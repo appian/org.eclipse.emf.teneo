@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.12 2007/08/10 16:40:57 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.13 2007/09/03 12:59:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
@@ -125,5 +126,20 @@ public interface PAnnotatedModel extends EObject {
 
 	/** Return the eclass annotated with this entity name. If not found then an exception is thrown */
 	public EClass getEClass(String entityName);
+
+	/** @return true if there is annotated eclass with the passed entityname */
+	public boolean hasEClass(String entityName);
+
+	/**
+	 * @return the EClassifier for a certain name. First the eclasses are searched using the name as
+	 *         the entityname then the edatatypes are searched.
+	 */
+	public EClassifier getEClassifier(String name);
+
+	/**
+	 * @return true if there is an EClass with the name as entityname or an EDataType with the name
+	 *         passed as a parameter.
+	 */
+	public boolean hasEClassifier(String name);
 
 } // PAnnotatedModel

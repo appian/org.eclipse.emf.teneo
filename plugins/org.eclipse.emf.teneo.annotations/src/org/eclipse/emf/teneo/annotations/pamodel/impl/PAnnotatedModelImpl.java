@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.20 2007/08/10 16:40:57 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.21 2007/09/03 12:59:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -513,7 +514,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	private ConcurrentHashMap<String, EClass> entityNameToEClass = new ConcurrentHashMap<String, EClass>();
 
-	/** Return the eclass annotated with this entity name. If not found then an exception is thrown */
+	/** @return the eclass annotated with this entity name. If not found then an exception is thrown */
 	public EClass getEClass(String entityName) {
 		EClass eClass;
 		if ((eClass = entityNameToEClass.get(entityName)) != null) {
@@ -529,6 +530,59 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			}
 		}
 		throw new IllegalArgumentException("No Annotated EClass for entityName " + entityName);
+	}
+
+	/**
+	 * @return the EClassifier for a certain name. First the eclasses are searched using the name as
+	 *         the entityname then the edatatypes are searched.
+	 */
+	public EClassifier getEClassifier(String name) {
+		if (hasEClass(name)) {
+			return getEClass(name);
+		}
+
+		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
+			final EClassifier eClassifier = aPackage.getAnnotatedEPackage().getEClassifier(name);
+			if (eClassifier instanceof EDataType) {
+				return eClassifier;
+			}
+		}
+		throw new IllegalArgumentException("No EClassifier for name " + name);
+	}
+
+	/**
+	 * @return true if there is an EClass with the name as entityname or an EDataType with the name
+	 *         passed as a parameter.
+	 */
+	public boolean hasEClassifier(String name) {
+		if (hasEClass(name)) {
+			return true;
+		}
+
+		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
+			final EClassifier eClassifier = aPackage.getAnnotatedEPackage().getEClassifier(name);
+			if (eClassifier instanceof EDataType) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/** @return true if there is annotated eclass with the passed entityname */
+	public boolean hasEClass(String entityName) {
+		if (entityNameToEClass.get(entityName) != null) {
+			return true;
+		}
+		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
+			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
+				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
+						aClass.getEntity().getName().compareTo(entityName) == 0) {
+					entityNameToEClass.put(entityName, aClass.getAnnotatedEClass());
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/** Dump this model to xml */

@@ -2,11 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageImpl.java,v 1.10 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PAnnotatedEPackageImpl.java,v 1.11 2007/09/03 12:59:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -29,28 +31,27 @@ import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PAnnotated EPackage</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EPackage</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaModel <em>Pa Model</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getAnnotatedEPackage <em>Annotated EPackage</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaEClasses <em>Pa EClasses</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getTableGenerators <em>Table Generators</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaEDataTypes <em>Pa EData Types</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaModel <em>Pa Model</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getAnnotatedEPackage <em>Annotated EPackage</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaEClasses <em>Pa EClasses</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getTableGenerators <em>Table Generators</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaEDataTypes <em>Pa EData Types</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implements PAnnotatedEPackage {
 	/**
-	 * The cached value of the '{@link #getAnnotatedEPackage() <em>Annotated EPackage</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAnnotatedEPackage() <em>Annotated EPackage</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAnnotatedEPackage()
 	 * @generated
 	 * @ordered
@@ -58,9 +59,9 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	protected EPackage annotatedEPackage;
 
 	/**
-	 * The cached value of the '{@link #getPaEClasses() <em>Pa EClasses</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPaEClasses() <em>Pa EClasses</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPaEClasses()
 	 * @generated
 	 * @ordered
@@ -68,9 +69,9 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	protected EList<PAnnotatedEClass> paEClasses;
 
 	/**
-	 * The cached value of the '{@link #getSequenceGenerators() <em>Sequence Generators</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSequenceGenerators() <em>Sequence Generators</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSequenceGenerators()
 	 * @generated
 	 * @ordered
@@ -78,9 +79,9 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	protected EList<SequenceGenerator> sequenceGenerators;
 
 	/**
-	 * The cached value of the '{@link #getTableGenerators() <em>Table Generators</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTableGenerators() <em>Table Generators</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTableGenerators()
 	 * @generated
 	 * @ordered
@@ -88,9 +89,9 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	protected EList<TableGenerator> tableGenerators;
 
 	/**
-	 * The cached value of the '{@link #getPaEDataTypes() <em>Pa EData Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPaEDataTypes() <em>Pa EData Types</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPaEDataTypes()
 	 * @generated
 	 * @ordered
@@ -98,8 +99,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	protected EList<PAnnotatedEDataType> paEDataTypes;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PAnnotatedEPackageImpl() {
@@ -107,8 +108,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -117,66 +118,79 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PAnnotatedModel getPaModel() {
-		if (eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL) return null;
-		return (PAnnotatedModel)eContainer();
+		if (eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL) {
+			return null;
+		}
+		return (PAnnotatedModel) eContainer();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetPaModel(PAnnotatedModel newPaModel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newPaModel, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newPaModel, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, msgs);
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPaModel(PAnnotatedModel newPaModel) {
-		if (newPaModel != eInternalContainer() || (eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL && newPaModel != null)) {
-			if (EcoreUtil.isAncestor(this, newPaModel))
+		if (newPaModel != eInternalContainer() ||
+				(eContainerFeatureID != PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL && newPaModel != null)) {
+			if (EcoreUtil.isAncestor(this, newPaModel)) {
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newPaModel != null)
-				msgs = ((InternalEObject)newPaModel).eInverseAdd(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PAnnotatedModel.class, msgs);
+			}
+			if (newPaModel != null) {
+				msgs =
+						((InternalEObject) newPaModel).eInverseAdd(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES,
+							PAnnotatedModel.class, msgs);
+			}
 			msgs = basicSetPaModel(newPaModel, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL,
+				newPaModel, newPaModel));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL, newPaModel, newPaModel));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EPackage getAnnotatedEPackage() {
 		if (annotatedEPackage != null && annotatedEPackage.eIsProxy()) {
-			InternalEObject oldAnnotatedEPackage = (InternalEObject)annotatedEPackage;
-			annotatedEPackage = (EPackage)eResolveProxy(oldAnnotatedEPackage);
+			InternalEObject oldAnnotatedEPackage = (InternalEObject) annotatedEPackage;
+			annotatedEPackage = (EPackage) eResolveProxy(oldAnnotatedEPackage);
 			if (annotatedEPackage != oldAnnotatedEPackage) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE, oldAnnotatedEPackage, annotatedEPackage));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE, oldAnnotatedEPackage, annotatedEPackage));
+				}
 			}
 		}
 		return annotatedEPackage;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EPackage basicGetAnnotatedEPackage() {
@@ -184,99 +198,113 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public void setAnnotatedEPackage(EPackage newAnnotatedEPackage) {
 		EPackage oldAnnotatedEPackage = annotatedEPackage;
 		annotatedEPackage = newAnnotatedEPackage;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE, oldAnnotatedEPackage, annotatedEPackage));
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT, oldAnnotatedEPackage, annotatedEPackage));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE, oldAnnotatedEPackage, annotatedEPackage));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT, oldAnnotatedEPackage, annotatedEPackage));
 		}
 	}
 
+	@Override
 	public ENamedElement basicGetAnnotatedElement() {
 		return basicGetAnnotatedEPackage();
 	}
 
+	@Override
 	public void setAnnotatedElement(ENamedElement newAnnotatedElement) {
 		setAnnotatedEPackage((EPackage) newAnnotatedElement);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PAnnotatedEClass> getPaEClasses() {
 		if (paEClasses == null) {
-			paEClasses = new EObjectContainmentWithInverseEList<PAnnotatedEClass>(PAnnotatedEClass.class, this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE);
+			paEClasses =
+					new EObjectContainmentWithInverseEList<PAnnotatedEClass>(PAnnotatedEClass.class, this,
+						PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE);
 		}
 		return paEClasses;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<SequenceGenerator> getSequenceGenerators() {
 		if (sequenceGenerators == null) {
-			sequenceGenerators = new EObjectContainmentEList<SequenceGenerator>(SequenceGenerator.class, this, PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS);
+			sequenceGenerators =
+					new EObjectContainmentEList<SequenceGenerator>(SequenceGenerator.class, this,
+						PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS);
 		}
 		return sequenceGenerators;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<TableGenerator> getTableGenerators() {
 		if (tableGenerators == null) {
-			tableGenerators = new EObjectContainmentEList<TableGenerator>(TableGenerator.class, this, PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS);
+			tableGenerators =
+					new EObjectContainmentEList<TableGenerator>(TableGenerator.class, this,
+						PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS);
 		}
 		return tableGenerators;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PAnnotatedEDataType> getPaEDataTypes() {
 		if (paEDataTypes == null) {
-			paEDataTypes = new EObjectContainmentWithInverseEList<PAnnotatedEDataType>(PAnnotatedEDataType.class, this, PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES, PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE);
+			paEDataTypes =
+					new EObjectContainmentWithInverseEList<PAnnotatedEDataType>(PAnnotatedEDataType.class, this,
+						PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES,
+						PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE);
 		}
 		return paEDataTypes;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-				if (eInternalContainer() != null)
+				if (eInternalContainer() != null) {
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetPaModel((PAnnotatedModel)otherEnd, msgs);
+				}
+				return basicSetPaModel((PAnnotatedModel) otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEClasses()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEClasses()).basicAdd(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPaEDataTypes()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPaEDataTypes()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,34 +313,35 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
 				return basicSetPaModel(null, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
-				return ((InternalEList<?>)getPaEClasses()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getPaEClasses()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
-				return ((InternalEList<?>)getSequenceGenerators()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getSequenceGenerators()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
-				return ((InternalEList<?>)getTableGenerators()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getTableGenerators()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
-				return ((InternalEList<?>)getPaEDataTypes()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getPaEDataTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES, PAnnotatedModel.class, msgs);
+				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_MODEL__PA_EPACKAGES,
+					PAnnotatedModel.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -321,7 +350,9 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
 				return getPaModel();
 			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE:
-				if (resolve) return getAnnotatedEPackage();
+				if (resolve) {
+					return getAnnotatedEPackage();
+				}
 				return basicGetAnnotatedEPackage();
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				return getPaEClasses();
@@ -336,53 +367,53 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-				setPaModel((PAnnotatedModel)newValue);
+				setPaModel((PAnnotatedModel) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE:
-				setAnnotatedEPackage((EPackage)newValue);
+				setAnnotatedEPackage((EPackage) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				getPaEClasses().clear();
-				getPaEClasses().addAll((Collection<? extends PAnnotatedEClass>)newValue);
+				getPaEClasses().addAll((Collection<? extends PAnnotatedEClass>) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_GENERATORS:
 				getSequenceGenerators().clear();
-				getSequenceGenerators().addAll((Collection<? extends SequenceGenerator>)newValue);
+				getSequenceGenerators().addAll((Collection<? extends SequenceGenerator>) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__TABLE_GENERATORS:
 				getTableGenerators().clear();
-				getTableGenerators().addAll((Collection<? extends TableGenerator>)newValue);
+				getTableGenerators().addAll((Collection<? extends TableGenerator>) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
 				getPaEDataTypes().clear();
-				getPaEDataTypes().addAll((Collection<? extends PAnnotatedEDataType>)newValue);
+				getPaEDataTypes().addAll((Collection<? extends PAnnotatedEDataType>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL:
-				setPaModel((PAnnotatedModel)null);
+				setPaModel((PAnnotatedModel) null);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE:
-				setAnnotatedEPackage((EPackage)null);
+				setAnnotatedEPackage((EPackage) null);
 				return;
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES:
 				getPaEClasses().clear();
@@ -401,8 +432,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -424,4 +455,17 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 		return super.eIsSet(featureID);
 	}
 
-} //PAnnotatedEPackageImpl
+	/**
+	 * @return the PAnnotatedEClasses with an entity annotation
+	 */
+	public List<PAnnotatedEClass> getEntities() {
+		final List<PAnnotatedEClass> entities = new ArrayList<PAnnotatedEClass>();
+		for (PAnnotatedEClass aClass : getPaEClasses()) {
+			if (aClass.getEntity() != null) {
+				entities.add(aClass);
+			}
+		}
+		return entities;
+	}
+
+} // PAnnotatedEPackageImpl
