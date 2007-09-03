@@ -11,14 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.11 2007/08/10 22:35:33 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.12 2007/09/03 14:30:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -40,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -138,16 +136,16 @@ public class EcoreAction extends AbstractTestAction {
 				}
 				store.commitTransaction();
 			}
-			{
-				store.beginTransaction();
-				final Resource res = new XMIResourceImpl();
-				for (Object o : store.getObjects(EPackage.class)) {
-					res.getContents().add((EObject) o);
-				}
-				final OutputStream os = new FileOutputStream("/home/mtaal/mytmp/test.ecore");
-				res.save(os, Collections.EMPTY_MAP);
-				store.commitTransaction();
-			}
+// {
+// store.beginTransaction();
+// final Resource res = new XMIResourceImpl();
+// for (Object o : store.getObjects(EPackage.class)) {
+// res.getContents().add((EObject) o);
+// }
+// final OutputStream os = new FileOutputStream("/home/mtaal/mytmp/test.ecore");
+// res.save(os, Collections.EMPTY_MAP);
+// store.commitTransaction();
+// }
 
 		} catch (Exception e) {
 			throw new StoreTestException("Exception when testing persistence of ecore", e);
