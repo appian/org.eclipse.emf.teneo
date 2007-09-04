@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.12 2007/07/09 12:54:45 mtaal Exp $
+ * $Id: AllTests.java,v 1.13 2007/09/04 09:57:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class AllTests {
 
@@ -52,11 +52,11 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", JPOXTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(MappedSuperClassAction.class);
 		suite.addTestSuite(SetResourceAction.class);
 		suite.addTestSuite(SetAction.class);
 
 		suite.addTestSuite(IdAction.class);
-		suite.addTestSuite(MappedSuperClassAction.class);
 
 		suite.addTestSuite(EDataTypeAction.class);
 

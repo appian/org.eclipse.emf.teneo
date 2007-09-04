@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.12 2007/07/11 19:00:23 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.13 2007/09/04 09:57:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All generate tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class AllGenerateTests {
 
@@ -53,11 +53,12 @@ public class AllGenerateTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", JPOXTestbed
 					.instance().getConfigurations());
+		suite.addTest(new JPOXGenerateTest(MappedSuperClassAction.class));
+
 		suite.addTest(new JPOXGenerateTest(IdAction.class));
 
 		suite.addTest(new JPOXGenerateTest(SetAction.class));
 		suite.addTest(new JPOXGenerateTest(SetResourceAction.class));
-		suite.addTest(new JPOXGenerateTest(MappedSuperClassAction.class));
 
 		suite.addTest(new JPOXGenerateTest(EDataTypeAction.class));
 		suite.addTest(new JPOXGenerateTest(SecondaryTableActionJDO.class));
