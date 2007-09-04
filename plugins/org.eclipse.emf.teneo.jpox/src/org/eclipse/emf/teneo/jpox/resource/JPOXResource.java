@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.6 2007/03/29 22:13:44 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.7 2007/09/04 09:56:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -48,30 +48,26 @@ import org.jpox.store.OID;
 import org.jpox.store.OIDFactory;
 
 /**
- * JPOX Resource. The JPOX resource is connected to a persistence manager during
- * its lifetime. A transaction is started before the load and it is stopped just
- * after the save.
+ * JPOX Resource. The JPOX resource is connected to a persistence manager during its lifetime. A
+ * transaction is started before the load and it is stopped just after the save.
  * 
- * A JPOX resource is created using an uri. The uri should have specific
- * parameters to allow the jpox resource to know to which database to connect.
+ * A JPOX resource is created using an uri. The uri should have specific parameters to allow the
+ * jpox resource to know to which database to connect.
  * 
- * When you create a persistence manager through the appropriate method in the
- * JPOXHelper class. The name you passed there can be used as a parameter in the
- * uri used to create this resource (using the parameter pmfname). The uri is
- * then: jpox://?pmfname=mypmf.
+ * When you create a persistence manager through the appropriate method in the JPOXHelper class. The
+ * name you passed there can be used as a parameter in the uri used to create this resource (using
+ * the parameter pmfname). The uri is then: jpox://?pmfname=mypmf.
  * 
- * The types read by the resource can be filtered in two ways: - pass a
- * parameter with the list of types (interfaces or concrete In the second
- * approach all the connection parameters which are required to create a
- * persistence manager factory are used. Here the following parameters have to
- * be passed: dbdriver dburl (note the url should also contain the databasename)
- * dbname dbuser dbpwd
+ * The types read by the resource can be filtered in two ways: - pass a parameter with the list of
+ * types (interfaces or concrete In the second approach all the connection parameters which are
+ * required to create a persistence manager factory are used. Here the following parameters have to
+ * be passed: dbdriver dburl (note the url should also contain the databasename) dbname dbuser dbpwd
  * 
- * Another simple trick which is used to fool emf a bit is that the extension of
- * the uri can also be used to init a jpox resource!
+ * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be
+ * used to init a jpox resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2007/03/29 22:13:44 $
+ * @version $Revision: 1.7 $ $Date: 2007/09/04 09:56:42 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -141,9 +137,7 @@ public class JPOXResource extends StoreResource {
 					JpoxUtil.getCreateDataStore(props);
 					setDefinedQueries(getQueries(props));
 				} catch (IOException e) {
-					throw new JpoxStoreException(
-							"Exception when reading properties from: "
-									+ uri.toString(), e);
+					throw new JpoxStoreException("Exception when reading properties from: " + uri.toString(), e);
 				}
 			} else {
 				log.debug("Trying fileextension: " + uri.fileExtension());
@@ -163,8 +157,7 @@ public class JPOXResource extends StoreResource {
 
 			setDefinedQueries(getQueries(params));
 
-			final String scName = getParam(params, PM_CONTROLLER_PARAM, uri
-					.query());
+			final String scName = getParam(params, PM_CONTROLLER_PARAM, uri.query());
 			pmController = PMController.getPMController(scName);
 			log.debug("Using p, controller " + scName);
 			emfDataStore = pmController.getJpoxDataStore();
@@ -174,17 +167,15 @@ public class JPOXResource extends StoreResource {
 			// retrieve the topclasses)
 			super.init(emfDataStore.getTopClasses());
 		} else {
-			throw new JpoxStoreException(
-					"The following uri can not be used to create a"
-							+ " jpoxresource, it misses parameters for either the jpoxdatastore or a pmController "
-							+ uri.toString());
+			throw new JpoxStoreException("The following uri can not be used to create a" +
+					" jpoxresource, it misses parameters for either the jpoxdatastore or a pmController " +
+					uri.toString());
 		}
 
 		log.debug("Looking for emf data store using  " + emfdsName);
 
 		final String fetch_param = (String) params.get(FETCH_MINIMAL);
-		fetchMinimal = fetch_param != null
-				&& fetch_param.compareToIgnoreCase("true") == 0;
+		fetchMinimal = fetch_param != null && fetch_param.compareToIgnoreCase("true") == 0;
 		fetchAll = useAllFetchGroup;
 
 		// load the persistencemanager
@@ -197,30 +188,27 @@ public class JPOXResource extends StoreResource {
 			if (pmController != null) {
 				persistenceManager = pmController.getPM();
 			} else {
-				persistenceManager = emfDataStore.getPMF()
-						.getPersistenceManager();
+				persistenceManager = emfDataStore.getPMF().getPersistenceManager();
 			}
 			// set the fetch groups
 			if (fetchAll) {
-				log.debug("Fetchgroup contains all fields for this resource; "
-						+ uri);
+				log.debug("Fetchgroup contains all fields for this resource; " + uri);
 				persistenceManager.getFetchPlan().addGroup(FetchPlan.ALL);
 			} else if (fetchMinimal) {
 				log.debug("Minimal fetch group used for resource; " + uri);
 				persistenceManager.getFetchPlan().addGroup(FetchPlan.DEFAULT);
 			} else {
-				log.debug("Standard emf/jpox fetch group used for resource; "
-						+ uri);
+				log.debug("Standard emf/jpox fetch group used for resource; " + uri);
 			}
 		}
 		return persistenceManager;
 	}
 
 	/**
-	 * Overridden because if an eobject is removed from its containing parent
-	 * then jpox will move it to the deleted state and then the content of the
-	 * deleted object can not be used anymore.
+	 * Overridden because if an eobject is removed from its containing parent then jpox will move it
+	 * to the deleted state and then the content of the deleted object can not be used anymore.
 	 */
+	@Override
 	public void detached(EObject eObject) {
 		if (((PersistenceCapable) eObject).jdoIsDeleted()) {
 			detachedHelper(eObject);
@@ -230,9 +218,10 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if
-	 * the array is of length zero then no refering EObjects where found.
+	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length
+	 * zero then no refering EObjects where found.
 	 */
+	@Override
 	public Object[] getCrossReferencers(EObject referedTo) {
 		Transaction tx = null;
 		boolean err = true;
@@ -241,21 +230,19 @@ public class JPOXResource extends StoreResource {
 				tx = getPersistenceManager().currentTransaction();
 				tx.begin();
 			}
-			final Object[] result = emfDataStore.getCrossReferencers(
-					getPersistenceManager(), referedTo);
+			final Object[] result = emfDataStore.getCrossReferencers(getPersistenceManager(), referedTo);
 			err = false;
 
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new JpoxStoreException(
-					"Exception when doing cross reference search "
-							+ emfDataStore.getName(), e);
+			throw new JpoxStoreException("Exception when doing cross reference search " + emfDataStore.getName(), e);
 		} finally {
 			if (!hasPMController) {
 				if (err) {
-					if (tx != null && tx.isActive())
+					if (tx != null && tx.isActive()) {
 						tx.rollback();
+					}
 				} else {
 					tx.commit();
 				}
@@ -265,8 +252,8 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * Unpacks the id string and reads an object from the db, note for each read
-	 * a transaction is opened, unless the session is controlled by the caller.
+	 * Unpacks the id string and reads an object from the db, note for each read a transaction is
+	 * opened, unless the session is controlled by the caller.
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getEObjectByID(java.lang.String)
 	 */
@@ -291,23 +278,34 @@ public class JPOXResource extends StoreResource {
 				if (!tx.isActive()) { // can also be asserted but okay try to
 					// be helpful
 					log
-							.warn("Resource getobjectbyid: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
+						.warn("Resource getobjectbyid: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
 					tx.begin();
 				}
 			}
 
 			log.debug("Reading eobject using urifragment " + id);
+			try {
+				final InternalEObject obj = (InternalEObject) getPersistenceManager().getObjectById(new OID(id));
+				addToContent(obj);
+				err = false;
+				return obj;
 
-			final InternalEObject obj = (InternalEObject) getPersistenceManager()
-					.getObjectById(new OID(id));
-			addToContent(obj);
-			err = false;
-			return obj;
+				// catch two cases of illegal id's, instead of passing the error null is returned
+			} catch (IllegalArgumentException e) {
+				// on purpose do not rethrow
+				log.debug("Exception when decoding id " + id + ", this is not necessarily an error, trying superclass",
+					e);
+				return super.getEObjectByID(id);
+			} catch (StringIndexOutOfBoundsException e) {
+				// on purpose do not rethrow
+				log.debug("Exception when decoding id " + id + ", this is not necessarily an error, trying superclass",
+					e);
+				return super.getEObjectByID(id);
+			}
 		} finally {
 			if (!hasPMController) {
 				if (err) {
-					log
-							.warn("Exception during getobjectbyid, rolling back transaction");
+					log.warn("Exception during getobjectbyid, rolling back transaction");
 					tx.rollback();
 				} else {
 					log.warn("Committing transaction");
@@ -321,15 +319,15 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * Creates a unique id string from the eobject. The id string will contain a
-	 * link to the type (eclass) and the string version of the id itself. This
-	 * method assumes that the id can be converted from and to a string!
+	 * Creates a unique id string from the eobject. The id string will contain a link to the type
+	 * (eclass) and the string version of the id itself. This method assumes that the id can be
+	 * converted from and to a string!
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getURIFragment(org.eclipse.emf.ecore.EObject)
 	 */
 	@Override
 	public String getURIFragment(EObject object) {
-		
+
 		if (object == null) {
 			return null;
 		}
@@ -337,9 +335,11 @@ public class JPOXResource extends StoreResource {
 		if (object instanceof PersistenceCapable && getPersistenceManager().getObjectId(object) != null) {
 			final OID oid;
 			if (getPersistenceManager().getObjectId(object) instanceof OID) {
-				oid = (OID)getPersistenceManager().getObjectId(object);
-			} else { 
-				oid = OIDFactory.getInstance(object.getClass().getName(), ((SingleFieldIdentity)getPersistenceManager().getObjectId(object)).getKeyAsObject());
+				oid = (OID) getPersistenceManager().getObjectId(object);
+			} else {
+				oid =
+						OIDFactory.getInstance(object.getClass().getName(),
+							((SingleFieldIdentity) getPersistenceManager().getObjectId(object)).getKeyAsObject());
 			}
 			if (oid == null) {
 				return super.getURIFragment(object);
@@ -350,9 +350,9 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * Saves the changed objects or removes the detached objects from this
-	 * resource.
+	 * Saves the changed objects or removes the detached objects from this resource.
 	 */
+	@Override
 	protected void saveResource(Map options) {
 		log.debug("SAVING DAO jpoxresource using uri: " + uri.toString());
 
@@ -363,7 +363,7 @@ public class JPOXResource extends StoreResource {
 			if (!tx.isActive()) { // can also be asserted but okay try to be
 				// helpful
 				log
-						.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
+					.warn("Resource save: the transaction of the resource should always be active, but it isn't when save starts, beginning transaction");
 				tx.begin();
 			}
 		}
@@ -388,12 +388,10 @@ public class JPOXResource extends StoreResource {
 			// determine unreachables
 			final ArrayList reallyRemove = new ArrayList();
 			for (int i = 0; i < removedEObjects.size(); i++) {
-				final PersistenceCapable pc = (PersistenceCapable) removedEObjects
-						.get(i);
+				final PersistenceCapable pc = (PersistenceCapable) removedEObjects.get(i);
 				final EObject eobj = (EObject) pc;
-				if (pc.jdoIsPersistent()
-						&& !pc.jdoIsDeleted()
-						&& (eobj.eResource() == null || eobj.eResource() == this)) {
+				if (pc.jdoIsPersistent() && !pc.jdoIsDeleted() &&
+						(eobj.eResource() == null || eobj.eResource() == this)) {
 					reallyRemove.add(pc);
 				}
 			}
@@ -402,8 +400,7 @@ public class JPOXResource extends StoreResource {
 			/*
 			 * ArrayList toRemove = new ArrayList(); for (Iterator removeIt =
 			 * reallyRemove.iterator(); removeIt.hasNext();) {
-			 * toRemove.add(((PersistenceManagerImpl)
-			 * pm).makePersistent(removeIt.next())); }
+			 * toRemove.add(((PersistenceManagerImpl) pm).makePersistent(removeIt.next())); }
 			 */
 			getPersistenceManager().deletePersistentAll(reallyRemove);
 
@@ -427,6 +424,7 @@ public class JPOXResource extends StoreResource {
 	/**
 	 * Loads all the objects in the global list
 	 */
+	@Override
 	public List loadResource(Map options) {
 		log.debug("Loading resource: " + getURI().toString());
 
@@ -470,11 +468,11 @@ public class JPOXResource extends StoreResource {
 	/**
 	 * Clears the list of eobjects by id and commits an open transaction
 	 */
+	@Override
 	protected void doUnload() {
 		if (!hasPMController) {
 			if (getPersistenceManager().currentTransaction().isActive()) {
-				log
-						.debug("At unload, transaction is still active committing it");
+				log.debug("At unload, transaction is still active committing it");
 				getPersistenceManager().currentTransaction().commit();
 			}
 
@@ -486,12 +484,11 @@ public class JPOXResource extends StoreResource {
 	}
 
 	/**
-	 * This method can be overridden to implement specific load behavior. Note
-	 * that a transaction has already been started. The persistence manager is
-	 * passed as a parameter, this is the same persistence manager which can be
-	 * retrieved using the getPersistenceManager method. The read objects should
-	 * be returned in the list. Note that after this call the retrieved objects
-	 * are put in the resource content.
+	 * This method can be overridden to implement specific load behavior. Note that a transaction
+	 * has already been started. The persistence manager is passed as a parameter, this is the same
+	 * persistence manager which can be retrieved using the getPersistenceManager method. The read
+	 * objects should be returned in the list. Note that after this call the retrieved objects are
+	 * put in the resource content.
 	 */
 	protected List loadFromStore(PersistenceManager pm) {
 		if (definedQueriesPresent()) {
@@ -530,9 +527,9 @@ public class JPOXResource extends StoreResource {
 
 		final ArrayList readObjects = new ArrayList();
 		final String[] qrys = getDefinedQueries();
-		for (int i = 0; i < qrys.length; i++) {
-			log.debug("Loading objects using query: " + qrys[i]);
-			final Query qry = pm.newQuery(qrys[i]);
+		for (String element : qrys) {
+			log.debug("Loading objects using query: " + element);
+			final Query qry = pm.newQuery(element);
 			final List result = (List) qry.execute();
 			final Iterator it = result.iterator();
 			while (it.hasNext()) {

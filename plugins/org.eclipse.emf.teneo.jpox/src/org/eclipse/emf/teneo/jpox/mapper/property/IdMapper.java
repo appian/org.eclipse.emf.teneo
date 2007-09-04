@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.8 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: IdMapper.java,v 1.9 2007/09/04 09:56:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -20,7 +20,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class IdMapper extends AbstractMapper implements ExtensionPoint {
@@ -58,10 +58,10 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 			mappingContext.getColumnMapper().map(aAttribute.getColumn(), fieldElement);
 		} else if (mappingContext.getEmbeddingFeature() != null) { // embedded at least override
 			// TODO: check illegal, embedded component can not really have an id
-			final PAnnotatedEReference pae = mappingContext.getEmbeddingFeature();
+			final PAnnotatedEStructuralFeature pae = mappingContext.getEmbeddingFeature();
 			final String name =
-					pae.getAnnotatedEReference().getName() + "_" + aAttribute.getAnnotatedEAttribute().getName() +
-							"_ID";
+					pae.getAnnotatedEStructuralFeature().getName() + "_" +
+							aAttribute.getAnnotatedEAttribute().getName() + "_ID";
 			fieldElement.addAttribute("column", name);
 		}
 

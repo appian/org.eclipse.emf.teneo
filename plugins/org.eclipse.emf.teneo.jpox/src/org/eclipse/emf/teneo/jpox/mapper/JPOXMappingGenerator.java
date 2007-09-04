@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.14 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.15 2007/09/04 09:56:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAware {
@@ -110,7 +110,7 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 				PAnnotatedEClass aClass = (PAnnotatedEClass) element2;
 				Class implClass = ERuntime.INSTANCE.getJavaClass((EClass) aClass.getAnnotatedElement());
 
-				if (aClass.getEntity() == null || implClass == null) {
+				if ((aClass.getEntity() == null && aClass.getMappedSuperclass() == null) || implClass == null) {
 					continue;
 				}
 
