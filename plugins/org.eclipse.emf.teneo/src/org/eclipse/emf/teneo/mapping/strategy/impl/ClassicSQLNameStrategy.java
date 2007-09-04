@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.9 2007/08/10 16:40:55 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.10 2007/09/04 09:57:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -94,7 +94,10 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * 
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getColumnName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
-	public String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature) {
+	public String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature, String prefix) {
+		if (prefix != null) {
+			return convert(prefix + "_" + aStructuralFeature.getAnnotatedEStructuralFeature().getName());
+		}
 		return convert(aStructuralFeature.getAnnotatedEStructuralFeature().getName());
 	}
 

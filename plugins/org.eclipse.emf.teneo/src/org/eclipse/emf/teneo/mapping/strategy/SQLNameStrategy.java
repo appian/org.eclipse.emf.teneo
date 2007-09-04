@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.6 2007/07/18 16:10:08 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.7 2007/09/04 09:57:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Note that strategies are normally created once for each instance of persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public interface SQLNameStrategy extends ExtensionPoint {
 
@@ -60,8 +60,8 @@ public interface SQLNameStrategy extends ExtensionPoint {
 	/** Returns the table name for a passed AnnotatedEClass */
 	public abstract String getTableName(PAnnotatedEClass aClass);
 
-	/** Simple column name */
-	public abstract String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature);
+	/** Simple column name with optional prefix */
+	public abstract String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature, String prefix);
 
 	/**
 	 * Return the name of the foreign key used for this aReference. If null is returned then the

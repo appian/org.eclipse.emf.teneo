@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.3 2007/09/04 09:57:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -139,7 +139,7 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				}
 
 				if (aAttribute.getColumn() != null && aAttribute.getColumn().getName() == null) {
-					aAttribute.getColumn().setName(getSqlNameStrategy().getColumnName(aAttribute));
+					aAttribute.getColumn().setName(getSqlNameStrategy().getColumnName(aAttribute, null));
 				}
 
 			} else if (aStructuralFeature instanceof PAnnotatedEReference) {
@@ -197,7 +197,7 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 
 				// handle column naming at this level
 				if (aReference.getColumn() != null && aReference.getColumn().getName() == null) {
-					aReference.getColumn().setName(getSqlNameStrategy().getColumnName(aReference));
+					aReference.getColumn().setName(getSqlNameStrategy().getColumnName(aReference, null));
 				}
 
 			} else {

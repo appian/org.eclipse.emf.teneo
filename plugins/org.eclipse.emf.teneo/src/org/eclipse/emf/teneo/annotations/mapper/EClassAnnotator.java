@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.3 2007/09/04 09:57:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -254,7 +254,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			return;
 		}
 		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass.getESuperTypes().get(0));
-		if (superAClass.getEntity() != null) {
+		if (superAClass.getEntity() != null || superAClass.getMappedSuperclass() != null) {
 			aClass.setPaSuperEntity(superAClass);
 		}
 	}

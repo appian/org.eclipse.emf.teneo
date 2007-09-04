@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.2 2007/08/10 16:40:56 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.3 2007/09/04 09:57:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class AbstractProcessingContext {
@@ -62,7 +62,7 @@ public class AbstractProcessingContext {
 	 * Pushes the current embedding feature on the stack, to be popped later, this is to handle
 	 * nested components and automatic renaming of props
 	 */
-	private Stack<PAnnotatedEReference> embeddingFeatureStack = new Stack<PAnnotatedEReference>();
+	private Stack<PAnnotatedEStructuralFeature> embeddingFeatureStack = new Stack<PAnnotatedEStructuralFeature>();
 
 	/**
 	 * Add attribute overrides, happens for each mapped superclass and each embedded component
@@ -98,7 +98,7 @@ public class AbstractProcessingContext {
 	}
 
 	/** Pushes the current embedding feature on the stack */
-	public void pushEmbeddingFeature(PAnnotatedEReference er) {
+	public void pushEmbeddingFeature(PAnnotatedEStructuralFeature er) {
 		embeddingFeatureStack.push(er);
 	}
 
@@ -108,7 +108,7 @@ public class AbstractProcessingContext {
 	}
 
 	/** Peeks for the current embedding feature */
-	public PAnnotatedEReference getEmbeddingFeature() {
+	public PAnnotatedEStructuralFeature getEmbeddingFeature() {
 		if (embeddingFeatureStack.isEmpty()) {
 			return null;
 		}
