@@ -31,7 +31,7 @@ import testinheritance.TestinheritancePackage;
  * Tests multiple inheritance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -47,6 +47,9 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		// as foreign keys are not unique for this test case because of multiple inheritance
+		// todo: solve this
+		props.setProperty(PersistenceOptions.SET_FOREIGN_KEY_NAME, "false");
 		return props;
 	}
 
