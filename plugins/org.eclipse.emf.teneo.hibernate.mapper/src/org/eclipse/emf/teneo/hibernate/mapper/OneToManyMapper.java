@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.22 2007/09/03 14:07:20 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.23 2007/09/04 09:57:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -163,8 +163,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			final EClass eclass = eref.getEReferenceType();
 			final EAttribute valueEAttribute = (EAttribute) eclass.getEStructuralFeature("value");
 			final PAnnotatedEAttribute valuePAttribute = paReference.getPaModel().getPAnnotated(valueEAttribute);
-			addElementElement(paReference, collElement, valueEAttribute.getName(), valuePAttribute,
-				getColumns(valuePAttribute), otm.getTargetEntity());
+			addElementElement(collElement, valuePAttribute, getColumns(valuePAttribute), otm.getTargetEntity());
 		} else if (!isEObject(targetName) && jt != null) {
 			// A m2m forces a join table, note that isunique does not completely
 			// follow the semantics of emf, unique on
@@ -257,8 +256,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			final EClass eclass = eref.getEReferenceType();
 			final EAttribute valueEAttribute = (EAttribute) eclass.getEStructuralFeature("value");
 			final PAnnotatedEAttribute valuePAttribute = paReference.getPaModel().getPAnnotated(valueEAttribute);
-			addElementElement(paReference, collElement, valueEAttribute.getName(), valuePAttribute,
-				getColumns(valuePAttribute), otm.getTargetEntity());
+			addElementElement(collElement, valuePAttribute, getColumns(valuePAttribute), otm.getTargetEntity());
 		} else if (jt != null) {
 			final List<JoinColumn> inverseJoinColumns =
 					jt != null && jt.getInverseJoinColumns() != null ? jt.getInverseJoinColumns()
@@ -284,7 +282,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			Element collElement, String featureName, String targetEntity) {
 		if (isEObject(targetEntity)) { // anytype
 			final Element any = collElement.addElement("many-to-any").addAttribute("id-type", "long");
-			addColumns(paReference, any, null, getAnyTypeColumns(featureName, false), false, false);
+			addColumns(any, paReference, getAnyTypeColumns(featureName, false), false, false);
 			return any;
 		} else {
 			if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {

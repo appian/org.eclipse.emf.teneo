@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.17 2007/08/10 20:17:25 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.18 2007/09/04 09:57:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -61,7 +61,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		if (isEObject(targetName)) {
 			final String erefName = paReference.getAnnotatedEReference().getName();
-			addColumns(paReference, associationElement, erefName, getAnyTypeColumns(erefName, true), true, false);
+			addColumns(associationElement, paReference, getAnyTypeColumns(erefName, true), true, false);
 			// foreign key is not added when the reference is to a generic EObject
 		} else {
 			addForeignKeyAttribute(associationElement, paReference);

@@ -20,7 +20,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
@@ -434,8 +433,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	/**
 	 * Add Element element in given collection element.
 	 */
-	protected Element addElementElement(PAnnotatedETypedElement pet, Element collElement, String defaultName,
-			PAnnotatedEAttribute paAttribute, List<Column> columns, String targetEntity) {
+	protected Element addElementElement(Element collElement, PAnnotatedEAttribute paAttribute, List<Column> columns,
+			String targetEntity) {
 		final Element elElement;
 		if (targetEntity == null || paAttribute.getEnumerated() != null) {
 			elElement = collElement.addElement("element");
@@ -444,7 +443,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			elElement = collElement.addElement("element").addAttribute("type", targetEntity);
 		}
 		if (columns != null && columns.size() > 0) {
-			addColumns(pet, elElement, defaultName, columns, getHbmContext().isCurrentElementFeatureMap(), true);
+			addColumns(elElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), true);
 		}
 		return elElement;
 	}

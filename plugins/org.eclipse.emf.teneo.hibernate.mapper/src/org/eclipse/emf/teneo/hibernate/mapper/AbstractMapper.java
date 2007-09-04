@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.28 2007/09/03 14:07:20 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.29 2007/09/04 09:57:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
@@ -280,24 +280,26 @@ public abstract class AbstractMapper {
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(PAnnotatedETypedElement pet, Element propertyElement, String defaultName,
-			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty) {
-		addColumns(pet, propertyElement, defaultName, columns, isNullable, setColumnAttributesInProperty, false, false);
+	protected void addColumns(Element propertyElement, PAnnotatedEStructuralFeature pef, List<Column> columns,
+			boolean isNullable, boolean setColumnAttributesInProperty) {
+		addColumns(propertyElement, pef, columns, isNullable, setColumnAttributesInProperty, false, false);
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(PAnnotatedETypedElement pet, Element propertyElement, String defaultName,
-			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique,
-			boolean isIdProperty) {
+	protected void addColumns(Element propertyElement, PAnnotatedEStructuralFeature pef, List<Column> columns,
+			boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique, boolean isIdProperty) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
 			final String name;
+
 			if (getHbmContext().getEmbeddingFeature() != null) { // embedded
 				// TODO: check illegal, embedded component can not really have an id
-				final PAnnotatedEReference pae = getHbmContext().getEmbeddingFeature();
-				name = pae.getAnnotatedEReference().getName() + "_" + defaultName;
+				final PAnnotatedEStructuralFeature embeddingFeature = getHbmContext().getEmbeddingFeature();
+				name =
+						getHbmContext().getSqlNameStrategy().getColumnName(pef,
+							embeddingFeature.getAnnotatedEStructuralFeature().getName());
 			} else {
-				name = defaultName;
+				name = getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
 			}
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
 			col.setName(name);
@@ -308,9 +310,9 @@ public abstract class AbstractMapper {
 				col.setUnique(isUnique);
 			}
 
-			if (pet instanceof HbAnnotatedEAttribute && ((HbAnnotatedEAttribute) pet).getGenerated() != null &&
-					((HbAnnotatedEAttribute) pet).getGenerated().getValue() != null &&
-					((HbAnnotatedEAttribute) pet).getGenerated().getValue() != GenerationTime.NEVER) {
+			if (pef instanceof HbAnnotatedEAttribute && ((HbAnnotatedEAttribute) pef).getGenerated() != null &&
+					((HbAnnotatedEAttribute) pef).getGenerated().getValue() != null &&
+					((HbAnnotatedEAttribute) pef).getGenerated().getValue() != GenerationTime.NEVER) {
 				col.setInsertable(false);
 				col.setUpdatable(false);
 			}
@@ -318,7 +320,7 @@ public abstract class AbstractMapper {
 			columns.add(col);
 		}
 		for (Column column : columns) {
-			addColumn(pet, propertyElement, defaultName, column, isNullable, setColumnAttributesInProperty);
+			addColumn(propertyElement, pef, column, isNullable, setColumnAttributesInProperty);
 		}
 	}
 
@@ -379,7 +381,7 @@ public abstract class AbstractMapper {
 	}
 
 	/** Sets property attributes on the basis of the column */
-	private void addColumn(PAnnotatedETypedElement pet, Element propertyElement, String defaultName, Column column,
+	private void addColumn(Element propertyElement, PAnnotatedEStructuralFeature pef, Column column,
 			boolean isNullable, boolean setColumnAttributesInProperty) {
 		if (column != null) {
 			if (setColumnAttributesInProperty) {
@@ -402,7 +404,7 @@ public abstract class AbstractMapper {
 				propertyElement.addAttribute("not-null", isNullable || column.isNullable() ? "false" : "true");
 				propertyElement.addAttribute("unique", column.isUnique() ? "true" : "false");
 			}
-			addColumnElement(pet, propertyElement, defaultName, column, isNullable);
+			addColumnElement(propertyElement, pef, column, isNullable);
 		}
 	}
 
@@ -410,8 +412,8 @@ public abstract class AbstractMapper {
 	 * Add a columnelement to the property, takes into account length, precision etc. forceNullable
 	 * is set when the feature belongs to a featuremap
 	 */
-	private void addColumnElement(PAnnotatedETypedElement pet, Element propertyElement, String defaultName,
-			Column column, boolean forceNullable) {
+	private void addColumnElement(Element propertyElement, PAnnotatedEStructuralFeature pef, Column column,
+			boolean forceNullable) {
 		if (column != null) {
 			Element columnElement =
 					propertyElement.addElement("column").addAttribute("not-null",
@@ -421,7 +423,15 @@ public abstract class AbstractMapper {
 			if (column.getName() != null) {
 				name = column.getName();
 			} else {
-				name = defaultName;
+				if (getHbmContext().getEmbeddingFeature() != null) { // embedded
+					// TODO: check illegal, embedded component can not really have an id
+					final PAnnotatedEStructuralFeature embeddingFeature = getHbmContext().getEmbeddingFeature();
+					name =
+							getHbmContext().getSqlNameStrategy().getColumnName(pef,
+								embeddingFeature.getAnnotatedEStructuralFeature().getName());
+				} else {
+					name = getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
+				}
 			}
 			columnElement.addAttribute("name", getHbmContext().trunc(name));
 			if (column.isSetLength()) {
@@ -440,13 +450,13 @@ public abstract class AbstractMapper {
 			if (uc != null) {
 				columnElement.addAttribute("unique-key", uc);
 			}
-			if (pet instanceof HbAnnotatedETypeElement && ((HbAnnotatedETypeElement) pet).getHbIndex() != null) {
-				final Index index = ((HbAnnotatedETypeElement) pet).getHbIndex();
+			if (pef instanceof HbAnnotatedETypeElement && ((HbAnnotatedETypeElement) pef).getHbIndex() != null) {
+				final Index index = ((HbAnnotatedETypeElement) pef).getHbIndex();
 				columnElement.addAttribute("index", index.getName());
 			}
 
 			// --- JJH, adapted by MT
-			addCommentElement(pet.getAnnotatedElement(), columnElement);
+			addCommentElement(pef.getAnnotatedElement(), columnElement);
 			// --- JJH
 		}
 	}

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.22 2007/08/10 16:41:00 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.23 2007/09/04 09:57:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -54,8 +54,6 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	public void processBasic(PAnnotatedEAttribute paAttribute) {
 		log.debug("processBasic " + paAttribute.getAnnotatedEAttribute().getName());
 
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
-
 		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
 		final String attrName = getHbmContext().getPropertyName(eattr);
 		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName);
@@ -66,8 +64,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(paAttribute, propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
-			.isCurrentElementFeatureMap() ||
+		addColumns(propElement, paAttribute, getColumns(paAttribute), getHbmContext().isCurrentElementFeatureMap() ||
 				isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
@@ -89,7 +86,6 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 * Generate hb mapping for the given temporal attribute.
 	 */
 	public void processTemporal(PAnnotatedEAttribute paAttribute) {
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
 		log.debug("processTemporal " + paAttribute.getAnnotatedEAttribute().getName());
 
 		TemporalType tt = paAttribute.getTemporal().getValue();
@@ -108,8 +104,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(paAttribute, propElement, eAttribute.getName(), getColumns(paAttribute), getHbmContext()
-			.isCurrentElementFeatureMap() ||
+		addColumns(propElement, paAttribute, getColumns(paAttribute), getHbmContext().isCurrentElementFeatureMap() ||
 				isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
@@ -144,8 +139,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(paAttribute, propElement, paAttribute.getAnnotatedEAttribute().getName(), getColumns(paAttribute),
-			getHbmContext().isCurrentElementFeatureMap() || isNullable(basic, paAttribute), true);
+		addColumns(propElement, paAttribute, getColumns(paAttribute), getHbmContext().isCurrentElementFeatureMap() ||
+				isNullable(basic, paAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
 	}
@@ -156,7 +151,6 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	public void processEnum(PAnnotatedEAttribute paAttribute) {
 		log.debug("processEnum " + paAttribute.getAnnotatedEAttribute());
 
-		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
 		Basic basic = paAttribute.getBasic();
 		if (basic == null) {
 			basic = PannotationFactory.eINSTANCE.createBasic();
@@ -168,7 +162,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 					getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
-		addColumns(paAttribute, propElement, eattr.getName(), columns, isNullable(basic, paAttribute) ||
+		addColumns(propElement, paAttribute, columns, isNullable(basic, paAttribute) ||
 				getHbmContext().isCurrentElementFeatureMap(), true);
 		setType(paAttribute, propElement);
 	}
@@ -188,8 +182,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 			log.warn("Version has more than one attribute, only using the first one, eclass: " +
 					paAttribute.getAnnotatedEAttribute().getEContainingClass().getName());
 		}
-		addColumns(paAttribute, propElement, eAttribute.getName(), columns, getHbmContext()
-			.isCurrentElementFeatureMap(), false);
+		addColumns(propElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), false);
 		setType(paAttribute, propElement);
 	}
 
