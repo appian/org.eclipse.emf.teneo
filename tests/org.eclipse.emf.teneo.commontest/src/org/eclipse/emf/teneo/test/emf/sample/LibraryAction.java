@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.11 2007/07/18 16:09:58 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.12 2007/11/14 16:39:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -265,7 +265,7 @@ public class LibraryAction extends AbstractTestAction {
 //
 // // must be a load event
 // assertTrue("Eventtype is not load notification but: " + msg.getEventType(),
-// msg.getEventType() == Constants.ELIST_LOAD_NOTIFICATION);
+// msg.getEventType() == AnnotationUtil.ELIST_LOAD_NOTIFICATION);
 //
 // countNotifications++;
 // }

@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class UpdateAction extends AbstractTestAction {
 
@@ -33,8 +33,6 @@ public class UpdateAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
-
 		{
 			final Parent p = UpdateFactory.eINSTANCE.createParent();
 			p.setName("p");

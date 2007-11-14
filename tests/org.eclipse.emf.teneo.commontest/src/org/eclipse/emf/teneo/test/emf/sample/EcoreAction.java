@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.12 2007/09/03 14:30:53 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.13 2007/11/14 16:39:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -62,7 +62,6 @@ public class EcoreAction extends AbstractTestAction {
 	/** Reads the library model and persists it. */
 	@Override
 	public void doAction(TestStore store) {
-
 		if (store.getInheritanceType().equals(InheritanceType.SINGLE_TABLE)) {
 			// ignore this as this fails any way
 			return;
@@ -81,14 +80,15 @@ public class EcoreAction extends AbstractTestAction {
 				store.beginTransaction();
 				final EPackage epack = (EPackage) resourceOne.getContents().get(0);
 				store.store(epack);
-				store.store(EcorePackage.eINSTANCE);
+				final EPackage ecorePackage = EcorePackage.eINSTANCE;
+				store.store(ecorePackage);
 				store.commitTransaction();
 			}
 
 			// read from the relational store
 			// and save it in a xml byte array
 			final Resource resourceTwo = new XMIResourceImpl();
-			if (false) {
+			if (true) {
 				store.beginTransaction();
 				final List<?> result = store.getObjects(EPackage.class);
 				// get the library ecore from the result
