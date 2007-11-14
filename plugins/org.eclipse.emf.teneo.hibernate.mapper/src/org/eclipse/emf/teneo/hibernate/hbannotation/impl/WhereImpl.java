@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WhereImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: WhereImpl.java,v 1.6 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -22,24 +22,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.WhereImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.WhereImpl#getClause <em>Clause</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WhereImpl extends EObjectImpl implements Where {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class WhereImpl extends HbAnnotationImpl implements Where {
 	/**
 	 * The default value of the '{@link #getClause() <em>Clause</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -84,44 +73,6 @@ public class WhereImpl extends EObjectImpl implements Where {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.WHERE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.WHERE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getClause() {
 		return clause;
 	}
@@ -146,9 +97,6 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.WHERE__CLAUSE:
 				return getClause();
 		}
@@ -163,9 +111,6 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.WHERE__CLAUSE:
 				setClause((String)newValue);
 				return;
@@ -181,9 +126,6 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.WHERE__CLAUSE:
 				setClause(CLAUSE_EDEFAULT);
 				return;
@@ -199,8 +141,6 @@ public class WhereImpl extends EObjectImpl implements Where {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.WHERE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.WHERE__CLAUSE:
 				return CLAUSE_EDEFAULT == null ? clause != null : !CLAUSE_EDEFAULT.equals(clause);
 		}

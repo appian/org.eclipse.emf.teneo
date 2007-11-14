@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.4 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -768,7 +768,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		generatedEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(cascadeEClass, Cascade.class, "Cascade", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCascade_Value(), thePannotationPackage.getCascadeType(), "value", null, 0, -1, Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

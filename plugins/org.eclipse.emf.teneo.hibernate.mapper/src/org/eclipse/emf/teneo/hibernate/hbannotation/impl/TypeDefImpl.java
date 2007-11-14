@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeDefImpl.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: TypeDefImpl.java,v 1.7 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeDefImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeDefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeDefImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeDefImpl#getTypeClass <em>Type Class</em>}</li>
@@ -36,17 +35,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
  *
  * @generated
  */
-public class TypeDefImpl extends EObjectImpl implements TypeDef {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class TypeDefImpl extends HbAnnotationImpl implements TypeDef {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -121,44 +110,6 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
 		return name;
 	}
@@ -216,9 +167,6 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.TYPE_DEF__NAME:
 				return getName();
 			case HbannotationPackage.TYPE_DEF__PARAMETERS:
@@ -238,9 +186,6 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.TYPE_DEF__NAME:
 				setName((String)newValue);
 				return;
@@ -263,9 +208,6 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.TYPE_DEF__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -287,8 +229,6 @@ public class TypeDefImpl extends EObjectImpl implements TypeDef {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE_DEF__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.TYPE_DEF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case HbannotationPackage.TYPE_DEF__PARAMETERS:

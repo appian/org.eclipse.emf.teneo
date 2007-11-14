@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: TypeImpl.java,v 1.6 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.TypeImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
@@ -35,17 +34,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  *
  * @generated
  */
-public class TypeImpl extends EObjectImpl implements Type {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class TypeImpl extends HbAnnotationImpl implements Type {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -100,44 +89,6 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.TYPE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.TYPE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getType() {
 		return type;
 	}
@@ -174,9 +125,6 @@ public class TypeImpl extends EObjectImpl implements Type {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.TYPE__TYPE:
 				return getType();
 			case HbannotationPackage.TYPE__PARAMETERS:
@@ -194,9 +142,6 @@ public class TypeImpl extends EObjectImpl implements Type {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.TYPE__TYPE:
 				setType((String)newValue);
 				return;
@@ -216,9 +161,6 @@ public class TypeImpl extends EObjectImpl implements Type {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.TYPE__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
@@ -237,8 +179,6 @@ public class TypeImpl extends EObjectImpl implements Type {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.TYPE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.TYPE__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case HbannotationPackage.TYPE__PARAMETERS:

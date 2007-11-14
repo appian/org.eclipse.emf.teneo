@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.4 2007/11/14 16:38:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -1220,69 +1220,6 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE__TRANSIENT = PamodelPackage.PANNOTATED_EDATA_TYPE__TRANSIENT;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__ATTRIBUTE_OVERRIDES = PamodelPackage.PANNOTATED_EDATA_TYPE__ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Join Table</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__JOIN_TABLE = PamodelPackage.PANNOTATED_EDATA_TYPE__JOIN_TABLE;
-
-	/**
-	 * The feature id for the '<em><b>One To Many</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__ONE_TO_MANY = PamodelPackage.PANNOTATED_EDATA_TYPE__ONE_TO_MANY;
-
-	/**
-	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__SEQUENCE_GENERATOR = PamodelPackage.PANNOTATED_EDATA_TYPE__SEQUENCE_GENERATOR;
-
-	/**
-	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__TABLE_GENERATORS = PamodelPackage.PANNOTATED_EDATA_TYPE__TABLE_GENERATORS;
-
-	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__JOIN_COLUMNS = PamodelPackage.PANNOTATED_EDATA_TYPE__JOIN_COLUMNS;
-
-	/**
-	 * The feature id for the '<em><b>Column</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__COLUMN = PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN;
-
-	/**
 	 * The feature id for the '<em><b>Annotated EData Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1364,94 +1301,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE__PA_EPACKAGE = PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE;
 
 	/**
-	 * The feature id for the '<em><b>Pa EClass</b></em>' container reference.
+	 * The feature id for the '<em><b>Column</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__PA_ECLASS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Annotated EStructural Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_WHERE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Hb Collection Of Elements</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_COLLECTION_OF_ELEMENTS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Hb Map Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_MAP_KEY = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Hb Cascade</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_CASCADE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Hb Id Bag</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Hb Index</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_INDEX = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EDATA_TYPE__COLUMN = PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Hb Type Def</b></em>' containment reference.
@@ -1460,7 +1316,43 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EDATA_TYPE__HB_WHERE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Hb Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Hb Id Bag</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Hb Index</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EDATA_TYPE__HB_INDEX = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EData Type</em>' class.
@@ -1469,7 +1361,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EDATA_TYPE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 5;
 
 
 	/**
@@ -1752,6 +1644,50 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEDataType_HbTypeDef();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbWhere <em>Hb Where</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Where</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbWhere()
+	 * @see #getHbAnnotatedEDataType()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEDataType_HbWhere();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbColumns <em>Hb Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Hb Columns</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbColumns()
+	 * @see #getHbAnnotatedEDataType()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEDataType_HbColumns();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbIdBag <em>Hb Id Bag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Id Bag</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbIdBag()
+	 * @see #getHbAnnotatedEDataType()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEDataType_HbIdBag();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbIndex <em>Hb Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Hb Index</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbIndex()
+	 * @see #getHbAnnotatedEDataType()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEDataType_HbIndex();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1994,6 +1930,38 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF = eINSTANCE.getHbAnnotatedEDataType_HbTypeDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Where</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EDATA_TYPE__HB_WHERE = eINSTANCE.getHbAnnotatedEDataType_HbWhere();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Columns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EDATA_TYPE__HB_COLUMNS = eINSTANCE.getHbAnnotatedEDataType_HbColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Id Bag</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG = eINSTANCE.getHbAnnotatedEDataType_HbIdBag();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Index</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EDATA_TYPE__HB_INDEX = eINSTANCE.getHbAnnotatedEDataType_HbIndex();
 
 	}
 

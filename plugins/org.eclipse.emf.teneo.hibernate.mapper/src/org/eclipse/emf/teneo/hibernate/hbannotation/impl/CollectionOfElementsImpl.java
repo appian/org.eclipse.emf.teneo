@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CollectionOfElementsImpl.java,v 1.6 2007/07/11 17:13:31 mtaal Exp $
+ * $Id: CollectionOfElementsImpl.java,v 1.7 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getTargetElement <em>Target Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CollectionOfElementsImpl#getFetch <em>Fetch</em>}</li>
  * </ul>
@@ -31,17 +30,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
  *
  * @generated
  */
-public class CollectionOfElementsImpl extends EObjectImpl implements CollectionOfElements {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class CollectionOfElementsImpl extends HbAnnotationImpl implements CollectionOfElements {
 	/**
 	 * The default value of the '{@link #getTargetElement() <em>Target Element</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,44 +95,6 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getTargetElement() {
 		return targetElement;
 	}
@@ -189,9 +140,6 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				return getTargetElement();
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:
@@ -208,9 +156,6 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				setTargetElement((String)newValue);
 				return;
@@ -229,9 +174,6 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				setTargetElement(TARGET_ELEMENT_EDEFAULT);
 				return;
@@ -250,8 +192,6 @@ public class CollectionOfElementsImpl extends EObjectImpl implements CollectionO
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__TARGET_ELEMENT:
 				return TARGET_ELEMENT_EDEFAULT == null ? targetElement != null : !TARGET_ELEMENT_EDEFAULT.equals(targetElement);
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS__FETCH:

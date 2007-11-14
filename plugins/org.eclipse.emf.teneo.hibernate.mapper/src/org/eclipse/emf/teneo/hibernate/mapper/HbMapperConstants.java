@@ -12,16 +12,16 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbMapperConstants.java,v 1.6 2007/07/17 13:59:29 mtaal Exp $
+ * $Id: HbMapperConstants.java,v 1.7 2007/11/14 16:38:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 /**
- * Constants used by the hibernate mapper
+ * AnnotationUtil used by the hibernate mapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbMapperConstants {
 	/** The expected parameter name which contains the enum class name */

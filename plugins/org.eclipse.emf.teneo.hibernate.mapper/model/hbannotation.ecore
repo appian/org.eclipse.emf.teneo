@@ -6,8 +6,7 @@
   <eAnnotations source="teneo.mapping.source">
     <details key="1" value="http://hibernate.elver.org/"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotation" abstract="true" interface="true"
-      eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//PAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotation" abstract="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//PAnnotation">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="CompatibleEModelElementType AnnotationIsSupported"/>
     </eAnnotations>

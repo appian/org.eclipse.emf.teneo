@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProxyImpl.java,v 1.4 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: ProxyImpl.java,v 1.5 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#getProxyClass <em>Proxy Class</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ProxyImpl#isLazy <em>Lazy</em>}</li>
  * </ul>
@@ -30,17 +29,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
  *
  * @generated
  */
-public class ProxyImpl extends EObjectImpl implements Proxy {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class ProxyImpl extends HbAnnotationImpl implements Proxy {
 	/**
 	 * The default value of the '{@link #getProxyClass() <em>Proxy Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -105,44 +94,6 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.PROXY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.PROXY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getProxyClass() {
 		return proxyClass;
 	}
@@ -188,9 +139,6 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.PROXY__PROXY_CLASS:
 				return getProxyClass();
 			case HbannotationPackage.PROXY__LAZY:
@@ -207,9 +155,6 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.PROXY__PROXY_CLASS:
 				setProxyClass((String)newValue);
 				return;
@@ -228,9 +173,6 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.PROXY__PROXY_CLASS:
 				setProxyClass(PROXY_CLASS_EDEFAULT);
 				return;
@@ -249,8 +191,6 @@ public class ProxyImpl extends EObjectImpl implements Proxy {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.PROXY__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.PROXY__PROXY_CLASS:
 				return PROXY_CLASS_EDEFAULT == null ? proxyClass != null : !PROXY_CLASS_EDEFAULT.equals(proxyClass);
 			case HbannotationPackage.PROXY__LAZY:

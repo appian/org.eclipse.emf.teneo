@@ -48,8 +48,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbFetch" eType="ecore:EClass hbannotation.ecore#//Fetch"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbOnDelete" eType="ecore:EClass hbannotation.ecore#//OnDelete"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEDataType" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEDataType #//HbAnnotatedETypeElement">
+  <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEDataType" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEDataType #//HbAnnotatedEModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbTypeDef" eType="ecore:EClass hbannotation.ecore#//TypeDef"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbWhere" eType="ecore:EClass hbannotation.ecore#//Where"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbColumns" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//Column"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbIdBag" eType="ecore:EClass hbannotation.ecore#//IdBag"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbIndex" eType="ecore:EClass hbannotation.ecore#//Index"/>
   </eClassifiers>
 </ecore:EPackage>

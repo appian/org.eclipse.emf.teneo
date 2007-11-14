@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdBagImpl.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: IdBagImpl.java,v 1.7 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getGenerator <em>Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.IdBagImpl#getTable <em>Table</em>}</li>
@@ -31,17 +30,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
  *
  * @generated
  */
-public class IdBagImpl extends EObjectImpl implements IdBag {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class IdBagImpl extends HbAnnotationImpl implements IdBag {
 	/**
 	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -126,44 +115,6 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ID_BAG__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getGenerator() {
 		return generator;
 	}
@@ -230,9 +181,6 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.ID_BAG__GENERATOR:
 				return getGenerator();
 			case HbannotationPackage.ID_BAG__TYPE:
@@ -251,9 +199,6 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.ID_BAG__GENERATOR:
 				setGenerator((String)newValue);
 				return;
@@ -275,9 +220,6 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.ID_BAG__GENERATOR:
 				setGenerator(GENERATOR_EDEFAULT);
 				return;
@@ -299,8 +241,6 @@ public class IdBagImpl extends EObjectImpl implements IdBag {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.ID_BAG__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.ID_BAG__GENERATOR:
 				return GENERATOR_EDEFAULT == null ? generator != null : !GENERATOR_EDEFAULT.equals(generator);
 			case HbannotationPackage.ID_BAG__TYPE:

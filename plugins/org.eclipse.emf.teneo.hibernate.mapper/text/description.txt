@@ -123,5 +123,9 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbFetch : Fetch
     Reference hbOnDelete : OnDelete
 
-  Class HbAnnotatedEDataType -> PAnnotatedEDataType, HbAnnotatedETypeElement
+  Class HbAnnotatedEDataType -> PAnnotatedEDataType, HbAnnotatedEModelElement
     Reference hbTypeDef : TypeDef
+    Reference hbWhere : Where
+    Reference hbColumns : Column<<0..*>>
+    Reference hbIdBag : IdBag
+    Reference hbIndex : Index

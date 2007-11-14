@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDeleteImpl.java,v 1.3 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: OnDeleteImpl.java,v 1.4 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -23,24 +23,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.OnDeleteImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.OnDeleteImpl#getAction <em>Action</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OnDeleteImpl extends EObjectImpl implements OnDelete {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class OnDeleteImpl extends HbAnnotationImpl implements OnDelete {
 	/**
 	 * The default value of the '{@link #getAction() <em>Action</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -85,44 +74,6 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.ON_DELETE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.ON_DELETE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public OnDeleteAction getAction() {
 		return action;
 	}
@@ -147,9 +98,6 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.ON_DELETE__ACTION:
 				return getAction();
 		}
@@ -165,9 +113,6 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.ON_DELETE__ACTION:
 				setAction((OnDeleteAction)newValue);
 				return;
@@ -183,9 +128,6 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.ON_DELETE__ACTION:
 				setAction(ACTION_EDEFAULT);
 				return;
@@ -201,8 +143,6 @@ public class OnDeleteImpl extends EObjectImpl implements OnDelete {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.ON_DELETE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.ON_DELETE__ACTION:
 				return action != ACTION_EDEFAULT;
 		}

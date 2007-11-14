@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.24 2007/07/17 13:59:29 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.25 2007/11/14 16:38:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -120,6 +120,13 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				target.addAttribute("name", hbmContext.getInstanceClassName(entity.getAnnotatedEClass()));
 			}
 		} else if (getHbmContext().forceUseOfInstance(entity)) {
+
+			final Element importElement = new Element("import");
+
+			importElement.addAttribute("class", hbmContext.getInstanceClassName(entity.getAnnotatedEClass()))
+				.addAttribute("rename", entityName);
+			getHbmContext().getCurrent().add(getImportIndex(), importElement);
+
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name",
 						hbmContext.getInstanceClassName(entity.getAnnotatedEClass())).addAttribute("abstract",
@@ -129,8 +136,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name",
 						hbmContext.getInstanceClassName(entity.getAnnotatedEClass())).addAttribute("entity-name",
-						getHbmContext().getEntityNameStrategy().toEntityName(eclass)).addAttribute("abstract",
-						isAbstractStr).addAttribute("lazy",
+						entityName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
 						((HbAnnotatedEClass) entity).getHbProxy() == null ? "false" : "true");
 		}
 
@@ -182,6 +188,24 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		return target;
+	}
+
+	/** Return index were to place the import */
+	protected int getImportIndex() {
+		final List<?> children = getHbmContext().getCurrent().getChildren();
+		int defaultResult = 0;
+		for (int i = 0; i < children.size(); i++) {
+			final Element e = (Element) children.get(i);
+			final String name = e.getName();
+			if (name.compareTo("class") == 0 || name.compareTo("subclass") == 0 ||
+					name.compareTo("joined-subclass") == 0 || name.compareTo("union-subclass") == 0) {
+				return i;
+			}
+			if (name.compareTo("typedef") == 0 || name.compareTo("meta") == 0) {
+				defaultResult = i + 1;
+			}
+		}
+		return defaultResult;
 	}
 
 	/** Returns true if this entity or one of its superclasses has an idclass */

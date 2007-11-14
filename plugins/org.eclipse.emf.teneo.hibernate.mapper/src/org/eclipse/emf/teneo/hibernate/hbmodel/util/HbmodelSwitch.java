@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelSwitch.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbmodelSwitch.java,v 1.2 2007/11/14 16:38:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -157,9 +157,6 @@ public class HbmodelSwitch<T> {
 				HbAnnotatedEDataType hbAnnotatedEDataType = (HbAnnotatedEDataType)theEObject;
 				T result = caseHbAnnotatedEDataType(hbAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedEDataType(hbAnnotatedEDataType);
-				if (result == null) result = caseHbAnnotatedETypeElement(hbAnnotatedEDataType);
-				if (result == null) result = casePAnnotatedETypedElement(hbAnnotatedEDataType);
-				if (result == null) result = casePAnnotatedEStructuralFeature(hbAnnotatedEDataType);
 				if (result == null) result = caseHbAnnotatedEModelElement(hbAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedEModelElement(hbAnnotatedEDataType);
 				if (result == null) result = defaultCase(theEObject);

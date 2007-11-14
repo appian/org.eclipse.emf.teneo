@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackage.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
+ * $Id: HbannotationPackage.java,v 1.4 2007/11/14 16:38:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -59,9 +59,9 @@ public interface HbannotationPackage extends EPackage {
 	HbannotationPackage eINSTANCE = org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationImpl <em>Hb Annotation</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationImpl
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbAnnotation()
 	 * @generated
 	 */
@@ -1246,9 +1246,9 @@ public interface HbannotationPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationImpl <em>Hb Annotation</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbAnnotationImpl
 		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbAnnotation()
 		 * @generated
 		 */

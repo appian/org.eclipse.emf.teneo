@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeImpl.java,v 1.5 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: CascadeImpl.java,v 1.6 2007/11/14 16:38:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -27,24 +27,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CascadeImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.CascadeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CascadeImpl extends EObjectImpl implements Cascade {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class CascadeImpl extends HbAnnotationImpl implements Cascade {
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -79,44 +68,6 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbannotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HbannotationPackage.CASCADE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<CascadeType> getValue() {
 		if (value == null) {
 			value = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, HbannotationPackage.CASCADE__VALUE);
@@ -132,9 +83,6 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case HbannotationPackage.CASCADE__VALUE:
 				return getValue();
 		}
@@ -150,9 +98,6 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case HbannotationPackage.CASCADE__VALUE:
 				getValue().clear();
 				getValue().addAll((Collection<? extends CascadeType>)newValue);
@@ -169,9 +114,6 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case HbannotationPackage.CASCADE__VALUE:
 				getValue().clear();
 				return;
@@ -187,8 +129,6 @@ public class CascadeImpl extends EObjectImpl implements Cascade {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.CASCADE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case HbannotationPackage.CASCADE__VALUE:
 				return value != null && !value.isEmpty();
 		}

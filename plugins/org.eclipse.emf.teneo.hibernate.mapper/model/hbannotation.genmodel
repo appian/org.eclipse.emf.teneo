@@ -122,6 +122,10 @@
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEDataType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbTypeDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbWhere"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbColumns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbIdBag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbIndex"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
