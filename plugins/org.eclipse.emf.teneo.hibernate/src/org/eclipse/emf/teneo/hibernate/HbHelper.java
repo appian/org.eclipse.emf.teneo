@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.11 2007/08/10 16:40:52 mtaal Exp $
+ * $Id: HbHelper.java,v 1.12 2007/11/14 16:37:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -23,11 +23,9 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
@@ -39,7 +37,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class HbHelper {
 	/** The logger */
@@ -108,7 +106,6 @@ public class HbHelper {
 
 	/** Clears the list of session factories */
 	public synchronized void closeAll() {
-		EModelResolver.instance().clear();
 		for (HbDataStore emfds : emfDataStores.values()) {
 			emfds.close();
 		}
@@ -189,9 +186,6 @@ public class HbHelper {
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
 		MappingUtil.registerHbExtensions(extensionManager);
-
-		// set the eruntime as the emodel resolver!
-		ERuntime.setAsEModelResolver();
 
 		log.debug("Generating mapping file passed epackages");
 		// DCB: Use Hibernate-specific annotation processing mechanism. This

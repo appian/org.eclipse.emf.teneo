@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.9 2007/07/17 12:23:34 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.10 2007/11/14 16:37:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,10 +25,8 @@ import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cache.HashtableCacheProvider;
@@ -40,7 +38,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
@@ -65,9 +63,6 @@ public class HbEntityDataStore extends HbDataStore {
 			// if (getName() == null)
 			// throw new HbStoreException("Name is not set");
 		}
-
-		// set the eruntime as the emodel resolver!
-		ERuntime.setAsEModelResolver();
 
 		log.debug(">>>>> Creating EJB3 Configuration");
 		ejb3Configuration = createConfiguration();
@@ -140,13 +135,8 @@ public class HbEntityDataStore extends HbDataStore {
 	 */
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile() || getPersistenceOptions().getMappingFilePath() != null) {
-
-			// register otherwise the getFileList will not work
-			ERuntime.INSTANCE.register(getEPackages());
-
 			log.debug("Searching hbm files in class paths of epackages");
-			final String[] fileList =
-					StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, getPersistenceOptions().getMappingFilePath());
+			final String[] fileList = getMappingFileList();
 			for (String element : fileList) {
 				log.debug("Adding file " + element + " to Hibernate Configuration");
 				final InputStream is = this.getClass().getResourceAsStream(element);

@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -1000,6 +1000,26 @@ public abstract class HbDataStore implements DataStore {
 		/** Returns the query string used used */
 		public String getQueryStr() {
 			return qryStr;
+		}
+	}
+
+	/**
+	 * Return the list of mapping files. If the mapping file path property of persistenceoptions was
+	 * set then this is returned, otherwise the classpath is searched for the mapping file.
+	 */
+	protected String[] getMappingFileList() {
+		if (getPersistenceOptions().getMappingFilePath() != null) {
+			log.debug("Using specified list of mapping files " + getPersistenceOptions().getMappingFilePath());
+			return getPersistenceOptions().getMappingFilePath().split(",");
+		} else if (getPersistenceOptions().isUseMappingFile()) {
+			// register otherwise the getFileList will not work
+			EModelResolver.instance().register(getEPackages());
+
+			log.debug("Searching hbm files in class paths of epackages");
+			return StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, null);
+		} else {
+			throw new HbStoreException(
+				"This method may only be called if either the useMappingFile property or the MappingFilePath property has been set");
 		}
 	}
 

@@ -11,16 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbConstants.java,v 1.2 2007/02/01 12:34:13 mtaal Exp $
+ * $Id: HbConstants.java,v 1.3 2007/11/14 16:37:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
 /**
- * Constants used in the runtime layer as well as the hibernate mapping step.
+ * AnnotationUtil used in the runtime layer as well as the hibernate mapping step.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HbConstants {
 	/** Column names used to store the econtainer class */
