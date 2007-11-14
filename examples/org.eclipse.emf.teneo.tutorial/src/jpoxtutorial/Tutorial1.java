@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.6 2007/02/01 12:35:12 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.7 2007/11/14 16:37:24 mtaal Exp $
  */
 
 package jpoxtutorial;
@@ -50,7 +50,7 @@ import org.jpox.PMFConfiguration;
  * Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class Tutorial1 {
 
@@ -71,7 +71,8 @@ public class Tutorial1 {
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, "root");
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, "root");
 
-		// create/register the JpoxDataStore, set the db props and the epackages to persist, initialize creates
+		// create/register the JpoxDataStore, set the db props and the epackages to persist,
+		// initialize creates
 		// the database
 		String pmfName = "MyPMF"; // the name of the JpoxDataStore
 		JpoxDataStore jpoxDataStore = JpoxHelper.INSTANCE.createRegisterDataStore(pmfName);
@@ -98,7 +99,7 @@ public class Tutorial1 {
 		book.setAuthor(writer);
 		book.setPages(305);
 		book.setTitle("The Hobbit");
-		book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		book.setCategory(BookCategory.SCIENCE_FICTION);
 
 		// add the writer/book to the library. The writer and book are automatically
 		// made persistent because they are added to the library which is already
@@ -128,9 +129,9 @@ public class Tutorial1 {
 		lib = (Library) c.iterator().next();
 
 		// read the writer and book
-		writer = (Writer) lib.getWriters().get(0);
+		writer = lib.getWriters().get(0);
 		System.out.println(writer.getName());
-		book = (Book) lib.getBooks().get(0);
+		book = lib.getBooks().get(0);
 		System.out.println(book.getTitle());
 
 		// show that the container is set
@@ -145,7 +146,7 @@ public class Tutorial1 {
 		Book georgesBook = LibraryFactory.eINSTANCE.createBook();
 		georgesBook.setPages(250);
 		georgesBook.setTitle("1984");
-		georgesBook.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		georgesBook.setCategory(BookCategory.SCIENCE_FICTION);
 		georgesBook.setAuthor(george);
 
 		lib.getBooks().add(georgesBook);
@@ -167,9 +168,10 @@ public class Tutorial1 {
 		System.out.println(((Book) coll.iterator().next()).getTitle()); // show a title
 
 		// retrieve a book which has a writer with the name of G. Orwell
-		qry = pm.newQuery("SELECT FROM " + BookImpl.class.getName() + " WHERE "
-				+ " title==\"1984\" && author == writ && writ.name == \"G. Orwell\" " + "VARIABLES "
-				+ WriterImpl.class.getName() + " writ");
+		qry =
+				pm.newQuery("SELECT FROM " + BookImpl.class.getName() + " WHERE " +
+						" title==\"1984\" && author == writ && writ.name == \"G. Orwell\" " + "VARIABLES " +
+						WriterImpl.class.getName() + " writ");
 		coll = (Collection) qry.execute();
 		System.out.println(coll.size()); // should be 1
 		Book bk = (Book) coll.iterator().next();
@@ -181,18 +183,18 @@ public class Tutorial1 {
 		coll = (Collection) qry.execute();
 		lib = (Library) coll.iterator().next();
 
-		qry = pm.newQuery("SELECT FROM " + JpoxHelper.INSTANCE.getInstanceClass(Book.class).getName() + " WHERE "
-				+ " title==\"1984\" && author == writ && writ.name == \"G. Orwell\" " + "VARIABLES "
-				+ WriterImpl.class.getName() + " writ");
+		qry =
+				pm.newQuery("SELECT FROM " + BookImpl.class.getName() + " WHERE " +
+						" title==\"1984\" && author == writ && writ.name == \"G. Orwell\" " + "VARIABLES " +
+						WriterImpl.class.getName() + " writ");
 		System.err.println(((Collection) qry.execute()).size());
 
 		// retrieving all books
-		qry = pm.newQuery("SELECT FROM " + JpoxHelper.INSTANCE.getInstanceClass(Book.class).getName());
+		qry = pm.newQuery("SELECT FROM " + BookImpl.class.getName());
 		System.err.println(((Collection) qry.execute()).size());
 
 		// retrieving all libraries with a name ending on library
-		qry = pm.newQuery("SELECT FROM " + JpoxHelper.INSTANCE.getInstanceClass(Library.class).getName()
-				+ " WHERE name.endsWith(\"Library\")");
+		qry = pm.newQuery("SELECT FROM " + LibraryImpl.class.getName() + " WHERE name.endsWith(\"Library\")");
 		System.err.println(((Collection) qry.execute()).size());
 
 		// and really close of
@@ -225,7 +227,7 @@ public class Tutorial1 {
 			bookNew.setAuthor(writerNew);
 			bookNew.setPages(305);
 			bookNew.setTitle("Foundation and Empire");
-			bookNew.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			bookNew.setCategory(BookCategory.SCIENCE_FICTION);
 
 			// add the writer/book to the library.
 			libNew.getWriters().add(writerNew);

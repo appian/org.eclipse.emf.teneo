@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.3 2007/02/01 12:35:12 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.4 2007/11/14 16:37:24 mtaal Exp $
  */
 
 package hbtutorial;
@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -38,12 +39,13 @@ import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Environment;
 
 /**
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class Tutorial1 {
 
@@ -52,11 +54,7 @@ public class Tutorial1 {
 
 		// Create the DataStore.
 		final String dataStoreName = "LibraryDataStore";
-		final HbDataStore dataStore = (HbDataStore)HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
-
-		// the name of the database, this database should exist but does not
-		// need to contain tables
-		// String dbName = "library";
+		final HbDataStore dataStore = HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
 
 		// To configure Hibernate, supply properties describing the JDBC driver,
 		// URL, username/password and SQL dialect.
@@ -65,23 +63,20 @@ public class Tutorial1 {
 		//
 		// Alternatively, you can set the properties programmatically:
 		//
-		// Properties hibernateProperties = new Properties();
+		Properties hibernateProperties = new Properties();
 		//
 		// 1) From a ".properties" file or stream.
 		// InputStream in = ...
 		// hibernateProperties.load(in);
 		//
 		// 2) or populated manually:
-		// hibernateProperties.setProperty(Environment.DRIVER,
-		// "com.mysql.jdbc.Driver");
-		// hibernateProperties.setProperty(Environment.USER, "root");
-		// hibernateProperties.setProperty(Environment.URL,
-		// "jdbc:mysql://127.0.0.1:3306/library" + dbName
-		// hibernateProperties.setProperty(Environment.PASS, "root");
-		// hibernateProperties.setProperty(Environment.DIALECT,
-		// "org.hibernate.dialect.MySQLInnoDBDialect");
+		hibernateProperties.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+		hibernateProperties.setProperty(Environment.USER, "root");
+		hibernateProperties.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/library");
+		hibernateProperties.setProperty(Environment.PASS, "root");
+		hibernateProperties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLInnoDBDialect");
 		//
-		// dataStore.setHibernateProperties(props);
+		dataStore.setHibernateProperties(hibernateProperties);
 		// 
 		// For more information see <a
 		// href="http://www.hibernate.org/hib_docs/v3/reference/en/html/session-configuration.html#configuration-programmatic">
@@ -115,7 +110,7 @@ public class Tutorial1 {
 			book.setAuthor(writer);
 			book.setPages(305);
 			book.setTitle("The Hobbit");
-			book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			book.setCategory(BookCategory.SCIENCE_FICTION);
 
 			// Add the Writer and Book to the Library. They are made
 			// persistent automatically because the Library is already
@@ -135,19 +130,19 @@ public class Tutorial1 {
 
 			// Retrieve the Library and its child objects.
 			// Note that you must use the EClass name in the HQL query.
-			Query query = session.createQuery("FROM Library");			
+			Query query = session.createQuery("FROM Library");
 			List libraries = query.list();
 			Library library = (Library) libraries.get(0);
 
 			// Obtain the Writer and Book
-			Writer writer = (Writer) library.getWriters().get(0);
+			Writer writer = library.getWriters().get(0);
 			System.out.println(writer.getName());
-			Book book = (Book) library.getBooks().get(0);
+			Book book = library.getBooks().get(0);
 			System.out.println(book.getTitle());
 
-			// Verify that the eContainer and references are set correctly. 
+			// Verify that the eContainer and references are set correctly.
 			assert (book.eContainer() == library);
-			assert (writer.getBooks().get(0) == book); 
+			assert (writer.getBooks().get(0) == book);
 
 			// Add a new Writer and Book
 			Writer georgeOrwell = LibraryFactory.eINSTANCE.createWriter();
@@ -157,7 +152,7 @@ public class Tutorial1 {
 			Book georgesBook = LibraryFactory.eINSTANCE.createBook();
 			georgesBook.setPages(250);
 			georgesBook.setTitle("1984");
-			georgesBook.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			georgesBook.setCategory(BookCategory.SCIENCE_FICTION);
 			georgesBook.setAuthor(georgeOrwell);
 
 			library.getBooks().add(georgesBook);
@@ -167,7 +162,7 @@ public class Tutorial1 {
 			session.getTransaction().commit();
 			session.close();
 		}
-		
+
 		{
 			final Session session = sessionFactory.openSession();
 			session.beginTransaction();
@@ -180,9 +175,10 @@ public class Tutorial1 {
 				System.out.println(book.getTitle());
 			}
 
-			// Retrieve George Orwell's book. 
-			query = session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
-					+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
+			// Retrieve George Orwell's book.
+			query =
+					session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
+							+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
 			books = query.list();
 
 			// Show some results
@@ -193,8 +189,9 @@ public class Tutorial1 {
 			System.out.println(book.getAuthor().getName()); // should be G. Orwell
 
 			// Count the number of books in the library
-			query = session.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
-					+ " WHERE lib.name='My Library'");
+			query =
+					session.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
+							+ " WHERE lib.name='My Library'");
 			int count = ((Number) query.uniqueResult()).intValue();
 			// there should be 2 books
 			System.out.println("There are " + count + " books in the library");
@@ -227,7 +224,7 @@ public class Tutorial1 {
 			bookNew.setAuthor(writerNew);
 			bookNew.setPages(305);
 			bookNew.setTitle("Foundation and Empire");
-			bookNew.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			bookNew.setCategory(BookCategory.SCIENCE_FICTION);
 
 			// add the writer/book to the library.
 			libNew.getWriters().add(writerNew);

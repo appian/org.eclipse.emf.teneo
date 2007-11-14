@@ -12,4 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.teneo.hibernate.libraries,
  org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.jpox,
- org.eclipse.emf.teneo.jpox.libraries
+ org.eclipse.emf.teneo.jpox.libraries,
+ library
+Bundle-ClassPath: mysql-connector-java-3.1.12-bin.jar,
+ .
