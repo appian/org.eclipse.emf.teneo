@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamingHandler.java,v 1.5 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: NamingHandler.java,v 1.6 2007/11/14 16:39:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -22,7 +22,9 @@ import java.util.ArrayList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
@@ -30,10 +32,10 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * unique names accross tables and databases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
-public class NamingHandler implements ExtensionPoint {
+public class NamingHandler implements ExtensionPoint, ExtensionManagerAware {
 	/** The logger for all these exceptions */
 	protected static final Log log = LogFactory.getLog(NamingHandler.class);
 
@@ -42,6 +44,8 @@ public class NamingHandler implements ExtensionPoint {
 
 	/** The suffix used for an id column in a list */
 	protected static final String ID_COLUMN_SUFFIX = "_ID";
+
+	private ExtensionManager extensionManager;
 
 	/**
 	 * List of unique column names over all eclasses/structural features
@@ -103,7 +107,22 @@ public class NamingHandler implements ExtensionPoint {
 	 * members
 	 */
 	public String correctName(MappingContext mc, EStructuralFeature efeature) {
-		Class implClass = ERuntime.INSTANCE.getJavaClass(mc.getCurrentAClass().getAnnotatedEClass());
+		Class implClass = EModelResolver.instance().getJavaClass(mc.getCurrentAClass().getAnnotatedEClass());
 		return correctName(implClass, efeature);
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
+	}
+
+	/**
+	 * @param extensionManager
+	 *            the extensionManager to set
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

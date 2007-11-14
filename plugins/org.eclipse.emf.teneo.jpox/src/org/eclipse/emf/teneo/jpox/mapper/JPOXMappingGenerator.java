@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.15 2007/09/04 09:56:42 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.16 2007/11/14 16:39:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -24,7 +24,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
@@ -33,6 +32,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAware {
@@ -96,7 +96,7 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 			epackages.add(aPackage.getAnnotatedElement());
 		}
 		final EPackage[] epackagesArray = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
-		ERuntime.INSTANCE.register(epackagesArray);
+		EModelResolver.instance().register(epackagesArray);
 		mappingContext.setEpackages(epackagesArray);
 
 		// group the eclasses by their impl. java package, this is required
@@ -108,7 +108,7 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 			log.info("Generating jdo for epackage " + aPackage.getAnnotatedElement().getName());
 			for (Object element2 : aPackage.getPaEClasses()) {
 				PAnnotatedEClass aClass = (PAnnotatedEClass) element2;
-				Class implClass = ERuntime.INSTANCE.getJavaClass((EClass) aClass.getAnnotatedElement());
+				Class implClass = EModelResolver.instance().getJavaClass((EClass) aClass.getAnnotatedElement());
 
 				if ((aClass.getEntity() == null && aClass.getMappedSuperclass() == null) || implClass == null) {
 					continue;
@@ -169,7 +169,7 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 			return;
 		}
 
-		Class implClass = ERuntime.INSTANCE.getJavaClass(eclass);
+		Class implClass = EModelResolver.instance().getJavaClass(eclass);
 		if (implClass == null) {
 			log.warn("EClass " + eclass.getName() + " does not have a concrete representation. " +
 					"This is not a problem for abstract eclasses");

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.17 2007/07/11 14:43:06 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.18 2007/11/14 16:39:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -58,6 +58,7 @@ import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpox.cache.EMFHardRefCache;
 import org.eclipse.emf.teneo.jpox.cache.EMFNullCache;
@@ -102,7 +103,7 @@ import org.w3c.dom.NodeList;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $ $Date: 2007/07/11 14:43:06 $
+ * @version $Revision: 1.18 $ $Date: 2007/11/14 16:39:46 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -192,8 +193,7 @@ public class JpoxDataStore implements DataStore {
 		}
 
 		// set the eruntime as the emodel resolver!
-		ERuntime.setAsEModelResolver();
-		ERuntime.INSTANCE.register(getEPackages());
+		EModelResolver.instance().register(getEPackages());
 
 		// the jdo file list
 		String suffix = properties.getProperty(PMFConfiguration.METADATA_JDO_FILE_EXTENSION_PROPERTY);
@@ -250,11 +250,11 @@ public class JpoxDataStore implements DataStore {
 		// things don't work (get an empty metadatamanager, it is unclear at
 		// this point
 		// why this needs to be done like this.
-		Class[] topClasses = ERuntime.INSTANCE.getTopClasses();
+		Class[] topClasses = ((ERuntime) EModelResolver.instance()).getTopClasses();
 		// check if the topclasses are persistencecapable!
 		final ArrayList newTopClasses = new ArrayList();
 		for (Class element : topClasses) {
-			final Class concrete = ERuntime.INSTANCE.getInstanceClass(element);
+			final Class concrete = ((ERuntime) EModelResolver.instance()).getInstanceClass(element);
 			if (concrete != null && PersistenceCapable.class.isAssignableFrom(concrete)) {
 				// now check if the class is mapped as a sub-class, in which
 				// case it is not a topclass
@@ -426,7 +426,7 @@ public class JpoxDataStore implements DataStore {
 
 	/** Returns the instanceclass for a passed interface */
 	public Class getInstanceClass(Class interf) {
-		return ERuntime.INSTANCE.getInstanceClass(interf);
+		return ((ERuntime) EModelResolver.instance()).getInstanceClass(interf);
 	}
 
 	/** Returns the list of names of topclasses, used by resources */
@@ -845,7 +845,7 @@ public class JpoxDataStore implements DataStore {
 				toClasses.length == featureNames.length);
 			Class tclass = toClasses[c];
 			if (tclass.isInterface() && EObject.class.isAssignableFrom(tclass)) {
-				tclass = ERuntime.INSTANCE.getInstanceClass(tclass);
+				tclass = getInstanceClass(tclass);
 				if (tclass == null) { // no impl. class for interface
 					log.debug("Ignoring " + toClasses[c].getName() +
 							" for computation of referencing classes because it has no concrete implementor");
@@ -1025,7 +1025,7 @@ public class JpoxDataStore implements DataStore {
 			}
 
 			if (isContainer) {
-				final EClass eclass = ERuntime.INSTANCE.getEClass(fromClass);
+				final EClass eclass = EModelResolver.instance().getEClass(fromClass);
 				assert (eclass != null);
 				structuralFeature = StoreUtil.getEStructuralFeature(eclass, featureName);
 			} else {

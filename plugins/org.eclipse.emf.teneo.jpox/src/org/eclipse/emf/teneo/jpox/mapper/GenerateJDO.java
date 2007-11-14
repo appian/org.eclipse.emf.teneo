@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GenerateJDO.java,v 1.10 2007/08/10 16:40:49 mtaal Exp $
+ * $Id: GenerateJDO.java,v 1.11 2007/11/14 16:39:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -29,7 +29,6 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
@@ -43,7 +42,7 @@ import org.eclipse.emf.teneo.extension.ExtensionUtil;
  * methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class GenerateJDO {
@@ -117,9 +116,6 @@ public class GenerateJDO {
 				file.delete();
 			}
 			file.createNewFile();
-
-			// set the eruntime as the emodel resolver!
-			ERuntime.setAsEModelResolver();
 
 			final PersistenceOptions po =
 					extensionManager.getExtension(PersistenceOptions.class, new Object[] { options });

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxHelper.java,v 1.8 2007/08/10 16:40:49 mtaal Exp $
+ * $Id: JpoxHelper.java,v 1.9 2007/11/14 16:39:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -22,10 +22,8 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
@@ -39,7 +37,7 @@ import org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory;
  * EMF Data Stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class JpoxHelper {
 	/** The logger */
@@ -112,7 +110,6 @@ public class JpoxHelper {
 			jds.close();
 		}
 		emfDataStores.clear();
-		ERuntime.INSTANCE.clear();
 	}
 
 	/** Returns a jpox data store, note if not found then null is returned */
@@ -151,18 +148,6 @@ public class JpoxHelper {
 		return jds;
 	}
 
-	/**
-	 * Returns the instanceclass for a passed interface,
-	 */
-	public Class getInstanceClass(Class interfaze) {
-		if (!interfaze.isInterface() || !EObject.class.isAssignableFrom(interfaze)) {
-			throw new JpoxStoreException(
-				"This method may only be called with a class which is an interface (extending from EObject), " +
-						interfaze.getName() + " is not an interface or does not extend EObject.");
-		}
-		return ERuntime.INSTANCE.getInstanceClass(interfaze);
-	}
-
 	/** Generate a jpox mapping for a set of epackages and options */
 	public String generateMapping(EPackage[] epackages, Properties props) {
 		return generateMapping(epackages, props, ExtensionManagerFactory.getInstance().create());
@@ -171,9 +156,6 @@ public class JpoxHelper {
 	/** Generate a jpox mapping for a set of epackages and options */
 	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
 		log.debug("Generating mapping file passed epackages");
-
-		// set the eruntime as the emodel resolver!
-		ERuntime.setAsEModelResolver();
 
 		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
 		final PAnnotatedModel paModel =

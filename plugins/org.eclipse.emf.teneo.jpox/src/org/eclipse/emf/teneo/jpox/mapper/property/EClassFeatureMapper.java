@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.10 2007/07/18 20:51:31 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.11 2007/11/14 16:39:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -25,12 +25,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.mapper.StoreMappingException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.jpox.mapper.AbstractMapper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoint {
@@ -51,7 +51,7 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 		log.debug("Processing aclass: " + aClass.getAnnotatedEClass().getName() + "/" +
 				aClass.getAnnotatedElement().getName());
 
-		final Class<?> implClass = ERuntime.INSTANCE.getJavaClass(aClass.getAnnotatedEClass());
+		final Class<?> implClass = EModelResolver.instance().getJavaClass(aClass.getAnnotatedEClass());
 
 		// collect all the features to map
 		final List<PAnnotatedEStructuralFeature> features =

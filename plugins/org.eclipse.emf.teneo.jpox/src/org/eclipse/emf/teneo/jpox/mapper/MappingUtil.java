@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class MappingUtil {
@@ -58,7 +58,7 @@ public class MappingUtil {
 		if (eClass.isInterface()) {
 			return eClass.getInstanceClass();
 		}
-		return ERuntime.INSTANCE.getJavaClass(eClass);
+		return EModelResolver.instance().getJavaClass(eClass);
 	}
 
 	/** Adds an anytype embedded element definition to the passed element */
@@ -181,7 +181,8 @@ public class MappingUtil {
 						featureResult.add(efeature);
 					}
 				} else if (onlyEObject && efeature instanceof EReference) {
-					Class implClass = ERuntime.INSTANCE.getJavaClass(((EReference) efeature).getEReferenceType());
+					Class implClass =
+							EModelResolver.instance().getJavaClass(((EReference) efeature).getEReferenceType());
 					if (implClass != null && !result.contains(implClass.getName())) {
 						result.add(implClass.getName());
 						featureResult.add(efeature);
