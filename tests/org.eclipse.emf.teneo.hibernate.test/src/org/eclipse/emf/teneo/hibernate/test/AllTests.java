@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.4 2007/02/01 12:36:24 mtaal Exp $
+ * $Id: AllTests.java,v 1.5 2007/11/14 16:39:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -23,17 +23,17 @@ import junit.framework.TestSuite;
  * Runs all hibernate tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite("All tests for hibernate");
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.annotations.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.detach.AllTests.suite());
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests.suite());
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.annotations.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.elist.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.relation.AllTests.suite());
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs.AllTests.suite());
 		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests.suite());
 		return suite;

@@ -10,17 +10,23 @@ package org.eclipse.emf.teneo.hibernate.test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 
@@ -28,7 +34,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class ReadEcore {
 
@@ -42,12 +48,9 @@ public class ReadEcore {
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final String[] ecores =
-					new String[] { "_0.ecore", "_1.ecore", "_11.ecore", "_12.ecore", "_13.ecore", "_14.ecore",
-							"_15.ecore", "_16.ecore", "_17.ecore", "_18.ecore" };
+			final String[] ecores = new String[] { "Bugzilla.ecore" };
 			for (String ecore : ecores) {
-				final Resource res =
-						resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/wolf/" + ecore), true);
+				final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/" + ecore), true);
 				res.load(new HashMap());
 
 				Iterator it = res.getAllContents();
@@ -102,7 +105,64 @@ public class ReadEcore {
 		hbds.setHibernateProperties(props);
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-		props.setProperty(PersistenceOptions.PERSISTENCE_XML, "test.persistence.xml");
+		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		hbds.getExtensionManager().registerExtension(EntityNameStrategy.class.getName(),
+			QualifyingEntityNameStrategy.class.getName());
+// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
+		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+		hbds.setPersistenceProperties(props);
+
+		// sets its epackages stored in this datastore
+		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE, XMLTypePackage.eINSTANCE });
+
+		// initialize, also creates the database tables
+		try {
+			hbds.initialize();
+
+			Session s = hbds.getSessionFactory().openSession();
+			s.beginTransaction();
+			for (EPackage epack : epacks) {
+				s.save(epack);
+			}
+			s.getTransaction().commit();
+
+			s = hbds.getSessionFactory().openSession();
+			final List l = s.createQuery("select e from ecore.EPackage e").list();
+			final EPackage[] newEpacks = new EPackage[l.size()];
+			int i = 0;
+			for (Object o : l) {
+				final EPackage epack = (EPackage) o;
+				newEpacks[i++] = epack;
+			}
+
+			initSecondDataStore(newEpacks);
+
+		} finally {
+			System.err.println(hbds.getMappingXML());
+		}
+
+		SessionFactory sessionFactory = hbds.getSessionFactory();
+		return hbds;
+	}
+
+	private static HbDataStore initSecondDataStore(EPackage[] epacks) {
+		HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore("test2");
+		final Properties props = new Properties();
+		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+		props.setProperty(Environment.USER, "root");
+		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
+		props.setProperty(Environment.PASS, "root");
+		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+		hbds.setHibernateProperties(props);
+		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
+		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
+		hbds.getExtensionManager().registerExtension(EntityNameStrategy.class.getName(),
+			QualifyingEntityNameStrategy.class.getName());
+// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 		hbds.setPersistenceProperties(props);
 
