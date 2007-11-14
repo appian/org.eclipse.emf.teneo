@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.3 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -92,14 +92,25 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 			if (aReference.getAReferenceType() != null) {
 				// == null if the reference is to a high level type such as an eobject
 
+				// Set the join columns to not insertable/updatable if this is the many-to-one side
+				// of a bidirectional relation with a one-to-many list (indexed!) on the other side.
+				boolean isInsertableUpdatable = true;
+				if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
+					final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
+					if (aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList()) {
+						isInsertableUpdatable = false;
+					}
+				}
+				// old:
+				// isInsertableUpdatable = eReference.getEOpposite() == null ||
+				// eReference.getEOpposite().isTransient()
+
 				// NOTE that currently in all cases if there is an opposite Teneo assumes
 				// that it is managed from the other side. In reality this only needs to
 				// be done if the other side is indexed.
 				// NOTE: otm/mto with join table is not supported at the moment!
 				final List<String> names = getSqlNameStrategy().getManyToOneJoinColumnNames(aReference);
-				aReference.getJoinColumns().addAll(
-					getJoinColumns(names, mto.isOptional(), eReference.getEOpposite() == null ||
-							eReference.getEOpposite().isTransient(), mto));
+				aReference.getJoinColumns().addAll(getJoinColumns(names, mto.isOptional(), isInsertableUpdatable, mto));
 			}
 		}
 	}

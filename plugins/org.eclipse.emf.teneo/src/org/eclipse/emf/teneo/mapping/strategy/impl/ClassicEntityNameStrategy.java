@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicEntityNameStrategy.java,v 1.1 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: ClassicEntityNameStrategy.java,v 1.2 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
@@ -34,7 +35,7 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ClassicEntityNameStrategy implements EntityNameStrategy {
 
@@ -46,6 +47,8 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 
 	// The pamodel for which this is done
 	private PAnnotatedModel paModel;
+
+	private ExtensionManager extensionManager;
 
 	/*
 	 * (non-Javadoc)
@@ -141,5 +144,14 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

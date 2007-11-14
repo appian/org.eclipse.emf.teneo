@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: QualifyingEntityNameStrategy.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: QualifyingEntityNameStrategy.java,v 1.3 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
@@ -30,7 +31,7 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * to handle eclass name clashes between different packages.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 
@@ -38,6 +39,8 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 	private PAnnotatedModel paModel;
 
 	public static final QualifyingEntityNameStrategy INSTANCE = new QualifyingEntityNameStrategy();
+
+	private ExtensionManager extensionManager;
 
 	public String toEntityName(EClass eClass) {
 		if (eClass == null) {
@@ -111,5 +114,14 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

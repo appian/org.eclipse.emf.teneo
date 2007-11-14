@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultExtensionManager.java,v 1.2 2007/07/17 12:22:41 mtaal Exp $
+ * $Id: DefaultExtensionManager.java,v 1.3 2007/11/14 16:38:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class DefaultExtensionManager implements ExtensionManager {
@@ -181,12 +181,16 @@ public class DefaultExtensionManager implements ExtensionManager {
 			if (extension.isSingleton() && !constructorUsed) {
 				log.debug("Caching extension instance as singleton " + extension);
 				extensionInstances.put(point, extensionInstance);
+
+				// now see if the extensioninstance also implements other extensionpoints
+				registerForAllExtensionPoints(extensionInstance.getClass(), extensionInstance);
 			}
 			if (extension.isSingleton() && constructorUsed) {
 				log.warn("The extension: " + extension.getPoint() +
 						" is declared as a singleton but this getInstance call " +
 						" passed initialization parameters so it is not cached, " + clz.getName());
 			}
+
 			return extensionInstance;
 		} catch (Exception e) {
 			throw new TeneoExtensionException("Exception while instantiating: " + extension.getClassName(), e);
@@ -266,5 +270,40 @@ public class DefaultExtensionManager implements ExtensionManager {
 	@SuppressWarnings("unchecked")
 	public <T> T getExtension(Class<T> clz, Object[] initArgs) {
 		return (T) getExtension(clz.getName(), initArgs);
+	}
+
+	/**
+	 * Registers an instance for all other extensionpoints it implements if no other instance was
+	 * already registered for it.
+	 */
+	private void registerForAllExtensionPoints(Class<?> cls, ExtensionPoint extensionInstance) {
+		if (cls == null) {
+			return;
+		}
+
+		// for its interfaces
+		for (Class<?> interf : cls.getInterfaces()) {
+			checkRegister(extensionRegistry.get(interf.getName()), extensionInstance);
+		}
+
+		// and for the class itself
+		checkRegister(extensionRegistry.get(cls.getName()), extensionInstance);
+
+		// and not the superclass, the check for null is done in the method itself
+		registerForAllExtensionPoints(cls.getSuperclass(), extensionInstance);
+	}
+
+	// register the passed instance if it implements the extension and its class
+	// is registered for that extension
+	private void checkRegister(Extension extension, ExtensionPoint extensionInstance) {
+		if (extension == null) {
+			return;
+		}
+		if (extension.getClassName().compareTo(extensionInstance.getClass().getName()) == 0 &&
+				extension.isSingleton() && extensionInstances.get(extension.getPoint()) == null) {
+			log.debug("Also registering extensioninstance: " + extensionInstance.getClass().getName() +
+					" for extension " + extension.getPoint());
+			extensionInstances.put(extension.getPoint(), extensionInstance);
+		}
 	}
 }

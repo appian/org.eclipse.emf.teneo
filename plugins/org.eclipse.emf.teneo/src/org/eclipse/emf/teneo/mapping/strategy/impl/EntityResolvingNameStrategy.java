@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.2 2007/09/03 12:57:56 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.3 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -36,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
@@ -51,6 +52,8 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
 	// Internal cache name from name to eclass
 	private ConcurrentHashMap<String, EClass> entityNameToEClass = new ConcurrentHashMap<String, EClass>();
+
+	private ExtensionManager extensionManager;
 
 	/*
 	 * (non-Javadoc)
@@ -182,5 +185,14 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 */
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		this.extensionManager = extensionManager;
 	}
 }

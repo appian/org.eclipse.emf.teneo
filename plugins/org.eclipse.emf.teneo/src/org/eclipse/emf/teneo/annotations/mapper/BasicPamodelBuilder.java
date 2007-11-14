@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.1 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.2 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -47,7 +47,12 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	 * Uses an empty freshly instantiated PAnnotatedModel as target.
 	 */
 	public BasicPamodelBuilder() {
-		setPAnnotatedModel(PamodelFactory.eINSTANCE.createPAnnotatedModel());
+		setPAnnotatedModel(createPAnnotatedModel());
+	}
+
+	/** Create the pAnnotatedModel */
+	public PAnnotatedModel createPAnnotatedModel() {
+		return PamodelFactory.eINSTANCE.createPAnnotatedModel();
 	}
 
 	/**

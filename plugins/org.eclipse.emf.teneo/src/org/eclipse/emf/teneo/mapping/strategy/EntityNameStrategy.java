@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityNameStrategy.java,v 1.3 2007/07/12 18:05:47 mtaal Exp $
+ * $Id: EntityNameStrategy.java,v 1.4 2007/11/14 16:38:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -20,15 +20,16 @@ package org.eclipse.emf.teneo.mapping.strategy;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Converter from entityname to and from an eclass. The entityname is used in the hql, etc.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
-public interface EntityNameStrategy extends ExtensionPoint {
+public interface EntityNameStrategy extends ExtensionPoint, ExtensionManagerAware {
 
 	/** The EObject eclass */
 	public static EClass EOBJECT_ECLASS = (EClass) EcorePackage.eINSTANCE.getEClassifier("EObject");

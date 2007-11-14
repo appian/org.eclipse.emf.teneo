@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.18 2007/07/17 12:22:41 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.19 2007/11/14 16:38:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -41,14 +41,14 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.teneo.Constants;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.TeneoException;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 
 /**
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class StoreUtil {
@@ -71,7 +71,7 @@ public class StoreUtil {
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 
 	/** Reads the epackages present in the passed ecore files. */
-	public static EPackage[] readEPackages(String[] ecoreFiles) {
+	public static List<EPackage> readEPackages(String[] ecoreFiles) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
@@ -98,7 +98,7 @@ public class StoreUtil {
 				}
 			}
 		}
-		return epackages.toArray(new EPackage[epackages.size()]);
+		return epackages;
 	}
 
 	/**
@@ -540,9 +540,7 @@ public class StoreUtil {
 		newPackagePathList.add(File.pathSeparator); // add the root package
 
 		// TODO: move this to the EModelResolver!
-		final ArrayList<Class<?>> allClasses = new ArrayList<Class<?>>(ERuntime.INSTANCE.getAllInterfaces());
-		allClasses.addAll(ERuntime.INSTANCE.getAllConcreteClasses());
-		for (Class<?> clazz : allClasses) {
+		for (Class<?> clazz : EModelResolver.instance().getAllClassesAndInterfaces()) {
 			final String className = clazz.getName();
 			final int classNameIndex = className.lastIndexOf(PACKAGE_SEPARATOR);
 			final String trunkClassName = className.substring(0, classNameIndex);

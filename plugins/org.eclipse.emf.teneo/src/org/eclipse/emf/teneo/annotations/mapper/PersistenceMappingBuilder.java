@@ -10,7 +10,9 @@ package org.eclipse.emf.teneo.annotations.mapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -57,8 +59,18 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 
 	/**
 	 * Builds a persistence mapping for one or more epackages
+	 * 
+	 * @Deprecated use the method with the List<EPackage> parameter
 	 */
 	public PAnnotatedModel buildMapping(EPackage[] epackages, PersistenceOptions po, ExtensionManager extensionManager) {
+		return buildMapping(Arrays.asList(epackages), po, extensionManager);
+	}
+
+	/**
+	 * Builds a persistence mapping for one or more epackages
+	 */
+	public PAnnotatedModel buildMapping(List<EPackage> epackages, PersistenceOptions po,
+			ExtensionManager extensionManager) {
 		// create the pamodel
 
 		// DCB: Introduce indirection so that extensions to annotation

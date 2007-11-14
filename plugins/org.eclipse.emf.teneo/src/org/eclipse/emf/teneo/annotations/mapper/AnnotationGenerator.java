@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AnnotationGenerator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: AnnotationGenerator.java,v 1.2 2007/11/14 16:38:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -22,7 +22,6 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -41,7 +40,7 @@ import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -71,20 +70,6 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 
 		persistenceOptions = po;
 
-		// check if the emodelresolver has been set, if not then
-		// use the ERuntime as the default
-		try {
-			if (EModelResolver.instance() == null) { // fails anyway but this
-				// will not be optimised
-				// away
-				// set the eruntime as the default emodel resolver!
-				ERuntime.setAsEModelResolver();
-			}
-		} catch (IllegalStateException e) {
-			// not set, set the eruntime as the emodel resolver!
-			ERuntime.setAsEModelResolver();
-		}
-
 		final List<PAnnotatedEPackage> apacks = annotatedModel.getPaEPackages();
 
 		final EPackage[] epacks = new EPackage[apacks.size()];
@@ -93,9 +78,10 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 			epacks[cnt++] = apack.getAnnotatedEPackage();
 		}
 
+		final EModelResolver eModelResolver = EModelResolver.instance();
 		log.debug("Registering epackages in model resolver, modelresolver instance is: " +
-				EModelResolver.instance().getClass().getName());
-		EModelResolver.instance().register(epacks);
+				eModelResolver.getClass().getName());
+		eModelResolver.register(epacks);
 
 		// if force fully classify typename then use the EModelResolver/ERuntime
 		if (persistenceOptions.isAlsoMapAsClass()) {
@@ -103,8 +89,7 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
-					aclass.setOnlyMapAsEntity(!EModelResolver.instance().hasImplementationClass(
-						aclass.getAnnotatedEClass()));
+					aclass.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getAnnotatedEClass()));
 				}
 			}
 		}

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.12 2007/07/11 17:46:01 mtaal Exp $
+ * $Id: ERuntime.java,v 1.13 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * concrete class, references for cross reference computation, contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class ERuntime extends EModelResolver {
@@ -61,12 +61,6 @@ public class ERuntime extends EModelResolver {
 
 	/** The singleton instance */
 	public static final ERuntime INSTANCE = new ERuntime();
-
-	/** Set this instance as the emodelresolver */
-	public static void setAsEModelResolver() {
-		log.debug("Setting ERunTime as EModelResolver");
-		EModelResolver.setInstance(INSTANCE);
-	}
 
 	/** The list of epackages processed here */
 	private final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
@@ -416,5 +410,18 @@ public class ERuntime extends EModelResolver {
 	 */
 	public Class<?>[] getContainedInterfaces() {
 		return containedClasses.toArray(new Class[containedClasses.size()]);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.ecore.EModelResolver#getAllClassesAndInterfaces()
+	 */
+	@Override
+	public List<Class<?>> getAllClassesAndInterfaces() {
+		final List<Class<?>> result = new ArrayList<Class<?>>();
+		result.addAll(getAllConcreteClasses());
+		result.addAll(getAllInterfaces());
+		return result;
 	}
 }

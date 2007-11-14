@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Constants.java,v 1.5 2007/03/08 20:10:48 mtaal Exp $
+ * $Id: Constants.java,v 1.6 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 /**
- * Constants used when reading a property file is also used by resources.
+ * AnnotationUtil used when reading a property file is also used by resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */ 
 
 public class Constants {

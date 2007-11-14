@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.3 2007/07/17 17:37:16 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.4 2007/11/14 16:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -166,11 +167,28 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			}
 			if (joinTable.getInverseJoinColumns().size() == 0 && aReference.getAReferenceType() != null) {
 				final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, true);
+				// todo: should the inverse join columns not be
 				joinTable.getInverseJoinColumns().addAll(getJoinColumns(names, false, true, otm));
 			}
 		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
 			final List<String> names = getSqlNameStrategy().getOneToManyEReferenceJoinColumns(aReference);
 			aReference.getJoinColumns().addAll(getJoinColumns(names, aReference.getEmbedded() == null, true, otm));
+
+			// In case of a bidirectional relation without a join table
+			// do a special thing: if this is a list (with an index) then the association is always
+			// managed from this side of the relation. This means that update/insert of the
+			// joincolumns
+			// on the other side is set to false.
+			// See the hibernate manual: 6.3.3. Bidirectional associations with indexed collections
+			if (otm.isList() && eReference.getEOpposite() != null) {
+				final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
+				if (aOpposite.getJoinColumns().size() > 0) {
+					for (JoinColumn jc : aOpposite.getJoinColumns()) {
+						jc.setInsertable(false);
+						jc.setUpdatable(false);
+					}
+				}
+			}
 		}
 	}
 }

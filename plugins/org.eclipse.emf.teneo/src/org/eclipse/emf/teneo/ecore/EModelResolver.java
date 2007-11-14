@@ -1,8 +1,11 @@
 package org.eclipse.emf.teneo.ecore;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.ERuntime;
 
 /**
  * The EModelResolver allows pluggable access to the underlying ecore model. It maps from
@@ -19,7 +22,7 @@ public abstract class EModelResolver {
 	/** Return the current ecore resolver */
 	public static EModelResolver instance() {
 		if (instance == null) {
-			throw new IllegalStateException("ModelResolver instance has not been set!");
+			instance = ERuntime.INSTANCE;
 		}
 		return instance;
 	}
@@ -43,6 +46,9 @@ public abstract class EModelResolver {
 
 	/** Register the epackages */
 	public abstract void register(EPackage[] epacks);
+
+	/** @return all java classes and interfaces */
+	public abstract List<Class<?>> getAllClassesAndInterfaces();
 
 	/** @return the java implementation class for an EClass */
 	public abstract Class<?> getJavaClass(EClassifier eclassifier);
