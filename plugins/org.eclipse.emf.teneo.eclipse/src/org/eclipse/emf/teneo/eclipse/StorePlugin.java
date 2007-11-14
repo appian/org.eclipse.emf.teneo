@@ -11,16 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: StorePlugin.java,v 1.2 2007/02/01 12:35:18 mtaal Exp $
+ * $Id: StorePlugin.java,v 1.3 2007/11/14 19:20:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Properties;
-
-import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -30,9 +25,9 @@ import org.osgi.framework.BundleContext;
  */
 public class StorePlugin extends AbstractUIPlugin {
 
-	//The shared instance.
+	// The shared instance.
 	private static StorePlugin plugin;
-	
+
 	/**
 	 * The constructor.
 	 */
@@ -43,30 +38,34 @@ public class StorePlugin extends AbstractUIPlugin {
 	/**
 	 * This method is called upon plug-in activation
 	 */
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		
-		Properties props = new Properties();
-		try
-		{
-			props.load(StorePlugin.class.getResourceAsStream("log4j.properties"));
-		}
-		catch (IOException e)
-		{
-			throw new StoreEclipseException("Exception when reading log4j props", e);
-		}
-		
-		// place the log file in the allowed location
-		final File file = getStateLocation().makeAbsolute().toFile();
-		props.setProperty("log4j.appender.A1.File", file.getAbsolutePath() + 
-				File.separator + props.getProperty("log4j.appender.A1.File"));
-		
-		PropertyConfigurator.configure(props);
+
+// See bugzilla 207170
+//		
+// Properties props = new Properties();
+// try
+// {
+// props.load(StorePlugin.class.getResourceAsStream("log4j.properties"));
+// }
+// catch (IOException e)
+// {
+// throw new StoreEclipseException("Exception when reading log4j props", e);
+// }
+//		
+// // place the log file in the allowed location
+// final File file = getStateLocation().makeAbsolute().toFile();
+// props.setProperty("log4j.appender.A1.File", file.getAbsolutePath() +
+// File.separator + props.getProperty("log4j.appender.A1.File"));
+//		
+// PropertyConfigurator.configure(props);
 	}
 
 	/**
 	 * This method is called when the plug-in is stopped
 	 */
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		super.stop(context);
 		plugin = null;
@@ -80,10 +79,10 @@ public class StorePlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path.
-	 *
-	 * @param path the path
+	 * Returns an image descriptor for the image file at the given plug-in relative path.
+	 * 
+	 * @param path
+	 *            the path
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
