@@ -7,8 +7,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="PAnnotationElementCommutes"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedElement" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"
         volatile="true" derived="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
@@ -34,8 +33,7 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEPackage" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEPackage" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -67,8 +65,7 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEClass" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -81,7 +78,12 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true"/>
+        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="AttributeOverrides"/>
+        <details key="annotationClass" value="javax.persistence.AttributeOverrides"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorColumn" eType="ecore:EClass pannotation.ecore#//DiscriminatorColumn"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorValue" eType="ecore:EClass pannotation.ecore#//DiscriminatorValue"
@@ -98,15 +100,30 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="primaryKeyJoinColumns"
         upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="PrimaryKeyJoinColumns"/>
+        <details key="annotationClass" value="javax.persistence.PrimaryKeyJoinColumns"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondaryTables" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//SecondaryTable" containment="true"/>
+        eType="ecore:EClass pannotation.ecore#//SecondaryTable" containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="SecondaryTables"/>
+        <details key="annotationClass" value="javax.persistence.SecondaryTables"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass pannotation.ecore#//Table"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerator" eType="ecore:EClass pannotation.ecore#//TableGenerator"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="associationOverrides" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//AssociationOverride" containment="true"/>
+        eType="ecore:EClass pannotation.ecore#//AssociationOverride" containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="AssociationOverrides"/>
+        <details key="annotationClass" value="javax.persistence.AssociationOverrides"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedETypedElement">
@@ -120,7 +137,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEStructuralFeature"
-        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
         volatile="true" derived="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
@@ -133,8 +150,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEAttribute" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -158,8 +174,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotAnnotatedAsEmbed AssociationAgreeWithReference AssociationWellFormed"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEReference" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -180,7 +195,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="primaryKeyJoinColumns"
         upperBound="-1" eType="ecore:EClass pannotation.ecore#//PrimaryKeyJoinColumn"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="PrimaryKeyJoinColumns"/>
+        <details key="annotationClass" value="javax.persistence.PrimaryKeyJoinColumns"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedETypedElement" abstract="true"
       eSuperTypes="#//PAnnotatedEModelElement">
@@ -188,7 +208,12 @@
       <details key="constraints" value="EClassCommutes TransientNotAnnotated"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeOverrides" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true"/>
+        eType="ecore:EClass pannotation.ecore#//AttributeOverride" containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="AttributeOverrides"/>
+        <details key="annotationClass" value="javax.persistence.AttributeOverrides"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinTable" eType="ecore:EClass pannotation.ecore#//JoinTable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="oneToMany" eType="ecore:EClass pannotation.ecore#//OneToMany"
@@ -198,11 +223,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableGenerators" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//TableGenerator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
-        eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true"/>
+        eType="ecore:EClass pannotation.ecore#//JoinColumn" containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="JoinColumns"/>
+        <details key="annotationClass" value="javax.persistence.JoinColumns"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEDataType" eSuperTypes="#//PAnnotatedETypedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEDataType" eSuperTypes="#//PAnnotatedEModelElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper"/>
     </eAnnotations>
@@ -232,5 +262,7 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="ecore:EClass pannotation.ecore#//Column"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

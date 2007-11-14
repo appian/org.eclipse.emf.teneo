@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.15 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.16 2007/11/14 16:37:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -651,6 +651,15 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPAnnotatedEDataType_Column() {
+		return (EReference)pAnnotatedEDataTypeEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPAnnotatedEReference() {
 		return pAnnotatedEReferenceEClass;
 	}
@@ -914,6 +923,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		createEReference(pAnnotatedEDataTypeEClass, PANNOTATED_EDATA_TYPE__TEMPORAL);
 		createEReference(pAnnotatedEDataTypeEClass, PANNOTATED_EDATA_TYPE__VERSION);
 		createEReference(pAnnotatedEDataTypeEClass, PANNOTATED_EDATA_TYPE__PA_EPACKAGE);
+		createEReference(pAnnotatedEDataTypeEClass, PANNOTATED_EDATA_TYPE__COLUMN);
 	}
 
 	/**
@@ -953,11 +963,11 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		pAnnotatedEAttributeEClass.getESuperTypes().add(this.getPAnnotatedEStructuralFeature());
 		pAnnotatedEReferenceEClass.getESuperTypes().add(this.getPAnnotatedEStructuralFeature());
 		pAnnotatedETypedElementEClass.getESuperTypes().add(this.getPAnnotatedEModelElement());
-		pAnnotatedEDataTypeEClass.getESuperTypes().add(this.getPAnnotatedETypedElement());
+		pAnnotatedEDataTypeEClass.getESuperTypes().add(this.getPAnnotatedEModelElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotatedEModelElementEClass, PAnnotatedEModelElement.class, "PAnnotatedEModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPAnnotatedEModelElement_AnnotatedElement(), ecorePackage.getENamedElement(), null, "annotatedElement", null, 1, 1, PAnnotatedEModelElement.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEModelElement_AnnotatedElement(), ecorePackage.getENamedElement(), null, "annotatedElement", null, 0, 1, PAnnotatedEModelElement.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEModelElement_Transient(), thePannotationPackage.getTransient(), null, "transient", null, 0, 1, PAnnotatedEModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pAnnotatedModelEClass, PAnnotatedModel.class, "PAnnotatedModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -965,7 +975,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 
 		initEClass(pAnnotatedEPackageEClass, PAnnotatedEPackage.class, "PAnnotatedEPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEPackage_PaModel(), this.getPAnnotatedModel(), this.getPAnnotatedModel_PaEPackages(), "paModel", null, 0, 1, PAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPAnnotatedEPackage_AnnotatedEPackage(), ecorePackage.getEPackage(), null, "annotatedEPackage", null, 1, 1, PAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEPackage_AnnotatedEPackage(), ecorePackage.getEPackage(), null, "annotatedEPackage", null, 0, 1, PAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEPackage_PaEClasses(), this.getPAnnotatedEClass(), this.getPAnnotatedEClass_PaEPackage(), "paEClasses", null, 0, -1, PAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEPackage_SequenceGenerators(), thePannotationPackage.getSequenceGenerator(), null, "sequenceGenerators", null, 0, -1, PAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEPackage_TableGenerators(), thePannotationPackage.getTableGenerator(), null, "tableGenerators", null, 0, -1, PAnnotatedEPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -973,7 +983,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 
 		initEClass(pAnnotatedEClassEClass, PAnnotatedEClass.class, "PAnnotatedEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEClass_PaEPackage(), this.getPAnnotatedEPackage(), this.getPAnnotatedEPackage_PaEClasses(), "paEPackage", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPAnnotatedEClass_AnnotatedEClass(), ecorePackage.getEClass(), null, "annotatedEClass", null, 1, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEClass_AnnotatedEClass(), ecorePackage.getEClass(), null, "annotatedEClass", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_PaEStructuralFeatures(), this.getPAnnotatedEStructuralFeature(), this.getPAnnotatedEStructuralFeature_PaEClass(), "paEStructuralFeatures", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_AttributeOverrides(), thePannotationPackage.getAttributeOverride(), null, "attributeOverrides", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_DiscriminatorColumn(), thePannotationPackage.getDiscriminatorColumn(), null, "discriminatorColumn", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -991,11 +1001,11 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 
 		initEClass(pAnnotatedEStructuralFeatureEClass, PAnnotatedEStructuralFeature.class, "PAnnotatedEStructuralFeature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEStructuralFeature_PaEClass(), this.getPAnnotatedEClass(), this.getPAnnotatedEClass_PaEStructuralFeatures(), "paEClass", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature(), ecorePackage.getEStructuralFeature(), null, "annotatedEStructuralFeature", null, 1, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature(), ecorePackage.getEStructuralFeature(), null, "annotatedEStructuralFeature", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEStructuralFeature_ForeignKey(), thePannotationPackage.getForeignKey(), null, "foreignKey", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pAnnotatedEAttributeEClass, PAnnotatedEAttribute.class, "PAnnotatedEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPAnnotatedEAttribute_AnnotatedEAttribute(), ecorePackage.getEAttribute(), null, "annotatedEAttribute", null, 1, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEAttribute_AnnotatedEAttribute(), ecorePackage.getEAttribute(), null, "annotatedEAttribute", null, 0, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEAttribute_Basic(), thePannotationPackage.getBasic(), null, "basic", null, 0, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEAttribute_Enumerated(), thePannotationPackage.getEnumerated(), null, "enumerated", null, 0, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEAttribute_GeneratedValue(), thePannotationPackage.getGeneratedValue(), null, "generatedValue", null, 0, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1005,7 +1015,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEReference(getPAnnotatedEAttribute_Version(), thePannotationPackage.getVersion(), null, "version", null, 0, 1, PAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pAnnotatedEReferenceEClass, PAnnotatedEReference.class, "PAnnotatedEReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPAnnotatedEReference_AnnotatedEReference(), ecorePackage.getEReference(), null, "annotatedEReference", null, 1, 1, PAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEReference_AnnotatedEReference(), ecorePackage.getEReference(), null, "annotatedEReference", null, 0, 1, PAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEReference_Embedded(), thePannotationPackage.getEmbedded(), null, "embedded", null, 0, 1, PAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEReference_EmbeddedId(), thePannotationPackage.getEmbeddedId(), null, "embeddedId", null, 0, 1, PAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEReference_ManyToMany(), thePannotationPackage.getManyToMany(), null, "manyToMany", null, 0, 1, PAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1034,6 +1044,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEReference(getPAnnotatedEDataType_Temporal(), thePannotationPackage.getTemporal(), null, "temporal", null, 0, 1, PAnnotatedEDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEDataType_Version(), thePannotationPackage.getVersion(), null, "version", null, 0, 1, PAnnotatedEDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEDataType_PaEPackage(), this.getPAnnotatedEPackage(), this.getPAnnotatedEPackage_PaEDataTypes(), "paEPackage", null, 0, 1, PAnnotatedEDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEDataType_Column(), thePannotationPackage.getColumn(), null, "column", null, 0, 1, PAnnotatedEDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1043,6 +1054,8 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		createEcoreAnnotations();
 		// teneo/internal/PersistenceMapping
 		createPersistenceMappingAnnotations();
+		// elver.jpa
+		createElverAnnotations();
 	}
 
 	/**
@@ -1076,7 +1089,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "SameEFeatures EPackageCommutes ProperPrimaryKey EntityOrEmbeddableOrMappedSuper\tOverriddenAreDefined ProperInheritance ProperDiscriminator SingleTableForSingleStrategy ProperPKJoin"
-		   });					
+		   });									
 		addAnnotation
 		  (pAnnotatedEStructuralFeatureEClass, 
 		   source, 
@@ -1094,13 +1107,13 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "NotAnnotatedAsEmbed AssociationAgreeWithReference AssociationWellFormed"
-		   });			
+		   });				
 		addAnnotation
 		  (pAnnotatedETypedElementEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "EClassCommutes TransientNotAnnotated"
-		   });		
+		   });				
 		addAnnotation
 		  (pAnnotatedEDataTypeEClass, 
 		   source, 
@@ -1164,7 +1177,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });			
+		   });							
 		addAnnotation
 		  (getPAnnotatedEStructuralFeature_PaEClass(), 
 		   source, 
@@ -1188,7 +1201,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });				
+		   });							
 		addAnnotation
 		  (getPAnnotatedEDataType_AnnotatedEDataType(), 
 		   source, 
@@ -1201,6 +1214,65 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   new String[] {
 			 "ignore", "true"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>elver.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createElverAnnotations() {
+		String source = "elver.jpa";														
+		addAnnotation
+		  (getPAnnotatedEClass_AttributeOverrides(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "AttributeOverrides",
+			 "annotationClass", "javax.persistence.AttributeOverrides"
+		   });		
+		addAnnotation
+		  (getPAnnotatedEClass_PrimaryKeyJoinColumns(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "PrimaryKeyJoinColumns",
+			 "annotationClass", "javax.persistence.PrimaryKeyJoinColumns"
+		   });		
+		addAnnotation
+		  (getPAnnotatedEClass_SecondaryTables(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "SecondaryTables",
+			 "annotationClass", "javax.persistence.SecondaryTables"
+		   });		
+		addAnnotation
+		  (getPAnnotatedEClass_AssociationOverrides(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "AssociationOverrides",
+			 "annotationClass", "javax.persistence.AssociationOverrides"
+		   });									
+		addAnnotation
+		  (getPAnnotatedEReference_PrimaryKeyJoinColumns(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "PrimaryKeyJoinColumns",
+			 "annotationClass", "javax.persistence.PrimaryKeyJoinColumns"
+		   });			
+		addAnnotation
+		  (getPAnnotatedETypedElement_AttributeOverrides(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "AttributeOverrides",
+			 "annotationClass", "javax.persistence.AttributeOverrides"
+		   });		
+		addAnnotation
+		  (getPAnnotatedETypedElement_JoinColumns(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "JoinColumns",
+			 "annotationClass", "javax.persistence.JoinColumns"
+		   });			
 	}
 
 	/**

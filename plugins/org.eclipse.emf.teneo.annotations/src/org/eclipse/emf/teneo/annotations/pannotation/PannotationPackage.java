@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.11 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.12 2007/11/14 16:37:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -57,9 +57,9 @@ public interface PannotationPackage extends EPackage {
 	PannotationPackage eINSTANCE = org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl <em>PAnnotation</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.PAnnotation
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getPAnnotation()
 	 * @generated
 	 */
@@ -3210,10 +3210,10 @@ public interface PannotationPackage extends EPackage {
 	 */
 	interface Literals  {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl <em>PAnnotation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.annotations.pannotation.PAnnotation
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl
 		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getPAnnotation()
 		 * @generated
 		 */

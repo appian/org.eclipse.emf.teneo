@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.13 2007/07/04 19:28:00 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.14 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -95,8 +95,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Annotated EClass</em>' reference.
 	 * @see #setAnnotatedEClass(EClass)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AnnotatedEClass()
-	 * @model required="true"
-	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @model annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EClass getAnnotatedEClass();
@@ -142,6 +141,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Attribute Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AttributeOverrides()
 	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='AttributeOverrides' annotationClass='javax.persistence.AttributeOverrides'"
 	 * @generated
 	 */
 	EList<AttributeOverride> getAttributeOverrides();
@@ -352,6 +352,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Secondary Tables</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_SecondaryTables()
 	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='SecondaryTables' annotationClass='javax.persistence.SecondaryTables'"
 	 * @generated
 	 */
 	EList<SecondaryTable> getSecondaryTables();
@@ -419,6 +420,7 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Association Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_AssociationOverrides()
 	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='AssociationOverrides' annotationClass='javax.persistence.AssociationOverrides'"
 	 * @generated
 	 */
 	EList<AssociationOverride> getAssociationOverrides();

@@ -2,19 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToOneImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: ManyToOneImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
@@ -22,13 +21,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Many To One</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Many To One</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getTargetEntity <em>Target Entity</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getCascade <em>Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl#getFetch <em>Fetch</em>}</li>
@@ -38,21 +35,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *
  * @generated
  */
-public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	/**
 	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -60,9 +46,9 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	protected static final String TARGET_ENTITY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -70,9 +56,9 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	protected String targetEntity = TARGET_ENTITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCascade() <em>Cascade</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCascade() <em>Cascade</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCascade()
 	 * @generated
 	 * @ordered
@@ -80,9 +66,9 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	protected EList<CascadeType> cascade;
 
 	/**
-	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -91,8 +77,8 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 
 	/**
 	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -100,9 +86,9 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	protected FetchType fetch = FETCH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isOptional()
 	 * @generated
 	 * @ordered
@@ -110,9 +96,9 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	protected static final boolean OPTIONAL_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isOptional()
 	 * @generated
 	 * @ordered
@@ -120,8 +106,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	protected boolean optional = OPTIONAL_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ManyToOneImpl() {
@@ -129,8 +114,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -139,46 +123,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.MANY_TO_ONE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -186,8 +131,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
@@ -198,8 +142,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isOptional() {
@@ -207,8 +150,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setOptional(boolean newOptional) {
@@ -219,16 +161,12 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
 				return getTargetEntity();
 			case PannotationPackage.MANY_TO_ONE__CASCADE:
@@ -242,17 +180,13 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
 				setTargetEntity((String)newValue);
 				return;
@@ -271,16 +205,12 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
 				setTargetEntity(TARGET_ENTITY_EDEFAULT);
 				return;
@@ -298,15 +228,12 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.MANY_TO_ONE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.MANY_TO_ONE__TARGET_ENTITY:
 				return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT.equals(targetEntity);
 			case PannotationPackage.MANY_TO_ONE__CASCADE:
@@ -320,8 +247,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTargetEntity() {
@@ -329,8 +255,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setTargetEntity(String newTargetEntity) {
@@ -341,8 +266,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<CascadeType> getCascade() {
@@ -353,8 +277,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -374,4 +297,15 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 		return result.toString();
 	}
 
-} //ManyToOneImpl
+	@Override
+	protected String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject, EStructuralFeature eFeature,
+			boolean prependComma, List<String> imports) {
+		if (eFeature == PannotationPackage.eINSTANCE.getManyToOne_TargetEntity()) {
+			// do not return anything because jpa expects a real classname,
+			// the targetentity only has an entityname here.
+			return "";
+		}
+		return super.getAnnotationValue(eObject, eFeature, prependComma, imports);
+	}
+
+} // ManyToOneImpl

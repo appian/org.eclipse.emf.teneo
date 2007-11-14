@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEDataTypeImpl.java,v 1.4 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PAnnotatedEDataTypeImpl.java,v 1.5 2007/11/14 16:37:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
@@ -42,12 +43,13 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEDataTypeImpl#getTemporal <em>Temporal</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEDataTypeImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEDataTypeImpl#getPaEPackage <em>Pa EPackage</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEDataTypeImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl implements PAnnotatedEDataType {
+public class PAnnotatedEDataTypeImpl extends PAnnotatedEModelElementImpl implements PAnnotatedEDataType {
 	/**
 	 * The cached value of the '{@link #getAnnotatedEDataType() <em>Annotated EData Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -127,6 +129,16 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * @ordered
 	 */
 	protected Version version;
+
+	/**
+	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Column column;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -532,6 +544,49 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Column getColumn() {
+		return column;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetColumn(Column newColumn, NotificationChain msgs) {
+		Column oldColumn = column;
+		column = newColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN, oldColumn, newColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColumn(Column newColumn) {
+		if (newColumn != column) {
+			NotificationChain msgs = null;
+			if (column != null)
+				msgs = ((InternalEObject)column).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN, null, msgs);
+			if (newColumn != null)
+				msgs = ((InternalEObject)newColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN, null, msgs);
+			msgs = basicSetColumn(newColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN, newColumn, newColumn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -567,6 +622,8 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 				return basicSetVersion(null, msgs);
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
 				return basicSetPaEPackage(null, msgs);
+			case PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN:
+				return basicSetColumn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -612,6 +669,8 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 				return getVersion();
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
 				return getPaEPackage();
+			case PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN:
+				return getColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -650,6 +709,9 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 				return;
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
 				setPaEPackage((PAnnotatedEPackage)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN:
+				setColumn((Column)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -690,6 +752,9 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
 				setPaEPackage((PAnnotatedEPackage)null);
 				return;
+			case PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN:
+				setColumn((Column)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -720,6 +785,8 @@ public class PAnnotatedEDataTypeImpl extends PAnnotatedETypedElementImpl impleme
 				return version != null;
 			case PamodelPackage.PANNOTATED_EDATA_TYPE__PA_EPACKAGE:
 				return getPaEPackage() != null;
+			case PamodelPackage.PANNOTATED_EDATA_TYPE__COLUMN:
+				return column != null;
 		}
 		return super.eIsSet(featureID);
 	}

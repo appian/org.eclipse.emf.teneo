@@ -2,36 +2,39 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotation.java,v 1.5 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PAnnotation.java,v 1.6 2007/11/14 16:37:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
+
+import java.util.List;
 
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotation</b></em>'. <!-- end-user-doc
- * -->
- * 
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotation</b></em>'.
+ * <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement <em>EModel Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement <em>EModel Element</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPAnnotation()
- * @model interface="true" abstract="true" annotation="http://www.eclipse.org/emf/2002/Ecore
- *        constraints='CompatibleEModelElementType AnnotationIsSupported'"
+ * @model abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='CompatibleEModelElementType AnnotationIsSupported'"
  * @generated
  */
 public interface PAnnotation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>EModel Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>EModel Element</em>' reference isn't clear, there really should be more of a
-	 * description here...
+	 * If the meaning of the '<em>EModel Element</em>' reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EModel Element</em>' reference.
@@ -52,4 +55,9 @@ public interface PAnnotation extends EObject {
 	 */
 	void setEModelElement(EModelElement value);
 
+	/** Return the java annotation, any importStatements are added to the passed list */
+	String getJavaAnnotation(List<String> importStatements);
+
+	/** Return the class name of the annotation */
+	String getAnnotationClassName();
 } // PAnnotation

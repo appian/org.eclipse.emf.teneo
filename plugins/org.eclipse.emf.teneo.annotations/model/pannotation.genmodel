@@ -86,6 +86,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/temporal"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/version"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/paEPackage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/column"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Pannotation" basePackage="org.eclipse.emf.teneo.annotations"

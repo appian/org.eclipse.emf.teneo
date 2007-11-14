@@ -2,19 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToManyImpl.java,v 1.8 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: OneToManyImpl.java,v 1.9 2007/11/14 16:37:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
@@ -22,13 +21,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>One To Many</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>One To Many</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getTargetEntity <em>Target Entity</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getCascade <em>Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getFetch <em>Fetch</em>}</li>
@@ -40,21 +37,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *
  * @generated
  */
-public class OneToManyImpl extends EObjectImpl implements OneToMany {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 	/**
 	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -62,9 +48,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected static final String TARGET_ENTITY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -72,9 +58,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected String targetEntity = TARGET_ENTITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCascade() <em>Cascade</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCascade() <em>Cascade</em>}' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCascade()
 	 * @generated
 	 * @ordered
@@ -82,9 +68,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected EList<CascadeType> cascade;
 
 	/**
-	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -93,8 +79,8 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 
 	/**
 	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -102,9 +88,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected FetchType fetch = FETCH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMappedBy() <em>Mapped By</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getMappedBy() <em>Mapped By</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMappedBy()
 	 * @generated
 	 * @ordered
@@ -112,9 +98,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected static final String MAPPED_BY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMappedBy() <em>Mapped By</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMappedBy() <em>Mapped By</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMappedBy()
 	 * @generated
 	 * @ordered
@@ -122,9 +108,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected String mappedBy = MAPPED_BY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isIndexed() <em>Indexed</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIndexed()
 	 * @generated
 	 * @ordered
@@ -132,9 +118,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected static final boolean INDEXED_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isIndexed() <em>Indexed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isIndexed() <em>Indexed</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isIndexed()
 	 * @generated
 	 * @ordered
@@ -142,9 +128,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected boolean indexed = INDEXED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
@@ -152,9 +138,9 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected static final boolean UNIQUE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
@@ -162,8 +148,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	protected boolean unique = UNIQUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected OneToManyImpl() {
@@ -171,8 +156,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -181,46 +165,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -228,8 +173,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
@@ -240,8 +184,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTargetEntity() {
@@ -249,8 +192,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setTargetEntity(String newTargetEntity) {
@@ -261,8 +203,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<CascadeType> getCascade() {
@@ -273,8 +214,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getMappedBy() {
@@ -282,8 +222,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setMappedBy(String newMappedBy) {
@@ -294,8 +233,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isIndexed() {
@@ -303,8 +241,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setIndexed(boolean newIndexed) {
@@ -315,8 +252,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -324,8 +260,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setUnique(boolean newUnique) {
@@ -336,16 +271,12 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case PannotationPackage.ONE_TO_MANY__TARGET_ENTITY:
 				return getTargetEntity();
 			case PannotationPackage.ONE_TO_MANY__CASCADE:
@@ -363,17 +294,13 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case PannotationPackage.ONE_TO_MANY__TARGET_ENTITY:
 				setTargetEntity((String)newValue);
 				return;
@@ -398,16 +325,12 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case PannotationPackage.ONE_TO_MANY__TARGET_ENTITY:
 				setTargetEntity(TARGET_ENTITY_EDEFAULT);
 				return;
@@ -431,15 +354,12 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ONE_TO_MANY__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.ONE_TO_MANY__TARGET_ENTITY:
 				return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT.equals(targetEntity);
 			case PannotationPackage.ONE_TO_MANY__CASCADE:
@@ -457,8 +377,7 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -486,4 +405,16 @@ public class OneToManyImpl extends EObjectImpl implements OneToMany {
 	public boolean isList() {
 		return isIndexed() || !isUnique();
 	}
-} //OneToManyImpl
+
+	@Override
+	protected String getAnnotationValue(org.eclipse.emf.ecore.EObject eObject, EStructuralFeature eFeature,
+			boolean prependComma, List<String> imports) {
+		if (eFeature == PannotationPackage.eINSTANCE.getOneToMany_TargetEntity()) {
+			// do not return anything because jpa expects a real classname,
+			// the targetentity only has an entityname here.
+			return "";
+		}
+		return super.getAnnotationValue(eObject, eFeature, prependComma, imports);
+	}
+
+} // OneToManyImpl

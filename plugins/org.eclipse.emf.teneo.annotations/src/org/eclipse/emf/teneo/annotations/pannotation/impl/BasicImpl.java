@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: BasicImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -23,7 +20,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#getFetch <em>Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl#isOptional <em>Optional</em>}</li>
  * </ul>
@@ -31,17 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *
  * @generated
  */
-public class BasicImpl extends EObjectImpl implements Basic {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class BasicImpl extends PAnnotationImpl implements Basic {
 	/**
 	 * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,44 +92,6 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.BASIC__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.BASIC__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public FetchType getFetch() {
 		return fetch;
 	}
@@ -189,9 +137,6 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.BASIC__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case PannotationPackage.BASIC__FETCH:
 				return getFetch();
 			case PannotationPackage.BASIC__OPTIONAL:
@@ -208,9 +153,6 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.BASIC__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case PannotationPackage.BASIC__FETCH:
 				setFetch((FetchType)newValue);
 				return;
@@ -229,9 +171,6 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.BASIC__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case PannotationPackage.BASIC__FETCH:
 				setFetch(FETCH_EDEFAULT);
 				return;
@@ -250,8 +189,6 @@ public class BasicImpl extends EObjectImpl implements Basic {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.BASIC__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.BASIC__FETCH:
 				return fetch != FETCH_EDEFAULT;
 			case PannotationPackage.BASIC__OPTIONAL:

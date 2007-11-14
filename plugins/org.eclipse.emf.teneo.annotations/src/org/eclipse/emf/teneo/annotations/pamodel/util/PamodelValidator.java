@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.20 2007/07/17 17:37:13 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.21 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -765,8 +765,6 @@ public class PamodelValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEModelElement_PAnnotationElementCommutes(pAnnotatedEDataType, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedEDataType, diagnostics, context);
-		if (result || diagnostics != null) result &= validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_NotAnnotatedAsBasic(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_GeneratedOnId(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotatedEDataType_DefinedGenerator(pAnnotatedEDataType, diagnostics, context);

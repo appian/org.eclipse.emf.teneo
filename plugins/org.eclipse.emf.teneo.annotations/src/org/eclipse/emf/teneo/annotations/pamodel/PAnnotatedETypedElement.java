@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedETypedElement.java,v 1.6 2007/07/04 19:28:00 mtaal Exp $
+ * $Id: PAnnotatedETypedElement.java,v 1.7 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -51,6 +51,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Attribute Overrides</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedETypedElement_AttributeOverrides()
 	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='AttributeOverrides' annotationClass='javax.persistence.AttributeOverrides'"
 	 * @generated
 	 */
 	EList<AttributeOverride> getAttributeOverrides();
@@ -161,6 +162,7 @@ public interface PAnnotatedETypedElement extends PAnnotatedEModelElement {
 	 * @return the value of the '<em>Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedETypedElement_JoinColumns()
 	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='JoinColumns' annotationClass='javax.persistence.JoinColumns'"
 	 * @generated
 	 */
 	EList<JoinColumn> getJoinColumns();

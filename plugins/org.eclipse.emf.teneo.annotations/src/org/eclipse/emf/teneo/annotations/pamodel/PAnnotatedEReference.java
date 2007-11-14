@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.10 2007/07/04 19:28:00 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.11 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -59,8 +59,7 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * @return the value of the '<em>Annotated EReference</em>' reference.
 	 * @see #setAnnotatedEReference(EReference)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_AnnotatedEReference()
-	 * @model required="true"
-	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @model annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
 	EReference getAnnotatedEReference();
@@ -261,6 +260,7 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * @return the value of the '<em>Primary Key Join Columns</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_PrimaryKeyJoinColumns()
 	 * @model containment="true"
+	 *        annotation="elver.jpa annotationName='PrimaryKeyJoinColumns' annotationClass='javax.persistence.PrimaryKeyJoinColumns'"
 	 * @generated
 	 */
 	EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns();

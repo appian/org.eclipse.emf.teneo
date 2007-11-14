@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.24 2007/07/11 17:15:11 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.25 2007/11/14 16:37:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;

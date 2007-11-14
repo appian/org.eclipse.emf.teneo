@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.13 2007/09/03 12:59:56 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.14 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
+
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -22,32 +24,29 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated Model</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel#getPaEPackages <em>Pa EPackages</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel#getPaEPackages <em>Pa EPackages</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedModel()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='AtMostOnePackage
- *        DistinctGenerators'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='AtMostOnePackage DistinctGenerators'"
  * @generated
  */
 public interface PAnnotatedModel extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Pa EPackages</b></em>' containment reference list. The
-	 * list contents are of type
-	 * {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage}. It is bidirectional
-	 * and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaModel <em>Pa Model</em>}'.
+	 * Returns the value of the '<em><b>Pa EPackages</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaModel <em>Pa Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pa EPackages</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Pa EPackages</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedModel_PaEPackages()
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaModel
@@ -141,5 +140,11 @@ public interface PAnnotatedModel extends EObject {
 	 *         passed as a parameter.
 	 */
 	public boolean hasEClassifier(String name);
+
+	/** Return the mapping from epackage elements to annotated package elements */
+	public Map<EModelElement, PAnnotatedEModelElement> getModelElementMapping();
+
+	/** Merge the passed annotated model in the one present */
+	public void merge(PAnnotatedModel pModel);
 
 } // PAnnotatedModel

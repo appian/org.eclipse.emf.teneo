@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnImpl.java,v 1.7 2007/09/03 12:59:56 mtaal Exp $
+ * $Id: ColumnImpl.java,v 1.8 2007/11/14 16:37:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
@@ -21,37 +18,26 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getEModelElement <em>EModel Element</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUnique <em>Unique</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isNullable <em>Nullable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isInsertable <em>Insertable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUpdatable <em>Updatable</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getColumnDefinition <em>Column Definition</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getTable <em>Table</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getLength <em>Length</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getPrecision <em>Precision</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUnique <em>Unique</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isNullable <em>Nullable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isInsertable <em>Insertable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#isUpdatable <em>Updatable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getColumnDefinition <em>Column Definition</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getTable <em>Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getPrecision <em>Precision</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getScale <em>Scale</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class ColumnImpl extends EObjectImpl implements Column {
+public class ColumnImpl extends PAnnotationImpl implements Column {
 	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -59,9 +45,9 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -149,9 +135,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	protected boolean updatable = UPDATABLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getColumnDefinition() <em>Column Definition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -159,9 +144,8 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	protected static final String COLUMN_DEFINITION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getColumnDefinition() <em>Column Definition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getColumnDefinition() <em>Column Definition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getColumnDefinition()
 	 * @generated
 	 * @ordered
@@ -179,9 +163,9 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	protected static final String TABLE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getTable() <em>Table</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getTable()
 	 * @generated
 	 * @ordered
@@ -238,9 +222,9 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	protected int precision = PRECISION_EDEFAULT;
 
 	/**
-	 * This is true if the Precision attribute has been set. <!-- begin-user-doc --> <!--
+	 * This is true if the Precision attribute has been set.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -257,9 +241,9 @@ public class ColumnImpl extends EObjectImpl implements Column {
 	protected static final int SCALE_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute. <!-- begin-user-doc
+	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -277,7 +261,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ColumnImpl() {
@@ -286,7 +269,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -296,49 +278,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject) eModelElement;
-			eModelElement = (EModelElement) eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						PannotationPackage.COLUMN__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-				}
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__EMODEL_ELEMENT,
-				oldEModelElement, eModelElement));
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -347,20 +286,17 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NAME, oldName, name));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getLength() {
@@ -369,7 +305,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setLength(int newLength) {
@@ -377,15 +312,12 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		length = newLength;
 		boolean oldLengthESet = lengthESet;
 		lengthESet = true;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__LENGTH, oldLength, length,
-				!oldLengthESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__LENGTH, oldLength, length, !oldLengthESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void unsetLength() {
@@ -393,15 +325,12 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		boolean oldLengthESet = lengthESet;
 		length = LENGTH_EDEFAULT;
 		lengthESet = false;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__LENGTH, oldLength,
-				LENGTH_EDEFAULT, oldLengthESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__LENGTH, oldLength, LENGTH_EDEFAULT, oldLengthESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isSetLength() {
@@ -410,7 +339,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getScale() {
@@ -419,7 +347,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setScale(int newScale) {
@@ -427,15 +354,12 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		scale = newScale;
 		boolean oldScaleESet = scaleESet;
 		scaleESet = true;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__SCALE, oldScale, scale,
-				!oldScaleESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__SCALE, oldScale, scale, !oldScaleESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void unsetScale() {
@@ -443,15 +367,12 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		boolean oldScaleESet = scaleESet;
 		scale = SCALE_EDEFAULT;
 		scaleESet = false;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__SCALE, oldScale,
-				SCALE_EDEFAULT, oldScaleESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__SCALE, oldScale, SCALE_EDEFAULT, oldScaleESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isSetScale() {
@@ -460,17 +381,11 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
-				if (resolve) {
-					return getEModelElement();
-				}
-				return basicGetEModelElement();
 			case PannotationPackage.COLUMN__NAME:
 				return getName();
 			case PannotationPackage.COLUMN__UNIQUE:
@@ -497,44 +412,40 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
-				setEModelElement((EModelElement) newValue);
-				return;
 			case PannotationPackage.COLUMN__NAME:
-				setName((String) newValue);
+				setName((String)newValue);
 				return;
 			case PannotationPackage.COLUMN__UNIQUE:
-				setUnique(((Boolean) newValue).booleanValue());
+				setUnique(((Boolean)newValue).booleanValue());
 				return;
 			case PannotationPackage.COLUMN__NULLABLE:
-				setNullable(((Boolean) newValue).booleanValue());
+				setNullable(((Boolean)newValue).booleanValue());
 				return;
 			case PannotationPackage.COLUMN__INSERTABLE:
-				setInsertable(((Boolean) newValue).booleanValue());
+				setInsertable(((Boolean)newValue).booleanValue());
 				return;
 			case PannotationPackage.COLUMN__UPDATABLE:
-				setUpdatable(((Boolean) newValue).booleanValue());
+				setUpdatable(((Boolean)newValue).booleanValue());
 				return;
 			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
-				setColumnDefinition((String) newValue);
+				setColumnDefinition((String)newValue);
 				return;
 			case PannotationPackage.COLUMN__TABLE:
-				setTable((String) newValue);
+				setTable((String)newValue);
 				return;
 			case PannotationPackage.COLUMN__LENGTH:
-				setLength(((Integer) newValue).intValue());
+				setLength(((Integer)newValue).intValue());
 				return;
 			case PannotationPackage.COLUMN__PRECISION:
-				setPrecision(((Integer) newValue).intValue());
+				setPrecision(((Integer)newValue).intValue());
 				return;
 			case PannotationPackage.COLUMN__SCALE:
-				setScale(((Integer) newValue).intValue());
+				setScale(((Integer)newValue).intValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -542,15 +453,11 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
-				setEModelElement((EModelElement) null);
-				return;
 			case PannotationPackage.COLUMN__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -587,14 +494,11 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.COLUMN__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.COLUMN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case PannotationPackage.COLUMN__UNIQUE:
@@ -606,8 +510,7 @@ public class ColumnImpl extends EObjectImpl implements Column {
 			case PannotationPackage.COLUMN__UPDATABLE:
 				return updatable != UPDATABLE_EDEFAULT;
 			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
-				return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null : !COLUMN_DEFINITION_EDEFAULT
-					.equals(columnDefinition);
+				return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null : !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
 			case PannotationPackage.COLUMN__TABLE:
 				return TABLE_EDEFAULT == null ? table != null : !TABLE_EDEFAULT.equals(table);
 			case PannotationPackage.COLUMN__LENGTH:
@@ -622,7 +525,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -631,20 +533,17 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUnique(boolean newUnique) {
 		boolean oldUnique = unique;
 		unique = newUnique;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UNIQUE, oldUnique, unique));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getPrecision() {
@@ -653,7 +552,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setPrecision(int newPrecision) {
@@ -661,15 +559,12 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		precision = newPrecision;
 		boolean oldPrecisionESet = precisionESet;
 		precisionESet = true;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__PRECISION, oldPrecision,
-				precision, !oldPrecisionESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__PRECISION, oldPrecision, precision, !oldPrecisionESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void unsetPrecision() {
@@ -677,15 +572,12 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		boolean oldPrecisionESet = precisionESet;
 		precision = PRECISION_EDEFAULT;
 		precisionESet = false;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__PRECISION, oldPrecision,
-				PRECISION_EDEFAULT, oldPrecisionESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__PRECISION, oldPrecision, PRECISION_EDEFAULT, oldPrecisionESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isSetPrecision() {
@@ -694,7 +586,6 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isNullable() {
@@ -703,21 +594,17 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setNullable(boolean newNullable) {
 		boolean oldNullable = nullable;
 		nullable = newNullable;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NULLABLE, oldNullable,
-				nullable));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NULLABLE, oldNullable, nullable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isInsertable() {
@@ -726,21 +613,17 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setInsertable(boolean newInsertable) {
 		boolean oldInsertable = insertable;
 		insertable = newInsertable;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INSERTABLE, oldInsertable,
-				insertable));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INSERTABLE, oldInsertable, insertable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isUpdatable() {
@@ -749,21 +632,17 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUpdatable(boolean newUpdatable) {
 		boolean oldUpdatable = updatable;
 		updatable = newUpdatable;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UPDATABLE, oldUpdatable,
-				updatable));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UPDATABLE, oldUpdatable, updatable));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getColumnDefinition() {
@@ -772,21 +651,17 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setColumnDefinition(String newColumnDefinition) {
 		String oldColumnDefinition = columnDefinition;
 		columnDefinition = newColumnDefinition;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__COLUMN_DEFINITION,
-				oldColumnDefinition, columnDefinition));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__COLUMN_DEFINITION, oldColumnDefinition, columnDefinition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getTable() {
@@ -795,27 +670,22 @@ public class ColumnImpl extends EObjectImpl implements Column {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTable(String newTable) {
 		String oldTable = table;
 		table = newTable;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__TABLE, oldTable, table));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
-			return super.toString();
-		}
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -833,23 +703,11 @@ public class ColumnImpl extends EObjectImpl implements Column {
 		result.append(", table: ");
 		result.append(table);
 		result.append(", length: ");
-		if (lengthESet) {
-			result.append(length);
-		} else {
-			result.append("<unset>");
-		}
+		if (lengthESet) result.append(length); else result.append("<unset>");
 		result.append(", precision: ");
-		if (precisionESet) {
-			result.append(precision);
-		} else {
-			result.append("<unset>");
-		}
+		if (precisionESet) result.append(precision); else result.append("<unset>");
 		result.append(", scale: ");
-		if (scaleESet) {
-			result.append(scale);
-		} else {
-			result.append("<unset>");
-		}
+		if (scaleESet) result.append(scale); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

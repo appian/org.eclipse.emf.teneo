@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.13 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.14 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -68,7 +68,7 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedETypedElement {
 	 * @return the value of the '<em>Annotated EStructural Feature</em>' reference.
 	 * @see #setAnnotatedEStructuralFeature(EStructuralFeature)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature()
-	 * @model required="true" volatile="true" derived="true"
+	 * @model volatile="true" derived="true"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationOverrideImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: AssociationOverrideImpl.java,v 1.7 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -12,10 +12,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
@@ -23,13 +21,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Association Override</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Association Override</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl#getJoinColumns <em>Join Columns</em>}</li>
  * </ul>
@@ -37,21 +33,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *
  * @generated
  */
-public class AssociationOverrideImpl extends EObjectImpl implements AssociationOverride {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class AssociationOverrideImpl extends PAnnotationImpl implements AssociationOverride {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -60,8 +46,8 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -70,8 +56,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 
 	/**
 	 * The cached value of the '{@link #getJoinColumns() <em>Join Columns</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getJoinColumns()
 	 * @generated
 	 * @ordered
@@ -79,8 +64,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	protected EList<JoinColumn> joinColumns;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected AssociationOverrideImpl() {
@@ -88,8 +72,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -98,46 +81,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
@@ -145,8 +89,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -157,8 +100,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<JoinColumn> getJoinColumns() {
@@ -169,8 +111,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -183,16 +124,12 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case PannotationPackage.ASSOCIATION_OVERRIDE__NAME:
 				return getName();
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
@@ -202,17 +139,13 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case PannotationPackage.ASSOCIATION_OVERRIDE__NAME:
 				setName((String)newValue);
 				return;
@@ -225,16 +158,12 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case PannotationPackage.ASSOCIATION_OVERRIDE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -246,15 +175,12 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.ASSOCIATION_OVERRIDE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.ASSOCIATION_OVERRIDE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
@@ -264,8 +190,7 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -278,5 +203,4 @@ public class AssociationOverrideImpl extends EObjectImpl implements AssociationO
 		result.append(')');
 		return result.toString();
 	}
-
-} //AssociationOverrideImpl
+} // AssociationOverrideImpl

@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GeneratedValueImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: GeneratedValueImpl.java,v 1.7 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -23,7 +20,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getStrategy <em>Strategy</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl#getGenerator <em>Generator</em>}</li>
  * </ul>
@@ -31,17 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *
  * @generated
  */
-public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class GeneratedValueImpl extends PAnnotationImpl implements GeneratedValue {
 	/**
 	 * The default value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -106,44 +92,6 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public GenerationType getStrategy() {
 		return strategy;
 	}
@@ -189,9 +137,6 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case PannotationPackage.GENERATED_VALUE__STRATEGY:
 				return getStrategy();
 			case PannotationPackage.GENERATED_VALUE__GENERATOR:
@@ -208,9 +153,6 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case PannotationPackage.GENERATED_VALUE__STRATEGY:
 				setStrategy((GenerationType)newValue);
 				return;
@@ -229,9 +171,6 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case PannotationPackage.GENERATED_VALUE__STRATEGY:
 				setStrategy(STRATEGY_EDEFAULT);
 				return;
@@ -250,8 +189,6 @@ public class GeneratedValueImpl extends EObjectImpl implements GeneratedValue {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.GENERATED_VALUE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.GENERATED_VALUE__STRATEGY:
 				return strategy != STRATEGY_EDEFAULT;
 			case PannotationPackage.GENERATED_VALUE__GENERATOR:

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelSwitch.java,v 1.21 2007/07/17 17:37:13 mtaal Exp $
+ * $Id: PamodelSwitch.java,v 1.22 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -158,7 +158,6 @@ public class PamodelSwitch<T> {
 			case PamodelPackage.PANNOTATED_EDATA_TYPE: {
 				PAnnotatedEDataType pAnnotatedEDataType = (PAnnotatedEDataType)theEObject;
 				T result = casePAnnotatedEDataType(pAnnotatedEDataType);
-				if (result == null) result = casePAnnotatedETypedElement(pAnnotatedEDataType);
 				if (result == null) result = casePAnnotatedEModelElement(pAnnotatedEDataType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

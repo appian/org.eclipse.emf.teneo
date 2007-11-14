@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.14 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.15 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -1033,7 +1033,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__ANNOTATED_ELEMENT = PANNOTATED_ETYPED_ELEMENT__ANNOTATED_ELEMENT;
+	int PANNOTATED_EDATA_TYPE__ANNOTATED_ELEMENT = PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -1042,70 +1042,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__TRANSIENT = PANNOTATED_ETYPED_ELEMENT__TRANSIENT;
-
-	/**
-	 * The feature id for the '<em><b>Attribute Overrides</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__ATTRIBUTE_OVERRIDES = PANNOTATED_ETYPED_ELEMENT__ATTRIBUTE_OVERRIDES;
-
-	/**
-	 * The feature id for the '<em><b>Join Table</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__JOIN_TABLE = PANNOTATED_ETYPED_ELEMENT__JOIN_TABLE;
-
-	/**
-	 * The feature id for the '<em><b>One To Many</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__ONE_TO_MANY = PANNOTATED_ETYPED_ELEMENT__ONE_TO_MANY;
-
-	/**
-	 * The feature id for the '<em><b>Sequence Generator</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__SEQUENCE_GENERATOR = PANNOTATED_ETYPED_ELEMENT__SEQUENCE_GENERATOR;
-
-	/**
-	 * The feature id for the '<em><b>Table Generators</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__TABLE_GENERATORS = PANNOTATED_ETYPED_ELEMENT__TABLE_GENERATORS;
-
-	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__JOIN_COLUMNS = PANNOTATED_ETYPED_ELEMENT__JOIN_COLUMNS;
-
-	/**
-	 * The feature id for the '<em><b>Column</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EDATA_TYPE__COLUMN = PANNOTATED_ETYPED_ELEMENT__COLUMN;
+	int PANNOTATED_EDATA_TYPE__TRANSIENT = PANNOTATED_EMODEL_ELEMENT__TRANSIENT;
 
 	/**
 	 * The feature id for the '<em><b>Annotated EData Type</b></em>' reference.
@@ -1114,7 +1051,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 0;
+	int PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Basic</b></em>' containment reference.
@@ -1123,7 +1060,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__BASIC = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 1;
+	int PANNOTATED_EDATA_TYPE__BASIC = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Enumerated</b></em>' containment reference.
@@ -1132,7 +1069,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__ENUMERATED = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 2;
+	int PANNOTATED_EDATA_TYPE__ENUMERATED = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Generated Value</b></em>' containment reference.
@@ -1141,7 +1078,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__GENERATED_VALUE = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 3;
+	int PANNOTATED_EDATA_TYPE__GENERATED_VALUE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1150,7 +1087,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__ID = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 4;
+	int PANNOTATED_EDATA_TYPE__ID = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Lob</b></em>' containment reference.
@@ -1159,7 +1096,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__LOB = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 5;
+	int PANNOTATED_EDATA_TYPE__LOB = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Temporal</b></em>' containment reference.
@@ -1168,7 +1105,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__TEMPORAL = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 6;
+	int PANNOTATED_EDATA_TYPE__TEMPORAL = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' containment reference.
@@ -1177,7 +1114,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__VERSION = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 7;
+	int PANNOTATED_EDATA_TYPE__VERSION = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Pa EPackage</b></em>' container reference.
@@ -1186,7 +1123,16 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE__PA_EPACKAGE = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 8;
+	int PANNOTATED_EDATA_TYPE__PA_EPACKAGE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EDATA_TYPE__COLUMN = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>PAnnotated EData Type</em>' class.
@@ -1195,7 +1141,7 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EDATA_TYPE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 9;
+	int PANNOTATED_EDATA_TYPE_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 10;
 
 
 	/**
@@ -1731,6 +1677,17 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEDataType_PaEPackage();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType#getColumn()
+	 * @see #getPAnnotatedEDataType()
+	 * @generated
+	 */
+	EReference getPAnnotatedEDataType_Column();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference <em>PAnnotated EReference</em>}'.
@@ -2369,6 +2326,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_EDATA_TYPE__PA_EPACKAGE = eINSTANCE.getPAnnotatedEDataType_PaEPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EDATA_TYPE__COLUMN = eINSTANCE.getPAnnotatedEDataType_Column();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl <em>PAnnotated EReference</em>}' class.

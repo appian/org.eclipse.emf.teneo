@@ -11,7 +11,7 @@
     <details key="0" value="http://annotation.elver.org/"/>
     <details key="1" value="http://ejb.elver.org/"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="PAnnotation" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="PAnnotation" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="CompatibleEModelElementType AnnotationIsSupported"/>
     </eAnnotations>
@@ -375,7 +375,7 @@
       <details key="constraints" value="AllowedElementType"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//TemporalType"
-        defaultValueLiteral="TIMESTAMP"/>
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transient" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

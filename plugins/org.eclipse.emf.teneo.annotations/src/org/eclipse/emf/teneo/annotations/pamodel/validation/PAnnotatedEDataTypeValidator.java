@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEDataTypeValidator.java,v 1.1 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: PAnnotatedEDataTypeValidator.java,v 1.2 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
@@ -36,4 +37,6 @@ public interface PAnnotatedEDataTypeValidator {
 	boolean validateTemporal(Temporal value);
 	boolean validateVersion(Version value);
 	boolean validatePaEPackage(PAnnotatedEPackage value);
+
+	boolean validateColumn(Column value);
 }

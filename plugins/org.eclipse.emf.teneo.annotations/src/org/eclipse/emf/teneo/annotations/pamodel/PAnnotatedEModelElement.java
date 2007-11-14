@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElement.java,v 1.6 2007/07/04 19:28:00 mtaal Exp $
+ * $Id: PAnnotatedEModelElement.java,v 1.7 2007/11/14 16:37:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -42,7 +42,7 @@ public interface PAnnotatedEModelElement extends EObject {
 	 * @return the value of the '<em>Annotated Element</em>' reference.
 	 * @see #setAnnotatedElement(ENamedElement)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEModelElement_AnnotatedElement()
-	 * @model required="true" volatile="true" derived="true"
+	 * @model volatile="true" derived="true"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */

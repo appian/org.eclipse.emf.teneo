@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondaryTableImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: SecondaryTableImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -12,10 +12,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -30,7 +28,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl#getEModelElement <em>EModel Element</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl#getCatalog <em>Catalog</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl#getSchema <em>Schema</em>}</li>
@@ -41,17 +38,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
  *
  * @generated
  */
-public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
-	/**
-	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEModelElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected EModelElement eModelElement;
-
+public class SecondaryTableImpl extends PAnnotationImpl implements SecondaryTable {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -149,44 +136,6 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	@Override
 	protected EClass eStaticClass() {
 		return PannotationPackage.Literals.SECONDARY_TABLE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement getEModelElement() {
-		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
-			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
-			}
-		}
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EModelElement basicGetEModelElement() {
-		return eModelElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEModelElement(EModelElement newEModelElement) {
-		EModelElement oldEModelElement = eModelElement;
-		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT, oldEModelElement, eModelElement));
 	}
 
 	/**
@@ -300,9 +249,6 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
-				return basicGetEModelElement();
 			case PannotationPackage.SECONDARY_TABLE__NAME:
 				return getName();
 			case PannotationPackage.SECONDARY_TABLE__CATALOG:
@@ -326,9 +272,6 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
-				return;
 			case PannotationPackage.SECONDARY_TABLE__NAME:
 				setName((String)newValue);
 				return;
@@ -358,9 +301,6 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
-				return;
 			case PannotationPackage.SECONDARY_TABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -388,8 +328,6 @@ public class SecondaryTableImpl extends EObjectImpl implements SecondaryTable {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.SECONDARY_TABLE__EMODEL_ELEMENT:
-				return eModelElement != null;
 			case PannotationPackage.SECONDARY_TABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case PannotationPackage.SECONDARY_TABLE__CATALOG:
