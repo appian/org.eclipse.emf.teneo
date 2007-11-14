@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXGenerateTest.java,v 1.3 2007/02/01 12:34:05 mtaal Exp $
+ * $Id: JPOXGenerateTest.java,v 1.4 2007/11/14 16:38:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.generate;
 
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
@@ -24,11 +23,11 @@ import org.eclipse.emf.teneo.test.conf.Testbed;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Encapsulates a real action to ensure that the action is not really done but only the generation of the mapping file
- * and enhancement is done.
+ * Encapsulates a real action to ensure that the action is not really done but only the generation
+ * of the mapping file and enhancement is done.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class JPOXGenerateTest extends AbstractActionTest {
 
@@ -43,28 +42,31 @@ public class JPOXGenerateTest extends AbstractActionTest {
 	}
 
 	/** Perform the mapping action */
+	@Override
 	public void testAction() {
-		ERuntime.INSTANCE.clear();
-
 		((JPOXTestbed) Testbed.instance()).doMapping(this);
 	}
 
 	/** Throws unsupportedexception */
+	@Override
 	protected TestStore getStore() {
 		throw new UnsupportedOperationException("No store present for this type of test");
 	}
 
 	/** Passes the call to testAction */
+	@Override
 	protected void runTest() throws Throwable {
 		testAction();
 	}
 
 	/** Does nothing in this implementation */
+	@Override
 	public void setUp() throws Exception {
 		// do nothing
 	}
 
 	/** Does nothing in this implementation */
+	@Override
 	public void tearDown() {
 		// do nothing
 	}

@@ -32,9 +32,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpox.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.JpoxDataStore;
@@ -56,7 +56,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -105,7 +105,6 @@ public class JPOXTestStore extends AbstractTestStore {
 		this.props = props;
 		this.inheritanceType = inheritanceType;
 		this.extensionManager = extensionManager;
-		ERuntime.INSTANCE.clear();
 		init(adapter, jdoLocation);
 	}
 
@@ -170,6 +169,8 @@ public class JPOXTestStore extends AbstractTestStore {
 		} catch (IOException e) {
 			throw new StoreTestException("IOException while copying mapping file", e);
 		}
+
+		EModelResolver.instance().clear();
 
 		emfDataStore = JpoxHelper.INSTANCE.createRegisterDataStore(adapter.getDbName());
 		emfDataStore.setExtensionManager(extensionManager);
@@ -375,8 +376,6 @@ public class JPOXTestStore extends AbstractTestStore {
 		if (!donotDrop) {
 			dropDatabase();
 		}
-
-		ERuntime.INSTANCE.clear();
 	}
 
 	/** Returns true if the transaction is still active */
@@ -418,7 +417,7 @@ public class JPOXTestStore extends AbstractTestStore {
 			return interfaze;
 		}
 
-		return JpoxHelper.INSTANCE.getInstanceClass(interfaze);
+		return getDataStore().getInstanceClass(interfaze);
 	}
 
 	/** Gets the referedto list */
