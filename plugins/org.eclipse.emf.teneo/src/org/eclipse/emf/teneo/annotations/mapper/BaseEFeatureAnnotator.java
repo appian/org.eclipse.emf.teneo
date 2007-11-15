@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.1 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.2 2007/11/15 19:56:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -264,18 +264,37 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			return;
 		}
 
-		if (isContainment && !getPersistenceOptions().isSetCascadeAllOnContainment()) {
-			cascadeList.add(CascadeType.REMOVE);
-			cascadeList.add(CascadeType.MERGE);
-			cascadeList.add(CascadeType.PERSIST);
-			cascadeList.add(CascadeType.REFRESH);
-		} else if (isContainment) {
-			cascadeList.add(CascadeType.ALL);
+		if (isContainment) {
+			if (getPersistenceOptions().isSetCascadeAllOnContainment()) {
+				cascadeList.add(CascadeType.ALL);
+			} else {
+				if (getPersistenceOptions().isSetCascadeRemoveOnContainment()) {
+					cascadeList.add(CascadeType.REMOVE);
+				}
+				if (getPersistenceOptions().isSetCascadeMergeOnContainment()) {
+					cascadeList.add(CascadeType.MERGE);
+				}
+				if (getPersistenceOptions().isSetCascadePersistOnContainment()) {
+					cascadeList.add(CascadeType.PERSIST);
+				}
+				if (getPersistenceOptions().isSetCascadeRefreshOnContainment()) {
+					cascadeList.add(CascadeType.REFRESH);
+				}
+			}
+		} else if (getPersistenceOptions().isSetCascadePolicyForNonContainment()) {
+			if (getPersistenceOptions().isSetCascadeMergeOnNonContainment()) {
+				cascadeList.add(CascadeType.MERGE);
+			}
+			if (getPersistenceOptions().isSetCascadePersistOnNonContainment()) {
+				cascadeList.add(CascadeType.PERSIST);
+			}
+			if (getPersistenceOptions().isSetCascadeRefreshOnNonContainment()) {
+				cascadeList.add(CascadeType.REFRESH);
+			}
 		} else {
 			cascadeList.add(CascadeType.MERGE);
 			cascadeList.add(CascadeType.PERSIST);
 			cascadeList.add(CascadeType.REFRESH);
 		}
 	}
-
 }

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.19 2007/11/14 16:38:39 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.20 2007/11/15 19:56:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
@@ -48,7 +49,7 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class StoreUtil {
@@ -69,6 +70,12 @@ public class StoreUtil {
 
 	/** The Annotation source name */
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+
+	/** Returns true if the passed EAttribute is a qname */
+	public static boolean isQName(EAttribute eAttribute) {
+		final EDataType eDataType = eAttribute.getEAttributeType();
+		return eDataType == XMLTypePackage.eINSTANCE.getQName();
+	}
 
 	/** Reads the epackages present in the passed ecore files. */
 	public static List<EPackage> readEPackages(String[] ecoreFiles) {

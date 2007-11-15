@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.36 2007/08/10 20:16:16 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.37 2007/11/15 19:56:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -25,9 +25,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
@@ -36,7 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -139,6 +141,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * Set or not set the cascade attribute on a mto, mtm or otm non-containment relation. The
 	 * backward compatible value is true. The better performing value is false. The default is
 	 * false.
+	 * 
+	 * @Deprecated use CASCADE_POLICY_ON_NON_CONTAINMENT
 	 */
 	public static final String SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT =
 			MAPPING_PREFIX + "set_default_cascade_on_non_containment";
@@ -152,8 +156,29 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Force all containment relations to be eagerly loaded or not */
 	public static final String FETCH_CONTAINMENT_EAGERLY = MAPPING_PREFIX + "fetch_containment_eagerly";
 
-	/** Set cascade all (incl. orphan delete) on containment relation */
+	/**
+	 * Set cascade all (incl. orphan delete) on containment relation.
+	 * 
+	 * @Deprecated use CASCADE_POLICY_ON_CONTAINMENT
+	 */
 	public static final String SET_CASCADE_ALL_ON_CONTAINMENT = MAPPING_PREFIX + "cascade_all_on_containment";
+
+	/**
+	 * Can be used to set custom cascade policy for containment : <br>
+	 * <code>ALL</code> or a combination of (<code>REMOVE</code>,<code>REFRESH</code>,<code>PERSIST</code>,<code>MERGE</code>)
+	 * <br>
+	 * e.g. : REMOVE,PERSIST,MERGE <br>
+	 * Warning : ALL != REMOVE,REFRESH,PERSIST,MERGE <br>
+	 * but ALL == REMOVE with delete Orphan, REFRESH,PERSIST,MERGE
+	 */
+	public static final String CASCADE_POLICY_ON_CONTAINMENT = MAPPING_PREFIX + "cascade_policy_on_containment";
+
+	/**
+	 * Can be used to set custom cascade policy for non containment : <br>
+	 * a combination of (<code>REFRESH</code>,<code>PERSIST</code>,<code>MERGE</code>)
+	 * e.g. : PERSIST,MERGE
+	 */
+	public static final String CASCADE_POLICY_ON_NON_CONTAINMENT = MAPPING_PREFIX + "cascade_policy_on_non_containment";
 
 	/**
 	 * Can be used to control if the entity ann. should be added automatically to the model elements
@@ -282,7 +307,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
 		props.setProperty(USE_MAPPING_FILE, "false");
 // props.setProperty(MAPPING_FILE_PATH, null); // null is the default anyway
-		props.setProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "true");
+		props.setProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "");
+		props.setProperty(CASCADE_POLICY_ON_CONTAINMENT, "ALL");
 		props.setProperty(OPTIMISTIC, "true");
 		props.setProperty(UPDATE_SCHEMA, "true");
 		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
@@ -310,7 +336,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(MAP_ALL_LISTS_AS_IDBAG, "false");
 		props.setProperty(IDBAG_ID_COLUMN_NAME, "ID");
 		props.setProperty(ADD_INDEX_FOR_FOREIGN_KEY, "false");
-		props.setProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "false");
+		props.setProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "");
+		props.setProperty(CASCADE_POLICY_ON_NON_CONTAINMENT, "");
 		props.setProperty(SET_FOREIGN_KEY_NAME, "true");
 		props.setProperty(MAP_EMBEDDABLE_AS_EMBEDDED, "false");
 		props.setProperty(MAX_COMMENT_LENGTH, "0");
@@ -396,7 +423,48 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * Returns the value of the SET_DEFAULT_CASCADE_ON_MTO_MTM option, default is false
 	 */
 	public boolean isSetDefaultCascadeOnNonContainment() {
-		return Boolean.valueOf(properties.getProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT)).booleanValue();
+		String property = properties.getProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT);
+		if (!property.equals("")) {
+			return Boolean.valueOf(property).booleanValue();
+		} else {
+			return !properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT).equals("");
+		}
+	}
+
+	public boolean isSetCascadePolicyForNonContainment() {
+		return !properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT).equals("");
+	}
+
+	/**
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the merge cascade
+	 * type
+	 */
+	public boolean isSetCascadeMergeOnNonContainment() {
+		return isSetCascadeOnNonContainement(CascadeType.MERGE.getName());
+	}
+
+	/**
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the persist cascade
+	 * type
+	 */
+	public boolean isSetCascadePersistOnNonContainment() {
+		return isSetCascadeOnNonContainement(CascadeType.PERSIST.getName());
+	}
+
+	/**
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the refresh cascade
+	 * type
+	 */
+	public boolean isSetCascadeRefreshOnNonContainment() {
+		return isSetCascadeOnNonContainement(CascadeType.REFRESH.getName());
+	}
+
+	/**
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the given cascade
+	 * type
+	 */
+	private boolean isSetCascadeOnNonContainement(String cascadeType) {
+		return isSetCascade(properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT), cascadeType);
 	}
 
 	/**
@@ -475,7 +543,41 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/** Returns the value of the orphan delete on containment, default is true */
 	public boolean isSetCascadeAllOnContainment() {
-		return Boolean.valueOf(properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT)).booleanValue();
+		if (!properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT).equals("")) {
+			return Boolean.valueOf(properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT)).booleanValue();
+		} else {
+			return isSetCascadeOnContainement(CascadeType.ALL.getName());
+		}
+	}
+
+	/** Returns true if CASCADE_POLICY_ON_CONTAINMENT property contains the MERGE cascade type */
+	public boolean isSetCascadeMergeOnContainment() {
+		return isSetCascadeOnContainement(CascadeType.MERGE.getName());
+	}
+
+	/** Returns true if CASCADE_POLICY_ON_CONTAINMENT property contains the PERSIST cascade type */
+	public boolean isSetCascadePersistOnContainment() {
+		return isSetCascadeOnContainement(CascadeType.PERSIST.getName());
+	}
+
+	/** Returns true if CASCADE_POLICY_ON_CONTAINMENT property contains the REMOVE cascade type */
+	public boolean isSetCascadeRemoveOnContainment() {
+		return isSetCascadeOnContainement(CascadeType.REMOVE.getName());
+	}
+
+	/** Returns true if CASCADE_POLICY_ON_CONTAINMENT property contains the REFRESH cascade type */
+	public boolean isSetCascadeRefreshOnContainment() {
+		return isSetCascadeOnContainement(CascadeType.REFRESH.getName());
+	}
+
+	/** Returns true if CASCADE_POLICY_ON_CONTAINMENT property contains the given cascade type */
+	private boolean isSetCascadeOnContainement(String cascadeType) {
+		return isSetCascade(properties.getProperty(CASCADE_POLICY_ON_CONTAINMENT), cascadeType);
+	}
+
+	/** Returns true if property contains the given cascade type */
+	private boolean isSetCascade(String property, String cascadeType) {
+		return Pattern.matches(".*\\b" + cascadeType.toUpperCase() + "\\b.*", property.toUpperCase());
 	}
 
 	/** Returns the value of the Optimistic option, default is true */
