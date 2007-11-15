@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AnnotationGenerator.java,v 1.2 2007/11/14 16:38:39 mtaal Exp $
+ * $Id: AnnotationGenerator.java,v 1.3 2007/11/15 15:33:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -21,7 +21,12 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -40,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -90,6 +95,27 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
 					aclass.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getAnnotatedEClass()));
+				}
+			}
+		}
+
+		// solve a specific case of the EcorePackage going wrong for the eSuperTypes
+		// see bugzilla: https://bugs.eclipse.org/bugs/show_bug.cgi?id=205790
+		for (EPackage epack : epacks) {
+			if (epack.getNsURI() != null && epack.getNsURI().compareTo(EcorePackage.eINSTANCE.getNsURI()) == 0) {
+				// now find the
+				for (EClassifier eClassifier : epack.getEClassifiers()) {
+					if (eClassifier.eClass() == EcorePackage.eINSTANCE.getEClass()) {
+						final EClass eClass = (EClass) eClassifier;
+						for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
+							if (eFeature.getName().compareTo("eSuperTypes") == 0) {
+								if (eFeature.getEAnnotation("teneo.jpa") == null) {
+									EcoreUtil.setAnnotation(eFeature, "teneo.jpa", "value", "@ManyToMany");
+									break;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
