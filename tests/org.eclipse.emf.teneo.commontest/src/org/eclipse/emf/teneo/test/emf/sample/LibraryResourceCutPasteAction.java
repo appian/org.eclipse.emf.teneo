@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceCutPasteAction.java,v 1.6 2007/07/04 19:28:21 mtaal Exp $
+ * $Id: LibraryResourceCutPasteAction.java,v 1.7 2007/11/15 19:55:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests cut/paste action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	/**
@@ -57,6 +57,7 @@ public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		Properties props = new Properties();
 		props.setProperty(PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT, "false");
+		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_CONTAINMENT, "REMOVE,MERGE,PERSIST,REFRESH");
 		return props;
 	}
 
