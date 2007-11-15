@@ -70,7 +70,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/** Adds a manytoone tag to the current element of the hbmcontext */
-	protected Element addManyToOne(PAnnotatedEReference aReference, String referedTo) {
+	protected Element addManyToOne(Element currentParent, PAnnotatedEReference aReference, String referedTo) {
 		final String assocName = getHbmContext().getPropertyName(aReference.getAnnotatedEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
 
@@ -84,12 +84,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final Element element;
 		if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
 			element =
-					getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", assocName)
-						.addAttribute("entity-name", referedTo);
+					currentParent.addElement("many-to-one").addAttribute("name", assocName).addAttribute("entity-name",
+						referedTo);
 		} else {
 			element =
-					getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", assocName)
-						.addAttribute("class", getHbmContext().getInstanceClassName(referedToEClass));
+					currentParent.addElement("many-to-one").addAttribute("name", assocName).addAttribute("class",
+						getHbmContext().getInstanceClassName(referedToEClass));
 		}
 
 		if (aReference instanceof HbAnnotatedEReference) {
@@ -166,8 +166,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			// --- JJH
 
 		}
-		associationElement.addAttribute("insert", Boolean.toString(insertable));
-		associationElement.addAttribute("update", Boolean.toString(updatable));
+		if (associationElement.getName().compareTo("join") != 0) { // ugly but effective
+			associationElement.addAttribute("insert", Boolean.toString(insertable));
+			associationElement.addAttribute("update", Boolean.toString(updatable));
+		}
 	}
 
 	/**
@@ -261,13 +263,16 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 */
 	protected void addListIndex(Element collElement, PAnnotatedEStructuralFeature aFeature) {
 		// TODO use column name generator
-		String name =
-				(aFeature.getPaEClass().getAnnotatedEClass().getName() + "_" +
-						aFeature.getAnnotatedEStructuralFeature().getName() + "_IDX").toUpperCase();
+		String name = getIndexColumnName(aFeature);
 
 		log.debug("Add list index " + name + " to " + aFeature.getAnnotatedEStructuralFeature().getName());
 
 		collElement.addElement("list-index").addAttribute("column", getHbmContext().trunc(name));
+	}
+
+	protected String getIndexColumnName(PAnnotatedEStructuralFeature aFeature) {
+		return (aFeature.getPaEClass().getAnnotatedEClass().getName() + "_" +
+				aFeature.getAnnotatedEStructuralFeature().getName() + "_IDX").toUpperCase();
 	}
 
 	/**

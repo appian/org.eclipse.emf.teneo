@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.18 2007/09/04 09:57:29 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.19 2007/11/15 10:44:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -16,9 +16,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -55,7 +57,38 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		log.debug("Target " + targetName);
 
-		final Element associationElement = addManyToOne(paReference, targetName);
+		JoinTable joinTable = null;
+		PAnnotatedEReference aOpposite = null;
+		if (paReference.getAnnotatedEReference().getEOpposite() != null) {
+			aOpposite = paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
+			if (aOpposite.getOneToMany() != null && !aOpposite.getOneToMany().isList() &&
+					aOpposite.getJoinTable() != null) {
+				joinTable = aOpposite.getJoinTable();
+			}
+		}
+
+		final Element currentElement;
+		if (joinTable != null) {
+			currentElement =
+					getHbmContext().getCurrent().addElement("join").addAttribute("table", joinTable.getName())
+						.addAttribute("inverse", "true").addAttribute("optional", Boolean.toString(mto.isOptional()));
+
+		} else {
+			currentElement = getHbmContext().getCurrent();
+		}
+
+		if (joinTable != null) {
+			final Element keyElement = currentElement.addElement("key");
+			addKeyColumns((HbAnnotatedETypeElement) paReference, keyElement, joinTable.getInverseJoinColumns());
+		}
+
+		final Element associationElement = addManyToOne(currentElement, paReference, targetName);
+
+		if (joinTable != null) {
+			addJoinColumns(paReference, associationElement, joinTable.getJoinColumns(), getHbmContext()
+				.isForceOptional() ||
+					getHbmContext().isCurrentElementFeatureMap());
+		}
 
 		addCascadesForSingle(associationElement, mto.getCascade());
 
@@ -73,11 +106,13 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 				associationElement.addAttribute("lazy", "false");
 			}
 
-			addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() ||
-					mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
+			if (joinTable == null) {
+				addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() ||
+						mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 
-			associationElement.addAttribute("not-null", getHbmContext().isForceOptional() || mto.isOptional() ||
-					getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
+				associationElement.addAttribute("not-null", getHbmContext().isForceOptional() || mto.isOptional() ||
+						getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
+			}
 		}
 
 		// MT: TODO; the characteristic of the other side should be checked (if
