@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.9 2007/09/04 09:56:42 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.10 2007/11/15 19:56:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class BasicMapper extends AbstractMapper implements ExtensionPoint {
@@ -100,5 +100,10 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		// if (false && aAttribute.getAnnotatedEAttribute().isUnique()) {
 		// field.addElement("unique");
 		// }
+
+// if (StoreUtil.isQName(eAttribute)) {
+// field.addElement("extension").addAttribute("vendor-name", "jpox").addAttribute("key",
+// "implementation-classes").addAttribute("value", QName.class.getName());
+// }
 	}
 }

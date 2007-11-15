@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.18 2007/11/14 16:39:46 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.19 2007/11/15 19:56:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -32,6 +32,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.spi.PersistenceCapable;
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -74,6 +75,7 @@ import org.eclipse.emf.teneo.jpox.elist.RemoveLifeCycleListener;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
 import org.eclipse.emf.teneo.jpox.mapping.ENumMapping;
 import org.eclipse.emf.teneo.jpox.mapping.EObjectMapping;
+import org.eclipse.emf.teneo.jpox.mapping.QNameMapping;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
 import org.eclipse.emf.teneo.type.FeatureMapEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -103,7 +105,7 @@ import org.w3c.dom.NodeList;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $ $Date: 2007/11/14 16:39:46 $
+ * @version $Revision: 1.19 $ $Date: 2007/11/15 19:56:06 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -339,6 +341,15 @@ public class JpoxDataStore implements DataStore {
 		ce4.putAttribute("class-name", EMFSoftRefCache.class.getName());
 		extension.addConfigurationElement(ce4);
 		log.debug("Registered " + EMFSoftRefCache.class.getName());
+
+		final ExtensionPoint mappingEP =
+				initPmf.getPMFContext().getPluginManager().getExtensionPoint("org.jpox.store_mapping");
+		final Extension mappingExt = new Extension(mappingEP, mappingEP.getPlugin());
+		mappingEP.addExtension(mappingExt);
+		final ConfigurationElement mce = new ConfigurationElement(extension, "mapping", null);
+		mce.putAttribute("java-type", QName.class.getName());
+		mce.putAttribute("mapping-class", QNameMapping.class.getName());
+		mappingExt.addConfigurationElement(mce);
 
 		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", List.class.getName(),
 			EListMapping.class.getName(), EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
