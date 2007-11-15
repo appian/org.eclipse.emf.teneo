@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryJoinTableNamingAction.java,v 1.3 2007/06/29 07:35:43 mtaal Exp $
+ * $Id: LibraryJoinTableNamingAction.java,v 1.4 2007/11/15 10:44:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryJoinTableNamingAction extends AbstractTestAction {
 	/**
@@ -55,6 +55,7 @@ public class LibraryJoinTableNamingAction extends AbstractTestAction {
 		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
 		props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
 		props.setProperty(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "unique");
+		props.setProperty(PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG, "true");
 		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
 		return props;
 	}
