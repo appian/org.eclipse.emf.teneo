@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.13 2007/07/11 22:17:06 mtaal Exp $
+ * $Id: AllTests.java,v 1.14 2007/11/15 19:56:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListUnionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.MixedAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.NestedGroupAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.QNameAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.RestrictionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.SimpleTypeAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.SimplefeaturemapAction;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class AllTests {
 
@@ -48,6 +49,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", JPOXTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(QNameAction.class);
 
 		suite.addTestSuite(SimpleTypeAction.class);
 

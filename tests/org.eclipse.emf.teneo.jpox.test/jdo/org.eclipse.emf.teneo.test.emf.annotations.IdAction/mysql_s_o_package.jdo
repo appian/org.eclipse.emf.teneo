@@ -46,5 +46,13 @@
 			<field name="autoID" persistence-modifier="persistent" primary-key="true" value-strategy="auto" indexed="true"/>
 			<field name="name" persistence-modifier="persistent" null-value="none"/>
 		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.id.impl.OtherTableGeneratorIDImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="othertablegeneratorid" identity-type="application">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="myid" persistence-modifier="persistent" primary-key="true" value-strategy="increment" indexed="true" strategy="increment" sequence-table-name="OTHERTGEN" sequence-nextval-column-name="VAL_COL"/>
+		</class>
 	</package>
 </jdo>

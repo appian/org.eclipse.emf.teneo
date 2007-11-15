@@ -82,5 +82,19 @@
 			<field name="zip" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="zipESet" persistence-modifier="persistent"/>
 		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.CustomerImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="customer" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.SpecificCustomerImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="specificcustomer" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="specificName" persistence-modifier="persistent" null-value="none"/>
+		</class>
 	</package>
 </jdo>
