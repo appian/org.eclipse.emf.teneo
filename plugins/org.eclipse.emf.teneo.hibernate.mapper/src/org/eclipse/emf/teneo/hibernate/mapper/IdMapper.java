@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.19 2007/09/04 09:57:29 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.20 2007/11/15 14:48:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -262,6 +262,10 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 							id.getPaModel().getSequenceGenerator(id.getAnnotatedEAttribute(),
 								generatedValue.getGenerator());
 					generatorElement.addElement("param").addAttribute("name", "sequence").setText(sg.getSequenceName());
+					generatorElement.addElement("param").addAttribute("name", "initialValue").setText(
+						Integer.toString(sg.getInitialValue()));
+					generatorElement.addElement("param").addAttribute("name", "allocationSize").setText(
+						Integer.toString(sg.getAllocationSize()));
 				}
 			} else {
 				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
