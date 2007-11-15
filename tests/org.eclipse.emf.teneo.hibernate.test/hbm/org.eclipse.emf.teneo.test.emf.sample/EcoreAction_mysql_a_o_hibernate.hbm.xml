@@ -224,12 +224,10 @@
 		<property name="interface" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
 			<column not-null="false" unique="false" name="`interface`"/>
 		</property>
-		<list name="eSuperTypes" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="eclass_esupertypes">
-				<column name="`eclass_esupertypes_e_id`" not-null="false" unique="false"/>
-			</key>
+		<list name="eSuperTypes" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`eclass_eclass`">
+			<key/>
 			<list-index column="`eclass_esupertypes_idx`"/>
-			<one-to-many entity-name="EClass"/>
+			<many-to-many entity-name="EClass" unique="false" foreign-key="eclass_esupertypes"/>
 		</list>
 		<list name="eOperations" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="eclass_eoperations">
