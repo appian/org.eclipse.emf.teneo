@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.5 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.6 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.SimpleID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID;
 import org.eclipse.emf.teneo.samples.emf.annotations.id.TableID;
@@ -60,6 +61,13 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 	 * @generated
 	 */
 	private EClass autoIDEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass otherTableGeneratorIDEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -236,6 +244,24 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOtherTableGeneratorID() {
+		return otherTableGeneratorIDEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOtherTableGeneratorID_Myid() {
+		return (EAttribute)otherTableGeneratorIDEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public IdFactory getIdFactory() {
 		return (IdFactory)getEFactoryInstance();
 	}
@@ -274,6 +300,9 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		autoIDEClass = createEClass(AUTO_ID);
 		createEAttribute(autoIDEClass, AUTO_ID__AUTO_ID);
 		createEAttribute(autoIDEClass, AUTO_ID__NAME);
+
+		otherTableGeneratorIDEClass = createEClass(OTHER_TABLE_GENERATOR_ID);
+		createEAttribute(otherTableGeneratorIDEClass, OTHER_TABLE_GENERATOR_ID__MYID);
 	}
 
 	/**
@@ -325,6 +354,9 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		initEAttribute(getAutoID_AutoID(), theXMLTypePackage.getLong(), "autoID", null, 1, 1, AutoID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAutoID_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, AutoID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(otherTableGeneratorIDEClass, OtherTableGeneratorID.class, "OtherTableGeneratorID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOtherTableGeneratorID_Myid(), theXMLTypePackage.getLong(), "myid", null, 1, 1, OtherTableGeneratorID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -347,7 +379,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\")\n\t\t"
+			 "appinfo", "\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\" initialValue=10 allocationSize=100)\n\t\t\t@SequenceGenerator(name=\"GENERATORTWO\" sequenceName=\"myOtherSequenceName\" initialValue=5 allocationSize=50)\n\t"
 		   });			
 		addAnnotation
 		  (getIdentityID_Myid(), 
@@ -372,6 +404,18 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@TableGenerator(name=\"TGENERATOR\", table=\"TGEN\", initialValue=\"2\", valueColumnName=\"VAL_COL\")\n\t\t\t\t@GeneratedValue(strategy=TABLE, generator=\"TGENERATOR\")\n\t\t\t"
+		   });				
+		addAnnotation
+		  (otherTableGeneratorIDEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\t\t\t\t@TableGenerator(name=\"OTHERTGENERATOR\", table=\"OTHERTGEN\", initialValue=\"2\", valueColumnName=\"VAL_COL\")\n\t\t\t"
+		   });		
+		addAnnotation
+		  (getOtherTableGeneratorID_Myid(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Id\n\t\t\t\t@GeneratedValue(strategy=TABLE, generator=\"OTHERTGENERATOR\")\n\t\t\t"
 		   });	
 	}
 
@@ -434,6 +478,20 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		   });			
 		addAnnotation
 		  (getTableGeneratorID_Myid(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "myid"
+		   });		
+		addAnnotation
+		  (otherTableGeneratorIDEClass, 
+		   source, 
+		   new String[] {
+			 "name", "TableID",
+			 "kind", "elementOnly"
+		   });				
+		addAnnotation
+		  (getOtherTableGeneratorID_Myid(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",

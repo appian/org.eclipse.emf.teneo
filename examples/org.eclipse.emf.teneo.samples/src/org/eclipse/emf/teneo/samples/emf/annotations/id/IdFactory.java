@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdFactory.java,v 1.3 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: IdFactory.java,v 1.4 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id;
 
@@ -69,6 +69,15 @@ public interface IdFactory extends EFactory {
 	 * @generated
 	 */
 	AutoID createAutoID();
+
+	/**
+	 * Returns a new object of class '<em>Other Table Generator ID</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Other Table Generator ID</em>'.
+	 * @generated
+	 */
+	OtherTableGeneratorID createOtherTableGeneratorID();
 
 	/**
 	 * Returns the package supported by this factory.

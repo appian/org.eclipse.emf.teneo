@@ -2,19 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdFactoryImpl.java,v 1.4 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: IdFactoryImpl.java,v 1.5 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.teneo.samples.emf.annotations.id.*;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.AutoID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.SimpleID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.TableGeneratorID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.TableID;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,6 +69,7 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 			case IdPackage.TABLE_ID: return createTableID();
 			case IdPackage.TABLE_GENERATOR_ID: return createTableGeneratorID();
 			case IdPackage.AUTO_ID: return createAutoID();
+			case IdPackage.OTHER_TABLE_GENERATOR_ID: return createOtherTableGeneratorID();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +123,16 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 	public AutoID createAutoID() {
 		AutoIDImpl autoID = new AutoIDImpl();
 		return autoID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OtherTableGeneratorID createOtherTableGeneratorID() {
+		OtherTableGeneratorIDImpl otherTableGeneratorID = new OtherTableGeneratorIDImpl();
+		return otherTableGeneratorID;
 	}
 
 	/**

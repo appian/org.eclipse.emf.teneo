@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdSwitch.java,v 1.4 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: IdSwitch.java,v 1.5 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.util;
 
@@ -117,6 +117,12 @@ public class IdSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IdPackage.OTHER_TABLE_GENERATOR_ID: {
+				OtherTableGeneratorID otherTableGeneratorID = (OtherTableGeneratorID)theEObject;
+				T result = caseOtherTableGeneratorID(otherTableGeneratorID);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -193,6 +199,21 @@ public class IdSwitch<T> {
 	 * @generated
 	 */
 	public T caseAutoID(AutoID object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Other Table Generator ID</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Other Table Generator ID</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOtherTableGeneratorID(OtherTableGeneratorID object) {
 		return null;
 	}
 

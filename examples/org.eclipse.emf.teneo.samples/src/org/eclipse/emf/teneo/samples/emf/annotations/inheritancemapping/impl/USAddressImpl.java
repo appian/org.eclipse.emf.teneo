@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddressImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: USAddressImpl.java,v 1.4 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -57,7 +57,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean stateESet = false;
+	protected boolean stateESet;
 
 	/**
 	 * The default value of the '{@link #getZip() <em>Zip</em>}' attribute.
@@ -86,7 +86,7 @@ public class USAddressImpl extends AddressImpl implements USAddress {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean zipESet = false;
+	protected boolean zipESet;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdAdapterFactory.java,v 1.4 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: IdAdapterFactory.java,v 1.5 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.util;
 
@@ -92,6 +92,10 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 				return createAutoIDAdapter();
 			}
 			@Override
+			public Adapter caseOtherTableGeneratorID(OtherTableGeneratorID object) {
+				return createOtherTableGeneratorIDAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -178,6 +182,20 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAutoIDAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID <em>Other Table Generator ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID
+	 * @generated
+	 */
+	public Adapter createOtherTableGeneratorIDAdapter() {
 		return null;
 	}
 

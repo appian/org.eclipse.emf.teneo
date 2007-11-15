@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.5 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.6 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -16,11 +16,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState;
@@ -80,6 +82,20 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * @generated
 	 */
 	private EClass usAddressEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass customerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specificCustomerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -351,6 +367,42 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCustomer() {
+		return customerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomer_Name() {
+		return (EAttribute)customerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSpecificCustomer() {
+		return specificCustomerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSpecificCustomer_SpecificName() {
+		return (EAttribute)specificCustomerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getUSState() {
 		return usStateEEnum;
 	}
@@ -419,6 +471,12 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		createEAttribute(usAddressEClass, US_ADDRESS__STATE);
 		createEAttribute(usAddressEClass, US_ADDRESS__ZIP);
 
+		customerEClass = createEClass(CUSTOMER);
+		createEAttribute(customerEClass, CUSTOMER__NAME);
+
+		specificCustomerEClass = createEClass(SPECIFIC_CUSTOMER);
+		createEAttribute(specificCustomerEClass, SPECIFIC_CUSTOMER__SPECIFIC_NAME);
+
 		// Create enums
 		usStateEEnum = createEEnum(US_STATE);
 
@@ -461,6 +519,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		internationalPriceEClass.getESuperTypes().add(this.getPrice());
 		ukAddressEClass.getESuperTypes().add(this.getAddress());
 		usAddressEClass.getESuperTypes().add(this.getAddress());
+		specificCustomerEClass.getESuperTypes().add(this.getCustomer());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(addressEClass, Address.class, "Address", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -489,6 +548,12 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		initEClass(usAddressEClass, USAddress.class, "USAddress", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUSAddress_State(), this.getUSState(), "state", "AK", 1, 1, USAddress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUSAddress_Zip(), theXMLTypePackage.getPositiveInteger(), "zip", null, 1, 1, USAddress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(customerEClass, Customer.class, "Customer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomer_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Customer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specificCustomerEClass, SpecificCustomer.class, "SpecificCustomer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSpecificCustomer_SpecificName(), theXMLTypePackage.getString(), "specificName", null, 0, 1, SpecificCustomer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(usStateEEnum, USState.class, "USState");
@@ -553,6 +618,18 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   new String[] {
 			 "appinfo", "@Table(name=\"UNITEDSTATESADDRESS\")\n\t\t\t"
 		   });				
+		addAnnotation
+		  (customerEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\t\t\t\t@Inheritance(strategy=TABLE_PER_CLASS)\t\t\t"
+		   });			
+		addAnnotation
+		  (getCustomer_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });					
 	}
 
 	/**
@@ -702,6 +779,34 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   new String[] {
 			 "kind", "element",
 			 "name", "zip"
+		   });			
+		addAnnotation
+		  (customerEClass, 
+		   source, 
+		   new String[] {
+			 "name", "Price",
+			 "kind", "elementOnly"
+		   });			
+		addAnnotation
+		  (getCustomer_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });		
+		addAnnotation
+		  (specificCustomerEClass, 
+		   source, 
+		   new String[] {
+			 "name", "Price",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getSpecificCustomer_SpecificName(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
 		   });		
 		addAnnotation
 		  (usStateEEnum, 

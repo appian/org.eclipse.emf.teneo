@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DistrictUKAddressImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: DistrictUKAddressImpl.java,v 1.4 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -53,7 +53,7 @@ public class DistrictUKAddressImpl extends UKAddressImpl implements DistrictUKAd
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean districtESet = false;
+	protected boolean districtESet;
 
 	/**
 	 * <!-- begin-user-doc -->

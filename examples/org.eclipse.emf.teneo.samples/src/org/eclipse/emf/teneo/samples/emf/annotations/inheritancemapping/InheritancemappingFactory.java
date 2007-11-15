@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactory.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: InheritancemappingFactory.java,v 1.2 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -78,6 +78,24 @@ public interface InheritancemappingFactory extends EFactory {
 	 * @generated
 	 */
 	USAddress createUSAddress();
+
+	/**
+	 * Returns a new object of class '<em>Customer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Customer</em>'.
+	 * @generated
+	 */
+	Customer createCustomer();
+
+	/**
+	 * Returns a new object of class '<em>Specific Customer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Specific Customer</em>'.
+	 * @generated
+	 */
+	SpecificCustomer createSpecificCustomer();
 
 	/**
 	 * Returns the package supported by this factory.

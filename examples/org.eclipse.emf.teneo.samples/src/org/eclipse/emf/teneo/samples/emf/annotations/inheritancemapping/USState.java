@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USState.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: USState.java,v 1.3 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getUSState()
- * @model
+ * @model extendedMetaData="name='USState'"
  * @generated
  */
 public enum USState implements Enumerator

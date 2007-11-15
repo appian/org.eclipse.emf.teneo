@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactoryImpl.java,v 1.6 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: InheritancemappingFactoryImpl.java,v 1.7 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -74,6 +74,8 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 			case InheritancemappingPackage.PRICE: return createPrice();
 			case InheritancemappingPackage.UK_ADDRESS: return createUKAddress();
 			case InheritancemappingPackage.US_ADDRESS: return createUSAddress();
+			case InheritancemappingPackage.CUSTOMER: return createCustomer();
+			case InheritancemappingPackage.SPECIFIC_CUSTOMER: return createSpecificCustomer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -171,6 +173,26 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	public USAddress createUSAddress() {
 		USAddressImpl usAddress = new USAddressImpl();
 		return usAddress;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Customer createCustomer() {
+		CustomerImpl customer = new CustomerImpl();
+		return customer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SpecificCustomer createSpecificCustomer() {
+		SpecificCustomerImpl specificCustomer = new SpecificCustomerImpl();
+		return specificCustomer;
 	}
 
 	/**

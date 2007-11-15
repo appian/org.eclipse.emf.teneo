@@ -40,5 +40,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//USAddress/state"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//USAddress/zip"/>
     </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Customer/name"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//SpecificCustomer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//SpecificCustomer/specificName"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

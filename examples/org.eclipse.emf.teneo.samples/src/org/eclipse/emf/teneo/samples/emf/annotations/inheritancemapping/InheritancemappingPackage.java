@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackage.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: InheritancemappingPackage.java,v 1.2 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -420,6 +420,71 @@ public interface InheritancemappingPackage extends EPackage {
 	int US_ADDRESS_FEATURE_COUNT = ADDRESS_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.CustomerImpl <em>Customer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.CustomerImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getCustomer()
+	 * @generated
+	 */
+	int CUSTOMER = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Customer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOMER_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.SpecificCustomerImpl <em>Specific Customer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.SpecificCustomerImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getSpecificCustomer()
+	 * @generated
+	 */
+	int SPECIFIC_CUSTOMER = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_CUSTOMER__NAME = CUSTOMER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Specific Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_CUSTOMER__SPECIFIC_NAME = CUSTOMER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Specific Customer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_CUSTOMER_FEATURE_COUNT = CUSTOMER_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState <em>US State</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,7 +492,7 @@ public interface InheritancemappingPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getUSState()
 	 * @generated
 	 */
-	int US_STATE = 7;
+	int US_STATE = 9;
 
 	/**
 	 * The meta object id for the '<em>US State Object</em>' data type.
@@ -437,7 +502,7 @@ public interface InheritancemappingPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getUSStateObject()
 	 * @generated
 	 */
-	int US_STATE_OBJECT = 8;
+	int US_STATE_OBJECT = 10;
 
 
 	/**
@@ -654,6 +719,48 @@ public interface InheritancemappingPackage extends EPackage {
 	EAttribute getUSAddress_Zip();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer <em>Customer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Customer</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer
+	 * @generated
+	 */
+	EClass getCustomer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer#getName()
+	 * @see #getCustomer()
+	 * @generated
+	 */
+	EAttribute getCustomer_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer <em>Specific Customer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Specific Customer</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer
+	 * @generated
+	 */
+	EClass getSpecificCustomer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer#getSpecificName <em>Specific Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Specific Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer#getSpecificName()
+	 * @see #getSpecificCustomer()
+	 * @generated
+	 */
+	EAttribute getSpecificCustomer_SpecificName();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState <em>US State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -670,7 +777,7 @@ public interface InheritancemappingPackage extends EPackage {
 	 * @return the meta object for data type '<em>US State Object</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState"
-	 *        extendedMetaData="name='USState:Object' baseType='USState'" 
+	 *        extendedMetaData="name='USState:Object' baseType='USState'"
 	 * @generated
 	 */
 	EDataType getUSStateObject();
@@ -870,6 +977,42 @@ public interface InheritancemappingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute US_ADDRESS__ZIP = eINSTANCE.getUSAddress_Zip();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.CustomerImpl <em>Customer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.CustomerImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getCustomer()
+		 * @generated
+		 */
+		EClass CUSTOMER = eINSTANCE.getCustomer();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOMER__NAME = eINSTANCE.getCustomer_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.SpecificCustomerImpl <em>Specific Customer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.SpecificCustomerImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getSpecificCustomer()
+		 * @generated
+		 */
+		EClass SPECIFIC_CUSTOMER = eINSTANCE.getSpecificCustomer();
+
+		/**
+		 * The meta object literal for the '<em><b>Specific Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIFIC_CUSTOMER__SPECIFIC_NAME = eINSTANCE.getSpecificCustomer_SpecificName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState <em>US State</em>}' enum.

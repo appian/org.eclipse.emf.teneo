@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackage.java,v 1.4 2007/07/11 18:59:48 mtaal Exp $
+ * $Id: IdPackage.java,v 1.5 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory
  * @model kind="package"
- *        annotation="teneo.jpa appinfo='\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\")\n\t\t'"
+ *        annotation="teneo.jpa appinfo='\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\" initialValue=10 allocationSize=100)\n\t\t\t@SequenceGenerator(name=\"GENERATORTWO\" sequenceName=\"myOtherSequenceName\" initialValue=5 allocationSize=50)\n\t'"
  * @generated
  */
 public interface IdPackage extends EPackage {
@@ -213,6 +213,35 @@ public interface IdPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.OtherTableGeneratorIDImpl <em>Other Table Generator ID</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.OtherTableGeneratorIDImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getOtherTableGeneratorID()
+	 * @generated
+	 */
+	int OTHER_TABLE_GENERATOR_ID = 5;
+
+	/**
+	 * The feature id for the '<em><b>Myid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OTHER_TABLE_GENERATOR_ID__MYID = 0;
+
+	/**
+	 * The number of structural features of the '<em>Other Table Generator ID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OTHER_TABLE_GENERATOR_ID_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID <em>Identity ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -327,6 +356,27 @@ public interface IdPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAutoID_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID <em>Other Table Generator ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Other Table Generator ID</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID
+	 * @generated
+	 */
+	EClass getOtherTableGeneratorID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID#getMyid <em>Myid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Myid</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID#getMyid()
+	 * @see #getOtherTableGeneratorID()
+	 * @generated
+	 */
+	EAttribute getOtherTableGeneratorID_Myid();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -447,6 +497,24 @@ public interface IdPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute AUTO_ID__NAME = eINSTANCE.getAutoID_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.OtherTableGeneratorIDImpl <em>Other Table Generator ID</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.OtherTableGeneratorIDImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getOtherTableGeneratorID()
+		 * @generated
+		 */
+		EClass OTHER_TABLE_GENERATOR_ID = eINSTANCE.getOtherTableGeneratorID();
+
+		/**
+		 * The meta object literal for the '<em><b>Myid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OTHER_TABLE_GENERATOR_ID__MYID = eINSTANCE.getOtherTableGeneratorID_Myid();
 
 	}
 

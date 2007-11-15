@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContentList.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: ContentList.java,v 1.4 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -67,7 +67,7 @@ public interface ContentList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Address</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getContentList_Address()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address" resolveProxies="false" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */
@@ -84,7 +84,7 @@ public interface ContentList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Price</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getContentList_Price()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price" resolveProxies="false" required="true"
+	 * @model resolveProxies="false" required="true"
 	 *        extendedMetaData="kind='element' name='price'"
 	 * @generated
 	 */

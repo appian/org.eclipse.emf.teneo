@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContentListImpl.java,v 1.3 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: ContentListImpl.java,v 1.4 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -63,7 +63,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Address> address = null;
+	protected EList<Address> address;
 
 	/**
 	 * The cached value of the '{@link #getPrice() <em>Price</em>}' reference list.
@@ -73,7 +73,7 @@ public class ContentListImpl extends EObjectImpl implements ContentList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Price> price = null;
+	protected EList<Price> price;
 
 	/**
 	 * <!-- begin-user-doc -->

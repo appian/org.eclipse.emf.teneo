@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingAdapterFactory.java,v 1.2 2007/02/08 23:09:20 mtaal Exp $
+ * $Id: InheritancemappingAdapterFactory.java,v 1.3 2007/11/15 14:48:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
 
@@ -98,6 +98,14 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseUSAddress(USAddress object) {
 				return createUSAddressAdapter();
+			}
+			@Override
+			public Adapter caseCustomer(Customer object) {
+				return createCustomerAdapter();
+			}
+			@Override
+			public Adapter caseSpecificCustomer(SpecificCustomer object) {
+				return createSpecificCustomerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -214,6 +222,34 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUSAddressAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer <em>Customer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer
+	 * @generated
+	 */
+	public Adapter createCustomerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer <em>Specific Customer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer
+	 * @generated
+	 */
+	public Adapter createSpecificCustomerAdapter() {
 		return null;
 	}
 
