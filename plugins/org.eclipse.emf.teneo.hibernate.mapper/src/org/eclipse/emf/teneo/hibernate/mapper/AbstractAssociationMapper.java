@@ -441,7 +441,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected Element addElementElement(Element collElement, PAnnotatedEAttribute paAttribute, List<Column> columns,
 			String targetEntity) {
 		final Element elElement;
-		if (targetEntity == null || paAttribute.getEnumerated() != null) {
+		if (targetEntity == null || paAttribute.getEnumerated() != null ||
+				StoreUtil.isQName(paAttribute.getAnnotatedEAttribute())) {
 			elElement = collElement.addElement("element");
 			setType(paAttribute, elElement);
 		} else { // in this case the defaultannotator has set the targetentity!
@@ -536,9 +537,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
-																				 * == null ? new
-																				 * ArrayList() :
-																				 * (List)joinTable.getJoinColumns().getValue()
-																				 */);
+		 * == null ? new
+		 * ArrayList() :
+		 * (List)joinTable.getJoinColumns().getValue()
+		 */);
 	}
 }

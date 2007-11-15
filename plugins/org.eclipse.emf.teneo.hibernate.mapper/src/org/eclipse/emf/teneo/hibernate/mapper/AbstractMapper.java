@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.29 2007/09/04 09:57:29 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.30 2007/11/15 19:55:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,6 +39,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Base class for all mapping classes. Provides access to the hbmcontext.
@@ -106,6 +107,8 @@ public abstract class AbstractMapper {
 			}
 		} else if (paAttribute.getEnumerated() != null) {
 			handleEnumType(paAttribute, propElement);
+		} else if (StoreUtil.isQName(paAttribute.getAnnotatedEAttribute())) {
+			propElement.addAttribute("type", "org.eclipse.emf.teneo.hibernate.mapping.QNameUserType");
 		} else {
 			final String hType = hbType(paAttribute);
 			if (hType != null) {
