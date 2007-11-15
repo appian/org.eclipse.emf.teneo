@@ -22,6 +22,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.GroupAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.MixedAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.NestedGroupAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.QNameAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.RestrictionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.SimpleTypeAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.SimplefeaturemapAction;
@@ -32,7 +33,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class AllTests {
 
@@ -40,6 +41,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 					HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(QNameAction.class);
 
 		suite.addTestSuite(SimpleTypeAction.class);
 
