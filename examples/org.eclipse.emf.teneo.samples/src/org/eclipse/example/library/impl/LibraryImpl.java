@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryImpl.java,v 1.1 2007/11/16 13:22:57 mtaal Exp $
+ * $Id: LibraryImpl.java,v 1.2 2007/11/16 13:38:07 mtaal Exp $
  */
 package org.eclipse.example.library.impl;
 
@@ -64,15 +64,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * This is true if the Name attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean nameESet = false;
-
-	/**
 	 * The cached value of the '{@link #getWriters() <em>Writers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,7 +71,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList writers = null;
+	protected EList<Writer> writers;
 
 	/**
 	 * The cached value of the '{@link #getBooks() <em>Books</em>}' containment reference list.
@@ -90,7 +81,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList books = null;
+	protected EList<Book> books;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,6 +97,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return LibraryPackage.Literals.LIBRARY;
 	}
@@ -127,10 +119,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
-		boolean oldNameESet = nameESet;
-		nameESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.LIBRARY__NAME, oldName, name, !oldNameESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.LIBRARY__NAME, oldName, name));
 	}
 
 	/**
@@ -138,32 +128,9 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetName() {
-		String oldName = name;
-		boolean oldNameESet = nameESet;
-		name = NAME_EDEFAULT;
-		nameESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, LibraryPackage.LIBRARY__NAME, oldName, NAME_EDEFAULT, oldNameESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetName() {
-		return nameESet;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getWriters() {
+	public EList<Writer> getWriters() {
 		if (writers == null) {
-			writers = new EObjectContainmentEList(Writer.class, this, LibraryPackage.LIBRARY__WRITERS);
+			writers = new EObjectContainmentEList<Writer>(Writer.class, this, LibraryPackage.LIBRARY__WRITERS);
 		}
 		return writers;
 	}
@@ -173,9 +140,9 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBooks() {
+	public EList<Book> getBooks() {
 		if (books == null) {
-			books = new EObjectContainmentEList(Book.class, this, LibraryPackage.LIBRARY__BOOKS);
+			books = new EObjectContainmentEList<Book>(Book.class, this, LibraryPackage.LIBRARY__BOOKS);
 		}
 		return books;
 	}
@@ -185,12 +152,13 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LibraryPackage.LIBRARY__WRITERS:
-				return ((InternalEList)getWriters()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getWriters()).basicRemove(otherEnd, msgs);
 			case LibraryPackage.LIBRARY__BOOKS:
-				return ((InternalEList)getBooks()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getBooks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -200,6 +168,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LibraryPackage.LIBRARY__NAME:
@@ -217,6 +186,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibraryPackage.LIBRARY__NAME:
@@ -224,11 +195,11 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return;
 			case LibraryPackage.LIBRARY__WRITERS:
 				getWriters().clear();
-				getWriters().addAll((Collection)newValue);
+				getWriters().addAll((Collection<? extends Writer>)newValue);
 				return;
 			case LibraryPackage.LIBRARY__BOOKS:
 				getBooks().clear();
-				getBooks().addAll((Collection)newValue);
+				getBooks().addAll((Collection<? extends Book>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -239,10 +210,11 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case LibraryPackage.LIBRARY__NAME:
-				unsetName();
+				setName(NAME_EDEFAULT);
 				return;
 			case LibraryPackage.LIBRARY__WRITERS:
 				getWriters().clear();
@@ -259,10 +231,11 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case LibraryPackage.LIBRARY__NAME:
-				return isSetName();
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case LibraryPackage.LIBRARY__WRITERS:
 				return writers != null && !writers.isEmpty();
 			case LibraryPackage.LIBRARY__BOOKS:
@@ -276,12 +249,13 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
-		if (nameESet) result.append(name); else result.append("<unset>");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

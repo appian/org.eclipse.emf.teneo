@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryResourceFactoryImpl.java,v 1.1 2007/11/16 13:22:57 mtaal Exp $
+ * $Id: LibraryResourceFactoryImpl.java,v 1.2 2007/11/16 13:38:06 mtaal Exp $
  */
 package org.eclipse.example.library.util;
 
@@ -38,6 +38,7 @@ public class LibraryResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new LibraryResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

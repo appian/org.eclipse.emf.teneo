@@ -2,18 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.1 2007/11/16 13:22:57 mtaal Exp $
+ * $Id: Writer.java,v 1.2 2007/11/16 13:38:07 mtaal Exp $
  */
 package org.eclipse.example.library;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Writer</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Writer</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -32,14 +30,14 @@ public interface Writer extends EObject {
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more
+	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.example.library.LibraryPackage#getWriter_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -47,8 +45,7 @@ public interface Writer extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.example.library.Writer#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -68,10 +65,10 @@ public interface Writer extends EObject {
 	 * @return the value of the '<em>Books</em>' reference list.
 	 * @see org.eclipse.example.library.LibraryPackage#getWriter_Books()
 	 * @see org.eclipse.example.library.Book#getAuthor
-	 * @model type="library.Book" opposite="author"
+	 * @model opposite="author"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Writer

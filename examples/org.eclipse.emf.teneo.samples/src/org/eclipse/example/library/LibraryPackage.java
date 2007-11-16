@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.1 2007/11/16 13:22:57 mtaal Exp $
+ * $Id: LibraryPackage.java,v 1.2 2007/11/16 13:38:07 mtaal Exp $
  */
 package org.eclipse.example.library;
 
@@ -365,8 +365,8 @@ public interface LibraryPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Book Category Object</em>'.
 	 * @see org.eclipse.example.library.BookCategory
-	 * @model instanceClass="library.BookCategory"
-	 *        extendedMetaData="name='BookCategory:Object' baseType='BookCategory'" 
+	 * @model instanceClass="org.eclipse.example.library.BookCategory"
+	 *        extendedMetaData="name='BookCategory:Object' baseType='BookCategory'"
 	 * @generated
 	 */
 	EDataType getBookCategoryObject();
