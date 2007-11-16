@@ -13,5 +13,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.jpox,
  org.eclipse.emf.teneo.jpox.libraries,
- library
+ org.eclipse.emf.teneo.samples
 Bundle-ClassPath: .
