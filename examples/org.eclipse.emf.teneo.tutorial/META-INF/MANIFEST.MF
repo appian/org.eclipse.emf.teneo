@@ -11,3 +11,4 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.teneo.jpox.libraries,
  org.eclipse.emf.teneo.samples
 Bundle-ClassPath: .
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
