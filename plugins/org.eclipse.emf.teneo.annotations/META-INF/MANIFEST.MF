@@ -18,3 +18,4 @@ Export-Package: org.eclipse.emf.teneo.annotations.pamodel,
  org.eclipse.emf.teneo.annotations.pannotation.impl,
  org.eclipse.emf.teneo.annotations.pannotation.util,
  org.eclipse.emf.teneo.annotations.pannotation.validation
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
