@@ -571,3 +571,4 @@ Bundle-ClassPath: ant-antlr-1.6.5.jar,
  xerces-2.6.2.jar,
  xml-apis.jar,
  hibernate-commons-annotations.jar
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
