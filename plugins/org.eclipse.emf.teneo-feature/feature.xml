@@ -3,7 +3,7 @@
       id="org.eclipse.emf.teneo"
       label="%featureName (Incubation)"
       version="0.8.0.qualifier"
-      provider-name="%featureProvider">
+      provider-name="%providerName">
 
    <description url=" http://www.eclipse.org/emft">
       %description (Incubation)
