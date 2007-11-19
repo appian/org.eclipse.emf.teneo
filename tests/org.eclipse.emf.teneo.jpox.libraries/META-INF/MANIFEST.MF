@@ -119,3 +119,4 @@ Bundle-ClassPath: .,
  log4j-1.2.13.jar,
  jpox-1.1.8.jar,
  jpox-enhancer-1.1.8.jar
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
