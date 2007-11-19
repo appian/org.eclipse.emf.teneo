@@ -54,7 +54,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -129,7 +129,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			final PersistableDelegateList pelist =
 					(PersistableDelegateList) createPersistableList((InternalEObject) owner, eFeature, (List) obj);
 			final EObject eobj = (EObject) owner;
-			if (eobj.eClass().getClassifierID() < 0 && !EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
+			if (!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
 				if (log.isDebugEnabled()) {
 					log.debug("Dynamic elist, set using the esettings");
 				}
@@ -219,8 +219,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 *      org.hibernate.engine.SessionFactoryImplementor)
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
-		if (((EObject) target).eClass().getClassifierID() < 0 &&
-				!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
+		if (!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) target)) {
 			if (log.isDebugEnabled()) {
 				log.debug("Dynamic elist, set using the esettings");
 			}
