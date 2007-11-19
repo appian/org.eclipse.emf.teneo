@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial1.java,v 1.6 2007/11/19 17:03:58 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.7 2007/11/19 17:14:17 mtaal Exp $
  */
 
 package hbtutorial;
@@ -45,7 +45,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class Tutorial1 {
 
@@ -141,8 +141,8 @@ public class Tutorial1 {
 			System.out.println(book.getTitle());
 
 			// Verify that the eContainer and references are set correctly.
-// assert (book.eContainer() == library);
-// assert (writer.getBooks().get(0) == book);
+			assert (book.eContainer() == library);
+			assert (writer.getBooks().get(0) == book);
 
 			// Add a new Writer and Book
 			Writer georgeOrwell = LibraryFactory.eINSTANCE.createWriter();
