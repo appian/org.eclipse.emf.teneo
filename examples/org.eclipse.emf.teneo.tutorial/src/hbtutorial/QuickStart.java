@@ -9,9 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- * </copyright>
+ * </copyright> 
  *
- * $Id: QuickStart.java,v 1.4 2007/11/14 16:37:24 mtaal Exp $
+ * $Id: QuickStart.java,v 1.5 2007/11/19 13:36:43 mtaal Exp $
  */
 
 package hbtutorial;
@@ -36,7 +36,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class QuickStart {
 
