@@ -4,11 +4,7 @@ Bundle-Name: Teneo Tutorial Code (Incubation)
 Bundle-SymbolicName: org.eclipse.emf.teneo.tutorial
 Bundle-Version: 0.8.0.qualifier
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.teneo,
- org.eclipse.emf.teneo.annotations,
+Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.teneo.hibernate.libraries,
  org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.jpox,
