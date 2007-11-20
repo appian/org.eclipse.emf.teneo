@@ -107,4 +107,21 @@
 			<column not-null="false" unique="false" name="`zip`"/>
 		</property>
 	</joined-subclass>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.CustomerImpl" entity-name="Customer" abstract="false" lazy="false" table="`customer`">
+		<meta attribute="eclassName">Customer</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+	<union-subclass name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.SpecificCustomerImpl" entity-name="SpecificCustomer" abstract="false" lazy="false" extends="Customer" table="`specificcustomer`">
+		<meta attribute="eclassName">SpecificCustomer</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping</meta>
+		<property name="specificName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`specificname`"/>
+		</property>
+	</union-subclass>
 </hibernate-mapping>
