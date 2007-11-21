@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: StoreExportXML.java,v 1.2 2007/02/01 12:35:18 mtaal Exp $
+ * $Id: StoreExportXML.java,v 1.3 2007/11/21 14:31:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.resourcehandler;
@@ -25,9 +25,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -46,7 +49,7 @@ import org.eclipse.ui.dialogs.SaveAsDialog;
  * Generic action class for exporting xml from a resource file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public abstract class StoreExportXML implements IObjectActionDelegate {
@@ -74,11 +77,14 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		try {
-			final SaveAsDialog saDialog = new ExportSaveAsDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+			final SaveAsDialog saDialog =
+					new ExportSaveAsDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 			saDialog.open();
 			final IPath path = saDialog.getResult();
 
-			if (path == null) return; // nothing selected
+			if (path == null) {
+				return; // nothing selected
+			}
 
 			// create the path
 			final IPath containerPath = path.removeLastSegments(1);
@@ -94,25 +100,8 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 			final IFile destFile = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 			final Properties props = StoreEclipseUtil.readPropFile(selection);
 
-			final byte[] content = doExport(props);
-
-			IWorkspaceRunnable createOperation = new IWorkspaceRunnable() {
-				public void run(IProgressMonitor monitor) throws CoreException {
-
-					// delete the file if it is present
-					// first set some attrs to make it possible to delete
-					final ResourceAttributes attrs = new ResourceAttributes();
-					attrs.setArchive(false);
-					attrs.setReadOnly(false);
-					if (destFile.exists()) {
-						destFile.setResourceAttributes(attrs);
-						destFile.delete(true, null);
-					}
-					destFile.create(new ByteArrayInputStream(content), true, null);
-				}
-			};
-
-			ResourcesPlugin.getWorkspace().run(createOperation, null);
+			final WorkspaceJob wj = new LocalJob(destFile, props);
+			wj.schedule();
 		} catch (CoreException c) {
 			StoreEclipseUtil.handleError(c, log);
 		}
@@ -130,7 +119,9 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selected) {
-		if (!(selected instanceof IStructuredSelection)) return;
+		if (!(selected instanceof IStructuredSelection)) {
+			return;
+		}
 
 		final IStructuredSelection structSelection = (IStructuredSelection) selected;
 		selection = structSelection;
@@ -151,6 +142,7 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 		/*
 		 * (non-Javadoc) Method declared in Window.
 		 */
+		@Override
 		protected Control createContents(Composite parent) {
 			Control contents = super.createContents(parent);
 			if (isXMLExport()) {
@@ -160,6 +152,48 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 			}
 			setMessage("Select a parent location and enter a file name");
 			return contents;
+		}
+	}
+
+	private class LocalJob extends WorkspaceJob {
+
+		private IFile file;
+		private Properties props;
+
+		LocalJob(IFile file, Properties props) {
+			super("Import");
+			this.file = file;
+			this.props = props;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
+		 */
+		@Override
+		public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+
+			final byte[] content = doExport(props);
+
+			IWorkspaceRunnable createOperation = new IWorkspaceRunnable() {
+				public void run(IProgressMonitor monitor) throws CoreException {
+
+					// delete the file if it is present
+					// first set some attrs to make it possible to delete
+					final ResourceAttributes attrs = new ResourceAttributes();
+					attrs.setArchive(false);
+					attrs.setReadOnly(false);
+					if (file.exists()) {
+						file.setResourceAttributes(attrs);
+						file.delete(true, null);
+					}
+					file.create(new ByteArrayInputStream(content), true, null);
+				}
+			};
+
+			ResourcesPlugin.getWorkspace().run(createOperation, null);
+			return Status.OK_STATUS;
 		}
 	}
 

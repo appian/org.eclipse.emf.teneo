@@ -14,6 +14,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.WorkspaceJob;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseException;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
@@ -36,7 +41,7 @@ import org.eclipse.ui.part.FileEditorInput;
  * Performs the open resource action based on the information in the property file
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class StoreOpenResource implements IObjectActionDelegate {
 	/** The logger for this class */
@@ -65,26 +70,12 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 		final IFile propFile = (IFile) selection.getFirstElement();
 		try {
 			final Properties props = StoreEclipseUtil.readPropFile(selection);
-			openDataStore(props);
-
-			// now use the editor props to find the correct editor
-			final String editorextension = doTrim(props
-					.getProperty(Constants.PROP_EDITOR_EXTENSTION));
-			final String editorid = doTrim(props.getProperty(Constants.PROP_EDITOR_ID));
-
-			final String foundEditorID = getEditorID(editorid, editorextension);
-
-			// and open it
-			final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow();
-			final IWorkbenchPage page = workbenchWindow.getActivePage();
-			page.openEditor(new FileEditorInput(propFile), foundEditorID);
+			final WorkspaceJob wj = new LocalJob(propFile, props);
+			wj.schedule();
 		} catch (Exception e) {
-			e.printStackTrace(System.err);
 			log.error(e);
-			MessageDialog.openError(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					"Error Occured", e.getMessage());
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error Occured", e
+				.getMessage());
 		}
 	}
 
@@ -93,17 +84,20 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 
 	/** Convenience method */
 	private String doTrim(String totrim) {
-		if (totrim == null) return null;
+		if (totrim == null) {
+			return null;
+		}
 		return totrim.trim();
 	}
 
 	/** Returns the editor id on the basis of the editor id or the extension */
 	private String getEditorID(String propID, String propExtension) {
-		if (propID != null) return propID;
+		if (propID != null) {
+			return propID;
+		}
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 
-		IEditorDescriptor editorDesc = workbench.getEditorRegistry()
-				.getDefaultEditor(propExtension);
+		IEditorDescriptor editorDesc = workbench.getEditorRegistry().getDefaultEditor(propExtension);
 		if (editorDesc == null) {
 			IFileEditorMapping[] mappings = workbench.getEditorRegistry().getFileEditorMappings();
 			for (IFileEditorMapping map : mappings) {
@@ -116,25 +110,59 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 		}
 
 		if (editorDesc == null) {
-			throw new StoreEclipseException("No editor can be found for extension: "
-					+ propExtension);
+			throw new StoreEclipseException("No editor can be found for extension: " + propExtension);
 		}
 		return editorDesc.getId();
 	}
 
 	/** Creates a dummy file which is used to 'fool' the editor to open a specific rdb resource */
 	public IFile getModelFile(IFile ehbFile, String extension) {
-		return ResourcesPlugin.getWorkspace().getRoot().getFile(
-				ehbFile.getFullPath().append("hibernate." + extension));
+		return ResourcesPlugin.getWorkspace().getRoot().getFile(ehbFile.getFullPath().append("hibernate." + extension));
 	}
 
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selected) {
-		if (!(selected instanceof IStructuredSelection)) return;
+		if (!(selected instanceof IStructuredSelection)) {
+			return;
+		}
 
 		final IStructuredSelection structSelection = (IStructuredSelection) selected;
 		selection = structSelection;
+	}
+
+	private class LocalJob extends WorkspaceJob {
+
+		private IFile file;
+		private Properties props;
+
+		LocalJob(IFile file, Properties props) {
+			super("Open resource");
+			this.file = file;
+			this.props = props;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
+		 */
+		@Override
+		public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+			openDataStore(props);
+
+			// now use the editor props to find the correct editor
+			final String editorextension = doTrim(props.getProperty(Constants.PROP_EDITOR_EXTENSTION));
+			final String editorid = doTrim(props.getProperty(Constants.PROP_EDITOR_ID));
+
+			final String foundEditorID = getEditorID(editorid, editorextension);
+
+			// and open it
+			final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			final IWorkbenchPage page = workbenchWindow.getActivePage();
+			page.openEditor(new FileEditorInput(file), foundEditorID);
+			return Status.OK_STATUS;
+		}
 	}
 }

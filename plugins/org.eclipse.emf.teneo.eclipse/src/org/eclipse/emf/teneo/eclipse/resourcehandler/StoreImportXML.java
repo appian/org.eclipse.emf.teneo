@@ -14,6 +14,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.WorkspaceJob;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -28,7 +33,7 @@ import org.eclipse.ui.dialogs.ResourceSelectionDialog;
  * Performs the import xml action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public abstract class StoreImportXML implements IObjectActionDelegate {
@@ -68,13 +73,15 @@ public abstract class StoreImportXML implements IObjectActionDelegate {
 				title = "Select one or more XMI resources to import from.";
 			}
 
-			final ResourceSelectionDialog dialog = new ResourceSelectionDialog(PlatformUI
-					.getWorkbench().getActiveWorkbenchWindow().getShell(), ResourcesPlugin
-					.getWorkspace().getRoot(), title);
+			final ResourceSelectionDialog dialog =
+					new ResourceSelectionDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						ResourcesPlugin.getWorkspace().getRoot(), title);
 			dialog.open();
 			final Object[] fileObjs = dialog.getResult();
 
-			if (fileObjs == null) return; // nothing selected
+			if (fileObjs == null) {
+				return; // nothing selected
+			}
 
 			IFile[] files = new IFile[fileObjs.length];
 			for (int i = 0; i < fileObjs.length; i++) {
@@ -82,7 +89,8 @@ public abstract class StoreImportXML implements IObjectActionDelegate {
 			}
 
 			final Properties props = StoreEclipseUtil.readPropFile(selection);
-			doImport(files, props);
+			final WorkspaceJob wj = new LocalJob(files, props);
+			wj.schedule();
 		} catch (Exception c) {
 			StoreEclipseUtil.handleError(c, log);
 		}
@@ -95,9 +103,34 @@ public abstract class StoreImportXML implements IObjectActionDelegate {
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selected) {
-		if (!(selected instanceof IStructuredSelection)) return;
+		if (!(selected instanceof IStructuredSelection)) {
+			return;
+		}
 
 		final IStructuredSelection structSelection = (IStructuredSelection) selected;
 		selection = structSelection;
+	}
+
+	private class LocalJob extends WorkspaceJob {
+
+		private IFile[] files;
+		private Properties props;
+
+		LocalJob(IFile[] files, Properties props) {
+			super("Import");
+			this.files = files;
+			this.props = props;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
+		 */
+		@Override
+		public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
+			doImport(files, props);
+			return Status.OK_STATUS;
+		}
 	}
 }
