@@ -14,11 +14,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.resources.WorkspaceJob;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseException;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
@@ -41,7 +36,7 @@ import org.eclipse.ui.part.FileEditorInput;
  * Performs the open resource action based on the information in the property file
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public abstract class StoreOpenResource implements IObjectActionDelegate {
 	/** The logger for this class */
@@ -70,9 +65,20 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 		final IFile propFile = (IFile) selection.getFirstElement();
 		try {
 			final Properties props = StoreEclipseUtil.readPropFile(selection);
-			final WorkspaceJob wj = new LocalJob(propFile, props);
-			wj.schedule();
+			openDataStore(props);
+
+			// now use the editor props to find the correct editor
+			final String editorextension = doTrim(props.getProperty(Constants.PROP_EDITOR_EXTENSTION));
+			final String editorid = doTrim(props.getProperty(Constants.PROP_EDITOR_ID));
+
+			final String foundEditorID = getEditorID(editorid, editorextension);
+
+			// and open it
+			final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			final IWorkbenchPage page = workbenchWindow.getActivePage();
+			page.openEditor(new FileEditorInput(propFile), foundEditorID);
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 			log.error(e);
 			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error Occured", e
 				.getMessage());
@@ -130,39 +136,5 @@ public abstract class StoreOpenResource implements IObjectActionDelegate {
 
 		final IStructuredSelection structSelection = (IStructuredSelection) selected;
 		selection = structSelection;
-	}
-
-	private class LocalJob extends WorkspaceJob {
-
-		private IFile file;
-		private Properties props;
-
-		LocalJob(IFile file, Properties props) {
-			super("Open resource");
-			this.file = file;
-			this.props = props;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.core.resources.WorkspaceJob#runInWorkspace(org.eclipse.core.runtime.IProgressMonitor)
-		 */
-		@Override
-		public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
-			openDataStore(props);
-
-			// now use the editor props to find the correct editor
-			final String editorextension = doTrim(props.getProperty(Constants.PROP_EDITOR_EXTENSTION));
-			final String editorid = doTrim(props.getProperty(Constants.PROP_EDITOR_ID));
-
-			final String foundEditorID = getEditorID(editorid, editorextension);
-
-			// and open it
-			final IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-			final IWorkbenchPage page = workbenchWindow.getActivePage();
-			page.openEditor(new FileEditorInput(file), foundEditorID);
-			return Status.OK_STATUS;
-		}
 	}
 }
