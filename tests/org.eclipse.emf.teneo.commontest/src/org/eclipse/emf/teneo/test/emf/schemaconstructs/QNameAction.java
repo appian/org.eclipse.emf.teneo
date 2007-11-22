@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: QNameAction.java,v 1.1 2007/11/15 19:55:33 mtaal Exp $
+ * $Id: QNameAction.java,v 1.2 2007/11/22 11:42:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Simple test for: qname
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class QNameAction extends AbstractTestAction {
 
@@ -47,7 +47,6 @@ public class QNameAction extends AbstractTestAction {
 	/** Creates simple types and tests against */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final QnameFactory factory = QnameFactory.eINSTANCE;
 
 		// store an all type
