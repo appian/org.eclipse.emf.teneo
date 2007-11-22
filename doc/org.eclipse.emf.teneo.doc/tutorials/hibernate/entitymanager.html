@@ -139,7 +139,7 @@
 <a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -280,7 +280,7 @@
 <p>To use Teneo and the EJB3/JPA EntityManagerFactory (instead of the SessionFactory) you need to use a
 		different datastore: HbEntityDataStore. Instead of using the HbHelper to create a datastore you need to 
 		directly create a HbEntityDataStore (so do: new HbEntityDataStore()). After creation you need to set its name
-		by calling setName. After that the use of the HbEntityDataStore is the same as for the HbDataStore (which is really the concrete subclass HbSessionDataStore).</p>
+		by calling setName. After that the use of the HbEntityDataStore is the same as for the HbDataStore.</p>
 		
 <p>The HbEntityDataStore is a subclass of HbDataStore and adds a getEntityManagerFactory method. This means that everywhere on this site
 		where you read HbDataStore you can also use the HbEntityDataStore.</p>

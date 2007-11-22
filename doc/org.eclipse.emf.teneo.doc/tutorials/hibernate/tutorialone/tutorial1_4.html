@@ -139,7 +139,7 @@
 <div class="menupagetitle">Query EMF Objects</div>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -324,7 +324,7 @@ query = session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
 books = query.list();
 
 // Show some results
-System.out.println("There are " + books.size() + " in the Library."); // should be 1
+System.out.println("There is " + books.size() + " book from G. Orwell in the Library."); // should be 1
 System.out.println(books.get(0).getClass().getName());
 Book book = (Book) books.get(0);
 System.out.println(book.getTitle()); // should be 1984

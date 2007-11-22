@@ -139,7 +139,7 @@
 <a href="../../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -354,7 +354,7 @@ georgeOrwell.setName("G. Orwell");
 Book georgesBook = LibraryFactory.eINSTANCE.createBook();
 georgesBook.setPages(250);
 georgesBook.setTitle("1984");
-georgesBook.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+georgesBook.setCategory(BookCategory.SCIENCE_FICTION);
 georgesBook.setAuthor(georgeOrwell);
 
 library.getBooks().add(georgesBook);
@@ -372,7 +372,7 @@ session.close();</pre>
 <h3>Next Step</h3>
 		
 		
-<p>The next step of the tutorial shows some Hibernate HQL queries that retrieve EMF objects from the database.</p>
+<p>The next step of the tutorial shows some Hibernate HQL queries retrieving EMF objects from the database.</p>
 		
 <p>
 <a href="tutorial1_4.html">Click here</a> to go to the next step.</p>

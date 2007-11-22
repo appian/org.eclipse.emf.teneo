@@ -139,7 +139,7 @@
 <a href="../../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_selected_1.3')" id="menu_selected_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -328,9 +328,6 @@ public void start(BundleContext context) throws Exception
 	hbds.setHibernateProperties(props);
 	hbds.initialize();
 	
-	// this is required to force the editor to retrieve the correct resource
-	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new HibernateResourceFactory())
-	
 	super.start(context);
 }
 	</pre>
@@ -370,7 +367,8 @@ at org.hibernate.mapping.Property.isValid(Property.java:185)
 			
 <p>For this tutorial an Hibernate EMF resource factory has to be specified. This is done
 				by setting the library element of the org.eclipse.emf.ecore.extension_parser extension
-				point to: org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory.</p>
+				point to: org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory. You can find this extension point 
+				in plugin.xml in the model plugin.</p>
 			
 <p>
 			
@@ -389,7 +387,7 @@ at org.hibernate.mapping.Property.isValid(Property.java:185)
 			Hibernate is more precise and will not allow this.</p>
 			
 <p>To prevent this add the following code in the performFinish method of the LibraryModelWizard
-			class in the library editor project. This has to be added around line 220 after the rootObject variable has been set:</p>
+			class in the library editor project. This has to be added around line 215 just after the rootObject variable has been set:</p>
 			
 <pre class="code">
 if (rootObject instanceof Library)

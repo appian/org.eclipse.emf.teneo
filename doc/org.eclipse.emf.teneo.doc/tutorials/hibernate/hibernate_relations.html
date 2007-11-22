@@ -139,7 +139,7 @@
 <a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -401,13 +401,17 @@
 <p>Based on this annotations Teneo will generate a join table for this model. Note that 
 		this annotation can be combined with the indexed annotation.</p>
 		
+<p>Note that currently hibernate does not support an indexed bi-directional relation with a join table. 
+		For these type of relations a join table makes less sense because of the bidirectional nature duplicates
+		are not possible anyway.</p> 
+		
 <p>
 <em>The unique annotation does not exist in the EJB3 spec and is a Teneo extension.</em>
 </p>
 		
 </div>		
 		
-<a name="N10071"></a><a name="Embedded+components"></a>
+<a name="N10074"></a><a name="Embedded+components"></a>
 <div class="h3">
 <h3>Embedded components</h3>
 		
@@ -430,7 +434,7 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div>		
 		
-<a name="N10084"></a><a name="Storing+container+relation"></a>
+<a name="N10087"></a><a name="Storing+container+relation"></a>
 <div class="h3">
 <h3>Storing container relation</h3>
 			

@@ -139,7 +139,7 @@
 <a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -321,8 +321,8 @@ String dbName = "library";
 final Properties props = new Properties();
 props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
 props.setProperty(Environment.USER, "root");
-props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/" + dbName);
 props.setProperty(Environment.PASS, "root");
+props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/" + dbName);
 props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 
 // create the HbDataStore
@@ -344,7 +344,7 @@ hbds.initialize();
 <li>Create a Hibernate session and a transaction:
 			<pre class="code">
 // Create a session and a transaction
-Session session = hbds.getSession();
+Session session = hbds.getSessionFactory().openSession();
 Transaction tx = session.getTransaction();
     	</pre>
 </li>
@@ -370,7 +370,7 @@ Book book = LibraryFactory.eINSTANCE.createBook();
 book.setAuthor(writer);
 book.setPages(305);
 book.setTitle("The Hobbit");
-book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+book.setCategory(BookCategory.SCIENCE_FICTION);
 	
 // add the writer/book to the library. The writer and book are automatically
 // made persistent because they are added to the library which is already

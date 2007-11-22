@@ -139,7 +139,7 @@
 <a href="../../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menupage">
-<div class="menupagetitle">Using EMF/JPOX Resources</div>
+<div class="menupagetitle">Using EMF/Hibernate Resources</div>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -363,7 +363,7 @@ Book bookNew = LibraryFactory.eINSTANCE.createBook();
 bookNew.setAuthor(writerNew);
 bookNew.setPages(305);
 bookNew.setTitle("Foundation and Empire");
-bookNew.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+bookNew.setCategory(BookCategory.SCIENCE_FICTION);
 
 // add the writer/book to the library.
 libNew.getWriters().add(writerNew);
@@ -386,7 +386,7 @@ res.getContents().add(libNew);
 <p>Now save the resource. Note that the resource handles things like transactions.</p>
 			
 <pre class="code">
-res.save(null);
+res.save(Collections.EMPTY_MAP);
 			</pre>
 		
 </div>

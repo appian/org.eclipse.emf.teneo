@@ -139,7 +139,7 @@
 <a href="../hibernate/tutorialone/tutorial1_4.html">Query EMF Objects</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/JPOX Resources</a>
+<a href="../hibernate/tutorialone/tutorial1_5.html">Using EMF/Hibernate Resources</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.3')" id="menu_1.3Title" class="menutitle">Library Editor Tutorial</div>
@@ -577,7 +577,7 @@
 <li>
 					
 <strong>PersistenceOptions.MAPPING_FILE_PATH</strong>
-					(default: null): with this option you can specify a resource path (incl. filename) to a mapping
+					(default: null): with this option you can specify one or more comma-delimited resource paths (incl. filename) to a mapping
 					file. Instead of generating a mapping Teneo will then use the mapping file found
 					through this path.
 				</li>
@@ -612,7 +612,8 @@
 <li>
 					
 <strong>PersistenceOptions.SET_CASCADE_ALL_ON_CONTAINMENT</strong>
-					(default: true): as a default Teneo will set a cascade style ALL on a containment relation.
+					(default: false): this option is <strong>deprecated</strong> use CASCADE_POLICY_ON_CONTAINMENT instead.
+					as a default Teneo will set a cascade style ALL on a containment relation.
 					This also enables dependent or orphan delete behavior. However it makes more
 					difficult to support cut/paste operations using resources (see
 					<a href="hibernate_details.html#cutpaste">here</a>
@@ -625,12 +626,32 @@
 				
 <li>
 					
+<strong>PersistenceOptions.CASCADE_POLICY_ON_CONTAINMENT</strong>
+					(default: ALL): this option allows you to set the default cascade policy for 
+					containment relations. It can be set to a comma delimited set of cascade values,
+					for example MERGE, PERSIST, REFRESH, REMOVE.
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT</strong>
-					(default: false): this option controls if Teneo will set the cascade attribute on a
+					(default: false): this option is <strong>deprecated</strong> use CASCADE_POLICY_ON_NON_CONTAINMENT instead.
+					this option controls if Teneo will set the cascade attribute on a
 					non-containment relation. The default value is false, as normally non-contained
 					objects are persisted independently. Cascading on an association has a
 					performance penaly and therefore as a generatl statement this should only be
 					done if really required.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT</strong>
+					(default: not set): this option allows you to set the default cascade policy for 
+					non containment relations. It can be set to a comma delimited set of cascade values,
+					for example MERGE, PERSIST, REFRESH. If this option is not set then then the system will use the 
+					following set: MERGE, PERSIST, REFRESH.
 				</li>
 
 				
@@ -641,7 +662,6 @@
 					mapped. Default is "true", this means that all EClasses are mapped to the
 					persistent store.
 				</li>
-
 
 				
 <li>

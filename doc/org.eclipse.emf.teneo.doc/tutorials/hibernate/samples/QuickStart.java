@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: QuickStart.java,v 1.20 2007/09/04 10:07:11 mtaal Exp $
+ * $Id: QuickStart.java,v 1.21 2007/11/22 11:51:55 mtaal Exp $
  */
 
 package hbtutorial;
@@ -33,7 +33,7 @@ import org.hibernate.Transaction;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
 */
 public class QuickStart {
 
@@ -90,7 +90,7 @@ public class QuickStart {
 		book.setAuthor(writer);
 		book.setPages(305);
 		book.setTitle("The Hobbit");
-		book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		book.setCategory(BookCategory.SCIENCE_FICTION);
 			
 		// add the writer/book to the library. The writer and book are automatically
 		// made persistent because they are added to the library which is already
