@@ -310,17 +310,17 @@ lib = (Library)coll.iterator().next();
 		class offers a convenience method for this task.</p>
 		
 <pre class="code">
-qry = pm.newQuery("SELECT FROM " + JpoxHelper.INSTANCE.getInstanceClass(Book.class).getName() + " WHERE " +
+qry = pm.newQuery("SELECT FROM " + BookImpl.class.getName() + " WHERE " +
 		" title==\"1984\" &amp;&amp; author == writ &amp;&amp; writ.name == \"G. Orwell\" " + 
 		"VARIABLES " + WriterImpl.class.getName() + " writ");
 System.err.println(((Collection)qry.execute()).size());
 
 // retrieving all books
-qry = pm.newQuery("SELECT FROM " + JpoxHelper.INSTANCE.getInstanceClass(Book.class).getName());
+qry = pm.newQuery("SELECT FROM " + BookImpl.class.getName());
 System.err.println(((Collection)qry.execute()).size());
 
 // retrieving all libraries with a name ending on library
-qry = pm.newQuery("SELECT FROM " +  JpoxHelper.INSTANCE.getInstanceClass(Library.class).getName() + 
+qry = pm.newQuery("SELECT FROM " +  LibraryImpl.class.getName() + 
 	" WHERE name.endsWith(\"Library\")");		
 System.err.println(((Collection)qry.execute()).size());
 

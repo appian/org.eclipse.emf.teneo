@@ -273,7 +273,9 @@
 <li>Set Library model plugin dependency:
 				<ul>
 					
-<li>Add the EMF persistency runtime plugin (org.eclipse.emf.teneo.jpox) to the plugin dependencies of the Library (model) project</li>
+<li>Add the EMF - JPOX persistency runtime plugin (org.eclipse.emf.teneo.jpox) to the plugin dependencies of the Library (model) project</li>
+					
+<li>Add the plugin with JPOX libraries to the plugin dependencies of the Library (model) project</li>
 				
 </ul>
 				
@@ -283,7 +285,7 @@
 					'Enable Auto Enhancement'.</li>
 				
 <li>Generate JDO file: right click on the ecore file (normally called library.ecore) 
-				top package (org.eclipse.example.library) and in
+				and in
 				the Teneo menu choose one of the <em>Generate EMF - JDO/JPOX OR Mapping (...)</em> option. 
 				A package.jdo file should be created next to the ecore file. <em>It is possible that you need to refresh the 
 				folder to see the created package.jdo.</em>
@@ -321,7 +323,7 @@ jpoxDataStore.initialize();
 <li>Create a persistence manager and factory
 	<pre class="code">
 // Now create a persistence manager and a transaction
-PersistenceManager pm = jpoxDataStore.getPersistenceManager();
+PersistenceManager pm = jpoxDataStore.getPMF().getPersistenceManager();
 Transaction tx = pm.currentTransaction(); 
     	</pre>
 </li>
@@ -347,7 +349,7 @@ Book book = LibraryFactory.eINSTANCE.createBook();
 book.setAuthor(writer);
 book.setPages(305);
 book.setTitle("The Hobbit");
-book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+book.setCategory(BookCategory.SCIENCE_FICTION);
 
 // add the writer/book to the library. The writer and book are automatically
 // made persistent because they are added to the library which was already

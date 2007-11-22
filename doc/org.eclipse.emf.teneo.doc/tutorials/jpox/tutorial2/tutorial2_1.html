@@ -327,9 +327,6 @@ public void start(BundleContext context) throws Exception
     	jpoxDataStore.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
     	jpoxDataStore.initialize();
 
-	// this is required to force the editor to retrieve the correct resource
-	Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("library", new JPOXResourceFactory());
-
 	super.start(context);
 }
 		</pre>
@@ -359,7 +356,8 @@ public void start(BundleContext context) throws Exception
 			
 <p>For this tutorial an EMF JPOX resource factory has to be specified. This is done
 				by setting the library element of the org.eclipse.emf.ecore.extension_parser extension
-				point to: org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory (see image below).</p>
+				to: org.eclipse.emf.teneo.jpox.resource.JPOXResourceFactory (see image below). You can find
+				this extension in the plugin.xml in your model project.</p>
 			
 <p>
 			
@@ -370,9 +368,6 @@ public void start(BundleContext context) throws Exception
 			
 <ul>
 			
-<li>For this tutorial the JPOX DAO resource is registered for the library extension. In general
-				for integration	with a generated EMF Editor a JPOX DAO resource should be used.</li>
-			
 <li>Note that the JPOX resource is normally loaded without a JPOXResource.DS_NAME_PARAM parameter in the url. If there is 
 			no dsname parameter in the url then the JPOX resource will use the extension of the filename
 			to find the PersistenceManagerFactory.</li>
@@ -381,7 +376,7 @@ public void start(BundleContext context) throws Exception
 		
 </div>
 		
-<a name="N10077"></a><a name="Create+valid+EMF+Objects"></a>
+<a name="N10074"></a><a name="Create+valid+EMF+Objects"></a>
 <div class="h3">
 <h3>Create valid EMF Objects</h3>
 			

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.20 2007/09/04 10:07:11 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.21 2007/11/22 11:45:38 mtaal Exp $
  */
 
 package jpoxtutorial;
@@ -50,7 +50,7 @@ import org.jpox.PMFConfiguration;
  * Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class Tutorial1 {
 
@@ -98,7 +98,7 @@ public class Tutorial1 {
 		book.setAuthor(writer);
 		book.setPages(305);
 		book.setTitle("The Hobbit");
-		book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		book.setCategory(BookCategory.SCIENCE_FICTION);
 
 		// add the writer/book to the library. The writer and book are automatically
 		// made persistent because they are added to the library which is already
@@ -145,7 +145,7 @@ public class Tutorial1 {
 		Book georgesBook = LibraryFactory.eINSTANCE.createBook();
 		georgesBook.setPages(250);
 		georgesBook.setTitle("1984");
-		georgesBook.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+		georgesBook.setCategory(BookCategory.SCIENCE_FICTION);
 		georgesBook.setAuthor(george);
 
 		lib.getBooks().add(georgesBook);
@@ -225,7 +225,7 @@ public class Tutorial1 {
 			bookNew.setAuthor(writerNew);
 			bookNew.setPages(305);
 			bookNew.setTitle("Foundation and Empire");
-			bookNew.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			bookNew.setCategory(BookCategory.SCIENCE_FICTION);
 
 			// add the writer/book to the library.
 			libNew.getWriters().add(writerNew);
