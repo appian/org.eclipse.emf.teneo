@@ -18,6 +18,7 @@ import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
+import org.eclipse.emf.teneo.test.emf.sample.JuliaAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryCheckNameAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryFKAction;
@@ -44,7 +45,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  */
 public class AllTests {
 
@@ -52,6 +53,10 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(JuliaAction.class);
+		if (true) {
+			return suite;
+		}
 		suite.addTestSuite(SimpleRentalAction.class);
 		suite.addTestSuite(LibraryResourceCutPasteAction.class);
 
