@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsd"           elementFormDefault="qualified"           attributeFormDefault="unqualified"           version="0.9.3.0"           xml:lang="en"           xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"            xmlns:portal="http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsd"           xmlns:xs="http://www.w3.org/2001/XMLSchema"           xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+   <xs:element name="booksinlib" type="portal:BooksInLib"/>
+    <xs:complexType name="BooksInLib">
+        <xs:sequence>
+            <xs:element name="library" type="portal:Library" maxOccurs="unbounded">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Library">
+        <xs:sequence>
+            <xs:element name="library" type="portal:Library" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="portal:abstract-book-definition" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+               <xs:attribute name="uniqueName" type="xs:ID" use="required"/>       
+    </xs:complexType>
+    
+   <!--     book Definition
+-->
+
+   <xs:element name="abstract-book-definition" type="portal:BookDefinition" abstract="true">
+    </xs:element>
+   <xs:complexType name="BookDefinition" abstract="true">
+        <xs:sequence>
+            <xs:element name="description" type="xs:string" />
+            <xs:element name="location" type="xs:string" />
+        </xs:sequence>
+           <xs:attribute name="uniqueName" type="xs:ID" use="required"/>     </xs:complexType>
+    
+   <xs:element name="publisher-definition" type="portal:PublisherDefinition" substitutionGroup="portal:abstract-book-definition">
+    </xs:element>
+    <xs:complexType name="PublisherDefinition">
+           <xs:complexContent>
+       <xs:extension base="portal:BookDefinition">
+       <xs:sequence>
+           <xs:element name="title" type="xs:string" minOccurs="0"/>
+           <xs:element name="resource-link" type="portal:BookDefinitionResourceLink"/>
+       </xs:sequence>
+     </xs:extension>
+   </xs:complexContent>
+
+    </xs:complexType>
+
+   <xs:complexType name="BookDefinitionResourceLink">
+   <xs:complexContent>
+       <xs:extension base="portal:ResourceLink">
+           <xs:attribute name="bookSubject" type="xs:string">
+           </xs:attribute>
+       </xs:extension>
+   </xs:complexContent>
+</xs:complexType>
+
+   <xs:complexType name="ResourceLink" abstract="true">
+   <xs:attribute name="name" type="xs:string" use="required"/>
+</xs:complexType>
+
+
+    <xs:element name="children-books" type="portal:ChildrenBooks" substitutionGroup="portal:abstract-book-definition">
+    </xs:element>
+    <xs:complexType name="ChildrenBooks">
+        <xs:complexContent>
+            <xs:extension base="portal:BookDefinition">
+                <xs:sequence>
+                    <xs:element name="title" type="xs:string"/>
+                    <xs:element name="cartoon" type="xs:string"/>
+                    <xs:element name="popup" type="xs:string"/>
+                </xs:sequence>
+                <xs:attribute name="publisherDefinitionRef" type="xs:IDREF" use="required" ecore:reference="portal:PublisherDefinition" >
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+   <xs:element name="adult-books" type="portal:AdultBooks" substitutionGroup="portal:abstract-book-definition">
+    </xs:element>
+    <xs:complexType name="AdultBooks">
+        <xs:complexContent>
+            <xs:extension base="portal:BookDefinition">
+                <xs:sequence>
+                    <xs:element name="title" type="xs:string"/>
+                    <xs:element name="checkedout" type="xs:string"/>
+                    <xs:element name="userid" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
