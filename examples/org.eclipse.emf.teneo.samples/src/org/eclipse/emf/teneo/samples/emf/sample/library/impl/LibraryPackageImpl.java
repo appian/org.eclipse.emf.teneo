@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.6 2007/07/09 12:55:19 mtaal Exp $
+ * $Id: LibraryPackageImpl.java,v 1.7 2007/12/28 14:38:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -514,7 +514,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		  (getLibrary_Writers(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Fetch(SUBSELECT)"
+			 "appinfo", "@Fetch(SUBSELECT)\n@ForeignKey(name=\"schrijvers\")"
 		   });				
 	}
 

@@ -47,14 +47,14 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="MEMBER_POSTS_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="member_posts"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 			<field name="created" persistence-modifier="persistent" mapped-by="creator" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.TopicImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="MEMBER_CREATED_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="member_created"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.PostImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="post" identity-type="datastore">
@@ -86,7 +86,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="exception"/>
-			<field name="category" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="category" persistence-modifier="persistent" null-value="none"/>
 			<field name="categoryESet" persistence-modifier="persistent"/>
 			<field name="creator" persistence-modifier="persistent" delete-action="restrict" null-value="none">
 				<foreign-key name="topic_creator"/>
@@ -98,7 +98,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="TOPIC_POSTS_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="topic_posts"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 		</class>
 	</package>

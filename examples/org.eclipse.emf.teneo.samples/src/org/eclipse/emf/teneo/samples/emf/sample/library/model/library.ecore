@@ -73,7 +73,7 @@
         <details key="name" value="writers"/>
       </eAnnotations>
       <eAnnotations source="teneo.hibernate">
-        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+        <details key="appinfo" value="@Fetch(SUBSELECT)&#xA;@ForeignKey(name=&quot;schrijvers&quot;)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"

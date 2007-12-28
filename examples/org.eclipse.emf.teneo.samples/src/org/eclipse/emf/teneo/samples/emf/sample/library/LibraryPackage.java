@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.1 2006/07/11 16:57:12 mtaal Exp $
+ * $Id: LibraryPackage.java,v 1.2 2007/12/28 14:38:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -366,7 +366,7 @@ public interface LibraryPackage extends EPackage {
 	 * @return the meta object for data type '<em>Book Category Object</em>'.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory"
-	 *        extendedMetaData="name='BookCategory:Object' baseType='BookCategory'" 
+	 *        extendedMetaData="name='BookCategory:Object' baseType='BookCategory'"
 	 * @generated
 	 */
 	EDataType getBookCategoryObject();

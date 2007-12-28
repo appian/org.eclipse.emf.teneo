@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.2 2006/08/25 23:04:14 mtaal Exp $
+ * $Id: Writer.java,v 1.3 2007/12/28 14:38:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -67,10 +67,10 @@ public interface Writer extends SerializableEObject {
 	 * @return the value of the '<em>Books</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getWriter_Books()
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.Book#getAuthor
-	 * @model type="org.eclipse.emf.teneo.samples.emf.sample.library.Book" opposite="author"
+	 * @model opposite="author"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
-	EList getBooks();
+	EList<Book> getBooks();
 
 } // Writer

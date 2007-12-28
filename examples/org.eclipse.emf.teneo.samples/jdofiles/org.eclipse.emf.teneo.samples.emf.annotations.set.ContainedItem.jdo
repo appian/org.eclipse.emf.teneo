@@ -51,7 +51,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="ITEMLIST_ITEM_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="itemlist_item"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 			<field name="joinedItem" persistence-modifier="persistent" table="itemlist_item" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl" dependent-element="false">
