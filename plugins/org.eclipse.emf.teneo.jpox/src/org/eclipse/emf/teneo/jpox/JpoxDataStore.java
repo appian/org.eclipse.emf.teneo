@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.19 2007/11/15 19:56:06 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.20 2007/12/28 14:36:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -41,6 +41,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.AbstractEnumerator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -105,7 +106,7 @@ import org.w3c.dom.NodeList;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $ $Date: 2007/11/15 19:56:06 $
+ * @version $Revision: 1.20 $ $Date: 2007/12/28 14:36:25 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -114,6 +115,7 @@ public class JpoxDataStore implements DataStore {
 
 	/** The AbstractEnumerator which is the super class of all emf enums */
 	private static final Class<?> emfEnumClass = AbstractEnumerator.class;
+	private static final Class<?> nextEmfEnumClass = Enumerator.class;
 
 	/** The name under which it is registered */
 	private String name;
@@ -373,7 +375,7 @@ public class JpoxDataStore implements DataStore {
 				final EClassifier eclassifier = (EClassifier) it.next();
 				final Class instanceClass = eclassifier.getInstanceClass();
 
-				if (emfEnumClass.isAssignableFrom(instanceClass)) {
+				if (emfEnumClass.isAssignableFrom(instanceClass) || nextEmfEnumClass.isAssignableFrom(instanceClass)) {
 					log.debug("Registering enum type mapper/wrapper for eclass: " + instanceClass.getName());
 					tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", instanceClass
 						.getName(), ENumMapping.class.getName(), null, true, "1.4", true, false, true, clr);
