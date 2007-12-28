@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE persistence-mapping PUBLIC "-//APACHE//DTD Documentation V1.3//EN" "document-v13.dtd">
+<persistence-mapping xmlns="http://www.eclipse.org/emft/teneo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+&#9;<!-- Template for TestAction persistence mapping. -->
+
+&#9;<epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/cascadenotall">
+
+&#9;&#9;<eclass name="Writer">
+&#9;&#9;&#9;<property name="books">
+&#9;&#9;&#9;&#9;<one-to-many target-entity="Book" mapped-by="author">
+&#9;&#9;&#9;&#9;&#9;<cascade>MERGE</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>PERSIST</cascade>
+&#9;&#9;&#9;&#9;</one-to-many>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;&#9;<eclass name="Library">
+&#9;&#9;&#9;<property name="writers">
+&#9;&#9;&#9;&#9;<one-to-many>
+&#9;&#9;&#9;&#9;&#9;<cascade>MERGE</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>PERSIST</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>REFRESH</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>REMOVE</cascade>
+&#9;&#9;&#9;&#9;</one-to-many>
+&#9;&#9;&#9;</property>
+&#9;&#9;&#9;<property name="books">
+&#9;&#9;&#9;&#9;<one-to-many>
+&#9;&#9;&#9;&#9;&#9;<cascade>MERGE</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>PERSIST</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>REFRESH</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>REMOVE</cascade>
+&#9;&#9;&#9;&#9;</one-to-many>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;</epackage>
+
+</persistence-mapping>

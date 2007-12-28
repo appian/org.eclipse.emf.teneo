@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE persistence-mapping PUBLIC "-//APACHE//DTD Documentation V1.3//EN" "document-v13.dtd">
+<persistence-mapping xmlns="http://www.eclipse.org/emft/teneo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+&#9;<epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping">
+
+&#9;&#9;<eclass name="ContentList">
+&#9;&#9;&#9;<property name="name">
+&#9;&#9;&#9;&#9;<id/>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;&#9;<eclass name="Price">
+&#9;&#9;&#9;<table name="myprice"/>
+&#9;&#9;&#9;<inheritance>TABLE_PER_CLASS</inheritance>
+&#9;&#9;&#9;<property name="name">
+&#9;&#9;&#9;&#9;<id/>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;&#9;<eclass name="Address">
+&#9;&#9;&#9;<inheritance>JOINED</inheritance>
+&#9;&#9;&#9;<property name="name">
+&#9;&#9;&#9;&#9;<id/>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;</epackage>
+
+</persistence-mapping>

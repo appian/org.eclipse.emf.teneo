@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE persistence-mapping PUBLIC "-//APACHE//DTD Documentation V1.3//EN" "document-v13.dtd">
+<persistence-mapping xmlns="http://www.eclipse.org/emft/teneo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+&#9;<epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone">
+
+&#9;&#9;<eclass name="Head">
+&#9;&#9;&#9;<property name="person">
+&#9;&#9;&#9;&#9;<one-to-one target-entity="Person" optional="false" mapped-by="head" fetch="EAGER">
+&#9;&#9;&#9;&#9;&#9;<cascade>MERGE</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>PERSIST</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>REFRESH</cascade>
+&#9;&#9;&#9;&#9;</one-to-one>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;&#9;<eclass name="Person">
+&#9;&#9;&#9;<property name="address">
+&#9;&#9;&#9;&#9;<many-to-one fetch="EAGER" target-entity="Address" optional="true">
+&#9;&#9;&#9;&#9;&#9;<cascade>MERGE</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>PERSIST</cascade>
+&#9;&#9;&#9;&#9;&#9;<cascade>REFRESH</cascade>
+&#9;&#9;&#9;&#9;</many-to-one>
+&#9;&#9;&#9;</property>
+&#9;&#9;&#9;<property name="head">
+&#9;&#9;&#9;&#9;<one-to-one fetch="EAGER" target-entity="Head" optional="true" cascade="ALL"/>
+&#9;&#9;&#9;</property>
+&#9;&#9;</eclass>
+
+&#9;</epackage>
+
+</persistence-mapping>

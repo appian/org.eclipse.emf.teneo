@@ -377,7 +377,7 @@
 				
 <li>9.1.18: Basic Annotation</li>
 				
-<li>9.1.19: Lob Annotation</li>
+<li>9.1.19: Lob Annotation (see <a href="ejb3_examples.html#lob">here</a> for an example)</li>
 				
 <li>9.1.20: Temporal Annotation (no special support required, handled automatically)</li>
 				
@@ -421,7 +421,7 @@
 			
 </div>
 		
-<a name="N100A4"></a><a name="hbspecific"></a>
+<a name="N100A8"></a><a name="hbspecific"></a>
 <div class="h3">
 <h3>Hibernate Annotations Extensions</h3>
 			
@@ -463,12 +463,12 @@
 		
 </div>
 		
-<a name="N100DF"></a><a name="Annotation+notes"></a>
+<a name="N100E3"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N100E5"></a><a name="edatatype"></a>
+<a name="N100E9"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
 <p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
@@ -478,7 +478,7 @@
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N100EE"></a><a name="transient"></a>
+<a name="N100F2"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
@@ -487,7 +487,7 @@
 </div>
 		
 		
-<a name="N100FB"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
+<a name="N100FF"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
 <h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
@@ -509,7 +509,7 @@
 </div>
 		
 		
-<a name="N1010F"></a><a name="indexed"></a>
+<a name="N10113"></a><a name="indexed"></a>
 <div class="h4">
 <h4>Indexed Annotation</h4>
 <p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
@@ -519,7 +519,7 @@
 </div>
 			
 			
-<a name="N1011C"></a><a name="EmbeddedID+annotation"></a>
+<a name="N10120"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -531,7 +531,7 @@
 </div>
 			
 			
-<a name="N1012D"></a><a name="lob_notes"></a>
+<a name="N10131"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>
@@ -555,7 +555,7 @@
 				</pre>
 </div>
 						
-<a name="N10141"></a><a name="EMF+ID+Attribute"></a>
+<a name="N10145"></a><a name="EMF+ID+Attribute"></a>
 <div class="h4">
 <h4>EMF ID Attribute</h4>
 <p>When an eattribute has its ID property set to true and there is no @Id annotated eattribute in the 
@@ -563,7 +563,7 @@
 			<a href="options.html">ID_FEATURE_AS_PRIMARY_KEY</a>.</p>
 </div>
 			
-<a name="N1014E"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
+<a name="N10152"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
 <div class="h4">
 <h4>Extra CASCADE type: NONE</h4>
 <p>Teneo will automatically set the cascade annotation when no cascade annotation has been set on an 

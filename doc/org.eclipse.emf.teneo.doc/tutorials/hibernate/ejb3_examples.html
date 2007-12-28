@@ -274,6 +274,12 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
+<a href="#xmlsamples">Examples of annotations in XML</a>
+</li>
+<li>
+<a href="#lob">Lob Annotation</a>
+</li>
+<li>
 <a href="#column">Annotations on EDataType</a>
 </li>
 <li>
@@ -287,7 +293,103 @@
 </li>
 </ul>
 		
-<a name="N1000E"></a><a name="column"></a>
+<a name="N1000E"></a><a name="xmlsamples"></a>
+<div class="h3">
+<h3>Examples of annotations in XML</h3>
+			
+			
+<p>Here are a number of examples of xml annotations from the Teneo test cases with the corresponding ecore model and the generated hbm:</p>
+			
+<p>
+<a href="../download/xmlsamples/AssociationOverrideAction.persistence.xml">AssociationOverrideAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/associationoverride.ecore">ecore</a>, <a href="../download/xmlsamples/AssociationOverrideAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/CascadeNotallAction.persistence.xml">CascadeNotallAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/cascadenotall.ecore">ecore</a>, <a href="../download/xmlsamples/CascadeNotallAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/EDataTypeAction.persistence.xml">EDataTypeAction.persistence.xml</a>
+			(<a href="../download/xmlsamples/edatatypeColumn.ecore">ecore</a>, <a href="../download/xmlsamples/EDataTypeAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/EmbeddedIdAction.persistence.xml">EmbeddedIdAction.persistence.xml</a>
+			(<a href="../download/xmlsamples/embeddedid.ecore">ecore</a>, <a href="../download/xmlsamples/EmbeddedIdAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/IdBagAction.persistence.xml">IdBagAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/idbag.ecore">ecore</a>, <a href="../download/xmlsamples/IdBagAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/InheritanceAnnotationAction.persistence.xml">InheritanceAnnotationAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/inheritancemapping.ecore">ecore</a>, <a href="../download/xmlsamples/InheritanceAnnotationAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/InheritanceAnnotationTablePerClassAction.persistence.xml">InheritanceAnnotationTablePerClassAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/inheritancemapping.ecore">ecore</a>, <a href="../download/xmlsamples/InheritanceAnnotationTablePerClassAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/LobAction.persistence.xml">LobAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/lob.ecore">ecore</a>, <a href="../download/xmlsamples/LobAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/SecondarytableHibernateAction.persistence.xml">SecondarytableHibernateAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/secondarytablehibernate.ecore">ecore</a>, <a href="../download/xmlsamples/SecondarytableHibernateAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/ToOneAction.persistence.xml">ToOneAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/toone.ecore">ecore</a>, <a href="../download/xmlsamples/ToOneAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+			
+<p>
+<a href="../download/xmlsamples/TransientAction.persistence.xml">TransientAction.persistence.xml</a>
+			 (<a href="../download/xmlsamples/transent.ecore">ecore</a>, <a href="../download/xmlsamples/TransientAction_mysql_a_o_hibernate.hbm.xml">Generated HBM</a>)</p>
+		
+</div>
+		
+<a name="N100B2"></a><a name="lob"></a>
+<div class="h3">
+<h3>Lob Annotation</h3>
+			
+			
+<p>Here is an example on how to handle blob's using ecore and model annotations.</p>
+			
+<p>First add an EDataType for java.sql.Blob in your ecore:</p>
+			
+<pre class="code">
+&lt;eClassifiers xsi:type="ecore:EDataType" name="Blob" instanceClassName="java.sql.Blob"/&gt;
+			</pre>
+			
+<p>Then, in the attribute of type Blob, add "teneo.jpa" annotations as follows in your ecore:</p>
+			
+<pre class="code">
+....
+&lt;eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="#//Blob"&gt;
+	&lt;eAnnotations source="teneo.jpa"&gt;
+		&lt;details key="value" value="
+			@Lob
+			@Column(length=1048576)
+			@Type(type="blob")"/&gt;
+	&lt;/eAnnotations&gt;
+&lt;/eStructuralFeatures&gt;
+...
+			</pre>
+			
+<p>Notice the 1MB column length if you copy-paste. Change it to what you need.</p>
+			
+<p>Note also that the above annotation can be set on the EDataType. In that case
+			it won't be needed to specify it on each EAttribute.</p>
+			
+<p>Then, use the blob as you would with hibernate. For instance:</p>
+			
+<pre class="code">
+Document doc = MyFactory.eINSTANCE.createDocument();
+Blob blob = Hibernate.createBlob(new byte[] { 1, 2, 3, 4 });
+doc.setContent(blob);
+			</pre>
+		
+</div>
+		
+<a name="N100D7"></a><a name="column"></a>
 <div class="h3">
 <h3>Annotations on EDataType</h3>
 			
@@ -366,7 +468,7 @@
 			
 </div>
 		
-<a name="N10023"></a><a name="mtm"></a>
+<a name="N100EC"></a><a name="mtm"></a>
 <div class="h3">
 <h3>ManyToMany Annotations</h3>
 			
@@ -422,7 +524,7 @@
 			
 </div>
 		
-<a name="N10031"></a><a name="inheritance"></a>
+<a name="N100FA"></a><a name="inheritance"></a>
 <div class="h3">
 <h3>Inheritance and Discriminator Annotations</h3>
 			
@@ -460,7 +562,7 @@
 			
 </div>
 		
-<a name="N10046"></a><a name="other"></a>
+<a name="N1010F"></a><a name="other"></a>
 <div class="h3">
 <h3>Other examples</h3>
 			
