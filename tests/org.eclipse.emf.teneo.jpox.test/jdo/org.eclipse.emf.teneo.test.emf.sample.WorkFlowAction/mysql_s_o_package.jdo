@@ -12,21 +12,21 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="WORKFLOW_NODES_IDX"/>
-				<foreign-key delete-action="cascade" update-action="cascade" name="workflow_nodes"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 			</field>
 			<field name="edges" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" dependent-element="true">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="WORKFLOW_EDGES_IDX"/>
-				<foreign-key delete-action="cascade" update-action="cascade" name="workflow_edges"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 			</field>
 			<field name="comments" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.CommentImpl" dependent-element="true">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="WORKFLOW_COMMENTS_IDX"/>
-				<foreign-key delete-action="cascade" update-action="cascade" name="workflow_comments"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowNodeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="workflownode" identity-type="datastore">
@@ -38,14 +38,14 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="WORKFLOWNODE_OUTPUTS_IDX"/>
-				<foreign-key delete-action="cascade" update-action="cascade" name="workflownode_outputs"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 			</field>
 			<field name="inputs" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.InputPortImpl" dependent-element="true">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="WORKFLOWNODE_INPUTS_IDX"/>
-				<foreign-key delete-action="cascade" update-action="cascade" name="workflownode_inputs"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 			</field>
 			<field name="isStart" persistence-modifier="persistent" null-value="exception"/>
 			<field name="isFinish" persistence-modifier="persistent" null-value="exception"/>
@@ -74,7 +74,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="INPUTPORT_EDGES_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="inputport_edges"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.OutputPortImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="outputport" identity-type="datastore">
@@ -86,7 +86,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="OUTPUTPORT_EDGES_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="outputport_edges"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.FaultImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="fault" identity-type="datastore">

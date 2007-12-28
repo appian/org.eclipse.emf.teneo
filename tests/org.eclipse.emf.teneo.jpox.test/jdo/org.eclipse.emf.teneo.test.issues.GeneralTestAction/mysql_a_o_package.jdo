@@ -17,7 +17,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="ADDRESS_CONTACTS_IDX"/>
-				<foreign-key delete-action="cascade" update-action="cascade" name="address_contacts"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 			</field>
 			<field name="state" persistence-modifier="none"/>
 			<field name="country" persistence-modifier="persistent" delete-action="restrict" null-value="none">

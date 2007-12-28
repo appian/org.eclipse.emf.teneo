@@ -70,14 +70,14 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="MAIN_TWONR_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="main_twonr"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 			<field name="twonn" persistence-modifier="persistent" mapped-by="main" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoNNImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="MAIN_TWONN_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="main_twonn"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneCNImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="onecn" identity-type="datastore">

@@ -14,7 +14,7 @@
 			<field name="title" persistence-modifier="persistent" null-value="exception"/>
 			<field name="pages" persistence-modifier="persistent" null-value="none"/>
 			<field name="pagesESet" persistence-modifier="persistent"/>
-			<field name="category" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="category" persistence-modifier="persistent" null-value="none"/>
 			<field name="categoryESet" persistence-modifier="persistent"/>
 			<field name="author" persistence-modifier="persistent" delete-action="restrict" null-value="none">
 				<foreign-key name="book_author"/>
@@ -66,7 +66,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="WRITER_BOOKS_IDX"/>
-				<foreign-key delete-action="restrict" update-action="cascade" name="writer_books"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
 		</class>
 	</package>

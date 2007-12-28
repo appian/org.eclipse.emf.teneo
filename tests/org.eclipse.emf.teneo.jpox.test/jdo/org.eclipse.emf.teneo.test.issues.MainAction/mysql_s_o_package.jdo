@@ -14,7 +14,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="linkedObject" persistence-modifier="persistent" delete-action="restrict" null-value="none">
-				<foreign-key name="childobject1_linkedobject"/>
+				<foreign-key/>
 				<extension vendor-name="jpox" key="implementation-classes" value="main.impl.BaseObjectImpl"/>
 			</field>
 		</class>
@@ -23,7 +23,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="object1" persistence-modifier="persistent" delete-action="restrict" null-value="none">
-				<foreign-key name="baseobject_object1"/>
+				<foreign-key/>
 				<extension vendor-name="jpox" key="implementation-classes" value="main.impl.ChildObject1Impl"/>
 			</field>
 		</class>

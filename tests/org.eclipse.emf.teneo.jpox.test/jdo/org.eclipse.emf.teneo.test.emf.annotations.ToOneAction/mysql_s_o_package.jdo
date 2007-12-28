@@ -28,7 +28,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="hairColor" persistence-modifier="persistent" null-value="exception"/>
 			<field name="person" persistence-modifier="persistent" delete-action="restrict" null-value="none">
-				<foreign-key name="head_person"/>
+				<foreign-key/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl"/>
 			</field>
 		</class>
@@ -44,7 +44,7 @@
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.AddressImpl"/>
 			</field>
 			<field name="head" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="person_head"/>
+				<foreign-key delete-action="cascade" update-action="cascade"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl"/>
 			</field>
 			<field name="leftArm" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
