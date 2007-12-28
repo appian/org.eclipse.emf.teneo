@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.30 2007/11/15 19:55:38 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.31 2007/12/28 14:36:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
+import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
@@ -48,6 +49,21 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public abstract class AbstractMapper {
+	/** The list of types which translate to a hibernate types */
+	private static final String[] TEMPORAL_TYPE_NAMES;
+
+	/** Initialize TEMPORAL_TYPE_NAMES */
+	static {
+		TEMPORAL_TYPE_NAMES = new String[TemporalType.VALUES.size()];
+		TEMPORAL_TYPE_NAMES[TemporalType.DATE.getValue()] = "date";
+		TEMPORAL_TYPE_NAMES[TemporalType.TIME.getValue()] = "time";
+		TEMPORAL_TYPE_NAMES[TemporalType.TIMESTAMP.getValue()] = "timestamp";
+	}
+
+	/** Returns the correct temporal type for hibernate */
+	private static String hbType(TemporalType temporalType) {
+		return TEMPORAL_TYPE_NAMES[temporalType != null ? temporalType.getValue() : TemporalType.TIMESTAMP.getValue()];
+	}
 
 	/** logs it all */
 	// private static final Log log = LogFactory.getLog(AbstractMapper.class);
@@ -175,9 +191,9 @@ public abstract class AbstractMapper {
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
-			return getEDateTimeClass(eDataType);
+			return getEDateTimeClass(paAttribute);
 		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
-			return getEDateClass(eDataType);
+			return getEDateClass(paAttribute);
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
@@ -210,7 +226,9 @@ public abstract class AbstractMapper {
 	/*
 	 * @return The name of the java class needed to map the date type
 	 */
-	public String getEDateClass(EDataType eDataType) {
+	public String getEDateClass(PAnnotatedEAttribute paAttribute) {
+		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
+
 		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType));
 
 		if (XMLTypePackage.eINSTANCE.getDate().equals(eDataType)) {
@@ -227,6 +245,12 @@ public abstract class AbstractMapper {
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return getHbmContext().getXSDDateUserType();
 		}
+
+		if (paAttribute.getTemporal() != null) {
+			final TemporalType tt = paAttribute.getTemporal().getValue();
+			return hbType(tt);
+		}
+
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
 		return Date.class.getName();
@@ -235,7 +259,9 @@ public abstract class AbstractMapper {
 	/*
 	 * @return The name of the java class needed to map the datetime/timestamp type
 	 */
-	public String getEDateTimeClass(EDataType eDataType) {
+	public String getEDateTimeClass(PAnnotatedEAttribute paAttribute) {
+		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
+
 		assert (EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
 
 		if (XMLTypePackage.eINSTANCE.getDateTime().equals(eDataType)) {
@@ -249,6 +275,12 @@ public abstract class AbstractMapper {
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return getHbmContext().getXSDDateTimeUserType();
 		}
+
+		if (paAttribute.getTemporal() != null) {
+			final TemporalType tt = paAttribute.getTemporal().getValue();
+			return hbType(tt);
+		}
+
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
 		// really wants a different mapping he/she should use maybe a usertype??
 		return Timestamp.class.getName();

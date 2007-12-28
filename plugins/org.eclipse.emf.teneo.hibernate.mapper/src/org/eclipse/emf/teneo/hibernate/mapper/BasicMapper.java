@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.23 2007/09/04 09:57:29 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.24 2007/12/28 14:36:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,7 +23,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -36,17 +35,6 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 
 	/** Log it all */
 	private static final Log log = LogFactory.getLog(BasicMapper.class);
-
-	/** The list of types which translate to a hibernate types */
-	private static final String[] TEMPORAL_TYPE_NAMES;
-
-	/** Initialize TEMPORAL_TYPE_NAMES */
-	static {
-		TEMPORAL_TYPE_NAMES = new String[TemporalType.VALUES.size()];
-		TEMPORAL_TYPE_NAMES[TemporalType.DATE.getValue()] = "date";
-		TEMPORAL_TYPE_NAMES[TemporalType.TIME.getValue()] = "time";
-		TEMPORAL_TYPE_NAMES[TemporalType.TIMESTAMP.getValue()] = "timestamp";
-	}
 
 	/**
 	 * Generate hb mapping for the given basic attribute.
@@ -91,10 +79,6 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		TemporalType tt = paAttribute.getTemporal().getValue();
 		final String attrName = getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute());
 		log.debug("addProperty: " + attrName + " temporal " + tt.getName());
-		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) paAttribute;
-		final HbAnnotatedEDataType hed =
-				(HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(
-					paAttribute.getAnnotatedEAttribute().getEAttributeType());
 
 		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName);
 
@@ -116,11 +100,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		// #191463
-		if ((hed != null && hed.getHbTypeDef() != null) || hea.getHbType() != null) {
-			setType(paAttribute, propElement);
-		} else {
-			propElement.addAttribute("type", BasicMapper.hbType(tt));
-		}
+		setType(paAttribute, propElement);
 	}
 
 	/**
@@ -193,12 +173,6 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		if (log.isDebugEnabled()) {
 			log.debug("Skipping transient feature for " + paFeature.getAnnotatedEStructuralFeature().getName());
 		}
-	}
-
-	/** Returns the correct temporal type for hibernate */
-	private static String hbType(TemporalType temporalType) {
-		return BasicMapper.TEMPORAL_TYPE_NAMES[temporalType != null ? temporalType.getValue() : TemporalType.TIMESTAMP
-			.getValue()];
 	}
 
 	/**
