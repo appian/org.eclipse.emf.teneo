@@ -12,18 +12,25 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyAttributeAnnotator.java,v 1.3 2007/07/18 16:10:08 mtaal Exp $
+ * $Id: OneToManyAttributeAnnotator.java,v 1.4 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
@@ -31,6 +38,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
+import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
+import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
@@ -38,13 +47,15 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(OneToManyAttributeAnnotator.class);
+
+	private TemporalType optionDefaultTemporal = null;
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEAttribute aAttribute) {
@@ -71,7 +82,7 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 			log.debug("One to many present adding default information if required");
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames()) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aAttribute.getForeignKey() == null) {
 			aAttribute.setForeignKey(createFK(aAttribute));
 		}
 
@@ -81,6 +92,47 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 			enumerated.setValue(EnumType.STRING);
 			enumerated.setEModelElement(eAttribute);
 			aAttribute.setEnumerated(enumerated);
+		}
+
+		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
+		// clazz is hidden somewhere
+		if (clazz == null || Object.class.equals(clazz)) {
+			ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
+			for (EClassifier eclassifier : eclassifiers) {
+				if (eclassifier.getInstanceClass() != null) {
+					clazz = eclassifier.getInstanceClass();
+					break;
+				}
+			}
+		}
+
+		final EDataType eDataType = aAttribute.getAnnotatedEAttribute().getEAttributeType();
+		if (clazz != null &&
+				(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+					.getDateTime())) {
+			final Temporal temporal = getFactory().createTemporal();
+			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
+				temporal.setValue(TemporalType.DATE);
+			} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
+				temporal.setValue(TemporalType.TIMESTAMP);
+			} else {
+				temporal.setValue(optionDefaultTemporal);
+			}
+			aAttribute.setTemporal(temporal);
+			temporal.setEModelElement(eAttribute);
+		} else if (clazz != null &&
+				(Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+					.getDateTime())) {
+			final Temporal temporal = getFactory().createTemporal();
+			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
+				temporal.setValue(TemporalType.DATE);
+			} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
+				temporal.setValue(TemporalType.TIMESTAMP);
+			} else {
+				temporal.setValue(optionDefaultTemporal);
+			}
+			aAttribute.setTemporal(temporal);
+			temporal.setEModelElement(eAttribute);
 		}
 
 		// set cascade if not set
@@ -111,6 +163,21 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 					+ "because otm was not set manually");
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
+	 */
+	@Override
+	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
+		super.setPersistenceOptions(persistenceOptions);
+
+		optionDefaultTemporal = TemporalType.get(persistenceOptions.getDefaultTemporalValue());
+		if (optionDefaultTemporal == null) {
+			throw new StoreMappingException("Temporal value not found: " + persistenceOptions.getDefaultTemporalValue());
 		}
 	}
 

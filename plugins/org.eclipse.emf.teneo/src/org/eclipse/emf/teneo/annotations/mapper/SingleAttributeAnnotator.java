@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: SingleAttributeAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
+ * $Id: SingleAttributeAnnotator.java,v 1.3 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -43,7 +44,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a single attribute, a primitive type such as a long or int.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -104,14 +105,31 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 				}
 			}
 
-			if (clazz != null && Date.class.isAssignableFrom(clazz)) {
+			final EDataType eDataType = aAttribute.getAnnotatedEAttribute().getEAttributeType();
+			if (clazz != null &&
+					(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+						.getDateTime())) {
 				final Temporal temporal = getFactory().createTemporal();
-				temporal.setValue(optionDefaultTemporal);
+				if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
+					temporal.setValue(TemporalType.DATE);
+				} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
+					temporal.setValue(TemporalType.TIMESTAMP);
+				} else {
+					temporal.setValue(optionDefaultTemporal);
+				}
 				aAttribute.setTemporal(temporal);
 				temporal.setEModelElement(eAttribute);
-			} else if (clazz != null && Calendar.class.isAssignableFrom(clazz)) {
+			} else if (clazz != null &&
+					(Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+						.getDateTime())) {
 				final Temporal temporal = getFactory().createTemporal();
-				temporal.setValue(optionDefaultTemporal);
+				if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
+					temporal.setValue(TemporalType.DATE);
+				} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
+					temporal.setValue(TemporalType.TIMESTAMP);
+				} else {
+					temporal.setValue(optionDefaultTemporal);
+				}
 				aAttribute.setTemporal(temporal);
 				temporal.setEModelElement(eAttribute);
 			}

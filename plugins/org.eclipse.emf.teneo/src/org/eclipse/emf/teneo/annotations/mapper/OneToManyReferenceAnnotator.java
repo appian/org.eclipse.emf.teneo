@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.4 2007/11/14 16:38:38 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.5 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -85,8 +85,32 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			aReference.setEmbedded(getFactory().createEmbedded());
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames()) {
-			aReference.setForeignKey(createFK(aReference));
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
+			// See bugzilla 211798: handle a specific case when this is a bidirectional
+			// one-to-many/many-to-one. In that case the foreign key name has to be
+			// the same on both sides and is set on the many-side. So use the
+			// annotated reference from the other side to ensure that the same foreign key name
+			// is used.
+			if (eReference.getEOpposite() != null && !eReference.getEOpposite().isMany() &&
+					!eReference.getEOpposite().isTransient()) {
+				final PAnnotatedEReference aOpposite = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
+				if (aOpposite != null && aOpposite.getTransient() == null) {
+					// don't do anything as otherwise hibernate will create two
+					// fk's with the same name
+
+// if (aOpposite.getForeignKey() != null) {
+// final ForeignKey fk = getFactory().createForeignKey();
+// fk.setName(aOpposite.getForeignKey().getName());
+// aReference.setForeignKey(fk);
+// } else {
+// aReference.setForeignKey(createFK(aOpposite));
+// }
+				} else {
+					aReference.setForeignKey(createFK(aReference));
+				}
+			} else {
+				aReference.setForeignKey(createFK(aReference));
+			}
 		}
 
 		if (eReference.isContainment() || getPersistenceOptions().isSetDefaultCascadeOnNonContainment()) {

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneReferenceAnnotator.java,v 1.2 2007/07/12 18:05:46 mtaal Exp $
+ * $Id: OneToOneReferenceAnnotator.java,v 1.3 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -65,11 +65,35 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 		if (oto.getMappedBy() == null && setMappedBy(eReference)) { // only
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
-		setCascade(oto.getCascade(), eReference.isContainment());
 
-		if (getPersistenceOptions().isSetForeignKeyNames()) {
-			aReference.setForeignKey(createFK(aReference));
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
+			// See bugzilla 211798: handle a specific case when this is a bidirectional
+			// association. In that case the foreign key name has to be
+			// the same on both sides and is set on the many-side. So use the
+			// annotated reference from the other side to ensure that the same foreign key name
+			// is used.
+			if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
+				final PAnnotatedEReference aOpposite = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
+				if (aOpposite != null && aOpposite.getTransient() == null) {
+					// don't do anything as otherwise hibernate will create two
+					// fk's with the same name
+
+// if (aOpposite.getForeignKey() != null) {
+// final ForeignKey fk = getFactory().createForeignKey();
+// fk.setName(aOpposite.getForeignKey().getName());
+// aReference.setForeignKey(fk);
+// } else {
+// aReference.setForeignKey(createFK(aOpposite));
+// }
+				} else {
+					aReference.setForeignKey(createFK(aReference));
+				}
+			} else {
+				aReference.setForeignKey(createFK(aReference));
+			}
 		}
+
+		setCascade(oto.getCascade(), eReference.isContainment());
 
 		if (getPersistenceOptions().isMapEmbeddableAsEmbedded() &&
 				aReference.getAReferenceType().getEmbeddable() != null) {

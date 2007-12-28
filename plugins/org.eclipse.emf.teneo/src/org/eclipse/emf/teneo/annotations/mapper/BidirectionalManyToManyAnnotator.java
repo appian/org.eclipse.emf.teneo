@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BidirectionalManyToManyAnnotator.java,v 1.4 2007/07/18 16:10:07 mtaal Exp $
+ * $Id: BidirectionalManyToManyAnnotator.java,v 1.5 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a bidirectional many-to-many ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -73,7 +73,7 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames()) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			aReference.setForeignKey(createFK(aReference));
 		}
 

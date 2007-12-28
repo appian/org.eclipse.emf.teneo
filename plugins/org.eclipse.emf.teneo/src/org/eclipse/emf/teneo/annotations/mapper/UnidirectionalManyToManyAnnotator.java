@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: UnidirectionalManyToManyAnnotator.java,v 1.3 2007/07/18 16:10:08 mtaal Exp $
+ * $Id: UnidirectionalManyToManyAnnotator.java,v 1.4 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a many-to-many which is handled from one side.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -73,7 +73,7 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator imp
 		}
 		joinTable.setEModelElement(eReference);
 
-		if (getPersistenceOptions().isSetForeignKeyNames()) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			aReference.setForeignKey(createFK(aReference));
 		}
 

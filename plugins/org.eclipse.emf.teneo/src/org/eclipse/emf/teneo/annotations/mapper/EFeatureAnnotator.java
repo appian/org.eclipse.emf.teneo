@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.3 2007/09/04 09:57:34 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.4 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -102,7 +102,6 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				final Transient trans = getFactory().createTransient();
 				trans.setEModelElement(eStructuralFeature);
 				aStructuralFeature.setTransient(trans);
-				// note next statement will force continue
 			}
 
 			// process transients further because they can be part of a

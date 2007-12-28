@@ -11,9 +11,10 @@
  *   Martin Taal
  *   Davide Marchignoli
  *   Brian Vetter (bugzilla 175909)
+ *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.6 2007/07/04 19:27:26 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.7 2007/12/28 14:36:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -24,6 +25,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.emf.ecore.EClassifier;
@@ -31,8 +34,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import org.eclipse.emf.teneo.TeneoException;
 
 /**
  * Utility class to classify Ecore datatypes.
@@ -45,6 +47,9 @@ public class EcoreDataTypes {
 	private static XMLTypePackage xmlTypePackage = XMLTypePackage.eINSTANCE;
 	private static EDataType xmlDateEDataType = xmlTypePackage.getDate();
 	private static EDataType xmlDateTimeEDataType = xmlTypePackage.getDateTime();
+
+	// XML datatype factory instance
+	private final DatatypeFactory dataTypeFactory;
 
 	private static final List<EDataType> PRIMITIVES_ETYPES_LIST =
 			Collections.unmodifiableList(Arrays.asList(new EDataType[] { EcorePackage.eINSTANCE.getEBoolean(),
@@ -63,13 +68,18 @@ public class EcoreDataTypes {
 	public static EcoreDataTypes INSTANCE = new EcoreDataTypes();
 
 	private EcoreDataTypes() {
+		try {
+			dataTypeFactory = DatatypeFactory.newInstance();
+		} catch (DatatypeConfigurationException e) {
+			throw new TeneoException("Exception ", e);
+		}
 	}
 
 	// TODO: Make all utility methods static.
 
 	/** Return a XMLGregorianCalendar on the basis of the date */
 	public XMLGregorianCalendar getXMLGregorianCalendar(Date date) {
-		final XMLGregorianCalendar gregCalendar = new XMLGregorianCalendarImpl();
+		final XMLGregorianCalendar gregCalendar = dataTypeFactory.newXMLGregorianCalendar();
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		gregCalendar.setYear(calendar.get(Calendar.YEAR));
@@ -80,7 +90,7 @@ public class EcoreDataTypes {
 
 	/** Return a XMLGregorianCalendar on datetime level (milliseconds) */
 	public XMLGregorianCalendar getXMLGregorianCalendarDateTime(Date date) {
-		final XMLGregorianCalendar gregCalendar = new XMLGregorianCalendarImpl();
+		final XMLGregorianCalendar gregCalendar = dataTypeFactory.newXMLGregorianCalendar();
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		gregCalendar.setYear(calendar.get(Calendar.YEAR));
@@ -94,16 +104,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns an immutable list of the Ecore EDataType for java
-	 *         primitives.
+	 * @return Returns an immutable list of the Ecore EDataType for java primitives.
 	 */
 	public List<EDataType> getEPrimitives() {
 		return PRIMITIVES_ETYPES_LIST;
 	}
 
 	/**
-	 * @return Returns true if and only if the the given eDataType is the Ecore
-	 *         EDataType for a primitive type.
+	 * @return Returns true if and only if the the given eDataType is the Ecore EDataType for a
+	 *         primitive type.
 	 */
 	public boolean isEPrimitive(EDataType eDataType) {
 		return (eDataType != null) && (eDataType.getInstanceClass() != null) &&
@@ -111,16 +120,15 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns an immutable list of the Ecore EDataType for java
-	 *         primitive wrapper classes.
+	 * @return Returns an immutable list of the Ecore EDataType for java primitive wrapper classes.
 	 */
 	public List<EDataType> getEWrappers() {
 		return WRAPPERS_ETYPES_LIST;
 	}
 
 	/**
-	 * @return Returns true if and only if the the given eDataType is the Ecore
-	 *         EDataType for a primitive wrapper class.
+	 * @return Returns true if and only if the the given eDataType is the Ecore EDataType for a
+	 *         primitive wrapper class.
 	 */
 	public boolean isEWrapper(EDataType eDataType) {
 		return WRAPPERS_ETYPES_LIST.contains(eDataType);
@@ -136,7 +144,9 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	-	 * @return true if and only if the given dataType is a date datatype.
+	 * - *
+	 * 
+	 * @return true if and only if the given dataType is a date datatype.
 	 */
 	public boolean isEDate(EDataType eDataType) {
 		if (eDataType.equals(xmlDateEDataType)) {
@@ -175,8 +185,8 @@ public class EcoreDataTypes {
 	}
 
 	/**
-	 * @return Returns true if and only if the given type is either a primitive
-	 *         or a wrapper or string or a date.
+	 * @return Returns true if and only if the given type is either a primitive or a wrapper or
+	 *         string or a date.
 	 */
 	public boolean isSimpleType(EDataType eType) {
 		// TODO move elsewhere
