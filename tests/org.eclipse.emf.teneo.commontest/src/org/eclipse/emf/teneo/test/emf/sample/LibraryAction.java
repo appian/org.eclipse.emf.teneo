@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.12 2007/11/14 16:39:43 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.13 2007/12/28 14:36:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -94,15 +94,15 @@ public class LibraryAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
-			assertTrue(((Writer) lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
+			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 
 // final Object[] eobjs = store.getCrossReferencers((EObject)lib.getWriters().get(0), false);
 
 			// these two books should be the same as this book is the first in the writers
 			// collection
 			// and in the library collection
-			Book wBook = (Book) ((Writer) lib.getWriters().get(0)).getBooks().get(0);
-			Book lBook = (Book) lib.getBooks().get(0);
+			Book wBook = (lib.getWriters().get(0)).getBooks().get(0);
+			Book lBook = lib.getBooks().get(0);
 
 			// check container
 			assertTrue(lBook.eContainer() == lib);

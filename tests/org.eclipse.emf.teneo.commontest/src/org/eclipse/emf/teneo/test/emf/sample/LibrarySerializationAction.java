@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.6 2007/07/04 19:28:21 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.7 2007/12/28 14:36:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -41,10 +41,11 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * Tests serialization of the library example, also after persistence solution has replaced members.
  * 
- * Test case uses Impl classes to facilitate build on emft server (encountered class loading errors).
+ * Test case uses Impl classes to facilitate build on emft server (encountered class loading
+ * errors).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -80,7 +81,7 @@ public class LibrarySerializationAction extends AbstractTestAction {
 			LibraryImpl lib = (LibraryImpl) store.getObject(Library.class);
 			assertEquals(2, lib.getBooks().size());
 			assertEquals(1, lib.getWriters().size());
-			assertEquals(2, ((Writer) lib.getWriters().get(0)).getBooks().size());
+			assertEquals(2, (lib.getWriters().get(0)).getBooks().size());
 			serialize(lib, "two");
 			store.commitTransaction();
 		}
@@ -138,16 +139,16 @@ public class LibrarySerializationAction extends AbstractTestAction {
 		assertEquals(2, library.getBooks().size());
 		assertEquals(1, library.getWriters().size());
 
-		Writer writer = (Writer) library.getWriters().get(0);
+		Writer writer = library.getWriters().get(0);
 		assertEquals(preFix + "JRR Tolkien", writer.getName());
 		assertEquals(2, writer.getBooks().size());
 
-		Book bk1 = (Book) library.getBooks().get(0);
+		Book bk1 = library.getBooks().get(0);
 		assertEquals(preFix + "The Hobbit", bk1.getTitle());
 		assertEquals(5, bk1.getPages());
 		assertEquals(BookCategory.SCIENCE_FICTION_LITERAL, bk1.getCategory());
 
-		Book bk2 = (Book) library.getBooks().get(1);
+		Book bk2 = library.getBooks().get(1);
 		assertEquals(preFix + "The fellowship of the ring", bk2.getTitle());
 		assertEquals(7, bk2.getPages());
 		assertEquals(BookCategory.SCIENCE_FICTION_LITERAL, bk2.getCategory());
