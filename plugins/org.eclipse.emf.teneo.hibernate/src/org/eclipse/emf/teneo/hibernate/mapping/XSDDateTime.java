@@ -9,9 +9,10 @@
  * Contributors:
  *   Brian Vetter
  *   Martin Taal
+ *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: XSDDateTime.java,v 1.2 2007/07/04 19:27:28 mtaal Exp $
+ * $Id: XSDDateTime.java,v 1.3 2007/12/28 14:36:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -30,8 +31,6 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
 import org.hibernate.type.MutableType;
-
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
 /**
  * Implements the hibernate UserType for EMF's XMLGregorianCalendar ("datetime" type in XSD).
@@ -71,7 +70,7 @@ public class XSDDateTime extends MutableType {
 	 */
 	@Override
 	public Object deepCopyNotNull(Object value) {
-		return new XMLGregorianCalendarImpl(((XMLGregorianCalendar) value).toGregorianCalendar());
+		return dataTypeFactory.newXMLGregorianCalendar(((XMLGregorianCalendar) value).toGregorianCalendar());
 	}
 
 	/*
