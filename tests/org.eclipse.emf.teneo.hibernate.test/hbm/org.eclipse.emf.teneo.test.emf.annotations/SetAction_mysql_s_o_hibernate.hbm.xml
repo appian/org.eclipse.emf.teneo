@@ -53,7 +53,7 @@
 			<one-to-many entity-name="testSet.ContainedItem"/>
 		</bag>
 		<bag name="item" order-by="name desc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="testset_itemlist_item">
+			<key update="true">
 				<column name="`item_itemlist_e_id`" not-null="false" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.Item"/>

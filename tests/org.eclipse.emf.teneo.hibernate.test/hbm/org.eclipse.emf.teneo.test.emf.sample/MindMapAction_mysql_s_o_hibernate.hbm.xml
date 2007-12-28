@@ -82,7 +82,7 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<list name="comments" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="resource_comments">
+			<key update="true">
 				<column name="`thread_author_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`resource_comments_idx`"/>

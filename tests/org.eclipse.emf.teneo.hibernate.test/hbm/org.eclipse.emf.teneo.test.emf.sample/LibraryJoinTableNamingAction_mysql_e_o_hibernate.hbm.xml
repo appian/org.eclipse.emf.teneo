@@ -54,7 +54,7 @@
 		</property>
 		<bag name="writers" fetch="subselect" lazy="true" cascade="all,delete-orphan">
 			<cache usage="read-write"/>
-			<key update="true" foreign-key="LIBRARY_WRITERS">
+			<key update="true" foreign-key="schrijvers">
 				<column name="`LIBRARY_WRITERS_E_ID`" not-null="false" unique="false"/>
 			</key>
 			<one-to-many entity-name="Writer"/>
@@ -86,7 +86,7 @@
 			<key update="true">
 				<column name="`WRITER_E_ID`" not-null="true" unique="false"/>
 			</key>
-			<many-to-many entity-name="Book" unique="true" foreign-key="WRITER_BOOKS">
+			<many-to-many entity-name="Book" unique="true">
 				<column name="`BOOK_E_ID`" not-null="true" unique="false"/>
 			</many-to-many>
 		</bag>

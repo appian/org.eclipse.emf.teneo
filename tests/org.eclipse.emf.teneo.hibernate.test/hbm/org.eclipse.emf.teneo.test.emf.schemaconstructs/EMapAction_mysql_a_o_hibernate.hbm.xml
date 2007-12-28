@@ -45,7 +45,7 @@
 			<key update="true">
 				<column name="`book_categorybydate_e_id`" not-null="false" unique="false"/>
 			</key>
-			<map-key type="java.util.Date"/>
+			<map-key type="timestamp"/>
 			<element>
 				<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 					<param name="enumClass">org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category</param>

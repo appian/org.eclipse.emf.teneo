@@ -59,14 +59,14 @@
 			<one-to-many entity-name="TwoCN"/>
 		</list>
 		<list name="twonr" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="main_twonr">
+			<key update="true">
 				<column name="`twonr_main_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`main_twonr_idx`"/>
 			<one-to-many entity-name="TwoNR"/>
 		</list>
 		<list name="twonn" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="main_twonn">
+			<key update="true">
 				<column name="`twonn_main_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`main_twonn_idx`"/>

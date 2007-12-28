@@ -40,7 +40,7 @@
 			<column not-null="false" unique="false" name="`emergencycontact`"/>
 		</property>
 		<bag name="addresses" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="person_addresses">
+			<key update="true">
 				<column name="`address_person_e_id`" not-null="false" unique="false"/>
 			</key>
 			<one-to-many entity-name="Address"/>

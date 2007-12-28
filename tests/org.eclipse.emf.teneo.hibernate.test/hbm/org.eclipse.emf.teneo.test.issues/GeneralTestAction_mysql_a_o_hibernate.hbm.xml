@@ -17,7 +17,7 @@
 			<column not-null="false" unique="false" name="`name`"/>
 		</property>
 		<list name="contacts" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="address_contacts">
+			<key update="true">
 				<column name="`contact_address_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`address_contacts_idx`"/>

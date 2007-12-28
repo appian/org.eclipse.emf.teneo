@@ -35,21 +35,21 @@
 		<meta attribute="eclassName">Workflow</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<list name="nodes" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="workflow_nodes">
+			<key update="true">
 				<column name="`workflownode_workflow_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`workflow_nodes_idx`"/>
 			<one-to-many entity-name="WorkflowNode"/>
 		</list>
 		<list name="edges" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="workflow_edges">
+			<key update="true">
 				<column name="`edge_workflow_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`workflow_edges_idx`"/>
 			<one-to-many entity-name="Edge"/>
 		</list>
 		<list name="comments" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="workflow_comments">
+			<key update="true">
 				<column name="`comment_workflow_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`workflow_comments_idx`"/>
@@ -63,14 +63,14 @@
 			<column not-null="false" unique="false" name="`workflownode_workflow_id`"/>
 		</many-to-one>
 		<list name="outputs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="workflownode_outputs">
+			<key update="true">
 				<column name="`outputport_node_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`workflownode_outputs_idx`"/>
 			<one-to-many entity-name="OutputPort"/>
 		</list>
 		<list name="inputs" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="workflownode_inputs">
+			<key update="true">
 				<column name="`inputport_node_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`workflownode_inputs_idx`"/>
@@ -107,7 +107,7 @@
 			<column not-null="false" unique="false" name="`inputport_node_id`"/>
 		</many-to-one>
 		<list name="edges" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="inputport_edges">
+			<key update="true">
 				<column name="`edge_target_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`inputport_edges_idx`"/>
@@ -121,7 +121,7 @@
 			<column not-null="false" unique="false" name="`outputport_node_id`"/>
 		</many-to-one>
 		<list name="edges" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="outputport_edges">
+			<key update="true">
 				<column name="`edge_source_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`outputport_edges_idx`"/>

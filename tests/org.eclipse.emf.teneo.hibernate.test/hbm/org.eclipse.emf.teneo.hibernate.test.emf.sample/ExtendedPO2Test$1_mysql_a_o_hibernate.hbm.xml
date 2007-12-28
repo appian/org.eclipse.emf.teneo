@@ -156,7 +156,7 @@
 			<column not-null="false" unique="false" name="`customerid`"/>
 		</property>
 		<list name="orders" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="customer_orders">
+			<key update="true">
 				<column name="`purchaseorder_customer_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`customer_orders_idx`"/>

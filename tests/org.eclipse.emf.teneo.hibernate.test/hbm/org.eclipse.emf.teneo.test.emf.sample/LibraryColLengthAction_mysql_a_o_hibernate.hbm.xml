@@ -48,7 +48,7 @@
 			<column not-null="true" unique="false" name="`name`"/>
 		</property>
 		<list name="writers" fetch="subselect" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="library_writers">
+			<key update="true" foreign-key="schrijvers">
 				<column name="`li_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`l_idx`"/>
@@ -77,7 +77,7 @@
 			<column not-null="true" unique="false" name="`name`"/>
 		</property>
 		<list name="books" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="writer_books">
+			<key update="true">
 				<column name="`bo_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`w_idx`"/>

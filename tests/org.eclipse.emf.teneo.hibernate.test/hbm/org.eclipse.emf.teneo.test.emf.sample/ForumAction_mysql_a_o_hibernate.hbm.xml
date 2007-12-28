@@ -50,14 +50,14 @@
 			<column not-null="true" unique="false" name="`nickname`"/>
 		</property>
 		<list name="posts" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="member_posts">
+			<key update="true">
 				<column name="`post_author_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`member_posts_idx`"/>
 			<one-to-many entity-name="Post"/>
 		</list>
 		<list name="created" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="member_created">
+			<key update="true">
 				<column name="`topic_creator_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`member_created_idx`"/>
@@ -109,7 +109,7 @@
 			<column not-null="false" unique="false" name="`topic_creator_e_id`"/>
 		</many-to-one>
 		<list name="posts" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="topic_posts">
+			<key update="true">
 				<column name="`post_topic_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`topic_posts_idx`"/>

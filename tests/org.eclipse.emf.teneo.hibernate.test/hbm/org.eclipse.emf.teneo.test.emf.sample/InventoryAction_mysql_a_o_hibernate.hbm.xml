@@ -20,7 +20,7 @@
 			<column not-null="false" unique="false" name="`ptype_base_id`"/>
 		</many-to-one>
 		<bag name="subTypes" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="ptype_subtypes">
+			<key update="true">
 				<column name="`ptype_base_id`" not-null="false" unique="false"/>
 			</key>
 			<one-to-many entity-name="PType"/>

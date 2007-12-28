@@ -70,7 +70,7 @@
 			<column not-null="false" unique="false" name="`name`"/>
 		</property>
 		<list name="books" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true" foreign-key="writer_books">
+			<key update="true">
 				<column name="`book_author_e_id`" not-null="false" unique="false"/>
 			</key>
 			<list-index column="`writer_books_idx`"/>
