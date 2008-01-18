@@ -62,7 +62,7 @@
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.PromotionTypeImpl"/>
 			</field>
 			<field name="publicationDate" persistence-modifier="persistent" null-value="exception" embedded="true"/>
-			<field name="bookCategory" persistence-modifier="persistent" null-value="none"/>
+			<field name="bookCategory" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="bookCategoryESet" persistence-modifier="persistent"/>
 			<field name="itemId" persistence-modifier="persistent" null-value="none"/>
 		</class>

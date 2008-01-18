@@ -833,6 +833,11 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.ecore.resource,
    org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.emf.sample.catalog.validation;uses:="org.eclipse.emf.teneo.samples.emf.sample.catalog,org.eclipse.emf.common.util",
+ org.eclipse.emf.teneo.samples.emf.sample.claim,
+ org.eclipse.emf.teneo.samples.emf.sample.claim.impl,
+ org.eclipse.emf.teneo.samples.emf.sample.claim.model,
+ org.eclipse.emf.teneo.samples.emf.sample.claim.util,
+ org.eclipse.emf.teneo.samples.emf.sample.claim.validation,
  org.eclipse.emf.teneo.samples.emf.sample.dynamic;uses:="org.eclipse.emf.common.util,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl;
   uses:="org.eclipse.emf.teneo.samples.emf.sample.dynamic,
