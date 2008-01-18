@@ -34,7 +34,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class ReadEcore {
 
@@ -44,29 +44,31 @@ public class ReadEcore {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
-			final ResourceSet resourceSet = new ResourceSetImpl();
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("*", new EcoreResourceFactoryImpl());
-			final ArrayList epackages = new ArrayList();
-			final String[] ecores = new String[] { "Bugzilla.ecore" };
-			for (String ecore : ecores) {
-				final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/" + ecore), true);
-				res.load(new HashMap());
+			if (false) {
+				final ResourceSet resourceSet = new ResourceSetImpl();
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",
+					new EcoreResourceFactoryImpl());
+				final ArrayList epackages = new ArrayList();
+				final String[] ecores = new String[] { "Bugzilla.ecore" };
+				for (String ecore : ecores) {
+					final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/" + ecore), true);
+					res.load(new HashMap());
 
-				Iterator it = res.getAllContents();
-				while (it.hasNext()) {
-					final Object obj = it.next();
-					if (obj instanceof EPackage) {
-						EPackage epack = (EPackage) obj;
-						if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
-							EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+					Iterator it = res.getAllContents();
+					while (it.hasNext()) {
+						final Object obj = it.next();
+						if (obj instanceof EPackage) {
+							EPackage epack = (EPackage) obj;
+							if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
+								EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+							}
+							epackages.add(epack);
 						}
-						epackages.add(epack);
 					}
 				}
-			}
 
-			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
+				EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
+			}
 
 // epacks =
 // new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
@@ -79,17 +81,40 @@ public class ReadEcore {
 // customs.ru.ekts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
 // customs.ru.information.customs.documents.kt.sout._3._0._1._1Package.eINSTANCE };
 
-			final Properties props = new Properties();
-			props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
-			props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-			props.setProperty(PersistenceOptions.PERSISTENCE_XML, "test.persistence.xml");
-			props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+// final Properties props = new Properties();
+// props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+// props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
+// props.setProperty(PersistenceOptions.PERSISTENCE_XML, "test.persistence.xml");
+// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 
 // System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
-			initDataStore(epacks);
+// HbDataStore hbds = initSimpleDataStore(new EPackage[] { ModelPackage.eINSTANCE });
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
+	}
+
+	/** Initialise database and hibernate with the mapping */
+	private static HbDataStore initSimpleDataStore(EPackage[] epacks) {
+		HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore("test");
+		final Properties props = new Properties();
+		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+		props.setProperty(Environment.USER, "root");
+		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/claim");
+		props.setProperty(Environment.PASS, "root");
+		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+// props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
+// "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
+		hbds.setPersistenceProperties(props);
+		hbds.setHibernateProperties(props);
+		hbds.setEPackages(epacks);
+		// initialize, also creates the database tables
+		try {
+			hbds.initialize();
+		} finally {
+			System.err.println(hbds.getMappingXML());
+		}
+		return hbds;
 	}
 
 	/** Initialise database and hibernate with the mapping */
@@ -98,7 +123,7 @@ public class ReadEcore {
 		final Properties props = new Properties();
 		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
 		props.setProperty(Environment.USER, "root");
-		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
+		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/claim");
 		props.setProperty(Environment.PASS, "root");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");

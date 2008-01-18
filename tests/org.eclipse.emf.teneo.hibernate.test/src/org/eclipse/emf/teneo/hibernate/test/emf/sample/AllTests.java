@@ -15,6 +15,7 @@ import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CarAction;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
+import org.eclipse.emf.teneo.test.emf.sample.ClaimAction;
 import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  */
 public class AllTests {
 
@@ -53,6 +54,9 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(LibraryResourceAction.class);
+		suite.addTestSuite(LibraryTest.class);
+		suite.addTestSuite(ClaimAction.class);
 		suite.addTestSuite(ProductAction.class);
 
 		suite.addTestSuite(JuliaAction.class);
@@ -62,7 +66,6 @@ public class AllTests {
 		suite.addTestSuite(EcoreAction.class);
 
 		suite.addTestSuite(LibraryJoinTableNamingAction.class);
-		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(CarAction.class);
 
@@ -103,7 +106,6 @@ public class AllTests {
 		// suite.addTestSuite(YahooAction.class);
 		suite.addTestSuite(MindMapAction.class);
 
-		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibrarySerializationAction.class);
 
 		// suite.addTestSuite(GMFNotationAction.class);
