@@ -9,7 +9,7 @@
   <genPackages prefix="Pamodel" basePackage="org.eclipse.emf.teneo.annotations" disposableProviderFactory="true"
       ecorePackage="pamodel.ecore#/">
     <genClasses image="false" ecoreClass="pamodel.ecore#//PAnnotatedEModelElement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEModelElement/annotatedElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEModelElement/modelElement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEModelElement/transient"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedModel">
@@ -17,7 +17,7 @@
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEPackage">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/paModel"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/annotatedEPackage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/modelEPackage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/paEClasses"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/sequenceGenerators"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEPackage/tableGenerators"/>
@@ -25,7 +25,7 @@
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEClass">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/paEPackage"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/annotatedEClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/modelEClass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/paEStructuralFeatures"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/attributeOverrides"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/discriminatorColumn"/>
@@ -43,11 +43,11 @@
     </genClasses>
     <genClasses image="false" ecoreClass="pamodel.ecore#//PAnnotatedEStructuralFeature">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/paEClass"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/annotatedEStructuralFeature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/modelEStructuralFeature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/foreignKey"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/annotatedEAttribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/modelEAttribute"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/basic"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/enumerated"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/generatedValue"/>
@@ -57,7 +57,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/version"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEReference">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/annotatedEReference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/modelEReference"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/embedded"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/embeddedId"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/manyToMany"/>
@@ -77,7 +77,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedETypedElement/column"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEDataType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/annotatedEDataType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/modelEDataType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/basic"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/enumerated"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEDataType/generatedValue"/>

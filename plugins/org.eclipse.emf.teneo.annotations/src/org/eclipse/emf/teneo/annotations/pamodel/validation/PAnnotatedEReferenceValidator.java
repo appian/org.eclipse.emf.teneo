@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceValidator.java,v 1.1 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: PAnnotatedEReferenceValidator.java,v 1.2 2008/01/18 06:20:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  */
 public interface PAnnotatedEReferenceValidator {
 	boolean validate();
+
+	boolean validateModelEReference(EReference value);
 
 	boolean validateAnnotatedEReference(EReference value);
 	boolean validateEmbedded(Embedded value);

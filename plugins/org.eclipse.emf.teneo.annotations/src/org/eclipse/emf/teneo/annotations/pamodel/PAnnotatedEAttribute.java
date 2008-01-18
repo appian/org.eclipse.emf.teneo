@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEAttribute.java,v 1.9 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotatedEAttribute.java,v 1.10 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getAnnotatedEAttribute <em>Annotated EAttribute</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getModelEAttribute <em>Model EAttribute</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getBasic <em>Basic</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getEnumerated <em>Enumerated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getGeneratedValue <em>Generated Value</em>}</li>
@@ -39,29 +39,20 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  */
 public interface PAnnotatedEAttribute extends PAnnotatedEStructuralFeature {
 	/**
-	 * Returns the value of the '<em><b>Annotated EAttribute</b></em>' reference.
+	 * Returns the value of the '<em><b>Model EAttribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Annotated EAttribute</em>' reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotated EAttribute</em>' reference.
-	 * @see #setAnnotatedEAttribute(EAttribute)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEAttribute_AnnotatedEAttribute()
-	 * @model annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @return the value of the '<em>Model EAttribute</em>' reference.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEAttribute_ModelEAttribute()
+	 * @model transient="true" changeable="false" volatile="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
-	EAttribute getAnnotatedEAttribute();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute#getAnnotatedEAttribute <em>Annotated EAttribute</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotated EAttribute</em>' reference.
-	 * @see #getAnnotatedEAttribute()
-	 * @generated
-	 */
-	void setAnnotatedEAttribute(EAttribute value);
+	EAttribute getModelEAttribute();
 
 	/**
 	 * Returns the value of the '<em><b>Basic</b></em>' containment reference.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.21 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.22 2008/01/18 06:20:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.eclipse.emf.teneo.annotations.pamodel.*;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;

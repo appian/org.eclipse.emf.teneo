@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.14 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.15 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -18,8 +17,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'.
@@ -28,7 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getPaEClass <em>Pa EClass</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getAnnotatedEStructuralFeature <em>Annotated EStructural Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getModelEStructuralFeature <em>Model EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getForeignKey <em>Foreign Key</em>}</li>
  * </ul>
  * </p>
@@ -39,8 +38,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 		PAnnotatedEStructuralFeature {
 	/**
 	 * The cached value of the '{@link #getForeignKey() <em>Foreign Key</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getForeignKey()
 	 * @generated
 	 * @ordered
@@ -74,8 +72,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetPaEClass(PAnnotatedEClass newPaEClass, NotificationChain msgs) {
@@ -107,9 +104,9 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EStructuralFeature getAnnotatedEStructuralFeature() {
-		EStructuralFeature annotatedEStructuralFeature = basicGetAnnotatedEStructuralFeature();
-		return annotatedEStructuralFeature != null && annotatedEStructuralFeature.eIsProxy() ? (EStructuralFeature)eResolveProxy((InternalEObject)annotatedEStructuralFeature) : annotatedEStructuralFeature;
+	public EStructuralFeature getModelEStructuralFeature() {
+		EStructuralFeature modelEStructuralFeature = basicGetModelEStructuralFeature();
+		return modelEStructuralFeature != null && modelEStructuralFeature.eIsProxy() ? (EStructuralFeature)eResolveProxy((InternalEObject)modelEStructuralFeature) : modelEStructuralFeature;
 	}
 
 	/**
@@ -117,18 +114,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * 
 	 * @generated NOT
 	 */
-	public abstract EStructuralFeature basicGetAnnotatedEStructuralFeature();
+	public EStructuralFeature basicGetModelEStructuralFeature() {
+		return (EStructuralFeature) getModelElement();
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	public abstract void setAnnotatedEStructuralFeature(EStructuralFeature newEStructuralFeature);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ForeignKey getForeignKey() {
@@ -136,8 +127,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetForeignKey(ForeignKey newForeignKey, NotificationChain msgs) {
@@ -151,8 +141,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setForeignKey(ForeignKey newForeignKey) {
@@ -169,17 +158,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY, newForeignKey, newForeignKey));
 	}
 
-	public ENamedElement basicGetAnnotatedElement() {
-		return basicGetAnnotatedEStructuralFeature();
-	}
-
-	public void setAnnotatedElement(ENamedElement newAnnotatedElement) {
-		setAnnotatedEStructuralFeature((EStructuralFeature) newAnnotatedElement);
-	}
-
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -194,8 +174,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -210,8 +189,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -224,8 +202,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -233,9 +210,9 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
 				return getPaEClass();
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE:
-				if (resolve) return getAnnotatedEStructuralFeature();
-				return basicGetAnnotatedEStructuralFeature();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MODEL_ESTRUCTURAL_FEATURE:
+				if (resolve) return getModelEStructuralFeature();
+				return basicGetModelEStructuralFeature();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				return getForeignKey();
 		}
@@ -243,8 +220,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -252,9 +228,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
 				setPaEClass((PAnnotatedEClass)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE:
-				setAnnotatedEStructuralFeature((EStructuralFeature)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				setForeignKey((ForeignKey)newValue);
@@ -264,8 +237,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -273,9 +245,6 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
 				setPaEClass((PAnnotatedEClass)null);
-				return;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE:
-				setAnnotatedEStructuralFeature((EStructuralFeature)null);
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				setForeignKey((ForeignKey)null);
@@ -285,8 +254,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -294,8 +262,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 		switch (featureID) {
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS:
 				return getPaEClass() != null;
-			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE:
-				return basicGetAnnotatedEStructuralFeature() != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MODEL_ESTRUCTURAL_FEATURE:
+				return basicGetModelEStructuralFeature() != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				return foreignKey != null;
 		}
@@ -311,6 +279,7 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/** Returns the column annotation */
+	@Override
 	public Column getColumn() {
 		return column;
 	}

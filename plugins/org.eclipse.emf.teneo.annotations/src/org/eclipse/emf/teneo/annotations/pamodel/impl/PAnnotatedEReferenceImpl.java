@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.12 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.13 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -13,7 +13,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,42 +30,31 @@ import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PAnnotated EReference</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EReference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getAnnotatedEReference <em>Annotated EReference</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getEmbedded <em>Embedded</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getEmbeddedId <em>Embedded Id</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getManyToMany <em>Many To Many</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getManyToOne <em>Many To One</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKey <em>Map Key</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOneToOne <em>One To One</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderBy <em>Order By</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getModelEReference <em>Model EReference</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getEmbedded <em>Embedded</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getEmbeddedId <em>Embedded Id</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getManyToMany <em>Many To Many</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getManyToOne <em>Many To One</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKey <em>Map Key</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOneToOne <em>One To One</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderBy <em>Order By</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl implements PAnnotatedEReference {
 
 	/**
-	 * The cached value of the '{@link #getAnnotatedEReference() <em>Annotated EReference</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAnnotatedEReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected EReference annotatedEReference;
-
-	/**
 	 * The cached value of the '{@link #getEmbedded() <em>Embedded</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEmbedded()
 	 * @generated
 	 * @ordered
@@ -74,9 +62,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected Embedded embedded;
 
 	/**
-	 * The cached value of the '{@link #getEmbeddedId() <em>Embedded Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEmbeddedId() <em>Embedded Id</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEmbeddedId()
 	 * @generated
 	 * @ordered
@@ -84,9 +72,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected EmbeddedId embeddedId;
 
 	/**
-	 * The cached value of the '{@link #getManyToMany() <em>Many To Many</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getManyToMany() <em>Many To Many</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getManyToMany()
 	 * @generated
 	 * @ordered
@@ -94,9 +82,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected ManyToMany manyToMany;
 
 	/**
-	 * The cached value of the '{@link #getManyToOne() <em>Many To One</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getManyToOne() <em>Many To One</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getManyToOne()
 	 * @generated
 	 * @ordered
@@ -104,9 +92,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected ManyToOne manyToOne;
 
 	/**
-	 * The cached value of the '{@link #getMapKey() <em>Map Key</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMapKey() <em>Map Key</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMapKey()
 	 * @generated
 	 * @ordered
@@ -115,8 +103,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 
 	/**
 	 * The cached value of the '{@link #getOneToOne() <em>One To One</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOneToOne()
 	 * @generated
 	 * @ordered
@@ -125,8 +113,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 
 	/**
 	 * The cached value of the '{@link #getOrderBy() <em>Order By</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOrderBy()
 	 * @generated
 	 * @ordered
@@ -134,9 +122,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	protected OrderBy orderBy;
 
 	/**
-	 * The cached value of the '{@link #getPrimaryKeyJoinColumns() <em>Primary Key Join Columns</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPrimaryKeyJoinColumns() <em>Primary Key Join Columns</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPrimaryKeyJoinColumns()
 	 * @generated
 	 * @ordered
@@ -145,33 +133,32 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 
 	/** The pannotated eclass to which the reference is pointing */
 	private PAnnotatedEClass areferenceType = null;
-	
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PAnnotatedEReferenceImpl() {
 		super();
 	}
-	
+
 	/** Returns the eclass to which the reference is pointing */
 	public EClass getEReferenceType() {
-		return getAnnotatedEReference().getEReferenceType();
+		return getModelEReference().getEReferenceType();
 	}
-	
+
 	/** Returns the annotated class to which the reference is pointing */
 	public PAnnotatedEClass getAReferenceType() {
 		if (areferenceType == null) {
 			areferenceType = getPaModel().getPAnnotated(getEReferenceType());
 		}
 		return areferenceType;
- 	}
+	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -180,49 +167,28 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EReference getAnnotatedEReference() {
-		if (annotatedEReference != null && annotatedEReference.eIsProxy()) {
-			InternalEObject oldAnnotatedEReference = (InternalEObject)annotatedEReference;
-			annotatedEReference = (EReference)eResolveProxy(oldAnnotatedEReference);
-			if (annotatedEReference != oldAnnotatedEReference) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE, oldAnnotatedEReference, annotatedEReference));
-			}
-		}
-		return annotatedEReference;
+	public EReference getModelEReference() {
+		EReference modelEReference = basicGetModelEReference();
+		return modelEReference != null && modelEReference.eIsProxy()
+				? (EReference) eResolveProxy((InternalEObject) modelEReference) : modelEReference;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference basicGetAnnotatedEReference() {
-		return annotatedEReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public void setAnnotatedEReference(EReference newAnnotatedEReference) {
-		EReference oldAnnotatedEReference = annotatedEReference;
-		annotatedEReference = newAnnotatedEReference;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE, oldAnnotatedEReference, annotatedEReference));
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE, oldAnnotatedEReference, annotatedEReference));
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ELEMENT, oldAnnotatedEReference, annotatedEReference));
-		}
+	public EReference basicGetModelEReference() {
+		return (EReference) getModelElement();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Embedded getEmbedded() {
@@ -230,42 +196,57 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetEmbedded(Embedded newEmbedded, NotificationChain msgs) {
 		Embedded oldEmbedded = embedded;
 		embedded = newEmbedded;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED, oldEmbedded, newEmbedded);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED,
+						oldEmbedded, newEmbedded);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEmbedded(Embedded newEmbedded) {
 		if (newEmbedded != embedded) {
 			NotificationChain msgs = null;
-			if (embedded != null)
-				msgs = ((InternalEObject)embedded).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED, null, msgs);
-			if (newEmbedded != null)
-				msgs = ((InternalEObject)newEmbedded).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED, null, msgs);
+			if (embedded != null) {
+				msgs =
+						((InternalEObject) embedded).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED, null, msgs);
+			}
+			if (newEmbedded != null) {
+				msgs =
+						((InternalEObject) newEmbedded).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED, null, msgs);
+			}
 			msgs = basicSetEmbedded(newEmbedded, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED,
+				newEmbedded, newEmbedded));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED, newEmbedded, newEmbedded));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EmbeddedId getEmbeddedId() {
@@ -273,50 +254,57 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetEmbeddedId(EmbeddedId newEmbeddedId, NotificationChain msgs) {
 		EmbeddedId oldEmbeddedId = embeddedId;
 		embeddedId = newEmbeddedId;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID, oldEmbeddedId, newEmbeddedId);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID,
+						oldEmbeddedId, newEmbeddedId);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEmbeddedId(EmbeddedId newEmbeddedId) {
 		if (newEmbeddedId != embeddedId) {
 			NotificationChain msgs = null;
-			if (embeddedId != null)
-				msgs = ((InternalEObject)embeddedId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID, null, msgs);
-			if (newEmbeddedId != null)
-				msgs = ((InternalEObject)newEmbeddedId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID, null, msgs);
+			if (embeddedId != null) {
+				msgs =
+						((InternalEObject) embeddedId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID, null, msgs);
+			}
+			if (newEmbeddedId != null) {
+				msgs =
+						((InternalEObject) newEmbeddedId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID, null, msgs);
+			}
 			msgs = basicSetEmbeddedId(newEmbeddedId, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID,
+				newEmbeddedId, newEmbeddedId));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID, newEmbeddedId, newEmbeddedId));
-	}
-
-	public EStructuralFeature basicGetAnnotatedEStructuralFeature() {
-		return basicGetAnnotatedEReference();
-	}
-
-	public void setAnnotatedEStructuralFeature(EStructuralFeature newEStructuralFeature) {
-		setAnnotatedEReference((EReference) newEStructuralFeature);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ManyToMany getManyToMany() {
@@ -324,42 +312,57 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetManyToMany(ManyToMany newManyToMany, NotificationChain msgs) {
 		ManyToMany oldManyToMany = manyToMany;
 		manyToMany = newManyToMany;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY, oldManyToMany, newManyToMany);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY,
+						oldManyToMany, newManyToMany);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setManyToMany(ManyToMany newManyToMany) {
 		if (newManyToMany != manyToMany) {
 			NotificationChain msgs = null;
-			if (manyToMany != null)
-				msgs = ((InternalEObject)manyToMany).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY, null, msgs);
-			if (newManyToMany != null)
-				msgs = ((InternalEObject)newManyToMany).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY, null, msgs);
+			if (manyToMany != null) {
+				msgs =
+						((InternalEObject) manyToMany).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY, null, msgs);
+			}
+			if (newManyToMany != null) {
+				msgs =
+						((InternalEObject) newManyToMany).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY, null, msgs);
+			}
 			msgs = basicSetManyToMany(newManyToMany, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY,
+				newManyToMany, newManyToMany));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY, newManyToMany, newManyToMany));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ManyToOne getManyToOne() {
@@ -367,42 +370,57 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetManyToOne(ManyToOne newManyToOne, NotificationChain msgs) {
 		ManyToOne oldManyToOne = manyToOne;
 		manyToOne = newManyToOne;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE, oldManyToOne, newManyToOne);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE,
+						oldManyToOne, newManyToOne);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setManyToOne(ManyToOne newManyToOne) {
 		if (newManyToOne != manyToOne) {
 			NotificationChain msgs = null;
-			if (manyToOne != null)
-				msgs = ((InternalEObject)manyToOne).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE, null, msgs);
-			if (newManyToOne != null)
-				msgs = ((InternalEObject)newManyToOne).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE, null, msgs);
+			if (manyToOne != null) {
+				msgs =
+						((InternalEObject) manyToOne).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE, null, msgs);
+			}
+			if (newManyToOne != null) {
+				msgs =
+						((InternalEObject) newManyToOne).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE, null, msgs);
+			}
 			msgs = basicSetManyToOne(newManyToOne, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE,
+				newManyToOne, newManyToOne));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE, newManyToOne, newManyToOne));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MapKey getMapKey() {
@@ -410,42 +428,57 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMapKey(MapKey newMapKey, NotificationChain msgs) {
 		MapKey oldMapKey = mapKey;
 		mapKey = newMapKey;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY, oldMapKey, newMapKey);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY,
+						oldMapKey, newMapKey);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMapKey(MapKey newMapKey) {
 		if (newMapKey != mapKey) {
 			NotificationChain msgs = null;
-			if (mapKey != null)
-				msgs = ((InternalEObject)mapKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY, null, msgs);
-			if (newMapKey != null)
-				msgs = ((InternalEObject)newMapKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY, null, msgs);
+			if (mapKey != null) {
+				msgs =
+						((InternalEObject) mapKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY, null, msgs);
+			}
+			if (newMapKey != null) {
+				msgs =
+						((InternalEObject) newMapKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY, null, msgs);
+			}
 			msgs = basicSetMapKey(newMapKey, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY,
+				newMapKey, newMapKey));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY, newMapKey, newMapKey));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OneToOne getOneToOne() {
@@ -453,42 +486,57 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetOneToOne(OneToOne newOneToOne, NotificationChain msgs) {
 		OneToOne oldOneToOne = oneToOne;
 		oneToOne = newOneToOne;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE, oldOneToOne, newOneToOne);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE,
+						oldOneToOne, newOneToOne);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOneToOne(OneToOne newOneToOne) {
 		if (newOneToOne != oneToOne) {
 			NotificationChain msgs = null;
-			if (oneToOne != null)
-				msgs = ((InternalEObject)oneToOne).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE, null, msgs);
-			if (newOneToOne != null)
-				msgs = ((InternalEObject)newOneToOne).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE, null, msgs);
+			if (oneToOne != null) {
+				msgs =
+						((InternalEObject) oneToOne).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE, null, msgs);
+			}
+			if (newOneToOne != null) {
+				msgs =
+						((InternalEObject) newOneToOne).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE, null, msgs);
+			}
 			msgs = basicSetOneToOne(newOneToOne, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE,
+				newOneToOne, newOneToOne));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE, newOneToOne, newOneToOne));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public OrderBy getOrderBy() {
@@ -496,55 +544,72 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetOrderBy(OrderBy newOrderBy, NotificationChain msgs) {
 		OrderBy oldOrderBy = orderBy;
 		orderBy = newOrderBy;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY, oldOrderBy, newOrderBy);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY,
+						oldOrderBy, newOrderBy);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * Added behavior that indexed is set to false in case order by is set
+	 * <!-- begin-user-doc --> Added behavior that indexed is set to false in case order by is set
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public void setOrderBy(OrderBy newOrderBy) {
 		if (newOrderBy != orderBy) {
 			NotificationChain msgs = null;
-			if (orderBy != null)
-				msgs = ((InternalEObject)orderBy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY, null, msgs);
-			if (newOrderBy != null)
-				msgs = ((InternalEObject)newOrderBy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY, null, msgs);
+			if (orderBy != null) {
+				msgs =
+						((InternalEObject) orderBy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY, null, msgs);
+			}
+			if (newOrderBy != null) {
+				msgs =
+						((InternalEObject) newOrderBy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY, null, msgs);
+			}
 			msgs = basicSetOrderBy(newOrderBy, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY,
+				newOrderBy, newOrderBy));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY, newOrderBy, newOrderBy));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PrimaryKeyJoinColumn> getPrimaryKeyJoinColumns() {
 		if (primaryKeyJoinColumns == null) {
-			primaryKeyJoinColumns = new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS);
+			primaryKeyJoinColumns =
+					new EObjectContainmentEList<PrimaryKeyJoinColumn>(PrimaryKeyJoinColumn.class, this,
+						PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS);
 		}
 		return primaryKeyJoinColumns;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -565,22 +630,24 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
 				return basicSetOrderBy(null, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
-				return ((InternalEList<?>)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
-				if (resolve) return getAnnotatedEReference();
-				return basicGetAnnotatedEReference();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MODEL_EREFERENCE:
+				if (resolve) {
+					return getModelEReference();
+				}
+				return basicGetModelEReference();
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
 				return getEmbedded();
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
@@ -602,77 +669,71 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
-				setAnnotatedEReference((EReference)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
-				setEmbedded((Embedded)newValue);
+				setEmbedded((Embedded) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
-				setEmbeddedId((EmbeddedId)newValue);
+				setEmbeddedId((EmbeddedId) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY:
-				setManyToMany((ManyToMany)newValue);
+				setManyToMany((ManyToMany) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE:
-				setManyToOne((ManyToOne)newValue);
+				setManyToOne((ManyToOne) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY:
-				setMapKey((MapKey)newValue);
+				setMapKey((MapKey) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE:
-				setOneToOne((OneToOne)newValue);
+				setOneToOne((OneToOne) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
-				setOrderBy((OrderBy)newValue);
+				setOrderBy((OrderBy) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
-				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>)newValue);
+				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
-				setAnnotatedEReference((EReference)null);
-				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
-				setEmbedded((Embedded)null);
+				setEmbedded((Embedded) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
-				setEmbeddedId((EmbeddedId)null);
+				setEmbeddedId((EmbeddedId) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_MANY:
-				setManyToMany((ManyToMany)null);
+				setManyToMany((ManyToMany) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__MANY_TO_ONE:
-				setManyToOne((ManyToOne)null);
+				setManyToOne((ManyToOne) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY:
-				setMapKey((MapKey)null);
+				setMapKey((MapKey) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ONE_TO_ONE:
-				setOneToOne((OneToOne)null);
+				setOneToOne((OneToOne) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_BY:
-				setOrderBy((OrderBy)null);
+				setOrderBy((OrderBy) null);
 				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
@@ -682,15 +743,15 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE:
-				return annotatedEReference != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MODEL_EREFERENCE:
+				return basicGetModelEReference() != null;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED:
 				return embedded != null;
 			case PamodelPackage.PANNOTATED_EREFERENCE__EMBEDDED_ID:
@@ -713,7 +774,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 
 	/** Refers to an entity or to a concrete class */
 	public boolean isRefersToAnEntity() {
-		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(getAnnotatedEReference().getEReferenceType());
-		return aClass == null || aClass.isOnlyMapAsEntity(); // aClass can be null when the reference is to the EObject eclass itself
+		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(getModelEReference().getEReferenceType());
+		return aClass == null || aClass.isOnlyMapAsEntity(); // aClass can be null when the
+		// reference is to the EObject
+		// eclass itself
 	}
-} //PAnnotatedEReferenceImpl
+} // PAnnotatedEReferenceImpl

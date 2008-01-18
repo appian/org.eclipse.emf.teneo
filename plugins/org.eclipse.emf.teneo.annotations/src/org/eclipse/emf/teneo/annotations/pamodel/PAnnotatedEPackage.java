@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackage.java,v 1.11 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotatedEPackage.java,v 1.12 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaModel <em>Pa Model</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getAnnotatedEPackage <em>Annotated EPackage</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getModelEPackage <em>Model EPackage</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaEClasses <em>Pa EClasses</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getSequenceGenerators <em>Sequence Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getTableGenerators <em>Table Generators</em>}</li>
@@ -70,21 +70,12 @@ public interface PAnnotatedEPackage extends PAnnotatedEModelElement {
 	 * <!-- end-user-doc -->
 	 * 
 	 * @return the value of the '<em>Annotated EPackage</em>' reference.
-	 * @see #setAnnotatedEPackage(EPackage)
+	 * @see #setModelEPackage(EPackage)
 	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEPackage_AnnotatedEPackage()
 	 * @model required="true" annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
-	EPackage getAnnotatedEPackage();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getAnnotatedEPackage <em>Annotated EPackage</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotated EPackage</em>' reference.
-	 * @see #getAnnotatedEPackage()
-	 * @generated
-	 */
-	void setAnnotatedEPackage(EPackage value);
+	EPackage getModelEPackage();
 
 	/**
 	 * Returns the value of the '<em><b>Pa EClasses</b></em>' containment reference list.

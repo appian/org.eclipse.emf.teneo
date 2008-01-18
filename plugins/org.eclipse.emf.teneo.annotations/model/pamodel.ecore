@@ -7,8 +7,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="PAnnotationElementCommutes"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"
-        volatile="true" derived="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"
+        derived="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -33,7 +33,8 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEPackage" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelEPackage" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"
+        changeable="false" volatile="true" transient="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -65,7 +66,8 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelEClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        changeable="false" volatile="true" transient="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -136,9 +138,9 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEStructuralFeature"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelEStructuralFeature"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"
-        volatile="true" derived="true">
+        changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -150,7 +152,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelEAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"
+        changeable="false" volatile="true" transient="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -174,7 +177,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotAnnotatedAsEmbed AssociationAgreeWithReference AssociationWellFormed"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelEReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        changeable="false" volatile="true" transient="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>
@@ -236,8 +240,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotAnnotatedAsBasic GeneratedOnId DefinedGenerator IdOnEntityOrMappedSuper"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotatedEDataType" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelEDataType" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType" changeable="false"
+        volatile="true" transient="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="ignore" value="true"/>
       </eAnnotations>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEDataTypeValidator.java,v 1.2 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotatedEDataTypeValidator.java,v 1.3 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  */
 public interface PAnnotatedEDataTypeValidator {
 	boolean validate();
+
+	boolean validateModelEDataType(EDataType value);
 
 	boolean validateAnnotatedEDataType(EDataType value);
 	boolean validateBasic(Basic value);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElementImpl.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: PAnnotatedEModelElementImpl.java,v 1.7 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -22,24 +22,33 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PAnnotated EModel Element</b></em>'.
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EModel Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEModelElementImpl#getAnnotatedElement <em>Annotated Element</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEModelElementImpl#getTransient <em>Transient</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEModelElementImpl#getModelElement <em>Model Element</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEModelElementImpl#getTransient <em>Transient</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements PAnnotatedEModelElement {
 	/**
+	 * The cached value of the '{@link #getModelElement() <em>Model Element</em>}' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getModelElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ENamedElement modelElement;
+
+	/**
 	 * The cached value of the '{@link #getTransient() <em>Transient</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTransient()
 	 * @generated
 	 * @ordered
@@ -47,8 +56,8 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	protected Transient transient_;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PAnnotatedEModelElementImpl() {
@@ -56,8 +65,8 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -66,32 +75,50 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public ENamedElement getAnnotatedElement() {
-		ENamedElement annotatedElement = basicGetAnnotatedElement();
-		return annotatedElement != null && annotatedElement.eIsProxy() ? (ENamedElement)eResolveProxy((InternalEObject)annotatedElement) : annotatedElement;
+	public ENamedElement getModelElement() {
+		if (modelElement != null && modelElement.eIsProxy()) {
+			InternalEObject oldModelElement = (InternalEObject) modelElement;
+			modelElement = (ENamedElement) eResolveProxy(oldModelElement);
+			if (modelElement != oldModelElement) {
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT, oldModelElement, modelElement));
+				}
+			}
+		}
+		return modelElement;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
 	 */
-	public abstract ENamedElement basicGetAnnotatedElement();
+	public ENamedElement basicGetModelElement() {
+		return modelElement;
+	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
 	 */
-	public abstract void setAnnotatedElement(ENamedElement newAnnotatedElement);
+	public void setModelElement(ENamedElement newModelElement) {
+		ENamedElement oldModelElement = modelElement;
+		modelElement = newModelElement;
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT, oldModelElement, modelElement));
+		}
+	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Transient getTransient() {
@@ -99,42 +126,57 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTransient(Transient newTransient, NotificationChain msgs) {
 		Transient oldTransient = transient_;
 		transient_ = newTransient;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT, oldTransient, newTransient);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification =
+					new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT,
+						oldTransient, newTransient);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTransient(Transient newTransient) {
 		if (newTransient != transient_) {
 			NotificationChain msgs = null;
-			if (transient_ != null)
-				msgs = ((InternalEObject)transient_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT, null, msgs);
-			if (newTransient != null)
-				msgs = ((InternalEObject)newTransient).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT, null, msgs);
+			if (transient_ != null) {
+				msgs =
+						((InternalEObject) transient_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT, null, msgs);
+			}
+			if (newTransient != null) {
+				msgs =
+						((InternalEObject) newTransient).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
+								PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT, null, msgs);
+			}
 			msgs = basicSetTransient(newTransient, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT,
+				newTransient, newTransient));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT, newTransient, newTransient));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -147,16 +189,18 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
-				if (resolve) return getAnnotatedElement();
-				return basicGetAnnotatedElement();
+			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT:
+				if (resolve) {
+					return getModelElement();
+				}
+				return basicGetModelElement();
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
 				return getTransient();
 		}
@@ -164,51 +208,51 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
-				setAnnotatedElement((ENamedElement)newValue);
+			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT:
+				setModelElement((ENamedElement) newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
-				setTransient((Transient)newValue);
+				setTransient((Transient) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
-				setAnnotatedElement((ENamedElement)null);
+			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT:
+				setModelElement((ENamedElement) null);
 				return;
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
-				setTransient((Transient)null);
+				setTransient((Transient) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT:
-				return basicGetAnnotatedElement() != null;
+			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT:
+				return modelElement != null;
 			case PamodelPackage.PANNOTATED_EMODEL_ELEMENT__TRANSIENT:
 				return transient_ != null;
 		}
@@ -222,18 +266,22 @@ public abstract class PAnnotatedEModelElementImpl extends EObjectImpl implements
 		// TODO implement as wrapper on eContents?
 		List<PAnnotation> annotations = new ArrayList<PAnnotation>();
 		for (Object x : eContents()) {
-			if (x instanceof PAnnotation)
-				annotations.add((PAnnotation)x);
+			if (x instanceof PAnnotation) {
+				annotations.add((PAnnotation) x);
+			}
 		}
 		return annotations;
 	}
 
-	/** 
+	/**
 	 * Overridden to provide type info
+	 * 
 	 * @see org.eclipse.emf.ecore.impl.BasicEObjectImpl#toString()
 	 */
+	@Override
 	public String toString() {
-		ENamedElement em = getAnnotatedElement();
-		return em.eClass().getName() + "/" + em.getName(); 
+		ENamedElement em = getModelElement();
+		return em.eClass().getName() + "/" + em.getName();
 	}
-} //PAnnotatedEModelElementImpl
+
+} // PAnnotatedEModelElementImpl

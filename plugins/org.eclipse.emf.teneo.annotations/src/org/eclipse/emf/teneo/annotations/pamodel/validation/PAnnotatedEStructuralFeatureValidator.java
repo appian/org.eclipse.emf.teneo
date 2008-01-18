@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureValidator.java,v 1.2 2007/07/11 17:15:11 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureValidator.java,v 1.3 2008/01/18 06:20:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -21,6 +21,8 @@ public interface PAnnotatedEStructuralFeatureValidator {
 	boolean validate();
 
 	boolean validatePaEClass(PAnnotatedEClass value);
+	boolean validateModelEStructuralFeature(EStructuralFeature value);
+
 	boolean validateAnnotatedEStructuralFeature(EStructuralFeature value);
 
 	boolean validateForeignKey(ForeignKey value);

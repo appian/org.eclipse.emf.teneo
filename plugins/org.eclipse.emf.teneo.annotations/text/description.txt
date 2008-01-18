@@ -12,7 +12,7 @@ Contains packages:
 Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
 
   Class PAnnotatedEModelElement
-    Reference /annotatedElement : ENamedElement
+    Reference /modelElement : ENamedElement
     Reference transient : Transient
 
   Class PAnnotatedModel
@@ -20,7 +20,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
 
   Class PAnnotatedEPackage -> PAnnotatedEModelElement
     Reference paModel : PAnnotatedModel
-    Reference annotatedEPackage : EPackage
+    Reference modelEPackage : EPackage
     Reference paEClasses : PAnnotatedEClass<<0..*>>
     Reference sequenceGenerators : SequenceGenerator<<0..*>>
     Reference tableGenerators : TableGenerator<<0..*>>
@@ -28,7 +28,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
 
   Class PAnnotatedEClass -> PAnnotatedEModelElement
     Reference paEPackage : PAnnotatedEPackage
-    Reference annotatedEClass : EClass
+    Reference modelEClass : EClass
     Reference paEStructuralFeatures : PAnnotatedEStructuralFeature<<0..*>>
     Reference attributeOverrides : AttributeOverride<<0..*>>
     Reference discriminatorColumn : DiscriminatorColumn
@@ -46,11 +46,11 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
 
   Class PAnnotatedEStructuralFeature -> PAnnotatedETypedElement
     Reference paEClass : PAnnotatedEClass
-    Reference /annotatedEStructuralFeature : EStructuralFeature
+    Reference /modelEStructuralFeature : EStructuralFeature
     Reference foreignKey : ForeignKey
 
   Class PAnnotatedEAttribute -> PAnnotatedEStructuralFeature
-    Reference annotatedEAttribute : EAttribute
+    Reference modelEAttribute : EAttribute
     Reference basic : Basic
     Reference enumerated : Enumerated
     Reference generatedValue : GeneratedValue
@@ -60,7 +60,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference version : Version
 
   Class PAnnotatedEReference -> PAnnotatedEStructuralFeature
-    Reference annotatedEReference : EReference
+    Reference modelEReference : EReference
     Reference embedded : Embedded
     Reference embeddedId : EmbeddedId
     Reference manyToMany : ManyToMany
@@ -80,7 +80,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference column : Column
 
   Class PAnnotatedEDataType -> PAnnotatedEModelElement
-    Reference annotatedEDataType : EDataType<<1..1>>
+    Reference modelEDataType : EDataType<<1..1>>
     Reference basic : Basic
     Reference enumerated : Enumerated
     Reference generatedValue : GeneratedValue

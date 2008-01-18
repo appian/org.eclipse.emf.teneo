@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElementValidator.java,v 1.1 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: PAnnotatedEModelElementValidator.java,v 1.2 2008/01/18 06:20:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -18,6 +18,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.Transient;
  */
 public interface PAnnotatedEModelElementValidator {
 	boolean validate();
+
+	boolean validateModelElement(ENamedElement value);
 
 	boolean validateAnnotatedElement(ENamedElement value);
 	boolean validateTransient(Transient value);

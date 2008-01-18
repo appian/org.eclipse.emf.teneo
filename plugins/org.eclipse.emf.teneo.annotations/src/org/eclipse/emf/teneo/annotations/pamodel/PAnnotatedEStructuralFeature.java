@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeature.java,v 1.14 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeature.java,v 1.15 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getPaEClass <em>Pa EClass</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAnnotatedEStructuralFeature <em>Annotated EStructural Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getModelEStructuralFeature <em>Model EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getForeignKey <em>Foreign Key</em>}</li>
  * </ul>
  * </p>
@@ -58,30 +58,20 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedETypedElement {
 	void setPaEClass(PAnnotatedEClass value);
 
 	/**
-	 * Returns the value of the '<em><b>Annotated EStructural Feature</b></em>' reference.
+	 * Returns the value of the '<em><b>Model EStructural Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Annotated EStructural Feature</em>' reference isn't clear, there really should be
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotated EStructural Feature</em>' reference.
-	 * @see #setAnnotatedEStructuralFeature(EStructuralFeature)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_AnnotatedEStructuralFeature()
-	 * @model volatile="true" derived="true"
+	 * @return the value of the '<em>Model EStructural Feature</em>' reference.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_ModelEStructuralFeature()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
-	EStructuralFeature getAnnotatedEStructuralFeature();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getAnnotatedEStructuralFeature <em>Annotated EStructural Feature</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotated EStructural Feature</em>' reference.
-	 * @see #getAnnotatedEStructuralFeature()
-	 * @generated
-	 */
-	void setAnnotatedEStructuralFeature(EStructuralFeature value);
+	EStructuralFeature getModelEStructuralFeature();
 
 	/**
 	 * Returns the value of the '<em><b>Foreign Key</b></em>' containment reference.

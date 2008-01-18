@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReference.java,v 1.11 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotatedEReference.java,v 1.12 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getAnnotatedEReference <em>Annotated EReference</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getModelEReference <em>Model EReference</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getEmbedded <em>Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getEmbeddedId <em>Embedded Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getManyToMany <em>Many To Many</em>}</li>
@@ -49,29 +49,20 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	PAnnotatedEClass getAReferenceType();
 	
 	/**
-	 * Returns the value of the '<em><b>Annotated EReference</b></em>' reference.
+	 * Returns the value of the '<em><b>Model EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Annotated EReference</em>' reference isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotated EReference</em>' reference.
-	 * @see #setAnnotatedEReference(EReference)
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_AnnotatedEReference()
-	 * @model annotation="teneo/internal/PersistenceMapping ignore='true'"
+	 * @return the value of the '<em>Model EReference</em>' reference.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_ModelEReference()
+	 * @model transient="true" changeable="false" volatile="true"
+	 *        annotation="teneo/internal/PersistenceMapping ignore='true'"
 	 * @generated
 	 */
-	EReference getAnnotatedEReference();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getAnnotatedEReference <em>Annotated EReference</em>}' reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotated EReference</em>' reference.
-	 * @see #getAnnotatedEReference()
-	 * @generated
-	 */
-	void setAnnotatedEReference(EReference value);
+	EReference getModelEReference();
 
 	/**
 	 * Returns the value of the '<em><b>Embedded</b></em>' containment reference.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.23 2007/11/15 14:48:19 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.24 2008/01/18 06:20:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -74,7 +74,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		public void notifyChanged(Notification msg) {
 			// TODO handle resolve?
 			Object msgFeature = msg.getFeature();
-			if (!msg.isTouch() && msgFeature == PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_AnnotatedElement()) {
+			if (!msg.isTouch() && msgFeature == PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_ModelElement()) {
 				switch (msg.getEventType()) {
 					case Notification.SET:
 					case Notification.UNSET:
@@ -172,12 +172,12 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 * the annotatedElement feature of <code>pa</code> is unset.
 	 */
 	protected void addMapping(PAnnotatedEModelElement target) {
-		final EModelElement eModelElement = target.getAnnotatedElement();
+		final EModelElement eModelElement = target.getModelElement();
 		if (eModelElement != null) {
 			PAnnotatedEModelElement prevAssoc = eElement_to_pElement.get(eModelElement);
 			if (prevAssoc != null) {
 				removeMapping(eModelElement);
-				prevAssoc.setAnnotatedElement(null);
+				prevAssoc.setModelElement(null);
 			}
 			eElement_to_pElement.put(eModelElement, target);
 		}
@@ -218,7 +218,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 */
 	protected void detach(PAnnotatedEModelElement aElement) {
 		aElement.eAdapters().remove(itsMapTrackingAdapter);
-		ENamedElement annotatedElement = aElement.getAnnotatedElement();
+		ENamedElement annotatedElement = aElement.getModelElement();
 		if (annotatedElement != null) {
 			removeMapping(annotatedElement);
 		}
@@ -247,7 +247,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			Object x = i.next();
 			if (x instanceof PAnnotatedEModelElement) {
 				PAnnotatedEModelElement paElement = (PAnnotatedEModelElement) x;
-				ENamedElement annotatedElement = paElement.getAnnotatedElement();
+				ENamedElement annotatedElement = paElement.getModelElement();
 				if (annotatedElement != null) {
 					assert getPAnnotated(annotatedElement) == paElement;
 					definedUnused.remove(annotatedElement);
@@ -539,8 +539,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
 				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
 						aClass.getEntity().getName().compareTo(entityName) == 0) {
-					entityNameToEClass.put(entityName, aClass.getAnnotatedEClass());
-					return aClass.getAnnotatedEClass();
+					entityNameToEClass.put(entityName, aClass.getModelEClass());
+					return aClass.getModelEClass();
 				}
 			}
 		}
@@ -557,7 +557,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 
 		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
-			final EClassifier eClassifier = aPackage.getAnnotatedEPackage().getEClassifier(name);
+			final EClassifier eClassifier = aPackage.getModelEPackage().getEClassifier(name);
 			if (eClassifier instanceof EDataType) {
 				return eClassifier;
 			}
@@ -575,7 +575,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		}
 
 		for (PAnnotatedEPackage aPackage : getPaEPackages()) {
-			final EClassifier eClassifier = aPackage.getAnnotatedEPackage().getEClassifier(name);
+			final EClassifier eClassifier = aPackage.getModelEPackage().getEClassifier(name);
 			if (eClassifier instanceof EDataType) {
 				return true;
 			}
@@ -592,7 +592,7 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
 				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
 						aClass.getEntity().getName().compareTo(entityName) == 0) {
-					entityNameToEClass.put(entityName, aClass.getAnnotatedEClass());
+					entityNameToEClass.put(entityName, aClass.getModelEClass());
 					return true;
 				}
 			}
