@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.10 2007/11/15 19:56:06 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.11 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class BasicMapper extends AbstractMapper implements ExtensionPoint {
@@ -40,13 +40,13 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 
 	/** Handles a normal basic attribute */
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
-		log.debug("Processing basic field: " + aAttribute.getAnnotatedElement().getName());
+		log.debug("Processing basic field: " + aAttribute.getModelElement().getName());
 		Element field = eclassElement.addElement("field");
 		field.addAttribute("name",
-			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getModelElement()))
 			.addAttribute("persistence-modifier", "persistent");
 
-		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
+		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 
 		// special case
 		if (eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray()) {
@@ -65,8 +65,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		} else if (mappingContext.getEmbeddingFeature() != null) { // embedded at least override
 			final PAnnotatedEStructuralFeature pae = mappingContext.getEmbeddingFeature();
 			final String name =
-					pae.getAnnotatedEStructuralFeature().getName() + "_" +
-							aAttribute.getAnnotatedEAttribute().getName() + "_ID";
+					pae.getModelEStructuralFeature().getName() + "_" +
+							aAttribute.getModelEAttribute().getName() + "_ID";
 			field.addAttribute("column", name);
 		}
 

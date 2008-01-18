@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneMapper.java,v 1.16 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: ManyToOneMapper.java,v 1.17 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class ManyToOneMapper extends AssociationMapper implements ExtensionPoint {
@@ -42,8 +42,8 @@ public class ManyToOneMapper extends AssociationMapper implements ExtensionPoint
 
 	/** Handles a single ereference feature */
 	public void map(PAnnotatedEReference aReference, Element eclassElement) {
-		log.debug("Processing many to one ereference: " + aReference.getAnnotatedElement().getName());
-		EReference eReference = (EReference) aReference.getAnnotatedElement();
+		log.debug("Processing many to one ereference: " + aReference.getModelElement().getName());
+		EReference eReference = (EReference) aReference.getModelElement();
 
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all
 		// cases?

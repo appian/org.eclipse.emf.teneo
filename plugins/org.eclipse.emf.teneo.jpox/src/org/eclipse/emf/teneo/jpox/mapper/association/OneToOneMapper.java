@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneMapper.java,v 1.12 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: OneToOneMapper.java,v 1.13 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping for the one to one association.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class OneToOneMapper extends AssociationMapper implements ExtensionPoint {
@@ -40,8 +40,8 @@ public class OneToOneMapper extends AssociationMapper implements ExtensionPoint 
 
 	/** Handles a single ereference feature */
 	public void map(PAnnotatedEReference aReference, Element eclassElement) {
-		log.debug("Processing one to one ereference: " + aReference.getAnnotatedElement().getName());
-		EReference eReference = (EReference) aReference.getAnnotatedElement();
+		log.debug("Processing one to one ereference: " + aReference.getModelElement().getName());
+		EReference eReference = (EReference) aReference.getModelElement();
 
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all
 		// cases?
@@ -81,7 +81,7 @@ public class OneToOneMapper extends AssociationMapper implements ExtensionPoint 
 			// item from the list.
 			// -> result item points back to the list but is not present anymore in the list
 			if (aReference.getOneToOne() != null && aReference.getOneToOne().getMappedBy() != null &&
-					!aReference.getAnnotatedEReference().isContainment()) {
+					!aReference.getModelEReference().isContainment()) {
 				// disabled mapped-by for now, for one reason or another jpox did not cascade the
 				// persist action over a bidirectional relation, bidirectionality is controlled
 				// anyway by emf.

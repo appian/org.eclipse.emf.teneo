@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyMapper.java,v 1.15 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: OneToManyMapper.java,v 1.16 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class OneToManyMapper extends AssociationMapper implements ExtensionPoint {
@@ -44,8 +44,8 @@ public class OneToManyMapper extends AssociationMapper implements ExtensionPoint
 
 	/** Handles a many=true ereference feature */
 	public void map(PAnnotatedEReference aReference, Element eclassElement) {
-		log.debug("Processing one to many ereference: " + aReference.getAnnotatedElement().getName());
-		EReference eReference = (EReference) aReference.getAnnotatedElement();
+		log.debug("Processing one to many ereference: " + aReference.getModelElement().getName());
+		EReference eReference = (EReference) aReference.getModelElement();
 
 		// TODO: cascaderemove will set dependent=true on the element maybe this is to rough for all
 		// cases?
@@ -70,7 +70,7 @@ public class OneToManyMapper extends AssociationMapper implements ExtensionPoint
 		// deletes the
 		// item from the list.
 		// -> result item points back to the list but is not present anymore in the list
-		if (otm.getMappedBy() != null && !aReference.getAnnotatedEReference().isContainment()) {
+		if (otm.getMappedBy() != null && !aReference.getModelEReference().isContainment()) {
 			field.addAttribute("mapped-by", otm.getMappedBy());
 		}
 

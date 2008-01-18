@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdMapper.java,v 1.9 2007/09/04 09:56:42 mtaal Exp $
+ * $Id: IdMapper.java,v 1.10 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class IdMapper extends AbstractMapper implements ExtensionPoint {
@@ -43,10 +43,10 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 
 	/** Process the id annotation */
 	public void map(PAnnotatedEAttribute aAttribute, Element classElement) {
-		log.debug("Processing id annotation:" + aAttribute.getAnnotatedElement().getName());
+		log.debug("Processing id annotation:" + aAttribute.getModelElement().getName());
 		Element fieldElement = classElement.addElement("field");
 		fieldElement.addAttribute("name",
-			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getModelElement()))
 			.addAttribute("persistence-modifier", "persistent");
 		fieldElement.addAttribute("primary-key", "true");
 
@@ -60,8 +60,8 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 			// TODO: check illegal, embedded component can not really have an id
 			final PAnnotatedEStructuralFeature pae = mappingContext.getEmbeddingFeature();
 			final String name =
-					pae.getAnnotatedEStructuralFeature().getName() + "_" +
-							aAttribute.getAnnotatedEAttribute().getName() + "_ID";
+					pae.getModelEStructuralFeature().getName() + "_" +
+							aAttribute.getModelEAttribute().getName() + "_ID";
 			fieldElement.addAttribute("column", name);
 		}
 
@@ -78,7 +78,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 				fieldElement.addAttribute("value-strategy", "increment");
 			} else {
 				log.error("VALUE-STRATEGY: " + gv.getStrategy().getName() + " not supported for field " +
-						aAttribute.getAnnotatedElement().getName());
+						aAttribute.getModelElement().getName());
 			}
 			fieldElement.addAttribute("indexed", "true");
 
@@ -87,7 +87,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 				if (GenerationType.TABLE.equals(gv.getStrategy())) {
 					fieldElement.addAttribute("strategy", "increment");
 					final TableGenerator tg =
-							aAttribute.getPaModel().getTableGenerator(aAttribute.getAnnotatedEAttribute(),
+							aAttribute.getPaModel().getTableGenerator(aAttribute.getModelEAttribute(),
 								gv.getGenerator());
 					if (tg.getTable() != null) {
 						fieldElement.addAttribute("sequence-table-name", tg.getTable());
@@ -100,7 +100,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 					}
 				} else {
 					final SequenceGenerator sg =
-							aAttribute.getPaModel().getSequenceGenerator(aAttribute.getAnnotatedEAttribute(),
+							aAttribute.getPaModel().getSequenceGenerator(aAttribute.getModelEAttribute(),
 								gv.getGenerator());
 					fieldElement.addAttribute("sequence", sg.getSequenceName());
 				}

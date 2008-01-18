@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AssociationMapper.java,v 1.6 2007/07/11 17:14:40 mtaal Exp $
+ * $Id: AssociationMapper.java,v 1.7 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class AssociationMapper extends AbstractMapper {
@@ -40,7 +40,7 @@ public class AssociationMapper extends AbstractMapper {
 	/** Sets common reference field attributes */
 	protected void setCommonReferenceAttributes(Element fieldElement, PAnnotatedEReference aReference,
 			boolean cascadeRemove) {
-		EReference eReference = (EReference) aReference.getAnnotatedElement();
+		EReference eReference = (EReference) aReference.getModelElement();
 
 		boolean isWildcard = MappingUtil.isWildcard(eReference);
 

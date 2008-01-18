@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassFeatureMapper.java,v 1.11 2007/11/14 16:39:46 mtaal Exp $
+ * $Id: EClassFeatureMapper.java,v 1.12 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Mapps the features of a passed annotated class, the class itself is not mapped here.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoint {
@@ -48,10 +48,9 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 
 	/** Process the id annotation */
 	public void map(PAnnotatedEClass aClass, Element classElement) {
-		log.debug("Processing aclass: " + aClass.getAnnotatedEClass().getName() + "/" +
-				aClass.getAnnotatedElement().getName());
+		log.debug("Processing aclass: " + aClass.getModelEClass().getName() + "/" + aClass.getModelElement().getName());
 
-		final Class<?> implClass = EModelResolver.instance().getJavaClass(aClass.getAnnotatedEClass());
+		final Class<?> implClass = EModelResolver.instance().getJavaClass(aClass.getModelEClass());
 
 		// collect all the features to map
 		final List<PAnnotatedEStructuralFeature> features =
@@ -72,21 +71,22 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 			}
 
 			// ignore container references as these do not have a java repr.
-			if (aStructuralFeature.getAnnotatedElement() instanceof EReference) {
-				EReference eref = (EReference) aStructuralFeature.getAnnotatedElement();
+			if (aStructuralFeature.getModelElement() instanceof EReference) {
+				EReference eref = (EReference) aStructuralFeature.getModelElement();
 				if (eref.isContainer()) {
 					continue;
 				}
 			}
 
 			// in jdo transient members should still be mapped
-			if (isTransient && hasJavaMember(implClass, aStructuralFeature.getAnnotatedEStructuralFeature())) {
+			if (isTransient && hasJavaMember(implClass, aStructuralFeature.getModelEStructuralFeature())) {
 				Element field = classElement.addElement("field");
 				field.addAttribute(
 					"name",
-					namingHandler.correctName(mappingContext, (EStructuralFeature) aStructuralFeature
-						.getAnnotatedElement())).addAttribute("persistence-modifier", "none");
-				log.debug("TRANSIENT: " + aStructuralFeature.getAnnotatedElement().getName());
+					namingHandler
+						.correctName(mappingContext, (EStructuralFeature) aStructuralFeature.getModelElement()))
+					.addAttribute("persistence-modifier", "none");
+				log.debug("TRANSIENT: " + aStructuralFeature.getModelElement().getName());
 				continue;
 			} else if (isTransient) {
 				continue;
@@ -128,7 +128,7 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 
 			boolean esfField = false;
 			for (PAnnotatedEStructuralFeature asf : features) {
-				if (asf.getAnnotatedEStructuralFeature().getName().compareToIgnoreCase(field.getName()) == 0) {
+				if (asf.getModelEStructuralFeature().getName().compareToIgnoreCase(field.getName()) == 0) {
 					esfField = true;
 					break;
 				}
@@ -158,8 +158,9 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 				Element field = eclassElement.addElement("field");
 				field.addAttribute(
 					"name",
-					namingHandler.correctName(mappingContext, (EStructuralFeature) aStructuralFeature
-						.getAnnotatedElement())).addAttribute("persistence-modifier", "none");
+					namingHandler
+						.correctName(mappingContext, (EStructuralFeature) aStructuralFeature.getModelElement()))
+					.addAttribute("persistence-modifier", "none");
 			}
 		} else { // must be ereference
 			PAnnotatedEReference aReference = (PAnnotatedEReference) aStructuralFeature; // cast
@@ -175,7 +176,7 @@ public class EClassFeatureMapper extends AbstractMapper implements ExtensionPoin
 				mappingContext.getManyToOneMapper().map(aReference, eclassElement);
 			} else {
 				throw new StoreMappingException("No otm, mtm, mto, oto for ereference " +
-						aReference.getAnnotatedElement().getName());
+						aReference.getModelElement().getName());
 			}
 		}
 	}

@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class MappingUtil {
@@ -86,7 +86,7 @@ public class MappingUtil {
 
 	/** Adds a generic feature map entry to the passed element */
 	public static void addGenericFeatureMapEntryMapping(Element field, PAnnotatedEAttribute aAttribute, FetchType ft) {
-		EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
+		EAttribute eAttribute = aAttribute.getModelEAttribute();
 
 		log.debug("Any feature entry, adding embedded tags");
 

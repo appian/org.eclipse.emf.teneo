@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.9 2007/07/12 18:04:18 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.10 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
@@ -44,13 +44,13 @@ public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 
 	/** Handles a many attribute */
 	public void map(PAnnotatedEAttribute aAttribute, Element eclassElement) {
-		log.debug("Processing one to many attribute: " + aAttribute.getAnnotatedElement().getName());
+		log.debug("Processing one to many attribute: " + aAttribute.getModelElement().getName());
 		Element field = eclassElement.addElement("field");
 		field.addAttribute("name",
-			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getAnnotatedElement()))
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getModelElement()))
 			.addAttribute("persistence-modifier", "persistent");
 
-		EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
+		EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
 		final boolean isArray =
 				eAttribute.getEType().getInstanceClass() != null && eAttribute.getEType().getInstanceClass().isArray();
 

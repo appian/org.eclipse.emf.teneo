@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXMappingGenerator.java,v 1.16 2007/11/14 16:39:46 mtaal Exp $
+ * $Id: JPOXMappingGenerator.java,v 1.17 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Generates a jpox mapping file based on the pamodel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAware {
@@ -93,7 +93,7 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 		ArrayList epackages = new ArrayList();
 		for (Object element : annotatedModel.getPaEPackages()) {
 			PAnnotatedEPackage aPackage = (PAnnotatedEPackage) element;
-			epackages.add(aPackage.getAnnotatedElement());
+			epackages.add(aPackage.getModelElement());
 		}
 		final EPackage[] epackagesArray = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 		EModelResolver.instance().register(epackagesArray);
@@ -105,10 +105,10 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 		HashMap aClassesByPackage = new HashMap();
 		for (Object element : annotatedModel.getPaEPackages()) {
 			PAnnotatedEPackage aPackage = (PAnnotatedEPackage) element;
-			log.info("Generating jdo for epackage " + aPackage.getAnnotatedElement().getName());
+			log.info("Generating jdo for epackage " + aPackage.getModelElement().getName());
 			for (Object element2 : aPackage.getPaEClasses()) {
 				PAnnotatedEClass aClass = (PAnnotatedEClass) element2;
-				Class implClass = EModelResolver.instance().getJavaClass((EClass) aClass.getAnnotatedElement());
+				Class implClass = EModelResolver.instance().getJavaClass((EClass) aClass.getModelElement());
 
 				if ((aClass.getEntity() == null && aClass.getMappedSuperclass() == null) || implClass == null) {
 					continue;
@@ -153,15 +153,15 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 			return;
 		}
 
-		if (aClass.getAnnotatedEClass().isInterface()) {
+		if (aClass.getModelEClass().isInterface()) {
 			// final Element classElement = container.addElement("interface");
 			// classElement.addAttribute("name",
 			// aClass.getAnnotatedEClass().getInstanceClassName());
-			log.debug(aClass.getAnnotatedEClass().getName() + " is interface, no explicit mapping");
+			log.debug(aClass.getModelEClass().getName() + " is interface, no explicit mapping");
 			return;
 		}
 
-		EClass eclass = (EClass) aClass.getAnnotatedElement();
+		EClass eclass = (EClass) aClass.getModelElement();
 		log.debug("Generating for eclass: " + eclass.getName());
 
 		// NOTE: very rough test!
@@ -263,9 +263,9 @@ public class JPOXMappingGenerator implements ExtensionPoint, ExtensionManagerAwa
 	 * Collect the implemented interfaces minus the interfaces implemented by mapped superclasses.
 	 */
 	private void collectImplements(PAnnotatedEClass aClass, ArrayList result) {
-		collectImplements(aClass.getAnnotatedEClass().getInstanceClass(), result);
-		for (int i = 0; i < aClass.getAnnotatedEClass().getESuperTypes().size(); i++) {
-			final EClass ec = aClass.getAnnotatedEClass().getESuperTypes().get(i);
+		collectImplements(aClass.getModelEClass().getInstanceClass(), result);
+		for (int i = 0; i < aClass.getModelEClass().getESuperTypes().size(); i++) {
+			final EClass ec = aClass.getModelEClass().getESuperTypes().get(i);
 			final PAnnotatedEClass ac = aClass.getPaModel().getPAnnotated(ec);
 			if (ac != null && ac.getTransient() == null && !ec.isInterface()) {
 				final ArrayList inheritedInterfaces = new ArrayList();

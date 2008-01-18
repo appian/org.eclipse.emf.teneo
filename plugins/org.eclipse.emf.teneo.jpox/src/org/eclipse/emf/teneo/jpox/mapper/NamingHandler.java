@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NamingHandler.java,v 1.6 2007/11/14 16:39:46 mtaal Exp $
+ * $Id: NamingHandler.java,v 1.7 2008/01/18 06:20:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * unique names accross tables and databases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class NamingHandler implements ExtensionPoint, ExtensionManagerAware {
@@ -107,7 +107,7 @@ public class NamingHandler implements ExtensionPoint, ExtensionManagerAware {
 	 * members
 	 */
 	public String correctName(MappingContext mc, EStructuralFeature efeature) {
-		Class implClass = EModelResolver.instance().getJavaClass(mc.getCurrentAClass().getAnnotatedEClass());
+		Class implClass = EModelResolver.instance().getJavaClass(mc.getCurrentAClass().getModelEClass());
 		return correctName(implClass, efeature);
 	}
 
