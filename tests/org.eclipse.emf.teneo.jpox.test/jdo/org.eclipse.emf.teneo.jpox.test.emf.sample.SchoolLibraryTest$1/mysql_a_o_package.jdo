@@ -13,7 +13,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="none"/>
 			<field name="pages" persistence-modifier="persistent" null-value="none"/>
-			<field name="category" persistence-modifier="persistent" null-value="none"/>
+			<field name="category" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="author" persistence-modifier="persistent" delete-action="restrict" null-value="none">
 				<foreign-key name="book_author"/>
 				<column name="book_author_e_id" allows-null="true"/>

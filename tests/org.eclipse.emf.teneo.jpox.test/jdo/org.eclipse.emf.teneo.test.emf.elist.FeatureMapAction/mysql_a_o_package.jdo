@@ -51,7 +51,7 @@
 				</element>
 				<order column="PRODUCTTYPE_GROUP_IDX"/>
 			</field>
-			<field name="productClassification" persistence-modifier="persistent" null-value="none"/>
+			<field name="productClassification" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="productClassificationESet" persistence-modifier="persistent"/>
 			<field name="group1" persistence-modifier="persistent">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry">

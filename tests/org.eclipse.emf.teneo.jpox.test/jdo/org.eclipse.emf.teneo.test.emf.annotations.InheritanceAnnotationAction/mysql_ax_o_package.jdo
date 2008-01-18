@@ -79,7 +79,7 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="state" persistence-modifier="persistent" null-value="none"/>
+			<field name="state" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="stateESet" persistence-modifier="persistent"/>
 			<field name="zip" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="zipESet" persistence-modifier="persistent"/>

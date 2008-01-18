@@ -12,7 +12,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="itemType" persistence-modifier="persistent" primary-key="true"/>
-			<field name="nullableItemType" persistence-modifier="persistent" null-value="none"/>
+			<field name="nullableItemType" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="nullableItemTypeESet" persistence-modifier="persistent"/>
 		</class>
 	</package>
