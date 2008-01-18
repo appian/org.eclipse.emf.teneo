@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.16 2007/08/10 16:40:52 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.17 2008/01/18 06:20:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -57,7 +57,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -202,7 +202,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (log.isDebugEnabled()) {
 				log.debug("Reading eobject using urifragment " + id);
 			}
-			final String[] parts = id.split(SEPARATOR);
+			final String[] parts = id.split("\\" + SEPARATOR);
 
 			if (parts.length != 2) {
 				if (log.isDebugEnabled()) {
