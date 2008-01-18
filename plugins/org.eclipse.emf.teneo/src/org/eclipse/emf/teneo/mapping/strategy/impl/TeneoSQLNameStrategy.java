@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: TeneoSQLNameStrategy.java,v 1.4 2007/08/10 16:40:55 mtaal Exp $
+ * $Id: TeneoSQLNameStrategy.java,v 1.5 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * different parts of a name (separated by _).
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
@@ -50,7 +50,7 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	 */
 	@Override
 	public List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference) {
-		final EReference eref = aReference.getAnnotatedEReference();
+		final EReference eref = aReference.getModelEReference();
 
 		// isTransient occurs for computed featuremap features, these are ignored
 		// later on
@@ -66,7 +66,7 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 			// This is done so that both sides of the relationship use the same columns
 			aClass = aReference.getPaEClass();
 		}
-		final String typeName = aClass.getAnnotatedEClass().getName();
+		final String typeName = aClass.getModelEClass().getName();
 		final String featureName = eref.getName();
 
 		final List<String> result = new ArrayList<String>();

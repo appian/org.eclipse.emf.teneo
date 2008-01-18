@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -156,7 +156,7 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 				for (PAnnotatedEStructuralFeature pef : pec.getPaEStructuralFeatures()) {
 					if (pef instanceof PAnnotatedEAttribute) {
 						final PAnnotatedEAttribute pea = (PAnnotatedEAttribute) pef;
-						final EDataType et = pea.getAnnotatedEAttribute().getEAttributeType();
+						final EDataType et = pea.getModelEAttribute().getEAttributeType();
 						final PAnnotatedEDataType ped = pam.getPAnnotated(et);
 						if (ped == null) {
 							continue; // not an explicit modeled edatatype
@@ -165,7 +165,7 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 							final EStructuralFeature asf = pea.eClass().getEStructuralFeature(esf.getName());
 							if (asf != null && !pea.eIsSet(asf) && ped.eIsSet(esf)) {
 								log.debug("Copying value for feature " + esf.getName() + " from edatatype " +
-										et.getName() + " to " + pea.getAnnotatedEAttribute().getName());
+										et.getName() + " to " + pea.getModelEAttribute().getName());
 
 								final Object obj = ped.eGet(esf);
 								if (obj instanceof Collection) {

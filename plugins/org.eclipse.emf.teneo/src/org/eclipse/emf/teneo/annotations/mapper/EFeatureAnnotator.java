@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.4 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.5 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -69,7 +69,7 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEStructuralFeature aStructuralFeature) {
-		EStructuralFeature eStructuralFeature = aStructuralFeature.getAnnotatedEStructuralFeature();
+		EStructuralFeature eStructuralFeature = aStructuralFeature.getModelEStructuralFeature();
 
 		boolean errorOccured = true;
 		try {
@@ -154,7 +154,7 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				// specified manually, the system as a default will choose
 				// uni-manytoone
 
-				final EReference eReference = (EReference) aStructuralFeature.getAnnotatedElement();
+				final EReference eReference = (EReference) aStructuralFeature.getModelElement();
 				final EReference eOpposite = eReference.getEOpposite();
 
 				// elements of a group are never multi-occurence because the

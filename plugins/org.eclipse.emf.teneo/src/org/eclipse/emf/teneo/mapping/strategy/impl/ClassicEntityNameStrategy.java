@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicEntityNameStrategy.java,v 1.2 2007/11/14 16:38:38 mtaal Exp $
+ * $Id: ClassicEntityNameStrategy.java,v 1.3 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ClassicEntityNameStrategy implements EntityNameStrategy {
 
@@ -99,15 +99,14 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 		EClass eClass = null;
 		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
 			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				final EClass checkEClass = aClass.getAnnotatedEClass();
+				final EClass checkEClass = aClass.getModelEClass();
 				if (checkEClass.getName().compareTo(eClassName) == 0) {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
 								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
-								aPackage.getAnnotatedEPackage().getName() +
-								". A different EClassResolver should be used.");
+								aPackage.getModelEPackage().getName() + ". A different EClassResolver should be used.");
 					}
 				}
 				eClass = checkEClass;
@@ -153,5 +152,12 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
 	}
 }

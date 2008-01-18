@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneReferenceAnnotator.java,v 1.3 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: OneToOneReferenceAnnotator.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -39,8 +39,8 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 	/** Annotate it */
 	public void annotate(PAnnotatedEReference aReference) {
 		final String logStr =
-				aReference.getAnnotatedEReference().getName() + "/" +
-						aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null ||
 				aReference.getManyToOne() != null) {
@@ -48,7 +48,7 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 					"it already has a OneToMany, ManyToMany or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getModelElement();
 
 		OneToOne oto = aReference.getOneToOne();
 		if (oto == null) {

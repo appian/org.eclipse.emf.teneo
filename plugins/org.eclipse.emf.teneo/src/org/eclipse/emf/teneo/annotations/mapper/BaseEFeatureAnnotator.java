@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.2 2007/11/15 19:56:10 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.3 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
@@ -42,7 +44,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -53,6 +55,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	// The logger
 	protected static final Log log = LogFactory.getLog(BaseEFeatureAnnotator.class);
 
+	private int defaultVarCharLength = -1;
+
 	/** Create a foreign key and set its name */
 	protected ForeignKey createFK(PAnnotatedEStructuralFeature aFeature) {
 		final ForeignKey fk = getFactory().createForeignKey();
@@ -60,12 +64,24 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		return fk;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
+	 */
+	@Override
+	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
+		super.setPersistenceOptions(persistenceOptions);
+
+		defaultVarCharLength = persistenceOptions.getDefaultVarCharLength();
+	}
+
 	/**
 	 * Adds the column level constraints on the basis of the xsd extended meta data
 	 */
 	protected void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
 
-		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
+		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 
 		// decide if a column annotation should be added, this is done
 		// when the maxLength or length, totalDigits or fractionDigits are set
@@ -77,7 +93,7 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			}
 			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
 			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
-			if (maxLength != null || totalDigits != null || fractionDigits != null) {
+			if (maxLength != null || totalDigits != null || fractionDigits != null || defaultVarCharLength > -1) {
 				final Column column = getFactory().createColumn();
 				// only support this for the string class, the length/maxlength
 				// is also
@@ -100,6 +116,34 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 				aAttribute.setColumn(column);
 			}
 		}
+
+		final Column c = aAttribute.getColumn();
+		if (isStringType(aAttribute.getModelEAttribute()) && c != null && defaultVarCharLength > 0 && !c.isSetLength()) {
+			c.setLength(defaultVarCharLength);
+		}
+	}
+
+	private boolean isStringType(EAttribute eAttribute) {
+		final Class<?> clz = eAttribute.getEAttributeType().getInstanceClass();
+		if (clz != null && String.class.isAssignableFrom(clz)) {
+			return true;
+		}
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getString()) {
+			return true;
+		}
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getName_()) {
+			return true;
+		}
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getNCName()) {
+			return true;
+		}
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getToken()) {
+			return true;
+		}
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getQName()) {
+			return true;
+		}
+		return false;
 	}
 
 	/** Return a list of join columns */
@@ -119,7 +163,7 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 
 	/** Returns the type name of a many attribute */
 	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
-		final EAttribute eAttribute = aAttribute.getAnnotatedEAttribute();
+		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 		// check on equality on object.class is used for listunion simpleunions
 		final Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
 		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.3 2007/09/04 09:57:34 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class AbstractProcessingContext {
@@ -122,13 +122,13 @@ public class AbstractProcessingContext {
 
 	/** Return the overridden column for the passed attribute */
 	public Column getOverride(PAnnotatedEAttribute paAttribute) {
-		return (Column) currentOverrides.get(paAttribute.getAnnotatedEAttribute().getName());
+		return (Column) currentOverrides.get(paAttribute.getModelEAttribute().getName());
 	}
 
 	/** Return the overridden JoinColumns for this reference */
 	@SuppressWarnings("unchecked")
 	public EList<JoinColumn> getOverride(PAnnotatedEReference paReference) {
-		return (EList<JoinColumn>) currentOverrides.get(paReference.getAnnotatedEReference().getName());
+		return (EList<JoinColumn>) currentOverrides.get(paReference.getModelEReference().getName());
 	}
 
 	/** Return the overridden Joincolumns for the indicated featureName */
@@ -148,12 +148,11 @@ public class AbstractProcessingContext {
 	 */
 	public List<PAnnotatedEStructuralFeature> getInheritedFeatures(PAnnotatedEClass aClass) {
 		// if no supertypes then there are no inherited features
-		final EClass eclass = aClass.getAnnotatedEClass();
+		final EClass eclass = aClass.getModelEClass();
 		if (eclass.getESuperTypes().size() == 0) {
 			return new ArrayList<PAnnotatedEStructuralFeature>();
 		}
-		log.debug("Determining inherited features which are mapped locally for " +
-				aClass.getAnnotatedEClass().getName());
+		log.debug("Determining inherited features which are mapped locally for " + aClass.getModelEClass().getName());
 		final List<EStructuralFeature> inheritedFeatures =
 				new ArrayList<EStructuralFeature>(eclass.getEAllStructuralFeatures());
 
@@ -164,7 +163,7 @@ public class AbstractProcessingContext {
 		// remove all features inherited from the first supertype
 		// as this inheritance is done in the mapping file
 		if (aClass.getPaSuperEntity() != null) {
-			inheritedFeatures.removeAll(aClass.getPaSuperEntity().getAnnotatedEClass().getEAllStructuralFeatures());
+			inheritedFeatures.removeAll(aClass.getPaSuperEntity().getModelEClass().getEAllStructuralFeatures());
 		}
 
 		// get all efeatures from direct mappedsuperclasses
@@ -194,10 +193,10 @@ public class AbstractProcessingContext {
 	private void removeIdFeatures(PAnnotatedEClass aClass, List<EStructuralFeature> inheritedFeatures) {
 		// first get all the mapped superclasses
 		final ArrayList<EClass> mappedSuperEClasses = new ArrayList<EClass>();
-		for (EClass superEClass : aClass.getAnnotatedEClass().getESuperTypes()) {
+		for (EClass superEClass : aClass.getModelEClass().getESuperTypes()) {
 			final PAnnotatedEClass superPAClass = aClass.getPaModel().getPAnnotated(superEClass);
 			if (superPAClass != null && superPAClass.getMappedSuperclass() != null) {
-				mappedSuperEClasses.add(superPAClass.getAnnotatedEClass());
+				mappedSuperEClasses.add(superPAClass.getModelEClass());
 			}
 		}
 
@@ -257,7 +256,7 @@ public class AbstractProcessingContext {
 		if (entity.hasIdAnnotatedFeature()) {
 			return false;
 		}
-		for (EClass superEClass : entity.getAnnotatedEClass().getEAllSuperTypes()) {
+		for (EClass superEClass : entity.getModelEClass().getEAllSuperTypes()) {
 			final PAnnotatedEClass superPAClass = entity.getPaModel().getPAnnotated(superEClass);
 			if (superPAClass != null && superPAClass.getMappedSuperclass() == null) {
 				return false;

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: QualifyingEntityNameStrategy.java,v 1.3 2007/11/14 16:38:38 mtaal Exp $
+ * $Id: QualifyingEntityNameStrategy.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * to handle eclass name clashes between different packages.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 
@@ -77,12 +77,12 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 		// now try all epackages
 		EClass eClass = null;
 		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
-			final EPackage ePackage = aPackage.getAnnotatedEPackage();
+			final EPackage ePackage = aPackage.getModelEPackage();
 			if (ePackage.getNsPrefix().compareTo(nsPrefix) != 0 && ePackage.getName().compareTo(nsPrefix) != 0) {
 				continue;
 			}
 			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				final EClass checkEClass = aClass.getAnnotatedEClass();
+				final EClass checkEClass = aClass.getModelEClass();
 				if (checkEClass.getName().compareTo(eClassName) == 0) {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
@@ -123,5 +123,12 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
 	}
 }

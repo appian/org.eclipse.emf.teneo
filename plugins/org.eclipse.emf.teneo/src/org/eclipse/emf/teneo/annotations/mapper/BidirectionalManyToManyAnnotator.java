@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BidirectionalManyToManyAnnotator.java,v 1.5 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: BidirectionalManyToManyAnnotator.java,v 1.6 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a bidirectional many-to-many ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -42,15 +42,15 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEReference aReference) {
 		final String featureLogStr =
-				aReference.getAnnotatedEReference().getName() + "/" +
-						aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
 			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
 					"it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getModelElement();
 		final EReference eOpposite = eReference.getEOpposite();
 		assert (eOpposite != null && eOpposite.isMany());
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyAttributeAnnotator.java,v 1.4 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: OneToManyAttributeAnnotator.java,v 1.5 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -60,12 +60,12 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEAttribute aAttribute) {
 		final String logStr =
-				aAttribute.getAnnotatedEAttribute().getName() + "/" +
-						aAttribute.getAnnotatedEAttribute().getEContainingClass().getName();
+				aAttribute.getModelEAttribute().getName() + "/" +
+						aAttribute.getModelEAttribute().getEContainingClass().getName();
 
 		log.debug("EAttribute " + logStr + " needs a onetomany");
 
-		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
+		final EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
 
 		OneToMany otm = aAttribute.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
@@ -106,7 +106,7 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 			}
 		}
 
-		final EDataType eDataType = aAttribute.getAnnotatedEAttribute().getEAttributeType();
+		final EDataType eDataType = aAttribute.getModelEAttribute().getEAttributeType();
 		if (clazz != null &&
 				(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
 					.getDateTime())) {

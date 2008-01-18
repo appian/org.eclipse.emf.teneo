@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.3 2007/11/14 16:38:38 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
@@ -120,16 +120,15 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
 				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
 						aClass.getEntity().getName().compareTo(eClassName) == 0 &&
-						!StoreUtil.isMapEntry(aClass.getAnnotatedEClass())) { // map entries are
+						!StoreUtil.isMapEntry(aClass.getModelEClass())) { // map entries are
 					// ignored
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
 								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
-								aPackage.getAnnotatedEPackage().getName() +
-								". A different EClassResolver should be used.");
+								aPackage.getModelEPackage().getName() + ". A different EClassResolver should be used.");
 					}
-					eClass = aClass.getAnnotatedEClass();
+					eClass = aClass.getModelEClass();
 				}
 			}
 		}
@@ -146,10 +145,9 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
 								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
-								aPackage.getAnnotatedEPackage().getName() +
-								". A different EClassResolver should be used.");
+								aPackage.getModelEPackage().getName() + ". A different EClassResolver should be used.");
 					}
-					eClass = aClass.getAnnotatedEClass();
+					eClass = aClass.getModelEClass();
 				}
 			}
 		}
@@ -194,5 +192,12 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
+	}
+
+	/**
+	 * @return the extensionManager
+	 */
+	public ExtensionManager getExtensionManager() {
+		return extensionManager;
 	}
 }

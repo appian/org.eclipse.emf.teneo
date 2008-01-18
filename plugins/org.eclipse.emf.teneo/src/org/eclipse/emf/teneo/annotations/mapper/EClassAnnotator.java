@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.3 2007/09/04 09:57:34 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -65,7 +65,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	 */
 	protected boolean annotate(PAnnotatedEClass aClass) {
 
-		final EClass eclass = (EClass) aClass.getAnnotatedElement();
+		final EClass eclass = (EClass) aClass.getModelElement();
 
 		// check if already processed
 		if (processedAClasses.contains(aClass)) {
@@ -87,7 +87,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		}
 
 		// first do the superclasses
-		for (EClass superEclass : aClass.getAnnotatedEClass().getESuperTypes()) {
+		for (EClass superEclass : aClass.getModelEClass().getESuperTypes()) {
 			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEclass);
 			if (superAClass == null) {
 				throw new StoreAnnotationsException(
@@ -101,7 +101,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			}
 		}
 
-		log.debug(" Adding default annotations for EClass: " + aClass.getAnnotatedElement().getName());
+		log.debug(" Adding default annotations for EClass: " + aClass.getModelElement().getName());
 
 		processedAClasses.add(aClass);
 
@@ -151,7 +151,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED)) {
 			ArrayList<String> idFeatures = new ArrayList<String>();
 			PAnnotatedEClass aSuperClass = null;
-			for (EClass eSuperClass : aClass.getAnnotatedEClass().getESuperTypes()) {
+			for (EClass eSuperClass : aClass.getModelEClass().getESuperTypes()) {
 				aSuperClass = getAnnotatedModel().getPAnnotated(eSuperClass);
 				idFeatures.addAll(StrategyUtil.getIDFeaturesNames(aSuperClass, getPersistenceOptions()
 					.getDefaultIDFeatureName()));
@@ -249,7 +249,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	/** Set the super entity */
 	protected void setSuperEntity(PAnnotatedEClass aClass) {
 		assert (aClass.getPaSuperEntity() == null);
-		final EClass eclass = aClass.getAnnotatedEClass();
+		final EClass eclass = aClass.getModelEClass();
 		if (eclass.getESuperTypes().size() == 0) {
 			return;
 		}
@@ -262,7 +262,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	/** Returns fals for jpox and true for hibernate */
 	protected boolean isMappableAnnotatedClass(PAnnotatedEClass aClass) {
 
-		final EClass eclass = aClass.getAnnotatedEClass();
+		final EClass eclass = aClass.getModelEClass();
 
 		if (!mapInterfaceEClass() && eclass.isInterface()) {
 			log.debug("Not mapping interfaces and this is an interface eclass, ignore it");
@@ -275,7 +275,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 
 		if (!getPersistenceOptions().isSetEntityAutomatically() && aClass.getEntity() == null &&
 				aClass.getEmbeddable() == null) {
-			log.debug("Entities are not added automatically and this eclass: " + aClass.getAnnotatedEClass().getName() +
+			log.debug("Entities are not added automatically and this eclass: " + aClass.getModelEClass().getName() +
 					" does not have an entity/embeddable annotation.");
 			return false;
 		}

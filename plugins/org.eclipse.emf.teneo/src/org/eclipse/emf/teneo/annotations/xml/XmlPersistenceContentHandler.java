@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.2 2007/07/12 12:55:58 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.3 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -300,7 +300,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			}
 			case ECLASS: {
 				final String eClassName = attributes.getValue("name");
-				final EClassifier eClassifier = pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eClassName);
+				final EClassifier eClassifier = pAnnotatedEPackage.getModelEPackage().getEClassifier(eClassName);
 				if (eClassifier == null) {
 					throw new SAXException("Could not find EClass \"" + eClassName + "\"");
 				}
@@ -312,8 +312,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			}
 			case EDATATYPE: {
 				final String eDataTypeName = attributes.getValue("name");
-				final EDataType et =
-						(EDataType) pAnnotatedEPackage.getAnnotatedEPackage().getEClassifier(eDataTypeName);
+				final EDataType et = (EDataType) pAnnotatedEPackage.getModelEPackage().getEClassifier(eDataTypeName);
 				if (et == null) {
 					throw new SAXException("Could not find EClass \"" + eDataTypeName + "\"");
 				}
@@ -325,7 +324,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			}
 			case ESTRUCTURALFEATURE: {
 				final String eStructuralFeatureName = attributes.getValue("name");
-				final EClass eClass = pAnnotatedEClass.getAnnotatedEClass();
+				final EClass eClass = pAnnotatedEClass.getModelEClass();
 				final EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(eStructuralFeatureName);
 				if (eStructuralFeature == null) {
 					throw new SAXException("Could not find EStructuralFeature \"" + eStructuralFeatureName +

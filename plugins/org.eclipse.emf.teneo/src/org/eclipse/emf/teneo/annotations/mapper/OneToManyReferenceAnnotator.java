@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.5 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.6 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -52,15 +52,15 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 	/** Annotate it */
 	public void annotate(PAnnotatedEReference aReference) {
 		final String logStr =
-				aReference.getAnnotatedEReference().getName() + "/" +
-						aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
 		if (aReference.getManyToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
 			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToMany but " +
 					"it already has a ManyToMany, OneToOne or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getModelElement();
 		OneToMany otm = aReference.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
@@ -155,11 +155,11 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			otm.setUnique(eReference.isContainment() ||
 					(!getPersistenceOptions().alwaysMapListAsIdBag() && eReference.isUnique()));
 
-			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
+			if (aReference.getModelEReference().getEOpposite() != null) {
 				log.debug("Setting unique because is bidirectional (has eopposite) otm");
 				otm.setUnique(true);
 			}
-		} else if (aReference.getAnnotatedEReference().getEOpposite() != null) {
+		} else if (aReference.getModelEReference().getEOpposite() != null) {
 			log.warn("The EReference " + logStr +
 					" is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}

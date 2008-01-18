@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: SingleAttributeAnnotator.java,v 1.3 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: SingleAttributeAnnotator.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a single attribute, a primitive type such as a long or int.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -57,9 +57,9 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEAttribute aAttribute) {
 
-		log.debug(" Adding default annotations for EAttribute " + aAttribute.getAnnotatedElement().getName());
+		log.debug(" Adding default annotations for EAttribute " + aAttribute.getModelElement().getName());
 
-		final EAttribute eAttribute = (EAttribute) aAttribute.getAnnotatedElement();
+		final EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
 
 		// this is done before adding the id because an enumerated can also be
 		// an id
@@ -105,7 +105,7 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 				}
 			}
 
-			final EDataType eDataType = aAttribute.getAnnotatedEAttribute().getEAttributeType();
+			final EDataType eDataType = aAttribute.getModelEAttribute().getEAttributeType();
 			if (clazz != null &&
 					(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
 						.getDateTime())) {

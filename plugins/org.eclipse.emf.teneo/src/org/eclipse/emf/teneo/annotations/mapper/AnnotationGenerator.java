@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AnnotationGenerator.java,v 1.3 2007/11/15 15:33:55 mtaal Exp $
+ * $Id: AnnotationGenerator.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -80,7 +80,7 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 		final EPackage[] epacks = new EPackage[apacks.size()];
 		int cnt = 0;
 		for (PAnnotatedEPackage apack : apacks) {
-			epacks[cnt++] = apack.getAnnotatedEPackage();
+			epacks[cnt++] = apack.getModelEPackage();
 		}
 
 		final EModelResolver eModelResolver = EModelResolver.instance();
@@ -94,7 +94,7 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
-					aclass.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getAnnotatedEClass()));
+					aclass.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getModelEClass()));
 				}
 			}
 		}
@@ -155,7 +155,7 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 
 	/** Maps one epackage */
 	protected void processPackage(PAnnotatedEPackage aPackage) {
-		log.debug(">>>> Adding default annotations for EPackage " + aPackage.getAnnotatedElement().getName());
+		log.debug(">>>> Adding default annotations for EPackage " + aPackage.getModelElement().getName());
 
 		log.debug("Processing EDataTypes");
 		for (PAnnotatedEDataType annotatedEDataType : aPackage.getPaEDataTypes()) {

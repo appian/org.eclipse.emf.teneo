@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.37 2007/11/15 19:56:09 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.38 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -104,6 +104,9 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
+
+	/** The default length of a varchar column. Normally hibernate will choose to set this to 255. */
+	public static final String DEFAULT_VARCHAR_LENGTH = MAPPING_PREFIX + "default_varchar_length";
 
 	/**
 	 * The maximum length of the comments which are copied from the model to the mapping file. The
@@ -341,6 +344,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(SET_FOREIGN_KEY_NAME, "true");
 		props.setProperty(MAP_EMBEDDABLE_AS_EMBEDDED, "false");
 		props.setProperty(MAX_COMMENT_LENGTH, "0");
+		props.setProperty(DEFAULT_VARCHAR_LENGTH, "-1");
 		return props;
 	}
 
@@ -651,6 +655,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public String getDefaultCacheStrategy() {
 		return properties.getProperty(DEFAULT_CACHE_STRATEGY);
+	}
+
+	/** Return the default varchar length */
+	public int getDefaultVarCharLength() {
+		return Integer.parseInt(properties.getProperty(DEFAULT_VARCHAR_LENGTH));
 	}
 
 	/** Are econtainer mappings (hibernate) disabled */

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: UnidirectionalManyToManyAnnotator.java,v 1.4 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: UnidirectionalManyToManyAnnotator.java,v 1.5 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a many-to-many which is handled from one side.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -42,15 +42,15 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator imp
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEReference aReference) {
 		final String featureLogStr =
-				aReference.getAnnotatedEReference().getName() + "/" +
-						aReference.getAnnotatedEReference().getEContainingClass().getName();
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
 			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
 					"it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
-		final EReference eReference = (EReference) aReference.getAnnotatedElement();
+		final EReference eReference = (EReference) aReference.getModelElement();
 
 		// note that mtm is always present because this case can not be discovered by Teneo
 		final ManyToMany mtm = aReference.getManyToMany();

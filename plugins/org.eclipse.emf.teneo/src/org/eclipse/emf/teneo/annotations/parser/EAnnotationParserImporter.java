@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.2 2007/07/11 14:41:06 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.3 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -57,7 +57,7 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	/** Parse an pamodel */
 	public void process(PAnnotatedModel paModel) {
 		for (PAnnotatedEPackage pap : paModel.getPaEPackages()) {
-			log.debug("Processing package " + pap.getAnnotatedEPackage().getName());
+			log.debug("Processing package " + pap.getModelEPackage().getName());
 			processAnnotatedModelElement(pap, pap.eClass().getEPackage());
 
 			// and now the eclasses
@@ -68,29 +68,29 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	/** Process package */
 	protected void process(PAnnotatedEPackage pap) {
 		for (PAnnotatedEClass pac : pap.getPaEClasses()) {
-			processAnnotatedModelElement(pac, pac.getAnnotatedEClass().getEPackage());
+			processAnnotatedModelElement(pac, pac.getModelEClass().getEPackage());
 			process(pac);
 		}
 		for (PAnnotatedEDataType pac : pap.getPaEDataTypes()) {
-			processAnnotatedModelElement(pac, pac.getAnnotatedEDataType().getEPackage());
+			processAnnotatedModelElement(pac, pac.getModelEDataType().getEPackage());
 		}
 	}
 
 	/** Process the efeatures */
 	protected void process(PAnnotatedEClass pac) {
-		log.debug("Processing eclass " + pac.getAnnotatedEClass().getName());
+		log.debug("Processing eclass " + pac.getModelEClass().getName());
 		for (PAnnotatedEStructuralFeature paf : pac.getPaEStructuralFeatures()) {
-			processAnnotatedModelElement(paf, paf.getAnnotatedEStructuralFeature().eClass().getEPackage());
+			processAnnotatedModelElement(paf, paf.getModelEStructuralFeature().eClass().getEPackage());
 		}
 	}
 
 	/** Process a type with its eannotations */
 	@SuppressWarnings("unchecked")
 	protected void processAnnotatedModelElement(PAnnotatedEModelElement pee, EPackage epack) {
-		log.debug("Processing " + pee.getAnnotatedElement().getName());
+		log.debug("Processing " + pee.getModelElement().getName());
 		final ArrayList<NamedParserNode> parsedNodes = new ArrayList<NamedParserNode>();
-		for (EAnnotation annotation : pee.getAnnotatedElement().getEAnnotations()) {
-			parsedNodes.addAll(process(annotation, pee.getAnnotatedElement()));
+		for (EAnnotation annotation : pee.getModelElement().getEAnnotations()) {
+			parsedNodes.addAll(process(annotation, pee.getModelElement()));
 		}
 
 		// now also do the annotations on the edatatype (if any)

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StrategyUtil.java,v 1.3 2007/07/18 16:10:08 mtaal Exp $
+ * implementation </copyright> $Id: StrategyUtil.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Contains different util methods related to strategies.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class StrategyUtil {
@@ -80,19 +80,19 @@ public class StrategyUtil {
 	/** Internal will walk the inheritance tree to find the id feature */
 	private static List<String> getIDFeaturesNamesRecurse(PAnnotatedEClass aClass) {
 		final ArrayList<String> list = new ArrayList<String>();
-		for (EStructuralFeature feature : aClass.getAnnotatedEClass().getEStructuralFeatures()) {
+		for (EStructuralFeature feature : aClass.getModelEClass().getEStructuralFeatures()) {
 			final PAnnotatedEStructuralFeature aStructuralFeature = aClass.getPaModel().getPAnnotated(feature);
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
-				final String attrName = aAttribute.getAnnotatedEAttribute().getName();
+				final String attrName = aAttribute.getModelEAttribute().getName();
 				if (aAttribute.getId() != null && !list.contains(attrName)) {
 					list.add(attrName);
 				}
 			}
 		}
 
-		if (list.isEmpty() && aClass.getAnnotatedEClass().getESuperTypes().size() > 0) {
-			for (EClass eClass : aClass.getAnnotatedEClass().getESuperTypes()) {
+		if (list.isEmpty() && aClass.getModelEClass().getESuperTypes().size() > 0) {
+			for (EClass eClass : aClass.getModelEClass().getESuperTypes()) {
 				final PAnnotatedEClass aSuperClass = aClass.getPaModel().getPAnnotated(eClass);
 				if (aSuperClass != null) {
 					final List<String> superList = getIDFeaturesNamesRecurse(aSuperClass);

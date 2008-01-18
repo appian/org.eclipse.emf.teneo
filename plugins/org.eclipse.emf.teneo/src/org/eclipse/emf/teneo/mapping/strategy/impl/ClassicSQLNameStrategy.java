@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.10 2007/09/04 09:57:34 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.11 2008/01/18 06:20:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -67,8 +67,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 *      java.lang.String)
 	 */
 	public String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature) {
-		return convert(getEntityName(aSuperClass.getPaModel(), aSuperClass.getAnnotatedEClass()) + "_" + idFeature,
-			true);
+		return convert(getEntityName(aSuperClass.getPaModel(), aSuperClass.getModelEClass()) + "_" + idFeature, true);
 	}
 
 	/*
@@ -77,7 +76,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getSecondaryTablePrimaryKeyJoinColumnName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public String getSecondaryTablePrimaryKeyJoinColumnName(PAnnotatedEStructuralFeature iddef) {
-		return convert(iddef.getAnnotatedEStructuralFeature().getName());
+		return convert(iddef.getModelEStructuralFeature().getName());
 	}
 
 	/*
@@ -86,7 +85,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass)
 	 */
 	public String getTableName(PAnnotatedEClass aClass) {
-		return convert(getEntityName(aClass.getPaModel(), aClass.getAnnotatedEClass()));
+		return convert(getEntityName(aClass.getPaModel(), aClass.getModelEClass()));
 	}
 
 	/*
@@ -96,9 +95,9 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 */
 	public String getColumnName(PAnnotatedEStructuralFeature aStructuralFeature, String prefix) {
 		if (prefix != null) {
-			return convert(prefix + "_" + aStructuralFeature.getAnnotatedEStructuralFeature().getName());
+			return convert(prefix + "_" + aStructuralFeature.getModelEStructuralFeature().getName());
 		}
-		return convert(aStructuralFeature.getAnnotatedEStructuralFeature().getName());
+		return convert(aStructuralFeature.getModelEStructuralFeature().getName());
 	}
 
 	/*
@@ -108,8 +107,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 */
 	public String getForeignKeyName(PAnnotatedEStructuralFeature aFeature) {
 		final PAnnotatedEClass aClass = aFeature.getPaEClass();
-		return convert(getEntityName(aClass.getPaModel(), aClass.getAnnotatedEClass()) + "_" +
-				aFeature.getAnnotatedEStructuralFeature().getName(), true);
+		return convert(getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_" +
+				aFeature.getModelEStructuralFeature().getName(), true);
 	}
 
 	/*
@@ -118,7 +117,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getManyToOneJoinColumnNames(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
 	 */
 	public List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference) {
-		final EReference eref = aReference.getAnnotatedEReference();
+		final EReference eref = aReference.getModelEReference();
 
 		// isTransient occurs for computed featuremap features, these are ignored
 		// later on
@@ -136,7 +135,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 			// the owner of the one-to-many
 			aClass = aReference.getPaEClass();
 		}
-		final String typeName = aClass.getAnnotatedEClass().getName();
+		final String typeName = aClass.getModelEClass().getName();
 		final String featureName = eref.getName();
 
 		final List<String> result = new ArrayList<String>();
@@ -169,8 +168,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 */
 	public List<String> getOneToManyEAttributeJoinColumns(PAnnotatedEAttribute aAttribute) {
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
-		final String typeName = aClass.getAnnotatedEClass().getName();
-		final String featureName = aAttribute.getAnnotatedEAttribute().getName();
+		final String typeName = aClass.getModelEClass().getName();
+		final String featureName = aAttribute.getModelEAttribute().getName();
 
 		final List<String> result = new ArrayList<String>();
 		final List<String> names =
@@ -202,12 +201,12 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		// for backwards compatibility if the other side is there then use the name
 		// of the other side for the typeName and featureName. The many-to-one determines
 		// the naming
-		if (aReference.getAnnotatedEReference().getEOpposite() != null) {
-			typeName = aReference.getAReferenceType().getAnnotatedEClass().getName();
-			featureName = aReference.getAnnotatedEReference().getEOpposite().getName();
+		if (aReference.getModelEReference().getEOpposite() != null) {
+			typeName = aReference.getAReferenceType().getModelEClass().getName();
+			featureName = aReference.getModelEReference().getEOpposite().getName();
 		} else {
-			typeName = aClass.getAnnotatedEClass().getName();
-			featureName = aReference.getAnnotatedEReference().getName();
+			typeName = aClass.getModelEClass().getName();
+			featureName = aReference.getModelEReference().getName();
 		}
 
 		final List<String> result = new ArrayList<String>();
@@ -240,17 +239,17 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		String featureName;
 		if (inverse) {
 			aClass = aReference.getAReferenceType();
-			if (aReference.getAnnotatedEReference().getEOpposite() != null) {
-				typeName = aReference.getAReferenceType().getAnnotatedEClass().getName();
-				featureName = "_" + aReference.getAnnotatedEReference().getEOpposite().getName();
+			if (aReference.getModelEReference().getEOpposite() != null) {
+				typeName = aReference.getAReferenceType().getModelEClass().getName();
+				featureName = "_" + aReference.getModelEReference().getEOpposite().getName();
 			} else {
-				typeName = aReference.getAReferenceType().getAnnotatedEClass().getName();
+				typeName = aReference.getAReferenceType().getModelEClass().getName();
 				featureName = "";
 			}
 		} else {
 			aClass = aReference.getPaEClass();
-			typeName = aClass.getAnnotatedEClass().getName();
-			featureName = "_" + aReference.getAnnotatedEReference().getName();
+			typeName = aClass.getModelEClass().getName();
+			featureName = "_" + aReference.getModelEReference().getName();
 		}
 		// for backward compatibility, only use featurename if the reference is
 		// to itself
@@ -282,10 +281,10 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getJoinTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute)
 	 */
 	public String getJoinTableName(PAnnotatedEAttribute aAttribute) {
-		assert (aAttribute.getAnnotatedEAttribute().isMany());
+		assert (aAttribute.getModelEAttribute().isMany());
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
-		return convert(getEntityName(aClass.getPaModel(), aClass.getAnnotatedEClass()) + "_" +
-				aAttribute.getAnnotatedEAttribute().getName(), true);
+		return convert(getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_" +
+				aAttribute.getModelEAttribute().getName(), true);
 
 	}
 
@@ -295,7 +294,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getJoinTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
 	 */
 	public String getJoinTableName(PAnnotatedEReference aReference) {
-		final EReference eReference = aReference.getAnnotatedEReference();
+		final EReference eReference = aReference.getModelEReference();
 		final boolean isEObject = eReference.getEType() == ClassicEntityNameStrategy.EOBJECT_ECLASS;
 		final String jTableName;
 
