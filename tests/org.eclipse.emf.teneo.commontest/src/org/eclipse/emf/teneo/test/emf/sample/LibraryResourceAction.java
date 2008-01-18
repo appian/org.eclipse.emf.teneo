@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.9 2007/07/04 19:28:21 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.10 2008/01/18 06:19:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -30,11 +30,11 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests the library example of emf/xsd using a resource. Actually tests bidirectional references using resources. Most other aspects
- * of resources are handled in the Catalog example.
+ * Tests the library example of emf/xsd using a resource. Actually tests bidirectional references
+ * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -96,6 +96,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 			}
 
 			// walk through the structure starting from the library
+			String libURI = null;
+			String writerURI = null;
 			{
 				Resource res = store.getResource();
 				res.setTrackingModification(true);
@@ -103,7 +105,10 @@ public class LibraryResourceAction extends AbstractTestAction {
 
 				Library lib = (Library) res.getContents().get(0);
 
-				Writer tolkien = (Writer) lib.getWriters().get(0);
+				Writer tolkien = lib.getWriters().get(0);
+
+				libURI = res.getURIFragment(lib);
+				writerURI = res.getURIFragment(tolkien);
 
 				/*
 				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int
@@ -127,7 +132,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 				 * BookCategory.SCIENCE_FICTION_LITERAL);
 				 */
 				// correct the mistake we made
-				Book orwellsBook = (Book) tolkien.getBooks().get(2);
+				Book orwellsBook = tolkien.getBooks().get(2);
 				assertTrue(orwellsBook.getTitle().compareTo("1984") == 0);
 
 				// add orwell as a writer
@@ -149,6 +154,19 @@ public class LibraryResourceAction extends AbstractTestAction {
 				// Georgi Manev
 				res.save(null);
 				res.save(null);
+				res.unload();
+			}
+
+			{
+				Resource res = store.getResource();
+				Library lib = (Library) res.getEObject(libURI);
+				Writer w = (Writer) res.getEObject(writerURI);
+				assertEquals("JRR Tolkien", w.getName());
+				assertEquals(2, w.getBooks().size());
+				assertEquals("The Hobbit", w.getBooks().get(1).getTitle());
+				assertEquals(lib.getName(), "Science Fiction");
+				assertTrue(lib.getWriters().contains(w));
+				assertTrue(lib.getBooks().contains(w.getBooks().get(0)));
 				res.unload();
 			}
 
@@ -192,7 +210,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 
 			Library lib = (Library) res.getContents().get(0);
 
-			Writer writer = (Writer) lib.getWriters().get(0);
+			Writer writer = lib.getWriters().get(0);
 
 			Library newLib = factory.createLibrary();
 			newLib.setName("tstlib");
