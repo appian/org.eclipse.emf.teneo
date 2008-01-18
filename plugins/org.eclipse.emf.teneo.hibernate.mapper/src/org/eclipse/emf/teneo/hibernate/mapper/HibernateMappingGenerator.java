@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.17 2007/07/12 18:04:12 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.18 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -74,7 +74,7 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 		for (PAnnotatedEPackage pae : paModel.getPaEPackages()) {
 			for (PAnnotatedEClass paClass : pae.getPaEClasses()) {
 				if (paClass.getEntity() != null) {
-					hbmContext.setEntityName(paClass.getAnnotatedEClass(), getEntityName(paClass));
+					hbmContext.setEntityName(paClass.getModelEClass(), getEntityName(paClass));
 				}
 			}
 		}
@@ -84,7 +84,7 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 	 * @return Returns the entity name for the given paClass
 	 */
 	protected String getEntityName(PAnnotatedEClass paClass) {
-		final EClass eclass = paClass.getAnnotatedEClass();
+		final EClass eclass = paClass.getModelEClass();
 
 		String name = paClass.getEntity().getName();
 		if (name == null) {
@@ -147,7 +147,7 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
 				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
 					// here, we eliminate map.enties
-					if (!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getAnnotatedEClass())) {
+					if (!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getModelEClass())) {
 						processPAClass(paEClass);
 					}
 				}
@@ -173,13 +173,13 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 				}
 
 				// ignore the map entries which do not have an explicit entity
-				if (paEClass.getAnnotatedEClass().getInstanceClass() == Map.Entry.class && paEClass.getEntity() == null) {
-					log.debug("Ignoring " + paEClass.getAnnotatedEClass().getName() + " ignored, is a map entry");
+				if (paEClass.getModelEClass().getInstanceClass() == Map.Entry.class && paEClass.getEntity() == null) {
+					log.debug("Ignoring " + paEClass.getModelEClass().getName() + " ignored, is a map entry");
 					paEClass.setTransient(PannotationFactory.eINSTANCE.createTransient());
 					return;
 				}
 
-				hbmContext.setCurrentEClass(paEClass.getAnnotatedEClass());
+				hbmContext.setCurrentEClass(paEClass.getModelEClass());
 				hbmContext.getEntityMapper().processEntity(paEClass);
 
 			} else if (log.isDebugEnabled()) {

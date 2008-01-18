@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEDataTypeImpl.java,v 1.10 2007/11/14 16:38:34 mtaal Exp $
+ * $Id: HbAnnotatedEDataTypeImpl.java,v 1.11 2008/01/18 06:21:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -16,24 +16,15 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEDataTypeImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
-import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
-import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
 
 /**

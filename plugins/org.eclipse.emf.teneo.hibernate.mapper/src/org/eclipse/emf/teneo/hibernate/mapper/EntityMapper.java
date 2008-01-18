@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.25 2007/11/14 16:38:34 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.26 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -91,7 +91,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			DiscriminatorValue dValue, Table table) {
 		// determine what type of hibernate tag should be used
 		final InheritanceType inheritanceStrategy = inhStrategy != null ? inhStrategy : InheritanceType.SINGLE_TABLE;
-		final EClass eclass = entity.getAnnotatedEClass();
+		final EClass eclass = entity.getModelEClass();
 		final String hbClassName;
 		if (superEntity == null) {
 			hbClassName = "class";
@@ -117,25 +117,25 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			if (hasCompositeID(entity)) { // only for this specific case
 				// it is
 				// required to have the impl.name
-				target.addAttribute("name", hbmContext.getInstanceClassName(entity.getAnnotatedEClass()));
+				target.addAttribute("name", hbmContext.getInstanceClassName(entity.getModelEClass()));
 			}
 		} else if (getHbmContext().forceUseOfInstance(entity)) {
 
 			final Element importElement = new Element("import");
 
-			importElement.addAttribute("class", hbmContext.getInstanceClassName(entity.getAnnotatedEClass()))
-				.addAttribute("rename", entityName);
+			importElement.addAttribute("class", hbmContext.getInstanceClassName(entity.getModelEClass())).addAttribute(
+				"rename", entityName);
 			getHbmContext().getCurrent().add(getImportIndex(), importElement);
 
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name",
-						hbmContext.getInstanceClassName(entity.getAnnotatedEClass())).addAttribute("abstract",
+						hbmContext.getInstanceClassName(entity.getModelEClass())).addAttribute("abstract",
 						isAbstractStr).addAttribute("lazy",
 						((HbAnnotatedEClass) entity).getHbProxy() == null ? "false" : "true");
 		} else {
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name",
-						hbmContext.getInstanceClassName(entity.getAnnotatedEClass())).addAttribute("entity-name",
+						hbmContext.getInstanceClassName(entity.getModelEClass())).addAttribute("entity-name",
 						entityName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
 						((HbAnnotatedEClass) entity).getHbProxy() == null ? "false" : "true");
 		}
@@ -143,9 +143,9 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		if (superEntity != null) {
 			final String extendsEntity;
 			if (superEntity.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(superEntity)) {
-				extendsEntity = getHbmContext().getEntityName(superEntity.getAnnotatedEClass());
+				extendsEntity = getHbmContext().getEntityName(superEntity.getModelEClass());
 			} else {
-				extendsEntity = getHbmContext().getInstanceClassName(superEntity.getAnnotatedEClass());
+				extendsEntity = getHbmContext().getInstanceClassName(superEntity.getModelEClass());
 			}
 			target.addAttribute("extends", extendsEntity);
 			log.debug("Extends " + extendsEntity);
@@ -255,7 +255,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		} else if (entity.getPaSuperEntity() != null && InheritanceType.JOINED.equals(entity.getInheritanceStrategy())) {
 			final ArrayList<PrimaryKeyJoinColumn> list = new ArrayList<PrimaryKeyJoinColumn>();
 			final PrimaryKeyJoinColumn pkjc = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-			final String entityName = getHbmContext().getEntityName(entity.getAnnotatedEClass());
+			final String entityName = getHbmContext().getEntityName(entity.getModelEClass());
 			getHbmContext().trunc(entityName + "id"); // TODO improve name
 			// creation here
 			list.add(pkjc);
@@ -339,7 +339,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		// initially the comment is placed at the back, move it to the front
-		final Element comment = addCommentElement(entity.getAnnotatedEClass(), entityElement);
+		final Element comment = addCommentElement(entity.getModelEClass(), entityElement);
 		if (comment != null) {
 			entityElement.remove(comment);
 			entityElement.add(0, comment);
@@ -356,11 +356,10 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 		// and add the metas at the front
 		final Element meta1 = new Element("meta");
-		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(
-			entity.getAnnotatedEClass().getName());
+		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(entity.getModelEClass().getName());
 		final Element meta2 = new Element("meta");
 		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
-			entity.getAnnotatedEClass().getEPackage().getNsURI());
+			entity.getModelEClass().getEPackage().getNsURI());
 
 		entityElement.add(0, meta1);
 		entityElement.add(1, meta2);
@@ -417,7 +416,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			final String tableName = getSecondaryTableName(feature);
 			if (!tableNames.contains(tableName)) {
 				final String message =
-						"Feature \"" + feature.getAnnotatedElement().getName() +
+						"Feature \"" + feature.getModelElement().getName() +
 								"\" was mapped to undeclared secondary table \"" + tableName + "\".";
 				log.error(message);
 				throw new MappingException(message);
@@ -460,7 +459,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			if (secondaryTable.getSchema() != null) {
 				joinElement.addAttribute("schema", secondaryTable.getSchema());
 			}
-			entity.getAnnotatedEClass().getEIDAttribute();
+			entity.getModelEClass().getEIDAttribute();
 			final List<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable.getPkJoinColumns();
 			for (PrimaryKeyJoinColumn pkJoinColumn : pkJoinColumns) {
 				final Element keyElement = joinElement.addElement("key");

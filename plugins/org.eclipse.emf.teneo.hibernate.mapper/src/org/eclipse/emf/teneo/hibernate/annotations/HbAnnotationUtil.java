@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbAnnotationUtil.java,v 1.1 2007/07/12 12:52:06 mtaal Exp $
+ * $Id: HbAnnotationUtil.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
  * Some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbAnnotationUtil {
@@ -40,8 +40,8 @@ public class HbAnnotationUtil {
 	/** Adds an index */
 	public static void setIndex(PAnnotatedEReference aReference, AbstractAnnotator annotator) {
 		final String indexName =
-				annotator.getEntityName(aReference.getAnnotatedEReference().getEContainingClass()) + "_" +
-						aReference.getAnnotatedEReference().getName();
+				annotator.getEntityName(aReference.getModelEReference().getEContainingClass()) + "_" +
+						aReference.getModelEReference().getName();
 		final HbAnnotatedEReference haReference = (HbAnnotatedEReference) aReference;
 		if (haReference.getHbIndex() == null) {
 			final Index index = HbannotationFactory.eINSTANCE.createIndex();

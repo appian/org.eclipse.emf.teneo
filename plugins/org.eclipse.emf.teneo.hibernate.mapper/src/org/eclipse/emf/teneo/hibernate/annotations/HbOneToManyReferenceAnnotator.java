@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbOneToManyReferenceAnnotator.java,v 1.1 2007/07/12 12:52:05 mtaal Exp $
+ * $Id: HbOneToManyReferenceAnnotator.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
@@ -49,8 +49,8 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 					.getHbCollectionOfElements());
 
 		// add an idbag annotation
-		if (getPersistenceOptions().alwaysMapListAsIdBag() && aReference.getAnnotatedEReference().isMany() &&
-				aReference.getOneToMany() == null && !aReference.getAnnotatedEReference().isContainment()) {
+		if (getPersistenceOptions().alwaysMapListAsIdBag() && aReference.getModelEReference().isMany() &&
+				aReference.getOneToMany() == null && !aReference.getModelEReference().isContainment()) {
 			((HbAnnotatedEReference) aReference).setHbIdBag(HbannotationFactory.eINSTANCE.createIdBag());
 			// add a join table
 		}
@@ -75,7 +75,7 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 			}
 
 			log.debug("Setting cache strategy " + defaultCacheStrategy + " on " +
-					aReference.getAnnotatedEReference().getName());
+					aReference.getModelEReference().getName());
 			final Cache cache = HbannotationFactory.eINSTANCE.createCache();
 			cache.setUsage(ccs);
 			((HbAnnotatedEReference) aReference).setHbCache(cache);

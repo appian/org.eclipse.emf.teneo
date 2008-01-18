@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbOneToManyAttributeAnnotator.java,v 1.1 2007/07/12 12:52:05 mtaal Exp $
+ * $Id: HbOneToManyAttributeAnnotator.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
@@ -57,21 +57,21 @@ public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
 		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) aAttribute;
 		final HbAnnotatedEDataType hed =
 				(HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
-					aAttribute.getAnnotatedEAttribute().getEAttributeType());
+					aAttribute.getModelEAttribute().getEAttributeType());
 		if (isCollectionOfElements) {
 			CollectionOfElements coe = ((HbAnnotatedEAttribute) aAttribute).getHbCollectionOfElements();
 			if (coe.getTargetElement() == null) {
 				coe.setTargetElement(getTargetTypeName(aAttribute));
 			}
 		} else if (hea.getHbType() != null && hea.getOneToMany() == null &&
-				!aAttribute.getAnnotatedEAttribute().isMany()) {
+				!aAttribute.getModelEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
 			// to be able to handle the complete list/collection
 			singleAttributeAnnotator.annotate(aAttribute);
 		} else if (hed != null && hed.getHbTypeDef() != null && hea.getOneToMany() == null &&
-				!aAttribute.getAnnotatedEAttribute().isMany()) {
+				!aAttribute.getModelEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
@@ -87,7 +87,7 @@ public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
 	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
 		final HbAnnotatedEDataType ped =
 				(HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
-					aAttribute.getAnnotatedEAttribute().getEAttributeType());
+					aAttribute.getModelEAttribute().getEAttributeType());
 		if (ped != null && ped.getHbTypeDef() != null) {
 			return ped.getHbTypeDef().getName();
 		}

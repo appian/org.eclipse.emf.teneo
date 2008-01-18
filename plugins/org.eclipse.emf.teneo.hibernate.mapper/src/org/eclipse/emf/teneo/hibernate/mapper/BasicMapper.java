@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.24 2007/12/28 14:36:40 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.25 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -40,9 +40,9 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 * Generate hb mapping for the given basic attribute.
 	 */
 	public void processBasic(PAnnotatedEAttribute paAttribute) {
-		log.debug("processBasic " + paAttribute.getAnnotatedEAttribute().getName());
+		log.debug("processBasic " + paAttribute.getModelEAttribute().getName());
 
-		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
+		final EAttribute eattr = paAttribute.getModelEAttribute();
 		final String attrName = getHbmContext().getPropertyName(eattr);
 		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName);
 
@@ -74,10 +74,10 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 * Generate hb mapping for the given temporal attribute.
 	 */
 	public void processTemporal(PAnnotatedEAttribute paAttribute) {
-		log.debug("processTemporal " + paAttribute.getAnnotatedEAttribute().getName());
+		log.debug("processTemporal " + paAttribute.getModelEAttribute().getName());
 
 		TemporalType tt = paAttribute.getTemporal().getValue();
-		final String attrName = getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute());
+		final String attrName = getHbmContext().getPropertyName(paAttribute.getModelEAttribute());
 		log.debug("addProperty: " + attrName + " temporal " + tt.getName());
 
 		final Element propElement = getHbmContext().getCurrent().addElement("property").addAttribute("name", attrName);
@@ -107,7 +107,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 * Generate hb mapping for the given lob attribute.
 	 */
 	public void processLob(PAnnotatedEAttribute paAttribute) {
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
+		final EAttribute eAttribute = paAttribute.getModelEAttribute();
 		log.debug("processLob " + eAttribute.getName());
 
 		final Element propElement = getHbmContext().getCurrent().addElement("property");
@@ -129,7 +129,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 * Generate hb mapping for the given enum attribute.
 	 */
 	public void processEnum(PAnnotatedEAttribute paAttribute) {
-		log.debug("processEnum " + paAttribute.getAnnotatedEAttribute());
+		log.debug("processEnum " + paAttribute.getModelEAttribute());
 
 		Basic basic = paAttribute.getBasic();
 		if (basic == null) {
@@ -139,7 +139,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		final List<Column> columns = getColumns(paAttribute);
 		final Element propElement =
 				getHbmContext().getCurrent().addElement("property").addAttribute("name",
-					getHbmContext().getPropertyName(paAttribute.getAnnotatedEAttribute()));
+					getHbmContext().getPropertyName(paAttribute.getModelEAttribute()));
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		addColumns(propElement, paAttribute, columns, isNullable(basic, paAttribute) ||
@@ -152,15 +152,15 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 */
 	public void processVersion(PAnnotatedEAttribute paAttribute) {
 		if (log.isDebugEnabled()) {
-			log.debug("Generating version for " + paAttribute.getAnnotatedEAttribute().getName());
+			log.debug("Generating version for " + paAttribute.getModelEAttribute().getName());
 		}
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
+		final EAttribute eAttribute = paAttribute.getModelEAttribute();
 		final Element propElement =
 				getHbmContext().getCurrent().addElement("version").addAttribute("name", eAttribute.getName());
 		List<Column> columns = getColumns(paAttribute);
 		if (columns.size() > 1) {
 			log.warn("Version has more than one attribute, only using the first one, eclass: " +
-					paAttribute.getAnnotatedEAttribute().getEContainingClass().getName());
+					paAttribute.getModelEAttribute().getEContainingClass().getName());
 		}
 		addColumns(propElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), false);
 		setType(paAttribute, propElement);
@@ -171,7 +171,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 */
 	public void processTransient(PAnnotatedEStructuralFeature paFeature) {
 		if (log.isDebugEnabled()) {
-			log.debug("Skipping transient feature for " + paFeature.getAnnotatedEStructuralFeature().getName());
+			log.debug("Skipping transient feature for " + paFeature.getModelEStructuralFeature().getName());
 		}
 	}
 

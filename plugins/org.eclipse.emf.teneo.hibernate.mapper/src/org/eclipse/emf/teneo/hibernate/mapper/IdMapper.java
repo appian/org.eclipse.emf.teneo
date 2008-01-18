@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.20 2007/11/15 14:48:33 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.21 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -13,6 +13,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
@@ -24,11 +25,14 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -40,7 +44,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class IdMapper extends AbstractMapper implements ExtensionPoint {
+public class IdMapper extends AbstractAssociationMapper implements ExtensionPoint {
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(IdMapper.class);
@@ -115,25 +119,65 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 	 * Process embedded id.
 	 */
 	public void processEmbeddedId(PAnnotatedEReference aReference) {
-		final EReference eReference = aReference.getAnnotatedEReference();
+		final EReference eReference = aReference.getModelEReference();
 		final PAnnotatedEClass aClass = aReference.getPaModel().getPAnnotated(eReference.getEReferenceType());
-		final Element compositeIdElement = getHbmContext().getCurrent().addElement("composite-id");
+		final Element compositeIdElement = DocumentHelper.createElement("composite-id");
+		getHbmContext().getCurrent().add(0, compositeIdElement);
 		compositeIdElement.addAttribute("name", eReference.getName());
-		final String className = getHbmContext().getInstanceClassName(aClass.getAnnotatedEClass());
+		final String className = getHbmContext().getInstanceClassName(aClass.getModelEClass());
 		compositeIdElement.addAttribute("class", className);
 		getHbmContext().setCurrent(compositeIdElement);
 		for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
-			if (!(aFeature instanceof PAnnotatedEAttribute)) {
-				continue;
+			if (aFeature instanceof PAnnotatedEAttribute) {
+				PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
+				final Element keyPropertyElement = compositeIdElement.addElement("key-property");
+				keyPropertyElement.addAttribute("name", aFeature.getModelEStructuralFeature().getName());
+				addColumns(keyPropertyElement, aAttribute, getColumns(aAttribute), getHbmContext()
+					.isCurrentElementFeatureMap(), false);
+				setType(aAttribute, keyPropertyElement);
+			} else if (aFeature instanceof PAnnotatedEReference &&
+					!((PAnnotatedEReference) aFeature).getModelEReference().isMany()) {
+				addKeyManyToOne(compositeIdElement, (PAnnotatedEReference) aFeature);
 			}
-			PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
-			final Element keyPropertyElement = compositeIdElement.addElement("key-property");
-			keyPropertyElement.addAttribute("name", aFeature.getAnnotatedEStructuralFeature().getName());
-			addColumns(keyPropertyElement, aAttribute, getColumns(aAttribute), getHbmContext()
-				.isCurrentElementFeatureMap(), false);
-			setType(aAttribute, keyPropertyElement);
 		}
 		getHbmContext().setCurrent(compositeIdElement.getParent());
+	}
+
+	private void addKeyManyToOne(Element currentParent, PAnnotatedEReference paReference) {
+		log.debug("Process many-to-one " + paReference);
+
+		final List<JoinColumn> jcs = getJoinColumns(paReference);
+
+		final EClass referedTo = paReference.getModelEReference().getEReferenceType();
+		final ManyToOne mto = paReference.getManyToOne();
+		String targetName = mto.getTargetEntity();
+		if (targetName == null) {
+			targetName = getHbmContext().getEntityName(referedTo);
+		}
+
+		log.debug("Target " + targetName);
+
+		final Element associationElement = addManyToOne(currentParent, paReference, targetName, true);
+
+		addForeignKeyAttribute(associationElement, paReference);
+		// todo default false until proxies are supported
+		final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getPaModel().getPAnnotated(referedTo);
+		if (haClass.getHbProxy() != null) {
+			associationElement.addAttribute("lazy", "proxy");
+		} else {
+			associationElement.addAttribute("lazy", "false");
+		}
+
+		addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() || mto.isOptional() ||
+				getHbmContext().isCurrentElementFeatureMap());
+
+		// MT: TODO; the characteristic of the other side should be checked (if
+		// present), if the otherside is a onetoone
+		// then this
+		// should be set to true. But then this is then handled by a
+		// bidirectional onetoone (I think).
+		// if (joinColumns.isEmpty())
+		// associationElement.addAttribute("unique", "true");
 	}
 
 	/**
@@ -152,7 +196,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 					"superclass/type, id properties should always be specified in the top of the inheritance structure");
 		}
 
-		final EAttribute eAttribute = id.getAnnotatedEAttribute();
+		final EAttribute eAttribute = id.getModelEAttribute();
 		final List<Column> columns = getColumns(id);
 		final GeneratedValue generatedValue = id.getGeneratedValue();
 
@@ -190,7 +234,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 			}
 
 		} else { // enumerated id
-			final EClassifier eclassifier = id.getAnnotatedEAttribute().getEType();
+			final EClassifier eclassifier = id.getModelEAttribute().getEType();
 			if (!getHbmContext().isGeneratedByEMF() && !getHbmContext().isDynamic(eclassifier)) {
 				final String typeName = getEnumUserType(id.getEnumerated());
 				final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
@@ -198,7 +242,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 					"name", "enumClassName").addText(instanceClass.getName());
 			} else if (!getHbmContext().isGeneratedByEMF() && getHbmContext().isDynamic(eclassifier)) {
 				throw new UnsupportedOperationException("DYNAMIC WITH ENUM ID NOT YET SUPPORTED");
-			} else if (id.getAnnotatedEAttribute().getEType().getInstanceClass() != null) {
+			} else if (id.getModelEAttribute().getEType().getInstanceClass() != null) {
 				usedIdElement.addElement("type").addAttribute("name", getEnumUserType(id.getEnumerated())).addElement(
 					"param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
 					eAttribute.getEType().getInstanceClass().getName());
@@ -206,9 +250,9 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 				final Element typeElement =
 						usedIdElement.addElement("type").addAttribute("name", hbDynamicEnumType(id.getEnumerated()));
 				typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
-					id.getAnnotatedEAttribute().getEType().getName());
+					id.getModelEAttribute().getEType().getName());
 				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
-					id.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+					id.getModelEAttribute().getEType().getEPackage().getNsURI());
 			}
 		}
 
@@ -219,8 +263,8 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 
 			if (isCompositeId) {
 				throw new MappingException("Composite id can not have a generated value " +
-						id.getAnnotatedEAttribute().getEContainingClass().getName() + "/" +
-						id.getAnnotatedEAttribute().getName());
+						id.getModelEAttribute().getEContainingClass().getName() + "/" +
+						id.getModelEAttribute().getName());
 			}
 
 			final Element generatorElement = usedIdElement.addElement("generator");
@@ -243,8 +287,7 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 				if (generatedValue.getGenerator() != null) { // table
 					// generator
 					final TableGenerator tg =
-							id.getPaModel().getTableGenerator(id.getAnnotatedEAttribute(),
-								generatedValue.getGenerator());
+							id.getPaModel().getTableGenerator(id.getModelEAttribute(), generatedValue.getGenerator());
 					generatorElement.addElement("param").addAttribute("name", "table").setText(
 						(tg.getTable() != null ? tg.getTable() : "uid_table")); // externalize
 					generatorElement.addElement("param").addAttribute("name", "column").setText(
@@ -259,8 +302,8 @@ public class IdMapper extends AbstractMapper implements ExtensionPoint {
 				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 				if (generatedValue.getGenerator() != null) {
 					final SequenceGenerator sg =
-							id.getPaModel().getSequenceGenerator(id.getAnnotatedEAttribute(),
-								generatedValue.getGenerator());
+							id.getPaModel()
+								.getSequenceGenerator(id.getModelEAttribute(), generatedValue.getGenerator());
 					generatorElement.addElement("param").addAttribute("name", "sequence").setText(sg.getSequenceName());
 					generatorElement.addElement("param").addAttribute("name", "initialValue").setText(
 						Integer.toString(sg.getInitialValue()));

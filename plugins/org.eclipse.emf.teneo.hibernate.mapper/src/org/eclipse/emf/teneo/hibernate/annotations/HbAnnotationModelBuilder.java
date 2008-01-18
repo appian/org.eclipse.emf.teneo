@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbAnnotationModelBuilder.java,v 1.1 2007/07/11 14:40:45 mtaal Exp $
+ * $Id: HbAnnotationModelBuilder.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.annotations;
 
@@ -53,7 +53,7 @@ public class HbAnnotationModelBuilder extends BasicPamodelBuilder {
 			default:
 				throw new AssertionError("Trying to build HbAnnotatedEModelElement for a " + eModelElementEClass);
 		}
-		paElement.setAnnotatedElement((ENamedElement) eModelElement);
+		paElement.setModelElement((ENamedElement) eModelElement);
 		return paElement;
 	}
 }

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.21 2007/11/15 10:44:54 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.22 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -60,14 +60,15 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 		log.debug("Generating many to one mapping for onetoone" + paReference);
 
 		final OneToOne oto = paReference.getOneToOne();
-		final EReference eref = paReference.getAnnotatedEReference();
+		final EReference eref = paReference.getModelEReference();
 		String specifiedName = oto.getTargetEntity();
 
 		if (specifiedName == null) {
 			specifiedName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 
-		final Element associationElement = addManyToOne(getHbmContext().getCurrent(), paReference, specifiedName);
+		final Element associationElement =
+				addManyToOne(getHbmContext().getCurrent(), paReference, specifiedName, false);
 
 		addCascadesForSingle(associationElement, oto.getCascade());
 
@@ -104,7 +105,7 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			targetName = getHbmContext().getEntityName(paReference.getEReferenceType());
 		}
 
-		final EReference eref = paReference.getAnnotatedEReference();
+		final EReference eref = paReference.getModelEReference();
 		final EReference otherSide = eref.getEOpposite();
 		final Element associationElement = addOneToOne(paReference, getHbmContext().getPropertyName(eref), targetName);
 

@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.12 2007/07/12 18:04:12 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.13 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -52,9 +52,9 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 		try {
 			// make a difference between a many-to-one component and multi-component
 			if (paReference.getManyToOne() != null) {
-				processSingleEmbedded(paReference, paReference.getAnnotatedEReference().getEReferenceType());
+				processSingleEmbedded(paReference, paReference.getModelEReference().getEReferenceType());
 			} else if (paReference.getOneToOne() != null) {
-				processSingleEmbedded(paReference, paReference.getAnnotatedEReference().getEReferenceType());
+				processSingleEmbedded(paReference, paReference.getModelEReference().getEReferenceType());
 			} else {
 				if (paReference.getManyToMany() != null) {
 					throw new MappingException("ManyToMany can not be combined with Embedded " + paReference);
@@ -78,7 +78,7 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 
 		final Element componentElement =
 				getHbmContext().getCurrent().addElement("component").addAttribute("name",
-					paReference.getAnnotatedEReference().getName());
+					paReference.getModelEReference().getName());
 
 		// todo: change recognizing a component to using metadata!
 		// then the class tag can point to a real impl. class@
@@ -87,7 +87,7 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 		try {
 			// process the features of the target
 			final PAnnotatedEClass componentAClass =
-					paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEReferenceType());
+					paReference.getPaModel().getPAnnotated(paReference.getModelEReference().getEReferenceType());
 			getHbmContext().processFeatures(componentAClass.getPaEStructuralFeatures());
 		} finally {
 			getHbmContext().setCurrent(componentElement.getParent());

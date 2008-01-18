@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbEDataTypeAnnotator.java,v 1.1 2007/07/12 12:52:06 mtaal Exp $
+ * $Id: HbEDataTypeAnnotator.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -34,7 +34,7 @@ import org.hibernate.type.TypeFactory;
  * Annotates an EDataType
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
@@ -49,27 +49,27 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 		if (hed.getHbTypeDef() != null) {
 			return; // already there do nothing
 		}
-		final String typeClass = getCustomDataType(ped.getAnnotatedEDataType());
+		final String typeClass = getCustomDataType(ped.getModelEDataType());
 		if (typeClass == null) {
-			log.debug("Not creating typedef for edatatype: " + ped.getAnnotatedEDataType().getName() +
+			log.debug("Not creating typedef for edatatype: " + ped.getModelEDataType().getName() +
 					" because it is natively handled by hibernate");
 			return;
 		}
 
 		// create default typedef
-		log.debug("Creating default typedef for edatatype " + hed.getAnnotatedEDataType().getName());
+		log.debug("Creating default typedef for edatatype " + hed.getModelEDataType().getName());
 		final TypeDef typeDef = HbannotationFactory.eINSTANCE.createTypeDef();
-		typeDef.setName(hed.getAnnotatedEDataType().getEPackage().getName() + "." +
-				ped.getAnnotatedEDataType().getName());
+		typeDef.setName(hed.getModelEDataType().getEPackage().getName() + "." +
+				ped.getModelEDataType().getName());
 		typeDef.setTypeClass(getDefaultUserType());
 		// add default parameters
 		final Parameter paramPackage = HbannotationFactory.eINSTANCE.createParameter();
 		paramPackage.setName(HbMapperConstants.EPACKAGE_PARAM);
-		paramPackage.setValue(hed.getAnnotatedEDataType().getEPackage().getNsURI());
+		paramPackage.setValue(hed.getModelEDataType().getEPackage().getNsURI());
 		typeDef.getParameters().add(paramPackage);
 		final Parameter edParam = HbannotationFactory.eINSTANCE.createParameter();
 		edParam.setName(HbMapperConstants.EDATATYPE_PARAM);
-		edParam.setValue(hed.getAnnotatedEDataType().getName());
+		edParam.setValue(hed.getModelEDataType().getName());
 		typeDef.getParameters().add(edParam);
 		hed.setHbTypeDef(typeDef);
 	}

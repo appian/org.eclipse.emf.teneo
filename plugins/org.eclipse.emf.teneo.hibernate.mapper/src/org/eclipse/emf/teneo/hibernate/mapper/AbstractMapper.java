@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.31 2007/12/28 14:36:40 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.32 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -70,10 +70,10 @@ public abstract class AbstractMapper {
 	/** return the opposite of an association */
 	protected PAnnotatedEReference getOtherSide(PAnnotatedEReference paReference) {
 		// TODO assuming that mappedBy coincide with opposite, check in validation
-		if (paReference.getAnnotatedEReference().getEOpposite() == null) {
+		if (paReference.getModelEReference().getEOpposite() == null) {
 			return null;
 		}
-		return paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
+		return paReference.getPaModel().getPAnnotated(paReference.getModelEReference().getEOpposite());
 	}
 
 	/** The mapping context of this mapping action */
@@ -96,7 +96,7 @@ public abstract class AbstractMapper {
 
 		// handle the type annotation
 		final HbAnnotatedEAttribute hea = (HbAnnotatedEAttribute) paAttribute;
-		final EDataType ed = (EDataType) hea.getAnnotatedEAttribute().getEType();
+		final EDataType ed = (EDataType) hea.getModelEAttribute().getEType();
 		final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) hea.getPaModel().getPAnnotated(ed);
 
 		final String name;
@@ -123,7 +123,7 @@ public abstract class AbstractMapper {
 			}
 		} else if (paAttribute.getEnumerated() != null) {
 			handleEnumType(paAttribute, propElement);
-		} else if (StoreUtil.isQName(paAttribute.getAnnotatedEAttribute())) {
+		} else if (StoreUtil.isQName(paAttribute.getModelEAttribute())) {
 			propElement.addAttribute("type", "org.eclipse.emf.teneo.hibernate.mapping.QNameUserType");
 		} else {
 			final String hType = hbType(paAttribute);
@@ -133,9 +133,9 @@ public abstract class AbstractMapper {
 				final Element typeElement =
 						propElement.addElement("type").addAttribute("name", hbmContext.getDefaultUserType());
 				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EDATATYPE_PARAM).addText(
-					paAttribute.getAnnotatedEAttribute().getEAttributeType().getName());
+					paAttribute.getModelEAttribute().getEAttributeType().getName());
 				typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
-					paAttribute.getAnnotatedEAttribute().getEType().getEPackage().getNsURI());
+					paAttribute.getModelEAttribute().getEType().getEPackage().getNsURI());
 			}
 		}
 	}
@@ -144,7 +144,7 @@ public abstract class AbstractMapper {
 	private void handleEnumType(PAnnotatedEAttribute paAttribute, Element propElement) {
 		final Enumerated enumerated = paAttribute.getEnumerated();
 		assert (enumerated != null);
-		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
+		final EAttribute eattr = paAttribute.getModelEAttribute();
 		final EClassifier eclassifier = eattr.getEType();
 		if (!getHbmContext().isGeneratedByEMF() && getHbmContext().getInstanceClass(eclassifier) != null) {
 			final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
@@ -171,10 +171,10 @@ public abstract class AbstractMapper {
 	 *             if no corresponding hb type is defined.
 	 */
 	protected String hbType(PAnnotatedEAttribute paAttribute) {
-		final EAttribute eAttribute = paAttribute.getAnnotatedEAttribute();
+		final EAttribute eAttribute = paAttribute.getModelEAttribute();
 		final HbAnnotatedEDataType hed =
 				(HbAnnotatedEDataType) paAttribute.getPaModel().getPAnnotated(eAttribute.getEAttributeType());
-		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
+		final EDataType eDataType = paAttribute.getModelEAttribute().getEAttributeType();
 		if (hed != null && hed.getHbTypeDef() != null) {
 			return hed.getHbTypeDef().getName();
 		} else if (paAttribute.getLob() != null) {
@@ -227,7 +227,7 @@ public abstract class AbstractMapper {
 	 * @return The name of the java class needed to map the date type
 	 */
 	public String getEDateClass(PAnnotatedEAttribute paAttribute) {
-		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
+		final EDataType eDataType = paAttribute.getModelEAttribute().getEAttributeType();
 
 		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType));
 
@@ -260,7 +260,7 @@ public abstract class AbstractMapper {
 	 * @return The name of the java class needed to map the datetime/timestamp type
 	 */
 	public String getEDateTimeClass(PAnnotatedEAttribute paAttribute) {
-		final EDataType eDataType = paAttribute.getAnnotatedEAttribute().getEAttributeType();
+		final EDataType eDataType = paAttribute.getModelEAttribute().getEAttributeType();
 
 		assert (EcoreDataTypes.INSTANCE.isEDateTime(eDataType));
 
@@ -332,7 +332,7 @@ public abstract class AbstractMapper {
 				final PAnnotatedEStructuralFeature embeddingFeature = getHbmContext().getEmbeddingFeature();
 				name =
 						getHbmContext().getSqlNameStrategy().getColumnName(pef,
-							embeddingFeature.getAnnotatedEStructuralFeature().getName());
+							embeddingFeature.getModelEStructuralFeature().getName());
 			} else {
 				name = getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
 			}
@@ -463,7 +463,7 @@ public abstract class AbstractMapper {
 					final PAnnotatedEStructuralFeature embeddingFeature = getHbmContext().getEmbeddingFeature();
 					name =
 							getHbmContext().getSqlNameStrategy().getColumnName(pef,
-								embeddingFeature.getAnnotatedEStructuralFeature().getName());
+								embeddingFeature.getModelEStructuralFeature().getName());
 				} else {
 					name = getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
 				}
@@ -491,7 +491,7 @@ public abstract class AbstractMapper {
 			}
 
 			// --- JJH, adapted by MT
-			addCommentElement(pef.getAnnotatedElement(), columnElement);
+			addCommentElement(pef.getModelElement(), columnElement);
 			// --- JJH
 		}
 	}

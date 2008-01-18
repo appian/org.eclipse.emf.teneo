@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: FeatureMapMapping.java,v 1.11 2007/09/03 14:07:20 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.12 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,18 +48,18 @@ public class FeatureMapMapping {
 		log.debug("Created featuremap mapping instance for " + paAttribute);
 		this.hbmContext = hbmContext;
 		this.paAttribute = paAttribute;
-		final EAttribute eattr = paAttribute.getAnnotatedEAttribute();
+		final EAttribute eattr = paAttribute.getModelEAttribute();
 		assert (FeatureMapUtil.isFeatureMap(eattr));
 	}
 
 	/** Returns the entityName */
 	public String getEntityName() {
-		return StoreUtil.getEntityName(paAttribute.getAnnotatedEAttribute());
+		return StoreUtil.getEntityName(paAttribute.getModelEAttribute());
 	}
 
 	/** Processes the features of this featuremap entry */
 	public void process() {
-		final String entityName = StoreUtil.getEntityName(paAttribute.getAnnotatedEAttribute());
+		final String entityName = StoreUtil.getEntityName(paAttribute.getModelEAttribute());
 		log.debug("Processing feature map feature: " + entityName);
 		Element mainElement =
 				hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName).addAttribute(
@@ -68,12 +68,12 @@ public class FeatureMapMapping {
 		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META)
 			.addText(
 				hbmContext.getEntityNameStrategy().toEntityName(
-					paAttribute.getAnnotatedEAttribute().getEContainingClass()));
+					paAttribute.getModelEAttribute().getEContainingClass()));
 
 		final FeatureMapper fp = hbmContext.getFeatureMapper();
 		hbmContext.setCurrent(mainElement);
 		hbmContext.setCurrentElementFeatureMap(true);
-		hbmContext.setNamePrefix(paAttribute.getAnnotatedEAttribute().getName() + "_");
+		hbmContext.setNamePrefix(paAttribute.getModelEAttribute().getName() + "_");
 
 		// TODO: check if id of parent can be used instead
 		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
@@ -91,11 +91,11 @@ public class FeatureMapMapping {
 
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
-		final boolean isMixed = StoreUtil.isMixed(paAttribute.getAnnotatedEAttribute());
+		final boolean isMixed = StoreUtil.isMixed(paAttribute.getModelEAttribute());
 		for (PAnnotatedEStructuralFeature paFeature : paClass.getPaEStructuralFeatures()) {
-			EStructuralFeature eFeature = paFeature.getAnnotatedEStructuralFeature();
-			if ((isMixed && eFeature.getFeatureID() != paAttribute.getAnnotatedEAttribute().getFeatureID()) ||
-					StoreUtil.isElementOfGroup(eFeature, paAttribute.getAnnotatedEAttribute())) {
+			EStructuralFeature eFeature = paFeature.getModelEStructuralFeature();
+			if ((isMixed && eFeature.getFeatureID() != paAttribute.getModelEAttribute().getFeatureID()) ||
+					StoreUtil.isElementOfGroup(eFeature, paAttribute.getModelEAttribute())) {
 				log.debug("Feature " + StoreUtil.toString(eFeature) + " belongs to this featuremap");
 
 				// continue if it is a id
@@ -136,6 +136,6 @@ public class FeatureMapMapping {
 
 	/** Returns the eattribute */
 	public EAttribute getEAttribute() {
-		return paAttribute.getAnnotatedEAttribute();
+		return paAttribute.getModelEAttribute();
 	}
 }

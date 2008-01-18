@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.23 2007/09/04 09:57:29 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.24 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -78,7 +78,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		}
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
-		final EReference eref = hbReference.getAnnotatedEReference();
+		final EReference eref = hbReference.getModelEReference();
 		final EClass refType = eref.getEReferenceType();
 		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();
 
@@ -197,7 +197,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// addCollectionElement(paReference.getAnnotatedElement().getName(),
 		// paReference.isIndexed());
 		final Element collElement = addCollectionElement(paReference);
-		final EReference eref = paReference.getAnnotatedEReference();
+		final EReference eref = paReference.getModelEReference();
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();
 
@@ -289,7 +289,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 				return collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
 			} else {
 				return collElement.addElement("one-to-many").addAttribute("class",
-					getHbmContext().getInstanceClassName(referedToAClass.getAnnotatedEClass()));
+					getHbmContext().getInstanceClassName(referedToAClass.getModelEClass()));
 			}
 		}
 	}
@@ -308,8 +308,8 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		} else {
 			manyToMany =
 					collElement.addElement("many-to-many").addAttribute("class",
-						getHbmContext().getInstanceClassName(referedToAClass.getAnnotatedEClass())).addAttribute(
-						"unique", unique ? "true" : "false");
+						getHbmContext().getInstanceClassName(referedToAClass.getModelEClass())).addAttribute("unique",
+						unique ? "true" : "false");
 		}
 		addKeyColumns(hbReference, manyToMany, invJoinColumns); // pass null for jointable
 

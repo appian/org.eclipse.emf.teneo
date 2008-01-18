@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.19 2007/11/15 10:44:54 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.20 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,7 +48,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
 
-		final EClass referedTo = paReference.getAnnotatedEReference().getEReferenceType();
+		final EClass referedTo = paReference.getModelEReference().getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
 		if (targetName == null) {
@@ -59,8 +59,8 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		JoinTable joinTable = null;
 		PAnnotatedEReference aOpposite = null;
-		if (paReference.getAnnotatedEReference().getEOpposite() != null) {
-			aOpposite = paReference.getPaModel().getPAnnotated(paReference.getAnnotatedEReference().getEOpposite());
+		if (paReference.getModelEReference().getEOpposite() != null) {
+			aOpposite = paReference.getPaModel().getPAnnotated(paReference.getModelEReference().getEOpposite());
 			if (aOpposite.getOneToMany() != null && !aOpposite.getOneToMany().isList() &&
 					aOpposite.getJoinTable() != null) {
 				joinTable = aOpposite.getJoinTable();
@@ -82,7 +82,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 			addKeyColumns((HbAnnotatedETypeElement) paReference, keyElement, joinTable.getInverseJoinColumns());
 		}
 
-		final Element associationElement = addManyToOne(currentElement, paReference, targetName);
+		final Element associationElement = addManyToOne(currentElement, paReference, targetName, false);
 
 		if (joinTable != null) {
 			addJoinColumns(paReference, associationElement, joinTable.getJoinColumns(), getHbmContext()
@@ -93,7 +93,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 		addCascadesForSingle(associationElement, mto.getCascade());
 
 		if (isEObject(targetName)) {
-			final String erefName = paReference.getAnnotatedEReference().getName();
+			final String erefName = paReference.getModelEReference().getName();
 			addColumns(associationElement, paReference, getAnyTypeColumns(erefName, true), true, false);
 			// foreign key is not added when the reference is to a generic EObject
 		} else {

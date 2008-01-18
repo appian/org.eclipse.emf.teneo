@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbEClassAnnotator.java,v 1.1 2007/07/12 12:52:05 mtaal Exp $
+ * $Id: HbEClassAnnotator.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbEClassAnnotator extends EClassAnnotator {
@@ -56,7 +56,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		final boolean res = super.annotate(aClass);
 
 		final HbAnnotatedEClass hbClass = (HbAnnotatedEClass) aClass;
-		final EClass eclass = aClass.getAnnotatedEClass();
+		final EClass eclass = aClass.getModelEClass();
 		final Class<?> concreteClass = EModelResolver.instance().getJavaClass(eclass);
 
 		// automatically add the proxy annotation
@@ -67,7 +67,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 				// interface class is set below.
 				((HbAnnotatedEClass) aClass).setHbProxy(proxy);
 				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass " +
-						aClass.getAnnotatedEClass().getName());
+						aClass.getModelEClass().getName());
 			}
 		}
 
@@ -90,7 +90,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		boolean hasCache = ((HbAnnotatedEClass) aClass).getHbCache() != null;
 
 		if (aClass.getPaSuperEntity() != null && hasCache) {
-			log.warn("EClass: " + aClass.getAnnotatedEClass().getName() +
+			log.warn("EClass: " + aClass.getModelEClass().getName() +
 					" has a cache strategy defined while it has a superclass, this strategy is ignored.");
 			return res;
 		}
@@ -103,9 +103,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 						"as defined in the JPA Hibernate Annotation Extensions.");
 			}
 
-			log
-				.debug("Setting cache strategy " + defaultCacheStrategy + " on " +
-						aClass.getAnnotatedEClass().getName());
+			log.debug("Setting cache strategy " + defaultCacheStrategy + " on " + aClass.getModelEClass().getName());
 			final Cache cache = HbannotationFactory.eINSTANCE.createCache();
 			cache.setUsage(ccs);
 			((HbAnnotatedEClass) aClass).setHbCache(cache);
@@ -129,7 +127,7 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	@Override
 	protected void setSuperEntity(PAnnotatedEClass aClass) {
 		assert (aClass.getPaSuperEntity() == null);
-		final EClass eclass = aClass.getAnnotatedEClass();
+		final EClass eclass = aClass.getModelEClass();
 		if (eclass.getESuperTypes().size() == 0) {
 			aClass.setPaSuperEntity(null);
 			return;
@@ -145,10 +143,10 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	/** Compute the annotated superclass, ignore interfaces if parameterized */
 	private PAnnotatedEClass getPaSuperEntity(PAnnotatedEClass aClass, boolean allowInterfaces) {
 		final PAnnotatedModel model = aClass.getPaModel();
-		for (EClass superEClass : aClass.getAnnotatedEClass().getESuperTypes()) {
+		for (EClass superEClass : aClass.getModelEClass().getESuperTypes()) {
 			final PAnnotatedEClass x = model.getPAnnotated(superEClass);
 			if (x.getEntity() != null && x.getMappedSuperclass() == null &&
-					(allowInterfaces || !x.getAnnotatedEClass().isInterface())) {
+					(allowInterfaces || !x.getModelEClass().isInterface())) {
 				return x;
 			}
 		}

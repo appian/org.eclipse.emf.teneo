@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.4 2007/11/14 16:38:34 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.5 2008/01/18 06:21:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -71,13 +71,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_ETYPE_ELEMENT__MODEL_ELEMENT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -161,13 +161,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__PA_ECLASS = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EStructural Feature</b></em>' reference.
+	 * The feature id for the '<em><b>Model EStructural Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ANNOTATED_ESTRUCTURAL_FEATURE;
+	int HB_ANNOTATED_ETYPE_ELEMENT__MODEL_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MODEL_ESTRUCTURAL_FEATURE;
 
 	/**
 	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
@@ -261,13 +261,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_EATTRIBUTE__MODEL_ELEMENT = PamodelPackage.PANNOTATED_EATTRIBUTE__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -351,13 +351,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__PA_ECLASS = PamodelPackage.PANNOTATED_EATTRIBUTE__PA_ECLASS;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EStructural Feature</b></em>' reference.
+	 * The feature id for the '<em><b>Model EStructural Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_ESTRUCTURAL_FEATURE;
+	int HB_ANNOTATED_EATTRIBUTE__MODEL_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EATTRIBUTE__MODEL_ESTRUCTURAL_FEATURE;
 
 	/**
 	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
@@ -369,13 +369,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EATTRIBUTE__FOREIGN_KEY;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EAttribute</b></em>' reference.
+	 * The feature id for the '<em><b>Model EAttribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE = PamodelPackage.PANNOTATED_EATTRIBUTE__ANNOTATED_EATTRIBUTE;
+	int HB_ANNOTATED_EATTRIBUTE__MODEL_EATTRIBUTE = PamodelPackage.PANNOTATED_EATTRIBUTE__MODEL_EATTRIBUTE;
 
 	/**
 	 * The feature id for the '<em><b>Basic</b></em>' containment reference.
@@ -541,13 +541,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_ECLASS__MODEL_ELEMENT = PamodelPackage.PANNOTATED_ECLASS__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -568,13 +568,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__PA_EPACKAGE = PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EClass</b></em>' reference.
+	 * The feature id for the '<em><b>Model EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS__ANNOTATED_ECLASS = PamodelPackage.PANNOTATED_ECLASS__ANNOTATED_ECLASS;
+	int HB_ANNOTATED_ECLASS__MODEL_ECLASS = PamodelPackage.PANNOTATED_ECLASS__MODEL_ECLASS;
 
 	/**
 	 * The feature id for the '<em><b>Pa EStructural Features</b></em>' containment reference list.
@@ -758,13 +758,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EMODEL_ELEMENT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_EMODEL_ELEMENT__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT = PamodelPackage.PANNOTATED_EMODEL_ELEMENT__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -795,13 +795,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EPACKAGE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_EPACKAGE__MODEL_ELEMENT = PamodelPackage.PANNOTATED_EPACKAGE__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -822,13 +822,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EPACKAGE__PA_MODEL = PamodelPackage.PANNOTATED_EPACKAGE__PA_MODEL;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EPackage</b></em>' reference.
+	 * The feature id for the '<em><b>Model EPackage</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE = PamodelPackage.PANNOTATED_EPACKAGE__ANNOTATED_EPACKAGE;
+	int HB_ANNOTATED_EPACKAGE__MODEL_EPACKAGE = PamodelPackage.PANNOTATED_EPACKAGE__MODEL_EPACKAGE;
 
 	/**
 	 * The feature id for the '<em><b>Pa EClasses</b></em>' containment reference list.
@@ -904,13 +904,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_EREFERENCE__MODEL_ELEMENT = PamodelPackage.PANNOTATED_EREFERENCE__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -994,13 +994,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__PA_ECLASS = PamodelPackage.PANNOTATED_EREFERENCE__PA_ECLASS;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EStructural Feature</b></em>' reference.
+	 * The feature id for the '<em><b>Model EStructural Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_ESTRUCTURAL_FEATURE;
+	int HB_ANNOTATED_EREFERENCE__MODEL_ESTRUCTURAL_FEATURE = PamodelPackage.PANNOTATED_EREFERENCE__MODEL_ESTRUCTURAL_FEATURE;
 
 	/**
 	 * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
@@ -1012,13 +1012,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EREFERENCE__FOREIGN_KEY;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EReference</b></em>' reference.
+	 * The feature id for the '<em><b>Model EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE = PamodelPackage.PANNOTATED_EREFERENCE__ANNOTATED_EREFERENCE;
+	int HB_ANNOTATED_EREFERENCE__MODEL_EREFERENCE = PamodelPackage.PANNOTATED_EREFERENCE__MODEL_EREFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Embedded</b></em>' containment reference.
@@ -1202,13 +1202,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Annotated Element</b></em>' reference.
+	 * The feature id for the '<em><b>Model Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__ANNOTATED_ELEMENT = PamodelPackage.PANNOTATED_EDATA_TYPE__ANNOTATED_ELEMENT;
+	int HB_ANNOTATED_EDATA_TYPE__MODEL_ELEMENT = PamodelPackage.PANNOTATED_EDATA_TYPE__MODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' containment reference.
@@ -1220,13 +1220,13 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE__TRANSIENT = PamodelPackage.PANNOTATED_EDATA_TYPE__TRANSIENT;
 
 	/**
-	 * The feature id for the '<em><b>Annotated EData Type</b></em>' reference.
+	 * The feature id for the '<em><b>Model EData Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE = PamodelPackage.PANNOTATED_EDATA_TYPE__ANNOTATED_EDATA_TYPE;
+	int HB_ANNOTATED_EDATA_TYPE__MODEL_EDATA_TYPE = PamodelPackage.PANNOTATED_EDATA_TYPE__MODEL_EDATA_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Basic</b></em>' containment reference.

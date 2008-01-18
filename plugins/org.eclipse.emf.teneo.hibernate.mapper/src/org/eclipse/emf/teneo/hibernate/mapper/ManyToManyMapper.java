@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToManyMapper.java,v 1.18 2007/07/17 17:37:36 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.19 2008/01/18 06:21:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 		log.debug("Creating many-to-many for " + paReference);
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
-		final EReference eref = paReference.getAnnotatedEReference();
+		final EReference eref = paReference.getModelEReference();
 		final JoinTable jt = hbReference.getJoinTable();
 		final ManyToMany mtm = hbReference.getManyToMany();
 
