@@ -275,6 +275,9 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
+<a href="#compositeid">How to do composite-ids with many-to-one</a>
+</li>
+<li>
 <a href="#orgeneration">Manual Generation of OR Mapping</a>
 </li>
 <li>
@@ -321,7 +324,64 @@
 </li>
 </ul>
 		
-<a name="N10011"></a><a name="orgeneration"></a>
+<a name="N10011"></a><a name="compositeid"></a>
+<div class="h3">
+<h3>How to do composite-ids with many-to-one</h3>
+		
+<p>In many traditional database schemas, containment parent-child relations are modelled by defining a multi-field primary key for the child: the primary 
+		key of the child then consists of the primary key of the parent (as a foreign key) plus 
+		an additional field to make the child unique. For example an order-orderline model: the order has as a primary key an order number, the primary key 
+		of the child is then order number and order line number. Often When mapping to an existing database this same structure has to be defined in the model using 
+		jpa annotations.</p>
+		
+<p>
+		This section explains in short what needs to be done to let Teneo handle this correctly.</p> 
+		
+<p>The following example model is used in this description: <a href="../download/xmlsamples/Claim.xsd">xsd</a>, <a href="../download/xmlsamples/claim.ecore">ecore</a>. This model consists of two main types: Claim and ClaimLine. Claim has a primary key of two fields in the db. ClaimLine is contained
+		in Claim and has a primary key consisting of the two fields of Claim and one additional field. Claim and ClaimLine have a bidirectional one-to-many/many-to-one relation. 
+		</p>
+		
+<p>To handle this correctly the following steps need to be taken:</p>
+		
+<p>For each class with a primary key with multiple fields create a separate key type. See ClaimCompositeKey and ClaimLineCompositeKey in the example model. 
+		In addition see <a class="external" href="http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration-compositeid">here</a>,
+		and <a class="external" href="http://www.hibernate.org/hib_docs/v3/reference/en/html/components.html#components-compositeid">here</a> for some specific requirements for the key class.</p>
+		
+<p>The key type has eattributes/ereferences corresponding to the fields of the primary key. In the example the child type has a many-to-one to the parent, 
+		this many-to-one is part of the primary key of the child so therefore it should
+		also be added to the key type of the child (see ClaimLineCompositeKey).</p> 
+		
+<p>The many-to-one ereference from the child to the parent  
+		needs to be annotated with @Transient (see the xsd) otherwise Hibernate will throw a duplicate column exception.</p>   
+		
+<p>For each main type with a composite id there needs to be an ereference from the main type to the key type. This ereference needs to be annotated with @EmbeddedId.</p>
+		
+<p>Using the resulting model the code can be generated and Teneo will map the structure correctly.</p> 
+		
+<p>As a last step: in the generated java code it is possible to automatically populate the composite key object of the child when adding the child to the parent.
+		Using the example: when a ClaimLine is added to the claimLine collection of Claim then the Claim feature in the ClaimLine ClaimLineCompositeKey 
+		also needs to be set. EMF will automatically generate stubs were to this. In this example in ClaimLine there
+		is a basicSetClaim method were the relevant line can be added. Note that javadoc @generated has to be changed to @generated NOT otherwise this change
+		will be overwritten when the code is regenerated. 
+		</p>
+		
+<pre class="code">
+/**
+ * @generated NOT
+ */
+public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
+	msgs = eBasicSetContainer((InternalEObject) newClaim, ClaimPackage.CLAIM_LINE__CLAIM, msgs);
+	getClaimLineCompositeKey().setClaim(newClaim); // this is line sets the Claim in the composite key
+	return msgs;
+}
+	</pre>
+
+</div>		
+		
+		
+	
+		
+<a name="N10049"></a><a name="orgeneration"></a>
 <div class="h3">
 <h3>Manual Generation of OR Mapping</h3>
 		
@@ -352,7 +412,7 @@
 		
 </div>
 		
-<a name="N10030"></a><a name="Classloader"></a>
+<a name="N10068"></a><a name="Classloader"></a>
 <div class="h3">
 <h3>Classloader</h3>
 			
@@ -363,7 +423,7 @@
 		
 </div>
 		
-<a name="N10039"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
+<a name="N10071"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
 <div class="h3">
 <h3>Requirements on EObjects: InternalEObject</h3>
 		
@@ -372,7 +432,7 @@
 		
 </div>
 		
-<a name="N10042"></a><a name="Relational+Validation+and+EObject+persistency"></a>
+<a name="N1007A"></a><a name="Relational+Validation+and+EObject+persistency"></a>
 <div class="h3">
 <h3>Relational Validation and EObject persistency</h3>
 			
@@ -383,7 +443,7 @@
 		
 </div>
 		
-<a name="N1004C"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
+<a name="N10084"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
 <div class="h3">
 <h3>Automatic creation of tables/Database Schema</h3>
 		
@@ -396,7 +456,7 @@
 		
 </div>
 		
-<a name="N1005C"></a><a name="escaping"></a>
+<a name="N10094"></a><a name="escaping"></a>
 <div class="h3">
 <h3>Escaping of table and column names</h3>
 		
@@ -416,7 +476,7 @@
 		
 </div>
 		
-<a name="N10071"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
+<a name="N100A9"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
 <div class="h3">
 <h3>Querying using eclass names, class names or interface names</h3>
 			
@@ -425,7 +485,7 @@
 		
 </div>
 		
-<a name="N1007A"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
+<a name="N100B2"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
 <div class="h3">
 <h3>Lazy loading/fetching, Proxy</h3>
 			
@@ -438,7 +498,7 @@
 		
 </div>
 		
-<a name="N10089"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
+<a name="N100C1"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
 <div class="h3">
 <h3>Automatic creation of TypeDef for EDataType</h3>
 			
@@ -454,7 +514,7 @@
 		
 </div>
 		
-<a name="N10095"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
+<a name="N100CD"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
 <div class="h3">
 <h3>Client-Server scenario: requires explicitly modelled id and version properties</h3>
 			
@@ -466,7 +526,7 @@
 		
 </div>
 		
-<a name="N1009E"></a><a name="Default+ID+Feature+Name"></a>
+<a name="N100D6"></a><a name="Default+ID+Feature+Name"></a>
 <div class="h3">
 <h3>Default ID Feature Name</h3>
 		
@@ -478,7 +538,7 @@
 		
 </div>
 		
-<a name="N100AB"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N100E3"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -494,7 +554,7 @@
 		
 </div>
 		
-<a name="N100BB"></a><a name="cutpaste"></a>
+<a name="N100F3"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -528,7 +588,7 @@
 		
 </div>
 		
-<a name="N100DC"></a><a name="Validation"></a>
+<a name="N10114"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -564,7 +624,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N100F0"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N10128"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			

@@ -502,6 +502,15 @@
 				
 <li>
 					
+<strong>PersistenceOptions.DEFAULT_VARCHAR_LENGTH</strong>
+					(default: 255 set by Hibernate): as a default Hibernate will use a length of 255 for varchar columns.
+					This option makes it possible to choose another default length. Note that it is also 
+					possible to set the length for each individual Column/EFeature using the @Column annotation.
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>
 					(default: false): this option (boolean) controls if the container relations are mapped
 					explicitly in the database, see also
