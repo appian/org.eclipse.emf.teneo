@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.20 2007/12/28 14:36:25 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.21 2008/01/20 05:59:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,6 +25,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -33,8 +33,6 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.spi.PersistenceCapable;
 import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -90,15 +88,11 @@ import org.jpox.metadata.AbstractClassMetaData;
 import org.jpox.metadata.AbstractPropertyMetaData;
 import org.jpox.metadata.ExtensionMetaData;
 import org.jpox.metadata.InheritanceStrategy;
-import org.jpox.metadata.JDOEntityResolver;
 import org.jpox.metadata.MetaDataManager;
 import org.jpox.plugin.ConfigurationElement;
 import org.jpox.plugin.Extension;
 import org.jpox.plugin.ExtensionPoint;
 import org.jpox.store.StoreManager;
-import org.jpox.util.ClassUtils;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 /**
  * Defines for one or more EPackages where (in which relational store) they are persisted. In
@@ -106,7 +100,7 @@ import org.w3c.dom.NodeList;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $ $Date: 2007/12/28 14:36:25 $
+ * @version $Revision: 1.21 $ $Date: 2008/01/20 05:59:13 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -211,19 +205,26 @@ public class JpoxDataStore implements DataStore {
 		}
 
 		// then create the list of all classnames
-		final String[] pcClassNames = getAllClassNames(jdoFileList);
-
-		// create the schema
-		createSchema(pcClassNames, properties);
-
-		// build the list of classnames which are passed to jpox at start
+		final Set<Class<?>> classes = ERuntime.INSTANCE.getAllConcreteClasses();
+		final List<Class<?>> pcList = new ArrayList<Class<?>>();
+		for (Class<?> clz : classes) {
+			if (PersistenceCapable.class.isAssignableFrom(clz)) {
+				pcList.add(clz);
+			}
+		}
+		final String[] pcClassNames = new String[pcList.size()];
+		int i = 0;
 		final StringBuffer classNameList = new StringBuffer();
-		for (int i = 0; i < pcClassNames.length; i++) {
+		for (Class<?> clz : pcList) {
 			if (i > 0) {
 				classNameList.append(",");
 			}
 			classNameList.append(pcClassNames[i]);
+			pcClassNames[i++] = clz.getName();
 		}
+
+		// create the schema
+		createSchema(pcClassNames, properties);
 
 		classNameList.append(",");
 		classNameList.append(AnyTypeEObject.class.getName());
@@ -533,92 +534,6 @@ public class JpoxDataStore implements DataStore {
 			pm.close();
 			localPmf.close();
 		}
-	}
-
-	/**
-	 * Creates a list of classnames on the basis of the jdo files. This code has been copied
-	 * partially from jpox.org. This copying was required because jpox does not support passing jdo
-	 * file names as resource paths.
-	 */
-	private String[] getAllClassNames(String[] jdoFiles) {
-		// then determine the list of jdo files
-		// Build up set of classes
-		List class_names = null;
-		try {
-			class_names = getClassNames(jdoFiles);
-		} catch (Exception e) {
-			throw new JpoxStoreException("Exception while reading jdo_files, fileList: " + dumpFileList(jdoFiles), e);
-		}
-
-		if (class_names == null || class_names.size() == 0) {
-			throw new JpoxStoreException(
-				"There are no classes in the jdo files? A common reason can be that your classes are not enhanced, used jdo files: " +
-						dumpFileList(jdoFiles));
-		}
-		final String[] class_name_array = new String[class_names.size()];
-		final Iterator class_names_iter = class_names.iterator();
-		int i = 0;
-		while (class_names_iter.hasNext()) {
-			class_name_array[i++] = (String) class_names_iter.next();
-		}
-		return class_name_array;
-	}
-
-	/**
-	 * Returns an ordered list of classnames so that all super class names are present in the list
-	 * before their subclass.
-	 */
-	public List getClassNames(String[] packageJDOFiles) throws Exception {
-		ArrayList result = new ArrayList();
-
-		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		final DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
-
-		documentBuilder.setEntityResolver(new JDOEntityResolver());
-
-		for (String element : packageJDOFiles) {
-			log.debug("Reading jdo file: " + element);
-			InputStream is = this.getClass().getResourceAsStream(element);
-			if (is == null) { // absolute location somewhere?
-				is = new FileInputStream(element);
-			}
-			final Element docElement = documentBuilder.parse(is).getDocumentElement();
-
-			// find all the nodes with tagname class
-			final NodeList nodes = docElement.getElementsByTagName("class");
-			for (int j = 0; j < nodes.getLength(); j++) {
-				// the class element
-				Element classElement = (Element) nodes.item(j);
-				String className = classElement.getAttribute("name");
-
-				// find the package name by going one level up.
-				String packageName = ((Element) classElement.getParentNode()).getAttribute("name");
-				className = ClassUtils.createFullClassName(packageName, className);
-				if (!result.contains(className)) {
-					result.add(className);
-				}
-			}
-		}
-		return result;
-	}
-
-	/** Creates a comma delimited list of a file list */
-	private String dumpFileList(String[] jdoFileList) {
-		if (jdoFileList == null) {
-			return "The filelist is NULL";
-		}
-		if (jdoFileList.length == 0) {
-			return "The filelist is empty";
-		}
-
-		final StringBuffer result = new StringBuffer();
-		for (int i = 0; i < jdoFileList.length; i++) {
-			if (i > 0) {
-				result.append(", ");
-			}
-			result.append(jdoFileList[i]);
-		}
-		return result.toString();
 	}
 
 	/** Dump properties in the log */
