@@ -400,16 +400,14 @@ EPackage.Registry.INSTANCE.put(schoolPackage.getNsURI(), schoolPackage);
 			
 			
 <p>The EPackage has been created now Hibernate should be reconfigured and the database schema should be updated. 
-			<em>To reinitialize a HbDataStore the reinitialize method should be called (not the initialize method).</em>
-			
-</p>
+			</p>
 			
 <pre class="code">
 // Now reset the epackages in the datastore, only required if you add an EPackage
 hbds.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE, schoolPackage});
 
 // reinitialize hibernate and update the database schema
-hbds.reInitialize();
+hbds.initialize();
 
 // print the hibernate.hbm.xml
 System.err.println(hbds.getMappingXML());
@@ -422,7 +420,7 @@ System.err.println(hbds.getMappingXML());
 		
 </div>
 		
-<a name="N1007F"></a><a name="step3"></a>
+<a name="N1007C"></a><a name="step3"></a>
 <div class="h3">
 <h3>Step 3: Create and persist Dynamic EObject</h3>
 			
@@ -460,7 +458,7 @@ tx.commit();
 		
 </div>
 		
-<a name="N1008D"></a><a name="step4"></a>
+<a name="N1008A"></a><a name="step4"></a>
 <div class="h3">
 <h3>Step 4: Query for dynamic EMF objects</h3>
 			
@@ -510,7 +508,7 @@ session.close();
 		
 </div>
 		
-<a name="N1009B"></a><a name="limitations"></a>
+<a name="N10098"></a><a name="limitations"></a>
 <div class="h3">
 <h3>Limitations</h3>
 			
