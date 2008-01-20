@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.15 2007/07/09 12:54:48 mtaal Exp $
+ * $Id: AllTests.java,v 1.16 2008/01/20 08:35:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
 
 import junit.framework.Test;
-import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
@@ -34,15 +33,17 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite =
+		MultiCfgTestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed.instance()
 					.getConfigurations());
-		suite.addTestSuite(FruitsAction.class);
+		if (!JPOXTestbed.isRunningOnEMFTServer()) {
+			suite.addTestSuite(FruitsAction.class);
+		}
 		suite.addTestSuite(MultipleInheritanceAction.class);
 
 		suite.addTestSuite(GeneralTestAction.class);
