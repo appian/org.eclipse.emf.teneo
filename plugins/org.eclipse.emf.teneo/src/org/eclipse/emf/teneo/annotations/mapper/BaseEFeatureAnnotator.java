@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.3 2008/01/18 06:20:24 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.4 2008/01/29 19:03:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -113,8 +113,12 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 				if (fractionDigits != null) {
 					column.setScale(Integer.parseInt(fractionDigits));
 				}
+				if (aAttribute.getBasic() != null) {
+					column.setNullable(aAttribute.getBasic().isOptional());
+				}
 				aAttribute.setColumn(column);
 			}
+
 		}
 
 		final Column c = aAttribute.getColumn();
