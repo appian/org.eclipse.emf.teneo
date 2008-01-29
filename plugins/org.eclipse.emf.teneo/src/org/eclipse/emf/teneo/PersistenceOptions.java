@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.38 2008/01/18 06:20:24 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.39 2008/01/29 12:58:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -113,6 +113,12 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * default is zero which means no comments are copied from the model to the mapping.
 	 */
 	public static final String MAX_COMMENT_LENGTH = MAPPING_PREFIX + "max_comment_length";
+
+	/**
+	 * The escape character to use when escaping table and column names. Standard Hibernate uses the `
+	 * (backtick). This is the default value.
+	 */
+	public static final String SQL_NAME_ESCAPE_CHARACTER = MAPPING_PREFIX + "sql_name_escape_character";
 
 	/**
 	 * EClass marked with Embeddable is always embedded, default is false. If this is set to true
@@ -345,6 +351,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(MAP_EMBEDDABLE_AS_EMBEDDED, "false");
 		props.setProperty(MAX_COMMENT_LENGTH, "0");
 		props.setProperty(DEFAULT_VARCHAR_LENGTH, "-1");
+		props.setProperty(SQL_NAME_ESCAPE_CHARACTER, "`");
 		return props;
 	}
 
@@ -632,6 +639,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Returns the value of the default id property */
 	public String getDefaultIDFeatureName() {
 		return properties.getProperty(DEFAULT_ID_FEATURE_NAME);
+	}
+
+	/** Return the sql escape character, default is ` */
+	public String getSqlNameEscapeCharacter() {
+		return properties.getProperty(SQL_NAME_ESCAPE_CHARACTER);
 	}
 
 	/** Returns the value of the join table naming strategy */
