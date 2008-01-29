@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -317,6 +317,7 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public Object[] getCrossReferencers(Session session, Object referedTo) {
 		final ArrayList<Object> result = getCrossReferencers(new HbSessionWrapper(this, session), referedTo, false);
+
 		return result.toArray(new Object[result.size()]);
 	}
 
