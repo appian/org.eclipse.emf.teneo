@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToOneMapper.java,v 1.22 2008/01/18 06:21:36 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.23 2008/01/29 12:58:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -89,7 +89,11 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 						.isCurrentElementFeatureMap());
 			addJoinColumns(paReference, associationElement, joinColumns, forceNullable);
 
-			associationElement.addAttribute("unique", "true");
+			// apparently sql server does not like a unique constraint on a nullable column
+			// null values also seem to be seen as a unique value.
+			if (!forceNullable) {
+				associationElement.addAttribute("unique", "true");
+			}
 		}
 	}
 

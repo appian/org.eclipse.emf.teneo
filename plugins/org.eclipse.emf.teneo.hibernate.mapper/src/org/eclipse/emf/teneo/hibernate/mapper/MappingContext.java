@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.23 2007/09/03 14:07:20 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.24 2008/01/29 12:58:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -108,6 +108,9 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	/** The sql case strategy */
 	protected SQLNameStrategy sqlNameStrategy;
 
+	/** The escape character string used for escaping sql names */
+	protected String escapeCharacter;
+
 	/**
 	 * Set force optional, force optional is used in case a subclass is stored in the same table as
 	 * its superclass, in this case all properties of the subclass are denoted as optional.
@@ -139,6 +142,7 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 		isMapEMapAsTrueMap = po.isMapEMapAsTrueMap();
 		idbagIDColumnName = po.getIDBagIDColumnName();
 		maximumCommentLength = po.getMaximumCommentLength();
+		escapeCharacter = po.getSqlNameEscapeCharacter();
 	}
 
 	/** Return the concrete impl. class */
@@ -381,10 +385,6 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 * inheritance/mappedsuperclass).
 	 */
 	protected String trunc(String truncName, boolean truncPrefix) {
-		if (truncName.indexOf("mixed_`") != -1) {
-			System.err.println(truncName);
-		}
-
 		final String useName;
 		// currentEFeature is null in the beginning
 		if (currentEFeature != null && currentEFeature.getEContainingClass() != currentEClass &&
@@ -402,11 +402,11 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 			useName = getNamePrefix() + truncName;
 		}
 
-		if (useName.indexOf('`') == 0) {
+		if (escapeCharacter.length() > 0 && useName.indexOf(escapeCharacter) == 0) {
 			return getSqlNameStrategy().convert(useName, false);
 		}
 
-		return "`" + getSqlNameStrategy().convert(useName, false) + "`";
+		return escapeCharacter + getSqlNameStrategy().convert(useName, false) + escapeCharacter;
 	}
 
 	/**
@@ -660,5 +660,20 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 */
 	public void setNamePrefix(String namePrefix) {
 		this.namePrefix = namePrefix;
+	}
+
+	/**
+	 * @return the escapeCharacter
+	 */
+	public String getEscapeCharacter() {
+		return escapeCharacter;
+	}
+
+	/**
+	 * @param escapeCharacter
+	 *            the escapeCharacter to set
+	 */
+	public void setEscapeCharacter(String escapeCharacter) {
+		this.escapeCharacter = escapeCharacter;
 	}
 }
