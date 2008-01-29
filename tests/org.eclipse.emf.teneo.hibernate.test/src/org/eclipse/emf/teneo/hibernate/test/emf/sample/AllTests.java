@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryUseMappingFileAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
+import org.eclipse.emf.teneo.test.emf.sample.NoEscapeLibraryAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
@@ -46,7 +47,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  */
 public class AllTests {
 
@@ -54,6 +55,9 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(LibraryTest.class);
+		suite.addTestSuite(LibraryFKAction.class);
+		suite.addTestSuite(NoEscapeLibraryAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(ClaimAction.class);
@@ -78,8 +82,6 @@ public class AllTests {
 
 		suite.addTestSuite(PrimerPOAction.class);
 		suite.addTestSuite(DynamicAction.class);
-
-		suite.addTestSuite(LibraryFKAction.class);
 
 		suite.addTestSuite(LibraryQualifyActionHB.class);
 
