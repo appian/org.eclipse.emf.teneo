@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.24 2008/01/20 05:19:58 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.25 2008/01/29 19:03:13 mtaal Exp $
  */
 
 package hbtutorial;
@@ -43,7 +43,7 @@ import org.hibernate.SessionFactory;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class Tutorial1 {
 

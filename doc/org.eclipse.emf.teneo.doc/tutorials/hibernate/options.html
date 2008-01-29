@@ -315,9 +315,7 @@
 <p>
 				A number of options are related to the naming logic for table and columns names. The
 				logic can be controlled by setting the following options or by registering your own
-				extension (see
-				<a href="extensions.html">here</a>
-				).
+				extension (see <a href="extensions.html">here</a>).
 			</p>
 
 			
@@ -411,6 +409,15 @@
 				
 <li>
 					
+<strong>PersistenceOptions.SQL_NAME_ESCAPE_CHARACTER</strong>
+					(default: `): Teneo will escape table and column names (see <a href="hibernate_details.html#escaping">here</a>). As a default the ` backtick 
+					character is used. This option allows you to change the escape character or disable
+					it by setting it to an empty string.
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.VERSION_COLUMN_NAME</strong>
 					(default: e_version): can be used to set the version column name which is used to store the version
 					of an object in case of optimistic locking. Default the version column name is
@@ -421,7 +428,7 @@
 		
 </div>
 		
-<a name="N1006B"></a><a name="General+Options"></a>
+<a name="N10075"></a><a name="General+Options"></a>
 <div class="h3">
 <h3>General Options</h3>
 			
