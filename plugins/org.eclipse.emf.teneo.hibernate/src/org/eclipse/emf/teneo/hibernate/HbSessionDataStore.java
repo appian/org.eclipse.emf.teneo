@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.6 2007/11/14 16:37:27 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.7 2008/02/03 22:35:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class HbSessionDataStore extends HbDataStore {
@@ -66,6 +66,9 @@ public class HbSessionDataStore extends HbDataStore {
 			// if (getName() == null)
 			// throw new HbStoreException("Name is not set");
 		}
+
+		// reset interceptor
+		setInterceptor(null);
 
 		log.debug(">>>>> Creating HB Configuration");
 		hbConfiguration = createConfiguration();
@@ -118,6 +121,9 @@ public class HbSessionDataStore extends HbDataStore {
 	/** Sets the interceptor */
 	@Override
 	protected void setInterceptor() {
+		if (getInterceptor() != null) { // probably overridden
+			return;
+		}
 		final Interceptor interceptor =
 				getHbContext().createInterceptor(getHibernateConfiguration(), getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);

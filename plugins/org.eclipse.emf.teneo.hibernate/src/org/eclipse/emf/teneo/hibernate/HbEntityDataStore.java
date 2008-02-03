@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.10 2007/11/14 16:37:27 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.11 2008/02/03 22:35:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class HbEntityDataStore extends HbDataStore {
 
@@ -63,6 +63,9 @@ public class HbEntityDataStore extends HbDataStore {
 			// if (getName() == null)
 			// throw new HbStoreException("Name is not set");
 		}
+
+		// reset interceptor
+		setInterceptor(null);
 
 		log.debug(">>>>> Creating EJB3 Configuration");
 		ejb3Configuration = createConfiguration();
@@ -103,6 +106,9 @@ public class HbEntityDataStore extends HbDataStore {
 	/** Sets the interceptor */
 	@Override
 	protected void setInterceptor() {
+		if (getInterceptor() != null) {
+			return;
+		}
 		final Interceptor interceptor =
 				getHbContext().createInterceptor(getHibernateConfiguration(), getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);
