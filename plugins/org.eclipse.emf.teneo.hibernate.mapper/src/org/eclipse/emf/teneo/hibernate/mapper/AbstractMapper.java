@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.32 2008/01/18 06:21:36 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.33 2008/02/03 22:37:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -190,18 +190,66 @@ public abstract class AbstractMapper {
 			return eDataType.getInstanceClassName();
 		} else if (EcoreDataTypes.INSTANCE.isEString(eDataType)) {
 			return eDataType.getInstanceClassName();
-		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
+		} else if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType) ||
+				(paAttribute.getTemporal() != null && paAttribute.getTemporal().getValue().getValue() == TemporalType.TIMESTAMP_VALUE)) {
 			return getEDateTimeClass(paAttribute);
-		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType)) {
+		} else if (EcoreDataTypes.INSTANCE.isEDuration(eDataType)) {
+			return hbmContext.getDurationType();
+		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType) ||
+				(paAttribute.getTemporal() != null && paAttribute.getTemporal().getValue().getValue() == TemporalType.DATE_VALUE)) {
 			return getEDateClass(paAttribute);
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
 			// null forces caller to use usertype
 			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
-		} else if (eDataType.getInstanceClass() != null) {
-			return eDataType.getInstanceClassName();
+// } else if (eDataType.getInstanceClass() != null) {
+// return eDataType.getInstanceClassName();
 		} else {
-			// all edatatypes are translatable to a string, done by caller
-			return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
+			final String result = EcoreDataTypes.INSTANCE.getTargetTypeName(paAttribute);
+			if (result.compareTo(Object.class.getName()) == 0) {
+				// all edatatypes are translatable to a string, done by caller
+				return null; // "org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType";
+			}
+			return result;
+		}
+	}
+
+	/** Returns the type name of a many attribute */
+	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
+		final EAttribute eAttribute = aAttribute.getModelEAttribute();
+		// check on equality on object.class is used for listunion simpleunions
+		final Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
+		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
+			if (instanceClass.isArray()) {
+				// get rid of the [] at the end
+				return eAttribute.getEType().getInstanceClassName().substring(0,
+					eAttribute.getEType().getInstanceClassName().length() - 2);
+			}
+			return instanceClass.getName();
+		} else {
+			// the type is hidden somewhere deep get it
+			// the edatatype is the java.util.list
+			// it has an itemType which is the name of the element edatatype
+			// which contains the instanceclass
+			// takes also into account inheritance between datatypes
+			// NOTE the otm.targetentity can consist of a comma delimited list
+			// of target
+			// entities this is required for listunion types but is not
+			// according to the ejb3 spec!
+			ArrayList<EClassifier> eclassifiers =
+					EcoreDataTypes.INSTANCE.getItemTypes((EDataType) eAttribute.getEType());
+			if (eclassifiers.size() > 0) {
+				StringBuffer result = new StringBuffer();
+				for (int i = 0; i < eclassifiers.size(); i++) {
+					final EClassifier eclassifier = eclassifiers.get(i);
+					if (i > 0) {
+						result.append(",");
+					}
+					result.append(eclassifier.getInstanceClassName());
+				}
+				return result.toString();
+			} else {
+				return Object.class.getName();
+			}
 		}
 	}
 

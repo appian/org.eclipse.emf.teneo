@@ -450,13 +450,14 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected Element addElementElement(Element collElement, PAnnotatedEAttribute paAttribute, List<Column> columns,
 			String targetEntity) {
 		final Element elElement;
-		if (targetEntity == null || paAttribute.getEnumerated() != null ||
-				StoreUtil.isQName(paAttribute.getModelEAttribute())) {
-			elElement = collElement.addElement("element");
-			setType(paAttribute, elElement);
-		} else { // in this case the defaultannotator has set the targetentity!
-			elElement = collElement.addElement("element").addAttribute("type", targetEntity);
-		}
+// if (targetEntity == null || paAttribute.getEnumerated() != null ||
+// StoreUtil.isQName(paAttribute.getModelEAttribute())) {
+		// MT: the target type name is ignored for a many element, it is always recomputed
+		elElement = collElement.addElement("element");
+		setType(paAttribute, elElement);
+// } else { // in this case the defaultannotator has set the targetentity!
+// elElement = collElement.addElement("element").addAttribute("type", targetEntity);
+// }
 		if (columns != null && columns.size() > 0) {
 			addColumns(elElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), true);
 		}
@@ -546,9 +547,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
-		 * == null ? new
-		 * ArrayList() :
-		 * (List)joinTable.getJoinColumns().getValue()
-		 */);
+																				 * == null ? new
+																				 * ArrayList() :
+																				 * (List)joinTable.getJoinColumns().getValue()
+																				 */);
 	}
 }

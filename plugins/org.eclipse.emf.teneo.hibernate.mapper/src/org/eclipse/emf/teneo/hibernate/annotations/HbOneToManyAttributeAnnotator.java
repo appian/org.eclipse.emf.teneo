@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbOneToManyAttributeAnnotator.java,v 1.2 2008/01/18 06:21:37 mtaal Exp $
+ * $Id: HbOneToManyAttributeAnnotator.java,v 1.3 2008/02/03 22:37:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
@@ -63,8 +63,7 @@ public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
 			if (coe.getTargetElement() == null) {
 				coe.setTargetElement(getTargetTypeName(aAttribute));
 			}
-		} else if (hea.getHbType() != null && hea.getOneToMany() == null &&
-				!aAttribute.getModelEAttribute().isMany()) {
+		} else if (hea.getHbType() != null && hea.getOneToMany() == null && !aAttribute.getModelEAttribute().isMany()) {
 			// assume this to be a single attribute, we can get here when
 			// the instance is an array or list in that case the user type is
 			// assumed
@@ -82,19 +81,20 @@ public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {
 		}
 	}
 
-	/** Returns the type name of a many attribute */
-	@Override
-	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
-		final HbAnnotatedEDataType ped =
-				(HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
-					aAttribute.getModelEAttribute().getEAttributeType());
-		if (ped != null && ped.getHbTypeDef() != null) {
-			return ped.getHbTypeDef().getName();
-		}
-		if (((HbAnnotatedEAttribute) aAttribute).getHbType() != null) {
-			return ((HbAnnotatedEAttribute) aAttribute).getHbType().getType();
-		}
-		return super.getTargetTypeName(aAttribute);
-	}
+// MT: is now recomputed in the mapping step
+// /** Returns the type name of a many attribute */
+// @Override
+// protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
+// final HbAnnotatedEDataType ped =
+// (HbAnnotatedEDataType) aAttribute.getPaModel().getPAnnotated(
+// aAttribute.getModelEAttribute().getEAttributeType());
+// if (ped != null && ped.getHbTypeDef() != null) {
+// return ped.getHbTypeDef().getName();
+// }
+// if (((HbAnnotatedEAttribute) aAttribute).getHbType() != null) {
+// return ((HbAnnotatedEAttribute) aAttribute).getHbType().getType();
+// }
+// return EcoreDataTypes.INSTANCE.getTargetTypeName(aAttribute);
+// }
 
 }

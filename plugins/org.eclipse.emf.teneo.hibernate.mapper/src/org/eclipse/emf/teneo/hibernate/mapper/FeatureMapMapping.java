@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: FeatureMapMapping.java,v 1.12 2008/01/18 06:21:36 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.13 2008/02/03 22:37:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -65,10 +65,8 @@ public class FeatureMapMapping {
 				hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName).addAttribute(
 					"lazy", "false").addAttribute("table", hbmContext.trunc(entityName.toUpperCase(), false));
 
-		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META)
-			.addText(
-				hbmContext.getEntityNameStrategy().toEntityName(
-					paAttribute.getModelEAttribute().getEContainingClass()));
+		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addText(
+			hbmContext.getEntityNameStrategy().toEntityName(paAttribute.getModelEAttribute().getEContainingClass()));
 
 		final FeatureMapper fp = hbmContext.getFeatureMapper();
 		hbmContext.setCurrent(mainElement);
@@ -103,6 +101,7 @@ public class FeatureMapMapping {
 				if (paFeature instanceof PAnnotatedEAttribute && ((PAnnotatedEAttribute) paFeature).getId() != null) {
 					// Feature is an id, temporarily removing the id, otherwise the fm gets confused
 					id = ((PAnnotatedEAttribute) paFeature).getId();
+					((PAnnotatedEAttribute) paFeature).setId(null);
 				}
 
 				// temporarily remove the transient otherwise the feature is not processed

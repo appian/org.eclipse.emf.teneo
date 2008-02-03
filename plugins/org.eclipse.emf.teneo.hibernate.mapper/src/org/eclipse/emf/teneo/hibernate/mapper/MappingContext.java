@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.24 2008/01/29 12:58:10 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.25 2008/02/03 22:37:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -492,6 +492,11 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	/** Returns the enumusertype class name */
 	public String getEnumUserType() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.ENumUserType";
+	}
+
+	/** Returns the xml duration class name */
+	public String getDurationType() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.XSDDuration";
 	}
 
 	/** Returns the enum user type integer name */
