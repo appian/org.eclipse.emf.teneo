@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.21 2008/01/20 05:59:13 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.22 2008/02/03 22:35:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -32,6 +32,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.spi.PersistenceCapable;
+import javax.xml.datatype.Duration;
 import javax.xml.namespace.QName;
 
 import org.apache.commons.logging.Log;
@@ -72,6 +73,7 @@ import org.eclipse.emf.teneo.jpox.elist.FeatureMapWrapper;
 import org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry;
 import org.eclipse.emf.teneo.jpox.elist.RemoveLifeCycleListener;
 import org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject;
+import org.eclipse.emf.teneo.jpox.mapping.DurationMapping;
 import org.eclipse.emf.teneo.jpox.mapping.ENumMapping;
 import org.eclipse.emf.teneo.jpox.mapping.EObjectMapping;
 import org.eclipse.emf.teneo.jpox.mapping.QNameMapping;
@@ -100,7 +102,7 @@ import org.jpox.store.StoreManager;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $ $Date: 2008/01/20 05:59:13 $
+ * @version $Revision: 1.22 $ $Date: 2008/02/03 22:35:15 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -353,6 +355,10 @@ public class JpoxDataStore implements DataStore {
 		mce.putAttribute("java-type", QName.class.getName());
 		mce.putAttribute("mapping-class", QNameMapping.class.getName());
 		mappingExt.addConfigurationElement(mce);
+
+		final ConfigurationElement mce2 = new ConfigurationElement(extension, "mapping", null);
+		mce2.putAttribute("java-type", Duration.class.getName());
+		mce2.putAttribute("mapping-class", DurationMapping.class.getName());
 
 		tm.addType(initPmf.getPMFContext().getPluginManager(), "org.jpox.store_mapping", List.class.getName(),
 			EListMapping.class.getName(), EListWrapper.class.getName(), false, "1.4", true, false, false, clr);
