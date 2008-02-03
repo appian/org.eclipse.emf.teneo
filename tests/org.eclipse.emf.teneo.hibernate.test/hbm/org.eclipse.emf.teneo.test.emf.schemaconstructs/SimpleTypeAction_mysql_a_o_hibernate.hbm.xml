@@ -85,7 +85,7 @@
 				<column name="`simplelist_dat_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_dat_idx`"/>
-			<element type="java.util.Date"/>
+			<element type="timestamp"/>
 		</list>
 		<list name="limitedstring" table="`simplelist_limitedstring`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
