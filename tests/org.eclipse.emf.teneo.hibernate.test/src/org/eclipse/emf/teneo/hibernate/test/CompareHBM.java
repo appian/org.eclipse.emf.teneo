@@ -15,14 +15,14 @@ import java.io.FileReader;
  * Compare Hbm files
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class CompareHBM {
 
 	private static final String fromDir =
 			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm";
 	private static final String toDir =
-			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm_old/21062007";
+			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm_old";
 
 	/**
 	 * @param args
@@ -37,6 +37,9 @@ public class CompareHBM {
 
 	private static void walkFiles(File from, File to) throws Exception {
 		for (File f : from.listFiles()) {
+			if (f.getPath().indexOf("CVS") != -1) {
+				continue;
+			}
 			if (f.isDirectory()) {
 				walkFiles(f, to);
 			} else {

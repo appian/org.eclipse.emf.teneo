@@ -14,6 +14,7 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DateTimeAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.DurationAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAsListAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllTests {
 
@@ -41,9 +42,11 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 					HibernateTestbed.instance().getConfigurations());
-		suite.addTestSuite(QNameAction.class);
-
 		suite.addTestSuite(SimpleTypeAction.class);
+
+		suite.addTestSuite(DurationAction.class);
+
+		suite.addTestSuite(QNameAction.class);
 
 		suite.addTestSuite(EcoreAttrsAction.class);
 
@@ -70,5 +73,4 @@ public class AllTests {
 		// $JUnit-END$
 		return suite;
 	}
-
 }

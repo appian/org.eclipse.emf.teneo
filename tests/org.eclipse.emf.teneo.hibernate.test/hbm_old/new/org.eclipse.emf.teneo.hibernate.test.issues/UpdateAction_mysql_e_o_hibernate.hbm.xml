@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.update.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" table="`child`">
+		<meta attribute="eclassName">Child</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/update</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</id>
+		<property name="description" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`description`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.update.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" table="`parent`">
+		<meta attribute="eclassName">Parent</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/update</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</id>
+		<property name="description" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`description`"/>
+		</property>
+		<list name="children" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="parent_children">
+				<column name="`parent_children_name`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`parent_children_idx`"/>
+			<one-to-many entity-name="Child"/>
+		</list>
+	</class>
+</hibernate-mapping>

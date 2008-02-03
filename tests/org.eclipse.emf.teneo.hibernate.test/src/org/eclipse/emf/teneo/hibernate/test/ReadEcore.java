@@ -30,11 +30,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 
+import com.stpenable.gensec.GensecPackage;
+
 /**
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class ReadEcore {
 
@@ -49,9 +51,9 @@ public class ReadEcore {
 				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",
 					new EcoreResourceFactoryImpl());
 				final ArrayList epackages = new ArrayList();
-				final String[] ecores = new String[] { "Bugzilla.ecore" };
+				final String[] ecores = new String[] { "/home/mtaal/mytmp/gensec.ecore" };
 				for (String ecore : ecores) {
-					final Resource res = resourceSet.getResource(URI.createFileURI("/home/mtaal/mytmp/" + ecore), true);
+					final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
 					res.load(new HashMap());
 
 					Iterator it = res.getAllContents();
@@ -69,7 +71,6 @@ public class ReadEcore {
 
 				EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 			}
-
 // epacks =
 // new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
 // customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
@@ -88,7 +89,7 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 
 // System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
-// HbDataStore hbds = initSimpleDataStore(new EPackage[] { ModelPackage.eINSTANCE });
+			HbDataStore hbds = initSimpleDataStore(new EPackage[] { GensecPackage.eINSTANCE });
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
@@ -100,11 +101,14 @@ public class ReadEcore {
 		final Properties props = new Properties();
 		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
 		props.setProperty(Environment.USER, "root");
-		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/claim");
+		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 // props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
 // "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
+// props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
+		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+
 		hbds.setPersistenceProperties(props);
 		hbds.setHibernateProperties(props);
 		hbds.setEPackages(epacks);
