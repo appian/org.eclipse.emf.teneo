@@ -14,11 +14,12 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.7 2007/12/28 14:36:28 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.8 2008/02/03 22:37:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -29,12 +30,17 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.TeneoException;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 
 /**
  * Utility class to classify Ecore datatypes.
@@ -47,6 +53,9 @@ public class EcoreDataTypes {
 	private static XMLTypePackage xmlTypePackage = XMLTypePackage.eINSTANCE;
 	private static EDataType xmlDateEDataType = xmlTypePackage.getDate();
 	private static EDataType xmlDateTimeEDataType = xmlTypePackage.getDateTime();
+
+	// The source of the annotations of extended metadata used by emf
+	private static final String ANNOTATION_SOURCE_METADATA = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 
 	// XML datatype factory instance
 	private final DatatypeFactory dataTypeFactory;
@@ -73,6 +82,107 @@ public class EcoreDataTypes {
 		} catch (DatatypeConfigurationException e) {
 			throw new TeneoException("Exception ", e);
 		}
+	}
+
+	/** Returns the type name of a many attribute */
+	public String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
+		final EAttribute eAttribute = aAttribute.getModelEAttribute();
+		// check on equality on object.class is used for listunion simpleunions
+		final Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
+		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
+			if (instanceClass.isArray()) {
+				// get rid of the [] at the end
+				return eAttribute.getEType().getInstanceClassName().substring(0,
+					eAttribute.getEType().getInstanceClassName().length() - 2);
+			}
+			return instanceClass.getName();
+		} else {
+			// the type is hidden somewhere deep get it
+			// the edatatype is the java.util.list
+			// it has an itemType which is the name of the element edatatype
+			// which contains the instanceclass
+			// takes also into account inheritance between datatypes
+			// NOTE the otm.targetentity can consist of a comma delimited list
+			// of target
+			// entities this is required for listunion types but is not
+			// according to the ejb3 spec!
+			ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
+			if (eclassifiers.size() > 0) {
+				StringBuffer result = new StringBuffer();
+				for (int i = 0; i < eclassifiers.size(); i++) {
+					final EClassifier eclassifier = eclassifiers.get(i);
+					if (i > 0) {
+						result.append(",");
+					}
+					result.append(eclassifier.getInstanceClassName());
+				}
+				return result.toString();
+			} else {
+				return Object.class.getName();
+			}
+		}
+	}
+
+	/** Walks up a edatatype inheritance structure to find the itemType */
+	public ArrayList<EClassifier> getItemTypes(EDataType eDataType) {
+		final ArrayList<EClassifier> result = new ArrayList<EClassifier>();
+		if (eDataType == null) {
+			return result;
+		}
+		final String itemType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "itemType");
+		if (itemType != null) {
+			result.add(getEClassifier(eDataType.getEPackage(), itemType));
+			return result;
+		}
+
+		final String memberTypes = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "memberTypes");
+		if (memberTypes != null) {
+			String[] mtypes = memberTypes.split(" ");
+			for (String element : mtypes) {
+				EClassifier eclassifier = getEClassifier(eDataType.getEPackage(), element);
+				result.addAll(getItemTypes((EDataType) eclassifier));
+			}
+			return result;
+		}
+
+		final String baseType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "baseType");
+		if (baseType != null) {
+			final ArrayList<EClassifier> tmpResult =
+					getItemTypes((EDataType) getEClassifier(eDataType.getEPackage(), baseType));
+			if (tmpResult.size() > 0) {
+				result.addAll(tmpResult);
+				return result;
+			}
+		}
+		if (!Object.class.equals(eDataType.getInstanceClass())) {
+			result.add(eDataType);
+		}
+		return result;
+	}
+
+	/**
+	 * Returns the eclassifier using either the name of the eclassifier or the name element
+	 */
+	public EClassifier getEClassifier(EPackage epackage, String searchName) {
+		for (EClassifier eclassifier : epackage.getEClassifiers()) {
+			if (eclassifier.getName().compareTo(searchName) == 0) {
+				return eclassifier;
+			}
+			String nameAnnotation = getEAnnotationValue(eclassifier, ANNOTATION_SOURCE_METADATA, "name");
+			if (nameAnnotation != null && searchName.compareTo(nameAnnotation) == 0) {
+				return eclassifier;
+			}
+		}
+		return null;
+	}
+
+	/** Returns the value of an annotation with a certain key */
+	public String getEAnnotationValue(EModelElement eModelElement, String source, String key) {
+		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
+		if (eAnnotation == null) {
+			return null;
+		}
+		return eAnnotation.getDetails().get(key);
 	}
 
 	// TODO: Make all utility methods static.
@@ -141,6 +251,18 @@ public class EcoreDataTypes {
 		// should be eDataType == EString but does not work due to XML type
 		// implementations
 		return String.class == eDataType.getInstanceClass();
+	}
+
+	public boolean isEDuration(EDataType eDataType) {
+		String className = null;
+		if (eDataType.getInstanceClassName() != null) {
+			className = eDataType.getInstanceClassName();
+		} else if (eDataType.getInstanceClass() != null) {
+			className = eDataType.getInstanceClass().getName();
+		} else {
+			return false;
+		}
+		return className.compareTo("javax.xml.datatype.Duration") == 0;
 	}
 
 	/**

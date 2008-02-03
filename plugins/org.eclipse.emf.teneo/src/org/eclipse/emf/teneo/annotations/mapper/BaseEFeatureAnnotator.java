@@ -12,22 +12,21 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.4 2008/01/29 19:03:15 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.5 2008/02/03 22:37:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -38,19 +37,19 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
+import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
+import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
+import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
  * Placeholder for several utility methods which are relevant for annotating ereferences and
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
-
-	// The source of the annotations of extended metadata used by emf
-	private static final String ANNOTATION_SOURCE_METADATA = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(BaseEFeatureAnnotator.class);
@@ -165,116 +164,21 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		return result;
 	}
 
-	/** Returns the type name of a many attribute */
 	protected String getTargetTypeName(PAnnotatedEAttribute aAttribute) {
-		final EAttribute eAttribute = aAttribute.getModelEAttribute();
-		// check on equality on object.class is used for listunion simpleunions
-		final Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
-		if (instanceClass != null && !Object.class.equals(instanceClass) && !List.class.equals(instanceClass)) {
-			if (instanceClass.isArray()) {
-				// get rid of the [] at the end
-				return eAttribute.getEType().getInstanceClassName().substring(0,
-					eAttribute.getEType().getInstanceClassName().length() - 2);
-			}
-			return instanceClass.getName();
-		} else {
-			// the type is hidden somewhere deep get it
-			// the edatatype is the java.util.list
-			// it has an itemType which is the name of the element edatatype
-			// which contains the instanceclass
-			// takes also into account inheritance between datatypes
-			// NOTE the otm.targetentity can consist of a comma delimited list
-			// of target
-			// entities this is required for listunion types but is not
-			// according to the ejb3 spec!
-			ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
-			if (eclassifiers.size() > 0) {
-				StringBuffer result = new StringBuffer();
-				for (int i = 0; i < eclassifiers.size(); i++) {
-					final EClassifier eclassifier = eclassifiers.get(i);
-					if (i > 0) {
-						result.append(",");
-					}
-					result.append(eclassifier.getInstanceClassName());
-				}
-				return result.toString();
-			} else {
-				return Object.class.getName();
-			}
-		}
-	}
-
-	/** Walks up a edatatype inheritance structure to find the itemType */
-	protected ArrayList<EClassifier> getItemTypes(EDataType eDataType) {
-		final ArrayList<EClassifier> result = new ArrayList<EClassifier>();
-		if (eDataType == null) {
-			return result;
-		}
-		final String itemType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "itemType");
-		if (itemType != null) {
-			result.add(getEClassifier(eDataType.getEPackage(), itemType));
-			return result;
-		}
-
-		final String memberTypes = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "memberTypes");
-		if (memberTypes != null) {
-			String[] mtypes = memberTypes.split(" ");
-			for (String element : mtypes) {
-				EClassifier eclassifier = getEClassifier(eDataType.getEPackage(), element);
-				result.addAll(getItemTypes((EDataType) eclassifier));
-			}
-			return result;
-		}
-
-		final String baseType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "baseType");
-		if (baseType != null) {
-			final ArrayList<EClassifier> tmpResult =
-					getItemTypes((EDataType) getEClassifier(eDataType.getEPackage(), baseType));
-			if (tmpResult.size() > 0) {
-				result.addAll(tmpResult);
-				return result;
-			}
-		}
-		if (!Object.class.equals(eDataType.getInstanceClass())) {
-			result.add(eDataType);
-		}
-		return result;
-	}
-
-	/**
-	 * Returns the eclassifier using either the name of the eclassifier or the name element
-	 */
-	protected EClassifier getEClassifier(EPackage epackage, String searchName) {
-		for (EClassifier eclassifier : epackage.getEClassifiers()) {
-			if (eclassifier.getName().compareTo(searchName) == 0) {
-				return eclassifier;
-			}
-			String nameAnnotation = getEAnnotationValue(eclassifier, ANNOTATION_SOURCE_METADATA, "name");
-			if (nameAnnotation != null && searchName.compareTo(nameAnnotation) == 0) {
-				return eclassifier;
-			}
-		}
-		return null;
+		return EcoreDataTypes.INSTANCE.getTargetTypeName(aAttribute);
 	}
 
 	/** Get a specific extended metadate */
 	protected String getExtendedMetaData(EAttribute eAttribute, String key) {
-		String value = getEAnnotationValue(eAttribute, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		String value =
+				EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute,
+					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		if (value == null) {
 			value =
-					getEAnnotationValue(eAttribute.getEAttributeType(),
+					EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute.getEAttributeType(),
 						"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		}
 		return value;
-	}
-
-	/** Returns the value of an annotation with a certain key */
-	protected String getEAnnotationValue(EModelElement eModelElement, String source, String key) {
-		final EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
-		if (eAnnotation == null) {
-			return null;
-		}
-		return eAnnotation.getDetails().get(key);
 	}
 
 	/** Determines if mapped by should be set */
@@ -343,6 +247,51 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			cascadeList.add(CascadeType.MERGE);
 			cascadeList.add(CascadeType.PERSIST);
 			cascadeList.add(CascadeType.REFRESH);
+		}
+	}
+
+	protected void setTemporal(PAnnotatedEAttribute aAttribute, TemporalType defaultTemporal) {
+		final EAttribute eAttribute = aAttribute.getModelEAttribute();
+		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
+		// clazz is hidden somewhere
+		if (clazz == null || Object.class.equals(clazz)) {
+			ArrayList<EClassifier> eclassifiers =
+					EcoreDataTypes.INSTANCE.getItemTypes((EDataType) eAttribute.getEType());
+			for (EClassifier eclassifier : eclassifiers) {
+				if (eclassifier.getInstanceClass() != null) {
+					clazz = eclassifier.getInstanceClass();
+					break;
+				}
+			}
+		}
+
+		final EDataType eDataType = aAttribute.getModelEAttribute().getEAttributeType();
+		if (clazz != null &&
+				(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+					.getDateTime())) {
+			final Temporal temporal = getFactory().createTemporal();
+			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
+				temporal.setValue(TemporalType.DATE);
+			} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
+				temporal.setValue(TemporalType.TIMESTAMP);
+			} else {
+				temporal.setValue(defaultTemporal);
+			}
+			aAttribute.setTemporal(temporal);
+			temporal.setEModelElement(eAttribute);
+		} else if (clazz != null &&
+				(Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+					.getDateTime())) {
+			final Temporal temporal = getFactory().createTemporal();
+			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
+				temporal.setValue(TemporalType.DATE);
+			} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
+				temporal.setValue(TemporalType.TIMESTAMP);
+			} else {
+				temporal.setValue(defaultTemporal);
+			}
+			aAttribute.setTemporal(temporal);
+			temporal.setEModelElement(eAttribute);
 		}
 	}
 }

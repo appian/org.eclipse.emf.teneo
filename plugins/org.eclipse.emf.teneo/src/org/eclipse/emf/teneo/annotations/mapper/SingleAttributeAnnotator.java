@@ -12,22 +12,15 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: SingleAttributeAnnotator.java,v 1.4 2008/01/18 06:20:24 mtaal Exp $
+ * $Id: SingleAttributeAnnotator.java,v 1.5 2008/02/03 22:37:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -36,7 +29,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
@@ -44,7 +36,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a single attribute, a primitive type such as a long or int.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -93,46 +85,7 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 		}
 
 		if (aAttribute.getTemporal() == null) {
-			Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
-			// clazz is hidden somewhere
-			if (clazz == null || Object.class.equals(clazz)) {
-				ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
-				for (EClassifier eclassifier : eclassifiers) {
-					if (eclassifier.getInstanceClass() != null) {
-						clazz = eclassifier.getInstanceClass();
-						break;
-					}
-				}
-			}
-
-			final EDataType eDataType = aAttribute.getModelEAttribute().getEAttributeType();
-			if (clazz != null &&
-					(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
-						.getDateTime())) {
-				final Temporal temporal = getFactory().createTemporal();
-				if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
-					temporal.setValue(TemporalType.DATE);
-				} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
-					temporal.setValue(TemporalType.TIMESTAMP);
-				} else {
-					temporal.setValue(optionDefaultTemporal);
-				}
-				aAttribute.setTemporal(temporal);
-				temporal.setEModelElement(eAttribute);
-			} else if (clazz != null &&
-					(Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
-						.getDateTime())) {
-				final Temporal temporal = getFactory().createTemporal();
-				if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
-					temporal.setValue(TemporalType.DATE);
-				} else if (eDataType == XMLTypePackage.eINSTANCE.getDateTime()) {
-					temporal.setValue(TemporalType.TIMESTAMP);
-				} else {
-					temporal.setValue(optionDefaultTemporal);
-				}
-				aAttribute.setTemporal(temporal);
-				temporal.setEModelElement(eAttribute);
-			}
+			setTemporal(aAttribute, optionDefaultTemporal);
 		}
 
 		if (aAttribute.getBasic() == null) {
