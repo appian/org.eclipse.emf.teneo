@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Duration" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>duration.ecore</foreignModel>
+  <genPackages prefix="Duration" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
+      resource="XML" disposableProviderFactory="true" ecorePackage="duration.ecore#/">
+    <genClasses ecoreClass="duration.ecore#//DurationTest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute duration.ecore#//DurationTest/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute duration.ecore#//DurationTest/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute duration.ecore#//DurationTest/durations"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
