@@ -12,7 +12,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="exception">
-				<column name="title" allows-null="true" length="50"/>
+				<column name="title" allows-null="false" length="50"/>
 			</field>
 			<field name="pages" persistence-modifier="persistent" null-value="none">
 				<column name="pages" allows-null="true"/>
@@ -37,7 +37,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception">
-				<column name="name" allows-null="true" length="50"/>
+				<column name="name" allows-null="false" length="50"/>
 			</field>
 			<field name="writers" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" dependent-element="true">
@@ -69,7 +69,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception">
-				<column name="name" allows-null="true" length="50"/>
+				<column name="name" allows-null="false" length="50"/>
 			</field>
 			<field name="books" persistence-modifier="persistent" mapped-by="author" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl" dependent-element="false">

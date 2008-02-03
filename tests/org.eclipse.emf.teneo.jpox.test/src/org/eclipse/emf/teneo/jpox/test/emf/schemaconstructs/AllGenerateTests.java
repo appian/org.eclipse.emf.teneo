@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.7 2007/11/15 19:56:28 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.8 2008/02/03 22:32:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.jpox.test.generate.JPOXGenerateTest;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.AnyTypeAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.DurationAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ExtensionAction;
@@ -42,7 +43,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllGenerateTests {
 
@@ -50,6 +51,8 @@ public class AllGenerateTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", JPOXTestbed
 					.instance().getConfigurations());
+
+		suite.addTest(new JPOXGenerateTest(DurationAction.class));
 
 		suite.addTest(new JPOXGenerateTest(QNameAction.class));
 		suite.addTest(new JPOXGenerateTest(EMapAction.class));

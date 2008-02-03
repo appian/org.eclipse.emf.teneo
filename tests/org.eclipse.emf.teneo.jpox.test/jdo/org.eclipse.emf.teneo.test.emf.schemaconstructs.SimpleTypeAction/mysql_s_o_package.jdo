@@ -135,14 +135,14 @@
 			<field name="enuESet" persistence-modifier="persistent"/>
 			<field name="dat" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="limitedstring" persistence-modifier="persistent" null-value="exception">
-				<column name="limitedstring" allows-null="true" length="10"/>
+				<column name="limitedstring" allows-null="false" length="10"/>
 			</field>
 			<field name="limitedDecimal" persistence-modifier="persistent" null-value="none" embedded="true">
 				<column name="limiteddecimal" allows-null="true" length="4" scale="1"/>
 			</field>
 			<field name="limitedDecimalESet" persistence-modifier="persistent"/>
 			<field name="extraLimitedString" persistence-modifier="persistent" null-value="exception">
-				<column name="extralimitedstring" allows-null="true" length="5"/>
+				<column name="extralimitedstring" allows-null="false" length="5"/>
 			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="simpletypeobject" identity-type="datastore">
