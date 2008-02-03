@@ -274,6 +274,9 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
+<a href="#rowcount">org.hibernate.StaleStateException: Batch update returned unexpected row count from update [0]; actual row count: 0; expected: 1</a>
+</li>
+<li>
 <a href="#runtime">Troubleshooting the Mapping and Runtime layer/Hibernate</a>
 </li>
 <li>
@@ -350,7 +353,19 @@
 <em>For troubleshooting please also visit <strong>the EMFT open issues list <a class="external" href="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMFT&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&query_format=advanced&order=map_components.name">here</a>.</strong></em>
 </p>
 		
-<a name="N10019"></a><a name="runtime"></a>
+<a name="N10019"></a><a name="rowcount"></a>
+<div class="h3">
+<h3>org.hibernate.StaleStateException: Batch update returned unexpected row count from update [0]; actual row count: 0; expected: 1</h3>
+			
+			
+<p>This exception can occur when using synthetic id's in combination with the creation of multiple session factories. For example when doing test runs with a database clean up between the test run.
+			The exception occurs because the Idenfifier Cache, which is used by Teneo to handle synthetic id's, is not in-sync with the database.</p>
+			
+<p>To solve this you have to clear the Identifier cache by calling: IdentifierCacheHandler.clear();</p>
+		
+</div>
+		
+<a name="N10026"></a><a name="runtime"></a>
 <div class="h3">
 <h3>Troubleshooting the Mapping and Runtime layer/Hibernate</h3>
 			
@@ -369,7 +384,7 @@
 		
 </div>
 		
-<a name="N10034"></a><a name="ormapper"></a>
+<a name="N10041"></a><a name="ormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the automatic in-memory mapping</h3>
 			
@@ -379,7 +394,7 @@
 		
 </div>
 		
-<a name="N1003E"></a><a name="manualormapper"></a>
+<a name="N1004B"></a><a name="manualormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the OR Mapper Menu Option</h3>
 			
@@ -397,7 +412,7 @@
 		
 </div>
 		
-<a name="N10054"></a><a name="resourceplanning"></a>
+<a name="N10061"></a><a name="resourceplanning"></a>
 <div class="h3">
 <h3>Troubleshooting the Resource Utilities</h3>
 			
@@ -413,7 +428,7 @@
 		
 </div>
 		
-<a name="N10064"></a><a name="More+debug+information+from+Eclipse"></a>
+<a name="N10071"></a><a name="More+debug+information+from+Eclipse"></a>
 <div class="h3">
 <h3>More debug information from Eclipse</h3>
 			
@@ -429,7 +444,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N10074"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
+<a name="N10081"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
 <div class="h3">
 <h3>Cut and Paste does not work in the Editor</h3>
 		
@@ -438,7 +453,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N10080"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
+<a name="N1008D"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
 <div class="h3">
 <h3>Client-server scenario: when saving on the server always new objects are created or I get a duplicate key exception</h3>
 		
@@ -448,7 +463,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 			
-<a name="N1008D"></a><a name="Column+name+e_version+not+supported+by+database"></a>
+<a name="N1009A"></a><a name="Column+name+e_version+not+supported+by+database"></a>
 <div class="h3">
 <h3>Column name e_version not supported by database</h3>
 			
@@ -458,7 +473,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1009A"></a><a name="Column+names+too+long"></a>
+<a name="N100A7"></a><a name="Column+names+too+long"></a>
 <div class="h3">
 <h3>Column names too long</h3>
 			
@@ -468,7 +483,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100A7"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
+<a name="N100B4"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
 <div class="h3">
 <h3>org.hibernate.DuplicateMappingException: Duplicate class/entitymapping</h3>
 			
@@ -479,7 +494,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100B4"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<a name="N100C1"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
 <div class="h3">
 <h3>Created new model through new model wizard: diagnostic error</h3>
 			
@@ -497,7 +512,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100C0"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
+<a name="N100CD"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
 <div class="h3">
 <h3>java.lang.NoClassDefFoundError when starting/initializing runtime layer</h3>
 				
@@ -516,7 +531,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100D3"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
+<a name="N100E0"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
 <div class="h3">
 <h3>No class def found: org.hibernate.proxy.ProxyFactory</h3>
 			
@@ -528,7 +543,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100DC"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
+<a name="N100E9"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
 <div class="h3">
 <h3>Could not determine type for: org.eclipse.emf.common.util.AbstractEnumerator, for columns: [org.hibernate.mapping.Column(enu)]</h3>
 			
@@ -550,7 +565,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100EB"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<a name="N100F8"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
 <div class="h3">
 <h3>The resource is empty in the generated editor</h3>
 				
@@ -559,7 +574,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100F9"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
+<a name="N10106"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
 <div class="h3">
 <h3>Update manager does not find the upgrade of the EMF Hibernate plugin</h3>
 			
@@ -567,7 +582,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10102"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<a name="N1010F"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
 <div class="h3">
 <h3>Editor does not start,  the error log gives a sql error 'Missing column....'</h3>
 			
@@ -578,7 +593,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1010F"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
+<a name="N1011C"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
 <div class="h3">
 <h3>Editor does not start, ClassNotFoundException on the Editor Plugin</h3>
 			
@@ -589,7 +604,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10118"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<a name="N10125"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
 <div class="h3">
 <h3>Editor does not start, AssertionFailedException</h3>
 			
@@ -609,7 +624,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10127"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
+<a name="N10134"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
 <div class="h3">
 <h3>Validation exception on enumerate properties when saving the editor content</h3>
 				
@@ -626,7 +641,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N1013B"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
+<a name="N10148"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
 <div class="h3">
 <h3>Stacktraces when starting Eclipse with already open EMF editor</h3>
 				
@@ -641,7 +656,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N1014A"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N10157"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				
@@ -652,7 +667,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10153"></a><a name="JoinTable+name+clash"></a>
+<a name="N10160"></a><a name="JoinTable+name+clash"></a>
 <div class="h3">
 <h3>JoinTable name clash</h3>
 			
