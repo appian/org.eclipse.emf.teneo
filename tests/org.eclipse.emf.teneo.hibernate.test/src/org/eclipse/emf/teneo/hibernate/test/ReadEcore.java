@@ -30,13 +30,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 
-import com.stpenable.gensec.GensecPackage;
-
 /**
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class ReadEcore {
 
@@ -89,7 +87,7 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 
 // System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
-			HbDataStore hbds = initSimpleDataStore(new EPackage[] { GensecPackage.eINSTANCE });
+// HbDataStore hbds = initSimpleDataStore(new EPackage[] { GensecPackage.eINSTANCE });
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}

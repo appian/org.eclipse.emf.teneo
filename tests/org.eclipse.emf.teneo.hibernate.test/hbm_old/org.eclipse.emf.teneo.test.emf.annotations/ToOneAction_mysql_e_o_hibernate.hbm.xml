@@ -59,6 +59,6 @@
 			<column not-null="false" unique="false" name="`address_address_e_id`"/>
 		</many-to-one>
 		<one-to-one name="head" entity-name="Head" cascade="all" property-ref="person" lazy="false"/>
-		<many-to-one name="leftArm" entity-name="Arm" foreign-key="person_leftarm" lazy="false" insert="true" update="true"/>
+		<many-to-one name="leftArm" entity-name="Arm" foreign-key="person_leftarm" lazy="false" insert="true" update="true" unique="true"/>
 	</class>
 </hibernate-mapping>

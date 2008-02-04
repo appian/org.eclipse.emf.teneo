@@ -6,13 +6,14 @@
 		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
 		<param name="edatatype">SimpleEnumObject</param>
 	</typedef>
-	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl" entity-name="SimpleList" abstract="false" lazy="false" table="`simplelist`">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl" entity-name="SimpleList" abstract="false" lazy="false" discriminator-value="SimpleList" table="`simplelist`">
 		<meta attribute="eclassName">SimpleList</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
+		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -84,7 +85,7 @@
 				<column name="`simplelist_dat_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_dat_idx`"/>
-			<element type="timestamp"/>
+			<element type="java.util.Date"/>
 		</list>
 		<list name="limitedstring" table="`simplelist_limitedstring`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -129,13 +130,14 @@
 			<element type="byte"/>
 		</array>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl" entity-name="SimpleType" abstract="false" lazy="false" table="`simpletype`">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl" entity-name="SimpleType" abstract="false" lazy="false" discriminator-value="SimpleType" table="`simpletype`">
 		<meta attribute="eclassName">SimpleType</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
+		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -173,22 +175,23 @@
 			<column not-null="true" unique="false" name="`dat`"/>
 		</property>
 		<property name="limitedstring" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`limitedstring`" length="10"/>
+			<column not-null="false" unique="false" name="`limitedstring`" length="10"/>
 		</property>
 		<property name="limitedDecimal" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigDecimal">
 			<column not-null="false" unique="false" name="`limiteddecimal`" precision="4" scale="1"/>
 		</property>
 		<property name="extraLimitedString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`extralimitedstring`" length="5"/>
+			<column not-null="false" unique="false" name="`extralimitedstring`" length="5"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl" entity-name="SimpleTypeObject" abstract="false" lazy="false" table="`simpletypeobject`">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl" entity-name="SimpleTypeObject" abstract="false" lazy="false" discriminator-value="SimpleTypeObject" table="`simpletypeobject`">
 		<meta attribute="eclassName">SimpleTypeObject</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
+		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

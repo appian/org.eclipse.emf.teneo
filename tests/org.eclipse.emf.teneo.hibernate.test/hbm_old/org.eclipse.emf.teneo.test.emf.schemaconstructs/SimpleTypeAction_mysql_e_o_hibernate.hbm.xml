@@ -84,7 +84,7 @@
 				<column name="`simplelist_dat_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_dat_idx`"/>
-			<element type="timestamp"/>
+			<element type="java.util.Date"/>
 		</list>
 		<list name="limitedstring" table="`simplelist_limitedstring`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -173,13 +173,13 @@
 			<column not-null="true" unique="false" name="`dat`"/>
 		</property>
 		<property name="limitedstring" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`limitedstring`" length="10"/>
+			<column not-null="false" unique="false" name="`limitedstring`" length="10"/>
 		</property>
 		<property name="limitedDecimal" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigDecimal">
 			<column not-null="false" unique="false" name="`limiteddecimal`" precision="4" scale="1"/>
 		</property>
 		<property name="extraLimitedString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`extralimitedstring`" length="5"/>
+			<column not-null="false" unique="false" name="`extralimitedstring`" length="5"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl" entity-name="SimpleTypeObject" abstract="false" lazy="false" table="`simpletypeobject`">

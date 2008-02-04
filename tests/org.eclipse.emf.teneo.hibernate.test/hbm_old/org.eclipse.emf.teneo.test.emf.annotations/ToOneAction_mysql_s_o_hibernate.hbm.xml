@@ -2,14 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.AddressImpl" entity-name="Address" abstract="false" lazy="false" discriminator-value="Address" table="`address`">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.AddressImpl" entity-name="Address" abstract="false" lazy="false" table="`address`">
 		<meta attribute="eclassName">Address</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -17,14 +16,13 @@
 			<column not-null="true" unique="false" name="`city`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ArmImpl" entity-name="Arm" abstract="false" lazy="false" discriminator-value="Arm" table="`arm`">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.ArmImpl" entity-name="Arm" abstract="false" lazy="false" table="`arm`">
 		<meta attribute="eclassName">Arm</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -32,14 +30,13 @@
 			<column not-null="false" unique="false" name="`length`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl" entity-name="Head" abstract="false" lazy="false" discriminator-value="Head" table="`head`">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl" entity-name="Head" abstract="false" lazy="false" table="`head`">
 		<meta attribute="eclassName">Head</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -48,14 +45,13 @@
 		</property>
 		<many-to-one name="person" entity-name="Person" cascade="merge,persist,save-update,lock,refresh" lazy="false" insert="true" update="true" unique="true"/>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" discriminator-value="Person" table="`person`">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" table="`person`">
 		<meta attribute="eclassName">Person</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/toone</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -63,6 +59,6 @@
 			<column not-null="false" unique="false" name="`address_address_e_id`"/>
 		</many-to-one>
 		<one-to-one name="head" entity-name="Head" cascade="all" property-ref="person" lazy="false"/>
-		<many-to-one name="leftArm" entity-name="Arm" foreign-key="person_leftarm" lazy="false" insert="true" update="true"/>
+		<many-to-one name="leftArm" entity-name="Arm" foreign-key="person_leftarm" lazy="false" insert="true" update="true" unique="true"/>
 	</class>
 </hibernate-mapping>
