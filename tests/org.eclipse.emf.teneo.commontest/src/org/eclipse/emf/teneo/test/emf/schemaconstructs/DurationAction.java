@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DurationAction.java,v 1.1 2008/02/03 22:32:56 mtaal Exp $
+ * $Id: DurationAction.java,v 1.2 2008/02/04 05:40:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests xsd duration type.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DurationAction extends AbstractTestAction {
 
@@ -48,7 +48,6 @@ public class DurationAction extends AbstractTestAction {
 	/** Creates simple types and tests against */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		// test a simple type
 		final DurationFactory factory = DurationFactory.eINSTANCE;
 		try {
