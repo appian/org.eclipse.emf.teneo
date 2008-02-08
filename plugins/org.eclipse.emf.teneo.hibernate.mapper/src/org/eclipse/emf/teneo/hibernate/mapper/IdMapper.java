@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.21 2008/01/18 06:21:36 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.22 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -103,7 +103,7 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		meta.addAttribute("attribute", HbMapperConstants.ID_META).addText("true");
 		idElement.add(0, meta);
 
-		idElement.addAttribute("access", mc.getIdPropertyHandlerName());
+		idElement.addAttribute("access", mc.getSyntheticIdPropertyHandlerName());
 
 		return idElement;
 	}
@@ -141,6 +141,8 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 			}
 		}
 		getHbmContext().setCurrent(compositeIdElement.getParent());
+
+		addAccessor(compositeIdElement, hbmContext.getComponentPropertyHandlerName());
 	}
 
 	private void addKeyManyToOne(Element currentParent, PAnnotatedEReference paReference) {

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.33 2008/02/03 22:37:13 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.34 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -89,6 +89,16 @@ public abstract class AbstractMapper {
 	/** Set the hbm context */
 	protected void setHbmContext(MappingContext hbmContext) {
 		this.hbmContext = hbmContext;
+	}
+
+	protected void addAccessor(Element element, String propertyHandler) {
+		if (propertyHandler != null && propertyHandler.length() > 0) {
+			element.addAttribute("access", hbmContext.getPropertyHandlerName());
+		}
+	}
+
+	protected void addAccessor(Element element) {
+		addAccessor(element, hbmContext.getPropertyHandlerName());
 	}
 
 	/** Handles the type or typedef annotations */

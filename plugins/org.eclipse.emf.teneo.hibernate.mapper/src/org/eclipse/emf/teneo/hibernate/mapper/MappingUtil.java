@@ -11,11 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.3 2007/08/10 16:41:00 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.4 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
+import java.util.Properties;
+
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.BasicPamodelBuilder;
 import org.eclipse.emf.teneo.annotations.mapper.EClassAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.EDataTypeAnnotator;
@@ -24,10 +28,13 @@ import org.eclipse.emf.teneo.annotations.mapper.ManyToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyAttributeAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.extension.ExtensionUtil;
 import org.eclipse.emf.teneo.hibernate.annotations.HbAnnotationModelBuilder;
 import org.eclipse.emf.teneo.hibernate.annotations.HbEAnnotationParserImporter;
@@ -45,9 +52,34 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class MappingUtil {
+
+	/**
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options.
+	 * The hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any
+	 * other way by Elver.
+	 */
+	public static String generateMapping(EPackage[] epackages, Properties props) {
+		final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
+		return generateMapping(epackages, props, extensionManager);
+	}
+
+	public static String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
+		registerHbExtensions(extensionManager);
+
+		// DCB: Use Hibernate-specific annotation processing mechanism. This
+		// allows use of
+		// Hibernate-specific annotations.
+		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
+		final PAnnotatedModel paModel =
+				extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(epackages, po,
+					extensionManager);
+		final HibernateMappingGenerator hmg = extensionManager.getExtension(HibernateMappingGenerator.class);
+		hmg.setPersistenceOptions(po);
+		return hmg.generateToString(paModel);
+	}
 
 	/**
 	 * Determine the collection element set, bag or list. Only used in case Teneo operates for

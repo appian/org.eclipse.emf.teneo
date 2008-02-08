@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.24 2008/01/18 06:21:36 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.25 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -86,6 +86,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// TODO request EMF team to deal correctly with unique attribute on
 		// EReferences
 		final Element collElement = addCollectionElement(paReference);
+		addAccessor(collElement);
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
 			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
@@ -197,6 +198,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// addCollectionElement(paReference.getAnnotatedElement().getName(),
 		// paReference.isIndexed());
 		final Element collElement = addCollectionElement(paReference);
+		addAccessor(collElement);
 		final EReference eref = paReference.getModelEReference();
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.25 2008/02/03 22:37:13 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.26 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -432,13 +432,33 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	}
 
 	/** Return the version property handler */
-	public String getVersionPropertyHandlerName() {
+	public String getSyntheticVersionPropertyHandlerName() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler";
 	}
 
 	/** Return the id property handler */
-	public String getIdPropertyHandlerName() {
+	public String getSyntheticIdPropertyHandlerName() {
 		return "org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler";
+	}
+
+	/** Return the standard property handler */
+	public String getPropertyHandlerName() {
+		return "";
+	}
+
+	/** Return the version property handler for a normal version field */
+	public String getVersionPropertyHandlerName() {
+		return "";
+	}
+
+	/** Return the id property handler for a normal id property handler */
+	public String getIdPropertyHandlerName() {
+		return "";
+	}
+
+	/** Return the component property handler */
+	public String getComponentPropertyHandlerName() {
+		return "";
 	}
 
 	/** Is this a dynamic eclass, i.e. it has no instanceclass */

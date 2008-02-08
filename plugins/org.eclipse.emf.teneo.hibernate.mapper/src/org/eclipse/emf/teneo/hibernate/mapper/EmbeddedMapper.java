@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.13 2008/01/18 06:21:36 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.14 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -92,6 +92,8 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 		} finally {
 			getHbmContext().setCurrent(componentElement.getParent());
 		}
+
+		addAccessor(componentElement, hbmContext.getComponentPropertyHandlerName());
 	}
 
 	/** Process a list of components */

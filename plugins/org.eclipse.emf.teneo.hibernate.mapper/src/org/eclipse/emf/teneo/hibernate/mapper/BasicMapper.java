@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.25 2008/01/18 06:21:36 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.26 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -68,6 +68,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 			final Index index = ((HbAnnotatedEAttribute) paAttribute).getHbIndex();
 			propElement.addAttribute("index", index.getName());
 		}
+
+		addAccessor(propElement);
 	}
 
 	/**
@@ -101,6 +103,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 
 		// #191463
 		setType(paAttribute, propElement);
+
+		addAccessor(propElement);
 	}
 
 	/**
@@ -123,6 +127,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 				isNullable(basic, paAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
+
+		addAccessor(propElement);
 	}
 
 	/**
@@ -145,6 +151,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		addColumns(propElement, paAttribute, columns, isNullable(basic, paAttribute) ||
 				getHbmContext().isCurrentElementFeatureMap(), true);
 		setType(paAttribute, propElement);
+
+		addAccessor(propElement);
 	}
 
 	/**
@@ -164,6 +172,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 		addColumns(propElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), false);
 		setType(paAttribute, propElement);
+
+		addAccessor(propElement, hbmContext.getVersionPropertyHandlerName());
 	}
 
 	/**

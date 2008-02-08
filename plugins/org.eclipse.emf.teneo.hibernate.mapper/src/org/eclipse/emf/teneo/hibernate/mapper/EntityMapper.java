@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.27 2008/01/29 12:58:10 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.28 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -309,6 +309,8 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
 			} else if (getHbmContext().mustAddSyntheticID(entity)) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
+			} else {
+				addAccessor(idElement, hbmContext.getIdPropertyHandlerName());
 			}
 
 			if (idElement != null) {
@@ -569,7 +571,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
 		versionElement.add(0, meta);
 
-		versionElement.addAttribute("access", getHbmContext().getVersionPropertyHandlerName());
+		versionElement.addAttribute("access", getHbmContext().getSyntheticVersionPropertyHandlerName());
 
 		return versionElement;
 	}

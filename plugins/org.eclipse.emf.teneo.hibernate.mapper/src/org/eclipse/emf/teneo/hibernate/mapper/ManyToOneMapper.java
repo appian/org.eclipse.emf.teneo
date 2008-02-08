@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.20 2008/01/18 06:21:36 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.21 2008/02/08 01:19:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -83,6 +83,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 		}
 
 		final Element associationElement = addManyToOne(currentElement, paReference, targetName, false);
+		addAccessor(associationElement);
 
 		if (joinTable != null) {
 			addJoinColumns(paReference, associationElement, joinTable.getJoinColumns(), getHbmContext()
