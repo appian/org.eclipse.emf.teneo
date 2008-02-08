@@ -34,7 +34,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class ReadEcore {
 
@@ -106,6 +106,14 @@ public class ReadEcore {
 // "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
 // props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+
+		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "64");
+		props.setProperty(PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY, "simple");
+		props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
+		props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
+		props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
+
+		System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 
 		hbds.setPersistenceProperties(props);
 		hbds.setHibernateProperties(props);

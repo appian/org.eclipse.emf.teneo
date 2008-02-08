@@ -15,12 +15,12 @@ import java.io.FileReader;
  * Compare Hbm files
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class CompareHBM {
 
-	private static final String fromDir =
-			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm";
+	private static final String fromDir = "/home/mtaal/mytmp/hbm";
+// "/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm";
 	private static final String toDir =
 			"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.hibernate.test/hbm_old";
 
