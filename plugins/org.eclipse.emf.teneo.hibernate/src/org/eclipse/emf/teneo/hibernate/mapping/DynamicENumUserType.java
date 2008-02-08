@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserType.java,v 1.5 2007/07/17 12:21:53 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.6 2008/02/08 01:17:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -27,6 +27,7 @@ import java.util.Properties;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
 import org.hibernate.usertype.ParameterizedType;
@@ -36,7 +37,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2007/07/17 12:21:53 $
+ * @version $Revision: 1.6 $ $Date: 2008/02/08 01:17:44 $
  */
 
 public class DynamicENumUserType implements UserType, ParameterizedType {
@@ -124,7 +125,11 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 			return enumValue;
 		}
 
-		enumValue = enumInstance.getEEnumLiteralByLiteral(name);
+		enumValue = enumInstance.getEEnumLiteralByLiteral(name.trim());
+		if (enumValue == null) {
+			throw new HbMapperException("The enum value " + name + " is not valid for enumerator: " +
+					enumInstance.getName());
+		}
 		localCache.put(name, enumValue);
 		return enumValue;
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ENumUserType.java,v 1.6 2007/02/08 23:11:37 mtaal Exp $
+ * $Id: ENumUserType.java,v 1.7 2008/02/08 01:17:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -38,7 +38,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2007/02/08 23:11:37 $
+ * @version $Revision: 1.7 $ $Date: 2008/02/08 01:17:44 $
  */
 
 public class ENumUserType implements UserType, ParameterizedType {
@@ -85,14 +85,17 @@ public class ENumUserType implements UserType, ParameterizedType {
 	/** Compares the int values of the enumerates */
 	public boolean equals(Object x, Object y) throws HibernateException {
 		// todo: check compare on null values
-		if (x == null && y == null)
+		if (x == null && y == null) {
 			return true;
+		}
 
-		if (x == null || y == null)
+		if (x == null || y == null) {
 			return false;
+		}
 
-		if (x.getClass() != y.getClass())
+		if (x.getClass() != y.getClass()) {
 			return false;
+		}
 		assert (x instanceof Enumerator);
 		return ((Enumerator) x).getValue() == ((Enumerator) y).getValue();
 	}
@@ -114,32 +117,41 @@ public class ENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[], java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
+	 *      java.lang.Object)
 	 */
 	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
 		final String name = rs.getString(names[0]);
-		if (rs.wasNull())
+		if (rs.wasNull()) {
 			return null;
+		}
 
-		Enumerator enumValue = (Enumerator) localCache.get(name);
-		if (enumValue != null)
+		Enumerator enumValue = localCache.get(name);
+		if (enumValue != null) {
 			return enumValue;
+		}
 
 		// call the getMethod!
 		try {
-			enumValue = (Enumerator) getMethod.invoke(null, new Object[] { name });
-			localCache.put(name, enumValue);
-			return enumValue;
+			enumValue = (Enumerator) getMethod.invoke(null, new Object[] { name.trim() });
 		} catch (Exception e) {
-			throw new HbMapperException("Exception when getting enum for class: " + enumType.getName()
-					+ " using value: " + name, e);
+			throw new HbMapperException("Exception when getting enum for class: " + enumType.getName() +
+					" using value: " + name, e);
 		}
+		if (enumValue == null) {
+			throw new HbMapperException("The enum value " + name + " is not valid for enumerator: " +
+					enumType.getName());
+		}
+
+		localCache.put(name, enumValue);
+		return enumValue;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement,
+	 *      java.lang.Object, int)
 	 */
 	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
 		if (value == null) {
@@ -152,7 +164,8 @@ public class ENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object, java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object,
+	 *      java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;

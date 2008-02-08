@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -107,6 +107,8 @@ public abstract class HbDataStore implements DataStore {
 
 	/** The list of epackages stored in the datastore */
 	private EPackage[] ePackages;
+
+	private EPackageConstructor ePackageConstructor = null;
 
 	/** Update the schema option */
 	// private boolean updateSchema = true;
@@ -147,6 +149,16 @@ public abstract class HbDataStore implements DataStore {
 	 * @return the epackages
 	 */
 	public EPackage[] getEPackages() {
+		if (ePackages == null && ePackageConstructor != null) {
+			final java.util.List<EPackage> ePacks = ePackageConstructor.getEPackages();
+			final EPackage[] ePacksArray = new EPackage[ePacks.size()];
+			int i = 0;
+			for (EPackage ePack : ePacks) {
+				ePacksArray[i++] = ePack;
+			}
+			setEPackages(ePacksArray);
+		}
+
 		return ePackages;
 	}
 
@@ -931,7 +943,7 @@ public abstract class HbDataStore implements DataStore {
 		}
 
 		if (classDone.contains(eclass)) {
-			return refersTo.get(eclass);
+			return refersTo.get(eClassUri);
 		}
 
 		final java.util.List<ReferenceTo> thisList = refersTo.get(ens.toEntityName(eclass));
@@ -1126,5 +1138,22 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public void setPaModel(PAnnotatedModel paModel) {
 		this.paModel = paModel;
+	}
+
+	/**
+	 * Facilitates setting ePackages through Spring
+	 */
+	public void setEPackageClasses(java.util.List<String> ePackageClasses) {
+		if (ePackageConstructor == null) {
+			ePackageConstructor = new EPackageConstructor();
+		}
+		ePackageConstructor.setModelClasses(ePackageClasses);
+	}
+
+	public void setEPackageFiles(java.util.List<String> ePackageFiles) {
+		if (ePackageConstructor == null) {
+			ePackageConstructor = new EPackageConstructor();
+		}
+		ePackageConstructor.setModelFiles(ePackageFiles);
 	}
 }

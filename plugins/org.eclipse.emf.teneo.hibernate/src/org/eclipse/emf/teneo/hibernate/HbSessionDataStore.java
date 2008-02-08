@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.7 2008/02/03 22:35:13 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.8 2008/02/08 01:17:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,7 +25,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
 import org.hibernate.Interceptor;
-import org.hibernate.SessionFactory;
 import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.event.InitializeCollectionEventListener;
@@ -39,16 +38,15 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
-public class HbSessionDataStore extends HbDataStore {
+public class HbSessionDataStore extends HbBaseSessionDataStore {
+
+	private static final long serialVersionUID = 1L;
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbSessionDataStore.class);
-
-	/** The persistency manager factory */
-	private SessionFactory sessionFactory;
 
 	/** The used Hibernate configuration */
 	private Configuration hbConfiguration;
@@ -80,10 +78,12 @@ public class HbSessionDataStore extends HbDataStore {
 		initializeDataStore();
 
 		// wait for the session factory until the database is (re)created
-		if (sessionFactory != null && !sessionFactory.isClosed()) {
-			sessionFactory.close();
+		if (isSessionFactorySet()) {
+			if (getSessionFactory() != null && !getSessionFactory().isClosed()) {
+				getSessionFactory().close();
+			}
 		}
-		sessionFactory = buildSessionFactory();
+		buildSessionFactory();
 
 		setInitialized(true);
 	}
@@ -168,8 +168,8 @@ public class HbSessionDataStore extends HbDataStore {
 	}
 
 	/** Build the session factory */
-	protected SessionFactory buildSessionFactory() {
-		return getConfiguration().buildSessionFactory();
+	protected void buildSessionFactory() {
+		setSessionFactory(getConfiguration().buildSessionFactory());
 	}
 
 	/*
@@ -182,16 +182,6 @@ public class HbSessionDataStore extends HbDataStore {
 		if (!getSessionFactory().isClosed()) {
 			getSessionFactory().close();
 		}
-	}
-
-	/** Get the session factory */
-	@Override
-	public SessionFactory getSessionFactory() {
-		if (!isInitialized()) {
-			initialize();
-		}
-		assert (sessionFactory != null);
-		return sessionFactory;
 	}
 
 	/** Return a new session wrapper */

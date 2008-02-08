@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.11 2008/02/03 22:35:13 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.12 2008/02/08 01:17:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -19,8 +19,10 @@ package org.eclipse.emf.teneo.hibernate;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.logging.Log;
@@ -38,9 +40,9 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
-public class HbEntityDataStore extends HbDataStore {
+public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbEntityDataStore.class);
@@ -216,5 +218,18 @@ public class HbEntityDataStore extends HbDataStore {
 	@Override
 	public SessionFactory getSessionFactory() {
 		throw new UnsupportedOperationException("This method should not be called, use getEntityManagerFactory");
+	}
+
+	public EntityManager createEntityManager() {
+		return getEntityManagerFactory().createEntityManager();
+	}
+
+	@SuppressWarnings("unchecked")
+	public EntityManager createEntityManager(Map arg0) {
+		return getEntityManagerFactory().createEntityManager(arg0);
+	}
+
+	public boolean isOpen() {
+		return getEntityManagerFactory().isOpen();
 	}
 }
