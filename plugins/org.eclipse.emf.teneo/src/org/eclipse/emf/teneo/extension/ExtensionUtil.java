@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.6 2007/08/10 16:40:55 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.7 2008/02/08 01:17:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -46,17 +46,21 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class ExtensionUtil {
 
 	/** Creates a default extension */
 	public static Extension createExtension(Class<?> extensionPoint, Class<?> clz) {
+		return createExtension(extensionPoint, clz, true);
+	}
+
+	public static Extension createExtension(Class<?> extensionPoint, Class<?> clz, boolean defaultExtension) {
 		final Extension extension = new Extension();
 		extension.setPoint(extensionPoint.getName());
 		extension.setClassName(clz.getName());
-		extension.setDefaultExtension(true);
+		extension.setDefaultExtension(defaultExtension);
 		return extension;
 	}
 
