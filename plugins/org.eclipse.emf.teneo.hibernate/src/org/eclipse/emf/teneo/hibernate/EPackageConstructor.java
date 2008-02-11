@@ -11,12 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EPackageConstructor.java,v 1.1 2008/02/08 01:17:44 mtaal Exp $
+ * $Id: EPackageConstructor.java,v 1.2 2008/02/11 09:59:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
-import org.eclipse.emf.teneo.util.FieldUtil;
 
 /**
  * Reads epackages from different formats and makes them available to other beans.
@@ -93,7 +92,7 @@ public class EPackageConstructor {
 		ePacks.addAll(buildFromModelClasses());
 		ePacks.addAll(buildFromModelFiles());
 
-		for (EPackage epackage : ePackages) {
+		for (EPackage epackage : ePacks) {
 			log.info("Registered EPackage: " + epackage.getNsURI());
 		}
 
@@ -102,6 +101,7 @@ public class EPackageConstructor {
 			addSubPackages(ePacks, ePackage);
 		}
 
+		ePackages = ePacks;
 		initialized = true;
 	}
 
@@ -122,18 +122,17 @@ public class EPackageConstructor {
 		for (String ecoreModelPackageClassName : ecoreModelClasses) {
 			try {
 				final Class<?> cls = this.getClass().getClassLoader().loadClass(ecoreModelPackageClassName);
-				// TODO: externalize this constant
-				final Field fld = FieldUtil.getField(cls, "eINSTANCE");
+				final Method m = cls.getMethod("init");
 
 				// purposely passing null because it must be static
-				final EPackage emp = (EPackage) fld.get(null);
+				final EPackage emp = (EPackage) m.invoke(null);
 
 				// initialise the emp, will also read the epackage
 				result.add(emp);
 			} catch (Exception e) {
 				throw new IllegalStateException(
 					"Excption while trying to retrieve EcoreModelPackage instance from class: " +
-							ecoreModelPackageClassName);
+							ecoreModelPackageClassName, e);
 			}
 		}
 		return result;
