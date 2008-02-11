@@ -11,15 +11,18 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.9 2007/11/14 16:39:25 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.10 2008/02/11 09:59:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
+
+import java.util.Properties;
 
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
+import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryAction;
@@ -29,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -42,6 +45,17 @@ public class LibraryTest extends AbstractActionTest {
 // System.err.println(o);
 // }
 		};
+
+		@Override
+		public Properties getExtraConfigurationProperties() {
+			// compute path to ecore
+			String path = "/" + LibraryPackage.eINSTANCE.getClass().getPackage().getName();
+			// strip of the impl
+			path = path.replaceAll("\\.", "/").substring(0, path.length() - 5) + "/library.ecore";
+			final Properties props = super.getExtraConfigurationProperties();
+			props.setProperty(HibernateTestStore.EPACKAGE_INIT_MODE, HibernateTestStore.EPACKAGE_INIT_MODE_CLASS);
+			return props;
+		}
 
 		@Override
 		protected void checkTeneoSQLNameStrategy() {

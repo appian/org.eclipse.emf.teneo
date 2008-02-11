@@ -9,6 +9,7 @@
 package org.eclipse.emf.teneo.hibernate.test.stores;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -50,11 +51,16 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
 	private static Log log = LogFactory.getLog(HibernateTestStore.class);
+
+	public static final String EPACKAGE_INIT_MODE = "epackageinitmode";
+	public static final String EPACKAGE_INIT_MODE_CLASS = "class";
+	public static final String EPACKAGE_INIT_MODE_ECORE = "ecore";
+	public static final String EPACKAGE_INIT_MODE_ECORE_VALUE = "ecorefile";
 
 	/** The emf resource set used during the test */
 	protected final ResourceSet resourceSet = new ResourceSetImpl();
@@ -131,7 +137,21 @@ public class HibernateTestStore extends AbstractTestStore {
 		}
 		emfDataStore.setExtensionManager(extensionManager);
 		emfDataStore.setName(getDatabaseAdapter().getDbName());
-		emfDataStore.setEPackages(epackages);
+		if (props.getProperty(EPACKAGE_INIT_MODE) != null) {
+			if (props.getProperty(EPACKAGE_INIT_MODE).compareTo(EPACKAGE_INIT_MODE_CLASS) == 0) {
+				final List<String> clss = new ArrayList<String>();
+				for (EPackage epackage : epackages) {
+					clss.add(epackage.getClass().getName());
+				}
+				emfDataStore.setEPackageClasses(clss);
+			} else if (props.getProperty(EPACKAGE_INIT_MODE).compareTo(EPACKAGE_INIT_MODE_ECORE) == 0) {
+				final List<String> ecores = new ArrayList<String>();
+				ecores.add(props.getProperty(EPACKAGE_INIT_MODE_ECORE_VALUE));
+				emfDataStore.setEPackageFiles(ecores);
+			}
+		} else {
+			emfDataStore.setEPackages(epackages);
+		}
 		// set both hibernate and persistence props as we do not know the difference right now
 		emfDataStore.setHibernateProperties(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
 		emfDataStore.setPersistenceProperties(props);

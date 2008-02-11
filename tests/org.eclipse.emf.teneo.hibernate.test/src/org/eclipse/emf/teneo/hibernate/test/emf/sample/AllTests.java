@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  */
 public class AllTests {
 
@@ -55,8 +55,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
-		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibraryTest.class);
+		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibraryFKAction.class);
 		suite.addTestSuite(NoEscapeLibraryAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
