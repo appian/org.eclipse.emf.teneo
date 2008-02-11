@@ -39,7 +39,7 @@ import org.eclipse.jdt.launching.JavaRuntime;
 public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigurationConstants {
 
 	/** Standard name of the generation action */
-	private static final String CONFIGURATION_NAME = "Elver JDO Generation";
+	private static final String CONFIGURATION_NAME = "Teneo OR-Mapping Generation";
 
 	/** The list of java projects */
 	private final ArrayList<IJavaProject> jProjects; // IJavaProject
@@ -59,8 +59,8 @@ public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigura
 	/**
 	 * The constructor.
 	 */
-	public RunGenerateJob(ArrayList<IJavaProject> jProjects, String[] ecores,
-			String targetFileName, String mainClass, HashMap<String, String> options) {
+	public RunGenerateJob(ArrayList<IJavaProject> jProjects, String[] ecores, String targetFileName, String mainClass,
+			HashMap<String, String> options) {
 		super("Generate Mapping File");
 		this.jProjects = jProjects;
 		this.ecores = ecores;
@@ -75,8 +75,8 @@ public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigura
 	public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
 		// first delete the old generation of the same name
 		ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
-		ILaunchConfigurationType type = manager
-				.getLaunchConfigurationType(IJavaLaunchConfigurationConstants.ID_JAVA_APPLICATION);
+		ILaunchConfigurationType type =
+				manager.getLaunchConfigurationType(IJavaLaunchConfigurationConstants.ID_JAVA_APPLICATION);
 		ILaunchConfiguration[] configurations = manager.getLaunchConfigurations(type);
 		for (ILaunchConfiguration element : configurations) {
 			if (element.getName().compareTo(CONFIGURATION_NAME) == 0) {
@@ -104,14 +104,13 @@ public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigura
 
 		for (int i = 0; i < jProjects.size(); i++) {
 			final IJavaProject jProject = jProjects.get(i);
-			final IRuntimeClasspathEntry outputEntry = JavaRuntime
-					.newDefaultProjectClasspathEntry(jProject);
+			final IRuntimeClasspathEntry outputEntry = JavaRuntime.newDefaultProjectClasspathEntry(jProject);
 			result.add(outputEntry.getMemento());
 		}
 
 		IPath systemLibsPath = new Path(JavaRuntime.JRE_CONTAINER);
-		IRuntimeClasspathEntry systemLibsEntry = JavaRuntime.newRuntimeContainerClasspathEntry(
-				systemLibsPath, IRuntimeClasspathEntry.STANDARD_CLASSES);
+		IRuntimeClasspathEntry systemLibsEntry =
+				JavaRuntime.newRuntimeContainerClasspathEntry(systemLibsPath, IRuntimeClasspathEntry.STANDARD_CLASSES);
 		result.add(systemLibsEntry.getMemento());
 
 		return result;
@@ -125,7 +124,9 @@ public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigura
 				final IJavaProject ijp = jProjects.get(i);
 				for (int j = 0; j < ijp.getPackageFragmentRoots().length; j++) {
 					IPackageFragmentRoot ipf = ijp.getPackageFragmentRoots()[j];
-					if (ipf.getClass().getName().endsWith("JarPackageFragmentRoot")) continue;
+					if (ipf.getClass().getName().endsWith("JarPackageFragmentRoot")) {
+						continue;
+					}
 					for (int c = 0; c < ipf.getChildren().length; c++) {
 						walk(ipf.getChildren()[c], "", result);
 					}
@@ -135,21 +136,26 @@ public class RunGenerateJob extends WorkspaceJob implements IJavaLaunchConfigura
 			StringBuffer resultStr = new StringBuffer();
 			for (int i = 0; i < result.size(); i++) {
 				final String epackage = result.get(i);
-				if (i > 0) resultStr.append(",");
+				if (i > 0) {
+					resultStr.append(",");
+				}
 				resultStr.append(epackage);
 			}
 			return resultStr.toString();
 		} catch (Exception e) {
-			throw new StoreEclipseException("Exception while looking for epackages in projects "
-					+ e.getMessage(), e);
+			throw new StoreEclipseException("Exception while looking for epackages in projects " + e.getMessage(), e);
 		}
 
 	}
 
 	/** Walk the java element structure looking for EPackage sources */
 	private void walk(IJavaElement ije, String pName, ArrayList<String> result) throws Exception {
-		if (ije.getClass().getName().endsWith("JarPackageFragmentRoot")) return;
-		if (!(ije instanceof IPackageFragment)) return;
+		if (ije.getClass().getName().endsWith("JarPackageFragmentRoot")) {
+			return;
+		}
+		if (!(ije instanceof IPackageFragment)) {
+			return;
+		}
 
 		final IPackageFragment pf = (IPackageFragment) ije;
 		final String packageName = pName + (pName.length() > 0 ? "." : "") + pf.getElementName();
