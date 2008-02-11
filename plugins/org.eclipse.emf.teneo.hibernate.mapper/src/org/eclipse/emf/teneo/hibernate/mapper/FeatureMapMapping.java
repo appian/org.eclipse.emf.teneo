@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: FeatureMapMapping.java,v 1.13 2008/02/03 22:37:13 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.14 2008/02/11 22:33:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -77,12 +77,15 @@ public class FeatureMapMapping {
 		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
 			"native");
 
-		final Element versionElement =
-				mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName()).addAttribute(
-					"access", "org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
-		final Element meta = new Element("meta");
-		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
-		versionElement.add(0, meta);
+		if (hbmContext.alwaysVersion()) {
+			final Element versionElement =
+					mainElement.addElement("version").addAttribute("name", hbmContext.getVersionColumnName())
+						.addAttribute("access",
+							"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+			final Element meta = new Element("meta");
+			meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+			versionElement.add(0, meta);
+		}
 
 		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE).addAttribute(
 			"type", "java.lang.String");
