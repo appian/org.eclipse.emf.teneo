@@ -7,7 +7,7 @@
 #
 
 # @author <a href="mtaal@elver.org">Martin Taal</a>
-# @version $Revision: 1.20 $ $Date: 2008/02/03 22:35:07 $
+# @version $Revision: 1.21 $ $Date: 2008/02/11 10:01:07 $
 
 # name: the name under which this information is used to register a EMFDataStore/Session Factory. Must be 
 # 		unique. IMPORTANT: this should be the same name as used in the calls to HibernateHelper

@@ -286,6 +286,9 @@
 <a href="#entitydatastore">HbEntityDataStore, support for Hibernate EntityManager</a>
 </li>
 <li>
+<a href="#spring">Spring configuration and the HbSessionDataStore/HbEntityDataStore</a>
+</li>
+<li>
 <a href="#options">Runtime Options</a>
 </li>
 <li>
@@ -361,7 +364,44 @@
 		
 </div>			
 		
-<a name="N1005C"></a><a name="options"></a>
+<a name="N1005C"></a><a name="spring"></a>
+<div class="h3">
+<h3>Spring configuration and the HbSessionDataStore/HbEntityDataStore</h3>
+			
+			
+<p>It is possible to use the HbSessionDataStore and HbEntityDataStore as a sessionFactory or entityManagerFactory for Spring. 
+			The HbSessionDataStore implements the SessionFactory and the HbEntityDataStore implements the EntityManagerFactory interface.</p>
+			
+<p>To configure the datastore through Spring and let Spring use it as a sessionFactory/entityManagerFactory, follow these guidelines:</p>
+			
+<p>Define a bean declaration in your applicationContext.xml with id set to "sessionFactory" or "entityManagerFactory" and the 
+			class attribute set to resp. the HbSessionDataStore or HbEntityDataStore classname. The properties of the datastore have 
+			to be set as follows</p>
+			
+<ul>
+			
+<li>name: set the name property of the datastore.</li>
+			
+<li>persistenceProperties: set the persistenceProperties using standard Spring methods for setting properties.</li>
+			
+<li>hibernateProperties: set the hibernateProperties using standard Spring methods for setting properties.
+			The hibernateProperties also define the datasource or jdbc parameters, so a separate persistence.xml is not required (and not used).</li>
+			
+<li>ePackageClasses: set the epackage class names through the ePackageClasses property on the HbSessionDataStore/HbEntityDataStore.
+			The ePackageClasses property is a list of strings, with each string containing the classname of the EPackage Impl class, for 
+			example: org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryPackageImpl.
+			</li>
+			
+</ul>
+			
+<p>
+<strong>This Spring configuration is not tested using a separate testcase, let us know if the above description needs to be corrected.</strong>
+</p>
+		
+</div>
+		
+		
+<a name="N1007F"></a><a name="options"></a>
 <div class="h3">
 <h3>Runtime Options</h3>
 			
@@ -373,7 +413,7 @@
 		
 </div>
 		
-<a name="N10070"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
+<a name="N10093"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
 <div class="h3">
 <h3>Getting the Hibernate Mapping XML</h3>
 			

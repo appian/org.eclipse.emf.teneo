@@ -372,7 +372,9 @@
 			
 <p>The runtime layer uses commons-logging for logging. <a href="samples/log4j.properties">Here</a> 
 				you can find an example log4j.properties file. This file should be placed directly in
-				the src directory of your EMF Model project.</p>
+				the src directory of your EMF Model project. <em>Note: also check if Eclipse copies the file to your bin/build directory. For a plugin
+				project this can be specified in the build.properties.</em>
+</p>
 			
 <p>The example <a href="samples/log4j.properties">log4j.properties</a> also contains log4j settings
 				for Hibernate.</p>
@@ -384,7 +386,7 @@
 		
 </div>
 		
-<a name="N10041"></a><a name="ormapper"></a>
+<a name="N10043"></a><a name="ormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the automatic in-memory mapping</h3>
 			
@@ -394,7 +396,7 @@
 		
 </div>
 		
-<a name="N1004B"></a><a name="manualormapper"></a>
+<a name="N1004D"></a><a name="manualormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the OR Mapper Menu Option</h3>
 			
@@ -412,7 +414,7 @@
 		
 </div>
 		
-<a name="N10061"></a><a name="resourceplanning"></a>
+<a name="N10063"></a><a name="resourceplanning"></a>
 <div class="h3">
 <h3>Troubleshooting the Resource Utilities</h3>
 			
@@ -428,7 +430,7 @@
 		
 </div>
 		
-<a name="N10071"></a><a name="More+debug+information+from+Eclipse"></a>
+<a name="N10073"></a><a name="More+debug+information+from+Eclipse"></a>
 <div class="h3">
 <h3>More debug information from Eclipse</h3>
 			
@@ -444,7 +446,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N10081"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
+<a name="N10083"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
 <div class="h3">
 <h3>Cut and Paste does not work in the Editor</h3>
 		
@@ -453,7 +455,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N1008D"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
+<a name="N1008F"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
 <div class="h3">
 <h3>Client-server scenario: when saving on the server always new objects are created or I get a duplicate key exception</h3>
 		
@@ -463,7 +465,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 			
-<a name="N1009A"></a><a name="Column+name+e_version+not+supported+by+database"></a>
+<a name="N1009C"></a><a name="Column+name+e_version+not+supported+by+database"></a>
 <div class="h3">
 <h3>Column name e_version not supported by database</h3>
 			
@@ -473,7 +475,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100A7"></a><a name="Column+names+too+long"></a>
+<a name="N100A9"></a><a name="Column+names+too+long"></a>
 <div class="h3">
 <h3>Column names too long</h3>
 			
@@ -483,7 +485,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100B4"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
+<a name="N100B6"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
 <div class="h3">
 <h3>org.hibernate.DuplicateMappingException: Duplicate class/entitymapping</h3>
 			
@@ -494,7 +496,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100C1"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<a name="N100C3"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
 <div class="h3">
 <h3>Created new model through new model wizard: diagnostic error</h3>
 			
@@ -512,7 +514,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100CD"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
+<a name="N100CF"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
 <div class="h3">
 <h3>java.lang.NoClassDefFoundError when starting/initializing runtime layer</h3>
 				
@@ -531,7 +533,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100E0"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
+<a name="N100E2"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
 <div class="h3">
 <h3>No class def found: org.hibernate.proxy.ProxyFactory</h3>
 			
@@ -543,7 +545,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100E9"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
+<a name="N100EB"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
 <div class="h3">
 <h3>Could not determine type for: org.eclipse.emf.common.util.AbstractEnumerator, for columns: [org.hibernate.mapping.Column(enu)]</h3>
 			
@@ -565,7 +567,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100F8"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<a name="N100FA"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
 <div class="h3">
 <h3>The resource is empty in the generated editor</h3>
 				
@@ -574,7 +576,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10106"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
+<a name="N10108"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
 <div class="h3">
 <h3>Update manager does not find the upgrade of the EMF Hibernate plugin</h3>
 			
@@ -582,7 +584,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1010F"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<a name="N10111"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
 <div class="h3">
 <h3>Editor does not start,  the error log gives a sql error 'Missing column....'</h3>
 			
@@ -593,7 +595,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1011C"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
+<a name="N1011E"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
 <div class="h3">
 <h3>Editor does not start, ClassNotFoundException on the Editor Plugin</h3>
 			
@@ -604,7 +606,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10125"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<a name="N10127"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
 <div class="h3">
 <h3>Editor does not start, AssertionFailedException</h3>
 			
@@ -624,7 +626,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10134"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
+<a name="N10136"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
 <div class="h3">
 <h3>Validation exception on enumerate properties when saving the editor content</h3>
 				
@@ -641,7 +643,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10148"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
+<a name="N1014A"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
 <div class="h3">
 <h3>Stacktraces when starting Eclipse with already open EMF editor</h3>
 				
@@ -656,7 +658,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10157"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N10159"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				
@@ -667,7 +669,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10160"></a><a name="JoinTable+name+clash"></a>
+<a name="N10162"></a><a name="JoinTable+name+clash"></a>
 <div class="h3">
 <h3>JoinTable name clash</h3>
 			
