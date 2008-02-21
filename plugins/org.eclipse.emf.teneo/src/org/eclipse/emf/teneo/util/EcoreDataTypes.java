@@ -14,7 +14,7 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.8 2008/02/03 22:37:09 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.9 2008/02/21 21:59:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -131,7 +131,11 @@ public class EcoreDataTypes {
 		}
 		final String itemType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "itemType");
 		if (itemType != null) {
-			result.add(getEClassifier(eDataType.getEPackage(), itemType));
+			final EClassifier eClassifier = getEClassifier(eDataType.getEPackage(), itemType);
+			if (eClassifier != null) {
+				result.add(eClassifier);
+			}
+
 			return result;
 		}
 
@@ -139,19 +143,23 @@ public class EcoreDataTypes {
 		if (memberTypes != null) {
 			String[] mtypes = memberTypes.split(" ");
 			for (String element : mtypes) {
-				EClassifier eclassifier = getEClassifier(eDataType.getEPackage(), element);
-				result.addAll(getItemTypes((EDataType) eclassifier));
+				final EClassifier eclassifier = getEClassifier(eDataType.getEPackage(), element);
+				if (eclassifier != null) {
+					result.addAll(getItemTypes((EDataType) eclassifier));
+				}
 			}
 			return result;
 		}
 
 		final String baseType = getEAnnotationValue(eDataType, ANNOTATION_SOURCE_METADATA, "baseType");
 		if (baseType != null) {
-			final ArrayList<EClassifier> tmpResult =
-					getItemTypes((EDataType) getEClassifier(eDataType.getEPackage(), baseType));
-			if (tmpResult.size() > 0) {
-				result.addAll(tmpResult);
-				return result;
+			final EClassifier eClassifier = getEClassifier(eDataType.getEPackage(), baseType);
+			if (eClassifier != null) {
+				final ArrayList<EClassifier> tmpResult = getItemTypes((EDataType) eClassifier);
+				if (tmpResult.size() > 0) {
+					result.addAll(tmpResult);
+					return result;
+				}
 			}
 		}
 		if (!Object.class.equals(eDataType.getInstanceClass())) {
