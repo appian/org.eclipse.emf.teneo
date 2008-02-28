@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.10 2007/07/11 14:40:55 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.11 2008/02/28 07:08:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -25,12 +25,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
+import org.eclipse.emf.teneo.hibernate.mapping.TeneoInternalEObject;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
@@ -55,7 +55,7 @@ import org.hibernate.util.ReflectHelper;
  * object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -171,7 +171,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		// first
 		final HashSet<Class<?>> proxyInterfaces = new HashSet<Class<?>>();
 		proxyInterfaces.add(HibernateProxy.class);
-		proxyInterfaces.add(InternalEObject.class);
+		proxyInterfaces.add(TeneoInternalEObject.class);
 
 		final Class<?> pInterface = persistentClass.getProxyInterface();
 		if (pInterface != null) {

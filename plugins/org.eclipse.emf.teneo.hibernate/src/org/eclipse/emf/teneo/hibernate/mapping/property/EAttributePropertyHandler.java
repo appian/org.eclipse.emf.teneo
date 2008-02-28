@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.7 2007/08/10 16:40:52 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.8 2008/02/28 07:08:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -43,7 +43,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
