@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: MapPersistableEMap.java,v 1.1 2007/03/18 19:18:25 mtaal Exp $
+ * $Id: MapPersistableEMap.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.InternalEObject;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 		implements PersistableDelegateList<BasicEMap.Entry<K, V>> {
