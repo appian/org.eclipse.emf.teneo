@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.8 2007/06/29 07:35:13 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.9 2008/02/28 07:08:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 @SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {

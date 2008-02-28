@@ -1,5 +1,5 @@
 /**
- * <copyright> Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others All rights
+ * <copyright> Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others All rights
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.65 $
+ * @version $Revision: 1.66 $
  */
 public class AllTests {
 
@@ -55,6 +55,9 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(RentalMapAsClassAction.class);
+
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibraryFKAction.class);
@@ -90,8 +93,6 @@ public class AllTests {
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 
 		suite.addTestSuite(ExtendedPO2Test.class);
-
-		suite.addTestSuite(RentalMapAsClassAction.class);
 
 		suite.addTestSuite(RentalResourceReferenceAction.class);
 
