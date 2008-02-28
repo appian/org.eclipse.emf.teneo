@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapWrapper.java,v 1.1 2007/02/08 23:14:52 mtaal Exp $
+ * $Id: EMapWrapper.java,v 1.2 2008/02/28 07:09:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -39,7 +39,7 @@ import org.jpox.StateManager;
  * the jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2007/02/08 23:14:52 $
+ * @version $Revision: 1.2 $ $Date: 2008/02/28 07:09:03 $
  */
 
 public class EMapWrapper<K, V> extends EListWrapper<Map.Entry<K, V>> implements EMap<K, V> {
