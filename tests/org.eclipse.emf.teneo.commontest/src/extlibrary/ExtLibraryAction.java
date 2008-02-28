@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtLibraryAction.java,v 1.7 2007/06/29 07:35:44 mtaal Exp $
+ * $Id: ExtLibraryAction.java,v 1.8 2008/02/28 07:08:17 mtaal Exp $
  */
 
 package extlibrary;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the extlibrary
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class ExtLibraryAction extends AbstractTestAction {
 

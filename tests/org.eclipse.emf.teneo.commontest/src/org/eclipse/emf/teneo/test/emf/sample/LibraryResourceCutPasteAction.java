@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceCutPasteAction.java,v 1.7 2007/11/15 19:55:33 mtaal Exp $
+ * $Id: LibraryResourceCutPasteAction.java,v 1.8 2008/02/28 07:08:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests cut/paste action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class LibraryResourceCutPasteAction extends AbstractTestAction {
 	/**

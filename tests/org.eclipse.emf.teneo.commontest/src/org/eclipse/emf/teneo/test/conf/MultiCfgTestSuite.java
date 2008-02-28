@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: MultiCfgTestSuite.java,v 1.4 2007/07/09 12:54:54 mtaal Exp $
+ * $Id: MultiCfgTestSuite.java,v 1.5 2008/02/28 07:08:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class MultiCfgTestSuite extends TestSuite {
 

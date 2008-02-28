@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CascadeNotallAction.java,v 1.10 2007/07/11 18:28:48 mtaal Exp $
+ * $Id: CascadeNotallAction.java,v 1.11 2008/02/28 07:08:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example without orphan delete or dependent element
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class CascadeNotallAction extends AbstractTestAction {
 	/**
@@ -188,9 +188,9 @@ public class CascadeNotallAction extends AbstractTestAction {
 			// the persistent writer would through its econtainer relation point
 			// to a non-saved newLib resulting in transient errors.
 			res.save(null);
-			lib.getWriters().remove(writer);
 			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error
 			// in jpox
+			lib.getWriters().remove(writer);
 			newLib.getWriters().add(writer);
 			res.save(null);
 			res.unload();
