@@ -14,6 +14,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.eclipse.genxml.GenerateMappingAction;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
+import org.eclipse.emf.teneo.hibernate.cdo.CDOHelper;
 import org.eclipse.emf.teneo.hibernate.mapper.GenerateHBM;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IActionDelegate;
@@ -22,10 +23,10 @@ import org.eclipse.ui.IActionDelegate;
  * Eclipse popup action to generate a hbm file based on the ecore files.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.1 $
  */
 
-public class GenerateHBMActionSuperClass extends GenerateMappingAction {
+public class CDOGenerateHBMActionSuperClass extends GenerateMappingAction {
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
@@ -33,7 +34,8 @@ public class GenerateHBMActionSuperClass extends GenerateMappingAction {
 	public void run(IAction action) {
 		final HashMap<String, String> options = new HashMap<String, String>();
 		options.put(PersistenceOptions.INHERITANCE_MAPPING, InheritanceType.SINGLE_TABLE.getName());
-		super.run(action, HbConstants.HBM_FILE_NAME, "Generate Hibernate mapping file", options, GenerateHBM.class
-			.getName());
+		options.put(CDOHelper.GENERATE_FOR_CDO, CDOHelper.GENERATE_FOR_CDO);
+		super.run(action, "cdo_" + HbConstants.HBM_FILE_NAME, "Generate Hibernate mapping file for CDO", options,
+			GenerateHBM.class.getName());
 	}
 }
