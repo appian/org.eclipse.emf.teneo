@@ -8,6 +8,7 @@ Eclipse-BuddyPolicy: dependent
 Bundle-Vendor: %Plugin.providerName
 Export-Package: org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.hibernate.annotations,
+ org.eclipse.emf.teneo.hibernate.cdo,
  org.eclipse.emf.teneo.hibernate.hbannotation,
  org.eclipse.emf.teneo.hibernate.hbannotation.impl,
  org.eclipse.emf.teneo.hibernate.hbannotation.util,
