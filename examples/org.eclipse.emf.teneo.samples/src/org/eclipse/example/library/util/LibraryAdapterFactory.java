@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryAdapterFactory.java,v 1.2 2007/11/16 13:38:06 mtaal Exp $
+ * $Id: LibraryAdapterFactory.java,v 1.3 2008/03/07 13:13:43 mtaal Exp $
  */
 package org.eclipse.example.library.util;
 
@@ -64,7 +64,7 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
