@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -305,8 +305,7 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Sets both the persistence as well as the hibernate properties */
 	public void setProperties(Properties props) {
-		this.persistenceOptions =
-				getExtensionManager().getExtension(PersistenceOptions.class, new Object[] { persistenceOptions });
+		this.persistenceOptions = getExtensionManager().getExtension(PersistenceOptions.class, new Object[] { props });
 		this.properties = props;
 	}
 
