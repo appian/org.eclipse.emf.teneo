@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.9 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.10 2008/03/07 13:15:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -132,7 +132,7 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 
 	/** Sets the properties in the Hibernate Configuration. */
 	protected void setPropertiesInConfiguration() {
-		Properties properties = getHibernateProperties();
+		Properties properties = getProperties();
 		if (properties != null) {
 			if (properties.getProperty("hibernate.cache.provider_class") == null) {
 				log.warn("No hibernate cache provider set, using " + HashtableCacheProvider.class.getName());

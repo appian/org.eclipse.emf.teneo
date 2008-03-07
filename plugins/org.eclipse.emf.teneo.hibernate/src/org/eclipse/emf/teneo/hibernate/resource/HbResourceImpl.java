@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.7 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.8 2008/03/07 13:15:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -58,7 +58,7 @@ import org.hibernate.Transaction;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -213,7 +213,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		try {
 			tx = mySession.beginTransaction();
 
-			final List<EObject> list = super.getSuperContents();
+			final List<EObject> list = super.getContents();
 			for (int i = 0; i < list.size(); i++) {
 				final Object obj = list.get(i);
 				// if (IdentifierCacheHandler.getID(obj) == null) // new object

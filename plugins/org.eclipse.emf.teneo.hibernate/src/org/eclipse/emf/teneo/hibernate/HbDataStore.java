@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -121,8 +121,8 @@ public abstract class HbDataStore implements DataStore {
 	/** The properties used to create the hibernate configuration object */
 	private PersistenceOptions persistenceOptions;
 
-	/** The hibernate properties */
-	private Properties hibernateProperties;
+	/** The properties */
+	private Properties properties;
 
 	/** The interceptor */
 	private Interceptor interceptor;
@@ -168,14 +168,6 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public void setEPackages(EPackage[] epackages) {
 		this.ePackages = epackages;
-	}
-
-	/** Returns the combined hibernate and persistence properties */
-	public Properties getProperties() {
-		final Properties props = new Properties();
-		props.putAll(getHibernateProperties());
-		props.putAll(getPersistenceOptions().getProperties());
-		return props;
 	}
 
 	/**
@@ -278,22 +270,52 @@ public abstract class HbDataStore implements DataStore {
 
 	/**
 	 * Sets the persistence options.
+	 * 
+	 * @deprecated use setProperties
 	 */
+	@Deprecated
 	public void setPersistenceProperties(Properties persistenceOptions) {
 		this.persistenceOptions =
 				getExtensionManager().getExtension(PersistenceOptions.class, new Object[] { persistenceOptions });
 	}
 
+	/**
+	 * @deprecated use getProperties
+	 */
+	@Deprecated
 	public Properties getHibernateProperties() {
-		return hibernateProperties;
+		return properties;
 	}
 
+	/**
+	 * @deprecated use getProperties
+	 */
+	@Deprecated
 	public Properties getPersistenceProperties() {
 		return persistenceOptions.getProperties();
 	}
 
+	/**
+	 * @deprecated use getProperties
+	 */
+	@Deprecated
 	public void setHibernateProperties(Properties hibernateProperties) {
-		this.hibernateProperties = hibernateProperties;
+		this.properties = hibernateProperties;
+	}
+
+	/** Sets both the persistence as well as the hibernate properties */
+	public void setProperties(Properties props) {
+		this.persistenceOptions =
+				getExtensionManager().getExtension(PersistenceOptions.class, new Object[] { persistenceOptions });
+		this.properties = props;
+	}
+
+	/** Returns the combined hibernate and persistence properties */
+	public Properties getProperties() {
+		final Properties props = new Properties();
+		props.putAll(properties);
+		props.putAll(getPersistenceOptions().getProperties());
+		return props;
 	}
 
 	/** Get the session factory */

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.19 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HbUtil.java,v 1.20 2008/03/07 13:15:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -49,7 +49,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class HbUtil {
 
@@ -198,8 +198,7 @@ public class HbUtil {
 
 		// create a EMF Data Store, this is retrieved later again
 		eds = HbHelper.INSTANCE.createRegisterDataStore(name);
-		eds.setPersistenceProperties(hbProps);
-		eds.setHibernateProperties(hbProps);
+		eds.setProperties(hbProps);
 		eds.setEPackages(epacks);
 		eds.initialize();
 		return eds;

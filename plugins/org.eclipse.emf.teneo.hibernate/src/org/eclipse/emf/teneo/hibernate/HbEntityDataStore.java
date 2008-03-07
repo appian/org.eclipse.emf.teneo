@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.13 2008/02/28 07:08:23 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.14 2008/03/07 13:15:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
 
@@ -124,7 +124,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 
 	/** Sets the properties in the Hibernate Configuration. */
 	protected void setPropertiesInConfiguration() {
-		Properties properties = getHibernateProperties();
+		Properties properties = getProperties();
 		if (properties != null) {
 			if (properties.getProperty("hibernate.cache.provider_class") == null) {
 				log.warn("No hibernate cache provider set, using " + HashtableCacheProvider.class.getName());

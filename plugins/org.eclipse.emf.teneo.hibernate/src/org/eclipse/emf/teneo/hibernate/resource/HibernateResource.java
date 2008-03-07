@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.18 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.19 2008/03/07 13:15:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -27,6 +27,7 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -57,7 +58,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -324,7 +325,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 				mySessionWrapper.beginTransaction();
 			}
 
-			for (EObject eobject : super.getSuperContents()) {
+			for (EObject eobject : super.getContents()) {
 				mySessionWrapper.saveOrUpdate(eobject);
 			}
 
@@ -537,6 +538,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 		SessionWrapper mySessionWrapper = null;
 		boolean err = true;
 		setIsLoading(true);
+		final Notification notification = setLoaded(true);
 		try {
 			mySessionWrapper = getSessionWrapper();
 			if (!hasSessionController) {
@@ -561,6 +563,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
+			}
+			if (notification != null) {
+				eNotify(notification);
 			}
 			log.debug("Finished listing objects by query " + query + " in resource " + getURI());
 		}
