@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.8 2008/02/28 07:09:03 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.9 2008/03/07 13:13:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -67,7 +67,7 @@ import org.jpox.store.OIDFactory;
  * used to init a jpox resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ $Date: 2008/02/28 07:09:03 $
+ * @version $Revision: 1.9 $ $Date: 2008/03/07 13:13:45 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -442,7 +442,7 @@ public class JPOXResource extends StoreResource {
 		// is created
 		// final ArrayList<InternalEObject> eobjs = new
 		// ArrayList<InternalEObject>();
-		final ContentsEList elist = (ContentsEList) super.getSuperContents();
+		final ContentsEList elist = (ContentsEList) super.getContents();
 		readObjects = loadFromStore(getPersistenceManager());
 		final Iterator it = readObjects.iterator();
 		while (it.hasNext()) {
