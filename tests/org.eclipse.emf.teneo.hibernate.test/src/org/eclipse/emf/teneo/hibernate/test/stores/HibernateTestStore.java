@@ -51,7 +51,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -153,8 +153,8 @@ public class HibernateTestStore extends AbstractTestStore {
 			emfDataStore.setEPackages(epackages);
 		}
 		// set both hibernate and persistence props as we do not know the difference right now
-		emfDataStore.setHibernateProperties(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
-		emfDataStore.setPersistenceProperties(props);
+		props.putAll(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
+		emfDataStore.setProperties(props);
 		emfDataStore.initialize();
 		if (sessionWrapper != null) {
 			refresh();

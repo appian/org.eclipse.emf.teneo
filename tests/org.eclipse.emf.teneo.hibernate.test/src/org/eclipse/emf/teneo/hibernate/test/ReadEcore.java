@@ -34,7 +34,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class ReadEcore {
 
@@ -115,8 +115,7 @@ public class ReadEcore {
 
 		System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 
-		hbds.setPersistenceProperties(props);
-		hbds.setHibernateProperties(props);
+		hbds.setProperties(props);
 		hbds.setEPackages(epacks);
 		// initialize, also creates the database tables
 		try {
@@ -137,7 +136,6 @@ public class ReadEcore {
 		props.setProperty(Environment.PASS, "root");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
-		hbds.setHibernateProperties(props);
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
 		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
@@ -146,7 +144,7 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 // "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-		hbds.setPersistenceProperties(props);
+		hbds.setProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE, XMLTypePackage.eINSTANCE });
@@ -190,7 +188,6 @@ public class ReadEcore {
 		props.setProperty(Environment.PASS, "root");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
-		hbds.setHibernateProperties(props);
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
 		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
@@ -199,7 +196,7 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 // "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-		hbds.setPersistenceProperties(props);
+		hbds.setProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(epacks);
