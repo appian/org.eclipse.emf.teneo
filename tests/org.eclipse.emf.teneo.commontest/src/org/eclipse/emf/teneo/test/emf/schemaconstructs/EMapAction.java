@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.9 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: EMapAction.java,v 1.10 2008/03/07 13:13:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -39,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class EMapAction extends AbstractTestAction {
 
@@ -88,6 +89,11 @@ public class EMapAction extends AbstractTestAction {
 
 		try {
 			final Resource res = store.getResource();
+			try {
+				res.load(null);
+			} catch (IOException e) {
+				throw new IllegalStateException(e);
+			}
 			final ArrayList bks = new ArrayList();
 			final ArrayList ws = new ArrayList();
 			for (Object obj : res.getContents()) {

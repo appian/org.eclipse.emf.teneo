@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapKeyAction.java,v 1.4 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: MapKeyAction.java,v 1.5 2008/03/07 13:13:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class MapKeyAction extends AbstractTestAction {
 	/**
@@ -48,9 +48,9 @@ public class MapKeyAction extends AbstractTestAction {
 		super(MapkeyPackage.eINSTANCE);
 	}
 
-	/** 
-	 * Check test set, note a where clause has been set on the relation
-	 * Only writers with name martin are returned 
+	/**
+	 * Check test set, note a where clause has been set on the relation Only writers with name
+	 * martin are returned
 	 */
 	private void checkTestSet(Book bk) {
 		// final String prefix = bk.getTitle();
@@ -106,6 +106,7 @@ public class MapKeyAction extends AbstractTestAction {
 
 		try {
 			final Resource res = store.getResource();
+			res.load(null);
 			final ArrayList<Book> bks = new ArrayList<Book>();
 			final ArrayList<Object> ws = new ArrayList<Object>();
 			for (final Object obj : res.getContents()) {

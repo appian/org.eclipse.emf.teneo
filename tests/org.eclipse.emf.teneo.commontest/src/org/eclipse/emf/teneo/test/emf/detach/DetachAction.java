@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachAction.java,v 1.8 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: DetachAction.java,v 1.9 2008/03/07 13:13:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -35,9 +35,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Is a test case to test basic detach functionality in the dao resource; Specifically for JPOX/JDO
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ 
+ * @version $Revision: 1.9 $
  */
 public abstract class DetachAction extends AbstractTestAction {
 
@@ -54,6 +54,7 @@ public abstract class DetachAction extends AbstractTestAction {
 			// Create objects
 			{
 				Resource res = store.getResource();
+				res.load(null);
 
 				TestB testb = factory.createTestB();
 				testb.setCode("testb");

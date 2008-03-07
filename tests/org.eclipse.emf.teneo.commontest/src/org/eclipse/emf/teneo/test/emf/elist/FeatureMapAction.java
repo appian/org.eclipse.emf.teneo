@@ -8,6 +8,7 @@
 
 package org.eclipse.emf.teneo.test.emf.elist;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * non-contained feature map entries (cascading delete) - Delete restrictions
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $ $Date: 2008/02/28 07:08:17 $
+ * @version $Revision: 1.6 $ $Date: 2008/03/07 13:13:53 $
  */
 public class FeatureMapAction extends AbstractTestAction {
 	/**
@@ -68,6 +69,11 @@ public class FeatureMapAction extends AbstractTestAction {
 
 		{
 			Resource res = store.getResource();
+			try {
+				res.load(null);
+			} catch (IOException e) {
+				throw new IllegalStateException(e);
+			}
 			Iterator<?> it = res.getContents().iterator();
 			while (it.hasNext()) {
 				final Object obj = it.next();

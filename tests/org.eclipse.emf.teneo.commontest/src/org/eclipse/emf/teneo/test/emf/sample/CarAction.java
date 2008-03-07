@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CarAction.java,v 1.2 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: CarAction.java,v 1.3 2008/03/07 13:13:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Properties;
 
@@ -35,7 +36,7 @@ import com.example.car.CarsList;
  * Test bugzilla 199373
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class CarAction extends AbstractTestAction {
 
@@ -73,6 +74,11 @@ public class CarAction extends AbstractTestAction {
 
 		try {
 			final Resource dbResource = store.getResource();
+			try {
+				dbResource.load(null);
+			} catch (IOException e) {
+				throw new IllegalStateException(e);
+			}
 			final CarsList carsList = (CarsList) dbResource.getContents().get(0);
 			final EList eListDatabaseCarType = carsList.getCarType();
 			final EList eListDatabaseCarLink = carsList.getCarLink();
