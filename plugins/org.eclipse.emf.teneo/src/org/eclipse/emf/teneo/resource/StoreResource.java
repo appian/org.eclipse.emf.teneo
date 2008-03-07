@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.23 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: StoreResource.java,v 1.24 2008/03/07 13:13:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -34,7 +34,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -54,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -100,9 +99,6 @@ public abstract class StoreResource extends ResourceImpl {
 	 * are never part of this set
 	 */
 	protected HashSet<EObject> modifiedEObjects = new HashSet<EObject>();
-
-	/** True when loading, isLoaded is maintained in the superclass */
-	protected boolean isLoading = false;
 
 	/**
 	 * Apparently the super EMF resource classes have a different idea of loaded During the unload
@@ -156,7 +152,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// note this ugly statement is required because in this class
 		// it is required to have direct access to the contents member
 		// the call to getSuperContents will initialize it
-		if (getSuperContents().size() == 0) {
+		if (getContents().size() == 0) {
 			log.debug("Initialized contents member");
 		}
 
@@ -167,6 +163,10 @@ public abstract class StoreResource extends ResourceImpl {
 	/** Sets topclasses */
 	protected void init(String[] topClasses) {
 		topClassNames = topClasses;
+	}
+
+	public void setIsLoading(boolean loading) {
+		isLoading = loading;
 	}
 
 	// ----------------------------------- Defined Queries
@@ -250,17 +250,6 @@ public abstract class StoreResource extends ResourceImpl {
 	// ------------------------------------ Load
 	// ------------------------------------------
 
-	/** Returns true if the resource is loading */
-	@Override
-	public boolean isLoading() {
-		return isLoading;
-	}
-
-	/** Set is loading, is used by persistable elists */
-	public void setIsLoading(boolean isLoading) {
-		this.isLoading = isLoading;
-	}
-
 	/** Returns true if the resource is unloading */
 	public boolean isUnLoading() {
 		return isUnLoading;
@@ -293,6 +282,7 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 
 		isLoading = true;
+		Notification notification = setLoaded(true);
 		try {
 			clearChangeTrackerArrays();
 			List<EObject> list = loadResource(options);
@@ -301,7 +291,12 @@ public abstract class StoreResource extends ResourceImpl {
 			}
 		} finally {
 			isLoading = false;
-			setLoaded(true);
+
+			if (notification != null) {
+				eNotify(notification);
+			}
+
+			setModified(false);
 		}
 	}
 
@@ -420,25 +415,27 @@ public abstract class StoreResource extends ResourceImpl {
 	// -------------------------- Content Iteration
 	// -----------------------------------
 
-	/**
-	 * Override load to force a load when getContents is called without a previous load call.
-	 */
-	@Override
-	public EList<EObject> getContents() {
-		if (!isLoaded() && !isLoading) {
-			load(null);
-		}
-
-		// and then do our thing!
-		return super.getContents();
-	}
-
-	/**
-	 * Extra method to allow subclasses to easily reach the contents of the superclass of this class
-	 */
-	protected EList<EObject> getSuperContents() {
-		return super.getContents();
-	}
+// /**
+// * Override load to force a load when getContents is called without a previous load call.
+// */
+// @Override
+// public EList<EObject> getContents() {
+// // the getContents should not load but should return an
+// // empty string if not yet loaded.
+// // if (!isLoaded() && !isLoading) {
+// // load(null);
+// // }
+// //
+// // and then do our thing!
+// return super.getContents();
+// }
+//
+// /**
+// * Extra method to allow subclasses to easily reach the contents of the superclass of this class
+// */
+// protected EList<EObject> getSuperContents() {
+// return super.getContents();
+// }
 
 	// -------------------------------- Change Tracker
 	// ----------------------------------
@@ -574,7 +571,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// and the load strategy is correct
 		if ((eObject.eContainer() == null || eObject.eContainmentFeature() == null || eObject.eContainmentFeature()
 			.isResolveProxies()) &&
-				!getSuperContents().contains(eObject) && loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
+				!getContents().contains(eObject) && loadStrategy.compareTo(ADD_TO_CONTENTS) == 0) {
 			// note direct access to super contents
 			final NotificationChain notifications = contents.basicAdd(eObject, null);
 			if (notifications != null && sendNotificationsOnLoad) {
