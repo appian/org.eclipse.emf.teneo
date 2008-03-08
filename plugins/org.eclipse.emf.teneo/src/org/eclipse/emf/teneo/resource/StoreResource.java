@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.24 2008/03/07 13:13:48 mtaal Exp $
+ * $Id: StoreResource.java,v 1.25 2008/03/08 04:59:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -338,13 +338,14 @@ public abstract class StoreResource extends ResourceImpl {
 	public void save(Map<?, ?> options) {
 		boolean err = true;
 		try {
+			setAllowNotifications(false);
 			validateContents();
-
 			saveResource(options);
 			err = false;
 		} finally {
 			// now clear the changed eobjects and move the new objects
 			// to the loaded eobjects
+			setAllowNotifications(true);
 			if (!err) {
 				modifiedEObjects.clear();
 				removedEObjects.clear();
@@ -504,6 +505,7 @@ public abstract class StoreResource extends ResourceImpl {
 		assert (!removedEObjects.contains(eObject));
 		removedEObjects.add(eObject);
 		loadedEObjects.remove(eObject);
+		modifiedEObjects.remove(eObject);
 	}
 
 	/** Object is attached, is overridden to use non-resolving iterator */
@@ -799,6 +801,14 @@ public abstract class StoreResource extends ResourceImpl {
 	@Override
 	protected Adapter createModificationTrackingAdapter() {
 		return new StoreModificationTrackingAdapter();
+	}
+
+	// Enable or disable notifications for the current content
+	protected void setAllowNotifications(boolean allow) {
+		for (Iterator<?> i = getNonResolvingAllContents(); i.hasNext();) {
+			EObject eObject = (EObject) i.next();
+			eObject.eSetDeliver(allow);
+		}
 	}
 
 	/**
