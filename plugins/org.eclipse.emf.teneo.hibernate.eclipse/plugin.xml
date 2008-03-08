@@ -154,7 +154,7 @@
          <action
                class="org.eclipse.emf.teneo.hibernate.eclipse.CDOGenerateHBMAction"
                enablesFor="+"
-               id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbm"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.cdogeneratehbm"
                label="Generate CDO - Hibernate OR Mapping (joined-subclass)"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group4"
                tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s) for use in a CDO server. Uses joined-subclass inheritance mapping strategy.">
@@ -175,7 +175,7 @@
          <action
                class="org.eclipse.emf.teneo.hibernate.eclipse.CDOGenerateHBMActionSuperClass"
                enablesFor="+"
-               id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbmsuperclass"
+               id="org.eclipse.emf.teneo.hibernate.eclipse.cdogeneratehbmsuperclass"
                label="Generate CDO - Hibernate OR Mapping (super-class)"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group4"
                tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s) for use in a cdo server. Uses superclass-table inheritance mapping strategy.">
