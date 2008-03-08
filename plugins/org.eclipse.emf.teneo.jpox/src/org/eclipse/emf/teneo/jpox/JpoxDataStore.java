@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.23 2008/02/28 07:09:03 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.24 2008/03/08 05:19:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
@@ -102,7 +101,7 @@ import org.jpox.store.StoreManager;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $ $Date: 2008/02/28 07:09:03 $
+ * @version $Revision: 1.24 $ $Date: 2008/03/08 05:19:09 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -516,6 +515,7 @@ public class JpoxDataStore implements DataStore {
 	protected void createSchema(String[] pcClassNames, Properties origProps) {
 		if (!updateSchema) {
 			log.debug("Update of the database schema has been disabled returning");
+			return;
 		}
 		log.debug("Updating database schema");
 
@@ -530,7 +530,8 @@ public class JpoxDataStore implements DataStore {
 		newProps.setProperty(PMFConfiguration.VALIDATE_TABLES_PROPERTY, "true");
 
 		// Create a PersistenceManager for this store and create the tables
-		final PersistenceManagerFactory localPmf = JDOHelper.getPersistenceManagerFactory(newProps);
+		final PersistenceManagerFactory localPmf =
+				JpoxHelper.INSTANCE.getPMFCreator().getPersistenceManagerFactory(newProps);
 		initializeTypeManager((AbstractPersistenceManagerFactory) localPmf);
 		final org.jpox.PersistenceManager pm = (org.jpox.PersistenceManager) localPmf.getPersistenceManager();
 		StoreManager store_mgr = pm.getStoreManager();
