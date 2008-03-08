@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.19 2008/03/07 13:15:03 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.20 2008/03/08 05:54:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -58,7 +58,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -353,7 +353,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				if (err) {
 					mySessionWrapper.rollbackTransaction();
-					mySessionWrapper.close();
+					// see bugzilla 221950
+// mySessionWrapper.close();
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
