@@ -285,6 +285,9 @@
 <a href="#java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer">java.lang.NoClassDefFoundError when starting/initializing runtime layer</a>
 </li>
 <li>
+<a href="#Properties+are+not+editable+with+EMF+generated+property+editor">Properties are not editable with EMF generated property editor</a>
+</li>
+<li>
 <a href="#Derby+database+and+cascading+deletes">Derby database and cascading deletes</a>
 </li>
 <li>
@@ -449,7 +452,60 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100B8"></a><a name="Derby+database+and+cascading+deletes"></a>
+<a name="N100B8"></a><a name="Properties+are+not+editable+with+EMF+generated+property+editor"></a>
+<div class="h3">
+<h3>Properties are not editable with EMF generated property editor</h3>
+			
+<p>If you store the .ejdo file within the plugin and open the EMF editor using different
+			urls there are situations that the editor opens in read-only mode.</p>
+			
+<p>If the url is opened as follows: FileLocator.find(Activator.getDefault().getBundle(), new
+Path("myfile.ejdo"), null). Then the property editor does not allow any modifications.</p>
+			
+<p>If however, the editor is opened using a 'file:/'
+based URL (file://myfile.ejdo), then the EMF property editor works as expected.</p>
+			
+<p>The first situation can be solved by creating a class similar to this one:</p>
+			
+<pre class="code">
+public class CustomAdapterFactoryEditingDomain extends
+                AdapterFactoryEditingDomain {
+        public CustomAdapterFactoryEditingDomain(AdapterFactory adapterFactory,
+                        CommandStack commandStack,
+                        Map&lt;Resource, Boolean&gt; resourceToReadOnlyMap) {
+                super(adapterFactory, commandStack, resourceToReadOnlyMap);
+        }
+
+        @Override
+        protected boolean isReadOnlyURI(URI uri) {
+                boolean defaultReadOnly = super.isReadOnlyURI(uri);
+                if (defaultReadOnly == true
+                                &amp;&amp; uri.fileExtension().compareTo("ejdo") == 0) {
+                        return false;
+                } else {
+                        return defaultReadOnly;
+                }
+        }
+}
+</pre>
+
+<p>And using an instance of this class as the editingDomain in the
+initializeEditingDomain() method of the EMF generated XXXEditor class:</p>
+
+<pre class="code">
+protected void initializeEditingDomain() {
+        .........
+        .........
+        editingDomain = new CustomAdapterFactoryEditingDomain(adapterFactory,
+commandStack, new HashMap&lt;Resource, Boolean&gt;());
+}
+			</pre>
+			
+<p>Reported and solution by Florian Hackenberger.</p>
+			
+</div>
+			
+<a name="N100D8"></a><a name="Derby+database+and+cascading+deletes"></a>
 <div class="h3">
 <h3>Derby database and cascading deletes</h3>
 			
@@ -463,7 +519,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100C1"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<a name="N100E1"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
 <div class="h3">
 <h3>Created new model through new model wizard: diagnostic error</h3>
 			
@@ -481,7 +537,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100CD"></a><a name="OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator"></a>
+<a name="N100ED"></a><a name="OR+Mapper%3A+java.lang.NoSuchMethodError%3A+org.eclipse.emf.common.util.AbstractEnumerator"></a>
 <div class="h3">
 <h3>OR Mapper: java.lang.NoSuchMethodError: org.eclipse.emf.common.util.AbstractEnumerator</h3>
 			
@@ -498,7 +554,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N100DA"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<a name="N100FA"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
 <div class="h3">
 <h3>The resource is empty in the generated editor</h3>
 				
@@ -511,7 +567,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N100EB"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin"></a>
+<a name="N1010B"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+-+JDO+plugin"></a>
 <div class="h3">
 <h3>Update manager does not find the upgrade of the EMF - JDO plugin</h3>
 			
@@ -519,7 +575,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N100F8"></a><a name="JoinTable+name+clash"></a>
+<a name="N10118"></a><a name="JoinTable+name+clash"></a>
 <div class="h3">
 <h3>JoinTable name clash</h3>
 			
@@ -529,7 +585,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N10101"></a><a name="Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<a name="N10121"></a><a name="Editor+does+not+start%2C+the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
 <div class="h3">
 <h3>Editor does not start, the error log gives a sql error 'Missing column....'</h3>
 			
@@ -538,7 +594,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N1010E"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin%2C+org.jpox.exceptions.ClassNotResolvedException"></a>
+<a name="N1012E"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin%2C+org.jpox.exceptions.ClassNotResolvedException"></a>
 <div class="h3">
 <h3>Editor does not start, ClassNotFoundException on the Editor Plugin, org.jpox.exceptions.ClassNotResolvedException</h3>
 			
@@ -549,7 +605,7 @@ at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:246)
 			
 </div>
 			
-<a name="N10117"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<a name="N10137"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
 <div class="h3">
 <h3>Editor does not start, AssertionFailedException</h3>
 			
@@ -569,7 +625,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10127"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N10147"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				

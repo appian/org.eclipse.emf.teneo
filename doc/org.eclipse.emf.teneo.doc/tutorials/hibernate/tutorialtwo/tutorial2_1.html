@@ -325,7 +325,7 @@ public void start(BundleContext context) throws Exception
 	// Initialize create the HbDataStore
 	HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore("library");
 	hbds.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
-	hbds.setHibernateProperties(props);
+	hbds.setProperties(props);
 	hbds.initialize();
 	
 	super.start(context);

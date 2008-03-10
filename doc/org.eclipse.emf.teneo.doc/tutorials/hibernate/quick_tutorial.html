@@ -332,8 +332,7 @@ HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
 hbds.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
 
 // set the relational database to use and other properties
-// to set Teneo specific options call hbds.setPersistenceProperties
-hbds.setHibernateProperties(props);
+hbds.setProperties(props);
 
 // initialize, also creates the database tables
 hbds.initialize();

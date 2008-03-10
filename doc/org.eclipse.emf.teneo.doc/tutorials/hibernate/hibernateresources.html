@@ -316,9 +316,6 @@
 <li>
 <a href="#Resource+use+after+Hibernate+exception">Resource use after Hibernate exception</a>
 </li>
-<li>
-<a href="#Closing+a+resource-N100D2">Closing a resource</a>
-</li>
 </ul>
 </li>
 </ul>
@@ -360,13 +357,10 @@
 		
 <p>The save action will reconnect the session, begin a transaction, do an update of
 		  the datastore and then commit and disconnect.</p>
-		 
-<p>In one of the next releases a new resource implementation will be added which will create a new session
-		 for each load and save action.</p>
 	
 </div>
     
-<a name="N10041"></a><a name="Validation"></a>
+<a name="N1003E"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
       
@@ -381,7 +375,7 @@
 	
 </div>
 		
-<a name="N1004B"></a><a name="Standard+load+behavior%3A+Top+level+types"></a>
+<a name="N10048"></a><a name="Standard+load+behavior%3A+Top+level+types"></a>
 <div class="h3">
 <h3>Standard load behavior: Top level types</h3>
 	  		
@@ -395,13 +389,13 @@
 	  
 </div>
 	 
-<a name="N1005C"></a><a name="Customizing+load+behavior"></a>
+<a name="N10059"></a><a name="Customizing+load+behavior"></a>
 <div class="h3">
 <h3>Customizing load behavior</h3>
 	 
 <p>It is possible to customize what the resource actually loads from the database.</p>
 		 
-<a name="N10064"></a><a name="Extend+the+resource+implementation+in+java"></a>
+<a name="N10061"></a><a name="Extend+the+resource+implementation+in+java"></a>
 <div class="h4">
 <h4>Extend the resource implementation in java</h4>
 <p>It is possible to customize the load behavior by overriding the loadFromStore method
@@ -410,7 +404,7 @@
 			</p>
 </div>
 		 
-<a name="N1006D"></a><a name="Set+specific+queries+to+load+the+resource"></a>
+<a name="N1006A"></a><a name="Set+specific+queries+to+load+the+resource"></a>
 <div class="h4">
 <h4>Set specific queries to load the resource</h4>
 <p>There are two ways to pass specific queries to the HibernateResource. The first method
@@ -427,7 +421,7 @@
 	 
 </div>
 	 
-<a name="N10089"></a><a name="Load+of+referenced+Objects"></a>
+<a name="N10086"></a><a name="Load+of+referenced+Objects"></a>
 <div class="h3">
 <h3>Load of referenced Objects</h3>
 	 
@@ -457,7 +451,7 @@
 	 
 </div>
     
-<a name="N1009E"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
+<a name="N1009B"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
 <div class="h3">
 <h3>Sharing one Session between Resources, One transaction when saving multiple resources</h3>
       
@@ -522,7 +516,7 @@
 		
 </div>
 		
-<a name="N100B6"></a><a name="Closing+a+resource"></a>
+<a name="N100B3"></a><a name="Closing+a+resource"></a>
 <div class="h3">
 <h3>Closing a resource</h3>
 	  		
@@ -534,24 +528,17 @@
 	
 </div>
     
-<a name="N100C0"></a><a name="Other+aspects"></a>
+<a name="N100BD"></a><a name="Other+aspects"></a>
 <div class="h3">
 <h3>Other aspects</h3>
       
 		
-<a name="N100C6"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<a name="N100C3"></a><a name="Resource+use+after+Hibernate+exception"></a>
 <div class="h4">
 <h4>Resource use after Hibernate exception</h4>
 <p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
 		be used anymore and should be unloaded (closed).</p>
 <p>In a future resource implementation this issue will be solved.</p>
-</div>
-		
-<a name="N100D2"></a><a name="Closing+a+resource-N100D2"></a>
-<div class="h4">
-<h4>Closing a resource</h4>
-<p>The Hibernate EMF resource can be closed by calling the unload method. 
-		  This method will close the disconnected session.</p>
 </div>
 	
 </div>

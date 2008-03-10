@@ -334,6 +334,9 @@
 <a href="#Editor+does+not+start%2C+AssertionFailedException">Editor does not start, AssertionFailedException</a>
 </li>
 <li>
+<a href="#Properties+are+not+editable+with+EMF+generated+property+editor">Properties are not editable with EMF generated property editor</a>
+</li>
+<li>
 <a href="#Validation+exception+on+enumerate+properties+when+saving+the+editor+content">Validation exception on enumerate properties when saving the editor content</a>
 </li>
 <li>
@@ -626,7 +629,60 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10136"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
+<a name="N10136"></a><a name="Properties+are+not+editable+with+EMF+generated+property+editor"></a>
+<div class="h3">
+<h3>Properties are not editable with EMF generated property editor</h3>
+			
+<p>If you store the .ehb file within the plugin and open the EMF editor using different
+			urls there are situations that the editor opens in read-only mode.</p>
+			
+<p>If the url is opened as follows: FileLocator.find(Activator.getDefault().getBundle(), new
+Path("myfile.ehb"), null). Then the property editor does not allow any modifications.</p>
+			
+<p>If however, the editor is opened using a 'file:/'
+based URL (file://myfile.ehb), then the EMF property editor works as expected.</p>
+			
+<p>The first situation can be solved by creating a class similar to this one:</p>
+			
+<pre class="code">
+public class CustomAdapterFactoryEditingDomain extends
+                AdapterFactoryEditingDomain {
+        public CustomAdapterFactoryEditingDomain(AdapterFactory adapterFactory,
+                        CommandStack commandStack,
+                        Map&lt;Resource, Boolean&gt; resourceToReadOnlyMap) {
+                super(adapterFactory, commandStack, resourceToReadOnlyMap);
+        }
+
+        @Override
+        protected boolean isReadOnlyURI(URI uri) {
+                boolean defaultReadOnly = super.isReadOnlyURI(uri);
+                if (defaultReadOnly == true
+                                &amp;&amp; uri.fileExtension().compareTo("ehb") == 0) {
+                        return false;
+                } else {
+                        return defaultReadOnly;
+                }
+        }
+}
+</pre>
+
+<p>And using an instance of this class as the editingDomain in the
+initializeEditingDomain() method of the EMF generated XXXEditor class:</p>
+
+<pre class="code">
+protected void initializeEditingDomain() {
+        .........
+        .........
+        editingDomain = new CustomAdapterFactoryEditingDomain(adapterFactory,
+commandStack, new HashMap&lt;Resource, Boolean&gt;());
+}
+			</pre>
+			
+<p>Reported and solution by Florian Hackenberger.</p>
+			
+</div>
+			
+<a name="N10154"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
 <div class="h3">
 <h3>Validation exception on enumerate properties when saving the editor content</h3>
 				
@@ -643,7 +699,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N1014A"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
+<a name="N10168"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
 <div class="h3">
 <h3>Stacktraces when starting Eclipse with already open EMF editor</h3>
 				
@@ -658,7 +714,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10159"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N10177"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				
@@ -669,7 +725,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10162"></a><a name="JoinTable+name+clash"></a>
+<a name="N10180"></a><a name="JoinTable+name+clash"></a>
 <div class="h3">
 <h3>JoinTable name clash</h3>
 			

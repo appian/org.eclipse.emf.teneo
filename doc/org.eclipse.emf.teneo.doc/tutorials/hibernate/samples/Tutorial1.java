@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.28 2008/02/28 07:08:03 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.29 2008/03/10 21:31:16 mtaal Exp $
  */
 
 package hbtutorial;
@@ -43,7 +43,7 @@ import org.hibernate.SessionFactory;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class Tutorial1 {
 
@@ -81,7 +81,7 @@ public class Tutorial1 {
 		// hibernateProperties.setProperty(Environment.DIALECT,
 		// "org.hibernate.dialect.MySQLInnoDBDialect");
 		//
-		// dataStore.setHibernateProperties(props);
+		// dataStore.setProperties(props);
 		// 
 		// For more information see <a
 		// href="http://www.hibernate.org/hib_docs/v3/reference/en/html/session-configuration.html#configuration-programmatic">

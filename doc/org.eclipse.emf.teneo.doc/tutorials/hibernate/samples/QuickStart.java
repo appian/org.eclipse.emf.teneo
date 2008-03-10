@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: QuickStart.java,v 1.28 2008/02/28 07:08:03 mtaal Exp $
+ * $Id: QuickStart.java,v 1.29 2008/03/10 21:31:16 mtaal Exp $
  */
 
 package hbtutorial;
@@ -33,7 +33,7 @@ import org.hibernate.Transaction;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
 */
 public class QuickStart {
 
@@ -61,7 +61,7 @@ public class QuickStart {
 		//props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/" + dbName);
 		//props.setProperty(Environment.PASS, "root");
 		//props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
-		//hbds.setHibernateProperties(props);
+		//hbds.setProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(new EPackage[]{LibraryPackage.eINSTANCE});
