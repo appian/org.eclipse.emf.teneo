@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.20 2008/03/08 05:54:16 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.21 2008/03/10 06:02:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.teneo.hibernate.EMFInterceptor;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
@@ -58,7 +59,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -75,10 +76,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 	public static String SESSION_CONTROLLER_PARAM = "sessionController";
 
 	/** The session wrapper used for long transactions */
-	private SessionWrapper sessionWrapper = null; // is opened at first load
+	protected SessionWrapper sessionWrapper = null; // is opened at first load
 
 	/** The session controller */
-	private SessionController sessionController = null;
+	protected SessionController sessionController = null;
 
 	/** Is set to true if there is a sessionController */
 	private boolean hasSessionController = false;
@@ -330,14 +331,14 @@ public class HibernateResource extends StoreResource implements HbResource {
 			}
 
 			// delete all deleted objects
-			for (int i = 0; i < removedEObjects.size(); i++) {
-				final Object obj = removedEObjects.get(i);
+			for (Object obj : removedEObjects) {
 				if (IdentifierCacheHandler.getID(obj) != null) // persisted
 				// object
 				{
 					if (((InternalEObject) obj).eDirectResource() == null ||
 							((InternalEObject) obj).eDirectResource() == this) {
 						mySessionWrapper.delete(obj);
+						EMFInterceptor.registerCollectionsForDereferencing((EObject) obj);
 					}
 				}
 			}
@@ -346,6 +347,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (!hasSessionController) {
 				mySessionWrapper.flush();
 			}
+
 			err = false;
 		} catch (Exception e) {
 			throw new HbMapperException("Exception when saving resource " + emfDataStore.getName(), e);

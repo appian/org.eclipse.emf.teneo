@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.7 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.8 2008/03/10 06:02:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -36,7 +36,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -192,4 +192,13 @@ public class HbSessionWrapper implements SessionWrapper {
 	public void clear() {
 		getSessionInternal().clear();
 	}
+
+	public void persist(Object obj) {
+		getSessionInternal().save(obj);
+	}
+
+	public Session getHibernateSession() {
+		return getSessionInternal();
+	}
+
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.8 2008/03/07 13:15:03 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.9 2008/03/10 06:02:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -34,6 +34,7 @@ import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.HbSessionWrapper;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
@@ -46,9 +47,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- * Hibernate Resource. This hibernate resource creates a new session for each load and save action.
- * When elists are lazily loaded then a new Session is created and the current content is added to
- * the session.
+ * HbResource. This hibernate resource creates a new session for each load and save action. When
+ * elists are lazily loaded then a new Session is created and the current content is added to the
+ * session.
  * 
  * When you create a HbDataStore through the appropriate method in the HbHelper class. The name you
  * passed there can be used as a parameter in the uri used to create this resource (using the
@@ -57,8 +58,13 @@ import org.hibernate.Transaction;
  * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be
  * used to init a hibernate resource!
  * 
+ * WARNING: This is an untested and experimental class, it is not intended to be used in production
+ * situations.
+ * 
+ * This class does not support the SessionController.
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -154,9 +160,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		return session;
 	}
 
-	/** Return the sessionwrapper */
+	/** Return a sessionwrapper */
 	public SessionWrapper getSessionWrapper() {
-		return null;
+		return new HbSessionWrapper(getEMFDataStore(), getSession());
 	}
 
 	/** Returns the sessionwrapper to the resource so that it can do clean up (or not) */
@@ -224,8 +230,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			}
 
 			// delete all deleted objects
-			for (int i = 0; i < removedEObjects.size(); i++) {
-				final Object obj = removedEObjects.get(i);
+			for (Object obj : removedEObjects) {
 				if (IdentifierCacheHandler.getID(obj) != null) // persisted
 				// object
 				{

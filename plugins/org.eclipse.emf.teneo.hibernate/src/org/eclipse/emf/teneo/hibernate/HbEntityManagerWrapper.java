@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.11 2008/02/28 07:08:23 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.12 2008/03/10 06:02:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -230,5 +230,13 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Clear the session */
 	public void clear() {
 		getEntityManager().clear();
+	}
+
+	public void persist(Object obj) {
+		getEntityManager().persist(obj);
+	}
+
+	public Session getHibernateSession() {
+		return (Session) getEntityManager().getDelegate();
 	}
 }

@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.6 2008/02/28 07:08:23 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.7 2008/03/10 06:02:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.hibernate.Session;
 
 /**
  * Wraps a session or an entity manager. Is used to support both standard hibernate as well as
@@ -30,7 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * and commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public interface SessionWrapper {
 
@@ -96,4 +97,9 @@ public interface SessionWrapper {
 	/** Check if a certain class is mapped using a certain inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy);
 
+	/** Persist a new object */
+	public void persist(Object obj);
+
+	/** Return the underlying session */
+	public Session getHibernateSession();
 }
