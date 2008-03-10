@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.11 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.12 2008/03/10 21:31:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -59,7 +59,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 		// create a book, writer and library
 		try {
 			{
-				Resource res = store.getResource();
+				Resource res = getResource(store);
 				res.load(null);
 
 				final Writer writer = factory.createWriter();
@@ -99,7 +99,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			String libURI = null;
 			String writerURI = null;
 			{
-				Resource res = store.getResource();
+				Resource res = getResource(store);
 				res.setTrackingModification(true);
 				res.load(null);
 
@@ -158,7 +158,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			}
 
 			{
-				Resource res = store.getResource();
+				Resource res = getResource(store);
 				Library lib = (Library) res.getEObject(libURI);
 				Writer w = (Writer) res.getEObject(writerURI);
 				assertEquals("JRR Tolkien", w.getName());
@@ -205,7 +205,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 		}
 
 		try {
-			Resource res = store.getResource();
+			Resource res = getResource(store);
 			res.load(null);
 
 			Library lib = (Library) res.getContents().get(0);
@@ -224,5 +224,9 @@ public class LibraryResourceAction extends AbstractTestAction {
 			fail("Orphan delete was not set"); // should fail
 		} catch (Exception e) {
 		}
+	}
+
+	protected Resource getResource(TestStore store) {
+		return store.getResource();
 	}
 }
