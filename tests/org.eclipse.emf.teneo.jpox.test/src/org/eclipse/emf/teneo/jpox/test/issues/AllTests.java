@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.17 2008/02/28 07:07:34 mtaal Exp $
+ * $Id: AllTests.java,v 1.18 2008/03/10 22:19:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -20,6 +20,7 @@ import junit.framework.Test;
 
 import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
+import org.eclipse.emf.teneo.test.issues.AbstractTopClassAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.FruitsAction;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.issues.SimplenmAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class AllTests {
 
@@ -41,6 +42,8 @@ public class AllTests {
 		MultiCfgTestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed.instance()
 					.getConfigurations());
+		suite.addTestSuite(AbstractTopClassAction.class);
+
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
 			suite.addTestSuite(FruitsAction.class);
 		}
