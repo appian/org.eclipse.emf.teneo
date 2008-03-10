@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.25 2008/03/10 21:30:15 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.26 2008/03/10 22:18:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -101,7 +101,7 @@ import org.jpox.store.StoreManager;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $ $Date: 2008/03/10 21:30:15 $
+ * @version $Revision: 1.26 $ $Date: 2008/03/10 22:18:46 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -274,17 +274,6 @@ public class JpoxDataStore implements DataStore {
 				}
 			}
 		}
-
-		// remove all the abstract types
-		// see bugzilla 220106
-		final List<Class<?>> toRemove = new ArrayList<Class<?>>();
-		for (Class<?> clz : newTopClasses) {
-			final EClass eClass = ((ERuntime) EModelResolver.instance()).getEClass(clz);
-			if (eClass == null || eClass.isAbstract()) {
-				toRemove.add(clz);
-			}
-		}
-		newTopClasses.removeAll(toRemove);
 
 		storeTopClasses = newTopClasses.toArray(new Class[newTopClasses.size()]);
 
