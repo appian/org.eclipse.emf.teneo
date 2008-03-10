@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="inheritancemapping"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping"
-    nsPrefix="inheritancemapping">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="abstractsuper"
+    nsURI="http://www.eclipse.org/emf/teneo/issues/abstractsuper" nsPrefix="abstractsuper">
   <eClassifiers xsi:type="ecore:EClass" name="Address" abstract="true">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Address"/>
@@ -158,9 +157,6 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Customer">
-    <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="&#x9;&#x9;&#x9;&#x9;@Inheritance(strategy=TABLE_PER_CLASS)&#x9;&#x9;&#x9;"/>
-    </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Price"/>
       <details key="kind" value="elementOnly"/>

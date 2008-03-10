@@ -2,27 +2,20 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactoryImpl.java,v 1.8 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: AbstractsuperFactoryImpl.java,v 1.1 2008/03/10 22:19:02 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
+package org.eclipse.emf.teneo.samples.issues.abstractsuper.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingFactory;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,24 +23,24 @@ import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InheritancemappingFactoryImpl extends EFactoryImpl implements InheritancemappingFactory {
+public class AbstractsuperFactoryImpl extends EFactoryImpl implements AbstractsuperFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static InheritancemappingFactory init() {
+	public static AbstractsuperFactory init() {
 		try {
-			InheritancemappingFactory theInheritancemappingFactory = (InheritancemappingFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping"); 
-			if (theInheritancemappingFactory != null) {
-				return theInheritancemappingFactory;
+			AbstractsuperFactory theAbstractsuperFactory = (AbstractsuperFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/issues/abstractsuper"); 
+			if (theAbstractsuperFactory != null) {
+				return theAbstractsuperFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new InheritancemappingFactoryImpl();
+		return new AbstractsuperFactoryImpl();
 	}
 
 	/**
@@ -56,7 +49,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InheritancemappingFactoryImpl() {
+	public AbstractsuperFactoryImpl() {
 		super();
 	}
 
@@ -68,15 +61,15 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case InheritancemappingPackage.CONTENT_LIST: return createContentList();
-			case InheritancemappingPackage.DISTRICT_UK_ADDRESS: return createDistrictUKAddress();
-			case InheritancemappingPackage.INTERNATIONAL_PRICE: return createInternationalPrice();
-			case InheritancemappingPackage.PRICE: return createPrice();
-			case InheritancemappingPackage.UK_ADDRESS: return createUKAddress();
-			case InheritancemappingPackage.US_ADDRESS: return createUSAddress();
-			case InheritancemappingPackage.CUSTOMER: return createCustomer();
-			case InheritancemappingPackage.SPECIFIC_CUSTOMER: return createSpecificCustomer();
-			case InheritancemappingPackage.UK_ADDRESS_LIST: return createUKAddressList();
+			case AbstractsuperPackage.CONTENT_LIST: return createContentList();
+			case AbstractsuperPackage.DISTRICT_UK_ADDRESS: return createDistrictUKAddress();
+			case AbstractsuperPackage.INTERNATIONAL_PRICE: return createInternationalPrice();
+			case AbstractsuperPackage.PRICE: return createPrice();
+			case AbstractsuperPackage.UK_ADDRESS: return createUKAddress();
+			case AbstractsuperPackage.US_ADDRESS: return createUSAddress();
+			case AbstractsuperPackage.CUSTOMER: return createCustomer();
+			case AbstractsuperPackage.SPECIFIC_CUSTOMER: return createSpecificCustomer();
+			case AbstractsuperPackage.UK_ADDRESS_LIST: return createUKAddressList();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -90,9 +83,9 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case InheritancemappingPackage.US_STATE:
+			case AbstractsuperPackage.US_STATE:
 				return createUSStateFromString(eDataType, initialValue);
-			case InheritancemappingPackage.US_STATE_OBJECT:
+			case AbstractsuperPackage.US_STATE_OBJECT:
 				return createUSStateObjectFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
@@ -107,9 +100,9 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case InheritancemappingPackage.US_STATE:
+			case AbstractsuperPackage.US_STATE:
 				return convertUSStateToString(eDataType, instanceValue);
-			case InheritancemappingPackage.US_STATE_OBJECT:
+			case AbstractsuperPackage.US_STATE_OBJECT:
 				return convertUSStateObjectToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
@@ -232,7 +225,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * @generated
 	 */
 	public USState createUSStateObjectFromString(EDataType eDataType, String initialValue) {
-		return createUSStateFromString(InheritancemappingPackage.Literals.US_STATE, initialValue);
+		return createUSStateFromString(AbstractsuperPackage.Literals.US_STATE, initialValue);
 	}
 
 	/**
@@ -241,7 +234,7 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * @generated
 	 */
 	public String convertUSStateObjectToString(EDataType eDataType, Object instanceValue) {
-		return convertUSStateToString(InheritancemappingPackage.Literals.US_STATE, instanceValue);
+		return convertUSStateToString(AbstractsuperPackage.Literals.US_STATE, instanceValue);
 	}
 
 	/**
@@ -249,8 +242,8 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InheritancemappingPackage getInheritancemappingPackage() {
-		return (InheritancemappingPackage)getEPackage();
+	public AbstractsuperPackage getAbstractsuperPackage() {
+		return (AbstractsuperPackage)getEPackage();
 	}
 
 	/**
@@ -260,8 +253,8 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	 * @generated
 	 */
 	@Deprecated
-	public static InheritancemappingPackage getPackage() {
-		return InheritancemappingPackage.eINSTANCE;
+	public static AbstractsuperPackage getPackage() {
+		return AbstractsuperPackage.eINSTANCE;
 	}
 
-} //InheritancemappingFactoryImpl
+} //AbstractsuperFactoryImpl

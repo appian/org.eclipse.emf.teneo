@@ -2,16 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingSwitch.java,v 1.4 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: AbstractsuperSwitch.java,v 1.1 2008/03/10 22:19:03 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
+package org.eclipse.emf.teneo.samples.issues.abstractsuper.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,17 +23,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage
+ * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.AbstractsuperPackage
  * @generated
  */
-public class InheritancemappingSwitch<T> {
+public class AbstractsuperSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static InheritancemappingPackage modelPackage;
+	protected static AbstractsuperPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -41,9 +41,9 @@ public class InheritancemappingSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InheritancemappingSwitch() {
+	public AbstractsuperSwitch() {
 		if (modelPackage == null) {
-			modelPackage = InheritancemappingPackage.eINSTANCE;
+			modelPackage = AbstractsuperPackage.eINSTANCE;
 		}
 	}
 
@@ -87,19 +87,19 @@ public class InheritancemappingSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case InheritancemappingPackage.ADDRESS: {
+			case AbstractsuperPackage.ADDRESS: {
 				Address address = (Address)theEObject;
 				T result = caseAddress(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.CONTENT_LIST: {
+			case AbstractsuperPackage.CONTENT_LIST: {
 				ContentList contentList = (ContentList)theEObject;
 				T result = caseContentList(contentList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.DISTRICT_UK_ADDRESS: {
+			case AbstractsuperPackage.DISTRICT_UK_ADDRESS: {
 				DistrictUKAddress districtUKAddress = (DistrictUKAddress)theEObject;
 				T result = caseDistrictUKAddress(districtUKAddress);
 				if (result == null) result = caseUKAddress(districtUKAddress);
@@ -107,47 +107,47 @@ public class InheritancemappingSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.INTERNATIONAL_PRICE: {
+			case AbstractsuperPackage.INTERNATIONAL_PRICE: {
 				InternationalPrice internationalPrice = (InternationalPrice)theEObject;
 				T result = caseInternationalPrice(internationalPrice);
 				if (result == null) result = casePrice(internationalPrice);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.PRICE: {
+			case AbstractsuperPackage.PRICE: {
 				Price price = (Price)theEObject;
 				T result = casePrice(price);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.UK_ADDRESS: {
+			case AbstractsuperPackage.UK_ADDRESS: {
 				UKAddress ukAddress = (UKAddress)theEObject;
 				T result = caseUKAddress(ukAddress);
 				if (result == null) result = caseAddress(ukAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.US_ADDRESS: {
+			case AbstractsuperPackage.US_ADDRESS: {
 				USAddress usAddress = (USAddress)theEObject;
 				T result = caseUSAddress(usAddress);
 				if (result == null) result = caseAddress(usAddress);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.CUSTOMER: {
+			case AbstractsuperPackage.CUSTOMER: {
 				Customer customer = (Customer)theEObject;
 				T result = caseCustomer(customer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.SPECIFIC_CUSTOMER: {
+			case AbstractsuperPackage.SPECIFIC_CUSTOMER: {
 				SpecificCustomer specificCustomer = (SpecificCustomer)theEObject;
 				T result = caseSpecificCustomer(specificCustomer);
 				if (result == null) result = caseCustomer(specificCustomer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case InheritancemappingPackage.UK_ADDRESS_LIST: {
+			case AbstractsuperPackage.UK_ADDRESS_LIST: {
 				UKAddressList ukAddressList = (UKAddressList)theEObject;
 				T result = caseUKAddressList(ukAddressList);
 				if (result == null) result = defaultCase(theEObject);
@@ -322,4 +322,4 @@ public class InheritancemappingSwitch<T> {
 		return null;
 	}
 
-} //InheritancemappingSwitch
+} //AbstractsuperSwitch

@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingAdapterFactory.java,v 1.4 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: AbstractsuperAdapterFactory.java,v 1.1 2008/03/10 22:19:03 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
+package org.eclipse.emf.teneo.samples.issues.abstractsuper.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,24 +13,24 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.*;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage
+ * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.AbstractsuperPackage
  * @generated
  */
-public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
+public class AbstractsuperAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static InheritancemappingPackage modelPackage;
+	protected static AbstractsuperPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -38,9 +38,9 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InheritancemappingAdapterFactory() {
+	public AbstractsuperAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = InheritancemappingPackage.eINSTANCE;
+			modelPackage = AbstractsuperPackage.eINSTANCE;
 		}
 	}
 
@@ -69,8 +69,8 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InheritancemappingSwitch<Adapter> modelSwitch =
-		new InheritancemappingSwitch<Adapter>() {
+	protected AbstractsuperSwitch<Adapter> modelSwitch =
+		new AbstractsuperSwitch<Adapter>() {
 			@Override
 			public Adapter caseAddress(Address object) {
 				return createAddressAdapter();
@@ -132,13 +132,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address <em>Address</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.Address <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.Address
 	 * @generated
 	 */
 	public Adapter createAddressAdapter() {
@@ -146,13 +146,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList <em>Content List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.ContentList <em>Content List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.ContentList
 	 * @generated
 	 */
 	public Adapter createContentListAdapter() {
@@ -160,13 +160,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress <em>District UK Address</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.DistrictUKAddress <em>District UK Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.DistrictUKAddress
 	 * @generated
 	 */
 	public Adapter createDistrictUKAddressAdapter() {
@@ -174,13 +174,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice <em>International Price</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.InternationalPrice <em>International Price</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.InternationalPrice
 	 * @generated
 	 */
 	public Adapter createInternationalPriceAdapter() {
@@ -188,13 +188,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price <em>Price</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.Price <em>Price</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.Price
 	 * @generated
 	 */
 	public Adapter createPriceAdapter() {
@@ -202,13 +202,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress <em>UK Address</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.UKAddress <em>UK Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.UKAddress
 	 * @generated
 	 */
 	public Adapter createUKAddressAdapter() {
@@ -216,13 +216,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress <em>US Address</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.USAddress <em>US Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.USAddress
 	 * @generated
 	 */
 	public Adapter createUSAddressAdapter() {
@@ -230,13 +230,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer <em>Customer</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.Customer <em>Customer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.Customer
 	 * @generated
 	 */
 	public Adapter createCustomerAdapter() {
@@ -244,13 +244,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer <em>Specific Customer</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.SpecificCustomer <em>Specific Customer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.SpecificCustomer
 	 * @generated
 	 */
 	public Adapter createSpecificCustomerAdapter() {
@@ -258,13 +258,13 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddressList <em>UK Address List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.abstractsuper.UKAddressList <em>UK Address List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddressList
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.UKAddressList
 	 * @generated
 	 */
 	public Adapter createUKAddressListAdapter() {
@@ -283,4 +283,4 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //InheritancemappingAdapterFactory
+} //AbstractsuperAdapterFactory

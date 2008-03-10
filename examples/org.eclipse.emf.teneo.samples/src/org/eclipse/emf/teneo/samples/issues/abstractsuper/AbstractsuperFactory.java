@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactory.java,v 1.3 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: AbstractsuperFactory.java,v 1.1 2008/03/10 22:19:03 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
+package org.eclipse.emf.teneo.samples.issues.abstractsuper;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -13,17 +13,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage
+ * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.AbstractsuperPackage
  * @generated
  */
-public interface InheritancemappingFactory extends EFactory {
+public interface AbstractsuperFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InheritancemappingFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingFactoryImpl.init();
+	AbstractsuperFactory eINSTANCE = org.eclipse.emf.teneo.samples.issues.abstractsuper.impl.AbstractsuperFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Content List</em>'.
@@ -113,6 +113,6 @@ public interface InheritancemappingFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	InheritancemappingPackage getInheritancemappingPackage();
+	AbstractsuperPackage getAbstractsuperPackage();
 
-} //InheritancemappingFactory
+} //AbstractsuperFactory

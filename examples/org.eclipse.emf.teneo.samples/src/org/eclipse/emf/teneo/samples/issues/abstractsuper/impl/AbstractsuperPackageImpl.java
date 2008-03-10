@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.7 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: AbstractsuperPackageImpl.java,v 1.1 2008/03/10 22:19:02 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
+package org.eclipse.emf.teneo.samples.issues.abstractsuper.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -12,21 +12,24 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingFactory;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddressList;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USAddress;
-import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState;
+
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.AbstractsuperFactory;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.AbstractsuperPackage;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.Address;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.ContentList;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.Customer;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.DistrictUKAddress;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.InternationalPrice;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.Price;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.SpecificCustomer;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.UKAddress;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.UKAddressList;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.USAddress;
+import org.eclipse.emf.teneo.samples.issues.abstractsuper.USState;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +37,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InheritancemappingPackageImpl extends EPackageImpl implements InheritancemappingPackage {
+public class AbstractsuperPackageImpl extends EPackageImpl implements AbstractsuperPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,12 +133,12 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#eNS_URI
+	 * @see org.eclipse.emf.teneo.samples.issues.abstractsuper.AbstractsuperPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private InheritancemappingPackageImpl() {
-		super(eNS_URI, InheritancemappingFactory.eINSTANCE);
+	private AbstractsuperPackageImpl() {
+		super(eNS_URI, AbstractsuperFactory.eINSTANCE);
 	}
 
 	/**
@@ -167,11 +170,11 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static InheritancemappingPackage init() {
-		if (isInited) return (InheritancemappingPackage)EPackage.Registry.INSTANCE.getEPackage(InheritancemappingPackage.eNS_URI);
+	public static AbstractsuperPackage init() {
+		if (isInited) return (AbstractsuperPackage)EPackage.Registry.INSTANCE.getEPackage(AbstractsuperPackage.eNS_URI);
 
 		// Obtain or create and register package
-		InheritancemappingPackageImpl theInheritancemappingPackage = (InheritancemappingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof InheritancemappingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new InheritancemappingPackageImpl());
+		AbstractsuperPackageImpl theAbstractsuperPackage = (AbstractsuperPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof AbstractsuperPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new AbstractsuperPackageImpl());
 
 		isInited = true;
 
@@ -179,15 +182,15 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theInheritancemappingPackage.createPackageContents();
+		theAbstractsuperPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theInheritancemappingPackage.initializePackageContents();
+		theAbstractsuperPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theInheritancemappingPackage.freeze();
+		theAbstractsuperPackage.freeze();
 
-		return theInheritancemappingPackage;
+		return theAbstractsuperPackage;
 	}
 
 	/**
@@ -456,8 +459,8 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InheritancemappingFactory getInheritancemappingFactory() {
-		return (InheritancemappingFactory)getEFactoryInstance();
+	public AbstractsuperFactory getAbstractsuperFactory() {
+		return (AbstractsuperFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -600,9 +603,9 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 
 		// Initialize enums and add enum literals
 		initEEnum(usStateEEnum, USState.class, "USState");
-		addEEnumLiteral(usStateEEnum, USState.AK_LITERAL);
-		addEEnumLiteral(usStateEEnum, USState.AL_LITERAL);
-		addEEnumLiteral(usStateEEnum, USState.AR_LITERAL);
+		addEEnumLiteral(usStateEEnum, USState.AK);
+		addEEnumLiteral(usStateEEnum, USState.AL);
+		addEEnumLiteral(usStateEEnum, USState.AR);
 
 		// Initialize data types
 		initEDataType(usStateObjectEDataType, USState.class, "USStateObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
@@ -615,70 +618,6 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		createExtendedMetaDataAnnotations();
 		// teneo.jpa
 		createTeneoAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>teneo.jpa</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";			
-		addAnnotation
-		  (addressEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Inheritance(strategy=JOINED)\n\t\t\t"
-		   });		
-		addAnnotation
-		  (getAddress_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Id"
-		   });						
-		addAnnotation
-		  (getContentList_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Id"
-		   });							
-		addAnnotation
-		  (internationalPriceEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t@DiscriminatorValue(\"myInternationalPrice\")\n\t\t\t"
-		   });				
-		addAnnotation
-		  (priceEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\" discriminatorType=STRING)\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
-		   });								
-		addAnnotation
-		  (usAddressEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Table(name=\"UNITEDSTATESADDRESS\")\n\t\t\t"
-		   });				
-		addAnnotation
-		  (customerEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "\t\t\t\t@Inheritance(strategy=TABLE_PER_CLASS)\t\t\t"
-		   });			
-		addAnnotation
-		  (getCustomer_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Id"
-		   });								
-		addAnnotation
-		  (getUKAddressList_Name(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Id"
-		   });		
 	}
 
 	/**
@@ -828,7 +767,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   new String[] {
 			 "kind", "element",
 			 "name", "zip"
-		   });			
+		   });		
 		addAnnotation
 		  (customerEClass, 
 		   source, 
@@ -893,4 +832,62 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		   });
 	}
 
-} //InheritancemappingPackageImpl
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";			
+		addAnnotation
+		  (addressEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Inheritance(strategy=JOINED)\n\t\t\t"
+		   });		
+		addAnnotation
+		  (getAddress_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });						
+		addAnnotation
+		  (getContentList_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });							
+		addAnnotation
+		  (internationalPriceEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@DiscriminatorValue(\"myInternationalPrice\")\n\t\t\t"
+		   });				
+		addAnnotation
+		  (priceEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\" discriminatorType=STRING)\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
+		   });								
+		addAnnotation
+		  (usAddressEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Table(name=\"UNITEDSTATESADDRESS\")\n\t\t\t"
+		   });					
+		addAnnotation
+		  (getCustomer_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });								
+		addAnnotation
+		  (getUKAddressList_Name(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });		
+	}
+
+} //AbstractsuperPackageImpl

@@ -2,12 +2,12 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
-    modelPluginID="org.eclipse.emf.teneo.samples" modelName="inheritancemapping" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0">
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Inheritancemapping" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
   <foreignModel>inheritancemapping.ecore</foreignModel>
-  <genPackages prefix="Inheritancemapping" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+  <genPackages prefix="Abstractsuper" basePackage="org.eclipse.emf.teneo.samples.issues"
       resource="XML" disposableProviderFactory="true" ecorePackage="inheritancemapping.ecore#/">
-    <genEnums ecoreEnum="inheritancemapping.ecore#//USState">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="inheritancemapping.ecore#//USState">
       <genEnumLiterals ecoreEnumLiteral="inheritancemapping.ecore#//USState/AK"/>
       <genEnumLiterals ecoreEnumLiteral="inheritancemapping.ecore#//USState/AL"/>
       <genEnumLiterals ecoreEnumLiteral="inheritancemapping.ecore#//USState/AR"/>
@@ -20,8 +20,8 @@
     </genClasses>
     <genClasses ecoreClass="inheritancemapping.ecore#//ContentList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//ContentList/name"/>
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inheritancemapping.ecore#//ContentList/address"/>
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inheritancemapping.ecore#//ContentList/price"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference inheritancemapping.ecore#//ContentList/address"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference inheritancemapping.ecore#//ContentList/price"/>
     </genClasses>
     <genClasses ecoreClass="inheritancemapping.ecore#//DistrictUKAddress">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//DistrictUKAddress/district"/>
