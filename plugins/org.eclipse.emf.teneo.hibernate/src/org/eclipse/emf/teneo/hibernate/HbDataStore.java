@@ -75,7 +75,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -446,7 +446,8 @@ public abstract class HbDataStore implements DataStore {
 					}
 				}
 			}
-			if (topEntity) {
+			// see bugzilla 220106
+			if (topEntity && !pc.isAbstract()) {
 				result.add(getMappedName(pc));
 			}
 		}

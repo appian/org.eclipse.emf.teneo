@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.18 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.19 2008/03/10 21:30:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
@@ -179,6 +179,8 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
 					sessionWrapper.commitTransaction();
 				}
+			}
+			if (sessionWrapper != null) {
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}

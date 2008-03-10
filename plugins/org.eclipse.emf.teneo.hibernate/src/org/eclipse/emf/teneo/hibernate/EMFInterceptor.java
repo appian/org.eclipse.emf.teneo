@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.11 2008/03/10 06:02:44 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.12 2008/03/10 21:30:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.collection.AbstractPersistentCollection;
  * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, ExtensionManagerAware,
@@ -60,6 +60,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	private static ThreadLocal<List<AbstractPersistentCollection>> persistentCollections =
 			new ThreadLocal<List<AbstractPersistentCollection>>();
 
+	// note is also used for non-deleted objects in HbResource
 	public static void registerCollectionsForDereferencing(EObject eObject) {
 		for (EReference eReference : eObject.eClass().getEAllReferences()) {
 			if (eReference.isMany()) {

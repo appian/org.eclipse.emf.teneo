@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.9 2008/03/10 06:02:44 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.10 2008/03/10 21:30:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,6 +31,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.teneo.Constants;
+import org.eclipse.emf.teneo.hibernate.EMFInterceptor;
 import org.eclipse.emf.teneo.hibernate.HbConstants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
@@ -45,6 +47,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.collection.PersistentCollection;
+import org.hibernate.engine.SessionImplementor;
+import org.hibernate.util.IdentityMap;
 
 /**
  * HbResource. This hibernate resource creates a new session for each load and save action. When
@@ -64,7 +69,7 @@ import org.hibernate.Transaction;
  * This class does not support the SessionController.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -147,14 +152,15 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 
 		if (loadedEObjects.size() > 0) {
 			session.beginTransaction();
-		}
 
-		// merge the loaded objects into the session
-		if (log.isDebugEnabled()) {
-			log.debug("Merging " + loadedEObjects.size() + " eobjects into new session ");
-		}
-		for (Object obj : loadedEObjects) {
-			session.lock(obj, LockMode.NONE);
+			// merge the loaded objects into the session
+			if (log.isDebugEnabled()) {
+				log.debug("Merging " + loadedEObjects.size() + " eobjects into new session ");
+			}
+			for (Object obj : loadedEObjects) {
+				session.lock(obj, LockMode.NONE);
+			}
+			session.getTransaction().commit();
 		}
 
 		return session;
@@ -167,12 +173,19 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 
 	/** Returns the sessionwrapper to the resource so that it can do clean up (or not) */
 	public void returnSessionWrapper(SessionWrapper sessionWrapper) {
-
+		returnSession(sessionWrapper.getHibernateSession());
 	}
 
 	/** Returns the session, closes it */
 	public void returnSession(Session theSession) {
-		// do nothing
+		// solves a bug with older versions of Hibernate, see the EMFInterceptor
+		Map.Entry<?, ?>[] collectionEntryArray =
+				IdentityMap.concurrentEntries(((SessionImplementor) theSession).getPersistenceContext()
+					.getCollectionEntries());
+		for (Entry<?, ?> element : collectionEntryArray) {
+			((PersistentCollection) element.getKey()).unsetSession((SessionImplementor) theSession);
+		}
+
 		theSession.close();
 	}
 
@@ -235,6 +248,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 				// object
 				{
 					mySession.delete(obj);
+					EMFInterceptor.registerCollectionsForDereferencing((EObject) obj);
 				}
 			}
 
