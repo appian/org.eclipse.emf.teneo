@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.26 2008/03/10 06:02:46 mtaal Exp $
+ * $Id: StoreResource.java,v 1.27 2008/03/10 21:31:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -786,7 +786,7 @@ public abstract class StoreResource extends ResourceImpl {
 	 * resource should adhere to that
 	 */
 	@SuppressWarnings("serial")
-	private TreeIterator<EObject> getNonResolvingAllContents() {
+	protected TreeIterator<EObject> getNonResolvingAllContents() {
 		return new AbstractTreeIterator<EObject>(this, false) {
 			@Override
 			public Iterator<EObject> getChildren(Object object) {
@@ -803,7 +803,7 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/** Returns a non-resolving contents elist for an eobject */
-	private EContentsEList<EObject> getNonResolvingContent(EObject eObject) {
+	protected EContentsEList<EObject> getNonResolvingContent(EObject eObject) {
 		return NonLoadingEContentsEList.create(eObject, false);
 	}
 
