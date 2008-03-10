@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryGlobalEagerAction.java,v 1.7 2008/02/28 07:08:15 mtaal Exp $
+ * $Id: LibraryGlobalEagerAction.java,v 1.8 2008/03/10 06:02:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,13 +38,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests setting of eager loading of containment at global level
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ 
-*/
+ * @version $Revision: 1.8 $
+ */
 public class LibraryGlobalEagerAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public LibraryGlobalEagerAction() {
@@ -52,9 +53,9 @@ public class LibraryGlobalEagerAction extends AbstractTestAction {
 
 	}
 
-	/** 
-	 * Can be overridden by subclass returns properties which control the or layer.
-	 * Such as setting of eager loading. 
+	/**
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting
+	 * of eager loading.
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -176,16 +177,15 @@ public class LibraryGlobalEagerAction extends AbstractTestAction {
 
 		assertEquals(2, libraryAdapter.getCountNotifications());
 
-		EObject[] modifieds = ((StoreResource) res).getModifiedEObjects();
 		boolean fndLibrary = false;
 		boolean fndBook = false;
-		for (EObject element : modifieds) {
+		for (EObject element : ((StoreResource) res).getModifiedEObjects()) {
 			fndLibrary = fndLibrary || element == lib;
 			fndBook = fndBook || element == book;
 		}
 		assertTrue("Library should be a modified object", fndLibrary);
 		assertTrue("Book should be a modified object", fndBook);
-		assertEquals(2, modifieds.length);
+		assertEquals(2, ((StoreResource) res).getModifiedEObjects().size());
 		res.unload();
 	}
 
@@ -196,7 +196,9 @@ public class LibraryGlobalEagerAction extends AbstractTestAction {
 
 		/**
 		 * Returns <code>false</code>
-		 * @param type the type.
+		 * 
+		 * @param type
+		 *            the type.
 		 * @return <code>false</code>
 		 */
 		@Override

@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class LazyLibraryAction extends AbstractTestAction {
 	/** Small adapter test */
@@ -200,16 +200,15 @@ public class LazyLibraryAction extends AbstractTestAction {
 
 		assertEquals(2, libraryAdapter.getCountNotifications());
 
-		final EObject[] modifieds = ((StoreResource) res).getModifiedEObjects();
 		boolean fndLibrary = false;
 		boolean fndBook = false;
-		for (final EObject element : modifieds) {
+		for (final EObject element : ((StoreResource) res).getModifiedEObjects()) {
 			fndLibrary = fndLibrary || element == lib;
 			fndBook = fndBook || element == book;
 		}
 		assertTrue("Library should be a modified object", fndLibrary);
 		assertTrue("Book should be a modified object", fndBook);
-		assertEquals(2, modifieds.length);
+		assertEquals(2, ((StoreResource) res).getModifiedEObjects().size());
 		res.unload();
 	}
 }

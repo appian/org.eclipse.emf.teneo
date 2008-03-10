@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryNonResolvingAction.java,v 1.9 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: LibraryNonResolvingAction.java,v 1.10 2008/03/10 06:02:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,13 +38,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * Tests non-resolving behavior of containment references. Main test is that setTrackingModification
  * does not result in loaded containment elists.
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ 
-*/
+ * @version $Revision: 1.10 $
+ */
 public class LibraryNonResolvingAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public LibraryNonResolvingAction() {
@@ -184,16 +185,15 @@ public class LibraryNonResolvingAction extends AbstractTestAction {
 
 		assertEquals(2, libraryAdapter.getCountNotifications());
 
-		EObject[] modifieds = ((StoreResource) res).getModifiedEObjects();
 		boolean fndLibrary = false;
 		boolean fndBook = false;
-		for (EObject element : modifieds) {
+		for (EObject element : ((StoreResource) res).getModifiedEObjects()) {
 			fndLibrary = fndLibrary || element == lib;
 			fndBook = fndBook || element == book;
 		}
 		assertTrue("Library should be a modified object", fndLibrary);
 		assertTrue("Book should be a modified object", fndBook);
-		assertEquals(2, modifieds.length);
+		assertEquals(2, ((StoreResource) res).getModifiedEObjects().size());
 
 		res.unload();
 	}
@@ -205,7 +205,9 @@ public class LibraryNonResolvingAction extends AbstractTestAction {
 
 		/**
 		 * Returns <code>false</code>
-		 * @param type the type.
+		 * 
+		 * @param type
+		 *            the type.
 		 * @return <code>false</code>
 		 */
 		@Override

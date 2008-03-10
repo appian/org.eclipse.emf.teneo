@@ -11,12 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryValidateResourceAction.java,v 1.6 2008/02/28 07:08:15 mtaal Exp $
+ * $Id: LibraryValidateResourceAction.java,v 1.7 2008/03/10 06:02:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,13 +36,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests if simple validation works for the resource implementation.
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ 
-*/
+ * @version $Revision: 1.7 $
+ */
 public class LibraryValidateResourceAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public LibraryValidateResourceAction() {
@@ -111,7 +114,7 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 					}
 				}
 
-				Writer tolkien = (Writer) lib.getWriters().get(0);
+				Writer tolkien = lib.getWriters().get(0);
 
 				tolkien.setName("Mr. Tolkien");
 
@@ -120,11 +123,11 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 				lib.getWriters().add(orwell);
 
 				final StoreResource sr = (StoreResource) res;
-				final EObject[] ca = sr.getNewEObjects();
-				final EObject[] cm = sr.getModifiedEObjects();
-				assertEquals(2, ca.length + cm.length);
-				assertTrue(cm[0] == tolkien);
-				assertTrue(ca[0] == orwell);
+				final List<EObject> ca = sr.getNewEObjects();
+				final HashSet<EObject> cm = sr.getModifiedEObjects();
+				assertEquals(2, ca.size() + cm.size());
+				assertTrue(cm.contains(tolkien));
+				assertTrue(ca.contains(orwell));
 
 				res.save(null);
 				res.unload();
@@ -158,7 +161,7 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 				Library lib = (Library) res.getContents().get(0);
 				boolean martinFound = false;
 				for (int i = 0; i < lib.getWriters().size(); i++) {
-					Writer wt = (Writer) lib.getWriters().get(i);
+					Writer wt = lib.getWriters().get(i);
 					martinFound = martinFound || wt.getName().compareTo("martin") == 0;
 				}
 				assertTrue("New writer martin was not committed", martinFound);
@@ -173,10 +176,10 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 	protected void testFlush(Resource res) {
 		/*
 		 * if (res instanceof HibernateResource) { HibernateResource hres = (HibernateResource)res;
-		 * Session session = hres.getSession(); Transaction tx = session.beginTransaction();
-		 *  // this should not fail! try { tx.commit(); } // there should be a finally block but
-		 * this is only a test catch (Exception e) { fail("The transaction commit should not flush
-		 * illegal objects to the database"); } }
+		 * Session session = hres.getSession(); Transaction tx = session.beginTransaction(); // this
+		 * should not fail! try { tx.commit(); } // there should be a finally block but this is only
+		 * a test catch (Exception e) { fail("The transaction commit should not flush illegal
+		 * objects to the database"); } }
 		 */
 	}
 }
