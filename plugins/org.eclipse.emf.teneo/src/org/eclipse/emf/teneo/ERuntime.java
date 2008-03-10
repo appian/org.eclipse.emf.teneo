@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.14 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ERuntime.java,v 1.15 2008/03/10 22:19:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * concrete class, references for cross reference computation, contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class ERuntime extends EModelResolver {
@@ -152,7 +152,12 @@ public class ERuntime extends EModelResolver {
 			if (isSelfOrSuperContained(clazz, containedClasses)) {
 				containedClasses.add(clazz);
 			} else {
-				topClasses.add(clazz);
+				final EClass eClass = getEClass(clazz);
+				// remove all the abstract types
+				// see bugzilla 220106
+				if (eClass == null || !eClass.isAbstract()) {
+					topClasses.add(clazz);
+				}
 			}
 		}
 
