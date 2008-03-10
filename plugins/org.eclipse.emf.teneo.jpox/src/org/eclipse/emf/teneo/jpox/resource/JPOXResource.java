@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.9 2008/03/07 13:13:45 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.10 2008/03/10 06:02:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -67,7 +67,7 @@ import org.jpox.store.OIDFactory;
  * used to init a jpox resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ $Date: 2008/03/07 13:13:45 $
+ * @version $Revision: 1.10 $ $Date: 2008/03/10 06:02:07 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -387,8 +387,8 @@ public class JPOXResource extends StoreResource {
 			// check needs to be done if the objects have not been removed in
 			// determine unreachables
 			final ArrayList reallyRemove = new ArrayList();
-			for (int i = 0; i < removedEObjects.size(); i++) {
-				final PersistenceCapable pc = (PersistenceCapable) removedEObjects.get(i);
+			for (Object o : removedEObjects) {
+				final PersistenceCapable pc = (PersistenceCapable) o;
 				final EObject eobj = (EObject) pc;
 				if (pc.jdoIsPersistent() && !pc.jdoIsDeleted() &&
 						(eobj.eResource() == null || eobj.eResource() == this)) {
