@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.25 2008/03/08 04:59:15 mtaal Exp $
+ * $Id: StoreResource.java,v 1.26 2008/03/10 06:02:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -78,8 +78,11 @@ public abstract class StoreResource extends ResourceImpl {
 	/** The logger */
 	private static Log log = LogFactory.getLog(StoreResource.class);
 
-	/** The list of objects which will be deleted at commit time */
-	protected ArrayList<EObject> removedEObjects = new ArrayList<EObject>();
+	/**
+	 * The list of objects which will be deleted at commit time. Needs to be a list because of the
+	 * order of deletion.
+	 */
+	protected List<EObject> removedEObjects = new ArrayList<EObject>();
 
 	/**
 	 * The set of objects loaded from the backend. objects which have been removed are still part of
@@ -92,7 +95,9 @@ public abstract class StoreResource extends ResourceImpl {
 	 * is removed it is just removed from this set and not added to the removed EObjects. new
 	 * eobjects are never part of the modifiedEObjects set.
 	 */
-	protected HashSet<EObject> newEObjects = new HashSet<EObject>();
+	protected List<EObject> newEObjects = new ArrayList<EObject>();
+	// is used for more efficient access
+	protected HashSet<EObject> newEObjectSet = new HashSet<EObject>();
 
 	/**
 	 * The set of changed objects, this contains the loadedEObjects which have changed new EObjects
@@ -351,6 +356,7 @@ public abstract class StoreResource extends ResourceImpl {
 				removedEObjects.clear();
 				loadedEObjects.addAll(newEObjects);
 				newEObjects.clear();
+				newEObjectSet.clear();
 				setModified(false);
 			}
 		}
@@ -445,6 +451,7 @@ public abstract class StoreResource extends ResourceImpl {
 	private void clearChangeTrackerArrays() {
 		removedEObjects.clear();
 		newEObjects.clear();
+		newEObjectSet.clear();
 		loadedEObjects.clear();
 		modifiedEObjects.clear();
 	}
@@ -462,7 +469,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// then childs also
 
 		if (loadedEObjects.contains(eObject) && !modifiedEObjects.contains(eObject)) {
-			assert (!newEObjects.contains(eObject));
+			assert (!newEObjectSet.contains(eObject));
 			modifiedEObjects.add(eObject);
 		}
 	}
@@ -481,11 +488,12 @@ public abstract class StoreResource extends ResourceImpl {
 			loadedEObjects.add(eObject);
 		} else {
 			// assert (!removedEObjects.contains(eObject));
-			assert (!newEObjects.contains(eObject));
+			assert (!newEObjectSet.contains(eObject));
 			if (removedEObjects.remove(eObject)) {
 				modifiedEObjects.add(eObject);
 			} else {
 				newEObjects.add(eObject);
+				newEObjectSet.add(eObject);
 			}
 		}
 	}
@@ -494,8 +502,9 @@ public abstract class StoreResource extends ResourceImpl {
 	public void removedEObject(EObject eObject) {
 		assert (!removedEObjects.contains(eObject));
 
-		if (newEObjects.contains(eObject)) {
-			newEObjects.remove(eObject); // just remove from this list
+		if (newEObjectSet.contains(eObject)) {
+			assert (newEObjects.remove(eObject)); // just remove from this list
+			newEObjectSet.remove(eObject);
 			return;
 		}
 
@@ -551,7 +560,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// adds an object to a resource directly and then later add this same
 		// object as a child
 		// to a container
-		if (newEObjects.contains(eObject) || loadedEObjects.contains(eObject)) {
+		if (newEObjectSet.contains(eObject) || loadedEObjects.contains(eObject)) {
 			return;
 		}
 
@@ -674,6 +683,7 @@ public abstract class StoreResource extends ResourceImpl {
 			modifiedEObjects.remove(eObject);
 			loadedEObjects.remove(eObject);
 			newEObjects.remove(eObject);
+			newEObjectSet.remove(eObject);
 			return;
 		}
 
@@ -698,18 +708,22 @@ public abstract class StoreResource extends ResourceImpl {
 	}
 
 	/** Returns the added objects */
-	public EObject[] getNewEObjects() {
-		return newEObjects.toArray(new EObject[newEObjects.size()]);
+	public List<EObject> getNewEObjects() {
+		return newEObjects;
+	}
+
+	public HashSet<EObject> getNewEObjectSet() {
+		return newEObjectSet;
 	}
 
 	/** Return the new eobjects */
-	public EObject[] getModifiedEObjects() {
-		return modifiedEObjects.toArray(new EObject[modifiedEObjects.size()]);
+	public HashSet<EObject> getModifiedEObjects() {
+		return modifiedEObjects;
 	}
 
 	/** Return the new eobjects */
-	public EObject[] getRemovedEObjects() {
-		return removedEObjects.toArray(new EObject[removedEObjects.size()]);
+	public List<EObject> getRemovedEObjects() {
+		return removedEObjects;
 	}
 
 	/**

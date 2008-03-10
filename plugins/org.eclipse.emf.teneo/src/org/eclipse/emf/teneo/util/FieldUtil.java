@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: FieldUtil.java,v 1.12 2008/02/28 07:08:33 mtaal Exp $
+ * implementation </copyright> $Id: FieldUtil.java,v 1.13 2008/03/10 06:02:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.TeneoException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class FieldUtil {
@@ -36,8 +36,8 @@ public class FieldUtil {
 			if (method != null) {
 				fieldMethodCache.put(obj.getClass().getName() + "." + methodName, method);
 			} else {
-				throw new TeneoException("Method does not exist " + obj.getClass().getName() + " method; "
-						+ method.getName());
+				throw new TeneoException("Method does not exist " + obj.getClass().getName() + " method; " +
+						method.getName());
 			}
 
 			return method.invoke(obj, params);
@@ -49,8 +49,8 @@ public class FieldUtil {
 				}
 			}
 
-			throw new TeneoException("Exception " + obj.getClass().getName() + " method; " + method.getName()
-					+ " with parameters: " + paramStr.toString(), e);
+			throw new TeneoException("Exception " + obj.getClass().getName() + " method; " + method.getName() +
+					" with parameters: " + paramStr.toString(), e);
 		}
 	}
 
@@ -59,8 +59,8 @@ public class FieldUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; "
-					+ field.getName());
+			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; " +
+					field.getName());
 		}
 	}
 
@@ -95,8 +95,8 @@ public class FieldUtil {
 			final Field field = getField(target.getClass(), fieldName);
 			field.set(target, value);
 		} catch (Exception e) {
-			throw new TeneoException("Exception setting " + fieldName + " from " + target.getClass().getName()
-					+ " to value " + value + " of type " + (value != null ? value.getClass().getName() : ""), e);
+			throw new TeneoException("Exception setting " + fieldName + " from " + target.getClass().getName() +
+					" to value " + value + " of type " + (value != null ? value.getClass().getName() : ""), e);
 		}
 	}
 
@@ -129,6 +129,7 @@ public class FieldUtil {
 		}
 
 		fieldMethodCache.put(clazz.getName() + "." + fieldName, field);
+		field.setAccessible(true);
 		return field;
 	}
 
