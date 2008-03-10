@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.24 2008/03/08 05:19:09 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.25 2008/03/10 21:30:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -101,7 +101,7 @@ import org.jpox.store.StoreManager;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $ $Date: 2008/03/08 05:19:09 $
+ * @version $Revision: 1.25 $ $Date: 2008/03/10 21:30:15 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -258,7 +258,7 @@ public class JpoxDataStore implements DataStore {
 		// why this needs to be done like this.
 		Class[] topClasses = ((ERuntime) EModelResolver.instance()).getTopClasses();
 		// check if the topclasses are persistencecapable!
-		final ArrayList newTopClasses = new ArrayList();
+		final ArrayList<Class<?>> newTopClasses = new ArrayList<Class<?>>();
 		for (Class element : topClasses) {
 			final Class concrete = ((ERuntime) EModelResolver.instance()).getInstanceClass(element);
 			if (concrete != null && PersistenceCapable.class.isAssignableFrom(concrete)) {
@@ -274,7 +274,19 @@ public class JpoxDataStore implements DataStore {
 				}
 			}
 		}
-		storeTopClasses = (Class[]) newTopClasses.toArray(new Class[newTopClasses.size()]);
+
+		// remove all the abstract types
+		// see bugzilla 220106
+		final List<Class<?>> toRemove = new ArrayList<Class<?>>();
+		for (Class<?> clz : newTopClasses) {
+			final EClass eClass = ((ERuntime) EModelResolver.instance()).getEClass(clz);
+			if (eClass == null || eClass.isAbstract()) {
+				toRemove.add(clz);
+			}
+		}
+		newTopClasses.removeAll(toRemove);
+
+		storeTopClasses = newTopClasses.toArray(new Class[newTopClasses.size()]);
 
 		if (log.isInfoEnabled()) {
 			log.info("Persistence manager factory created using properties: ");
@@ -291,7 +303,7 @@ public class JpoxDataStore implements DataStore {
 	/**
 	 * Get the list of all sub subclasses and subclasses which are not a mappedsuperclass
 	 */
-	private List<Class<?>> getSubClasses(Class<?> clz, MetaDataManager mdm, JDOClassLoaderResolver clr) {
+	protected List<Class<?>> getSubClasses(Class<?> clz, MetaDataManager mdm, JDOClassLoaderResolver clr) {
 		final ArrayList<Class<?>> subClasses = new ArrayList<Class<?>>();
 		final String[] subs = mdm.getSubclassesForClass(clz.getName(), false);
 
