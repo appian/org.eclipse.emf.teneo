@@ -54,7 +54,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -90,6 +90,10 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			.isMany());
 		isAMap = StoreUtil.isMap(eFeature);
 		this.newEMapMapping = newEMapMapping;
+	}
+
+	public EStructuralFeature getEFeature() {
+		return eFeature;
 	}
 
 	/*

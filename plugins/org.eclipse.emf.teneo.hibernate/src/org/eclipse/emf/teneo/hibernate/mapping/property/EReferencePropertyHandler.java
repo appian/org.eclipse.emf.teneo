@@ -36,7 +36,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -59,6 +59,10 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 		this.eReference = eReference;
 		isBidirectional = eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient();
 		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
+	}
+
+	public EReference getEReference() {
+		return eReference;
 	}
 
 	/*

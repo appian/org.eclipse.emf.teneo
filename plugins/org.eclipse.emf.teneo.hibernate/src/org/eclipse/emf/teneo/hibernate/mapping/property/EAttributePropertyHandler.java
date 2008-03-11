@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.8 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.9 2008/03/11 21:25:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -43,7 +43,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -68,6 +68,10 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 		AssertUtil.assertTrue(eAttribute.getName() + " is a many feature which is not handled by this accessor ",
 			!eAttribute.isMany());
 		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
+	}
+
+	public EAttribute getEAttribute() {
+		return eAttribute;
 	}
 
 	/*
