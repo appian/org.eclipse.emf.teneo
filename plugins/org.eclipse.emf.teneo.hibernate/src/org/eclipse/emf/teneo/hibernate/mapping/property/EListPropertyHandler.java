@@ -54,7 +54,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -150,7 +150,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				// interface while there
 				// are multiple implementors. FieldUtil does caching of
 				// fieldnames and fields.
-				final Field javaField = FieldUtil.getField(owner.getClass(), getFieldName());
+				final Field javaField = FieldUtil.getField(owner.getClass(), getFieldName(owner));
 				try {
 					javaField.set(owner, pelist);
 				} catch (Exception e) {
@@ -162,7 +162,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 		return obj;
 	}
 
-	protected String getFieldName() {
+	protected String getFieldName(Object owner) {
 		return eFeature.getName();
 	}
 
@@ -242,7 +242,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			}
 			if (log.isDebugEnabled()) {
 				log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
-						" field " + getFieldName());
+						" field " + getFieldName(target));
 			}
 
 		} else {
@@ -252,7 +252,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			// while there
 			// are multiple implementors. FieldUtil does caching of fieldnames
 			// and fields.
-			final Field javaField = FieldUtil.getField(target.getClass(), getFieldName());
+			final Field javaField = FieldUtil.getField(target.getClass(), getFieldName(target));
 
 			try {
 				final Object currentValue = javaField.get(target);
@@ -294,11 +294,12 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				}
 				if (log.isDebugEnabled()) {
 					log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
-							" field " + getFieldName());
+							" field " + getFieldName(target));
 				}
 			} catch (Exception e) {
-				throw new HbMapperException("The field + " + javaField.getName() + " can not be set using object " +
-						value.getClass().getName() + " on target " + target.getClass().getName(), e);
+				throw new HbMapperException("The field + " + (javaField != null ? javaField.getName() : "NULL") +
+						" can not be set using object " + value.getClass().getName() + " on target " +
+						target.getClass().getName(), e);
 			}
 		}
 	}
