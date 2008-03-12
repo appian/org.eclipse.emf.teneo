@@ -54,7 +54,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -297,7 +297,8 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 							" field " + getFieldName(target));
 				}
 			} catch (Exception e) {
-				throw new HbMapperException("The field + " + (javaField != null ? javaField.getName() : "NULL") +
+				throw new HbMapperException("The field " +
+						(javaField != null ? javaField.getName() : getFieldName(target)) +
 						" can not be set using object " + value.getClass().getName() + " on target " +
 						target.getClass().getName(), e);
 			}
