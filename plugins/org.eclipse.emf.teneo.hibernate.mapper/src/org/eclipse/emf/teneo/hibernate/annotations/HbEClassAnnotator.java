@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbEClassAnnotator.java,v 1.3 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbEClassAnnotator.java,v 1.4 2008/03/12 07:30:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbEClassAnnotator extends EClassAnnotator {
@@ -127,6 +127,13 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	@Override
 	protected void setSuperEntity(PAnnotatedEClass aClass) {
 		assert (aClass.getPaSuperEntity() == null);
+
+		// let the superclass do it
+		if (aClass.getEntity() != null && aClass.getEntity().getExtends() != null) {
+			super.setSuperEntity(aClass);
+			return;
+		}
+
 		final EClass eclass = aClass.getModelEClass();
 		if (eclass.getESuperTypes().size() == 0) {
 			aClass.setPaSuperEntity(null);
