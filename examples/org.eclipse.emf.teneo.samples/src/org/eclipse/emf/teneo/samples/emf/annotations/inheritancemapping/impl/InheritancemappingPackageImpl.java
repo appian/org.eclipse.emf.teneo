@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.7 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.8 2008/03/12 07:30:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -15,12 +15,15 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Address;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ChildOne;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ContentList;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Customer;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.DistrictUKAddress;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InternationalPrice;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentOne;
+import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentTwo;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.Price;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.SpecificCustomer;
 import org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddress;
@@ -104,6 +107,27 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * @generated
 	 */
 	private EClass ukAddressListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parentOneEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parentTwoEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass childOneEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -438,6 +462,33 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getParentOne() {
+		return parentOneEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParentTwo() {
+		return parentTwoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChildOne() {
+		return childOneEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getUSState() {
 		return usStateEEnum;
 	}
@@ -516,6 +567,12 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		createEAttribute(ukAddressListEClass, UK_ADDRESS_LIST__NAME);
 		createEReference(ukAddressListEClass, UK_ADDRESS_LIST__ADDRESS);
 
+		parentOneEClass = createEClass(PARENT_ONE);
+
+		parentTwoEClass = createEClass(PARENT_TWO);
+
+		childOneEClass = createEClass(CHILD_ONE);
+
 		// Create enums
 		usStateEEnum = createEEnum(US_STATE);
 
@@ -559,6 +616,8 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		ukAddressEClass.getESuperTypes().add(this.getAddress());
 		usAddressEClass.getESuperTypes().add(this.getAddress());
 		specificCustomerEClass.getESuperTypes().add(this.getCustomer());
+		childOneEClass.getESuperTypes().add(this.getParentOne());
+		childOneEClass.getESuperTypes().add(this.getParentTwo());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(addressEClass, Address.class, "Address", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -597,6 +656,12 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		initEClass(ukAddressListEClass, UKAddressList.class, "UKAddressList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUKAddressList_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, UKAddressList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUKAddressList_Address(), this.getUKAddress(), null, "address", null, 0, -1, UKAddressList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parentOneEClass, ParentOne.class, "ParentOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(parentTwoEClass, ParentTwo.class, "ParentTwo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(childOneEClass, ChildOne.class, "ChildOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(usStateEEnum, USState.class, "USState");

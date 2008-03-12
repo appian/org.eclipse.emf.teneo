@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingFactoryImpl.java,v 1.8 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: InheritancemappingFactoryImpl.java,v 1.9 2008/03/12 07:30:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -77,6 +77,9 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 			case InheritancemappingPackage.CUSTOMER: return createCustomer();
 			case InheritancemappingPackage.SPECIFIC_CUSTOMER: return createSpecificCustomer();
 			case InheritancemappingPackage.UK_ADDRESS_LIST: return createUKAddressList();
+			case InheritancemappingPackage.PARENT_ONE: return createParentOne();
+			case InheritancemappingPackage.PARENT_TWO: return createParentTwo();
+			case InheritancemappingPackage.CHILD_ONE: return createChildOne();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -204,6 +207,36 @@ public class InheritancemappingFactoryImpl extends EFactoryImpl implements Inher
 	public UKAddressList createUKAddressList() {
 		UKAddressListImpl ukAddressList = new UKAddressListImpl();
 		return ukAddressList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParentOne createParentOne() {
+		ParentOneImpl parentOne = new ParentOneImpl();
+		return parentOne;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParentTwo createParentTwo() {
+		ParentTwoImpl parentTwo = new ParentTwoImpl();
+		return parentTwo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChildOne createChildOne() {
+		ChildOneImpl childOne = new ChildOneImpl();
+		return childOne;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackage.java,v 1.3 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: InheritancemappingPackage.java,v 1.4 2008/03/12 07:30:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -522,6 +522,63 @@ public interface InheritancemappingPackage extends EPackage {
 	int UK_ADDRESS_LIST_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentOneImpl <em>Parent One</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentOneImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getParentOne()
+	 * @generated
+	 */
+	int PARENT_ONE = 10;
+
+	/**
+	 * The number of structural features of the '<em>Parent One</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_ONE_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentTwoImpl <em>Parent Two</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentTwoImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getParentTwo()
+	 * @generated
+	 */
+	int PARENT_TWO = 11;
+
+	/**
+	 * The number of structural features of the '<em>Parent Two</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_TWO_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ChildOneImpl <em>Child One</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ChildOneImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getChildOne()
+	 * @generated
+	 */
+	int CHILD_ONE = 12;
+
+	/**
+	 * The number of structural features of the '<em>Child One</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHILD_ONE_FEATURE_COUNT = PARENT_ONE_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState <em>US State</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -529,7 +586,7 @@ public interface InheritancemappingPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getUSState()
 	 * @generated
 	 */
-	int US_STATE = 10;
+	int US_STATE = 13;
 
 	/**
 	 * The meta object id for the '<em>US State Object</em>' data type.
@@ -539,7 +596,7 @@ public interface InheritancemappingPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getUSStateObject()
 	 * @generated
 	 */
-	int US_STATE_OBJECT = 11;
+	int US_STATE_OBJECT = 14;
 
 
 	/**
@@ -830,6 +887,36 @@ public interface InheritancemappingPackage extends EPackage {
 	EReference getUKAddressList_Address();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentOne <em>Parent One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parent One</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentOne
+	 * @generated
+	 */
+	EClass getParentOne();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentTwo <em>Parent Two</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parent Two</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentTwo
+	 * @generated
+	 */
+	EClass getParentTwo();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ChildOne <em>Child One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Child One</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ChildOne
+	 * @generated
+	 */
+	EClass getChildOne();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState <em>US State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1108,6 +1195,36 @@ public interface InheritancemappingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UK_ADDRESS_LIST__ADDRESS = eINSTANCE.getUKAddressList_Address();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentOneImpl <em>Parent One</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentOneImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getParentOne()
+		 * @generated
+		 */
+		EClass PARENT_ONE = eINSTANCE.getParentOne();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentTwoImpl <em>Parent Two</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentTwoImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getParentTwo()
+		 * @generated
+		 */
+		EClass PARENT_TWO = eINSTANCE.getParentTwo();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ChildOneImpl <em>Child One</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ChildOneImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.InheritancemappingPackageImpl#getChildOne()
+		 * @generated
+		 */
+		EClass CHILD_ONE = eINSTANCE.getChildOne();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState <em>US State</em>}' enum.

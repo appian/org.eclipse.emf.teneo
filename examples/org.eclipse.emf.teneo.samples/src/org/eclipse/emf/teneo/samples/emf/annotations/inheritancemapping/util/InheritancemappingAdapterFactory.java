@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingAdapterFactory.java,v 1.4 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: InheritancemappingAdapterFactory.java,v 1.5 2008/03/12 07:30:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
 
@@ -110,6 +110,18 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseUKAddressList(UKAddressList object) {
 				return createUKAddressListAdapter();
+			}
+			@Override
+			public Adapter caseParentOne(ParentOne object) {
+				return createParentOneAdapter();
+			}
+			@Override
+			public Adapter caseParentTwo(ParentTwo object) {
+				return createParentTwoAdapter();
+			}
+			@Override
+			public Adapter caseChildOne(ChildOne object) {
+				return createChildOneAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -268,6 +280,48 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUKAddressListAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentOne <em>Parent One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentOne
+	 * @generated
+	 */
+	public Adapter createParentOneAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentTwo <em>Parent Two</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentTwo
+	 * @generated
+	 */
+	public Adapter createParentTwoAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ChildOne <em>Child One</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ChildOne
+	 * @generated
+	 */
+	public Adapter createChildOneAdapter() {
 		return null;
 	}
 

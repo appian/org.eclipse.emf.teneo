@@ -226,4 +226,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParentOne"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParentTwo"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChildOne" eSuperTypes="#//ParentOne #//ParentTwo"/>
 </ecore:EPackage>

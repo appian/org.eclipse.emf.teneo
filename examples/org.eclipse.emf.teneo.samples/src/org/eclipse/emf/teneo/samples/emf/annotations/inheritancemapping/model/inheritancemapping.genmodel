@@ -50,5 +50,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//UKAddressList/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference inheritancemapping.ecore#//UKAddressList/address"/>
     </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ParentOne"/>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ParentTwo"/>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ChildOne"/>
   </genPackages>
 </genmodel:GenModel>

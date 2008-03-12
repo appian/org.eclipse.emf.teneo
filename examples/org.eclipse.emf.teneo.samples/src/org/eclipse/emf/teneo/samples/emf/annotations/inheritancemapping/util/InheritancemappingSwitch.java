@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingSwitch.java,v 1.4 2008/03/10 22:19:03 mtaal Exp $
+ * $Id: InheritancemappingSwitch.java,v 1.5 2008/03/12 07:30:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
 
@@ -150,6 +150,26 @@ public class InheritancemappingSwitch<T> {
 			case InheritancemappingPackage.UK_ADDRESS_LIST: {
 				UKAddressList ukAddressList = (UKAddressList)theEObject;
 				T result = caseUKAddressList(ukAddressList);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case InheritancemappingPackage.PARENT_ONE: {
+				ParentOne parentOne = (ParentOne)theEObject;
+				T result = caseParentOne(parentOne);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case InheritancemappingPackage.PARENT_TWO: {
+				ParentTwo parentTwo = (ParentTwo)theEObject;
+				T result = caseParentTwo(parentTwo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case InheritancemappingPackage.CHILD_ONE: {
+				ChildOne childOne = (ChildOne)theEObject;
+				T result = caseChildOne(childOne);
+				if (result == null) result = caseParentOne(childOne);
+				if (result == null) result = caseParentTwo(childOne);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -304,6 +324,51 @@ public class InheritancemappingSwitch<T> {
 	 * @generated
 	 */
 	public T caseUKAddressList(UKAddressList object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parent One</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parent One</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParentOne(ParentOne object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parent Two</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parent Two</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParentTwo(ParentTwo object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Child One</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Child One</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChildOne(ChildOne object) {
 		return null;
 	}
 
