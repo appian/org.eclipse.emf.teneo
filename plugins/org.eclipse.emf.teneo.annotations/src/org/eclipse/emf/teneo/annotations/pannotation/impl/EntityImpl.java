@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EntityImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: EntityImpl.java,v 1.8 2008/03/12 07:30:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EntityImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EntityImpl#getExtends <em>Extends</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +46,26 @@ public class EntityImpl extends PAnnotationImpl implements Entity {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getExtends() <em>Extends</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtends()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXTENDS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExtends() <em>Extends</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtends()
+	 * @generated
+	 * @ordered
+	 */
+	protected String extends_ = EXTENDS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,11 +112,34 @@ public class EntityImpl extends PAnnotationImpl implements Entity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getExtends() {
+		return extends_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExtends(String newExtends) {
+		String oldExtends = extends_;
+		extends_ = newExtends;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ENTITY__EXTENDS, oldExtends, extends_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.ENTITY__NAME:
 				return getName();
+			case PannotationPackage.ENTITY__EXTENDS:
+				return getExtends();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,6 +154,9 @@ public class EntityImpl extends PAnnotationImpl implements Entity {
 		switch (featureID) {
 			case PannotationPackage.ENTITY__NAME:
 				setName((String)newValue);
+				return;
+			case PannotationPackage.ENTITY__EXTENDS:
+				setExtends((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,6 +173,9 @@ public class EntityImpl extends PAnnotationImpl implements Entity {
 			case PannotationPackage.ENTITY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case PannotationPackage.ENTITY__EXTENDS:
+				setExtends(EXTENDS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -140,6 +190,8 @@ public class EntityImpl extends PAnnotationImpl implements Entity {
 		switch (featureID) {
 			case PannotationPackage.ENTITY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case PannotationPackage.ENTITY__EXTENDS:
+				return EXTENDS_EDEFAULT == null ? extends_ != null : !EXTENDS_EDEFAULT.equals(extends_);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -156,6 +208,8 @@ public class EntityImpl extends PAnnotationImpl implements Entity {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", extends: ");
+		result.append(extends_);
 		result.append(')');
 		return result.toString();
 	}

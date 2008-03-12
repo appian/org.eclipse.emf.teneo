@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EntityValidator.java,v 1.1 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: EntityValidator.java,v 1.2 2008/03/12 07:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.validation;
 
@@ -17,4 +17,6 @@ public interface EntityValidator {
 	boolean validate();
 
 	boolean validateName(String value);
+
+	boolean validateExtends(String value);
 }

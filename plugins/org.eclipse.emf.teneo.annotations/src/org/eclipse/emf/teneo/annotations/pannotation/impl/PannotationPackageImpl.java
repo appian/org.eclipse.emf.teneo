@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.19 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.20 2008/03/12 07:30:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -686,6 +686,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getEntity_Name() {
 		return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEntity_Extends() {
+		return (EAttribute)entityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1576,6 +1585,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		entityEClass = createEClass(ENTITY);
 		createEAttribute(entityEClass, ENTITY__NAME);
+		createEAttribute(entityEClass, ENTITY__EXTENDS);
 
 		enumeratedEClass = createEClass(ENUMERATED);
 		createEAttribute(enumeratedEClass, ENUMERATED__VALUE);
@@ -1815,6 +1825,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntity_Extends(), ecorePackage.getEString(), "extends", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enumeratedEClass, Enumerated.class, "Enumerated", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEnumerated_Value(), this.getEnumType(), "value", "ORDINAL", 0, 1, Enumerated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2008,7 +2019,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																									
+		   });																																																								
 	}
 
 	/**
@@ -2025,7 +2036,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																								
+		   });																																																							
 	}
 
 	/**
@@ -2082,7 +2093,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "NoInterface NoReservedName"
-		   });				
+		   });			
 		addAnnotation
 		  (enumeratedEClass, 
 		   source, 
@@ -2219,7 +2230,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EClass"
-		   });				
+		   });			
 		addAnnotation
 		  (enumeratedEClass, 
 		   source, 
@@ -2384,13 +2395,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																				
-		addAnnotation
-		  (entityEClass, 
-		   source, 
-		   new String[] {
-			 "ignore", "true"
-		   });																																			
+		   });																																																					
 	}
 
 	/**
@@ -2406,7 +2411,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																										
+		   });																																									
 	}
 
 	/**

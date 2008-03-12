@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.12 2007/11/14 16:37:55 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.13 2008/03/12 07:30:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -742,13 +742,22 @@ public interface PannotationPackage extends EPackage {
 	int ENTITY__NAME = PANNOTATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Extends</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__EXTENDS = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Entity</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+	int ENTITY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2194,6 +2203,17 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getEntity_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Entity#getExtends <em>Extends</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Extends</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.Entity#getExtends()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EAttribute getEntity_Extends();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue <em>Generated Value</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Generated Value</em>'.
@@ -3502,6 +3522,14 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Extends</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENTITY__EXTENDS = eINSTANCE.getEntity_Extends();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EnumeratedImpl <em>Enumerated</em>}' class.

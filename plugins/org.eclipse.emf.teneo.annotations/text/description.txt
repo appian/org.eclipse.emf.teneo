@@ -137,6 +137,7 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
 
   Class Entity -> PAnnotation
     Attribute name : EString
+    Attribute extends : EString
 
   Class Enumerated -> PAnnotation
     Attribute value : EnumType

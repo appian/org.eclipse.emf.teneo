@@ -131,10 +131,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NoInterface NoReservedName"/>
     </eAnnotations>
-    <eAnnotations source="teneo/internal/PersistenceMapping">
-      <details key="ignore" value="true"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extends" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Enumerated" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

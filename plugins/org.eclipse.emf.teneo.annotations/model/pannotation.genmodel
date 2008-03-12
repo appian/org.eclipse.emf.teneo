@@ -170,6 +170,7 @@
     <genClasses ecoreClass="pannotation.ecore#//EmbeddedId"/>
     <genClasses ecoreClass="pannotation.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Entity/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Entity/extends"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//Enumerated">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Enumerated/value"/>
