@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.5 2008/02/28 07:08:32 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.6 2008/03/12 07:30:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -253,6 +253,17 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (eclass.getESuperTypes().size() == 0) {
 			return;
 		}
+		// check for overridden using extends
+		if (aClass.getEntity() != null && aClass.getEntity().getExtends() != null) {
+			final EClass superEClass = aClass.getPaModel().getEClass(aClass.getEntity().getExtends());
+			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEClass);
+			if (!processedAClasses.contains(superAClass)) {
+				annotate(superAClass);
+			}
+			aClass.setPaSuperEntity(superAClass);
+			return;
+		}
+
 		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass.getESuperTypes().get(0));
 		if (superAClass.getEntity() != null || superAClass.getMappedSuperclass() != null) {
 			aClass.setPaSuperEntity(superAClass);
