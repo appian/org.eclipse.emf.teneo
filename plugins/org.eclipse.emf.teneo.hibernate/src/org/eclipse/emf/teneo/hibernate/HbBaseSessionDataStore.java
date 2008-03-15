@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.2 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.3 2008/03/15 06:15:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,10 +38,12 @@ import org.hibernate.stat.Statistics;
  * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 @SuppressWarnings("unchecked")
 public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
+
+	private static final long serialVersionUID = 1L;
 
 	/** The persistency manager factory */
 	private SessionFactory sessionFactory;

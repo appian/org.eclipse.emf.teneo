@@ -48,6 +48,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
+import org.eclipse.emf.teneo.hibernate.resource.HibernateXMLResourceFactory;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.EntityMode;
@@ -75,7 +76,7 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -92,8 +93,10 @@ public abstract class HbDataStore implements DataStore {
 		log.debug("Initializing protocol/extension for hibernate");
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("hibernate", new HibernateResourceFactory());
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("ehb", new HibernateResourceFactory());
+		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("hbxml", new HibernateXMLResourceFactory());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("hibernate", new HibernateResourceFactory());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ehb", new HibernateResourceFactory());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("hbxml", new HibernateXMLResourceFactory());
 	}
 
 	/** HashMap with referers */
@@ -1085,7 +1088,6 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/** Returns the persistent class for a certain EObject */
-	@SuppressWarnings("unchecked")
 	public PersistentClass getPersistentClass(String entityName) {
 		final Iterator<?> it = getClassMappings();
 		while (it.hasNext()) {
