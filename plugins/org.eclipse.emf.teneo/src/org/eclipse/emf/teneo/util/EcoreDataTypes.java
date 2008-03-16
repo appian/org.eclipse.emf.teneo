@@ -14,7 +14,7 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.10 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.11 2008/03/16 19:34:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -311,7 +311,7 @@ public class EcoreDataTypes {
 			// could be an XML date type
 			return eDataType.equals(xmlDateTimeEDataType);
 		}
-		return java.sql.Timestamp.class == ic;
+		return java.sql.Timestamp.class == ic || Date.class == ic;
 	}
 
 	/**
