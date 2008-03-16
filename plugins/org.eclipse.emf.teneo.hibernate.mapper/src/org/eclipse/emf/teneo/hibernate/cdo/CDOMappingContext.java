@@ -56,12 +56,12 @@ public class CDOMappingContext extends MappingContext {
 
 	@Override
 	public String getEnumUserType() {
-		return super.getEnumUserType();
+		return "string";
 	}
 
 	@Override
 	public String getEnumIntegerUserType() {
-		return super.getEnumIntegerUserType();
+		return "int";
 	}
 
 	@Override
@@ -76,12 +76,12 @@ public class CDOMappingContext extends MappingContext {
 
 	@Override
 	public String getDynamicEnumUserType() {
-		return super.getDynamicEnumIntegerUserType();
+		return "string";
 	}
 
 	@Override
 	public String getDynamicEnumIntegerUserType() {
-		return super.getDynamicEnumIntegerUserType();
+		return "int";
 	}
 
 	@Override

@@ -66,6 +66,7 @@ public class CDOHelper {
 	 * other way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
+		CDOHelper.getInstance().registerCDOExtensions(extensionManager);
 		return MappingUtil.generateMapping(epackages, props, extensionManager);
 	}
 }
