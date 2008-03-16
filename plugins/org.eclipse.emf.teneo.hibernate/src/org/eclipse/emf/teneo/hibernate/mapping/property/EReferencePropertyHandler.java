@@ -36,7 +36,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -134,7 +134,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 				}
 			}
 		} else {
-			if (curValue == null && value == null) {
+			if (curValue == value) {
 				return; // do nothing in this case
 			}
 			final EObject eobj = (EObject) target;

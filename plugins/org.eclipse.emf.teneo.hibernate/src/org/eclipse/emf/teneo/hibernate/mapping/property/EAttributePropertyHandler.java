@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.9 2008/03/11 21:25:52 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.10 2008/03/16 20:20:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -43,7 +43,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -154,6 +154,9 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 
 		final Object curValue = get(target);
 		if (curValue != null && curValue.equals(value)) {
+			return; // do not set if not changed
+		}
+		if (curValue == value) {
 			return; // do not set if not changed
 		}
 		EObject eobj = (EObject) target;
