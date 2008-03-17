@@ -163,7 +163,10 @@
 <a href="../../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
 </div>
 <div class="menuitem">
-<a href="../../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+<a href="../../hibernate/gmftutorial/tutorial3.html">GMF Changes</a>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/gmftutorial/tutorial4.html">Running the editor</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Details</div>
@@ -274,25 +277,12 @@
 <div class="app" id="projecthome">
 		
 <p>
-			
-<strong>
-				This tutorial is not completely up-to-date anymore for the latest release of
-				Teneo/Eclipse. Please also see the EMFT newsgroup (search for posts with the title
-				GMF) for more information. This tutorial is still made available because it in
-				general still gives a good overview of the different steps required to integrated
-				Teneo and GMF. It will be updated in the near future.
-			</strong>
-		
-</p>
-		
-<p>
-			This tutorial describes how the Hibernate EMF resource can be used in a graphical editor
-			generated using the
-			<a class="external" href="http://www.eclipse.org/gmf/">Graphical Modeling Framework (GMF)</a>
-			.
+			This tutorial describes how the generated GMF editor can be adapted to operate on a relational 
+			database. Both the diagram data and the model data will be stored in the same relational 
+			database.   
 		</p>
 		
-<p>From the GMF website:</p>
+<p>From the <a class="external" href="http://www.eclipse.org/gmf/">GMF</a> website:</p>
 		
 <p>
 			The Eclipse Graphical Modeling Framework (GMF) provides a generative component and
@@ -304,12 +294,19 @@
 <p>
 			
 <em>
-				This tutorial shows a 'quick-and-dirty' method to let the Mindmap example work with
-				Hibernate. The chosen approach is to make very small changes to the generated code
-				and is not focused on an elegant or optimal solution.
+				This tutorial shows you how to adapt the plugins from the Mindmap tutorial to operate 
+				on a relational database using hibernate. The chosen approach is to make very small changes to the generated code
+				and is not necessarily focused on an elegant or optimal solution.
 			</em>
 		
 </p>
+		
+<p>
+		The result of this tutorial will be a displayed as a menu option in Eclipse which directly opens the editor 
+		on a relational database.</p>
+			
+<p>
+<img alt="Diagram" src="images/opening.jpg"></p>
 		
 <p>
 			
@@ -334,12 +331,19 @@
 			</li>
 			
 <li>
-				You have done the Mindmap tutorial described
+				You have done part 1 of the Mindmap tutorial described
 				<a class="external" href="http://wiki.eclipse.org/index.php/GMF_Tutorial">here</a>
 				. This tutorial builds further on the mindmap example.
 			</li>
+			
+<li>This tutorial uses mysql as an example, as a prerequisite you need to create an 
+			empty database in your database with the name mindmap.</li>
 		
 </ul>
+		
+<p>The result of this tutorial can be downloaded from cvs: Host: dev.eclipse.org, path: /cvsroot/modeling 
+		and module org.eclipse.emf/org.eclipse.emf.teneo/examples/gmf/. The projects in cvs assume that the hibernate library
+		project is called Hibernate Libraries.</p>
 		
 <p>
 			The
@@ -357,7 +361,7 @@
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2007 The Elver Project</a>
+          Copyright &copy; 2008 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>

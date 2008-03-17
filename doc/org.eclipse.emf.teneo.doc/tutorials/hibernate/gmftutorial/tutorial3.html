@@ -16,7 +16,7 @@
 <link href="../../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../../">
 <script type="text/javascript" src="../../skin/tigris.js"></script><script src="../../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title>Running the GMF Editor</title>
+<title>The GMF database Editor</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -163,7 +163,10 @@
 <a href="../../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
 </div>
 <div class="menupage">
-<div class="menupagetitle">Running the editor</div>
+<div class="menupagetitle">GMF Changes</div>
+</div>
+<div class="menuitem">
+<a href="../../hibernate/gmftutorial/tutorial4.html">Running the editor</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Details</div>
@@ -268,112 +271,139 @@
 <div id="bodycol">
 <div id="apphead">
 <h2>
-<em>Running the GMF Editor</em>
+<em>The GMF database Editor</em>
 </h2>
 </div>
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
-<a href="#Link+to+the+database">Link to the database</a>
+<a href="#Change+MindmapDiagramEditor">Change MindmapDiagramEditor</a>
 </li>
 <li>
-<a href="#Running+the+diagram">Running the diagram</a>
-</li>
-<li>
-<a href="#Hibernate+Resources">Hibernate Resources</a>
-</li>
-<li>
-<a href="#Possible+issues">Possible issues</a>
+<a href="#Open+editor+action">Open editor action</a>
 </li>
 </ul>
 		
-<p>This section replaces the 'Running the diagram' part of the GMF tutorial.</p>
-		
-<a name="N10011"></a><a name="Link+to+the+database"></a>
+<p>In this step of the tutorial the generated editor class will be changed to accomodate for a database 
+		resource. This editor is made available as a 
+		menu option in the main Eclipse window.</p>
+	
+<a name="N10011"></a><a name="Change+MindmapDiagramEditor"></a>
 <div class="h3">
-<h3>Link to the database</h3>
-			
-			
-<p>Teneo requires connection information as well as which epackages are to be persisted
-			in the database. For this tutorial this information is set in a property file.</p>
-			
-<p>You can download a property file with most information set for the mindmap tutorial <a href="teneo.mindmap">here</a>.</p>
-			
-<p>Remarks:</p>
-			
+<h3>Change MindmapDiagramEditor</h3>
+		
+<p>The generated MindmapDiagramEditor can be found in
+		the org.eclipse.gmf.examples.mindmap.diagram.part package. The changes are required because the generated
+		editor assumes that the information (resources) is stored in files. This assumption results in the following
+		issues when directly using database resources:
+		</p>
+		
 <ul>
-			
-<li>The database properties in the property file have to be changed to contain your own database connection 
-			information.</li>
-			
-<li>
-<em>The property file is set to use the database 'mindmap'. This database has to exist (but can be empty).</em>
-</li>
-			
+		
+<li>GMF checks if the file containing the data exists in the workspace, for a database resource this will not work and always result
+		in a save-as dialog.</li>
+		
+<li>GMF will consider the database uri as a read-only uri as it is not a standard platform uri.</li>
+		
 </ul>
 		
-</div>
+<p>To overcome these issue the following code has to be added to the MindmapDiagramEditor:</p>
 		
-<a name="N1002F"></a><a name="Running+the+diagram"></a>
-<div class="h3">
-<h3>Running the diagram</h3>
-		
-<p>To run the diagram start a second workbench and create a project. Then save the property file 
-		in the project. The property file must have the extension mindmap.</p>
-		
-<p>Next right click on the property file and select 'Initialize mindmap_diagram diagram file'.
-		</p>
-			
-<p>
-<img alt="Initialize diagram" src="../images/gmf_initialize.jpg"></p>
-		
-<p>Just select the default choices in the wizard. After pressing finish the tables in
-		the database are created and the mindmap diagram editor is opened.
-		</p>
-		
-<p></p>
-		
-<p>
-			
-<img alt="Initialize diagram" src="../images/gmf_diagram1.jpg"></p>
-		
-<p>Now you can create topics and relate them. When you press save the data is stored in the database.
-			</p>
-<p>
-<img alt="Save diagram" src="../images/gmf_diagram2.jpg"></p>
-		
-<p>You can close the editor and re-open it by right-clicking on the mindmap_diagram file. The open logic assumes 
-		that the mindmap_diagram file and the .mindmap file are in the same location.
-			<img alt="Open diagram" src="../images/gmf_reopen.jpg"></p>
-		
-</div>
-		
-<a name="N10058"></a><a name="Hibernate+Resources"></a>
-<div class="h3">
-<h3>Hibernate Resources</h3>
-		
-<p>This tutorial makes use of a specific implementation of EMF resource for Hibernate. For more
-		information regarding the use of these resources see <a href="../hibernateresources.html">here</a>.
-		</p>
-		
-</div>
-		
-<a name="N10065"></a><a name="Possible+issues"></a>
-<div class="h3">
-<h3>Possible issues</h3>		
-			
-<p>
-<em>If you get this exception then you did not set the Eclipse-BuddyPolicy in the plugin containing the Hibernate libraries
-			(see <a href="../installation.html#Hibernate+Libraries">here</a>)</em>:</p>
-			
 <pre class="code">
-org.hibernate.MappingException: Could not determine type for: 
-	org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType, for columns: [org.hibernate.mapping.Column(econtainer_class), org.hibernate.mapping.Column(e_container)]
-at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:266)
-at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:253)
-at org.hibernate.mapping.Property.isValid(Property.java:185)
-			</pre>
+@Override
+// register the resource as not being readonly
+public void setInput(IEditorInput input) {
+	// this part is copied from the super.setInput because
+	// the catch block was hiding the underlying exception
+	// for now a printStackTrace is added for better visibility
+	// this should ofcourse be replaced by logging
+	try {
+		doSetInput(input, true);
+	} catch (CoreException x) {
+		x.printStackTrace(System.err);
+		String title = x.getMessage();
+		String msg = x.getMessage();
+		Shell shell = getSite().getShell();
+		ErrorDialog.openError(shell, title, msg, x.getStatus());
+	}
+
+	// set the resource in the resourcetoreadonly map
+	final ResourceSet rs = getEditingDomain().getResourceSet();
+	for (Resource res : rs.getResources()) {
+		((AdapterFactoryEditingDomain) getEditingDomain())
+				.getResourceToReadOnlyMap().put(res, new Boolean(false));
+	}
+}
+
+@Override
+// implement a more simple save as there are no save-as dialogs involved
+public void doSave(IProgressMonitor progressMonitor) {
+	updateState(getEditorInput());
+	validateState(getEditorInput());
+	performSave(false, progressMonitor);
+}
+		</pre>
+	
+</div>
+	
+<a name="N1002A"></a><a name="Open+editor+action"></a>
+<div class="h3">
+<h3>Open editor action</h3>
+	
+<p>Then the next step is to actually open the editor directly without going through a open file dialog.</p>
+	
+<p>For this you can use the OpenMindmapDBEditor.java which can be downloaded <a href="files/OpenMindmapDBEditor.java">here</a>. This 
+	class is fairly simple, the relevant code is:</p>
+	
+<pre class="code">
+initializeData();
+final IWorkbenchPage page = window.getActivePage();
+page.openEditor(new URIEditorInput(StoreController.DATABASE_URI),
+		MindmapDiagramEditor.ID);
+	</pre>
+	
+<p>The initializeData call is to a method (see the source file) which makes sure that there is at least one 
+	Map and Diagram instance in the db. This is required by the editor.</p>
+	
+<p>The most relevant part is opening the generated MindmapDiagramEditor using the Database Uri.</p>
+	
+<p>To make this ActionDelegate available as a global Eclipse menu option the following has to be added to the 
+	plugin.xml of the gmf diagram project (just before the closing plugin tag):</p>
+	
+<pre class="code">
+&lt;!-- 
+Adds a global menu, note is a rather simplistic method of adding a global menu option (is always visible).	
+--&gt;
+&lt;extension
+   id="mindmap.gmf.editor.actions"
+   point="org.eclipse.ui.actionSets"&gt;
+	&lt;actionSet
+      id="mindmap.gmf.editor.actions"
+      label="Mindmap DB"
+      visible="true"&gt;
+	   	&lt;menu
+	         id="mmMenu"
+	         label="Mindmap DB"&gt;
+	      		&lt;separator name="mmgroup"&gt;
+	      		&lt;/separator&gt;
+   		&lt;/menu&gt;
+   		&lt;action
+			 id="mindmap.teneo.gmf.action0"
+			label="Open DB Editor"
+			menubarPath="mmMenu/mmgroup"
+			style="push"&gt;
+	      		&lt;class class="org.eclipse.gmf.examples.mindmap.diagram.db.OpenMindmapDBEditor"&gt;
+	      		&lt;/class&gt;
+   		&lt;/action&gt;
+	&lt;/actionSet&gt;  
+&lt;/extension&gt;
+	</pre>
 		
+<p>
+			The
+			<a href="tutorial4.html">next step</a> wraps it up and discusses running the diagram editor.
+		</p>
+	
 </div>
 	
 </div>
@@ -386,7 +416,7 @@ at org.hibernate.mapping.Property.isValid(Property.java:185)
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2007 The Elver Project</a>
+          Copyright &copy; 2008 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>

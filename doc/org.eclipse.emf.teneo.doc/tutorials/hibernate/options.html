@@ -163,7 +163,10 @@
 <a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+<a href="../hibernate/gmftutorial/tutorial3.html">GMF Changes</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial4.html">Running the editor</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
@@ -704,9 +707,8 @@
 				
 <li>
 					
-<strong>PersistenceOptions.UPDATE_SCHEMA</strong>
-					(default: true): if set to "false" then the database schema is not updated when initializing a
-					HbDataStore. This improves startup times.
+<strong>PersistenceOptions.UPDATE_SCHEMA: REMOVED</strong>
+					: this option is not available anymore, the hibernate option hibernate.hbm2ddl.auto can be used.
 				</li>
 
 				
@@ -732,7 +734,7 @@
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2007 The Elver Project</a>
+          Copyright &copy; 2008 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>

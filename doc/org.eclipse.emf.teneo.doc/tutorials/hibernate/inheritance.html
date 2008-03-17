@@ -163,7 +163,10 @@
 <a href="../hibernate/gmftutorial/tutorial2.html">Environment Setup</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/gmftutorial/tutorial3.html">Running the editor</a>
+<a href="../hibernate/gmftutorial/tutorial3.html">GMF Changes</a>
+</div>
+<div class="menuitem">
+<a href="../hibernate/gmftutorial/tutorial4.html">Running the editor</a>
 </div>
 </div>
 <div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
@@ -288,6 +291,9 @@
 </li>
 <li>
 <a href="#Limitation">Limitation</a>
+</li>
+<li>
+<a href="#The+%40Entity+annotation%2C+choosing+a+different+supertype+for+relational+mapping">The @Entity annotation, choosing a different supertype for relational mapping</a>
 </li>
 <li>
 <a href="#Other+inheritance+mappings%3A+single-table%2C+table-per-concrete-class%2C+implicit+polymorphism%2C+any-reference">Other inheritance mappings: single-table, table-per-concrete-class, implicit polymorphism, any-reference</a>
@@ -416,7 +422,17 @@
 		the AssetList table. So when an AssetList with SchoolBooks is persisted the save action will fail.</p>
 </div>
 		
-<a name="N1007A"></a><a name="Other+inheritance+mappings%3A+single-table%2C+table-per-concrete-class%2C+implicit+polymorphism%2C+any-reference"></a>
+<a name="N1007A"></a><a name="The+%40Entity+annotation%2C+choosing+a+different+supertype+for+relational+mapping"></a>
+<div class="h4">
+<h4>The @Entity annotation, choosing a different supertype for relational mapping</h4>
+<p>As described above Teneo, as a default, chooses the first supertype as the one to use to generate the relational mapping. 
+		However there are cases (see <a href="gmftutorial/tutorial2.html#GMF+Multiple+Inheritance">here</a> for example) that this is not desired and it is neither possible to change the supertype definition. 
+		In this situation you can use the @Entity annotation and its extends field. The extends field should be set to the 
+		entityname of the desired supertype. See the this <a href="gmftutorial/files/annotations.xml">annotations.xml</a> as an example.
+		</p>
+</div>		
+		
+<a name="N1008B"></a><a name="Other+inheritance+mappings%3A+single-table%2C+table-per-concrete-class%2C+implicit+polymorphism%2C+any-reference"></a>
 <div class="h4">
 <h4>Other inheritance mappings: single-table, table-per-concrete-class, implicit polymorphism, any-reference</h4>
 <p>The example above uses a joined-subclass strategy. With single-table basically the same limitation applies. With table-per-concrete-class other limitations apply as described 
@@ -428,7 +444,7 @@
 		
 </div>
 		
-<a name="N1008A"></a><a name="Links+to+Inheritance-Mapping+Articles"></a>
+<a name="N1009B"></a><a name="Links+to+Inheritance-Mapping+Articles"></a>
 <div class="h3">
 <h3>Links to Inheritance-Mapping Articles</h3>
 		
@@ -456,7 +472,7 @@
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2007 The Elver Project</a>
+          Copyright &copy; 2008 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>
