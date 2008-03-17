@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: QuickStart.java,v 1.31 2008/03/17 19:30:36 mtaal Exp $
+ * $Id: QuickStart.java,v 1.32 2008/03/17 23:54:08 mtaal Exp $
  */
 
 package hbtutorial;
@@ -33,7 +33,7 @@ import org.hibernate.Transaction;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
 */
 public class QuickStart {
 
