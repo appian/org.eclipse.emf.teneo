@@ -31,7 +31,7 @@ import testinheritance.TestinheritancePackage;
  * Tests multiple inheritance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -120,6 +120,7 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 			child.setName("myName");
 			child.setTestId(4); // this is the key!
 			store.store(child);
+			store.commitTransaction();
 		}
 
 		try {
