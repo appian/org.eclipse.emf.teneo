@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.5 2008/02/28 07:08:32 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.6 2008/03/17 23:54:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class AbstractProcessingContext {
@@ -205,7 +205,7 @@ public class AbstractProcessingContext {
 		// have a real super type, in that case the id can be inherited from the
 		// mappedsuperclass
 		final ArrayList<EStructuralFeature> mappedSuperFeatures = new ArrayList<EStructuralFeature>();
-		if (aClass.getPaSuperEntity() == null) {
+		if (aClass.getPaSuperEntity() == null || aClass.getPaSuperEntity().getMappedSuperclass() != null) {
 			for (EClass mappedSuperEClass : mappedSuperEClasses) {
 				mappedSuperFeatures.removeAll(mappedSuperEClass.getEAllStructuralFeatures());
 				mappedSuperFeatures.addAll(mappedSuperEClass.getEAllStructuralFeatures());
