@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyToOneMapper.java,v 1.22 2008/02/28 07:07:43 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.23 2008/03/17 19:30:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -114,6 +114,13 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 				associationElement.addAttribute("not-null", getHbmContext().isForceOptional() || mto.isOptional() ||
 						getHbmContext().isCurrentElementFeatureMap() ? "false" : "true");
 			}
+		}
+
+		// note that the reference must be required, nullable and unique columns are not supported
+		// by ms sql server
+		// because ms sql server also sees null as a value
+		if (paReference.getModelEReference().isContainment() && paReference.getModelEReference().isRequired()) {
+			associationElement.addAttribute("unique", "true");
 		}
 
 		// MT: TODO; the characteristic of the other side should be checked (if
