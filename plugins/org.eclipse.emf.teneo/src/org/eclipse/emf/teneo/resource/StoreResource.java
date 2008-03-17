@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.27 2008/03/10 21:31:20 mtaal Exp $
+ * $Id: StoreResource.java,v 1.28 2008/03/17 16:13:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -368,8 +368,8 @@ public abstract class StoreResource extends ResourceImpl {
 	@Override
 	protected void doUnload() {
 		isUnLoading = true;
-		clearChangeTrackerArrays();
 		super.doUnload();
+		clearChangeTrackerArrays();
 		isUnLoading = false;
 	}
 

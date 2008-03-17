@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.12 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.13 2008/03/17 16:13:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the options set in the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -281,6 +281,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getJoinTableName(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute)
 	 */
 	public String getJoinTableName(PAnnotatedEAttribute aAttribute) {
+		// note for array the isMany is false, so disable this check
 		assert (aAttribute.getModelEAttribute().isMany());
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
 		return convert(getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_" +
