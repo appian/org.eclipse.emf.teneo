@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.12 2008/03/10 06:02:44 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.13 2008/03/17 16:13:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -104,6 +104,7 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 			throw new IllegalStateException("EntityTransaction is null, call begin before commit!");
 		}
 		entityTransaction.commit();
+		entityTransaction = null;
 	}
 
 	/** Rollback transaction */
@@ -112,6 +113,7 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 			throw new IllegalStateException("EntityTransaction is null, call begin before commit!");
 		}
 		entityTransaction.rollback();
+		entityTransaction = null;
 	}
 
 	/** Return an object using the entityname and a serializable id */

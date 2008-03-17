@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.21 2008/03/10 06:02:44 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.22 2008/03/17 16:13:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -59,7 +59,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -350,6 +350,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 			err = false;
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 			throw new HbMapperException("Exception when saving resource " + emfDataStore.getName(), e);
 		} finally {
 			if (!hasSessionController) {

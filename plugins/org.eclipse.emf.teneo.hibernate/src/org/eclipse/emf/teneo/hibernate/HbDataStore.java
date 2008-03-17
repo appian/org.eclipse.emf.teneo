@@ -70,13 +70,12 @@ import org.hibernate.mapping.Property;
 import org.hibernate.mapping.SimpleValue;
 import org.hibernate.mapping.Table;
 import org.hibernate.mapping.Value;
-import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 
 /**
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -217,7 +216,10 @@ public abstract class HbDataStore implements DataStore {
 		// set the event listeners
 		setEventListeners();
 
-		updateDatabaseSchema();
+		if (getPersistenceOptions().isUpdateSchema()) {
+			log
+				.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
+		}
 
 		log.debug("Registering datastore with persistent classes");
 		HbHelper.INSTANCE.registerDataStoreByPC(this);
@@ -610,17 +612,18 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/** Updates the database schema */
-	protected void updateDatabaseSchema() {
-		if (!getPersistenceOptions().isUpdateSchema()) {
-			log.debug("Database schema not updated, option " + PersistenceOptions.UPDATE_SCHEMA +
-					" has been set to false");
-			return;
-		}
-		log.debug("Starting update of schema");
-		new SchemaUpdate(getHibernateConfiguration()).execute(false, true);
-		log.debug(">>> Update of schema finished");
-	}
-
+	// this method is removed because it is just as easy to use the hibernate option
+	// hibernate.hbm2ddl.auto directly
+// protected void updateDatabaseSchema() {
+// if (getPersistenceOptions().isUpdateSchema()) {
+// log.debug("Database schema not updated, option " + PersistenceOptions.UPDATE_SCHEMA +
+// " has been set to false");
+// return;
+// }
+// log.debug("Starting update of schema");
+// new SchemaUpdate(getHibernateConfiguration()).execute(false, true);
+// log.debug(">>> Update of schema finished");
+// }
 	/**
 	 * Adds a econtainer mapping to the class mapping, is only called for eclasses which do not have
 	 * am explicit feature which points to the container
