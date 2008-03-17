@@ -34,7 +34,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class ReadEcore {
 
@@ -44,31 +44,29 @@ public class ReadEcore {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
-			if (false) {
-				final ResourceSet resourceSet = new ResourceSetImpl();
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*",
-					new EcoreResourceFactoryImpl());
-				final ArrayList epackages = new ArrayList();
-				final String[] ecores = new String[] { "/home/mtaal/mytmp/gensec.ecore" };
-				for (String ecore : ecores) {
-					final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
-					res.load(new HashMap());
+			final ResourceSet resourceSet = new ResourceSetImpl();
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("*", new EcoreResourceFactoryImpl());
+			final ArrayList epackages = new ArrayList();
+			final String[] ecores = new String[] { "/home/mtaal/mytmp/loop.ecore" };
+			for (String ecore : ecores) {
+				final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
+				res.load(new HashMap());
 
-					Iterator it = res.getAllContents();
-					while (it.hasNext()) {
-						final Object obj = it.next();
-						if (obj instanceof EPackage) {
-							EPackage epack = (EPackage) obj;
-							if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
-								EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
-							}
-							epackages.add(epack);
+				Iterator it = res.getAllContents();
+				while (it.hasNext()) {
+					final Object obj = it.next();
+					if (obj instanceof EPackage) {
+						EPackage epack = (EPackage) obj;
+						if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
+							EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
 						}
+						epackages.add(epack);
 					}
 				}
-
-				EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 			}
+
+			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 // epacks =
 // new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
 // customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
@@ -87,7 +85,7 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 
 // System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
-// HbDataStore hbds = initSimpleDataStore(new EPackage[] { GensecPackage.eINSTANCE });
+			HbDataStore hbds = initSimpleDataStore(epacks);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
@@ -105,13 +103,14 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
 // "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
 // props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
-		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-
-		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "64");
+// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+//
+		props.setProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY, "true");
+		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "18");
 		props.setProperty(PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY, "simple");
-		props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
-		props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
-		props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
+// props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
+// props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
+// props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
 
 		System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 
