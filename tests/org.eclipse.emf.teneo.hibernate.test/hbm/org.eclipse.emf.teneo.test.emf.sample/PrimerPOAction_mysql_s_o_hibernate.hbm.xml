@@ -44,7 +44,7 @@
 		<many-to-one name="shipTo" entity-name="USAddress" cascade="all" foreign-key="purchaseorder_shipto" lazy="false" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`usaddress_shipto_e_id`"/>
 		</many-to-one>
-		<many-to-one name="billTo" entity-name="USAddress" cascade="all" foreign-key="purchaseorder_billto" lazy="false" insert="true" update="true" not-null="true">
+		<many-to-one name="billTo" entity-name="USAddress" cascade="all" foreign-key="purchaseorder_billto" lazy="false" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`usaddress_billto_e_id`"/>
 		</many-to-one>
 		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">

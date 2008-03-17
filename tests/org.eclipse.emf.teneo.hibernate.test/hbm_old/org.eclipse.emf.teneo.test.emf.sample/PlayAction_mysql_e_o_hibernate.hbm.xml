@@ -115,10 +115,10 @@
 		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`title`"/>
 		</property>
-		<many-to-one name="fm" entity-name="FmType" cascade="all" foreign-key="playtype_fm" lazy="false" insert="true" update="true" not-null="true">
+		<many-to-one name="fm" entity-name="FmType" cascade="all" foreign-key="playtype_fm" lazy="false" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`fmtype_fm_e_id`"/>
 		</many-to-one>
-		<many-to-one name="personae" entity-name="PersonaeType" cascade="all" foreign-key="playtype_personae" lazy="false" insert="true" update="true" not-null="true">
+		<many-to-one name="personae" entity-name="PersonaeType" cascade="all" foreign-key="playtype_personae" lazy="false" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`personaetype_personae_e_id`"/>
 		</many-to-one>
 		<property name="sceneDescription" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
