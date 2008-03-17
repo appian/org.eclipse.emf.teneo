@@ -83,23 +83,25 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="none"/>
 		</class>
-		<class name="testinheritance.impl.ChildImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="child" identity-type="datastore">
+		<class name="testinheritance.impl.ChildImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="child" identity-type="application">
 			<implements name="testinheritance.Child"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="age" persistence-modifier="persistent" null-value="none"/>
+			<field name="testId" persistence-modifier="persistent" primary-key="true"/>
 			<field name="someReference" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
 				<foreign-key/>
 				<column name="somereference_somereference_name" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="testinheritance.impl.SomeReferenceImpl"/>
 			</field>
 		</class>
-		<class name="testinheritance.impl.Child2Impl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="child2" identity-type="datastore">
+		<class name="testinheritance.impl.Child2Impl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="child2" identity-type="application">
 			<implements name="testinheritance.Child2"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="age" persistence-modifier="persistent" null-value="none"/>
 			<field name="anotherProperty" persistence-modifier="persistent" null-value="none"/>
+			<field name="testId" persistence-modifier="persistent" primary-key="true"/>
 			<field name="someReference" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
 				<foreign-key/>
 				<column name="somereference_somereference_name" allows-null="false"/>

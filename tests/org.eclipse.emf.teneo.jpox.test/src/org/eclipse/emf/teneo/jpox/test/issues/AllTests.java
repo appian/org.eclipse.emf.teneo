@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.18 2008/03/10 22:19:11 mtaal Exp $
+ * $Id: AllTests.java,v 1.19 2008/03/17 23:54:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -23,18 +23,16 @@ import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.issues.AbstractTopClassAction;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
-import org.eclipse.emf.teneo.test.issues.FruitsAction;
 import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
 import org.eclipse.emf.teneo.test.issues.InterfaceTrueAction;
-import org.eclipse.emf.teneo.test.issues.MultipleInheritanceAction;
 import org.eclipse.emf.teneo.test.issues.SimplenmAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllTests {
 
@@ -42,12 +40,14 @@ public class AllTests {
 		MultiCfgTestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", JPOXTestbed.instance()
 					.getConfigurations());
+
 		suite.addTestSuite(AbstractTopClassAction.class);
 
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
-			suite.addTestSuite(FruitsAction.class);
+			// reenable for jpox 1.2
+// suite.addTestSuite(FruitsAction.class);
+// suite.addTestSuite(MultipleInheritanceAction.class);
 		}
-		suite.addTestSuite(MultipleInheritanceAction.class);
 
 		suite.addTestSuite(GeneralTestAction.class);
 		suite.addTestSuite(InterfaceTrueAction.class);
