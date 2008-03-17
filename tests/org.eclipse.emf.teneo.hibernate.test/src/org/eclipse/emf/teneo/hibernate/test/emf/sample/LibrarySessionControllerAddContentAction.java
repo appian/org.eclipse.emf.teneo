@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAddContentAction.java,v 1.6 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: LibrarySessionControllerAddContentAction.java,v 1.7 2008/03/17 16:19:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class LibrarySessionControllerAddContentAction extends AbstractTestAction {
 	/**
@@ -71,7 +71,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 
 		// create a book, writer and library
 		try {
-			{
+			try {
 				HibernateResource res1 = (HibernateResource) getResource(resourceSet, null);
 				HibernateResource res2 = (HibernateResource) getResource(resourceSet, null);
 				sc.getSessionWrapper().beginTransaction();
@@ -115,8 +115,9 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				res2.getResourceSet().getResources().remove(res2);
 				sc.getSessionWrapper().commitTransaction();
 				sc.getSessionWrapper().clear();
+			} finally {
+				SessionController.deRegisterSessionController("testsc");
 			}
-			SessionController.deRegisterSessionController("testsc");
 
 			sc = new SessionController();
 			sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());

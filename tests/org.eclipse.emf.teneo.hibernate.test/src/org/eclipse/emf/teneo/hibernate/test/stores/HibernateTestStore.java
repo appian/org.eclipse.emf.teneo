@@ -51,7 +51,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -63,7 +63,7 @@ public class HibernateTestStore extends AbstractTestStore {
 	public static final String EPACKAGE_INIT_MODE_ECORE_VALUE = "ecorefile";
 
 	/** The emf resource set used during the test */
-	protected final ResourceSet resourceSet = new ResourceSetImpl();
+	protected ResourceSet resourceSet;
 
 	/** The EMFDatastore */
 	private HbDataStore emfDataStore;
@@ -114,6 +114,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		setDataStore();
 
 		log.debug("HibernateTestStore initialized");
+		resourceSet = new ResourceSetImpl();
 	}
 
 	/** Creates a Hibernate property set from the databaseadapter */
@@ -124,6 +125,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		props.setProperty(Environment.URL, dbadapter.getDbUrl());
 		props.setProperty(Environment.PASS, dbadapter.getDbPwd());
 		props.setProperty(Environment.DIALECT, dbadapter.getDialect());
+		props.setProperty(Environment.HBM2DDL_AUTO, "update");
 		return props;
 	}
 
