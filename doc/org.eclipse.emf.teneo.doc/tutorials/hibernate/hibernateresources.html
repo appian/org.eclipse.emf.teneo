@@ -274,10 +274,11 @@
 <em>Hibernate EMF Resources</em>
 </h2>
 </div>
-<div class="abstract">The EMF Hibernate integration also contains a Resource implementation for
-		integration with the EMF Editing Domain. The resource implementation
-		extends the org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl to enable easy importing 
-		and exporting of XML to/from the relational store.
+<div class="abstract">The EMF Hibernate integration has two Resource implementations (HibernateResource and 
+    HibernateXMLResource) for
+		integration with the EMF Editing Domain. Both resource implementations
+		extend the org.eclipse.emf.ecore.xmi.impl.ResourceImpl. The HibernateXMLResource extends
+		the HibernateResource and in addition implements the XMLResource implementation.
     </div>
 <div class="app" id="projecthome">
 <ul class="minitoc">
@@ -314,6 +315,9 @@
 <a href="#Closing+a+resource">Closing a resource</a>
 </li>
 <li>
+<a href="#HibernateXMLResource">HibernateXMLResource</a>
+</li>
+<li>
 <a href="#Other+aspects">Other aspects</a>
 <ul class="minitoc">
 <li>
@@ -330,11 +334,12 @@
 <h3>Resource URI</h3>
       
       
-<p>The Hibernate EMFResource is registered using different extensions/protocols:</p>
+<p>The Hibernate Resource is registered using different extensions/protocols:</p>
 	  
 <ul>
 	  
-<li>Protocol: the Hibernate EMF Resource (factory) will be registered for the protocols hibernate and ehb</li>
+<li>Protocol: the Hibernate EMF Resource (factory) will be registered for the protocols hibernate and ehb, 
+	  the HibernateXMLResource is registered with the protocol hbxml.</li>
 	  
 <li>Extension: the Hibernate EMF Resource (factory) will be registered for the extensions hibernate and ehb</li>
 	  
@@ -530,13 +535,25 @@
 		  the session explicitly.</p>
 	
 </div>
+	
+<a name="N100BD"></a><a name="HibernateXMLResource"></a>
+<div class="h3">
+<h3>HibernateXMLResource</h3>
+	
+<p>The HibernateXMLResource extends the HibernateResource and implements the XMLResource interface. However the 
+	XMLResource implementation is very limited at the moment. The HibernateXMLResource has been
+	introduced for the GMF integration. For GMF the getID method was the most important. This
+	method has been implemented. Other methods will be implemented with meaningfull functionality
+	when it is requirement.</p>
+	
+</div>
     
-<a name="N100BD"></a><a name="Other+aspects"></a>
+<a name="N100C6"></a><a name="Other+aspects"></a>
 <div class="h3">
 <h3>Other aspects</h3>
       
 		
-<a name="N100C3"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<a name="N100CC"></a><a name="Resource+use+after+Hibernate+exception"></a>
 <div class="h4">
 <h4>Resource use after Hibernate exception</h4>
 <p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
