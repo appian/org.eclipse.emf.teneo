@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.10 2008/03/07 13:15:03 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.11 2008/03/19 22:25:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,7 +25,6 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
 import org.hibernate.Interceptor;
-import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.event.InitializeCollectionEventListener;
 
@@ -38,7 +37,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -134,13 +133,7 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	protected void setPropertiesInConfiguration() {
 		Properties properties = getProperties();
 		if (properties != null) {
-			if (properties.getProperty("hibernate.cache.provider_class") == null) {
-				log.warn("No hibernate cache provider set, using " + HashtableCacheProvider.class.getName());
-				log.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
-				properties.setProperty("hibernate.cache.provider_class", HashtableCacheProvider.class.getName());
-			}
-			log.debug("Setting properties in Hibernate Configuration:");
-			logProperties(properties);
+			setDefaultProperties(properties);
 			getConfiguration().setProperties(properties);
 		}
 	}

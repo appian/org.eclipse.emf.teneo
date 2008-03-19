@@ -55,7 +55,9 @@ import org.hibernate.EntityMode;
 import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
 import org.hibernate.engine.CascadeStyle;
 import org.hibernate.mapping.Bag;
 import org.hibernate.mapping.Collection;
@@ -75,7 +77,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -312,6 +314,21 @@ public abstract class HbDataStore implements DataStore {
 	public void setProperties(Properties props) {
 		this.persistenceOptions = getExtensionManager().getExtension(PersistenceOptions.class, new Object[] { props });
 		this.properties = props;
+	}
+
+	protected void setDefaultProperties(Properties properties) {
+		if (properties.getProperty("hibernate.cache.provider_class") == null) {
+			log.warn("No hibernate cache provider set, using " + HashtableCacheProvider.class.getName());
+			log.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
+			properties.setProperty("hibernate.cache.provider_class", HashtableCacheProvider.class.getName());
+		}
+		final String hbmUpdate = properties.getProperty(Environment.HBM2DDL_AUTO);
+		if (hbmUpdate == null) {
+			log.info("Hibernate property: " + Environment.HBM2DDL_AUTO + " not set, setting to update");
+			properties.setProperty(Environment.HBM2DDL_AUTO, "update");
+		}
+		log.debug("Setting properties in Hibernate Configuration:");
+		logProperties(properties);
 	}
 
 	/** Returns the combined hibernate and persistence properties */
