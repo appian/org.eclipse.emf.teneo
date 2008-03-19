@@ -13,7 +13,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="code" persistence-modifier="persistent" null-value="exception"/>
 			<field name="testB" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="testa_testb"/>
+				<foreign-key name="testa_testb"/>
 				<column name="testb_testb_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.detach.detachtest.impl.TestBImpl"/>
 			</field>

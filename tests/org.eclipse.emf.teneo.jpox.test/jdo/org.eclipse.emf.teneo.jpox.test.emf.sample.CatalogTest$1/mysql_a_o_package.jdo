@@ -74,7 +74,7 @@
 				<foreign-key delete-action="cascade" update-action="cascade" name="producttype_remark"/>
 			</field>
 			<field name="price" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="producttype_price"/>
+				<foreign-key name="producttype_price"/>
 				<column name="pricetype_price_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.catalog.impl.PriceTypeImpl"/>
 			</field>

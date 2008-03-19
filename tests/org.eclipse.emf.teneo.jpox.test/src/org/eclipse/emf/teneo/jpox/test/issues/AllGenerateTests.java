@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.13 2008/03/17 23:54:15 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.14 2008/03/19 22:25:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.issues;
@@ -30,18 +30,21 @@ import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
 import org.eclipse.emf.teneo.test.issues.InterfaceTrueAction;
 import org.eclipse.emf.teneo.test.issues.MainAction;
+import org.eclipse.emf.teneo.test.issues.NavTopAction;
 import org.eclipse.emf.teneo.test.issues.SimplenmAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class AllGenerateTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for issues", JPOXTestbed.instance().getConfigurations());
+
+		suite.addTest(new JPOXGenerateTest(NavTopAction.class));
 
 		suite.addTest(new JPOXGenerateTest(AbstractTopClassAction.class));
 		// reenable for jpox 1.2

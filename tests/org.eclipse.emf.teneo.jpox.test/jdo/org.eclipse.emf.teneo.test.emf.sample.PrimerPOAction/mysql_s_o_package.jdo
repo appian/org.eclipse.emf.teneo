@@ -23,12 +23,12 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="shipTo" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="purchaseorder_shipto"/>
+				<foreign-key name="purchaseorder_shipto"/>
 				<column name="usaddress_shipto_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl.USAddressImpl"/>
 			</field>
 			<field name="billTo" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="purchaseorder_billto"/>
+				<foreign-key name="purchaseorder_billto"/>
 				<column name="usaddress_billto_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl.USAddressImpl"/>
 			</field>

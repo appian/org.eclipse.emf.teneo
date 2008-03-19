@@ -102,5 +102,50 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="specificName" persistence-modifier="persistent" null-value="none"/>
 		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.UKAddressListImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="ukaddresslist" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.UKAddressList"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="UKAddressList"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="address" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.UKAddressImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="ukaddresslist_address_e_id" allows-null="true"/>
+				</element>
+				<order column="UKADDRESSLIST_ADDRESS_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="ukaddresslist_address"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentOneImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="parentone" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentOne"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="ParentOne"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ParentTwoImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="parenttwo" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ParentTwo"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="ParentTwo"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl.ChildOneImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.ChildOne"/>
+			<inheritance strategy="superclass-table">
+				<discriminator value="ChildOne"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+		</class>
 	</package>
 </jdo>

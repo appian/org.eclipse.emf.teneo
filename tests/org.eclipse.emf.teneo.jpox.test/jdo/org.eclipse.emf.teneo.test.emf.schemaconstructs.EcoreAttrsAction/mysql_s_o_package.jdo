@@ -75,9 +75,9 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="mixed" persistence-modifier="persistent">
+			<field name="mixed" persistence-modifier="persistent" table="mixed_mixed">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
-				<join name="mixed_mixed"/>
+				<join/>
 				<element>
 					<embedded>
 						<field name="featurePath">

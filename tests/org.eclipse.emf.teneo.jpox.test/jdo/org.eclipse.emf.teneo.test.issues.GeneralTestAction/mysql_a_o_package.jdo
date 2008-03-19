@@ -26,7 +26,7 @@
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.issues.generaltest.impl.CountryImpl"/>
 			</field>
 			<field name="city" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="address_city"/>
+				<foreign-key name="address_city"/>
 				<column name="city_city_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.issues.generaltest.impl.CityImpl"/>
 			</field>

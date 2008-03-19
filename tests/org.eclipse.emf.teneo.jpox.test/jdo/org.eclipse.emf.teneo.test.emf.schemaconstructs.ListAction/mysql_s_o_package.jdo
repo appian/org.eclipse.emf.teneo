@@ -12,18 +12,18 @@
 			<field name="country" persistence-modifier="persistent" null-value="exception"/>
 			<field name="index" persistence-modifier="persistent" null-value="none"/>
 			<field name="indexESet" persistence-modifier="persistent"/>
-			<field name="allStates" persistence-modifier="persistent">
+			<field name="allStates" persistence-modifier="persistent" table="statesbycountry_allstates">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_allstates"/>
+				<join/>
 				<order column="STATESBYCOUNTRY_ALLSTATES_IDX"/>
 			</field>
-			<field name="sixImportantStates" persistence-modifier="persistent">
+			<field name="sixImportantStates" persistence-modifier="persistent" table="statesbycountry_siximportantstates">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_siximportantstates"/>
+				<join/>
 				<order column="STATESBYCOUNTRY_SIXIMPORTANTSTATES_IDX"/>
 			</field>
 		</class>

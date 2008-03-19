@@ -13,11 +13,11 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="description" persistence-modifier="persistent" null-value="exception"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception" embedded="true"/>
-			<field name="names" persistence-modifier="persistent">
+			<field name="names" persistence-modifier="persistent" table="mytest_names">
 				<collection element-type="javax.xml.namespace.QName">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="mytest_names"/>
+				<join/>
 				<order column="MYTEST_NAMES_IDX"/>
 			</field>
 		</class>

@@ -21,7 +21,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="firstAddress" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="addresslist_firstaddress"/>
+				<foreign-key name="addresslist_firstaddress"/>
 				<column name="firstaddressholder_firstaddress_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.schemaconstructs.extension.impl.FirstAddressHolderImpl"/>
 			</field>

@@ -9,11 +9,11 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="authorName" persistence-modifier="persistent">
+			<field name="authorName" persistence-modifier="persistent" table="authorstype_authorname">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="authorstype_authorname"/>
+				<join/>
 				<order column="AUTHORSTYPE_AUTHORNAME_IDX"/>
 			</field>
 		</class>
@@ -45,13 +45,13 @@
 			<field name="iSBNESet" persistence-modifier="persistent"/>
 			<field name="price" persistence-modifier="persistent" null-value="exception"/>
 			<field name="authors" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="booktype_authors"/>
+				<foreign-key name="booktype_authors"/>
 				<column name="authorstype_authors_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.AuthorsTypeImpl"/>
 			</field>
 			<field name="description" persistence-modifier="persistent" null-value="none"/>
 			<field name="promotion" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="booktype_promotion"/>
+				<foreign-key name="booktype_promotion"/>
 				<column name="promotiontype_promotion_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.PromotionTypeImpl"/>
 			</field>
@@ -67,7 +67,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="books" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="collectiontype_books"/>
+				<foreign-key name="collectiontype_books"/>
 				<column name="bookstype_books_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BooksTypeImpl"/>
 			</field>

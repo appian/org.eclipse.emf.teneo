@@ -28,12 +28,12 @@
 			<field name="name" persistence-modifier="persistent" null-value="none"/>
 			<field name="nameESet" persistence-modifier="persistent"/>
 			<field name="containedonewayrequired" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="main_containedonewayrequired"/>
+				<foreign-key name="main_containedonewayrequired"/>
 				<column name="containedchildr_containedonewayrequired_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildRImpl"/>
 			</field>
 			<field name="containedoneWaynotrequired" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="main_containedonewaynotrequired"/>
+				<foreign-key name="main_containedonewaynotrequired"/>
 				<column name="containedchildnr_containedonewaynotrequired_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.ContainedChildNRImpl"/>
 			</field>

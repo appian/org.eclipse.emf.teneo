@@ -10,34 +10,34 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="country" persistence-modifier="persistent" null-value="exception"/>
-			<field name="allStates" persistence-modifier="persistent">
+			<field name="allStates" persistence-modifier="persistent" table="statesbycountry_allstates">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_allstates"/>
+				<join/>
 				<order column="STATESBYCOUNTRY_ALLSTATES_IDX"/>
 			</field>
-			<field name="sixImportantStates" persistence-modifier="persistent">
+			<field name="sixImportantStates" persistence-modifier="persistent" table="statesbycountry_siximportantstates">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_siximportantstates"/>
+				<join/>
 				<order column="STATESBYCOUNTRY_SIXIMPORTANTSTATES_IDX"/>
 			</field>
 			<field name="zipUnion" persistence-modifier="persistent" null-value="exception"/>
-			<field name="zipUnions" persistence-modifier="persistent">
+			<field name="zipUnions" persistence-modifier="persistent" table="statesbycountry_zipunions">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_zipunions"/>
+				<join/>
 				<order column="STATESBYCOUNTRY_ZIPUNIONS_IDX"/>
 			</field>
 			<field name="simpleUnion" persistence-modifier="persistent" null-value="exception" serialized="true"/>
-			<field name="simpleUnions" persistence-modifier="persistent">
+			<field name="simpleUnions" persistence-modifier="persistent" table="statesbycountry_simpleunions">
 				<collection element-type="org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_simpleunions"/>
+				<join/>
 				<element>
 					<embedded>
 						<field name="classifier">
@@ -51,11 +51,11 @@
 				<order column="STATESBYCOUNTRY_SIMPLEUNIONS_IDX"/>
 			</field>
 			<field name="simpleStringUnion" persistence-modifier="persistent" null-value="exception"/>
-			<field name="simpleStringUnions" persistence-modifier="persistent">
+			<field name="simpleStringUnions" persistence-modifier="persistent" table="statesbycountry_simplestringunions">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="statesbycountry_simplestringunions"/>
+				<join/>
 				<order column="STATESBYCOUNTRY_SIMPLESTRINGUNIONS_IDX"/>
 			</field>
 		</class>

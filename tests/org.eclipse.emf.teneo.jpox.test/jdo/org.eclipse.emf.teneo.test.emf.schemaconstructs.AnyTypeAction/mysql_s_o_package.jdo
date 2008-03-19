@@ -36,7 +36,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="singleAnyType" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="testany_singleanytype"/>
+				<foreign-key name="testany_singleanytype"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/>
 			</field>
 			<field name="multiAnyType" persistence-modifier="persistent" table="testany_multianytype" embedded="true" delete-action="restrict">
@@ -56,9 +56,9 @@
 				</element>
 				<order column="TESTANY_MULTIANYTYPE_IDX"/>
 			</field>
-			<field name="myAny" persistence-modifier="persistent">
+			<field name="myAny" persistence-modifier="persistent" table="testany_myany">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
-				<join name="testany_myany"/>
+				<join/>
 				<element>
 					<embedded>
 						<field name="featurePath">
@@ -71,9 +71,9 @@
 				</element>
 				<order column="TESTANY_MYANY_IDX"/>
 			</field>
-			<field name="any" persistence-modifier="persistent">
+			<field name="any" persistence-modifier="persistent" table="testany_any">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
-				<join name="testany_any"/>
+				<join/>
 				<element>
 					<embedded>
 						<field name="featurePath">

@@ -33,7 +33,7 @@ import org.jpox.enhancer.JPOXEnhancer;
  * The jpox test bed controls the creation of the store and the generation of the mapping file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.45 $
+ * @version $Revision: 1.46 $
  */
 public class JPOXTestbed extends Testbed {
 
@@ -192,7 +192,9 @@ public class JPOXTestbed extends Testbed {
 			// options.put(PersistenceOptions.QUALIFY_ENTITY_NAME,
 			// PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX);
 
-			fileWriter.write(JpoxHelper.INSTANCE.generateMapping(test.getEPackages(), options));
+			final ExtensionManager em = ExtensionManagerFactory.getInstance().create();
+			test.setExtensions(em);
+			fileWriter.write(JpoxHelper.INSTANCE.generateMapping(test.getEPackages(), options, em));
 			fileWriter.close();
 
 			// now copy the file to the samples plugin

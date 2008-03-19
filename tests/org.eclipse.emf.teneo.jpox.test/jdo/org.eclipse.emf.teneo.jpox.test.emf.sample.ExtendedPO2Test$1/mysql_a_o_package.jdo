@@ -45,12 +45,12 @@
 				<foreign-key delete-action="cascade" update-action="cascade" name="purchaseorder_items"/>
 			</field>
 			<field name="billTo" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="purchaseorder_billto"/>
+				<foreign-key name="purchaseorder_billto"/>
 				<column name="address_billto_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.AddressImpl"/>
 			</field>
 			<field name="shipTo" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="purchaseorder_shipto"/>
+				<foreign-key name="purchaseorder_shipto"/>
 				<column name="address_shipto_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.AddressImpl"/>
 			</field>
@@ -132,11 +132,11 @@
 				<discriminator value="GlobalAddress"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="location" persistence-modifier="persistent">
+			<field name="location" persistence-modifier="persistent" table="globaladdress_location">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="globaladdress_location"/>
+				<join/>
 				<order column="GLOBALADDRESS_LOCATION_IDX"/>
 			</field>
 			<field name="countryCode" persistence-modifier="persistent" null-value="none"/>

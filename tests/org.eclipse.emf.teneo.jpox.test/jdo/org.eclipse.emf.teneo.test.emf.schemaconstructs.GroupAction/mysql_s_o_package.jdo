@@ -44,12 +44,12 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="groupName" persistence-modifier="persistent" null-value="exception"/>
 			<field name="shipTo" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="addressgroup_shipto"/>
+				<foreign-key name="addressgroup_shipto"/>
 				<column name="address_shipto_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressImpl"/>
 			</field>
 			<field name="billTo" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="addressgroup_billto"/>
+				<foreign-key name="addressgroup_billto"/>
 				<column name="address_billto_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.schemaconstructs.groupall.impl.AddressImpl"/>
 			</field>

@@ -33,11 +33,11 @@
 				<discriminator column="dtype" strategy="value-map" value="FmType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="p" persistence-modifier="persistent">
+			<field name="p" persistence-modifier="persistent" table="fmtype_p">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="fmtype_p"/>
+				<join/>
 				<order column="FMTYPE_P_IDX"/>
 			</field>
 		</class>
@@ -84,11 +84,11 @@
 				<discriminator column="dtype" strategy="value-map" value="PersonaGroupType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="persona" persistence-modifier="persistent">
+			<field name="persona" persistence-modifier="persistent" table="personagrouptype_persona">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="personagrouptype_persona"/>
+				<join/>
 				<order column="PERSONAGROUPTYPE_PERSONA_IDX"/>
 			</field>
 			<field name="groupDescription" persistence-modifier="persistent" null-value="exception"/>
@@ -103,12 +103,12 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="exception"/>
 			<field name="fm" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="playtype_fm"/>
+				<foreign-key name="playtype_fm"/>
 				<column name="fmtype_fm_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.play.impl.FmTypeImpl"/>
 			</field>
 			<field name="personae" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="playtype_personae"/>
+				<foreign-key name="playtype_personae"/>
 				<column name="personaetype_personae_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaeTypeImpl"/>
 			</field>

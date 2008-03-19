@@ -3,7 +3,7 @@
 
 <jdo>
 	<package name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl">
-		<class name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ContainedItemImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="containeditem" identity-type="datastore">
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ContainedItemImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="testset_containeditem" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.set.ContainedItem"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
@@ -11,7 +11,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 		</class>
-		<class name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="item" identity-type="datastore">
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="testset_item" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.set.Item"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
@@ -19,12 +19,12 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="itemList" persistence-modifier="persistent" delete-action="restrict" null-value="none">
-				<foreign-key name="item_itemlist"/>
+				<foreign-key name="testset_item_itemlist"/>
 				<column name="item_itemlist_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemListImpl"/>
 			</field>
 		</class>
-		<class name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemListImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="itemlist" identity-type="datastore">
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemListImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="testset_itemlist" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.set.ItemList"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
@@ -38,7 +38,7 @@
 				<element>
 					<column name="itemlist_containeditem_e_id" allows-null="true"/>
 				</element>
-				<foreign-key delete-action="cascade" update-action="cascade" name="itemlist_containeditem"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="testset_itemlist_containeditem"/>
 			</field>
 			<field name="item" persistence-modifier="persistent" mapped-by="itemList" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl" dependent-element="false">
@@ -47,7 +47,7 @@
 				<order column="ITEMLIST_ITEM_IDX"/>
 				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
-			<field name="joinedItem" persistence-modifier="persistent" table="itemlist_item" delete-action="restrict">
+			<field name="joinedItem" persistence-modifier="persistent" table="testset_itemlist_testset_item" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>

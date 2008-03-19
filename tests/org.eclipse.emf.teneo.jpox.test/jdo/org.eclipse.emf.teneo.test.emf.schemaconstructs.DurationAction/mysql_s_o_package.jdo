@@ -12,11 +12,11 @@
 			<field name="name" persistence-modifier="persistent" primary-key="true"/>
 			<field name="duration" persistence-modifier="persistent" null-value="none" embedded="true"/>
 			<field name="durationESet" persistence-modifier="persistent"/>
-			<field name="durations" persistence-modifier="persistent">
+			<field name="durations" persistence-modifier="persistent" table="durationtest_durations">
 				<collection element-type="javax.xml.datatype.Duration">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="durationtest_durations"/>
+				<join/>
 				<order column="DURATIONTEST_DURATIONS_IDX"/>
 			</field>
 		</class>
