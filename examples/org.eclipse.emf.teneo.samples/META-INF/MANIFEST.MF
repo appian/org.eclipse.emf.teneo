@@ -1499,6 +1499,10 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.common.util,
    org.eclipse.emf.ecore.resource,
    org.eclipse.emf.ecore",
+ org.eclipse.emf.teneo.samples.issues.nav,
+ org.eclipse.emf.teneo.samples.issues.nav.impl,
+ org.eclipse.emf.teneo.samples.issues.nav.util,
+ org.eclipse.emf.teneo.samples.issues.nav.validation,
  org.eclipse.emf.teneo.samples.issues.refresh;uses:="org.eclipse.emf.common.util,org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.issues.refresh.impl;
   uses:="org.eclipse.emf.ecore.impl,
@@ -1546,6 +1550,10 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.common.util,
    org.eclipse.emf.ecore,
    org.eclipse.emf.ecore.resource",
+ org.eclipse.emf.teneo.samples.issues.top,
+ org.eclipse.emf.teneo.samples.issues.top.impl,
+ org.eclipse.emf.teneo.samples.issues.top.util,
+ org.eclipse.emf.teneo.samples.issues.top.validation,
  org.eclipse.emf.teneo.samples.issues.topclasses;uses:="org.eclipse.emf.common.util,org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.issues.topclasses.impl;
   uses:="org.eclipse.emf.ecore.impl,

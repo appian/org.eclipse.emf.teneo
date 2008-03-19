@@ -11,9 +11,9 @@
 				<discriminator column="dtype" strategy="value-map" value="LetterBodyType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="mixed" persistence-modifier="persistent">
+			<field name="mixed" persistence-modifier="persistent" table="letterbodytype_mixed">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
-				<join name="letterbodytype_mixed"/>
+				<join/>
 				<element>
 					<embedded>
 						<field name="featurePath">
@@ -35,9 +35,9 @@
 				<discriminator column="dtype" strategy="value-map" value="SalutationType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="mixed" persistence-modifier="persistent">
+			<field name="mixed" persistence-modifier="persistent" table="salutationtype_mixed">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
-				<join name="salutationtype_mixed"/>
+				<join/>
 				<element>
 					<embedded>
 						<field name="featurePath">

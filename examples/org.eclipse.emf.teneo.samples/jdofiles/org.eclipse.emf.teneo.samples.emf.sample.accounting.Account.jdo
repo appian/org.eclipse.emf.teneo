@@ -69,7 +69,7 @@
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.BalanceAccountImpl"/>
 			</field>
 			<field name="report" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="accounting_report"/>
+				<foreign-key name="accounting_report"/>
 				<column name="report_report_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportImpl"/>
 			</field>
@@ -172,12 +172,12 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="debitReportGroup" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="report_debitreportgroup"/>
+				<foreign-key name="report_debitreportgroup"/>
 				<column name="reportgroup_debitreportgroup_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl"/>
 			</field>
 			<field name="creditReportGroup" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
-				<foreign-key delete-action="cascade" update-action="cascade" name="report_creditreportgroup"/>
+				<foreign-key name="report_creditreportgroup"/>
 				<column name="reportgroup_creditreportgroup_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl"/>
 			</field>

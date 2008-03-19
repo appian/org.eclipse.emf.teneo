@@ -13,101 +13,101 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="code" persistence-modifier="persistent" null-value="none"/>
 			<field name="codeESet" persistence-modifier="persistent"/>
-			<field name="boo" persistence-modifier="persistent">
+			<field name="boo" persistence-modifier="persistent" table="simplelist_boo">
 				<collection element-type="java.lang.Boolean">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_boo"/>
+				<join/>
 				<order column="SIMPLELIST_BOO_IDX"/>
 			</field>
-			<field name="byt" persistence-modifier="persistent">
+			<field name="byt" persistence-modifier="persistent" table="simplelist_byt">
 				<collection element-type="java.lang.Byte">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_byt"/>
+				<join/>
 				<order column="SIMPLELIST_BYT_IDX"/>
 			</field>
-			<field name="doubl" persistence-modifier="persistent">
+			<field name="doubl" persistence-modifier="persistent" table="simplelist_doubl">
 				<collection element-type="java.lang.Double">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_doubl"/>
+				<join/>
 				<order column="SIMPLELIST_DOUBL_IDX"/>
 			</field>
-			<field name="floa" persistence-modifier="persistent">
+			<field name="floa" persistence-modifier="persistent" table="simplelist_floa">
 				<collection element-type="java.lang.Float">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_floa"/>
+				<join/>
 				<order column="SIMPLELIST_FLOA_IDX"/>
 			</field>
-			<field name="inte" persistence-modifier="persistent">
+			<field name="inte" persistence-modifier="persistent" table="simplelist_inte">
 				<collection element-type="java.lang.Integer">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_inte"/>
+				<join/>
 				<order column="SIMPLELIST_INTE_IDX"/>
 			</field>
-			<field name="long_" persistence-modifier="persistent">
+			<field name="long_" persistence-modifier="persistent" table="longNum">
 				<collection element-type="java.lang.Long">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="longNum"/>
+				<join/>
 				<order column="SIMPLELIST_LONG_IDX"/>
 			</field>
-			<field name="shor" persistence-modifier="persistent">
+			<field name="shor" persistence-modifier="persistent" table="simplelist_shor">
 				<collection element-type="java.lang.Short">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_shor"/>
+				<join/>
 				<order column="SIMPLELIST_SHOR_IDX"/>
 			</field>
-			<field name="enu" persistence-modifier="persistent">
+			<field name="enu" persistence-modifier="persistent" table="simplelist_enu">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_enu"/>
+				<join/>
 				<order column="SIMPLELIST_ENU_IDX"/>
 			</field>
-			<field name="dat" persistence-modifier="persistent">
+			<field name="dat" persistence-modifier="persistent" table="simplelist_dat">
 				<collection element-type="java.util.Date">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_dat"/>
+				<join/>
 				<order column="SIMPLELIST_DAT_IDX"/>
 			</field>
-			<field name="limitedstring" persistence-modifier="persistent">
+			<field name="limitedstring" persistence-modifier="persistent" table="simplelist_limitedstring">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_limitedstring"/>
+				<join/>
 				<order column="SIMPLELIST_LIMITEDSTRING_IDX"/>
 			</field>
-			<field name="stri" persistence-modifier="persistent">
+			<field name="stri" persistence-modifier="persistent" table="simplelist_stri">
 				<collection element-type="java.lang.String">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
-				<join name="simplelist_stri"/>
+				<join/>
 				<order column="SIMPLELIST_STRI_IDX"/>
 			</field>
-			<field name="intArray" persistence-modifier="persistent">
+			<field name="intArray" persistence-modifier="persistent" table="simplelist_intarray">
 				<array/>
-				<join name="simplelist_intarray"/>
+				<join/>
 				<element/>
 			</field>
-			<field name="doubleArray" persistence-modifier="persistent">
+			<field name="doubleArray" persistence-modifier="persistent" table="simplelist_doublearray">
 				<array/>
-				<join name="simplelist_doublearray"/>
+				<join/>
 				<element/>
 			</field>
-			<field name="stringArray" persistence-modifier="persistent">
+			<field name="stringArray" persistence-modifier="persistent" table="simplelist_stringarray">
 				<array/>
-				<join name="simplelist_stringarray"/>
+				<join/>
 				<element/>
 			</field>
-			<field name="byteArray" persistence-modifier="persistent">
+			<field name="byteArray" persistence-modifier="persistent" table="simplelist_bytearray">
 				<array/>
-				<join name="simplelist_bytearray"/>
+				<join/>
 				<element/>
 			</field>
 		</class>

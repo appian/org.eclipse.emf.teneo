@@ -7,7 +7,9 @@
 			<implements name="com.example.car.CarFrame"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="CarFrame"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="carWheel" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="com.example.car.impl.CarWheelImpl" dependent-element="true">
@@ -30,7 +32,9 @@
 			<implements name="com.example.car.CarLink"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="CarLink"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="carLinkId" persistence-modifier="persistent" primary-key="true"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
@@ -39,7 +43,9 @@
 			<implements name="com.example.car.CarsList"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="CarsList"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="carType" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="com.example.car.impl.CarTypeImpl" dependent-element="true">
@@ -66,7 +72,9 @@
 			<implements name="com.example.car.CarTire"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="CarTire"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" primary-key="true"/>
 		</class>
@@ -74,7 +82,9 @@
 			<implements name="com.example.car.CarType"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="CarType"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="carFrame" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="com.example.car.impl.CarFrameImpl" dependent-element="true">
@@ -92,7 +102,9 @@
 			<implements name="com.example.car.CarWheel"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="CarWheel"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="carTire" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="com.example.car.impl.CarTireImpl" dependent-element="true">

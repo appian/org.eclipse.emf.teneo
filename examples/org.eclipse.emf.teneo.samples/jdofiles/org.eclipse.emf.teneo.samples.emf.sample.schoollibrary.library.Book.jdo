@@ -7,7 +7,9 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Book"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Book"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="none"/>
 			<field name="pages" persistence-modifier="persistent" null-value="none"/>
@@ -22,7 +24,9 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Library"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Library"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="none"/>
 			<field name="writers" persistence-modifier="persistent" delete-action="restrict">
@@ -50,7 +54,9 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Writer"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Writer"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="none"/>
 			<field name="books" persistence-modifier="persistent" mapped-by="author" delete-action="restrict">
@@ -67,19 +73,25 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.Asset"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Asset"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="value" persistence-modifier="persistent" null-value="none"/>
 		</class>
-		<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolBookImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="schoolbook" identity-type="datastore">
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolBookImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.SchoolBook"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="superclass-table">
+				<discriminator value="SchoolBook"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="value" persistence-modifier="persistent" null-value="none"/>
 		</class>
-		<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolLibraryImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="schoollibrary" identity-type="datastore">
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.SchoolLibraryImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.SchoolLibrary"/>
-			<inheritance strategy="new-table"/>
+			<inheritance strategy="superclass-table">
+				<discriminator value="SchoolLibrary"/>
+			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="location" persistence-modifier="persistent" null-value="none"/>
 		</class>

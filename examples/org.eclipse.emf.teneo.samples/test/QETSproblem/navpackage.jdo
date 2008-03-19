@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd">
+
+<jdo>
+	<package name="com.ibm.isc.wccm.nav.impl">
+		<class name="com.ibm.isc.wccm.nav.impl.NavElementImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="nav_navelement" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.nav.NavElement"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="nav.NavElement"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="title" persistence-modifier="persistent" null-value="none"/>
+			<field name="description" persistence-modifier="persistent" null-value="none"/>
+			<field name="pageParams" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
+				<foreign-key delete-action="cascade" update-action="cascade" name="nvelement_pgeprams"/>
+				<column name="pageparams" allows-null="true"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="com.ibm.isc.wccm.nav.impl.PageParamsImpl"/>
+			</field>
+			<field name="moduleID" persistence-modifier="persistent" null-value="exception"/>
+			<field name="uniqueName" persistence-modifier="persistent" null-value="none"/>
+		</class>
+		<class name="com.ibm.isc.wccm.nav.impl.NavigationTreeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="nav_navigationtree" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.nav.NavigationTree"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="nav.NavigationTree"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="navElement" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="com.ibm.isc.wccm.nav.impl.NavElementImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="nv_nvgtintr_nvlmnt" allows-null="true"/>
+				</element>
+				<order column="NAVIGATIONTREE_NAVELEMENT_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="nv_nvgtintr_nvlmnt"/>
+			</field>
+		</class>
+		<class name="com.ibm.isc.wccm.nav.impl.PageParamsImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="nav_pageparams" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.nav.PageParams"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="nav.PageParams"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="renderParam" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="com.ibm.isc.wccm.nav.impl.RenderParamImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="nv_pgprms_rnderprm" allows-null="true"/>
+				</element>
+				<order column="PAGEPARAMS_RENDERPARAM_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="nv_pgprms_rnderprm"/>
+			</field>
+			<field name="pageHeader" persistence-modifier="persistent">
+				<collection element-type="java.lang.String">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<join name="nv_pgprms_pgeheder"/>
+				<order column="PAGEPARAMS_PAGEHEADER_IDX"/>
+			</field>
+		</class>
+		<class name="com.ibm.isc.wccm.nav.impl.RenderParamImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="nav_renderparam" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.nav.RenderParam"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="nav.RenderParam"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="value" persistence-modifier="persistent" null-value="exception"/>
+		</class>
+	</package>
+</jdo>

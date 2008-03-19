@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd">
+
+<jdo>
+	<package name="com.ibm.isc.wccm.top.impl">
+		<class name="com.ibm.isc.wccm.top.impl.ApplicationDefinitionImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="tp_pplctindfinitin" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.top.ApplicationDefinition"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="title" persistence-modifier="persistent" null-value="exception"/>
+			<field name="description" persistence-modifier="persistent" null-value="none"/>
+			<field name="navigationElement" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="com.ibm.isc.wccm.top.impl.NavigationElementImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="tp_pplctnd_nvgtnlm" allows-null="true"/>
+				</element>
+				<order column="APPLICATIONDEFINITION_NAVIGATIONELEMENT_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="tp_pplctnd_nvgtnlm"/>
+			</field>
+			<field name="appID" persistence-modifier="persistent" null-value="exception"/>
+			<field name="version" persistence-modifier="persistent" null-value="exception"/>
+		</class>
+		<class name="com.ibm.isc.wccm.top.impl.NavigationElementImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="tp_nvigatinelement" identity-type="application">
+			<implements name="com.ibm.isc.wccm.top.NavigationElement"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="title" persistence-modifier="persistent" null-value="none"/>
+			<field name="description" persistence-modifier="persistent" null-value="none"/>
+			<field name="pageParams" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
+				<foreign-key delete-action="cascade" update-action="cascade" name="nvigtinlmnt_pgprms"/>
+				<column name="pageparams" allows-null="true"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="com.ibm.isc.wccm.top.impl.PageParamsImpl"/>
+			</field>
+			<field name="uniqueName" persistence-modifier="persistent" primary-key="true"/>
+		</class>
+		<class name="com.ibm.isc.wccm.top.impl.PageParamsImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="top_pageparams" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.top.PageParams"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="renderParam" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="com.ibm.isc.wccm.top.impl.RenderParamImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="tp_pgprms_rnderprm" allows-null="true"/>
+				</element>
+				<order column="PAGEPARAMSRENDERPARAM1_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="tp_pgprms_rnderprm"/>
+			</field>
+			<field name="pageHeader" persistence-modifier="persistent">
+				<collection element-type="java.lang.String">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<join name="tp_pgprms_pgeheder"/>
+				<order column="PAGEPARAMSPAGEHEADER1_IDX"/>
+			</field>
+		</class>
+		<class name="com.ibm.isc.wccm.top.impl.RenderParamImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="top_renderparam" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.top.RenderParam"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="value" persistence-modifier="persistent" null-value="exception"/>
+		</class>
+		<class name="com.ibm.isc.wccm.top.impl.TopImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="top_top" identity-type="datastore">
+			<implements name="com.ibm.isc.wccm.top.Top"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+			<field name="applicationDefinition" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="com.ibm.isc.wccm.top.impl.ApplicationDefinitionImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="tp_tp_pplctndfntin" allows-null="true"/>
+				</element>
+				<order column="TOP_APPLICATIONDEFINITION_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="tp_tp_pplctndfntin"/>
+			</field>
+		</class>
+	</package>
+</jdo>
