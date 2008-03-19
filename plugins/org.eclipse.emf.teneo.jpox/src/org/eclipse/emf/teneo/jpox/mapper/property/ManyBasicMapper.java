@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyBasicMapper.java,v 1.11 2008/02/28 07:09:04 mtaal Exp $
+ * $Id: ManyBasicMapper.java,v 1.12 2008/03/19 22:25:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 	/** The logger for all these exceptions */
@@ -47,8 +47,8 @@ public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 		log.debug("Processing one to many attribute: " + aAttribute.getModelElement().getName());
 		Element field = eclassElement.addElement("field");
 		field.addAttribute("name",
-			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getModelElement()))
-			.addAttribute("persistence-modifier", "persistent");
+			namingHandler.correctName(mappingContext, (EStructuralFeature) aAttribute.getModelElement())).addAttribute(
+			"persistence-modifier", "persistent");
 
 		EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
 		final boolean isArray =
@@ -62,7 +62,7 @@ public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 			field.addElement("element");
 
 			if (aAttribute.getJoinTable() != null && aAttribute.getJoinTable().getName() != null) {
-				join.addAttribute("name", aAttribute.getJoinTable().getName());
+				field.addAttribute("table", aAttribute.getJoinTable().getName());
 			}
 			return; // and return from here
 		} else if (StoreUtil.isMixed(eAttribute)) {
@@ -97,7 +97,7 @@ public class ManyBasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		if (join != null && aAttribute.getJoinTable() != null && aAttribute.getJoinTable().getName() != null) {
-			join.addAttribute("name", aAttribute.getJoinTable().getName());
+			field.addAttribute("table", aAttribute.getJoinTable().getName());
 		}
 
 		Element order = field.addElement("order");
