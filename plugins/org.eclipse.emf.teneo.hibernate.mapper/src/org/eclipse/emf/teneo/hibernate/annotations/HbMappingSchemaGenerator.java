@@ -11,7 +11,7 @@
  *   Douglas Bitting
  * </copyright>
  *
- * $Id: HbMappingSchemaGenerator.java,v 1.2 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbMappingSchemaGenerator.java,v 1.3 2008/03/30 10:01:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -83,7 +83,7 @@ public class HbMappingSchemaGenerator extends PersistenceMappingSchemaGenerator 
 		if (result.compareTo("hb-column") == 0) {
 			return "columns"; // prevents a specific nameclash
 		}
-		if (result.startsWith("hb-")) {
+		if (result.startsWith("hb-") && result.compareTo("hb-map-key") != 0) {
 			return result.substring(3);
 		}
 		return result;

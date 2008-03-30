@@ -10,7 +10,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCollectionOfElements"
         eType="ecore:EClass hbannotation.ecore#//CollectionOfElements" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbMapKey" eType="ecore:EClass hbannotation.ecore#//MapKey"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="elementName" value="hb-map-key"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbColumns" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//Column"
         containment="true"/>

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.27 2008/02/28 07:07:43 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.28 2008/03/30 10:01:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -191,8 +191,16 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	 * one of them filled.
 	 */
 	private boolean isNullable(Basic basic, PAnnotatedEAttribute aattr) {
-		return getHbmContext().isForceOptional() || basic.isOptional() ||
+		// actually aattr.getColumn() should never be null as the default annotator
+		// always adds columns...
+		// has been changed from this commented code to the code below because
+		// of bugzilla: 224536 which gives the column annotation precedence
+		// over the basis annotation.
+// return getHbmContext().isForceOptional() || basic.isOptional() ||
+// getHbmContext().isCurrentElementFeatureMap() &&
+// (aattr.getColumn() != null || aattr.getColumn().isNullable());
+		return getHbmContext().isForceOptional() || (aattr.getColumn() == null && basic.isOptional()) ||
 				getHbmContext().isCurrentElementFeatureMap() &&
-				(aattr.getColumn() == null || aattr.getColumn().isNullable());
+				(aattr.getColumn() != null && aattr.getColumn().isNullable());
 	}
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackageImpl.java,v 1.3 2007/11/14 16:38:34 mtaal Exp $
+ * $Id: HbmodelPackageImpl.java,v 1.4 2008/03/30 10:01:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -584,6 +584,26 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// teneo/internal/PersistenceMapping
+		createPersistenceMappingAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo/internal/PersistenceMapping</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPersistenceMappingAnnotations() {
+		String source = "teneo/internal/PersistenceMapping";		
+		addAnnotation
+		  (getHbAnnotatedETypeElement_HbMapKey(), 
+		   source, 
+		   new String[] {
+			 "elementName", "hb-map-key"
+		   });
 	}
 
 } //HbmodelPackageImpl

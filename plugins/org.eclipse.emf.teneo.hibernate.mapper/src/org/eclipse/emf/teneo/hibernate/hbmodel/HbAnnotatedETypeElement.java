@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedETypeElement.java,v 1.7 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbAnnotatedETypeElement.java,v 1.8 2008/03/30 10:01:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -101,6 +101,7 @@ public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature, H
 	 * @see #setHbMapKey(MapKey)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedETypeElement_HbMapKey()
 	 * @model containment="true"
+	 *        annotation="teneo/internal/PersistenceMapping elementName='hb-map-key'"
 	 * @generated
 	 */
 	MapKey getHbMapKey();

@@ -96,7 +96,11 @@
 			</xsd:element>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="hb-map-key" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="type" type="Type"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="id" type="Id"/>
@@ -142,7 +146,11 @@
 			<xsd:element name="fetch" type="HbFetchType"/>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="hb-map-key" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="join-column" type="JoinColumn">
@@ -198,7 +206,11 @@
 			<xsd:element name="fetch" type="HbFetchType"/>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="hb-map-key" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="type" type="Type"/>
 			<xsd:element name="where" type="xsd:string"/>

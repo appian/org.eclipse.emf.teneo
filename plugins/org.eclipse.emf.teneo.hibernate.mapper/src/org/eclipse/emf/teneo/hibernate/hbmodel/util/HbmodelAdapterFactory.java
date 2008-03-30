@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelAdapterFactory.java,v 1.1 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbmodelAdapterFactory.java,v 1.2 2008/03/30 10:01:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.util;
 
@@ -73,7 +73,7 @@ public class HbmodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
