@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.11 2008/03/19 22:25:31 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.12 2008/03/30 10:01:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -37,7 +37,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -76,18 +76,15 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 
 		initializeDataStore();
 
-		// wait for the session factory until the database is (re)created
-		if (isSessionFactorySet()) {
-			if (getSessionFactory() != null && !getSessionFactory().isClosed()) {
-				getSessionFactory().close();
-			}
-		}
+		// will close the current sessionfactory if it was set
+		closeSessionFactory();
+
 		buildSessionFactory();
 
 		setInitialized(true);
 	}
 
-	/** Set the event listener, can be overridden, in this impl. it does nothing */
+	/** Set the event listener, can be overridden */
 	@Override
 	protected void setEventListeners() {
 		final EMFInitializeCollectionEventListener eventListener =

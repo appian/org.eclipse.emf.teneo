@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.3 2008/03/15 06:15:06 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.4 2008/03/30 10:01:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.stat.Statistics;
  * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 @SuppressWarnings("unchecked")
 public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
@@ -59,8 +59,12 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return sessionFactory;
 	}
 
-	protected boolean isSessionFactorySet() {
-		return sessionFactory != null && !sessionFactory.isClosed();
+	// close session factory if set
+	protected void closeSessionFactory() {
+		if (sessionFactory != null && !sessionFactory.isClosed()) {
+			sessionFactory.close();
+			sessionFactory = null;
+		}
 	}
 
 	/**
