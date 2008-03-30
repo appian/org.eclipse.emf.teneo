@@ -28,13 +28,14 @@ import org.eclipse.emf.teneo.samples.emf.sample.dynamic.DynamicFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.DynamicPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.Person;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
+import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -161,6 +162,12 @@ public class DynamicAction extends AbstractTestAction {
 			store.updateSchema();
 
 			System.err.println(store.getMappingXML());
+		}
+
+		// return from here in case of hsqldb because hsqldb does
+		// not support db reconfiguration
+		if (store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter) {
+			return;
 		}
 
 		// Now create three employee

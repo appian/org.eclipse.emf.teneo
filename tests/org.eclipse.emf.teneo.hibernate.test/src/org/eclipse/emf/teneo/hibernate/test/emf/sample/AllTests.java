@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.70 $
+ * @version $Revision: 1.71 $
  */
 public class AllTests {
 
@@ -55,6 +55,16 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(EcoreAction.class);
+		suite.addTestSuite(LibraryTest.class);
+
+		suite.addTestSuite(DynamicAction.class);
+		suite.addTestSuite(LibraryUseMappingFileAction.class);
+
+		suite.addTestSuite(LibraryCheckNameAction.class);
+		suite.addTestSuite(LibraryColLengthAction.class);
+
 		suite.addTestSuite(LibraryFKAction.class);
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 
@@ -62,11 +72,8 @@ public class AllTests {
 
 		suite.addTestSuite(RentalMapAsClassAction.class);
 
-		suite.addTestSuite(LibraryTest.class);
-		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(NoEscapeLibraryAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
-		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(ClaimAction.class);
 		suite.addTestSuite(ProductAction.class);
 
@@ -74,18 +81,11 @@ public class AllTests {
 		suite.addTestSuite(SimpleRentalAction.class);
 		suite.addTestSuite(LibraryResourceCutPasteAction.class);
 
-		suite.addTestSuite(EcoreAction.class);
-
 		suite.addTestSuite(LibraryJoinTableNamingAction.class);
 
 		suite.addTestSuite(CarAction.class);
 
-		suite.addTestSuite(LibraryColLengthAction.class);
-		suite.addTestSuite(LibraryCheckNameAction.class);
-
 		suite.addTestSuite(CatalogTest.class);
-
-		suite.addTestSuite(LibraryUseMappingFileAction.class);
 
 		suite.addTestSuite(PrimerPOAction.class);
 
@@ -117,7 +117,6 @@ public class AllTests {
 		suite.addTestSuite(DetachFromSessionAction.class);
 
 		suite.addTestSuite(SunBooksAction.class);
-		suite.addTestSuite(LibraryTest.class);
 		// suite.addTestSuite(WoWAction.class);
 		suite.addTestSuite(InventoryAction.class);
 		suite.addTestSuite(LibraryValidateResourceTest.class);

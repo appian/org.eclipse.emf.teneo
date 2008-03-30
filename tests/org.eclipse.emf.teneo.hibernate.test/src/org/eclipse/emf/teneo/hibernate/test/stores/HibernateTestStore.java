@@ -41,6 +41,7 @@ import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.test.stores.adapters.HibernateTestDBAdapter;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
+import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.Session;
@@ -51,7 +52,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -155,6 +156,13 @@ public class HibernateTestStore extends AbstractTestStore {
 		}
 		// set both hibernate and persistence props as we do not know the difference right now
 		props.putAll(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
+
+		// do a special trick for hsqldb, because hsqldb expects all identifiers to be
+		// escaped or otherwise uppercases them, so uppercase everything automatically
+		if (getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter &&
+				!props.containsKey(PersistenceOptions.SQL_CASE_STRATEGY)) {
+			props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
+		}
 		emfDataStore.setProperties(props);
 		emfDataStore.initialize();
 		if (sessionWrapper != null) {

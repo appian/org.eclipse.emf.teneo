@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.52 $
+ * @version $Revision: 1.53 $
  */
 public class AllTests {
 
@@ -90,8 +90,6 @@ public class AllTests {
 		suite.addTestSuite(LazyLibraryAction.class);
 
 		suite.addTestSuite(AttributeOverridesAction.class);
-
-		suite.addTestSuite(InheritanceAnnotationAction.class);
 
 		suite.addTestSuite(MapKeyAction.class);
 

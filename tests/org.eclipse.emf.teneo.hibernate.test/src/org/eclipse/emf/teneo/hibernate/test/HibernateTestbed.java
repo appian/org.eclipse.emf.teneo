@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.15 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.16 2008/03/30 15:11:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -62,11 +62,26 @@ public class HibernateTestbed extends Testbed {
 				propFileName = "/emft_test.properties";
 			} else {
 				propFileName = "/local_test.properties";
+				deleteHsqldbFile(new File("/tmp/hsqldb"));
 			}
 			Testbed.setTestBed(new HibernateTestbed());
+
 		} catch (Exception e) {
 			throw new StoreTestException("Exception while checking directory " + RUN_BASE_DIR, e);
 		}
+	}
+
+	// remove all hsqldb files before each run
+	private static void deleteHsqldbFile(File file) {
+		if (!file.exists()) {
+			return;
+		}
+		if (file.isDirectory()) {
+			for (File f : file.listFiles()) {
+				deleteHsqldbFile(f);
+			}
+		}
+		file.delete();
 	}
 
 	/** Delegates to the test bed */
@@ -114,13 +129,18 @@ public class HibernateTestbed extends Testbed {
 
 	/** Creates the mapping xml and writes it to a mapping file */
 	private void writeMappingToFile(AbstractTest testCase, ExtensionManager extensionManager) throws IOException {
+		// only write for mysql as one mapping file is enought
+		if (!getActiveConfiguration().getName().startsWith("mysql")) {
+			return;
+		}
 		final Properties props = testCase.getExtraConfigurationProperties();
 		props.put(PersistenceOptions.INHERITANCE_MAPPING, getActiveConfiguration().getMappingStrategy().getName());
 		final Properties properties = new Properties();
 		properties.putAll(props);
 		final String mappingXML =
 				HbHelper.INSTANCE.generateMapping(testCase.getEPackages(), properties, extensionManager);
-		writeMappingToFile(getHBMFile(testCase, getActiveConfiguration()), mappingXML);
+		final File file = getHBMFile(testCase, getActiveConfiguration());
+		writeMappingToFile(file, mappingXML);
 	}
 
 	/** Write the mapping file for debugging purposes */
