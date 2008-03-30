@@ -60,7 +60,7 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="myAbstract" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+		<property name="myAbstract" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigInteger">
 			<column not-null="false" unique="false" name="`myabstractgroup_myabstract`"/>
 		</property>
 	</class>

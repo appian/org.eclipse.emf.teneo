@@ -18,7 +18,7 @@
 		<many-to-one name="project" entity-name="Project" cascade="merge,persist,save-update,lock,refresh" foreign-key="item_project" lazy="false" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`myproject`" unique-key="c0"/>
 		</many-to-one>
-		<property name="age" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+		<property name="age" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
 			<column not-null="false" unique="false" name="`myint`" unique-key="c0"/>
 		</property>
 	</class>
