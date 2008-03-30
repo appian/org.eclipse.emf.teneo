@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BookAction.java,v 1.10 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: BookAction.java,v 1.11 2008/03/30 15:12:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -28,13 +28,14 @@ import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.column.ColumnPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
+import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class BookAction extends AbstractTestAction {
 	/**
@@ -86,11 +87,14 @@ public class BookAction extends AbstractTestAction {
 		// read back and check it
 		{
 			store.beginTransaction();
-			final Book book = (Book) store.getObject(Book.class);
-			assertTrue("The length of the booktitle should not be more than 25: " + book.getTitle().length(), book
-				.getTitle().length() <= 25);
-			assertTrue("Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
-				Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
+			final Book book = store.getObject(Book.class);
+			// hsqldb does not support column length, at least not in in-mem mode
+			if (!(store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter)) {
+				assertTrue("The length of the booktitle should not be more than 25: " + book.getTitle().length(), book
+					.getTitle().length() <= 25);
+				assertTrue("Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
+					Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
+			}
 			book.setWeight(new BigDecimal("25.5"));
 			store.store(book);
 			store.commitTransaction();
@@ -124,7 +128,7 @@ public class BookAction extends AbstractTestAction {
 		// read back and check it
 		{
 			store.beginTransaction();
-			final Book book = (Book) store.getObject(Book.class);
+			final Book book = store.getObject(Book.class);
 			assertTrue(255 == (int) (book.getWeight().doubleValue() * 10));
 			store.store(book);
 			store.commitTransaction();

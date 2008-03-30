@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryUseMappingFileAction.java,v 1.5 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: LibraryUseMappingFileAction.java,v 1.6 2008/03/30 15:12:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -30,11 +30,12 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
+import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LibraryUseMappingFileAction extends AbstractTestAction {
 	/**
@@ -99,7 +100,11 @@ public class LibraryUseMappingFileAction extends AbstractTestAction {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select count(*) from testBook");
+			if (store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter) {
+				rs = stmt.executeQuery("select count(*) from \"testBook\"");
+			} else {
+				rs = stmt.executeQuery("select count(*) from testBook");
+			}
 			rs.next();
 			assertEquals(2, rs.getInt(1));
 			rs.close();

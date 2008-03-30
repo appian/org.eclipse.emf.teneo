@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapKeyAction.java,v 1.5 2008/03/07 13:13:53 mtaal Exp $
+ * $Id: MapKeyAction.java,v 1.6 2008/03/30 15:12:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MapKeyAction extends AbstractTestAction {
 	/**
@@ -46,6 +46,22 @@ public class MapKeyAction extends AbstractTestAction {
 	 */
 	public MapKeyAction() {
 		super(MapkeyPackage.eINSTANCE);
+	}
+
+	// set the table/column names to uppercase otherwise this testcase will fail
+	// with hsqldb because hibernate does not escape the order by clause in a query.
+	// Caused by: java.sql.SQLException: Column not found: ITEM0_.NAME in
+	// statement [select item0_."item_itemlist_e_id" as item4_1_,
+	// item0_.e_id as e1_1_, item0_.e_id as e1_575_0_, item0_.e_version as
+	// e2_575_0_, item0_."name" as name3_575_0_, item0_."item_itemlist_e_id"
+	// as item4_575_0_ from "testset_item" item0_ where item0_."item_itemlist_e_id"=?
+	// order by item0_.name desc]
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
+		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
+		return props;
 	}
 
 	/**
@@ -140,17 +156,5 @@ public class MapKeyAction extends AbstractTestAction {
 		} catch (final Exception e) {
 			throw new StoreTestException("Exception when testing with resource", e);
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
-	@Override
-	public Properties getExtraConfigurationProperties() {
-		final Properties props = new Properties();
-		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "true");
-		return props;
 	}
 }

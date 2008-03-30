@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseTestDatabaseAdapter.java,v 1.3 2008/02/28 07:08:13 mtaal Exp $
+ * $Id: BaseTestDatabaseAdapter.java,v 1.4 2008/03/30 15:12:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -27,12 +27,13 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.test.StoreTestException;
 
 /**
- * Is a general test database adapter. This adapter hides details related to running the testcass with different databases. The
- * database specific actions are relatively simple, drop and create a database and possibly specific such as setting lower or uppercase
- * name handling in the database. For handling other databases this class can be extended.
+ * Is a general test database adapter. This adapter hides details related to running the testcass
+ * with different databases. The database specific actions are relatively simple, drop and create a
+ * database and possibly specific such as setting lower or uppercase name handling in the database.
+ * For handling other databases this class can be extended.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
@@ -67,9 +68,10 @@ public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
 		dbUser = props.getProperty("dbuser");
 		dbPwd = props.getProperty("dbpassword");
 		optimistic = props.getProperty("optimistic") != null && props.getProperty("optimistic").compareTo("true") == 0;
-		logInfo = " adapter|dbName|url|user|pwd|driver "
-				+ this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|" + dbName + "|" + dbUrl
-				+ "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
+		logInfo =
+				" adapter|dbName|url|user|pwd|driver " +
+						this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|" +
+						dbName + "|" + dbUrl + "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
 	}
 
 	/*
@@ -113,9 +115,10 @@ public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
 		dbName = databaseName;
 
 		// set the loginfo
-		logInfo = " adapter|dbName|url|user|pwd|driver "
-				+ this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|" + dbName + "|" + dbUrl
-				+ "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
+		logInfo =
+				" adapter|dbName|url|user|pwd|driver " +
+						this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1) + "|" +
+						dbName + "|" + dbUrl + "|" + dbUser + "|" + dbPwd + "|" + dbDriver;
 
 		log.debug("Initialized database adapter: " + logInfo);
 	}
@@ -135,7 +138,9 @@ public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
 	 * @see org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter#getDbUrl()
 	 */
 	public String getDbUrl() {
-		if (dbUrl.endsWith("/")) {
+		if (dbUrl.endsWith(":")) { // hsqldb
+			return dbUrl + dbName;
+		} else if (dbUrl.endsWith("/")) {
 			return dbUrl + dbName;
 		} else {
 			return dbUrl + "/" + dbName;
@@ -253,5 +258,4 @@ public class BaseTestDatabaseAdapter implements TestDatabaseAdapter {
 		rs.close();
 		return exists;
 	}
-
 }

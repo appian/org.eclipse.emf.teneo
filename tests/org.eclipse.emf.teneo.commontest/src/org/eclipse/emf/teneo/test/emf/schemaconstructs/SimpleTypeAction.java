@@ -20,13 +20,14 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleType
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpletypesPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
+import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */
@@ -106,7 +107,10 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertTrue(result.getLimitedstring().compareTo(STRING) == 0);
 			assertEquals(LONG, result.getLon());
 			assertEquals(SHORT, result.getShor());
-			assertEquals(STRING.substring(0, 5), result.getExtraLimitedString());
+			// hsqldb does not support column length, at least not in in-mem mode
+			if (!(store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter)) {
+				assertEquals(STRING.substring(0, 5), result.getExtraLimitedString());
+			}
 			assertEquals(bigDecimalTwo.floatValue(), result.getLimitedDecimal().floatValue(), 0.11);
 			store.deleteObject(result);
 			store.commitTransaction();
@@ -223,7 +227,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 			assertValues(result.getFloa(), floats);
 			assertValues(result.getIntArray(), simpleInts);
 			assertValues(result.getDoubleArray(), simpleDoubles);
-			assertValues((String[]) result.getStringArray(), strings);
+			assertValues(result.getStringArray(), strings);
 			assertValues(result.getByteArray(), simpleBytes);
 			assertValues(result.getStri(), strings);
 

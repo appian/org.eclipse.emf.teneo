@@ -9,8 +9,10 @@
 package org.eclipse.emf.teneo.test.emf.annotations;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
@@ -26,7 +28,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test 1n relation (contained and non-contained) using sets.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class SetAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -39,6 +41,21 @@ public class SetAction extends AbstractTestAction {
 	 */
 	public SetAction() {
 		super(SetPackage.eINSTANCE);
+	}
+
+	// set the table/column names to uppercase otherwise this testcase will fail
+	// with hsqldb because hibernate does not escape the order by clause in a query.
+	// Caused by: java.sql.SQLException: Column not found: ITEM0_.NAME in
+	// statement [select item0_."item_itemlist_e_id" as item4_1_,
+	// item0_.e_id as e1_1_, item0_.e_id as e1_575_0_, item0_.e_version as
+	// e2_575_0_, item0_."name" as name3_575_0_, item0_."item_itemlist_e_id"
+	// as item4_575_0_ from "testset_item" item0_ where item0_."item_itemlist_e_id"=?
+	// order by item0_.name desc]
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */

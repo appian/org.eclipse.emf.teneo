@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction {
 
@@ -92,7 +92,7 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 	public void doAction(TestStore store) {
 		if (store.isInheritanceStrategy(InternationalPriceImpl.class, InheritanceType.SINGLE_TABLE)) {
 			ignored_tests++;
-			assertTrue(ignored_tests < 4);
+			assertTrue(ignored_tests < 5);
 			return; // not the correct test, should only run xml tests, need to change the whole
 			// test framework to do this
 		}
