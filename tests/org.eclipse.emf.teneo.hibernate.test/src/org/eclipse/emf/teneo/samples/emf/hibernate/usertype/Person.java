@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.5 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: Person.java,v 1.6 2008/03/30 20:54:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -23,11 +23,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getPhoneNumbers <em>Phone Numbers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getEmergencyContact <em>Emergency Contact</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getAddresses <em>Addresses</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getBirthPlace <em>Birth Place</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson()
  * @model extendedMetaData="name='Person' kind='elementOnly'"
+ *        annotation="teneo.hibernate appinfo='\t\t\t\t\t\t@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")'"
  * @generated
  */
 public interface Person extends EObject {
@@ -96,7 +98,7 @@ public interface Person extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Phone Numbers</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson_PhoneNumbers()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber" dataType="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.PhoneNumber" upper="100"
+	 * @model dataType="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.PhoneNumber" upper="100"
 	 * @generated
 	 */
 	EList getPhoneNumbers();
@@ -146,5 +148,31 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	EList getAddresses();
+
+	/**
+	 * Returns the value of the '<em><b>Birth Place</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Birth Place</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Birth Place</em>' attribute.
+	 * @see #setBirthPlace(String)
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson_BirthPlace()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getBirthPlace();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getBirthPlace <em>Birth Place</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Birth Place</em>' attribute.
+	 * @see #getBirthPlace()
+	 * @generated
+	 */
+	void setBirthPlace(String value);
 
 } // Person

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackage.java,v 1.8 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: UsertypePackage.java,v 1.9 2008/03/30 20:54:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypeFactory
  * @model kind="package"
+ *        annotation="teneo.hibernate appinfo='\t\t\t\t\t\t@NamedQuery(name=\"getPersonByBirthPlace2\" query=\"select p from Person p where p.birthPlace=?\")\n\t\t\t\t\t'"
  * @generated
  */
 public interface UsertypePackage extends EPackage {
@@ -116,13 +117,22 @@ public interface UsertypePackage extends EPackage {
 	int PERSON__ADDRESSES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Birth Place</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__BIRTH_PLACE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 5;
+	int PERSON_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
@@ -259,6 +269,17 @@ public interface UsertypePackage extends EPackage {
 	EReference getPerson_Addresses();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getBirthPlace <em>Birth Place</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Birth Place</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getBirthPlace()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_BirthPlace();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -298,7 +319,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name
 	 * @model instanceClass="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name"
 	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@TypeDef(name=\"nameType\" typeClass=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t'"
-	 *        extendedMetaData="name='Name'" 
+	 *        extendedMetaData="name='Name'"
 	 * @generated
 	 */
 	EDataType getName_();
@@ -321,7 +342,7 @@ public interface UsertypePackage extends EPackage {
 	 * @return the meta object for data type '<em>Int Array</em>'.
 	 * @model instanceClass="int[]"
 	 *        extendedMetaData="name='IntArray'"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@TypeDef(name=\"intArrayType\" typeClass=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"IntArray\")})\n\t\t\t\t\t'" 
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@TypeDef(name=\"intArrayType\" typeClass=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"IntArray\")})\n\t\t\t\t\t'"
 	 * @generated
 	 */
 	EDataType getIntArray();
@@ -397,6 +418,14 @@ public interface UsertypePackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSON__ADDRESSES = eINSTANCE.getPerson_Addresses();
+
+		/**
+		 * The meta object literal for the '<em><b>Birth Place</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__BIRTH_PLACE = eINSTANCE.getPerson_BirthPlace();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.1 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.2 2008/03/30 20:54:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -62,7 +62,7 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * @generated
 	 * @ordered
 	 */
-	protected Person person = null;
+	protected Person person;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeSwitch.java,v 1.4 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: UsertypeSwitch.java,v 1.5 2008/03/30 20:54:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
@@ -104,13 +104,13 @@ public class UsertypeSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Person</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Person</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Person</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Person</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -119,13 +119,13 @@ public class UsertypeSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Address</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Address</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Address</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Address</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -134,13 +134,13 @@ public class UsertypeSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */

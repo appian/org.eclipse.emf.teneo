@@ -15,6 +15,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/phoneNumbers"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/emergencyContact"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usertype.ecore#//Person/addresses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/birthPlace"/>
     </genClasses>
     <genClasses ecoreClass="usertype.ecore#//Address">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Address/addressInfo"/>

@@ -3,6 +3,9 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="usertype"
     nsURI="http://www.elver.org/samples/emf/hibernate/usertype" nsPrefix="usertype">
+  <eAnnotations source="teneo.hibernate">
+    <details key="appinfo" value="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@NamedQuery(name=&quot;getPersonByBirthPlace2&quot; query=&quot;select p from Person p where p.birthPlace=?&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name">
     <eAnnotations source="teneo.jpa">
       <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@TypeDef(name=&quot;nameType&quot; typeClass=&quot;org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Columns({@Column(name=&quot;first_name&quot;), @Column(name=&quot;last_name&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
@@ -15,6 +18,9 @@
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Person"/>
       <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.hibernate">
+      <details key="appinfo" value="&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@NamedQuery(name=&quot;getPersonByBirthPlace&quot; query=&quot;select p from Person p where p.birthPlace=?&quot;)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
         eType="#//Name">
@@ -40,6 +46,8 @@
         <details key="appinfo" value="@OnDelete(action=OnDeleteAction.CASCADE)&#xA;@OneToMany(indexed=false, unique=true)"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="birthPlace" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="PhoneNumber" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IntArray" instanceClassName="int[]">

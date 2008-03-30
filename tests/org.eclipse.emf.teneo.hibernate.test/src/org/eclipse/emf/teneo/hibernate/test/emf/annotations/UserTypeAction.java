@@ -11,7 +11,7 @@
  *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.9 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.10 2008/03/30 20:54:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
@@ -30,12 +31,13 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypeFactory;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.hibernate.Query;
 
 /**
  * Test
  * 
  * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 @SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {
@@ -73,6 +75,7 @@ public class UserTypeAction extends AbstractTestAction {
 		addr2.setAddressInfo("addr2");
 		person.getAddresses().add(addr1);
 		person.getAddresses().add(addr2);
+		person.setBirthPlace("Singapore");
 		store.store(addr1);
 		store.store(addr2);
 		store.store(person);
@@ -96,6 +99,15 @@ public class UserTypeAction extends AbstractTestAction {
 		assertEquals(2, person.getAddresses().size());
 
 		store.commitTransaction();
+
+		final Query q1 = ((HibernateTestStore) store).getSession().getNamedQuery("getPersonByBirthPlace");
+		q1.setString(0, "Singapore");
+		assertEquals(1, q1.list().size());
+
+		final Query q2 = ((HibernateTestStore) store).getSession().getNamedQuery("getPersonByBirthPlace2");
+		q2.setString(0, "Singapore");
+		assertEquals(1, q2.list().size());
+
 	}
 
 	private void testDatabase(TestStore store) {

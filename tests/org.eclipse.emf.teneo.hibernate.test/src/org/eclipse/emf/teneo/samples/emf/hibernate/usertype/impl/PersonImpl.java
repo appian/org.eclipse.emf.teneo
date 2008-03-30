@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.8 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.9 2008/03/30 20:54:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -43,6 +43,7 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getPhoneNumbers <em>Phone Numbers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getEmergencyContact <em>Emergency Contact</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getAddresses <em>Addresses</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getBirthPlace <em>Birth Place</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,7 +98,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList phoneNumbers = null;
+	protected EList phoneNumbers;
 
 	/**
 	 * The default value of the '{@link #getEmergencyContact() <em>Emergency Contact</em>}' attribute.
@@ -127,7 +128,27 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList addresses = null;
+	protected EList addresses;
+
+	/**
+	 * The default value of the '{@link #getBirthPlace() <em>Birth Place</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBirthPlace()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BIRTH_PLACE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBirthPlace() <em>Birth Place</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBirthPlace()
+	 * @generated
+	 * @ordered
+	 */
+	protected String birthPlace = BIRTH_PLACE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -239,6 +260,27 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBirthPlace() {
+		return birthPlace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBirthPlace(String newBirthPlace) {
+		String oldBirthPlace = birthPlace;
+		birthPlace = newBirthPlace;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UsertypePackage.PERSON__BIRTH_PLACE, oldBirthPlace, birthPlace));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UsertypePackage.PERSON__ADDRESSES:
@@ -277,6 +319,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return getEmergencyContact();
 			case UsertypePackage.PERSON__ADDRESSES:
 				return getAddresses();
+			case UsertypePackage.PERSON__BIRTH_PLACE:
+				return getBirthPlace();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -305,6 +349,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 				getAddresses().clear();
 				getAddresses().addAll((Collection)newValue);
 				return;
+			case UsertypePackage.PERSON__BIRTH_PLACE:
+				setBirthPlace((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -331,6 +378,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__ADDRESSES:
 				getAddresses().clear();
 				return;
+			case UsertypePackage.PERSON__BIRTH_PLACE:
+				setBirthPlace(BIRTH_PLACE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -352,6 +402,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return EMERGENCY_CONTACT_EDEFAULT == null ? emergencyContact != null : !EMERGENCY_CONTACT_EDEFAULT.equals(emergencyContact);
 			case UsertypePackage.PERSON__ADDRESSES:
 				return addresses != null && !addresses.isEmpty();
+			case UsertypePackage.PERSON__BIRTH_PLACE:
+				return BIRTH_PLACE_EDEFAULT == null ? birthPlace != null : !BIRTH_PLACE_EDEFAULT.equals(birthPlace);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -373,6 +425,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 		result.append(phoneNumbers);
 		result.append(", emergencyContact: ");
 		result.append(emergencyContact);
+		result.append(", birthPlace: ");
+		result.append(birthPlace);
 		result.append(')');
 		return result.toString();
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackageImpl.java,v 1.8 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: UsertypePackageImpl.java,v 1.9 2008/03/30 20:54:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -190,6 +190,15 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPerson_BirthPlace() {
+		return (EAttribute)personEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAddress() {
 		return addressEClass;
 	}
@@ -273,6 +282,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		createEAttribute(personEClass, PERSON__PHONE_NUMBERS);
 		createEAttribute(personEClass, PERSON__EMERGENCY_CONTACT);
 		createEReference(personEClass, PERSON__ADDRESSES);
+		createEAttribute(personEClass, PERSON__BIRTH_PLACE);
 
 		addressEClass = createEClass(ADDRESS);
 		createEAttribute(addressEClass, ADDRESS__ADDRESS_INFO);
@@ -316,6 +326,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		initEAttribute(getPerson_PhoneNumbers(), this.getPhoneNumber(), "phoneNumbers", null, 0, 100, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_EmergencyContact(), this.getPhoneNumber(), "emergencyContact", "", 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Addresses(), this.getAddress(), this.getAddress_Person(), "addresses", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_BirthPlace(), ecorePackage.getEString(), "birthPlace", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAddress_AddressInfo(), ecorePackage.getEString(), "addressInfo", null, 1, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -330,10 +341,34 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// teneo.jpa
+		// teneo.hibernate
 		createTeneoAnnotations();
+		// teneo.jpa
+		createTeneo_1Annotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.hibernate</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.hibernate";		
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\t\t\t\t\t\t@NamedQuery(name=\"getPersonByBirthPlace2\" query=\"select p from Person p where p.birthPlace=?\")\n\t\t\t\t\t"
+		   });					
+		addAnnotation
+		  (personEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\t\t\t\t\t\t@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")"
+		   });							
 	}
 
 	/**
@@ -342,14 +377,14 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";		
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.jpa";			
 		addAnnotation
 		  (nameEDataType, 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t\t@TypeDef(name=\"nameType\" typeClass=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.NameType\")\n\t\t\t\t\t\t@Columns({@Column(name=\"first_name\"), @Column(name=\"last_name\")})\n\t\t\t\t\t"
-		   });						
+		   });							
 		addAnnotation
 		  (getPerson_Addresses(), 
 		   source, 
@@ -371,7 +406,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";				
 		addAnnotation
 		  (nameEDataType, 
 		   source, 
@@ -384,7 +419,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   new String[] {
 			 "name", "Person",
 			 "kind", "elementOnly"
-		   });		
+		   });			
 		addAnnotation
 		  (getPerson_Name(), 
 		   source, 
