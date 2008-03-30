@@ -48,6 +48,7 @@
 			<xsd:element name="embeddable" type="Embeddable"/>
 			<xsd:element name="entity" type="Entity"/>
 			<xsd:element name="cache" type="Cache"/>
+			<xsd:element name="named-query" type="NamedQuery"/>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="proxy" type="Proxy"/>
 			<xsd:element name="where" type="xsd:string"/>
@@ -315,6 +316,10 @@
 	<xsd:attribute name="generator" type="xsd:string" use="optional"/>
 	<xsd:attribute name="table" type="xsd:string" use="optional"/>
 	<xsd:attribute name="type" type="xsd:string" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="NamedQuery">
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="query" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:simpleType name="OnDeleteAction">
 	<xsd:restriction base="xsd:token">

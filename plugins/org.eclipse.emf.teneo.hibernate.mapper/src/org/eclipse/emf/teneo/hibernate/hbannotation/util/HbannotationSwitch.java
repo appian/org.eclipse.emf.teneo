@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.3 2007/07/11 17:35:11 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.4 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -218,6 +218,14 @@ public class HbannotationSwitch<T> {
 				T result = caseGenerated(generated);
 				if (result == null) result = caseHbAnnotation(generated);
 				if (result == null) result = casePAnnotation(generated);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.NAMED_QUERY: {
+				NamedQuery namedQuery = (NamedQuery)theEObject;
+				T result = caseNamedQuery(namedQuery);
+				if (result == null) result = caseHbAnnotation(namedQuery);
+				if (result == null) result = casePAnnotation(namedQuery);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -452,6 +460,21 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseGenerated(Generated object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Query</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Query</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedQuery(NamedQuery object) {
 		return null;
 	}
 

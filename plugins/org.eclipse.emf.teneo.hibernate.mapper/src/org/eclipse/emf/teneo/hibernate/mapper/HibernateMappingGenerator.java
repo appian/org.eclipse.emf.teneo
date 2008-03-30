@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.19 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.20 2008/03/30 20:55:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -34,8 +34,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicEntityNameStrategy;
@@ -111,6 +113,17 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			initEntityNames(hbmContext, paModel);
 			processTypedefs(paModel);
 			processPersistentClasses(paModel);
+			// Process Named Queries
+			// Added by PhaneeshN
+			// This will emit the named query implementation into the mapping
+			// based on model annotation @NamedQuery(name={name}, query={query});
+			// Named queries can be parameterized
+			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
+				processPANamedQueries(paPackage);
+				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
+					processPANamedQueries(paEClass);
+				}
+			}
 			return hbmContext.endDocument();
 		} catch (MappingException exc) {
 			throw new MappingException("Hibernate mapping generation failed", exc);
@@ -208,6 +221,53 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 					emitTypeDef(hed.getHbTypeDef());
 				}
 			}
+		}
+	}
+
+	/**
+	 * Process the given class and declare named queries that are annotated as Model Annotations
+	 * 
+	 * @author PhaneeshN <a
+	 *         href="mailto:phaneesh.nagararaja@sos.sungard.com">phaneesh.nagararaja@sos.sungard.com</a>
+	 *         <a href="http://www.sungardhe.com">SunGard Higher Education</a>
+	 */
+	protected void processPANamedQueries(PAnnotatedEClass paEClass) {
+		// TODO: Should be refactored into a NamedQueryMapper Extension and register it into
+		// extension Manager
+		if (log.isDebugEnabled()) {
+			log.debug("Processing Queries for " + paEClass.getEntity().getName());
+		}
+		if (log.isDebugEnabled()) {
+			log.debug("********************** Named Queries ***************************");
+			for (NamedQuery namedQuery : ((HbAnnotatedEClass) paEClass).getHbNamedQuery()) {
+				log.info(namedQuery.getName() + ":" + namedQuery.getQuery());
+			}
+			log.debug("****************************************************************");
+		}
+		for (NamedQuery namedQuery : ((HbAnnotatedEClass) paEClass).getHbNamedQuery()) {
+			final Element target = this.hbmContext.getCurrent().addElement("query");
+			target.addAttribute("name", namedQuery.getName());
+			target.addText("<![CDATA[" + namedQuery.getQuery() + "]]>");
+		}
+	}
+
+	protected void processPANamedQueries(PAnnotatedEPackage paEPackage) {
+		// TODO: Should be refactored into a NamedQueryMapper Extension and register it into
+		// extension Manager
+		if (log.isDebugEnabled()) {
+			log.debug("Processing Queries for " + paEPackage.getModelEPackage().getName());
+		}
+		if (log.isDebugEnabled()) {
+			log.debug("********************** Named Queries ***************************");
+			for (NamedQuery namedQuery : ((HbAnnotatedEPackage) paEPackage).getHbNamedQuery()) {
+				log.info(namedQuery.getName() + ":" + namedQuery.getQuery());
+			}
+			log.debug("****************************************************************");
+		}
+		for (NamedQuery namedQuery : ((HbAnnotatedEPackage) paEPackage).getHbNamedQuery()) {
+			final Element target = this.hbmContext.getCurrent().addElement("query");
+			target.addAttribute("name", namedQuery.getName());
+			target.addText("<![CDATA[" + namedQuery.getQuery() + "]]>");
 		}
 	}
 

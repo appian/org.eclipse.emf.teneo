@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.5 2008/01/18 06:21:37 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.6 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -739,13 +739,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__HB_PROXY = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Hb Named Query</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_NAMED_QUERY = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 4;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -885,13 +894,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Hb Named Query</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 2;
+	int HB_ANNOTATED_EPACKAGE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl <em>Hb Annotated EReference</em>}' class.
@@ -1538,6 +1556,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_HbProxy();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbNamedQuery <em>Hb Named Query</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Hb Named Query</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbNamedQuery()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbNamedQuery();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1578,6 +1607,17 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHbAnnotatedEPackage_HbTypeDef();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbNamedQuery <em>Hb Named Query</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Hb Named Query</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbNamedQuery()
+	 * @see #getHbAnnotatedEPackage()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEPackage_HbNamedQuery();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference <em>Hb Annotated EReference</em>}'.
@@ -1844,6 +1884,14 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_ECLASS__HB_PROXY = eINSTANCE.getHbAnnotatedEClass_HbProxy();
 
 		/**
+		 * The meta object literal for the '<em><b>Hb Named Query</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_NAMED_QUERY = eINSTANCE.getHbAnnotatedEClass_HbNamedQuery();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1878,6 +1926,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF = eINSTANCE.getHbAnnotatedEPackage_HbTypeDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Named Query</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY = eINSTANCE.getHbAnnotatedEPackage_HbNamedQuery();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl <em>Hb Annotated EReference</em>}' class.

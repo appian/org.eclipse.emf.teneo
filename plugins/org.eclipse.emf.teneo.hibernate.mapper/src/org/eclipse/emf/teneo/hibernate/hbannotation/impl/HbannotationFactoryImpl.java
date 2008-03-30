@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.5 2008/03/30 10:01:15 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.6 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -89,6 +89,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.PROXY: return createProxy();
 			case HbannotationPackage.INDEX: return createIndex();
 			case HbannotationPackage.GENERATED: return createGenerated();
+			case HbannotationPackage.NAMED_QUERY: return createNamedQuery();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -268,6 +269,16 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	public Generated createGenerated() {
 		GeneratedImpl generated = new GeneratedImpl();
 		return generated;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedQuery createNamedQuery() {
+		NamedQueryImpl namedQuery = new NamedQueryImpl();
+		return namedQuery;
 	}
 
 	/**

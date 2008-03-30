@@ -37,6 +37,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbWhere" eType="ecore:EClass hbannotation.ecore#//Where"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbProxy" eType="ecore:EClass hbannotation.ecore#//Proxy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbNamedQuery" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//NamedQuery"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" abstract="true"
       interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>
@@ -45,6 +47,8 @@
         eType="ecore:EClass hbannotation.ecore#//GenericGenerator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbTypeDef" upperBound="-1"
         eType="ecore:EClass hbannotation.ecore#//TypeDef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbNamedQuery" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//NamedQuery"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEReference" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEReference #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCache" eType="ecore:EClass hbannotation.ecore#//Cache"

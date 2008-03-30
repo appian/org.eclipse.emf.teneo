@@ -2,17 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.10 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.11 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -29,6 +33,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbWhere <em>Hb Where</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbProxy <em>Hb Proxy</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbNamedQuery <em>Hb Named Query</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,6 +79,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @ordered
 	 */
 	protected Proxy hbProxy;
+
+	/**
+	 * The cached value of the '{@link #getHbNamedQuery() <em>Hb Named Query</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbNamedQuery()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedQuery> hbNamedQuery;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -252,6 +267,18 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<NamedQuery> getHbNamedQuery() {
+		if (hbNamedQuery == null) {
+			hbNamedQuery = new EObjectResolvingEList<NamedQuery>(NamedQuery.class, this, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY);
+		}
+		return hbNamedQuery;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -283,6 +310,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				if (resolve) return getHbProxy();
 				return basicGetHbProxy();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				return getHbNamedQuery();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -291,6 +320,7 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -305,6 +335,10 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return;
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				setHbProxy((Proxy)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				getHbNamedQuery().clear();
+				getHbNamedQuery().addAll((Collection<? extends NamedQuery>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -329,6 +363,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				setHbProxy((Proxy)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				getHbNamedQuery().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -348,6 +385,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return hbWhere != null;
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_PROXY:
 				return hbProxy != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_NAMED_QUERY:
+				return hbNamedQuery != null && !hbNamedQuery.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackage.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbAnnotatedEPackage.java,v 1.7 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 
 /**
@@ -20,6 +21,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbGenericGenerators <em>Hb Generic Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbTypeDef <em>Hb Type Def</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbNamedQuery <em>Hb Named Query</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,5 +62,21 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	 * @generated
 	 */
 	EList<TypeDef> getHbTypeDef();
+
+	/**
+	 * Returns the value of the '<em><b>Hb Named Query</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb Named Query</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb Named Query</em>' reference list.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_HbNamedQuery()
+	 * @model
+	 * @generated
+	 */
+	EList<NamedQuery> getHbNamedQuery();
 
 } // HbAnnotatedEPackage

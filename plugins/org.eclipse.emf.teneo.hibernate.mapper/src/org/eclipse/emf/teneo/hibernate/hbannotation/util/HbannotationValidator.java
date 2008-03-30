@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.4 2008/03/30 10:01:15 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.5 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -141,6 +141,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateIndex((Index)value, diagnostics, context);
 			case HbannotationPackage.GENERATED:
 				return validateGenerated((Generated)value, diagnostics, context);
+			case HbannotationPackage.NAMED_QUERY:
+				return validateNamedQuery((NamedQuery)value, diagnostics, context);
 			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbannotationPackage.HB_FETCH_TYPE:
@@ -452,6 +454,24 @@ public class HbannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(proxy, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNamedQuery(NamedQuery namedQuery, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(namedQuery, diagnostics, context);
 		return result;
 	}
 

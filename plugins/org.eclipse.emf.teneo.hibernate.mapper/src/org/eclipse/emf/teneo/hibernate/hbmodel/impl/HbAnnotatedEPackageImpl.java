@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackageImpl.java,v 1.7 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbAnnotatedEPackageImpl.java,v 1.8 2008/03/30 20:55:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -13,9 +13,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
@@ -28,6 +30,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getHbGenericGenerators <em>Hb Generic Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getHbTypeDef <em>Hb Type Def</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getHbNamedQuery <em>Hb Named Query</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +55,16 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * @ordered
 	 */
 	protected EList<TypeDef> hbTypeDef;
+
+	/**
+	 * The cached value of the '{@link #getHbNamedQuery() <em>Hb Named Query</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbNamedQuery()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedQuery> hbNamedQuery;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -93,6 +106,18 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<NamedQuery> getHbNamedQuery() {
+		if (hbNamedQuery == null) {
+			hbNamedQuery = new EObjectResolvingEList<NamedQuery>(NamedQuery.class, this, HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY);
+		}
+		return hbNamedQuery;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -118,6 +143,8 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 				return getHbGenericGenerators();
 			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF:
 				return getHbTypeDef();
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
+				return getHbNamedQuery();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -138,6 +165,10 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 				getHbTypeDef().clear();
 				getHbTypeDef().addAll((Collection<? extends TypeDef>)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
+				getHbNamedQuery().clear();
+				getHbNamedQuery().addAll((Collection<? extends NamedQuery>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -155,6 +186,9 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF:
 				getHbTypeDef().clear();
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
+				getHbNamedQuery().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -170,6 +204,8 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 				return hbGenericGenerators != null && !hbGenericGenerators.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_TYPE_DEF:
 				return hbTypeDef != null && !hbTypeDef.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
+				return hbNamedQuery != null && !hbNamedQuery.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
