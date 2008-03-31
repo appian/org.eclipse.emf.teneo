@@ -13,7 +13,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.20 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.21 2008/03/31 07:46:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -235,7 +235,7 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 		// TODO: Should be refactored into a NamedQueryMapper Extension and register it into
 		// extension Manager
 		if (log.isDebugEnabled()) {
-			log.debug("Processing Queries for " + paEClass.getEntity().getName());
+			log.debug("Processing Queries for " + paEClass.getModelEClass().getName());
 		}
 		if (log.isDebugEnabled()) {
 			log.debug("********************** Named Queries ***************************");
