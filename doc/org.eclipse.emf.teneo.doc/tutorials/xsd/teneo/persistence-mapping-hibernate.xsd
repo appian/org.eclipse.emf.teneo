@@ -48,6 +48,7 @@
 			<xsd:element name="embeddable" type="Embeddable"/>
 			<xsd:element name="entity" type="Entity"/>
 			<xsd:element name="cache" type="Cache"/>
+			<xsd:element name="named-query" type="NamedQuery"/>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="proxy" type="Proxy"/>
 			<xsd:element name="where" type="xsd:string"/>
@@ -96,7 +97,11 @@
 			</xsd:element>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="hb-map-key" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="type" type="Type"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="id" type="Id"/>
@@ -142,7 +147,11 @@
 			<xsd:element name="fetch" type="HbFetchType"/>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="hb-map-key" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="join-column" type="JoinColumn">
@@ -198,7 +207,11 @@
 			<xsd:element name="fetch" type="HbFetchType"/>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="hb-map-key" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="type" type="Type"/>
 			<xsd:element name="where" type="xsd:string"/>
@@ -303,6 +316,10 @@
 	<xsd:attribute name="generator" type="xsd:string" use="optional"/>
 	<xsd:attribute name="table" type="xsd:string" use="optional"/>
 	<xsd:attribute name="type" type="xsd:string" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="NamedQuery">
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="query" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:simpleType name="OnDeleteAction">
 	<xsd:restriction base="xsd:token">
