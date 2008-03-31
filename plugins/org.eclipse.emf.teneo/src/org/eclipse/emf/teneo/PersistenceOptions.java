@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.40 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.41 2008/03/31 09:56:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -313,7 +313,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
-		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
+		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
 		props.setProperty(USE_MAPPING_FILE, "false");
 // props.setProperty(MAPPING_FILE_PATH, null); // null is the default anyway
 		props.setProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "");
