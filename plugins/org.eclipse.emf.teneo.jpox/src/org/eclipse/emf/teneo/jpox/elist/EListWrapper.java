@@ -59,7 +59,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $ $Date: 2008/02/28 07:09:03 $
+ * @version $Revision: 1.14 $ $Date: 2008/03/31 07:05:02 $
  */
 
 public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryable, SCOList {
@@ -131,7 +131,15 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		isEObjectList = elementType == EObject.class; // AnyTypeEObject.class;
 		isObjectList = elementType == Object.class; // AnyTypeEObject.class;
 
-		if (jdoDelegate.isLoaded()) {
+		// see bugzilla 224322, the SimpleLibraryResourceTest showed that
+		// in the postfetch new wrappers were created which had loaded==false
+		// while the delegate was set. The code below correctly sets the
+		// loaded value
+		if (!list.isEmpty()) {
+			jdoDelegate.setValueFrom(list, false);
+			jdoDelegate.setCacheLoaded(true);
+			setIsLoaded(true);
+		} else if (jdoDelegate.isLoaded()) {
 			load();
 		}
 		setEOpposite();

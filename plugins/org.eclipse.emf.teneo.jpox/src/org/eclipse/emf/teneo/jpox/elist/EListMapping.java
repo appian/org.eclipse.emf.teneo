@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EListMapping.java,v 1.8 2008/03/30 10:01:08 mtaal Exp $
+ * $Id: EListMapping.java,v 1.9 2008/03/31 07:05:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -41,7 +41,7 @@ import org.jpox.store.mapping.CollectionMapping;
  * Mapping class around the EListWrapper. The newWrapper method returns a new EListWrapper instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ $Date: 2008/03/30 10:01:08 $
+ * @version $Revision: 1.9 $ $Date: 2008/03/31 07:05:02 $
  */
 
 public class EListMapping extends CollectionMapping {
@@ -215,6 +215,27 @@ public class EListMapping extends CollectionMapping {
 	 */
 	@Override
 	public void postFetch(StateManager sm) {
+		Collection<?> value = (Collection<?>) sm.provideField(fmd.getAbsoluteFieldNumber());
+
+		// see bugzilla 224322, the SimpleLibraryResourceTest showed that
+		// in the postfetch new wrappers were created which had loaded==false
+		// while the delegate was set. The code below reuses a current wrapper
+		// the same code is used in the postupdate.
+		if (value instanceof SCO) {
+			SCO sco = (SCO) value;
+
+			if (sm.getObject() == sco.getOwner() && fieldName.equals(sco.getFieldName())) {
+				return;
+			}
+		}
+
+		// should not get here but for completeness sake
+		if (value instanceof EListWrapper) {
+			final EListWrapper<?> wrapper = (EListWrapper<?>) value;
+			sm.replaceField(fmd.getAbsoluteFieldNumber(), createWrapper(sm, fieldName, wrapper.getDelegate()));
+			return;
+		}
+
 		sm.replaceField(fmd.getAbsoluteFieldNumber(), newWrapper(sm, fieldName));
 	}
 

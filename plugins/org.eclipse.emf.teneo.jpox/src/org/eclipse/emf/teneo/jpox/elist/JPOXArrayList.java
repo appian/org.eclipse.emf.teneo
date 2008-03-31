@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXArrayList.java,v 1.3 2008/02/28 07:09:03 mtaal Exp $
+ * $Id: JPOXArrayList.java,v 1.4 2008/03/31 07:05:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -20,11 +20,11 @@ import org.jpox.StateManager;
 import org.jpox.sco.ArrayList;
 
 /**
- * Subclass of the jpox arraylist to get to specific protected fields (nl. isCacheLoaded). Is used internally by the
- * EListWrapper
+ * Subclass of the jpox arraylist to get to specific protected fields (nl. isCacheLoaded). Is used
+ * internally by the EListWrapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2008/02/28 07:09:03 $
+ * @version $Revision: 1.4 $ $Date: 2008/03/31 07:05:02 $
  */
 
 class JPOXArrayList extends ArrayList {
@@ -43,6 +43,10 @@ class JPOXArrayList extends ArrayList {
 	/** Returns is cache loaded */
 	public boolean isLoaded() {
 		return isCacheLoaded;
+	}
+
+	public void setCacheLoaded(boolean value) {
+		isCacheLoaded = value;
 	}
 
 }
