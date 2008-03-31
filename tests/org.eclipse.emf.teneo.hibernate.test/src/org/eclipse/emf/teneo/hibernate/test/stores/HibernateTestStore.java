@@ -52,7 +52,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -156,6 +156,10 @@ public class HibernateTestStore extends AbstractTestStore {
 		}
 		// set both hibernate and persistence props as we do not know the difference right now
 		props.putAll(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
+
+		if (!props.containsKey(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS)) {
+			props.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
+		}
 
 		// do a special trick for hsqldb, because hsqldb expects all identifiers to be
 		// escaped or otherwise uppercases them, so uppercase everything automatically
