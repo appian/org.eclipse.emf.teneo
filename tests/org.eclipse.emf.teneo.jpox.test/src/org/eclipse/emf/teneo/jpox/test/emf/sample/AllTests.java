@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.28 2008/02/28 07:07:34 mtaal Exp $
+ * $Id: AllTests.java,v 1.29 2008/03/31 07:04:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -36,13 +36,14 @@ import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
 import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
 import org.eclipse.emf.teneo.test.emf.sample.RentalResourceReferenceAction;
+import org.eclipse.emf.teneo.test.emf.sample.SimpleLibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class AllTests {
 
@@ -50,6 +51,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 					.getConfigurations());
+
+		suite.addTestSuite(SimpleLibraryResourceAction.class);
 
 		suite.addTestSuite(LibrarySerializationAction.class);
 		suite.addTestSuite(CarAction.class);
