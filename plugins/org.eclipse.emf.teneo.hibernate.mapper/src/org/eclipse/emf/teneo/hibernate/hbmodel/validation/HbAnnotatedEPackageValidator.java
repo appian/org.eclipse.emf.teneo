@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackageValidator.java,v 1.1 2007/02/08 23:13:13 mtaal Exp $
+ * $Id: HbAnnotatedEPackageValidator.java,v 1.2 2008/03/31 07:22:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.validation;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 
 /**
@@ -22,4 +23,6 @@ public interface HbAnnotatedEPackageValidator {
 
 	boolean validateHbGenericGenerators(EList<GenericGenerator> value);
 	boolean validateHbTypeDef(EList<TypeDef> value);
+
+	boolean validateHbNamedQuery(EList<NamedQuery> value);
 }
