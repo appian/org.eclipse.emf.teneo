@@ -39,6 +39,7 @@ import org.eclipse.emf.teneo.test.emf.sample.PrimerPOAction;
 import org.eclipse.emf.teneo.test.emf.sample.ProductAction;
 import org.eclipse.emf.teneo.test.emf.sample.RentalMapAsClassAction;
 import org.eclipse.emf.teneo.test.emf.sample.RentalResourceReferenceAction;
+import org.eclipse.emf.teneo.test.emf.sample.SimpleLibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.SimpleRentalAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
@@ -47,7 +48,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.71 $
+ * @version $Revision: 1.72 $
  */
 public class AllTests {
 
@@ -55,6 +56,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(SimpleLibraryResourceAction.class);
 
 		suite.addTestSuite(EcoreAction.class);
 		suite.addTestSuite(LibraryTest.class);
