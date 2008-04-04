@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.6 2008/02/28 07:08:32 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.7 2008/04/04 11:49:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -56,7 +56,12 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 			log.debug("EReference + " + logStr + " does not have a manytoone annotation, adding one");
 			mto = getFactory().createManyToOne();
 			aReference.setManyToOne(mto);
-			mto.setOptional(!eReference.isRequired() || eReference.isUnsettable() || eReference.getEOpposite() != null);
+			// removed unsettable because it is not used to define optional, it is used
+			// to allow distinction between the default value set or a feature which has not been
+			// set, this is used in validation
+// mto.setOptional(!eReference.isRequired() || eReference.isUnsettable() ||
+// eReference.getEOpposite() != null);
+			mto.setOptional(!eReference.isRequired() || eReference.getEOpposite() != null);
 			mto.setEModelElement(eReference);
 		} else {
 			log.debug("EReference + " + logStr + " does have a manytoone annotation, using it");

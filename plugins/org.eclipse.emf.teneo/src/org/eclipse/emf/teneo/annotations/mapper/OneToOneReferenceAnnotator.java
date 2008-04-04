@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneReferenceAnnotator.java,v 1.5 2008/02/28 07:08:32 mtaal Exp $
+ * $Id: OneToOneReferenceAnnotator.java,v 1.6 2008/04/04 11:49:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -55,7 +55,11 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			log.debug("EReference + " + logStr + " does not have a onetoone annotation, adding one");
 			oto = getFactory().createOneToOne();
 			aReference.setOneToOne(oto);
-			oto.setOptional(!eReference.isRequired() || eReference.isUnsettable());
+			// removed unsettable because it is not used to define optional, it is used
+			// to allow distinction between the default value set or a feature which has not been
+			// set, this is used in validation
+// oto.setOptional(!eReference.isRequired() || eReference.isUnsettable());
+			oto.setOptional(!eReference.isRequired());
 			oto.setEModelElement(eReference);
 		} else {
 			log.debug("EReference + " + logStr + " has an onetoone annotation setting defaults if required");

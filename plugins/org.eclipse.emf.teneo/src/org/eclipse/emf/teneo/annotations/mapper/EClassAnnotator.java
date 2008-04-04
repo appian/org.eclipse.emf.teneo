@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.6 2008/03/12 07:30:21 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.7 2008/04/04 11:49:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -148,7 +148,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		}
 
 		// add PrimaryKeyJoinColumn in case of a joined
-		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED)) {
+		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED) &&
+				aClass.getPrimaryKeyJoinColumns().size() == 0) {
 			ArrayList<String> idFeatures = new ArrayList<String>();
 			PAnnotatedEClass aSuperClass = null;
 			for (EClass eSuperClass : aClass.getModelEClass().getESuperTypes()) {

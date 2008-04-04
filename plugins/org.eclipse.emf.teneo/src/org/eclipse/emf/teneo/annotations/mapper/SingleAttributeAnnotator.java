@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: SingleAttributeAnnotator.java,v 1.6 2008/02/28 07:08:32 mtaal Exp $
+ * $Id: SingleAttributeAnnotator.java,v 1.7 2008/04/04 11:49:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a single attribute, a primitive type such as a long or int.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -98,7 +98,16 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 			// confusing why having this then? If this applies then for each
 			// basic and nullable
 			// field a column annotation has to be added to force nullability
-			basic.setOptional(!eAttribute.isRequired() || eAttribute.isUnsettable());
+
+			// removed unsettable because it is not used to define optional, it is used
+			// to allow distinction between the default value set or a feature which has not been
+			// set, this is used in validation
+// basic.setOptional(!eAttribute.isRequired() || eAttribute.isUnsettable());
+			if (aAttribute.getColumn() != null) {
+				basic.setOptional(aAttribute.getColumn().isNullable());
+			} else {
+				basic.setOptional(!eAttribute.isRequired());
+			}
 			aAttribute.setBasic(basic);
 		}
 
