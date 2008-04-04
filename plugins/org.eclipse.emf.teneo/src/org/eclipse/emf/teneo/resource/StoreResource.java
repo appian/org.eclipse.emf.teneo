@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.28 2008/03/17 16:13:32 mtaal Exp $
+ * $Id: StoreResource.java,v 1.29 2008/04/04 07:29:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.StoreValidationException;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -295,13 +295,12 @@ public abstract class StoreResource extends ResourceImpl {
 				addToContent((InternalEObject) eObject);
 			}
 		} finally {
-			isLoading = false;
-
 			if (notification != null) {
 				eNotify(notification);
 			}
 
 			setModified(false);
+			isLoading = false;
 		}
 	}
 
@@ -503,7 +502,8 @@ public abstract class StoreResource extends ResourceImpl {
 		assert (!removedEObjects.contains(eObject));
 
 		if (newEObjectSet.contains(eObject)) {
-			assert (newEObjects.remove(eObject)); // just remove from this list
+			assert (newEObjects.contains(eObject));
+			newEObjects.remove(eObject); // just remove from this list
 			newEObjectSet.remove(eObject);
 			return;
 		}
