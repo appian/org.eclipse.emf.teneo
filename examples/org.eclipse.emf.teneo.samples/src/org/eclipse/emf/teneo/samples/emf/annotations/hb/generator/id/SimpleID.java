@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleID.java,v 1.3 2007/08/10 16:41:10 mtaal Exp $
+ * $Id: SimpleID.java,v 1.4 2008/04/04 11:50:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
@@ -41,8 +41,8 @@ public interface SimpleID extends EObject {
 	 * @see #unsetAutoID()
 	 * @see #setAutoID(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage#getSimpleID_AutoID()
-	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t\t\t@Id @GeneratedValue @Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t\t\t'"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long"
+	 *        annotation="teneo.hibernate appinfo='\n\t\t\t\t\t\t@Id @GeneratedValue @Column(name=\"AUTOD\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='autoID'"
 	 * @generated
 	 */

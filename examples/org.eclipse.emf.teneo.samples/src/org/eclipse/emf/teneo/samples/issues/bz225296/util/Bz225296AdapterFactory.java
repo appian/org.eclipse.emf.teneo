@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdAdapterFactory.java,v 1.3 2008/04/04 11:50:25 mtaal Exp $
+ * $Id: Bz225296AdapterFactory.java,v 1.1 2008/04/04 11:50:24 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.util;
+package org.eclipse.emf.teneo.samples.issues.bz225296.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,24 +13,24 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.*;
+import org.eclipse.emf.teneo.samples.issues.bz225296.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage
+ * @see org.eclipse.emf.teneo.samples.issues.bz225296.Bz225296Package
  * @generated
  */
-public class IdAdapterFactory extends AdapterFactoryImpl {
+public class Bz225296AdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static IdPackage modelPackage;
+	protected static Bz225296Package modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -38,9 +38,9 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IdAdapterFactory() {
+	public Bz225296AdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = IdPackage.eINSTANCE;
+			modelPackage = Bz225296Package.eINSTANCE;
 		}
 	}
 
@@ -69,19 +69,15 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IdSwitch<Adapter> modelSwitch =
-		new IdSwitch<Adapter>() {
+	protected Bz225296Switch<Adapter> modelSwitch =
+		new Bz225296Switch<Adapter>() {
 			@Override
-			public Adapter caseIdentityID(IdentityID object) {
-				return createIdentityIDAdapter();
+			public Adapter caseBlock(Block object) {
+				return createBlockAdapter();
 			}
 			@Override
-			public Adapter caseSimpleID(SimpleID object) {
-				return createSimpleIDAdapter();
-			}
-			@Override
-			public Adapter caseTableID(TableID object) {
-				return createTableIDAdapter();
+			public Adapter caseVServer(VServer object) {
+				return createVServerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -104,44 +100,30 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdentityID <em>Identity ID</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.bz225296.Block <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdentityID
+	 * @see org.eclipse.emf.teneo.samples.issues.bz225296.Block
 	 * @generated
 	 */
-	public Adapter createIdentityIDAdapter() {
+	public Adapter createBlockAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.SimpleID <em>Simple ID</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.bz225296.VServer <em>VServer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.SimpleID
+	 * @see org.eclipse.emf.teneo.samples.issues.bz225296.VServer
 	 * @generated
 	 */
-	public Adapter createSimpleIDAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.TableID <em>Table ID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.TableID
-	 * @generated
-	 */
-	public Adapter createTableIDAdapter() {
+	public Adapter createVServerAdapter() {
 		return null;
 	}
 
@@ -157,4 +139,4 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //IdAdapterFactory
+} //Bz225296AdapterFactory

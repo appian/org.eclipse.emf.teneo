@@ -28,10 +28,10 @@
       <details key="name" value="SimpleID"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoID" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
       <eAnnotations source="teneo.hibernate">
-        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Id @GeneratedValue @Column(name=&quot;AUTOD&quot; nullable=&quot;false&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Id @GeneratedValue @Column(name=&quot;AUTOD&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

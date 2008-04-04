@@ -18,10 +18,10 @@
 
 	<xsd:complexType name="SimpleID">
 		<xsd:sequence>
-			<xsd:element name="autoID" type="xsd:long">
+			<xsd:element name="autoID" type="xsd:long" minOccurs="0">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.hibernate">
-						@Id @GeneratedValue @Column(name="AUTOD" nullable="false")
+						@Id @GeneratedValue @Column(name="AUTOD")
 					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>

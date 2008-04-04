@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.5 2007/08/10 16:41:10 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.6 2008/04/04 11:50:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -260,7 +260,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		initEAttribute(getIdentityID_Myid(), theXMLTypePackage.getLong(), "myid", null, 1, 1, IdentityID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simpleIDEClass, SimpleID.class, "SimpleID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSimpleID_AutoID(), theXMLTypePackage.getLong(), "autoID", null, 1, 1, SimpleID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimpleID_AutoID(), theXMLTypePackage.getLong(), "autoID", null, 0, 1, SimpleID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleID_Generated(), theXMLTypePackage.getLong(), "generated", null, 1, 1, SimpleID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableIDEClass, TableID.class, "TableID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -300,7 +300,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		  (getSimpleID_AutoID(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t\t@Id @GeneratedValue @Column(name=\"AUTOD\" nullable=\"false\")\n\t\t\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t\t@Id @GeneratedValue @Column(name=\"AUTOD\")\n\t\t\t\t\t"
 		   });			
 		addAnnotation
 		  (getSimpleID_Generated(), 

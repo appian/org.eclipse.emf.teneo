@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:lib="http://www.eclipse.org/emf/teneo/samples/issues/bz224991" 
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/issues/bz224991" 
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/bz224991">
+
+ 	<xsd:complexType name="Parent">
+ 		<xsd:sequence>
+      		<xsd:element name="id" type="xsd:long"/>
+	   	</xsd:sequence>
+  	</xsd:complexType>
+
+ 	<xsd:complexType name="Child">
+ 		<xsd:sequence>
+      		<xsd:element name="id" type="xsd:long"/>
+	    </xsd:sequence>
+  	</xsd:complexType>
+ </schema>
