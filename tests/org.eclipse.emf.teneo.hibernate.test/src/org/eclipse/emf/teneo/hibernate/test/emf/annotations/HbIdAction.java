@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbIdAction.java,v 1.6 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: HbIdAction.java,v 1.7 2008/04/04 11:50:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -28,13 +28,14 @@ import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdentityID;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.SimpleID;
 import org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.TableID;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
+import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Tests GenericGenerator of hibernate
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbIdAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -64,6 +65,10 @@ public class HbIdAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		// hsqldb does not support generated fields
+		if (store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter) {
+			return;
+		}
 		final IdFactory factory = IdFactory.eINSTANCE;
 		{
 			store.beginTransaction();

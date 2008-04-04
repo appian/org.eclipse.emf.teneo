@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296.impl.BlockImpl" entity-name="Block" abstract="false" lazy="true" discriminator-value="Block" table="`ops_block`" proxy="org.eclipse.emf.teneo.samples.issues.bz225296.Block">
+		<meta attribute="eclassName">Block</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="vserver" entity-name="VServer" cascade="merge,persist,save-update,lock,refresh" foreign-key="block_vserver" lazy="false" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`vserver_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296.impl.VServerImpl" entity-name="VServer" abstract="false" lazy="false" discriminator-value="VServer" table="`ops_vserver`">
+		<meta attribute="eclassName">VServer</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<bag name="blocks" fetch="select" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`vserver_id`" not-null="false" unique="false"/>
+			</key>
+			<one-to-many entity-name="Block"/>
+		</bag>
+	</class>
+</hibernate-mapping>

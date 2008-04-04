@@ -15,8 +15,8 @@
 		<property name="numPosts" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
 			<column not-null="false" unique="false" name="`numposts`"/>
 		</property>
-		<property name="signature" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
-			<column not-null="false" unique="false" name="`signature`"/>
+		<property name="signature" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`signature`"/>
 		</property>
 		<property name="email" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`email`"/>

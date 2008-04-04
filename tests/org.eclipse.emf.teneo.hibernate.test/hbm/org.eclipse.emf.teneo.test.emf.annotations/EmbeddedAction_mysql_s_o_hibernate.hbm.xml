@@ -16,15 +16,15 @@
 			<property name="myString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 				<column not-null="false" unique="false" name="`columnstring3`"/>
 			</property>
-			<property name="myInteger" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-				<column not-null="false" unique="false" name="`firstembedded_myinteger`"/>
+			<property name="myInteger" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+				<column not-null="true" unique="false" name="`firstembedded_myinteger`"/>
 			</property>
 		</component>
 		<component name="secondEmbedded" class="org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl">
 			<property name="myString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 				<column not-null="false" unique="false" name="`columnstring1`"/>
 			</property>
-			<property name="myInteger" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<property name="myInteger" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
 				<column not-null="false" unique="false" name="`columninteger1`"/>
 			</property>
 		</component>
@@ -32,7 +32,7 @@
 			<property name="myString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 				<column not-null="false" unique="false" name="`columnstring2`"/>
 			</property>
-			<property name="myInteger" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<property name="myInteger" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
 				<column not-null="false" unique="false" name="`columninteger2`"/>
 			</property>
 		</component>
@@ -45,8 +45,8 @@
 				<property name="myString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 					<column not-null="true" unique="false" name="`mystring`"/>
 				</property>
-				<property name="myInteger" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-					<column not-null="false" unique="false" name="`myinteger`"/>
+				<property name="myInteger" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+					<column not-null="true" unique="false" name="`myinteger`"/>
 				</property>
 			</composite-element>
 		</list>
@@ -54,8 +54,8 @@
 			<property name="myString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 				<column not-null="true" unique="false" name="`fifthembedded_mystring`"/>
 			</property>
-			<property name="myInteger" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-				<column not-null="false" unique="false" name="`fifthembedded_myinteger`"/>
+			<property name="myInteger" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+				<column not-null="true" unique="false" name="`fifthembedded_myinteger`"/>
 			</property>
 		</component>
 		<component name="alsoEmbeddable" class="org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AlsoEmbeddableImpl">

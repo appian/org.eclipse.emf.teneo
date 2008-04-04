@@ -17,13 +17,13 @@
 		</property>
 		<join table="`PERSON_ADDRESS`">
 			<key column="`ID`"/>
-			<property name="address" lazy="false" insert="true" update="true" not-null="true" unique="false" type="text">
+			<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
 				<column not-null="false" unique="false" name="`ADDRESS`"/>
 			</property>
 		</join>
 		<join table="`PERSON_PHOTO`">
 			<key column="`ID`"/>
-			<property name="photo" lazy="false" insert="true" update="true" not-null="true" unique="false" type="binary">
+			<property name="photo" lazy="false" insert="true" update="true" not-null="false" unique="false" type="binary">
 				<column not-null="false" unique="false" name="`PHOTO`" length="1000000"/>
 			</property>
 		</join>

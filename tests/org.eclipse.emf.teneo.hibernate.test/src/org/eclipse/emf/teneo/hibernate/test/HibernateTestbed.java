@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.16 2008/03/30 15:11:58 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.17 2008/04/04 11:50:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -137,6 +137,10 @@ public class HibernateTestbed extends Testbed {
 		props.put(PersistenceOptions.INHERITANCE_MAPPING, getActiveConfiguration().getMappingStrategy().getName());
 		final Properties properties = new Properties();
 		properties.putAll(props);
+		if (!properties.containsKey(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS)) {
+			properties.setProperty(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "false");
+		}
+
 		final String mappingXML =
 				HbHelper.INSTANCE.generateMapping(testCase.getEPackages(), properties, extensionManager);
 		final File file = getHBMFile(testCase, getActiveConfiguration());

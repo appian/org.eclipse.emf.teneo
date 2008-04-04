@@ -17,13 +17,13 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="billingName" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+		<property name="billingName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`billing_name`" length="50"/>
 		</property>
-		<property name="claimGroupVSPId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+		<property name="claimGroupVSPId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`clm_grp_vsp_id`" length="3"/>
 		</property>
-		<property name="claimStatus" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+		<property name="claimStatus" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`clm_status`" length="2"/>
 		</property>
 		<bag name="claimLine" lazy="true" cascade="all,delete-orphan">
@@ -50,13 +50,13 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="claimLineBilledAmount" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigDecimal">
+		<property name="claimLineBilledAmount" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigDecimal">
 			<column not-null="false" unique="false" name="`clmln_bill_amt`"/>
 		</property>
-		<property name="serviceCode" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+		<property name="serviceCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`svc_cd`"/>
 		</property>
-		<property name="claimLineStatus" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+		<property name="claimLineStatus" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`clmln_status`" length="2"/>
 		</property>
 	</class>
