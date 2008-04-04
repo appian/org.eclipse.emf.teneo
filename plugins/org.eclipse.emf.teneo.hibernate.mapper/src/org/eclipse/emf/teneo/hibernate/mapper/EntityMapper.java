@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: EntityMapper.java,v 1.29 2008/02/28 07:07:43 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.30 2008/04/04 11:49:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -250,7 +250,15 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		// the id
 		// element has been placed
 
-		if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
+		if (entity.getPaSuperEntity() == null && entity.getPrimaryKeyJoinColumns() != null &&
+				entity.getPrimaryKeyJoinColumns().size() > 0) {
+			log.warn("This entity (" + entity.getEntity().getName() + " is the root in the class hierarchy and " +
+					"has a pk joincolum annotation, this is not correct, ignoring pk joincolumn annotation");
+		} else if (InheritanceType.SINGLE_TABLE.equals(entity.getInheritanceStrategy()) &&
+				entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
+			log.warn("Single table inheritance strategy (entity " + entity.getEntity().getName() +
+					", primary key join column annotation is ignored for subclass");
+		} else if (entity.getPrimaryKeyJoinColumns() != null && entity.getPrimaryKeyJoinColumns().size() > 0) {
 			addPrimaryKeyJoinColumn(entity.getPrimaryKeyJoinColumns(), entity);
 		} else if (entity.getPaSuperEntity() != null && InheritanceType.JOINED.equals(entity.getInheritanceStrategy())) {
 			final ArrayList<PrimaryKeyJoinColumn> list = new ArrayList<PrimaryKeyJoinColumn>();

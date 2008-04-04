@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: BasicMapper.java,v 1.28 2008/03/30 10:01:15 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.29 2008/04/04 11:49:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -52,8 +52,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(propElement, paAttribute, getColumns(paAttribute), getHbmContext().isCurrentElementFeatureMap() ||
-				isNullable(basic, paAttribute), true);
+		addColumns(propElement, paAttribute, getColumns(paAttribute), isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
@@ -90,8 +89,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(propElement, paAttribute, getColumns(paAttribute), getHbmContext().isCurrentElementFeatureMap() ||
-				isNullable(basic, paAttribute), true);
+		addColumns(propElement, paAttribute, getColumns(paAttribute), isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 
@@ -123,8 +121,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
-		addColumns(propElement, paAttribute, getColumns(paAttribute), getHbmContext().isCurrentElementFeatureMap() ||
-				isNullable(basic, paAttribute), true);
+		addColumns(propElement, paAttribute, getColumns(paAttribute), isNullable(basic, paAttribute), true);
 		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
 		setType(paAttribute, propElement);
 
@@ -200,7 +197,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 // getHbmContext().isCurrentElementFeatureMap() &&
 // (aattr.getColumn() != null || aattr.getColumn().isNullable());
 		return getHbmContext().isForceOptional() || (aattr.getColumn() == null && basic.isOptional()) ||
-				getHbmContext().isCurrentElementFeatureMap() &&
+				getHbmContext().isCurrentElementFeatureMap() ||
 				(aattr.getColumn() != null && aattr.getColumn().isNullable());
 	}
 }
