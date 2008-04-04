@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogAction.java,v 1.6 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: CatalogAction.java,v 1.7 2008/04/04 11:50:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * to catalog, delete from catalog.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public abstract class CatalogAction extends AbstractTestAction {
 
@@ -101,6 +101,7 @@ public abstract class CatalogAction extends AbstractTestAction {
 			strfor2.setValue("remarkb");
 			product2.getRemark().add(strfor2);
 			product2.setPrice(price2);
+			product2.setDescription("description2");
 			store.store(product2);
 
 			store.commitTransaction();

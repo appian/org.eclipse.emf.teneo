@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests annotations to direct the inheritance mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction {
 
@@ -75,7 +75,6 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 
 				if (address.getName().compareTo("empty") == 0) {
 					assertFalse(((USAddress) address).isSetState());
-					assertFalse(((USAddress) address).isSetZip());
 				} else {
 					assertTrue(((USAddress) address).isSetState());
 					assertTrue(((USAddress) address).isSetZip());
@@ -114,12 +113,8 @@ public class InheritanceAnnotationTablePerClassAction extends AbstractTestAction
 			emptyaddress.setName("empty");
 			emptyaddress.setCity("empty");
 			emptyaddress.setStreet("empty");
-			if (emptyaddress.isSetState()) {
-				emptyaddress.unsetState();
-			}
-			if (emptyaddress.isSetZip()) {
-				emptyaddress.unsetZip();
-			}
+			emptyaddress.setZip(new BigInteger("123"));
+			emptyaddress.setState(USState.AK_LITERAL);
 
 			store.store(usaddress);
 			store.store(emptyaddress);

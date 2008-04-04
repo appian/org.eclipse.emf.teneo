@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests https://bugs.eclipse.org/bugs/show_bug.cgi?id=220106
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AbstractTopClassAction extends AbstractTestAction {
 
@@ -60,12 +60,8 @@ public class AbstractTopClassAction extends AbstractTestAction {
 			emptyaddress.setName("empty");
 			emptyaddress.setCity("empty");
 			emptyaddress.setStreet("empty");
-			if (emptyaddress.isSetState()) {
-				emptyaddress.unsetState();
-			}
-			if (emptyaddress.isSetZip()) {
-				emptyaddress.unsetZip();
-			}
+			emptyaddress.setState(USState.AL);
+			emptyaddress.setZip(new BigInteger("1231"));
 
 			store.store(usaddress);
 			store.store(emptyaddress);

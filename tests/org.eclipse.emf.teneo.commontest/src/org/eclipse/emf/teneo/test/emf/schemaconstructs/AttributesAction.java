@@ -20,7 +20,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Very simple test to test that attributes also work.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public abstract class AttributesAction extends AbstractTestAction {
 	/**
@@ -56,7 +56,7 @@ public abstract class AttributesAction extends AbstractTestAction {
 			}
 			{
 				store.beginTransaction();
-				A a = (A) store.getObject(A.class);
+				A a = store.getObject(A.class);
 				assertEquals(500, a.getB());
 				assertEquals("c", a.getC());
 				assertTrue(100.4 == a.getComment());
@@ -71,7 +71,7 @@ public abstract class AttributesAction extends AbstractTestAction {
 
 			{
 				store.beginTransaction();
-				A a = (A) store.getObject(A.class);
+				A a = store.getObject(A.class);
 				try {
 					a.setD(null); // this is not allowed a required attribute
 					store.commitTransaction();
@@ -85,8 +85,8 @@ public abstract class AttributesAction extends AbstractTestAction {
 			// all the other fields (except name) are optional
 			{
 				store.beginTransaction();
-				A a = (A) store.getObject(A.class);
-				a.setName(null);
+				A a = store.getObject(A.class);
+				a.setName("test");
 				a.unsetB();
 				a.unsetComment();
 				a.setC(null);
