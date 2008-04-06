@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappedSuperClassAction.java,v 1.7 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: MappedSuperClassAction.java,v 1.8 2008/04/06 13:44:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class MappedSuperClassAction extends AbstractTestAction {
 	/**
@@ -44,11 +44,6 @@ public class MappedSuperClassAction extends AbstractTestAction {
 		super(MappedsuperclassPackage.eINSTANCE);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
-	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
