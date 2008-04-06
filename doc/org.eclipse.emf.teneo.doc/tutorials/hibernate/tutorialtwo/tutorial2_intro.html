@@ -63,7 +63,7 @@
 <div id="toptabs" class="tabs">
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
-<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../../webappgen/index.html">Web App Generation</a></td><td><a class="base-selected" href="../../services/index.html">Services</a></td>
+<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td>
 </tr>
 </table>
 </div>
@@ -303,6 +303,13 @@
 		The chosen approach is to make very small changes to the generated code and is not focused on an elegant or 
 		optimal solution.</em>
 </p>
+		
+<p>The tutorial Library projects can be downloaded from cvs at the following location: host: dev.eclipse.org, root: /cvsroot/modeling,
+		module: org.eclipse.emf/org.eclipse.emf.teneo/examples/library (emf 2.3). The changes in these projects correspond to the 
+		changes described here. The Library project has a dependency on a Hibernate Libraries plugin which contains all the 
+		hibernate libraries. The hibernate libraries plugin is not present in cvs because of licensing reasons, so you should create your own
+		and set the correct dependency in the Library project (set re-export to true! and set the Eclipse-Buddypolicy in the hibernate
+		libraries plugin).</p> 
 		
 <p>The <a href="tutorial2_1.html">next step</a> of this tutorial describes these changes in more detail.</p>
 	

@@ -63,7 +63,7 @@
 <div id="toptabs" class="tabs">
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
-<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../../webappgen/index.html">Web App Generation</a></td><td><a class="base-selected" href="../../services/index.html">Services</a></td>
+<td><a class="base-selected" href="../../index.html">Home</a></td><th><a class="base-selected" href="../../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../../jpox/index.html">EMF JDO/JPOX</a></td>
 </tr>
 </table>
 </div>
@@ -305,7 +305,7 @@
 <h3>Initialization</h3>
 			
 			
-<p>To initialize the Teneo layer the following code has to be added to static inner
+<p>To initialize the Teneo layer the following code has to be added to the static inner
 				class <em>Implementation</em> in the <em>LibraryEditorPlugin</em> class.</p>
 
 <p>
@@ -390,7 +390,7 @@ at org.hibernate.mapping.Property.isValid(Property.java:185)
 			Hibernate is more precise and will not allow this.</p>
 			
 <p>To prevent this add the following code in the performFinish method of the LibraryModelWizard
-			class in the library editor project. This has to be added around line 215 just after the rootObject variable has been set:</p>
+			class in the library editor project. This has to be added somewhere near line 237 (exact line number can vary because of formatting etc.) just after the rootObject variable has been set:</p>
 			
 <pre class="code">
 if (rootObject instanceof Library)

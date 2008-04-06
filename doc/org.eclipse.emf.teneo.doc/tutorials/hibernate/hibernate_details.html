@@ -63,7 +63,7 @@
 <div id="toptabs" class="tabs">
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
-<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../webappgen/index.html">Web App Generation</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td>
 </tr>
 </table>
 </div>
@@ -413,9 +413,14 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </ol>
 		
+<p>Note that with manual generation of the mapping, Teneo is not able to find the java instance class names (unless the ecore contains the java instance
+		classnames). This means that when doing manual generation that cglib proxying is disabled. To generate a mapping with cglib 
+		proxying enabled either perform the mapping programmatically (see <a href="hbdatastore.html#Getting+the+Hibernate+Mapping+XML">here</a>) or use an ecore with 
+		java instance class names.</p>
+		
 </div>
 		
-<a name="N10068"></a><a name="Classloader"></a>
+<a name="N1006F"></a><a name="Classloader"></a>
 <div class="h3">
 <h3>Classloader</h3>
 			
@@ -426,7 +431,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N10071"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
+<a name="N10078"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
 <div class="h3">
 <h3>Requirements on EObjects: InternalEObject</h3>
 		
@@ -435,7 +440,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1007A"></a><a name="Relational+Validation+and+EObject+persistency"></a>
+<a name="N10081"></a><a name="Relational+Validation+and+EObject+persistency"></a>
 <div class="h3">
 <h3>Relational Validation and EObject persistency</h3>
 			
@@ -446,7 +451,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N10084"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
+<a name="N1008B"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
 <div class="h3">
 <h3>Automatic creation of tables/Database Schema</h3>
 		
@@ -459,7 +464,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N10094"></a><a name="escaping"></a>
+<a name="N1009B"></a><a name="escaping"></a>
 <div class="h3">
 <h3>Escaping of table and column names</h3>
 		
@@ -480,7 +485,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100AD"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
+<a name="N100B4"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
 <div class="h3">
 <h3>Querying using eclass names, class names or interface names</h3>
 			
@@ -489,7 +494,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100B6"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
+<a name="N100BD"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
 <div class="h3">
 <h3>Lazy loading/fetching, Proxy</h3>
 			
@@ -502,7 +507,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100C5"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
+<a name="N100CC"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
 <div class="h3">
 <h3>Automatic creation of TypeDef for EDataType</h3>
 			
@@ -518,7 +523,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100D1"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
+<a name="N100D8"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
 <div class="h3">
 <h3>Client-Server scenario: requires explicitly modelled id and version properties</h3>
 			
@@ -530,7 +535,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100DA"></a><a name="Default+ID+Feature+Name"></a>
+<a name="N100E1"></a><a name="Default+ID+Feature+Name"></a>
 <div class="h3">
 <h3>Default ID Feature Name</h3>
 		
@@ -542,7 +547,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100E7"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N100EE"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -558,7 +563,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100F7"></a><a name="cutpaste"></a>
+<a name="N100FE"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -592,7 +597,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N10118"></a><a name="Validation"></a>
+<a name="N1011F"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -628,7 +633,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N1012C"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N10133"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			
