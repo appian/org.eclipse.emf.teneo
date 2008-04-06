@@ -12,7 +12,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.4 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.5 2008/04/06 13:44:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -272,6 +272,10 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			case NESTED_ANNOTATION: {
 				final EStructuralFeature annotationEStructuralFeature =
 						getEStructuralFeature(getPAnnotation(), localName);
+				if (annotationEStructuralFeature == null) {
+					final PAnnotation pa = getPAnnotation();
+					System.err.println(pa);
+				}
 				if (annotationEStructuralFeature.getEType() instanceof EClass) {
 					newParseState = NESTED_ANNOTATION;
 				} else {
@@ -413,6 +417,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			case EPACKAGE_ANNOTATION:
 			case ECLASS_ANNOTATION:
 			case ESTRUCTURALFEATURE_ANNOTATION:
+			case NESTED_ANNOTATION:
 				pAnnotations.pop();
 				break;
 			case ANNOTATION_ATTRIBUTE:

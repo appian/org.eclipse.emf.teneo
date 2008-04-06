@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.5 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.6 2008/04/06 13:44:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
@@ -158,7 +158,7 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 				final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
 				eClass = EModelResolver.instance().getEClass(cls);
 			} catch (StoreClassLoadException e) {
-				log.debug("Failed to retreive ECLass for name: " + eClassName +
+				log.debug("Failed to retreive EClass for name: " + eClassName +
 						". This is no problem if this is a featuremap.");
 			}
 		}

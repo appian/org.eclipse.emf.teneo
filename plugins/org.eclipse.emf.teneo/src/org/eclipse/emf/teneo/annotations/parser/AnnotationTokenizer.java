@@ -11,14 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.4 2008/03/30 20:54:45 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.5 2008/04/06 13:44:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
+import java.util.HashMap;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 
 /**
  * Tokenizes a java annotation. The main tokens are: - TypeName - Identifier - Value - Array
@@ -43,37 +46,37 @@ class AnnotationTokenizer {
 	private final static Log log = LogFactory.getLog(AnnotationTokenizer.class);
 
 	/** Character Codes */
-	private static final int K_CR = 13;
+	private static final int K_CR = 1024;
 
-	private static final int K_LF = 10;
+	private static final int K_LF = 2048;
 
 	/** Special Tokens */
-	static final int T_EOF = 0;
+	static final int T_EOF = 4096;
 
-	private static final int T_EOL = -1;
+	private static final int T_EOL = 8192;
 
-	private static final int T_UNKNOWN = -2;
+	private static final int T_UNKNOWN = 16384;
 
 	/**
 	 * Annotation tokens
 	 */
-	static final int T_TYPENAME = 1;
+	static final int T_TYPENAME = 2;
 
-	static final int T_IDENTIFIER = 2;
+	static final int T_IDENTIFIER = 4;
 
-	static final int T_ARRAYSTART = 3;
+	static final int T_ARRAYSTART = 8;
 
-	static final int T_ARRAYEND = 4;
+	static final int T_ARRAYEND = 16;
 
-	static final int T_VALUE = 5;
+	static final int T_VALUE = 32;
 
-	static final int T_IS = 6;
+	static final int T_IS = 64;
 
-	static final int T_CONTENTSTART = 7;
+	static final int T_CONTENTSTART = 128;
 
-	static final int T_CONTENTEND = 8;
+	static final int T_CONTENTEND = 256;
 
-	static final int T_COMMA = 9;
+	static final int T_COMMA = 512;
 
 	/** Data */
 	private char[] data;
@@ -94,6 +97,8 @@ class AnnotationTokenizer {
 	/** The last returned token */
 	private int currentToken = T_EOF - 1;
 
+	private HashMap<Integer, String> constantToName = new HashMap<Integer, String>();
+
 	/**
 	 * Constructor
 	 */
@@ -101,6 +106,43 @@ class AnnotationTokenizer {
 	AnnotationTokenizer(ENamedElement eNamedElement, String source) {
 		this.eNamedElement = eNamedElement;
 		setSource(source.toCharArray());
+		constantToName.put(2, "Annotation");
+		constantToName.put(4, "Attribute Name");
+		constantToName.put(8, "Array Start ({)");
+		constantToName.put(16, "Array End (})");
+		constantToName.put(32, "Value (e.g. String, int)");
+		constantToName.put(64, "= character");
+		constantToName.put(128, "Annotation content start ('(')");
+		constantToName.put(256, "Annotation content end (')')");
+		constantToName.put(512, "Comma (,)");
+
+		constantToName.put(1024, "Carriage Return");
+		constantToName.put(2048, "Line Feed");
+		constantToName.put(4096, "EOF");
+		constantToName.put(8192, "EOL");
+		constantToName.put(16384, "Unknown");
+	}
+
+	public String getCurrentTokenName() {
+		final String name = constantToName.get(currentToken);
+		if (name == null) {
+			throw new StoreAnnotationsException("Illegal token " + currentToken);
+		}
+		return name;
+	}
+
+	public String getTokenNames(long tokens) {
+		final StringBuffer sb = new StringBuffer();
+		for (Integer key : constantToName.keySet()) {
+
+			if ((tokens & key.intValue()) > 0) {
+				if (sb.length() > 0) {
+					sb.append(", ");
+				}
+				sb.append(constantToName.get(key));
+			}
+		}
+		return sb.toString();
 	}
 
 	/**
@@ -150,8 +192,9 @@ class AnnotationTokenizer {
 
 			switch (lChar) {
 				case ' ': // Skip leading whitespace!
-				case K_LF: // Single Line Feed.
-				case K_CR: // Carriage Return, optionally followed by a Line Feed.
+				case '\n': // new line
+				case '\r': // Carriage Return.
+				case '\f': // Line Feed.
 				case '\t': {
 					lCur++;
 					continue Loop; // --> Keep on skipping leading whitespace!
@@ -268,15 +311,16 @@ class AnnotationTokenizer {
 	 * Returns an error version of the query with a _ at the error location.
 	 */
 	final String getErrorText() {
-		final StringBuffer result = new StringBuffer();
-		result.append("E Element: " + eNamedElement.getName() + "\n");
-		result.append("Begin: " + tokBeg + "\n");
-		result.append("End: " + tokEnd + "\n");
-		result.append("Length: " + data.length + "\n");
-		result.append("first part: " + new String(data, 0, tokEnd) + "\n");
-		result.append("Last part: " + new String(data, tokEnd, data.length - tokEnd - 2) + "\n");
+// final StringBuffer result = new StringBuffer();
+// result.append("E Element: " + eNamedElement.getName() + "\n");
+// result.append("Begin: " + tokBeg + "\n");
+// result.append("End: " + tokEnd + "\n");
+// result.append("Length: " + data.length + "\n");
+// result.append("first part: " + new String(data, 0, tokEnd) + "\n");
+// result.append("Last part: " + new String(data, tokEnd, data.length - tokEnd - 2) + "\n");
 
-		return new String(data, 0, tokEnd) + "_" + new String(data, tokEnd, data.length - tokEnd - 2);
+		return new String(data, 0, tokEnd) + "_" + new String(data, tokEnd, data.length - tokEnd - 2) +
+				"\nCurrent lexeme: " + getLexeme();
 	}
 
 	/**
