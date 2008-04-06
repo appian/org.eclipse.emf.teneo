@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapper.java,v 1.7 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: FeatureMapper.java,v 1.8 2008/04/06 13:44:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -93,13 +93,13 @@ public class FeatureMapper implements ExtensionPoint {
 	 * @see org.eclipse.emf.teneo.annotations.builder.DelegatingBuilder#process(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public void process(PAnnotatedEStructuralFeature paFeature) {
-		hbmContext.setCurrentEFeature(paFeature.getModelEStructuralFeature());
+		hbmContext.setCurrentFeature(paFeature);
 		if (paFeature instanceof PAnnotatedEAttribute) {
 			processPAnnotatedEAttribute((PAnnotatedEAttribute) paFeature);
 		} else {
 			processPAnnotatedEReference((PAnnotatedEReference) paFeature);
 		}
-		hbmContext.setCurrentEFeature(null);
+		hbmContext.setCurrentFeature(null);
 	}
 
 	/** Process the eattribute */

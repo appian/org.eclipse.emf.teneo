@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.27 2008/02/28 07:07:43 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.28 2008/04/06 13:44:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -19,7 +19,9 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -39,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -86,6 +88,7 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 
 	/** The current efeature being processed */
 	protected EStructuralFeature currentEFeature = null;
+	protected PAnnotatedEStructuralFeature currentAFeature = null;
 
 	/** The entity mapper */
 	private EntityMapper entityMapper;
@@ -382,22 +385,46 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 * efeature was inherited and really belongs to another eclass. In this case jointables and join
 	 * keys must be renamed to the new eclass. TODO: handle the case that the jointable/columns were
 	 * set manually. This procedure will override them (only applies in case of multiple
-	 * inheritance/mappedsuperclass).
+	 * inheritance/mappedsuperclass). This renaming is required for the case that an ereference is
+	 * inherited from a mapped superclass, in this case the join-column of the e-reference will be
+	 * placed in another table. If one ereference is inherited by multiple subtypes then this goes
+	 * wrong because they then all share the same join column with foreign keys relating it to
+	 * different tables, and multiple foreign keys on one column can not point to different
+	 * directions.
+	 * 
+	 * This method is also called for table names.
+	 * 
 	 */
 	protected String trunc(String truncName, boolean truncPrefix) {
+
+		// see bugzilla 225818
+		// in case of attributeoverride then do not repair the name
 		final String useName;
-		// currentEFeature is null in the beginning
-		if (currentEFeature != null && currentEFeature.getEContainingClass() != currentEClass &&
-				getEntityName(currentEFeature.getEContainingClass(), false) != null &&
-				truncName.toUpperCase().startsWith(getEntityName(currentEFeature.getEContainingClass()).toUpperCase())) {
-			log.debug("Replacing name of table/joincolumn " + truncName);
-			// get rid of the first part
-			useName =
-					getNamePrefix() + getEntityName(currentEClass) +
-							truncName.substring(getEntityName(currentEFeature.getEContainingClass()).length());
-			log.debug("with " + useName + " because efeature is inherited");
-			log
-				.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
+		// method is also called for table names
+		if (currentAFeature != null) {
+			boolean override = false;
+			if (currentAFeature instanceof PAnnotatedEAttribute) {
+				override = getOverride((PAnnotatedEAttribute) currentAFeature) != null;
+			} else {
+				override = getOverride((PAnnotatedEReference) currentAFeature) != null;
+			}
+
+			final String otherEntityName = getEntityName(currentEFeature.getEContainingClass(), false);
+			// if the current name starts with the name of the mapped superclass then
+			// change it back to the current eclass, do not do this in case of override
+			if (!override && currentEFeature.getEContainingClass() != currentEClass && otherEntityName != null &&
+					truncName.toUpperCase().startsWith(otherEntityName.toUpperCase())) {
+				log.debug("Replacing name of table/joincolumn " + truncName);
+				// get rid of the first part
+				useName =
+						getNamePrefix() + getEntityName(currentEClass) +
+								truncName.substring(getEntityName(currentEFeature.getEContainingClass()).length());
+				log.debug("with " + useName + " because efeature is inherited");
+				log
+					.debug("This renaming does not work in case of manually specified joincolumn/table names and mappedsuperclass or multiple inheritance!");
+			} else {
+				useName = getNamePrefix() + truncName;
+			}
 		} else {
 			useName = getNamePrefix() + truncName;
 		}
@@ -599,8 +626,9 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 * @param currentEFeature
 	 *            the currentEFeature to set
 	 */
-	public void setCurrentEFeature(EStructuralFeature currentEFeature) {
-		this.currentEFeature = currentEFeature;
+	public void setCurrentFeature(PAnnotatedEStructuralFeature currentFeature) {
+		this.currentAFeature = currentFeature;
+		this.currentEFeature = currentFeature == null ? null : currentFeature.getModelEStructuralFeature();
 	}
 
 	/**
