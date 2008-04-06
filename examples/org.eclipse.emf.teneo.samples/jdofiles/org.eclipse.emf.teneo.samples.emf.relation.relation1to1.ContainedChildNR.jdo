@@ -31,7 +31,7 @@
 				<discriminator column="dtype" strategy="value-map" value="Main"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="name" persistence-modifier="persistent" null-value="none"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="nameESet" persistence-modifier="persistent"/>
 			<field name="containedonewayrequired" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
 				<foreign-key name="main_containedonewayrequired"/>

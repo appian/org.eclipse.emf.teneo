@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SpecificDocument.java,v 1.3 2007/08/10 20:30:43 mtaal Exp $
+ * $Id: SpecificDocument.java,v 1.4 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -20,7 +20,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getSpecificDocument()
- * @model annotation="teneo.jpa appinfo='@Entity'"
+ * @model annotation="teneo.jpa appinfo='@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t'"
  *        extendedMetaData="name='SpecificDocument' kind='elementOnly'"
  * @generated
  */

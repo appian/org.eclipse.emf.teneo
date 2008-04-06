@@ -23,7 +23,9 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.ParentDocument"/>
 			<inheritance strategy="subclass-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="myName" persistence-modifier="persistent" null-value="exception"/>
+			<field name="myName" persistence-modifier="persistent" null-value="exception">
+				<column name="XXX" allows-null="false"/>
+			</field>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.SpecificDocumentImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="specificdocument" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDocument"/>

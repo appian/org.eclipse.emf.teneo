@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LftImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: LftImpl.java,v 1.3 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -46,7 +46,7 @@ public class LftImpl extends EObjectImpl implements Lft {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Cntr> cntr = null;
+	protected EList<Cntr> cntr;
 
 	/**
 	 * <!-- begin-user-doc -->

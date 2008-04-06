@@ -1,0 +1,1142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ops"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2" nsPrefix="ops">
+  <eClassifiers xsi:type="ecore:EClass" name="Block">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_block&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="id"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vserver" eType="#//VServer"
+        eOpposite="#//VServer/block">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;vserver_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataCenter">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_datacenter&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="Default"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" upperBound="-1" eType="#//Host"
+        containment="true" eOpposite="#//Host/dataCenter">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;datacenter_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Domain">
+    <eAnnotations source="webamg.emf">
+      <details key="managed" value="false"/>
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="systems" upperBound="-1"
+        eType="#//DomainSystem" eOpposite="#//DomainSystem/domains">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;domain_system&quot; joinColumns=@JoinColumn(name=&quot;domain_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;system_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainSystem">
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domains" upperBound="-1"
+        eType="#//Domain" eOpposite="#//Domain/systems">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; mappedBy=&quot;systems&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;domain_system&quot; joinColumns=@JoinColumn(name=&quot;system_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;domain_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opsSystem" upperBound="-1"
+        eType="#//OpsSystem" eOpposite="#//OpsSystem/domainSystem">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_domainsystem_opssystem&quot; joinColumns=@JoinColumn(name=&quot;domainsystem_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;opssystem_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"
+        eOpposite="#//Interface/domainSystem">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;interface_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardEmail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FailoverType">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_failovertype&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="managed" value="false"/>
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Host">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_host&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataCenter" eType="#//DataCenter"
+        eOpposite="#//DataCenter/host">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;datacenter_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vserver" upperBound="-1"
+        eType="#//VServer" containment="true" eOpposite="#//VServer/host">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;host_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ip" upperBound="-1" eType="#//IP"
+        containment="true" eOpposite="#//IP/host">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;host_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownIp" eType="#//IP">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;ownip_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="network" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="providerId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gateway" eType="#//IP"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="block" upperBound="-1"
+        eType="#//HostBlock" containment="true" eOpposite="#//HostBlock/host">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;host_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HostBlock">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_hostblock&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="id"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" eType="#//Host" eOpposite="#//Host/block">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;host_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_interface&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" upperBound="-1" eType="#//Role"
+        eOpposite="#//Role/interface">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; mappedBy=&quot;interface&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_role_interface&quot; joinColumns=@JoinColumn(name=&quot;interface_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;role_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainSystem" upperBound="-1"
+        eType="#//DomainSystem" eOpposite="#//DomainSystem/interface">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;interface_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failoverType" eType="#//FailoverType">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;failovertype_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="external" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IP">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_ip&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="ip"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" eType="#//Host" eOpposite="#//Host/ip">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;host_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//IpType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shared" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ipName" upperBound="-1"
+        eType="#//IPName" eOpposite="#//IPName/ip">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; mappedBy=&quot;ip&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_ip_ipname&quot; joinColumns=@JoinColumn(name=&quot;ip_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;ipname_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vserver" upperBound="-1"
+        eType="#//VServer" eOpposite="#//VServer/ip">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; mappedBy=&quot;ip&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_vserver_ip&quot; joinColumns=@JoinColumn(name=&quot;ip_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;vserver_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MuninInfo">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_munininfo&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="pluginName"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pluginName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="warningLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="criticalLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="monitorableByNagios" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displaySummary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" eType="#//Role" eOpposite="#//Role/muninInfo">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;role_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IPName">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_ipname&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ip" upperBound="-1" eType="#//IP"
+        eOpposite="#//IP/ipName">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_ip_ipname&quot; joinColumns=@JoinColumn(name=&quot;ipname_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;ip_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_parameter&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="key"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Role">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_role&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
+        eType="#//Interface" eOpposite="#//Interface/role">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_role_interface&quot; joinColumns=@JoinColumn(name=&quot;role_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;interface_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vserver" upperBound="-1"
+        eType="#//VServer" eOpposite="#//VServer/role">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;role_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredInterface" upperBound="-1"
+        eType="#//Interface">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_role_requredinterface&quot; joinColumns=@JoinColumn(name=&quot;role_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;interface_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="muninInfo" upperBound="-1"
+        eType="#//MuninInfo" containment="true" eOpposite="#//MuninInfo/role">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;role_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpsSystem">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_opssystem&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownVserver" upperBound="-1"
+        eType="#//VServer" eOpposite="#//VServer/ownSystem">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;own_opssystem_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servingVserver" upperBound="-1"
+        eType="#//VServer" eOpposite="#//VServer/servedSystem">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; mappedBy=&quot;servedSystem&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_vserver_opssystem&quot; joinColumns=@JoinColumn(name=&quot;opssystem_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;vserver_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainSystem" upperBound="-1"
+        eType="#//DomainSystem" eOpposite="#//DomainSystem/opsSystem">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; mappedBy=&quot;opsSystem&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_domainsystem_opssystem&quot; joinColumns=@JoinColumn(name=&quot;opssystem_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;domainsystem_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VServer">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_vserver&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="block" upperBound="-1"
+        eType="#//Block" containment="true" eOpposite="#//Block/vserver">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;vserver_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownSystem" eType="#//OpsSystem"
+        eOpposite="#//OpsSystem/ownVserver">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;own_opssystem_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="servedSystem" upperBound="-1"
+        eType="#//OpsSystem" eOpposite="#//OpsSystem/servingVserver">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_vserver_opssystem&quot; joinColumns=@JoinColumn(name=&quot;vserver_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;opssystem_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ip" upperBound="-1" eType="#//IP"
+        eOpposite="#//IP/vserver">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@ManyToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinTable(name=&quot;ops_vserver_ip&quot; joinColumns=@JoinColumn(name=&quot;vserver_id&quot; nullable=&quot;false&quot;) inverseJoinColumns=@JoinColumn(name=&quot;ip_id&quot; nullable=&quot;false&quot;))"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="host" eType="#//Host" eOpposite="#//Host/vserver">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;host_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" eType="#//Role" eOpposite="#//Role/vserver">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;role_id&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="IpType">
+    <eLiterals name="External" literal="External"/>
+    <eLiterals name="Internal" value="1" literal="Internal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DWHCluster">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_dwhcluster&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="Default"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(unique=&quot;true&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instance" upperBound="-1"
+        eType="#//DWHInstance" containment="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;dwhcluster_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DWHInstance">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Table(name=&quot;ops_dwhinstance&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="Default"/>
+    </eAnnotations>
+    <eAnnotations source="webamg.emf">
+      <details key="user.key" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@GeneratedValue"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="etl" upperBound="-1" eType="#//VServer">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;dwhinstance_id&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@OneToMany(indexed=&quot;false&quot; )"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Fetch(SUBSELECT)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modified" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Temporal(TIMESTAMP)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(columnDefinition=&quot;timestamp&quot; insertable=&quot;false&quot; updatable=&quot;false&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.hibernate">
+        <details key="appinfo" value="@Generated(ALWAYS)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revision" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Version"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;e_version&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Lob"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(length=64000)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

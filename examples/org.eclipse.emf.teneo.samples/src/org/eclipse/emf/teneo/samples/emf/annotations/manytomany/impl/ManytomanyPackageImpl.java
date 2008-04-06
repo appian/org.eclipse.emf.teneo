@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManytomanyPackageImpl.java,v 1.4 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: ManytomanyPackageImpl.java,v 1.5 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -337,25 +337,25 @@ public class ManytomanyPackageImpl extends EPackageImpl implements ManytomanyPac
 		  (getCntr_Rght(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
 		   });			
 		addAnnotation
 		  (getCntr_Lft(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Lft\")\n\t\t\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=\"Lft\")\n\t\t\t\t\t"
 		   });				
 		addAnnotation
 		  (getLft_Cntr(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE,PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t"
 		   });				
 		addAnnotation
 		  (getRght_Cntr(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"rght\" indexed=\"false\")\n\t\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
+			 "appinfo", "\n\t\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE,PERSIST} targetEntity=\"Cntr\" mappedBy=\"rght\" indexed=\"false\")\n\t\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t"
 		   });	
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentDocument.java,v 1.4 2007/08/10 20:30:43 mtaal Exp $
+ * $Id: ParentDocument.java,v 1.5 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 
@@ -20,7 +20,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getParentDocument()
- * @model annotation="teneo.jpa appinfo='@MappedSuperclass'"
+ * @model annotation="teneo.jpa appinfo='@Entity @MappedSuperclass'"
  *        extendedMetaData="name='ParentDocument' kind='elementOnly'"
  * @generated
  */
@@ -37,6 +37,7 @@ public interface ParentDocument extends Document {
 	 * @see #setMyName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getParentDocument_MyName()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t     @Column(name=XXX,nullable=\"false\")\n\t\t\t\t\t    '"
 	 *        extendedMetaData="kind='element' name='myName'"
 	 * @generated
 	 */

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Parent.java,v 1.4 2007/02/08 23:09:28 mtaal Exp $
+ * $Id: Parent.java,v 1.5 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid;
 
@@ -36,8 +36,7 @@ public interface Parent extends Person {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getParent_Children()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.compositeid.Child"
-	 *        annotation="teneo.jpa appinfo='@JoinColumns({\n\t@JoinColumn(name=\"myParentFirstName\", referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\", referencedColumnName=\"lastName\"),\n})'"
+	 * @model annotation="teneo.jpa appinfo='@JoinColumns({\n\t@JoinColumn(name=\"myParentFirstName\", referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\", referencedColumnName=\"lastName\")\n})'"
 	 * @generated
 	 */
 	EList<Child> getChildren();

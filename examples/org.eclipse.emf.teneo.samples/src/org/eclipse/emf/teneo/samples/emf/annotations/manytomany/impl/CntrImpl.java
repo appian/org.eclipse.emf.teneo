@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CntrImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: CntrImpl.java,v 1.3 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl;
 
@@ -48,7 +48,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Rght> rght = null;
+	protected EList<Rght> rght;
 
 	/**
 	 * The cached value of the '{@link #getLft() <em>Lft</em>}' reference list.
@@ -58,7 +58,7 @@ public class CntrImpl extends EObjectImpl implements Cntr {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Lft> lft = null;
+	protected EList<Lft> lft;
 
 	/**
 	 * <!-- begin-user-doc -->

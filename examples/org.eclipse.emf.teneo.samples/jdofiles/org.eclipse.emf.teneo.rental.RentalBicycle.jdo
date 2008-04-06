@@ -46,9 +46,9 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="rentToBusinessPartner" persistence-modifier="persistent" null-value="exception"/>
 			<field name="startDate" persistence-modifier="persistent" null-value="exception" embedded="true"/>
-			<field name="endDate" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="endDate" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="endDateESet" persistence-modifier="persistent"/>
-			<field name="cost" persistence-modifier="persistent" null-value="none"/>
+			<field name="cost" persistence-modifier="persistent" null-value="exception"/>
 			<field name="costESet" persistence-modifier="persistent"/>
 			<field name="rentalUnits" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.rental.impl.RentalUnitImpl" dependent-element="false">

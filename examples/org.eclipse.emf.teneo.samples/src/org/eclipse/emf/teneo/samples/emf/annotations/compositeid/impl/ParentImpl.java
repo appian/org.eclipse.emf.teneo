@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentImpl.java,v 1.4 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: ParentImpl.java,v 1.5 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl;
 
@@ -37,7 +37,7 @@ public class ParentImpl extends PersonImpl implements Parent {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Child> children = null;
+	protected EList<Child> children;
 
 	/**
 	 * <!-- begin-user-doc -->

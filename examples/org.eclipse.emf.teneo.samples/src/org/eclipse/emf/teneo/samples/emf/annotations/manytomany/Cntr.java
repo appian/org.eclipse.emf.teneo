@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cntr.java,v 1.4 2007/02/08 23:09:27 mtaal Exp $
+ * $Id: Cntr.java,v 1.5 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -40,8 +40,8 @@ public interface Cntr extends EObject {
 	 * @return the value of the '<em>Rght</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getCntr_Rght()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Rght#getCntr
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Rght" opposite="cntr" resolveProxies="false" required="true"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t'"
+	 * @model opposite="cntr" resolveProxies="false" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=\"Rght\" indexed=\"false\")\n\t\t\t\t\t@JoinTable(name=\"RightCenter\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='rght'"
 	 * @generated
 	 */
@@ -60,8 +60,8 @@ public interface Cntr extends EObject {
 	 * @return the value of the '<em>Lft</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getCntr_Lft()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft#getCntr
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Lft" opposite="cntr" resolveProxies="false" required="true"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity=\"Lft\")\n\t\t\t\t\t'"
+	 * @model opposite="cntr" resolveProxies="false" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=\"Lft\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='lft'"
 	 * @generated
 	 */

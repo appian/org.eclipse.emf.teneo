@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedsuperclassPackageImpl.java,v 1.5 2007/08/10 20:30:43 mtaal Exp $
+ * $Id: MappedsuperclassPackageImpl.java,v 1.6 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
@@ -322,13 +322,19 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		  (parentDocumentEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "@MappedSuperclass"
-		   });				
+			 "appinfo", "@Entity @MappedSuperclass"
+		   });			
+		addAnnotation
+		  (getParentDocument_MyName(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t     @Column(name=XXX,nullable=\"false\")\n\t\t\t\t\t    "
+		   });			
 		addAnnotation
 		  (specificDocumentEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Entity"
+			 "appinfo", "@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t"
 		   });		
 	}
 
@@ -374,7 +380,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   new String[] {
 			 "name", "ParentDocument",
 			 "kind", "elementOnly"
-		   });		
+		   });			
 		addAnnotation
 		  (getParentDocument_MyName(), 
 		   source, 

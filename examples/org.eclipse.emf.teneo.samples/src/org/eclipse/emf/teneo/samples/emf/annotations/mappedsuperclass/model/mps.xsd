@@ -30,12 +30,18 @@
 
 	<xsd:complexType name="ParentDocument">
 		<xsd:annotation>
-			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Entity @MappedSuperclass</xsd:appinfo>
 		</xsd:annotation>
 		<xsd:complexContent>
 			<xsd:extension base="this:Document">
 				<xsd:sequence>
-					<xsd:element name="myName" type="xsd:string" />
+					<xsd:element name="myName" type="xsd:string">
+					   <xsd:annotation>
+					    <xsd:appinfo source="teneo.jpa">
+					     @Column(name=XXX,nullable="false")
+					    </xsd:appinfo>
+					   </xsd:annotation>
+					  </xsd:element>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>
@@ -43,7 +49,10 @@
 
 	<xsd:complexType name="SpecificDocument">
 	 	<xsd:annotation>
-			<xsd:appinfo source="teneo.jpa">@Entity</xsd:appinfo>
+			<xsd:appinfo source="teneo.jpa">@Entity
+       @AttributeOverrides({@AttributeOverride(name="myName",  
+		column=@Column(name="PARENTDOCUMENT_NAME", length="50"))})
+			</xsd:appinfo>
 	    </xsd:annotation>
 		<xsd:complexContent>
 			<xsd:extension base="this:ParentDocument">

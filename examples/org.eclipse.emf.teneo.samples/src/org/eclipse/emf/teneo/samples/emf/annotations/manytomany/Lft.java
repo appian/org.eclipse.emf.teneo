@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Lft.java,v 1.3 2007/02/08 23:09:27 mtaal Exp $
+ * $Id: Lft.java,v 1.4 2008/04/06 13:45:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.manytomany;
 
@@ -39,8 +39,8 @@ public interface Lft extends EObject {
 	 * @return the value of the '<em>Cntr</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.ManytomanyPackage#getLft_Cntr()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr#getLft
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.Cntr" opposite="lft" resolveProxies="false" required="true"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t'"
+	 * @model opposite="lft" resolveProxies="false" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@ManyToMany(fetch=LAZY cascade={MERGE,PERSIST} targetEntity=\"Cntr\" mappedBy=\"lft\")\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='cntr'"
 	 * @generated
 	 */

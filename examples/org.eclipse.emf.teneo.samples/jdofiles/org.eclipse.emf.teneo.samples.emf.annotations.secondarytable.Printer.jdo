@@ -16,10 +16,10 @@
 			</join>
 			<field name="make" persistence-modifier="persistent" null-value="exception"/>
 			<field name="model" persistence-modifier="persistent" null-value="exception"/>
-			<field name="tonerMake" persistence-modifier="persistent" table="THETONER" null-value="exception">
+			<field name="tonerMake" persistence-modifier="persistent" table="THETONER" null-value="none">
 				<column name="tonermake" allows-null="true"/>
 			</field>
-			<field name="tonerModel" persistence-modifier="persistent" table="THETONER" null-value="exception">
+			<field name="tonerModel" persistence-modifier="persistent" table="THETONER" null-value="none">
 				<column name="tonermodel" allows-null="true"/>
 			</field>
 		</class>

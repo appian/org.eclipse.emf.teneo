@@ -11,7 +11,7 @@
 				<discriminator column="dtype" strategy="value-map" value="ProductType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="code" persistence-modifier="persistent" null-value="none"/>
+			<field name="code" persistence-modifier="persistent" null-value="exception"/>
 			<field name="codeESet" persistence-modifier="persistent"/>
 			<field name="id" persistence-modifier="persistent" primary-key="true"/>
 			<field name="supplier" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
@@ -19,7 +19,7 @@
 				<column name="suppliertype_supplier_e_id" allows-null="false"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.product.impl.SupplierTypeImpl"/>
 			</field>
-			<field name="price" persistence-modifier="persistent" null-value="none"/>
+			<field name="price" persistence-modifier="persistent" null-value="exception"/>
 			<field name="priceESet" persistence-modifier="persistent"/>
 			<field name="createdOn" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="anyOne" persistence-modifier="persistent" delete-action="restrict" null-value="none">
@@ -53,7 +53,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
-			<field name="noOfEmployees" persistence-modifier="persistent" null-value="none"/>
+			<field name="noOfEmployees" persistence-modifier="persistent" null-value="exception"/>
 			<field name="noOfEmployeesESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.sample.product.impl.ClassificationTypeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="classificationtype" identity-type="datastore">
@@ -64,7 +64,7 @@
 				<discriminator column="dtype" strategy="value-map" value="ClassificationType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="name" persistence-modifier="persistent" null-value="none"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="nameESet" persistence-modifier="persistent"/>
 		</class>
 	</package>

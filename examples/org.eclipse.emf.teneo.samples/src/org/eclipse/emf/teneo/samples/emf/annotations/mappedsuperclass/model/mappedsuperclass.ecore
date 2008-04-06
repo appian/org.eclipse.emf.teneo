@@ -37,7 +37,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParentDocument" eSuperTypes="#//Document">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="@MappedSuperclass"/>
+      <details key="appinfo" value="@Entity @MappedSuperclass"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="ParentDocument"/>
@@ -45,6 +45,9 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;     @Column(name=XXX,nullable=&quot;false&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;    "/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="myName"/>
@@ -53,7 +56,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpecificDocument" eSuperTypes="#//ParentDocument">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="@Entity"/>
+      <details key="appinfo" value="@Entity&#xA;       @AttributeOverrides({@AttributeOverride(name=&quot;myName&quot;,  &#xA;&#x9;&#x9;column=@Column(name=&quot;PARENTDOCUMENT_NAME&quot;, length=&quot;50&quot;))})&#xA;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="SpecificDocument"/>
