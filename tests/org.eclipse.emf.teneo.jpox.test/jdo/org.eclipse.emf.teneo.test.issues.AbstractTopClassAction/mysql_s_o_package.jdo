@@ -45,7 +45,7 @@
 			<implements name="org.eclipse.emf.teneo.samples.issues.abstractsuper.DistrictUKAddress"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="district" persistence-modifier="persistent" null-value="none"/>
+			<field name="district" persistence-modifier="persistent" null-value="exception"/>
 			<field name="districtESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.issues.abstractsuper.impl.InternationalPriceImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" identity-type="datastore">
@@ -77,9 +77,9 @@
 			<implements name="org.eclipse.emf.teneo.samples.issues.abstractsuper.USAddress"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="state" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="state" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="stateESet" persistence-modifier="persistent"/>
-			<field name="zip" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="zip" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="zipESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.issues.abstractsuper.impl.CustomerImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="customer" identity-type="application">

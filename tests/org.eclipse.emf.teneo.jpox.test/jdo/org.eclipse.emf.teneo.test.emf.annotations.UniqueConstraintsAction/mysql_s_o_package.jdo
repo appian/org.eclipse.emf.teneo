@@ -14,7 +14,7 @@
 				<column name="MYINT"/>
 				<column name="MYPROJECT"/>
 			</unique>
-			<field name="name" persistence-modifier="persistent" null-value="exception">
+			<field name="name" persistence-modifier="persistent" null-value="none">
 				<column name="MYSTR" allows-null="true"/>
 			</field>
 			<field name="project" persistence-modifier="persistent" delete-action="restrict" null-value="none">

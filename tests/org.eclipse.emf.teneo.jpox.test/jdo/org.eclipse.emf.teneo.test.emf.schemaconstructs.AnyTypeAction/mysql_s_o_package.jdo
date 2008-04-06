@@ -10,9 +10,9 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
-			<field name="doub" persistence-modifier="persistent" null-value="none"/>
+			<field name="doub" persistence-modifier="persistent" null-value="exception"/>
 			<field name="doubESet" persistence-modifier="persistent"/>
-			<field name="lon" persistence-modifier="persistent" null-value="none"/>
+			<field name="lon" persistence-modifier="persistent" null-value="exception"/>
 			<field name="lonESet" persistence-modifier="persistent"/>
 			<field name="myB" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
 				<foreign-key name="a_myb"/>

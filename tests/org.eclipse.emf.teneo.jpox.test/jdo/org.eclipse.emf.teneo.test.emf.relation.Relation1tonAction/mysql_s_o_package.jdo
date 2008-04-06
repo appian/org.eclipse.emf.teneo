@@ -9,7 +9,7 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="name" persistence-modifier="persistent" null-value="none"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="nameESet" persistence-modifier="persistent"/>
 			<field name="onecr" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneCRImpl" dependent-element="true">

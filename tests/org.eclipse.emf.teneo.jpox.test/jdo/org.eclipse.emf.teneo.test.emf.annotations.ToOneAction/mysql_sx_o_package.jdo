@@ -17,7 +17,7 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="length" persistence-modifier="persistent" null-value="none"/>
+			<field name="length" persistence-modifier="persistent" null-value="exception"/>
 			<field name="lengthESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="head" identity-type="datastore">

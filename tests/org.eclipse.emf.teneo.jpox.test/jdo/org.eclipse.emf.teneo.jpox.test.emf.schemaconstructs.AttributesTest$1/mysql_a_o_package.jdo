@@ -11,7 +11,7 @@
 				<discriminator column="dtype" strategy="value-map" value="A"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="name" persistence-modifier="persistent" null-value="none"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="nameESet" persistence-modifier="persistent"/>
 			<field name="b" persistence-modifier="persistent" null-value="none"/>
 			<field name="bESet" persistence-modifier="persistent"/>

@@ -78,7 +78,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="exception"/>
-			<field name="category" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="category" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="categoryESet" persistence-modifier="persistent"/>
 			<field name="creator" persistence-modifier="persistent" delete-action="restrict" null-value="none">
 				<foreign-key name="topic_creator"/>

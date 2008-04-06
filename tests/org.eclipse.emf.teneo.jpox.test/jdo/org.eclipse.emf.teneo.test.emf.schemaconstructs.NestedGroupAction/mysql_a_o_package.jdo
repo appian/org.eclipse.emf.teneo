@@ -48,7 +48,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="cname" persistence-modifier="persistent" null-value="exception"/>
-			<field name="cvalue" persistence-modifier="persistent" null-value="none"/>
+			<field name="cvalue" persistence-modifier="persistent" null-value="exception"/>
 			<field name="cvalueESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.ElementImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="element" identity-type="datastore">

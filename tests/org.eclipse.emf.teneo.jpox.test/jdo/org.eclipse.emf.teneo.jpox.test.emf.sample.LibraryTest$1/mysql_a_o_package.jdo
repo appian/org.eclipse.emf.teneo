@@ -16,12 +16,12 @@
 			<field name="title" persistence-modifier="persistent" null-value="exception">
 				<column name="title" allows-null="false" length="50"/>
 			</field>
-			<field name="pages" persistence-modifier="persistent" null-value="none">
-				<column name="pages" allows-null="true"/>
+			<field name="pages" persistence-modifier="persistent" null-value="exception">
+				<column name="pages" allows-null="false"/>
 			</field>
 			<field name="pagesESet" persistence-modifier="persistent"/>
-			<field name="category" persistence-modifier="persistent" null-value="none" embedded="true">
-				<column name="category" allows-null="true"/>
+			<field name="category" persistence-modifier="persistent" null-value="exception" embedded="true">
+				<column name="category" allows-null="false"/>
 			</field>
 			<field name="categoryESet" persistence-modifier="persistent"/>
 			<field name="author" persistence-modifier="persistent" delete-action="restrict" null-value="none">

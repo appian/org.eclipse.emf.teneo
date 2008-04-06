@@ -41,7 +41,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
-			<field name="iSBN" persistence-modifier="persistent" null-value="none"/>
+			<field name="iSBN" persistence-modifier="persistent" null-value="exception"/>
 			<field name="iSBNESet" persistence-modifier="persistent"/>
 			<field name="price" persistence-modifier="persistent" null-value="exception"/>
 			<field name="authors" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
@@ -56,7 +56,7 @@
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.PromotionTypeImpl"/>
 			</field>
 			<field name="publicationDate" persistence-modifier="persistent" null-value="exception" embedded="true"/>
-			<field name="bookCategory" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="bookCategory" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="bookCategoryESet" persistence-modifier="persistent"/>
 			<field name="itemId" persistence-modifier="persistent" null-value="none"/>
 		</class>

@@ -9,9 +9,9 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="price" persistence-modifier="persistent" null-value="none"/>
+			<field name="price" persistence-modifier="persistent" null-value="exception"/>
 			<field name="priceESet" persistence-modifier="persistent"/>
-			<field name="quantity" persistence-modifier="persistent" null-value="none"/>
+			<field name="quantity" persistence-modifier="persistent" null-value="exception"/>
 			<field name="quantityESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.ProductTypeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="producttype" identity-type="application">
@@ -47,7 +47,7 @@
 				</element>
 				<order column="PRODUCTTYPE_GROUP_IDX"/>
 			</field>
-			<field name="productClassification" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="productClassification" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="productClassificationESet" persistence-modifier="persistent"/>
 			<field name="group1" persistence-modifier="persistent">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry">
@@ -83,7 +83,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
-			<field name="price" persistence-modifier="persistent" null-value="none"/>
+			<field name="price" persistence-modifier="persistent" null-value="exception"/>
 			<field name="priceESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.TranslatedDescriptionTypeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="translateddescriptiontype" identity-type="datastore">

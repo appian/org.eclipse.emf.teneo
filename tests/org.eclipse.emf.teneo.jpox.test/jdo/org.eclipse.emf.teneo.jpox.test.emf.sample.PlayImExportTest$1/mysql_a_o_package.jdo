@@ -21,7 +21,7 @@
 				<order column="ACTTYPE_SCENE_IDX"/>
 				<foreign-key delete-action="cascade" update-action="cascade" name="acttype_scene"/>
 			</field>
-			<field name="pindex" persistence-modifier="persistent" null-value="none"/>
+			<field name="pindex" persistence-modifier="persistent" null-value="exception"/>
 			<field name="pindexESet" persistence-modifier="persistent"/>
 			<field name="title" persistence-modifier="persistent" null-value="exception"/>
 		</class>

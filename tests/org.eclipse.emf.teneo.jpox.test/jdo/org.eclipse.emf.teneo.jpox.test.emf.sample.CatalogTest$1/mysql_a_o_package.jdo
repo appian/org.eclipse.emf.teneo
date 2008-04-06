@@ -42,9 +42,9 @@
 				<discriminator column="dtype" strategy="value-map" value="PriceType"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="price" persistence-modifier="persistent" null-value="none"/>
+			<field name="price" persistence-modifier="persistent" null-value="exception"/>
 			<field name="priceESet" persistence-modifier="persistent"/>
-			<field name="quantityTo" persistence-modifier="persistent" null-value="none"/>
+			<field name="quantityTo" persistence-modifier="persistent" null-value="exception"/>
 			<field name="quantityToESet" persistence-modifier="persistent"/>
 			<field name="supplier" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
 				<foreign-key name="pricetype_supplier"/>
@@ -61,7 +61,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="code" persistence-modifier="persistent" primary-key="true"/>
-			<field name="description" persistence-modifier="persistent" null-value="none"/>
+			<field name="description" persistence-modifier="persistent" null-value="exception"/>
 			<field name="descriptionESet" persistence-modifier="persistent"/>
 			<field name="remark" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.catalog.impl.StringTypeImpl" dependent-element="true">
@@ -98,7 +98,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
-			<field name="noOfEmployees" persistence-modifier="persistent" null-value="none"/>
+			<field name="noOfEmployees" persistence-modifier="persistent" null-value="exception"/>
 			<field name="noOfEmployeesESet" persistence-modifier="persistent"/>
 		</class>
 	</package>

@@ -7,7 +7,7 @@
 			<implements name="org.eclipse.emf.teneo.rental.RentalBicycle"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="type" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="type" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="typeESet" persistence-modifier="persistent"/>
 			<field name="manufacturer" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
 				<foreign-key name="rentalbicycle_manufacturer"/>
@@ -27,7 +27,7 @@
 			<implements name="org.eclipse.emf.teneo.rental.RentalCar"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="size" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="size" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="sizeESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.rental.impl.RentalContractImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="rentalcontract" identity-type="datastore">
@@ -38,9 +38,9 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="rentToBusinessPartner" persistence-modifier="persistent" null-value="exception"/>
 			<field name="startDate" persistence-modifier="persistent" null-value="exception" embedded="true"/>
-			<field name="endDate" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="endDate" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="endDateESet" persistence-modifier="persistent"/>
-			<field name="cost" persistence-modifier="persistent" null-value="none"/>
+			<field name="cost" persistence-modifier="persistent" null-value="exception"/>
 			<field name="costESet" persistence-modifier="persistent"/>
 			<field name="rentalUnits" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.rental.impl.RentalUnitImpl" dependent-element="false">

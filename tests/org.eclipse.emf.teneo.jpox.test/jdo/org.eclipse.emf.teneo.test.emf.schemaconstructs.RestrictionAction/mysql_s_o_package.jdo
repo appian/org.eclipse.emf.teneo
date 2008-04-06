@@ -15,7 +15,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="numPosts" persistence-modifier="persistent" null-value="none" embedded="true"/>
-			<field name="signature" persistence-modifier="persistent" null-value="none"/>
+			<field name="signature" persistence-modifier="persistent" null-value="exception"/>
 			<field name="signatureESet" persistence-modifier="persistent"/>
 			<field name="email" persistence-modifier="persistent" null-value="none"/>
 			<field name="firstSubscribed" persistence-modifier="persistent" null-value="none" embedded="true"/>

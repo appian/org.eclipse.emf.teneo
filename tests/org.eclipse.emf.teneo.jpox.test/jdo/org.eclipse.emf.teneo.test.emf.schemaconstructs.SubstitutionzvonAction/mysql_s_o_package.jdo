@@ -9,7 +9,7 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="value" persistence-modifier="persistent" null-value="none"/>
+			<field name="value" persistence-modifier="persistent" null-value="exception"/>
 			<field name="valueESet" persistence-modifier="persistent"/>
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexEvenTypeImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="complexeventype" identity-type="datastore">

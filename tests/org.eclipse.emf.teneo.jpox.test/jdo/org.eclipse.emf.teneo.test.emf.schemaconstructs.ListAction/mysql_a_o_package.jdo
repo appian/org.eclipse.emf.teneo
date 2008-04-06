@@ -12,7 +12,7 @@
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
 			<field name="country" persistence-modifier="persistent" null-value="exception"/>
-			<field name="index" persistence-modifier="persistent" null-value="none"/>
+			<field name="index" persistence-modifier="persistent" null-value="exception"/>
 			<field name="indexESet" persistence-modifier="persistent"/>
 			<field name="allStates" persistence-modifier="persistent" table="statesbycountry_allstates">
 				<collection element-type="java.lang.String">

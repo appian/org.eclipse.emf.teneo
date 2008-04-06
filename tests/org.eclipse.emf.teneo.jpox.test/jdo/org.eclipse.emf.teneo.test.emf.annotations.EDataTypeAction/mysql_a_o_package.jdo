@@ -11,14 +11,14 @@
 				<discriminator column="dtype" strategy="value-map" value="Book"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="title" persistence-modifier="persistent" null-value="exception">
+			<field name="title" persistence-modifier="persistent" null-value="none">
 				<column name="titel" allows-null="true" length="25"/>
 				<unique>
 					<column name="titel" allows-null="true" length="25"/>
 				</unique>
 			</field>
 			<field name="pages" persistence-modifier="none"/>
-			<field name="weight" persistence-modifier="persistent" null-value="exception" embedded="true">
+			<field name="weight" persistence-modifier="persistent" null-value="none" embedded="true">
 				<column name="gewicht" allows-null="true" length="5" scale="2"/>
 			</field>
 			<field name="author" persistence-modifier="persistent" null-value="exception"/>

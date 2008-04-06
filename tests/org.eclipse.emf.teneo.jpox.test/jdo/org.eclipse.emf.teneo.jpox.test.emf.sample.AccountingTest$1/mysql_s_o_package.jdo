@@ -35,7 +35,7 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="name" persistence-modifier="persistent" null-value="none"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="nameESet" persistence-modifier="persistent"/>
 			<field name="accountGroup" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountGroupImpl" dependent-element="true">
@@ -125,7 +125,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="description" persistence-modifier="persistent" null-value="exception"/>
 			<field name="date" persistence-modifier="persistent" null-value="exception" embedded="true"/>
-			<field name="amount" persistence-modifier="persistent" null-value="none"/>
+			<field name="amount" persistence-modifier="persistent" null-value="exception"/>
 			<field name="amountESet" persistence-modifier="persistent"/>
 			<field name="debitAccount" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
 				<foreign-key name="journalstatement_debitaccount"/>
@@ -197,7 +197,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
-			<field name="rate" persistence-modifier="persistent" null-value="none"/>
+			<field name="rate" persistence-modifier="persistent" null-value="exception"/>
 			<field name="rateESet" persistence-modifier="persistent"/>
 		</class>
 	</package>

@@ -10,7 +10,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" primary-key="true"/>
-			<field name="duration" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="duration" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="durationESet" persistence-modifier="persistent"/>
 			<field name="durations" persistence-modifier="persistent" table="durationtest_durations">
 				<collection element-type="javax.xml.datatype.Duration">

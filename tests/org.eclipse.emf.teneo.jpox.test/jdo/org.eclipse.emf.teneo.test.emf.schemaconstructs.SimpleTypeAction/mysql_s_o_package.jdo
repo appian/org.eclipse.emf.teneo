@@ -9,7 +9,7 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="code" persistence-modifier="persistent" null-value="none"/>
+			<field name="code" persistence-modifier="persistent" null-value="exception"/>
 			<field name="codeESet" persistence-modifier="persistent"/>
 			<field name="boo" persistence-modifier="persistent" table="simplelist_boo">
 				<collection element-type="java.lang.Boolean">
@@ -115,30 +115,30 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="code" persistence-modifier="persistent" null-value="none"/>
+			<field name="code" persistence-modifier="persistent" null-value="exception"/>
 			<field name="codeESet" persistence-modifier="persistent"/>
-			<field name="boo" persistence-modifier="persistent" null-value="none"/>
+			<field name="boo" persistence-modifier="persistent" null-value="exception"/>
 			<field name="booESet" persistence-modifier="persistent"/>
-			<field name="byt" persistence-modifier="persistent" null-value="none"/>
+			<field name="byt" persistence-modifier="persistent" null-value="exception"/>
 			<field name="bytESet" persistence-modifier="persistent"/>
-			<field name="doubl" persistence-modifier="persistent" null-value="none"/>
+			<field name="doubl" persistence-modifier="persistent" null-value="exception"/>
 			<field name="doublESet" persistence-modifier="persistent"/>
-			<field name="float_" persistence-modifier="persistent" null-value="none"/>
+			<field name="float_" persistence-modifier="persistent" null-value="exception"/>
 			<field name="floatESet" persistence-modifier="persistent"/>
-			<field name="inte" persistence-modifier="persistent" null-value="none"/>
+			<field name="inte" persistence-modifier="persistent" null-value="exception"/>
 			<field name="inteESet" persistence-modifier="persistent"/>
-			<field name="lon" persistence-modifier="persistent" null-value="none"/>
+			<field name="lon" persistence-modifier="persistent" null-value="exception"/>
 			<field name="lonESet" persistence-modifier="persistent"/>
-			<field name="shor" persistence-modifier="persistent" null-value="none"/>
+			<field name="shor" persistence-modifier="persistent" null-value="exception"/>
 			<field name="shorESet" persistence-modifier="persistent"/>
-			<field name="enu" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="enu" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="enuESet" persistence-modifier="persistent"/>
 			<field name="dat" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="limitedstring" persistence-modifier="persistent" null-value="exception">
 				<column name="limitedstring" allows-null="false" length="10"/>
 			</field>
-			<field name="limitedDecimal" persistence-modifier="persistent" null-value="none" embedded="true">
-				<column name="limiteddecimal" allows-null="true" length="4" scale="1"/>
+			<field name="limitedDecimal" persistence-modifier="persistent" null-value="exception" embedded="true">
+				<column name="limiteddecimal" allows-null="false" length="4" scale="1"/>
 			</field>
 			<field name="limitedDecimalESet" persistence-modifier="persistent"/>
 			<field name="extraLimitedString" persistence-modifier="persistent" null-value="exception">
@@ -151,25 +151,25 @@
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="code" persistence-modifier="persistent" null-value="none"/>
+			<field name="code" persistence-modifier="persistent" null-value="exception"/>
 			<field name="codeESet" persistence-modifier="persistent"/>
-			<field name="boo" persistence-modifier="persistent" null-value="none"/>
+			<field name="boo" persistence-modifier="persistent" null-value="exception"/>
 			<field name="booESet" persistence-modifier="persistent"/>
-			<field name="byt" persistence-modifier="persistent" null-value="none"/>
+			<field name="byt" persistence-modifier="persistent" null-value="exception"/>
 			<field name="bytESet" persistence-modifier="persistent"/>
-			<field name="doubl" persistence-modifier="persistent" null-value="none"/>
+			<field name="doubl" persistence-modifier="persistent" null-value="exception"/>
 			<field name="doublESet" persistence-modifier="persistent"/>
-			<field name="float_" persistence-modifier="persistent" null-value="none"/>
+			<field name="float_" persistence-modifier="persistent" null-value="exception"/>
 			<field name="floatESet" persistence-modifier="persistent"/>
-			<field name="inte" persistence-modifier="persistent" null-value="none"/>
+			<field name="inte" persistence-modifier="persistent" null-value="exception"/>
 			<field name="inteESet" persistence-modifier="persistent"/>
-			<field name="lon" persistence-modifier="persistent" null-value="none"/>
+			<field name="lon" persistence-modifier="persistent" null-value="exception"/>
 			<field name="lonESet" persistence-modifier="persistent"/>
-			<field name="shor" persistence-modifier="persistent" null-value="none"/>
+			<field name="shor" persistence-modifier="persistent" null-value="exception"/>
 			<field name="shorESet" persistence-modifier="persistent"/>
-			<field name="enu" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="enu" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="enuESet" persistence-modifier="persistent"/>
-			<field name="dat" persistence-modifier="persistent" null-value="none" embedded="true"/>
+			<field name="dat" persistence-modifier="persistent" null-value="exception" embedded="true"/>
 			<field name="datESet" persistence-modifier="persistent"/>
 		</class>
 	</package>
