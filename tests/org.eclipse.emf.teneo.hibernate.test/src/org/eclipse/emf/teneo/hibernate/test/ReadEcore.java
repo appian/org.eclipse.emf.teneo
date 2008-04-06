@@ -34,7 +34,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class ReadEcore {
 
@@ -48,7 +48,7 @@ public class ReadEcore {
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final String[] ecores = new String[] { "/home/mtaal/mytmp/loop.ecore" };
+			final String[] ecores = new String[] { "/home/mtaal/mytmp/ops.ecore" };
 			for (String ecore : ecores) {
 				final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
 				res.load(new HashMap());
@@ -100,14 +100,18 @@ public class ReadEcore {
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
-// props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
+		props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+			"org/eclipse/emf/teneo/hibernate/test/ops_persistence.xml");
+		props.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
+
+		// props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
 // "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
 // props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
 // props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 //
-		props.setProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY, "true");
-		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "18");
-		props.setProperty(PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY, "simple");
+// props.setProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY, "true");
+// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "18");
+// props.setProperty(PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY, "simple");
 // props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 // props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
 // props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
@@ -118,7 +122,7 @@ public class ReadEcore {
 		hbds.setEPackages(epacks);
 		// initialize, also creates the database tables
 		try {
-			hbds.initialize();
+// hbds.initialize();
 		} finally {
 			System.err.println(hbds.getMappingXML());
 		}

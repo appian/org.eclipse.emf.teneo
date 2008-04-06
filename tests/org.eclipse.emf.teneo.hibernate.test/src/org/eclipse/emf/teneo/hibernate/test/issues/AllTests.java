@@ -16,7 +16,7 @@ import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.issues.AbstractReferenceAction;
 import org.eclipse.emf.teneo.test.issues.AbstractTopClassAction;
 import org.eclipse.emf.teneo.test.issues.BZ224991Action;
-import org.eclipse.emf.teneo.test.issues.BZ225296Action;
+import org.eclipse.emf.teneo.test.issues.BZ225296_2Action;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class AllTests {
 
@@ -41,8 +41,9 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
 
+		suite.addTestSuite(BZ225296_2Action.class);
+
 		suite.addTestSuite(BZ224991Action.class);
-		suite.addTestSuite(BZ225296Action.class);
 
 		suite.addTestSuite(AbstractTopClassAction.class);
 		suite.addTestSuite(GeneralTestAction.class);

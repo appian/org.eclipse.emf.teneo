@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<persistence-mapping 
+    xmlns="http://www.eclipse.org/emft/teneo" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.eclipse.org/emft/teneo persistence.xsd">
+
+  <epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2">
+
+    <eclass name="Block">
+      <proxy lazy="true"/>
+      <table name="ops_block"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>      
+      <ereference name="vserver"> 
+        <join-column name="vserver_id"/> 
+      </ereference>    
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="DataCenter">
+      <table name="ops_datacenter"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="host">
+        <fetch>SUBSELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="datacenter_id"/> 
+      </ereference>
+      <property name="description">
+        <lob/>
+        <column length="64000"/>
+      </property>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="Domain">
+      <table name="domain"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="systems">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY"/>
+         <join-table name="domain_system">
+             <join-column  name="domain_id" nullable="false"/>
+         </join-table>
+      </ereference>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>      
+    </eclass>
+  
+    <eclass name="DomainSystem">
+      <table name="domainsystem"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="domains">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" mapped-by="systems"/>
+        <join-table name="domain_system">
+            <join-column name="system_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="opsSystem">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" mapped-by="systems"/>
+        <join-table name="ops_domainsystem_opssystem">
+            <join-column name="domainsystem_id" nullable="false"/>
+	          <inverse-join-column name="system_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="interface"> 
+        <join-column name="interface_id"/> 
+      </ereference>            
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>      
+    </eclass>
+
+    <eclass name="FailoverType">
+      <table name="ops_failovertype"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="Host">
+      <table name="ops_host"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="vserver">
+        <fetch>SUBSELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="host_id"/>        
+      </ereference>
+      <ereference name="ip">
+        <fetch>SUBSELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="host_id"/>         
+      </ereference>
+      <ereference name="ownIp"> 
+        <join-column name="ownip_id"/> 
+      </ereference>             
+      <property name="description">
+        <lob/>
+        <column length="64000"/>
+      </property>
+      <property name="network">
+        <lob/>
+        <column length="64000"/>
+      </property>
+      <property name="providerId">
+        <lob/>
+        <column length="64000" unique="true"/>
+      </property>
+      <property name="block">
+        <fetch>SUBSELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="host_id"/>         
+      </property>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+
+
+    <eclass name="HostBlock">
+      <table name="ops_hostblock"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="host"> 
+        <join-column name="host_id"/> 
+      </ereference>            
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="Interface">
+      <table name="ops_interface"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="role">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" mapped-by="interface"/>
+        <join-table name="ops_role_interface">
+            <join-column name="interface_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="domainSystem">
+        <fetch>SELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="interface_id"/>        
+      </ereference>
+      <ereference name="failoverType"> 
+        <join-column name="failovertype_id"/> 
+      </ereference>             
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="IP">
+      <table name="ops_ip"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="ipName">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" mapped-by="ip" fetch="LAZY"/>
+        <join-table name="ops_ip_ipname">
+            <join-column name="ip_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="vserver">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" mapped-by="ip"/>
+        <join-table name="ops_vserver_ip">
+            <join-column name="ip_id" nullable="false"/>            
+        </join-table>
+      </ereference>      
+      <ereference name="host"> 
+        <join-column name="host_id"/> 
+      </ereference>      
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="MuninInfo">
+      <table name="ops_munininfo"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <property name="pluginName">
+        <lob/>
+        <column length="64000" unique="true"/>
+      </property>
+      <ereference name="role"> 
+        <join-column name="role_id"/> 
+      </ereference>      
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="IPName">
+      <table name="ops_ipname"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="ip">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY"/>
+        <join-table name="ops_ip_ipname">
+            <join-column name="ipname_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="Parameter">
+      <table name="ops_parameter"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="Role">
+      <table name="ops_role"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="interface">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY"/>
+        <join-table name="ops_role_interface">
+            <join-column name="role_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="vserver">
+        <fetch>SELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="role_id"/>
+      </ereference>
+      <ereference name="requiredInterface">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY"/>
+        <join-table name="ops_role_requredinterface">
+            <join-column name="role_id" nullable="false"/>
+        </join-table>
+      </ereference>      
+      <ereference name="muninInfo">
+        <fetch>SUBSELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="role_id"/>
+      </ereference>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="OpsSystem">
+      <table name="ops_opssystem"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="ownVserver">
+        <fetch>SELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="own_opssystem_id"/>
+      </ereference>
+      <ereference name="servingVserver">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" mapped-by="servedSystem"/>
+        <join-table name="ops_vserver_opssystem">
+            <join-column name="opssystem_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="domainSystem">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" mapped-by="opsSystem"/>
+        <join-table name="ops_domainsystem_opssystem">
+            <join-column name="opssystem_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+    <eclass name="VServer">
+      <table name="ops_vserver"/>
+      <property name="id"> 
+        <id/> 
+        <generated-value/>
+      </property>
+      <ereference name="block">
+        <fetch>SELECT</fetch>
+        <one-to-many fetch="LAZY" indexed="false"/>
+        <join-column name="vserver_id"/>
+      </ereference>
+      <ereference name="servedSystem">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY"/>
+        <join-table name="ops_vserver_opssystem">
+            <join-column name="vserver_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="ip">
+        <fetch>SELECT</fetch>
+        <many-to-many indexed="false" fetch="LAZY" />
+        <join-table name="ops_vserver_ip">
+            <join-column name="vserver_id" nullable="false"/>
+        </join-table>
+      </ereference>
+      <ereference name="role"> 
+        <join-column name="role_id"/> 
+      </ereference>    
+      <ereference name="host"> 
+        <join-column name="host_id"/> 
+      </ereference>                    
+      <ereference name="ownSystem"> 
+        <join-column name="own_opssystem_id"/> 
+      </ereference>                    
+      <property name="revision"> 
+        <version/> 
+        <column name="e_version"/> 
+       </property>
+      <property name="modified"> 
+        <column column-definition="timestamp" insertable="false" updatable="false"/>
+        <generated>ALWAYS</generated>
+        <temporal>TIMESTAMP</temporal>
+       </property>
+    </eclass>
+
+ 
+   </epackage>
+</persistence-mapping>
