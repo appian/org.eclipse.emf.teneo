@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: B.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: B.java,v 1.2 2008/04/07 14:34:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -36,7 +36,7 @@ public interface B extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getB_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */

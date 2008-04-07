@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/anytype"
-	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/anytype">
+<xs:schema xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/anytype" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/anytype">
    
    	<!-- Tests:
    	- xsd:anyType type
@@ -14,19 +11,19 @@
   		<xs:sequence>
    			<xs:element name="name" type="xs:string"/> 
    			<xs:element name="singleAnyType" type="xs:anyType"/>
-   			<xs:element name="multiAnyType" type="xs:anyType" maxOccurs="unbounded"/>
+   			<xs:element maxOccurs="unbounded" name="multiAnyType" type="xs:anyType"/>
    			<xs:any ecore:name="myAny" namespace="##other"/>
-   			<xs:any maxOccurs="unbounded" namespace="##other"/>
+   			<xs:any maxOccurs="unbounded" namespace="##local"/>
   		</xs:sequence>
  	</xs:complexType>
  	
  	<!-- Type to be used to set any above -->
- 	<xs:complexType name="myA" ecore:name="A">
+ 	<xs:complexType ecore:name="A" name="myA">
  		<xs:sequence>
  			<xs:element name="name" type="xs:string"/>
  			<xs:element name="doub" type="xs:double"/>
  			<xs:element name="lon" type="xs:long"/>
- 			<xs:element name="myB" type="xs:IDREF" ecore:reference="B"/>
+ 			<xs:element ecore:reference="B" name="myB" type="xs:IDREF"/>
  		</xs:sequence>
  	</xs:complexType>
 

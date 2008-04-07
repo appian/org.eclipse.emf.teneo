@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: A.java,v 1.1 2006/07/11 16:57:14 mtaal Exp $
+ * $Id: A.java,v 1.2 2008/04/07 14:34:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -39,7 +39,7 @@ public interface A extends EObject{
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getA_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -68,7 +68,7 @@ public interface A extends EObject{
 	 * @see #unsetDoub()
 	 * @see #setDoub(double)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getA_Doub()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Double" required="true"
 	 *        extendedMetaData="kind='element' name='doub'"
 	 * @generated
 	 */
@@ -122,7 +122,7 @@ public interface A extends EObject{
 	 * @see #unsetLon()
 	 * @see #setLon(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getA_Lon()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
 	 *        extendedMetaData="kind='element' name='lon'"
 	 * @generated
 	 */

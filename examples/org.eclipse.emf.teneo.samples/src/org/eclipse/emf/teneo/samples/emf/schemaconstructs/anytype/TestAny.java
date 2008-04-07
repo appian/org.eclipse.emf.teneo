@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAny.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
+ * $Id: TestAny.java,v 1.3 2008/04/07 14:34:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -44,7 +44,7 @@ public interface TestAny extends EObject{
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getTestAny_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -98,7 +98,7 @@ public interface TestAny extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Multi Any Type</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getTestAny_MultiAnyType()
-	 * @model type="org.eclipse.emf.ecore.EObject" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='multiAnyType'"
 	 * @generated
 	 */
@@ -115,7 +115,7 @@ public interface TestAny extends EObject{
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My Any</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getTestAny_MyAny()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="false"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':3' processing='strict'"
 	 * @generated
 	 */
@@ -133,7 +133,7 @@ public interface TestAny extends EObject{
 	 * @return the value of the '<em>Any</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.AnytypePackage#getTestAny_Any()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="true"
-	 *        extendedMetaData="kind='elementWildcard' wildcards='##other' name=':4' processing='strict'"
+	 *        extendedMetaData="kind='elementWildcard' wildcards='##local' name=':4' processing='strict'"
 	 * @generated
 	 */
 	FeatureMap getAny();
