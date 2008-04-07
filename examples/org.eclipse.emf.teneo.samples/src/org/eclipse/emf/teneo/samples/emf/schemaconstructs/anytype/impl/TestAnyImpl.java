@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAnyImpl.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: TestAnyImpl.java,v 1.3 2008/04/07 15:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl;
 
@@ -39,6 +39,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.TestAny;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl#getSingleAnyType <em>Single Any Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl#getMultiAnyType <em>Multi Any Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl#getA <em>A</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl#getMyAny <em>My Any</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl#getAny <em>Any</em>}</li>
  * </ul>
@@ -75,7 +76,7 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject singleAnyType = null;
+	protected EObject singleAnyType;
 
 	/**
 	 * The cached value of the '{@link #getMultiAnyType() <em>Multi Any Type</em>}' containment reference list.
@@ -85,7 +86,36 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EObject> multiAnyType = null;
+	protected EList<EObject> multiAnyType;
+
+	/**
+	 * The default value of the '{@link #getA() <em>A</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getA()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String A_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getA() <em>A</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getA()
+	 * @generated
+	 * @ordered
+	 */
+	protected String a = A_EDEFAULT;
+
+	/**
+	 * This is true if the A attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean aESet;
 
 	/**
 	 * The cached value of the '{@link #getMyAny() <em>My Any</em>}' attribute list.
@@ -95,7 +125,7 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 	 * @generated
 	 * @ordered
 	 */
-	protected FeatureMap myAny = null;
+	protected FeatureMap myAny;
 
 	/**
 	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
@@ -105,7 +135,7 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 	 * @generated
 	 * @ordered
 	 */
-	protected FeatureMap any = null;
+	protected FeatureMap any;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,6 +237,52 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getA() {
+		return a;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setA(String newA) {
+		String oldA = a;
+		a = newA;
+		boolean oldAESet = aESet;
+		aESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnytypePackage.TEST_ANY__A, oldA, a, !oldAESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetA() {
+		String oldA = a;
+		boolean oldAESet = aESet;
+		a = A_EDEFAULT;
+		aESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, AnytypePackage.TEST_ANY__A, oldA, A_EDEFAULT, oldAESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetA() {
+		return aESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FeatureMap getMyAny() {
 		if (myAny == null) {
 			myAny = new BasicFeatureMap(this, AnytypePackage.TEST_ANY__MY_ANY);
@@ -260,6 +336,8 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 				return getSingleAnyType();
 			case AnytypePackage.TEST_ANY__MULTI_ANY_TYPE:
 				return getMultiAnyType();
+			case AnytypePackage.TEST_ANY__A:
+				return getA();
 			case AnytypePackage.TEST_ANY__MY_ANY:
 				if (coreType) return getMyAny();
 				return ((FeatureMap.Internal)getMyAny()).getWrapper();
@@ -289,6 +367,9 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 				getMultiAnyType().clear();
 				getMultiAnyType().addAll((Collection<? extends EObject>)newValue);
 				return;
+			case AnytypePackage.TEST_ANY__A:
+				setA((String)newValue);
+				return;
 			case AnytypePackage.TEST_ANY__MY_ANY:
 				((FeatureMap.Internal)getMyAny()).set(newValue);
 				return;
@@ -316,6 +397,9 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 			case AnytypePackage.TEST_ANY__MULTI_ANY_TYPE:
 				getMultiAnyType().clear();
 				return;
+			case AnytypePackage.TEST_ANY__A:
+				unsetA();
+				return;
 			case AnytypePackage.TEST_ANY__MY_ANY:
 				getMyAny().clear();
 				return;
@@ -340,6 +424,8 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 				return singleAnyType != null;
 			case AnytypePackage.TEST_ANY__MULTI_ANY_TYPE:
 				return multiAnyType != null && !multiAnyType.isEmpty();
+			case AnytypePackage.TEST_ANY__A:
+				return isSetA();
 			case AnytypePackage.TEST_ANY__MY_ANY:
 				return myAny != null && !myAny.isEmpty();
 			case AnytypePackage.TEST_ANY__ANY:
@@ -360,6 +446,8 @@ public class TestAnyImpl extends EObjectImpl implements TestAny {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", a: ");
+		if (aESet) result.append(a); else result.append("<unset>");
 		result.append(", myAny: ");
 		result.append(myAny);
 		result.append(", any: ");

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypePackageImpl.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: AnytypePackageImpl.java,v 1.3 2008/04/07 15:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl;
 
@@ -41,6 +41,13 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 	 * @generated
 	 */
 	private EClass bEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,6 +195,15 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getC() {
+		return cEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestAny() {
 		return testAnyEClass;
 	}
@@ -224,7 +240,7 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTestAny_MyAny() {
+	public EAttribute getTestAny_A() {
 		return (EAttribute)testAnyEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -233,8 +249,17 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTestAny_Any() {
+	public EAttribute getTestAny_MyAny() {
 		return (EAttribute)testAnyEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestAny_Any() {
+		return (EAttribute)testAnyEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -274,10 +299,13 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 		bEClass = createEClass(B);
 		createEAttribute(bEClass, B__NAME);
 
+		cEClass = createEClass(C);
+
 		testAnyEClass = createEClass(TEST_ANY);
 		createEAttribute(testAnyEClass, TEST_ANY__NAME);
 		createEReference(testAnyEClass, TEST_ANY__SINGLE_ANY_TYPE);
 		createEReference(testAnyEClass, TEST_ANY__MULTI_ANY_TYPE);
+		createEAttribute(testAnyEClass, TEST_ANY__A);
 		createEAttribute(testAnyEClass, TEST_ANY__MY_ANY);
 		createEAttribute(testAnyEClass, TEST_ANY__ANY);
 	}
@@ -316,19 +344,22 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(aEClass, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, "A", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getA_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getA_Doub(), theXMLTypePackage.getDouble(), "doub", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getA_Lon(), theXMLTypePackage.getLong(), "lon", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getA_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getA_Doub(), theXMLTypePackage.getDouble(), "doub", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getA_Lon(), theXMLTypePackage.getLong(), "lon", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getA_MyB(), this.getB(), null, "myB", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.A.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bEClass, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.B.class, "B", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getB_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.B.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getB_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.B.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cEClass, org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.C.class, "C", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(testAnyEClass, TestAny.class, "TestAny", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestAny_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestAny_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestAny_SingleAnyType(), ecorePackage.getEObject(), null, "singleAnyType", null, 1, 1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestAny_MultiAnyType(), ecorePackage.getEObject(), null, "multiAnyType", null, 1, -1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestAny_MyAny(), ecorePackage.getEFeatureMapEntry(), "myAny", null, 1, 1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestAny_A(), theXMLTypePackage.getString(), "a", null, 1, 1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestAny_MyAny(), ecorePackage.getEFeatureMapEntry(), "myAny", null, 1, 1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestAny_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 1, -1, TestAny.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
@@ -397,6 +428,13 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 			 "name", "name"
 		   });		
 		addAnnotation
+		  (cEClass, 
+		   source, 
+		   new String[] {
+			 "name", "C",
+			 "kind", "empty"
+		   });		
+		addAnnotation
 		  (testAnyEClass, 
 		   source, 
 		   new String[] {
@@ -425,12 +463,19 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 			 "name", "multiAnyType"
 		   });		
 		addAnnotation
+		  (getTestAny_A(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "a"
+		   });		
+		addAnnotation
 		  (getTestAny_MyAny(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
-			 "wildcards", "##other",
-			 "name", ":3",
+			 "wildcards", "##any",
+			 "name", ":4",
 			 "processing", "strict"
 		   });		
 		addAnnotation
@@ -438,8 +483,8 @@ public class AnytypePackageImpl extends EPackageImpl implements AnytypePackage {
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
-			 "wildcards", "##other",
-			 "name", ":4",
+			 "wildcards", "##local",
+			 "name", ":5",
 			 "processing", "strict"
 		   });
 	}

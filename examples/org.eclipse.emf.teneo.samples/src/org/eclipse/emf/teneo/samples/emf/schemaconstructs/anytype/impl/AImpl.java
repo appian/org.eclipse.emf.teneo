@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AImpl.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: AImpl.java,v 1.3 2008/04/07 15:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl;
 
@@ -82,7 +82,7 @@ public class AImpl extends EObjectImpl implements A {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean doubESet = false;
+	protected boolean doubESet;
 
 	/**
 	 * The default value of the '{@link #getLon() <em>Lon</em>}' attribute.
@@ -111,7 +111,7 @@ public class AImpl extends EObjectImpl implements A {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean lonESet = false;
+	protected boolean lonESet;
 
 	/**
 	 * The cached value of the '{@link #getMyB() <em>My B</em>}' reference.
@@ -121,7 +121,7 @@ public class AImpl extends EObjectImpl implements A {
 	 * @generated
 	 * @ordered
 	 */
-	protected B myB = null;
+	protected B myB;
 
 	/**
 	 * <!-- begin-user-doc -->

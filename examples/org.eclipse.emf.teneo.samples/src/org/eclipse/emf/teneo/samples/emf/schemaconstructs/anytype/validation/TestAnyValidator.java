@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestAnyValidator.java,v 1.1 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: TestAnyValidator.java,v 1.2 2008/04/07 15:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.validation;
 
@@ -24,6 +24,8 @@ public interface TestAnyValidator {
 	boolean validateName(String value);
 	boolean validateSingleAnyType(EObject value);
 	boolean validateMultiAnyType(EList<EObject> value);
+	boolean validateA(String value);
+
 	boolean validateMyAny(FeatureMap value);
 	boolean validateAny(FeatureMap value);
 }

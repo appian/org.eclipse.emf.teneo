@@ -16,10 +16,12 @@
     <genClasses ecoreClass="anytype.ecore#//B">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//B/name"/>
     </genClasses>
+    <genClasses ecoreClass="anytype.ecore#//C"/>
     <genClasses ecoreClass="anytype.ecore#//TestAny">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference anytype.ecore#//TestAny/singleAnyType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference anytype.ecore#//TestAny/multiAnyType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/a"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/myAny"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute anytype.ecore#//TestAny/any"/>
     </genClasses>

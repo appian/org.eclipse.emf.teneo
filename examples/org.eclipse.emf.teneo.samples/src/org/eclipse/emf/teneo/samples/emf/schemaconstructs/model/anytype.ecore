@@ -49,6 +49,12 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="C"/>
+      <details key="kind" value="empty"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestAny">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="testAny"/>
@@ -76,11 +82,18 @@
         <details key="name" value="multiAnyType"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="a"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myAny" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="elementWildcard"/>
-        <details key="wildcards" value="##other"/>
-        <details key="name" value=":3"/>
+        <details key="wildcards" value="##any"/>
+        <details key="name" value=":4"/>
         <details key="processing" value="strict"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -89,7 +102,7 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="elementWildcard"/>
         <details key="wildcards" value="##local"/>
-        <details key="name" value=":4"/>
+        <details key="name" value=":5"/>
         <details key="processing" value="strict"/>
       </eAnnotations>
     </eStructuralFeatures>

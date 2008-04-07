@@ -12,7 +12,8 @@
    			<xs:element name="name" type="xs:string"/> 
    			<xs:element name="singleAnyType" type="xs:anyType"/>
    			<xs:element maxOccurs="unbounded" name="multiAnyType" type="xs:anyType"/>
-   			<xs:any ecore:name="myAny" namespace="##other"/>
+   			<xs:element name="a" type="xs:string" nillable="true"/>
+   			<xs:any ecore:name="myAny" namespace="##any"/>
    			<xs:any maxOccurs="unbounded" namespace="##local"/>
   		</xs:sequence>
  	</xs:complexType>
@@ -30,6 +31,11 @@
  	<xs:complexType name="B">
  		<xs:sequence>
  			<xs:element name="name" type="xs:string"/>
+ 		</xs:sequence>
+ 	</xs:complexType>
+
+ 	<xs:complexType name="C">
+ 		<xs:sequence>
  		</xs:sequence>
  	</xs:complexType>
  </xs:schema>

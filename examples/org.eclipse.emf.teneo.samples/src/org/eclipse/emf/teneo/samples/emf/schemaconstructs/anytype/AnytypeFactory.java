@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypeFactory.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
+ * $Id: AnytypeFactory.java,v 1.3 2008/04/07 15:14:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -42,6 +42,15 @@ public interface AnytypeFactory extends EFactory{
 	 * @generated
 	 */
 	B createB();
+
+	/**
+	 * Returns a new object of class '<em>C</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>C</em>'.
+	 * @generated
+	 */
+	C createC();
 
 	/**
 	 * Returns a new object of class '<em>Test Any</em>'.

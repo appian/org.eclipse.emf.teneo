@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypePackage.java,v 1.2 2007/02/08 23:09:26 mtaal Exp $
+ * $Id: AnytypePackage.java,v 1.3 2008/04/07 15:14:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype;
 
@@ -143,6 +143,25 @@ public interface AnytypePackage extends EPackage{
 	int B_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.CImpl <em>C</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.CImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypePackageImpl#getC()
+	 * @generated
+	 */
+	int C = 2;
+
+	/**
+	 * The number of structural features of the '<em>C</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int C_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl <em>Test Any</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,7 +169,7 @@ public interface AnytypePackage extends EPackage{
 	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypePackageImpl#getTestAny()
 	 * @generated
 	 */
-	int TEST_ANY = 2;
+	int TEST_ANY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -180,13 +199,22 @@ public interface AnytypePackage extends EPackage{
 	int TEST_ANY__MULTI_ANY_TYPE = 2;
 
 	/**
+	 * The feature id for the '<em><b>A</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_ANY__A = 3;
+
+	/**
 	 * The feature id for the '<em><b>My Any</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_ANY__MY_ANY = 3;
+	int TEST_ANY__MY_ANY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -195,7 +223,7 @@ public interface AnytypePackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_ANY__ANY = 4;
+	int TEST_ANY__ANY = 5;
 
 	/**
 	 * The number of structural features of the '<em>Test Any</em>' class.
@@ -204,7 +232,7 @@ public interface AnytypePackage extends EPackage{
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_ANY_FEATURE_COUNT = 5;
+	int TEST_ANY_FEATURE_COUNT = 6;
 
 
 	/**
@@ -283,6 +311,16 @@ public interface AnytypePackage extends EPackage{
 	EAttribute getB_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.C <em>C</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>C</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.C
+	 * @generated
+	 */
+	EClass getC();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.TestAny <em>Test Any</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,6 +362,17 @@ public interface AnytypePackage extends EPackage{
 	 * @generated
 	 */
 	EReference getTestAny_MultiAnyType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.TestAny#getA <em>A</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>A</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.TestAny#getA()
+	 * @see #getTestAny()
+	 * @generated
+	 */
+	EAttribute getTestAny_A();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.TestAny#getMyAny <em>My Any</em>}'.
@@ -430,6 +479,16 @@ public interface AnytypePackage extends EPackage{
 		EAttribute B__NAME = eINSTANCE.getB_Name();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.CImpl <em>C</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.CImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.AnytypePackageImpl#getC()
+		 * @generated
+		 */
+		EClass C = eINSTANCE.getC();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl <em>Test Any</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -462,6 +521,14 @@ public interface AnytypePackage extends EPackage{
 		 * @generated
 		 */
 		EReference TEST_ANY__MULTI_ANY_TYPE = eINSTANCE.getTestAny_MultiAnyType();
+
+		/**
+		 * The meta object literal for the '<em><b>A</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ANY__A = eINSTANCE.getTestAny_A();
 
 		/**
 		 * The meta object literal for the '<em><b>My Any</b></em>' attribute list feature.

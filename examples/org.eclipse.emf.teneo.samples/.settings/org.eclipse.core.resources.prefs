@@ -1,5 +1,6 @@
-#Mon Sep 18 11:36:35 CEST 2006
+#Mon Apr 07 13:34:42 CEST 2008
 eclipse.preferences.version=1
 encoding//src/org/eclipse/emf/teneo/samples/emf/annotations/associationoverride/model/associationoverride.ecore_diagram=UTF-8
 encoding//src/org/eclipse/emf/teneo/samples/emf/annotations/hb/generator/id/model/id.ecore_diagram=UTF-8
 encoding//src/org/eclipse/emf/teneo/samples/emf/sample/catalog/model/catalog.ecore_diagram=UTF-8
+encoding//src/org/eclipse/emf/teneo/samples/emf/schemaconstructs/model/AnyType.xsd=UTF8

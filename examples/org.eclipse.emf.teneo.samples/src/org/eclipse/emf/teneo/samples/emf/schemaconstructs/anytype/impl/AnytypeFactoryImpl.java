@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypeFactoryImpl.java,v 1.2 2007/02/08 23:09:17 mtaal Exp $
+ * $Id: AnytypeFactoryImpl.java,v 1.3 2008/04/07 15:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl;
 
@@ -61,6 +61,7 @@ public class AnytypeFactoryImpl extends EFactoryImpl implements AnytypeFactory {
 		switch (eClass.getClassifierID()) {
 			case AnytypePackage.A: return createA();
 			case AnytypePackage.B: return createB();
+			case AnytypePackage.C: return createC();
 			case AnytypePackage.TEST_ANY: return createTestAny();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -85,6 +86,16 @@ public class AnytypeFactoryImpl extends EFactoryImpl implements AnytypeFactory {
 	public B createB() {
 		BImpl b = new BImpl();
 		return b;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public C createC() {
+		CImpl c = new CImpl();
+		return c;
 	}
 
 	/**

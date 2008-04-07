@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnytypeAdapterFactory.java,v 1.2 2007/02/08 23:09:27 mtaal Exp $
+ * $Id: AnytypeAdapterFactory.java,v 1.3 2008/04/07 15:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.util;
 
@@ -80,6 +80,10 @@ public class AnytypeAdapterFactory extends AdapterFactoryImpl {
 				return createBAdapter();
 			}
 			@Override
+			public Adapter caseC(C object) {
+				return createCAdapter();
+			}
+			@Override
 			public Adapter caseTestAny(TestAny object) {
 				return createTestAnyAdapter();
 			}
@@ -128,6 +132,20 @@ public class AnytypeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.C <em>C</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.C
+	 * @generated
+	 */
+	public Adapter createCAdapter() {
 		return null;
 	}
 
