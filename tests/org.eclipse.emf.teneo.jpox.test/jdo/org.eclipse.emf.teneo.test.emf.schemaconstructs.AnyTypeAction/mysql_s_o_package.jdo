@@ -28,6 +28,13 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.CImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="c" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.C"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
+		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.impl.TestAnyImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="testany" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.anytype.TestAny"/>
 			<implements name="org.eclipse.emf.ecore.EObject"/>
@@ -56,6 +63,8 @@
 				</element>
 				<order column="TESTANY_MULTIANYTYPE_IDX"/>
 			</field>
+			<field name="a" persistence-modifier="persistent" null-value="exception"/>
+			<field name="aESet" persistence-modifier="persistent"/>
 			<field name="myAny" persistence-modifier="persistent" table="testany_myany">
 				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
 				<join/>
