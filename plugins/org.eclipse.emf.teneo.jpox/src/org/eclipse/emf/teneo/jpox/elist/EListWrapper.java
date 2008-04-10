@@ -59,7 +59,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $ $Date: 2008/03/31 07:05:02 $
+ * @version $Revision: 1.15 $ $Date: 2008/04/10 09:19:59 $
  */
 
 public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryable, SCOList {
@@ -492,6 +492,10 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 		// action in the updateListWithListElements cleared the one side of the
 		// bidirectional case.
 		JpoxUtil.updateListWithListElements(jdoDelegate, attachedElements);
+
+		// now sync the delegate with the jdodelegate
+		getDelegate().clear();
+		getDelegate().addAll(jdoDelegate);
 	}
 
 	/**

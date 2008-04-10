@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxUtil.java,v 1.3 2008/02/28 07:09:03 mtaal Exp $
+ * $Id: JpoxUtil.java,v 1.4 2008/04/10 09:19:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -29,12 +29,13 @@ import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.PMFConfiguration;
 import org.jpox.StateManager;
+import org.jpox.sco.SCOList;
 
 /**
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2008/02/28 07:09:03 $
+ * @version $Revision: 1.4 $ $Date: 2008/04/10 09:19:59 $
  */
 
 public class JpoxUtil {
@@ -42,41 +43,43 @@ public class JpoxUtil {
 	/** Repair the container */
 	public static void repairContainer(Object value) {
 		if (value instanceof StateManager) {
-			if (((StateManager)value).isDeleted(((StateManager)value).getObject())) {
+			if (((StateManager) value).isDeleted(((StateManager) value).getObject())) {
 				return;
 			}
 		}
 		EContainerRepairControl.repair(JpoxUtil.checkGetObject(value));
 	}
-	
-	/** Returns the object itself if it is an eobject, if it is a statemanager then the object
-	 * is returned, otherwise the object itself is returned.
+
+	/**
+	 * Returns the object itself if it is an eobject, if it is a statemanager then the object is
+	 * returned, otherwise the object itself is returned.
 	 */
 	public static Object checkGetObject(Object value) {
 		if (value instanceof StateManager) {
-			return ((StateManager)value).getObject();
+			return ((StateManager) value).getObject();
 		}
 		return value;
 	}
-	
+
 	/** Creates and registers an emf data store using a set of generic store properties */
 	public static JpoxDataStore getCreateDataStore(Properties props) {
 		final String name = props.getProperty(Constants.PROP_NAME);
 		JpoxDataStore jds = JpoxHelper.INSTANCE.getDataStore(name);
-		if (jds != null)
+		if (jds != null) {
 			return jds;
+		}
 
 		final Properties properties = new Properties();
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_DRIVERNAME_PROPERTY, doTrim(props
-				.getProperty(Constants.PROP_DB_DRIVER)));
+			.getProperty(Constants.PROP_DB_DRIVER)));
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_URL_PROPERTY, doTrim(props
-				.getProperty(Constants.PROP_DB_URL)));
+			.getProperty(Constants.PROP_DB_URL)));
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_USERNAME_PROPERTY, doTrim(props
-				.getProperty(Constants.PROP_DB_USER)));
+			.getProperty(Constants.PROP_DB_USER)));
 		properties.setProperty(PMFConfiguration.JDO_DATASTORE_PASSWORD_PROPERTY, doTrim(props
-				.getProperty(Constants.PROP_DB_PWD)));
+			.getProperty(Constants.PROP_DB_PWD)));
 		properties.setProperty(PMFConfiguration.JDO_MAPPING_CATALOG_PROPERTY, doTrim(props
-				.getProperty(Constants.PROP_DB_NAME)));
+			.getProperty(Constants.PROP_DB_NAME)));
 
 		EPackage[] epacks = StoreUtil.getEPackages(doTrim(props.getProperty(Constants.PROP_EPACKAGE_NSURI)));
 
@@ -90,19 +93,20 @@ public class JpoxUtil {
 
 	/** Convenience method */
 	private static String doTrim(String totrim) {
-		if (totrim == null)
+		if (totrim == null) {
 			return null;
+		}
 		return totrim.trim();
 	}
 
 	/**
-	 * The following method is copied from the jpox class SCOUtils. We would prefer to use that method directly but it
-	 * is not public. Credits to jpox for this method.
+	 * The following method is copied from the jpox class SCOUtils. We would prefer to use that
+	 * method directly but it is not public. Credits to jpox for this method.
 	 */
 
 	/**
-	 * Convenience method for use by List attachCopy methods to update the passed (attached) list using the (attached)
-	 * list elements passed.
+	 * Convenience method for use by List attachCopy methods to update the passed (attached) list
+	 * using the (attached) list elements passed.
 	 * 
 	 * @param attachedList
 	 *            The current (attached) list, the jdo delegate
@@ -151,8 +155,7 @@ public class JpoxUtil {
 			final int newpos = i;
 			final int oldpos = indexOf(attachedList, element);
 			if (newpos != oldpos) {
-				Object obj = attachedList.remove(oldpos);
-				attachedList.add(newpos, obj);
+				((SCOList) attachedList).set(newpos, element, false);
 				updated = true;
 			}
 		}
@@ -160,34 +163,42 @@ public class JpoxUtil {
 		return updated;
 	}
 
-	/** Returns true if the passed pc is contained in the list of pc's, comparison is done on the basis of oid */
+	/**
+	 * Returns true if the passed pc is contained in the list of pc's, comparison is done on the
+	 * basis of oid
+	 */
 	private static boolean isPresent(List list, Object obj) {
-		if (!(obj instanceof PersistenceCapable))
+		if (!(obj instanceof PersistenceCapable)) {
 			return list.contains(obj);
+		}
 		final PersistenceCapable pc1 = (PersistenceCapable) obj;
 		for (int i = 0; i < list.size(); i++) {
 			final PersistenceCapable pc2 = (PersistenceCapable) list.get(i);
 			if ((pc2.jdoGetObjectId() == null || pc1.jdoGetObjectId() == null) && pc2.equals(pc1)) {
 				return true;
-			} else if (pc2.jdoGetObjectId() != null && pc1.jdoGetObjectId() != null
-					&& pc2.jdoGetObjectId().equals(pc1.jdoGetObjectId())) {
+			} else if (pc2.jdoGetObjectId() != null && pc1.jdoGetObjectId() != null &&
+					pc2.jdoGetObjectId().equals(pc1.jdoGetObjectId())) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	/** Returns true if the passed pc is contained in the list of pc's, comparison is done on the basis of oid */
+	/**
+	 * Returns true if the passed pc is contained in the list of pc's, comparison is done on the
+	 * basis of oid
+	 */
 	private static int indexOf(List list, Object obj) {
-		if (!(obj instanceof PersistenceCapable))
+		if (!(obj instanceof PersistenceCapable)) {
 			return list.indexOf(obj);
+		}
 		final PersistenceCapable pc1 = (PersistenceCapable) obj;
 		for (int i = 0; i < list.size(); i++) {
 			final PersistenceCapable pc2 = (PersistenceCapable) list.get(i);
 			if ((pc2.jdoGetObjectId() == null || pc1.jdoGetObjectId() == null) && pc2.equals(pc1)) {
 				return i;
-			} else if (pc2.jdoGetObjectId() != null && pc1.jdoGetObjectId() != null
-					&& pc2.jdoGetObjectId().equals(pc1.jdoGetObjectId())) {
+			} else if (pc2.jdoGetObjectId() != null && pc1.jdoGetObjectId() != null &&
+					pc2.jdoGetObjectId().equals(pc1.jdoGetObjectId())) {
 				return i;
 			}
 		}
