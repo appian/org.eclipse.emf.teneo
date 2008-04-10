@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.12 2008/03/10 21:31:18 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.13 2008/04/10 09:20:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -168,6 +168,21 @@ public class LibraryResourceAction extends AbstractTestAction {
 				assertTrue(lib.getWriters().contains(w));
 				assertTrue(lib.getBooks().contains(w.getBooks().get(0)));
 				res.unload();
+			}
+
+			{
+				Resource res = getResource(store);
+				Library lib = (Library) res.getEObject(libURI);
+				Writer w = factory.createWriter();
+				w.setName("writer");
+				Book b = factory.createBook();
+				b.setTitle("title");
+				b.setPages(1);
+				b.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+				w.getBooks().add(b);
+				lib.getWriters().add(0, w);
+				lib.getBooks().add(b);
+				res.save(null);
 			}
 
 			// {
