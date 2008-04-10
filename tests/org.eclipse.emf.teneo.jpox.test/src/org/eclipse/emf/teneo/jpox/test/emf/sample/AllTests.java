@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.29 2008/03/31 07:04:39 mtaal Exp $
+ * $Id: AllTests.java,v 1.30 2008/04/10 09:20:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public class AllTests {
 
@@ -51,6 +51,7 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 					.getConfigurations());
+		suite.addTestSuite(LibraryResourceAction.class);
 
 		suite.addTestSuite(SimpleLibraryResourceAction.class);
 
@@ -71,7 +72,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryNonResolvingAction.class);
 
 		suite.addTestSuite(LibraryValidateResourceAction.class);
-		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryGlobalEagerAction.class);
 
 		// suite.addTestSuite(WorkFlowAction.class);
