@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnImpl.java,v 1.8 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: ColumnImpl.java,v 1.9 2008/04/11 23:42:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -93,6 +93,15 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	 * @ordered
 	 */
 	protected boolean nullable = NULLABLE_EDEFAULT;
+
+	/**
+	 * This is true if the Nullable attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean nullableESet;
 
 	/**
 	 * The default value of the '{@link #isInsertable() <em>Insertable</em>}' attribute. <!--
@@ -465,7 +474,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 				setUnique(UNIQUE_EDEFAULT);
 				return;
 			case PannotationPackage.COLUMN__NULLABLE:
-				setNullable(NULLABLE_EDEFAULT);
+				unsetNullable();
 				return;
 			case PannotationPackage.COLUMN__INSERTABLE:
 				setInsertable(INSERTABLE_EDEFAULT);
@@ -504,7 +513,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 			case PannotationPackage.COLUMN__UNIQUE:
 				return unique != UNIQUE_EDEFAULT;
 			case PannotationPackage.COLUMN__NULLABLE:
-				return nullable != NULLABLE_EDEFAULT;
+				return isSetNullable();
 			case PannotationPackage.COLUMN__INSERTABLE:
 				return insertable != INSERTABLE_EDEFAULT;
 			case PannotationPackage.COLUMN__UPDATABLE:
@@ -599,8 +608,33 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	public void setNullable(boolean newNullable) {
 		boolean oldNullable = nullable;
 		nullable = newNullable;
+		boolean oldNullableESet = nullableESet;
+		nullableESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NULLABLE, oldNullable, nullable));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__NULLABLE, oldNullable, nullable, !oldNullableESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetNullable() {
+		boolean oldNullable = nullable;
+		boolean oldNullableESet = nullableESet;
+		nullable = NULLABLE_EDEFAULT;
+		nullableESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.COLUMN__NULLABLE, oldNullable, NULLABLE_EDEFAULT, oldNullableESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetNullable() {
+		return nullableESet;
 	}
 
 	/**
@@ -693,7 +727,7 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		result.append(", unique: ");
 		result.append(unique);
 		result.append(", nullable: ");
-		result.append(nullable);
+		if (nullableESet) result.append(nullable); else result.append("<unset>");
 		result.append(", insertable: ");
 		result.append(insertable);
 		result.append(", updatable: ");

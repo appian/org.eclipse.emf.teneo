@@ -8,8 +8,7 @@ Bundle-Localization: plugin
 Eclipse-BuddyPolicy: dependent
 Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.ecore,
- org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo.libraries
+ org.eclipse.emf.ecore.xmi
 Export-Package: org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.annotations.pamodel,
  org.eclipse.emf.teneo.annotations.pamodel.impl,
@@ -20,3 +19,4 @@ Export-Package: org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.annotations.pannotation.util,
  org.eclipse.emf.teneo.annotations.pannotation.validation
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.apache.commons.logging;version="1.0.4"

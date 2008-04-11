@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Column.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: Column.java,v 1.7 2008/04/11 23:42:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -245,9 +245,11 @@ public interface Column extends PAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nullable</em>' attribute.
+	 * @see #isSetNullable()
+	 * @see #unsetNullable()
 	 * @see #setNullable(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Nullable()
-	 * @model default="true"
+	 * @model default="true" unsettable="true"
 	 * @generated
 	 */
 	boolean isNullable();
@@ -256,10 +258,35 @@ public interface Column extends PAnnotation {
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Nullable</em>' attribute.
+	 * @see #isSetNullable()
+	 * @see #unsetNullable()
 	 * @see #isNullable()
 	 * @generated
 	 */
 	void setNullable(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetNullable()
+	 * @see #isNullable()
+	 * @see #setNullable(boolean)
+	 * @generated
+	 */
+	void unsetNullable();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isNullable <em>Nullable</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Nullable</em>' attribute is set.
+	 * @see #unsetNullable()
+	 * @see #isNullable()
+	 * @see #setNullable(boolean)
+	 * @generated
+	 */
+	boolean isSetNullable();
 
 	/**
 	 * Returns the value of the '<em><b>Insertable</b></em>' attribute.
