@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JuliaAction.java,v 1.2 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: JuliaAction.java,v 1.3 2008/04/11 03:21:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -27,7 +27,7 @@ import com.ibm.websphere.appserver.schemas._6._0.ibm.portal.test.TestPackage;
  * Test bugzilla 199373
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class JuliaAction extends AbstractTestAction {
 
@@ -56,6 +56,5 @@ public class JuliaAction extends AbstractTestAction {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
-		store.disableDrop();
 	}
 }

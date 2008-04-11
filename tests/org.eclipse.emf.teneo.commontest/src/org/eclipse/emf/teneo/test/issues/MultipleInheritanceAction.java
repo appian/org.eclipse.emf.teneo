@@ -31,7 +31,7 @@ import testinheritance.TestinheritancePackage;
  * Tests multiple inheritance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class MultipleInheritanceAction extends AbstractTestAction {
 	/**
@@ -56,7 +56,6 @@ public class MultipleInheritanceAction extends AbstractTestAction {
 	/** Test */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		try {
 			Resource res = null;
 			try {
