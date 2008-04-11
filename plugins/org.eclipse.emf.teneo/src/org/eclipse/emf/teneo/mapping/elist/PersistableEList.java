@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.17 2008/03/10 06:02:46 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.18 2008/04/11 23:43:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -38,10 +38,12 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
+	private static final long serialVersionUID = 1L;
+
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistableEList.class);
 

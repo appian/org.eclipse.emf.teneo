@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.5 2008/04/06 13:44:03 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.6 2008/04/11 23:43:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -44,11 +44,6 @@ import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 class AnnotationTokenizer {
 	/** Log it */
 	private final static Log log = LogFactory.getLog(AnnotationTokenizer.class);
-
-	/** Character Codes */
-	private static final int K_CR = 1024;
-
-	private static final int K_LF = 2048;
 
 	/** Special Tokens */
 	static final int T_EOF = 4096;
@@ -91,9 +86,6 @@ class AnnotationTokenizer {
 	/** Ponts to the end of the current token. */
 	private int tokEnd;
 
-	/** For which model element are we doing this */
-	private ENamedElement eNamedElement;
-
 	/** The last returned token */
 	private int currentToken = T_EOF - 1;
 
@@ -104,7 +96,6 @@ class AnnotationTokenizer {
 	 */
 
 	AnnotationTokenizer(ENamedElement eNamedElement, String source) {
-		this.eNamedElement = eNamedElement;
 		setSource(source.toCharArray());
 		constantToName.put(2, "Annotation");
 		constantToName.put(4, "Attribute Name");

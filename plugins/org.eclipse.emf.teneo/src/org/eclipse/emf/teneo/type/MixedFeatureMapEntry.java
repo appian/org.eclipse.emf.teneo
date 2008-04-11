@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: MixedFeatureMapEntry.java,v 1.4 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: MixedFeatureMapEntry.java,v 1.5 2008/04/11 23:43:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -21,14 +21,15 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.Constants;
 
 /**
- * Is a specific EMF feature map for handling mixed content. Mixed content is content which consists of normal nodes and
- * other content. The other content supported here is text, cdata and comment.
+ * Is a specific EMF feature map for handling mixed content. Mixed content is content which consists
+ * of normal nodes and other content. The other content supported here is text, cdata and comment.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
+	private static final long serialVersionUID = 1L;
 
 	/** Constant used to encode the TEXT feature in the db. */
 	static final String TEXT_FEATURE_DBID = "TEXT";
@@ -40,6 +41,7 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 	static final String COMMENT_FEATURE_DBID = "COMMENT";
 
 	/** Overridden to encode the TEXT, CDATA or COMMENT structural features */
+	@Override
 	protected String createStructuralFeatureDBID() {
 		final EStructuralFeature structuralFeature = getEStructuralFeature();
 
@@ -54,13 +56,17 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 	}
 
 	/** Gets a structuralfeature on the basis of the passed id */
+	@Override
 	protected EStructuralFeature retrieveStructuralFeature(String dbid) {
-		if (TEXT_FEATURE_DBID.compareTo(dbid) == 0)
+		if (TEXT_FEATURE_DBID.compareTo(dbid) == 0) {
 			return Constants.TEXT;
-		if (CDATA_FEATURE_DBID.compareTo(dbid) == 0)
+		}
+		if (CDATA_FEATURE_DBID.compareTo(dbid) == 0) {
 			return Constants.CDATA;
-		if (COMMENT_FEATURE_DBID.compareTo(dbid) == 0)
+		}
+		if (COMMENT_FEATURE_DBID.compareTo(dbid) == 0) {
 			return Constants.COMMENT;
+		}
 
 		return super.retrieveStructuralFeature(dbid);
 	}
@@ -68,7 +74,7 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 	/** Returns true if the feature is a TEXT, CDATA or COMMENT */
 	protected boolean isMixedFeature() {
 		final EStructuralFeature structuralFeature = getEStructuralFeature();
-		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA
-				|| structuralFeature == Constants.COMMENT;
+		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA ||
+				structuralFeature == Constants.COMMENT;
 	}
 }

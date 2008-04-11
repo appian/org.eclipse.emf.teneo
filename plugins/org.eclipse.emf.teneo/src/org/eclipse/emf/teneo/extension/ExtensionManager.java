@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionManager.java,v 1.3 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ExtensionManager.java,v 1.4 2008/04/11 23:43:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -22,7 +22,7 @@ package org.eclipse.emf.teneo.extension;
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public interface ExtensionManager {
 
@@ -42,14 +42,12 @@ public interface ExtensionManager {
 	 * Convenience method which also performs the casting and uses the classname of the class
 	 * parameter to search for the plugin.
 	 */
-	@SuppressWarnings("unchecked")
 	public abstract <T> T getExtension(Class<T> clz);
 
 	/**
 	 * Convenience method which also performs the casting and uses the classname of the class
 	 * parameter to search for the plugin.
 	 */
-	@SuppressWarnings("unchecked")
 	public abstract <T> T getExtension(Class<T> clz, Object[] initArgs);
 
 	/**
