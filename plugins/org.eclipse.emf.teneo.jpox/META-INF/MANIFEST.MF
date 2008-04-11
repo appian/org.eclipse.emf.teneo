@@ -24,3 +24,4 @@ Export-Package: org.eclipse.emf.teneo.jpox,
 Bundle-ClassPath: .,org.eclipse.emf.teneo.jpox.enhanced.jar,
  org.eclipse.emf.teneo.jpox.jar
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.apache.commons.logging;version="1.0.4"
