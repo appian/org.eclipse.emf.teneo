@@ -8,7 +8,6 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.teneo.samples;visibility:=reexport,
  org.junit;bundle-version="[3.8.0,4.0.0)",
- org.eclipse.emf.teneo.libraries,
  org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations
 Eclipse-LazyStart: true
@@ -92,3 +91,4 @@ Export-Package: com.mysql.jdbc,
  sun.tools.tree,
  sun.tools.util
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.apache.commons.logging;version="1.0.4"
