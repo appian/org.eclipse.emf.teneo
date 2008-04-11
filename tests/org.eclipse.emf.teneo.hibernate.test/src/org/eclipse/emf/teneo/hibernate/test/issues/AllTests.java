@@ -22,6 +22,7 @@ import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
 import org.eclipse.emf.teneo.test.issues.InheritanceAction;
 import org.eclipse.emf.teneo.test.issues.InterfaceTrueAction;
+import org.eclipse.emf.teneo.test.issues.LargeMapValueAction;
 import org.eclipse.emf.teneo.test.issues.MTMSameAction;
 import org.eclipse.emf.teneo.test.issues.MultipleInheritanceAction;
 import org.eclipse.emf.teneo.test.issues.ResourceAction;
@@ -32,7 +33,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllTests {
 
@@ -40,6 +41,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
+
+		suite.addTestSuite(LargeMapValueAction.class);
 
 		suite.addTestSuite(BZ225296_2Action.class);
 
