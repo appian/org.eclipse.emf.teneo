@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.26 2008/04/11 23:42:48 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.27 2008/04/12 11:48:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -218,7 +218,7 @@ public class PannotationValidator extends EObjectValidator {
 				return validateInheritanceType((InheritanceType)value, diagnostics, context);
 			case PannotationPackage.TEMPORAL_TYPE:
 				return validateTemporalType((TemporalType)value, diagnostics, context);
-			default:
+			default: 
 				return true;
 		}
 	}
@@ -255,14 +255,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "CompatibleEModelElementType", getObjectLabel(pAnnotation, context) },
-						 new Object[] { pAnnotation },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "CompatibleEModelElementType", getObjectLabel(pAnnotation, context) }),
+						 new Object[] { pAnnotation }));
 			}
 			return false;
 		}
@@ -283,14 +281,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AnnotationIsSupported", getObjectLabel(pAnnotation, context) },
-						 new Object[] { pAnnotation },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AnnotationIsSupported", getObjectLabel(pAnnotation, context) }),
+						 new Object[] { pAnnotation }));
 			}
 			return false;
 		}
@@ -366,14 +362,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(basic, context) },
-						 new Object[] { basic },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AllowedElementType", getObjectLabel(basic, context) }),
+						 new Object[] { basic }));
 			}
 			return false;
 		}
@@ -414,14 +408,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "ScalePrecisionForNumeric", getObjectLabel(column, context) },
-						 new Object[] { column },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ScalePrecisionForNumeric", getObjectLabel(column, context) }),
+						 new Object[] { column }));
 			}
 			return false;
 		}
@@ -442,14 +434,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "LengthForString", getObjectLabel(column, context) },
-						 new Object[] { column },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "LengthForString", getObjectLabel(column, context) }),
+						 new Object[] { column }));
 			}
 			return false;
 		}
@@ -507,14 +497,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoAbstract", getObjectLabel(discriminatorValue, context) },
-						 new Object[] { discriminatorValue },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NoAbstract", getObjectLabel(discriminatorValue, context) }),
+						 new Object[] { discriminatorValue }));
 			}
 			return false;
 		}
@@ -554,14 +542,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoInterface", getObjectLabel(embeddable, context) },
-						 new Object[] { embeddable },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NoInterface", getObjectLabel(embeddable, context) }),
+						 new Object[] { embeddable }));
 			}
 			return false;
 		}
@@ -601,14 +587,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "EmbedByValue", getObjectLabel(embedded, context) },
-						 new Object[] { embedded },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EmbedByValue", getObjectLabel(embedded, context) }),
+						 new Object[] { embedded }));
 			}
 			return false;
 		}
@@ -648,14 +632,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "EmbedByValue", getObjectLabel(embeddedId, context) },
-						 new Object[] { embeddedId },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EmbedByValue", getObjectLabel(embeddedId, context) }),
+						 new Object[] { embeddedId }));
 			}
 			return false;
 		}
@@ -696,14 +678,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoInterface", getObjectLabel(entity, context) },
-						 new Object[] { entity },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NoInterface", getObjectLabel(entity, context) }),
+						 new Object[] { entity }));
 			}
 			return false;
 		}
@@ -724,14 +704,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoReservedName", getObjectLabel(entity, context) },
-						 new Object[] { entity },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NoReservedName", getObjectLabel(entity, context) }),
+						 new Object[] { entity }));
 			}
 			return false;
 		}
@@ -771,14 +749,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(enumerated, context) },
-						 new Object[] { enumerated },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AllowedElementType", getObjectLabel(enumerated, context) }),
+						 new Object[] { enumerated }));
 			}
 			return false;
 		}
@@ -836,14 +812,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(id, context) },
-						 new Object[] { id },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AllowedElementType", getObjectLabel(id, context) }),
+						 new Object[] { id }));
 			}
 			return false;
 		}
@@ -955,14 +929,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedType", getObjectLabel(lob, context) },
-						 new Object[] { lob },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AllowedType", getObjectLabel(lob, context) }),
+						 new Object[] { lob }));
 			}
 			return false;
 		}
@@ -1002,14 +974,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsManyValued", getObjectLabel(manyToMany, context) },
-						 new Object[] { manyToMany },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IsManyValued", getObjectLabel(manyToMany, context) }),
+						 new Object[] { manyToMany }));
 			}
 			return false;
 		}
@@ -1049,14 +1019,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsNotManyValued", getObjectLabel(manyToOne, context) },
-						 new Object[] { manyToOne },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IsNotManyValued", getObjectLabel(manyToOne, context) }),
+						 new Object[] { manyToOne }));
 			}
 			return false;
 		}
@@ -1114,14 +1082,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoInterface", getObjectLabel(mappedSuperclass, context) },
-						 new Object[] { mappedSuperclass },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NoInterface", getObjectLabel(mappedSuperclass, context) }),
+						 new Object[] { mappedSuperclass }));
 			}
 			return false;
 		}
@@ -1161,14 +1127,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsManyValued", getObjectLabel(oneToMany, context) },
-						 new Object[] { oneToMany },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IsManyValued", getObjectLabel(oneToMany, context) }),
+						 new Object[] { oneToMany }));
 			}
 			return false;
 		}
@@ -1208,14 +1172,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsNotManyValued", getObjectLabel(oneToOne, context) },
-						 new Object[] { oneToOne },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IsNotManyValued", getObjectLabel(oneToOne, context) }),
+						 new Object[] { oneToOne }));
 			}
 			return false;
 		}
@@ -1256,14 +1218,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "WellFormedOrder", getObjectLabel(orderBy, context) },
-						 new Object[] { orderBy },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "WellFormedOrder", getObjectLabel(orderBy, context) }),
+						 new Object[] { orderBy }));
 			}
 			return false;
 		}
@@ -1284,14 +1244,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsManyValued", getObjectLabel(orderBy, context) },
-						 new Object[] { orderBy },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IsManyValued", getObjectLabel(orderBy, context) }),
+						 new Object[] { orderBy }));
 			}
 			return false;
 		}
@@ -1421,14 +1379,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(temporal, context) },
-						 new Object[] { temporal },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AllowedElementType", getObjectLabel(temporal, context) }),
+						 new Object[] { temporal }));
 			}
 			return false;
 		}
@@ -1504,14 +1460,12 @@ public class PannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(createDiagnostic
+					(new BasicDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(version, context) },
-						 new Object[] { version },
-						 context));
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AllowedElementType", getObjectLabel(version, context) }),
+						 new Object[] { version }));
 			}
 			return false;
 		}
@@ -1597,19 +1551,6 @@ public class PannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateTemporalType(TemporalType temporalType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
-	}
-
-	/**
-	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ResourceLocator getResourceLocator() {
-		// TODO
-		// Specialize this to return a resource locator for messages specific to this validator.
-		// Ensure that you remove @generated or mark it @generated NOT
-		return super.getResourceLocator();
 	}
 
 } //PannotationValidator
