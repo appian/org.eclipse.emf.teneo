@@ -28,4 +28,4 @@ Export-Package: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.type,
  org.eclipse.emf.teneo.util
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.apache.commons.logging;version="1.0.4"
+Import-Package: org.apache.commons.logging
