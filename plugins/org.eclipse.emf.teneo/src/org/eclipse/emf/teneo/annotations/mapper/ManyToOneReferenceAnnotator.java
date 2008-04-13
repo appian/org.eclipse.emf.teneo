@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.7 2008/04/04 11:49:27 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.8 2008/04/13 11:11:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
@@ -30,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -116,6 +117,13 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 				// NOTE: otm/mto with join table is not supported at the moment!
 				final List<String> names = getSqlNameStrategy().getManyToOneJoinColumnNames(aReference);
 				aReference.getJoinColumns().addAll(getJoinColumns(names, mto.isOptional(), isInsertableUpdatable, mto));
+			}
+		} else {
+			// if nullable was not set explicitly then use the mto optional feature
+			for (JoinColumn jc : aReference.getJoinColumns()) {
+				if (!jc.isSetNullable()) {
+					jc.setNullable(mto.isOptional());
+				}
 			}
 		}
 	}

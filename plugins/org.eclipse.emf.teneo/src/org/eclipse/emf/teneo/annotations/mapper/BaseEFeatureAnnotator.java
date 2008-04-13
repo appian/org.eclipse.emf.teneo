@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.6 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.7 2008/04/13 11:11:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -117,7 +117,9 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 				}
 				aAttribute.setColumn(column);
 			}
-
+		} else if (aAttribute.getBasic() != null && !aAttribute.getColumn().isSetNullable()) {
+			// bugzilla 226775
+			aAttribute.getColumn().setNullable(aAttribute.getBasic().isOptional());
 		}
 
 		final Column c = aAttribute.getColumn();
