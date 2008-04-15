@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.teneo.eclipselink.common
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Bundle-Vendor: %providerName
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore
+Export-Package: org.eclipse.emf.teneo.eclipselink.common.eobject,
+ org.eclipse.emf.teneo.eclipselink.common.resource
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
