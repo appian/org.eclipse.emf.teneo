@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.teneo.eclipselink.common.ui;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.edit.ui
+Eclipse-LazyStart: true
+Bundle-Vendor: %providerName
+Export-Package: org.eclipse.emf.teneo.eclipselink.common.ui,
+ org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages,
+ org.eclipse.emf.teneo.eclipselink.common.ui.wizards,
+ org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Activator: org.eclipse.emf.teneo.eclipselink.common.ui.Activator
