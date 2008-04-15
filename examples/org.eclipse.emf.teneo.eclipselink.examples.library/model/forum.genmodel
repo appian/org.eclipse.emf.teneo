@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.eclipselink.examples.library/src"
+    editDirectory="/org.eclipse.emf.teneo.eclipselink.examples.library.edit/src" editorDirectory="/org.eclipse.emf.teneo.eclipselink.examples.library.editor/src"
+    modelPluginID="org.eclipse.emf.teneo.eclipselink.examples.library" modelName="Forum"
+    modelPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.Activator"
+    editPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator"
+    editorPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator"
+    testsDirectory="" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="library.genmodel#//library">
+  <foreignModel>forum.ecore</foreignModel>
+  <genPackages prefix="Forum" basePackage="org.eclipse.emf.teneo.eclipselink.examples.library"
+      disposableProviderFactory="true" providerPackageSuffix="edit" presentationPackageSuffix="editor"
+      ecorePackage="forum.ecore#/">
+    <genClasses ecoreClass="forum.ecore#//Forum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute forum.ecore#//Forum/name"/>
+      <genFeatures children="true" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference forum.ecore#//Forum/ratedAuthors"/>
+      <genFeatures children="true" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference forum.ecore#//Forum/featuredBooks"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
