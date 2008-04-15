@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.eclipse.emf.teneo.eclipselink.ui.actions.LoadModelFromDatabaseActionSet"
+            label="Load EMF Model from Database"
+            visible="true">
+         <action
+               class="org.eclipse.emf.teneo.eclipselink.ui.actions.EclipseLinkLoadModelFromDatabaseAction"
+               icon="icons/full/obj16/LoadModelFromDatabase.gif"
+               id="org.eclipse.emf.teneo.eclipselink.ui.actions.LoadModelFromDatabaseAction"
+               label="Load EMF Model from Database..."
+               menubarPath="file/new.ext"
+               style="push"
+               toolbarPath="file/new.ext"
+               tooltip="Load an EMF Model From Database"/>
+      </actionSet>
+   </extension>
+
+   <extension
+         point = "org.eclipse.ui.preferencePages">
+      <page id="org.eclipse.emf.teneo.eclipselink.ui.preferencepages.DatabasePreferencePage"
+	        class="org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages.BasicDatabasePreferencePage"
+            name="Database">
+      </page>
+   </extension>
+
+</plugin>
