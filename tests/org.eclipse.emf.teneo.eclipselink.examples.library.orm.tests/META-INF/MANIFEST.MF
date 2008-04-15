@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.teneo.eclipselink,
+ org.eclipse.emf.teneo.eclipselink.examples.library,
+ org.eclipse.emf.teneo.eclipselink.examples.library.orm,
+ org.junit,
+ org.apache.derby
+Eclipse-LazyStart: true
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Activator: org.eclipse.emf.teneo.eclipselink.examples.library.orm.osgi.Activator
+JPA-PersistenceUnits: library
