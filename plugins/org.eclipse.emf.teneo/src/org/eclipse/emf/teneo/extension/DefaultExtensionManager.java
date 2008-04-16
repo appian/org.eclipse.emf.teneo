@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultExtensionManager.java,v 1.4 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: DefaultExtensionManager.java,v 1.5 2008/04/16 21:07:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class DefaultExtensionManager implements ExtensionManager {
@@ -233,8 +233,9 @@ public class DefaultExtensionManager implements ExtensionManager {
 				if (argumentType == null && !Object.class.isAssignableFrom(paramType)) {
 					found = false;
 					break;
-				}
-				if (!paramType.isAssignableFrom(argumentType)) {
+				} else if (argumentType == null && Object.class.isAssignableFrom(paramType)) {
+					// just continue
+				} else if (!paramType.isAssignableFrom(argumentType)) {
 					found = false;
 					break;
 				}
