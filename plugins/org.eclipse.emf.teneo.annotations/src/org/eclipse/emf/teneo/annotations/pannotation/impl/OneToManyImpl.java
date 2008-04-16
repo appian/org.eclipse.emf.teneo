@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToManyImpl.java,v 1.9 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: OneToManyImpl.java,v 1.10 2008/04/16 21:08:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -26,21 +26,22 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getTargetEntity <em>Target Entity</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getCascade <em>Cascade</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getFetch <em>Fetch</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getMappedBy <em>Mapped By</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isIndexed <em>Indexed</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isUnique <em>Unique</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getTargetEntity <em>Target Entity</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getCascade <em>Cascade</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getFetch <em>Fetch</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getMappedBy <em>Mapped By</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isIndexed <em>Indexed</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isUnique <em>Unique</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 	/**
 	 * The default value of the '{@link #getTargetEntity() <em>Target Entity</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTargetEntity()
 	 * @generated
 	 * @ordered
@@ -78,9 +79,9 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 	protected static final FetchType FETCH_EDEFAULT = FetchType.LAZY;
 
 	/**
-	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
-	 * <!-- begin-user-doc
+	 * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFetch()
 	 * @generated
 	 * @ordered
@@ -149,6 +150,7 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected OneToManyImpl() {
@@ -157,6 +159,7 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -166,6 +169,7 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FetchType getFetch() {
@@ -174,17 +178,21 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFetch(FetchType newFetch) {
 		FetchType oldFetch = fetch;
 		fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__FETCH, oldFetch, fetch));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__FETCH, oldFetch,
+				fetch));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getTargetEntity() {
@@ -193,28 +201,35 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTargetEntity(String newTargetEntity) {
 		String oldTargetEntity = targetEntity;
 		targetEntity = newTargetEntity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__TARGET_ENTITY, oldTargetEntity, targetEntity));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__TARGET_ENTITY,
+				oldTargetEntity, targetEntity));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<CascadeType> getCascade() {
 		if (cascade == null) {
-			cascade = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, PannotationPackage.ONE_TO_MANY__CASCADE);
+			cascade =
+					new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this,
+						PannotationPackage.ONE_TO_MANY__CASCADE);
 		}
 		return cascade;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getMappedBy() {
@@ -223,17 +238,21 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setMappedBy(String newMappedBy) {
 		String oldMappedBy = mappedBy;
 		mappedBy = newMappedBy;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__MAPPED_BY, oldMappedBy, mappedBy));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__MAPPED_BY,
+				oldMappedBy, mappedBy));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isIndexed() {
@@ -242,17 +261,21 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIndexed(boolean newIndexed) {
 		boolean oldIndexed = indexed;
 		indexed = newIndexed;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__INDEXED, oldIndexed, indexed));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__INDEXED, oldIndexed,
+				indexed));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public boolean isUnique() {
@@ -261,17 +284,21 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setUnique(boolean newUnique) {
 		boolean oldUnique = unique;
 		unique = newUnique;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__UNIQUE, oldUnique, unique));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__UNIQUE, oldUnique,
+				unique));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -295,6 +322,7 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -302,23 +330,23 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.ONE_TO_MANY__TARGET_ENTITY:
-				setTargetEntity((String)newValue);
+				setTargetEntity((String) newValue);
 				return;
 			case PannotationPackage.ONE_TO_MANY__CASCADE:
 				getCascade().clear();
-				getCascade().addAll((Collection<? extends CascadeType>)newValue);
+				getCascade().addAll((Collection<? extends CascadeType>) newValue);
 				return;
 			case PannotationPackage.ONE_TO_MANY__FETCH:
-				setFetch((FetchType)newValue);
+				setFetch((FetchType) newValue);
 				return;
 			case PannotationPackage.ONE_TO_MANY__MAPPED_BY:
-				setMappedBy((String)newValue);
+				setMappedBy((String) newValue);
 				return;
 			case PannotationPackage.ONE_TO_MANY__INDEXED:
-				setIndexed(((Boolean)newValue).booleanValue());
+				setIndexed(((Boolean) newValue).booleanValue());
 				return;
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
-				setUnique(((Boolean)newValue).booleanValue());
+				setUnique(((Boolean) newValue).booleanValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -326,6 +354,7 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -355,13 +384,15 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.ONE_TO_MANY__TARGET_ENTITY:
-				return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT.equals(targetEntity);
+				return TARGET_ENTITY_EDEFAULT == null ? targetEntity != null : !TARGET_ENTITY_EDEFAULT
+					.equals(targetEntity);
 			case PannotationPackage.ONE_TO_MANY__CASCADE:
 				return cascade != null && !cascade.isEmpty();
 			case PannotationPackage.ONE_TO_MANY__FETCH:
@@ -378,11 +409,14 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (targetEntity: ");
@@ -417,4 +451,12 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 		return super.getAnnotationValue(eObject, eFeature, prependComma, imports);
 	}
 
+	@Override
+	protected boolean isFeatureValidJavaAnnotation(EStructuralFeature eFeature) {
+		if (eFeature == PannotationPackage.eINSTANCE.getOneToMany_Indexed() ||
+				eFeature == PannotationPackage.eINSTANCE.getOneToMany_Unique()) {
+			return false;
+		}
+		return super.isFeatureValidJavaAnnotation(eFeature);
+	}
 } // OneToManyImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotationImpl.java,v 1.1 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotationImpl.java,v 1.2 2008/04/16 21:08:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -34,10 +34,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#getEModelElement <em>EModel Element</em>}</li>
+ * <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#getEModelElement <em>EModel Element</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation {
@@ -58,6 +58,7 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 	/**
 	 * The cached value of the '{@link #getEModelElement() <em>EModel Element</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEModelElement()
 	 * @generated
 	 * @ordered
@@ -66,6 +67,7 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PAnnotationImpl() {
@@ -74,6 +76,7 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,15 +86,18 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EModelElement getEModelElement() {
 		if (eModelElement != null && eModelElement.eIsProxy()) {
-			InternalEObject oldEModelElement = (InternalEObject)eModelElement;
-			eModelElement = (EModelElement)eResolveProxy(oldEModelElement);
+			InternalEObject oldEModelElement = (InternalEObject) eModelElement;
+			eModelElement = (EModelElement) eResolveProxy(oldEModelElement);
 			if (eModelElement != oldEModelElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+				}
 			}
 		}
 		return eModelElement;
@@ -99,6 +105,7 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EModelElement basicGetEModelElement() {
@@ -107,24 +114,30 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEModelElement(EModelElement newEModelElement) {
 		EModelElement oldEModelElement = eModelElement;
 		eModelElement = newEModelElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PANNOTATION__EMODEL_ELEMENT, oldEModelElement, eModelElement));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PANNOTATION__EMODEL_ELEMENT,
+				oldEModelElement, eModelElement));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-				if (resolve) return getEModelElement();
+				if (resolve) {
+					return getEModelElement();
+				}
 				return basicGetEModelElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -132,13 +145,14 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)newValue);
+				setEModelElement((EModelElement) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -146,13 +160,14 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
-				setEModelElement((EModelElement)null);
+				setEModelElement((EModelElement) null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -160,6 +175,7 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -180,7 +196,9 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 	public String getJavaAnnotation(List<String> imports) {
 		final StringBuffer sb = new StringBuffer();
 		for (EStructuralFeature eFeature : eClass().getEStructuralFeatures()) {
-			sb.append(getAnnotationValue(this, eFeature, sb.length() > 0, imports));
+			if (isFeatureValidJavaAnnotation(eFeature)) {
+				sb.append(getAnnotationValue(this, eFeature, sb.length() > 0, imports));
+			}
 		}
 
 		// ensure that there is always at most one
@@ -190,6 +208,11 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 			return "@" + eClass().getName();
 		}
 		return "@" + eClass().getName() + "(" + sb.toString() + ")";
+	}
+
+	// to handle some non standard annotation
+	protected boolean isFeatureValidJavaAnnotation(EStructuralFeature eFeature) {
+		return true;
 	}
 
 	/** Returns an annotation correct name value pair if the feature is set */
