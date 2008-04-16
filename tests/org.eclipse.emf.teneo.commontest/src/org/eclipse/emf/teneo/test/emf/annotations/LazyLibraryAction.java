@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * does not result in loaded containment elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class LazyLibraryAction extends AbstractTestAction {
 	/** Small adapter test */
@@ -158,13 +158,23 @@ public class LazyLibraryAction extends AbstractTestAction {
 				final Library lib = (Library) res.getContents().get(0);
 				final PersistableEList<?> writers = (PersistableEList<?>) lib.getWriters();
 				assertTrue("Elist should be loaded", writers.isLoaded());
+				assertTrue(lib.getWriters().get(0).eContainer() == lib);
+				assertTrue(lib.getBooks().get(0).eContainer() == lib);
+				res.unload();
+			}
+
+			{
+				store.beginTransaction();
+				final Library lib = store.getObject(Library.class);
+				assertTrue(lib.getWriters().get(0).eContainer() == lib);
+				assertTrue(lib.getBooks().get(0).eContainer() == lib);
+				store.commitTransaction();
 			}
 		} catch (final IOException e) {
 			throw new StoreTestException("IOException during save", e);
 		}
 	}
 
-	/** Sets USE_EMF_PROXIES to true */
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();

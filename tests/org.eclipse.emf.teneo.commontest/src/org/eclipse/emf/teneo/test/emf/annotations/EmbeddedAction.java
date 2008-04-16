@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedAction.java,v 1.5 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: EmbeddedAction.java,v 1.6 2008/04/16 21:07:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -20,6 +20,7 @@ import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
@@ -31,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class EmbeddedAction extends AbstractTestAction {
 	/**
@@ -102,6 +103,11 @@ public class EmbeddedAction extends AbstractTestAction {
 				embedder.setFifthEmbedded(ea);
 			}
 
+			final AnotherEmbeddable anotherEmbeddable = factory.createAnotherEmbeddable();
+			anotherEmbeddable.setName("name");
+			anotherEmbeddable.setAnotherName("anotherName");
+			embedder.setAnotherEmbedded(anotherEmbeddable);
+
 			final AlsoEmbeddable ae = factory.createAlsoEmbeddable();
 			ae.setName("me");
 			embedder.setAlsoEmbeddable(ae);
@@ -119,6 +125,11 @@ public class EmbeddedAction extends AbstractTestAction {
 			assertEquals(5, (embedder.getFourthEmbedded().get(1)).getMyInteger());
 			assertEquals(6, embedder.getFifthEmbedded().getMyInteger());
 			assertEquals("me", embedder.getAlsoEmbeddable().getName());
+
+			final AnotherEmbeddable ae = embedder.getAnotherEmbedded();
+			assertEquals("anotherName", ae.getAnotherName());
+			assertEquals("name", ae.getName());
+
 			store.commitTransaction();
 		}
 	}

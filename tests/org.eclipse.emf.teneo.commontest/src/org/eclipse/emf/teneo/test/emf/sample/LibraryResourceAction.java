@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.13 2008/04/10 09:20:01 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.14 2008/04/16 21:07:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	/**
@@ -52,7 +52,6 @@ public class LibraryResourceAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
-	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
@@ -93,6 +92,9 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.save(null);
 				res.save(null);
 				res.unload();
+				assertTrue(res.getContents().size() == 0);
+				assertTrue(library.getBooks().size() > 0);
+				assertTrue(library.getWriters().size() > 0);
 			}
 
 			// walk through the structure starting from the library
@@ -155,6 +157,9 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.save(null);
 				res.save(null);
 				res.unload();
+				assertTrue(res.getContents().size() == 0);
+				assertTrue(lib.getBooks().size() > 0);
+				assertTrue(lib.getWriters().size() > 0);
 			}
 
 			{
@@ -168,6 +173,9 @@ public class LibraryResourceAction extends AbstractTestAction {
 				assertTrue(lib.getWriters().contains(w));
 				assertTrue(lib.getBooks().contains(w.getBooks().get(0)));
 				res.unload();
+				assertTrue(res.getContents().size() == 0);
+				assertTrue(lib.getBooks().size() > 0);
+				assertTrue(lib.getWriters().size() > 0);
 			}
 
 			{
@@ -183,6 +191,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 				lib.getWriters().add(0, w);
 				lib.getBooks().add(b);
 				res.save(null);
+				assertTrue(lib.getBooks().size() > 0);
+				assertTrue(lib.getWriters().size() > 0);
 			}
 
 			// {
@@ -222,6 +232,20 @@ public class LibraryResourceAction extends AbstractTestAction {
 		try {
 			Resource res = getResource(store);
 			res.load(null);
+			Library lib = (Library) res.getContents().get(0);
+			assertTrue(lib.getBooks().size() > 0);
+			assertTrue(lib.getWriters().size() > 0);
+			res.unload();
+			assertTrue(res.getContents().size() == 0);
+			assertTrue(lib.getBooks().size() > 0);
+			assertTrue(lib.getWriters().size() > 0);
+		} catch (IOException e) {
+			throw new StoreTestException(e.getMessage(), e);
+		}
+
+		try {
+			Resource res = getResource(store);
+			res.load(null);
 
 			Library lib = (Library) res.getContents().get(0);
 
@@ -238,6 +262,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 			res.unload();
 			fail("Orphan delete was not set"); // should fail
 		} catch (Exception e) {
+			// note the above fail will throw an error so that one
+			// does not end up here
 		}
 	}
 
