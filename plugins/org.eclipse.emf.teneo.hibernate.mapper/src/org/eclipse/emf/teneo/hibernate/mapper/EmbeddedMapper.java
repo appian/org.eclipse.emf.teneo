@@ -12,16 +12,20 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.15 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.16 2008/04/16 21:07:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -88,12 +92,26 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 			// process the features of the target
 			final PAnnotatedEClass componentAClass =
 					paReference.getPaModel().getPAnnotated(paReference.getModelEReference().getEReferenceType());
-			getHbmContext().processFeatures(componentAClass.getPaEStructuralFeatures());
+
+			getHbmContext().processFeatures(getAllFeatures(componentAClass));
 		} finally {
 			getHbmContext().setCurrent(componentElement.getParent());
 		}
 
 		addAccessor(componentElement, hbmContext.getComponentPropertyHandlerName());
+	}
+
+	// gather the pafeatures of the supertypes also
+	private List<PAnnotatedEStructuralFeature> getAllFeatures(PAnnotatedEClass componentAClass) {
+		final ArrayList<PAnnotatedEStructuralFeature> result = new ArrayList<PAnnotatedEStructuralFeature>();
+		result.addAll(componentAClass.getPaEStructuralFeatures());
+		for (EClass eClass : componentAClass.getModelEClass().getESuperTypes()) {
+			final PAnnotatedEClass aSuperClass = componentAClass.getPaModel().getPAnnotated(eClass);
+			if (aSuperClass != null) {
+				result.addAll(getAllFeatures(aSuperClass));
+			}
+		}
+		return result;
 	}
 
 	/** Process a list of components */
