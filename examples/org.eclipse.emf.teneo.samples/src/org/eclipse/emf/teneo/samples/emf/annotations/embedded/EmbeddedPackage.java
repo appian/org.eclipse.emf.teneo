@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackage.java,v 1.3 2007/07/11 18:28:20 mtaal Exp $
+ * $Id: EmbeddedPackage.java,v 1.4 2008/04/16 21:08:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -88,6 +88,43 @@ public interface EmbeddedPackage extends EPackage {
 	int ALSO_EMBEDDABLE_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl <em>Another Embeddable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getAnotherEmbeddable()
+	 * @generated
+	 */
+	int ANOTHER_EMBEDDABLE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_EMBEDDABLE__NAME = ALSO_EMBEDDABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Another Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_EMBEDDABLE__ANOTHER_NAME = ALSO_EMBEDDABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Another Embeddable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_EMBEDDABLE_FEATURE_COUNT = ALSO_EMBEDDABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl <em>Embeddable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,7 +132,7 @@ public interface EmbeddedPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getEmbeddable()
 	 * @generated
 	 */
-	int EMBEDDABLE = 1;
+	int EMBEDDABLE = 2;
 
 	/**
 	 * The feature id for the '<em><b>My String</b></em>' attribute.
@@ -132,7 +169,7 @@ public interface EmbeddedPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getEmbedder()
 	 * @generated
 	 */
-	int EMBEDDER = 2;
+	int EMBEDDER = 3;
 
 	/**
 	 * The feature id for the '<em><b>First Embedded</b></em>' containment reference.
@@ -189,13 +226,22 @@ public interface EmbeddedPackage extends EPackage {
 	int EMBEDDER__ALSO_EMBEDDABLE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Another Embedded</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMBEDDER__ANOTHER_EMBEDDED = 6;
+
+	/**
 	 * The number of structural features of the '<em>Embedder</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMBEDDER_FEATURE_COUNT = 6;
+	int EMBEDDER_FEATURE_COUNT = 7;
 
 
 	/**
@@ -218,6 +264,27 @@ public interface EmbeddedPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAlsoEmbeddable_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable <em>Another Embeddable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Another Embeddable</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable
+	 * @generated
+	 */
+	EClass getAnotherEmbeddable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAnotherName <em>Another Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Another Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAnotherName()
+	 * @see #getAnotherEmbeddable()
+	 * @generated
+	 */
+	EAttribute getAnotherEmbeddable_AnotherName();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable <em>Embeddable</em>}'.
@@ -328,6 +395,17 @@ public interface EmbeddedPackage extends EPackage {
 	EReference getEmbedder_AlsoEmbeddable();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAnotherEmbedded <em>Another Embedded</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Another Embedded</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAnotherEmbedded()
+	 * @see #getEmbedder()
+	 * @generated
+	 */
+	EReference getEmbedder_AnotherEmbedded();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -366,6 +444,24 @@ public interface EmbeddedPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ALSO_EMBEDDABLE__NAME = eINSTANCE.getAlsoEmbeddable_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl <em>Another Embeddable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getAnotherEmbeddable()
+		 * @generated
+		 */
+		EClass ANOTHER_EMBEDDABLE = eINSTANCE.getAnotherEmbeddable();
+
+		/**
+		 * The meta object literal for the '<em><b>Another Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANOTHER_EMBEDDABLE__ANOTHER_NAME = eINSTANCE.getAnotherEmbeddable_AnotherName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl <em>Embeddable</em>}' class.
@@ -450,6 +546,14 @@ public interface EmbeddedPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EMBEDDER__ALSO_EMBEDDABLE = eINSTANCE.getEmbedder_AlsoEmbeddable();
+
+		/**
+		 * The meta object literal for the '<em><b>Another Embedded</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EMBEDDER__ANOTHER_EMBEDDED = eINSTANCE.getEmbedder_AnotherEmbedded();
 
 	}
 

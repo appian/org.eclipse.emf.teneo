@@ -10,6 +10,9 @@
     <genClasses ecoreClass="embedded.ecore#//AlsoEmbeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AlsoEmbeddable/name"/>
     </genClasses>
+    <genClasses ecoreClass="embedded.ecore#//AnotherEmbeddable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AnotherEmbeddable/anotherName"/>
+    </genClasses>
     <genClasses ecoreClass="embedded.ecore#//Embeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myString"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myInteger"/>
@@ -21,6 +24,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fourthEmbedded"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fifthEmbedded"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/alsoEmbeddable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/anotherEmbedded"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -2,16 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedSwitch.java,v 1.4 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: ResourceunloadSwitch.java,v 1.1 2008/04/16 21:08:13 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.embedded.util;
+package org.eclipse.emf.teneo.samples.issues.resourceunload.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.embedded.*;
+import org.eclipse.emf.teneo.samples.issues.resourceunload.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,17 +23,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embedded.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage
+ * @see org.eclipse.emf.teneo.samples.issues.resourceunload.ResourceunloadPackage
  * @generated
  */
-public class EmbeddedSwitch<T> {
+public class ResourceunloadSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static EmbeddedPackage modelPackage;
+	protected static ResourceunloadPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -41,9 +41,9 @@ public class EmbeddedSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EmbeddedSwitch() {
+	public ResourceunloadSwitch() {
 		if (modelPackage == null) {
-			modelPackage = EmbeddedPackage.eINSTANCE;
+			modelPackage = ResourceunloadPackage.eINSTANCE;
 		}
 	}
 
@@ -87,28 +87,15 @@ public class EmbeddedSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case EmbeddedPackage.ALSO_EMBEDDABLE: {
-				AlsoEmbeddable alsoEmbeddable = (AlsoEmbeddable)theEObject;
-				T result = caseAlsoEmbeddable(alsoEmbeddable);
+			case ResourceunloadPackage.BOOK: {
+				Book book = (Book)theEObject;
+				T result = caseBook(book);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EmbeddedPackage.ANOTHER_EMBEDDABLE: {
-				AnotherEmbeddable anotherEmbeddable = (AnotherEmbeddable)theEObject;
-				T result = caseAnotherEmbeddable(anotherEmbeddable);
-				if (result == null) result = caseAlsoEmbeddable(anotherEmbeddable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EmbeddedPackage.EMBEDDABLE: {
-				Embeddable embeddable = (Embeddable)theEObject;
-				T result = caseEmbeddable(embeddable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EmbeddedPackage.EMBEDDER: {
-				Embedder embedder = (Embedder)theEObject;
-				T result = caseEmbedder(embedder);
+			case ResourceunloadPackage.LIBRARY: {
+				Library library = (Library)theEObject;
+				T result = caseLibrary(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,62 +104,32 @@ public class EmbeddedSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Also Embeddable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Book</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Also Embeddable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Book</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAlsoEmbeddable(AlsoEmbeddable object) {
+	public T caseBook(Book object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Another Embeddable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Library</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Another Embeddable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Library</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAnotherEmbeddable(AnotherEmbeddable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Embeddable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Embeddable</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEmbeddable(Embeddable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Embedder</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Embedder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEmbedder(Embedder object) {
+	public T caseLibrary(Library object) {
 		return null;
 	}
 
@@ -191,4 +148,4 @@ public class EmbeddedSwitch<T> {
 		return null;
 	}
 
-} //EmbeddedSwitch
+} //ResourceunloadSwitch

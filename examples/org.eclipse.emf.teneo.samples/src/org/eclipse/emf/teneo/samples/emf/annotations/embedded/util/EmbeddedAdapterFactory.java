@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedAdapterFactory.java,v 1.3 2007/07/11 18:28:21 mtaal Exp $
+ * $Id: EmbeddedAdapterFactory.java,v 1.4 2008/04/16 21:08:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.util;
 
@@ -76,6 +76,10 @@ public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
 				return createAlsoEmbeddableAdapter();
 			}
 			@Override
+			public Adapter caseAnotherEmbeddable(AnotherEmbeddable object) {
+				return createAnotherEmbeddableAdapter();
+			}
+			@Override
 			public Adapter caseEmbeddable(Embeddable object) {
 				return createEmbeddableAdapter();
 			}
@@ -114,6 +118,20 @@ public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAlsoEmbeddableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable <em>Another Embeddable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable
+	 * @generated
+	 */
+	public Adapter createAnotherEmbeddableAdapter() {
 		return null;
 	}
 

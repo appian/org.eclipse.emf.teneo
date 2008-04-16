@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbedderValidator.java,v 1.2 2007/07/11 18:28:21 mtaal Exp $
+ * $Id: EmbedderValidator.java,v 1.3 2008/04/16 21:08:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.validation;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 
 /**
@@ -27,4 +28,6 @@ public interface EmbedderValidator {
 	boolean validateFifthEmbedded(Embeddable value);
 
 	boolean validateAlsoEmbeddable(AlsoEmbeddable value);
+
+	boolean validateAnotherEmbedded(AnotherEmbeddable value);
 }

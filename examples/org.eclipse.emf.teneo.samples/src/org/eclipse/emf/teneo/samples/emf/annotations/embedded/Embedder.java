@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embedder.java,v 1.5 2007/07/11 18:28:21 mtaal Exp $
+ * $Id: Embedder.java,v 1.6 2008/04/16 21:08:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getFourthEmbedded <em>Fourth Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getFifthEmbedded <em>Fifth Embedded</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAlsoEmbeddable <em>Also Embeddable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAnotherEmbedded <em>Another Embedded</em>}</li>
  * </ul>
  * </p>
  *
@@ -187,5 +188,33 @@ public interface Embedder extends EObject {
 	 * @generated
 	 */
 	void setAlsoEmbeddable(AlsoEmbeddable value);
+
+	/**
+	 * Returns the value of the '<em><b>Another Embedded</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Another Embedded</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Another Embedded</em>' containment reference.
+	 * @see #setAnotherEmbedded(AnotherEmbeddable)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_AnotherEmbedded()
+	 * @model containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t'"
+	 *        extendedMetaData="kind='element' name='anotherEmbedded'"
+	 * @generated
+	 */
+	AnotherEmbeddable getAnotherEmbedded();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder#getAnotherEmbedded <em>Another Embedded</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Another Embedded</em>' containment reference.
+	 * @see #getAnotherEmbedded()
+	 * @generated
+	 */
+	void setAnotherEmbedded(AnotherEmbeddable value);
 
 } // Embedder
