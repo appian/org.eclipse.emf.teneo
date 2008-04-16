@@ -43,12 +43,13 @@ import org.eclipse.emf.teneo.test.emf.sample.SimpleLibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.SimpleRentalAction;
 import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
 import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
+import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
 
 /**
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.73 $
+ * @version $Revision: 1.74 $
  */
 public class AllTests {
 
@@ -56,6 +57,12 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(ResourceUnloadAction.class);
+		if (true) {
+			return suite;
+		}
+		suite.addTestSuite(LibraryResourceAction.class);
+
 		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(SimpleLibraryResourceAction.class);
@@ -76,7 +83,6 @@ public class AllTests {
 		suite.addTestSuite(RentalMapAsClassAction.class);
 
 		suite.addTestSuite(NoEscapeLibraryAction.class);
-		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(ClaimAction.class);
 		suite.addTestSuite(ProductAction.class);
 
