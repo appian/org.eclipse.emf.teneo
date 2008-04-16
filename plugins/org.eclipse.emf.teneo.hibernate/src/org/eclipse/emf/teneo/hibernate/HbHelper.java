@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.13 2008/02/28 07:08:23 mtaal Exp $
+ * $Id: HbHelper.java,v 1.14 2008/04/16 21:08:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -37,7 +37,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class HbHelper {
 	/** The logger */
@@ -150,8 +150,9 @@ public class HbHelper {
 
 		log.info("Creating emf data store and registering it under name: " + name);
 		emfds = emfDataStoreFactory.createHbDataStore();
-		emfDataStores.put(name, emfds);
 		emfds.setName(name);
+		// next call is done automatically
+		// emfDataStores.put(name, emfds);
 		log.info("Returning created emf data store, initialize this newly created data store!");
 		return emfds;
 	}

@@ -77,7 +77,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.39 $
+ * @version $Revision: 1.40 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -180,6 +180,7 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public void setName(String name) {
 		this.name = name;
+		HbHelper.INSTANCE.register(this);
 	}
 
 	/**

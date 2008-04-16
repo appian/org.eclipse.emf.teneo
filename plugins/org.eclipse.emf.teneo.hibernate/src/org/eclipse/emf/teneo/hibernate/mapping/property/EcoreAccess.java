@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAccess.java,v 1.4 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EcoreAccess.java,v 1.5 2008/04/16 21:08:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -23,38 +23,32 @@ import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.teneo.util.FieldUtil;
 
 /**
- * Provides access to package private methods in org.eclipse.emf.ecore.impl
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class EcoreAccess {
 
 	/** Return the DynamicValueHolder */
 	public static DynamicValueHolder getValueHolder(BasicEObjectImpl deo) {
-		return (DynamicValueHolder) FieldUtil
-				.callMethod(deo, "eSettings", null);
+		return (DynamicValueHolder) FieldUtil.callMethod(deo, "eSettings", null);
 	}
 
 	/** Sets an elist using the passed feature */
-	public static void setManyEFeatureValue(EStructuralFeature eFeature,
-			Object value, BasicEObjectImpl owner) {
+	public static void setManyEFeatureValue(EStructuralFeature eFeature, Object value, BasicEObjectImpl owner) {
 		final DynamicValueHolder dvh = getValueHolder(owner);
 		dvh.dynamicSet(eFeature.getFeatureID(), value);
 	}
 
 	/** Gets an elist using the passed feature */
-	public static EList<?> getManyEFeatureValue(EStructuralFeature eFeature,
-			BasicEObjectImpl owner) {
+	public static EList<?> getManyEFeatureValue(EStructuralFeature eFeature, BasicEObjectImpl owner) {
 		final DynamicValueHolder dvh = getValueHolder(owner);
 		return (EList<?>) dvh.dynamicGet(eFeature.getFeatureID());
 	}
 
 	/** Determines if a passed feature is a static feature */
-	public static boolean isStaticFeature(EStructuralFeature eFeature,
-			BasicEObjectImpl owner) {
-		Integer staticFeatureCount = (Integer) FieldUtil.callMethod(owner,
-				"eStaticFeatureCount", null);
+	public static boolean isStaticFeature(EStructuralFeature eFeature, BasicEObjectImpl owner) {
+		Integer staticFeatureCount = (Integer) FieldUtil.callMethod(owner, "eStaticFeatureCount", null);
 		return eFeature.getFeatureID() < staticFeatureCount.intValue();
 	}
 }

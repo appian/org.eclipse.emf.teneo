@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -36,7 +37,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -149,6 +150,10 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 					((HibernateResource) res).setIsLoading(loading);
 				}
 			}
+		}
+
+		if (eReference.isContainment() && target instanceof InternalEObject && value instanceof InternalEObject) {
+			EContainerRepairControl.setContainer((InternalEObject) target, (InternalEObject) value, eReference);
 		}
 	}
 

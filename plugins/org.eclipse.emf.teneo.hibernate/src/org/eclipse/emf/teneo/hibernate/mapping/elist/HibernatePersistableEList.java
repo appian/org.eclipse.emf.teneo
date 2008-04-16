@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.19 2008/03/10 21:30:18 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.20 2008/04/16 21:08:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
@@ -138,8 +138,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 				// disabled for now as containers are persisted by hibernate
 				// anyway
-				if (false && isContainment()) {
-					final int featureID = getEStructuralFeature().getFeatureID();
+				if (isContainment()) {
 					for (Object element : objs) {
 						if (element instanceof InternalEObject) {
 							EContainerRepairControl.setContainer(owner, (InternalEObject) element,
