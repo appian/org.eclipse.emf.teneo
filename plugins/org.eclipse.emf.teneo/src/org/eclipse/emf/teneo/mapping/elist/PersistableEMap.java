@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.8 2008/04/11 23:43:43 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.9 2008/04/17 11:33:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -90,12 +90,12 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	/** Constructor */
 	public PersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, EStructuralFeature feature) {
 		// invoke constructor with no lazyLoadMapDelegate
-		super(entryEClass, Map.Entry.class, owner, feature.getFeatureID());
+		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(feature));
 
 		setDelegateEList(owner, feature, new ArrayList<Entry<K, V>>());
 
 		this.owner = owner;
-		this.featureID = feature.getFeatureID();
+		this.featureID = owner.eClass().getFeatureID(feature);
 		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
 	}
 
@@ -112,10 +112,10 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 */
 	public PersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> list) {
-		super(entryEClass, Map.Entry.class, owner, feature.getFeatureID());
+		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(feature));
 
 		this.owner = owner;
-		this.featureID = feature.getFeatureID();
+		this.featureID = owner.eClass().getFeatureID(feature);
 
 		// create our list
 		setDelegateEList(owner, feature, list);
@@ -129,7 +129,7 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	/** Sets the delegatelist to a persistablelist */
 	protected void setDelegateEList(InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> delegateORMList) {
-		assert (feature.getFeatureID() == featureID);
+		assert (owner.eClass().getFeatureID(feature) == featureID);
 
 		// NOTE BEWARE: the delegateEList is a member of the superclass!
 		delegateEList = createDelegateEList(owner, feature, delegateORMList);

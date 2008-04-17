@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.29 2008/04/04 07:29:01 mtaal Exp $
+ * $Id: StoreResource.java,v 1.30 2008/04/17 11:33:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -34,26 +34,30 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.StoreValidationException;
+import org.eclipse.emf.teneo.util.FieldUtil;
 
 /**
  * General part of Store Resources. Main feature is that it keeps track of changes to the resource
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -370,6 +374,66 @@ public abstract class StoreResource extends ResourceImpl {
 		super.doUnload();
 		clearChangeTrackerArrays();
 		isUnLoading = false;
+	}
+
+	/*
+	 * Javadoc copied from interface.
+	 */
+	@Override
+	public EList<EObject> getContents() {
+		if (contents == null) {
+			contents = new LocalContentsEList();
+		}
+		return contents;
+	}
+
+	// this specific ContentsElist overrides inverseremove to handle the following case
+	// using queries it is possible to load a parent and child both in the root of the
+	// resource. During unload of the resource the child is removed from the parent
+	// see the BasicEObjectImpl.eSetResource implementation. This is undesirable therefore
+	// the inverseRemove method is overridden.
+	private class LocalContentsEList extends ContentsEList<EObject> {
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public NotificationChain inverseRemove(EObject object, NotificationChain notifications) {
+			if (!isUnLoading()) {
+				return super.inverseRemove(object, notifications);
+			}
+			if (!unloadingContents.contains(object)) {
+				return super.inverseRemove(object, notifications);
+			}
+
+			final InternalEObject eObject = (InternalEObject) object;
+			final InternalEObject eContainer = eObject.eInternalContainer();
+			if (eContainer == null) {
+				return super.inverseRemove(object, notifications);
+			}
+
+			// specific case which works fine as in this case the
+			// object is not removed from its container
+			if (eObject.eContainmentFeature().isResolveProxies()) {
+				return super.inverseRemove(object, notifications);
+			}
+
+			// can this ever happen?
+			if (!(eObject instanceof BasicEObjectImpl)) {
+				return super.inverseRemove(object, notifications);
+			}
+
+			// now the only thing remaining is mimick the inverseRemove without removal
+			// from the container
+			// this is the invariant:
+			// eDirectResource() != null && eContainer != null
+			// in this case the directresource has to be set, using java reflection to handle that
+			final Resource oldResource = eObject.eDirectResource();
+			if (oldResource != null) {
+				notifications = ((InternalEList<?>) oldResource.getContents()).basicRemove(this, notifications);
+			}
+			FieldUtil.callMethod(eObject, "eSetDirectResource", new Object[] { null });
+
+			return notifications;
+		}
 	}
 
 	/**
