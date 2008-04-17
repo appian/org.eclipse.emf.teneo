@@ -14,6 +14,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -37,7 +38,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -56,8 +57,12 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	/** Two way reference */
 	protected boolean isBidirectional;
 
+	private int featureId = -1;
+
 	public void initialize(EReference eReference) {
 		this.eReference = eReference;
+		final EClass eClass = eReference.getEContainingClass();
+		featureId = eClass.getFeatureID(eReference);
 		isBidirectional = eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient();
 		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
 	}
@@ -118,17 +123,20 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 				// curValue and value have been read in
 				// the same
 				// pm.
+				// Note that the eInverseRemove is called on the target itself and the value is
+				// passed
+				// therefore the eReference featureid is passed and not the opposite
 				if (value == null) { // remove
 					final NotificationChain nots =
-							((InternalEObject) target).eInverseRemove((InternalEObject) curValue, eReference
-								.getFeatureID(), eReference.getEType().getInstanceClass(), null);
+							((InternalEObject) target).eInverseRemove((InternalEObject) curValue, featureId, eReference
+								.getEType().getInstanceClass(), null);
 					if (nots != null) {
 						nots.dispatch();
 					}
 				} else {
 					final NotificationChain nots =
-							((InternalEObject) target).eInverseAdd((InternalEObject) value, eReference.getFeatureID(),
-								eReference.getEType().getInstanceClass(), null);
+							((InternalEObject) target).eInverseAdd((InternalEObject) value, featureId, eReference
+								.getEType().getInstanceClass(), null);
 					if (nots != null) {
 						nots.dispatch();
 					}

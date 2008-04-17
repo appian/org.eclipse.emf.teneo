@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAccess.java,v 1.5 2008/04/16 21:08:03 mtaal Exp $
+ * $Id: EcoreAccess.java,v 1.6 2008/04/17 11:33:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
 /**
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class EcoreAccess {
 
@@ -37,18 +37,22 @@ public class EcoreAccess {
 	/** Sets an elist using the passed feature */
 	public static void setManyEFeatureValue(EStructuralFeature eFeature, Object value, BasicEObjectImpl owner) {
 		final DynamicValueHolder dvh = getValueHolder(owner);
-		dvh.dynamicSet(eFeature.getFeatureID(), value);
+		dvh.dynamicSet(getFeatureId(owner, eFeature), value);
 	}
 
 	/** Gets an elist using the passed feature */
 	public static EList<?> getManyEFeatureValue(EStructuralFeature eFeature, BasicEObjectImpl owner) {
 		final DynamicValueHolder dvh = getValueHolder(owner);
-		return (EList<?>) dvh.dynamicGet(eFeature.getFeatureID());
+		return (EList<?>) dvh.dynamicGet(getFeatureId(owner, eFeature));
+	}
+
+	public static int getFeatureId(BasicEObjectImpl owner, EStructuralFeature eFeature) {
+		return owner.eClass().getFeatureID(eFeature);
 	}
 
 	/** Determines if a passed feature is a static feature */
 	public static boolean isStaticFeature(EStructuralFeature eFeature, BasicEObjectImpl owner) {
 		Integer staticFeatureCount = (Integer) FieldUtil.callMethod(owner, "eStaticFeatureCount", null);
-		return eFeature.getFeatureID() < staticFeatureCount.intValue();
+		return getFeatureId(owner, eFeature) < staticFeatureCount.intValue();
 	}
 }
