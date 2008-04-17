@@ -17,6 +17,7 @@ import org.eclipse.emf.teneo.test.emf.sample.CarAction;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.ClaimAction;
 import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
+import org.eclipse.emf.teneo.test.emf.sample.FleetAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.JuliaAction;
@@ -49,7 +50,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.74 $
+ * @version $Revision: 1.75 $
  */
 public class AllTests {
 
@@ -57,10 +58,9 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(FleetAction.class);
+
 		suite.addTestSuite(ResourceUnloadAction.class);
-		if (true) {
-			return suite;
-		}
 		suite.addTestSuite(LibraryResourceAction.class);
 
 		suite.addTestSuite(LibraryTest.class);
