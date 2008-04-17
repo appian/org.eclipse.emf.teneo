@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.30 2008/04/17 11:33:46 mtaal Exp $
+ * $Id: StoreResource.java,v 1.31 2008/04/17 11:34:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -57,7 +57,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -392,6 +392,7 @@ public abstract class StoreResource extends ResourceImpl {
 	// resource. During unload of the resource the child is removed from the parent
 	// see the BasicEObjectImpl.eSetResource implementation. This is undesirable therefore
 	// the inverseRemove method is overridden.
+	// See bugzilla 227500
 	private class LocalContentsEList extends ContentsEList<EObject> {
 		private static final long serialVersionUID = 1L;
 
