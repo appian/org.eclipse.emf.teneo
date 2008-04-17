@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.teneo.sdk"
-      label="%featureName (Incubation)"
+      label="%featureName"
       version="0.8.0.qualifier"
       provider-name="%providerName"
       image="eclipse_update_120.jpg">
@@ -21,17 +21,14 @@
 
    <includes
          id="org.eclipse.emf.teneo"
-         version="0.0.0"
-         match="compatible"/>
+         version="0.0.0"/>
 
    <includes
          id="org.eclipse.emf.teneo.source"
-         version="0.0.0"
-         match="compatible"/>
+         version="0.0.0"/>
 
    <includes
          id="org.eclipse.emf.teneo.doc"
-         version="0.0.0"
-         match="compatible"/>
+         version="0.0.0"/>
 
 </feature>
