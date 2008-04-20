@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.22 2008/03/17 16:13:29 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.23 2008/04/20 10:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -59,7 +59,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -223,6 +223,13 @@ public class HibernateResource extends StoreResource implements HbResource {
 				return super.getEObjectByID(id);
 			}
 			final String idStr = parts[1].substring(1 + splitIndex);
+
+			// try to find the object using the id-part
+			final EObject eObject = super.getEObjectByID(idStr);
+			if (eObject != null) {
+				return eObject;
+			}
+
 			final Object result =
 					getSessionWrapper().get(parts[0], (Serializable) HbUtil.stringToId(eclass, emfDataStore, idStr));
 			if (result == null) {
@@ -231,9 +238,12 @@ public class HibernateResource extends StoreResource implements HbResource {
 				}
 				return super.getEObjectByID(id);
 			}
-			final InternalEObject eobject = (InternalEObject) result;
-			addToContent(eobject);
-			return eobject;
+			final InternalEObject internalEObject = (InternalEObject) result;
+			// only add if not yet part of a resource
+			if (internalEObject.eResource() == null) {
+				addUsingContainmentStructure((InternalEObject) result);
+			}
+			return (EObject) result;
 		} finally {
 			if (!hasSessionController) {
 				getSessionWrapper().commitTransaction();
@@ -501,7 +511,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 					// if already part of this resource then it should have been
 					// loaded through
 					// a containment relation.
-					assert (eObject.eResource() != this || loadedEObjects.contains(eObject) || newEObjects
+					assert (eObject.eResource() != this || loadedEObjectSet.contains(eObject) || newEObjects
 						.contains(eObject));
 					addToContent(eObject);
 				}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.12 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.13 2008/04/20 10:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap implements ExtensionPoint {
@@ -170,7 +170,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 						if (res != null && res instanceof StoreResource &&
 								fme.getEStructuralFeature() instanceof EReference) {
 							((StoreResource) res).addToContentOrAttach((InternalEObject) fme.getValue(),
-								((EReference) fme.getEStructuralFeature()).isContainment());
+								(EReference) fme.getEStructuralFeature());
 						}
 					}
 				}

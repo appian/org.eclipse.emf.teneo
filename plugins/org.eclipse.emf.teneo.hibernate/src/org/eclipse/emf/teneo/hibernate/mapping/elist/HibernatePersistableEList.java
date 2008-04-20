@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.20 2008/04/16 21:08:04 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.21 2008/04/20 10:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -21,6 +21,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -42,7 +43,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
@@ -153,7 +154,8 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 					// when required
 					for (Object element : objs) {
 						if (element instanceof EObject) {
-							((StoreResource) res).addToContentOrAttach((InternalEObject) element, isContainment());
+							((StoreResource) res).addToContentOrAttach((InternalEObject) element,
+								(EReference) getEStructuralFeature());
 						}
 					}
 				}

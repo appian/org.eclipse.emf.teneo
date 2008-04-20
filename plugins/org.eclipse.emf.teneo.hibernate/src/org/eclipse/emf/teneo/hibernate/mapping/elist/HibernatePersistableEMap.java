@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.6 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.7 2008/04/20 10:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.collection.PersistentCollection;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implements ExtensionPoint {
@@ -109,7 +109,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 					for (Object element : objs) {
 						if (element instanceof EObject) {
 							((StoreResource) res).addToContentOrAttach((InternalEObject) element,
-								((EReference) getEStructuralFeature()).isContainment());
+								(EReference) getEStructuralFeature());
 						}
 					}
 				}

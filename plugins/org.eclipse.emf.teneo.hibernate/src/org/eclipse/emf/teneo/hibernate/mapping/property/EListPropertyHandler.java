@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.InternalEObject.EStore;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
-import org.eclipse.emf.ecore.impl.EStoreEObjectImpl.EStoreEList;
+import org.eclipse.emf.ecore.impl.EStoreEObjectImpl.BasicEStoreEList;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
@@ -56,7 +56,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -124,7 +124,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public Object get(Object owner) throws HibernateException {
 		Object obj = ((EObject) owner).eGet(eFeature);
 
-		if (obj instanceof EStoreEList<?>) {
+		if (obj instanceof BasicEStoreEList<?>) {
 			final EStore eStore = ((InternalEObject) owner).eStore();
 			// the call to size forces a load, this is a trick to
 			// force the estore to create a list, otherwise the .get
@@ -187,7 +187,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		Object obj = ((EObject) owner).eGet(eFeature);
 
-		if (obj instanceof EStoreEList<?>) {
+		if (obj instanceof BasicEStoreEList<?>) {
 			final EStore eStore = ((InternalEObject) owner).eStore();
 			// the call to size forces a load, this is a trick to
 			// force the estore to create a list, otherwise the .get
@@ -256,9 +256,11 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			}
 			Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature, (BasicEObjectImpl) target);
 
-			if (currentValue instanceof EStoreEList<?>) {
+			if (currentValue instanceof BasicEStoreEList<?>) {
 				final EStore eStore = ((InternalEObject) target).eStore();
-				currentValue = eStore.get((InternalEObject) target, eFeature, EStore.NO_INDEX);
+				if (eStore.size((InternalEObject) target, eFeature) != -1) {
+					currentValue = eStore.get((InternalEObject) target, eFeature, EStore.NO_INDEX);
+				}
 			}
 
 			// if currentvalue is not null then use the passed value

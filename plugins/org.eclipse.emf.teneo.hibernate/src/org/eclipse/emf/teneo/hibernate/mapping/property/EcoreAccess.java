@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAccess.java,v 1.6 2008/04/17 11:33:44 mtaal Exp $
+ * $Id: EcoreAccess.java,v 1.7 2008/04/20 10:31:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -25,12 +25,15 @@ import org.eclipse.emf.teneo.util.FieldUtil;
 /**
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class EcoreAccess {
 
 	/** Return the DynamicValueHolder */
 	public static DynamicValueHolder getValueHolder(BasicEObjectImpl deo) {
+		if (deo instanceof DynamicValueHolder) {
+			return (DynamicValueHolder) deo;
+		}
 		return (DynamicValueHolder) FieldUtil.callMethod(deo, "eSettings", null);
 	}
 

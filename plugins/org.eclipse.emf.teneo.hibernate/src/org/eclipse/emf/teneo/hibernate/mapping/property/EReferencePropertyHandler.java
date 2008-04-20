@@ -38,7 +38,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -153,7 +153,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 				final boolean loading = ((HibernateResource) res).isLoading();
 				try {
 					((HibernateResource) res).setIsLoading(true);
-					((HibernateResource) res).addToContentOrAttach((InternalEObject) value, false);
+					((HibernateResource) res).addToContentOrAttach((InternalEObject) value, eReference);
 				} finally {
 					((HibernateResource) res).setIsLoading(loading);
 				}
