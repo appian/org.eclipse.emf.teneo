@@ -11,17 +11,18 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ResourceAction.java,v 1.6 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: ResourceAction.java,v 1.7 2008/04/20 10:33:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.samples.issues.resource.Head;
 import org.eclipse.emf.teneo.samples.issues.resource.Person;
 import org.eclipse.emf.teneo.samples.issues.resource.ResourceFactory;
@@ -34,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests setting resource when a single ref. relation is loaded.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ResourceAction extends AbstractTestAction {
 
@@ -75,8 +76,11 @@ public class ResourceAction extends AbstractTestAction {
 
 		// now use a resource to read!
 		try {
+
+			final HashMap<String, String> options = new HashMap<String, String>();
+			options.put(StoreResource.LOAD_STRATEGY_PARAM, StoreResource.ADD_TO_CONTENTS);
 			final Resource res = store.getResource("query1=select p from Person p");
-			res.load(Collections.EMPTY_MAP);
+			res.load(options);
 			Iterator<?> it = res.getContents().iterator();
 			while (it.hasNext()) {
 				Object o = it.next();
