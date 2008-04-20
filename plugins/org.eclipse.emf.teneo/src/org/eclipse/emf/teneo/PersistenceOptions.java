@@ -12,7 +12,7 @@
  *   Jason Henriksen - Mapping File Path
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.41 2008/03/31 09:56:55 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.42 2008/04/20 10:33:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -159,7 +159,10 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Inheritance mapping */
 	public static final String INHERITANCE_MAPPING = MAPPING_PREFIX + "inheritance";
 
-	/** Can be set to force an update of the schema when the application starts */
+	/**
+	 * Can be set to force an update of the schema when the application starts. Note this option is
+	 * only meaningfull for jpox, for hibernate use the hibernate property: hibernate.hbm2ddl_auto
+	 */
 	public static final String UPDATE_SCHEMA = RUNTIME_PREFIX + "update_schema";
 
 	/** Force all containment relations to be eagerly loaded or not */
