@@ -59,7 +59,7 @@ import org.jpox.store.query.ResultObjectFactory;
  * jpox arraylist is the delegate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $ $Date: 2008/04/10 09:19:59 $
+ * @version $Revision: 1.16 $ $Date: 2008/04/20 10:33:21 $
  */
 
 public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryable, SCOList {
@@ -608,7 +608,8 @@ public class EListWrapper<E> extends PersistableEList<E> implements SCO, Queryab
 				// required
 				// true is passed although this is not containment, need to do that
 				// to get attached working correctly. TODO make nicer
-				((StoreResource) res).addToContentOrAttach((InternalEObject) child, true);
+				((StoreResource) res).addToContentOrAttach((InternalEObject) child,
+					(EReference) getEStructuralFeature());
 			}
 		}
 		if (setLoading) {
