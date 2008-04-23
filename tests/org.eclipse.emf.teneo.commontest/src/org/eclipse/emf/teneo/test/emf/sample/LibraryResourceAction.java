@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.14 2008/04/16 21:07:53 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.15 2008/04/23 15:45:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,20 +34,11 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
-	/**
-	 * Constructor for ClassHierarchyParsing.
-	 * 
-	 * @param arg0
-	 */
 	public LibraryResourceAction() {
 		super(LibraryPackage.eINSTANCE);
-	}
-
-	protected boolean hibernateEnabled() {
-		return true;
 	}
 
 	/** Creates an item, an address and links them to a po. */
