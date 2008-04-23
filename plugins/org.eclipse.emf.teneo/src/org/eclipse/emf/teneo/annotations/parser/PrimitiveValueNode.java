@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PrimitiveValueNode.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: PrimitiveValueNode.java,v 1.3 2008/04/23 15:45:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -38,9 +38,11 @@ class PrimitiveValueNode extends NamedParserNode {
 	 *            the value to set
 	 */
 	public void setValue(String value) {
+		value = value.replaceAll("&gt;", ">");
+		value = value.replaceAll("&lt;", "<");
+
 		// correct a small mistake in the tokenizer
-		if (value != null && value.length() > 1 && value.charAt(0) == '"'
-				&& value.charAt(value.length() - 1) == '"') {
+		if (value != null && value.length() > 1 && value.charAt(0) == '"' && value.charAt(value.length() - 1) == '"') {
 			this.value = value.substring(1, value.length() - 1);
 		} else {
 			this.value = value;
@@ -48,6 +50,7 @@ class PrimitiveValueNode extends NamedParserNode {
 	}
 
 	/** Translate into an etype */
+	@Override
 	Object convert(EClassResolver ecr) {
 		return value;
 	}

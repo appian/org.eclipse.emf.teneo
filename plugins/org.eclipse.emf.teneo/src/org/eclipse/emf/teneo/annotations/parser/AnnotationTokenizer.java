@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.6 2008/04/11 23:43:43 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.7 2008/04/23 15:45:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -228,8 +228,9 @@ class AnnotationTokenizer {
 					} while (lChar == ',' || lChar == '-' || lChar == '.' || lChar == ' ' || lChar == '_' ||
 							lChar == '/' || lChar == '@' || lChar == ':' || lChar == '=' || lChar == '(' ||
 							lChar == ')' || lChar == '{' || lChar == '}' || lChar == '\'' || lChar == '#' ||
-							lChar == '$' || ('0' <= lChar && lChar <= '9') || ('a' <= lChar && lChar <= 'z') ||
-							lChar == '?' || ('A' <= lChar && lChar <= 'Z'));
+							lChar == '&' || lChar == '<' || lChar == '>' || lChar == '$' || lChar == ';' ||
+							('0' <= lChar && lChar <= '9') || ('a' <= lChar && lChar <= 'z') || lChar == '?' ||
+							('A' <= lChar && lChar <= 'Z'));
 
 					if (lChar != '\"') {
 						final AnnotationParserException e =

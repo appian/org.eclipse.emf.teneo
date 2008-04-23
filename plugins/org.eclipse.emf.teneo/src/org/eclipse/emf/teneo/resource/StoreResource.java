@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.32 2008/04/20 10:33:24 mtaal Exp $
+ * $Id: StoreResource.java,v 1.33 2008/04/23 15:45:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -57,7 +57,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -375,6 +375,7 @@ public abstract class StoreResource extends ResourceImpl {
 				// this is not the nicest solution but it prevents dangling references
 				// when objects are not added explicitly to a resource
 				setEResource(eObject, false);
+				attached(eObject);
 			}
 		} finally {
 			setIsLoading(oldLoading);

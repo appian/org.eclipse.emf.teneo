@@ -10,9 +10,10 @@
  * Contributors:
  *   Martin Taal - Initial API and implementation
  *   Jason Henriksen - Mapping File Path
+ *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.42 2008/04/20 10:33:24 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.43 2008/04/23 15:45:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -38,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -104,6 +105,19 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
+
+	/**
+	 * see bugzilla 227673, option can be used to set the hibernate usertype used for xsd date and
+	 * xsd date time fields.
+	 */
+	private static String USER_XSDDATE_TYPE = MAPPING_PREFIX + "UserDateType";
+	private static String USER_XSDDATETIME_TYPE = MAPPING_PREFIX + "UserDateTimeType";
+
+	/**
+	 * This option can be used to control the actual xsd date class used, as a default the
+	 * javax.xml.datatype.XMLGregorianCalendar class is used.
+	 */
+	private static String XSDDATE_CLASS = MAPPING_PREFIX + "XSDDateClass";
 
 	/** The default length of a varchar column. Normally hibernate will choose to set this to 255. */
 	public static final String DEFAULT_VARCHAR_LENGTH = MAPPING_PREFIX + "default_varchar_length";
@@ -355,6 +369,9 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(MAX_COMMENT_LENGTH, "0");
 		props.setProperty(DEFAULT_VARCHAR_LENGTH, "-1");
 		props.setProperty(SQL_NAME_ESCAPE_CHARACTER, "`");
+		props.setProperty(USER_XSDDATE_TYPE, "org.eclipse.emf.teneo.hibernate.mapping.XSDDate");
+		props.setProperty(USER_XSDDATETIME_TYPE, "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime");
+		props.setProperty(XSDDATE_CLASS, "javax.xml.datatype.XMLGregorianCalendar");
 		return props;
 	}
 
@@ -772,5 +789,17 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public String getSQLNameStrategy() {
 		return properties.getProperty(SQL_NAME_STRATEGY);
+	}
+
+	public String getUserXSDDateType() {
+		return properties.getProperty(USER_XSDDATE_TYPE);
+	}
+
+	public String getUserXSDDateTime() {
+		return properties.getProperty(USER_XSDDATETIME_TYPE);
+	}
+
+	public String getXSDDateClass() {
+		return properties.getProperty(XSDDATE_CLASS);
 	}
 }

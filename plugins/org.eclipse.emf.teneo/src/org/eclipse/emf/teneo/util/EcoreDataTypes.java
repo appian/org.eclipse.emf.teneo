@@ -14,7 +14,7 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.11 2008/03/16 19:34:02 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.12 2008/04/23 15:45:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 
@@ -278,7 +279,7 @@ public class EcoreDataTypes {
 	 * 
 	 * @return true if and only if the given dataType is a date datatype.
 	 */
-	public boolean isEDate(EDataType eDataType) {
+	public boolean isEDate(EDataType eDataType, PersistenceOptions po) {
 		if (eDataType.equals(xmlDateEDataType)) {
 			return true;
 		}
@@ -289,7 +290,7 @@ public class EcoreDataTypes {
 		Class<?> ic = eDataType.getInstanceClass();
 		// do a string comparison to prevent another dependency for this teneo library.
 		if (eDataType.getInstanceClassName() != null &&
-				eDataType.getInstanceClassName().compareTo("javax.xml.datatype.XMLGregorianCalendar") == 0) {
+				eDataType.getInstanceClassName().compareTo(po.getXSDDateClass()) == 0) {
 			return true;
 		}
 		return java.util.Date.class == ic || java.util.Calendar.class == ic || java.sql.Date.class == ic;
@@ -307,10 +308,11 @@ public class EcoreDataTypes {
 		 * itself so I have kept the original check against the java classes.
 		 */
 		Class<?> ic = eDataType.getInstanceClass();
-		if (ic == Object.class) {
-			// could be an XML date type
-			return eDataType.equals(xmlDateTimeEDataType);
-		}
+		// already handled through the first if
+// if (ic == Object.class) {
+// // could be an XML date type
+// return eDataType.equals(xmlDateTimeEDataType);
+// }
 		return java.sql.Timestamp.class == ic || Date.class == ic;
 	}
 
@@ -318,9 +320,9 @@ public class EcoreDataTypes {
 	 * @return Returns true if and only if the given type is either a primitive or a wrapper or
 	 *         string or a date.
 	 */
-	public boolean isSimpleType(EDataType eType) {
+	public boolean isSimpleType(EDataType eType, PersistenceOptions po) {
 		// TODO move elsewhere
-		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType) || isEDate(eType);
+		return isEPrimitive(eType) || isEWrapper(eType) || isEString(eType) || isEDate(eType, po) || isEDateTime(eType);
 	}
 
 	/**
@@ -328,13 +330,13 @@ public class EcoreDataTypes {
 	 * 
 	 * @return Returns true if the given eDataType is a Basic type
 	 */
-	public boolean isBasicType(EDataType eDataType) {
+	public boolean isBasicType(EDataType eDataType, PersistenceOptions po) {
 		// TODO consider also BigInteger, BigDecimal, java.util.Calendar,
 		// java.sql.Date
 		// java.sql.Time, java.sql.Timestamp, byte[], Byte[], char[],
 		// Character[]
 		// and any other type that implements Serializable
-		return isSimpleType(eDataType) || isEnum(eDataType);
+		return isSimpleType(eDataType, po) || isEnum(eDataType);
 	}
 
 	/**
