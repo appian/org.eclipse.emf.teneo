@@ -16,7 +16,7 @@
 <link href="../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../">
 <script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title></title>
+<title>Teneo CDO Integration</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -91,10 +91,10 @@
 </table>
 </td><td class="dialog">
 <div class="menu">
-<div onclick="SwitchMenu('menu_selected_1.1')" id="menu_selected_1.1Title" class="menutitle">Home</div>
-<div id="menu_selected_1.1" class="selectedmenuitemgroup">
-<div class="menupage">
-<div class="menupagetitle">Introduction</div>
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/index.html">Introduction</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/status.html">Status</a>
@@ -169,10 +169,10 @@
 <a href="../hibernate/gmftutorial/tutorial4.html">Running the editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Details</div>
-<div id="menu_1.5" class="menuitemgroup">
-<div class="menuitem">
-<a href="../hibernate/cdo.html">CDO</a>
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
+<div class="menupage">
+<div class="menupagetitle">CDO</div>
 </div>
 <div class="menuitem">
 <a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
@@ -267,113 +267,175 @@
 </tr>
 </table>
 <table></table>
-<table>
-<tr>
-<td></td><td><span class="logos"><a href="http://forrest.apache.org/"><img border="0" alt="Built with Apache Forrest logo" src="../images/built-with-forrest-button.png" width="88" height="31"></a></span>
-<br>
-</td>
-</tr>
-</table>
+<table></table>
 <div class="strut">&nbsp;</div>
 </td><td>
 <div class="content">
 <div id="bodycol">
+<div id="apphead">
+<h2>
+<em>Teneo CDO Integration</em>
+</h2>
+</div>
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
-<a href="#Teneo+Eclipse+EMFT+project">Teneo Eclipse EMFT project</a>
+<a href="#Some+prerequisites">Some prerequisites</a>
 </li>
 <li>
-<a href="#EMF+Persistency+Solution+using+Hibernate">EMF Persistency Solution using Hibernate</a>
+<a href="#CDO-Teneo+and+Offline+mapping+in+hibernate+file">CDO-Teneo and Offline mapping in hibernate file</a>
+<ul class="minitoc">
+<li>
+<a href="#Configure+CDO+to+use+the+mapping+file">Configure CDO to use the mapping file</a>
+</li>
+</ul>
 </li>
 <li>
-<a href="#Hibernate">Hibernate</a>
-</li>
-<li>
-<a href="#EMF">EMF</a>
+<a href="#Runtime+in-memory+mapping">Runtime in-memory mapping</a>
 </li>
 </ul>
 		
-<a name="N1000D"></a><a name="Teneo+Eclipse+EMFT+project"></a>
-<div class="h3">
-<h3>Teneo Eclipse EMFT project</h3>
-			
-			
-<p>
-<strong>Teneo persistency is an Eclipse EMFT project:</strong>
-</p>
-			
-<ul>
-			
-<li>The elver.org website is the source for documentation of Teneo.</li>
-			
-<li>The source code can be retrieved from Eclipse cvs. The new main java package name: org.eclipse.emf.teneo.</li>
-			
-<li>Teneo/Elver is part of the EMFT build process, builds can be downloaded here: 
-			<a class="external" href="http://download.eclipse.org/technology/emft/downloads/">EMFT Downloads</a> 
-			(select the Teneo project in the listbox). For the Eclipse update manager use: 
-			http://download.eclipse.org/modeling/emft/updates/site-interim.xml.</li>
-			
-<li>Support is given on the EMFT newsgroup: news://news.eclipse.org/eclipse.technology.emft.</li>
-			
-</ul>
-		
-</div>
-		
-<a name="N1002B"></a><a name="EMF+Persistency+Solution+using+Hibernate"></a>
-<div class="h3">
-<h3>EMF Persistency Solution using Hibernate</h3>
-			
-				
-<p>The EMF - Hibernate integration currently supports a number of important EMF features and 
-				standard Hibernate features. EMF objects can be persisted in most major relational databases and retrieved using an EMF resource approach or 
-					HQL queries.
-				</p>
-			
-<p>Current versions:</p>
-			
-<ul>
-			
-<li>0.7.5 for Eclipse 3.2/EMF 2.2/hibernate 3.2 and jdk 1.4</li>
-			
-<li>0.8.0 <strong>I-builds</strong> for Eclipse 3.3/EMF 2.3/hibernate 3.2 and jdk 1.5</li>
-			
-<li>0.8.0 <strong>S-builds</strong> for Eclipse 3.4/EMF 2.4/hibernate 3.2 and jdk 1.5</li>
-			
-</ul>
-			
-<p>For more information, visit the following links: 
-			<a href="status.html">Status</a>, <a href="features.html">Features</a>, <a class="external" href="http://www.eclipse.org/modeling/emft/news/relnotes.php?project=teneo">Release Notes</a>
-</p>
-			
-<p>
-<em>For troubleshooting please visit the <strong><a href="knownissues.html">Known Issues</a></strong> 
-				and <strong><a href="troubleshooting.html">Troubleshooting</a></strong> pages.</em>
-</p>
-		
-</div>
-		
-<a name="N10066"></a><a name="Hibernate"></a>
-<div class="h3">
-<h3>Hibernate</h3>
-			
-			
-<p>The EMF - Hibernate integration is a layer over the Hibernate product. The used Hibernate version is 3.2.
-			For more information visit Hibernate at <a class="external" href="http://www.hibernate.org">http://www.hibernate.org</a>.
+<p>Teneo can be used in combination with <a class="external" href="http://www.eclipse.org/modeling/emft/?project=cdo">CDO</a>.
+		From the website: CDO is a 3-tiers solution for distributed shared models and a complete model repository server.
+		When Teneo is used in combination with CDO then Teneo provides the automatic ecore - relational mapping capabilities
+		while CDO provides the runtime hibernate layer.
 		</p>
 		
+<p>This page only gives a short overview of the Teneo CDO integration. For more information regarding CDO 
+		please visit the CDO documentation website <a class="external" href="http://wiki.eclipse.org/CDO">here</a>
+</p>
+		
+<p>Teneo can be used in two modes with CDO: 1) offline mapping, 2) runtime in-memory mapping. Each of them 
+		is discussed separately</p>
+		
+<a name="N1001E"></a><a name="Some+prerequisites"></a>
+<div class="h3">
+<h3>Some prerequisites</h3>
+		
+<p>To work with the combination of CDO, Hibernate and Teneo you require the following plugins:</p>
+		
+<ul>
+		
+<li>The hibernate libraries. The recommended approach is to place the hibernate jar files in a separate plugin
+		and set the Eclipse-Buddypolicy of this plugin to dependent, see also the Teneo install page regarding this:
+		<a href="installation.html#Hibernate+Libraries">here</a>
+</li>
+		
+<li>The standard CDO plugins</li>
+		
+<li>The CDO Hibernate plugin: org.eclipse.emf.cdo.server.hibernate.</li>
+		
+<li>When you use the runtime in-memory mapping then also the following Teneo plugins are required: 1) org.eclipse.emf.teneo, 2) org.eclipse.emf.teneo.annotations, 3) org.eclipse.emf.teneo.hibernate.mapper
+		and the CDO plugin: org.eclipse.cdo.server.hibernate.teneo.</li>
+		
+</ul> 
+		
 </div>
 		
-<a name="N10074"></a><a name="EMF"></a>
+<a name="N10039"></a><a name="CDO-Teneo+and+Offline+mapping+in+hibernate+file"></a>
 <div class="h3">
-<h3>EMF</h3>
-			
-			
-<p>The <a class="external" href="http://www.eclipse.org">Eclipse Modeling Framwork (EMF)</a> is a modeling and 
-				code generation framework which generates source code from different sources: an UML diagram or 
-		a XML Schema. For more information see <a class="external" href="http://www.eclipse.org/emf">here</a>.
-		</p>
+<h3>CDO-Teneo and Offline mapping in hibernate file</h3>
 		
+<p>In this scenario the hibernate mapping file is generated during development time. The advantage of this 
+		approach is that there is no runtime dependency on Teneo plugins.</p>
+		
+<p>The hibernate mapping can be generated by right clicking on one or more
+		ecore files and selecting the correct menu in the Teneo menu (see below). <strong>Note that for this generation to work the 
+		project containing the ecore files should have the org.eclipse.emf.teneo.hibernate plugin set as a dependency!.</strong>
+		
+</p>
+		
+<p>
+<img alt="CDO Menu" src="images/cdo_menu.jpg"></p>
+		
+<p>After selecting this option a cdo_hibernate.hbm.xml should be present in the same directory as the ecore file.</p>
+		
+<p>Place the generated mapping file somewhere in your classpath. <em>Note that you often have to explicitly select the file 
+		in the build.properties of your plugin to let it be copied to the build directory!</em>
+</p>
+		
+<a name="N10054"></a><a name="Configure+CDO+to+use+the+mapping+file"></a>
+<div class="h4">
+<h4>Configure CDO to use the mapping file</h4>
+<p>To actually use the mapping file and the CDO Hibernate layer the only thing which needs to be done is 
+		create a specific store for your repository. The HibernateFileMappingProvider expects the path (in your classpath) to the
+		generated mapping file:</p>
+<pre class="code">
+IHibernateMappingProvider mappingProvider = new HibernateFileMappingProvider("/mappings/product.hbm.xml");
+IStore store = new HibernateStore(mappingProvider);
+		</pre>
+</div>
+		
+</div>
+		
+<a name="N10062"></a><a name="Runtime+in-memory+mapping"></a>
+<div class="h3">
+<h3>Runtime in-memory mapping</h3>
+		
+<p>In this scenario the mapping is done when the CDO layer initializes. The advantage of this approach is that you can dynamically add 
+		epackages at runtime. In this setup you also require the teneo plugins as described above.</p>
+		
+<p>For runtime mapping the configuration is done at runtime. Teneo has a number of options and settings which
+		can be controlled by <a href="options.html">options</a>. When Teneo is used in combination with CDO then these
+		options can be passed as properties to the repository when the repository is created.</p>
+		
+<p>The following source code illustrates this, in this example the teneo properties are read from a separate 
+		properties file:</p>
+		
+<pre class="code">
+@Override
+public IRepository createRepository(String name, Map&lt;String, String&gt; testProperties)
+{
+  setLogging();
+
+  Map&lt;String, String&gt; props = new HashMap&lt;String, String&gt;();
+  props.put(Props.PROP_OVERRIDE_UUID, "f8188187-65de-4c8a-8e75-e0ce5949837a");
+  props.put(Props.PROP_SUPPORTING_AUDITS, "false");
+  props.put(Props.PROP_SUPPORTING_REVISION_DELTAS, "false");
+  props.put(Props.PROP_VERIFYING_REVISIONS, "false");
+  props.put(Props.PROP_CURRENT_LRU_CAPACITY, "10000");
+  props.put(Props.PROP_REVISED_LRU_CAPACITY, "10000");
+  addHibernateTeneoProperties(props);
+
+  // override with the test properties
+  props.putAll(testProperties);
+
+  return CDOServerUtil.createRepository(name, createStore(), props);
+}
+
+private void addHibernateTeneoProperties(Map&lt;String, String&gt; props)
+{
+  try
+  {
+    final Properties teneoProperties = new Properties();
+    teneoProperties.load(getClass().getResourceAsStream("/app.properties"));
+    for (Object key : teneoProperties.keySet())
+    {
+      props.put((String)key, teneoProperties.getProperty((String)key));
+    }
+  }
+  catch (Exception e)
+  {
+    throw WrappedException.wrap(e);
+  }
+}
+		</pre>
+	
+<p>Then the creation of the HibernateStore is done as follows. Note the specific TeneoHibernateMappingProvider,
+	this class can be found in the org.eclipse.cdo.server.hibernate.teneo plugin.</p>
+	
+<pre class="code">
+@Override
+public IStore createStore()
+{
+  IHibernateMappingProvider mappingProvider = new TeneoHibernateMappingProvider();
+  return new HibernateStore(mappingProvider);
+}	
+	</pre>		
+		
+<p>After this the repository can be used as a normal CDO repository while it works through Hibernate on
+		the relational database.</p>
+	
 </div>
 	
 </div>

@@ -63,7 +63,7 @@
 <div id="toptabs" class="tabs">
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
-<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td>
+<td><a class="base-selected" href="../index.html">Home</a></td><th><a class="base-selected" href="../hibernate/index.html">EMF Hibernate</a></th><td><a class="base-selected" href="../jpox/index.html">EMF JDO/JPOX</a></td><td><a class="base-selected" href="../webappgen/index.html">Web App Generation</a></td><td><a class="base-selected" href="../services/index.html">Services</a></td>
 </tr>
 </table>
 </div>
@@ -171,6 +171,9 @@
 </div>
 <div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
 <div id="menu_selected_1.5" class="selectedmenuitemgroup">
+<div class="menuitem">
+<a href="../hibernate/cdo.html">CDO</a>
+</div>
 <div class="menuitem">
 <a href="../hibernate/dynamic.html">Dynamic EMF Tutorial</a>
 </div>
@@ -442,14 +445,12 @@
 <ul>
 	 
 <li>StoreResource.SET_ERESOURCE (default): in this mode only the explicitly loaded objects are present in the contents of the resource
-	 (i.e. in the top of the resource content). Objects may be present as contained children of explicitly loaded objects. Eventhough the 
-	 referenced objects are not directly present in the contents the eResource of the referenced objects is set to 
-	 the loading resource. This is only done if objects are not already present in another resource.</li>
+	 (i.e. in the top of the resource content). Objects may be present as contained children of explicitly loaded objects. Objects references through non-containment
+	 relations are not added to the contents of a resource.</li>
 	 
-<li>StoreResource.ADD_TO_CONTENTS: this value means that any referenced objects and the container of a 
-	 loaded object (if resolveProxies==false for the containment relation) are added to the contents of the resource.
-	 This means that these objects are present in the top of the resource. If resolveProxies==true then the container of a
-	 loaded object is not loaded in the resource as the container may be in a different resource. Implicitly loaded objects are only added to the 
+<li>StoreResource.ADD_TO_CONTENTS: any referenced objects (and their container) are added to the resource.
+	 So during resolving of a references it is possible that the content list of a resource is modified. When a referenced object is contained using a containment 
+	 relation withresolveProxies==true, then the object itself is added to the root of the resource, as with resolveProxies the container may be in a different resource. Implicitly loaded objects are only added to the 
 	 loading resource if they are not already present in another resource.</li>
 	 
 </ul>
