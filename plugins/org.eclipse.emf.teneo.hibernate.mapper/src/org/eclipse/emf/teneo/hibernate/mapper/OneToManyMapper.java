@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.26 2008/02/28 07:07:43 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.27 2008/04/23 15:44:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -184,6 +185,8 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
 			addForeignKeyAttribute(keyElement, paReference);
 		}
+
+		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference).getFilter());
 	}
 
 	/**
@@ -272,6 +275,8 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
 			addForeignKeyAttribute(keyElement, paReference);
 		}
+
+		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference).getFilter());
 	}
 
 	/**

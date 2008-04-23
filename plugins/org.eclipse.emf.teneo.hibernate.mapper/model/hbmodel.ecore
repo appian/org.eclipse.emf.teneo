@@ -23,6 +23,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbIdBag" eType="ecore:EClass hbannotation.ecore#//IdBag"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbIndex" eType="ecore:EClass hbannotation.ecore#//Index"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Filter" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//Filter"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEAttribute" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEAttribute #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
@@ -39,6 +41,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbProxy" eType="ecore:EClass hbannotation.ecore#//Proxy"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbNamedQuery" upperBound="-1"
         eType="ecore:EClass hbannotation.ecore#//NamedQuery"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FilterDef" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//FilterDef"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Filter" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//Filter"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" abstract="true"
       interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>
@@ -49,6 +55,8 @@
         eType="ecore:EClass hbannotation.ecore#//TypeDef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbNamedQuery" upperBound="-1"
         eType="ecore:EClass hbannotation.ecore#//NamedQuery"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FilterDef" upperBound="-1"
+        eType="ecore:EClass hbannotation.ecore#//FilterDef"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEReference" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEReference #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCache" eType="ecore:EClass hbannotation.ecore#//Cache"

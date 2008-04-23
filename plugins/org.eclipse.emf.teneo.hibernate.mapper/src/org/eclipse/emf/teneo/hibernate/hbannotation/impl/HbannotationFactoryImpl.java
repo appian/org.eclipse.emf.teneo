@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.6 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.7 2008/04/23 15:44:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -90,6 +90,9 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.INDEX: return createIndex();
 			case HbannotationPackage.GENERATED: return createGenerated();
 			case HbannotationPackage.NAMED_QUERY: return createNamedQuery();
+			case HbannotationPackage.FILTER: return createFilter();
+			case HbannotationPackage.PARAM_DEF: return createParamDef();
+			case HbannotationPackage.FILTER_DEF: return createFilterDef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -279,6 +282,36 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	public NamedQuery createNamedQuery() {
 		NamedQueryImpl namedQuery = new NamedQueryImpl();
 		return namedQuery;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Filter createFilter() {
+		FilterImpl filter = new FilterImpl();
+		return filter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParamDef createParamDef() {
+		ParamDefImpl paramDef = new ParamDefImpl();
+		return paramDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FilterDef createFilterDef() {
+		FilterDefImpl filterDef = new FilterDefImpl();
+		return filterDef;
 	}
 
 	/**

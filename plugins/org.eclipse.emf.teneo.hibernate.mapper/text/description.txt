@@ -74,6 +74,19 @@ Package hbannotation <http://www.eclipse.org/emf/teneo/2006/HbAnnotation>
     Attribute name : EString
     Attribute query : EString
 
+  Class Filter -> HbAnnotation
+    Attribute name : EString<<1..1>>
+    Attribute condition : EString
+
+  Class ParamDef -> HbAnnotation
+    Attribute name : EString<<1..1>>
+    Attribute type : EString<<1..1>>
+
+  Class FilterDef -> HbAnnotation
+    Attribute name : EString<<1..1>>
+    Attribute defaultCondition : EString
+    Reference parameters : ParamDef<<0..*>>
+
   Enum CacheConcurrencyStrategy
     Literal NONE = 0
     Literal READ_ONLY = 1
@@ -105,6 +118,7 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbCascade : Cascade
     Reference hbIdBag : IdBag
     Reference hbIndex : Index
+    Reference Filter : Filter<<0..*>>
 
   Class HbAnnotatedEAttribute -> PAnnotatedEAttribute, HbAnnotatedETypeElement
     Reference hbType : Type
@@ -116,6 +130,8 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbWhere : Where
     Reference hbProxy : Proxy
     Reference hbNamedQuery : NamedQuery<<0..*>>
+    Reference FilterDef : FilterDef<<0..*>>
+    Reference Filter : Filter<<0..*>>
 
   Class HbAnnotatedEModelElement -> PAnnotatedEModelElement
 
@@ -123,6 +139,7 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbGenericGenerators : GenericGenerator<<0..*>>
     Reference hbTypeDef : TypeDef<<0..*>>
     Reference hbNamedQuery : NamedQuery<<0..*>>
+    Reference FilterDef : FilterDef<<0..*>>
 
   Class HbAnnotatedEReference -> PAnnotatedEReference, HbAnnotatedETypeElement
     Reference hbCache : Cache

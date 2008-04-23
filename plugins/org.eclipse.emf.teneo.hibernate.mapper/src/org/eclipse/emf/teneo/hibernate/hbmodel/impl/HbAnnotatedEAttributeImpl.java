@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.8 2007/07/11 17:35:11 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.9 2008/04/23 15:44:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -15,11 +15,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
@@ -44,6 +46,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbCascade <em>Hb Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbIndex <em>Hb Index</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbType <em>Hb Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getGenerated <em>Generated</em>}</li>
  * </ul>
@@ -120,6 +123,16 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * @ordered
 	 */
 	protected Index hbIndex;
+
+	/**
+	 * The cached value of the '{@link #getFilter() <em>Filter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Filter> filter;
 
 	/**
 	 * The cached value of the '{@link #getHbType() <em>Hb Type</em>}' containment reference.
@@ -408,6 +421,18 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Filter> getFilter() {
+		if (filter == null) {
+			filter = new EObjectResolvingEList<Filter>(Filter.class, this, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER);
+		}
+		return filter;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -539,6 +564,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX:
 				if (resolve) return getHbIndex();
 				return basicGetHbIndex();
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER:
+				return getFilter();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				return getHbType();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__GENERATED:
@@ -576,6 +603,10 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX:
 				setHbIndex((Index)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER:
+				getFilter().clear();
+				getFilter().addAll((Collection<? extends Filter>)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				setHbType((Type)newValue);
@@ -615,6 +646,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX:
 				setHbIndex((Index)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER:
+				getFilter().clear();
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				setHbType((Type)null);
 				return;
@@ -646,6 +680,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return hbIdBag != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX:
 				return hbIndex != null;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER:
+				return filter != null && !filter.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				return hbType != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__GENERATED:
@@ -674,6 +710,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE;
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG;
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX;
+				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
 				default: return -1;
 			}
 		}
@@ -700,6 +737,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_CASCADE;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_ID_BAG;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER;
 				default: return -1;
 			}
 		}

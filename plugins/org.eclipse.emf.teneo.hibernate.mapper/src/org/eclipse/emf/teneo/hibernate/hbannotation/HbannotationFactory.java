@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.4 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.5 2008/04/23 15:44:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -165,6 +165,33 @@ public interface HbannotationFactory extends EFactory {
 	 * @generated
 	 */
 	NamedQuery createNamedQuery();
+
+	/**
+	 * Returns a new object of class '<em>Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Filter</em>'.
+	 * @generated
+	 */
+	Filter createFilter();
+
+	/**
+	 * Returns a new object of class '<em>Param Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Param Def</em>'.
+	 * @generated
+	 */
+	ParamDef createParamDef();
+
+	/**
+	 * Returns a new object of class '<em>Filter Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Filter Def</em>'.
+	 * @generated
+	 */
+	FilterDef createFilterDef();
 
 	/**
 	 * Returns the package supported by this factory.

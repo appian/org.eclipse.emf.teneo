@@ -2,13 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClass.java,v 1.9 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbAnnotatedEClass.java,v 1.10 2008/04/23 15:44:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
@@ -26,6 +28,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbWhere <em>Hb Where</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbProxy <em>Hb Proxy</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbNamedQuery <em>Hb Named Query</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilterDef <em>Filter Def</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilter <em>Filter</em>}</li>
  * </ul>
  * </p>
  *
@@ -152,5 +156,37 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * @generated
 	 */
 	EList<NamedQuery> getHbNamedQuery();
+
+	/**
+	 * Returns the value of the '<em><b>Filter Def</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Filter Def</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Filter Def</em>' reference list.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_FilterDef()
+	 * @model
+	 * @generated
+	 */
+	EList<FilterDef> getFilterDef();
+
+	/**
+	 * Returns the value of the '<em><b>Filter</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.Filter}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Filter</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Filter</em>' reference list.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_Filter()
+	 * @model
+	 * @generated
+	 */
+	EList<Filter> getFilter();
 
 } // HbAnnotatedEClass

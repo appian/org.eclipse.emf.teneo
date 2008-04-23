@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingContext.java,v 1.28 2008/04/06 13:44:27 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.29 2008/04/23 15:44:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -131,6 +131,8 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	// The maximum comment length allowed
 	private int maximumCommentLength = 0;
 
+	private PersistenceOptions persistenceOptions;
+
 	/** Returns the entitymapper */
 	public EntityMapper getEntityMapper() {
 		return entityMapper;
@@ -146,6 +148,7 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 		idbagIDColumnName = po.getIDBagIDColumnName();
 		maximumCommentLength = po.getMaximumCommentLength();
 		escapeCharacter = po.getSqlNameEscapeCharacter();
+		persistenceOptions = po;
 	}
 
 	/** Return the concrete impl. class */
@@ -573,12 +576,18 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 
 	/** Returns the usertype used to handle the xsd date */
 	public String getXSDDateUserType() {
-		return "org.eclipse.emf.teneo.hibernate.mapping.XSDDate";
+		// --- JJH
+		return persistenceOptions.getUserXSDDateType();
+		// return "org.eclipse.emf.teneo.hibernate.mapping.XSDDate";
+		// --- JJH
 	}
 
 	/** Returns the usertype used to handle the xsd datetime */
 	public String getXSDDateTimeUserType() {
-		return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
+		// --- JJH
+		return persistenceOptions.getUserXSDDateTime();
+		// return "org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime";
+		// --- JJH
 	}
 
 	/**
@@ -728,5 +737,12 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	 */
 	public void setEscapeCharacter(String escapeCharacter) {
 		this.escapeCharacter = escapeCharacter;
+	}
+
+	/**
+	 * @return the persistenceOptions
+	 */
+	public PersistenceOptions getPersistenceOptions() {
+		return persistenceOptions;
 	}
 }

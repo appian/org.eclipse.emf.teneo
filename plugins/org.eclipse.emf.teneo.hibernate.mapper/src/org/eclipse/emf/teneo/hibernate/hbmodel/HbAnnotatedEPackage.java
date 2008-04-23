@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackage.java,v 1.7 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbAnnotatedEPackage.java,v 1.8 2008/04/23 15:44:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
@@ -22,6 +23,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbGenericGenerators <em>Hb Generic Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbTypeDef <em>Hb Type Def</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getHbNamedQuery <em>Hb Named Query</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getFilterDef <em>Filter Def</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,5 +80,21 @@ public interface HbAnnotatedEPackage extends PAnnotatedEPackage {
 	 * @generated
 	 */
 	EList<NamedQuery> getHbNamedQuery();
+
+	/**
+	 * Returns the value of the '<em><b>Filter Def</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Filter Def</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Filter Def</em>' reference list.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEPackage_FilterDef()
+	 * @model
+	 * @generated
+	 */
+	EList<FilterDef> getFilterDef();
 
 } // HbAnnotatedEPackage

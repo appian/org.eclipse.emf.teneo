@@ -13,12 +13,13 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.21 2008/03/31 07:46:24 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.22 2008/04/23 15:44:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,7 +35,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
+import org.eclipse.emf.teneo.hibernate.hbannotation.ParamDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
@@ -162,11 +165,29 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 					// here, we eliminate map.enties
 					if (!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getModelEClass())) {
 						processPAClass(paEClass);
+
 					}
+					mapFilterDef(hbmContext.getCurrent(), ((HbAnnotatedEClass) paEClass).getFilterDef());
 				}
+				mapFilterDef(hbmContext.getCurrent(), ((HbAnnotatedEPackage) paPackage).getFilterDef());
 			}
 		} finally {
 			processedPAClasses = null;
+		}
+	}
+
+	protected void mapFilterDef(Element parentElement, List<FilterDef> filterDefs) {
+		for (FilterDef fd : filterDefs) {
+			final Element fdElement = parentElement.addElement("filter-def");
+			fdElement.addAttribute("name", fd.getName());
+			if (fd.getDefaultCondition() != null) {
+				fdElement.addAttribute("condition", fd.getDefaultCondition());
+			}
+			for (ParamDef pd : fd.getParameters()) {
+				final Element pdElement = fdElement.addElement("filter-param");
+				pdElement.addAttribute("name", pd.getName());
+				pdElement.addAttribute("type", pd.getType());
+			}
 		}
 	}
 

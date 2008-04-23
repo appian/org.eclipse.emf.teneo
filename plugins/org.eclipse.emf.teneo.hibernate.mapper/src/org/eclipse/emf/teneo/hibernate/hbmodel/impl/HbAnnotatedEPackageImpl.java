@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEPackageImpl.java,v 1.8 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbAnnotatedEPackageImpl.java,v 1.9 2008/04/23 15:44:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl;
+import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
@@ -31,6 +32,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getHbGenericGenerators <em>Hb Generic Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getHbTypeDef <em>Hb Type Def</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getHbNamedQuery <em>Hb Named Query</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEPackageImpl#getFilterDef <em>Filter Def</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,6 +67,16 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	 * @ordered
 	 */
 	protected EList<NamedQuery> hbNamedQuery;
+
+	/**
+	 * The cached value of the '{@link #getFilterDef() <em>Filter Def</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFilterDef()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FilterDef> filterDef;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -118,6 +130,18 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<FilterDef> getFilterDef() {
+		if (filterDef == null) {
+			filterDef = new EObjectResolvingEList<FilterDef>(FilterDef.class, this, HbmodelPackage.HB_ANNOTATED_EPACKAGE__FILTER_DEF);
+		}
+		return filterDef;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -145,6 +169,8 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 				return getHbTypeDef();
 			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
 				return getHbNamedQuery();
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__FILTER_DEF:
+				return getFilterDef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,6 +195,10 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 				getHbNamedQuery().clear();
 				getHbNamedQuery().addAll((Collection<? extends NamedQuery>)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__FILTER_DEF:
+				getFilterDef().clear();
+				getFilterDef().addAll((Collection<? extends FilterDef>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -189,6 +219,9 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
 				getHbNamedQuery().clear();
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__FILTER_DEF:
+				getFilterDef().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -206,6 +239,8 @@ public class HbAnnotatedEPackageImpl extends PAnnotatedEPackageImpl implements H
 				return hbTypeDef != null && !hbTypeDef.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY:
 				return hbNamedQuery != null && !hbNamedQuery.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_EPACKAGE__FILTER_DEF:
+				return filterDef != null && !filterDef.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

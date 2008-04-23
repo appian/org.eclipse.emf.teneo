@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.9 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.10 2008/04/23 15:44:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
@@ -22,6 +23,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
@@ -45,6 +47,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCascade <em>Hb Cascade</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIndex <em>Hb Index</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
@@ -122,6 +125,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected Index hbIndex;
+
+	/**
+	 * The cached value of the '{@link #getFilter() <em>Filter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Filter> filter;
 
 	/**
 	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference.
@@ -420,6 +433,18 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Filter> getFilter() {
+		if (filter == null) {
+			filter = new EObjectResolvingEList<Filter>(Filter.class, this, HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER);
+		}
+		return filter;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -582,6 +607,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
 				if (resolve) return getHbIndex();
 				return basicGetHbIndex();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
+				return getFilter();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return getHbCache();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -624,6 +651,10 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
 				setHbIndex((Index)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
+				getFilter().clear();
+				getFilter().addAll((Collection<? extends Filter>)newValue);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)newValue);
 				return;
@@ -665,6 +696,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
 				setHbIndex((Index)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
+				getFilter().clear();
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)null);
 				return;
@@ -699,6 +733,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbIdBag != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX:
 				return hbIndex != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
+				return filter != null && !filter.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return hbCache != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -729,6 +765,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX;
+				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
 				default: return -1;
 			}
 		}
@@ -755,6 +792,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_CASCADE: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CASCADE;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER;
 				default: return -1;
 			}
 		}

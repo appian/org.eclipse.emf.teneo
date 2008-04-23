@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: ManyAttributeMapper.java,v 1.20 2008/02/28 07:07:43 mtaal Exp $
+ * </copyright> $Id: ManyAttributeMapper.java,v 1.21 2008/04/23 15:44:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -22,6 +22,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -97,5 +98,7 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 		}
 
 		addAccessor(collElement);
+
+		mapFilter(collElement, ((HbAnnotatedETypeElement) paAttribute).getFilter());
 	}
 }

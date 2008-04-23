@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbEDataTypeAnnotator.java,v 1.3 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbEDataTypeAnnotator.java,v 1.4 2008/04/23 15:44:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -34,7 +34,7 @@ import org.hibernate.type.TypeFactory;
  * Annotates an EDataType
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
@@ -59,8 +59,7 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 		// create default typedef
 		log.debug("Creating default typedef for edatatype " + hed.getModelEDataType().getName());
 		final TypeDef typeDef = HbannotationFactory.eINSTANCE.createTypeDef();
-		typeDef.setName(hed.getModelEDataType().getEPackage().getName() + "." +
-				ped.getModelEDataType().getName());
+		typeDef.setName(hed.getModelEDataType().getEPackage().getName() + "." + ped.getModelEDataType().getName());
 		typeDef.setTypeClass(getDefaultUserType());
 		// add default parameters
 		final Parameter paramPackage = HbannotationFactory.eINSTANCE.createParameter();
@@ -85,7 +84,7 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 	 */
 	private String getCustomDataType(EDataType eDataType) {
 		final String typeClassName = eDataType.getInstanceClassName();
-		if (EcoreDataTypes.INSTANCE.isSimpleType(eDataType)) {
+		if (EcoreDataTypes.INSTANCE.isSimpleType(eDataType, getPersistenceOptions())) {
 			return null;
 		} else if (EcoreDataTypes.INSTANCE.isEnum(eDataType)) {
 			return null;

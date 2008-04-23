@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.35 2008/02/28 07:07:43 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.36 2008/04/23 15:44:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
@@ -205,7 +206,7 @@ public abstract class AbstractMapper {
 			return getEDateTimeClass(paAttribute);
 		} else if (EcoreDataTypes.INSTANCE.isEDuration(eDataType)) {
 			return hbmContext.getDurationType();
-		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType) ||
+		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType, getHbmContext().getPersistenceOptions()) ||
 				(paAttribute.getTemporal() != null && paAttribute.getTemporal().getValue().getValue() == TemporalType.DATE_VALUE)) {
 			return getEDateClass(paAttribute);
 		} else if (eDataType.getInstanceClass() != null && eDataType.getInstanceClass() == Object.class) {
@@ -287,26 +288,24 @@ public abstract class AbstractMapper {
 	public String getEDateClass(PAnnotatedEAttribute paAttribute) {
 		final EDataType eDataType = paAttribute.getModelEAttribute().getEAttributeType();
 
-		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType));
+		assert (EcoreDataTypes.INSTANCE.isEDate(eDataType, getHbmContext().getPersistenceOptions()));
 
 		if (XMLTypePackage.eINSTANCE.getDate().equals(eDataType)) {
-			return getHbmContext().getXSDDateUserType();
-		}
-
-		// only override if the user did not specify a more specific class
-		if (eDataType.getInstanceClass() == Object.class ||
-				(eDataType.getInstanceClassName() != null && eDataType.getInstanceClassName().compareTo(
-					"javax.xml.datatype.XMLGregorianCalendar") == 0)) {
-			// EMF returns an XSD Date type as an Object instance. go figure.
-			// note that I would prefer to use the class instance to get the name
-			// but for other reasons I do not want to have references to the
-			// org.eclipse.emf.teneo.hibernate plugin.
 			return getHbmContext().getXSDDateUserType();
 		}
 
 		if (paAttribute.getTemporal() != null) {
 			final TemporalType tt = paAttribute.getTemporal().getValue();
 			return hbType(tt);
+		}
+
+		// only override if the user did not specify a more specific class
+		if (EcoreDataTypes.INSTANCE.isEDate(eDataType, getHbmContext().getPersistenceOptions())) {
+			// EMF returns an XSD Date type as an Object instance. go figure.
+			// note that I would prefer to use the class instance to get the name
+			// but for other reasons I do not want to have references to the
+			// org.eclipse.emf.teneo.hibernate plugin.
+			return getHbmContext().getXSDDateUserType();
 		}
 
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
@@ -326,17 +325,17 @@ public abstract class AbstractMapper {
 			return getHbmContext().getXSDDateTimeUserType();
 		}
 
-		if (eDataType.getInstanceClass() == Object.class) {
+		if (paAttribute.getTemporal() != null) {
+			final TemporalType tt = paAttribute.getTemporal().getValue();
+			return hbType(tt);
+		}
+
+		if (EcoreDataTypes.INSTANCE.isEDateTime(eDataType)) {
 			// EMF returns an XSD Date type as an Object instance. go figure.
 			// note that I would prefer to use the class instance to get the name
 			// but for other reasons I do not want to have references to the
 			// org.eclipse.emf.teneo.hibernate plugin.
 			return getHbmContext().getXSDDateTimeUserType();
-		}
-
-		if (paAttribute.getTemporal() != null) {
-			final TemporalType tt = paAttribute.getTemporal().getValue();
-			return hbType(tt);
 		}
 
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the user
@@ -498,6 +497,16 @@ public abstract class AbstractMapper {
 				propertyElement.addAttribute("unique", column.isUnique() ? "true" : "false");
 			}
 			addColumnElement(propertyElement, pef, column, isNullable);
+		}
+	}
+
+	protected void mapFilter(Element parentElement, List<Filter> filters) {
+		for (Filter filter : filters) {
+			final Element filterElement = parentElement.addElement("filter");
+			filterElement.addAttribute("name", filter.getName());
+			if (filter.getCondition() != null) {
+				filterElement.addAttribute("condition", filter.getCondition());
+			}
 		}
 	}
 

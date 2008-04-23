@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedETypeElementValidator.java,v 1.2 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: HbAnnotatedETypeElementValidator.java,v 1.3 2008/04/23 15:44:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.validation;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
@@ -34,4 +35,6 @@ public interface HbAnnotatedETypeElementValidator {
 	boolean validateHbIdBag(IdBag value);
 
 	boolean validateHbIndex(Index value);
+
+	boolean validateFilter(EList<Filter> value);
 }

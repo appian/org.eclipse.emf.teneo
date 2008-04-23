@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.4 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.5 2008/04/23 15:44:25 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -226,6 +226,30 @@ public class HbannotationSwitch<T> {
 				T result = caseNamedQuery(namedQuery);
 				if (result == null) result = caseHbAnnotation(namedQuery);
 				if (result == null) result = casePAnnotation(namedQuery);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.FILTER: {
+				Filter filter = (Filter)theEObject;
+				T result = caseFilter(filter);
+				if (result == null) result = caseHbAnnotation(filter);
+				if (result == null) result = casePAnnotation(filter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.PARAM_DEF: {
+				ParamDef paramDef = (ParamDef)theEObject;
+				T result = caseParamDef(paramDef);
+				if (result == null) result = caseHbAnnotation(paramDef);
+				if (result == null) result = casePAnnotation(paramDef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.FILTER_DEF: {
+				FilterDef filterDef = (FilterDef)theEObject;
+				T result = caseFilterDef(filterDef);
+				if (result == null) result = caseHbAnnotation(filterDef);
+				if (result == null) result = casePAnnotation(filterDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -475,6 +499,51 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseNamedQuery(NamedQuery object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Filter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFilter(Filter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Param Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Param Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParamDef(ParamDef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Filter Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Filter Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFilterDef(FilterDef object) {
 		return null;
 	}
 

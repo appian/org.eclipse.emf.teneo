@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.6 2008/03/30 20:55:12 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.7 2008/04/23 15:44:26 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -242,13 +242,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Filter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__FILTER = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EType Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 7;
+	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
@@ -504,13 +513,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__HB_INDEX = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Filter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__FILTER = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 7;
+	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' containment reference.
@@ -519,7 +537,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class.
@@ -528,7 +546,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -748,13 +766,31 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__HB_NAMED_QUERY = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Filter Def</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__FILTER_DEF = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Filter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__FILTER = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 5;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -903,13 +939,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Filter Def</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EPACKAGE__FILTER_DEF = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EPACKAGE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 3;
+	int HB_ANNOTATED_EPACKAGE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EPACKAGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl <em>Hb Annotated EReference</em>}' class.
@@ -1174,13 +1219,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__HB_INDEX = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Filter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__FILTER = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 7;
+	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Hb Fetch</b></em>' reference.
@@ -1189,7 +1243,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
@@ -1198,7 +1252,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
@@ -1207,7 +1261,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1470,6 +1524,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedETypeElement_HbIndex();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFilter <em>Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Filter</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFilter()
+	 * @see #getHbAnnotatedETypeElement()
+	 * @generated
+	 */
+	EReference getHbAnnotatedETypeElement_Filter();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute <em>Hb Annotated EAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1567,6 +1632,28 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_HbNamedQuery();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilterDef <em>Filter Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Filter Def</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilterDef()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_FilterDef();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilter <em>Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Filter</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilter()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_Filter();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1618,6 +1705,17 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHbAnnotatedEPackage_HbNamedQuery();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getFilterDef <em>Filter Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Filter Def</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage#getFilterDef()
+	 * @see #getHbAnnotatedEPackage()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEPackage_FilterDef();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference <em>Hb Annotated EReference</em>}'.
@@ -1816,6 +1914,14 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX = eINSTANCE.getHbAnnotatedETypeElement_HbIndex();
 
 		/**
+		 * The meta object literal for the '<em><b>Filter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ETYPE_ELEMENT__FILTER = eINSTANCE.getHbAnnotatedETypeElement_Filter();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1892,6 +1998,22 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_ECLASS__HB_NAMED_QUERY = eINSTANCE.getHbAnnotatedEClass_HbNamedQuery();
 
 		/**
+		 * The meta object literal for the '<em><b>Filter Def</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__FILTER_DEF = eINSTANCE.getHbAnnotatedEClass_FilterDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__FILTER = eINSTANCE.getHbAnnotatedEClass_Filter();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1934,6 +2056,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EPACKAGE__HB_NAMED_QUERY = eINSTANCE.getHbAnnotatedEPackage_HbNamedQuery();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter Def</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EPACKAGE__FILTER_DEF = eINSTANCE.getHbAnnotatedEPackage_FilterDef();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl <em>Hb Annotated EReference</em>}' class.

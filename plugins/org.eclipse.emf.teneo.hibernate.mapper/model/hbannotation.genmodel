@@ -92,6 +92,19 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//NamedQuery/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//NamedQuery/query"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Filter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Filter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Filter/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//ParamDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//ParamDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//ParamDef/type"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//FilterDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//FilterDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//FilterDef/defaultCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbannotation.ecore#//FilterDef/parameters"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Hbmodel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">
@@ -103,6 +116,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/hbCascade"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/hbIdBag"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/hbIndex"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/Filter"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEAttribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/hbType"/>
@@ -114,12 +128,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbWhere"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbProxy"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbNamedQuery"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/FilterDef"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/Filter"/>
     </genClasses>
     <genClasses image="false" ecoreClass="hbmodel.ecore#//HbAnnotatedEModelElement"/>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEPackage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbGenericGenerators"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbTypeDef"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbNamedQuery"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/FilterDef"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbCache"/>
