@@ -7,7 +7,7 @@
       image="eclipse_update_120.jpg">
 
    <description>
-      %description (Incubation)
+      %description
    </description>
 
    <license url="%licenseURL">
