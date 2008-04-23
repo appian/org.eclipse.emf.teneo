@@ -9,11 +9,13 @@
 	</xsd:complexType>
 	<xsd:complexType name="EPackage">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="filter-def" type="FilterDef"/>
 			<xsd:element name="generic-generator" type="GenericGenerator">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbGenericGenerators</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="named-query" type="NamedQuery"/>
 			<xsd:element name="type-def" type="TypeDef"/>
 			<xsd:element name="sequence-generator" type="SequenceGenerator">
 				<xsd:annotation>
@@ -33,6 +35,8 @@
 	</xsd:complexType>
 	<xsd:complexType name="EClass">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="filter" type="Filter"/>
+			<xsd:element name="filter-def" type="FilterDef"/>
 			<xsd:element name="association-override" type="AssociationOverride">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">associationOverrides</xsd:appinfo>
@@ -77,6 +81,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="EAttribute">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="attribute-override" type="AttributeOverride">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
@@ -127,6 +132,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="EReference">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="attribute-override" type="AttributeOverride">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
@@ -183,6 +189,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="Property">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="attribute-override" type="AttributeOverride">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
@@ -287,6 +294,21 @@
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
 	<xsd:attribute name="target-element" type="xsd:string" use="optional"/>
 </xsd:complexType>
+<xsd:complexType name="Filter">
+	<xsd:attribute name="condition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="required"/>
+</xsd:complexType>
+<xsd:complexType name="FilterDef">
+	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:element name="parameter" type="ParamDef">
+			<xsd:annotation>
+				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">parameters</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:choice>
+	<xsd:attribute name="default-condition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="required"/>
+</xsd:complexType>
 <xsd:simpleType name="GenerationTime">
 	<xsd:restriction base="xsd:token">
 		<xsd:enumeration value="NEVER"/>
@@ -327,6 +349,10 @@
 		<xsd:enumeration value="CASCADE"/>
 	</xsd:restriction>
 </xsd:simpleType>
+<xsd:complexType name="ParamDef">
+	<xsd:attribute name="name" type="xsd:string" use="required"/>
+	<xsd:attribute name="type" type="xsd:string" use="required"/>
+</xsd:complexType>
 <xsd:complexType name="Parameter">
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="value" type="xsd:string" use="required"/>
