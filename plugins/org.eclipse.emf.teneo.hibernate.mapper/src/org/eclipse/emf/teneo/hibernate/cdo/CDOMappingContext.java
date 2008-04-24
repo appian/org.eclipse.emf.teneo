@@ -66,12 +66,12 @@ public class CDOMappingContext extends MappingContext {
 
 	@Override
 	public String getSyntheticIdPropertyHandlerName() {
-		return super.getSyntheticIdPropertyHandlerName();
+		return "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOSyntheticIdPropertyHandler";
 	}
 
 	@Override
 	public String getSyntheticVersionPropertyHandlerName() {
-		return super.getSyntheticVersionPropertyHandlerName();
+		return "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOSyntheticVersionPropertyHandler";
 	}
 
 	@Override
