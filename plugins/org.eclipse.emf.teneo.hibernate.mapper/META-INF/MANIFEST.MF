@@ -23,4 +23,5 @@ Require-Bundle: org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.apache.commons.logging
+Import-Package: org.apache.commons.logging,
+ org.hibernate.type
