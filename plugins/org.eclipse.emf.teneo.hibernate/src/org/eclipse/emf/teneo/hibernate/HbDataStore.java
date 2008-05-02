@@ -77,7 +77,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -554,14 +554,12 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	protected void setComponentTuplizer(Component component, Configuration cfg) {
 		// check if the eclass exists
-		try {
-			// todo: change recognizing a component to using metadata!
-			final EClass eClass = getEntityNameStrategy().toEClass(component.getComponentClassName());
-			if (eClass != null) {
-				log.debug("Found " + eClass.getName() + " as a component");
-			}
-		} catch (IllegalArgumentException e) {
-			return; // not a valud eclass;
+		// todo: change recognizing a component to using metadata!
+		final EClass eClass = getEntityNameStrategy().toEClass(component.getComponentClassName());
+		if (eClass != null) {
+			log.debug("Found " + eClass.getName() + " as a component");
+		} else {
+			return;
 		}
 		// is a
 		// valid
@@ -843,17 +841,12 @@ public abstract class HbDataStore implements DataStore {
 
 				final Property prop = (Property) propIt.next();
 				EClass eClass = null;
-				try {
-					if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) == null) {
-						if (pc.getEntityName() != null) {
-							eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
-						} else {
-							eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
-						}
+				if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) == null) {
+					if (pc.getEntityName() != null) {
+						eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+					} else {
+						eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
 					}
-				} catch (IllegalArgumentException e) {
-					// ignoring exception on purpose
-					eClass = null;
 				}
 
 				final EStructuralFeature ef =
@@ -981,13 +974,9 @@ public abstract class HbDataStore implements DataStore {
 			HashMap<String, java.util.List<ReferenceTo>> refersTo, ArrayList<EClass> classDone) {
 		final EntityNameStrategy ens = getEntityNameStrategy();
 		EClass eclass;
-		try {
-			eclass = ens.toEClass(eClassUri);
-		} catch (IllegalArgumentException e) {
-			// catch this, this happens when the refered to eclass is not mapped
-			// because it is is embeddable
-			eclass = null;
-		}
+		// eclass = null when the refered to eclass is not mapped
+		// because it is is embeddable
+		eclass = ens.toEClass(eClassUri);
 		if (eclass == null) {
 			return new ArrayList<ReferenceTo>();
 		}
