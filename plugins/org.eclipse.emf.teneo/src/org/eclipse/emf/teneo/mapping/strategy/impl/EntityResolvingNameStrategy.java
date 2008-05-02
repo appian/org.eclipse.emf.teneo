@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.6 2008/04/06 13:44:04 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.7 2008/05/02 06:09:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -26,9 +26,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
-import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
-import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -37,7 +34,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
@@ -153,18 +150,21 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 		}
 
 		// we didn'y find it, perhaps it is fully qualified, lets try by full class name
-		if (eClass == null) {
-			try {
-				final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
-				eClass = EModelResolver.instance().getEClass(cls);
-			} catch (StoreClassLoadException e) {
-				log.debug("Failed to retreive EClass for name: " + eClassName +
-						". This is no problem if this is a featuremap.");
-			}
-		}
+// if (eClass == null) {
+// try {
+// final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
+// eClass = EModelResolver.instance().getEClass(cls);
+// } catch (StoreClassLoadException e) {
+// log.debug("Failed to retreive EClass for name: " + eClassName +
+// ". This is no problem if this is a featuremap.");
+// }
+// }
 
 		if (eClass == null) {
-			throw new IllegalArgumentException("No EClass found using " + eClassName);
+			log.debug("Failed to retreive EClass for name: " + eClassName +
+					". This is no problem if this is a featuremap.");
+			return null;
+// throw new IllegalArgumentException("No EClass found using " + eClassName);
 		}
 		entityNameToEClass.put(eClassName, eClass);
 		return eClass;
