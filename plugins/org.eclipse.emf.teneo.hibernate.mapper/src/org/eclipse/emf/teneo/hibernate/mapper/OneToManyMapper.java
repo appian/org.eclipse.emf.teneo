@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: OneToManyMapper.java,v 1.27 2008/04/23 15:44:25 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.28 2008/05/09 05:28:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -107,6 +107,12 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addJoinTable(hbReference, collElement, keyElement, jt);
 		} else {
 			addKeyColumns(hbReference, keyElement, jcs);
+
+			// a special case see here:
+			// http://forum.hibernate.org/viewtopic.php?p=2383090
+			if (eref.isContainment() && false) {
+				collElement.addAttribute("inverse", "true");
+			}
 		}
 
 		final OneToMany otm = hbReference.getOneToMany();

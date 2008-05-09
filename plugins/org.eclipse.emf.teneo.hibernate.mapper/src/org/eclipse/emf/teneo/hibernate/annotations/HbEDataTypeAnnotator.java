@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbEDataTypeAnnotator.java,v 1.4 2008/04/23 15:44:26 mtaal Exp $
+ * $Id: HbEDataTypeAnnotator.java,v 1.5 2008/05/09 05:28:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -28,13 +28,12 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
-import org.hibernate.type.TypeFactory;
 
 /**
  * Annotates an EDataType
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
@@ -90,21 +89,25 @@ public class HbEDataTypeAnnotator extends EDataTypeAnnotator {
 			return null;
 		} else if (eDataType.getInstanceClass() == Object.class) {
 			return null;
-		} else if (typeClassName != null && TypeFactory.basic(typeClassName) != null) {
-			// If Hibernate natively handles the type then don't bother creating
-			// a typedef.
-			return null;
+// } else if (typeClassName != null && TypeFactory.basic(typeClassName) != null) {
+// // If Hibernate natively handles the type then don't bother creating
+// // a typedef.
+// return null;
 		}
 		if (typeClassName != null) {
 			final Class<?> instanceClass = eDataType.getInstanceClass();
 			if (instanceClass != null && instanceClass.isArray()) {
+				final Class<?> compClass = instanceClass.getComponentType();
+				if (EcoreDataTypes.INSTANCE.isPrimitive(compClass)) {
+					return null;
+				}
 				// get rid of the [] at the end
-				final String primType = typeClassName.substring(0, typeClassName.length() - 2);
+// final String primType = typeClassName.substring(0, typeClassName.length() - 2);
 				// check if hb supports it
 				// no dots is primitve
-				if (TypeFactory.basic(primType) != null) {
-					return null; // if so let hb do it
-				}
+// if (TypeFactory.basic(primType) != null) {
+// return null; // if so let hb do it
+// }
 			}
 		}
 
