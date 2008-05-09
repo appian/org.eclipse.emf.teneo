@@ -14,7 +14,7 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.12 2008/04/23 15:45:32 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.13 2008/05/09 05:28:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -67,6 +67,11 @@ public class EcoreDataTypes {
 					EcorePackage.eINSTANCE.getEDouble(), EcorePackage.eINSTANCE.getEFloat(),
 					EcorePackage.eINSTANCE.getEInt(), EcorePackage.eINSTANCE.getELong(),
 					EcorePackage.eINSTANCE.getEShort(), }));
+
+	private static final List<Class<?>> PRIMITIVE_OBJECT_TYPE_LIST =
+			Collections.unmodifiableList(Arrays.asList(new Class<?>[] { java.lang.Boolean.class, java.lang.Byte.class,
+					java.lang.Double.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Long.class,
+					java.math.BigDecimal.class, java.math.BigInteger.class }));
 
 	private static final List<EDataType> WRAPPERS_ETYPES_LIST =
 			Collections.unmodifiableList(Arrays.asList(new EDataType[] { EcorePackage.eINSTANCE.getEBooleanObject(),
@@ -234,8 +239,14 @@ public class EcoreDataTypes {
 	 *         primitive type.
 	 */
 	public boolean isEPrimitive(EDataType eDataType) {
-		return (eDataType != null) && (eDataType.getInstanceClass() != null) &&
-				(eDataType.getInstanceClass().isPrimitive());
+		return eDataType != null && isPrimitive(eDataType.getInstanceClass());
+	}
+
+	public boolean isPrimitive(Class<?> clz) {
+		if (clz == null) {
+			return false;
+		}
+		return clz.isPrimitive() || PRIMITIVE_OBJECT_TYPE_LIST.contains(clz);
 	}
 
 	/**
