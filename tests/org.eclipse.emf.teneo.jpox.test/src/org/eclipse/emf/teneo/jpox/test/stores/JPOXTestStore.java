@@ -40,6 +40,7 @@ import org.eclipse.emf.teneo.jpox.JpoxConstants;
 import org.eclipse.emf.teneo.jpox.JpoxDataStore;
 import org.eclipse.emf.teneo.jpox.JpoxHelper;
 import org.eclipse.emf.teneo.jpox.resource.JPOXResource;
+import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.jpox.test.Utils;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
@@ -56,7 +57,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -138,7 +139,8 @@ public class JPOXTestStore extends AbstractTestStore {
 			final File pluginsDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile();
 			final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.samples");
 			String packagePath =
-					"bin" + File.separator + epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+					(JPOXTestbed.isRunningOnEMFTServer() ? "@dot" : "bin") + File.separator +
+							epack.getClass().getName().replace('.', File.separatorChar) + ".class";
 			File packageFile = new File(pluginDir, packagePath);
 			File packageDirectory = packageFile.getParentFile();
 			if (!packageDirectory.exists()) {
@@ -164,6 +166,7 @@ public class JPOXTestStore extends AbstractTestStore {
 				log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
 				destination.delete();
 			}
+			log.info("Writing jdo file to " + destination.getAbsolutePath());
 			destination.createNewFile();
 			StoreUtil.copyFile(new File(jdoLocation), destination);
 		} catch (IOException e) {
