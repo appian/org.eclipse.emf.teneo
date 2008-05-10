@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd">
+
+<jdo>
+	<package name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl">
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.BookImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="book" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Book"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Book"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="title" persistence-modifier="persistent" null-value="exception"/>
+			<field name="pages" persistence-modifier="persistent" null-value="exception"/>
+			<field name="pagesESet" persistence-modifier="persistent"/>
+			<field name="category" persistence-modifier="persistent" null-value="exception" embedded="true"/>
+			<field name="categoryESet" persistence-modifier="persistent"/>
+			<field name="author" persistence-modifier="persistent" delete-action="restrict" null-value="none">
+				<foreign-key name="book_author"/>
+				<column name="book_author_e_id" allows-null="true"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.WriterImpl"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.LibraryImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="library" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Library"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Library"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="writers" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.WriterImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="library_writers_e_id" allows-null="true"/>
+				</element>
+				<order column="LIBRARY_WRITERS_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="library_writers"/>
+			</field>
+			<field name="books" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.BookImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+				</collection>
+				<element>
+					<column name="library_books_e_id" allows-null="true"/>
+				</element>
+				<order column="LIBRARY_BOOKS_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="library_books"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.WriterImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="writer" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.annotations.lazy.Writer"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Writer"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="books" persistence-modifier="persistent" mapped-by="author" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.lazy.impl.BookImpl" dependent-element="false">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<order column="WRITER_BOOKS_IDX"/>
+				<foreign-key delete-action="restrict" update-action="cascade"/>
+			</field>
+		</class>
+	</package>
+</jdo>
