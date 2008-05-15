@@ -1718,6 +1718,6 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.common.notify,
    org.eclipse.emf.ecore",
  testinheritance.validation;uses:="testinheritance,org.eclipse.emf.common.util"
-Bundle-ClassPath: jdo2-api-2.0.jar,
- .
+Bundle-ClassPath: .,
+ jdo2-api-2.0.jar
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
