@@ -2,6 +2,18 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
+	<typedef name="substitution.EvenType" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/substitution</param>
+		<param name="edatatype">EvenType</param>
+	</typedef>
+	<typedef name="substitution.OddType" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/substitution</param>
+		<param name="edatatype">OddType</param>
+	</typedef>
+	<typedef name="substitution.SimpleNumber" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/substitution</param>
+		<param name="edatatype">SimpleNumber</param>
+	</typedef>
 	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitution.impl.ComplexNumberImpl" entity-name="ComplexNumber" abstract="false" lazy="false" table="`complexnumber`">
 		<meta attribute="eclassName">ComplexNumber</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/schemaconstructs/substitution</meta>
@@ -97,7 +109,7 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mySimpleAbstract" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+		<property name="mySimpleAbstract" lazy="false" insert="true" update="true" not-null="false" unique="false" type="substitution.SimpleNumber">
 			<column not-null="false" unique="false" name="`mysimpleabstractgroup_mysimpleabstract`"/>
 		</property>
 	</class>

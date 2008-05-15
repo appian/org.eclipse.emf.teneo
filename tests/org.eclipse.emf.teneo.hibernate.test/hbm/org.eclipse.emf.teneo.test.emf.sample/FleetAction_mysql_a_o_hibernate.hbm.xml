@@ -2,6 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
+	<typedef name="temporal.EBooleanArray" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http:///temporal.ecore</param>
+		<param name="edatatype">EBooleanArray</param>
+	</typedef>
 	<class entity-name="Vehicle" abstract="false" lazy="false" discriminator-value="Vehicle" table="`vehicle`">
 		<meta attribute="eclassName">Vehicle</meta>
 		<meta attribute="epackage">http:///fleet.ecore</meta>
