@@ -57,7 +57,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -132,45 +132,53 @@ public class JPOXTestStore extends AbstractTestStore {
 			properties.setProperty(PMFConfiguration.DEFAULT_INHERITANCE_STRATEGY_PROPERTY, "JDO2");
 		}
 
-		try {
-			log.debug("Copying " + jdoLocation + " to classpath");
-			EPackage epack = epackages[0];
-			final File sourceFile = new File(jdoLocation);
-			final File pluginsDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile();
-			final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.samples");
-			String packagePath =
-					(JPOXTestbed.isRunningOnEMFTServer() ? "@dot" : "bin") + File.separator +
-							epack.getClass().getName().replace('.', File.separatorChar) + ".class";
-			File packageFile = new File(pluginDir, packagePath);
-			File packageDirectory = packageFile.getParentFile();
-			if (!packageDirectory.exists()) {
-				packagePath = epack.getClass().getName().replace('.', File.separatorChar) + ".class";
-				packageFile = new File(pluginDir, packagePath);
-				packageDirectory = packageFile.getParentFile();
-			}
+		if (!JPOXTestbed.isRunningOnEMFTServer()) {
+			try {
+				log.debug("Copying " + jdoLocation + " to classpath");
+				EPackage epack = epackages[0];
+				final File sourceFile = new File(jdoLocation);
+				final File pluginsDir = sourceFile.getParentFile().getParentFile().getParentFile().getParentFile();
+				final File pluginDir = Utils.getPluginDir(pluginsDir, "org.eclipse.emf.teneo.samples");
+				String packagePath =
+						"bin" + File.separator + epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+				File packageFile = new File(pluginDir, packagePath);
+				File packageDirectory = packageFile.getParentFile();
+				if (!packageDirectory.exists()) {
+					packagePath = epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+					packageFile = new File(pluginDir, packagePath);
+					packageDirectory = packageFile.getParentFile();
+				}
 
-			final File dest;
-			if (properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER) != null &&
-					properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER)
-						.compareToIgnoreCase("true") == 0) {
-				dest = new File(packageDirectory.getParentFile().getParentFile(), "package.jdo");
-			} else {
-				dest = new File(packageDirectory.getParentFile(), "package.jdo");
-			}
+				final File dest;
+				if (properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER) != null &&
+						properties.getProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER)
+							.compareToIgnoreCase("true") == 0) {
+					dest = new File(packageDirectory.getParentFile().getParentFile(), "package.jdo");
+				} else {
+					dest = new File(packageDirectory.getParentFile(), "package.jdo");
+				}
 
-			if (!dest.exists()) {
-				dest.mkdirs();
+				if (!dest.exists()) {
+					dest.mkdirs();
+				}
+				final File destination = new File(dest.getAbsolutePath());
+				if (destination.exists()) {
+					log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
+					destination.delete();
+				}
+				log.info("Writing jdo file to " + destination.getAbsolutePath());
+				destination.createNewFile();
+				StoreUtil.copyFile(new File(jdoLocation), destination);
+
+				String packageSourcePath =
+						"src" + File.separator + epack.getClass().getName().replace('.', File.separatorChar) + ".class";
+				File packageSourceDir = new File(pluginDir, packageSourcePath).getParentFile();
+				final File sourceDest = new File(packageSourceDir, "package.jdo");
+				sourceDest.createNewFile();
+				StoreUtil.copyFile(new File(jdoLocation), sourceDest);
+			} catch (IOException e) {
+				throw new StoreTestException("IOException while copying mapping file", e);
 			}
-			final File destination = new File(dest.getAbsolutePath());
-			if (destination.exists()) {
-				log.warn("Overwriting existing package.jdo file in location " + destination.getAbsolutePath());
-				destination.delete();
-			}
-			log.info("Writing jdo file to " + destination.getAbsolutePath());
-			destination.createNewFile();
-			StoreUtil.copyFile(new File(jdoLocation), destination);
-		} catch (IOException e) {
-			throw new StoreTestException("IOException while copying mapping file", e);
 		}
 
 		EModelResolver.instance().clear();
