@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="sunBooks.BookCategoryTypeObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</param>
+		<param name="edatatype">BookCategoryTypeObject</param>
+	</typedef>
+	<typedef name="sunBooks.BookCategoryTypeObject1" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</param>
+		<param name="edatatype">BookCategoryTypeObject1</param>
+	</typedef>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.AuthorsTypeImpl" entity-name="AuthorsType" abstract="false" lazy="false" table="`authorstype`">
+		<meta attribute="eclassName">AuthorsType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="authorName" table="`authorstype_authorname`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`authorstype_authorname_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`authorstype_authorname_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BooksTypeImpl" entity-name="BooksType" abstract="false" lazy="false" table="`bookstype`">
+		<meta attribute="eclassName">BooksType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="book" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="bookstype_book">
+				<column name="`bookstype_book_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`bookstype_book_idx`"/>
+			<one-to-many entity-name="BookType"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.BookTypeImpl" entity-name="BookType" abstract="false" lazy="false" table="`booktype`">
+		<meta attribute="eclassName">BookType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<property name="iSBN" lazy="false" insert="true" update="true" not-null="true" unique="false" type="long">
+			<column not-null="true" unique="false" name="`isbn`"/>
+		</property>
+		<property name="price" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`price`"/>
+		</property>
+		<many-to-one name="authors" entity-name="AuthorsType" cascade="all" foreign-key="booktype_authors" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`authorstype_authors_e_id`"/>
+		</many-to-one>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`description`"/>
+		</property>
+		<many-to-one name="promotion" entity-name="PromotionType" cascade="all" foreign-key="booktype_promotion" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`promotiontype_promotion_e_id`"/>
+		</many-to-one>
+		<property name="publicationDate" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDate">
+			<column not-null="true" unique="false" name="`publicationdate`"/>
+		</property>
+		<property name="bookCategory" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`bookcategory`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.sunBooks.BookCategoryType1</param>
+			</type>
+		</property>
+		<property name="itemId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`itemid`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.CollectionTypeImpl" entity-name="CollectionType" abstract="false" lazy="false" table="`collectiontype`">
+		<meta attribute="eclassName">CollectionType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="books" entity-name="BooksType" cascade="all" foreign-key="collectiontype_books" lazy="false" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`bookstype_books_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.sunBooks.impl.PromotionTypeImpl" entity-name="PromotionType" abstract="false" lazy="false" table="`promotiontype`">
+		<meta attribute="eclassName">PromotionType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/sun_books</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="discount" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`discount`"/>
+		</property>
+		<property name="none" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`none`"/>
+		</property>
+	</class>
+</hibernate-mapping>

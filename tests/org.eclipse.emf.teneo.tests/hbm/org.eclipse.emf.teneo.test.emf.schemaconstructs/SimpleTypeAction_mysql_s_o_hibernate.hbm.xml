@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="simpletypes.SimpleEnumObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
+		<param name="edatatype">SimpleEnumObject</param>
+	</typedef>
+	<typedef name="simpletypes.StringArray" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
+		<param name="edatatype">StringArray</param>
+	</typedef>
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleListImpl" entity-name="SimpleList" abstract="false" lazy="false" table="`simplelist`">
+		<meta attribute="eclassName">SimpleList</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="code" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`code`"/>
+		</property>
+		<list name="boo" table="`simplelist_boo`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_boo_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_boo_idx`"/>
+			<element type="boolean"/>
+		</list>
+		<list name="byt" table="`simplelist_byt`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_byt_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_byt_idx`"/>
+			<element type="java.lang.Byte"/>
+		</list>
+		<list name="doubl" table="`simplelist_doubl`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_doubl_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_doubl_idx`"/>
+			<element type="java.lang.Double"/>
+		</list>
+		<list name="floa" table="`simplelist_floa`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_floa_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_floa_idx`"/>
+			<element type="java.lang.Float"/>
+		</list>
+		<list name="inte" table="`simplelist_inte`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_inte_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_inte_idx`"/>
+			<element type="java.lang.Integer"/>
+		</list>
+		<list name="long" table="`longnum`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_long_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_long_idx`"/>
+			<element type="java.lang.Long"/>
+		</list>
+		<list name="shor" table="`simplelist_shor`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_shor_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_shor_idx`"/>
+			<element type="short"/>
+		</list>
+		<list name="enu" table="`simplelist_enu`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_enu_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_enu_idx`"/>
+			<element>
+				<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+					<param name="enumClass">org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum</param>
+				</type>
+			</element>
+		</list>
+		<list name="dat" table="`simplelist_dat`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_dat_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_dat_idx`"/>
+			<element type="timestamp"/>
+		</list>
+		<list name="limitedstring" table="`simplelist_limitedstring`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_limitedstring_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_limitedstring_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<list name="stri" table="`simplelist_stri`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_stri_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_stri_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<array name="intArray" table="`simplelist_intarray`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_intarray_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_intarray_idx`"/>
+			<element type="int"/>
+		</array>
+		<array name="doubleArray" table="`simplelist_doublearray`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_doublearray_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_doublearray_idx`"/>
+			<element type="double"/>
+		</array>
+		<property name="stringArray" lazy="false" insert="true" update="true" not-null="true" unique="false" type="simpletypes.StringArray">
+			<column not-null="true" unique="false" name="`stringarray`"/>
+		</property>
+		<array name="byteArray" table="`simplelist_bytearray`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_bytearray_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_bytearray_idx`"/>
+			<element type="byte"/>
+		</array>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl" entity-name="SimpleType" abstract="false" lazy="false" table="`simpletype`">
+		<meta attribute="eclassName">SimpleType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="code" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`code`"/>
+		</property>
+		<property name="boo" lazy="false" insert="true" update="true" not-null="true" unique="false" type="boolean">
+			<column not-null="true" unique="false" name="`boo`"/>
+		</property>
+		<property name="byt" lazy="false" insert="true" update="true" not-null="true" unique="false" type="byte">
+			<column not-null="true" unique="false" name="`byt`"/>
+		</property>
+		<property name="doubl" lazy="false" insert="true" update="true" not-null="true" unique="false" type="double">
+			<column not-null="true" unique="false" name="`doubl`"/>
+		</property>
+		<property name="float" lazy="false" insert="true" update="true" not-null="true" unique="false" type="float">
+			<column not-null="true" unique="false" name="`float`"/>
+		</property>
+		<property name="inte" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+			<column not-null="true" unique="false" name="`inte`"/>
+		</property>
+		<property name="lon" lazy="false" insert="true" update="true" not-null="true" unique="false" type="long">
+			<column not-null="true" unique="false" name="`lon`"/>
+		</property>
+		<property name="shor" lazy="false" insert="true" update="true" not-null="true" unique="false" type="short">
+			<column not-null="true" unique="false" name="`shor`"/>
+		</property>
+		<property name="enu" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`enu`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.SimpleEnum</param>
+			</type>
+		</property>
+		<property name="dat" lazy="false" insert="true" update="true" not-null="true" unique="false" type="timestamp">
+			<column not-null="true" unique="false" name="`dat`"/>
+		</property>
+		<property name="limitedstring" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`limitedstring`" length="10"/>
+		</property>
+		<property name="limitedDecimal" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigDecimal">
+			<column not-null="true" unique="false" name="`limiteddecimal`" precision="4" scale="1"/>
+		</property>
+		<property name="extraLimitedString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`extralimitedstring`" length="5"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeObjectImpl" entity-name="SimpleTypeObject" abstract="false" lazy="false" table="`simpletypeobject`">
+		<meta attribute="eclassName">SimpleTypeObject</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="code" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`code`"/>
+		</property>
+		<property name="boo" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Boolean">
+			<column not-null="true" unique="false" name="`boo`"/>
+		</property>
+		<property name="byt" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Byte">
+			<column not-null="true" unique="false" name="`byt`"/>
+		</property>
+		<property name="doubl" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Double">
+			<column not-null="true" unique="false" name="`doubl`"/>
+		</property>
+		<property name="float" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Float">
+			<column not-null="true" unique="false" name="`float`"/>
+		</property>
+		<property name="inte" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Integer">
+			<column not-null="true" unique="false" name="`inte`"/>
+		</property>
+		<property name="lon" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Long">
+			<column not-null="true" unique="false" name="`lon`"/>
+		</property>
+		<property name="shor" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.Short">
+			<column not-null="true" unique="false" name="`shor`"/>
+		</property>
+		<property name="enu" lazy="false" not-null="true" insert="true" update="true" unique="false" type="simpletypes.SimpleEnumObject">
+			<column not-null="true" unique="false" name="`enu`"/>
+		</property>
+		<property name="dat" lazy="false" insert="true" update="true" not-null="true" unique="false" type="timestamp">
+			<column not-null="true" unique="false" name="`dat`"/>
+		</property>
+	</class>
+</hibernate-mapping>
