@@ -2,10 +2,6 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<typedef name="schemaprimerpo.QuantityType" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/schemaprimerpo</param>
-		<param name="edatatype">QuantityType</param>
-	</typedef>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl.ItemImpl" entity-name="Item" abstract="false" lazy="false" table="`item`">
 		<meta attribute="eclassName">Item</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/schemaprimerpo</meta>
@@ -19,7 +15,7 @@
 		<property name="productName" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`productname`"/>
 		</property>
-		<property name="quantity" lazy="false" insert="true" update="true" not-null="true" unique="false" type="schemaprimerpo.QuantityType">
+		<property name="quantity" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigInteger">
 			<column not-null="true" unique="false" name="`quantity`"/>
 		</property>
 		<property name="uSPrice" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigDecimal">

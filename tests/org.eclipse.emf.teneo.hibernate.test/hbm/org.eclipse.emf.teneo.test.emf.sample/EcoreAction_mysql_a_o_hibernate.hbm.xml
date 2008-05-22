@@ -2,18 +2,6 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<typedef name="ecore.EBigDecimal" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
-		<param name="edatatype">EBigDecimal</param>
-	</typedef>
-	<typedef name="ecore.EBigInteger" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
-		<param name="edatatype">EBigInteger</param>
-	</typedef>
-	<typedef name="ecore.EByteArray" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
-		<param name="edatatype">EByteArray</param>
-	</typedef>
 	<typedef name="ecore.EDiagnosticChain" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
 		<param name="edatatype">EDiagnosticChain</param>
@@ -54,26 +42,6 @@
 		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
 		<param name="edatatype">ETreeIterator</param>
 	</typedef>
-	<typedef name="type.Base64Binary" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">Base64Binary</param>
-	</typedef>
-	<typedef name="type.BooleanObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">BooleanObject</param>
-	</typedef>
-	<typedef name="type.ByteObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">ByteObject</param>
-	</typedef>
-	<typedef name="type.Decimal" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">Decimal</param>
-	</typedef>
-	<typedef name="type.DoubleObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">DoubleObject</param>
-	</typedef>
 	<typedef name="type.Duration" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">Duration</param>
@@ -86,14 +54,6 @@
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">ENTITIESBase</param>
 	</typedef>
-	<typedef name="type.FloatObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">FloatObject</param>
-	</typedef>
-	<typedef name="type.HexBinary" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">HexBinary</param>
-	</typedef>
 	<typedef name="type.IDREFS" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">IDREFS</param>
@@ -101,22 +61,6 @@
 	<typedef name="type.IDREFSBase" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">IDREFSBase</param>
-	</typedef>
-	<typedef name="type.Integer" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">Integer</param>
-	</typedef>
-	<typedef name="type.IntObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">IntObject</param>
-	</typedef>
-	<typedef name="type.LongObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">LongObject</param>
-	</typedef>
-	<typedef name="type.NegativeInteger" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">NegativeInteger</param>
 	</typedef>
 	<typedef name="type.NMTOKENS" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
@@ -126,21 +70,9 @@
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">NMTOKENSBase</param>
 	</typedef>
-	<typedef name="type.NonNegativeInteger" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">NonNegativeInteger</param>
-	</typedef>
-	<typedef name="type.NonPositiveInteger" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">NonPositiveInteger</param>
-	</typedef>
 	<typedef name="type.NOTATION" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">NOTATION</param>
-	</typedef>
-	<typedef name="type.PositiveInteger" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">PositiveInteger</param>
 	</typedef>
 	<typedef name="type.QName" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
@@ -153,18 +85,6 @@
 	<typedef name="type.UnsignedByteObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">UnsignedByteObject</param>
-	</typedef>
-	<typedef name="type.UnsignedIntObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">UnsignedIntObject</param>
-	</typedef>
-	<typedef name="type.UnsignedLong" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">UnsignedLong</param>
-	</typedef>
-	<typedef name="type.UnsignedShortObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
-		<param name="edatatype">UnsignedShortObject</param>
 	</typedef>
 	<class name="org.eclipse.emf.ecore.impl.BasicEObjectImpl" entity-name="ecore_EObject" abstract="false" lazy="false" discriminator-value="ecore_EObject" table="`ecore_eobject`">
 		<meta attribute="eclassName">EObject</meta>
