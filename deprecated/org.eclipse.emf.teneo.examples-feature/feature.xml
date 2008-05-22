@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.teneo.examples"
       label="%featureName"
-      version="0.8.0.qualifier"
+      version="1.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emft">
-      %description (Incubation)
+      %description
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
