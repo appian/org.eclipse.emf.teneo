@@ -6,12 +6,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *   L.M. Fridael
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.10 2008/03/30 20:54:58 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.11 2008/05/27 07:42:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -36,8 +33,7 @@ import org.hibernate.Query;
 /**
  * Test
  * 
- * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 @SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {

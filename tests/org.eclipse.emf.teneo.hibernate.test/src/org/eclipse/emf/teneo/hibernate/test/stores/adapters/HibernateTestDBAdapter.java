@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestDBAdapter.java,v 1.4 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: HibernateTestDBAdapter.java,v 1.5 2008/05/27 07:42:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores.adapters;
@@ -20,11 +20,11 @@ import org.eclipse.emf.teneo.test.stores.TestDatabaseAdapter;
 
 /**
  * 
- * @author <a href="mailto:marchign@fastmail.fm">Davide Marchignoli</a>
- * @version $Revision: 1.4 $
-*/
+ * @author Martin Taal
+ * @version $Revision: 1.5 $
+ */
 public interface HibernateTestDBAdapter extends TestDatabaseAdapter {
-	
+
 	/** The getDialect method */
 	public String getDialect();
 }

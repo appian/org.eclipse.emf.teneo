@@ -7,11 +7,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors:
- *   L.M. Fridael
  * </copyright>
  *
- * $Id: DetachFromSessionAction.java,v 1.5 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: DetachFromSessionAction.java,v 1.6 2008/05/27 07:42:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -29,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests detach and attachment to session
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class DetachFromSessionAction extends AbstractTestAction {
 
@@ -63,7 +61,7 @@ public class DetachFromSessionAction extends AbstractTestAction {
 
 		hts.refresh();
 		hts.beginTransaction();
-		Writer w2 = (Writer) store.getObject(Writer.class);
+		Writer w2 = store.getObject(Writer.class);
 		assertEquals("m2", w2.getName());
 		store.checkNumber(Writer.class, 1);
 		store.checkNumber(Book.class, 1);

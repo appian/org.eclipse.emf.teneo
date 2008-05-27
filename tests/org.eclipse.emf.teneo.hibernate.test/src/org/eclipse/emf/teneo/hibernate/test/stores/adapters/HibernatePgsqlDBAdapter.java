@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePgsqlDBAdapter.java,v 1.4 2008/02/28 07:08:56 mtaal Exp $
+ * $Id: HibernatePgsqlDBAdapter.java,v 1.5 2008/05/27 07:42:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.stores.adapters;
@@ -22,12 +22,11 @@ import org.hibernate.dialect.PostgreSQLDialect;
 /**
  * Overridden to add the hibernate database dialect.
  * 
- * @author <a href="mailto:marchign@fastmail.fm">Davide Marchignoli</a>
- * @version $Revision: 1.4 $
-*/
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
+ * @version $Revision: 1.5 $
+ */
 
-public class HibernatePgsqlDBAdapter extends PgsqlTestDatabaseAdapter implements HibernateTestDBAdapter
-{
+public class HibernatePgsqlDBAdapter extends PgsqlTestDatabaseAdapter implements HibernateTestDBAdapter {
 	/** Return the hibernate dialted */
 	public String getDialect() {
 		return PostgreSQLDialect.class.getName();
