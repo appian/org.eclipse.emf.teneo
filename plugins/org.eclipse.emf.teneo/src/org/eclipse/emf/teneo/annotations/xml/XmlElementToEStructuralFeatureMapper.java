@@ -8,11 +8,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Laurens Fridael
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.3 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: XmlElementToEStructuralFeatureMapper.java,v 1.4 2008/05/27 07:42:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -32,9 +31,6 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Helper class used internally for mapping XML element names to EStructuralFeature names.
- * 
- * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
- * 
  */
 public class XmlElementToEStructuralFeatureMapper implements ExtensionPoint {
 	private Map<String, String> eStructuralFeatureNamesByXmlElementName = new HashMap<String, String>();

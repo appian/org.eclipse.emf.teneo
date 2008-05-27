@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToManyAttributeAnnotator.java,v 1.7 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: OneToManyAttributeAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {

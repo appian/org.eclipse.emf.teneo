@@ -8,11 +8,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Laurens Fridael
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceMapper.java,v 1.4 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: XmlPersistenceMapper.java,v 1.5 2008/05/27 07:42:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -35,8 +34,6 @@ import org.xml.sax.SAXNotRecognizedException;
 
 /**
  * Populates and configures a PAnnotatedModel using an XML persistence mapping file.
- * 
- * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
  */
 public class XmlPersistenceMapper implements ExtensionPoint, ExtensionManagerAware {
 

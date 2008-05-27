@@ -8,11 +8,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Laurens Fridael
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.5 2008/04/06 13:44:04 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.6 2008/05/27 07:42:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -48,9 +47,6 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * SAX ContentHandler for processing XML persistence mapping. Used internally by
  * {@link XmlPersistenceMapper}.
- * 
- * @author <a href="lmfridael@elver.org">Laurens Fridael</a>
- * 
  */
 public class XmlPersistenceContentHandler extends DefaultHandler implements ExtensionPoint, ExtensionManagerAware {
 

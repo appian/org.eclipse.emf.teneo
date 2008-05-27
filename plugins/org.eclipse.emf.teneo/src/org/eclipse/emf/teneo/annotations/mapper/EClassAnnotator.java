@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.7 2008/04/04 11:49:27 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +43,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {

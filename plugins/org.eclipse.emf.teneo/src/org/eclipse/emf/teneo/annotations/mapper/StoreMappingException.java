@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: StoreMappingException.java,v 1.3 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: StoreMappingException.java,v 1.4 2008/05/27 07:42:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -27,7 +26,7 @@ import org.eclipse.emf.teneo.TeneoException;
  * value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class StoreMappingException extends TeneoException {

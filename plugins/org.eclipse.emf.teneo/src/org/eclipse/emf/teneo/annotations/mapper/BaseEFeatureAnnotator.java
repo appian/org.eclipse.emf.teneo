@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.7 2008/04/13 11:11:13 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -46,7 +45,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {

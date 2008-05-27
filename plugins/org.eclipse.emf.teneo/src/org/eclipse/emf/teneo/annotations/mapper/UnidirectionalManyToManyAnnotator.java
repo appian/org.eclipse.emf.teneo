@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: UnidirectionalManyToManyAnnotator.java,v 1.6 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: UnidirectionalManyToManyAnnotator.java,v 1.7 2008/05/27 07:42:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a many-to-many which is handled from one side.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {

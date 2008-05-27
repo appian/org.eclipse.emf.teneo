@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: OneToOneReferenceAnnotator.java,v 1.6 2008/04/04 11:49:27 mtaal Exp $
+ * $Id: OneToOneReferenceAnnotator.java,v 1.7 2008/05/27 07:42:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -28,7 +27,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
