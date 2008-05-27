@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbUnidirectionalManyToManyAnnotator.java,v 1.2 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbUnidirectionalManyToManyAnnotator.java,v 1.3 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -27,7 +26,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbUnidirectionalManyToManyAnnotator extends UnidirectionalManyToManyAnnotator {

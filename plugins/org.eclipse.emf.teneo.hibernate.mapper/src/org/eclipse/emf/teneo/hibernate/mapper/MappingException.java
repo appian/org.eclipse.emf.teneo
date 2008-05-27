@@ -2,8 +2,8 @@
  * <copyright> Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others All rights
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: MappingException.java,v 1.6 2008/02/28 07:07:43 mtaal Exp $
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
+ * </copyright> $Id: MappingException.java,v 1.7 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -19,7 +19,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
  * there is no real hierarchy, I tend to use have one general exception which always logs the
  * exception
  * 
- * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public class MappingException extends TeneoException {
@@ -50,7 +49,7 @@ public class MappingException extends TeneoException {
 
 	public MappingException(String msg, PAnnotation pAnnotation) {
 		super(msg + ", " + pAnnotation);
-		log.error("EXCEPTION: " + msg + " element " + pAnnotation.eClass().getName() + " "
-				+ (pAnnotation.getEModelElement() != null ? pAnnotation.getEModelElement().eClass().getName() : ""));
+		log.error("EXCEPTION: " + msg + " element " + pAnnotation.eClass().getName() + " " +
+				(pAnnotation.getEModelElement() != null ? pAnnotation.getEModelElement().eClass().getName() : ""));
 	}
 }

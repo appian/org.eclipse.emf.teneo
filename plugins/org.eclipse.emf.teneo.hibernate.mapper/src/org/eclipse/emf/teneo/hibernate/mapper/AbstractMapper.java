@@ -2,8 +2,8 @@
  * <copyright> Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others All rights
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.36 2008/04/23 15:44:25 mtaal Exp $
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.37 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -46,7 +46,6 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 /**
  * Base class for all mapping classes. Provides access to the hbmcontext.
  * 
- * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public abstract class AbstractMapper {

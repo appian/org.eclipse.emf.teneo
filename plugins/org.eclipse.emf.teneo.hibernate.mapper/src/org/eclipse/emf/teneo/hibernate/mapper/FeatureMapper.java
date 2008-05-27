@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: FeatureMapper.java,v 1.8 2008/04/06 13:44:26 mtaal Exp $
+ * $Id: FeatureMapper.java,v 1.9 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;

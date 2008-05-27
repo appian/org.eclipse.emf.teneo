@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbAnnotationUtil.java,v 1.3 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbAnnotationUtil.java,v 1.4 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -29,7 +28,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
  * Some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbAnnotationUtil {

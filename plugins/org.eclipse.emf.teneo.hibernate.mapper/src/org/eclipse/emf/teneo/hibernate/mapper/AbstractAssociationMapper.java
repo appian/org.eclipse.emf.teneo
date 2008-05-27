@@ -36,7 +36,6 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 /**
  * Class contains different convenience methods which are of use for association mapping.
  * 
- * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public abstract class AbstractAssociationMapper extends AbstractMapper {
@@ -547,9 +546,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
-																				 * == null ? new
-																				 * ArrayList() :
-																				 * (List)joinTable.getJoinColumns().getValue()
-																				 */);
+		 * == null ? new
+		 * ArrayList() :
+		 * (List)joinTable.getJoinColumns().getValue()
+		 */);
 	}
 }

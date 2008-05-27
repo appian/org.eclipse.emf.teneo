@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbOneToManyAttributeAnnotator.java,v 1.4 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbOneToManyAttributeAnnotator.java,v 1.5 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -31,7 +30,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
  * primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbOneToManyAttributeAnnotator extends OneToManyAttributeAnnotator {

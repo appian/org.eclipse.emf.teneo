@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: HbEDataTypeAnnotator.java,v 1.5 2008/05/09 05:28:04 mtaal Exp $
+ * $Id: HbEDataTypeAnnotator.java,v 1.6 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -33,7 +32,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * Annotates an EDataType
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HbEDataTypeAnnotator extends EDataTypeAnnotator {

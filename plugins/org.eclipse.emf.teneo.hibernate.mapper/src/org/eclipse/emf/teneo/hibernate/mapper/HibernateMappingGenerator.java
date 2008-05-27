@@ -9,11 +9,10 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.22 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.23 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -52,7 +51,6 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 /**
  * The main starting point for generating a hibernate mapping from a PAnnotated model.
  * 
- * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManagerAware {

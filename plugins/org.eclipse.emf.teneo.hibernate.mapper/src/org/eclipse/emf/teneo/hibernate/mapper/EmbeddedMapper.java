@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.16 2008/04/16 21:07:54 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.17 2008/05/27 07:42:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -32,7 +31,6 @@ import org.eclipse.emf.teneo.simpledom.Element;
 /**
  * Maps Embedded properties.
  * 
- * @author <a href="mailto:marchign at elver.org">Davide Marchignoli</a>
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
 public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
