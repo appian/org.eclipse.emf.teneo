@@ -2,8 +2,8 @@
  * <copyright> Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others All rights
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Laurens Fridael </copyright>
- * $Id: AssociationOverrideAction.java,v 1.9 2008/02/28 07:08:14 mtaal Exp $
+ * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal</copyright>
+ * $Id: AssociationOverrideAction.java,v 1.10 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -26,8 +26,6 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Simple test for AssociationOverride.
- * 
- * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
  */
 public class AssociationOverrideAction extends AbstractTestAction {
 	private static final String EMPLOYEE_DEPARTMENT = "R&D";

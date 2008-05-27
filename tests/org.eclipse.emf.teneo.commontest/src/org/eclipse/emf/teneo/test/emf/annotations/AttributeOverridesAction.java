@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AttributeOverridesAction.java,v 1.4 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: AttributeOverridesAction.java,v 1.5 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -28,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AttributeOverridesAction extends AbstractTestAction {
 	/**

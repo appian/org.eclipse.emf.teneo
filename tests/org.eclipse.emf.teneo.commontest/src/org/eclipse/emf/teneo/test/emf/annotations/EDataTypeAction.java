@@ -9,10 +9,9 @@
  *
  * Contributors:
  *   Martin Taal
- *   Davide Marchignoli
  * </copyright>
  *
- * $Id: EDataTypeAction.java,v 1.7 2008/04/28 19:57:22 mtaal Exp $
+ * $Id: EDataTypeAction.java,v 1.8 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -35,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class EDataTypeAction extends AbstractTestAction {
 	/**

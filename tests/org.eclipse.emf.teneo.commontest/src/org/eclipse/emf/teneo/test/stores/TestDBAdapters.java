@@ -9,9 +9,10 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Davide Marchignoli
  * </copyright>
  *
- * $Id: TestDBAdapters.java,v 1.5 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: TestDBAdapters.java,v 1.6 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.Utils;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class TestDBAdapters {
 
@@ -42,7 +43,9 @@ public class TestDBAdapters {
 
 	/** Add db adapter */
 	public void addDBAdapter(String name, BaseTestDatabaseAdapter dbAdapter) {
-		if (dbAdapters.containsKey(name)) throw new IllegalArgumentException("Duplicate db adapter " + name);
+		if (dbAdapters.containsKey(name)) {
+			throw new IllegalArgumentException("Duplicate db adapter " + name);
+		}
 		dbAdapters.put(name, dbAdapter);
 	}
 
@@ -57,8 +60,9 @@ public class TestDBAdapters {
 				final Class adapterClass = Class.forName(dbAdapterClassName);
 				testAdapter = (BaseTestDatabaseAdapter) adapterClass.newInstance();
 			} catch (Exception e) {
-				throw new StoreTestException("Exception when creating TestDatabaseAdapter using classname: " + dbAdapterClassName
-						+ ", db identifier used in property file: " + initProps.getProperty(Utils.DATABASE_PROP_NAME), e);
+				throw new StoreTestException("Exception when creating TestDatabaseAdapter using classname: " +
+						dbAdapterClassName + ", db identifier used in property file: " +
+						initProps.getProperty(Utils.DATABASE_PROP_NAME), e);
 			}
 		}
 		testAdapter.initialize(initProps);

@@ -9,9 +9,10 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Davide Marchignoli
  * </copyright>
  *
- * $Id: AbstractTestStoreFactory.java,v 1.8 2008/02/28 07:08:13 mtaal Exp $
+ * $Id: AbstractTestStoreFactory.java,v 1.9 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -31,7 +32,7 @@ import org.eclipse.emf.teneo.test.conf.TestConfiguration;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public abstract class AbstractTestStoreFactory {
 

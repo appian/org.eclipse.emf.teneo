@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableHibernateAction.java,v 1.7 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: SecondarytableHibernateAction.java,v 1.8 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -33,9 +33,6 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Simple test for Secondary table.
- * 
- * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * 
  */
 public class SecondarytableHibernateAction extends AbstractTestAction {
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HsqldbTestDatabaseAdapter.java,v 1.4 2008/03/30 15:12:08 mtaal Exp $
+ * $Id: HsqldbTestDatabaseAdapter.java,v 1.5 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -25,8 +25,7 @@ import org.apache.commons.logging.LogFactory;
  * Test database adapter for HSQLDB. Overrides the database create and drop actions because these
  * require the database name in the url.
  * 
- * @author <a href="mailto:marchign@fastmail.fm">Davide Marchignoli</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HsqldbTestDatabaseAdapter extends BaseTestDatabaseAdapter {

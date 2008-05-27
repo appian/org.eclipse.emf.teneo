@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: ConfigurableTestSuite.java,v 1.4 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: ConfigurableTestSuite.java,v 1.5 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -26,11 +26,12 @@ import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 
 /**
- * The configurable test suite takes care of setting the active configuration before starting the test.
+ * The configurable test suite takes care of setting the active configuration before starting the
+ * test.
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class ConfigurableTestSuite extends TestSuite {
 
@@ -58,9 +59,11 @@ public class ConfigurableTestSuite extends TestSuite {
 	}
 
 	/** Run the test using the specified configuration */
+	@Override
 	public void runTest(Test test, TestResult result) {
-		if (Testbed.instance().getActiveConfiguration() != runConfiguration)
+		if (Testbed.instance().getActiveConfiguration() != runConfiguration) {
 			Testbed.instance().setActiveConfiguration(getRunConfiguration());
+		}
 		super.runTest(test, result);
 	}
 
@@ -69,6 +72,7 @@ public class ConfigurableTestSuite extends TestSuite {
 	 */
 	public static Test warning(final String message) {
 		return new TestCase("warning") {
+			@Override
 			protected void runTest() {
 				fail(message);
 			}
@@ -89,13 +93,15 @@ public class ConfigurableTestSuite extends TestSuite {
 	}
 
 	/**
-	 * Handles specially testClass derived from AbstractTestAction. For this class a suite is created acting as a corresponding
-	 * subclass of AbstractHibernateActionTest
+	 * Handles specially testClass derived from AbstractTestAction. For this class a suite is
+	 * created acting as a corresponding subclass of AbstractHibernateActionTest
 	 */
+	@Override
 	public void addTestSuite(Class testClass) {
-		if (AbstractTestAction.class.isAssignableFrom(testClass))
+		if (AbstractTestAction.class.isAssignableFrom(testClass)) {
 			super.addTest(createTestForAction(testClass));
-		else
+		} else {
 			super.addTestSuite(testClass);
+		}
 	}
 }

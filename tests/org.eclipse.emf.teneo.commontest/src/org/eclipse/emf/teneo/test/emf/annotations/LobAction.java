@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LobAction.java,v 1.6 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: LobAction.java,v 1.7 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -26,9 +26,6 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Simple test for Lob.
- * 
- * @author <a href="mailto:lmfridael@elver.org">Laurens Fridael</a>
- * 
  */
 public class LobAction extends AbstractTestAction {
 	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
@@ -70,7 +67,7 @@ public class LobAction extends AbstractTestAction {
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
 
-		final Person person = (Person) store.getObject(Person.class);
+		final Person person = store.getObject(Person.class);
 		assertEquals(ID, person.getId());
 		assertEquals(NAME, person.getName());
 		assertEquals(ADDRESS, person.getAddress());

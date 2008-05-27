@@ -9,9 +9,10 @@
  *
  * Contributors:
  *   Martin Taal
+ *   Davide Marchignoli
  * </copyright>
  *
- * $Id: TestDatabaseAdapter.java,v 1.4 2008/02/28 07:08:13 mtaal Exp $
+ * $Id: TestDatabaseAdapter.java,v 1.5 2008/05/27 07:42:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -23,7 +24,7 @@ import java.sql.Connection;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public interface TestDatabaseAdapter {
 
