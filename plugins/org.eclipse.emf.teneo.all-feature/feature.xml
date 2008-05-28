@@ -18,7 +18,7 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://www.eclipse.org/modeling/emft/updates/"/>
+      <update label="%updateSiteName" url="http://www.eclipse.org/modeling/emf/updates/"/>
    </url>
 
    <includes
