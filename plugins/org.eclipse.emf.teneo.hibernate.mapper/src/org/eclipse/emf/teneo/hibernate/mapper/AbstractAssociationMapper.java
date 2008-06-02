@@ -292,25 +292,37 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		log.debug("Add map key " + mapKey.getName() + " to " + aFeature.getModelEStructuralFeature().getName());
 
 		// now, we add the column type. this is a required field
-		final EStructuralFeature feature =
-				((EReference) aFeature.getModelElement()).getEReferenceType().getEStructuralFeature("value");
-		final EAttribute attr = (EAttribute) ((EClass) feature.getEType()).getEStructuralFeature(mapKey.getName());
-		final PAnnotatedEAttribute paAttribute = aFeature.getPaModel().getPAnnotated(attr);
-		final Element mapKeyElement =
-				collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName()));
-		setType(paAttribute, mapKeyElement);
+		final EStructuralFeature keyFeature =
+				((EReference) aFeature.getModelElement()).getEReferenceType().getEStructuralFeature("key");
+		if (keyFeature instanceof EReference) {
+			final PAnnotatedEClass referedAClass =
+					aFeature.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
+			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
+				final String entityName = hbmContext.getEntityName(((EReference) keyFeature).getEReferenceType());
+				collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
+			} else {
+				collElement.addElement("map-key-many-to-many").addAttribute("class",
+					getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
+			}
+		} else {
+			final PAnnotatedEAttribute paAttribute =
+					(PAnnotatedEAttribute) aFeature.getPaModel().getPAnnotated(keyFeature);
+			final Element mapKeyElement =
+					collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName()));
+			setType(paAttribute, mapKeyElement);
+		}
 // "type", attr.getEType().getInstanceClassName());
 	}
 
 	/** Add a mapkey taking into account if the key is an entity or a simple type */
 	protected void addMapKey(Element collElement, PAnnotatedEReference aref) {
 		final EReference eref = aref.getModelEReference();
-		final EStructuralFeature feature = eref.getEReferenceType().getEStructuralFeature("key");
-		if (feature instanceof EReference) {
+		final EStructuralFeature keyFeature = eref.getEReferenceType().getEStructuralFeature("key");
+		if (keyFeature instanceof EReference) {
 			final PAnnotatedEClass referedAClass =
-					aref.getPaModel().getPAnnotated(((EReference) feature).getEReferenceType());
+					aref.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
 			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
-				final String entityName = hbmContext.getEntityName(((EReference) feature).getEReferenceType());
+				final String entityName = hbmContext.getEntityName(((EReference) keyFeature).getEReferenceType());
 				collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
 			} else {
 				collElement.addElement("map-key-many-to-many").addAttribute("class",
@@ -320,7 +332,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 // final String type = hbType(aref.getPaModel().getPAnnotated((EAttribute) feature));
 			final Element mapKey = collElement.addElement("map-key"); // .addAttribute("type",
 			// type);
-			final PAnnotatedEAttribute paAttribute = aref.getPaModel().getPAnnotated((EAttribute) feature);
+			final PAnnotatedEAttribute paAttribute = aref.getPaModel().getPAnnotated((EAttribute) keyFeature);
 			setType(paAttribute, mapKey);
 		}
 	}
