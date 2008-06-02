@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInitializeCollectionEventListener.java,v 1.2 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EMFInitializeCollectionEventListener.java,v 1.3 2008/06/02 07:15:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -25,7 +25,7 @@ import org.hibernate.event.def.DefaultInitializeCollectionEventListener;
  * Sets eDeliver to false for the owner of the collection during the initialization of the
  * collection.
  * 
- * @author <a href="mailto:mkanaley@tibco.com">Mike Kanaley</a>
+ * @author <a href="mailto:mtaal@elver.org">Mike Kanaley</a>
  */
 public class EMFInitializeCollectionEventListener extends DefaultInitializeCollectionEventListener implements
 		ExtensionPoint {

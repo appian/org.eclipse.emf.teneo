@@ -77,7 +77,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -126,7 +126,7 @@ public abstract class HbDataStore implements DataStore {
 	private PersistenceOptions persistenceOptions;
 
 	/** The properties */
-	private Properties properties;
+	private Properties properties = new Properties();
 
 	/** The interceptor */
 	private Interceptor interceptor;

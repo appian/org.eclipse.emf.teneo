@@ -8,10 +8,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Michael Kanaley, TIBCO Software Inc.
+ *   Martin Taal
  * </copyright>
  *
- * $Id: XSDDuration.java,v 1.2 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: XSDDuration.java,v 1.3 2008/06/02 07:15:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 

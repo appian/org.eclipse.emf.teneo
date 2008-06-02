@@ -56,7 +56,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -282,8 +282,13 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			if (currentValue != null && currentValue instanceof PersistableEList) {
 				((PersistableEList) currentValue).replaceDelegate((List) value);
 			} else {
-				EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList((InternalEObject) target, eFeature,
-					(List) value), (BasicEObjectImpl) target);
+				if (value instanceof Map) {
+					EcoreAccess.setManyEFeatureValue(eFeature, createPersistableMap((InternalEObject) target, eFeature,
+						(Map) value), (BasicEObjectImpl) target);
+				} else {
+					EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList((InternalEObject) target,
+						eFeature, (List) value), (BasicEObjectImpl) target);
+				}
 			}
 			if (log.isDebugEnabled()) {
 				log.debug("Set value " + value.getClass().getName() + " for target " + target.getClass().getName() +
