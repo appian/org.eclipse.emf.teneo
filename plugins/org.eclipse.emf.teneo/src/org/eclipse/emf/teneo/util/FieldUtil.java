@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: FieldUtil.java,v 1.14 2008/04/11 23:43:43 mtaal Exp $
+ * implementation </copyright> $Id: FieldUtil.java,v 1.15 2008/06/02 07:15:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.TeneoException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class FieldUtil {
@@ -48,7 +48,7 @@ public class FieldUtil {
 				}
 			}
 
-			throw new TeneoException("Exception " + obj.getClass().getName() + " method; " + method.getName() +
+			throw new TeneoException("Exception " + obj.getClass().getName() + " method; " + methodName +
 					" with parameters: " + paramStr.toString(), e);
 		}
 	}

@@ -14,7 +14,7 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: EcoreDataTypes.java,v 1.13 2008/05/09 05:28:23 mtaal Exp $
+ * $Id: EcoreDataTypes.java,v 1.14 2008/06/02 07:15:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -102,31 +102,29 @@ public class EcoreDataTypes {
 					eAttribute.getEType().getInstanceClassName().length() - 2);
 			}
 			return instanceClass.getName();
-		} else {
-			// the type is hidden somewhere deep get it
-			// the edatatype is the java.util.list
-			// it has an itemType which is the name of the element edatatype
-			// which contains the instanceclass
-			// takes also into account inheritance between datatypes
-			// NOTE the otm.targetentity can consist of a comma delimited list
-			// of target
-			// entities this is required for listunion types but is not
-			// according to the ejb3 spec!
-			ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
-			if (eclassifiers.size() > 0) {
-				StringBuffer result = new StringBuffer();
-				for (int i = 0; i < eclassifiers.size(); i++) {
-					final EClassifier eclassifier = eclassifiers.get(i);
-					if (i > 0) {
-						result.append(",");
-					}
-					result.append(eclassifier.getInstanceClassName());
-				}
-				return result.toString();
-			} else {
-				return Object.class.getName();
-			}
 		}
+		// the type is hidden somewhere deep get it
+		// the edatatype is the java.util.list
+		// it has an itemType which is the name of the element edatatype
+		// which contains the instanceclass
+		// takes also into account inheritance between datatypes
+		// NOTE the otm.targetentity can consist of a comma delimited list
+		// of target
+		// entities this is required for listunion types but is not
+		// according to the ejb3 spec!
+		ArrayList<EClassifier> eclassifiers = getItemTypes((EDataType) eAttribute.getEType());
+		if (eclassifiers.size() > 0) {
+			StringBuffer result = new StringBuffer();
+			for (int i = 0; i < eclassifiers.size(); i++) {
+				final EClassifier eclassifier = eclassifiers.get(i);
+				if (i > 0) {
+					result.append(",");
+				}
+				result.append(eclassifier.getInstanceClassName());
+			}
+			return result.toString();
+		}
+		return Object.class.getName();
 	}
 
 	/** Walks up a edatatype inheritance structure to find the itemType */
@@ -364,8 +362,7 @@ public class EcoreDataTypes {
 		final Class<?> clazz = eType.getInstanceClass();
 		if (clazz != null) {
 			return (clazz.isArray() && clazz.getComponentType().equals(Byte.TYPE));
-		} else {
-			return false;
 		}
+		return false;
 	}
 }

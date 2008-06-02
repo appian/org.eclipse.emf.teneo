@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.43 2008/04/23 15:45:32 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.44 2008/06/02 07:15:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -457,9 +457,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		String property = properties.getProperty(SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT);
 		if (!property.equals("")) {
 			return Boolean.valueOf(property).booleanValue();
-		} else {
-			return !properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT).equals("");
 		}
+		return !properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT).equals("");
 	}
 
 	public boolean isSetCascadePolicyForNonContainment() {
@@ -576,9 +575,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	public boolean isSetCascadeAllOnContainment() {
 		if (!properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT).equals("")) {
 			return Boolean.valueOf(properties.getProperty(SET_CASCADE_ALL_ON_CONTAINMENT)).booleanValue();
-		} else {
-			return isSetCascadeOnContainement(CascadeType.ALL.getName());
 		}
+		return isSetCascadeOnContainement(CascadeType.ALL.getName());
 	}
 
 	/** Returns true if CASCADE_POLICY_ON_CONTAINMENT property contains the MERGE cascade type */

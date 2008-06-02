@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.6 2008/05/27 07:42:09 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.7 2008/06/02 07:15:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -268,10 +268,6 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			case NESTED_ANNOTATION: {
 				final EStructuralFeature annotationEStructuralFeature =
 						getEStructuralFeature(getPAnnotation(), localName);
-				if (annotationEStructuralFeature == null) {
-					final PAnnotation pa = getPAnnotation();
-					System.err.println(pa);
-				}
 				if (annotationEStructuralFeature.getEType() instanceof EClass) {
 					newParseState = NESTED_ANNOTATION;
 				} else {
@@ -315,9 +311,6 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 				final EDataType et = (EDataType) pAnnotatedEPackage.getModelEPackage().getEClassifier(eDataTypeName);
 				if (et == null) {
 					throw new SAXException("Could not find EClass \"" + eDataTypeName + "\"");
-				}
-				if (!(et instanceof EDataType)) {
-					throw new SAXException("EClassifier \"" + eDataTypeName + "\" is not an EDataType.");
 				}
 				pAnnotatedEDataType = pAnnotatedModel.getPAnnotated(et);
 				break;

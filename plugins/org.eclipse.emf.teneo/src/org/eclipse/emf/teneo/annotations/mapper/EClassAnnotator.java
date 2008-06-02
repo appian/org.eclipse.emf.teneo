@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.9 2008/06/02 07:15:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -64,6 +64,13 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	 */
 	protected boolean annotate(PAnnotatedEClass aClass) {
 
+		if (aClass == null) {
+			throw new StoreAnnotationsException(
+				"Mapping Exception, no Annotated Class for EClass, "
+						+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
+						+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+		}
+
 		final EClass eclass = (EClass) aClass.getModelElement();
 
 		// check if already processed
@@ -77,13 +84,6 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		}
 
 		log.debug("Creating mapping for eclass " + eclass.getName());
-
-		if (aClass == null) {
-			throw new StoreAnnotationsException(
-				"Mapping Exception, no Annotated Class for EClass, "
-						+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
-						+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
-		}
 
 		// first do the superclasses
 		for (EClass superEclass : aClass.getModelEClass().getESuperTypes()) {
