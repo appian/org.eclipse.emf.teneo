@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.14 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.15 2008/06/02 07:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -119,7 +119,6 @@ public class EcoreAction extends AbstractTestAction {
 			{
 				store.beginTransaction();
 				final List<?> list = store.getObjects(EPackage.class);
-				final EPackage epack = (EPackage) list.get(0);
 				for (Object o : list) {
 					store.deleteObject(o);
 				}

@@ -82,7 +82,7 @@ public class ForcedIdBagAction extends AbstractTestAction {
 			// apparently hibernate core creates different tables than running with
 			// hibernate entitymanager, need to check!
 			resultSet = metaData.getPrimaryKeys(null, null, "myjoin");
-			boolean rsTrue = resultSet.next();
+			resultSet.next();
 			assertTrue("Primary key column should be named \"idbag_id\"", "idbag_id".equalsIgnoreCase(resultSet
 				.getString("COLUMN_NAME")));
 			assertFalse("Found more than one primary key.", resultSet.next());

@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class SetResourceAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -93,6 +93,7 @@ public class SetResourceAction extends AbstractTestAction {
 					}
 				}
 
+				assert (list != null);
 				assertEquals(NO_ITEMS, list.getItem().size());
 				assertEquals(NO_ITEMS, list.getContainedItem().size());
 				assertEquals(NO_ITEMS, list.getJoinedItem().size());
@@ -142,6 +143,8 @@ public class SetResourceAction extends AbstractTestAction {
 					}
 				}
 
+				assert (list != null);
+
 				final ArrayList<String> checkNames = new ArrayList<String>(names);
 				for (int i = 0; i < list.getItem().size(); i++) {
 					assertTrue(checkNames.remove(list.getItem().get(i).getName()));
@@ -177,6 +180,7 @@ public class SetResourceAction extends AbstractTestAction {
 						list = (ItemList) res.getContents().get(i);
 					}
 				}
+				assert (list != null);
 				assertEquals(newCount, list.getItem().size());
 				res.save(null);
 				res.unload();

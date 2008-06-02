@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogAction.java,v 1.7 2008/04/04 11:50:30 mtaal Exp $
+ * $Id: CatalogAction.java,v 1.8 2008/06/02 07:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * to catalog, delete from catalog.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public abstract class CatalogAction extends AbstractTestAction {
 
@@ -225,6 +225,7 @@ public abstract class CatalogAction extends AbstractTestAction {
 			CatalogType cat = (CatalogType) store.query(CatalogType.class, "name", "MainCatalog", 1).get(0);
 
 			assertTrue(cat != null);
+			assert (cat != null);
 			assertTrue(cat.getName().compareTo("MainCatalog") == 0);
 			assertTrue(cat.getProduct().size() == 2);
 			assertTrue((cat.getProduct().get(0)).getCode().compareTo("product1") == 0);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DetachAction.java,v 1.9 2008/03/07 13:13:53 mtaal Exp $
+ * $Id: DetachAction.java,v 1.10 2008/06/02 07:15:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.detach;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is a test case to test basic detach functionality in the dao resource; Specifically for JPOX/JDO
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public abstract class DetachAction extends AbstractTestAction {
 
@@ -119,6 +119,9 @@ public abstract class DetachAction extends AbstractTestAction {
 					}
 				}
 
+				assert (testc != null);
+				assert (testa != null);
+
 				// get testb to force a load
 				if (testc.getTestB().size() != 2 || (testc.getTestB().get(0)).getCode().compareTo("testb2") != 0) {
 					throw new Error("Where is testb?");
@@ -168,6 +171,9 @@ public abstract class DetachAction extends AbstractTestAction {
 						testc = (TestC) obj;
 					}
 				}
+
+				assert (testa != null);
+				assert (testc != null);
 
 				if (testa.getCode().compareTo("detached") != 0) {
 					throw new StoreTestException("The code of testa was not set!");

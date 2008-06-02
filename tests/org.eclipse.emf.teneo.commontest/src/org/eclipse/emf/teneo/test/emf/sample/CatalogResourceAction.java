@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: CatalogResourceAction.java,v 1.7 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: CatalogResourceAction.java,v 1.8 2008/06/02 07:15:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -33,12 +33,13 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Performs a number of test actions on the catalog example. Create products, link a supplier, add to catalog, delete from catalog.
+ * Performs a number of test actions on the catalog example. Create products, link a supplier, add
+ * to catalog, delete from catalog.
  * 
  * All using a resource, tests add, delete and update of objects in a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class CatalogResourceAction extends AbstractTestAction {
 	/**
@@ -60,14 +61,16 @@ public class CatalogResourceAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Creates a supplier, a product, relates then, saves them in a resource and retrieves them again. and does sme
+	 * Creates a supplier, a product, relates then, saves them in a resource and retrieves them
+	 * again. and does sme
 	 */
 	Resource resource;
 
+	@Override
 	public void doAction(TestStore store) {
 		final CatalogFactory factory = CatalogFactory.eINSTANCE;
 		try {
-			double checkPrice = (double) 69.96; // is checked later
+			double checkPrice = 69.96; // is checked later
 
 			{
 				resource = store.getResource();
@@ -84,7 +87,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				price.setQuantityTo(100.0);
 				resource.getContents().add(price);
 
-				final ProductType product = (ProductType) factory.createProductType();
+				final ProductType product = factory.createProductType();
 				product.setCode("product1");
 				product.setDescription("This is a very nice product");
 				final StringType str1 = factory.createStringType();
@@ -104,8 +107,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 				resource = store.getResource();
 				resource.load(null);
 
-				assertTrue("There should be two top objects in the resource but there are " + resource.getContents().size(), resource
-						.getContents().size() == 2);
+				assertTrue("There should be two top objects in the resource but there are " +
+						resource.getContents().size(), resource.getContents().size() == 2);
 
 				// get the supplier
 				SupplierType supplier = null;
@@ -121,7 +124,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 				price2.setSupplier(supplier);
 				price2.setQuantityTo(100.0);
 
-				final ProductType product2 = (ProductType) factory.createProductType();
+				final ProductType product2 = factory.createProductType();
 				product2.setCode("product2");
 				product2.setDescription("This is a very nice product");
 				final StringType strfor2 = factory.createStringType();
@@ -140,7 +143,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 			store.checkNumber(StringType.class, 3);
 			store.commitTransaction();
 
-			// directly checks if the following StringTypes are in the database: remarka, remarkb and remarkc
+			// directly checks if the following StringTypes are in the database: remarka, remarkb
+			// and remarkc
 			{
 				store.beginTransaction();
 				final List<?> results = store.getObjects(StringType.class);
@@ -200,7 +204,9 @@ public class CatalogResourceAction extends AbstractTestAction {
 				it = resource.getContents().iterator();
 				while (it.hasNext()) {
 					Object obj = it.next();
-					if (obj instanceof ProductType) mainCatalog.getProduct().add((ProductType)obj);
+					if (obj instanceof ProductType) {
+						mainCatalog.getProduct().add((ProductType) obj);
+					}
 				}
 				final CatalogType subCatalog = factory.createCatalogType();
 				subCatalog.setName("SubCatalog");
@@ -227,8 +233,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 				while (it.hasNext()) {
 					final Object obj = it.next();
 
-					assertTrue("Only top classes should be returned", obj instanceof ProductType || obj instanceof SupplierType
-							|| obj instanceof CatalogType);
+					assertTrue("Only top classes should be returned", obj instanceof ProductType ||
+							obj instanceof SupplierType || obj instanceof CatalogType);
 
 					if (obj instanceof CatalogType && ((CatalogType) obj).getName().compareTo("MainCatalog") == 0) {
 						assertTrue("There should only be one MainCatalog", cat == null);
@@ -236,12 +242,13 @@ public class CatalogResourceAction extends AbstractTestAction {
 					}
 				}
 				assertTrue(cat != null);
+				assert (cat != null);
 				assertEquals(0, cat.getName().compareTo("MainCatalog"));
 				assertEquals(2, cat.getProduct().size());
-				assertTrue(((ProductType) cat.getProduct().get(0)).getCode().compareTo("product1") == 0);
-				assertTrue(((ProductType) cat.getProduct().get(1)).getCode().compareTo("product2") == 0);
+				assertTrue((cat.getProduct().get(0)).getCode().compareTo("product1") == 0);
+				assertTrue((cat.getProduct().get(1)).getCode().compareTo("product2") == 0);
 				cat.getProduct().remove(1); // this product will not be deleted, only the reference
-				assertTrue(((CatalogType) cat.getSubCatalog().get(0)).getName().compareTo("SubCatalog") == 0);
+				assertTrue((cat.getSubCatalog().get(0)).getName().compareTo("SubCatalog") == 0);
 
 				resource.save(null);
 				resource.unload();
@@ -268,7 +275,7 @@ public class CatalogResourceAction extends AbstractTestAction {
 
 						// test if the containment is set correctly
 						// there is always at least one remark!
-						EObject eobj = (EObject) ((ProductType) obj).getRemark().get(0);
+						EObject eobj = ((ProductType) obj).getRemark().get(0);
 						assertTrue("The remark should be contained in the product", eobj.eContainer() == obj);
 
 						// delete the product with 1 remark, this is then tested below
@@ -312,8 +319,8 @@ public class CatalogResourceAction extends AbstractTestAction {
 				assertTrue(result.getCode().compareTo("product1") == 0);
 				assertTrue(result.getRemark().size() == 2);
 
-				assertTrue(((StringType) result.getRemark().get(0)).getValue().compareTo("remarka") == 0);
-				assertTrue(((StringType) result.getRemark().get(1)).getValue().compareTo("remarkb") == 0);
+				assertTrue((result.getRemark().get(0)).getValue().compareTo("remarka") == 0);
+				assertTrue((result.getRemark().get(1)).getValue().compareTo("remarkb") == 0);
 
 				// then remove one
 				result.getRemark().remove(1);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryValidateResourceAction.java,v 1.7 2008/03/10 06:02:08 mtaal Exp $
+ * $Id: LibraryValidateResourceAction.java,v 1.8 2008/06/02 07:15:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple validation works for the resource implementation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class LibraryValidateResourceAction extends AbstractTestAction {
 	/**
@@ -114,6 +114,7 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 					}
 				}
 
+				assert (lib != null);
 				Writer tolkien = lib.getWriters().get(0);
 
 				tolkien.setName("Mr. Tolkien");

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ProductAction.java,v 1.9 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: ProductAction.java,v 1.10 2008/06/02 07:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * primitive types (double and date).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class ProductAction extends AbstractTestAction {
 	public ProductAction() {
@@ -88,6 +88,7 @@ public class ProductAction extends AbstractTestAction {
 			store.beginTransaction();
 			ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
 			assertTrue(result != null);
+			assert (result != null);
 			assertTrue(result.getCode().compareTo("product1") == 0);
 			assertTrue(result.getSupplier() != null);
 			assertEquals(199.95, result.getPrice(), 0.01);

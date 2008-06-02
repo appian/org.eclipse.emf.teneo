@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestAction.java,v 1.6 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: AbstractTestAction.java,v 1.7 2008/06/02 07:15:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Abstract TestAction used in backend specific test cases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public abstract class AbstractTestAction extends Assert {
 	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to
@@ -113,8 +113,7 @@ public abstract class AbstractTestAction extends Assert {
 		final URL resource = getClass().getClassLoader().getResource(path);
 		if (resource == null) {
 			return null;
-		} else {
-			return path;
 		}
+		return path;
 	}
 }
