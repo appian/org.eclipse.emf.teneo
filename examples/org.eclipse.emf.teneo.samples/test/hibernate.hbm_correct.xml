@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="com.webamg.k2.inventory.impl.PlacementImpl" entity-name="Placement" abstract="false" lazy="false" discriminator-value="Placement" table="`placement`">
+		<meta attribute="eclassName">Placement</meta>
+		<meta attribute="epackage">http://www.webamg.com/k2/inventory</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="true" type="java.lang.String">
+			<column not-null="true" unique="true" name="`name`"/>
+		</property>
+		<property name="typeUri" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`typeuri`"/>
+		</property>
+		<map name="property" lazy="false" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`placement_id`" not-null="false" unique="false"/>
+			</key>
+			<map-key type="java.lang.String" column="name"/>
+			<element type="java.lang.String" not-null="false" unique="false" column="value"/>
+		</map>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`modified`" sql-type="timestamp"/>
+		</property>
+		<property name="revision" lazy="false" insert="false" update="false" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`e_version`"/>
+		</property>
+	</class>
+	<class name="com.webamg.k2.inventory.impl.DomainImpl" entity-name="Domain" abstract="false" lazy="false" discriminator-value="Domain" table="`domain`">
+		<meta attribute="eclassName">Domain</meta>
+		<meta attribute="epackage">http://www.webamg.com/k2/inventory</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<bag name="systems" fetch="subselect" lazy="true" table="`domain_system`">
+			<key update="true">
+				<column name="`domain_id`" not-null="true" unique="false"/>
+			</key>
+			<many-to-many entity-name="DomainSystem" unique="false" foreign-key="domain_systems">
+				<column name="`system_id`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`modified`" sql-type="timestamp"/>
+		</property>
+		<property name="revision" lazy="false" insert="false" update="false" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`e_version`"/>
+		</property>
+	</class>
+	<class name="com.webamg.k2.inventory.impl.DomainSystemImpl" entity-name="DomainSystem" abstract="false" lazy="false" discriminator-value="DomainSystem" table="`domainsystem`">
+		<meta attribute="eclassName">DomainSystem</meta>
+		<meta attribute="epackage">http://www.webamg.com/k2/inventory</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="true" type="java.lang.String">
+			<column not-null="true" unique="true" name="`name`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`description`"/>
+		</property>
+		<bag name="domains" fetch="subselect" lazy="true" inverse="true" table="`domain_system`">
+			<key update="true">
+				<column name="`system_id`" not-null="true" unique="false"/>
+			</key>
+			<many-to-many entity-name="Domain" unique="false" foreign-key="domainsystem_domains">
+				<column name="`domain_id`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`modified`" sql-type="timestamp"/>
+		</property>
+		<property name="revision" lazy="false" insert="false" update="false" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`e_version`"/>
+		</property>
+	</class>
+	<class name="com.webamg.k2.inventory.impl.ProtocolImpl" entity-name="Protocol" abstract="false" lazy="false" discriminator-value="Protocol" table="`protocol`">
+		<meta attribute="eclassName">Protocol</meta>
+		<meta attribute="epackage">http://www.webamg.com/k2/inventory</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<property name="rootUri" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`rooturi`"/>
+		</property>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`modified`" sql-type="timestamp"/>
+		</property>
+		<property name="revision" lazy="false" insert="false" update="false" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`e_version`"/>
+		</property>
+	</class>
+</hibernate-mapping>
