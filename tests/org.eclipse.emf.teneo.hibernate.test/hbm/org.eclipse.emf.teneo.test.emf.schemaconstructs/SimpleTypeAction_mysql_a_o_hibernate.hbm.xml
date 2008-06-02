@@ -2,46 +2,6 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<typedef name="simpletypes.Bool" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">Bool</param>
-	</typedef>
-	<typedef name="simpletypes.Byte" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">Byte</param>
-	</typedef>
-	<typedef name="simpletypes.ByteArray" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">ByteArray</param>
-	</typedef>
-	<typedef name="simpletypes.Double" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">Double</param>
-	</typedef>
-	<typedef name="simpletypes.DoubleArray" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">DoubleArray</param>
-	</typedef>
-	<typedef name="simpletypes.Float" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">Float</param>
-	</typedef>
-	<typedef name="simpletypes.Int" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">Int</param>
-	</typedef>
-	<typedef name="simpletypes.IntArray" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">IntArray</param>
-	</typedef>
-	<typedef name="simpletypes.LimitedDecimal" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">LimitedDecimal</param>
-	</typedef>
-	<typedef name="simpletypes.Long" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
-		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
-		<param name="edatatype">Long</param>
-	</typedef>
 	<typedef name="simpletypes.SimpleEnumObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/simpletypes</param>
 		<param name="edatatype">SimpleEnumObject</param>
@@ -76,35 +36,35 @@
 				<column name="`simplelist_byt_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_byt_idx`"/>
-			<element type="simpletypes.Byte"/>
+			<element type="java.lang.Byte"/>
 		</list>
 		<list name="doubl" table="`simplelist_doubl`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`simplelist_doubl_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_doubl_idx`"/>
-			<element type="simpletypes.Double"/>
+			<element type="java.lang.Double"/>
 		</list>
 		<list name="floa" table="`simplelist_floa`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`simplelist_floa_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_floa_idx`"/>
-			<element type="simpletypes.Float"/>
+			<element type="java.lang.Float"/>
 		</list>
 		<list name="inte" table="`simplelist_inte`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`simplelist_inte_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_inte_idx`"/>
-			<element type="simpletypes.Int"/>
+			<element type="java.lang.Integer"/>
 		</list>
 		<list name="long" table="`longnum`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`simplelist_long_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`simplelist_long_idx`"/>
-			<element type="simpletypes.Long"/>
+			<element type="java.lang.Long"/>
 		</list>
 		<list name="shor" table="`simplelist_shor`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -145,18 +105,30 @@
 			<list-index column="`simplelist_stri_idx`"/>
 			<element type="java.lang.String"/>
 		</list>
-		<property name="intArray" lazy="false" insert="true" update="true" not-null="true" unique="false" type="simpletypes.IntArray">
-			<column not-null="true" unique="false" name="`intarray`"/>
-		</property>
-		<property name="doubleArray" lazy="false" insert="true" update="true" not-null="true" unique="false" type="simpletypes.DoubleArray">
-			<column not-null="true" unique="false" name="`doublearray`"/>
-		</property>
+		<array name="intArray" table="`simplelist_intarray`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_intarray_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_intarray_idx`"/>
+			<element type="int"/>
+		</array>
+		<array name="doubleArray" table="`simplelist_doublearray`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_doublearray_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_doublearray_idx`"/>
+			<element type="double"/>
+		</array>
 		<property name="stringArray" lazy="false" insert="true" update="true" not-null="true" unique="false" type="simpletypes.StringArray">
 			<column not-null="true" unique="false" name="`stringarray`"/>
 		</property>
-		<property name="byteArray" lazy="false" insert="true" update="true" not-null="true" unique="false" type="simpletypes.ByteArray">
-			<column not-null="true" unique="false" name="`bytearray`"/>
-		</property>
+		<array name="byteArray" table="`simplelist_bytearray`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`simplelist_bytearray_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`simplelist_bytearray_idx`"/>
+			<element type="byte"/>
+		</array>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.simpletypes.impl.SimpleTypeImpl" entity-name="SimpleType" abstract="false" lazy="false" discriminator-value="SimpleType" table="`simpletype`">
 		<meta attribute="eclassName">SimpleType</meta>
@@ -205,7 +177,7 @@
 		<property name="limitedstring" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`limitedstring`" length="10"/>
 		</property>
-		<property name="limitedDecimal" lazy="false" insert="true" update="true" not-null="true" unique="false" type="simpletypes.LimitedDecimal">
+		<property name="limitedDecimal" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigDecimal">
 			<column not-null="true" unique="false" name="`limiteddecimal`" precision="4" scale="1"/>
 		</property>
 		<property name="extraLimitedString" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">

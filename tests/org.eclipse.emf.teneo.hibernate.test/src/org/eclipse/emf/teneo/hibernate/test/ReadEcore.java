@@ -27,14 +27,13 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 
 /**
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class ReadEcore {
 
@@ -85,7 +84,7 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 
 // System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
-			HbDataStore hbds = initSimpleDataStore(epacks);
+			initSimpleDataStore(epacks);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
@@ -178,7 +177,7 @@ public class ReadEcore {
 			System.err.println(hbds.getMappingXML());
 		}
 
-		SessionFactory sessionFactory = hbds.getSessionFactory();
+		hbds.getSessionFactory();
 		return hbds;
 	}
 
@@ -210,8 +209,6 @@ public class ReadEcore {
 		} finally {
 			System.err.println(hbds.getMappingXML());
 		}
-
-		SessionFactory sessionFactory = hbds.getSessionFactory();
 		return hbds;
 	}
 }
