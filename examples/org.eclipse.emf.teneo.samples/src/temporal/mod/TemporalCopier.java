@@ -1,9 +1,5 @@
 package temporal.mod;
 
-import temporal.Temporal;
-import temporal.TemporalPackage;
-import temporal.VersionHolder;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -25,20 +21,27 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import temporal.Temporal;
+import temporal.TemporalPackage;
+import temporal.VersionHolder;
+
 /**
- * The TemporalCopier is a modified version of the EMF Copier class. The copier copies EObject and their references. The
- * TemporalCopier provides the facility to create versions of Temporal continuities.
+ * The TemporalCopier is a modified version of the EMF Copier class. The copier copies EObject and
+ * their references. The TemporalCopier provides the facility to create versions of Temporal
+ * continuities.
  * 
- * To ease merges with future versions of EMF I took care to record where I modified the original code of the Copier to
- * support Temporal copying.
+ * To ease merges with future versions of EMF I took care to record where I modified the original
+ * code of the Copier to support Temporal copying.
  * 
- * 1) copyTemporalAttributes: Copies all Temporal specific attributes and references. Transfers the date and touched
- * attributes. 2) attachVersionToContinuity: Attaches the newly created version to the version holder of the continuity.
- * 3) copyBidirectional: Creates versions of any temporal associated in a bidirectional association with the temporal
- * being versioned. Temporal in a bidirectional relation are necessarily versioned together. However it is possible
- * that in a timeframe a versioned temporal is re-associated with a temporal that was not versioned in the given
- * timeframe. In that situation we have a temporal that already has a version. So we can't assume that if we are
- * versionning a temporal in a bidirectional association the opposite will need to be versioned it may already exist.
+ * 1) copyTemporalAttributes: Copies all Temporal specific attributes and references. Transfers the
+ * date and touched attributes. 2) attachVersionToContinuity: Attaches the newly created version to
+ * the version holder of the continuity. 3) copyBidirectional: Creates versions of any temporal
+ * associated in a bidirectional association with the temporal being versioned. Temporal in a
+ * bidirectional relation are necessarily versioned together. However it is possible that in a
+ * timeframe a versioned temporal is re-associated with a temporal that was not versioned in the
+ * given timeframe. In that situation we have a temporal that already has a version. So we can't
+ * assume that if we are versionning a temporal in a bidirectional association the opposite will
+ * need to be versioned it may already exist.
  * 
  * @author jcmcote
  * 
@@ -48,14 +51,13 @@ public class TemporalCopier extends HashMap {
 	/**
 	 * Date of copying.
 	 */
-	
+
 	protected final Date copyDate;
-	
+
 	/**
 	 * Whether proxies should be resolved during copying.
 	 */
 	protected boolean resolveProxies = true;
-
 
 	/**
 	 * Creates an instance.
@@ -95,8 +97,7 @@ public class TemporalCopier extends HashMap {
 							if (!eReference.isContainment() && !eReference.isContainer()) {
 								copyReference(eReference, eObject, copyEObject);
 							}
-						}
-						else if (FeatureMapUtil.isFeatureMap(eStructuralFeature)) {
+						} else if (FeatureMapUtil.isFeatureMap(eStructuralFeature)) {
 							FeatureMap featureMap = (FeatureMap) eObject.eGet(eStructuralFeature);
 							FeatureMap copyFeatureMap = (FeatureMap) copyEObject.eGet(getTarget(eStructuralFeature));
 							int copyFeatureMapSize = copyFeatureMap.size();
@@ -118,15 +119,15 @@ public class TemporalCopier extends HashMap {
 									//
 									if (!copyFeatureMap.add(feature, copyReferencedEObject)) {
 										for (int l = 0; l < copyFeatureMapSize; ++l) {
-											if (copyFeatureMap.getEStructuralFeature(l) == feature && copyFeatureMap.getValue(l) == copyReferencedEObject) {
+											if (copyFeatureMap.getEStructuralFeature(l) == feature &&
+													copyFeatureMap.getValue(l) == copyReferencedEObject) {
 												copyFeatureMap.move(copyFeatureMap.size() - 1, l);
 												--copyFeatureMapSize;
 												break;
 											}
 										}
 									}
-								}
-								else {
+								} else {
 									copyFeatureMap.add(featureMap.get(k));
 								}
 							}
@@ -138,8 +139,9 @@ public class TemporalCopier extends HashMap {
 	}
 
 	/**
-	 * Called to handle the copying of a cross reference; this adds values or sets a single value as appropriate for the
-	 * multiplicity while omitting any bidirectional reference that isn't in the copy map.
+	 * Called to handle the copying of a cross reference; this adds values or sets a single value as
+	 * appropriate for the multiplicity while omitting any bidirectional reference that isn't in the
+	 * copy map.
 	 * 
 	 * @param eReference
 	 *            the reference to copy.
@@ -156,8 +158,7 @@ public class TemporalCopier extends HashMap {
 				InternalEList target = (InternalEList) copyEObject.eGet(getTarget(eReference));
 				if (source.isEmpty()) {
 					target.clear();
-				}
-				else {
+				} else {
 					boolean isBidirectional = eReference.getEOpposite() != null;
 					int index = 0;
 					for (Iterator k = resolveProxies ? source.iterator() : source.basicIterator(); k.hasNext();) {
@@ -180,31 +181,26 @@ public class TemporalCopier extends HashMap {
 									++index;
 								}
 							}
-						}
-						else {
+						} else {
 							if (isBidirectional) {
 								int position = target.indexOf(copyReferencedEObject);
 								if (position == -1) {
 									target.addUnique(index, copyReferencedEObject);
-								}
-								else if (index != position) {
+								} else if (index != position) {
 									target.move(index, copyReferencedEObject);
 								}
-							}
-							else {
+							} else {
 								target.addUnique(index, copyReferencedEObject);
 							}
 							++index;
 						}
 					}
 				}
-			}
-			else {
+			} else {
 				Object referencedEObject = eObject.eGet(eReference, resolveProxies);
 				if (referencedEObject == null) {
 					copyEObject.eSet(getTarget(eReference), null);
-				}
-				else {
+				} else {
 					Object copyReferencedEObject = get(referencedEObject);
 					if (copyReferencedEObject == null) {
 						if (eReference.getEOpposite() == null) {
@@ -220,8 +216,7 @@ public class TemporalCopier extends HashMap {
 								copyEObject.eSet(getTarget(eReference), referencedEObject);
 							}
 						}
-					}
-					else {
+					} else {
 						copyEObject.eSet(getTarget(eReference), copyReferencedEObject);
 					}
 				}
@@ -239,7 +234,7 @@ public class TemporalCopier extends HashMap {
 	protected Collection copyAll(Collection eObjects) {
 		Collection result = new ArrayList(eObjects.size());
 		for (Iterator i = eObjects.iterator(); i.hasNext();) {
-			result.add(copy((EObject)i.next()));
+			result.add(copy((EObject) i.next()));
 		}
 		return result;
 	}
@@ -273,11 +268,10 @@ public class TemporalCopier extends HashMap {
 
 		// JCC: attach new version to continuity.
 		attachVersionToContinuity((Temporal) eObject, (Temporal) copyEObject);
-		
+
 		// JCC: add new version create to resource if it exists.
 		addVersionToContainer((Temporal) eObject, (Temporal) copyEObject);
 
-		
 		EClass eClass = eObject.eClass();
 		for (int i = 0, size = eClass.getFeatureCount(); i < size; ++i) {
 			EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(i);
@@ -287,8 +281,7 @@ public class TemporalCopier extends HashMap {
 				if (eStructuralFeature.isChangeable() && !eStructuralFeature.isDerived()) {
 					if (eStructuralFeature instanceof EAttribute) {
 						copyAttribute((EAttribute) eStructuralFeature, eObject, copyEObject);
-					}
-					else {
+					} else {
 						EReference eReference = (EReference) eStructuralFeature;
 						if (eReference.isContainment()) {
 							copyContainment(eReference, eObject, copyEObject);
@@ -336,7 +329,8 @@ public class TemporalCopier extends HashMap {
 	}
 
 	/**
-	 * Returns the target class used to create a copy instance for objects of the given source class.
+	 * Returns the target class used to create a copy instance for objects of the given source
+	 * class.
 	 * 
 	 * @param eClass
 	 *            the source class.
@@ -360,8 +354,8 @@ public class TemporalCopier extends HashMap {
 	}
 
 	/**
-	 * Called to handle the copying of a containment feature; this adds a list of copies or sets a single copy as
-	 * appropriate for the multiplicity.
+	 * Called to handle the copying of a containment feature; this adds a list of copies or sets a
+	 * single copy as appropriate for the multiplicity.
 	 * 
 	 * @param eReference
 	 *            the feature to copy.
@@ -377,49 +371,51 @@ public class TemporalCopier extends HashMap {
 				List target = (List) copyEObject.eGet(getTarget(eReference));
 				if (source.isEmpty()) {
 					target.clear();
-				}
-				else {
+				} else {
 					target.addAll(copyAll(source));
 
 					/**
-			  		 * JCC: added this to support versioning of containment features.
-			  		 * fix containment references.
-			  		 */
+					 * JCC: added this to support versioning of containment features. fix
+					 * containment references.
+					 */
 					InternalEObject continuityContainer = (InternalEObject) eObject;
-					int containerFeatureID = ((InternalEObject)source.get(0)).eContainerFeatureID();
+					int containerFeatureID = ((InternalEObject) source.get(0)).eContainerFeatureID();
 					for (int i = 0; i < target.size(); i++) {
 						Object copyChildEObject = target.get(i);
-						if(copyChildEObject instanceof Temporal){
-							Object continuity = ((Temporal)copyChildEObject).continuity();
-							((TemporalEStoreImpl)((InternalEObject)copyEObject).eStore()).set((InternalEObject)copyEObject, eReference, i, continuity);
-							((InternalEObject)copyChildEObject).eBasicSetContainer(continuityContainer, containerFeatureID, null);
+						if (copyChildEObject instanceof Temporal) {
+							Object continuity = ((Temporal) copyChildEObject).continuity();
+							((TemporalEStoreImpl) ((InternalEObject) copyEObject).eStore()).set(
+								(InternalEObject) copyEObject, eReference, i, continuity);
+							((InternalEObject) copyChildEObject).eBasicSetContainer(continuityContainer,
+								containerFeatureID, null);
 						}
 					}
 				}
-			}
-			else {
+			} else {
 				EObject childEObject = (EObject) eObject.eGet(eReference);
 				EObject copyChildEObject = childEObject == null ? null : copy(childEObject);
 				copyEObject.eSet(getTarget(eReference), copyChildEObject);
-				
+
 				/**
-		  		 * JCC: added this to support versioning of containment features.
-		  		 * fix containment references.
-		  		 */
-				if(copyChildEObject instanceof Temporal){
+				 * JCC: added this to support versioning of containment features. fix containment
+				 * references.
+				 */
+				if (copyChildEObject instanceof Temporal) {
 					InternalEObject continuityContainer = (InternalEObject) eObject;
-					int containerFeatureID = ((InternalEObject)childEObject).eContainerFeatureID();
-					Object continuity = ((Temporal)childEObject);
-					((TemporalEStoreImpl)((InternalEObject)copyEObject).eStore()).set((InternalEObject)copyEObject, eReference, -1, continuity);
-					((InternalEObject)copyChildEObject).eBasicSetContainer(continuityContainer, containerFeatureID, null);
+					int containerFeatureID = ((InternalEObject) childEObject).eContainerFeatureID();
+					Object continuity = (childEObject);
+					((TemporalEStoreImpl) ((InternalEObject) copyEObject).eStore()).set((InternalEObject) copyEObject,
+						eReference, -1, continuity);
+					((InternalEObject) copyChildEObject).eBasicSetContainer(continuityContainer, containerFeatureID,
+						null);
 				}
 			}
 		}
 	}
 
 	/**
-	 * Called to handle the copying of an attribute; this adds a list of values or sets a single value as appropriate
-	 * for the multiplicity.
+	 * Called to handle the copying of an attribute; this adds a list of values or sets a single
+	 * value as appropriate for the multiplicity.
 	 * 
 	 * @param eAttribute
 	 *            the attribute to copy.
@@ -441,27 +437,24 @@ public class TemporalCopier extends HashMap {
 						}
 					}
 				}
-			}
-			else if (eAttribute.isMany()) {
+			} else if (eAttribute.isMany()) {
 				List source = (List) eObject.eGet(eAttribute);
 				List target = (List) copyEObject.eGet(getTarget(eAttribute));
 				if (source.isEmpty()) {
 					target.clear();
-				}
-				else {
+				} else {
 					target.addAll(source);
 				}
-			}
-			else {
+			} else {
 				copyEObject.eSet(getTarget(eAttribute), eObject.eGet(eAttribute));
 			}
 		}
 	}
 
 	/**
-	 * JCC: This method creates versions for the opposite Temporals. If the opposite is not Temporal and exception is
-	 * thrown. Note: This method just creates a version of the opposite it does not fix the references. The
-	 * copyReferences will do that later.
+	 * JCC: This method creates versions for the opposite Temporals. If the opposite is not Temporal
+	 * and exception is thrown. Note: This method just creates a version of the opposite it does not
+	 * fix the references. The copyReferences will do that later.
 	 * 
 	 * @param eReference
 	 * @param eObject
@@ -481,8 +474,7 @@ public class TemporalCopier extends HashMap {
 						copyOpposite((Temporal) itemEObject);
 					}
 				}
-			}
-			else {
+			} else {
 				EObject childEObject = (EObject) eObject.eGet(eReference);
 				if (childEObject != null) {
 					// bidirectional association must be with other temporal
@@ -498,8 +490,9 @@ public class TemporalCopier extends HashMap {
 	}
 
 	/**
-	 * JCC: This method copies an opposite Temporal. If the opposite is not a continuity an exception is thrown. Also if
-	 * the given opposite temporal already has a suitable version none is created.
+	 * JCC: This method copies an opposite Temporal. If the opposite is not a continuity an
+	 * exception is thrown. Also if the given opposite temporal already has a suitable version none
+	 * is created.
 	 * 
 	 * @param childTemporal
 	 */
@@ -514,8 +507,7 @@ public class TemporalCopier extends HashMap {
 		if (temporalObjectAtNow == null || !temporalObjectAtNow.isDateWithinVersion(copyDate)) {
 			// We do not have a version for it so create one.
 			copy(childTemporal);
-		}
-		else {
+		} else {
 			System.err.println("------------ FYI: skiping creating version.");
 			System.err.println("------------ what causes this condition???");
 		}
@@ -536,15 +528,15 @@ public class TemporalCopier extends HashMap {
 		// It will get a new set of touched attributes when required.
 		TemporalEStoreHandler.setTouchedAttributes(continuity, null);
 
-		// Remove the version holder by containment reference it is only needed by the continuity for persistence reasons.
+		// Remove the version holder by containment reference it is only needed by the continuity
+		// for persistence reasons.
 		newVersion.eSet(TemporalPackage.eINSTANCE.getTemporal_VersionHolderContainment(), null);
 		newVersion.eSet(TemporalPackage.eINSTANCE.getTemporal_VersionHolder(), null);
-		
+
 		// Bump the date of the continuity to now.
 		continuity.eSet(TemporalPackage.eINSTANCE.getTemporal_Date(), copyDate);
 	}
 
-	
 	/**
 	 * JCC: This method adds the newly created version to the resource if any.
 	 * 
@@ -553,29 +545,28 @@ public class TemporalCopier extends HashMap {
 	 */
 	private void addVersionToContainer(Temporal continuity, Temporal newVersion) {
 		/**
-		 * JCC: added this to support versioning of containment features.
-		 * The TemporalCopier made a version of a continuity. We now check if the continuity
-		 * had a container. If so we will need to version the container also.
-		 * If it does not we check if it is attached to a resource if so its versions also be attached to the same resource.
+		 * JCC: added this to support versioning of containment features. The TemporalCopier made a
+		 * version of a continuity. We now check if the continuity had a container. If so we will
+		 * need to version the container also. If it does not we check if it is attached to a
+		 * resource if so its versions also be attached to the same resource.
 		 */
 		InternalEObject continuityContainer = (InternalEObject) continuity.eContainer();
-		if(continuityContainer != null){
+		if (continuityContainer != null) {
 			// Version the container of this temporal.
 			this.copy(continuityContainer);
-		}
-		else{
+		} else {
 			Resource resource = continuity.eResource();
-			if(resource != null){
+			if (resource != null) {
 				resource.getContents().add(newVersion);
 			}
-		}	
+		}
 	}
-	
-	
+
 	/**
 	 * JCC: This method adds the newly created version to the list of versions for the continuity.
-	 * Adds the new version to the versions list by inserting the new version at the location of the current
-	 * continuity and repositioning the continuity according to its new date. 
+	 * Adds the new version to the versions list by inserting the new version at the location of the
+	 * current continuity and repositioning the continuity according to its new date.
+	 * 
 	 * @param continuity
 	 * @param newVersion
 	 */
@@ -583,15 +574,15 @@ public class TemporalCopier extends HashMap {
 		VersionHolder vh = (VersionHolder) continuity.eGet(TemporalPackage.eINSTANCE.getTemporal_VersionHolder());
 		EList versions = vh.getVersions();
 
-		assert(continuity.isContinuity());
+		assert (continuity.isContinuity());
 		// Insert new version at index of continuity.
-		assert(versions.contains(newVersion) == false);
-		assert(versions.contains(continuity) == true);
+		assert (versions.contains(newVersion) == false);
+		assert (versions.contains(continuity) == true);
 		int indexOfContinuity = vh.getIndexOfContinuity();
 		versions.set(indexOfContinuity, newVersion);
-		assert(versions.contains(newVersion) == true);
-		assert(versions.contains(continuity) == false);
-		
+		assert (versions.contains(newVersion) == true);
+		assert (versions.contains(continuity) == false);
+
 		// Insert the continuity at the proper location based on its new date.
 		int versionCount = versions.size();
 		Date newDateOfContinuity = continuity.getDate();
@@ -606,16 +597,15 @@ public class TemporalCopier extends HashMap {
 		}
 
 		vh.setIndexOfContinuity(insertIndex);
-		
-		versions.add(insertIndex, continuity);
-		assert(versions.contains(newVersion) == true);
-		assert(versions.contains(continuity) == true);
 
+		versions.add(insertIndex, continuity);
+		assert (versions.contains(newVersion) == true);
+		assert (versions.contains(continuity) == true);
 
 		// Note the copier did not copy the reference to the version holder because
 		// it is not a containment reference. However since we added the version to the
 		// versions list which is in bi-directional relation with the versionHolder attribute
-		// it got set. (is this still true? I now use the copy method of the 
+		// it got set. (is this still true? I now use the copy method of the
 		// copier which I think may be coping this reference..)
 		assert (newVersion.eGet(TemporalPackage.eINSTANCE.getTemporal_VersionHolder()) == vh);
 	}
@@ -634,8 +624,8 @@ public class TemporalCopier extends HashMap {
 	}
 
 	/**
-	 * JCC: This is the main entry point into the temporal copier. It is used by the generated codes createVersion()
-	 * method.
+	 * JCC: This is the main entry point into the temporal copier. It is used by the generated codes
+	 * createVersion() method.
 	 * 
 	 * @param continuity
 	 * @return
@@ -651,7 +641,7 @@ public class TemporalCopier extends HashMap {
 		Temporal copy = (Temporal) copier.copy(continuity);
 		copier.copyReferences();
 		copier.resetBypassFlags();
-		//copier.fixContainments();
+		// copier.fixContainments();
 		return copy;
 	}
 
@@ -676,41 +666,42 @@ public class TemporalCopier extends HashMap {
 								fixContainment(eReference, eObject, copyEObject);
 							}
 						}
-//						else if (FeatureMapUtil.isFeatureMap(eStructuralFeature)) {
-//							FeatureMap featureMap = (FeatureMap) eObject.eGet(eStructuralFeature);
-//							FeatureMap copyFeatureMap = (FeatureMap) copyEObject.eGet(getTarget(eStructuralFeature));
-//							int copyFeatureMapSize = copyFeatureMap.size();
-//							for (int k = 0, featureMapSize = featureMap.size(); k < featureMapSize; ++k) {
-//								EStructuralFeature feature = featureMap.getEStructuralFeature(k);
-//								if (feature instanceof EReference) {
-//									Object referencedEObject = featureMap.getValue(k);
-//									Object copyReferencedEObject = get(referencedEObject);
-//									if (copyReferencedEObject == null && referencedEObject != null) {
-//										EReference reference = (EReference) feature;
-//										if (reference.isContainment() || reference.getEOpposite() != null) {
-//											continue;
-//										}
-//										copyReferencedEObject = referencedEObject;
-//									}
-//									// If we can't add it, it must already be in
-//									// the list so find it and move it to the
-//									// end.
-//									//
-//									if (!copyFeatureMap.add(feature, copyReferencedEObject)) {
-//										for (int l = 0; l < copyFeatureMapSize; ++l) {
-//											if (copyFeatureMap.getEStructuralFeature(l) == feature && copyFeatureMap.getValue(l) == copyReferencedEObject) {
-//												copyFeatureMap.move(copyFeatureMap.size() - 1, l);
-//												--copyFeatureMapSize;
-//												break;
-//											}
-//										}
-//									}
-//								}
-////								else {
-////									copyFeatureMap.add(featureMap.get(k));
-////								}
-//							}
-//						}
+// else if (FeatureMapUtil.isFeatureMap(eStructuralFeature)) {
+// FeatureMap featureMap = (FeatureMap) eObject.eGet(eStructuralFeature);
+// FeatureMap copyFeatureMap = (FeatureMap) copyEObject.eGet(getTarget(eStructuralFeature));
+// int copyFeatureMapSize = copyFeatureMap.size();
+// for (int k = 0, featureMapSize = featureMap.size(); k < featureMapSize; ++k) {
+// EStructuralFeature feature = featureMap.getEStructuralFeature(k);
+// if (feature instanceof EReference) {
+// Object referencedEObject = featureMap.getValue(k);
+// Object copyReferencedEObject = get(referencedEObject);
+// if (copyReferencedEObject == null && referencedEObject != null) {
+// EReference reference = (EReference) feature;
+// if (reference.isContainment() || reference.getEOpposite() != null) {
+// continue;
+// }
+// copyReferencedEObject = referencedEObject;
+// }
+// // If we can't add it, it must already be in
+// // the list so find it and move it to the
+// // end.
+// //
+// if (!copyFeatureMap.add(feature, copyReferencedEObject)) {
+// for (int l = 0; l < copyFeatureMapSize; ++l) {
+// if (copyFeatureMap.getEStructuralFeature(l) == feature && copyFeatureMap.getValue(l) ==
+// copyReferencedEObject) {
+// copyFeatureMap.move(copyFeatureMap.size() - 1, l);
+// --copyFeatureMapSize;
+// break;
+// }
+// }
+// }
+// }
+// // else {
+// // copyFeatureMap.add(featureMap.get(k));
+// // }
+// }
+// }
 					}
 				}
 			}
@@ -718,8 +709,9 @@ public class TemporalCopier extends HashMap {
 	}
 
 	/**
-	 * Called to handle the copying of a cross reference; this adds values or sets a single value as appropriate for the
-	 * multiplicity while omitting any bidirectional reference that isn't in the copy map.
+	 * Called to handle the copying of a cross reference; this adds values or sets a single value as
+	 * appropriate for the multiplicity while omitting any bidirectional reference that isn't in the
+	 * copy map.
 	 * 
 	 * @param eReference
 	 *            the reference to copy.
@@ -736,65 +728,59 @@ public class TemporalCopier extends HashMap {
 				InternalEList target = (InternalEList) copyEObject.eGet(getTarget(eReference));
 				if (source.isEmpty()) {
 					target.clear();
-				}
-				else {
-					boolean isBidirectional = eReference.getEOpposite() != null;
-					int index = 0;
+				} else {
 					ArrayList<EObject> x = new ArrayList<EObject>();
 					for (Iterator k = resolveProxies ? source.iterator() : source.basicIterator(); k.hasNext();) {
-						EObject obj = (EObject)k.next();
-						if(obj instanceof Temporal){
+						EObject obj = (EObject) k.next();
+						if (obj instanceof Temporal) {
 							x.add(obj);
 						}
 					}
-					
+
 					for (EObject obj : x) {
 						target.add(obj);
 					}
-						
-						
-//						Object copyReferencedEObject = get(referencedEObject);
-//						if (copyReferencedEObject == null) {
-//							if (!isBidirectional) {
-//								target.addUnique(index, referencedEObject);
-//								++index;
-//							}
-//							// JCC: If it is a bidirectional reference and the
-//							// opposite is a Temporal copy the reference.
-//							else {
-//								if (referencedEObject instanceof Temporal) {
-//									assert (((Temporal) referencedEObject).isContinuity());
-//									System.err.println("---------------copying bidirectional ref..");
-//									System.err.println("---------------what conditions make this happen??");
-//									target.addUnique(index, referencedEObject);
-//									++index;
-//								}
-//							}
-//						}
-//						else {
-//							if (isBidirectional) {
-//								int position = target.indexOf(copyReferencedEObject);
-//								if (position == -1) {
-//									target.addUnique(index, copyReferencedEObject);
-//								}
-//								else if (index != position) {
-//									target.move(index, copyReferencedEObject);
-//								}
-//							}
-//							else {
-//								target.addUnique(index, copyReferencedEObject);
-//							}
-//							++index;
-//						}
-//					}
+
+// Object copyReferencedEObject = get(referencedEObject);
+// if (copyReferencedEObject == null) {
+// if (!isBidirectional) {
+// target.addUnique(index, referencedEObject);
+// ++index;
+// }
+// // JCC: If it is a bidirectional reference and the
+// // opposite is a Temporal copy the reference.
+// else {
+// if (referencedEObject instanceof Temporal) {
+// assert (((Temporal) referencedEObject).isContinuity());
+// System.err.println("---------------copying bidirectional ref..");
+// System.err.println("---------------what conditions make this happen??");
+// target.addUnique(index, referencedEObject);
+// ++index;
+// }
+// }
+// }
+// else {
+// if (isBidirectional) {
+// int position = target.indexOf(copyReferencedEObject);
+// if (position == -1) {
+// target.addUnique(index, copyReferencedEObject);
+// }
+// else if (index != position) {
+// target.move(index, copyReferencedEObject);
+// }
+// }
+// else {
+// target.addUnique(index, copyReferencedEObject);
+// }
+// ++index;
+// }
+// }
 				}
-			}
-			else {
+			} else {
 				Object referencedEObject = eObject.eGet(eReference, resolveProxies);
 				if (referencedEObject == null) {
 					copyEObject.eSet(getTarget(eReference), null);
-				}
-				else {
+				} else {
 					Object copyReferencedEObject = get(referencedEObject);
 					if (copyReferencedEObject == null) {
 						if (eReference.getEOpposite() == null) {
@@ -810,8 +796,7 @@ public class TemporalCopier extends HashMap {
 								copyEObject.eSet(getTarget(eReference), referencedEObject);
 							}
 						}
-					}
-					else {
+					} else {
 						copyEObject.eSet(getTarget(eReference), copyReferencedEObject);
 					}
 				}

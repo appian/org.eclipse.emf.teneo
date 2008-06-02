@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.InternalEObject.EStore;
 
 /**
- * This class is a memory EStore. It is used to test temporality hooks. To turn
- * on the temporality hooks on setters and getters use the flags bellow.
+ * This class is a memory EStore. It is used to test temporality hooks. To turn on the temporality
+ * hooks on setters and getters use the flags bellow.
  */
 public class TemporalEStoreImpl implements EStore {
 
@@ -18,36 +18,36 @@ public class TemporalEStoreImpl implements EStore {
 	 * Specify if this TemporalEStoreImpl should be enabled or not.
 	 */
 	private boolean bypass = false;
-	
+
 	public static boolean trace = false;
-	
-	public boolean isBypass(){
+
+	public boolean isBypass() {
 		return bypass;
 	}
-	
-	public void setBypass(boolean b){
+
+	public void setBypass(boolean b) {
 		bypass = b;
 	}
-	
-	public EStore getNext(){
+
+	public EStore getNext() {
 		return next;
 	}
-	
-	
+
 	public TemporalEStoreImpl(EStore nextStore) {
 		next = nextStore;
 	}
 
 	public Object get(InternalEObject eObject, EStructuralFeature feature, int index) {
-		if(isBypass() == false)
-		{	
+		if (isBypass() == false) {
 			// Hook in temporality.
 			// Try getting the value from a historical version.
 			Object[] retValue = new Object[1];
 			boolean handled = TemporalEStoreHandler.get(eObject, feature, index, retValue);
 			// If it is a temporal request and we get a value back return it.
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -55,8 +55,7 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public Object set(InternalEObject eObject, EStructuralFeature feature, int index, Object value) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			Object[] retOldValue = new Object[1];
 			boolean handled = TemporalEStoreHandler.set(eObject, feature, index, value, retOldValue);
@@ -71,8 +70,7 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public void add(InternalEObject eObject, EStructuralFeature feature, int index, Object value) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			boolean handled = TemporalEStoreHandler.add(eObject, feature, index, value);
 			if (handled) {
 				return;
@@ -82,8 +80,7 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public Object remove(InternalEObject eObject, EStructuralFeature feature, int index) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			Object[] retOldValue = new Object[1];
 			boolean handled = TemporalEStoreHandler.remove(eObject, feature, index, retOldValue);
@@ -95,13 +92,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public Object move(InternalEObject eObject, EStructuralFeature feature, int targetIndex, int sourceIndex) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			Object[] retValue = new Object[1];
 			boolean handled = TemporalEStoreHandler.move(eObject, feature, targetIndex, sourceIndex, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -109,10 +107,8 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public void clear(InternalEObject eObject, EStructuralFeature feature) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
-			int[] retValue = new int[1];
 			boolean handled = TemporalEStoreHandler.clear(eObject, feature);
 			if (handled) {
 				return;
@@ -130,13 +126,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public int size(InternalEObject eObject, EStructuralFeature feature) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			int[] retValue = new int[1];
 			boolean handled = TemporalEStoreHandler.size(eObject, feature, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -144,13 +141,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public int indexOf(InternalEObject eObject, EStructuralFeature feature, Object value) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			int[] retValue = new int[1];
 			boolean handled = TemporalEStoreHandler.indexOf(eObject, feature, value, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -158,13 +156,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public int lastIndexOf(InternalEObject eObject, EStructuralFeature feature, Object value) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			int[] retValue = new int[1];
 			boolean handled = TemporalEStoreHandler.lastIndexOf(eObject, feature, value, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -172,13 +171,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public Object[] toArray(InternalEObject eObject, EStructuralFeature feature) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			Object[][] retValue = new Object[1][];
 			boolean handled = TemporalEStoreHandler.toArray(eObject, feature, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -186,13 +186,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public Object[] toArray(InternalEObject eObject, EStructuralFeature feature, Object[] array) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			Object[][] retValue = new Object[1][];
 			boolean handled = TemporalEStoreHandler.toArray(eObject, feature, array, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -200,13 +201,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public boolean isEmpty(InternalEObject eObject, EStructuralFeature feature) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			boolean[] retValue = new boolean[1];
 			boolean handled = TemporalEStoreHandler.isEmpty(eObject, feature, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -214,13 +216,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public boolean contains(InternalEObject eObject, EStructuralFeature feature, Object value) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			boolean[] retValue = new boolean[1];
 			boolean handled = TemporalEStoreHandler.contains(eObject, feature, value, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
@@ -228,13 +231,14 @@ public class TemporalEStoreImpl implements EStore {
 	}
 
 	public int hashCode(InternalEObject eObject, EStructuralFeature feature) {
-		if(isBypass() == false)
-		{
+		if (isBypass() == false) {
 			// Hook in temporality
 			int[] retValue = new int[1];
 			boolean handled = TemporalEStoreHandler.hashCode(eObject, feature, retValue);
 			if (handled) {
-				if(trace) System.out.println("Handled " + eObject + " feature " + feature.getName());
+				if (trace) {
+					System.out.println("Handled " + eObject + " feature " + feature.getName());
+				}
 				return retValue[0];
 			}
 		}
