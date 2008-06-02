@@ -13,6 +13,7 @@ package org.eclipse.emf.teneo.hibernate.cdo;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.extension.ExtensionUtil;
@@ -66,6 +67,7 @@ public class CDOHelper {
 	 * other way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
+		props.put(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 		CDOHelper.getInstance().registerCDOExtensions(extensionManager);
 		return MappingUtil.generateMapping(epackages, props, extensionManager);
 	}
