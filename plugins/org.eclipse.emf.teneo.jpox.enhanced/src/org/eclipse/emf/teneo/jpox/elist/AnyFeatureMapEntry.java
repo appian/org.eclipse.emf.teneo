@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyFeatureMapEntry.java,v 1.3 2008/02/28 07:09:08 mtaal Exp $
+ * $Id: AnyFeatureMapEntry.java,v 1.4 2008/06/02 07:15:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.elist;
@@ -33,15 +33,16 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 import org.jpox.store.OID;
 
 /**
- * Is a specific EMF feature map entry for handling any content. In case of any content it is unknown which elements are
- * actually stored. So in this case all information is stored in a set of String fields.
+ * Is a specific EMF feature map entry for handling any content. In case of any content it is
+ * unknown which elements are actually stored. So in this case all information is stored in a set of
+ * String fields.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2008/02/28 07:09:08 $
+ * @version $Revision: 1.4 $ $Date: 2008/06/02 07:15:44 $
  */
 
 public class AnyFeatureMapEntry extends FeatureMapEntry {
-	
+
 	/** The logger */
 	private static Log log = LogFactory.getLog(AnyFeatureMapEntry.class);
 
@@ -61,6 +62,7 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 	}
 
 	/** Create copy with same feature and different value */
+	@Override
 	public Internal createEntry(Object value) {
 		return new AnyFeatureMapEntry(getEStructuralFeature(), value);
 	}
@@ -70,20 +72,23 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 	 * 
 	 * @see org.eclipse.emf.teneo.jpox.emf.elist.FeatureMapEntry#getStructuralFeatureDBID()
 	 */
+	@Override
 	protected String getStructuralFeatureDBID() {
 		return featurePath;
 	}
 
 	/* Sets the value from the db specific values, is done already at initialization time */
+	@Override
 	protected Object getValueFromSpecificImplementation(EStructuralFeature feature) {
 		if (feature instanceof EReference) {
 			// a persistence capable object // note can be null if not found!
-			final Object obj = ((PersistenceCapable) this).jdoGetPersistenceManager().getObjectById(new OID(anyValue),
-					true);
+			final Object obj =
+					((PersistenceCapable) this).jdoGetPersistenceManager().getObjectById(new OID(anyValue), true);
 			if (obj == null) // object has possibly been deleted throw an error which shows this
 			{
-				final String msg = "EObjectMapping.getObject(): Object with object id: " + anyValue + " of feature: "
-						+ featurePath + " can not be retrieved, is has probably been deleted!";
+				final String msg =
+						"EObjectMapping.getObject(): Object with object id: " + anyValue + " of feature: " +
+								featurePath + " can not be retrieved, is has probably been deleted!";
 				log.error(msg);
 
 				return null;
@@ -102,6 +107,7 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 	}
 
 	/** Sets local values */
+	@Override
 	public void initializeSpecificImplementation() {
 		final EStructuralFeature feature = getEStructuralFeature();
 		final Object entryValue = getValue();
@@ -110,9 +116,10 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 		String setValue = null;
 		if (entryValue instanceof EObject) {
 			if (!(entryValue instanceof PersistenceCapable)) {
-				throw new JpoxEnhancedStoreException("Only persistencecapable EObjects can be stored in an any element, "
-						+ "the class: " + entryValue.getClass().getName() + " is not persistencecapable. "
-						+ " Make sure that this class is enhanced!");
+				throw new JpoxEnhancedStoreException(
+					"Only persistencecapable EObjects can be stored in an any element, " + "the class: " +
+							entryValue.getClass().getName() + " is not persistencecapable. " +
+							" Make sure that this class is enhanced!");
 			}
 			final PersistenceCapable pc = (PersistenceCapable) entryValue;
 			if (((PersistenceCapable) this).jdoGetPersistenceManager() != null) {
@@ -122,8 +129,6 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 					((PersistenceCapable) this).jdoGetPersistenceManager().makePersistent(pc);
 				}
 				setValue = pc.jdoGetObjectId().toString();
-			} else {
-				setValue = null;
 			}
 		} else {
 			// object is hopefully a simple type? Create a SimpleAnyType
@@ -139,8 +144,9 @@ public class AnyFeatureMapEntry extends FeatureMapEntry {
 
 	/** Sets the value in this anyfeature using the Persistence Manager */
 	public void persistValue(PersistenceManager pm) {
-		if (!(getValue() instanceof PersistenceCapable))
+		if (!(getValue() instanceof PersistenceCapable)) {
 			return;
+		}
 
 		final PersistenceCapable pc = (PersistenceCapable) getValue();
 		if (pc.jdoGetObjectId() == null) // not persistent yet
