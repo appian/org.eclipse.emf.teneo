@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.10 2008/06/02 07:15:29 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.11 2008/06/03 08:30:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -250,6 +250,10 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 */
 	@Override
 	public int size() {
+		// the subclass can override the size to perform smart size determination
+		if (!this.isLoaded()) {
+			load();
+		}
 		size = delegateEList.size();
 		return super.size();
 	}
