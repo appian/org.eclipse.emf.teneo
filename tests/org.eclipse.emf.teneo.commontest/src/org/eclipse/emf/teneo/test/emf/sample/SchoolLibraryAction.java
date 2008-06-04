@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SchoolLibraryAction.java,v 1.13 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: SchoolLibraryAction.java,v 1.14 2008/06/04 20:15:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -24,6 +24,7 @@ import java.util.Properties;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.Library;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the schoollibrary example which has some more inheritance structures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class SchoolLibraryAction extends AbstractTestAction {
 
@@ -66,6 +67,7 @@ public class SchoolLibraryAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
 		props.setProperty(AbstractTestStore.STORE_MAPPING_FILE_ONE_DIRECTORY_HIGHER, "true");
 		return props;
 	}
