@@ -20,3 +20,5 @@ Export-Package: org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.teneo.hibernate.tuplizer
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.commons.logging
+Bundle-ClassPath: .,
+ org.eclipse.emf.teneo.hibernate.extra.jar
