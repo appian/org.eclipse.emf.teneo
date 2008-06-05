@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.11 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.12 2008/06/05 05:25:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
-import org.eclipse.emf.teneo.hibernate.mapping.TeneoInternalEObject;
+import org.eclipse.emf.teneo.hibernate.mapping.internal.TeneoInternalEObject;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
@@ -55,7 +55,7 @@ import org.hibernate.util.ReflectHelper;
  * object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
