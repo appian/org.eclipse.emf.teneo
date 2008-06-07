@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Teneo Tutorial Code
+Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.tutorial
 Bundle-Version: 1.0.0.qualifier
 Bundle-Localization: plugin
@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.teneo.samples
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-Vendor: Eclipse.org
+Bundle-Vendor: %Plugin.providerName
 Import-Package: javax.jdo,
  org.hibernate,
  org.hibernate.cfg,
