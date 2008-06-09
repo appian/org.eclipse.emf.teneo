@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: MapPersistableEMap.java,v 1.3 2008/04/11 23:43:43 mtaal Exp $
+ * $Id: MapPersistableEMap.java,v 1.4 2008/06/09 22:09:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.InternalEObject;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -92,11 +92,13 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 		// create our list as empty for now
 		setDelegateEList(owner, feature, this.newList());
 
-		// perform eager loading if the underlying list has been pre-loaded
-		setLoaded();
+		if (isInitialized()) {
+			// perform eager loading if the underlying list has been pre-loaded
+			setLoaded();
 
-		// sets the size of this map, depending on its load status
-		size();
+			// sets the size of this map, depending on its load status
+			size();
+		}
 
 		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
 		mapValueIsEAttribute = entryEClass.getEStructuralFeature("value") instanceof EAttribute;
