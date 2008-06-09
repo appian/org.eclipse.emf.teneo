@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.29 2008/05/27 07:42:29 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.30 2008/06/09 22:09:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -81,6 +81,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		final EReference eref = hbReference.getModelEReference();
 		final EClass refType = eref.getEReferenceType();
 		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();
+		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 
 		// TODO add isUnique on interface
 		// TODO request EMF team to deal correctly with unique attribute on
@@ -120,7 +121,6 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			otm.setIndexed(false);
 		}
 
-		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 		boolean isMapValueIsEntity = false;
 		if (hbReference.getHbIdBag() == null && otm.isList()) {
 			// now we check if it is a list or a map
