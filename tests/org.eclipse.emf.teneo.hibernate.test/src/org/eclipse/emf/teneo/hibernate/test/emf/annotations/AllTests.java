@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdBagAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationTablePerClassAction;
+import org.eclipse.emf.teneo.test.emf.annotations.IntegerDiscriminatorAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
@@ -48,7 +49,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.57 $
+ * @version $Revision: 1.58 $
  */
 public class AllTests {
 
@@ -57,6 +58,7 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
 
+		suite.addTestSuite(IntegerDiscriminatorAction.class);
 		suite.addTestSuite(SecondarytableHibernateAction.class);
 		suite.addTestSuite(EmbeddedAction.class);
 
