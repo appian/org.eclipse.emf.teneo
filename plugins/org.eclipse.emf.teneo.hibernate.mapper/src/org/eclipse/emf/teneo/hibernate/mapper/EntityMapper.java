@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.33 2008/06/02 07:14:37 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.34 2008/06/10 05:25:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -443,8 +443,12 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		// Process features in primary table.
 		{
 			final List<PAnnotatedEStructuralFeature> featuresInTable = featuresByTable.get(PRIMARY_TABLE_KEY);
-			for (PAnnotatedEStructuralFeature feature : featuresInTable) {
-				processFeature(feature);
+			// can happen if there are only secondarytable features and no primary table
+			// features see bugzilla 235949
+			if (featuresInTable != null) {
+				for (PAnnotatedEStructuralFeature feature : featuresInTable) {
+					processFeature(feature);
+				}
 			}
 		}
 		// Process features in secondary tables.
