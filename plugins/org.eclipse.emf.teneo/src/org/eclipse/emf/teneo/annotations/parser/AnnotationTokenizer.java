@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.8 2008/06/10 08:24:45 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.9 2008/06/10 10:07:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -219,8 +219,7 @@ class AnnotationTokenizer {
 					return T_TYPENAME; // --> Identifier.
 				}
 					// VALUE with double quotes
-				case '"':
-				case '“': {
+				case '"': {
 					// after the dollar the identifier part needs to be found
 					tokBeg = lCur; // Save starting point of current lexeme.
 
@@ -233,7 +232,7 @@ class AnnotationTokenizer {
 							lChar == '%' || lChar == '\'' || ('0' <= lChar && lChar <= '9') ||
 							('a' <= lChar && lChar <= 'z') || lChar == '?' || ('A' <= lChar && lChar <= 'Z'));
 
-					if (lChar != '"' && lChar != '“') {
+					if (lChar != '"') {
 						final AnnotationParserException e =
 								new AnnotationParserException(
 									"Value not closed with double quote, see the _ for the location " + getErrorText());
