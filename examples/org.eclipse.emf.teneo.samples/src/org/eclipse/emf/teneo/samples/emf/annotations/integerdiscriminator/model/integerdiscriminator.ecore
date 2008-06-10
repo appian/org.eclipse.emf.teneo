@@ -22,4 +22,20 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractSub" abstract="true" eSuperTypes="#//Super"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SuperFormula">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Inheritance(strategy = InheritanceType.SINGLE_TABLE)&#xA;@DiscriminatorValue(&quot;1&quot;)&#xA;@DiscriminatorFormula(value=“case when name like 'R%' then 0 when name like 'G%' then 1 else 2 end“)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubFormula" eSuperTypes="#//SuperFormula">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@DiscriminatorValue(&quot;0&quot;)"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

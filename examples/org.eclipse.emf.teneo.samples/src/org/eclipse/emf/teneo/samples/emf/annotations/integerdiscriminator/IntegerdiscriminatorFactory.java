@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegerdiscriminatorFactory.java,v 1.1 2008/06/10 06:45:05 mtaal Exp $
+ * $Id: IntegerdiscriminatorFactory.java,v 1.2 2008/06/10 08:25:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator;
 
@@ -51,6 +51,24 @@ public interface IntegerdiscriminatorFactory extends EFactory {
 	 * @generated
 	 */
 	OtherSub createOtherSub();
+
+	/**
+	 * Returns a new object of class '<em>Super Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Super Formula</em>'.
+	 * @generated
+	 */
+	SuperFormula createSuperFormula();
+
+	/**
+	 * Returns a new object of class '<em>Sub Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sub Formula</em>'.
+	 * @generated
+	 */
+	SubFormula createSubFormula();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -13,5 +13,9 @@
     <genClasses ecoreClass="integerdiscriminator.ecore#//Sub"/>
     <genClasses ecoreClass="integerdiscriminator.ecore#//OtherSub"/>
     <genClasses ecoreClass="integerdiscriminator.ecore#//AbstractSub"/>
+    <genClasses ecoreClass="integerdiscriminator.ecore#//SuperFormula">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute integerdiscriminator.ecore#//SuperFormula/name"/>
+    </genClasses>
+    <genClasses ecoreClass="integerdiscriminator.ecore#//SubFormula"/>
   </genPackages>
 </genmodel:GenModel>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegerdiscriminatorFactoryImpl.java,v 1.1 2008/06/10 06:45:05 mtaal Exp $
+ * $Id: IntegerdiscriminatorFactoryImpl.java,v 1.2 2008/06/10 08:25:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl;
 
@@ -63,6 +63,8 @@ public class IntegerdiscriminatorFactoryImpl extends EFactoryImpl implements Int
 			case IntegerdiscriminatorPackage.SUPER: return createSuper();
 			case IntegerdiscriminatorPackage.SUB: return createSub();
 			case IntegerdiscriminatorPackage.OTHER_SUB: return createOtherSub();
+			case IntegerdiscriminatorPackage.SUPER_FORMULA: return createSuperFormula();
+			case IntegerdiscriminatorPackage.SUB_FORMULA: return createSubFormula();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +98,26 @@ public class IntegerdiscriminatorFactoryImpl extends EFactoryImpl implements Int
 	public OtherSub createOtherSub() {
 		OtherSubImpl otherSub = new OtherSubImpl();
 		return otherSub;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SuperFormula createSuperFormula() {
+		SuperFormulaImpl superFormula = new SuperFormulaImpl();
+		return superFormula;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SubFormula createSubFormula() {
+		SubFormulaImpl subFormula = new SubFormulaImpl();
+		return subFormula;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegerdiscriminatorAdapterFactory.java,v 1.1 2008/06/10 06:45:05 mtaal Exp $
+ * $Id: IntegerdiscriminatorAdapterFactory.java,v 1.2 2008/06/10 08:25:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.util;
 
@@ -88,6 +88,14 @@ public class IntegerdiscriminatorAdapterFactory extends AdapterFactoryImpl {
 				return createAbstractSubAdapter();
 			}
 			@Override
+			public Adapter caseSuperFormula(SuperFormula object) {
+				return createSuperFormulaAdapter();
+			}
+			@Override
+			public Adapter caseSubFormula(SubFormula object) {
+				return createSubFormulaAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -160,6 +168,34 @@ public class IntegerdiscriminatorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractSubAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula <em>Super Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula
+	 * @generated
+	 */
+	public Adapter createSuperFormulaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SubFormula <em>Sub Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SubFormula
+	 * @generated
+	 */
+	public Adapter createSubFormulaAdapter() {
 		return null;
 	}
 

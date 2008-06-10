@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegerdiscriminatorPackage.java,v 1.1 2008/06/10 06:45:05 mtaal Exp $
+ * $Id: IntegerdiscriminatorPackage.java,v 1.2 2008/06/10 08:25:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator;
 
@@ -175,6 +175,63 @@ public interface IntegerdiscriminatorPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SuperFormulaImpl <em>Super Formula</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SuperFormulaImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.IntegerdiscriminatorPackageImpl#getSuperFormula()
+	 * @generated
+	 */
+	int SUPER_FORMULA = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPER_FORMULA__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Super Formula</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPER_FORMULA_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SubFormulaImpl <em>Sub Formula</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SubFormulaImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.IntegerdiscriminatorPackageImpl#getSubFormula()
+	 * @generated
+	 */
+	int SUB_FORMULA = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_FORMULA__NAME = SUPER_FORMULA__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Sub Formula</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_FORMULA_FEATURE_COUNT = SUPER_FORMULA_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.Super <em>Super</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -224,6 +281,37 @@ public interface IntegerdiscriminatorPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAbstractSub();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula <em>Super Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Super Formula</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula
+	 * @generated
+	 */
+	EClass getSuperFormula();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula#getName()
+	 * @see #getSuperFormula()
+	 * @generated
+	 */
+	EAttribute getSuperFormula_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SubFormula <em>Sub Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sub Formula</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SubFormula
+	 * @generated
+	 */
+	EClass getSubFormula();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -294,6 +382,34 @@ public interface IntegerdiscriminatorPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ABSTRACT_SUB = eINSTANCE.getAbstractSub();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SuperFormulaImpl <em>Super Formula</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SuperFormulaImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.IntegerdiscriminatorPackageImpl#getSuperFormula()
+		 * @generated
+		 */
+		EClass SUPER_FORMULA = eINSTANCE.getSuperFormula();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUPER_FORMULA__NAME = eINSTANCE.getSuperFormula_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SubFormulaImpl <em>Sub Formula</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.SubFormulaImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl.IntegerdiscriminatorPackageImpl#getSubFormula()
+		 * @generated
+		 */
+		EClass SUB_FORMULA = eINSTANCE.getSubFormula();
 
 	}
 

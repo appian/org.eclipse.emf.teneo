@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegerdiscriminatorSwitch.java,v 1.1 2008/06/10 06:45:05 mtaal Exp $
+ * $Id: IntegerdiscriminatorSwitch.java,v 1.2 2008/06/10 08:25:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.util;
 
@@ -114,6 +114,19 @@ public class IntegerdiscriminatorSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IntegerdiscriminatorPackage.SUPER_FORMULA: {
+				SuperFormula superFormula = (SuperFormula)theEObject;
+				T result = caseSuperFormula(superFormula);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IntegerdiscriminatorPackage.SUB_FORMULA: {
+				SubFormula subFormula = (SubFormula)theEObject;
+				T result = caseSubFormula(subFormula);
+				if (result == null) result = caseSuperFormula(subFormula);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -175,6 +188,36 @@ public class IntegerdiscriminatorSwitch<T> {
 	 * @generated
 	 */
 	public T caseAbstractSub(AbstractSub object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Super Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Super Formula</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSuperFormula(SuperFormula object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sub Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sub Formula</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubFormula(SubFormula object) {
 		return null;
 	}
 

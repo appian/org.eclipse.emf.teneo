@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegerdiscriminatorPackageImpl.java,v 1.1 2008/06/10 06:45:05 mtaal Exp $
+ * $Id: IntegerdiscriminatorPackageImpl.java,v 1.2 2008/06/10 08:25:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.impl;
 
@@ -19,7 +19,9 @@ import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.Intege
 import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.IntegerdiscriminatorPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.OtherSub;
 import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.Sub;
+import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SubFormula;
 import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.Super;
+import org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.SuperFormula;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,6 +57,20 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 	 * @generated
 	 */
 	private EClass abstractSubEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass superFormulaEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subFormulaEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -177,6 +193,33 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSuperFormula() {
+		return superFormulaEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSuperFormula_Name() {
+		return (EAttribute)superFormulaEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSubFormula() {
+		return subFormulaEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public IntegerdiscriminatorFactory getIntegerdiscriminatorFactory() {
 		return (IntegerdiscriminatorFactory)getEFactoryInstance();
 	}
@@ -208,6 +251,11 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 		otherSubEClass = createEClass(OTHER_SUB);
 
 		abstractSubEClass = createEClass(ABSTRACT_SUB);
+
+		superFormulaEClass = createEClass(SUPER_FORMULA);
+		createEAttribute(superFormulaEClass, SUPER_FORMULA__NAME);
+
+		subFormulaEClass = createEClass(SUB_FORMULA);
 	}
 
 	/**
@@ -244,6 +292,7 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 		subEClass.getESuperTypes().add(this.getSuper());
 		otherSubEClass.getESuperTypes().add(this.getSuper());
 		abstractSubEClass.getESuperTypes().add(this.getSuper());
+		subFormulaEClass.getESuperTypes().add(this.getSuperFormula());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(superEClass, Super.class, "Super", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -254,6 +303,11 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 		initEClass(otherSubEClass, OtherSub.class, "OtherSub", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(abstractSubEClass, AbstractSub.class, "AbstractSub", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(superFormulaEClass, SuperFormula.class, "SuperFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSuperFormula_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, SuperFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(subFormulaEClass, SubFormula.class, "SubFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -284,6 +338,18 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 		   source, 
 		   new String[] {
 			 "value", "@DiscriminatorValue(\"500\")"
+		   });		
+		addAnnotation
+		  (superFormulaEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@Inheritance(strategy = InheritanceType.SINGLE_TABLE)\n@DiscriminatorValue(\"1\")\n@DiscriminatorFormula(value=\u201ccase when name like \'R%\' then 0 when name like \'G%\' then 1 else 2 end\u201c)"
+		   });			
+		addAnnotation
+		  (subFormulaEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@DiscriminatorValue(\"0\")"
 		   });
 	}
 
@@ -297,6 +363,13 @@ public class IntegerdiscriminatorPackageImpl extends EPackageImpl implements Int
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (getSuper_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });				
+		addAnnotation
+		  (getSuperFormula_Name(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
