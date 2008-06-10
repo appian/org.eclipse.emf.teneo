@@ -49,7 +49,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  */
 public class AllTests {
 
@@ -59,6 +59,7 @@ public class AllTests {
 					.instance().getConfigurations());
 
 		suite.addTestSuite(IntegerDiscriminatorAction.class);
+
 		suite.addTestSuite(SecondarytableHibernateAction.class);
 		suite.addTestSuite(EmbeddedAction.class);
 
