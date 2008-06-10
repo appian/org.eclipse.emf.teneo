@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.9 2008/06/02 07:15:29 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.10 2008/06/10 06:44:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
@@ -43,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -198,7 +199,22 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		// add a discriminator value
 		if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
 			final DiscriminatorValue dv = getFactory().createDiscriminatorValue();
-			dv.setValue(getEntityName(eclass));
+
+			final DiscriminatorColumn dc = getDiscriminatorColumn(aClass);
+			if (dc != null && dc.getDiscriminatorType() != null &&
+					dc.getDiscriminatorType().getValue() == DiscriminatorType.INTEGER_VALUE) {
+
+				// use the entityname to translate to an int value,
+				// hopefully hashcode is more or less unique...
+				final String entityName = getEntityName(eclass);
+				log
+					.warn("Generating an integer discriminator value for entity " +
+							entityName +
+							". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
+				dv.setValue("" + entityName.hashCode());
+			} else {
+				dv.setValue(getEntityName(eclass));
+			}
 			dv.setEModelElement(eclass);
 			aClass.setDiscriminatorValue(dv);
 		}
@@ -223,6 +239,19 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			eFeatureAnnotator.annotate(aStructuralFeature);
 		}
 		return true;
+	}
+
+	// finds the DiscriminatorColumn in the aClass or its super entities
+	protected DiscriminatorColumn getDiscriminatorColumn(PAnnotatedEClass aClass) {
+		if (aClass.getDiscriminatorColumn() != null) {
+			return aClass.getDiscriminatorColumn();
+		}
+
+		// or use aClass.getPaMappedSupers()?
+		if (aClass.getPaSuperEntity() != null) {
+			return getDiscriminatorColumn(aClass.getPaSuperEntity());
+		}
+		return null;
 	}
 
 	/** Sets the {@link EFeatureAnnotator} */
