@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.7 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.8 2008/06/10 08:24:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -149,6 +149,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateParamDef((ParamDef)value, diagnostics, context);
 			case HbannotationPackage.FILTER_DEF:
 				return validateFilterDef((FilterDef)value, diagnostics, context);
+			case HbannotationPackage.DISCRIMINATOR_FORMULA:
+				return validateDiscriminatorFormula((DiscriminatorFormula)value, diagnostics, context);
 			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbannotationPackage.HB_FETCH_TYPE:
@@ -157,7 +159,7 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateOnDeleteAction((OnDeleteAction)value, diagnostics, context);
 			case HbannotationPackage.GENERATION_TIME:
 				return validateGenerationTime((GenerationTime)value, diagnostics, context);
-			default: 
+			default:
 				return true;
 		}
 	}
@@ -196,12 +198,14 @@ public class HbannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "CompatibleEModelElementType", getObjectLabel(hbAnnotation, context) }),
-						 new Object[] { hbAnnotation }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "CompatibleEModelElementType", getObjectLabel(hbAnnotation, context) },
+						 new Object[] { hbAnnotation },
+						 context));
 			}
 			return false;
 		}
@@ -224,12 +228,14 @@ public class HbannotationValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AnnotationIsSupported", getObjectLabel(hbAnnotation, context) }),
-						 new Object[] { hbAnnotation }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AnnotationIsSupported", getObjectLabel(hbAnnotation, context) },
+						 new Object[] { hbAnnotation },
+						 context));
 			}
 			return false;
 		}
@@ -532,6 +538,24 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscriminatorFormula(DiscriminatorFormula discriminatorFormula, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(discriminatorFormula, diagnostics, context);
+		return result;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -599,6 +623,19 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateGenerationTime(GenerationTime generationTime, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
+	}
+
+	/**
+	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourceLocator getResourceLocator() {
+		// TODO
+		// Specialize this to return a resource locator for messages specific to this validator.
+		// Ensure that you remove @generated or mark it @generated NOT
+		return super.getResourceLocator();
 	}
 
 } // HbannotationValidator

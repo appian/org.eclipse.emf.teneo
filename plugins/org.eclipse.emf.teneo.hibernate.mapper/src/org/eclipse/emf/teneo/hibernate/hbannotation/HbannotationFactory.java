@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.5 2008/04/23 15:44:26 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.6 2008/06/10 08:24:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -192,6 +192,15 @@ public interface HbannotationFactory extends EFactory {
 	 * @generated
 	 */
 	FilterDef createFilterDef();
+
+	/**
+	 * Returns a new object of class '<em>Discriminator Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discriminator Formula</em>'.
+	 * @generated
+	 */
+	DiscriminatorFormula createDiscriminatorFormula();
 
 	/**
 	 * Returns the package supported by this factory.

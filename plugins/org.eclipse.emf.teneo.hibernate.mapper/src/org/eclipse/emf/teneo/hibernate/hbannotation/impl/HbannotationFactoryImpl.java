@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.7 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.8 2008/06/10 08:24:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -93,6 +93,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.FILTER: return createFilter();
 			case HbannotationPackage.PARAM_DEF: return createParamDef();
 			case HbannotationPackage.FILTER_DEF: return createFilterDef();
+			case HbannotationPackage.DISCRIMINATOR_FORMULA: return createDiscriminatorFormula();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -312,6 +313,16 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	public FilterDef createFilterDef() {
 		FilterDefImpl filterDef = new FilterDefImpl();
 		return filterDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscriminatorFormula createDiscriminatorFormula() {
+		DiscriminatorFormulaImpl discriminatorFormula = new DiscriminatorFormulaImpl();
+		return discriminatorFormula;
 	}
 
 	/**

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEClassAnnotator.java,v 1.5 2008/05/27 07:42:29 mtaal Exp $
+ * $Id: HbEClassAnnotator.java,v 1.6 2008/06/10 08:24:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HbEClassAnnotator extends EClassAnnotator {
@@ -108,6 +108,11 @@ public class HbEClassAnnotator extends EClassAnnotator {
 			((HbAnnotatedEClass) aClass).setHbCache(cache);
 		}
 		return res;
+	}
+
+	protected boolean addDiscriminator(PAnnotatedEClass aClass) {
+		final HbAnnotatedEClass hbClass = (HbAnnotatedEClass) aClass;
+		return hbClass.getDiscriminatorFormula() == null;
 	}
 
 	/*

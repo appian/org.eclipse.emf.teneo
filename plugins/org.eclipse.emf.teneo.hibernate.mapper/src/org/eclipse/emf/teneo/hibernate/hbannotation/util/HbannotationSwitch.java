@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.5 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.6 2008/06/10 08:24:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -250,6 +250,14 @@ public class HbannotationSwitch<T> {
 				T result = caseFilterDef(filterDef);
 				if (result == null) result = caseHbAnnotation(filterDef);
 				if (result == null) result = casePAnnotation(filterDef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.DISCRIMINATOR_FORMULA: {
+				DiscriminatorFormula discriminatorFormula = (DiscriminatorFormula)theEObject;
+				T result = caseDiscriminatorFormula(discriminatorFormula);
+				if (result == null) result = caseHbAnnotation(discriminatorFormula);
+				if (result == null) result = casePAnnotation(discriminatorFormula);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -544,6 +552,21 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseFilterDef(FilterDef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Discriminator Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Discriminator Formula</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDiscriminatorFormula(DiscriminatorFormula object) {
 		return null;
 	}
 

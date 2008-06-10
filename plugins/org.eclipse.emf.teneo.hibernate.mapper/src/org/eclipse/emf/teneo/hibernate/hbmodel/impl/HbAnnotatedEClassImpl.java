@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.12 2008/04/23 15:44:26 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.13 2008/06/10 08:24:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
+import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
@@ -38,6 +39,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbNamedQuery <em>Hb Named Query</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilterDef <em>Filter Def</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getDiscriminatorFormula <em>Discriminator Formula</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,6 +115,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @ordered
 	 */
 	protected EList<Filter> filter;
+
+	/**
+	 * The cached value of the '{@link #getDiscriminatorFormula() <em>Discriminator Formula</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDiscriminatorFormula()
+	 * @generated
+	 * @ordered
+	 */
+	protected DiscriminatorFormula discriminatorFormula;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -327,6 +339,49 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscriminatorFormula getDiscriminatorFormula() {
+		return discriminatorFormula;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDiscriminatorFormula(DiscriminatorFormula newDiscriminatorFormula, NotificationChain msgs) {
+		DiscriminatorFormula oldDiscriminatorFormula = discriminatorFormula;
+		discriminatorFormula = newDiscriminatorFormula;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, oldDiscriminatorFormula, newDiscriminatorFormula);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDiscriminatorFormula(DiscriminatorFormula newDiscriminatorFormula) {
+		if (newDiscriminatorFormula != discriminatorFormula) {
+			NotificationChain msgs = null;
+			if (discriminatorFormula != null)
+				msgs = ((InternalEObject)discriminatorFormula).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, null, msgs);
+			if (newDiscriminatorFormula != null)
+				msgs = ((InternalEObject)newDiscriminatorFormula).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, null, msgs);
+			msgs = basicSetDiscriminatorFormula(newDiscriminatorFormula, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA, newDiscriminatorFormula, newDiscriminatorFormula));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -337,6 +392,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return basicSetHbCache(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_WHERE:
 				return basicSetHbWhere(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				return basicSetDiscriminatorFormula(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -364,6 +421,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return getFilterDef();
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
 				return getFilter();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				return getDiscriminatorFormula();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -400,6 +459,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				getFilter().clear();
 				getFilter().addAll((Collection<? extends Filter>)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				setDiscriminatorFormula((DiscriminatorFormula)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -432,6 +494,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
 				getFilter().clear();
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				setDiscriminatorFormula((DiscriminatorFormula)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -457,6 +522,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return filterDef != null && !filterDef.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__FILTER:
 				return filter != null && !filter.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
+				return discriminatorFormula != null;
 		}
 		return super.eIsSet(featureID);
 	}

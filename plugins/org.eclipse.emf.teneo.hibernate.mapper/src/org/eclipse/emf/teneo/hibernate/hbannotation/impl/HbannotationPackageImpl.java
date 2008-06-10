@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.6 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.7 2008/06/10 08:24:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
+import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
@@ -176,6 +177,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	private EClass filterDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass discriminatorFormulaEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -749,6 +757,24 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDiscriminatorFormula() {
+		return discriminatorFormulaEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDiscriminatorFormula_Value() {
+		return (EAttribute)discriminatorFormulaEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -882,6 +908,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		createEAttribute(filterDefEClass, FILTER_DEF__DEFAULT_CONDITION);
 		createEReference(filterDefEClass, FILTER_DEF__PARAMETERS);
 
+		discriminatorFormulaEClass = createEClass(DISCRIMINATOR_FORMULA);
+		createEAttribute(discriminatorFormulaEClass, DISCRIMINATOR_FORMULA__VALUE);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
@@ -938,6 +967,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		filterEClass.getESuperTypes().add(this.getHbAnnotation());
 		paramDefEClass.getESuperTypes().add(this.getHbAnnotation());
 		filterDefEClass.getESuperTypes().add(this.getHbAnnotation());
+		discriminatorFormulaEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1016,6 +1046,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEAttribute(getFilterDef_DefaultCondition(), ecorePackage.getEString(), "defaultCondition", null, 0, 1, FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFilterDef_Parameters(), this.getParamDef(), null, "parameters", null, 0, -1, FilterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(discriminatorFormulaEClass, DiscriminatorFormula.class, "DiscriminatorFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDiscriminatorFormula_Value(), ecorePackage.getEString(), "value", null, 0, 1, DiscriminatorFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE);
@@ -1050,6 +1083,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		createTargetAnnotations();
 		// http://annotation.elver.org/internal/Collection
 		createCollectionAnnotations();
+		// teneo/internal/Target
+		createTarget_1Annotations();
 	}
 
 	/**
@@ -1065,7 +1100,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });																						
+		   });																							
 	}
 
 	/**
@@ -1081,7 +1116,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });																					
+		   });																						
 	}
 
 	/**
@@ -1215,7 +1250,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "0", "EClass",
 			 "1", "EReference"
-		   });
+		   });	
 	}
 
 	/**
@@ -1239,7 +1274,23 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });											
+		   });												
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo/internal/Target</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTarget_1Annotations() {
+		String source = "teneo/internal/Target";																									
+		addAnnotation
+		  (discriminatorFormulaEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass"
+		   });
 	}
 
 } // HbannotationPackageImpl

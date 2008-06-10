@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.34 2008/06/10 05:25:46 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.35 2008/06/10 08:24:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -323,7 +324,10 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			if (idElement != null) {
 				int index = entityElement.indexOf(idElement) + 1;
 
-				if (entity.getDiscriminatorColumn() != null) {
+				if (((HbAnnotatedEClass) entity).getDiscriminatorFormula() != null) {
+					entityElement.add(index++, createDiscriminatorElement(((HbAnnotatedEClass) entity)
+						.getDiscriminatorFormula(), entity.getDiscriminatorColumn()));
+				} else if (entity.getDiscriminatorColumn() != null) {
 					// add discriminator element immediately after id element
 					entityElement.add(index++, createDiscriminatorElement(entity.getDiscriminatorColumn()));
 				}
@@ -559,6 +563,16 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		if (dColumn.getColumnDefinition() != null) {
 			log.error("Unsupported column definition in discriminator column " + dColumn);
 			throw new MappingException("Unsupported column definition in discriminator column", dColumn);
+		}
+		return dcElement;
+	}
+
+	// note dc can be null
+	private Element createDiscriminatorElement(DiscriminatorFormula formula, DiscriminatorColumn dc) {
+		Element dcElement = DocumentHelper.createElement("discriminator");
+		dcElement.addAttribute("formula", formula.getValue());
+		if (dc != null && dc.getDiscriminatorType() != null) {
+			dcElement.addAttribute("type", hbDiscriminatorType(dc.getDiscriminatorType()));
 		}
 		return dcElement;
 	}

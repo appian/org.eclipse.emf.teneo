@@ -45,6 +45,8 @@
         eType="ecore:EClass hbannotation.ecore#//FilterDef"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Filter" upperBound="-1"
         eType="ecore:EClass hbannotation.ecore#//Filter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorFormula" eType="ecore:EClass hbannotation.ecore#//DiscriminatorFormula"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" abstract="true"
       interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>
