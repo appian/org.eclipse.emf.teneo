@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IntegerDiscriminatorAction.java,v 1.2 2008/06/10 08:25:02 mtaal Exp $
+ * $Id: IntegerDiscriminatorAction.java,v 1.3 2008/06/10 09:41:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.test.emf.annotations;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=235945
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class IntegerDiscriminatorAction extends AbstractTestAction {
 	/**
@@ -47,7 +47,6 @@ public class IntegerDiscriminatorAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final IntegerdiscriminatorFactory factory = IntegerdiscriminatorFactory.eINSTANCE;
 		{
 			store.beginTransaction();
