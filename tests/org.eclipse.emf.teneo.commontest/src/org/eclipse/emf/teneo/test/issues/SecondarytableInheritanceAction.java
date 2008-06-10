@@ -11,10 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableHibernateAction.java,v 1.9 2008/06/10 05:25:47 mtaal Exp $
+ * $Id: SecondarytableInheritanceAction.java,v 1.1 2008/06/10 05:25:47 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.test.emf.annotations;
+package org.eclipse.emf.teneo.test.issues;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,32 +24,30 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.Person;
-import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernateFactory;
-import org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage;
+import org.eclipse.emf.teneo.samples.issues.secondary.Person;
+import org.eclipse.emf.teneo.samples.issues.secondary.SecondaryFactory;
+import org.eclipse.emf.teneo.samples.issues.secondary.SecondaryPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Simple test for Secondary table.
+ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=235949
  */
-public class SecondarytableHibernateAction extends AbstractTestAction {
+public class SecondarytableInheritanceAction extends AbstractTestAction {
 
 	private static final String ADDRESS = "Amsterdamseweg 123, 4567AZ Amsterdam";
 
 	private static final long ID = 1;
 
-	private static final String NAME = "Jan Janssen";
-
 	private static final byte[] PHOTO = new byte[64 * 1024];
 
 	private static final String VERIFICATION_QUERY =
-			"SELECT * FROM PERSON as A INNER JOIN PERSON_ADDRESS as B ON A.ID = B.ID "
+			"SELECT * FROM GENERIC as A INNER JOIN PERSON_ADDRESS as B ON A.ID = B.ID "
 					+ "INNER JOIN PERSON_PHOTO as C ON A.ID = C.ID";
 
-	public SecondarytableHibernateAction() {
-		super(SecondarytablehibernatePackage.eINSTANCE);
+	public SecondarytableInheritanceAction() {
+		super(SecondaryPackage.eINSTANCE);
 	}
 
 	@Override
@@ -77,9 +75,8 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 	private void storePerson(TestStore store) {
 		store.beginTransaction();
 
-		final Person person = SecondarytablehibernateFactory.eINSTANCE.createPerson();
+		final Person person = SecondaryFactory.eINSTANCE.createPerson();
 		person.setId(ID);
-		person.setName(NAME);
 		person.setAddress(ADDRESS);
 		person.setPhoto(PHOTO);
 		store.store(person);
@@ -97,7 +94,6 @@ public class SecondarytableHibernateAction extends AbstractTestAction {
 		assertEquals(1, results.size());
 		final Person person = (Person) results.get(0);
 		assertEquals(ID, person.getId());
-		assertEquals(NAME, person.getName());
 		assertEquals(ADDRESS, person.getAddress());
 		final byte[] photo = person.getPhoto();
 		assertEquals(PHOTO.length, photo.length);
