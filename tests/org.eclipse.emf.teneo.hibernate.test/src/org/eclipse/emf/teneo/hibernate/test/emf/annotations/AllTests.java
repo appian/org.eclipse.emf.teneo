@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  */
 public class AllTests {
 
@@ -57,6 +57,7 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
 
+		suite.addTestSuite(SecondarytableHibernateAction.class);
 		suite.addTestSuite(EmbeddedAction.class);
 
 		suite.addTestSuite(LazyLibraryAction.class);
@@ -104,8 +105,6 @@ public class AllTests {
 		suite.addTestSuite(BookAction.class);
 
 		suite.addTestSuite(EDataTypeAction.class);
-
-		suite.addTestSuite(SecondarytableHibernateAction.class);
 
 		suite.addTestSuite(BasicAction.class);
 
