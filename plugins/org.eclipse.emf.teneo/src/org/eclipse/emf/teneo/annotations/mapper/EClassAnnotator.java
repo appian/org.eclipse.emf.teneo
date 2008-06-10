@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.10 2008/06/10 06:44:54 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.11 2008/06/10 08:24:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -184,39 +184,41 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			aClass.getTable().setName(getSqlNameStrategy().getTableName(aClass));
 		}
 
-		// For hibernate as well as jpox the discriminator column is only
-		// required for single table, the ejb3 spec does not make a clear
-		// statement about the requirement to also have a discriminator column for joined
-		if (isInheritanceRoot && aClass.getDiscriminatorColumn() == null &&
-				inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
-			// note defaults of primitive types are all defined in the model
-			final DiscriminatorColumn dc = getFactory().createDiscriminatorColumn();
-			dc.setEModelElement(eclass);
-			dc.setName(getSqlNameStrategy().getDiscriminatorColumnName());
-			aClass.setDiscriminatorColumn(dc);
-		}
-
-		// add a discriminator value
-		if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
-			final DiscriminatorValue dv = getFactory().createDiscriminatorValue();
-
-			final DiscriminatorColumn dc = getDiscriminatorColumn(aClass);
-			if (dc != null && dc.getDiscriminatorType() != null &&
-					dc.getDiscriminatorType().getValue() == DiscriminatorType.INTEGER_VALUE) {
-
-				// use the entityname to translate to an int value,
-				// hopefully hashcode is more or less unique...
-				final String entityName = getEntityName(eclass);
-				log
-					.warn("Generating an integer discriminator value for entity " +
-							entityName +
-							". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
-				dv.setValue("" + entityName.hashCode());
-			} else {
-				dv.setValue(getEntityName(eclass));
+		if (addDiscriminator(aClass)) {
+			// For hibernate as well as jpox the discriminator column is only
+			// required for single table, the ejb3 spec does not make a clear
+			// statement about the requirement to also have a discriminator column for joined
+			if (isInheritanceRoot && aClass.getDiscriminatorColumn() == null &&
+					inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
+				// note defaults of primitive types are all defined in the model
+				final DiscriminatorColumn dc = getFactory().createDiscriminatorColumn();
+				dc.setEModelElement(eclass);
+				dc.setName(getSqlNameStrategy().getDiscriminatorColumnName());
+				aClass.setDiscriminatorColumn(dc);
 			}
-			dv.setEModelElement(eclass);
-			aClass.setDiscriminatorValue(dv);
+
+			// add a discriminator value
+			if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
+				final DiscriminatorValue dv = getFactory().createDiscriminatorValue();
+
+				final DiscriminatorColumn dc = getDiscriminatorColumn(aClass);
+				if (dc != null && dc.getDiscriminatorType() != null &&
+						dc.getDiscriminatorType().getValue() == DiscriminatorType.INTEGER_VALUE) {
+
+					// use the entityname to translate to an int value,
+					// hopefully hashcode is more or less unique...
+					final String entityName = getEntityName(eclass);
+					log
+						.warn("Generating an integer discriminator value for entity " +
+								entityName +
+								". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
+					dv.setValue("" + entityName.hashCode());
+				} else {
+					dv.setValue(getEntityName(eclass));
+				}
+				dv.setEModelElement(eclass);
+				aClass.setDiscriminatorValue(dv);
+			}
 		}
 
 		// Add default PkJoinColumns for SecondaryTables.
@@ -238,6 +240,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		for (PAnnotatedEStructuralFeature aStructuralFeature : aClass.getPaEStructuralFeatures()) {
 			eFeatureAnnotator.annotate(aStructuralFeature);
 		}
+		return true;
+	}
+
+	protected boolean addDiscriminator(PAnnotatedEClass aClass) {
 		return true;
 	}
 

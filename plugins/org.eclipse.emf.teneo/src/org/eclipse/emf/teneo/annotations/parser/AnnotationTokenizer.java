@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.7 2008/04/23 15:45:32 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.8 2008/06/10 08:24:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -219,7 +219,8 @@ class AnnotationTokenizer {
 					return T_TYPENAME; // --> Identifier.
 				}
 					// VALUE with double quotes
-				case '"': {
+				case '"':
+				case '“': {
 					// after the dollar the identifier part needs to be found
 					tokBeg = lCur; // Save starting point of current lexeme.
 
@@ -229,10 +230,10 @@ class AnnotationTokenizer {
 							lChar == '/' || lChar == '@' || lChar == ':' || lChar == '=' || lChar == '(' ||
 							lChar == ')' || lChar == '{' || lChar == '}' || lChar == '\'' || lChar == '#' ||
 							lChar == '&' || lChar == '<' || lChar == '>' || lChar == '$' || lChar == ';' ||
-							('0' <= lChar && lChar <= '9') || ('a' <= lChar && lChar <= 'z') || lChar == '?' ||
-							('A' <= lChar && lChar <= 'Z'));
+							lChar == '%' || lChar == '\'' || ('0' <= lChar && lChar <= '9') ||
+							('a' <= lChar && lChar <= 'z') || lChar == '?' || ('A' <= lChar && lChar <= 'Z'));
 
-					if (lChar != '\"') {
+					if (lChar != '"' && lChar != '“') {
 						final AnnotationParserException e =
 								new AnnotationParserException(
 									"Value not closed with double quote, see the _ for the location " + getErrorText());
