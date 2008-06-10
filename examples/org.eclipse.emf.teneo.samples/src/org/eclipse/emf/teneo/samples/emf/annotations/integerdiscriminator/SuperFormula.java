@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SuperFormula.java,v 1.1 2008/06/10 08:25:05 mtaal Exp $
+ * $Id: SuperFormula.java,v 1.2 2008/06/10 10:07:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.integerdiscriminator.IntegerdiscriminatorPackage#getSuperFormula()
- * @model annotation="teneo.jpa value='@Inheritance(strategy = InheritanceType.SINGLE_TABLE)\n@DiscriminatorValue(\"1\")\n@DiscriminatorFormula(value=\u201ccase when name like \'R%\' then 0 when name like \'G%\' then 1 else 2 end\u201c)'"
+ * @model annotation="teneo.jpa value='@Inheritance(strategy = InheritanceType.SINGLE_TABLE)\n@DiscriminatorValue(\"1\")\n@DiscriminatorFormula(value=\"case when name like \'R%\' then 0 when name like \'G%\' then 1 else 2 end\")'"
  * @generated
  */
 public interface SuperFormula extends EObject {
