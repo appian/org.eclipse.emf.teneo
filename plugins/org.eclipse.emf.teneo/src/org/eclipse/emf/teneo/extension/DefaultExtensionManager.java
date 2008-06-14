@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultExtensionManager.java,v 1.5 2008/04/16 21:07:51 mtaal Exp $
+ * $Id: DefaultExtensionManager.java,v 1.6 2008/06/14 22:27:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -23,14 +23,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
-import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
 
 /**
  * Manages a set of extensions. Currently for each extension point there will always be only one
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class DefaultExtensionManager implements ExtensionManager {
@@ -115,37 +114,9 @@ public class DefaultExtensionManager implements ExtensionManager {
 		}
 
 		// get the clz
-		final Class<?> clz;
-		// see if the classloader strategy was already registered
-		final ClassLoaderStrategy cls =
-				(ClassLoaderStrategy) extensionInstances.get(ClassLoaderStrategy.class.getName());
-		try {
-			if (cls != null) { // already there use it to load the class
-				clz = cls.getClassLoader().loadClass(extension.getClassName());
-			} else {
-				// not there try to find it in the extension registry
-				final Extension clsExtension = extensionRegistry.get(ClassLoaderStrategy.class.getName());
-				if (clsExtension == null) {
-					// not there use the default classloader
-					clz = ClassLoaderResolver.classForName(extension.getClassName());
-				} else {
-					// create the classloader extension and register it
-					final Class<?> clsClass = ClassLoaderResolver.classForName(clsExtension.getClassName());
-					ClassLoaderStrategy clsInstance = null;
-					try {
-						clsInstance = (ClassLoaderStrategy) clsClass.newInstance();
-						extensionInstances.put(clsExtension.getPoint(), clsInstance);
-					} catch (Exception e) {
-						throw new TeneoExtensionException("Exception while instantiating class " + clsClass.getName(),
-							e);
-					}
-					// now get the class we were looking for
-					clz = clsInstance.getClassLoader().loadClass(extension.getClassName());
-				}
-			}
-		} catch (ClassNotFoundException e) {
-			throw new TeneoExtensionException("Class not found: " + extension.getClassName(), e);
-		}
+		// note that before the classloader was retrieved as an extension
+		// however this is not logical, always use the classloaderresolver for this
+		final Class<?> clz = ClassLoaderResolver.classForName(extension.getClassName());
 
 		// check if this class indeed implements ExtensionPoint
 		if (!(ExtensionPoint.class.isAssignableFrom(clz))) {

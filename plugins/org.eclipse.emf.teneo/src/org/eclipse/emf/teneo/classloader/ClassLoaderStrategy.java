@@ -12,21 +12,20 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderStrategy.java,v 1.4 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ClassLoaderStrategy.java,v 1.5 2008/06/14 22:27:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.classloader;
 
-import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
  * Interface for classes which determine which classloader to use.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
-public interface ClassLoaderStrategy extends ExtensionPoint {
+public interface ClassLoaderStrategy {
 	/**
 	 * Return the classloader
 	 */

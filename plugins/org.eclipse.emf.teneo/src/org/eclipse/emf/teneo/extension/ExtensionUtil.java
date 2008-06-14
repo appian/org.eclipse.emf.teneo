@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.8 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.9 2008/06/14 22:27:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -35,8 +35,6 @@ import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
 import org.eclipse.emf.teneo.annotations.xml.XmlElementToEStructuralFeatureMapper;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceContentHandler;
 import org.eclipse.emf.teneo.annotations.xml.XmlPersistenceMapper;
-import org.eclipse.emf.teneo.classloader.ClassLoaderStrategy;
-import org.eclipse.emf.teneo.classloader.ContextClassLoaderStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.impl.EntityResolvingNameStrategy;
@@ -46,7 +44,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class ExtensionUtil {
@@ -91,7 +89,9 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension(EAnnotationParserImporter.class, EAnnotationParserImporter.class));
 		em.registerExtension(createExtension(PersistenceMappingBuilder.class, PersistenceMappingBuilder.class));
 		em.registerExtension(createExtension(XmlPersistenceMapper.class, XmlPersistenceMapper.class));
-		em.registerExtension(createExtension(ClassLoaderStrategy.class, ContextClassLoaderStrategy.class));
+		// from now on always use the classloader
+// em.registerExtension(createExtension(ClassLoaderStrategy.class,
+// ContextClassLoaderStrategy.class));
 		em.registerExtension(createExtension(EntityNameStrategy.class, EntityResolvingNameStrategy.class));
 		em.registerExtension(createExtension(SQLNameStrategy.class, TeneoSQLNameStrategy.class));
 		em.registerExtension(createExtension(XmlPersistenceContentHandler.class, XmlPersistenceContentHandler.class));
