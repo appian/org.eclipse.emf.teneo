@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.9 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.10 2008/06/16 21:23:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -102,7 +102,14 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 				boolean isInsertableUpdatable = true;
 				if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
 					final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
-					if (aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList()) {
+
+					boolean hasJoinTable = false;
+					hasJoinTable =
+							(!aOpposite.getModelEReference().isContainment() && getPersistenceOptions()
+								.isJoinTableForNonContainedAssociations()) ||
+									aOpposite.getJoinTable() != null;
+
+					if (!hasJoinTable && aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList()) {
 						isInsertableUpdatable = false;
 					}
 				}
