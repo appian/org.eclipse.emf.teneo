@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.79 $
+ * @version $Revision: 1.80 $
  */
 public class AllTests {
 
@@ -61,10 +61,6 @@ public class AllTests {
 					.instance().getConfigurations());
 
 		suite.addTestSuite(LibraryLargeAction.class);
-		if (true) {
-			return suite;
-		}
-
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(SchoolLibraryTest.class);
 
