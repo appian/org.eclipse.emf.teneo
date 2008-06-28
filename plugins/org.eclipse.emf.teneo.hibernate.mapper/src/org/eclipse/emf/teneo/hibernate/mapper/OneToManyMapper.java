@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.30 2008/06/09 22:09:54 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.31 2008/06/28 22:41:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -131,7 +131,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			} else if (isMap) {
 				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
 				addMapKey(collElement, hbReference);
-			} else if (otm.isIndexed()) {
+			} else if (collElement.getName().compareTo("list") == 0) { // otm.isIndexed()
 				addListIndex(collElement, paReference);
 			}
 		}
@@ -297,10 +297,15 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addColumns(any, paReference, getAnyTypeColumns(featureName, false), false, false);
 			return any;
 		} else {
+			String tag = "one-to-many";
+			if (((HbAnnotatedEReference) paReference).getHbIdBag() != null) {
+				tag = "many-to-many";
+			}
+
 			if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
-				return collElement.addElement("one-to-many").addAttribute("entity-name", targetEntity);
+				return collElement.addElement(tag).addAttribute("entity-name", targetEntity);
 			} else {
-				return collElement.addElement("one-to-many").addAttribute("class",
+				return collElement.addElement(tag).addAttribute("class",
 					getHbmContext().getInstanceClassName(referedToAClass.getModelEClass()));
 			}
 		}

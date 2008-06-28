@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.37 2008/05/27 07:42:29 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.38 2008/06/28 22:41:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -381,19 +381,8 @@ public abstract class AbstractMapper {
 			boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique, boolean isIdProperty) {
 		// if no columns set then use some default
 		if (columns.isEmpty()) {
-			final String name;
-
-			if (getHbmContext().getEmbeddingFeature() != null) { // embedded
-				// TODO: check illegal, embedded component can not really have an id
-				final PAnnotatedEStructuralFeature embeddingFeature = getHbmContext().getEmbeddingFeature();
-				name =
-						getHbmContext().getSqlNameStrategy().getColumnName(pef,
-							embeddingFeature.getModelEStructuralFeature().getName());
-			} else {
-				name = getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
-			}
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
-			col.setName(name);
+			col.setName(getColumnName(pef));
 			col.setNullable(isNullable);
 			if (isIdProperty) {
 				col.setUnique(false);
@@ -412,6 +401,17 @@ public abstract class AbstractMapper {
 		}
 		for (Column column : columns) {
 			addColumn(propertyElement, pef, column, isNullable, setColumnAttributesInProperty);
+		}
+	}
+
+	protected String getColumnName(PAnnotatedEStructuralFeature pef) {
+		if (getHbmContext().getEmbeddingFeature() != null) { // embedded
+			// TODO: check illegal, embedded component can not really have an id
+			final PAnnotatedEStructuralFeature embeddingFeature = getHbmContext().getEmbeddingFeature();
+			return getHbmContext().getSqlNameStrategy().getColumnName(pef,
+				embeddingFeature.getModelEStructuralFeature().getName());
+		} else {
+			return getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
 		}
 	}
 

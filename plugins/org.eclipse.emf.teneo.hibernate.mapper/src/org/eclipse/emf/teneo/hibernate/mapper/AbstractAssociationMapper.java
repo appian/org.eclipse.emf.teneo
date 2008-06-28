@@ -158,7 +158,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			// associationElement.addAttribute("unique", joinColumn.isUnique() ?
 			// "true" : "false");
 			// if
-			// (joinColumn.eIsSet(PannotationPackage.eINSTANCE.getJoinColumn_ReferencedColumnName()))
+			//(joinColumn.eIsSet(PannotationPackage.eINSTANCE.getJoinColumn_ReferencedColumnName()))
 			// TODO is this foreign key ?
 			// MT: see the property-ref in hibernate, is used when the reference
 			// is not on the primary key
@@ -185,10 +185,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * Creates cascades for onetoone/manytoone, they differ from many relations because no
 	 * delete-orphan is supported.
 	 * 
-	 * @param associationElement:
-	 *            the element to which the cascades are added.
-	 * @param cascade:
-	 *            list of cascade annotation types
+	 * @param associationElement
+	 *            : the element to which the cascades are added.
+	 * @param cascade
+	 *            : list of cascade annotation types
 	 */
 	protected void addCascadesForSingle(Element associationElement, List<CascadeType> cascades) {
 		addCascades(associationElement, cascades, false);
@@ -205,10 +205,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * Creates cascades for onetomany, it differs from single relations because delete-orphan is
 	 * supported when cascade=all
 	 * 
-	 * @param associationElement:
-	 *            the element to which the cascades are added.
-	 * @param cascade:
-	 *            list of cascade annotation types
+	 * @param associationElement
+	 *            : the element to which the cascades are added.
+	 * @param cascade
+	 *            : list of cascade annotation types
 	 */
 	protected void addCascadesForMany(Element associationElement, List<CascadeType> cascades) {
 		addCascades(associationElement, cascades, true);
@@ -218,12 +218,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * Creates cascades for onetoone/manytoone, they differ from many relations because no
 	 * delete-orphan is supported.
 	 * 
-	 * @param associationElement:
-	 *            the element to which the cascades are added.
-	 * @param cascade:
-	 *            list of cascade annotation types
-	 * @param addDeleteOrphan:
-	 *            if true then delete-orphan is added in case of cascade all
+	 * @param associationElement
+	 *            : the element to which the cascades are added.
+	 * @param cascade
+	 *            : list of cascade annotation types
+	 * @param addDeleteOrphan
+	 *            : if true then delete-orphan is added in case of cascade all
 	 */
 	protected void addCascades(Element associationElement, List<CascadeType> cascades, boolean addDeleteOrphan) {
 		if (!cascades.isEmpty()) {
@@ -445,7 +445,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 
 		if (hasOrderBy) {
-			collectionElement.addAttribute("order-by", ((PAnnotatedEReference) paFeature).getOrderBy().getValue());
+			final PAnnotatedEClass aClass = ((PAnnotatedEReference) paFeature).getAReferenceType();
+			final String name =
+					getColumnNameForOrderBy(aClass, ((PAnnotatedEReference) paFeature).getOrderBy().getValue());
+			collectionElement.addAttribute("order-by", name);
 		}
 
 		if (hasWhereClause) {
@@ -453,6 +456,52 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 
 		return collectionElement;
+	}
+
+	// returns the column name of a certain feature in the target entity
+	protected String getColumnNameForOrderBy(PAnnotatedEClass aClass, String orderBy) {
+		// handle the case of multiple features separated by commas
+		final StringBuilder sb = new StringBuilder();
+		final String[] orderBys = orderBy.split(",");
+		for (String ob : orderBys) {
+			// handle direction asc/desc
+			ob = ob.trim();
+			String direction = " asc";
+			if (ob.indexOf(" ") != -1) {
+				final int index = ob.lastIndexOf(" ");
+				ob = ob.substring(0, index).trim();
+				direction = ob.substring(index);
+			}
+			boolean found = false;
+			for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
+				if (aFeature.getModelElement().getName().compareTo(ob) == 0) {
+					if (aFeature instanceof PAnnotatedEReference) {
+						throw new MappingException("Feature " + ob + " is an ereference, onle eattribute is supported");
+					}
+					found = true;
+					final PAnnotatedEAttribute attr = (PAnnotatedEAttribute) aFeature;
+					final List<Column> cs = getColumns(attr);
+					if (cs.isEmpty()) {
+						if (sb.length() > 0) {
+							sb.append(",");
+						}
+						sb.append(getColumnName(attr) + direction);
+					} else {
+						for (Column c : cs) {
+							if (sb.length() > 0) {
+								sb.append(",");
+							}
+							sb.append(c.getName() + direction);
+						}
+					}
+				}
+			}
+			if (!found) {
+				throw new MappingException("Feature " + ob + " not found in eclass " +
+						aClass.getModelEClass().getName());
+			}
+		}
+		return sb.toString();
 	}
 
 	/**
@@ -558,9 +607,11 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
-		 * == null ? new
-		 * ArrayList() :
-		 * (List)joinTable.getJoinColumns().getValue()
-		 */);
+																				 * == null ? new
+																				 * ArrayList() :
+																				 * (List)joinTable.
+																				 * getJoinColumns
+																				 * ().getValue()
+																				 */);
 	}
 }
