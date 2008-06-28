@@ -9,9 +9,7 @@
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<implements name="java.io.Serializable"/>
-			<inheritance strategy="new-table">
-				<discriminator column="dtype" strategy="value-map" value="Book"/>
-			</inheritance>
+			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="title" persistence-modifier="persistent" null-value="exception"/>
 			<field name="pages" persistence-modifier="persistent" null-value="exception"/>
@@ -30,14 +28,12 @@
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<implements name="java.io.Serializable"/>
-			<inheritance strategy="new-table">
-				<discriminator column="dtype" strategy="value-map" value="Library"/>
-			</inheritance>
+			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="writers" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" dependent-element="true">
-					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<element>
 					<column name="library_writers_e_id" allows-null="true"/>
@@ -47,7 +43,7 @@
 			</field>
 			<field name="books" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl" dependent-element="true">
-					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<element>
 					<column name="library_books_e_id" allows-null="true"/>
@@ -62,9 +58,7 @@
 			<implements name="org.eclipse.emf.ecore.EObject"/>
 			<implements name="org.eclipse.emf.common.notify.Notifier"/>
 			<implements name="java.io.Serializable"/>
-			<inheritance strategy="new-table">
-				<discriminator column="dtype" strategy="value-map" value="Writer"/>
-			</inheritance>
+			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="books" persistence-modifier="persistent" mapped-by="author" delete-action="restrict">
