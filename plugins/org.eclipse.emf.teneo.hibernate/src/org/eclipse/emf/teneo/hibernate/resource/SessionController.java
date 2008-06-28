@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionController.java,v 1.6 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: SessionController.java,v 1.7 2008/06/28 22:55:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -26,16 +26,15 @@ import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.hibernate.Session;
 
 /**
- * A session controller handles one session. The session controller can be
- * registered and retrieved by name. The session controller is used by resources
- * to share one session over different resources. The resources get the session
- * controller name as a parameter in the uri.
+ * A session controller handles one session. The session controller can be registered and retrieved
+ * by name. The session controller is used by resources to share one session over different
+ * resources. The resources get the session controller name as a parameter in the uri.
  * 
- * This class offers the registry functionality as well as a default
- * implementation of the session controller.
+ * This class offers the registry functionality as well as a default implementation of the session
+ * controller.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class SessionController {
@@ -46,12 +45,9 @@ public class SessionController {
 	private static Hashtable<String, SessionController> sessionControllers = new Hashtable<String, SessionController>();
 
 	/** Register a session controller */
-	public static synchronized void registerSessionController(String name,
-			SessionController sc) {
+	public static synchronized void registerSessionController(String name, SessionController sc) {
 		if (sessionControllers.get(name) != null) {
-			throw new HbMapperException(
-					"There is already a session controller registered with the name: "
-							+ name);
+			throw new HbMapperException("There is already a session controller registered with the name: " + name);
 		}
 		log.debug("Registering session controller: " + name);
 		sessionControllers.put(name, sc);
@@ -60,18 +56,15 @@ public class SessionController {
 	/** Deregisters a session controller */
 	public static synchronized void deRegisterSessionController(String name) {
 		if (sessionControllers.get(name) == null) {
-			throw new HbMapperException(
-					"There is no session controller registered with the name: "
-							+ name);
+			throw new HbMapperException("There is no session controller registered with the name: " + name);
 		}
 		log.debug("De-Registering session controller: " + name);
 		sessionControllers.remove(name);
 	}
 
 	/** Returns a session controller using the name */
-	public static synchronized SessionController getSessionController(
-			String name) {
-		return (SessionController) sessionControllers.get(name);
+	public static synchronized SessionController getSessionController(String name) {
+		return sessionControllers.get(name);
 	}
 
 	/** The local session wrapper */
@@ -97,17 +90,19 @@ public class SessionController {
 
 	/**
 	 * Note fails when using ejb data store.
+	 * 
 	 * @return the session
 	 */
 	@Deprecated
 	public Session getSession() {
-		return (Session)getSessionWrapper().getSession();
+		return (Session) getSessionWrapper().getSession();
 	}
-	
+
 	/** Return the session wrapper */
 	public SessionWrapper getSessionWrapper() {
 		if (sessionWrapper == null) {
 			sessionWrapper = hbDataStore.createSessionWrapper();
+			sessionWrapper.setFlushModeManual();
 		}
 		return sessionWrapper;
 	}
