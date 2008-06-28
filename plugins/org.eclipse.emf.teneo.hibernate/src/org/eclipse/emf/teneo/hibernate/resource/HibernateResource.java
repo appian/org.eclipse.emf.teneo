@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.23 2008/04/20 10:31:56 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.24 2008/06/28 22:41:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -40,10 +40,11 @@ import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbSessionWrapper;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
-import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.Session;
+import org.hibernate.engine.SessionImplementor;
 import org.hibernate.impl.SessionImpl;
 
 /**
@@ -59,7 +60,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -342,7 +343,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 			// delete all deleted objects
 			for (Object obj : removedEObjects) {
-				if (IdentifierCacheHandler.getID(obj) != null) // persisted
+				if (IdentifierUtil.getID(obj, (SessionImplementor) mySessionWrapper.getHibernateSession()) != null) // persisted
 				// object
 				{
 					if (((InternalEObject) obj).eDirectResource() == null ||

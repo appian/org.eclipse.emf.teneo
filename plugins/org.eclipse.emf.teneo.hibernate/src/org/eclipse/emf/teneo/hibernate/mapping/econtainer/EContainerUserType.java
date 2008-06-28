@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.9 2008/06/04 20:15:47 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.10 2008/06/28 22:41:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -54,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ $Date: 2008/06/04 20:15:47 $
+ * @version $Revision: 1.10 $ $Date: 2008/06/28 22:41:50 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
@@ -130,7 +130,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.type.Type#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int,
-	 *      boolean[], org.hibernate.engine.SessionImplementor)
+	 * boolean[], org.hibernate.engine.SessionImplementor)
 	 */
 	public void nullSafeSet(PreparedStatement st, Object value, int index, boolean[] settable,
 			SessionImplementor session) throws HibernateException, SQLException {
@@ -144,7 +144,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.type.Type#replace(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionImplementor, java.lang.Object, java.util.Map)
+	 * org.hibernate.engine.SessionImplementor, java.lang.Object, java.util.Map)
 	 */
 	@SuppressWarnings("unchecked")
 	public Object replace(Object original, Object target, SessionImplementor session, Object owner, Map copyCache)
@@ -329,7 +329,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 			return container.getClass().getName();
 		}
 		if (property == 1) {
-			return IdentifierCacheHandler.getID(container);
+			return IdentifierCacheHandler.getInstance().getID(container);
 		}
 
 		throw new HbMapperException("Property: " + property + " not supported in " + component.getClass().getName());
@@ -382,7 +382,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.usertype.CompositeUserType#replace(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionImplementor, java.lang.Object)
+	 * org.hibernate.engine.SessionImplementor, java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, SessionImplementor session, Object owner)
 			throws HibernateException {
@@ -396,11 +396,12 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 
 	/** Returns the id of the passed object */
 	private Serializable getID(String entityName, Object value, SessionImplementor session) {
-		Serializable result = (Serializable) IdentifierCacheHandler.getID(value);
+		Serializable result = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, value, session);
+
 		if (result != null) {
 			return result;
 		}
-		return ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, value, session);
+		return (Serializable) IdentifierCacheHandler.getInstance().getID(value);
 	}
 
 	/**

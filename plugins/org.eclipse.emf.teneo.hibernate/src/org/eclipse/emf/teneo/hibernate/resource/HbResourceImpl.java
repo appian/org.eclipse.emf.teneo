@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.10 2008/03/10 21:30:18 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.11 2008/06/28 22:41:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbSessionWrapper;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
-import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.FlushMode;
 import org.hibernate.LockMode;
@@ -69,7 +69,7 @@ import org.hibernate.util.IdentityMap;
  * This class does not support the SessionController.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -235,7 +235,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			final List<EObject> list = super.getContents();
 			for (int i = 0; i < list.size(); i++) {
 				final Object obj = list.get(i);
-				// if (IdentifierCacheHandler.getID(obj) == null) // new object
+				// if (IdentifierCacheHandler.getInstance().getID(obj) == null) // new object
 				// {
 				mySession.saveOrUpdate(obj);
 				// }
@@ -244,7 +244,7 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 
 			// delete all deleted objects
 			for (Object obj : removedEObjects) {
-				if (IdentifierCacheHandler.getID(obj) != null) // persisted
+				if (IdentifierUtil.getID(obj, (SessionImplementor) mySession) != null) // persisted
 				// object
 				{
 					mySession.delete(obj);

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: VersionPropertyHandler.java,v 1.5 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: VersionPropertyHandler.java,v 1.6 2008/06/28 22:41:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -33,7 +33,7 @@ import org.hibernate.property.Setter;
  * Reads the version from the internal version cache.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 @SuppressWarnings("unchecked")
 public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -64,14 +64,14 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	 * Reads the version from the versioncache
 	 */
 	public Object get(Object owner) throws HibernateException {
-		return IdentifierCacheHandler.getVersion(owner);
+		return IdentifierCacheHandler.getInstance().getVersion(owner);
 	}
 
 	/**
 	 * Reads the version from the versioncache
 	 */
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
-		return IdentifierCacheHandler.getVersion(owner);
+		return IdentifierCacheHandler.getInstance().getVersion(owner);
 	}
 
 	/*
@@ -99,6 +99,6 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 
 	/** Sets the version in the internal version cache */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
-		IdentifierCacheHandler.setVersion(target, value);
+		IdentifierCacheHandler.getInstance().setVersion(target, value);
 	}
 }

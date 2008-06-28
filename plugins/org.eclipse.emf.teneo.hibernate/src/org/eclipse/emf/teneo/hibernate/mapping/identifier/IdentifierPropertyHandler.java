@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierPropertyHandler.java,v 1.4 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: IdentifierPropertyHandler.java,v 1.5 2008/06/28 22:41:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -32,7 +32,7 @@ import org.hibernate.property.Setter;
  * used for synthetic id's.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 @SuppressWarnings("unchecked")
 public class IdentifierPropertyHandler implements Getter, Setter,
@@ -66,7 +66,7 @@ public class IdentifierPropertyHandler implements Getter, Setter,
 
 	/** Returns the id from the identifier cache */
 	public Object get(Object owner) throws HibernateException {
-		return IdentifierCacheHandler.getID(owner);
+		return IdentifierCacheHandler.getInstance().getID(owner);
 	}
 
 	/*
@@ -115,6 +115,6 @@ public class IdentifierPropertyHandler implements Getter, Setter,
 	 */
 	public void set(Object target, Object value,
 			SessionFactoryImplementor factory) throws HibernateException {
-		IdentifierCacheHandler.setID(target, value);
+		IdentifierCacheHandler.getInstance().setID(target, value);
 	}
 }

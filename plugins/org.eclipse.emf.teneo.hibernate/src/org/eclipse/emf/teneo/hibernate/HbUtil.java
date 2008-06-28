@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.21 2008/03/12 07:30:24 mtaal Exp $
+ * $Id: HbUtil.java,v 1.22 2008/06/28 22:41:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -49,7 +49,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class HbUtil {
 
@@ -69,7 +69,7 @@ public class HbUtil {
 			id = pc.getIdentifierProperty().getGetter(eobj.getClass()).get(eobj);
 		}
 		if (id == null) {
-			id = IdentifierCacheHandler.getID(eobj);
+			id = IdentifierCacheHandler.getInstance().getID(eobj);
 			if (id == null) {
 				return null;
 			}

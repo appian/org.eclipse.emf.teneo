@@ -3,14 +3,13 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
- * IdentifierCacheHandler.java,v 1.5 2007/02/08 23:11:37 mtaal Exp $
+ * IdentifierCacheHandler.getInstance().java,v 1.5 2007/02/08 23:11:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class IdentifierCacheHandler {
@@ -37,25 +36,36 @@ public class IdentifierCacheHandler {
 	private static final int PURGE_COUNT = 10000;
 
 	/** HashMap */
-	private static Map<Key, Object> idMap = Collections.synchronizedMap(new HashMap<Key, Object>());
+	private static Map<Key, Object> idMap = new HashMap<Key, Object>();
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int idModCount = 0;
 
 	/** HashMap */
-	private static Map<Key, Object> versionMap = Collections.synchronizedMap(new HashMap<Key, Object>());
+	private static Map<Key, Object> versionMap = new HashMap<Key, Object>();
 
 	/** Keeps track of the modifications to the versionMap */
 	private static int versionModCount = 0;
 
+	private static IdentifierCacheHandler instance = new IdentifierCacheHandler();
+
+	public static IdentifierCacheHandler getInstance() {
+// IdentifierCacheHandler ich = null;
+// if ((ich = instance.get()) == null) {
+// instance.set(new IdentifierCacheHandler());
+// return instance.get();
+// }
+		return instance;
+	}
+
 	/** Clear the identifier cache */
-	public static void clear() {
+	public void clear() {
 		idMap.clear();
 		versionMap.clear();
 	}
 
 	/** Get an identifier from the cache */
-	public static Object getID(Object obj) {
+	public Object getID(Object obj) {
 		final Object id = idMap.get(new Key(obj));
 		if (id == null) {
 			log.debug("ID for object " + obj.getClass().getName() + " not found in id cache");
@@ -64,7 +74,7 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Set an identifier in the cache */
-	public static void setID(Object obj, Object id) {
+	public void setID(Object obj, Object id) {
 		if (log.isDebugEnabled()) {
 			log.debug("Setting id: " + id + " for object " + obj.getClass().getName() + " in idcache ");
 		}
@@ -95,12 +105,12 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Gets a version from the cache */
-	public static Object getVersion(Object obj) {
+	public Object getVersion(Object obj) {
 		return versionMap.get(new Key(obj));
 	}
 
 	/** Sets a version in the cache */
-	public static void setVersion(Object obj, Object version) {
+	public void setVersion(Object obj, Object version) {
 		if (log.isDebugEnabled()) {
 			log.debug("Setting version: " + version + " for object " + obj.getClass().getName() + " in idcache ");
 		}
@@ -112,7 +122,7 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purge the versionmap for stale entries */
-	private static synchronized void purgeIDMap() {
+	private synchronized void purgeIDMap() {
 		if (idModCount < PURGE_COUNT) {
 			return;
 		}
@@ -121,7 +131,7 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purge the versionmap for stale entries */
-	private static synchronized void purgeVersionMap() {
+	private synchronized void purgeVersionMap() {
 		if (versionModCount < PURGE_COUNT) {
 			return;
 		}
@@ -130,7 +140,7 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purges the passed map for stale entries */
-	private static synchronized void purgeMap(Map<Key, Object> map) {
+	private synchronized void purgeMap(Map<Key, Object> map) {
 		synchronized (map) {
 			final ArrayList<Object> toRemove = new ArrayList<Object>();
 			final Iterator<Key> it = map.keySet().iterator();
@@ -147,12 +157,12 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Dumps the idmap */
-	public static void dumpID() {
+	public void dumpID() {
 		dumpContents(idMap);
 	}
 
 	/** Dumps the content of the passed map */
-	private static void dumpContents(Map<Key, Object> map) {
+	private void dumpContents(Map<Key, Object> map) {
 		synchronized (map) {
 			Iterator<Key> it = idMap.keySet().iterator();
 			while (it.hasNext()) {
@@ -177,7 +187,7 @@ public class IdentifierCacheHandler {
 		/** Constructor */
 		Key(Object keyObject) {
 			weakRef = new WeakReference<Object>(keyObject);
-			hashcode = keyObject.getClass().hashCode();
+			hashcode = keyObject.hashCode();
 		}
 
 		/*
@@ -195,9 +205,13 @@ public class IdentifierCacheHandler {
 			// weakreference already gone compare on keys itself
 			final Object obj0 = key0.weakRef.get();
 			final Object obj1 = weakRef.get();
-			if (obj0 == null || obj1 == null) {
-				return key0 == this;
+			// always say false on this one, if obj1 is null then this handled later
+			if (obj0 == null) {
+				return false;
 			}
+// if (obj0 == null || obj1 == null) {
+// return key0 == this;
+// }
 
 			// still present compare on values
 			// equals call should maybe also be done but goes wrong for

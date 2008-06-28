@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.12 2008/06/05 05:25:39 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.13 2008/06/28 22:41:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -30,8 +30,8 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
-import org.eclipse.emf.teneo.hibernate.mapping.internal.TeneoInternalEObject;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.internal.TeneoInternalEObject;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Environment;
@@ -55,7 +55,7 @@ import org.hibernate.util.ReflectHelper;
  * object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -87,7 +87,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	public Serializable getIdentifier(Object object) throws HibernateException {
-		Serializable id = (Serializable) IdentifierCacheHandler.getID(object);
+		Serializable id = (Serializable) IdentifierCacheHandler.getInstance().getID(object);
 		if (id != null) {
 			return id;
 		}
@@ -104,7 +104,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 			return version;
 		}
 
-		return IdentifierCacheHandler.getVersion(object);
+		return IdentifierCacheHandler.getInstance().getVersion(object);
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	public void setIdentifier(Object object, Serializable id) throws HibernateException {
-		IdentifierCacheHandler.setID(object, id);
+		IdentifierCacheHandler.getInstance().setID(object, id);
 		super.setIdentifier(object, id);
 	}
 
@@ -130,8 +130,9 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate.mapping.Property,
-	 *      org.hibernate.mapping.PersistentClass)
+	 * @see
+	 * org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate.mapping.Property
+	 * , org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
 	protected Getter buildPropertyGetter(Property mappedProperty, PersistentClass mappedEntity) {
@@ -141,8 +142,9 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate.mapping.Property,
-	 *      org.hibernate.mapping.PersistentClass)
+	 * @see
+	 * org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate.mapping.Property
+	 * , org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
 	protected Setter buildPropertySetter(Property mappedProperty, PersistentClass mappedEntity) {
@@ -152,8 +154,8 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildProxyFactory(org.hibernate.mapping.PersistentClass,
-	 *      org.hibernate.property.Getter, org.hibernate.property.Setter)
+	 * @seeorg.hibernate.tuple.AbstractEntityTuplizer#buildProxyFactory(org.hibernate.mapping.
+	 * PersistentClass, org.hibernate.property.Getter, org.hibernate.property.Setter)
 	 */
 	@Override
 	protected ProxyFactory buildProxyFactory(PersistentClass persistentClass, Getter idGetter, Setter idSetter) {
