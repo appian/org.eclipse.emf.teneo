@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ToOneAction.java,v 1.5 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: ToOneAction.java,v 1.6 2008/06/28 22:41:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -27,13 +27,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class ToOneAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public ToOneAction() {
@@ -66,7 +67,7 @@ public class ToOneAction extends AbstractTestAction {
 		// read back and check it
 		{
 			store.beginTransaction();
-			final Person p = (Person) store.getObject(Person.class);
+			final Person p = store.getObject(Person.class);
 			store.deleteObject(p);
 			store.commitTransaction();
 		}

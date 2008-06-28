@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PKeyJoinAction.java,v 1.4 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: PKeyJoinAction.java,v 1.5 2008/06/28 22:41:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -25,13 +25,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase
- *  
+ * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class PKeyJoinAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public PKeyJoinAction() {
@@ -55,7 +56,7 @@ public class PKeyJoinAction extends AbstractTestAction {
 		}
 		{
 			store.beginTransaction();
-			final Body bd = (Body) store.getObject(Body.class);
+			final Body bd = store.getObject(Body.class);
 			assertEquals(5, bd.getHead().getMyID());
 			assertEquals(5, bd.getTheID());
 			store.commitTransaction();
