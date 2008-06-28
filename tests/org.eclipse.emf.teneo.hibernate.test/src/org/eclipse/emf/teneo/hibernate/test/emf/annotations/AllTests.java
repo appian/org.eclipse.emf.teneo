@@ -49,7 +49,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  */
 public class AllTests {
 
@@ -57,6 +57,9 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(PKeyJoinAction.class);
+
+		suite.addTestSuite(ToOneAction.class);
 
 		suite.addTestSuite(IntegerDiscriminatorAction.class);
 
@@ -99,8 +102,6 @@ public class AllTests {
 
 		suite.addTestSuite(SetNMAction.class);
 
-		suite.addTestSuite(ToOneAction.class);
-
 		suite.addTestSuite(DuplicatesAction.class);
 
 		suite.addTestSuite(UniqueConstraintsAction.class);
@@ -112,7 +113,6 @@ public class AllTests {
 		suite.addTestSuite(BasicAction.class);
 
 		suite.addTestSuite(CompositeIdAction.class);
-		suite.addTestSuite(PKeyJoinAction.class);
 
 		suite.addTestSuite(SetResourceAction.class);
 		suite.addTestSuite(LobAction.class);

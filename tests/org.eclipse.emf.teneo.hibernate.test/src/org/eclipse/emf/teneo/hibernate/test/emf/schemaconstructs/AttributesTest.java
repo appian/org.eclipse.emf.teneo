@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AttributesTest.java,v 1.4 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: AttributesTest.java,v 1.5 2008/06/28 22:41:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -25,14 +25,15 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.AttributesAction;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class AttributesTest extends AbstractActionTest {
 
 	private static AttributesAction testAction = new AttributesAction() {
 
+		@Override
 		protected void checkIdIs(EObject o, String id) {
-			assertTrue(IdentifierCacheHandler.getID(o).toString().compareTo(id) == 0);
+			assertTrue(IdentifierCacheHandler.getInstance().getID(o).toString().compareTo(id) == 0);
 		}
 	};
 

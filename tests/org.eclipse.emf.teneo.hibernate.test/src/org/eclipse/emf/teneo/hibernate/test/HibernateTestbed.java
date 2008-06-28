@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.17 2008/04/04 11:50:17 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.18 2008/06/28 22:41:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -105,7 +105,7 @@ public class HibernateTestbed extends Testbed {
 	public TestStore createStore(AbstractTest testCase) {
 		try {
 
-			IdentifierCacheHandler.clear();
+			IdentifierCacheHandler.getInstance().clear();
 			final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
 			testCase.setExtensions(extensionManager);
 

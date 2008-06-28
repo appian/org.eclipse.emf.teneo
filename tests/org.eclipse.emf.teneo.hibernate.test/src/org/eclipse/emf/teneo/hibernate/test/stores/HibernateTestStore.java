@@ -44,6 +44,7 @@ import org.eclipse.emf.teneo.test.stores.AbstractTestStore;
 import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
+import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 import org.hibernate.ejb.EntityManagerImpl;
@@ -52,7 +53,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -173,6 +174,7 @@ public class HibernateTestStore extends AbstractTestStore {
 			refresh();
 		} else {
 			sessionWrapper = emfDataStore.createSessionWrapper();
+			sessionWrapper.getHibernateSession().setFlushMode(FlushMode.COMMIT);
 		}
 	}
 
@@ -207,6 +209,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		}
 		sessionWrapper.close();
 		sessionWrapper = emfDataStore.createSessionWrapper();
+		sessionWrapper.getHibernateSession().setFlushMode(FlushMode.COMMIT);
 	}
 
 	/** Returns session */
