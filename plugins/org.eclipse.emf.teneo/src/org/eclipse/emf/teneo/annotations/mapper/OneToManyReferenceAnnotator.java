@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.9 2008/06/28 22:51:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -158,7 +158,7 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 				log.debug("Setting unique because is bidirectional (has eopposite) otm");
 				otm.setUnique(true);
 			}
-		} else if (aReference.getModelEReference().getEOpposite() != null) {
+		} else if (!otm.isUnique() && !eReference.isUnique() && aReference.getModelEReference().getEOpposite() != null) {
 			log.warn("The EReference " + logStr +
 					" is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
