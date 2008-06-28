@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BZ237498Action.java,v 1.2 2008/06/28 23:11:49 mtaal Exp $
+ * $Id: BZ237790Action.java,v 1.1 2008/06/28 23:11:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -20,22 +20,22 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.samples.issues.bz237498.Bz237498Factory;
-import org.eclipse.emf.teneo.samples.issues.bz237498.Bz237498Package;
-import org.eclipse.emf.teneo.samples.issues.bz237498.Many;
-import org.eclipse.emf.teneo.samples.issues.bz237498.One;
+import org.eclipse.emf.teneo.samples.issues.bz237790.Bz237790Factory;
+import org.eclipse.emf.teneo.samples.issues.bz237790.Bz237790Package;
+import org.eclipse.emf.teneo.samples.issues.bz237790.Many;
+import org.eclipse.emf.teneo.samples.issues.bz237790.One;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Testcase for bugzilla 237498
+ * Testcase for bugzilla 237790
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class BZ237498Action extends AbstractTestAction {
-	public BZ237498Action() {
-		super(new EPackage[] { Bz237498Package.eINSTANCE });
+public class BZ237790Action extends AbstractTestAction {
+	public BZ237790Action() {
+		super(new EPackage[] { Bz237790Package.eINSTANCE });
 	}
 
 	/*
@@ -46,13 +46,13 @@ public class BZ237498Action extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG, "true");
+		props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
 		return props;
 	}
 
 	@Override
 	public void doAction(TestStore store) {
-		final Bz237498Factory factory = Bz237498Factory.eINSTANCE;
+		final Bz237790Factory factory = Bz237790Factory.eINSTANCE;
 		{
 			store.beginTransaction();
 			final One one = factory.createOne();
@@ -70,9 +70,9 @@ public class BZ237498Action extends AbstractTestAction {
 			store.beginTransaction();
 			final One one = store.getObject(One.class);
 			final Many m1 = one.getManies().get(0);
-			assertEquals("aaa", m1.getName());
+			assertEquals("zzz", m1.getName());
 			final Many m2 = one.getManies().get(1);
-			assertEquals("zzz", m2.getName());
+			assertEquals("aaa", m2.getName());
 			store.commitTransaction();
 		}
 	}
