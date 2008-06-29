@@ -48,6 +48,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="discriminator-column" type="DiscriminatorColumn"/>
+			<xsd:element name="discriminator-formula" type="xsd:string"/>
 			<xsd:element name="discriminator-value" type="xsd:string"/>
 			<xsd:element name="embeddable" type="Embeddable"/>
 			<xsd:element name="entity" type="Entity"/>
@@ -117,6 +118,7 @@
 			</xsd:element>
 			<xsd:element name="join-table" type="JoinTable"/>
 			<xsd:element name="lob" type="Lob"/>
+			<xsd:element name="natural-id" type="xsd:boolean"/>
 			<xsd:element name="one-to-many" type="OneToMany"/>
 			<xsd:element name="sequence-generator" type="SequenceGenerator"/>
 			<xsd:element name="table-generator" type="TableGenerator">
@@ -169,6 +171,7 @@
 			<xsd:element name="many-to-many" type="ManyToMany"/>
 			<xsd:element name="many-to-one" type="ManyToOne"/>
 			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="natural-id" type="xsd:boolean"/>
 			<xsd:element name="one-to-many" type="OneToMany"/>
 			<xsd:element name="one-to-one" type="OneToOne"/>
 			<xsd:element name="order-by" type="xsd:string"/>
@@ -233,6 +236,7 @@
 			<xsd:element name="many-to-many" type="ManyToMany"/>
 			<xsd:element name="many-to-one" type="ManyToOne"/>
 			<xsd:element name="map-key" type="xsd:string"/>
+			<xsd:element name="natural-id" type="xsd:boolean"/>
 			<xsd:element name="one-to-many" type="OneToMany"/>
 			<xsd:element name="one-to-one" type="OneToOne"/>
 			<xsd:element name="order-by" type="xsd:string"/>
