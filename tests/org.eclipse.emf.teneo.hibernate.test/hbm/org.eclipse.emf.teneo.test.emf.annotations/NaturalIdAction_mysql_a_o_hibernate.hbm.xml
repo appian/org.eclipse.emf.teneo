@@ -36,6 +36,7 @@
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/naturalid</meta>
 		<id name="id" type="int" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<natural-id mutable="false">

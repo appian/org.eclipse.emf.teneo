@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.otopk.impl.EmployeeImpl" entity-name="Employee" abstract="false" lazy="false" table="`employee`">
+		<meta attribute="eclassName">Employee</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/otopk</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="foreign">
+				<param name="property">employeeInfo</param>
+			</generator>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<one-to-one name="employeeInfo" entity-name="EmployeeInfo" foreign-key="employee_employeeinfo" cascade="merge,persist,save-update,lock,refresh" lazy="false" constrained="true"/>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.otopk.impl.EmployeeInfoImpl" entity-name="EmployeeInfo" abstract="false" lazy="false" table="`employeeinfo`">
+		<meta attribute="eclassName">EmployeeInfo</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/otopk</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>
