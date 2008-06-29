@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.21 2008/04/20 10:31:56 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.22 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
@@ -119,6 +119,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
+						sessionWrapper.setFlushModeManual();
 					} else {
 						log.debug("Delegate loaded or resource session is still active, using it");
 					}
@@ -171,6 +172,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 			if (controlsTransaction) {
 				if (err) {
 					sessionWrapper.rollbackTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -179,6 +181,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
 					sessionWrapper.commitTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				}
 			}
 			if (sessionWrapper != null) {

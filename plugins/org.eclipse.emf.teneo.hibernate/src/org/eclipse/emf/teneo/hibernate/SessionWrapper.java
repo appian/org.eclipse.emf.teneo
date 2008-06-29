@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.7 2008/03/10 06:02:44 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -31,7 +31,7 @@ import org.hibernate.Session;
  * and commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public interface SessionWrapper {
 
@@ -69,6 +69,8 @@ public interface SessionWrapper {
 
 	/** Does this impl. wrap an entitymanager */
 	boolean isEJB3EntityManager();
+
+	public void restorePreviousFlushMode();
 
 	/** Set the flushmode in the session */
 	void setFlushModeManual();

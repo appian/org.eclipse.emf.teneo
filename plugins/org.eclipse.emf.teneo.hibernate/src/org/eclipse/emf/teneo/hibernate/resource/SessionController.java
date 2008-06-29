@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SessionController.java,v 1.7 2008/06/28 22:55:39 mtaal Exp $
+ * $Id: SessionController.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -34,7 +34,7 @@ import org.hibernate.Session;
  * controller.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class SessionController {
@@ -102,7 +102,6 @@ public class SessionController {
 	public SessionWrapper getSessionWrapper() {
 		if (sessionWrapper == null) {
 			sessionWrapper = hbDataStore.createSessionWrapper();
-			sessionWrapper.setFlushModeManual();
 		}
 		return sessionWrapper;
 	}

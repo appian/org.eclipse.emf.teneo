@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.7 2008/04/20 10:31:56 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.collection.PersistentCollection;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implements ExtensionPoint {
@@ -84,6 +84,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
+						sessionWrapper.setFlushModeManual();
 					} else {
 						log.debug("Delegate loaded or resource session is still active, using it");
 					}
@@ -124,6 +125,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 			if (controlsTransaction) {
 				if (err) {
 					sessionWrapper.rollbackTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -132,6 +134,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
 					sessionWrapper.commitTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				}
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}

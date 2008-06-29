@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.13 2008/04/20 10:31:56 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.14 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap implements ExtensionPoint {
@@ -144,6 +144,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 						log.debug("Reconnecting session to read a lazy collection, Featuremap: " + logString);
 						controlsSession = true;
 						sessionWrapper.beginTransaction();
+						sessionWrapper.setFlushModeManual();
 					} else {
 						log.debug("Resource session is still active, using it");
 					}
@@ -182,6 +183,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 			if (controlsSession) {
 				if (err) {
 					sessionWrapper.rollbackTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -190,6 +192,7 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
 					sessionWrapper.commitTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				}
 			}
 		}

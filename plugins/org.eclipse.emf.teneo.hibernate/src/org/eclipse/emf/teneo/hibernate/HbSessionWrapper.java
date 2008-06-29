@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbSessionWrapper.java,v 1.8 2008/03/10 06:02:44 mtaal Exp $
+ * $Id: HbSessionWrapper.java,v 1.9 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -36,7 +36,7 @@ import org.hibernate.persister.entity.UnionSubclassEntityPersister;
  * Wraps a standard hibernate session.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class HbSessionWrapper implements SessionWrapper {
 
@@ -45,6 +45,8 @@ public class HbSessionWrapper implements SessionWrapper {
 
 	/** The datastore which created me */
 	private final HbDataStore hbDataStore;
+
+	private FlushMode flushMode;
 
 	/** Constructor */
 	public HbSessionWrapper(HbDataStore hbDataStore) {
@@ -136,8 +138,16 @@ public class HbSessionWrapper implements SessionWrapper {
 		return false;
 	}
 
+	public void restorePreviousFlushMode() {
+		if (flushMode != null) {
+			getSessionInternal().setFlushMode(flushMode);
+			flushMode = null;
+		}
+	}
+
 	/** Set the flushmode */
 	public void setFlushModeManual() {
+		flushMode = getSessionInternal().getFlushMode();
 		getSessionInternal().setFlushMode(FlushMode.MANUAL);
 	}
 

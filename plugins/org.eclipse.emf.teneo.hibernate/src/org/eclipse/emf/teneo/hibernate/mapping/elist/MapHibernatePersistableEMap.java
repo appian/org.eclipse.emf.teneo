@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapHibernatePersistableEMap.java,v 1.7 2008/04/20 10:31:56 mtaal Exp $
+ * $Id: MapHibernatePersistableEMap.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentMap;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> implements ExtensionPoint {
@@ -186,6 +186,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
+						sessionWrapper.setFlushModeManual();
 					} else {
 						log.debug("Delegate loaded or resource session is still active, using it");
 					}
@@ -231,6 +232,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 			if (controlsTransaction) {
 				if (err) {
 					sessionWrapper.rollbackTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				} else {
 					// a bit rough but delete from the persitence context
 					// otherwise
@@ -239,6 +241,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 					// will delete me
 					// getSession().getPersistenceContext().getCollectionEntries().remove(this);
 					sessionWrapper.commitTransaction();
+					sessionWrapper.restorePreviousFlushMode();
 				}
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}

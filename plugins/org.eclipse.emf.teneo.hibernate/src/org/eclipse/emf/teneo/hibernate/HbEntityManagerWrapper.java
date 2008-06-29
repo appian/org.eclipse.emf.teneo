@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.13 2008/03/17 16:13:29 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.14 2008/06/29 14:24:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -52,6 +52,8 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 
 	/** The current transaction */
 	private EntityTransaction entityTransaction = null;
+
+	private FlushModeType flushMode = null;
 
 	/** Constructor */
 	public HbEntityManagerWrapper(HbEntityDataStore hbEntityDataStore) {
@@ -166,8 +168,16 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 		return true;
 	}
 
+	public void restorePreviousFlushMode() {
+		if (flushMode != null) {
+			getEntityManager().setFlushMode(flushMode);
+			flushMode = null;
+		}
+	}
+
 	/** Set the flushmode */
 	public void setFlushModeManual() {
+		flushMode = getEntityManager().getFlushMode();
 		getEntityManager().setFlushMode(FlushModeType.COMMIT);
 	}
 
