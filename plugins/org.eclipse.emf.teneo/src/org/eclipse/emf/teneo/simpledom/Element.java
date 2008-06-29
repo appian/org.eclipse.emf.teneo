@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Element.java,v 1.7 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: Element.java,v 1.8 2008/06/29 14:23:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -24,7 +24,7 @@ import java.util.List;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class Element extends Node {
@@ -60,6 +60,31 @@ public class Element extends Node {
 		final Attribute attr = new Attribute(name, text);
 		attributes.add(attr);
 		return this;
+	}
+
+	/**
+	 * Return the value of an attribute the attribute name, if not found then null is returned
+	 */
+	public String getAttributeValue(String name) {
+		for (Attribute attr : attributes) {
+			if (attr.getName().compareTo(name) == 0) {
+				return attr.getText();
+			}
+		}
+		return null;
+	}
+
+	/** Remove the attribute using a specific name */
+	public void removeAttribute(String name) {
+		Attribute toRemove = null;
+		for (Attribute attr : attributes) {
+			if (attr.getName().compareTo(name) == 0) {
+				toRemove = attr;
+			}
+		}
+		if (toRemove != null) {
+			attributes.remove(toRemove);
+		}
 	}
 
 	/** Method to add attribute */
@@ -109,8 +134,9 @@ public class Element extends Node {
 	/** Find a child element */
 	public Element element(String name) {
 		for (Element elem : children) {
-			if (elem.getName().compareTo(name) == 0)
+			if (elem.getName().compareTo(name) == 0) {
 				return elem;
+			}
 		}
 		return null;
 	}
@@ -151,7 +177,7 @@ public class Element extends Node {
 		result.append("<" + getName());
 		for (int i = 0; i < attributes.size(); i++) {
 			result.append(" ");
-			final Attribute attr = (Attribute) attributes.get(i);
+			final Attribute attr = attributes.get(i);
 			result.append(attr.emitXML());
 		}
 		if (children.size() == 0 && getText().length() == 0) {
@@ -166,7 +192,7 @@ public class Element extends Node {
 		}
 
 		for (int i = 0; i < children.size(); i++) {
-			final Element element = (Element) children.get(i);
+			final Element element = children.get(i);
 			result.append(element.emitXML());
 		}
 		result.append("\n");
@@ -191,6 +217,7 @@ public class Element extends Node {
 	}
 
 	/** Clone */
+	@Override
 	public Object clone() {
 		final Element element = new Element();
 		element.setName(getName());

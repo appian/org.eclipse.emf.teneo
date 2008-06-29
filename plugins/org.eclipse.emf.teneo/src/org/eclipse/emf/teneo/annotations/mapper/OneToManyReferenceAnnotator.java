@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.9 2008/06/28 22:51:16 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.10 2008/06/29 14:23:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -194,8 +195,25 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 				joinTable.getInverseJoinColumns().addAll(getJoinColumns(names, false, true, otm));
 			}
 		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
-			final List<String> names = getSqlNameStrategy().getOneToManyEReferenceJoinColumns(aReference);
-			aReference.getJoinColumns().addAll(getJoinColumns(names, aReference.getEmbedded() == null, true, otm));
+			boolean borrowJoinColumnsOtherSide = false;
+			if (eReference.getEOpposite() != null) {
+				final PAnnotatedEReference aOther = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
+				if (aOther.getJoinColumns() != null && !aOther.getJoinColumns().isEmpty()) {
+					borrowJoinColumnsOtherSide = true;
+					for (JoinColumn jc : aOther.getJoinColumns()) {
+						aReference.getJoinColumns().add((JoinColumn) EcoreUtil.copy(jc));
+					}
+					// repair updatable/insertable
+					for (JoinColumn jc : aReference.getJoinColumns()) {
+						jc.setUpdatable(true);
+						jc.setInsertable(true);
+					}
+				}
+			}
+			if (!borrowJoinColumnsOtherSide) {
+				final List<String> names = getSqlNameStrategy().getOneToManyEReferenceJoinColumns(aReference);
+				aReference.getJoinColumns().addAll(getJoinColumns(names, aReference.getEmbedded() == null, true, otm));
+			}
 
 			// In case of a bidirectional relation without a join table
 			// do a special thing: if this is a list (with an index) then the association is always
