@@ -476,7 +476,9 @@
 		name is passed as an uri parameter. Using this name the HibernateResource can then find the SessionController
 		and retrieve a session. When a HibernateResource has a SessionController then the HibernateResource does not itself 
 		create a session or begin and commit transactions. Beginning and committing transactions is the responsibility
-		of the application itself.</p>
+		of the application itself.<strong> The Teneo session controller will set the flush mode to manual. The hibernateresource
+		will automatically flush at save.</strong>
+</p>
 		
 <p>Here is some example code illustrating the use of a SessionController:</p>
 		
@@ -525,7 +527,7 @@
 		
 </div>
 		
-<a name="N100B3"></a><a name="Closing+a+resource"></a>
+<a name="N100B5"></a><a name="Closing+a+resource"></a>
 <div class="h3">
 <h3>Closing a resource</h3>
 	  		
@@ -537,7 +539,7 @@
 	
 </div>
 	
-<a name="N100BD"></a><a name="HibernateXMLResource"></a>
+<a name="N100BF"></a><a name="HibernateXMLResource"></a>
 <div class="h3">
 <h3>HibernateXMLResource</h3>
 	
@@ -549,12 +551,12 @@
 	
 </div>
     
-<a name="N100C6"></a><a name="Other+aspects"></a>
+<a name="N100C8"></a><a name="Other+aspects"></a>
 <div class="h3">
 <h3>Other aspects</h3>
       
 		
-<a name="N100CC"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<a name="N100CE"></a><a name="Resource+use+after+Hibernate+exception"></a>
 <div class="h4">
 <h4>Resource use after Hibernate exception</h4>
 <p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not

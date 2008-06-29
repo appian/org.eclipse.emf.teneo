@@ -404,7 +404,7 @@
 				
 <li>9.1.27: MapKey Annotation</li>
 				
-<li>9.1.28: OrderBy Annotation (the annotation should contain the column name and not the property name)</li>
+<li>9.1.28: OrderBy Annotation</li>
 				
 <li>9.1.29: Inheritance Annotation</li>
 				
@@ -464,6 +464,8 @@
 				
 <li>Named query</li>
 				
+<li>NaturalId (only the mutable of the first natural id in an entity is used)</li>
+				
 <li>Proxy (limited testing done)</li>
 				
 <li>Type (on EAttribute)</li>
@@ -478,19 +480,19 @@
 		
 </div>
 		
-<a name="N100EC"></a><a name="Annotation+notes"></a>
+<a name="N100EF"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N100F2"></a><a name="entityannotation"></a>
+<a name="N100F5"></a><a name="entityannotation"></a>
 <div class="h4">
 <h4>@Entity annotation has a new field: extends</h4>
 <p>The @Entity annotation has a new field which is not specified in the jpa spec: extends. This annotation
 			can be used to handle multiple-inheritance, see <a href="inheritance.html#The+%40Entity.extends+annotation%2C+choosing+a+different+supertype+for+relational+mapping">here</a> for more information</p>
 </div>
 			
-<a name="N100FF"></a><a name="edatatype"></a>
+<a name="N10102"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
 <p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
@@ -500,7 +502,7 @@
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N10108"></a><a name="transient"></a>
+<a name="N1010B"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
@@ -509,7 +511,7 @@
 </div>
 		
 		
-<a name="N10115"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
+<a name="N10118"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
 <h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
@@ -531,7 +533,7 @@
 </div>
 		
 		
-<a name="N10129"></a><a name="indexed"></a>
+<a name="N1012C"></a><a name="indexed"></a>
 <div class="h4">
 <h4>Indexed Annotation</h4>
 <p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
@@ -541,7 +543,7 @@
 </div>
 			
 			
-<a name="N10136"></a><a name="EmbeddedID+annotation"></a>
+<a name="N10139"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -553,7 +555,7 @@
 </div>
 			
 			
-<a name="N10147"></a><a name="lob_notes"></a>
+<a name="N1014A"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>
@@ -577,7 +579,7 @@
 				</pre>
 </div>
 						
-<a name="N1015B"></a><a name="EMF+ID+Attribute"></a>
+<a name="N1015E"></a><a name="EMF+ID+Attribute"></a>
 <div class="h4">
 <h4>EMF ID Attribute</h4>
 <p>When an eattribute has its ID property set to true and there is no @Id annotated eattribute in the 
@@ -585,7 +587,7 @@
 			<a href="options.html">ID_FEATURE_AS_PRIMARY_KEY</a>.</p>
 </div>
 			
-<a name="N10168"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
+<a name="N1016B"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
 <div class="h4">
 <h4>Extra CASCADE type: NONE</h4>
 <p>Teneo will automatically set the cascade annotation when no cascade annotation has been set on an 
