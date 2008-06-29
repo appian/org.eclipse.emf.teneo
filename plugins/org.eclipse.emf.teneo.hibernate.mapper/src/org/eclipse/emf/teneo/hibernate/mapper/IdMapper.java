@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.24 2008/04/24 11:47:04 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.25 2008/06/29 20:08:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -264,7 +264,6 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		// error)
 
 		if (generatedValue != null) {
-
 			if (isCompositeId) {
 				throw new MappingException("Composite id can not have a generated value " +
 						id.getModelEAttribute().getEContainingClass().getName() + "/" +
@@ -317,7 +316,29 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 			} else {
 				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 			}
+		} else {
+			// check if there is a one-to-one with pk
+			checkAddForeignGenerator(idElement, aClass);
 		}
+	}
+
+	// check if one of the ereferences has a one-to-one and a primarykeyjoincolumn
+	// then use a special generator
+	protected boolean checkAddForeignGenerator(Element idElement, PAnnotatedEClass aClass) {
+		for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
+			if (aFeature instanceof PAnnotatedEReference) {
+				final PAnnotatedEReference aReference = (PAnnotatedEReference) aFeature;
+				if (aReference.getOneToOne() != null && !aReference.getPrimaryKeyJoinColumns().isEmpty()) {
+					final Element genElement = idElement.addElement("generator");
+					genElement.addAttribute("class", "foreign");
+					final Element paramElement = genElement.addElement("param");
+					paramElement.addAttribute("name", "property");
+					paramElement.addText(aReference.getModelElement().getName());
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
