@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.3 2008/03/30 10:01:18 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.4 2008/06/29 14:49:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -354,6 +354,19 @@ public class PersistenceMappingSchemaGenerator {
 			if (eStructuralFeature.isMany() && elementName.endsWith("s")) {
 				elementName = elementName.substring(0, elementName.length() - 1);
 			}
+		}
+
+		// check for double occurences, can occur when doing the property tag
+		// which combines ereference and eattribute features
+		final String xmlName = convertToXmlName(elementName);
+		for (Element otherElem : parentElement.getChildren()) {
+			String name;
+			if ((name = otherElem.getAttributeValue("name")) != null && name.compareTo(xmlName) == 0) {
+				return;
+			}
+		}
+		if (parentElement.element(convertToXmlName(elementName)) != null) {
+			return;
 		}
 
 		String typeName = schemaTypeNamesByAnnotationType.get(eType.getName());
