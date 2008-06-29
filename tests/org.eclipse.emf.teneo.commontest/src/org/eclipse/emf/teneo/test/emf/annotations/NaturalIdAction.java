@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NaturalIdAction.java,v 1.1 2008/06/29 14:23:08 mtaal Exp $
+ * $Id: NaturalIdAction.java,v 1.2 2008/06/29 20:08:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.test.emf.annotations;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for naturalid
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class NaturalIdAction extends AbstractTestAction {
 	public NaturalIdAction() {
@@ -62,7 +62,6 @@ public class NaturalIdAction extends AbstractTestAction {
 				final Family fam = factory.createFamily();
 				fam.setName("Smit");
 				fam.setAge(100);
-				fam.setId(1);
 				store.store(fam);
 				final Person p1 = factory.createPerson();
 				p1.setFirstName("Jan");
@@ -152,13 +151,6 @@ public class NaturalIdAction extends AbstractTestAction {
 				final Family fam = factory.createFamily();
 				fam.setName("Timmermans");
 				fam.setAge(100);
-				// the strange thing is that the id of the family has to
-				// be set to a unique value because otherwise persisting p
-				// will fail because there is already a person with a family with
-				// id 0 in the db. So the unique key is checked before the family
-				// is persisted. This is less of an issue normally as the family
-				// will be persisted first anyway.
-				fam.setId(5);
 				store.store(fam);
 				Person p = factory.createPerson();
 				p.setFirstName("Jan");
