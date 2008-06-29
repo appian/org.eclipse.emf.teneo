@@ -26,7 +26,6 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryFKAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryJoinTableNamingAction;
-import org.eclipse.emf.teneo.test.emf.sample.LibraryLargeAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryListAsBagAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
@@ -51,7 +50,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.80 $
+ * @version $Revision: 1.81 $
  */
 public class AllTests {
 
@@ -60,13 +59,16 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
 
-		suite.addTestSuite(LibraryLargeAction.class);
+		suite.addTestSuite(EcoreAction.class);
+
+		suite.addTestSuite(LibrarySessionControllerAction.class);
+
+// suite.addTestSuite(LibraryLargeAction.class);
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(SchoolLibraryTest.class);
 
 		suite.addTestSuite(EmployeeAction.class);
 
-		suite.addTestSuite(LibrarySessionControllerAction.class);
 		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
 		suite.addTestSuite(ResourceUnloadAction.class);
 
@@ -75,8 +77,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryResourceAction.class);
 
 		suite.addTestSuite(SimpleLibraryResourceAction.class);
-
-		suite.addTestSuite(EcoreAction.class);
 
 		suite.addTestSuite(DynamicAction.class);
 		suite.addTestSuite(LibraryUseMappingFileAction.class);

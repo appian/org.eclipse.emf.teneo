@@ -19,6 +19,7 @@ import org.eclipse.emf.teneo.test.issues.BZ224991Action;
 import org.eclipse.emf.teneo.test.issues.BZ225296_2Action;
 import org.eclipse.emf.teneo.test.issues.BZ237498Action;
 import org.eclipse.emf.teneo.test.issues.BZ237790Action;
+import org.eclipse.emf.teneo.test.issues.BZ237994Action;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
@@ -36,7 +37,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class AllTests {
 
@@ -44,11 +45,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(BZ237994Action.class);
 		suite.addTestSuite(BZ237790Action.class);
-
-		if (true) {
-			return suite;
-		}
 		suite.addTestSuite(BZ237498Action.class);
 
 		suite.addTestSuite(SecondarytableInheritanceAction.class);
