@@ -503,6 +503,9 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.ecore,
    org.eclipse.emf.ecore.resource",
  org.eclipse.emf.teneo.samples.emf.annotations.nmset.validation;uses:="org.eclipse.emf.common.util",
+ org.eclipse.emf.teneo.samples.emf.annotations.otopk,
+ org.eclipse.emf.teneo.samples.emf.annotations.otopk.impl,
+ org.eclipse.emf.teneo.samples.emf.annotations.otopk.util,
  org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin;uses:="org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin.impl;
   uses:="org.eclipse.emf.ecore.impl,

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Family.java,v 1.1 2008/06/29 14:23:14 mtaal Exp $
+ * $Id: Family.java,v 1.2 2008/06/29 20:09:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.naturalId;
 
@@ -91,7 +91,7 @@ public interface Family extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.naturalId.NaturalIdPackage#getFamily_Id()
-	 * @model annotation="teneo.jpa value='@Id\n@Generated'"
+	 * @model annotation="teneo.jpa value='@Id\n@GeneratedValue'"
 	 * @generated
 	 */
 	int getId();

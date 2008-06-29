@@ -35,7 +35,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eAnnotations source="teneo.jpa">
-        <details key="value" value="@Id&#xA;@Generated"/>
+        <details key="value" value="@Id&#xA;@GeneratedValue"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

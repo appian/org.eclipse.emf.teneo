@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NaturalIdPackageImpl.java,v 1.1 2008/06/29 14:23:14 mtaal Exp $
+ * $Id: NaturalIdPackageImpl.java,v 1.2 2008/06/29 20:09:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.naturalId.impl;
 
@@ -324,7 +324,7 @@ public class NaturalIdPackageImpl extends EPackageImpl implements NaturalIdPacka
 		  (getFamily_Id(), 
 		   source, 
 		   new String[] {
-			 "value", "@Id\n@Generated"
+			 "value", "@Id\n@GeneratedValue"
 		   });
 	}
 
