@@ -2,12 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttribute.java,v 1.6 2007/07/11 17:35:11 mtaal Exp $
+ * $Id: HbAnnotatedEAttribute.java,v 1.7 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 
 /**
@@ -19,6 +20,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getHbType <em>Hb Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getGenerated <em>Generated</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId <em>Natural Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +79,31 @@ public interface HbAnnotatedEAttribute extends PAnnotatedEAttribute, HbAnnotated
 	 * @generated
 	 */
 	void setGenerated(Generated value);
+
+	/**
+	 * Returns the value of the '<em><b>Natural Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Natural Id</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Natural Id</em>' containment reference.
+	 * @see #setNaturalId(NaturalId)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEAttribute_NaturalId()
+	 * @model containment="true"
+	 * @generated
+	 */
+	NaturalId getNaturalId();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId <em>Natural Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Natural Id</em>' containment reference.
+	 * @see #getNaturalId()
+	 * @generated
+	 */
+	void setNaturalId(NaturalId value);
 
 } // HbAnnotatedEAttribute

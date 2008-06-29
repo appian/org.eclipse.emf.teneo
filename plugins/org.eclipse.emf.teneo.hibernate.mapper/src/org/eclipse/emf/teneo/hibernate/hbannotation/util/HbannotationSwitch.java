@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.6 2008/06/10 08:24:59 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.7 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -258,6 +258,14 @@ public class HbannotationSwitch<T> {
 				T result = caseDiscriminatorFormula(discriminatorFormula);
 				if (result == null) result = caseHbAnnotation(discriminatorFormula);
 				if (result == null) result = casePAnnotation(discriminatorFormula);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.NATURAL_ID: {
+				NaturalId naturalId = (NaturalId)theEObject;
+				T result = caseNaturalId(naturalId);
+				if (result == null) result = caseHbAnnotation(naturalId);
+				if (result == null) result = casePAnnotation(naturalId);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -567,6 +575,21 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseDiscriminatorFormula(DiscriminatorFormula object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Natural Id</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Natural Id</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNaturalId(NaturalId object) {
 		return null;
 	}
 

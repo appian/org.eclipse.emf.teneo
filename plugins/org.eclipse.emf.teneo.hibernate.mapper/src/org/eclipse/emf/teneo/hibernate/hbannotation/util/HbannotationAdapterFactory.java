@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationAdapterFactory.java,v 1.7 2008/06/10 08:24:59 mtaal Exp $
+ * $Id: HbannotationAdapterFactory.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -168,6 +168,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDiscriminatorFormula(DiscriminatorFormula object) {
 				return createDiscriminatorFormulaAdapter();
+			}
+			@Override
+			public Adapter caseNaturalId(NaturalId object) {
+				return createNaturalIdAdapter();
 			}
 			@Override
 			public Adapter casePAnnotation(PAnnotation object) {
@@ -484,6 +488,20 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDiscriminatorFormulaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId <em>Natural Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId
+	 * @generated
+	 */
+	public Adapter createNaturalIdAdapter() {
 		return null;
 	}
 

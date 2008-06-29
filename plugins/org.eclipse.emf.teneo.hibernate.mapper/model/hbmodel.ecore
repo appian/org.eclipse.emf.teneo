@@ -31,6 +31,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="generated" eType="ecore:EClass hbannotation.ecore#//Generated"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="naturalId" eType="ecore:EClass hbannotation.ecore#//NaturalId"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEClass" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEClass">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCache" eType="ecore:EClass hbannotation.ecore#//Cache"
@@ -65,6 +67,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbFetch" eType="ecore:EClass hbannotation.ecore#//Fetch"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbOnDelete" eType="ecore:EClass hbannotation.ecore#//OnDelete"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="naturalId" eType="ecore:EClass hbannotation.ecore#//NaturalId"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEDataType" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEDataType #//HbAnnotatedEModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbTypeDef" eType="ecore:EClass hbannotation.ecore#//TypeDef"

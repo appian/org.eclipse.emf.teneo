@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.8 2008/06/10 08:24:58 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.9 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -540,13 +540,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -1264,13 +1273,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1576,6 +1594,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEAttribute_Generated();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId <em>Natural Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Natural Id</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getNaturalId()
+	 * @see #getHbAnnotatedEAttribute()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEAttribute_NaturalId();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass <em>Hb Annotated EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1781,6 +1810,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEReference_HbOnDelete();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Natural Id</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_NaturalId();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1968,6 +2008,14 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_EATTRIBUTE__GENERATED = eINSTANCE.getHbAnnotatedEAttribute_Generated();
 
 		/**
+		 * The meta object literal for the '<em><b>Natural Id</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = eINSTANCE.getHbAnnotatedEAttribute_NaturalId();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2126,6 +2174,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = eINSTANCE.getHbAnnotatedEReference_HbOnDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Natural Id</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__NATURAL_ID = eINSTANCE.getHbAnnotatedEReference_NaturalId();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.

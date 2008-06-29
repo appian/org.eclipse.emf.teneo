@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.25 2008/05/27 07:42:29 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.26 2008/06/29 14:23:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -20,6 +20,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -83,6 +84,12 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		final Element associationElement = addManyToOne(currentElement, paReference, targetName, false);
 		addAccessor(associationElement);
+
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+		if (hbReference.getNaturalId() != null) {
+			associationElement.addAttribute(HbMapperConstants.NATURAL_ID_ATTR, Boolean.toString(hbReference
+				.getNaturalId().isMutable()));
+		}
 
 		if (joinTable != null) {
 			addJoinColumns(paReference, associationElement, joinTable.getJoinColumns(), getHbmContext()

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.7 2008/06/10 08:24:58 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.ParamDef;
@@ -184,6 +185,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	private EClass discriminatorFormulaEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass naturalIdEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -775,6 +783,24 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNaturalId() {
+		return naturalIdEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNaturalId_Mutable() {
+		return (EAttribute)naturalIdEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -911,6 +937,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		discriminatorFormulaEClass = createEClass(DISCRIMINATOR_FORMULA);
 		createEAttribute(discriminatorFormulaEClass, DISCRIMINATOR_FORMULA__VALUE);
 
+		naturalIdEClass = createEClass(NATURAL_ID);
+		createEAttribute(naturalIdEClass, NATURAL_ID__MUTABLE);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
@@ -968,6 +997,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		paramDefEClass.getESuperTypes().add(this.getHbAnnotation());
 		filterDefEClass.getESuperTypes().add(this.getHbAnnotation());
 		discriminatorFormulaEClass.getESuperTypes().add(this.getHbAnnotation());
+		naturalIdEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1049,6 +1079,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEClass(discriminatorFormulaEClass, DiscriminatorFormula.class, "DiscriminatorFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscriminatorFormula_Value(), ecorePackage.getEString(), "value", null, 0, 1, DiscriminatorFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(naturalIdEClass, NaturalId.class, "NaturalId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNaturalId_Mutable(), ecorePackage.getEBoolean(), "mutable", null, 1, 1, NaturalId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE);
@@ -1100,7 +1133,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });																							
+		   });																								
 	}
 
 	/**
@@ -1116,7 +1149,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });																						
+		   });																							
 	}
 
 	/**
@@ -1250,7 +1283,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "0", "EClass",
 			 "1", "EReference"
-		   });	
+		   });			
+		addAnnotation
+		  (naturalIdEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
+		   });
 	}
 
 	/**
@@ -1274,7 +1313,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });												
+		   });													
 	}
 
 	/**
@@ -1290,7 +1329,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "0", "EClass"
-		   });
+		   });	
 	}
 
 } // HbannotationPackageImpl

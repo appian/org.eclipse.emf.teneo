@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbMapperConstants.java,v 1.9 2008/05/27 07:42:29 mtaal Exp $
+ * $Id: HbMapperConstants.java,v 1.10 2008/06/29 14:23:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -20,9 +20,12 @@ package org.eclipse.emf.teneo.hibernate.mapper;
  * AnnotationUtil used by the hibernate mapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class HbMapperConstants {
+	// the natural-id, the value of the attribute is mutable true/false
+	public static final String NATURAL_ID_ATTR = "natural-id";
+
 	/** The expected parameter name which contains the enum class name */
 	public static final String ENUM_CLASS_PARAM = "enumClass";
 

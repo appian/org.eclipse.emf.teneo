@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.35 2008/06/10 08:24:59 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.36 2008/06/29 14:23:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -351,6 +351,14 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 			// now process the featuremap entries if any
 			processFeatureMapFeatures();
+			int index = 1 + entityElement.getChildren().indexOf(idElement);
+			// check if there is a discriminator, if so put it behind that one
+			if (entityElement.element("discriminator") != null) {
+				final Element elem = entityElement.element("discriminator");
+				index = 1 + entityElement.getChildren().indexOf(elem);
+			}
+
+			handleNaturalId(entityElement, index);
 		}
 
 		// initially the comment is placed at the back, move it to the front
@@ -378,6 +386,38 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 		entityElement.add(0, meta1);
 		entityElement.add(1, meta2);
+	}
+
+	// reorganize the elements which have a natural-id inside a natural-id tag
+	protected void handleNaturalId(Element parentElement, int index) {
+		log.debug("Checking for natural-ids");
+		final List<Element> naturalIdElements = new ArrayList<Element>();
+		boolean mutable = false;
+		for (Element element : parentElement.getChildren()) {
+			String value;
+			if ((value = element.getAttributeValue(HbMapperConstants.NATURAL_ID_ATTR)) != null) {
+				if (naturalIdElements.isEmpty()) {
+					log.debug("Found natural-id, mutable: " + mutable);
+					mutable = Boolean.parseBoolean(value);
+				}
+				naturalIdElements.add(element);
+				element.removeAttribute(HbMapperConstants.NATURAL_ID_ATTR);
+			}
+		}
+		if (!naturalIdElements.isEmpty()) {
+			log.debug("Found " + naturalIdElements.size() +
+					" naturalid properies, putting them inside a natural-id tag");
+			parentElement.getChildren().removeAll(naturalIdElements);
+			final Element naturalId = parentElement.addElement("natural-id");
+			// remove it again to place it at the correct position a little lower
+			parentElement.remove(naturalId);
+			naturalId.addAttribute("mutable", Boolean.toString(mutable));
+			parentElement.add(index, naturalId);
+			naturalId.getChildren().addAll(naturalIdElements);
+			for (Element element : naturalIdElements) {
+				element.setParent(naturalId);
+			}
+		}
 	}
 
 	/** Process the featuremap entries */
@@ -468,7 +508,8 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 			// Create <join> element
 			// See
-			// http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration-join
+			//http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration
+			// -join
 			final Element joinElement = getHbmContext().getCurrent().addElement("join");
 			joinElement.addAttribute("table", getHbmContext().trunc(secondaryTable.getName().toUpperCase(), false));
 			log.debug("Mapping features to secondary table \"" + secondaryTable.getName() + "\"");

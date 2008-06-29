@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.10 2008/04/23 15:44:26 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.11 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
@@ -51,6 +52,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNaturalId <em>Natural Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -165,6 +167,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected OnDelete hbOnDelete;
+
+	/**
+	 * The cached value of the '{@link #getNaturalId() <em>Natural Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNaturalId()
+	 * @generated
+	 * @ordered
+	 */
+	protected NaturalId naturalId;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -561,6 +573,49 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NaturalId getNaturalId() {
+		return naturalId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNaturalId(NaturalId newNaturalId, NotificationChain msgs) {
+		NaturalId oldNaturalId = naturalId;
+		naturalId = newNaturalId;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID, oldNaturalId, newNaturalId);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNaturalId(NaturalId newNaturalId) {
+		if (newNaturalId != naturalId) {
+			NotificationChain msgs = null;
+			if (naturalId != null)
+				msgs = ((InternalEObject)naturalId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID, null, msgs);
+			if (newNaturalId != null)
+				msgs = ((InternalEObject)newNaturalId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID, null, msgs);
+			msgs = basicSetNaturalId(newNaturalId, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID, newNaturalId, newNaturalId));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -581,6 +636,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicSetHbIdBag(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return basicSetHbCache(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
+				return basicSetNaturalId(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -617,6 +674,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				if (resolve) return getHbOnDelete();
 				return basicGetHbOnDelete();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
+				return getNaturalId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -664,6 +723,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				setHbOnDelete((OnDelete)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
+				setNaturalId((NaturalId)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -708,6 +770,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				setHbOnDelete((OnDelete)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
+				setNaturalId((NaturalId)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -741,6 +806,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbFetch != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ON_DELETE:
 				return hbOnDelete != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
+				return naturalId != null;
 		}
 		return super.eIsSet(featureID);
 	}

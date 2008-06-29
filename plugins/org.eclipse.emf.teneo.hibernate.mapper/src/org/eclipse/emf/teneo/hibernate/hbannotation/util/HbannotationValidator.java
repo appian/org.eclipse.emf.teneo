@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.8 2008/06/10 08:24:59 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.9 2008/06/29 14:23:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -151,6 +151,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateFilterDef((FilterDef)value, diagnostics, context);
 			case HbannotationPackage.DISCRIMINATOR_FORMULA:
 				return validateDiscriminatorFormula((DiscriminatorFormula)value, diagnostics, context);
+			case HbannotationPackage.NATURAL_ID:
+				return validateNaturalId((NaturalId)value, diagnostics, context);
 			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbannotationPackage.HB_FETCH_TYPE:
@@ -556,6 +558,24 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNaturalId(NaturalId naturalId, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(naturalId, diagnostics, context);
+		return result;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -631,6 +651,7 @@ public class HbannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		// TODO
 		// Specialize this to return a resource locator for messages specific to this validator.

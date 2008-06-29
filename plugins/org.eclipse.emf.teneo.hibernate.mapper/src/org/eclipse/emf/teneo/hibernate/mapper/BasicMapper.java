@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: BasicMapper.java,v 1.30 2008/05/27 07:42:29 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.31 2008/06/29 14:23:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -68,6 +68,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		addAccessor(propElement);
+		addNaturalId((HbAnnotatedEAttribute) paAttribute, propElement);
 	}
 
 	/**
@@ -102,6 +103,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		setType(paAttribute, propElement);
 
 		addAccessor(propElement);
+		addNaturalId((HbAnnotatedEAttribute) paAttribute, propElement);
 	}
 
 	/**
@@ -125,6 +127,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		setType(paAttribute, propElement);
 
 		addAccessor(propElement);
+		addNaturalId((HbAnnotatedEAttribute) paAttribute, propElement);
 	}
 
 	/**
@@ -149,6 +152,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		setType(paAttribute, propElement);
 
 		addAccessor(propElement);
+		addNaturalId((HbAnnotatedEAttribute) paAttribute, propElement);
 	}
 
 	/**
@@ -170,6 +174,16 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		setType(paAttribute, propElement);
 
 		addAccessor(propElement, hbmContext.getVersionPropertyHandlerName());
+		addNaturalId((HbAnnotatedEAttribute) paAttribute, propElement);
+	}
+
+	protected void addNaturalId(HbAnnotatedEAttribute hbAttr, Element element) {
+
+		if (hbAttr.getNaturalId() != null) {
+			element
+				.addAttribute(HbMapperConstants.NATURAL_ID_ATTR, Boolean.toString(hbAttr.getNaturalId().isMutable()));
+		}
+
 	}
 
 	/**
