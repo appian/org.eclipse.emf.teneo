@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.32 2008/06/28 22:41:42 mtaal Exp $
+ * $Id: AllTests.java,v 1.33 2008/06/30 21:33:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -27,7 +27,6 @@ import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryFKAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
-import org.eclipse.emf.teneo.test.emf.sample.LibraryLargeAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
@@ -44,7 +43,7 @@ import org.eclipse.emf.teneo.test.emf.sample.SunBooksAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class AllTests {
 
@@ -53,11 +52,7 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
 					.getConfigurations());
 
-		suite.addTestSuite(LibraryLargeAction.class);
-
-		if (true) {
-			return suite;
-		}
+// suite.addTestSuite(LibraryLargeAction.class);
 
 		suite.addTestSuite(LibraryResourceAction.class);
 
