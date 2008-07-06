@@ -21,11 +21,11 @@
 		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="title" length="50"/>
 		</property>
-		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="pages"/>
+		<property name="pages" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+			<column not-null="true" unique="false" name="pages"/>
 		</property>
-		<property name="category" lazy="false" not-null="false" insert="true" update="true" unique="false">
-			<column not-null="false" unique="false" name="category"/>
+		<property name="category" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="category"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
 			</type>

@@ -5,6 +5,7 @@
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" discriminator-value="Book" table="`book`">
 		<meta attribute="eclassName">Book</meta>
 		<meta attribute="epackage">http:///org/elver/store/test/emf/sample/schoollibrary/library.ecore</meta>
+		<cache usage="read-write"/>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
@@ -32,6 +33,7 @@
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="false" discriminator-value="Library" table="`library`">
 		<meta attribute="eclassName">Library</meta>
 		<meta attribute="epackage">http:///org/elver/store/test/emf/sample/schoollibrary/library.ecore</meta>
+		<cache usage="read-write"/>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
@@ -44,6 +46,7 @@
 			<column not-null="false" unique="false" name="`name`"/>
 		</property>
 		<list name="writers" lazy="true" cascade="all,delete-orphan">
+			<cache usage="read-write"/>
 			<key update="true" foreign-key="library_writers">
 				<column name="`library_writers_e_id`" not-null="false" unique="false"/>
 			</key>
@@ -51,6 +54,7 @@
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="books" lazy="true" cascade="all,delete-orphan">
+			<cache usage="read-write"/>
 			<key update="true" foreign-key="library_books">
 				<column name="`library_books_e_id`" not-null="false" unique="false"/>
 			</key>
@@ -61,6 +65,7 @@
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="false" discriminator-value="Writer" table="`writer`">
 		<meta attribute="eclassName">Writer</meta>
 		<meta attribute="epackage">http:///org/elver/store/test/emf/sample/schoollibrary/library.ecore</meta>
+		<cache usage="read-write"/>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
@@ -73,6 +78,7 @@
 			<column not-null="false" unique="false" name="`name`"/>
 		</property>
 		<list name="books" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<cache usage="read-write"/>
 			<key update="true">
 				<column name="`book_author_e_id`" not-null="false" unique="false"/>
 			</key>
@@ -83,6 +89,7 @@
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.schoollibrary.impl.AssetImpl" entity-name="Asset" abstract="false" lazy="false" discriminator-value="Asset" table="`asset`">
 		<meta attribute="eclassName">Asset</meta>
 		<meta attribute="epackage">http:///org/elver/store/test/emf/sample/schoollibrary/schoollibrary.ecore</meta>
+		<cache usage="read-write"/>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>

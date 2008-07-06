@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296.impl.BlockImpl" entity-name="Block" abstract="false" lazy="false" discriminator-value="Block" table="`block`">
+		<meta attribute="eclassName">Block</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="id" lazy="false" insert="true" update="true" not-null="true" unique="false" type="long">
+			<column not-null="true" unique="false" name="`id`"/>
+		</property>
+		<many-to-one name="vserver" entity-name="VServer" cascade="merge,persist,save-update,lock,refresh" foreign-key="block_vserver" lazy="false" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`block_vserver_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296.impl.VServerImpl" entity-name="VServer" abstract="false" lazy="false" discriminator-value="VServer" table="`vserver`">
+		<meta attribute="eclassName">VServer</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="id" lazy="false" insert="true" update="true" not-null="true" unique="false" type="long">
+			<column not-null="true" unique="false" name="`id`"/>
+		</property>
+		<list name="blocks" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`block_vserver_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`vserver_blocks_idx`"/>
+			<one-to-many entity-name="Block"/>
+		</list>
+	</class>
+</hibernate-mapping>

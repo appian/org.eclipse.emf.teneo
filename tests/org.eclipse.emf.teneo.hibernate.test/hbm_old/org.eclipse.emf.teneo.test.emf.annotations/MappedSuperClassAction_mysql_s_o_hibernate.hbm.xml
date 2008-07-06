@@ -35,7 +35,7 @@
 			<column not-null="true" unique="false" name="`mygenericinfo`"/>
 		</property>
 		<property name="myName" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`myname`"/>
+			<column not-null="false" unique="false" name="`parentdocument_name`" length="50"/>
 		</property>
 		<property name="mySpecificInfo" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`myspecificinfo`"/>

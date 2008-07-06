@@ -7,6 +7,9 @@
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/primarykeyjoin</meta>
 		<id name="theID" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`theid`"/>
+			<generator class="foreign">
+				<param name="property">head</param>
+			</generator>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">

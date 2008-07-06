@@ -22,6 +22,10 @@
 		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
 		<param name="edatatype">EFeatureMapEntry</param>
 	</typedef>
+	<typedef name="ecore.EJavaClass" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
+		<param name="edatatype">EJavaClass</param>
+	</typedef>
 	<typedef name="ecore.EMap" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
 		<param name="edatatype">EMap</param>
@@ -73,6 +77,14 @@
 	<typedef name="type.QName" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
 		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
 		<param name="edatatype">QName</param>
+	</typedef>
+	<typedef name="type.ShortObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
+		<param name="edatatype">ShortObject</param>
+	</typedef>
+	<typedef name="type.UnsignedByteObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/2003/XMLType</param>
+		<param name="edatatype">UnsignedByteObject</param>
 	</typedef>
 	<class name="org.eclipse.emf.ecore.impl.BasicEObjectImpl" entity-name="ecore_EObject" abstract="false" lazy="false" table="`ecore_eobject`">
 		<meta attribute="eclassName">EObject</meta>

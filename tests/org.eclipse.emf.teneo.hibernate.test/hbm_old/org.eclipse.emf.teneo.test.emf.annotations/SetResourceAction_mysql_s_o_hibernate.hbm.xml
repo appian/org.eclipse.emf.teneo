@@ -52,7 +52,7 @@
 			</key>
 			<one-to-many entity-name="ContainedItem"/>
 		</bag>
-		<bag name="item" order-by="name desc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+		<bag name="item" order-by="name" lazy="true" cascade="merge,persist,save-update,lock,refresh">
 			<key update="true">
 				<column name="`item_itemlist_e_id`" not-null="false" unique="false"/>
 			</key>

@@ -26,6 +26,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.EmbeddedIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.EntityAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ExtraLazyAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ForcedIdBagAction;
+import org.eclipse.emf.teneo.test.emf.annotations.HbMapKeysAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdBagAction;
 import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
@@ -51,7 +52,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  */
 public class AllTests {
 
@@ -60,15 +61,17 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
 
-		suite.addTestSuite(OnetoonePKAction.class);
-		suite.addTestSuite(NaturalIdAction.class);
+		suite.addTestSuite(PKeyJoinAction.class);
+
 		if (true) {
 			return suite;
 		}
 
-		suite.addTestSuite(LazyLibraryAction.class);
+		suite.addTestSuite(HbMapKeysAction.class);
+		suite.addTestSuite(OnetoonePKAction.class);
+		suite.addTestSuite(NaturalIdAction.class);
 
-		suite.addTestSuite(PKeyJoinAction.class);
+		suite.addTestSuite(LazyLibraryAction.class);
 
 		suite.addTestSuite(ToOneAction.class);
 
