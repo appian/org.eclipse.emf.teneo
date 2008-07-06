@@ -11,10 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PKeyJoinAction.java,v 1.5 2008/06/28 22:41:29 mtaal Exp $
+ * $Id: PKeyJoinAction.java,v 1.6 2008/07/06 16:23:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
+
+import java.util.List;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin.Body;
 import org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin.Head;
@@ -27,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class PKeyJoinAction extends AbstractTestAction {
 	/**
@@ -61,6 +63,7 @@ public class PKeyJoinAction extends AbstractTestAction {
 			assertEquals(5, bd.getTheID());
 			store.commitTransaction();
 		}
+
 		{
 			store.beginTransaction();
 			final Body bd = factory.createBody();
@@ -70,13 +73,16 @@ public class PKeyJoinAction extends AbstractTestAction {
 			bd.setHead(hd);
 			store.store(bd);
 			store.store(hd);
-			try {
-				store.commitTransaction();
-				fail("Foreign key constraint is not enforced");
-			} catch (final Exception e) {
-				// success
-				store.rollbackTransaction();
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final List<?> bds = store.getObjects(Body.class);
+			for (Object o : bds) {
+				final Body b = (Body) o;
+				assertTrue(b.getTheID() == 5 || b.getTheID() == 7);
 			}
+			store.commitTransaction();
 		}
 
 	}
