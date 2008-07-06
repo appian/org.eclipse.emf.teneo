@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.24 2008/06/28 22:41:49 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.25 2008/07/06 16:25:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -60,7 +60,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -343,11 +343,15 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 			// delete all deleted objects
 			for (Object obj : removedEObjects) {
+				final InternalEObject eobj = (InternalEObject) obj;
+				if (eobj.eResource() != null && eobj.eResource() != this) {
+					continue;
+				}
+
 				if (IdentifierUtil.getID(obj, (SessionImplementor) mySessionWrapper.getHibernateSession()) != null) // persisted
 				// object
 				{
-					if (((InternalEObject) obj).eDirectResource() == null ||
-							((InternalEObject) obj).eDirectResource() == this) {
+					if (eobj.eDirectResource() == null || eobj.eDirectResource() == this) {
 						mySessionWrapper.delete(obj);
 						EMFInterceptor.registerCollectionsForDereferencing((EObject) obj);
 					}
