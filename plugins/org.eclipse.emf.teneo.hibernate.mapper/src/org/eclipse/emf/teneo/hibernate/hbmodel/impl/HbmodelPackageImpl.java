@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackageImpl.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbmodelPackageImpl.java,v 1.9 2008/07/06 16:25:27 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -242,6 +242,15 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 	 */
 	public EReference getHbAnnotatedETypeElement_Filter() {
 		return (EReference)hbAnnotatedETypeElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHbAnnotatedETypeElement_MapKeyManyToMany() {
+		return (EReference)hbAnnotatedETypeElementEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -551,6 +560,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG);
 		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX);
 		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__FILTER);
+		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY);
 
 		hbAnnotatedEAttributeEClass = createEClass(HB_ANNOTATED_EATTRIBUTE);
 		createEReference(hbAnnotatedEAttributeEClass, HB_ANNOTATED_EATTRIBUTE__HB_TYPE);
@@ -638,12 +648,13 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		initEClass(hbAnnotatedETypeElementEClass, HbAnnotatedETypeElement.class, "HbAnnotatedETypeElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedETypeElement_HbWhere(), theHbannotationPackage.getWhere(), null, "hbWhere", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_HbCollectionOfElements(), theHbannotationPackage.getCollectionOfElements(), null, "hbCollectionOfElements", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHbAnnotatedETypeElement_HbMapKey(), theHbannotationPackage.getMapKey(), null, "hbMapKey", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedETypeElement_HbMapKey(), theHbannotationPackage.getHbMapKey(), null, "hbMapKey", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_HbColumns(), thePannotationPackage.getColumn(), null, "hbColumns", null, 0, -1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_HbCascade(), theHbannotationPackage.getCascade(), null, "hbCascade", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_HbIdBag(), theHbannotationPackage.getIdBag(), null, "hbIdBag", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_HbIndex(), theHbannotationPackage.getIndex(), null, "hbIndex", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_Filter(), theHbannotationPackage.getFilter(), null, "Filter", null, 0, -1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedETypeElement_MapKeyManyToMany(), theHbannotationPackage.getMapKeyManyToMany(), null, "mapKeyManyToMany", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEAttributeEClass, HbAnnotatedEAttribute.class, "HbAnnotatedEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedEAttribute_HbType(), theHbannotationPackage.getType(), null, "hbType", null, 0, 1, HbAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -699,6 +710,12 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		String source = "teneo/internal/PersistenceMapping";		
 		addAnnotation
 		  (getHbAnnotatedETypeElement_HbMapKey(), 
+		   source, 
+		   new String[] {
+			 "elementName", "hb-map-key"
+		   });		
+		addAnnotation
+		  (getHbAnnotatedETypeElement_MapKeyManyToMany(), 
 		   source, 
 		   new String[] {
 			 "elementName", "hb-map-key"

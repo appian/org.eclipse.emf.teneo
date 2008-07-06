@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToManyMapper.java,v 1.23 2008/05/27 07:42:29 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.24 2008/07/06 16:25:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -59,8 +59,9 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 		if (mtm.isIndexed() && hbReference.getHbIdBag() == null) {
 			// now we check if it is a list or a map
-			if (hbReference.getMapKey() != null) {
-				addMapKey(collElement, paReference, hbReference.getMapKey());
+			if (hbReference.getMapKey() != null || hbReference.getHbMapKey() != null ||
+					hbReference.getMapKeyManyToMany() != null) {
+				addMapKey(collElement, paReference);
 			} else if (isMap) {
 				addMapKey(collElement, hbReference);
 			} else {

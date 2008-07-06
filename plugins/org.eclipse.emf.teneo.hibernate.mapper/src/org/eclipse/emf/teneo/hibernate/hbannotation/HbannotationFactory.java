@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.7 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.8 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -41,13 +41,13 @@ public interface HbannotationFactory extends EFactory {
 	CollectionOfElements createCollectionOfElements();
 
 	/**
-	 * Returns a new object of class '<em>Map Key</em>'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @return a new object of class '<em>Map Key</em>'.
+	 * Returns a new object of class '<em>Hb Map Key</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hb Map Key</em>'.
 	 * @generated
 	 */
-	MapKey createMapKey();
+	HbMapKey createHbMapKey();
 
 	/**
 	 * Returns a new object of class '<em>Parameter</em>'.
@@ -210,6 +210,15 @@ public interface HbannotationFactory extends EFactory {
 	 * @generated
 	 */
 	NaturalId createNaturalId();
+
+	/**
+	 * Returns a new object of class '<em>Map Key Many To Many</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map Key Many To Many</em>'.
+	 * @generated
+	 */
+	MapKeyManyToMany createMapKeyManyToMany();
 
 	/**
 	 * Returns the package supported by this factory.

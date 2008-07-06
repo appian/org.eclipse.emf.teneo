@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.7 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.8 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -117,11 +117,11 @@ public class HbannotationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case HbannotationPackage.MAP_KEY: {
-				MapKey mapKey = (MapKey)theEObject;
-				T result = caseMapKey(mapKey);
-				if (result == null) result = caseHbAnnotation(mapKey);
-				if (result == null) result = casePAnnotation(mapKey);
+			case HbannotationPackage.HB_MAP_KEY: {
+				HbMapKey hbMapKey = (HbMapKey)theEObject;
+				T result = caseHbMapKey(hbMapKey);
+				if (result == null) result = caseHbAnnotation(hbMapKey);
+				if (result == null) result = casePAnnotation(hbMapKey);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -269,6 +269,14 @@ public class HbannotationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HbannotationPackage.MAP_KEY_MANY_TO_MANY: {
+				MapKeyManyToMany mapKeyManyToMany = (MapKeyManyToMany)theEObject;
+				T result = caseMapKeyManyToMany(mapKeyManyToMany);
+				if (result == null) result = caseHbAnnotation(mapKeyManyToMany);
+				if (result == null) result = casePAnnotation(mapKeyManyToMany);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -315,17 +323,17 @@ public class HbannotationSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Map Key</em>'. <!--
-	 * begin-user-doc --> This implementation returns null; returning a non-null result will
-	 * terminate the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Map Key</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hb Map Key</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hb Map Key</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMapKey(MapKey object) {
+	public T caseHbMapKey(HbMapKey object) {
 		return null;
 	}
 
@@ -590,6 +598,21 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseNaturalId(NaturalId object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Key Many To Many</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Key Many To Many</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapKeyManyToMany(MapKeyManyToMany object) {
 		return null;
 	}
 

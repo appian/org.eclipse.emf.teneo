@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.9 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -30,11 +30,13 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
@@ -73,10 +75,11 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	private EClass collectionOfElementsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mapKeyEClass = null;
+	private EClass hbMapKeyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -192,6 +195,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	private EClass naturalIdEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapKeyManyToManyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -350,19 +360,21 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMapKey() {
-		return mapKeyEClass;
+	public EClass getHbMapKey() {
+		return hbMapKeyEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMapKey_Columns() {
-		return (EReference)mapKeyEClass.getEStructuralFeatures().get(0);
+	public EReference getHbMapKey_Columns() {
+		return (EReference)hbMapKeyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -801,6 +813,33 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapKeyManyToMany() {
+		return mapKeyManyToManyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMapKeyManyToMany_JoinColumns() {
+		return (EReference)mapKeyManyToManyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyManyToMany_TargetEntity() {
+		return (EAttribute)mapKeyManyToManyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -867,8 +906,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		createEAttribute(collectionOfElementsEClass, COLLECTION_OF_ELEMENTS__TARGET_ELEMENT);
 		createEAttribute(collectionOfElementsEClass, COLLECTION_OF_ELEMENTS__FETCH);
 
-		mapKeyEClass = createEClass(MAP_KEY);
-		createEReference(mapKeyEClass, MAP_KEY__COLUMNS);
+		hbMapKeyEClass = createEClass(HB_MAP_KEY);
+		createEReference(hbMapKeyEClass, HB_MAP_KEY__COLUMNS);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__NAME);
@@ -940,6 +979,10 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		naturalIdEClass = createEClass(NATURAL_ID);
 		createEAttribute(naturalIdEClass, NATURAL_ID__MUTABLE);
 
+		mapKeyManyToManyEClass = createEClass(MAP_KEY_MANY_TO_MANY);
+		createEReference(mapKeyManyToManyEClass, MAP_KEY_MANY_TO_MANY__JOIN_COLUMNS);
+		createEAttribute(mapKeyManyToManyEClass, MAP_KEY_MANY_TO_MANY__TARGET_ENTITY);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
@@ -979,7 +1022,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		hbAnnotationEClass.getESuperTypes().add(thePannotationPackage.getPAnnotation());
 		cascadeEClass.getESuperTypes().add(this.getHbAnnotation());
 		collectionOfElementsEClass.getESuperTypes().add(this.getHbAnnotation());
-		mapKeyEClass.getESuperTypes().add(this.getHbAnnotation());
+		hbMapKeyEClass.getESuperTypes().add(this.getHbAnnotation());
 		parameterEClass.getESuperTypes().add(this.getHbAnnotation());
 		typeEClass.getESuperTypes().add(this.getHbAnnotation());
 		whereEClass.getESuperTypes().add(this.getHbAnnotation());
@@ -998,6 +1041,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		filterDefEClass.getESuperTypes().add(this.getHbAnnotation());
 		discriminatorFormulaEClass.getESuperTypes().add(this.getHbAnnotation());
 		naturalIdEClass.getESuperTypes().add(this.getHbAnnotation());
+		mapKeyManyToManyEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1009,8 +1053,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEAttribute(getCollectionOfElements_TargetElement(), ecorePackage.getEString(), "targetElement", null, 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCollectionOfElements_Fetch(), thePannotationPackage.getFetchType(), "fetch", "LAZY", 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mapKeyEClass, MapKey.class, "MapKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMapKey_Columns(), thePannotationPackage.getColumn(), null, "columns", null, 0, -1, MapKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEClass(hbMapKeyEClass, HbMapKey.class, "HbMapKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHbMapKey_Columns(), thePannotationPackage.getColumn(), null, "columns", null, 0, -1, HbMapKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1082,6 +1126,10 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEClass(naturalIdEClass, NaturalId.class, "NaturalId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNaturalId_Mutable(), ecorePackage.getEBoolean(), "mutable", null, 1, 1, NaturalId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(mapKeyManyToManyEClass, MapKeyManyToMany.class, "MapKeyManyToMany", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMapKeyManyToMany_JoinColumns(), thePannotationPackage.getJoinColumn(), null, "joinColumns", null, 0, -1, MapKeyManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getMapKeyManyToMany_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, MapKeyManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE);
@@ -1133,7 +1181,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });																								
+		   });																									
 	}
 
 	/**
@@ -1149,7 +1197,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });																							
+		   });																								
 	}
 
 	/**
@@ -1173,7 +1221,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 			 "0", "EStructuralFeature"
 		   });		
 		addAnnotation
-		  (mapKeyEClass, 
+		  (hbMapKeyEClass, 
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
@@ -1289,6 +1337,12 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (mapKeyManyToManyEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EReference"
 		   });
 	}
 
@@ -1313,7 +1367,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });													
+		   });														
 	}
 
 	/**
@@ -1329,7 +1383,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "0", "EClass"
-		   });	
+		   });		
 	}
 
 } // HbannotationPackageImpl

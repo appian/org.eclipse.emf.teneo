@@ -9,7 +9,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbCollectionOfElements"
         eType="ecore:EClass hbannotation.ecore#//CollectionOfElements" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hbMapKey" eType="ecore:EClass hbannotation.ecore#//MapKey"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbMapKey" eType="ecore:EClass hbannotation.ecore#//HbMapKey"
         containment="true">
       <eAnnotations source="teneo/internal/PersistenceMapping">
         <details key="elementName" value="hb-map-key"/>
@@ -25,6 +25,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbIndex" eType="ecore:EClass hbannotation.ecore#//Index"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Filter" upperBound="-1"
         eType="ecore:EClass hbannotation.ecore#//Filter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyManyToMany" eType="ecore:EClass hbannotation.ecore#//MapKeyManyToMany"
+        containment="true">
+      <eAnnotations source="teneo/internal/PersistenceMapping">
+        <details key="elementName" value="hb-map-key"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEAttribute" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEAttribute #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"

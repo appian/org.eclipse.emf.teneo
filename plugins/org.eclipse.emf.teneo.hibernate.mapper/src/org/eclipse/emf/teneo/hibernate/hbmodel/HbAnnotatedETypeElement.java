@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedETypeElement.java,v 1.9 2008/04/23 15:44:26 mtaal Exp $
+ * $Id: HbAnnotatedETypeElement.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -12,9 +12,11 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
 /**
@@ -32,6 +34,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbIndex <em>Hb Index</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,22 +103,23 @@ public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature, H
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hb Map Key</em>' containment reference.
-	 * @see #setHbMapKey(MapKey)
+	 * @see #setHbMapKey(HbMapKey)
 	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedETypeElement_HbMapKey()
 	 * @model containment="true"
 	 *        annotation="teneo/internal/PersistenceMapping elementName='hb-map-key'"
 	 * @generated
 	 */
-	MapKey getHbMapKey();
+	HbMapKey getHbMapKey();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbMapKey <em>Hb Map Key</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hb Map Key</em>' containment reference.
 	 * @see #getHbMapKey()
 	 * @generated
 	 */
-	void setHbMapKey(MapKey value);
+	void setHbMapKey(HbMapKey value);
 
 	/**
 	 * Returns the value of the '<em><b>Hb Columns</b></em>' containment reference list.
@@ -224,5 +228,32 @@ public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature, H
 	 * @generated
 	 */
 	EList<Filter> getFilter();
+
+	/**
+	 * Returns the value of the '<em><b>Map Key Many To Many</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Map Key Many To Many</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Map Key Many To Many</em>' containment reference.
+	 * @see #setMapKeyManyToMany(MapKeyManyToMany)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedETypeElement_MapKeyManyToMany()
+	 * @model containment="true"
+	 *        annotation="teneo/internal/PersistenceMapping elementName='hb-map-key'"
+	 * @generated
+	 */
+	MapKeyManyToMany getMapKeyManyToMany();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getMapKeyManyToMany <em>Map Key Many To Many</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Map Key Many To Many</em>' containment reference.
+	 * @see #getMapKeyManyToMany()
+	 * @generated
+	 */
+	void setMapKeyManyToMany(MapKeyManyToMany value);
 
 } // HbAnnotatedETypeElement

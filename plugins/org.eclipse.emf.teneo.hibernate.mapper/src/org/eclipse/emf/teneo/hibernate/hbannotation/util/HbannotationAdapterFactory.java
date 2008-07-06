@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationAdapterFactory.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbannotationAdapterFactory.java,v 1.9 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -98,8 +98,8 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 				return createCollectionOfElementsAdapter();
 			}
 			@Override
-			public Adapter caseMapKey(MapKey object) {
-				return createMapKeyAdapter();
+			public Adapter caseHbMapKey(HbMapKey object) {
+				return createHbMapKeyAdapter();
 			}
 			@Override
 			public Adapter caseParameter(Parameter object) {
@@ -174,6 +174,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 				return createNaturalIdAdapter();
 			}
 			@Override
+			public Adapter caseMapKeyManyToMany(MapKeyManyToMany object) {
+				return createMapKeyManyToManyAdapter();
+			}
+			@Override
 			public Adapter casePAnnotation(PAnnotation object) {
 				return createPAnnotationAdapter();
 			}
@@ -240,16 +244,16 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKey <em>Map Key</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey <em>Hb Map Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKey
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey
 	 * @generated
 	 */
-	public Adapter createMapKeyAdapter() {
+	public Adapter createHbMapKeyAdapter() {
 		return null;
 	}
 
@@ -502,6 +506,20 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNaturalIdAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany <em>Map Key Many To Many</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany
+	 * @generated
+	 */
+	public Adapter createMapKeyManyToManyAdapter() {
 		return null;
 	}
 

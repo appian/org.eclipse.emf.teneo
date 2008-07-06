@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.11 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.12 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -24,9 +24,11 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
@@ -49,6 +51,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIndex <em>Hb Index</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
@@ -86,7 +89,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected MapKey hbMapKey;
+	protected HbMapKey hbMapKey;
 
 	/**
 	 * The cached value of the '{@link #getHbColumns() <em>Hb Columns</em>}' containment reference list. <!--
@@ -137,6 +140,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected EList<Filter> filter;
+
+	/**
+	 * The cached value of the '{@link #getMapKeyManyToMany() <em>Map Key Many To Many</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapKeyManyToMany()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapKeyManyToMany mapKeyManyToMany;
 
 	/**
 	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference.
@@ -279,16 +292,17 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MapKey getHbMapKey() {
+	public HbMapKey getHbMapKey() {
 		return hbMapKey;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHbMapKey(MapKey newHbMapKey, NotificationChain msgs) {
-		MapKey oldHbMapKey = hbMapKey;
+	public NotificationChain basicSetHbMapKey(HbMapKey newHbMapKey, NotificationChain msgs) {
+		HbMapKey oldHbMapKey = hbMapKey;
 		hbMapKey = newHbMapKey;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_MAP_KEY, oldHbMapKey, newHbMapKey);
@@ -298,10 +312,11 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHbMapKey(MapKey newHbMapKey) {
+	public void setHbMapKey(HbMapKey newHbMapKey) {
 		if (newHbMapKey != hbMapKey) {
 			NotificationChain msgs = null;
 			if (hbMapKey != null)
@@ -454,6 +469,49 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			filter = new EObjectResolvingEList<Filter>(Filter.class, this, HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER);
 		}
 		return filter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyManyToMany getMapKeyManyToMany() {
+		return mapKeyManyToMany;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapKeyManyToMany(MapKeyManyToMany newMapKeyManyToMany, NotificationChain msgs) {
+		MapKeyManyToMany oldMapKeyManyToMany = mapKeyManyToMany;
+		mapKeyManyToMany = newMapKeyManyToMany;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY, oldMapKeyManyToMany, newMapKeyManyToMany);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapKeyManyToMany(MapKeyManyToMany newMapKeyManyToMany) {
+		if (newMapKeyManyToMany != mapKeyManyToMany) {
+			NotificationChain msgs = null;
+			if (mapKeyManyToMany != null)
+				msgs = ((InternalEObject)mapKeyManyToMany).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY, null, msgs);
+			if (newMapKeyManyToMany != null)
+				msgs = ((InternalEObject)newMapKeyManyToMany).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY, null, msgs);
+			msgs = basicSetMapKeyManyToMany(newMapKeyManyToMany, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY, newMapKeyManyToMany, newMapKeyManyToMany));
 	}
 
 	/**
@@ -634,6 +692,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicSetHbCascade(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG:
 				return basicSetHbIdBag(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
+				return basicSetMapKeyManyToMany(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return basicSetHbCache(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
@@ -666,6 +726,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicGetHbIndex();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
 				return getFilter();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
+				return getMapKeyManyToMany();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return getHbCache();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -695,7 +757,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				setHbCollectionOfElements((CollectionOfElements)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_MAP_KEY:
-				setHbMapKey((MapKey)newValue);
+				setHbMapKey((HbMapKey)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS:
 				getHbColumns().clear();
@@ -713,6 +775,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
 				getFilter().clear();
 				getFilter().addAll((Collection<? extends Filter>)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
+				setMapKeyManyToMany((MapKeyManyToMany)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)newValue);
@@ -744,7 +809,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				setHbCollectionOfElements((CollectionOfElements)null);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_MAP_KEY:
-				setHbMapKey((MapKey)null);
+				setHbMapKey((HbMapKey)null);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_COLUMNS:
 				getHbColumns().clear();
@@ -760,6 +825,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
 				getFilter().clear();
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
+				setMapKeyManyToMany((MapKeyManyToMany)null);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)null);
@@ -800,6 +868,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbIndex != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER:
 				return filter != null && !filter.isEmpty();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
+				return mapKeyManyToMany != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return hbCache != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -833,6 +903,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
+				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY;
 				default: return -1;
 			}
 		}
@@ -860,6 +931,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_ID_BAG: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_ID_BAG;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY;
 				default: return -1;
 			}
 		}

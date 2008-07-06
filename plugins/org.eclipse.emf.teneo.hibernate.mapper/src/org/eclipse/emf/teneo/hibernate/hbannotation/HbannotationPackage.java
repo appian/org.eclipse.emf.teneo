@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackage.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbannotationPackage.java,v 1.9 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -167,40 +167,41 @@ public interface HbannotationPackage extends EPackage {
 	int COLLECTION_OF_ELEMENTS_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl <em>Map Key</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getMapKey()
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbMapKeyImpl <em>Hb Map Key</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbMapKeyImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbMapKey()
 	 * @generated
 	 */
-	int MAP_KEY = 3;
+	int HB_MAP_KEY = 3;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+	int HB_MAP_KEY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Columns</b></em>' containment reference list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY__COLUMNS = HB_ANNOTATION_FEATURE_COUNT + 0;
+	int HB_MAP_KEY__COLUMNS = HB_ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Map Key</em>' class.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Hb Map Key</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
+	int HB_MAP_KEY_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -1002,13 +1003,59 @@ public interface HbannotationPackage extends EPackage {
 	int NATURAL_ID_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyManyToManyImpl <em>Map Key Many To Many</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyManyToManyImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getMapKeyManyToMany()
+	 * @generated
+	 */
+	int MAP_KEY_MANY_TO_MANY = 22;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_MANY_TO_MANY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_MANY_TO_MANY__JOIN_COLUMNS = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_MANY_TO_MANY__TARGET_ENTITY = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Map Key Many To Many</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_MANY_TO_MANY_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getCacheConcurrencyStrategy()
 	 * @generated
 	 */
-	int CACHE_CONCURRENCY_STRATEGY = 22;
+	int CACHE_CONCURRENCY_STRATEGY = 23;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType <em>Hb Fetch Type</em>}' enum.
@@ -1017,7 +1064,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbFetchType()
 	 * @generated
 	 */
-	int HB_FETCH_TYPE = 23;
+	int HB_FETCH_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}' enum.
@@ -1026,7 +1073,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOnDeleteAction()
 	 * @generated
 	 */
-	int ON_DELETE_ACTION = 24;
+	int ON_DELETE_ACTION = 25;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime <em>Generation Time</em>}' enum.
@@ -1036,7 +1083,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getGenerationTime()
 	 * @generated
 	 */
-	int GENERATION_TIME = 25;
+	int GENERATION_TIME = 26;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}'.
@@ -1096,23 +1143,25 @@ public interface HbannotationPackage extends EPackage {
 	EAttribute getCollectionOfElements_Fetch();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKey <em>Map Key</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Map Key</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKey
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey <em>Hb Map Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Hb Map Key</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey
 	 * @generated
 	 */
-	EClass getMapKey();
+	EClass getHbMapKey();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKey#getColumns <em>Columns</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey#getColumns <em>Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Columns</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKey#getColumns()
-	 * @see #getMapKey()
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey#getColumns()
+	 * @see #getHbMapKey()
 	 * @generated
 	 */
-	EReference getMapKey_Columns();
+	EReference getHbMapKey_Columns();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Parameter <em>Parameter</em>}'.
@@ -1636,6 +1685,38 @@ public interface HbannotationPackage extends EPackage {
 	EAttribute getNaturalId_Mutable();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany <em>Map Key Many To Many</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Key Many To Many</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany
+	 * @generated
+	 */
+	EClass getMapKeyManyToMany();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getJoinColumns <em>Join Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Join Columns</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getJoinColumns()
+	 * @see #getMapKeyManyToMany()
+	 * @generated
+	 */
+	EReference getMapKeyManyToMany_JoinColumns();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getTargetEntity <em>Target Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Entity</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany#getTargetEntity()
+	 * @see #getMapKeyManyToMany()
+	 * @generated
+	 */
+	EAttribute getMapKeyManyToMany_TargetEntity();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
@@ -1744,20 +1825,22 @@ public interface HbannotationPackage extends EPackage {
 		EAttribute COLLECTION_OF_ELEMENTS__FETCH = eINSTANCE.getCollectionOfElements_Fetch();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl <em>Map Key</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl
-		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getMapKey()
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbMapKeyImpl <em>Hb Map Key</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbMapKeyImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbMapKey()
 		 * @generated
 		 */
-		EClass MAP_KEY = eINSTANCE.getMapKey();
+		EClass HB_MAP_KEY = eINSTANCE.getHbMapKey();
 
 		/**
 		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MAP_KEY__COLUMNS = eINSTANCE.getMapKey_Columns();
+		EReference HB_MAP_KEY__COLUMNS = eINSTANCE.getHbMapKey_Columns();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -2195,6 +2278,32 @@ public interface HbannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NATURAL_ID__MUTABLE = eINSTANCE.getNaturalId_Mutable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyManyToManyImpl <em>Map Key Many To Many</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyManyToManyImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getMapKeyManyToMany()
+		 * @generated
+		 */
+		EClass MAP_KEY_MANY_TO_MANY = eINSTANCE.getMapKeyManyToMany();
+
+		/**
+		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAP_KEY_MANY_TO_MANY__JOIN_COLUMNS = eINSTANCE.getMapKeyManyToMany_JoinColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Entity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_MANY_TO_MANY__TARGET_ENTITY = eINSTANCE.getMapKeyManyToMany_TargetEntity();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.

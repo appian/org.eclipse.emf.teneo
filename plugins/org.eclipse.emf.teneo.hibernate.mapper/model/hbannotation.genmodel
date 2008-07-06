@@ -38,8 +38,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//CollectionOfElements/targetElement"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//CollectionOfElements/fetch"/>
     </genClasses>
-    <genClasses ecoreClass="hbannotation.ecore#//MapKey">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//MapKey/columns"/>
+    <genClasses ecoreClass="hbannotation.ecore#//HbMapKey">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//HbMapKey/columns"/>
     </genClasses>
     <genClasses ecoreClass="hbannotation.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Parameter/name"/>
@@ -111,6 +111,10 @@
     <genClasses ecoreClass="hbannotation.ecore#//NaturalId">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//NaturalId/mutable"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//MapKeyManyToMany">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//MapKeyManyToMany/joinColumns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//MapKeyManyToMany/targetEntity"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Hbmodel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">
@@ -123,6 +127,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/hbIdBag"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/hbIndex"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/Filter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedETypeElement/mapKeyManyToMany"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEAttribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/hbType"/>

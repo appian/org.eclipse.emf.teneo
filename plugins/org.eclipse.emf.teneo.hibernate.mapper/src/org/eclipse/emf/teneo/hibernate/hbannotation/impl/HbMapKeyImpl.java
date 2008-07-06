@@ -2,36 +2,41 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKeyImpl.java,v 1.7 2008/01/18 06:21:36 mtaal Exp $
+ * $Id: HbMapKeyImpl.java,v 1.1 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
-import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Map Key</b></em>'.
+ * An implementation of the model object '<em><b>Hb Map Key</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MapKeyImpl#getColumns <em>Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbMapKeyImpl#getColumns <em>Columns</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
+public class HbMapKeyImpl extends HbAnnotationImpl implements HbMapKey {
 	/**
 	 * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -47,7 +52,7 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MapKeyImpl() {
+	protected HbMapKeyImpl() {
 		super();
 	}
 
@@ -58,7 +63,7 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HbannotationPackage.Literals.MAP_KEY;
+		return HbannotationPackage.Literals.HB_MAP_KEY;
 	}
 
 	/**
@@ -68,7 +73,7 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	 */
 	public EList<Column> getColumns() {
 		if (columns == null) {
-			columns = new EObjectContainmentEList<Column>(Column.class, this, HbannotationPackage.MAP_KEY__COLUMNS);
+			columns = new EObjectContainmentEList<Column>(Column.class, this, HbannotationPackage.HB_MAP_KEY__COLUMNS);
 		}
 		return columns;
 	}
@@ -81,7 +86,7 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HbannotationPackage.MAP_KEY__COLUMNS:
+			case HbannotationPackage.HB_MAP_KEY__COLUMNS:
 				return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -95,7 +100,7 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HbannotationPackage.MAP_KEY__COLUMNS:
+			case HbannotationPackage.HB_MAP_KEY__COLUMNS:
 				return getColumns();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -107,10 +112,10 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		@Override
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HbannotationPackage.MAP_KEY__COLUMNS:
+			case HbannotationPackage.HB_MAP_KEY__COLUMNS:
 				getColumns().clear();
 				getColumns().addAll((Collection<? extends Column>)newValue);
 				return;
@@ -126,7 +131,7 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.MAP_KEY__COLUMNS:
+			case HbannotationPackage.HB_MAP_KEY__COLUMNS:
 				getColumns().clear();
 				return;
 		}
@@ -141,10 +146,10 @@ public class MapKeyImpl extends HbAnnotationImpl implements MapKey {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HbannotationPackage.MAP_KEY__COLUMNS:
+			case HbannotationPackage.HB_MAP_KEY__COLUMNS:
 				return columns != null && !columns.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //MapKeyImpl
+} //HbMapKeyImpl

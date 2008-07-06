@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.31 2008/06/28 22:41:28 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.32 2008/07/06 16:25:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -125,9 +125,10 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		if (hbReference.getHbIdBag() == null && otm.isList()) {
 			// now we check if it is a list or a map
 			final EClass eclass = eref.getEReferenceType();
-			if (hbReference.getMapKey() != null) {
+			if (hbReference.getMapKey() != null || hbReference.getHbMapKey() != null ||
+					hbReference.getMapKeyManyToMany() != null) {
 				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
-				addMapKey(collElement, paReference, hbReference.getMapKey());
+				addMapKey(collElement, paReference);
 			} else if (isMap) {
 				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
 				addMapKey(collElement, hbReference);
@@ -244,8 +245,9 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		boolean isMapValueIsEntity = false;
 		if (hbReference.getHbIdBag() == null && otm.isList()) {
 			// now we check if it is a list or a map
-			if (hbReference.getMapKey() != null) {
-				addMapKey(collElement, paReference, hbReference.getMapKey());
+			if (hbReference.getMapKey() != null || hbReference.getHbMapKey() != null ||
+					hbReference.getMapKeyManyToMany() != null) {
+				addMapKey(collElement, paReference);
 			} else if (isMap) {
 				final EClass eclass = eref.getEReferenceType();
 				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.9 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -76,7 +76,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 		switch (eClass.getClassifierID()) {
 			case HbannotationPackage.CASCADE: return createCascade();
 			case HbannotationPackage.COLLECTION_OF_ELEMENTS: return createCollectionOfElements();
-			case HbannotationPackage.MAP_KEY: return createMapKey();
+			case HbannotationPackage.HB_MAP_KEY: return createHbMapKey();
 			case HbannotationPackage.PARAMETER: return createParameter();
 			case HbannotationPackage.TYPE: return createType();
 			case HbannotationPackage.WHERE: return createWhere();
@@ -95,6 +95,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.FILTER_DEF: return createFilterDef();
 			case HbannotationPackage.DISCRIMINATOR_FORMULA: return createDiscriminatorFormula();
 			case HbannotationPackage.NATURAL_ID: return createNaturalId();
+			case HbannotationPackage.MAP_KEY_MANY_TO_MANY: return createMapKeyManyToMany();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -159,12 +160,13 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MapKey createMapKey() {
-		MapKeyImpl mapKey = new MapKeyImpl();
-		return mapKey;
+	public HbMapKey createHbMapKey() {
+		HbMapKeyImpl hbMapKey = new HbMapKeyImpl();
+		return hbMapKey;
 	}
 
 	/**
@@ -334,6 +336,16 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	public NaturalId createNaturalId() {
 		NaturalIdImpl naturalId = new NaturalIdImpl();
 		return naturalId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyManyToMany createMapKeyManyToMany() {
+		MapKeyManyToManyImpl mapKeyManyToMany = new MapKeyManyToManyImpl();
+		return mapKeyManyToMany;
 	}
 
 	/**

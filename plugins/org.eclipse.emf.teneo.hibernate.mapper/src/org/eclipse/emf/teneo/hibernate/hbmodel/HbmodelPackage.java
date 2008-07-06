@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.9 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -251,13 +251,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__FILTER = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Map Key Many To Many</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EType Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
@@ -522,13 +531,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__FILTER = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Map Key Many To Many</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' containment reference.
@@ -537,7 +555,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -546,7 +564,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class.
@@ -555,7 +573,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -1246,13 +1264,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__FILTER = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Map Key Many To Many</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Hb Fetch</b></em>' reference.
@@ -1261,7 +1288,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
@@ -1270,7 +1297,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -1279,7 +1306,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
@@ -1288,7 +1315,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1560,6 +1587,17 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHbAnnotatedETypeElement_Filter();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getMapKeyManyToMany <em>Map Key Many To Many</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Map Key Many To Many</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getMapKeyManyToMany()
+	 * @see #getHbAnnotatedETypeElement()
+	 * @generated
+	 */
+	EReference getHbAnnotatedETypeElement_MapKeyManyToMany();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute <em>Hb Annotated EAttribute</em>}'.
@@ -1980,6 +2018,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_ETYPE_ELEMENT__FILTER = eINSTANCE.getHbAnnotatedETypeElement_Filter();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key Many To Many</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY = eINSTANCE.getHbAnnotatedETypeElement_MapKeyManyToMany();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.

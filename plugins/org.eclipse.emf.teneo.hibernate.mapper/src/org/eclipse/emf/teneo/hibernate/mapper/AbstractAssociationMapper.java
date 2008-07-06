@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
+import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -174,7 +175,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 		}
 		// ugly but effective
-		if (associationElement.getName().compareTo("join") != 0 &&
+		if (associationElement.getName().compareTo("map-key-many-to-many") != 0 &&
+				associationElement.getName().compareTo("join") != 0 &&
 				associationElement.getName().compareTo("key-many-to-one") != 0) {
 			associationElement.addAttribute("insert", Boolean.toString(insertable));
 			associationElement.addAttribute("update", Boolean.toString(updatable));
@@ -287,38 +289,81 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	/**
 	 * Adds a map-key element with the column name set to the give selected column element.
 	 */
-	protected void addMapKey(Element collElement, PAnnotatedEStructuralFeature aFeature, MapKey mapKey) {
-
-		log.debug("Add map key " + mapKey.getName() + " to " + aFeature.getModelEStructuralFeature().getName());
-
-		// now, we add the column type. this is a required field
-		final EStructuralFeature keyFeature =
-				((EReference) aFeature.getModelElement()).getEReferenceType().getEStructuralFeature("key");
-		if (keyFeature instanceof EReference) {
-			final PAnnotatedEClass referedAClass =
-					aFeature.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
-			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
-				final String entityName = hbmContext.getEntityName(((EReference) keyFeature).getEReferenceType());
-				collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
-			} else {
-				collElement.addElement("map-key-many-to-many").addAttribute("class",
-					getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
-			}
-		} else {
-			final PAnnotatedEAttribute paAttribute =
-					(PAnnotatedEAttribute) aFeature.getPaModel().getPAnnotated(keyFeature);
-			final Element mapKeyElement =
-					collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName()));
-			setType(paAttribute, mapKeyElement);
-		}
-// "type", attr.getEType().getInstanceClassName());
-	}
-
+	// bugzilla 238515
+// protected void addMapKey(Element collElement, PAnnotatedEStructuralFeature aFeature, MapKey
+	// mapKey) {
+//
+// log.debug("Add map key " + mapKey.getName() + " to " +
+	// aFeature.getModelEStructuralFeature().getName());
+//
+// // now, we add the column type. this is a required field
+// final EStructuralFeature keyFeature =
+// ((EReference) aFeature.getModelElement()).getEReferenceType().getEStructuralFeature("key");
+// if (keyFeature instanceof EReference) {
+// final PAnnotatedEClass referedAClass =
+// aFeature.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
+// if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
+// final String entityName = hbmContext.getEntityName(((EReference)
+	// keyFeature).getEReferenceType());
+// collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
+// } else {
+// collElement.addElement("map-key-many-to-many").addAttribute("class",
+// getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
+// }
+// } else {
+// final PAnnotatedEAttribute paAttribute =
+// (PAnnotatedEAttribute) aFeature.getPaModel().getPAnnotated(keyFeature);
+// final Element mapKeyElement =
+// collElement.addElement("map-key").addAttribute("column",
+	// getHbmContext().trunc(mapKey.getName()));
+// setType(paAttribute, mapKeyElement);
+// }
+// // "type", attr.getEType().getInstanceClassName());
+// }
 	/** Add a mapkey taking into account if the key is an entity or a simple type */
 	protected void addMapKey(Element collElement, PAnnotatedEReference aref) {
 		final EReference eref = aref.getModelEReference();
+		final HbAnnotatedEReference hbRef = (HbAnnotatedEReference) aref;
 		final EStructuralFeature keyFeature = eref.getEReferenceType().getEStructuralFeature("key");
-		if (keyFeature instanceof EReference) {
+
+		if (hbRef.getHbMapKey() != null && hbRef.getMapKey() != null) {
+			log
+				.warn("The EReference " +
+						aref.getModelElement().getName() +
+						" has both a javax.persistence.MapKey as well as a hibernate MapKey annotation this is not correct, only one of the two should be used.");
+		}
+
+		if (hbRef.getHbMapKey() != null) {
+			final org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey mapKey = hbRef.getHbMapKey();
+			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref.getPaModel().getPAnnotated(keyFeature);
+			final Element mapKeyElement = collElement.addElement("map-key");
+			if (mapKey.getColumns() != null && mapKey.getColumns().size() > 0) {
+				addColumns(mapKeyElement, aref, mapKey.getColumns(), false, false, false, false);
+			}
+			setType(paAttribute, mapKeyElement);
+		} else if (hbRef.getMapKey() != null) {
+			final MapKey mapKey = hbRef.getMapKey();
+			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref.getPaModel().getPAnnotated(keyFeature);
+			final Element mapKeyElement =
+					collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName()));
+			setType(paAttribute, mapKeyElement);
+		} else if (hbRef.getMapKeyManyToMany() != null) {
+			final MapKeyManyToMany mkm = hbRef.getMapKeyManyToMany();
+			final PAnnotatedEClass referedAClass =
+					aref.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
+			final Element mkmElement = collElement.addElement("map-key-many-to-many");
+			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
+				final String entityName =
+						mkm.getTargetEntity() != null ? mkm.getTargetEntity() : hbmContext
+							.getEntityName(((EReference) keyFeature).getEReferenceType());
+				mkmElement.addAttribute("entity-name", entityName);
+			} else {
+				mkmElement.addAttribute("class", getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
+			}
+			if (mkm.getJoinColumns() != null && mkm.getJoinColumns().size() > 0) {
+				addJoinColumns(hbRef, mkmElement, mkm.getJoinColumns(), false);
+			}
+		} else if (keyFeature instanceof EReference) {
 			final PAnnotatedEClass referedAClass =
 					aref.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
 			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
