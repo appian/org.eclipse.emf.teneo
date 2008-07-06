@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.34 2008/07/06 16:25:37 mtaal Exp $
+ * $Id: StoreResource.java,v 1.35 2008/07/06 16:47:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -57,7 +57,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -78,6 +78,12 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** The just set eResource */
 	public static final String SET_ERESOURCE = "setEResource";
+
+	/**
+	 * Don't do anything, risk of dangling_references but is better if objects get added to other
+	 * resources anyway.
+	 */
+	public static final String NOT_SET_ERESOURCE = "notSetEResource";
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(StoreResource.class);
@@ -371,8 +377,10 @@ public abstract class StoreResource extends ResourceImpl {
 				// only add if contained, just add to the loaded eobjects lists
 				assert (eObject.eContainer().eResource() == this);
 				attached(eObject);
-			} else {
-				// this is not the nicest solution but it prevents dangling references
+			} else if (loadStrategy.compareTo(SET_ERESOURCE) == 0) {
+				// this is not the nicest solution because everyone is added to the top of the
+				// resource.
+				// but it prevents dangling references
 				// when objects are not added explicitly to a resource
 				setEResource(eObject, false);
 				attached(eObject);
@@ -793,6 +801,7 @@ public abstract class StoreResource extends ResourceImpl {
 		}
 		if (currentEObject.eResource() != this) {
 			currentEObject.eSetResource(this, null);
+			attached(currentEObject);
 		}
 	}
 
