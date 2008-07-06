@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.33 2008/04/23 15:45:32 mtaal Exp $
+ * $Id: StoreResource.java,v 1.34 2008/07/06 16:25:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -57,7 +57,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * content and that settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -766,16 +766,16 @@ public abstract class StoreResource extends ResourceImpl {
 	 * !newEObjects.contains(eObject)) { attached(eObject); return; } // already part of another
 	 * resource if (!forceAddToContents && eObject.eResource() != null) { return; }
 	 * 
-	 * final ContentsEList elist = (ContentsEList) super.getContents(); if (elist.contains(eObject)) { //
-	 * can happen because of extends, polymorphism return; } // fill in the resource, do not use the
-	 * normal add method because it // is possible that a child of a container is loaded, in that
-	 * case // the normal add will remove the container of the object when the // resource is set in
-	 * the child object, this issue can happen with // direct reads using queries. NotificationChain
-	 * notification = null; if (loadStrategy.compareToIgnoreCase(ADD_TO_CONTENTS) == 0 ||
-	 * forceAddToContents) { notification = elist.basicAdd(eObject, null); } if (eObject.eResource() ==
-	 * null || (forceAddToContents && eObject.eResource() != this)) { setEResource(eObject,
-	 * forceAddToContents); } // attached(eObject); if (sendNotificationsOnLoad && notification !=
-	 * null) { notification.dispatch(); } }
+	 * final ContentsEList elist = (ContentsEList) super.getContents(); if (elist.contains(eObject))
+	 * { // can happen because of extends, polymorphism return; } // fill in the resource, do not
+	 * use the normal add method because it // is possible that a child of a container is loaded, in
+	 * that case // the normal add will remove the container of the object when the // resource is
+	 * set in the child object, this issue can happen with // direct reads using queries.
+	 * NotificationChain notification = null; if (loadStrategy.compareToIgnoreCase(ADD_TO_CONTENTS)
+	 * == 0 || forceAddToContents) { notification = elist.basicAdd(eObject, null); } if
+	 * (eObject.eResource() == null || (forceAddToContents && eObject.eResource() != this)) {
+	 * setEResource(eObject, forceAddToContents); } // attached(eObject); if
+	 * (sendNotificationsOnLoad && notification != null) { notification.dispatch(); } }
 	 */
 
 	/**
