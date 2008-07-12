@@ -11,6 +11,8 @@
 package org.eclipse.emf.teneo.hibernate.cdo;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.extension.ExtensionManager;
+import org.eclipse.emf.teneo.hibernate.mapper.EntityMapper;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingContext;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -20,7 +22,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
 public class CDOMappingContext extends MappingContext {
-
+	
 	/** Add a tuplizer element or not */
 	@Override
 	public void addTuplizerElement(Element entityElement, PAnnotatedEClass aclass) {
@@ -32,6 +34,11 @@ public class CDOMappingContext extends MappingContext {
 				new Element("tuplizer").addAttribute("entity-mode", "pojo").addAttribute("class",
 					"org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDORevisionTuplizer");
 		entityElement.add(0, tuplizerElement);
+	}
+	
+	public void setExtensionManager(ExtensionManager extensionManager) {
+		super.setExtensionManager(extensionManager);
+		extensionManager.registerExtension(EntityMapper.class.getName(), CDOEntityMapper.class.getName());
 	}
 
 	@Override

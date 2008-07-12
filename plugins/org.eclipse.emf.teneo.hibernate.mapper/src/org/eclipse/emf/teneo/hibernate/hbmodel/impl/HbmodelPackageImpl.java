@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackageImpl.java,v 1.9 2008/07/06 16:25:27 mtaal Exp $
+ * $Id: HbmodelPackageImpl.java,v 1.10 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -258,6 +258,15 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHbAnnotatedETypeElement_Formula() {
+		return (EReference)hbAnnotatedETypeElementEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHbAnnotatedEAttribute() {
 		return hbAnnotatedEAttributeEClass;
 	}
@@ -375,6 +384,24 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHbAnnotatedEClass_ForceDiscriminator() {
+		return (EReference)hbAnnotatedEClassEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHbAnnotatedEClass_Immutable() {
+		return (EReference)hbAnnotatedEClassEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHbAnnotatedEModelElement() {
 		return hbAnnotatedEModelElementEClass;
 	}
@@ -474,6 +501,15 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHbAnnotatedEReference_Immutable() {
+		return (EReference)hbAnnotatedEReferenceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHbAnnotatedEDataType() {
 		return hbAnnotatedEDataTypeEClass;
 	}
@@ -561,6 +597,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX);
 		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__FILTER);
 		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY);
+		createEReference(hbAnnotatedETypeElementEClass, HB_ANNOTATED_ETYPE_ELEMENT__FORMULA);
 
 		hbAnnotatedEAttributeEClass = createEClass(HB_ANNOTATED_EATTRIBUTE);
 		createEReference(hbAnnotatedEAttributeEClass, HB_ANNOTATED_EATTRIBUTE__HB_TYPE);
@@ -576,6 +613,8 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__FILTER_DEF);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__FILTER);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA);
+		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR);
+		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__IMMUTABLE);
 
 		hbAnnotatedEModelElementEClass = createEClass(HB_ANNOTATED_EMODEL_ELEMENT);
 
@@ -590,6 +629,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__HB_FETCH);
 		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__HB_ON_DELETE);
 		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__NATURAL_ID);
+		createEReference(hbAnnotatedEReferenceEClass, HB_ANNOTATED_EREFERENCE__IMMUTABLE);
 
 		hbAnnotatedEDataTypeEClass = createEClass(HB_ANNOTATED_EDATA_TYPE);
 		createEReference(hbAnnotatedEDataTypeEClass, HB_ANNOTATED_EDATA_TYPE__HB_TYPE_DEF);
@@ -655,6 +695,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		initEReference(getHbAnnotatedETypeElement_HbIndex(), theHbannotationPackage.getIndex(), null, "hbIndex", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_Filter(), theHbannotationPackage.getFilter(), null, "Filter", null, 0, -1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedETypeElement_MapKeyManyToMany(), theHbannotationPackage.getMapKeyManyToMany(), null, "mapKeyManyToMany", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedETypeElement_Formula(), theHbannotationPackage.getFormula(), null, "formula", null, 0, 1, HbAnnotatedETypeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEAttributeEClass, HbAnnotatedEAttribute.class, "HbAnnotatedEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedEAttribute_HbType(), theHbannotationPackage.getType(), null, "hbType", null, 0, 1, HbAnnotatedEAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -670,6 +711,8 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		initEReference(getHbAnnotatedEClass_FilterDef(), theHbannotationPackage.getFilterDef(), null, "FilterDef", null, 0, -1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEClass_Filter(), theHbannotationPackage.getFilter(), null, "Filter", null, 0, -1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEClass_DiscriminatorFormula(), theHbannotationPackage.getDiscriminatorFormula(), null, "discriminatorFormula", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEClass_ForceDiscriminator(), theHbannotationPackage.getForceDiscriminator(), null, "forceDiscriminator", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEClass_Immutable(), theHbannotationPackage.getImmutable(), null, "immutable", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEModelElementEClass, HbAnnotatedEModelElement.class, "HbAnnotatedEModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -684,6 +727,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		initEReference(getHbAnnotatedEReference_HbFetch(), theHbannotationPackage.getFetch(), null, "hbFetch", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEReference_HbOnDelete(), theHbannotationPackage.getOnDelete(), null, "hbOnDelete", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEReference_NaturalId(), theHbannotationPackage.getNaturalId(), null, "naturalId", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEReference_Immutable(), theHbannotationPackage.getImmutable(), null, "immutable", null, 0, 1, HbAnnotatedEReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEDataTypeEClass, HbAnnotatedEDataType.class, "HbAnnotatedEDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHbAnnotatedEDataType_HbTypeDef(), theHbannotationPackage.getTypeDef(), null, "hbTypeDef", null, 0, 1, HbAnnotatedEDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.36 2008/06/29 14:23:05 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.37 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -140,6 +140,11 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 						((HbAnnotatedEClass) entity).getHbProxy() == null ? "false" : "true");
 		}
 
+		final HbAnnotatedEClass hbEntity = (HbAnnotatedEClass) entity;
+		if (superEntity == null && hbEntity.getImmutable() != null) {
+			target.addAttribute("mutable", "false");
+		}
+
 		if (superEntity != null) {
 			final String extendsEntity;
 			if (superEntity.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(superEntity)) {
@@ -240,6 +245,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			log.debug("Mapping Entity " + entity);
 		}
 
+		final HbAnnotatedEClass hbEntity = (HbAnnotatedEClass) entity;
 		Element entityElement =
 				createEntity(entity, entity.getInheritanceStrategy(), entity.getPaSuperEntity(), entity
 					.getDiscriminatorValue(), entity.getTable());
@@ -325,11 +331,12 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				int index = entityElement.indexOf(idElement) + 1;
 
 				if (((HbAnnotatedEClass) entity).getDiscriminatorFormula() != null) {
-					entityElement.add(index++, createDiscriminatorElement(((HbAnnotatedEClass) entity)
-						.getDiscriminatorFormula(), entity.getDiscriminatorColumn()));
+					entityElement.add(index++, createDiscriminatorElement(hbEntity.getDiscriminatorFormula(), entity
+						.getDiscriminatorColumn(), hbEntity.getForceDiscriminator() != null));
 				} else if (entity.getDiscriminatorColumn() != null) {
 					// add discriminator element immediately after id element
-					entityElement.add(index++, createDiscriminatorElement(entity.getDiscriminatorColumn()));
+					entityElement.add(index++, createDiscriminatorElement(entity.getDiscriminatorColumn(), hbEntity
+						.getForceDiscriminator() != null));
 				}
 
 				// create and/or move version element (if present) immediately
@@ -590,12 +597,16 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 	 * Creates a discriminator element and returns it, so the caller should add it to the parent
 	 * element
 	 */
-	private Element createDiscriminatorElement(DiscriminatorColumn dColumn) {
+	private Element createDiscriminatorElement(DiscriminatorColumn dColumn, boolean force) {
 		Element dcElement = DocumentHelper.createElement("discriminator");
 		if (dColumn.getName() != null) {
 			dcElement.addAttribute("column", getHbmContext().trunc(dColumn.getName()));
 		}
 		dcElement.addAttribute("type", hbDiscriminatorType(dColumn.getDiscriminatorType()));
+
+		if (force) {
+			dcElement.addAttribute("force", "true");
+		}
 
 		if (dColumn.isSetLength() && log.isDebugEnabled()) {
 			log.debug("Ignoring length for discriminator column " + dColumn);
@@ -609,9 +620,14 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 	}
 
 	// note dc can be null
-	private Element createDiscriminatorElement(DiscriminatorFormula formula, DiscriminatorColumn dc) {
+	private Element createDiscriminatorElement(DiscriminatorFormula formula, DiscriminatorColumn dc, boolean force) {
 		Element dcElement = DocumentHelper.createElement("discriminator");
 		dcElement.addAttribute("formula", formula.getValue());
+
+		if (force) {
+			dcElement.addAttribute("force", "true");
+		}
+
 		if (dc != null && dc.getDiscriminatorType() != null) {
 			dcElement.addAttribute("type", hbDiscriminatorType(dc.getDiscriminatorType()));
 		}

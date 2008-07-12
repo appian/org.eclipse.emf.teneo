@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToManyMapper.java,v 1.24 2008/07/06 16:25:28 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.25 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,6 +48,10 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 		}
 
 		final Element collElement = addCollectionElement(hbReference);
+
+		if (hbReference.getImmutable() != null) {
+			collElement.addAttribute("mutable", "false");
+		}
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
 			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());

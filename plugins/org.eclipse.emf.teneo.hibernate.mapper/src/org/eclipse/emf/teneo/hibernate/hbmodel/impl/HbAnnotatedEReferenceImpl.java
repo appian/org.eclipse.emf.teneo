@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.12 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.13 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -24,8 +24,10 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Formula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
@@ -52,10 +54,12 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbIndex <em>Hb Index</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getFormula <em>Formula</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbCache <em>Hb Cache</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNaturalId <em>Natural Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getImmutable <em>Immutable</em>}</li>
  * </ul>
  * </p>
  *
@@ -152,6 +156,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	protected MapKeyManyToMany mapKeyManyToMany;
 
 	/**
+	 * The cached value of the '{@link #getFormula() <em>Formula</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormula()
+	 * @generated
+	 * @ordered
+	 */
+	protected Formula formula;
+
+	/**
 	 * The cached value of the '{@link #getHbCache() <em>Hb Cache</em>}' containment reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
@@ -190,6 +204,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected NaturalId naturalId;
+
+	/**
+	 * The cached value of the '{@link #getImmutable() <em>Immutable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImmutable()
+	 * @generated
+	 * @ordered
+	 */
+	protected Immutable immutable;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -515,6 +539,44 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Formula getFormula() {
+		if (formula != null && formula.eIsProxy()) {
+			InternalEObject oldFormula = (InternalEObject)formula;
+			formula = (Formula)eResolveProxy(oldFormula);
+			if (formula != oldFormula) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA, oldFormula, formula));
+			}
+		}
+		return formula;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Formula basicGetFormula() {
+		return formula;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFormula(Formula newFormula) {
+		Formula oldFormula = formula;
+		formula = newFormula;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA, oldFormula, formula));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -674,6 +736,49 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Immutable getImmutable() {
+		return immutable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetImmutable(Immutable newImmutable, NotificationChain msgs) {
+		Immutable oldImmutable = immutable;
+		immutable = newImmutable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE, oldImmutable, newImmutable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImmutable(Immutable newImmutable) {
+		if (newImmutable != immutable) {
+			NotificationChain msgs = null;
+			if (immutable != null)
+				msgs = ((InternalEObject)immutable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE, null, msgs);
+			if (newImmutable != null)
+				msgs = ((InternalEObject)newImmutable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE, null, msgs);
+			msgs = basicSetImmutable(newImmutable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE, newImmutable, newImmutable));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -698,6 +803,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicSetHbCache(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
 				return basicSetNaturalId(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
+				return basicSetImmutable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -728,6 +835,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return getFilter();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
 				return getMapKeyManyToMany();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
+				if (resolve) return getFormula();
+				return basicGetFormula();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return getHbCache();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -738,6 +848,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicGetHbOnDelete();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
 				return getNaturalId();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
+				return getImmutable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -779,6 +891,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
 				setMapKeyManyToMany((MapKeyManyToMany)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
+				setFormula((Formula)newValue);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)newValue);
 				return;
@@ -790,6 +905,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
 				setNaturalId((NaturalId)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
+				setImmutable((Immutable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -829,6 +947,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
 				setMapKeyManyToMany((MapKeyManyToMany)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
+				setFormula((Formula)null);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				setHbCache((Cache)null);
 				return;
@@ -840,6 +961,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
 				setNaturalId((NaturalId)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
+				setImmutable((Immutable)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -870,6 +994,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return filter != null && !filter.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY:
 				return mapKeyManyToMany != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA:
+				return formula != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_CACHE:
 				return hbCache != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_FETCH:
@@ -878,6 +1004,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return hbOnDelete != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NATURAL_ID:
 				return naturalId != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
+				return immutable != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -904,6 +1032,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY;
+				case HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA;
 				default: return -1;
 			}
 		}
@@ -932,6 +1061,7 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__HB_INDEX;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA: return HbmodelPackage.HB_ANNOTATED_EREFERENCE__FORMULA;
 				default: return -1;
 			}
 		}

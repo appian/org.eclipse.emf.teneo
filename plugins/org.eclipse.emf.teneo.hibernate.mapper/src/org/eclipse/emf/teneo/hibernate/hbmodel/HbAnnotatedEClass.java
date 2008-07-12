@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClass.java,v 1.11 2008/06/10 08:24:58 mtaal Exp $
+ * $Id: HbAnnotatedEClass.java,v 1.12 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -12,6 +12,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
+import org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
@@ -32,6 +34,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilterDef <em>Filter Def</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getDiscriminatorFormula <em>Discriminator Formula</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getForceDiscriminator <em>Force Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getImmutable <em>Immutable</em>}</li>
  * </ul>
  * </p>
  *
@@ -216,5 +220,57 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * @generated
 	 */
 	void setDiscriminatorFormula(DiscriminatorFormula value);
+
+	/**
+	 * Returns the value of the '<em><b>Force Discriminator</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Force Discriminator</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Force Discriminator</em>' containment reference.
+	 * @see #setForceDiscriminator(ForceDiscriminator)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_ForceDiscriminator()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ForceDiscriminator getForceDiscriminator();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getForceDiscriminator <em>Force Discriminator</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Force Discriminator</em>' containment reference.
+	 * @see #getForceDiscriminator()
+	 * @generated
+	 */
+	void setForceDiscriminator(ForceDiscriminator value);
+
+	/**
+	 * Returns the value of the '<em><b>Immutable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Immutable</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Immutable</em>' containment reference.
+	 * @see #setImmutable(Immutable)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_Immutable()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Immutable getImmutable();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getImmutable <em>Immutable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Immutable</em>' containment reference.
+	 * @see #getImmutable()
+	 * @generated
+	 */
+	void setImmutable(Immutable value);
 
 } // HbAnnotatedEClass

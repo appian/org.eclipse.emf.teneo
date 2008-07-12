@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.11 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -260,13 +260,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Formula</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__FORMULA = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EType Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_ETYPE_ELEMENT_FEATURE_COUNT = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
@@ -540,13 +549,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Formula</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__FORMULA = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
+
+	/**
 	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EATTRIBUTE__HB_TYPE = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' containment reference.
@@ -555,7 +573,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EATTRIBUTE__GENERATED = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -564,7 +582,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class.
@@ -573,7 +591,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -820,13 +838,31 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Force Discriminator</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Immutable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__IMMUTABLE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 8;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1273,13 +1309,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__MAP_KEY_MANY_TO_MANY = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Formula</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__FORMULA = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
+
+	/**
 	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 9;
+	int HB_ANNOTATED_EREFERENCE__HB_CACHE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Hb Fetch</b></em>' reference.
@@ -1288,7 +1333,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_EREFERENCE__HB_FETCH = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Hb On Delete</b></em>' reference.
@@ -1297,7 +1342,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 11;
+	int HB_ANNOTATED_EREFERENCE__HB_ON_DELETE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Natural Id</b></em>' containment reference.
@@ -1306,7 +1351,16 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_EREFERENCE__NATURAL_ID = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Immutable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__IMMUTABLE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
@@ -1315,7 +1369,7 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 13;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 15;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1600,6 +1654,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedETypeElement_MapKeyManyToMany();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFormula <em>Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Formula</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFormula()
+	 * @see #getHbAnnotatedETypeElement()
+	 * @generated
+	 */
+	EReference getHbAnnotatedETypeElement_Formula();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute <em>Hb Annotated EAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1741,6 +1806,28 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_DiscriminatorFormula();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getForceDiscriminator <em>Force Discriminator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Force Discriminator</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getForceDiscriminator()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_ForceDiscriminator();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getImmutable <em>Immutable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Immutable</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getImmutable()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_Immutable();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1857,6 +1944,17 @@ public interface HbmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getHbAnnotatedEReference_NaturalId();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Immutable</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_Immutable();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
@@ -2028,6 +2126,14 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY = eINSTANCE.getHbAnnotatedETypeElement_MapKeyManyToMany();
 
 		/**
+		 * The meta object literal for the '<em><b>Formula</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ETYPE_ELEMENT__FORMULA = eINSTANCE.getHbAnnotatedETypeElement_Formula();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl <em>Hb Annotated EAttribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2136,6 +2242,22 @@ public interface HbmodelPackage extends EPackage {
 		EReference HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA = eINSTANCE.getHbAnnotatedEClass_DiscriminatorFormula();
 
 		/**
+		 * The meta object literal for the '<em><b>Force Discriminator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR = eINSTANCE.getHbAnnotatedEClass_ForceDiscriminator();
+
+		/**
+		 * The meta object literal for the '<em><b>Immutable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__IMMUTABLE = eINSTANCE.getHbAnnotatedEClass_Immutable();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2228,6 +2350,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__NATURAL_ID = eINSTANCE.getHbAnnotatedEReference_NaturalId();
+
+		/**
+		 * The meta object literal for the '<em><b>Immutable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__IMMUTABLE = eINSTANCE.getHbAnnotatedEReference_Immutable();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.

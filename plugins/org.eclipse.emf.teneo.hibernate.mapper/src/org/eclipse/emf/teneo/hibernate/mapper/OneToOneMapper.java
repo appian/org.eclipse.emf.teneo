@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.26 2008/05/27 07:42:29 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.27 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -73,7 +73,7 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		if (isEObject(specifiedName)) {
-			addColumns(associationElement, paReference, getAnyTypeColumns(eref.getName(), true), true, false);
+			addColumnsAndFormula(associationElement, paReference, getAnyTypeColumns(eref.getName(), true), true, false);
 			// foreign key is not added when the reference is to a generic EObject
 		} else {
 			addForeignKeyAttribute(associationElement, paReference);

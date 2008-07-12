@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.11 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.12 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Formula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
@@ -51,6 +52,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbIndex <em>Hb Index</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getFormula <em>Formula</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbType <em>Hb Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getNaturalId <em>Natural Id</em>}</li>
@@ -148,6 +150,16 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * @ordered
 	 */
 	protected MapKeyManyToMany mapKeyManyToMany;
+
+	/**
+	 * The cached value of the '{@link #getFormula() <em>Formula</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormula()
+	 * @generated
+	 * @ordered
+	 */
+	protected Formula formula;
 
 	/**
 	 * The cached value of the '{@link #getHbType() <em>Hb Type</em>}' containment reference.
@@ -503,6 +515,44 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Formula getFormula() {
+		if (formula != null && formula.eIsProxy()) {
+			InternalEObject oldFormula = (InternalEObject)formula;
+			formula = (Formula)eResolveProxy(oldFormula);
+			if (formula != oldFormula) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA, oldFormula, formula));
+			}
+		}
+		return formula;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Formula basicGetFormula() {
+		return formula;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFormula(Formula newFormula) {
+		Formula oldFormula = formula;
+		formula = newFormula;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA, oldFormula, formula));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -685,6 +735,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return getFilter();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY:
 				return getMapKeyManyToMany();
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
+				if (resolve) return getFormula();
+				return basicGetFormula();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				return getHbType();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__GENERATED:
@@ -731,6 +784,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY:
 				setMapKeyManyToMany((MapKeyManyToMany)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
+				setFormula((Formula)newValue);
 				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				setHbType((Type)newValue);
@@ -779,6 +835,9 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY:
 				setMapKeyManyToMany((MapKeyManyToMany)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
+				setFormula((Formula)null);
+				return;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				setHbType((Type)null);
 				return;
@@ -817,6 +876,8 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return filter != null && !filter.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY:
 				return mapKeyManyToMany != null;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA:
+				return formula != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_TYPE:
 				return hbType != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__GENERATED:
@@ -849,6 +910,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX;
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY;
+				case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA: return HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA;
 				default: return -1;
 			}
 		}
@@ -877,6 +939,7 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__HB_INDEX: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__HB_INDEX;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FILTER: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FILTER;
 				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__MAP_KEY_MANY_TO_MANY: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__MAP_KEY_MANY_TO_MANY;
+				case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT__FORMULA: return HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__FORMULA;
 				default: return -1;
 			}
 		}

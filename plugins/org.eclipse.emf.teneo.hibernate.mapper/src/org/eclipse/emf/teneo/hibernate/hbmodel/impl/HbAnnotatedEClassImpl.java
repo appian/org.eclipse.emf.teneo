@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.13 2008/06/10 08:24:58 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.14 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
+import org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
@@ -40,6 +42,8 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilterDef <em>Filter Def</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getDiscriminatorFormula <em>Discriminator Formula</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getForceDiscriminator <em>Force Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getImmutable <em>Immutable</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,6 +129,26 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @ordered
 	 */
 	protected DiscriminatorFormula discriminatorFormula;
+
+	/**
+	 * The cached value of the '{@link #getForceDiscriminator() <em>Force Discriminator</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForceDiscriminator()
+	 * @generated
+	 * @ordered
+	 */
+	protected ForceDiscriminator forceDiscriminator;
+
+	/**
+	 * The cached value of the '{@link #getImmutable() <em>Immutable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImmutable()
+	 * @generated
+	 * @ordered
+	 */
+	protected Immutable immutable;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -382,6 +406,92 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForceDiscriminator getForceDiscriminator() {
+		return forceDiscriminator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetForceDiscriminator(ForceDiscriminator newForceDiscriminator, NotificationChain msgs) {
+		ForceDiscriminator oldForceDiscriminator = forceDiscriminator;
+		forceDiscriminator = newForceDiscriminator;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, oldForceDiscriminator, newForceDiscriminator);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setForceDiscriminator(ForceDiscriminator newForceDiscriminator) {
+		if (newForceDiscriminator != forceDiscriminator) {
+			NotificationChain msgs = null;
+			if (forceDiscriminator != null)
+				msgs = ((InternalEObject)forceDiscriminator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, null, msgs);
+			if (newForceDiscriminator != null)
+				msgs = ((InternalEObject)newForceDiscriminator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, null, msgs);
+			msgs = basicSetForceDiscriminator(newForceDiscriminator, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR, newForceDiscriminator, newForceDiscriminator));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Immutable getImmutable() {
+		return immutable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetImmutable(Immutable newImmutable, NotificationChain msgs) {
+		Immutable oldImmutable = immutable;
+		immutable = newImmutable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, oldImmutable, newImmutable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImmutable(Immutable newImmutable) {
+		if (newImmutable != immutable) {
+			NotificationChain msgs = null;
+			if (immutable != null)
+				msgs = ((InternalEObject)immutable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, null, msgs);
+			if (newImmutable != null)
+				msgs = ((InternalEObject)newImmutable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, null, msgs);
+			msgs = basicSetImmutable(newImmutable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE, newImmutable, newImmutable));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -394,6 +504,10 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return basicSetHbWhere(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
 				return basicSetDiscriminatorFormula(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				return basicSetForceDiscriminator(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				return basicSetImmutable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -423,6 +537,10 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return getFilter();
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
 				return getDiscriminatorFormula();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				return getForceDiscriminator();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				return getImmutable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -462,6 +580,12 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
 				setDiscriminatorFormula((DiscriminatorFormula)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				setForceDiscriminator((ForceDiscriminator)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				setImmutable((Immutable)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -497,6 +621,12 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
 				setDiscriminatorFormula((DiscriminatorFormula)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				setForceDiscriminator((ForceDiscriminator)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				setImmutable((Immutable)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -524,6 +654,10 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return filter != null && !filter.isEmpty();
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__DISCRIMINATOR_FORMULA:
 				return discriminatorFormula != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__FORCE_DISCRIMINATOR:
+				return forceDiscriminator != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
+				return immutable != null;
 		}
 		return super.eIsSet(featureID);
 	}

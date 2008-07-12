@@ -31,6 +31,7 @@
         <details key="elementName" value="hb-map-key"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="formula" eType="ecore:EClass hbannotation.ecore#//Formula"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEAttribute" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEAttribute #//HbAnnotatedETypeElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
@@ -55,6 +56,10 @@
         eType="ecore:EClass hbannotation.ecore#//Filter"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminatorFormula" eType="ecore:EClass hbannotation.ecore#//DiscriminatorFormula"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forceDiscriminator" eType="ecore:EClass hbannotation.ecore#//ForceDiscriminator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="immutable" eType="ecore:EClass hbannotation.ecore#//Immutable"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" abstract="true"
       interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>
@@ -74,6 +79,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbFetch" eType="ecore:EClass hbannotation.ecore#//Fetch"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbOnDelete" eType="ecore:EClass hbannotation.ecore#//OnDelete"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="naturalId" eType="ecore:EClass hbannotation.ecore#//NaturalId"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="immutable" eType="ecore:EClass hbannotation.ecore#//Immutable"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEDataType" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEDataType #//HbAnnotatedEModelElement">

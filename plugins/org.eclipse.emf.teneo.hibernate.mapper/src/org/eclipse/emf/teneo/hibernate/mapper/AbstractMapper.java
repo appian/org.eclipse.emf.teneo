@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.38 2008/06/28 22:41:28 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.39 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -371,16 +371,18 @@ public abstract class AbstractMapper {
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, PAnnotatedEStructuralFeature pef, List<Column> columns,
-			boolean isNullable, boolean setColumnAttributesInProperty) {
-		addColumns(propertyElement, pef, columns, isNullable, setColumnAttributesInProperty, false, false);
+	protected void addColumnsAndFormula(Element propertyElement, PAnnotatedEStructuralFeature pef,
+			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty) {
+		addColumnsAndFormula(propertyElement, pef, columns, isNullable, setColumnAttributesInProperty, false, false);
 	}
 
 	/** Same as above only handles multiple columns */
-	protected void addColumns(Element propertyElement, PAnnotatedEStructuralFeature pef, List<Column> columns,
-			boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique, boolean isIdProperty) {
+	protected void addColumnsAndFormula(Element propertyElement, PAnnotatedEStructuralFeature pef,
+			List<Column> columns, boolean isNullable, boolean setColumnAttributesInProperty, boolean isUnique,
+			boolean isIdProperty) {
 		// if no columns set then use some default
-		if (columns.isEmpty()) {
+		final HbAnnotatedETypeElement hbFeature = (HbAnnotatedETypeElement) pef;
+		if (columns.isEmpty() && hbFeature.getFormula() == null) {
 			final Column col = PannotationFactory.eINSTANCE.createColumn();
 			col.setName(getColumnName(pef));
 			col.setNullable(isNullable);
@@ -401,6 +403,11 @@ public abstract class AbstractMapper {
 		}
 		for (Column column : columns) {
 			addColumn(propertyElement, pef, column, isNullable, setColumnAttributesInProperty);
+		}
+
+		// do the formula part
+		if (hbFeature.getFormula() != null) {
+			propertyElement.addElement("formula").addText(hbFeature.getFormula().getValue());
 		}
 	}
 

@@ -216,4 +216,21 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetEntity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForceDiscriminator" eSuperTypes="#//HbAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Immutable" eSuperTypes="#//HbAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EReference"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Formula" eSuperTypes="#//HbAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EAttribute"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

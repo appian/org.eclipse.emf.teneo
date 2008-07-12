@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReference.java,v 1.8 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbAnnotatedEReference.java,v 1.9 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Fetch;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbFetch <em>Hb Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}</li>
  * </ul>
  * </p>
  *
@@ -133,5 +135,31 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	 * @generated
 	 */
 	void setNaturalId(NaturalId value);
+
+	/**
+	 * Returns the value of the '<em><b>Immutable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Immutable</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Immutable</em>' containment reference.
+	 * @see #setImmutable(Immutable)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_Immutable()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Immutable getImmutable();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Immutable</em>' containment reference.
+	 * @see #getImmutable()
+	 * @generated
+	 */
+	void setImmutable(Immutable value);
 
 } // HbAnnotatedEReference

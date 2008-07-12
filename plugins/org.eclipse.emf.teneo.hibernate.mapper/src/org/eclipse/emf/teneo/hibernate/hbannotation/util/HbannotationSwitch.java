@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.8 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.9 2008/07/12 13:10:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -274,6 +274,30 @@ public class HbannotationSwitch<T> {
 				T result = caseMapKeyManyToMany(mapKeyManyToMany);
 				if (result == null) result = caseHbAnnotation(mapKeyManyToMany);
 				if (result == null) result = casePAnnotation(mapKeyManyToMany);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.FORCE_DISCRIMINATOR: {
+				ForceDiscriminator forceDiscriminator = (ForceDiscriminator)theEObject;
+				T result = caseForceDiscriminator(forceDiscriminator);
+				if (result == null) result = caseHbAnnotation(forceDiscriminator);
+				if (result == null) result = casePAnnotation(forceDiscriminator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.IMMUTABLE: {
+				Immutable immutable = (Immutable)theEObject;
+				T result = caseImmutable(immutable);
+				if (result == null) result = caseHbAnnotation(immutable);
+				if (result == null) result = casePAnnotation(immutable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.FORMULA: {
+				Formula formula = (Formula)theEObject;
+				T result = caseFormula(formula);
+				if (result == null) result = caseHbAnnotation(formula);
+				if (result == null) result = casePAnnotation(formula);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -613,6 +637,51 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseMapKeyManyToMany(MapKeyManyToMany object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Force Discriminator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Force Discriminator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForceDiscriminator(ForceDiscriminator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Immutable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Immutable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseImmutable(Immutable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Formula</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFormula(Formula object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.11 2008/07/12 13:10:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -155,6 +155,12 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateNaturalId((NaturalId)value, diagnostics, context);
 			case HbannotationPackage.MAP_KEY_MANY_TO_MANY:
 				return validateMapKeyManyToMany((MapKeyManyToMany)value, diagnostics, context);
+			case HbannotationPackage.FORCE_DISCRIMINATOR:
+				return validateForceDiscriminator((ForceDiscriminator)value, diagnostics, context);
+			case HbannotationPackage.IMMUTABLE:
+				return validateImmutable((Immutable)value, diagnostics, context);
+			case HbannotationPackage.FORMULA:
+				return validateFormula((Formula)value, diagnostics, context);
 			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbannotationPackage.HB_FETCH_TYPE:
@@ -593,6 +599,60 @@ public class HbannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(mapKeyManyToMany, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateForceDiscriminator(ForceDiscriminator forceDiscriminator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(forceDiscriminator, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateImmutable(Immutable immutable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(immutable, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFormula(Formula formula, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(formula, diagnostics, context);
 		return result;
 	}
 

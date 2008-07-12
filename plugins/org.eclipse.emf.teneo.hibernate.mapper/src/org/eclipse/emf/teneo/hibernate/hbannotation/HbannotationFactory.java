@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.8 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.9 2008/07/12 13:10:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -219,6 +219,33 @@ public interface HbannotationFactory extends EFactory {
 	 * @generated
 	 */
 	MapKeyManyToMany createMapKeyManyToMany();
+
+	/**
+	 * Returns a new object of class '<em>Force Discriminator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Force Discriminator</em>'.
+	 * @generated
+	 */
+	ForceDiscriminator createForceDiscriminator();
+
+	/**
+	 * Returns a new object of class '<em>Immutable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Immutable</em>'.
+	 * @generated
+	 */
+	Immutable createImmutable();
+
+	/**
+	 * Returns a new object of class '<em>Formula</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Formula</em>'.
+	 * @generated
+	 */
+	Formula createFormula();
 
 	/**
 	 * Returns the package supported by this factory.

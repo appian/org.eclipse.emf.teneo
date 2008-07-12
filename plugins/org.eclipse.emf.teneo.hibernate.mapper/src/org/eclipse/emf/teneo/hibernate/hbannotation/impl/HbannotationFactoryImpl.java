@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.11 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -96,6 +96,9 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.DISCRIMINATOR_FORMULA: return createDiscriminatorFormula();
 			case HbannotationPackage.NATURAL_ID: return createNaturalId();
 			case HbannotationPackage.MAP_KEY_MANY_TO_MANY: return createMapKeyManyToMany();
+			case HbannotationPackage.FORCE_DISCRIMINATOR: return createForceDiscriminator();
+			case HbannotationPackage.IMMUTABLE: return createImmutable();
+			case HbannotationPackage.FORMULA: return createFormula();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -346,6 +349,36 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	public MapKeyManyToMany createMapKeyManyToMany() {
 		MapKeyManyToManyImpl mapKeyManyToMany = new MapKeyManyToManyImpl();
 		return mapKeyManyToMany;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForceDiscriminator createForceDiscriminator() {
+		ForceDiscriminatorImpl forceDiscriminator = new ForceDiscriminatorImpl();
+		return forceDiscriminator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Immutable createImmutable() {
+		ImmutableImpl immutable = new ImmutableImpl();
+		return immutable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Formula createFormula() {
+		FormulaImpl formula = new FormulaImpl();
+		return formula;
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationAdapterFactory.java,v 1.9 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbannotationAdapterFactory.java,v 1.10 2008/07/12 13:10:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -176,6 +176,18 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMapKeyManyToMany(MapKeyManyToMany object) {
 				return createMapKeyManyToManyAdapter();
+			}
+			@Override
+			public Adapter caseForceDiscriminator(ForceDiscriminator object) {
+				return createForceDiscriminatorAdapter();
+			}
+			@Override
+			public Adapter caseImmutable(Immutable object) {
+				return createImmutableAdapter();
+			}
+			@Override
+			public Adapter caseFormula(Formula object) {
+				return createFormulaAdapter();
 			}
 			@Override
 			public Adapter casePAnnotation(PAnnotation object) {
@@ -520,6 +532,48 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMapKeyManyToManyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator <em>Force Discriminator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator
+	 * @generated
+	 */
+	public Adapter createForceDiscriminatorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Immutable <em>Immutable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Immutable
+	 * @generated
+	 */
+	public Adapter createImmutableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Formula <em>Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Formula
+	 * @generated
+	 */
+	public Adapter createFormulaAdapter() {
 		return null;
 	}
 

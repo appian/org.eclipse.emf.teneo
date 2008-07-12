@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.25 2008/06/29 20:08:58 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.26 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -134,7 +134,7 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 				PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
 				final Element keyPropertyElement = compositeIdElement.addElement("key-property");
 				keyPropertyElement.addAttribute("name", aFeature.getModelEStructuralFeature().getName());
-				addColumns(keyPropertyElement, aAttribute, getColumns(aAttribute), getHbmContext()
+				addColumnsAndFormula(keyPropertyElement, aAttribute, getColumns(aAttribute), getHbmContext()
 					.isCurrentElementFeatureMap(), false);
 				setType(aAttribute, keyPropertyElement);
 			} else if (aFeature instanceof PAnnotatedEReference &&
@@ -227,7 +227,7 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 
 		// if idclass != null then this is a composite id which can not have a unique constraint
 		// on an id column
-		addColumns(usedIdElement, id, columns, false, false, aClass.getIdClass() == null, true);
+		addColumnsAndFormula(usedIdElement, id, columns, false, false, aClass.getIdClass() == null, true);
 
 		usedIdElement.addAttribute("name", eAttribute.getName());
 		if (id.getEnumerated() == null) {

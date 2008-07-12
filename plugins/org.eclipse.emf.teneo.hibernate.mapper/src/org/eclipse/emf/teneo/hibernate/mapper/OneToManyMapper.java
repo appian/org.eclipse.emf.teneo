@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.32 2008/07/06 16:25:28 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.33 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -88,6 +88,10 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// EReferences
 		final Element collElement = addCollectionElement(paReference);
 		addAccessor(collElement);
+
+		if (hbReference.getImmutable() != null) {
+			collElement.addAttribute("mutable", "false");
+		}
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
 			addCacheElement(collElement, ((HbAnnotatedEReference) paReference).getHbCache());
@@ -216,6 +220,10 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addCacheElement(collElement, hbReference.getHbCache());
 		}
 
+		if (hbReference.getImmutable() != null) {
+			collElement.addAttribute("mutable", "false");
+		}
+
 		// MT: note inverse does not work correctly with hibernate for indexed
 		// collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
@@ -296,7 +304,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			Element collElement, String featureName, String targetEntity) {
 		if (isEObject(targetEntity)) { // anytype
 			final Element any = collElement.addElement("many-to-any").addAttribute("id-type", "long");
-			addColumns(any, paReference, getAnyTypeColumns(featureName, false), false, false);
+			addColumnsAndFormula(any, paReference, getAnyTypeColumns(featureName, false), false, false);
 			return any;
 		} else {
 			String tag = "one-to-many";

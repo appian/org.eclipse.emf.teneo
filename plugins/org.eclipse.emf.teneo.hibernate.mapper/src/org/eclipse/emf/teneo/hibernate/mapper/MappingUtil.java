@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.5 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.6 2008/07/12 13:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.mapper.OneToManyAttributeAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
+import org.eclipse.emf.teneo.annotations.mapper.SingleAttributeAnnotator;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
@@ -45,6 +46,7 @@ import org.eclipse.emf.teneo.hibernate.annotations.HbManyToOneReferenceAnnotator
 import org.eclipse.emf.teneo.hibernate.annotations.HbOneToManyAttributeAnnotator;
 import org.eclipse.emf.teneo.hibernate.annotations.HbOneToManyReferenceAnnotator;
 import org.eclipse.emf.teneo.hibernate.annotations.HbOneToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.hibernate.annotations.HbSingleAttributeAnnotator;
 import org.eclipse.emf.teneo.hibernate.annotations.HbXmlPersistenceMapper;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 
@@ -52,7 +54,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class MappingUtil {
 
@@ -106,6 +108,8 @@ public class MappingUtil {
 			HbEAnnotationParserImporter.class));
 		extensionManager.registerExtension(ExtensionUtil.createExtension(XmlPersistenceMapper.class,
 			HbXmlPersistenceMapper.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(SingleAttributeAnnotator.class,
+			HbSingleAttributeAnnotator.class));
 		extensionManager.registerExtension(ExtensionUtil
 			.createExtension(EClassAnnotator.class, HbEClassAnnotator.class));
 		extensionManager.registerExtension(ExtensionUtil.createExtension(EFeatureAnnotator.class,

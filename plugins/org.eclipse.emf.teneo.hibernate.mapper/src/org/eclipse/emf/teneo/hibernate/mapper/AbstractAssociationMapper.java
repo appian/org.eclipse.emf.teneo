@@ -338,7 +338,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref.getPaModel().getPAnnotated(keyFeature);
 			final Element mapKeyElement = collElement.addElement("map-key");
 			if (mapKey.getColumns() != null && mapKey.getColumns().size() > 0) {
-				addColumns(mapKeyElement, aref, mapKey.getColumns(), false, false, false, false);
+				addColumnsAndFormula(mapKeyElement, aref, mapKey.getColumns(), false, false, false, false);
 			}
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKey() != null) {
@@ -564,7 +564,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 // elElement = collElement.addElement("element").addAttribute("type", targetEntity);
 // }
 		if (columns != null && columns.size() > 0) {
-			addColumns(elElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), true);
+			addColumnsAndFormula(elElement, paAttribute, columns, getHbmContext().isCurrentElementFeatureMap(), true);
 		}
 		return elElement;
 	}

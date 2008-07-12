@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedETypeElement.java,v 1.10 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbAnnotatedETypeElement.java,v 1.11 2008/07/12 13:10:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Formula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
@@ -35,6 +36,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getHbIndex <em>Hb Index</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFilter <em>Filter</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getMapKeyManyToMany <em>Map Key Many To Many</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFormula <em>Formula</em>}</li>
  * </ul>
  * </p>
  *
@@ -255,5 +257,31 @@ public interface HbAnnotatedETypeElement extends PAnnotatedEStructuralFeature, H
 	 * @generated
 	 */
 	void setMapKeyManyToMany(MapKeyManyToMany value);
+
+	/**
+	 * Returns the value of the '<em><b>Formula</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Formula</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Formula</em>' reference.
+	 * @see #setFormula(Formula)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedETypeElement_Formula()
+	 * @model
+	 * @generated
+	 */
+	Formula getFormula();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement#getFormula <em>Formula</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Formula</em>' reference.
+	 * @see #getFormula()
+	 * @generated
+	 */
+	void setFormula(Formula value);
 
 } // HbAnnotatedETypeElement
