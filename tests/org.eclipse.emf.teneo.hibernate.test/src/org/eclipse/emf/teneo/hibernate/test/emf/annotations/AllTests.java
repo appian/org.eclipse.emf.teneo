@@ -47,12 +47,13 @@ import org.eclipse.emf.teneo.test.emf.annotations.SetResourceAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ToOneAction;
 import org.eclipse.emf.teneo.test.emf.annotations.TransientAction;
 import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
+import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.63 $
+ * @version $Revision: 1.64 $
  */
 public class AllTests {
 
@@ -61,11 +62,8 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
 
+		suite.addTestSuite(VariousAction.class);
 		suite.addTestSuite(PKeyJoinAction.class);
-
-		if (true) {
-			return suite;
-		}
 
 		suite.addTestSuite(HbMapKeysAction.class);
 		suite.addTestSuite(OnetoonePKAction.class);
