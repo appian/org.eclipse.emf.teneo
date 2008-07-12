@@ -444,7 +444,10 @@
 	 
 <ul>
 	 
-<li>StoreResource.SET_ERESOURCE (default): in this mode only the explicitly loaded objects are present in the contents of the resource
+<li>StoreResource.SET_ERESOURCE (default): in this mode the explicitly loaded objects are added to the resource. In addition referenced objects are added to the resource
+	 and will be managed by the resource.</li> 
+	 
+<li>StoreResource.NOT_SET_ERESOURCE: in this mode only the explicitly loaded objects are present in the contents of the resource
 	 (i.e. in the top of the resource content). Objects may be present as contained children of explicitly loaded objects. Objects references through non-containment
 	 relations are not added to the contents of a resource.</li>
 	 
@@ -460,7 +463,7 @@
 	 
 </div>
     
-<a name="N1009B"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
+<a name="N1009E"></a><a name="Sharing+one+Session+between+Resources%2C+One+transaction+when+saving+multiple+resources"></a>
 <div class="h3">
 <h3>Sharing one Session between Resources, One transaction when saving multiple resources</h3>
       
@@ -527,7 +530,7 @@
 		
 </div>
 		
-<a name="N100B5"></a><a name="Closing+a+resource"></a>
+<a name="N100B8"></a><a name="Closing+a+resource"></a>
 <div class="h3">
 <h3>Closing a resource</h3>
 	  		
@@ -539,7 +542,7 @@
 	
 </div>
 	
-<a name="N100BF"></a><a name="HibernateXMLResource"></a>
+<a name="N100C2"></a><a name="HibernateXMLResource"></a>
 <div class="h3">
 <h3>HibernateXMLResource</h3>
 	
@@ -551,12 +554,12 @@
 	
 </div>
     
-<a name="N100C8"></a><a name="Other+aspects"></a>
+<a name="N100CB"></a><a name="Other+aspects"></a>
 <div class="h3">
 <h3>Other aspects</h3>
       
 		
-<a name="N100CE"></a><a name="Resource+use+after+Hibernate+exception"></a>
+<a name="N100D1"></a><a name="Resource+use+after+Hibernate+exception"></a>
 <div class="h4">
 <h4>Resource use after Hibernate exception</h4>
 <p>When a Hibernate error/exception occurs when working with a Hibernate resource it can not
