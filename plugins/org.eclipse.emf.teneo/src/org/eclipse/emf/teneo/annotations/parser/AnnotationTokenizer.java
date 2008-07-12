@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.9 2008/06/10 10:07:08 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.10 2008/07/12 13:11:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -30,14 +30,19 @@ import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
  * 
  * @GenericGenerator(name="hibseq", strategy = "hilo", parameters = {
  * @Parameter(name="table", value = "hilo_table"),
- * @Parameter(name="column", value="the_hilo_column")} } )
+ * @Parameter(name="column", value="the_hilo_column")} )
  * 
- * Here GenericGenerator is a TypeName, name and strategy are Identifiers and "hilo_table" is a
- * value, the array is the part between the {}.
+ *                                                     Here GenericGenerator is a TypeName, name and
+ *                                                     strategy are Identifiers and "hilo_table" is
+ *                                                     a value, the array is the part between the
+ *                                                     {}.
  * 
- * There is a special case where the typename is actually a list of values, e.g. SecondaryTables.
- * These are treated as a special type of TypeName which is translated into a ComplexNode with
- * isList=true. This is currently only supported at the top level.
+ *                                                     There is a special case where the typename is
+ *                                                     actually a list of values, e.g.
+ *                                                     SecondaryTables. These are treated as a
+ *                                                     special type of TypeName which is translated
+ *                                                     into a ComplexNode with isList=true. This is
+ *                                                     currently only supported at the top level.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -229,7 +234,7 @@ class AnnotationTokenizer {
 							lChar == '/' || lChar == '@' || lChar == ':' || lChar == '=' || lChar == '(' ||
 							lChar == ')' || lChar == '{' || lChar == '}' || lChar == '\'' || lChar == '#' ||
 							lChar == '&' || lChar == '<' || lChar == '>' || lChar == '$' || lChar == ';' ||
-							lChar == '%' || lChar == '\'' || ('0' <= lChar && lChar <= '9') ||
+							lChar == '%' || lChar == '*' || lChar == '\'' || ('0' <= lChar && lChar <= '9') ||
 							('a' <= lChar && lChar <= 'z') || lChar == '?' || ('A' <= lChar && lChar <= 'Z'));
 
 					if (lChar != '"') {

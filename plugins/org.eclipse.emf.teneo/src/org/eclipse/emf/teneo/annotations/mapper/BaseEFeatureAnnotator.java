@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.9 2008/07/12 13:11:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -65,7 +65,9 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
+	 * @see
+	 * org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse
+	 * .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
