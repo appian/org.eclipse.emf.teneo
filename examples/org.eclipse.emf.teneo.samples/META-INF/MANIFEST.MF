@@ -574,7 +574,6 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.ecore.resource,
    org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.emf.annotations.set.validation;uses:="org.eclipse.emf.teneo.samples.emf.annotations.set,org.eclipse.emf.common.util",
- org.eclipse.emf.teneo.samples.emf.annotations.test,
  org.eclipse.emf.teneo.samples.emf.annotations.toone;uses:="org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.emf.annotations.toone.impl;
   uses:="org.eclipse.emf.ecore.impl,
@@ -625,6 +624,9 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
    org.eclipse.emf.ecore,
    org.eclipse.emf.ecore.resource",
  org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints.validation;uses:="org.eclipse.emf.teneo.samples.emf.annotations.uniqueconstraints",
+ org.eclipse.emf.teneo.samples.emf.annotations.various,
+ org.eclipse.emf.teneo.samples.emf.annotations.various.impl,
+ org.eclipse.emf.teneo.samples.emf.annotations.various.util,
  org.eclipse.emf.teneo.samples.emf.detach.detachelist;uses:="org.eclipse.emf.common.util,org.eclipse.emf.ecore",
  org.eclipse.emf.teneo.samples.emf.detach.detachelist.impl;
   uses:="org.eclipse.emf.ecore.impl,

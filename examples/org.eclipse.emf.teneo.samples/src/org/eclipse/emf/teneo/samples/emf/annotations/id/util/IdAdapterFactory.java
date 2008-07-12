@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdAdapterFactory.java,v 1.5 2007/11/15 14:48:27 mtaal Exp $
+ * $Id: IdAdapterFactory.java,v 1.6 2008/07/12 13:09:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.util;
 
@@ -64,7 +64,7 @@ public class IdAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
