@@ -205,6 +205,13 @@
         <details key="annotationClass" value="javax.persistence.PrimaryKeyJoinColumns"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="associationOverrides" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//AssociationOverride" containment="true">
+      <eAnnotations source="elver.jpa">
+        <details key="annotationName" value="AssociationOverrides"/>
+        <details key="annotationClass" value="javax.persistence.AssociationOverrides"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedETypedElement" abstract="true"
       eSuperTypes="#//PAnnotatedEModelElement">

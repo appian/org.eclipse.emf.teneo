@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.25 2008/04/12 11:48:42 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.26 2008/07/13 13:12:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
@@ -117,7 +117,7 @@ public class PamodelValidator extends EObjectValidator {
 				return validatePAnnotatedETypedElement((PAnnotatedETypedElement)value, diagnostics, context);
 			case PamodelPackage.PANNOTATED_EDATA_TYPE:
 				return validatePAnnotatedEDataType((PAnnotatedEDataType)value, diagnostics, context);
-			default: 
+			default:
 				return true;
 		}
 	}
@@ -154,12 +154,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "PAnnotationElementCommutes", getObjectLabel(pAnnotatedEModelElement, context) }),
-						 new Object[] { pAnnotatedEModelElement }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "PAnnotationElementCommutes", getObjectLabel(pAnnotatedEModelElement, context) },
+						 new Object[] { pAnnotatedEModelElement },
+						 context));
 			}
 			return false;
 		}
@@ -198,12 +200,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AtMostOnePackage", getObjectLabel(pAnnotatedModel, context) }),
-						 new Object[] { pAnnotatedModel }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AtMostOnePackage", getObjectLabel(pAnnotatedModel, context) },
+						 new Object[] { pAnnotatedModel },
+						 context));
 			}
 			return false;
 		}
@@ -226,12 +230,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "DistinctGenerators", getObjectLabel(pAnnotatedModel, context) }),
-						 new Object[] { pAnnotatedModel }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "DistinctGenerators", getObjectLabel(pAnnotatedModel, context) },
+						 new Object[] { pAnnotatedModel },
+						 context));
 			}
 			return false;
 		}
@@ -270,12 +276,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AtMostOneEClass", getObjectLabel(pAnnotatedEPackage, context) }),
-						 new Object[] { pAnnotatedEPackage }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AtMostOneEClass", getObjectLabel(pAnnotatedEPackage, context) },
+						 new Object[] { pAnnotatedEPackage },
+						 context));
 			}
 			return false;
 		}
@@ -323,12 +331,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "SameEFeatures", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "SameEFeatures", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -349,12 +359,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EPackageCommutes", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EPackageCommutes", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -376,12 +388,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -402,12 +416,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EntityOrEmbeddableOrMappedSuper", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EntityOrEmbeddableOrMappedSuper", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -430,12 +446,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "OverriddenAreDefined", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "OverriddenAreDefined", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -457,12 +475,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperInheritance", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperInheritance", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -485,12 +505,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperDiscriminator", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperDiscriminator", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -511,12 +533,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "SingleTableForSingleStrategy", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "SingleTableForSingleStrategy", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -538,12 +562,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "ProperPKJoin", getObjectLabel(pAnnotatedEClass, context) }),
-						 new Object[] { pAnnotatedEClass }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperPKJoin", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
 			}
 			return false;
 		}
@@ -584,12 +610,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedEStructuralFeature, context) }),
-						 new Object[] { pAnnotatedEStructuralFeature }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedEStructuralFeature, context) },
+						 new Object[] { pAnnotatedEStructuralFeature },
+						 context));
 			}
 			return false;
 		}
@@ -612,12 +640,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedEStructuralFeature, context) }),
-						 new Object[] { pAnnotatedEStructuralFeature }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedEStructuralFeature, context) },
+						 new Object[] { pAnnotatedEStructuralFeature },
+						 context));
 			}
 			return false;
 		}
@@ -661,12 +691,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEAttribute, context) }),
-						 new Object[] { pAnnotatedEAttribute }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
 			}
 			return false;
 		}
@@ -688,12 +720,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEAttribute, context) }),
-						 new Object[] { pAnnotatedEAttribute }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
 			}
 			return false;
 		}
@@ -714,12 +748,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEAttribute, context) }),
-						 new Object[] { pAnnotatedEAttribute }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
 			}
 			return false;
 		}
@@ -740,12 +776,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEAttribute, context) }),
-						 new Object[] { pAnnotatedEAttribute }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
 			}
 			return false;
 		}
@@ -787,12 +825,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEDataType, context) }),
-						 new Object[] { pAnnotatedEDataType }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
 			}
 			return false;
 		}
@@ -813,12 +853,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEDataType, context) }),
-						 new Object[] { pAnnotatedEDataType }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
 			}
 			return false;
 		}
@@ -839,12 +881,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEDataType, context) }),
-						 new Object[] { pAnnotatedEDataType }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
 			}
 			return false;
 		}
@@ -865,16 +909,32 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEDataType, context) }),
-						 new Object[] { pAnnotatedEDataType }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
 			}
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		// TODO
+		// Specialize this to return a resource locator for messages specific to this validator.
+		// Ensure that you remove @generated or mark it @generated NOT
+		return super.getResourceLocator();
 	}
 
 	/**
@@ -913,12 +973,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "NotAnnotatedAsEmbed", getObjectLabel(pAnnotatedEReference, context) }),
-						 new Object[] { pAnnotatedEReference }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NotAnnotatedAsEmbed", getObjectLabel(pAnnotatedEReference, context) },
+						 new Object[] { pAnnotatedEReference },
+						 context));
 			}
 			return false;
 		}
@@ -939,12 +1001,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AssociationAgreeWithReference", getObjectLabel(pAnnotatedEReference, context) }),
-						 new Object[] { pAnnotatedEReference }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AssociationAgreeWithReference", getObjectLabel(pAnnotatedEReference, context) },
+						 new Object[] { pAnnotatedEReference },
+						 context));
 			}
 			return false;
 		}
@@ -965,12 +1029,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "AssociationWellFormed", getObjectLabel(pAnnotatedEReference, context) }),
-						 new Object[] { pAnnotatedEReference }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AssociationWellFormed", getObjectLabel(pAnnotatedEReference, context) },
+						 new Object[] { pAnnotatedEReference },
+						 context));
 			}
 			return false;
 		}
@@ -1010,12 +1076,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedETypedElement, context) }),
-						 new Object[] { pAnnotatedETypedElement }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedETypedElement, context) },
+						 new Object[] { pAnnotatedETypedElement },
+						 context));
 			}
 			return false;
 		}
@@ -1036,12 +1104,14 @@ public class PamodelValidator extends EObjectValidator {
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
+					(createDiagnostic
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedETypedElement, context) }),
-						 new Object[] { pAnnotatedETypedElement }));
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedETypedElement, context) },
+						 new Object[] { pAnnotatedETypedElement },
+						 context));
 			}
 			return false;
 		}

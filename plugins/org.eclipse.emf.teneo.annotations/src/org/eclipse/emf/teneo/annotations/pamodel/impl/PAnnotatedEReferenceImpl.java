@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceImpl.java,v 1.14 2008/01/29 12:58:06 mtaal Exp $
+ * $Id: PAnnotatedEReferenceImpl.java,v 1.15 2008/07/13 13:12:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
+import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
@@ -44,6 +45,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOneToOne <em>One To One</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderBy <em>Order By</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getAssociationOverrides <em>Association Overrides</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,6 +125,16 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @ordered
 	 */
 	protected EList<PrimaryKeyJoinColumn> primaryKeyJoinColumns;
+
+	/**
+	 * The cached value of the '{@link #getAssociationOverrides() <em>Association Overrides</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssociationOverrides()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AssociationOverride> associationOverrides;
 
 	/** The pannotated eclass to which the reference is pointing */
 	private PAnnotatedEClass areferenceType = null;
@@ -478,6 +490,18 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<AssociationOverride> getAssociationOverrides() {
+		if (associationOverrides == null) {
+			associationOverrides = new EObjectContainmentEList<AssociationOverride>(AssociationOverride.class, this, PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES);
+		}
+		return associationOverrides;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -500,6 +524,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return basicSetOrderBy(null, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				return ((InternalEList<?>)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES:
+				return ((InternalEList<?>)getAssociationOverrides()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -530,6 +556,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return getOrderBy();
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				return getPrimaryKeyJoinColumns();
+			case PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES:
+				return getAssociationOverrides();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -567,6 +595,10 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				getPrimaryKeyJoinColumns().clear();
 				getPrimaryKeyJoinColumns().addAll((Collection<? extends PrimaryKeyJoinColumn>)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES:
+				getAssociationOverrides().clear();
+				getAssociationOverrides().addAll((Collection<? extends AssociationOverride>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -602,6 +634,9 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				getPrimaryKeyJoinColumns().clear();
 				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES:
+				getAssociationOverrides().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -631,6 +666,8 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl i
 				return orderBy != null;
 			case PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS:
 				return primaryKeyJoinColumns != null && !primaryKeyJoinColumns.isEmpty();
+			case PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES:
+				return associationOverrides != null && !associationOverrides.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

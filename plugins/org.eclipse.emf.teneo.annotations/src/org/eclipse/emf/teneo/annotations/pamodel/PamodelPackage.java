@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.16 2008/01/18 06:20:56 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.17 2008/07/13 13:12:49 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -1018,13 +1018,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
+	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Model Element</b></em>' reference.
@@ -1796,6 +1805,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEReference_PrimaryKeyJoinColumns();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getAssociationOverrides <em>Association Overrides</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Association Overrides</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getAssociationOverrides()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_AssociationOverrides();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement <em>PAnnotated ETyped Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2422,6 +2442,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEReference_PrimaryKeyJoinColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Association Overrides</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES = eINSTANCE.getPAnnotatedEReference_AssociationOverrides();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.
