@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.17 2008/05/27 07:42:29 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.18 2008/07/13 13:12:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -48,6 +48,7 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 		getHbmContext().pushOverrideOnStack();
 		// and add our own
 		getHbmContext().addAttributeOverrides(paReference.getAttributeOverrides());
+		getHbmContext().addAssociationOverrides(paReference.getAssociationOverrides());
 
 		// push the feature is used for automatic renaming
 		getHbmContext().pushEmbeddingFeature(paReference);
@@ -84,7 +85,13 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 
 		// todo: change recognizing a component to using metadata!
 		// then the class tag can point to a real impl. class@
-		componentElement.addAttribute("class", getHbmContext().getInstanceClassName(target)); // implClass.getName());
+		componentElement.addAttribute("class", getHbmContext().getInstanceClassName(target)); // implClass
+																								// .
+																								// getName
+																								// (
+																								// )
+																								// )
+																								// ;
 		getHbmContext().setCurrent(componentElement);
 		try {
 			// process the features of the target

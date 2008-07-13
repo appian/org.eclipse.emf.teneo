@@ -133,6 +133,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 						joinColumn.isNullable() || forceNullable ? "false" : "true").addAttribute("unique",
 						joinColumn.isUnique() ? "true" : "false");
 			if (joinColumn.getName() != null) {
+
 				columnElement.addAttribute("name", getHbmContext().trunc(joinColumn.getName()));
 				final String uc = getHbmContext().getUniqueConstraintKey(joinColumn.getName());
 				if (uc != null) {

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ClassicMappingContext.java,v 1.5 2008/05/27 07:42:29 mtaal Exp $
+ * </copyright> $Id: ClassicMappingContext.java,v 1.6 2008/07/13 13:12:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper.classic;
@@ -16,7 +16,7 @@ import org.eclipse.emf.teneo.hibernate.mapper.MappingContext;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class ClassicMappingContext extends MappingContext {
 
@@ -42,9 +42,9 @@ public class ClassicMappingContext extends MappingContext {
 		if (currentAFeature != null) {
 			boolean override = false;
 			if (currentAFeature instanceof PAnnotatedEAttribute) {
-				override = getOverride((PAnnotatedEAttribute) currentAFeature) != null;
+				override = getAttributeOverride((PAnnotatedEAttribute) currentAFeature) != null;
 			} else {
-				override = getOverride((PAnnotatedEReference) currentAFeature) != null;
+				override = getAssociationOverrides((PAnnotatedEReference) currentAFeature) != null;
 			}
 
 			final String otherEntityName = getEntityName(currentEFeature.getEContainingClass(), false);

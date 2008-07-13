@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.39 2008/07/12 13:10:34 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.40 2008/07/13 13:12:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -347,7 +347,7 @@ public abstract class AbstractMapper {
 	 * list if no JoinColumns were defined.
 	 */
 	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
-		List<JoinColumn> joinColumns = getHbmContext().getOverride(paReference);
+		List<JoinColumn> joinColumns = getHbmContext().getAssociationOverrides(paReference);
 		if (joinColumns == null) {
 			return paReference.getJoinColumns();
 		}
@@ -459,7 +459,7 @@ public abstract class AbstractMapper {
 	 */
 	protected List<Column> getColumns(PAnnotatedEAttribute paAttribute) {
 		final Column defaultColumn = paAttribute.getColumn();
-		final Column oc = getHbmContext().getOverride(paAttribute);
+		final Column oc = getHbmContext().getAttributeOverride(paAttribute);
 
 		if (oc != null) {
 			final ArrayList<Column> result = new ArrayList<Column>();

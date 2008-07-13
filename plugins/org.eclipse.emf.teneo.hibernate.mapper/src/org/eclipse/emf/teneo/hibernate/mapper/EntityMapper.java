@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.37 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.38 2008/07/13 13:12:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -18,14 +18,19 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -249,9 +254,10 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		Element entityElement =
 				createEntity(entity, entity.getInheritanceStrategy(), entity.getPaSuperEntity(), entity
 					.getDiscriminatorValue(), entity.getTable());
+		final MappingContext mc = getHbmContext();
 
-		getHbmContext().setCurrent(entityElement);
-		getHbmContext().setCurrentTable(entity.getTable());
+		mc.setCurrent(entityElement);
+		mc.setCurrentTable(entity.getTable());
 		// MT: moved to processFeatures method because this should be done after
 		// the id
 		// element has been placed
@@ -269,28 +275,23 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		} else if (entity.getPaSuperEntity() != null && InheritanceType.JOINED.equals(entity.getInheritanceStrategy())) {
 			final ArrayList<PrimaryKeyJoinColumn> list = new ArrayList<PrimaryKeyJoinColumn>();
 			final PrimaryKeyJoinColumn pkjc = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-			final String entityName = getHbmContext().getEntityName(entity.getModelEClass());
-			getHbmContext().trunc(entityName + "id"); // TODO improve name
+			final String entityName = mc.getEntityName(entity.getModelEClass());
+			mc.trunc(entityName + "id"); // TODO improve name
 			// creation here
 			list.add(pkjc);
 			addPrimaryKeyJoinColumn(list, entity);
 		}
 
 		try {
-			final List<PAnnotatedEStructuralFeature> inheritedFeatures = getHbmContext().getInheritedFeatures(entity);
+			final List<PAnnotatedEStructuralFeature> inheritedFeatures = mc.getInheritedFeatures(entity);
 
-			getHbmContext().setForceOptional(
-				entity.getPaSuperEntity() != null &&
-						(entity.getInheritanceStrategy() == null || InheritanceType.SINGLE_TABLE.equals(entity
-							.getInheritanceStrategy())));
+			mc.setForceOptional(entity.getPaSuperEntity() != null &&
+					(entity.getInheritanceStrategy() == null || InheritanceType.SINGLE_TABLE.equals(entity
+						.getInheritanceStrategy())));
 
-			getHbmContext().pushOverrideOnStack();
-			if (entity.getAttributeOverrides() != null) {
-				getHbmContext().addAttributeOverrides(entity.getAttributeOverrides());
-			}
-			if (entity.getAssociationOverrides() != null) {
-				getHbmContext().addAssociationOverrides(entity.getAssociationOverrides());
-			}
+			mc.pushOverrideOnStack();
+			mc.addAttributeOverrides(entity.getAttributeOverrides());
+			mc.addAssociationOverrides(entity.getAssociationOverrides());
 
 			if (inheritedFeatures.size() > 0) {
 				log.debug("There are " + inheritedFeatures.size() + " inherited features ");
@@ -298,21 +299,21 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 			try {
 				processFeatures(inheritedFeatures);
-			} finally {
-				getHbmContext().popOverrideStack();
-			}
 
-			final EList<SecondaryTable> secondaryTables = entity.getSecondaryTables();
-			if (secondaryTables == null || secondaryTables.isEmpty()) {
-				// Process features normally.
-				processFeatures(entity.getPaEStructuralFeatures());
-			} else {
-				// Special processing needed for secondary tables.
-				processSecondaryTables(secondaryTables, entity);
+				final EList<SecondaryTable> secondaryTables = entity.getSecondaryTables();
+				if (secondaryTables == null || secondaryTables.isEmpty()) {
+					// Process features normally.
+					processFeatures(entity.getPaEStructuralFeatures());
+				} else {
+					// Special processing needed for secondary tables.
+					processSecondaryTables(secondaryTables, entity);
+				}
+			} finally {
+				mc.popOverrideStack();
 			}
 		} finally {
-			getHbmContext().setForceOptional(false);
-			getHbmContext().setCurrentTable(null);
+			mc.setForceOptional(false);
+			mc.setCurrentTable(null);
 			Element idElement = entityElement.element("id");
 			if (idElement == null) {
 				idElement = entityElement.element("composite-id");
@@ -321,7 +322,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			// create a synthetic id for roots
 			if (idElement == null && entity.getPaSuperEntity() == null && entity.getPaMappedSupers().size() == 0) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
-			} else if (getHbmContext().mustAddSyntheticID(entity)) {
+			} else if (mc.mustAddSyntheticID(entity)) {
 				idElement = IdMapper.addSyntheticId(hbmContext, entityElement);
 			} else {
 				addAccessor(idElement, hbmContext.getIdPropertyHandlerName());
@@ -354,7 +355,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 			mapFilter(entityElement, ((HbAnnotatedEClass) entity).getFilter());
 
-			getHbmContext().setCurrent(entityElement.getParent());
+			mc.setCurrent(entityElement.getParent());
 
 			// now process the featuremap entries if any
 			processFeatureMapFeatures();
@@ -376,7 +377,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		// place the tuplizer at the front
-		getHbmContext().addTuplizerElement(entityElement, entity);
+		mc.addTuplizerElement(entityElement, entity);
 
 		if ((entity.getPaSuperEntity() == null || entity.getPaSuperEntity().getMappedSuperclass() != null) &&
 				((HbAnnotatedEClass) entity).getHbCache() != null) {
@@ -475,7 +476,9 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		final Map<String, List<PAnnotatedEStructuralFeature>> featuresByTable =
 				new HashMap<String, List<PAnnotatedEStructuralFeature>>();
 		for (PAnnotatedEStructuralFeature feature : entity.getPaEStructuralFeatures()) {
+			// find the table for the feature
 			final String tableName = getSecondaryTableName(feature);
+			// if there put it in the correct list
 			if (!tableNames.contains(tableName)) {
 				final String message =
 						"Feature \"" + feature.getModelElement().getName() +
@@ -528,11 +531,11 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			}
 			entity.getModelEClass().getEIDAttribute();
 			final List<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable.getPkJoinColumns();
+			final Element keyElement = joinElement.addElement("key");
 			for (PrimaryKeyJoinColumn pkJoinColumn : pkJoinColumns) {
-				final Element keyElement = joinElement.addElement("key");
-				keyElement.addAttribute("column", getHbmContext().trunc(pkJoinColumn.getName()));
-				handleOndelete(keyElement, ((HbAnnotatedEClass) entity).getHbOnDelete());
+				keyElement.addElement("column").addAttribute("name", getHbmContext().trunc(pkJoinColumn.getName()));
 			}
+			handleOndelete(keyElement, ((HbAnnotatedEClass) entity).getHbOnDelete());
 
 			// Process features in this secondary table.
 			try {
@@ -549,14 +552,63 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 	}
 
 	/**
-	 * Returns the table name from the column annotation or the joincolumn annotation
+	 * Returns the table name from the column annotation or the joincolumn annotation Also takes
+	 * associationoverride or attributeoverride into account
 	 */
 	public String getSecondaryTableName(PAnnotatedEStructuralFeature pef) {
 		String tableName = null;
-		if (pef.getColumn() != null) {
-			tableName = pef.getColumn().getTable();
-		} else if (pef.getJoinColumns() != null && !pef.getJoinColumns().isEmpty()) {
-			tableName = (pef.getJoinColumns().get(0)).getTable();
+
+		if (pef instanceof PAnnotatedEAttribute) {
+			final PAnnotatedEAttribute pea = (PAnnotatedEAttribute) pef;
+			Column c = getHbmContext().getAttributeOverride(pea);
+			if (c == null) {
+				c = pef.getColumn();
+			}
+			if (c != null) {
+				tableName = c.getTable();
+			}
+		} else {
+			final PAnnotatedEReference per = (PAnnotatedEReference) pef;
+			final MappingContext mc = getHbmContext();
+			mc.pushOverrideOnStack();
+			mc.addAttributeOverrides(per.getAttributeOverrides());
+			mc.addAssociationOverrides(per.getAssociationOverrides());
+
+			try {
+				if (per.getEmbedded() != null) {
+					// check the embedded efeatures
+					// take the first feature of the target type
+					// assume that they are all handled in the same table
+					final EClass eClass = per.getModelEReference().getEReferenceType();
+					for (EAttribute ea : eClass.getEAllAttributes()) {
+						final Column c = mc.getAttributeOverride(ea.getName());
+						if (c != null && c.getTable() != null) {
+							return c.getTable();
+						}
+					}
+					for (EReference er : eClass.getEAllReferences()) {
+						final List<JoinColumn> jcs = mc.getAssociationOverrides(er.getName());
+						if (jcs != null && jcs.size() > 0) {
+							return jcs.get(0).getTable();
+						}
+					}
+				} else {
+					List<JoinColumn> jcs = getHbmContext().getAssociationOverrides(per);
+					if (jcs == null || jcs.size() == 0) {
+						jcs = per.getJoinColumns();
+					}
+					if (jcs != null && jcs.size() > 0) {
+						for (JoinColumn jc : jcs) {
+							if (jc.getTable() != null) {
+								tableName = jc.getTable();
+								break;
+							}
+						}
+					}
+				}
+			} finally {
+				getHbmContext().popOverrideStack();
+			}
 		}
 		return tableName;
 	}
