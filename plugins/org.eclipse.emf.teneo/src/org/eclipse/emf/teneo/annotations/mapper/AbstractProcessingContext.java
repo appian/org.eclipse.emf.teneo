@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractProcessingContext.java,v 1.6 2008/03/17 23:54:11 mtaal Exp $
+ * $Id: AbstractProcessingContext.java,v 1.7 2008/07/13 13:12:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
  * ProcessingContext which handles attributes overrides.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class AbstractProcessingContext {
@@ -121,19 +121,48 @@ public class AbstractProcessingContext {
 	}
 
 	/** Return the overridden column for the passed attribute */
-	public Column getOverride(PAnnotatedEAttribute paAttribute) {
-		return (Column) currentOverrides.get(paAttribute.getModelEAttribute().getName());
-	}
-
-	/** Return the overridden JoinColumns for this reference */
-	@SuppressWarnings("unchecked")
-	public EList<JoinColumn> getOverride(PAnnotatedEReference paReference) {
-		return (EList<JoinColumn>) currentOverrides.get(paReference.getModelEReference().getName());
+	public Column getAttributeOverride(PAnnotatedEAttribute paAttribute) {
+		return getAttributeOverride(paAttribute.getModelEAttribute().getName());
 	}
 
 	/** Return the overridden Joincolumns for the indicated featureName */
-	public Column getOverride(String featureName) {
-		return (Column) currentOverrides.get(featureName);
+	public Column getAttributeOverride(String featureName) {
+		final Column c = (Column) currentOverrides.get(featureName);
+		if (c == null) {
+			final Object o = getFromStack(featureName);
+			if (o != null && o instanceof Column) {
+				return (Column) o;
+			}
+		}
+		return c;
+	}
+
+	/** Return the overridden JoinColumns for this reference */
+	public List<JoinColumn> getAssociationOverrides(PAnnotatedEReference paReference) {
+		return getAssociationOverrides(paReference.getModelEReference().getName());
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<JoinColumn> getAssociationOverrides(String featureName) {
+		final List<JoinColumn> jcs = (List<JoinColumn>) currentOverrides.get(featureName);
+		if (jcs == null) {
+			final Object o = getFromStack(featureName);
+			if (o instanceof List<?>) {
+				return (List<JoinColumn>) o;
+			}
+		}
+		return jcs;
+	}
+
+	private Object getFromStack(String name) {
+		for (int i = (overrideStack.size() - 1); i >= 0; i--) {
+			final Map<String, Object> checkOverride = overrideStack.get(i);
+			final Object o = checkOverride.get(name);
+			if (o != null) {
+				return o;
+			}
+		}
+		return null;
 	}
 
 	/**

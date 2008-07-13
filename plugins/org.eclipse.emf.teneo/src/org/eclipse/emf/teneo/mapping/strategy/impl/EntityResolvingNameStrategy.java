@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.7 2008/05/02 06:09:10 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.8 2008/07/13 13:12:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the eclass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
@@ -83,7 +83,6 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 		// check if there is an entity annotation on the eclass with a name set
 		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(eClass);
 		if (aClass == null) {
-			System.err.println("TeST");
 			return eClass.getName();
 		}
 		if (aClass.getEntity() != null && aClass.getEntity().getName() != null) {
@@ -188,7 +187,9 @@ public class EntityResolvingNameStrategy implements EntityNameStrategy {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see
+	 * org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf
+	 * .teneo.extension.ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
