@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EDataTypeAction.java,v 1.8 2008/05/27 07:42:12 mtaal Exp $
+ * $Id: EDataTypeAction.java,v 1.9 2008/07/13 13:13:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class EDataTypeAction extends AbstractTestAction {
 	/**
@@ -91,7 +91,6 @@ public class EDataTypeAction extends AbstractTestAction {
 			if (!(store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter)) {
 				assertTrue("The length of the booktitle should not be more than 25: " + book.getTitle().length(), book
 					.getTitle().length() <= 25);
-				System.err.println(book.getWeight().doubleValue());
 				assertTrue("Only a precision of 5 is defined, so weight is not correctly stored as it has more digits",
 					Math.abs(testDbl.subtract(book.getWeight()).doubleValue()) > 1.0);
 			}

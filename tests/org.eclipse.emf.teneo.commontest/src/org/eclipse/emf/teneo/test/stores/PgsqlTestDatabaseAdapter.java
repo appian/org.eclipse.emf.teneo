@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PgsqlTestDatabaseAdapter.java,v 1.4 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: PgsqlTestDatabaseAdapter.java,v 1.5 2008/07/13 13:13:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.stores;
@@ -27,15 +27,16 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.test.StoreTestException;
 
 /**
- * Test database adapter for postgressql. Overrides the database create and drop actions because these require the database name in the
- * url.
+ * Test database adapter for postgressql. Overrides the database create and drop actions because
+ * these require the database name in the url.
  * 
- * The specific issue with the test environment was that at start and cleanup of the test (create and drop of the database), postgresql
- * apparently does not release closed connections quick enough. Therefore create or drop database failed sometimes. Therefore a very
- * rough workaround has been implemented, i.e. the drop/create is retried a number of times before failing.
+ * The specific issue with the test environment was that at start and cleanup of the test (create
+ * and drop of the database), postgresql apparently does not release closed connections quick
+ * enough. Therefore create or drop database failed sometimes. Therefore a very rough workaround has
+ * been implemented, i.e. the drop/create is retried a number of times before failing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
@@ -48,11 +49,13 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 	/** The amount of milliseconds to wait for postgres to nicely clean up connections */
 	// private static long WAIT_TIME = 10000;
 	/** Sets the dbName */
+	@Override
 	public void setDbName(String databaseName) {
 		super.setDbName(databaseName.toLowerCase());
 	}
 
 	/** Drops the database and creates a new one */
+	@Override
 	public void createDatabase() {
 		try {
 			log.info("Creating database: " + logInfo);
@@ -73,18 +76,25 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 							tries++;
 							stmt = conn.createStatement();
 							stmt.execute("CREATE DATABASE " + dbName + ";");
-							//conn.commit();
+							// conn.commit();
 							return;
 						} catch (Exception e) {
 							Thread.sleep(500);
-							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName()
-									+ "), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
-							// log.warn("Waiting for " + WAIT_TIME + " milli seconds on postgresql to release connections");
-							// wait(WAIT_TIME);							
-							if (tries == NO_TRIES) throw e;
+							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName() +
+									"), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
+							// log.warn("Waiting for " + WAIT_TIME +
+							// " milli seconds on postgresql to release connections");
+							// wait(WAIT_TIME);
+							if (tries == NO_TRIES) {
+								throw e;
+							}
 						} finally {
-							if (stmt != null) stmt.close();
-							if (conn != null) conn.close();
+							if (stmt != null) {
+								stmt.close();
+							}
+							if (conn != null) {
+								conn.close();
+							}
 							conn = driver.connect(useUrl, info);
 						}
 					}
@@ -103,9 +113,10 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 	}
 
 	/**
-	 * Drops the database, uses the conn.getMetaData().getCatalogs() method to determine if the database already exists. This should be
-	 * supported by the database driver.
+	 * Drops the database, uses the conn.getMetaData().getCatalogs() method to determine if the
+	 * database already exists. This should be supported by the database driver.
 	 */
+	@Override
 	public void dropDatabase() {
 		try {
 			final Driver driver = (Driver) Class.forName(dbDriver).newInstance();
@@ -125,7 +136,9 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 				boolean exists = false;
 				while (rs.next()) {
 					exists |= dbName.compareTo(rs.getString("datname")) == 0;
-					if (exists) break;
+					if (exists) {
+						break;
+					}
 				}
 				rs.close();
 				stmt.close();
@@ -136,24 +149,30 @@ public class PgsqlTestDatabaseAdapter extends BaseTestDatabaseAdapter {
 							tries++;
 							stmt = conn.createStatement();
 							stmt.execute("DROP DATABASE " + dbName + ";");
-							//conn.commit();
+							// conn.commit();
 							return;
 						} catch (Exception e) {
-							System.err.println(e.getMessage());
 							Thread.sleep(500);
-							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName()
-									+ "), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
-							// log.warn("Waiting for " + WAIT_TIME + " milli seconds on postgresql to release connections");
-							// wait(WAIT_TIME);							
-							if (tries == NO_TRIES) throw e;
+							log.warn("Exception (" + e.getMessage() + ") while creating database (" + getDbName() +
+									"), num of tries: " + tries + ", the create database gives up at: " + NO_TRIES);
+							// log.warn("Waiting for " + WAIT_TIME +
+							// " milli seconds on postgresql to release connections");
+							// wait(WAIT_TIME);
+							if (tries == NO_TRIES) {
+								throw e;
+							}
 						} finally {
-							if (stmt != null) stmt.close();
-							if (conn != null) conn.close();
+							if (stmt != null) {
+								stmt.close();
+							}
+							if (conn != null) {
+								conn.close();
+							}
 							conn = driver.connect(useUrl, info);
 						}
 					}
 				}
-				//conn.commit();
+				// conn.commit();
 				return;
 			} finally {
 				if (stmt != null) {
