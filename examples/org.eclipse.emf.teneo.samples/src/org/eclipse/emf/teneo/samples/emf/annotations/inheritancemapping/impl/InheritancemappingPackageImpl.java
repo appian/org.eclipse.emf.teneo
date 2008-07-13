@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.8 2008/03/12 07:30:27 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.9 2008/07/13 13:12:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -694,7 +694,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		  (addressEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Inheritance(strategy=JOINED)\n\t\t\t"
+			 "appinfo", "@Inheritance(strategy=JOINED)\n\t\t\t"
 		   });		
 		addAnnotation
 		  (getAddress_Name(), 

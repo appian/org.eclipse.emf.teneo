@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Address.java,v 1.3 2007/02/05 16:13:45 mtaal Exp $
+ * $Id: Address.java,v 1.4 2008/07/13 13:12:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.InheritancemappingPackage#getAddress()
  * @model abstract="true"
  *        extendedMetaData="name='Address' kind='elementOnly'"
- *        annotation="teneo.jpa appinfo='\n\t\t\t\t@Inheritance(strategy=JOINED)\n\t\t\t'"
+ *        annotation="teneo.jpa appinfo='@Inheritance(strategy=JOINED)\n\t\t\t'"
  * @generated
  */
 public interface Address extends EObject {

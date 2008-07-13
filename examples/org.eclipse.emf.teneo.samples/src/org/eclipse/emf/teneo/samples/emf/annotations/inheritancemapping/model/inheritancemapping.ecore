@@ -10,7 +10,7 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Inheritance(strategy=JOINED)&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="appinfo" value="@Inheritance(strategy=JOINED)&#xA;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">

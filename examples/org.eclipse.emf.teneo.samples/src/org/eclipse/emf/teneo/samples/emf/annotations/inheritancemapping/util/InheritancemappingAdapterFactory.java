@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingAdapterFactory.java,v 1.5 2008/03/12 07:30:27 mtaal Exp $
+ * $Id: InheritancemappingAdapterFactory.java,v 1.6 2008/07/13 13:12:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.util;
 
@@ -64,7 +64,7 @@ public class InheritancemappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
