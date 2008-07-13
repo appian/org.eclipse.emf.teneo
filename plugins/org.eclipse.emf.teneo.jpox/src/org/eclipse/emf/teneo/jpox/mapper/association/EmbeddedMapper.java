@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.10 2008/02/28 07:09:03 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.11 2008/07/13 13:12:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.association;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
@@ -42,6 +42,7 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 
 		mappingContext.pushOverrideOnStack();
 		mappingContext.addAttributeOverrides(aReference.getAttributeOverrides());
+		mappingContext.addAssociationOverrides(aReference.getAssociationOverrides());
 
 		EReference eReference = aReference.getModelEReference();
 		if (eReference.isMany() || eReference.getEOpposite() != null || aReference.getAttributeOverrides().size() > 0) {

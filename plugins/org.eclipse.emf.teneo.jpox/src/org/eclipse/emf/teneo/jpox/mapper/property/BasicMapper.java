@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BasicMapper.java,v 1.12 2008/02/28 07:09:04 mtaal Exp $
+ * $Id: BasicMapper.java,v 1.13 2008/07/13 13:12:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.mapper.property;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * The abstract class for different mappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class BasicMapper extends AbstractMapper implements ExtensionPoint {
@@ -57,7 +57,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		// handle the column
-		Column overridden = mappingContext.getOverride(aAttribute);
+		Column overridden = mappingContext.getAttributeOverride(aAttribute);
 		if (overridden != null) {
 			mappingContext.getColumnMapper().map(overridden, field);
 		} else if (aAttribute.getColumn() != null) {
