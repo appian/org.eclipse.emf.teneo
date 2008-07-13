@@ -52,12 +52,14 @@
 			<xsd:element name="discriminator-value" type="xsd:string"/>
 			<xsd:element name="embeddable" type="Embeddable"/>
 			<xsd:element name="entity" type="Entity"/>
+			<xsd:element name="force-discriminator" type="ForceDiscriminator"/>
 			<xsd:element name="cache" type="Cache"/>
 			<xsd:element name="named-query" type="NamedQuery"/>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="proxy" type="Proxy"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="id-class" type="xsd:string"/>
+			<xsd:element name="immutable" type="Immutable"/>
 			<xsd:element name="inheritance" type="InheritanceType"/>
 			<xsd:element name="mapped-superclass" type="MappedSuperclass"/>
 			<xsd:element name="primary-key-join-column" type="PrimaryKeyJoinColumn">
@@ -92,6 +94,7 @@
 			<xsd:element name="column" type="Column"/>
 			<xsd:element name="enumerated" type="EnumType"/>
 			<xsd:element name="foreign-key" type="xsd:string"/>
+			<xsd:element name="formula" type="xsd:string"/>
 			<xsd:element name="generated" type="GenerationTime"/>
 			<xsd:element name="generated-value" type="GeneratedValue"/>
 			<xsd:element name="cascade" type="CascadeType"/>
@@ -103,7 +106,7 @@
 			</xsd:element>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="hb-map-key" type="xsd:string">
+			<xsd:element name="hb-map-key" type="Column">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
 				</xsd:annotation>
@@ -135,6 +138,11 @@
 	<xsd:complexType name="EReference">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
 			<xsd:element name="filter" type="Filter"/>
+			<xsd:element name="association-override" type="AssociationOverride">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">associationOverrides</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="attribute-override" type="AttributeOverride">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
@@ -144,6 +152,7 @@
 			<xsd:element name="embedded" type="Embedded"/>
 			<xsd:element name="embedded-id" type="EmbeddedId"/>
 			<xsd:element name="foreign-key" type="xsd:string"/>
+			<xsd:element name="formula" type="xsd:string"/>
 			<xsd:element name="cache" type="Cache"/>
 			<xsd:element name="cascade" type="CascadeType"/>
 			<xsd:element name="collection-of-elements" type="CollectionOfElements"/>
@@ -155,13 +164,14 @@
 			<xsd:element name="fetch" type="HbFetchType"/>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="hb-map-key" type="xsd:string">
+			<xsd:element name="hb-map-key" type="Column">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="on-delete" type="OnDeleteAction"/>
 			<xsd:element name="where" type="xsd:string"/>
+			<xsd:element name="immutable" type="Immutable"/>
 			<xsd:element name="join-column" type="JoinColumn">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
@@ -193,6 +203,11 @@
 	<xsd:complexType name="Property">
 		<xsd:choice minOccurs="0" maxOccurs="unbounded">
 			<xsd:element name="filter" type="Filter"/>
+			<xsd:element name="association-override" type="AssociationOverride">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">associationOverrides</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="attribute-override" type="AttributeOverride">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
@@ -204,6 +219,7 @@
 			<xsd:element name="embedded-id" type="EmbeddedId"/>
 			<xsd:element name="enumerated" type="EnumType"/>
 			<xsd:element name="foreign-key" type="xsd:string"/>
+			<xsd:element name="formula" type="xsd:string"/>
 			<xsd:element name="generated" type="GenerationTime"/>
 			<xsd:element name="generated-value" type="GeneratedValue"/>
 			<xsd:element name="cache" type="Cache"/>
@@ -217,7 +233,7 @@
 			<xsd:element name="fetch" type="HbFetchType"/>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
-			<xsd:element name="hb-map-key" type="xsd:string">
+			<xsd:element name="hb-map-key" type="Column">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">hbMapKey</xsd:appinfo>
 				</xsd:annotation>
@@ -226,6 +242,7 @@
 			<xsd:element name="type" type="Type"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="id" type="Id"/>
+			<xsd:element name="immutable" type="Immutable"/>
 			<xsd:element name="join-column" type="JoinColumn">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
@@ -313,6 +330,7 @@
 	<xsd:attribute name="default-condition" type="xsd:string" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
+<xsd:complexType name="ForceDiscriminator"/>
 <xsd:simpleType name="GenerationTime">
 	<xsd:restriction base="xsd:token">
 		<xsd:enumeration value="NEVER"/>
@@ -342,6 +360,17 @@
 	<xsd:attribute name="generator" type="xsd:string" use="optional"/>
 	<xsd:attribute name="table" type="xsd:string" use="optional"/>
 	<xsd:attribute name="type" type="xsd:string" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="Immutable"/>
+<xsd:complexType name="MapKeyManyToMany">
+	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:element name="join-column" type="JoinColumn">
+			<xsd:annotation>
+				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:choice>
+	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="NamedQuery">
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
