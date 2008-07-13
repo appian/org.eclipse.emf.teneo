@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -160,8 +160,6 @@ public class DynamicAction extends AbstractTestAction {
 			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
 			store.updateSchema();
-
-			System.err.println(store.getMappingXML());
 		}
 
 		// return from here in case of hsqldb because hsqldb does
@@ -186,8 +184,6 @@ public class DynamicAction extends AbstractTestAction {
 			employee3.eSet(employeeManager, new Boolean(false));
 			store.store(employee3);
 			store.commitTransaction();
-
-			System.err.println(((HibernateTestStore) store).getMappingXML());
 
 			// the dynamiceobjectimpl should not be present in the mapping xml
 			assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(DynamicEObjectImpl.class.getName()) == -1);

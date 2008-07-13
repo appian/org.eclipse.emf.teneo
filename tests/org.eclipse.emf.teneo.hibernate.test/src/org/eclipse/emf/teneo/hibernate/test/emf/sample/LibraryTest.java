@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.11 2008/02/28 07:08:57 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.12 2008/07/13 13:13:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -41,9 +41,6 @@ public class LibraryTest extends AbstractActionTest {
 		protected void checkContainerAfterLibraryRetrieve(TestStore store, Writer writ) {
 // Session s = ((HibernateTestStore) store).getSession();
 // List<?> l = s.createSQLQuery("SELECT * FROM book").addEntity("Book").list();
-// for (Object o : l) {
-// System.err.println(o);
-// }
 		};
 
 		@Override

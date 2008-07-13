@@ -39,6 +39,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.MapKeyAction;
 import org.eclipse.emf.teneo.test.emf.annotations.MappedSuperClassAction;
 import org.eclipse.emf.teneo.test.emf.annotations.NaturalIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.OnetoonePKAction;
+import org.eclipse.emf.teneo.test.emf.annotations.OverrideSecondaryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.PKeyJoinAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SecondarytableHibernateAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetAction;
@@ -53,7 +54,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  */
 public class AllTests {
 
@@ -62,6 +63,7 @@ public class AllTests {
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", HibernateTestbed
 					.instance().getConfigurations());
 
+		suite.addTestSuite(OverrideSecondaryAction.class);
 		suite.addTestSuite(VariousAction.class);
 		suite.addTestSuite(PKeyJoinAction.class);
 
