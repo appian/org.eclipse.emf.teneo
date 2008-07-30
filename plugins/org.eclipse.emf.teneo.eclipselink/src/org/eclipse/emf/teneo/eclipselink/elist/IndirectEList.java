@@ -874,4 +874,36 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
     ((EStructuralFeature.Setting) this.getDelegate()).set(newValue);
   }
+
+	public boolean addAllUnique(Collection<? extends E> arg0) {
+		return this.getDelegate().addAllUnique(arg0);
+	}
+	
+	public boolean addAllUnique(int arg0, Collection<? extends E> arg1) {
+		return this.getDelegate().addAllUnique(arg0, arg1);
+	}
+	
+	public boolean basicContains(Object arg0) {
+		return this.getDelegate().basicContains(arg0);
+	}
+	
+	public boolean basicContainsAll(Collection<?> arg0) {
+		return this.getDelegate().basicContainsAll(arg0);
+	}
+	
+	public int basicIndexOf(Object arg0) {
+		return this.getDelegate().basicIndexOf(arg0);
+	}
+	
+	public int basicLastIndexOf(Object arg0) {
+		return this.getDelegate().basicIndexOf(arg0);
+	}
+	
+	public Object[] basicToArray() {
+		return this.getDelegate().basicToArray();
+	}
+	
+	public <T> T[] basicToArray(T[] arg0) {
+		return this.getDelegate().basicToArray(arg0);
+	}
 }

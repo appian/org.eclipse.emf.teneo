@@ -93,4 +93,28 @@ private static final long serialVersionUID = 1L;
   public void set(Object newValue) {
 	  throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
   }
+
+	public boolean basicContains(Object arg0) {
+		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+	}
+	
+	public boolean basicContainsAll(Collection<?> arg0) {
+		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+	}
+	
+	public int basicIndexOf(Object arg0) {
+		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+	}
+	
+	public int basicLastIndexOf(Object arg0) {
+		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+	}
+	
+	public Object[] basicToArray() {
+		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+	}
+	
+	public <T> T[] basicToArray(T[] arg0) {
+		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+	}
 }

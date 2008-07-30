@@ -13,7 +13,6 @@ package org.eclipse.emf.teneo.eclipselink;
 import java.lang.reflect.Field;
 import java.util.Collection;
 
-
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -21,18 +20,18 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.eclipselink.elist.EListContainerPolicy;
-import org.eclipse.emf.teneo.eclipselink.elist.IndirectEList;
 import org.eclipse.emf.teneo.eclipselink.elist.EclipseLinkEList;
+import org.eclipse.emf.teneo.eclipselink.elist.IndirectEList;
 import org.eclipse.emf.teneo.eclipselink.elistfactory.EElementUtil;
-import org.eclipse.emf.teneo.eclipselink.emap.IndirectEMap;
 import org.eclipse.emf.teneo.eclipselink.emap.EclipseLinkEMap;
+import org.eclipse.emf.teneo.eclipselink.emap.IndirectEMap;
+import org.eclipse.persistence.config.SessionCustomizer;
 import org.eclipse.persistence.descriptors.ClassDescriptor;
-import org.eclipse.persistence.exceptions.DefaultMappingException;
+import org.eclipse.persistence.exceptions.DescriptorException;
 import org.eclipse.persistence.exceptions.EclipseLinkException;
 import org.eclipse.persistence.internal.helper.Helper;
 import org.eclipse.persistence.internal.indirection.NoIndirectionPolicy;
 import org.eclipse.persistence.internal.queries.ContainerPolicy;
-import org.eclipse.persistence.internal.sessions.factories.SessionCustomizer;
 import org.eclipse.persistence.mappings.CollectionMapping;
 import org.eclipse.persistence.mappings.DatabaseMapping;
 import org.eclipse.persistence.queries.ReadAllQuery;
@@ -72,10 +71,6 @@ public abstract class EmfSessionCustomizer implements SessionCustomizer {
    */
   @SuppressWarnings("unchecked")
   public void customize(Session session) throws EclipseLinkException {
-    // replace integrity checker with one that logs problems, not throws
-    // exceptions
-    session.setIntegrityChecker(new EmfSessionIntegrityChecker());
-
     // register listener that will delete unnecessary EMap Entries at commit
     // time
     session.getEventManager().addListener(new EmfSessionEventListener());
@@ -112,7 +107,7 @@ public abstract class EmfSessionCustomizer implements SessionCustomizer {
       result = Helper.classImplementsInterface(collectionField.getType(), EMap.class);
     }
     catch (NoSuchFieldException exception) {
-      throw DefaultMappingException.fieldNotFound(collectionMapping.getDescriptor().getJavaClassName(), collectionMapping.getAttributeName());
+      throw DescriptorException.noFieldNameForMapping(collectionMapping);
     }
     return result;
   }

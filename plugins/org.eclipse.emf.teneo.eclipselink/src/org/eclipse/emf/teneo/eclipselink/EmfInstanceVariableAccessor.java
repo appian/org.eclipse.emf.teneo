@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.persistence.exceptions.DescriptorException;
 import org.eclipse.persistence.internal.descriptors.InstanceVariableAttributeAccessor;
 import org.eclipse.persistence.internal.helper.Helper;
-import org.eclipse.persistence.internal.jpa.metadata.MetadataHelper;
+import org.eclipse.persistence.internal.jpa.metadata.accessors.objects.MetadataMethod;
 import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
 import org.eclipse.persistence.internal.security.PrivilegedGetMethodReturnType;
 import org.eclipse.persistence.internal.security.PrivilegedGetValueFromField;
@@ -98,10 +98,10 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
     String restOfName = attrName.substring(1);
     Class<?> attributeType = getAttributeField().getType();
     if (attributeType.equals(boolean.class) || attributeType.equals(Boolean.class)) {
-      getterPrefix = MetadataHelper.IS_PROPERTY_METHOD_PREFIX;
+      getterPrefix = MetadataMethod.IS_PROPERTY_METHOD_PREFIX;
     }
     else {
-      getterPrefix = MetadataHelper.GET_PROPERTY_METHOD_PREFIX;
+      getterPrefix = MetadataMethod.GET_PROPERTY_METHOD_PREFIX;
     }
     getterMethodName = getterPrefix.concat(leadingChar).concat(restOfName);
     return getterMethodName;
@@ -247,7 +247,7 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
   }
 
   public boolean isMethodAttributeAccessor() {
-    return true;
+    return false;
   }
 
   /**
@@ -263,8 +263,6 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
   public void setGetMethodName(String getMethodName) {
     this.getMethodName = getMethodName;
   }
-
-  // ////////////////////////////////
 
   /**
    * The attribute name of an object is converted to Field type to access it

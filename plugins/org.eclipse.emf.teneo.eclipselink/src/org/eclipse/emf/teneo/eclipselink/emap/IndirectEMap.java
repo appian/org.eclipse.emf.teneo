@@ -1220,4 +1220,46 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
     ((EStructuralFeature.Setting) this.getDelegate()).set(newValue);
   }
+
+	public boolean addAllUnique(
+			Collection<? extends java.util.Map.Entry<K, V>> collection) {
+		return false;
+	}
+
+	public boolean addAllUnique(int index,
+			Collection<? extends java.util.Map.Entry<K, V>> collection) {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.addAllUnique(index, collection);
+	}
+
+	public boolean basicContains(Object object) {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.basicContains(object);
+	}
+
+	public boolean basicContainsAll(Collection<?> collection) {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.basicContainsAll(collection);
+	}
+
+	public int basicIndexOf(Object object) {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.basicIndexOf(object);
+	}
+
+	public int basicLastIndexOf(Object object) {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.basicLastIndexOf(object);
+	}
+
+	public Object[] basicToArray() {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.basicToArray();
+	}
+
+	public <T> T[] basicToArray(T[] array) {
+		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate())
+				.basicToArray(array);
+	}
+
 }

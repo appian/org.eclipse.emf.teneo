@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.ContentTreeIterator;
 import org.eclipse.emf.teneo.eclipselink.IndirectEContainer;
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
 
 /**
@@ -281,10 +282,10 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
     protected void loaded() {
 
       if (!isLoaded()) {
-        Map<?, ?> options = defaultLoadOptions;
+        Map<Object, Object> options = defaultLoadOptions;
         ResourceSet resourceSet = getResourceSet();
         if (resourceSet != null) {
-          options = mergeMaps(resourceSet.getLoadOptions(), options);
+          options = (Map<Object, Object>) mergeMaps(resourceSet.getLoadOptions(), options);
         }
         openDatabase(options);
       }
@@ -577,7 +578,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
   @Override
   protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
 
-    openDatabase(options);
+    openDatabase((Map<Object, Object>) options);
     readContentsFromDatabase(options);
   }
 
@@ -638,7 +639,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
     defaultLoadOptions.put("eclipselink.logging.level", "FINE");
   }
 
-  protected void openDatabase(Map<?, ?> options) {
+  protected void openDatabase(Map<Object, Object> options) {
 
     if (options == null) {
       String msg = "Argument for parameter 'options' must not be null.";
@@ -652,7 +653,8 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       if (!persistenceUnitNameToEntityManagerFactoryInstanceMap.containsKey(persistenceUnitName)) {
         // create and register new entity manager factory for given persistence
         // unit name according to sessions configuration file
-        EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(persistenceUnitName, options, this.getClass().getClassLoader());
+		options.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+        EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(persistenceUnitName, options);
         if (entityManagerFactory == null) {
         	throw new RuntimeException("Unable to create entity manager factory for persistence unit named '" + persistenceUnitName + "'.");
         }

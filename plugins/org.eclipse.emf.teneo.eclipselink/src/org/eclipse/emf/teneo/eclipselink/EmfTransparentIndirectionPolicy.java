@@ -114,7 +114,7 @@ public class EmfTransparentIndirectionPolicy extends TransparentIndirectionPolic
     if ( (getMapping().getDescriptor().getObjectChangePolicy().isObjectChangeTrackingPolicy())
             && (((ChangeTracker)clone)._persistence_getPropertyChangeListener() != null)
             && (container instanceof CollectionChangeTracker) ) {
-              ((CollectionChangeTracker)container).setTopLinkAttributeName(getMapping().getAttributeName());
+              ((CollectionChangeTracker)container).setTrackedAttributeName(getMapping().getAttributeName());
               ((CollectionChangeTracker)container)._persistence_setPropertyChangeListener(((ChangeTracker)clone)._persistence_getPropertyChangeListener());
           }
     return container;

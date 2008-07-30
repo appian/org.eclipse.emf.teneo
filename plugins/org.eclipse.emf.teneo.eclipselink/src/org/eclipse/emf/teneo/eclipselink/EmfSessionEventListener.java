@@ -40,8 +40,7 @@ public class EmfSessionEventListener extends SessionEventAdapter {
       eContainerField = Helper.getField(EObjectImpl.class, "eContainer");
       Session session = event.getSession();
       UnitOfWorkImpl uow = (UnitOfWorkImpl) session;
-      for (Enumeration<?> enumtr = uow.getCloneMapping().keys(); enumtr.hasMoreElements();) {
-        Object object = enumtr.nextElement();
+      for (Object object : uow.getCloneMapping().keySet()) {
         if (object instanceof BasicEMap.Entry) {
           EObjectImpl entry = (EObjectImpl) object;
           if (entry.eContainer() == null) {
@@ -50,7 +49,6 @@ public class EmfSessionEventListener extends SessionEventAdapter {
             EObjectImpl backupEntry = (EObjectImpl) uow.getBackupClone(entry);
             PrivilegedAccessHelper.setValueInField(eContainerField, entry, backupEntry.eContainer());
           }
-
         }
       }
     }
