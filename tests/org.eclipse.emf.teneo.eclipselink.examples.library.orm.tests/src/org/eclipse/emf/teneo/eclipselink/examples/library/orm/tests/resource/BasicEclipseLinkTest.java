@@ -11,6 +11,7 @@
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests.resource;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -18,6 +19,7 @@ import javax.persistence.EntityManagerFactory;
 
 import junit.framework.TestCase;
 
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
 
 
@@ -27,9 +29,9 @@ public class BasicEclipseLinkTest extends TestCase {
 
   protected TestModelFactory testLibraryFactory = new TestModelFactory();
 
-  protected Map<? extends Object, ? extends Object> getTestDatabaseLoginProperties() {
+  protected Map<String,Object> getTestDatabaseLoginProperties() {
   	
-	return Collections.emptyMap();
+	return new HashMap<String, Object>();
   }
 
   @Override
@@ -38,7 +40,9 @@ public class BasicEclipseLinkTest extends TestCase {
     super.tearDown();
 
     // create entity manager factory for given persistence unit name
-    EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(TEST_PERSISTENCE_UNIT_NAME, getTestDatabaseLoginProperties(), this.getClass().getClassLoader()); 
+	Map<String,Object> properties = getTestDatabaseLoginProperties();
+	properties.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+    EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(TEST_PERSISTENCE_UNIT_NAME, properties); 
 
     // create entity manager and begin transaction
     EntityManager entityManager = entityManagerFactory.createEntityManager();

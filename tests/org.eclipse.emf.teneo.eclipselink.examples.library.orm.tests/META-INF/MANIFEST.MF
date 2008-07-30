@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.teneo.eclipselink.examples.library,
  org.eclipse.emf.teneo.eclipselink.examples.library.orm,
  org.junit,
- org.apache.derby
+ org.eclipse.persistence.derby,
+ javax.persistence;bundle-version="1.99.0"
 Eclipse-LazyStart: true
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

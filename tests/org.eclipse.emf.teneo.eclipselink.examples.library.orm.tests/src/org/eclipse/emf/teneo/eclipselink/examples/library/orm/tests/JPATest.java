@@ -11,10 +11,12 @@
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
 import org.eclipse.persistence.sessions.Session;
 import org.eclipse.persistence.sessions.factories.SessionManager;
@@ -30,7 +32,9 @@ public abstract class JPATest extends ManagedTest {
 	
 	public EntityManagerFactory getEntityManagerFactory() {
 		if (factory == null) {
-			factory = new PersistenceProvider().createEntityManagerFactory(getPersistenceUnitName(), null, this.getClass().getClassLoader());
+			HashMap<String, Object> properties = new HashMap<String, Object>();
+			properties.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+			factory = new PersistenceProvider().createEntityManagerFactory(getPersistenceUnitName(), properties);
 		}
 		return factory;
 	}
