@@ -12,9 +12,9 @@ package org.eclipse.emf.teneo.eclipselink.examples.library.orm;
 
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl;
+import org.eclipse.persistence.config.DescriptorCustomizer;
 import org.eclipse.persistence.descriptors.ClassDescriptor;
 import org.eclipse.persistence.indirection.IndirectList;
-import org.eclipse.persistence.internal.sessions.factories.DescriptorCustomizer;
 import org.eclipse.persistence.mappings.ManyToManyMapping;
 
 public class PublisherCustomizer implements DescriptorCustomizer {

@@ -17,7 +17,6 @@
 			<property name="eclipselink.jdbc.password" value="app"/>
 
 			<property name="eclipselink.session.customizer" value="org.eclipse.emf.teneo.eclipselink.examples.library.orm.LibrarySessionCustomizer"/>
-			<property name="eclipselink.descriptor.customizer.TypeWriter" value="org.eclipse.emf.teneo.eclipselink.examples.library.orm.TypeWriterCustomizer"/>
 			 
 			<property name="eclipselink.jdbc.read-connections.min" value="1"/>
 			<property name="eclipselink.jdbc.write-connections.min" value="1"/>

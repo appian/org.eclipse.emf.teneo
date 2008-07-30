@@ -245,7 +245,7 @@
          		<generated-value/>
         	</id>
         	<basic name="maker"/>
-        	<basic name="type"/>
+        	<enumerated name="type"/>
         </attributes>
     </entity>
 

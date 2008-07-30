@@ -14,9 +14,9 @@ package org.eclipse.emf.teneo.eclipselink.examples.library.orm;
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl;
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.PublisherImpl;
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.TypeWriterImpl;
+import org.eclipse.persistence.config.DescriptorCustomizer;
 import org.eclipse.persistence.descriptors.ClassDescriptor;
 import org.eclipse.persistence.indirection.IndirectList;
-import org.eclipse.persistence.internal.sessions.factories.DescriptorCustomizer;
 import org.eclipse.persistence.mappings.ManyToManyMapping;
 import org.eclipse.persistence.mappings.OneToManyMapping;
 
