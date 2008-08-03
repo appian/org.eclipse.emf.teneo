@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.44 2008/06/02 07:15:29 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.45 2008/08/03 21:24:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -104,6 +104,19 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
+	/**
+	 * The escape character to use when escaping table and column names. Standard Hibernate uses the
+	 * ` (backtick). This is the default value.
+	 */
+	public static final String SQL_NAME_ESCAPE_CHARACTER = MAPPING_PREFIX + "sql_name_escape_character";
+
+	/**
+	 * The sql name strategy, if not set then the ClassicSQLNameStrategy is used.
+	 * 
+	 * @Deprecated use the extensionManager concept
+	 */
+	public static final String SQL_NAME_STRATEGY = NAMING_PREFIX + "sql_name_strategy";
+
 	// END: ++++++++++++++++++++++ SQL Naming related Options ++++++++++++++++++++++++++++++++++++
 
 	/**
@@ -129,12 +142,6 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String MAX_COMMENT_LENGTH = MAPPING_PREFIX + "max_comment_length";
 
 	/**
-	 * The escape character to use when escaping table and column names. Standard Hibernate uses the `
-	 * (backtick). This is the default value.
-	 */
-	public static final String SQL_NAME_ESCAPE_CHARACTER = MAPPING_PREFIX + "sql_name_escape_character";
-
-	/**
 	 * EClass marked with Embeddable is always embedded, default is false. If this is set to true
 	 * then it is not required anymore to set a
 	 * 
@@ -142,13 +149,6 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * @Embeddable on the EClass is then sufficient.
 	 */
 	public static final String MAP_EMBEDDABLE_AS_EMBEDDED = MAPPING_PREFIX + "map_embeddable_as_embedded";
-
-	/**
-	 * The sql name strategy, if not set then the ClassicSQLNameStrategy is used.
-	 * 
-	 * @Deprecated use the extensionManager concept
-	 */
-	public static final String SQL_NAME_STRATEGY = NAMING_PREFIX + "sql_name_strategy";
 
 	/** Optimistic locking */
 	public static final String OPTIMISTIC = MAPPING_PREFIX + "optimistic_locking";
@@ -191,8 +191,8 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * Can be used to set custom cascade policy for containment : <br>
-	 * <code>ALL</code> or a combination of (<code>REMOVE</code>,<code>REFRESH</code>,<code>PERSIST</code>,<code>MERGE</code>)
-	 * <br>
+	 * <code>ALL</code> or a combination of (<code>REMOVE</code>,<code>REFRESH</code>,
+	 * <code>PERSIST</code>,<code>MERGE</code>) <br>
 	 * e.g. : REMOVE,PERSIST,MERGE <br>
 	 * Warning : ALL != REMOVE,REFRESH,PERSIST,MERGE <br>
 	 * but ALL == REMOVE with delete Orphan, REFRESH,PERSIST,MERGE
@@ -201,8 +201,8 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * Can be used to set custom cascade policy for non containment : <br>
-	 * a combination of (<code>REFRESH</code>,<code>PERSIST</code>,<code>MERGE</code>)
-	 * e.g. : PERSIST,MERGE
+	 * a combination of (<code>REFRESH</code>,<code>PERSIST</code>,<code>MERGE</code>) e.g. :
+	 * PERSIST,MERGE
 	 */
 	public static final String CASCADE_POLICY_ON_NON_CONTAINMENT = MAPPING_PREFIX + "cascade_policy_on_non_containment";
 
@@ -211,12 +211,6 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * or that the default annotator should work according to the ejb3 spec.
 	 */
 	public static final String SET_ENTITY_AUTOMATICALLY = MAPPING_PREFIX + "set_entity_automatically";
-
-	/**
-	 * Can be used to control if implementation classes should be used for entity names and target
-	 * entities or that eclass names are used.
-	 */
-	public static final String USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME = NAMING_PREFIX + "java_class_entity_names";
 
 	/** Map all lists as a bag to the db (does not map the list index to the db), default is false */
 	public static final String ALWAYS_MAP_LIST_AS_BAG = MAPPING_PREFIX + "always_map_list_as_bag";
@@ -338,7 +332,6 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(OPTIMISTIC, "true");
 		props.setProperty(UPDATE_SCHEMA, "true");
 		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
-		props.setProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME, "false");
 		props.setProperty(SET_ENTITY_AUTOMATICALLY, "true");
 		props.setProperty(VERSION_COLUMN_NAME, "e_version");
 		props.setProperty(SQL_CASE_STRATEGY, "lowercase");
@@ -622,11 +615,6 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Returns the value of the fetch containment eagerly, default is false */
 	public boolean isFetchContainmentEagerly() {
 		return Boolean.valueOf(properties.getProperty(FETCH_CONTAINMENT_EAGERLY)).booleanValue();
-	}
-
-	/** Returns value of the use impl. classname as entity, default is false */
-	public boolean isUseImplementationClassAsEntityName() {
-		return Boolean.valueOf(properties.getProperty(USE_IMPLEMENTATION_CLASSES_AS_ENTITYNAME)).booleanValue();
 	}
 
 	/** Is set entity automatically, default is true */
