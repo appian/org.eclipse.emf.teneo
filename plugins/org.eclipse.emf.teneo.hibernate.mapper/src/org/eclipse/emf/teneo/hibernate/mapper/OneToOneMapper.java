@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.27 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.28 2008/08/03 19:24:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -42,9 +42,10 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 	/** Process the one-to-one */
 	public void process(PAnnotatedEReference paReference) {
-		if (getOtherSide(paReference) == null ||
-				paReference.getOneToOne().eIsSet(PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
-			if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
+		final PAnnotatedEReference opposite = getOtherSide(paReference);
+		if (opposite == null || paReference.getOneToOne().eIsSet(PannotationPackage.eINSTANCE.getOneToOne_MappedBy())) {
+			if (!paReference.getPrimaryKeyJoinColumns().isEmpty() ||
+					(opposite != null && !opposite.getPrimaryKeyJoinColumns().isEmpty())) {
 				createOneToOne(paReference);
 			} else {
 				createManyToOne(paReference);
@@ -118,7 +119,11 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 		addCascadesForSingle(associationElement, oto.getCascade());
 
 		// add the other-side
-		if (otherSide != null) {
+		final boolean primaryKeyJoin =
+				paReference.getPrimaryKeyJoinColumns().isEmpty() ||
+						(otherSide != null && getOtherSide(paReference).getPrimaryKeyJoinColumns().isEmpty());
+
+		if (!primaryKeyJoin && otherSide != null) {
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
