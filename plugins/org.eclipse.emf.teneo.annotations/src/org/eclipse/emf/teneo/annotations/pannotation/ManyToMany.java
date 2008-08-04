@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToMany.java,v 1.9 2007/07/18 16:12:40 mtaal Exp $
+ * $Id: ManyToMany.java,v 1.10 2008/08/04 05:15:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -151,6 +151,33 @@ public interface ManyToMany extends PAnnotation {
 	 * @generated
 	 */
 	void setIndexed(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Inverse</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inverse</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inverse</em>' attribute.
+	 * @see #setInverse(boolean)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_Inverse()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isInverse();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isInverse <em>Inverse</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inverse</em>' attribute.
+	 * @see #isInverse()
+	 * @generated
+	 */
+	void setInverse(boolean value);
 
 	/** Returns true if this one to many should be modeled as a list */
 	boolean isList();

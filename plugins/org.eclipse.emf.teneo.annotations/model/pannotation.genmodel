@@ -212,6 +212,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//ManyToMany/fetch"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//ManyToMany/mappedBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//ManyToMany/indexed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//ManyToMany/inverse"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//ManyToOne">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//ManyToOne/targetEntity"/>
@@ -230,6 +231,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//OneToMany/mappedBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//OneToMany/indexed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//OneToMany/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//OneToMany/inverse"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//OneToOne">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//OneToOne/targetEntity"/>
