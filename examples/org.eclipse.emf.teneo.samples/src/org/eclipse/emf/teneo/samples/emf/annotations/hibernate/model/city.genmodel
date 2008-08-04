@@ -13,6 +13,7 @@
     </genClasses>
     <genClasses ecoreClass="city.ecore#//Street">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute city.ecore#//Street/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference city.ecore#//Street/city"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

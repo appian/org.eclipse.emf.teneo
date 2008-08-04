@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernatePackage.java,v 1.1 2008/08/04 05:15:09 mtaal Exp $
+ * $Id: HibernatePackage.java,v 1.2 2008/08/04 12:39:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate;
 
@@ -116,13 +116,22 @@ public interface HibernatePackage extends EPackage {
 	int STREET__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>City</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STREET__CITY = 1;
+
+	/**
 	 * The number of structural features of the '<em>Street</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STREET_FEATURE_COUNT = 1;
+	int STREET_FEATURE_COUNT = 2;
 
 
 	/**
@@ -177,6 +186,17 @@ public interface HibernatePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStreet_Name();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street#getCity <em>City</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>City</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street#getCity()
+	 * @see #getStreet()
+	 * @generated
+	 */
+	EReference getStreet_City();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -243,6 +263,14 @@ public interface HibernatePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STREET__NAME = eINSTANCE.getStreet_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>City</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STREET__CITY = eINSTANCE.getStreet_City();
 
 	}
 

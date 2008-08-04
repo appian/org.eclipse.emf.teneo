@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CityImpl.java,v 1.1 2008/08/04 05:15:09 mtaal Exp $
+ * $Id: CityImpl.java,v 1.2 2008/08/04 12:39:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -118,9 +119,24 @@ public class CityImpl extends EObjectImpl implements City {
 	 */
 	public EList<Street> getStreets() {
 		if (streets == null) {
-			streets = new EObjectContainmentEList<Street>(Street.class, this, HibernatePackage.CITY__STREETS);
+			streets = new EObjectContainmentWithInverseEList<Street>(Street.class, this, HibernatePackage.CITY__STREETS, HibernatePackage.STREET__CITY);
 		}
 		return streets;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case HibernatePackage.CITY__STREETS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStreets()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

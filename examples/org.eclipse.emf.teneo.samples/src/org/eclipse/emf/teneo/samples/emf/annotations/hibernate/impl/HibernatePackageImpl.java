@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernatePackageImpl.java,v 1.1 2008/08/04 05:15:09 mtaal Exp $
+ * $Id: HibernatePackageImpl.java,v 1.2 2008/08/04 12:39:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl;
 
@@ -162,6 +162,15 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getStreet_City() {
+		return (EReference)streetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HibernateFactory getHibernateFactory() {
 		return (HibernateFactory)getEFactoryInstance();
 	}
@@ -191,6 +200,7 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 
 		streetEClass = createEClass(STREET);
 		createEAttribute(streetEClass, STREET__NAME);
+		createEReference(streetEClass, STREET__CITY);
 	}
 
 	/**
@@ -228,10 +238,11 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		// Initialize classes and features; add operations and parameters
 		initEClass(cityEClass, City.class, "City", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCity_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCity_Streets(), this.getStreet(), null, "streets", null, 0, -1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCity_Streets(), this.getStreet(), this.getStreet_City(), "streets", null, 0, -1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(streetEClass, Street.class, "Street", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStreet_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Street.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStreet_City(), this.getCity(), this.getCity_Streets(), "city", null, 1, 1, Street.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -258,11 +269,23 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 			 "appinfo", "@Entity(name=\"Stad\")"
 		   });			
 		addAnnotation
+		  (getCity_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "@Id"
+		   });		
+		addAnnotation
 		  (getCity_Streets(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@NotFound(action=IGNORE)"
-		   });	
+			 "appinfo", "@NotFound(action=IGNORE)\n@OneToMany(inverse=true, indexed=false)\n@JoinColumn(name=\"CITY_FK\", nullable=false)\n"
+		   });			
+		addAnnotation
+		  (getStreet_City(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@JoinColumn(name=\"CITY_FK\", nullable=false)\n@ManyToOne(optional=false)\n"
+		   });
 	}
 
 	/**
@@ -279,14 +302,14 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		   new String[] {
 			 "kind", "element",
 			 "name", "title"
-		   });			
+		   });				
 		addAnnotation
 		  (getStreet_Name(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "name"
-		   });
+		   });	
 	}
 
 } //HibernatePackageImpl

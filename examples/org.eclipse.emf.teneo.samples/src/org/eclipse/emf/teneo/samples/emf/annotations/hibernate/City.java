@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: City.java,v 1.1 2008/08/04 05:15:09 mtaal Exp $
+ * $Id: City.java,v 1.2 2008/08/04 12:39:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate;
 
@@ -41,6 +41,7 @@ public interface City extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage#getCity_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='title'"
+	 *        annotation="teneo.jpa value='@Id'"
 	 * @generated
 	 */
 	String getName();
@@ -58,6 +59,7 @@ public interface City extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Streets</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street#getCity <em>City</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Streets</em>' containment reference list isn't clear,
@@ -66,8 +68,9 @@ public interface City extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Streets</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage#getCity_Streets()
-	 * @model containment="true"
-	 *        annotation="teneo.jpa appinfo='@NotFound(action=IGNORE)'"
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street#getCity
+	 * @model opposite="city" containment="true"
+	 *        annotation="teneo.jpa appinfo='@NotFound(action=IGNORE)\n@OneToMany(inverse=true, indexed=false)\n@JoinColumn(name=\"CITY_FK\", nullable=false)\n'"
 	 * @generated
 	 */
 	EList<Street> getStreets();

@@ -12,11 +12,14 @@
         <details key="kind" value="element"/>
         <details key="name" value="title"/>
       </eAnnotations>
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="streets" upperBound="-1"
-        eType="#//Street" containment="true">
+        eType="#//Street" containment="true" eOpposite="#//Street/city">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@NotFound(action=IGNORE)"/>
+        <details key="appinfo" value="@NotFound(action=IGNORE)&#xA;@OneToMany(inverse=true, indexed=false)&#xA;@JoinColumn(name=&quot;CITY_FK&quot;, nullable=false)&#xA;"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -25,6 +28,12 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="name"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="city" lowerBound="1" eType="#//City"
+        eOpposite="#//City/streets">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@JoinColumn(name=&quot;CITY_FK&quot;, nullable=false)&#xA;@ManyToOne(optional=false)&#xA;"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
