@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * this way different test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public interface TestStore {
 
@@ -82,7 +82,7 @@ public interface TestStore {
 	public <T> T getObject(Class<T> clazz);
 
 	/** Returns a list of object of a certain class */
-	public List<?> getObjects(Class<?> clazz);
+	public <T> List<T> getObjects(Class<T> clazz);
 
 	/** Deletes an object */
 	public void deleteObject(Object obj);
