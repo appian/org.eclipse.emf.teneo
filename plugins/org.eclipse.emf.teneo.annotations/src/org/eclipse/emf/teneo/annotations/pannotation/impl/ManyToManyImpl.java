@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.12 2008/08/04 05:15:18 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.13 2008/08/04 12:38:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -135,7 +135,7 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INVERSE_EDEFAULT = true;
+	protected static final boolean INVERSE_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #isInverse() <em>Inverse</em>}' attribute.

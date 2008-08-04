@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToMany.java,v 1.10 2008/08/04 05:15:18 mtaal Exp $
+ * $Id: ManyToMany.java,v 1.11 2008/08/04 12:38:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -154,7 +154,7 @@ public interface ManyToMany extends PAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Inverse</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inverse</em>' attribute isn't clear,
@@ -164,7 +164,7 @@ public interface ManyToMany extends PAnnotation {
 	 * @return the value of the '<em>Inverse</em>' attribute.
 	 * @see #setInverse(boolean)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getManyToMany_Inverse()
-	 * @model default="true"
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isInverse();
