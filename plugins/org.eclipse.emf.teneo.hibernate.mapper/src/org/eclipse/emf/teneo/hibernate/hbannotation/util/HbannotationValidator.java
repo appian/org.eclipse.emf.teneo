@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.11 2008/07/12 13:10:34 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.12 2008/08/04 05:15:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -161,6 +161,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateImmutable((Immutable)value, diagnostics, context);
 			case HbannotationPackage.FORMULA:
 				return validateFormula((Formula)value, diagnostics, context);
+			case HbannotationPackage.NOT_FOUND:
+				return validateNotFound((NotFound)value, diagnostics, context);
 			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbannotationPackage.HB_FETCH_TYPE:
@@ -169,6 +171,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateOnDeleteAction((OnDeleteAction)value, diagnostics, context);
 			case HbannotationPackage.GENERATION_TIME:
 				return validateGenerationTime((GenerationTime)value, diagnostics, context);
+			case HbannotationPackage.NOT_FOUND_ACTION:
+				return validateNotFoundAction((NotFoundAction)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -657,6 +661,24 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNotFound(NotFound notFound, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(notFound, diagnostics, context);
+		return result;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -723,6 +745,15 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGenerationTime(GenerationTime generationTime, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNotFoundAction(NotFoundAction notFoundAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

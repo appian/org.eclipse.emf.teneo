@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationAdapterFactory.java,v 1.10 2008/07/12 13:10:34 mtaal Exp $
+ * $Id: HbannotationAdapterFactory.java,v 1.11 2008/08/04 05:15:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -188,6 +188,10 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFormula(Formula object) {
 				return createFormulaAdapter();
+			}
+			@Override
+			public Adapter caseNotFound(NotFound object) {
+				return createNotFoundAdapter();
 			}
 			@Override
 			public Adapter casePAnnotation(PAnnotation object) {
@@ -574,6 +578,20 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFormulaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFound <em>Not Found</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NotFound
+	 * @generated
+	 */
+	public Adapter createNotFoundAdapter() {
 		return null;
 	}
 

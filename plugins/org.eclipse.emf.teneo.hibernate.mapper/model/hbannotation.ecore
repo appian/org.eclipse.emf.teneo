@@ -233,4 +233,15 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NotFoundAction">
+    <eLiterals name="EXCEPTION" literal="EXCEPTION"/>
+    <eLiterals name="IGNORE" value="1" literal="IGNORE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotFound" eSuperTypes="#//HbAnnotation">
+    <eAnnotations source="http://annotation.elver.org/internal/Target">
+      <details key="0" value="EReference"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" lowerBound="1"
+        eType="#//NotFoundAction"/>
+  </eClassifiers>
 </ecore:EPackage>

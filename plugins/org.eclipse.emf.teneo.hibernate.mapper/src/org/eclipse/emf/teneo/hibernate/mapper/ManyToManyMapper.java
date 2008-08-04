@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToManyMapper.java,v 1.25 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.26 2008/08/04 05:15:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -95,10 +95,15 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 						"false");
 		}
 
+		if (hbReference.getNotFound() != null) {
+			mtmElement.addAttribute("not-found", hbReference.getNotFound().getAction().getName().toLowerCase());
+		}
+
 		addForeignKeyAttribute(mtmElement, hbReference);
 
 		// inverse is not supported by indexed lists
-		if (mtm.getMappedBy() != null && !mtm.isIndexed() && collElement.getName().compareTo("idbag") != 0) {
+		if (mtm.isInverse() ||
+				(mtm.getMappedBy() != null && !mtm.isIndexed() && collElement.getName().compareTo("idbag") != 0)) {
 			// note inverse is required for many-to-many to work, otherwise hibernate will insert
 			// both sides of the relation twice.
 			collElement.addAttribute("inverse", "true");

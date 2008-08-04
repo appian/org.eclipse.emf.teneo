@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReferenceImpl.java,v 1.13 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: HbAnnotatedEReferenceImpl.java,v 1.14 2008/08/04 05:14:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
+import org.eclipse.emf.teneo.hibernate.hbannotation.NotFound;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
@@ -60,6 +61,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getHbOnDelete <em>Hb On Delete</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNaturalId <em>Natural Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getImmutable <em>Immutable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEReferenceImpl#getNotFound <em>Not Found</em>}</li>
  * </ul>
  * </p>
  *
@@ -214,6 +216,16 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	 * @ordered
 	 */
 	protected Immutable immutable;
+
+	/**
+	 * The cached value of the '{@link #getNotFound() <em>Not Found</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNotFound()
+	 * @generated
+	 * @ordered
+	 */
+	protected NotFound notFound;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -779,6 +791,49 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotFound getNotFound() {
+		return notFound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNotFound(NotFound newNotFound, NotificationChain msgs) {
+		NotFound oldNotFound = notFound;
+		notFound = newNotFound;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND, oldNotFound, newNotFound);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNotFound(NotFound newNotFound) {
+		if (newNotFound != notFound) {
+			NotificationChain msgs = null;
+			if (notFound != null)
+				msgs = ((InternalEObject)notFound).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND, null, msgs);
+			if (newNotFound != null)
+				msgs = ((InternalEObject)newNotFound).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND, null, msgs);
+			msgs = basicSetNotFound(newNotFound, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND, newNotFound, newNotFound));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -805,6 +860,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return basicSetNaturalId(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
 				return basicSetImmutable(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND:
+				return basicSetNotFound(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -850,6 +907,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return getNaturalId();
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
 				return getImmutable();
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND:
+				return getNotFound();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -909,6 +968,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
 				setImmutable((Immutable)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND:
+				setNotFound((NotFound)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -965,6 +1027,9 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
 				setImmutable((Immutable)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND:
+				setNotFound((NotFound)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1006,6 +1071,8 @@ public class HbAnnotatedEReferenceImpl extends PAnnotatedEReferenceImpl implemen
 				return naturalId != null;
 			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__IMMUTABLE:
 				return immutable != null;
+			case HbmodelPackage.HB_ANNOTATED_EREFERENCE__NOT_FOUND:
+				return notFound != null;
 		}
 		return super.eIsSet(featureID);
 	}

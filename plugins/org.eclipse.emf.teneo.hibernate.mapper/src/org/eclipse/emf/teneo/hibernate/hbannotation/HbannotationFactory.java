@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactory.java,v 1.9 2008/07/12 13:10:34 mtaal Exp $
+ * $Id: HbannotationFactory.java,v 1.10 2008/08/04 05:15:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -246,6 +246,15 @@ public interface HbannotationFactory extends EFactory {
 	 * @generated
 	 */
 	Formula createFormula();
+
+	/**
+	 * Returns a new object of class '<em>Not Found</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Not Found</em>'.
+	 * @generated
+	 */
+	NotFound createNotFound();
 
 	/**
 	 * Returns the package supported by this factory.

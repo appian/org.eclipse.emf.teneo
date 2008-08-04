@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackage.java,v 1.10 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: HbannotationPackage.java,v 1.11 2008/08/04 05:15:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -1142,13 +1142,50 @@ public interface HbannotationPackage extends EPackage {
 	int FORMULA_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.NotFoundImpl <em>Not Found</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.NotFoundImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getNotFound()
+	 * @generated
+	 */
+	int NOT_FOUND = 26;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_FOUND__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_FOUND__ACTION = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Not Found</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_FOUND_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getCacheConcurrencyStrategy()
 	 * @generated
 	 */
-	int CACHE_CONCURRENCY_STRATEGY = 26;
+	int CACHE_CONCURRENCY_STRATEGY = 27;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType <em>Hb Fetch Type</em>}' enum.
@@ -1157,7 +1194,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbFetchType()
 	 * @generated
 	 */
-	int HB_FETCH_TYPE = 27;
+	int HB_FETCH_TYPE = 28;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}' enum.
@@ -1166,7 +1203,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOnDeleteAction()
 	 * @generated
 	 */
-	int ON_DELETE_ACTION = 28;
+	int ON_DELETE_ACTION = 29;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime <em>Generation Time</em>}' enum.
@@ -1176,7 +1213,17 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getGenerationTime()
 	 * @generated
 	 */
-	int GENERATION_TIME = 29;
+	int GENERATION_TIME = 30;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction <em>Not Found Action</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getNotFoundAction()
+	 * @generated
+	 */
+	int NOT_FOUND_ACTION = 31;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}'.
@@ -1851,6 +1898,27 @@ public interface HbannotationPackage extends EPackage {
 	EAttribute getFormula_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFound <em>Not Found</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Not Found</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NotFound
+	 * @generated
+	 */
+	EClass getNotFound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFound#getAction <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Action</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NotFound#getAction()
+	 * @see #getNotFound()
+	 * @generated
+	 */
+	EAttribute getNotFound_Action();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
@@ -1886,6 +1954,16 @@ public interface HbannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getGenerationTime();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction <em>Not Found Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Not Found Action</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction
+	 * @generated
+	 */
+	EEnum getNotFoundAction();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2478,6 +2556,24 @@ public interface HbannotationPackage extends EPackage {
 		EAttribute FORMULA__VALUE = eINSTANCE.getFormula_Value();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.NotFoundImpl <em>Not Found</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.NotFoundImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getNotFound()
+		 * @generated
+		 */
+		EClass NOT_FOUND = eINSTANCE.getNotFound();
+
+		/**
+		 * The meta object literal for the '<em><b>Action</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NOT_FOUND__ACTION = eINSTANCE.getNotFound_Action();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
@@ -2513,6 +2609,16 @@ public interface HbannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum GENERATION_TIME = eINSTANCE.getGenerationTime();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction <em>Not Found Action</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getNotFoundAction()
+		 * @generated
+		 */
+		EEnum NOT_FOUND_ACTION = eINSTANCE.getNotFoundAction();
 
 	}
 

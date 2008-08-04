@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.11 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.12 2008/08/04 05:14:59 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -1228,6 +1228,15 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS = PamodelPackage.PANNOTATED_EREFERENCE__PRIMARY_KEY_JOIN_COLUMNS;
 
 	/**
+	 * The feature id for the '<em><b>Association Overrides</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES;
+
+	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1363,13 +1372,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__IMMUTABLE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 14;
 
 	/**
+	 * The feature id for the '<em><b>Not Found</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__NOT_FOUND = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 15;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 15;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 16;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1957,6 +1975,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEReference_Immutable();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Not Found</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_NotFound();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2358,6 +2387,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__IMMUTABLE = eINSTANCE.getHbAnnotatedEReference_Immutable();
+
+		/**
+		 * The meta object literal for the '<em><b>Not Found</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__NOT_FOUND = eINSTANCE.getHbAnnotatedEReference_NotFound();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.

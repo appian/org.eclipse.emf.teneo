@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.33 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.34 2008/08/04 05:15:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -111,18 +111,19 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addJoinTable(hbReference, collElement, keyElement, jt);
 		} else {
 			addKeyColumns(hbReference, keyElement, jcs);
-
-			// a special case see here:
-			// http://forum.hibernate.org/viewtopic.php?p=2383090
-			if (eref.isContainment() && false) {
-				collElement.addAttribute("inverse", "true");
-			}
 		}
 
 		final OneToMany otm = hbReference.getOneToMany();
 		if (hbReference.getHbIdBag() != null) {
 			log.debug("Setting indexed=false because is an idbag");
 			otm.setIndexed(false);
+		}
+
+		// a special case see here:
+		// http://forum.hibernate.org/viewtopic.php?p=2383090
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=242479
+		if (otm.isInverse()) {
+			collElement.addAttribute("inverse", "true");
 		}
 
 		boolean isMapValueIsEntity = false;
@@ -191,9 +192,17 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 						.isUnique());
 			addForeignKeyAttribute(mtm, paReference);
 
+			if (hbReference.getNotFound() != null) {
+				mtm.addAttribute("not-found", hbReference.getNotFound().getAction().getName().toLowerCase());
+			}
 		} else {
-			addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
+			final Element otmElement =
+					addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
 			addForeignKeyAttribute(keyElement, paReference);
+
+			if (hbReference.getNotFound() != null) {
+				otmElement.addAttribute("not-found", hbReference.getNotFound().getAction().getName().toLowerCase());
+			}
 		}
 
 		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference).getFilter());
@@ -228,11 +237,12 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
 		final OneToMany otm = paReference.getOneToMany();
-		if (!otm.isIndexed() && !hbmContext.isGeneratedByEMF()) {
+		if (!otm.isIndexed() && otm.isInverse()) {
 			collElement.addAttribute("inverse", "true");
 		} else {
 			log.debug("Inverse is not set on purpose for indexed collections");
 		}
+
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, ((HbAnnotatedEReference) paReference).getHbOnDelete());
 
@@ -286,9 +296,17 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 					addManyToMany(hbReference, referedToAClass, collElement, targetName, inverseJoinColumns, otm
 						.isUnique());
 			addForeignKeyAttribute(mtm, paReference);
+			if (hbReference.getNotFound() != null) {
+				mtm.addAttribute("not-found", hbReference.getNotFound().getAction().getName().toLowerCase());
+			}
+
 		} else {
-			addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
+			final Element otmElement =
+					addOneToMany(paReference, referedToAClass, collElement, eref.getName(), targetName);
 			addForeignKeyAttribute(keyElement, paReference);
+			if (hbReference.getNotFound() != null) {
+				otmElement.addAttribute("not-found", hbReference.getNotFound().getAction().getName().toLowerCase());
+			}
 		}
 
 		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference).getFilter());
