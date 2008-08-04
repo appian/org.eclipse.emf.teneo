@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.28 2008/08/03 19:24:33 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.29 2008/08/04 12:38:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -120,8 +120,8 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 		// add the other-side
 		final boolean primaryKeyJoin =
-				paReference.getPrimaryKeyJoinColumns().isEmpty() ||
-						(otherSide != null && getOtherSide(paReference).getPrimaryKeyJoinColumns().isEmpty());
+				!paReference.getPrimaryKeyJoinColumns().isEmpty() ||
+						(otherSide != null && !getOtherSide(paReference).getPrimaryKeyJoinColumns().isEmpty());
 
 		if (!primaryKeyJoin && otherSide != null) {
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
