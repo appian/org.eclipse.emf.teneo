@@ -53,7 +53,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -134,7 +134,9 @@ public class HibernateTestStore extends AbstractTestStore {
 	private void setDataStore() {
 		// currentTimeMillis is added to make it unique
 		if (ejb3) {
-			emfDataStore = new HbEntityDataStore(); // (HbDataStore)HbHelper.INSTANCE.createRegisterDataStore(getDatabaseAdapter().getDbName());
+			emfDataStore = new HbEntityDataStore(); // (HbDataStore)HbHelper.INSTANCE.
+			// createRegisterDataStore
+			// (getDatabaseAdapter().getDbName());
 		} else {
 			emfDataStore = HbHelper.INSTANCE.createRegisterDataStore(getDatabaseAdapter().getDbName());
 		}
@@ -337,12 +339,13 @@ public class HibernateTestStore extends AbstractTestStore {
 	}
 
 	/** Returns a list of object of a certain class */
-	public List<?> getObjects(Class<?> clazz) {
+	@SuppressWarnings("unchecked")
+	public <T> List<T> getObjects(Class<T> clazz) {
 		// final Class concrete = replaceClass(clazz);
 		if (sessionWrapper.isEJB3EntityManager()) {
-			return sessionWrapper.executeQuery("select o from " + getEntityName(clazz) + " o");
+			return (List<T>) sessionWrapper.executeQuery("select o from " + getEntityName(clazz) + " o");
 		} else {
-			return sessionWrapper.executeQuery("FROM " + getEntityName(clazz));
+			return (List<T>) sessionWrapper.executeQuery("FROM " + getEntityName(clazz));
 		}
 	}
 

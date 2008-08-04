@@ -62,7 +62,7 @@
 		<many-to-one name="address" entity-name="Address" cascade="merge,persist,save-update,lock,refresh" foreign-key="person_address" lazy="false" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`address_address_e_id`"/>
 		</many-to-one>
-		<one-to-one name="head" entity-name="Head" cascade="all" lazy="false"/>
+		<one-to-one name="head" entity-name="Head" cascade="all" property-ref="person" lazy="false"/>
 		<many-to-one name="leftArm" entity-name="Arm" foreign-key="person_leftarm" lazy="false" insert="true" update="true"/>
 	</class>
 </hibernate-mapping>

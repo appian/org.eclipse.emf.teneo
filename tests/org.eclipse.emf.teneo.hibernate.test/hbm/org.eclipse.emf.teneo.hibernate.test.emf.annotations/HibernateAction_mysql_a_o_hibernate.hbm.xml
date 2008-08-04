@@ -5,24 +5,19 @@
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.CityImpl" entity-name="Stad" abstract="false" lazy="false" discriminator-value="Stad" table="`stad`">
 		<meta attribute="eclassName">City</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hibernate</meta>
-		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
-			<generator class="native"/>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`name`"/>
-		</property>
-		<list name="streets" inverse="true" lazy="true" cascade="all,delete-orphan">
-			<key update="true" foreign-key="stad_streets">
-				<column name="`city_streets_e_id`" not-null="false" unique="false"/>
+		<bag name="streets" inverse="true" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`city_fk`" not-null="true" unique="false"/>
 			</key>
-			<list-index column="`city_streets_idx`"/>
 			<one-to-many entity-name="Street" not-found="ignore"/>
-		</list>
+		</bag>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StreetImpl" entity-name="Street" abstract="false" lazy="false" discriminator-value="Street" table="`street`">
 		<meta attribute="eclassName">Street</meta>
@@ -38,5 +33,8 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</property>
+		<many-to-one name="city" entity-name="Stad" cascade="merge,persist,save-update,lock,refresh" foreign-key="street_city" lazy="false" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`city_fk`"/>
+		</many-to-one>
 	</class>
 </hibernate-mapping>

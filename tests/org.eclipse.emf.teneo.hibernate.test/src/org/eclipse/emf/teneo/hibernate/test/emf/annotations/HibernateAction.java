@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateAction.java,v 1.1 2008/08/04 05:15:05 mtaal Exp $
+ * $Id: HibernateAction.java,v 1.2 2008/08/04 12:39:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test for several hibernate annotations. See bugzilla: 242895, 242897
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HibernateAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -56,6 +56,13 @@ public class HibernateAction extends AbstractTestAction {
 			store.store(createCities());
 			store.commitTransaction();
 		}
+
+		{
+			store.beginTransaction();
+			final List<City> cities = store.getObjects(City.class);
+			store.deleteObject(cities.get(0));
+			store.commitTransaction();
+		}
 	}
 
 	private List<City> createCities() {
@@ -64,6 +71,7 @@ public class HibernateAction extends AbstractTestAction {
 			final City city = factory.createCity();
 			city.setName("city " + i);
 			city.getStreets().addAll(createStreets("city" + i));
+			cities.add(city);
 		}
 		return cities;
 	}
@@ -73,6 +81,7 @@ public class HibernateAction extends AbstractTestAction {
 		for (int i = 0; i < NO_TEST_OBJECTS; i++) {
 			final Street street = factory.createStreet();
 			street.setName(prefix + " - street " + i);
+			streets.add(street);
 		}
 		return streets;
 	}
