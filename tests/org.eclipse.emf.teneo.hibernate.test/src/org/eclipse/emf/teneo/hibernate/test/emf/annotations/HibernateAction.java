@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateAction.java,v 1.2 2008/08/04 12:39:28 mtaal Exp $
+ * $Id: HibernateAction.java,v 1.3 2008/08/11 20:46:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -22,6 +22,8 @@ import java.util.List;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernateFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State;
+import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
@@ -30,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test for several hibernate annotations. See bugzilla: 242895, 242897
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class HibernateAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -51,9 +53,25 @@ public class HibernateAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		{
 			store.beginTransaction();
 			store.store(createCities());
+
+			final State st = factory.createState();
+			store.store(st);
+			final StateDetail std = factory.createStateDetail();
+			store.store(std);
+			store.commitTransaction();
+		}
+
+		{
+			store.beginTransaction();
+			final State st = factory.createState();
+			store.store(st);
+			final StateDetail std = factory.createStateDetail();
+			std.setState(st);
+			store.store(std);
 			store.commitTransaction();
 		}
 
@@ -62,6 +80,17 @@ public class HibernateAction extends AbstractTestAction {
 			final List<City> cities = store.getObjects(City.class);
 			store.deleteObject(cities.get(0));
 			store.commitTransaction();
+		}
+
+		{
+			final List<State> states = store.getObjects(State.class);
+			int cnt = 0;
+			for (State st : states) {
+				if (st.getStateDetail() != null) {
+					cnt++;
+				}
+			}
+			assertEquals(1, cnt);
 		}
 	}
 

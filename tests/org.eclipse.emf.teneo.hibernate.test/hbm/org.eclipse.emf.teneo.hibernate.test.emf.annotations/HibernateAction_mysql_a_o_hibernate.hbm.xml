@@ -37,4 +37,32 @@
 			<column not-null="true" unique="false" name="`city_fk`"/>
 		</many-to-one>
 	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateImpl" entity-name="State" abstract="false" lazy="false" discriminator-value="State" table="`state`">
+		<meta attribute="eclassName">State</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hibernate</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<one-to-one name="stateDetail" entity-name="StateDetail" cascade="merge,persist,save-update,lock,refresh" property-ref="state" lazy="false"/>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateDetailImpl" entity-name="StateDetail" abstract="false" lazy="false" discriminator-value="StateDetail" table="`statedetail`">
+		<meta attribute="eclassName">StateDetail</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hibernate</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="state" entity-name="State" cascade="merge,persist,save-update,lock,refresh" not-null="false" lazy="false" insert="true" update="true">
+			<column not-null="false" unique="false" name="`state_id`"/>
+		</many-to-one>
+	</class>
 </hibernate-mapping>

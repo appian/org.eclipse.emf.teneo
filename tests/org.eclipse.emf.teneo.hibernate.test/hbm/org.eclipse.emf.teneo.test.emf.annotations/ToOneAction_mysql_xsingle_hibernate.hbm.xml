@@ -46,7 +46,7 @@
 		<property name="hairColor" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`haircolor`"/>
 		</property>
-		<many-to-one name="person" entity-name="Person" cascade="merge,persist,save-update,lock,refresh" lazy="false" insert="true" update="true" unique="true"/>
+		<one-to-one name="person" entity-name="Person" cascade="merge,persist,save-update,lock,refresh" property-ref="head" lazy="false"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" discriminator-value="Person" table="`person`">
 		<meta attribute="eclassName">Person</meta>
@@ -62,7 +62,7 @@
 		<many-to-one name="address" entity-name="Address" cascade="merge,persist,save-update,lock,refresh" foreign-key="person_address" lazy="false" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`address_address_e_id`"/>
 		</many-to-one>
-		<one-to-one name="head" entity-name="Head" cascade="all" property-ref="person" lazy="false"/>
+		<many-to-one name="head" entity-name="Head" cascade="all" not-null="false" lazy="false" insert="true" update="true"/>
 		<many-to-one name="leftArm" entity-name="Arm" cascade="merge,persist,save-update,lock,refresh" foreign-key="person_leftarm" lazy="false" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`arm_leftarm_e_id`"/>
 		</many-to-one>
