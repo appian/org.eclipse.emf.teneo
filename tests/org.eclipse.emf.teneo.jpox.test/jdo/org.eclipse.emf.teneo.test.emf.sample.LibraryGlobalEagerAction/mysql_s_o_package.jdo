@@ -18,7 +18,7 @@
 			<field name="categoryESet" persistence-modifier="persistent"/>
 			<field name="author" persistence-modifier="persistent" delete-action="restrict" null-value="none">
 				<foreign-key name="book_author"/>
-				<column name="book_author_e_id" allows-null="true"/>
+				<column name="schrijver" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl"/>
 			</field>
 		</class>
@@ -32,7 +32,7 @@
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
 			<field name="writers" persistence-modifier="persistent" delete-action="restrict">
-				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" dependent-element="true">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.library.impl.PersonImpl" dependent-element="true">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="false"/>
 				</collection>
 				<element>
@@ -54,10 +54,6 @@
 		</class>
 		<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="writer" identity-type="datastore">
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.library.Writer"/>
-			<implements name="org.eclipse.emf.teneo.samples.emf.sample.library.SerializableEObject"/>
-			<implements name="org.eclipse.emf.ecore.EObject"/>
-			<implements name="org.eclipse.emf.common.notify.Notifier"/>
-			<implements name="java.io.Serializable"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="exception"/>
@@ -68,6 +64,15 @@
 				<order column="WRITER_BOOKS_IDX"/>
 				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.PersonImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="person" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.library.Person"/>
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.library.SerializableEObject"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<implements name="java.io.Serializable"/>
+			<inheritance strategy="new-table"/>
+			<version strategy="version-number" column="e_version"/>
 		</class>
 	</package>
 </jdo>

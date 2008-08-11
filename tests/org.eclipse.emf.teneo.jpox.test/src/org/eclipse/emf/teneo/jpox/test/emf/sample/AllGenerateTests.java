@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.24 2008/06/30 21:33:00 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.25 2008/08/11 20:41:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -44,7 +44,7 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class AllGenerateTests {
 	public static Test suite() {
@@ -53,6 +53,8 @@ public class AllGenerateTests {
 					.getConfigurations());
 // suite.addTest(new JPOXGenerateTest(LibraryLargeAction.class));
 
+		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
+
 		suite.addTest(new JPOXGenerateTest(LibraryResourceAction.class));
 
 		suite.addTest(new JPOXGenerateTest(SimpleLibraryResourceAction.class));
@@ -60,8 +62,6 @@ public class AllGenerateTests {
 		suite.addTest(new JPOXGenerateTest(CarAction.class));
 
 		suite.addTest(new JPOXGenerateTest(LibraryFKAction.class));
-
-		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
 		suite.addTest(new JPOXGenerateTest(RentalResourceReferenceAction.class));
 
 		suite.addTest(new JPOXGenerateTest(SchoolLibraryTest.testAction));
