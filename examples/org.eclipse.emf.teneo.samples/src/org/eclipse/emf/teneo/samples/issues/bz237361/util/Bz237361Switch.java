@@ -2,16 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernateSwitch.java,v 1.2 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: Bz237361Switch.java,v 1.1 2008/08/11 20:40:39 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.util;
+package org.eclipse.emf.teneo.samples.issues.bz237361.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.*;
+import org.eclipse.emf.teneo.samples.issues.bz237361.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,17 +23,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage
+ * @see org.eclipse.emf.teneo.samples.issues.bz237361.Bz237361Package
  * @generated
  */
-public class HibernateSwitch<T> {
+public class Bz237361Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static HibernatePackage modelPackage;
+	protected static Bz237361Package modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -41,9 +41,9 @@ public class HibernateSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HibernateSwitch() {
+	public Bz237361Switch() {
 		if (modelPackage == null) {
-			modelPackage = HibernatePackage.eINSTANCE;
+			modelPackage = Bz237361Package.eINSTANCE;
 		}
 	}
 
@@ -87,27 +87,15 @@ public class HibernateSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case HibernatePackage.CITY: {
-				City city = (City)theEObject;
-				T result = caseCity(city);
+			case Bz237361Package.ONE: {
+				One one = (One)theEObject;
+				T result = caseOne(one);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case HibernatePackage.STREET: {
-				Street street = (Street)theEObject;
-				T result = caseStreet(street);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case HibernatePackage.STATE: {
-				State state = (State)theEObject;
-				T result = caseState(state);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case HibernatePackage.STATE_DETAIL: {
-				StateDetail stateDetail = (StateDetail)theEObject;
-				T result = caseStateDetail(stateDetail);
+			case Bz237361Package.MANY: {
+				Many many = (Many)theEObject;
+				T result = caseMany(many);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -116,62 +104,32 @@ public class HibernateSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>City</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>One</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>City</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>One</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCity(City object) {
+	public T caseOne(One object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Street</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Many</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Street</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Many</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStreet(Street object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>State</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>State</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseState(State object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>State Detail</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>State Detail</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStateDetail(StateDetail object) {
+	public T caseMany(Many object) {
 		return null;
 	}
 
@@ -190,4 +148,4 @@ public class HibernateSwitch<T> {
 		return null;
 	}
 
-} //HibernateSwitch
+} //Bz237361Switch

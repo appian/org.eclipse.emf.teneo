@@ -2,16 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CityImpl.java,v 1.3 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: ManyImpl.java,v 1.1 2008/08/11 20:40:39 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl;
-
-import java.util.Collection;
+package org.eclipse.emf.teneo.samples.issues.bz237361.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -19,30 +15,25 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City;
-import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State;
-import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street;
+import org.eclipse.emf.teneo.samples.issues.bz237361.Bz237361Package;
+import org.eclipse.emf.teneo.samples.issues.bz237361.Many;
+import org.eclipse.emf.teneo.samples.issues.bz237361.One;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>City</b></em>'.
+ * An implementation of the model object '<em><b>Many</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.CityImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.CityImpl#getStreets <em>Streets</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz237361.impl.ManyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.issues.bz237361.impl.ManyImpl#getOne <em>One</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CityImpl extends EObjectImpl implements City {
+public class ManyImpl extends EObjectImpl implements Many {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -64,21 +55,21 @@ public class CityImpl extends EObjectImpl implements City {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStreets() <em>Streets</em>}' containment reference list.
+	 * The cached value of the '{@link #getOne() <em>One</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStreets()
+	 * @see #getOne()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Street> streets;
+	protected One one;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CityImpl() {
+	protected ManyImpl() {
 		super();
 	}
 
@@ -89,7 +80,7 @@ public class CityImpl extends EObjectImpl implements City {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return HibernatePackage.Literals.CITY;
+		return Bz237361Package.Literals.MANY;
 	}
 
 	/**
@@ -110,7 +101,7 @@ public class CityImpl extends EObjectImpl implements City {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HibernatePackage.CITY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, Bz237361Package.MANY__NAME, oldName, name));
 	}
 
 	/**
@@ -118,11 +109,16 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Street> getStreets() {
-		if (streets == null) {
-			streets = new EObjectContainmentWithInverseEList<Street>(Street.class, this, HibernatePackage.CITY__STREETS, HibernatePackage.STREET__CITY);
+	public One getOne() {
+		if (one != null && one.eIsProxy()) {
+			InternalEObject oldOne = (InternalEObject)one;
+			one = (One)eResolveProxy(oldOne);
+			if (one != oldOne) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Bz237361Package.MANY__ONE, oldOne, one));
+			}
 		}
-		return streets;
+		return one;
 	}
 
 	/**
@@ -130,12 +126,56 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	public One basicGetOne() {
+		return one;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOne(One newOne, NotificationChain msgs) {
+		One oldOne = one;
+		one = newOne;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Bz237361Package.MANY__ONE, oldOne, newOne);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOne(One newOne) {
+		if (newOne != one) {
+			NotificationChain msgs = null;
+			if (one != null)
+				msgs = ((InternalEObject)one).eInverseRemove(this, Bz237361Package.ONE__MANIES, One.class, msgs);
+			if (newOne != null)
+				msgs = ((InternalEObject)newOne).eInverseAdd(this, Bz237361Package.ONE__MANIES, One.class, msgs);
+			msgs = basicSetOne(newOne, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Bz237361Package.MANY__ONE, newOne, newOne));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HibernatePackage.CITY__STREETS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStreets()).basicAdd(otherEnd, msgs);
+			case Bz237361Package.MANY__ONE:
+				if (one != null)
+					msgs = ((InternalEObject)one).eInverseRemove(this, Bz237361Package.ONE__MANIES, One.class, msgs);
+				return basicSetOne((One)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -148,8 +188,8 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HibernatePackage.CITY__STREETS:
-				return ((InternalEList<?>)getStreets()).basicRemove(otherEnd, msgs);
+			case Bz237361Package.MANY__ONE:
+				return basicSetOne(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -162,10 +202,11 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HibernatePackage.CITY__NAME:
+			case Bz237361Package.MANY__NAME:
 				return getName();
-			case HibernatePackage.CITY__STREETS:
-				return getStreets();
+			case Bz237361Package.MANY__ONE:
+				if (resolve) return getOne();
+				return basicGetOne();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -175,16 +216,14 @@ public class CityImpl extends EObjectImpl implements City {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HibernatePackage.CITY__NAME:
+			case Bz237361Package.MANY__NAME:
 				setName((String)newValue);
 				return;
-			case HibernatePackage.CITY__STREETS:
-				getStreets().clear();
-				getStreets().addAll((Collection<? extends Street>)newValue);
+			case Bz237361Package.MANY__ONE:
+				setOne((One)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -198,11 +237,11 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HibernatePackage.CITY__NAME:
+			case Bz237361Package.MANY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case HibernatePackage.CITY__STREETS:
-				getStreets().clear();
+			case Bz237361Package.MANY__ONE:
+				setOne((One)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -216,10 +255,10 @@ public class CityImpl extends EObjectImpl implements City {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HibernatePackage.CITY__NAME:
+			case Bz237361Package.MANY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case HibernatePackage.CITY__STREETS:
-				return streets != null && !streets.isEmpty();
+			case Bz237361Package.MANY__ONE:
+				return one != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -240,4 +279,4 @@ public class CityImpl extends EObjectImpl implements City {
 		return result.toString();
 	}
 
-} //CityImpl
+} //ManyImpl

@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernateAdapterFactory.java,v 1.2 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: Bz237361AdapterFactory.java,v 1.1 2008/08/11 20:40:39 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.util;
+package org.eclipse.emf.teneo.samples.issues.bz237361.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,24 +13,24 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.*;
+import org.eclipse.emf.teneo.samples.issues.bz237361.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage
+ * @see org.eclipse.emf.teneo.samples.issues.bz237361.Bz237361Package
  * @generated
  */
-public class HibernateAdapterFactory extends AdapterFactoryImpl {
+public class Bz237361AdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static HibernatePackage modelPackage;
+	protected static Bz237361Package modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -38,9 +38,9 @@ public class HibernateAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HibernateAdapterFactory() {
+	public Bz237361AdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = HibernatePackage.eINSTANCE;
+			modelPackage = Bz237361Package.eINSTANCE;
 		}
 	}
 
@@ -69,23 +69,15 @@ public class HibernateAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HibernateSwitch<Adapter> modelSwitch =
-		new HibernateSwitch<Adapter>() {
+	protected Bz237361Switch<Adapter> modelSwitch =
+		new Bz237361Switch<Adapter>() {
 			@Override
-			public Adapter caseCity(City object) {
-				return createCityAdapter();
+			public Adapter caseOne(One object) {
+				return createOneAdapter();
 			}
 			@Override
-			public Adapter caseStreet(Street object) {
-				return createStreetAdapter();
-			}
-			@Override
-			public Adapter caseState(State object) {
-				return createStateAdapter();
-			}
-			@Override
-			public Adapter caseStateDetail(StateDetail object) {
-				return createStateDetailAdapter();
+			public Adapter caseMany(Many object) {
+				return createManyAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -108,58 +100,30 @@ public class HibernateAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City <em>City</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.bz237361.One <em>One</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City
+	 * @see org.eclipse.emf.teneo.samples.issues.bz237361.One
 	 * @generated
 	 */
-	public Adapter createCityAdapter() {
+	public Adapter createOneAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street <em>Street</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.bz237361.Many <em>Many</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street
+	 * @see org.eclipse.emf.teneo.samples.issues.bz237361.Many
 	 * @generated
 	 */
-	public Adapter createStreetAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State <em>State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State
-	 * @generated
-	 */
-	public Adapter createStateAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail <em>State Detail</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail
-	 * @generated
-	 */
-	public Adapter createStateDetailAdapter() {
+	public Adapter createManyAdapter() {
 		return null;
 	}
 
@@ -175,4 +139,4 @@ public class HibernateAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //HibernateAdapterFactory
+} //Bz237361AdapterFactory

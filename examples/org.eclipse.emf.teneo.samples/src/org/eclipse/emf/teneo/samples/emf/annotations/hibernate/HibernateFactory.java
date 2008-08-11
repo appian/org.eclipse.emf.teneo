@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernateFactory.java,v 1.1 2008/08/04 05:15:09 mtaal Exp $
+ * $Id: HibernateFactory.java,v 1.2 2008/08/11 20:40:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate;
 
@@ -42,6 +42,24 @@ public interface HibernateFactory extends EFactory {
 	 * @generated
 	 */
 	Street createStreet();
+
+	/**
+	 * Returns a new object of class '<em>State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State</em>'.
+	 * @generated
+	 */
+	State createState();
+
+	/**
+	 * Returns a new object of class '<em>State Detail</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Detail</em>'.
+	 * @generated
+	 */
+	StateDetail createStateDetail();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernatePackage.java,v 1.2 2008/08/04 12:39:34 mtaal Exp $
+ * $Id: HibernatePackage.java,v 1.3 2008/08/11 20:40:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate;
 
@@ -135,6 +135,64 @@ public interface HibernatePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateImpl <em>State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.HibernatePackageImpl#getState()
+	 * @generated
+	 */
+	int STATE = 2;
+
+	/**
+	 * The feature id for the '<em><b>State Detail</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__STATE_DETAIL = 0;
+
+	/**
+	 * The number of structural features of the '<em>State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_FEATURE_COUNT = 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateDetailImpl <em>State Detail</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateDetailImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.HibernatePackageImpl#getStateDetail()
+	 * @generated
+	 */
+	int STATE_DETAIL = 3;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_DETAIL__STATE = 0;
+
+	/**
+	 * The number of structural features of the '<em>State Detail</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_DETAIL_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City <em>City</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,6 +255,48 @@ public interface HibernatePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getStreet_City();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State
+	 * @generated
+	 */
+	EClass getState();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State#getStateDetail <em>State Detail</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>State Detail</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State#getStateDetail()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_StateDetail();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail <em>State Detail</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Detail</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail
+	 * @generated
+	 */
+	EClass getStateDetail();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>State</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail#getState()
+	 * @see #getStateDetail()
+	 * @generated
+	 */
+	EReference getStateDetail_State();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -271,6 +371,42 @@ public interface HibernatePackage extends EPackage {
 		 * @generated
 		 */
 		EReference STREET__CITY = eINSTANCE.getStreet_City();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateImpl <em>State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.HibernatePackageImpl#getState()
+		 * @generated
+		 */
+		EClass STATE = eINSTANCE.getState();
+
+		/**
+		 * The meta object literal for the '<em><b>State Detail</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__STATE_DETAIL = eINSTANCE.getState_StateDetail();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateDetailImpl <em>State Detail</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.StateDetailImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl.HibernatePackageImpl#getStateDetail()
+		 * @generated
+		 */
+		EClass STATE_DETAIL = eINSTANCE.getStateDetail();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_DETAIL__STATE = eINSTANCE.getStateDetail_State();
 
 	}
 

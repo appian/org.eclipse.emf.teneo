@@ -19,7 +19,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="streets" upperBound="-1"
         eType="#//Street" containment="true" eOpposite="#//Street/city">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@NotFound(action=IGNORE)&#xA;@OneToMany(inverse=true, indexed=false)&#xA;@JoinColumn(name=&quot;CITY_FK&quot;, nullable=false)&#xA;"/>
+        <details key="appinfo" value="@NotFound(action=IGNORE)&#xA;@OneToMany(mappedBy=&quot;city&quot;, indexed=false)&#xA;@JoinColumn(name=&quot;CITY_FK&quot;, nullable=false)&#xA;"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -34,6 +34,22 @@
         eOpposite="#//City/streets">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@JoinColumn(name=&quot;CITY_FK&quot;, nullable=false)&#xA;@ManyToOne(optional=false)&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateDetail" eType="#//StateDetail"
+        eOpposite="#//StateDetail/state">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@OneToOne(mappedBy=&quot;state&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateDetail">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="#//State"
+        eOpposite="#//State/stateDetail">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@OneToOne(optional=true)&#xA;@JoinColumn(name=&quot;STATE_ID&quot;)"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

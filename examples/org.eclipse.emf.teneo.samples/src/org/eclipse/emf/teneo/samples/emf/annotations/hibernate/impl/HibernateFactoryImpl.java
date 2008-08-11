@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernateFactoryImpl.java,v 1.1 2008/08/04 05:15:09 mtaal Exp $
+ * $Id: HibernateFactoryImpl.java,v 1.2 2008/08/11 20:40:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl;
 
@@ -62,6 +62,8 @@ public class HibernateFactoryImpl extends EFactoryImpl implements HibernateFacto
 		switch (eClass.getClassifierID()) {
 			case HibernatePackage.CITY: return createCity();
 			case HibernatePackage.STREET: return createStreet();
+			case HibernatePackage.STATE: return createState();
+			case HibernatePackage.STATE_DETAIL: return createStateDetail();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -85,6 +87,26 @@ public class HibernateFactoryImpl extends EFactoryImpl implements HibernateFacto
 	public Street createStreet() {
 		StreetImpl street = new StreetImpl();
 		return street;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State createState() {
+		StateImpl state = new StateImpl();
+		return state;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateDetail createStateDetail() {
+		StateDetailImpl stateDetail = new StateDetailImpl();
+		return stateDetail;
 	}
 
 	/**

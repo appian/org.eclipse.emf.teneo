@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernatePackageImpl.java,v 1.2 2008/08/04 12:39:34 mtaal Exp $
+ * $Id: HibernatePackageImpl.java,v 1.3 2008/08/11 20:40:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl;
 
@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernateFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.State;
+import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street;
 
 /**
@@ -40,6 +42,20 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 	 * @generated
 	 */
 	private EClass streetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stateDetailEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -171,6 +187,42 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getState() {
+		return stateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getState_StateDetail() {
+		return (EReference)stateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStateDetail() {
+		return stateDetailEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateDetail_State() {
+		return (EReference)stateDetailEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HibernateFactory getHibernateFactory() {
 		return (HibernateFactory)getEFactoryInstance();
 	}
@@ -201,6 +253,12 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		streetEClass = createEClass(STREET);
 		createEAttribute(streetEClass, STREET__NAME);
 		createEReference(streetEClass, STREET__CITY);
+
+		stateEClass = createEClass(STATE);
+		createEReference(stateEClass, STATE__STATE_DETAIL);
+
+		stateDetailEClass = createEClass(STATE_DETAIL);
+		createEReference(stateDetailEClass, STATE_DETAIL__STATE);
 	}
 
 	/**
@@ -244,6 +302,12 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		initEAttribute(getStreet_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Street.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStreet_City(), this.getCity(), this.getCity_Streets(), "city", null, 1, 1, Street.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getState_StateDetail(), this.getStateDetail(), this.getStateDetail_State(), "stateDetail", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stateDetailEClass, StateDetail.class, "StateDetail", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStateDetail_State(), this.getState(), this.getState_StateDetail(), "state", null, 0, 1, StateDetail.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -278,13 +342,25 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		  (getCity_Streets(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@NotFound(action=IGNORE)\n@OneToMany(inverse=true, indexed=false)\n@JoinColumn(name=\"CITY_FK\", nullable=false)\n"
+			 "appinfo", "@NotFound(action=IGNORE)\n@OneToMany(mappedBy=\"city\", indexed=false)\n@JoinColumn(name=\"CITY_FK\", nullable=false)\n"
 		   });			
 		addAnnotation
 		  (getStreet_City(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "@JoinColumn(name=\"CITY_FK\", nullable=false)\n@ManyToOne(optional=false)\n"
+		   });		
+		addAnnotation
+		  (getState_StateDetail(), 
+		   source, 
+		   new String[] {
+			 "value", "@OneToOne(mappedBy=\"state\")"
+		   });		
+		addAnnotation
+		  (getStateDetail_State(), 
+		   source, 
+		   new String[] {
+			 "value", "@OneToOne(optional=true)\n@JoinColumn(name=\"STATE_ID\")"
 		   });
 	}
 
@@ -309,7 +385,7 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		   new String[] {
 			 "kind", "element",
 			 "name", "name"
-		   });	
+		   });			
 	}
 
 } //HibernatePackageImpl
