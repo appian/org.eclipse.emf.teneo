@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.11 2008/06/10 08:24:46 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.12 2008/08/11 20:41:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
@@ -44,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -80,7 +81,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		}
 
 		// do not process the document root
-		if (eclass.getName().compareTo("DocumentRoot") == 0) {
+		if (ExtendedMetaData.INSTANCE.isDocumentRoot(eclass)) {
 			return false;
 		}
 
@@ -355,7 +356,9 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
+	 * @see
+	 * org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse
+	 * .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {

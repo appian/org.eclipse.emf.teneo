@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.10 2008/06/29 14:23:09 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.11 2008/08/11 20:41:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -76,9 +76,12 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			log.debug("EReference + " + logStr + " has onetomany, check if defaults should be set");
 		}
 
-		if (otm.getMappedBy() == null && eReference.getEOpposite() != null) {
-			otm.setMappedBy(eReference.getEOpposite().getName());
-		}
+		// don't set mappedBy explicitly anymore
+		// mappedBy is not set anymore because it controls inverse
+		// see bugzilla 242479
+// if (otm.getMappedBy() == null && eReference.getEOpposite() != null) {
+// otm.setMappedBy(eReference.getEOpposite().getName());
+// }
 
 		if (getPersistenceOptions().isMapEmbeddableAsEmbedded() &&
 				aReference.getAReferenceType().getEmbeddable() != null) {
