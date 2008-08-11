@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.35 2008/08/04 12:38:09 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.36 2008/08/11 20:41:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -24,7 +24,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
@@ -56,9 +55,14 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// Guaranteed by validation?
 		if (getOtherSide(paReference) == null) {
 			processOtMUni(paReference);
-		} else if (!paReference.getOneToMany().eIsSet(PannotationPackage.eINSTANCE.getOneToMany_MappedBy())) {
-			throw new MappingException(
-				"The many side of a bidirectional one to many association must be the owning side", paReference);
+			// mappedBy is not set anymore because it controls inverse
+			// see bugzilla 242479
+// } else if
+			//(!paReference.getOneToMany().eIsSet(PannotationPackage.eINSTANCE.getOneToMany_MappedBy
+			// ()
+			// )) {
+// throw new MappingException(
+// "The many side of a bidirectional one to many association must be the owning side", paReference);
 		} else {
 			// MT: TODO add check, in this case unique should always true
 			// because an child can only occur once within
@@ -122,7 +126,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// a special case see here:
 		// http://forum.hibernate.org/viewtopic.php?p=2383090
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=242479
-		if (!otm.isIndexed() && hbReference.getHbIdBag() == null && otm.isInverse()) {
+		if (!otm.isIndexed() && hbReference.getHbIdBag() == null && otm.getMappedBy() != null) {
 			collElement.addAttribute("inverse", "true");
 		}
 
@@ -237,7 +241,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		// collections, see 7.3.3 of the hibernate
 		// manual 3.1.1
 		final OneToMany otm = paReference.getOneToMany();
-		if (!otm.isIndexed() && otm.isInverse() && hbReference.getHbIdBag() == null) {
+		if (!otm.isIndexed() && otm.getMappedBy() != null && hbReference.getHbIdBag() == null) {
 			collElement.addAttribute("inverse", "true");
 		} else {
 			log.debug("Inverse is not set on purpose for indexed collections");
