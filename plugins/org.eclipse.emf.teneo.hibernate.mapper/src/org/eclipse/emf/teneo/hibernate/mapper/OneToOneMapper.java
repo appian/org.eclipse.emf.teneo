@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.30 2008/08/11 20:41:39 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.31 2008/08/11 21:54:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -97,17 +97,19 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 		associationElement.addAttribute("not-null", (oto.isOptional() ? "false" : "true"));
 
+		addLazyProxy(associationElement, oto.getFetch(), paReference);
+
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+		if (hbReference.getHbFetch() != null) {
+			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
+		}
+
 		if (isEObject(specifiedName)) {
 			addColumnsAndFormula(associationElement, paReference, getAnyTypeColumns(eref.getName(), true), true, false);
 			// foreign key is not added when the reference is to a generic EObject
 		} else {
 			addForeignKeyAttribute(associationElement, paReference);
-			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
-			if (haClass.getHbProxy() != null) {
-				associationElement.addAttribute("lazy", "proxy");
-			} else {
-				associationElement.addAttribute("lazy", "false");
-			}
+			addLazyProxy(associationElement, oto.getFetch(), paReference);
 			final List<JoinColumn> joinColumns = getJoinColumns(paReference);
 			final boolean forceNullable =
 					(oto.isOptional() || getHbmContext().isForceOptional() || getHbmContext()
@@ -141,6 +143,12 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 		addForeignKeyAttribute(associationElement, paReference);
 		addCascadesForSingle(associationElement, oto.getCascade());
+		addLazyProxy(associationElement, oto.getFetch(), paReference);
+
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+		if (hbReference.getHbFetch() != null) {
+			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
+		}
 
 		// add the other-side
 		final boolean primaryKeyJoin =
@@ -151,12 +159,7 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
-		final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
-		if (haClass.getHbProxy() != null) {
-			associationElement.addAttribute("lazy", "proxy");
-		} else {
-			associationElement.addAttribute("lazy", "false");
-		}
+		addLazyProxy(associationElement, oto.getFetch(), paReference);
 
 		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 			associationElement.addAttribute("constrained", "true");

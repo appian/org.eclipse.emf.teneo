@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.26 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.27 2008/08/11 21:54:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -32,7 +32,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -164,13 +163,7 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		final Element associationElement = addManyToOne(currentParent, paReference, targetName, true);
 
 		addForeignKeyAttribute(associationElement, paReference);
-		// todo default false until proxies are supported
-		final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getPaModel().getPAnnotated(referedTo);
-		if (haClass.getHbProxy() != null) {
-			associationElement.addAttribute("lazy", "proxy");
-		} else {
-			associationElement.addAttribute("lazy", "false");
-		}
+		addLazyProxy(associationElement, mto.getFetch(), paReference);
 
 		addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() || mto.isOptional() ||
 				getHbmContext().isCurrentElementFeatureMap());

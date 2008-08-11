@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.36 2008/08/11 20:41:39 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.37 2008/08/11 21:54:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -153,7 +153,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 
 		// TODO OneToMany and CollectionOfElements are mutually exclusive.
 		// Should throw exception if both there?
-		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm.getFetch(), false);
+		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm.getFetch());
 		addCascadesForMany(collElement, (null != coe) ? hbCascadeList : otm.getCascade());
 		List<JoinColumn> inverseJoinColumns =
 				jt != null && jt.getInverseJoinColumns() != null ? jt.getInverseJoinColumns()
@@ -260,7 +260,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 			addKeyColumns(hbReference, keyElement, jcs);
 		}
 
-		addFetchType(collElement, otm.getFetch(), false);
+		addFetchType(collElement, otm.getFetch());
 		addCascadesForMany(collElement, otm.getCascade());
 
 		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();

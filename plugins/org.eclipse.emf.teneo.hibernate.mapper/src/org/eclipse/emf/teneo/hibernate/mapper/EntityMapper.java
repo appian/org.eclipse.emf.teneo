@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.38 2008/07/13 13:12:31 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.39 2008/08/11 21:54:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -110,6 +110,8 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 		final String entityName = getHbmContext().getEntityName(eclass);
 		final String isAbstractStr = eclass.isAbstract() ? "true" : "false";
+		final boolean doProxy =
+				((HbAnnotatedEClass) entity).getHbProxy() != null && ((HbAnnotatedEClass) entity).getHbProxy().isLazy();
 		if (entity.isOnlyMapAsEntity()) {
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("entity-name", entityName)
@@ -135,14 +137,13 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name",
 						hbmContext.getInstanceClassName(entity.getModelEClass())).addAttribute("abstract",
-						isAbstractStr).addAttribute("lazy",
-						((HbAnnotatedEClass) entity).getHbProxy() == null ? "false" : "true");
+						isAbstractStr).addAttribute("lazy", doProxy ? "true" : "false");
 		} else {
 			target =
 					getHbmContext().getCurrent().addElement(hbClassName).addAttribute("name",
 						hbmContext.getInstanceClassName(entity.getModelEClass())).addAttribute("entity-name",
 						entityName).addAttribute("abstract", isAbstractStr).addAttribute("lazy",
-						((HbAnnotatedEClass) entity).getHbProxy() == null ? "false" : "true");
+						doProxy ? "true" : "false");
 		}
 
 		final HbAnnotatedEClass hbEntity = (HbAnnotatedEClass) entity;

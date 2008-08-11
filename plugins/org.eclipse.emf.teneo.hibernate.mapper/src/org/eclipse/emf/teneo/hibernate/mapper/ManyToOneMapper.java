@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.27 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.28 2008/08/11 21:54:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -19,7 +19,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -85,6 +84,8 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 		final Element associationElement = addManyToOne(currentElement, paReference, targetName, false);
 		addAccessor(associationElement);
 
+		addLazyProxy(associationElement, mto.getFetch(), paReference);
+
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		if (hbReference.getNaturalId() != null) {
 			associationElement.addAttribute(HbMapperConstants.NATURAL_ID_ATTR, Boolean.toString(hbReference
@@ -99,6 +100,10 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 
 		addCascadesForSingle(associationElement, mto.getCascade());
 
+		if (hbReference.getHbFetch() != null) {
+			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
+		}
+
 		final boolean nullable =
 				getHbmContext().isForceOptional() || mto.isOptional() || getHbmContext().isCurrentElementFeatureMap();
 
@@ -108,13 +113,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 			// foreign key is not added when the reference is to a generic EObject
 		} else {
 			addForeignKeyAttribute(associationElement, paReference);
-			// todo default false until proxies are supported
-			final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getPaModel().getPAnnotated(referedTo);
-			if (haClass.getHbProxy() != null) {
-				associationElement.addAttribute("lazy", "proxy");
-			} else {
-				associationElement.addAttribute("lazy", "false");
-			}
+			addLazyProxy(associationElement, mto.getFetch(), paReference);
 
 			if (joinTable == null) {
 				addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() ||

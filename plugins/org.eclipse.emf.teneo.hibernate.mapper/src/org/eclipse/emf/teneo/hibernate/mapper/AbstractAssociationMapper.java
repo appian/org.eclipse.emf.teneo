@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -259,14 +260,27 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	/**
 	 * Sets the lazy attribute of the associationElement based on the fetchtype.
 	 */
-	protected void addFetchType(Element associationElement, FetchType fetch, boolean useProxy) {
+	protected void addFetchType(Element associationElement, FetchType fetch) {
+		if (fetch == null) {
+			return;
+		}
 		// TODO: when proxies are supported the below should be changed!
 		if (FetchType.EXTRA.equals(fetch)) {
 			associationElement.addAttribute("lazy", "extra");
-		} else if (useProxy) {
-			associationElement.addAttribute("lazy", FetchType.LAZY.equals(fetch) ? "true" : "false");
 		} else {
 			associationElement.addAttribute("lazy", FetchType.LAZY.equals(fetch) ? "true" : "false");
+		}
+	}
+
+	protected void addLazyProxy(Element element, FetchType fetch, PAnnotatedEReference paReference) {
+		final HbAnnotatedEClass haClass = (HbAnnotatedEClass) paReference.getAReferenceType();
+
+		boolean lazyFetch = fetch == null || fetch == FetchType.LAZY;
+		boolean doProxy = lazyFetch && (haClass.getHbProxy() != null && haClass.getHbProxy().isLazy());
+		if (doProxy && lazyFetch) {
+			element.addAttribute("lazy", "proxy");
+		} else {
+			element.addAttribute("lazy", "false");
 		}
 	}
 
