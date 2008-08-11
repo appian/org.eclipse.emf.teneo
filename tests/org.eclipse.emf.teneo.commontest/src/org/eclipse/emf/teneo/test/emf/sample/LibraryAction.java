@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.15 2008/02/28 07:08:15 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.16 2008/08/11 20:39:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class LibraryAction extends AbstractTestAction {
 	/**
@@ -119,7 +119,7 @@ public class LibraryAction extends AbstractTestAction {
 		if (true) {
 			store.beginTransaction();
 
-			final Writer writ = (Writer) store.getObjects(Writer.class).get(0);
+			final Writer writ = store.getObjects(Writer.class).get(0);
 
 			// store.refresh(writ);
 
@@ -157,7 +157,7 @@ public class LibraryAction extends AbstractTestAction {
 				}
 			}
 
-			final Book bk = (Book) store.getObjects(Book.class).get(0);
+			final Book bk = store.getObjects(Book.class).get(0);
 			assertTrue(bk.eContainer() == lib);
 
 			// check if the containing feature is also set correctly
