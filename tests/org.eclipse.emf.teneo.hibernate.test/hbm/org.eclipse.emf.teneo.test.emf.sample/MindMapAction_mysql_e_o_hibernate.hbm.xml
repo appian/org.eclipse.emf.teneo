@@ -58,10 +58,10 @@
 		<property name="label" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`label`"/>
 		</property>
-		<many-to-one name="source" entity-name="Topic" cascade="merge,persist,save-update,lock,refresh" foreign-key="relationship_source" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="source" entity-name="Topic" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="relationship_source" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`topic_source_e_id`"/>
 		</many-to-one>
-		<many-to-one name="target" entity-name="Topic" cascade="merge,persist,save-update,lock,refresh" foreign-key="relationship_target" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="target" entity-name="Topic" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="relationship_target" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`topic_target_e_id`"/>
 		</many-to-one>
 		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
@@ -121,7 +121,7 @@
 			<list-index column="`thread_items_idx`"/>
 			<one-to-many entity-name="ThreadItem"/>
 		</list>
-		<many-to-one name="author" entity-name="Resource" cascade="merge,persist,save-update,lock,refresh" foreign-key="thread_author" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="author" entity-name="Resource" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="thread_author" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`thread_author_e_id`"/>
 		</many-to-one>
 		<property name="postDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDate">
@@ -141,7 +141,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<many-to-one name="author" entity-name="Resource" cascade="merge,persist,save-update,lock,refresh" foreign-key="threaditem_author" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="author" entity-name="Resource" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="threaditem_author" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`resource_author_e_id`"/>
 		</many-to-one>
 		<property name="body" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">

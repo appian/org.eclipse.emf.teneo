@@ -33,7 +33,7 @@
 			<key update="true">
 				<column name="`BOOK_E_ID`" not-null="true" unique="false"/>
 			</key>
-			<many-to-one name="author" entity-name="Writer" insert="true" update="true" cascade="merge,persist,save-update,lock,refresh" foreign-key="BOOK_AUTHOR" lazy="false">
+			<many-to-one name="author" entity-name="Writer" lazy="false" insert="true" update="true" cascade="merge,persist,save-update,lock,refresh" foreign-key="BOOK_AUTHOR">
 				<column not-null="true" unique="false" name="`WRITER_E_ID`"/>
 			</many-to-one>
 		</join>

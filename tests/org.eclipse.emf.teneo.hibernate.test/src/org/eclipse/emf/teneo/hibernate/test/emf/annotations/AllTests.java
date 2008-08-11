@@ -54,7 +54,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.68 $
+ * @version $Revision: 1.69 $
  */
 public class AllTests {
 
@@ -64,7 +64,6 @@ public class AllTests {
 					.instance().getConfigurations());
 
 		suite.addTestSuite(HibernateAction.class);
-
 		suite.addTestSuite(OverrideSecondaryAction.class);
 		suite.addTestSuite(VariousAction.class);
 		suite.addTestSuite(PKeyJoinAction.class);

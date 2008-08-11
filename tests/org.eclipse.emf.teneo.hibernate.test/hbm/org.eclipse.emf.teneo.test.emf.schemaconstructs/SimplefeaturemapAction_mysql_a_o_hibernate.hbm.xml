@@ -48,10 +48,10 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<many-to-one name="preferredOrders" entity-name="PurchaseOrder" cascade="all" foreign-key="supplier_preferredorders" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="preferredOrders" entity-name="PurchaseOrder" lazy="false" cascade="all" foreign-key="supplier_preferredorders" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`orders_purchaseorder_preferredorders_e_id`"/>
 		</many-to-one>
-		<many-to-one name="standardOrders" entity-name="PurchaseOrder" cascade="all" foreign-key="supplier_standardorders" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="standardOrders" entity-name="PurchaseOrder" lazy="false" cascade="all" foreign-key="supplier_standardorders" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`orders_purchaseorder_standardorders_e_id`"/>
 		</many-to-one>
 		<property name="hardCopyOrderReference" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">

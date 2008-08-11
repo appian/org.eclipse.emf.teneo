@@ -78,10 +78,10 @@
 		<property name="comment" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`comment`"/>
 		</property>
-		<many-to-one name="author" entity-name="Member" cascade="merge,persist,save-update,lock,refresh" foreign-key="post_author" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="author" entity-name="Member" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="post_author" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`post_author_e_id`"/>
 		</many-to-one>
-		<many-to-one name="topic" entity-name="Topic" cascade="merge,persist,save-update,lock,refresh" foreign-key="post_topic" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="topic" entity-name="Topic" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="post_topic" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`post_topic_e_id`"/>
 		</many-to-one>
 	</class>
@@ -105,7 +105,7 @@
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.forum.TopicCategory</param>
 			</type>
 		</property>
-		<many-to-one name="creator" entity-name="Member" cascade="merge,persist,save-update,lock,refresh" foreign-key="topic_creator" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="creator" entity-name="Member" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="topic_creator" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`topic_creator_e_id`"/>
 		</many-to-one>
 		<list name="posts" lazy="true" cascade="merge,persist,save-update,lock,refresh">

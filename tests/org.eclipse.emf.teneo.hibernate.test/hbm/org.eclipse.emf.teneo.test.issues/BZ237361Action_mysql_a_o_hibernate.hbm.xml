@@ -34,7 +34,7 @@
 		</property>
 		<join table="maniesofone" inverse="true" optional="true">
 			<key/>
-			<many-to-one name="one" entity-name="One" insert="true" update="true" cascade="merge,persist,save-update,lock,refresh" foreign-key="many_one" lazy="false"/>
+			<many-to-one name="one" entity-name="One" lazy="false" insert="true" update="true" cascade="merge,persist,save-update,lock,refresh" foreign-key="many_one"/>
 		</join>
 	</class>
 </hibernate-mapping>

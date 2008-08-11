@@ -102,7 +102,7 @@
 		<property name="key" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`key`"/>
 		</property>
-		<many-to-one name="value" entity-name="Writer" cascade="merge,persist,save-update,lock,refresh" foreign-key="stringtowritermapentry_value" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="value" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="stringtowritermapentry_value" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`writer_value_e_id`"/>
 		</many-to-one>
 	</class>
@@ -132,7 +132,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<many-to-one name="key" entity-name="Writer" cascade="merge,persist,save-update,lock,refresh" foreign-key="writertostringmapentry_key" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="key" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="writertostringmapentry_key" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`writer_key_e_id`"/>
 		</many-to-one>
 		<property name="value" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">

@@ -12,7 +12,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<many-to-one name="order" entity-name="PurchaseOrder" cascade="merge,persist,save-update,lock,refresh" foreign-key="item_order" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="order" entity-name="PurchaseOrder" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="item_order" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`item_order_e_id`"/>
 		</many-to-one>
 		<property name="productName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -87,10 +87,10 @@
 			<list-index column="`purchaseorder_items_idx`"/>
 			<one-to-many entity-name="Item"/>
 		</list>
-		<many-to-one name="billTo" entity-name="Address" cascade="all" foreign-key="purchaseorder_billto" lazy="false" insert="true" update="true" not-null="true" unique="true">
+		<many-to-one name="billTo" entity-name="Address" lazy="false" cascade="all" foreign-key="purchaseorder_billto" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`address_billto_e_id`"/>
 		</many-to-one>
-		<many-to-one name="shipTo" entity-name="Address" cascade="all" foreign-key="purchaseorder_shipto" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="shipTo" entity-name="Address" lazy="false" cascade="all" foreign-key="purchaseorder_shipto" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`address_shipto_e_id`"/>
 		</many-to-one>
 		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -105,10 +105,10 @@
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.epo2.OrderStatus</param>
 			</type>
 		</property>
-		<many-to-one name="customer" entity-name="Customer" cascade="merge,persist,save-update,lock,refresh" foreign-key="purchaseorder_customer" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="customer" entity-name="Customer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="purchaseorder_customer" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`purchaseorder_customer_e_id`"/>
 		</many-to-one>
-		<many-to-one name="previousOrder" entity-name="PurchaseOrder" cascade="merge,persist,save-update,lock,refresh" foreign-key="purchaseorder_previousorder" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="previousOrder" entity-name="PurchaseOrder" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="purchaseorder_previousorder" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`purchaseorder_previousorder_e_id`"/>
 		</many-to-one>
 	</class>

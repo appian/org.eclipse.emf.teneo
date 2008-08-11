@@ -11,14 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateAction.java,v 1.3 2008/08/11 20:46:34 mtaal Exp $
+ * $Id: HibernateAction.java,v 1.4 2008/08/11 21:58:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernateFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage;
@@ -32,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Test for several hibernate annotations. See bugzilla: 242895, 242897
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class HibernateAction extends AbstractTestAction {
 	/** How many test objects are created */
@@ -44,6 +46,13 @@ public class HibernateAction extends AbstractTestAction {
 		super(HibernatePackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.SET_PROXY, "true");
+		return props;
+	}
+
 // @Override
 // public Properties getExtraConfigurationProperties() {
 // final Properties props = new Properties();
@@ -53,7 +62,6 @@ public class HibernateAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		{
 			store.beginTransaction();
 			store.store(createCities());

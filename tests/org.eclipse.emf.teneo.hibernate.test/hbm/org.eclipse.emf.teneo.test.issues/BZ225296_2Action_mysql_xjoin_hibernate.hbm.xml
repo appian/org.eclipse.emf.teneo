@@ -12,7 +12,7 @@
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
-		<many-to-one name="vserver" entity-name="VServer" cascade="merge,persist,save-update,lock,refresh" foreign-key="block_vserver" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="vserver" entity-name="VServer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="block_vserver" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`vserver_id`"/>
 		</many-to-one>
 		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -111,7 +111,7 @@
 				<column name="`system_id`" not-null="true" unique="false"/>
 			</many-to-many>
 		</bag>
-		<many-to-one name="interface" entity-name="Interface" cascade="merge,persist,save-update,lock,refresh" foreign-key="domainsystem_interface" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="interface" entity-name="Interface" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="domainsystem_interface" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`interface_id`"/>
 		</many-to-one>
 		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
@@ -151,7 +151,7 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`name`"/>
 		</property>
-		<many-to-one name="dataCenter" entity-name="DataCenter" cascade="merge,persist,save-update,lock,refresh" foreign-key="host_datacenter" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="dataCenter" entity-name="DataCenter" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="host_datacenter" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`host_datacenter_id`"/>
 		</many-to-one>
 		<bag name="vserver" fetch="subselect" lazy="true" cascade="all,delete-orphan">
@@ -166,7 +166,7 @@
 			</key>
 			<one-to-many entity-name="IP"/>
 		</bag>
-		<many-to-one name="ownIp" entity-name="IP" cascade="merge,persist,save-update,lock,refresh" foreign-key="host_ownip" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="ownIp" entity-name="IP" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="host_ownip" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`ownip_id`"/>
 		</many-to-one>
 		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
@@ -181,7 +181,7 @@
 		<property name="providerId" lazy="false" insert="true" update="true" not-null="false" unique="true" type="text">
 			<column not-null="false" unique="true" name="`providerid`" length="64000"/>
 		</property>
-		<many-to-one name="gateway" entity-name="IP" cascade="merge,persist,save-update,lock,refresh" foreign-key="host_gateway" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="gateway" entity-name="IP" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="host_gateway" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`ip_gateway_id`"/>
 		</many-to-one>
 		<bag name="block" fetch="subselect" lazy="true" cascade="all,delete-orphan">
@@ -201,7 +201,7 @@
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
-		<many-to-one name="host" entity-name="Host" cascade="merge,persist,save-update,lock,refresh" foreign-key="hostblock_host" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="host" entity-name="Host" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="hostblock_host" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`host_id`"/>
 		</many-to-one>
 		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -244,7 +244,7 @@
 			</key>
 			<one-to-many entity-name="DomainSystem"/>
 		</bag>
-		<many-to-one name="failoverType" entity-name="FailoverType" cascade="merge,persist,save-update,lock,refresh" foreign-key="interface_failovertype" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="failoverType" entity-name="FailoverType" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="interface_failovertype" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`failovertype_id`"/>
 		</many-to-one>
 		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
@@ -273,7 +273,7 @@
 		<property name="ip" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`ip`"/>
 		</property>
-		<many-to-one name="host" entity-name="Host" cascade="merge,persist,save-update,lock,refresh" foreign-key="ip_host" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="host" entity-name="Host" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="ip_host" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`host_id`"/>
 		</many-to-one>
 		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
@@ -333,7 +333,7 @@
 		<property name="displaySummary" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
 			<column not-null="false" unique="false" name="`displaysummary`"/>
 		</property>
-		<many-to-one name="role" entity-name="Role" cascade="merge,persist,save-update,lock,refresh" foreign-key="munininfo_role" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="role" entity-name="Role" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="munininfo_role" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`role_id`"/>
 		</many-to-one>
 	</class>
@@ -483,7 +483,7 @@
 			</key>
 			<one-to-many entity-name="Block"/>
 		</bag>
-		<many-to-one name="ownSystem" entity-name="OpsSystem" cascade="merge,persist,save-update,lock,refresh" foreign-key="vserver_ownsystem" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="ownSystem" entity-name="OpsSystem" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="vserver_ownsystem" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`own_opssystem_id`"/>
 		</many-to-one>
 		<bag name="servedSystem" fetch="select" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`ops_vserver_opssystem`">
@@ -502,10 +502,10 @@
 				<column name="`ip_id`" not-null="true" unique="false"/>
 			</many-to-many>
 		</bag>
-		<many-to-one name="host" entity-name="Host" cascade="merge,persist,save-update,lock,refresh" foreign-key="vserver_host" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="host" entity-name="Host" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="vserver_host" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`host_id`"/>
 		</many-to-one>
-		<many-to-one name="role" entity-name="Role" cascade="merge,persist,save-update,lock,refresh" foreign-key="vserver_role" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="role" entity-name="Role" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="vserver_role" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`role_id`"/>
 		</many-to-one>
 		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">

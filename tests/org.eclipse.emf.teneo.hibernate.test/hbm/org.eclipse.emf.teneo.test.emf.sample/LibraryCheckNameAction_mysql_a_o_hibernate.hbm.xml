@@ -29,7 +29,7 @@
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
 			</type>
 		</property>
-		<many-to-one name="author" entity-name="Writer" cascade="merge,persist,save-update,lock,refresh" foreign-key="bk_athor" lazy="false" insert="false" update="false" not-null="false">
+		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="bk_athor" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="`bk_thr_d`"/>
 		</many-to-one>
 	</class>

@@ -71,7 +71,7 @@
 		<version name="myversion" column="myversion" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<many-to-one name="owner" entity-name="Parent" cascade="merge,persist,save-update,lock,refresh" foreign-key="house_owner" lazy="false" insert="true" update="true" not-null="false">
+		<many-to-one name="owner" entity-name="Parent" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="house_owner" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`parent_owner_firstname`"/>
 			<column not-null="false" unique="false" name="`parent_owner_lastname`"/>
 		</many-to-one>
