@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToManyImpl.java,v 1.13 2008/08/04 12:38:18 mtaal Exp $
+ * $Id: OneToManyImpl.java,v 1.14 2008/08/11 20:42:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#getMappedBy <em>Mapped By</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isIndexed <em>Indexed</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isUnique <em>Unique</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl#isInverse <em>Inverse</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,26 +146,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 	 * @ordered
 	 */
 	protected boolean unique = UNIQUE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isInverse() <em>Inverse</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInverse()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean INVERSE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isInverse() <em>Inverse</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInverse()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean inverse = INVERSE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -292,27 +271,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isInverse() {
-		return inverse;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInverse(boolean newInverse) {
-		boolean oldInverse = inverse;
-		inverse = newInverse;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_MANY__INVERSE, oldInverse, inverse));
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -331,8 +289,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 				return isIndexed() ? Boolean.TRUE : Boolean.FALSE;
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
 				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
-			case PannotationPackage.ONE_TO_MANY__INVERSE:
-				return isInverse() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -364,9 +320,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
 				setUnique(((Boolean)newValue).booleanValue());
 				return;
-			case PannotationPackage.ONE_TO_MANY__INVERSE:
-				setInverse(((Boolean)newValue).booleanValue());
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -396,9 +349,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
 				setUnique(UNIQUE_EDEFAULT);
 				return;
-			case PannotationPackage.ONE_TO_MANY__INVERSE:
-				setInverse(INVERSE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -422,8 +372,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 				return indexed != INDEXED_EDEFAULT;
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
 				return unique != UNIQUE_EDEFAULT;
-			case PannotationPackage.ONE_TO_MANY__INVERSE:
-				return inverse != INVERSE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -449,8 +397,6 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 		result.append(indexed);
 		result.append(", unique: ");
 		result.append(unique);
-		result.append(", inverse: ");
-		result.append(inverse);
 		result.append(')');
 		return result.toString();
 	}

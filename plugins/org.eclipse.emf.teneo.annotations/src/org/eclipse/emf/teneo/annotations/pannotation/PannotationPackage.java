@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.14 2008/08/04 05:15:18 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.15 2008/08/11 20:42:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -1113,22 +1113,13 @@ public interface PannotationPackage extends EPackage {
 	int MANY_TO_MANY__INDEXED = PANNOTATION_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Inverse</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MANY_TO_MANY__INVERSE = PANNOTATION_FEATURE_COUNT + 5;
-
-	/**
 	 * The number of structural features of the '<em>Many To Many</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MANY_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
+	int MANY_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1288,22 +1279,13 @@ public interface PannotationPackage extends EPackage {
 	int ONE_TO_MANY__UNIQUE = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Inverse</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ONE_TO_MANY__INVERSE = PANNOTATION_FEATURE_COUNT + 6;
-
-	/**
 	 * The number of structural features of the '<em>One To Many</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ONE_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 7;
+	int ONE_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2536,17 +2518,6 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getManyToMany_Indexed();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isInverse <em>Inverse</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inverse</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.ManyToMany#isInverse()
-	 * @see #getManyToMany()
-	 * @generated
-	 */
-	EAttribute getManyToMany_Inverse();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne <em>Many To One</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Many To One</em>'.
@@ -2684,17 +2655,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOneToMany_Unique();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isInverse <em>Inverse</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inverse</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isInverse()
-	 * @see #getOneToMany()
-	 * @generated
-	 */
-	EAttribute getOneToMany_Inverse();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne <em>One To One</em>}'.
@@ -3854,14 +3814,6 @@ public interface PannotationPackage extends EPackage {
 		EAttribute MANY_TO_MANY__INDEXED = eINSTANCE.getManyToMany_Indexed();
 
 		/**
-		 * The meta object literal for the '<em><b>Inverse</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MANY_TO_MANY__INVERSE = eINSTANCE.getManyToMany_Inverse();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl <em>Many To One</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3988,14 +3940,6 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ONE_TO_MANY__UNIQUE = eINSTANCE.getOneToMany_Unique();
-
-		/**
-		 * The meta object literal for the '<em><b>Inverse</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ONE_TO_MANY__INVERSE = eINSTANCE.getOneToMany_Inverse();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl <em>One To One</em>}' class.

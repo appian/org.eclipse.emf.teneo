@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.24 2008/08/04 12:38:18 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.25 2008/08/11 20:42:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -946,15 +946,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getManyToMany_Inverse() {
-		return (EAttribute)manyToManyEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1064,15 +1055,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getOneToMany_Unique() {
 		return (EAttribute)oneToManyEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOneToMany_Inverse() {
-		return (EAttribute)oneToManyEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1646,7 +1628,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(manyToManyEClass, MANY_TO_MANY__FETCH);
 		createEAttribute(manyToManyEClass, MANY_TO_MANY__MAPPED_BY);
 		createEAttribute(manyToManyEClass, MANY_TO_MANY__INDEXED);
-		createEAttribute(manyToManyEClass, MANY_TO_MANY__INVERSE);
 
 		manyToOneEClass = createEClass(MANY_TO_ONE);
 		createEAttribute(manyToOneEClass, MANY_TO_ONE__TARGET_ENTITY);
@@ -1666,7 +1647,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__MAPPED_BY);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__INDEXED);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__UNIQUE);
-		createEAttribute(oneToManyEClass, ONE_TO_MANY__INVERSE);
 
 		oneToOneEClass = createEClass(ONE_TO_ONE);
 		createEAttribute(oneToOneEClass, ONE_TO_ONE__TARGET_ENTITY);
@@ -1888,7 +1868,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getManyToMany_Fetch(), this.getFetchType(), "fetch", "LAZY", 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getManyToMany_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getManyToMany_Indexed(), ecorePackage.getEBoolean(), "indexed", "true", 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getManyToMany_Inverse(), ecorePackage.getEBoolean(), "inverse", "false", 0, 1, ManyToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(manyToOneEClass, ManyToOne.class, "ManyToOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getManyToOne_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, ManyToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1908,7 +1887,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getOneToMany_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToMany_Indexed(), ecorePackage.getEBoolean(), "indexed", "true", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToMany_Unique(), ecorePackage.getEBoolean(), "unique", "true", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOneToMany_Inverse(), ecorePackage.getEBoolean(), "inverse", "false", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oneToOneEClass, OneToOne.class, "OneToOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOneToOne_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

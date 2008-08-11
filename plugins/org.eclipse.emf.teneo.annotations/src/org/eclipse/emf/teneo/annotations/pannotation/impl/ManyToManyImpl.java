@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.13 2008/08/04 12:38:18 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.14 2008/08/11 20:42:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#getFetch <em>Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#getMappedBy <em>Mapped By</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#isIndexed <em>Indexed</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl#isInverse <em>Inverse</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,26 +125,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 	 * @ordered
 	 */
 	protected boolean indexed = INDEXED_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isInverse() <em>Inverse</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInverse()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean INVERSE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isInverse() <em>Inverse</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInverse()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean inverse = INVERSE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -252,27 +231,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isInverse() {
-		return inverse;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInverse(boolean newInverse) {
-		boolean oldInverse = inverse;
-		inverse = newInverse;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_MANY__INVERSE, oldInverse, inverse));
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -289,8 +247,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 				return getMappedBy();
 			case PannotationPackage.MANY_TO_MANY__INDEXED:
 				return isIndexed() ? Boolean.TRUE : Boolean.FALSE;
-			case PannotationPackage.MANY_TO_MANY__INVERSE:
-				return isInverse() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,9 +275,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 			case PannotationPackage.MANY_TO_MANY__INDEXED:
 				setIndexed(((Boolean)newValue).booleanValue());
 				return;
-			case PannotationPackage.MANY_TO_MANY__INVERSE:
-				setInverse(((Boolean)newValue).booleanValue());
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -348,9 +301,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 			case PannotationPackage.MANY_TO_MANY__INDEXED:
 				setIndexed(INDEXED_EDEFAULT);
 				return;
-			case PannotationPackage.MANY_TO_MANY__INVERSE:
-				setInverse(INVERSE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -372,8 +322,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 				return MAPPED_BY_EDEFAULT == null ? mappedBy != null : !MAPPED_BY_EDEFAULT.equals(mappedBy);
 			case PannotationPackage.MANY_TO_MANY__INDEXED:
 				return indexed != INDEXED_EDEFAULT;
-			case PannotationPackage.MANY_TO_MANY__INVERSE:
-				return inverse != INVERSE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -397,8 +345,6 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 		result.append(mappedBy);
 		result.append(", indexed: ");
 		result.append(indexed);
-		result.append(", inverse: ");
-		result.append(inverse);
 		result.append(')');
 		return result.toString();
 	}
