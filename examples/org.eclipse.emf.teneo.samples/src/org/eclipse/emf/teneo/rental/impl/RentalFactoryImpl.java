@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalFactoryImpl.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
+ * $Id: RentalFactoryImpl.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -214,7 +214,7 @@ public class RentalFactoryImpl extends EFactoryImpl implements RentalFactory {
 	 * @generated
 	 */
 	public Date createDateFromString(EDataType eDataType, String initialValue) {
-		return (Date)super.createFromString(initialValue);
+		return (Date)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class RentalFactoryImpl extends EFactoryImpl implements RentalFactory {
 	 * @generated
 	 */
 	public String convertDateToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

@@ -33,7 +33,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="theAuthor" lowerBound="1"
         eType="#//Author" eOpposite="#//Author/theBook">
       <eAnnotations source="teneo.jpa">
-        <details key="value" value="@PrimaryKeyJoinColumn"/>
+        <details key="value" value="@PrimaryKeyJoinColumn&#xA;@OneToOne(fetch=LAZY)"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">

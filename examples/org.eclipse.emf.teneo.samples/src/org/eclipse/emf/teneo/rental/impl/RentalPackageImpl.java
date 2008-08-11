@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackageImpl.java,v 1.4 2007/03/29 22:13:50 mtaal Exp $
+ * $Id: RentalPackageImpl.java,v 1.5 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -651,7 +651,7 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "rentalUnits"
-		   });		
+		   });			
 		addAnnotation
 		  (rentalUnitEClass, 
 		   source, 
@@ -682,7 +682,13 @@ public class RentalPackageImpl extends EPackageImpl implements RentalPackage {
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";																				
+		String source = "teneo.jpa";																		
+		addAnnotation
+		  (getRentalContract_Currency(), 
+		   source, 
+		   new String[] {
+			 "value", "@ManyToOne(fetch=LAZY)"
+		   });				
 		addAnnotation
 		  (getRentalUnit_Description(), 
 		   source, 

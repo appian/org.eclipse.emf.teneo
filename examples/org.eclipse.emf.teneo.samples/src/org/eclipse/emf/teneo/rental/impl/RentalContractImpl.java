@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContractImpl.java,v 1.3 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalContractImpl.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -113,7 +113,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean endDateESet = false;
+	protected boolean endDateESet;
 
 	/**
 	 * The default value of the '{@link #getCost() <em>Cost</em>}' attribute.
@@ -142,7 +142,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean costESet = false;
+	protected boolean costESet;
 
 	/**
 	 * The cached value of the '{@link #getRentalUnits() <em>Rental Units</em>}' reference list.
@@ -152,7 +152,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RentalUnit> rentalUnits = null;
+	protected EList<RentalUnit> rentalUnits;
 
 	/**
 	 * The cached value of the '{@link #getCurrency() <em>Currency</em>}' reference.
@@ -162,7 +162,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 	 * @generated
 	 * @ordered
 	 */
-	protected Currency currency = null;
+	protected Currency currency;
 
 	/**
 	 * <!-- begin-user-doc -->

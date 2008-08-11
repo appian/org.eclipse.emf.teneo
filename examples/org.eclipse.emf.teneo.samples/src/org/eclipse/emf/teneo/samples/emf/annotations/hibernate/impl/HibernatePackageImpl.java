@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HibernatePackageImpl.java,v 1.3 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: HibernatePackageImpl.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate.impl;
 
@@ -342,7 +342,7 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		  (getCity_Streets(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@NotFound(action=IGNORE)\n@OneToMany(mappedBy=\"city\", indexed=false)\n@JoinColumn(name=\"CITY_FK\", nullable=false)\n"
+			 "appinfo", "@NotFound(action=IGNORE)\n@OneToMany(mappedBy=\"city\", indexed=false)"
 		   });			
 		addAnnotation
 		  (getStreet_City(), 
@@ -354,13 +354,13 @@ public class HibernatePackageImpl extends EPackageImpl implements HibernatePacka
 		  (getState_StateDetail(), 
 		   source, 
 		   new String[] {
-			 "value", "@OneToOne(mappedBy=\"state\")"
+			 "value", "@OneToOne(mappedBy=\"state\", fetch=LAZY)\n@Fetch(value=JOIN)"
 		   });		
 		addAnnotation
 		  (getStateDetail_State(), 
 		   source, 
 		   new String[] {
-			 "value", "@OneToOne(optional=true)\n@JoinColumn(name=\"STATE_ID\")"
+			 "value", "@OneToOne(optional=true, fetch=EAGER)\n@JoinColumn(name=\"STATE_ID\")"
 		   });
 	}
 

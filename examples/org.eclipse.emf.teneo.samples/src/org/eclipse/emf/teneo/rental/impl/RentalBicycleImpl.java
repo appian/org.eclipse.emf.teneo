@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalBicycleImpl.java,v 1.2 2007/03/29 22:13:50 mtaal Exp $
+ * $Id: RentalBicycleImpl.java,v 1.3 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -60,7 +60,7 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean typeESet = false;
+	protected boolean typeESet;
 
 	/**
 	 * The cached value of the '{@link #getManufacturer() <em>Manufacturer</em>}' reference.
@@ -70,7 +70,7 @@ public class RentalBicycleImpl extends RentalUnitImpl implements RentalBicycle {
 	 * @generated
 	 * @ordered
 	 */
-	protected Manufacturer manufacturer = null;
+	protected Manufacturer manufacturer;
 
 	/**
 	 * <!-- begin-user-doc -->

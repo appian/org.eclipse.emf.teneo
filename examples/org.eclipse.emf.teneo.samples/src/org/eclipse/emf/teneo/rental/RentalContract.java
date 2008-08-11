@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContract.java,v 1.3 2007/03/29 14:59:35 mtaal Exp $
+ * $Id: RentalContract.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -207,7 +207,7 @@ public interface RentalContract extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rental Units</em>' reference list.
 	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalContract_RentalUnits()
-	 * @model type="org.eclipse.emf.teneo.rental.RentalUnit" required="true"
+	 * @model required="true"
 	 *        extendedMetaData="kind='element' name='rentalUnits'"
 	 * @generated
 	 */
@@ -224,7 +224,7 @@ public interface RentalContract extends EObject {
 	 * @return the value of the '<em>Currency</em>' reference.
 	 * @see #setCurrency(Currency)
 	 * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalContract_Currency()
-	 * @model
+	 * @model annotation="teneo.jpa value='@ManyToOne(fetch=LAZY)'"
 	 * @generated
 	 */
 	Currency getCurrency();

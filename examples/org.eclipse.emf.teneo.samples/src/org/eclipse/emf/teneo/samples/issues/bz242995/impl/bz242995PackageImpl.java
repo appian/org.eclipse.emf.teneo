@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: bz242995PackageImpl.java,v 1.1 2008/08/03 19:23:43 mtaal Exp $
+ * $Id: bz242995PackageImpl.java,v 1.2 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz242995.impl;
 
@@ -467,7 +467,7 @@ public class bz242995PackageImpl extends EPackageImpl implements bz242995Package
 		  (getOneTimeWonder_TheAuthor(), 
 		   source, 
 		   new String[] {
-			 "value", "@PrimaryKeyJoinColumn"
+			 "value", "@PrimaryKeyJoinColumn\n@OneToOne(fetch=LAZY)"
 		   });		
 		addAnnotation
 		  (getOneTimeWonder_Id(), 

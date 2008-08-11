@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalBicycleType.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalBicycleType.java,v 1.2 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.rental.RentalPackage#getRentalBicycleType()
- * @model
+ * @model extendedMetaData="name='RentalBicycleType'"
  * @generated
  */
 public enum RentalBicycleType implements Enumerator {

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackage.java,v 1.3 2007/03/29 22:13:50 mtaal Exp $
+ * $Id: RentalPackage.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -571,7 +571,7 @@ public interface RentalPackage extends EPackage {
 	 * @return the meta object for data type '<em>Date</em>'.
 	 * @see java.util.Date
 	 * @model instanceClass="java.util.Date"
-	 *        extendedMetaData="name='Date'" 
+	 *        extendedMetaData="name='Date'"
 	 * @generated
 	 */
 	EDataType getDate();
@@ -583,7 +583,7 @@ public interface RentalPackage extends EPackage {
 	 * @return the meta object for data type '<em>Bicycle Type Object</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalBicycleType
 	 * @model instanceClass="org.eclipse.emf.teneo.rental.RentalBicycleType"
-	 *        extendedMetaData="name='RentalBicycleType:Object' baseType='RentalBicycleType'" 
+	 *        extendedMetaData="name='RentalBicycleType:Object' baseType='RentalBicycleType'"
 	 * @generated
 	 */
 	EDataType getRentalBicycleTypeObject();
@@ -595,7 +595,7 @@ public interface RentalPackage extends EPackage {
 	 * @return the meta object for data type '<em>Car Size Object</em>'.
 	 * @see org.eclipse.emf.teneo.rental.RentalCarSize
 	 * @model instanceClass="org.eclipse.emf.teneo.rental.RentalCarSize"
-	 *        extendedMetaData="name='RentalCarSize:Object' baseType='RentalCarSize'" 
+	 *        extendedMetaData="name='RentalCarSize:Object' baseType='RentalCarSize'"
 	 * @generated
 	 */
 	EDataType getRentalCarSizeObject();

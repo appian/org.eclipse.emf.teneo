@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneTimeWonder.java,v 1.1 2008/08/03 19:23:43 mtaal Exp $
+ * $Id: OneTimeWonder.java,v 1.2 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz242995;
 
@@ -67,7 +67,7 @@ public interface OneTimeWonder extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package#getOneTimeWonder_TheAuthor()
 	 * @see org.eclipse.emf.teneo.samples.issues.bz242995.Author#getTheBook
 	 * @model opposite="theBook" required="true"
-	 *        annotation="teneo.jpa value='@PrimaryKeyJoinColumn'"
+	 *        annotation="teneo.jpa value='@PrimaryKeyJoinColumn\n@OneToOne(fetch=LAZY)'"
 	 * @generated
 	 */
 	Author getTheAuthor();

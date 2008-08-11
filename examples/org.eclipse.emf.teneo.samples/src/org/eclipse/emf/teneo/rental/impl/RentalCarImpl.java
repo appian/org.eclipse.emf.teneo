@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalCarImpl.java,v 1.1 2007/03/07 23:34:09 mtaal Exp $
+ * $Id: RentalCarImpl.java,v 1.2 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -57,7 +57,7 @@ public class RentalCarImpl extends RentalUnitImpl implements RentalCar {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean sizeESet = false;
+	protected boolean sizeESet;
 
 	/**
 	 * <!-- begin-user-doc -->

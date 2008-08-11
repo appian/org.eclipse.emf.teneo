@@ -112,7 +112,11 @@
         <details key="name" value="rentalUnits"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="currency" eType="#//Currency"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currency" eType="#//Currency">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@ManyToOne(fetch=LAZY)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RentalUnit" abstract="true">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

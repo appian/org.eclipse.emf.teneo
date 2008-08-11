@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: State.java,v 1.1 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: State.java,v 1.2 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate;
 
@@ -39,7 +39,7 @@ public interface State extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage#getState_StateDetail()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.StateDetail#getState
 	 * @model opposite="state"
-	 *        annotation="teneo.jpa value='@OneToOne(mappedBy=\"state\")'"
+	 *        annotation="teneo.jpa value='@OneToOne(mappedBy=\"state\", fetch=LAZY)\n@Fetch(value=JOIN)'"
 	 * @generated
 	 */
 	StateDetail getStateDetail();

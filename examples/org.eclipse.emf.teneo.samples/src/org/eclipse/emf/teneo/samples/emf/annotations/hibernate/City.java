@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: City.java,v 1.3 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: City.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hibernate;
 
@@ -70,7 +70,7 @@ public interface City extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.HibernatePackage#getCity_Streets()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hibernate.Street#getCity
 	 * @model opposite="city" containment="true"
-	 *        annotation="teneo.jpa appinfo='@NotFound(action=IGNORE)\n@OneToMany(mappedBy=\"city\", indexed=false)\n@JoinColumn(name=\"CITY_FK\", nullable=false)\n'"
+	 *        annotation="teneo.jpa appinfo='@NotFound(action=IGNORE)\n@OneToMany(mappedBy=\"city\", indexed=false)'"
 	 * @generated
 	 */
 	EList<Street> getStreets();
