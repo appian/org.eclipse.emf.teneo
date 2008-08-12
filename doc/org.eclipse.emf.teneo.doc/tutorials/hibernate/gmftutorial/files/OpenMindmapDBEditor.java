@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: OpenMindmapDBEditor.java,v 1.14 2008/08/12 07:45:40 mtaal Exp $
+ * $Id: OpenMindmapDBEditor.java,v 1.15 2008/08/12 19:30:37 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap.diagram.db;
 
