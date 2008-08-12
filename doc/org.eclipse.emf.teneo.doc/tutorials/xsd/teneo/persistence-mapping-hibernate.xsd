@@ -182,6 +182,7 @@
 			<xsd:element name="many-to-one" type="ManyToOne"/>
 			<xsd:element name="map-key" type="xsd:string"/>
 			<xsd:element name="natural-id" type="xsd:boolean"/>
+			<xsd:element name="not-found" type="NotFoundAction"/>
 			<xsd:element name="one-to-many" type="OneToMany"/>
 			<xsd:element name="one-to-one" type="OneToOne"/>
 			<xsd:element name="order-by" type="xsd:string"/>
@@ -254,6 +255,7 @@
 			<xsd:element name="many-to-one" type="ManyToOne"/>
 			<xsd:element name="map-key" type="xsd:string"/>
 			<xsd:element name="natural-id" type="xsd:boolean"/>
+			<xsd:element name="not-found" type="NotFoundAction"/>
 			<xsd:element name="one-to-many" type="OneToMany"/>
 			<xsd:element name="one-to-one" type="OneToOne"/>
 			<xsd:element name="order-by" type="xsd:string"/>
@@ -376,6 +378,12 @@
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="query" type="xsd:string" use="optional"/>
 </xsd:complexType>
+<xsd:simpleType name="NotFoundAction">
+	<xsd:restriction base="xsd:token">
+		<xsd:enumeration value="EXCEPTION"/>
+		<xsd:enumeration value="IGNORE"/>
+	</xsd:restriction>
+</xsd:simpleType>
 <xsd:simpleType name="OnDeleteAction">
 	<xsd:restriction base="xsd:token">
 		<xsd:enumeration value="NO_ACTION"/>

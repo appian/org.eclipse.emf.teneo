@@ -281,6 +281,9 @@
 <div class="app" id="projecthome">
 <ul class="minitoc">
 <li>
+<a href="#Foreign-Key+Constraint%3A+deleting+parent+in+parent-child+relation+%28inverse%3Dtrue%29">Foreign-Key Constraint: deleting parent in parent-child relation (inverse=true)</a>
+</li>
+<li>
 <a href="#compositeid">How to do composite-ids with many-to-one</a>
 </li>
 <li>
@@ -330,7 +333,29 @@
 </li>
 </ul>
 		
-<a name="N10011"></a><a name="compositeid"></a>
+<a name="N10011"></a><a name="Foreign-Key+Constraint%3A+deleting+parent+in+parent-child+relation+%28inverse%3Dtrue%29"></a>
+<div class="h3">
+<h3>Foreign-Key Constraint: deleting parent in parent-child relation (inverse=true)</h3>
+			
+<p>For a containment list relation Teneo will generate a hibernate one-to-many mapping with cascade all, delete-orphan. Hibernate
+			will create a foreign-key in the database from the child to the parent in the relation. When the parent is deleted then hibernate 
+			will first nullify the foreign-key column in the child before removing the child. This will not work if the foreign-key column
+			is non-nullable.</p>
+			
+<p>See here for more information: <a class="external" href="http://forum.hibernate.org/viewtopic.php?p=2383090">hibernate forum</a>, 
+			<a class="external" href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=242479">EMF Bugzilla</a>
+</p>
+			
+<p>The hibernate forum gives as a solution to set inverse=true on the one-to-many. However, inverse="true" is normally not set by Teneo
+			because it can interfere with the EMF bidirectional relation handling.</p>
+			
+<p>To solve this the following solution is offered: to set inverse="true" on
+			a relation set the mappedBy attribute of the OneToMany or ManyToMany annotations: @OneToMany(mappedBy="MyOtherSideProp", indexed=false). Note that inverse=true only works on non-indexed collections therefore
+			indexed=false is also required.</p>			
+		
+</div>
+		
+<a name="N1002A"></a><a name="compositeid"></a>
 <div class="h3">
 <h3>How to do composite-ids with many-to-one</h3>
 		
@@ -387,7 +412,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 	
 		
-<a name="N10049"></a><a name="orgeneration"></a>
+<a name="N10062"></a><a name="orgeneration"></a>
 <div class="h3">
 <h3>Manual Generation of OR Mapping</h3>
 		
@@ -423,7 +448,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1006F"></a><a name="Classloader"></a>
+<a name="N10088"></a><a name="Classloader"></a>
 <div class="h3">
 <h3>Classloader</h3>
 			
@@ -434,7 +459,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N10078"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
+<a name="N10091"></a><a name="Requirements+on+EObjects%3A+InternalEObject"></a>
 <div class="h3">
 <h3>Requirements on EObjects: InternalEObject</h3>
 		
@@ -443,7 +468,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N10081"></a><a name="Relational+Validation+and+EObject+persistency"></a>
+<a name="N1009A"></a><a name="Relational+Validation+and+EObject+persistency"></a>
 <div class="h3">
 <h3>Relational Validation and EObject persistency</h3>
 			
@@ -454,7 +479,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1008B"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
+<a name="N100A4"></a><a name="Automatic+creation+of+tables%2FDatabase+Schema"></a>
 <div class="h3">
 <h3>Automatic creation of tables/Database Schema</h3>
 		
@@ -467,7 +492,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1009B"></a><a name="escaping"></a>
+<a name="N100B4"></a><a name="escaping"></a>
 <div class="h3">
 <h3>Escaping of table and column names</h3>
 		
@@ -488,16 +513,19 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100B4"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
+<a name="N100CD"></a><a name="Querying+using+eclass+names%2C+class+names+or+interface+names"></a>
 <div class="h3">
 <h3>Querying using eclass names, class names or interface names</h3>
 			
 <p>Teneo supports hql queries which use eclass (entity) names and class and interface names. The last two are supported 
 			when the option ALSO_MAP_AS_CLASS is set to true (which is the default).</p>
+			
+<p>It is possible that the entitymanager.getReference/session.get methods won't work with
+			interface classes, if so please look <a href="troubleshooting.html#classquery">here</a>.</p>
 		
 </div>
 		
-<a name="N100BD"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
+<a name="N100DD"></a><a name="Lazy+loading%2Ffetching%2C+Proxy"></a>
 <div class="h3">
 <h3>Lazy loading/fetching, Proxy</h3>
 			
@@ -510,7 +538,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100CC"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
+<a name="N100EC"></a><a name="Automatic+creation+of+TypeDef+for+EDataType"></a>
 <div class="h3">
 <h3>Automatic creation of TypeDef for EDataType</h3>
 			
@@ -526,7 +554,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100D8"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
+<a name="N100F8"></a><a name="Client-Server+scenario%3A+requires+explicitly+modelled+id+and+version+properties"></a>
 <div class="h3">
 <h3>Client-Server scenario: requires explicitly modelled id and version properties</h3>
 			
@@ -538,7 +566,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100E1"></a><a name="Default+ID+Feature+Name"></a>
+<a name="N10101"></a><a name="Default+ID+Feature+Name"></a>
 <div class="h3">
 <h3>Default ID Feature Name</h3>
 		
@@ -550,7 +578,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100EE"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N1010E"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -566,7 +594,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N100FE"></a><a name="cutpaste"></a>
+<a name="N1011E"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -600,7 +628,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1011F"></a><a name="Validation"></a>
+<a name="N1013F"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -636,7 +664,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N10133"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N10153"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			
