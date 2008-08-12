@@ -27,6 +27,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<join/>
+				<order column="PERSON_CHILDREN_IDX"/>
 			</field>
 		</class>
 	</package>

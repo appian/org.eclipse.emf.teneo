@@ -44,9 +44,10 @@
 				<element>
 					<column name="itemlist_containeditem_e_id" allows-null="true"/>
 				</element>
+				<order column="ITEMLIST_CONTAINEDITEM_IDX"/>
 				<foreign-key delete-action="cascade" update-action="cascade" name="itemlist_containeditem"/>
 			</field>
-			<field name="item" persistence-modifier="persistent" mapped-by="itemList" delete-action="restrict">
+			<field name="item" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
@@ -58,6 +59,7 @@
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<join/>
+				<order column="ITEMLIST_JOINEDITEM_IDX"/>
 			</field>
 		</class>
 	</package>
