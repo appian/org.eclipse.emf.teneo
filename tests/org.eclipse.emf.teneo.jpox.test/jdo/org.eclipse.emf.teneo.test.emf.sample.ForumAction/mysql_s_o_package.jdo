@@ -38,14 +38,14 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="nickname" persistence-modifier="persistent" null-value="exception"/>
-			<field name="posts" persistence-modifier="persistent" mapped-by="author" delete-action="restrict">
+			<field name="posts" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.PostImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
 				<order column="MEMBER_POSTS_IDX"/>
 				<foreign-key delete-action="restrict" update-action="cascade"/>
 			</field>
-			<field name="created" persistence-modifier="persistent" mapped-by="creator" delete-action="restrict">
+			<field name="created" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.TopicImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
@@ -85,7 +85,7 @@
 				<column name="topic_creator_e_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.MemberImpl"/>
 			</field>
-			<field name="posts" persistence-modifier="persistent" mapped-by="topic" delete-action="restrict">
+			<field name="posts" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.PostImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>

@@ -16,7 +16,7 @@
 				<column name="ptype_base_id" allows-null="true"/>
 				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.inv.impl.PTypeImpl"/>
 			</field>
-			<field name="subTypes" persistence-modifier="persistent" mapped-by="base" delete-action="restrict">
+			<field name="subTypes" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.inv.impl.PTypeImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>

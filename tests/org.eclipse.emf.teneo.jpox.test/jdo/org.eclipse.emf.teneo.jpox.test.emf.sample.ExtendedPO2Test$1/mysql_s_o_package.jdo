@@ -106,7 +106,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="customerID" persistence-modifier="persistent" null-value="none"/>
-			<field name="orders" persistence-modifier="persistent" mapped-by="customer" delete-action="restrict">
+			<field name="orders" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.epo2.impl.PurchaseOrderImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>

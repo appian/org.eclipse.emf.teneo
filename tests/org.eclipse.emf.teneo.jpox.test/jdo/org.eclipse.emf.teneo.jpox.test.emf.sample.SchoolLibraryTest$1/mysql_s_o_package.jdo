@@ -53,7 +53,7 @@
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
 			<field name="name" persistence-modifier="persistent" null-value="none"/>
-			<field name="books" persistence-modifier="persistent" mapped-by="author" delete-action="restrict">
+			<field name="books" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.schoollibrary.library.impl.BookImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>

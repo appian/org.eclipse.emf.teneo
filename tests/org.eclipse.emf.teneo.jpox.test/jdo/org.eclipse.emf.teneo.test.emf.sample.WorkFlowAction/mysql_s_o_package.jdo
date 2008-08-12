@@ -69,7 +69,7 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.workflow.InputPort"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="edges" persistence-modifier="persistent" mapped-by="target" delete-action="restrict">
+			<field name="edges" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
@@ -81,7 +81,7 @@
 			<implements name="org.eclipse.emf.teneo.samples.emf.sample.workflow.OutputPort"/>
 			<inheritance strategy="new-table"/>
 			<version strategy="version-number" column="e_version"/>
-			<field name="edges" persistence-modifier="persistent" mapped-by="source" delete-action="restrict">
+			<field name="edges" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>

@@ -77,7 +77,7 @@
 				<discriminator value="InputPort"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="edges" persistence-modifier="persistent" mapped-by="target" delete-action="restrict">
+			<field name="edges" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
@@ -91,7 +91,7 @@
 				<discriminator value="OutputPort"/>
 			</inheritance>
 			<version strategy="version-number" column="e_version"/>
-			<field name="edges" persistence-modifier="persistent" mapped-by="source" delete-action="restrict">
+			<field name="edges" persistence-modifier="persistent" delete-action="restrict">
 				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" dependent-element="false">
 					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
 				</collection>
