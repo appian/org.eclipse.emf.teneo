@@ -1,4 +1,4 @@
-/* $Id: print.css,v 1.41 2008/08/12 19:30:36 mtaal Exp $ */
+/* $Id: print.css,v 1.42 2008/08/26 21:20:20 mtaal Exp $ */
 
 #banner, #footer, #leftcol, #breadcrumbs, .docs #toc, .docs .courtesylinks	{
 	display: none;

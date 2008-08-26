@@ -351,6 +351,15 @@
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="strategy" type="xsd:string" use="required"/>
 </xsd:complexType>
+<xsd:complexType name="HbEntity">
+	<xsd:attribute name="dynamic-insert" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="dynamic-update" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="mutable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="optimistic-lock" type="OptimisticLockType" use="optional"/>
+	<xsd:attribute name="persister" type="xsd:string" use="optional"/>
+	<xsd:attribute name="polymorphism" type="PolymorphismType" use="optional"/>
+	<xsd:attribute name="select-before-update" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:simpleType name="HbFetchType">
 	<xsd:restriction base="xsd:token">
 		<xsd:enumeration value="JOIN"/>
@@ -390,6 +399,14 @@
 		<xsd:enumeration value="CASCADE"/>
 	</xsd:restriction>
 </xsd:simpleType>
+<xsd:simpleType name="OptimisticLockType">
+	<xsd:restriction base="xsd:token">
+		<xsd:enumeration value="ALL"/>
+		<xsd:enumeration value="DIRTY"/>
+		<xsd:enumeration value="NONE"/>
+		<xsd:enumeration value="VERSION"/>
+	</xsd:restriction>
+</xsd:simpleType>
 <xsd:complexType name="ParamDef">
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="type" type="xsd:string" use="required"/>
@@ -398,6 +415,12 @@
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="value" type="xsd:string" use="required"/>
 </xsd:complexType>
+<xsd:simpleType name="PolymorphismType">
+	<xsd:restriction base="xsd:token">
+		<xsd:enumeration value="IMPLICIT"/>
+		<xsd:enumeration value="EXPLICIT"/>
+	</xsd:restriction>
+</xsd:simpleType>
 <xsd:complexType name="Proxy">
 	<xsd:attribute name="lazy" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="proxy-class" type="xsd:string" use="optional"/>
