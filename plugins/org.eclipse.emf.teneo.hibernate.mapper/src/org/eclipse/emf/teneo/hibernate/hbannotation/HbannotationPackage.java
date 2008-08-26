@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackage.java,v 1.11 2008/08/04 05:15:00 mtaal Exp $
+ * $Id: HbannotationPackage.java,v 1.12 2008/08/26 21:19:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -1179,13 +1179,104 @@ public interface HbannotationPackage extends EPackage {
 	int NOT_FOUND_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbEntityImpl <em>Hb Entity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbEntityImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbEntity()
+	 * @generated
+	 */
+	int HB_ENTITY = 27;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Dynamic Insert</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__DYNAMIC_INSERT = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Dynamic Update</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__DYNAMIC_UPDATE = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Select Before Update</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__SELECT_BEFORE_UPDATE = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Mutable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__MUTABLE = HB_ANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Persister</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__PERSISTER = HB_ANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Optimistic Lock</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__OPTIMISTIC_LOCK = HB_ANNOTATION_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Polymorphism</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__POLYMORPHISM = HB_ANNOTATION_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>Hb Entity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 7;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getCacheConcurrencyStrategy()
 	 * @generated
 	 */
-	int CACHE_CONCURRENCY_STRATEGY = 27;
+	int CACHE_CONCURRENCY_STRATEGY = 28;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType <em>Hb Fetch Type</em>}' enum.
@@ -1194,7 +1285,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbFetchType()
 	 * @generated
 	 */
-	int HB_FETCH_TYPE = 28;
+	int HB_FETCH_TYPE = 29;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}' enum.
@@ -1203,7 +1294,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOnDeleteAction()
 	 * @generated
 	 */
-	int ON_DELETE_ACTION = 29;
+	int ON_DELETE_ACTION = 30;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime <em>Generation Time</em>}' enum.
@@ -1213,7 +1304,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getGenerationTime()
 	 * @generated
 	 */
-	int GENERATION_TIME = 30;
+	int GENERATION_TIME = 31;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction <em>Not Found Action</em>}' enum.
@@ -1223,7 +1314,27 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getNotFoundAction()
 	 * @generated
 	 */
-	int NOT_FOUND_ACTION = 31;
+	int NOT_FOUND_ACTION = 32;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType <em>Optimistic Lock Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOptimisticLockType()
+	 * @generated
+	 */
+	int OPTIMISTIC_LOCK_TYPE = 33;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType <em>Polymorphism Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getPolymorphismType()
+	 * @generated
+	 */
+	int POLYMORPHISM_TYPE = 34;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}'.
@@ -1919,6 +2030,93 @@ public interface HbannotationPackage extends EPackage {
 	EAttribute getNotFound_Action();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity <em>Hb Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Hb Entity</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity
+	 * @generated
+	 */
+	EClass getHbEntity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isDynamicInsert <em>Dynamic Insert</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Dynamic Insert</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isDynamicInsert()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_DynamicInsert();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isDynamicUpdate <em>Dynamic Update</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Dynamic Update</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isDynamicUpdate()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_DynamicUpdate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isSelectBeforeUpdate <em>Select Before Update</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Select Before Update</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isSelectBeforeUpdate()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_SelectBeforeUpdate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isMutable <em>Mutable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mutable</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#isMutable()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_Mutable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#getPersister <em>Persister</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persister</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#getPersister()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_Persister();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#getOptimisticLock <em>Optimistic Lock</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optimistic Lock</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#getOptimisticLock()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_OptimisticLock();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#getPolymorphism <em>Polymorphism</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Polymorphism</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity#getPolymorphism()
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	EAttribute getHbEntity_Polymorphism();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
@@ -1964,6 +2162,26 @@ public interface HbannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getNotFoundAction();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType <em>Optimistic Lock Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Optimistic Lock Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType
+	 * @generated
+	 */
+	EEnum getOptimisticLockType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType <em>Polymorphism Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Polymorphism Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType
+	 * @generated
+	 */
+	EEnum getPolymorphismType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2574,6 +2792,72 @@ public interface HbannotationPackage extends EPackage {
 		EAttribute NOT_FOUND__ACTION = eINSTANCE.getNotFound_Action();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbEntityImpl <em>Hb Entity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbEntityImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbEntity()
+		 * @generated
+		 */
+		EClass HB_ENTITY = eINSTANCE.getHbEntity();
+
+		/**
+		 * The meta object literal for the '<em><b>Dynamic Insert</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__DYNAMIC_INSERT = eINSTANCE.getHbEntity_DynamicInsert();
+
+		/**
+		 * The meta object literal for the '<em><b>Dynamic Update</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__DYNAMIC_UPDATE = eINSTANCE.getHbEntity_DynamicUpdate();
+
+		/**
+		 * The meta object literal for the '<em><b>Select Before Update</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__SELECT_BEFORE_UPDATE = eINSTANCE.getHbEntity_SelectBeforeUpdate();
+
+		/**
+		 * The meta object literal for the '<em><b>Mutable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__MUTABLE = eINSTANCE.getHbEntity_Mutable();
+
+		/**
+		 * The meta object literal for the '<em><b>Persister</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__PERSISTER = eINSTANCE.getHbEntity_Persister();
+
+		/**
+		 * The meta object literal for the '<em><b>Optimistic Lock</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__OPTIMISTIC_LOCK = eINSTANCE.getHbEntity_OptimisticLock();
+
+		/**
+		 * The meta object literal for the '<em><b>Polymorphism</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HB_ENTITY__POLYMORPHISM = eINSTANCE.getHbEntity_Polymorphism();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
@@ -2619,6 +2903,26 @@ public interface HbannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum NOT_FOUND_ACTION = eINSTANCE.getNotFoundAction();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType <em>Optimistic Lock Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOptimisticLockType()
+		 * @generated
+		 */
+		EEnum OPTIMISTIC_LOCK_TYPE = eINSTANCE.getOptimisticLockType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType <em>Polymorphism Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getPolymorphismType()
+		 * @generated
+		 */
+		EEnum POLYMORPHISM_TYPE = eINSTANCE.getPolymorphismType();
 
 	}
 

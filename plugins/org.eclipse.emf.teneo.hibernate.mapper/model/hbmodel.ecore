@@ -60,6 +60,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="immutable" eType="ecore:EClass hbannotation.ecore#//Immutable"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbEntity" eType="ecore:EClass hbannotation.ecore#//HbEntity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HbAnnotatedEModelElement" abstract="true"
       interface="true" eSuperTypes="../../org.eclipse.emf.teneo.annotations/model/pamodel.ecore#//PAnnotatedEModelElement"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.10 2008/08/04 05:15:00 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.11 2008/08/26 21:19:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -306,6 +306,14 @@ public class HbannotationSwitch<T> {
 				T result = caseNotFound(notFound);
 				if (result == null) result = caseHbAnnotation(notFound);
 				if (result == null) result = casePAnnotation(notFound);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.HB_ENTITY: {
+				HbEntity hbEntity = (HbEntity)theEObject;
+				T result = caseHbEntity(hbEntity);
+				if (result == null) result = caseHbAnnotation(hbEntity);
+				if (result == null) result = casePAnnotation(hbEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -705,6 +713,21 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseNotFound(NotFound object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hb Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hb Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHbEntity(HbEntity object) {
 		return null;
 	}
 

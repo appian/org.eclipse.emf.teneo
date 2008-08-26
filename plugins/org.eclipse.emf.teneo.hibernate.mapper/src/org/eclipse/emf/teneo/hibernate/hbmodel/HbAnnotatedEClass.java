@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClass.java,v 1.12 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: HbAnnotatedEClass.java,v 1.13 2008/08/26 21:19:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
@@ -36,6 +37,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getDiscriminatorFormula <em>Discriminator Formula</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getForceDiscriminator <em>Force Discriminator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getImmutable <em>Immutable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbEntity <em>Hb Entity</em>}</li>
  * </ul>
  * </p>
  *
@@ -272,5 +274,31 @@ public interface HbAnnotatedEClass extends PAnnotatedEClass {
 	 * @generated
 	 */
 	void setImmutable(Immutable value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb Entity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb Entity</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb Entity</em>' reference.
+	 * @see #setHbEntity(HbEntity)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEClass_HbEntity()
+	 * @model
+	 * @generated
+	 */
+	HbEntity getHbEntity();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbEntity <em>Hb Entity</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb Entity</em>' reference.
+	 * @see #getHbEntity()
+	 * @generated
+	 */
+	void setHbEntity(HbEntity value);
 
 } // HbAnnotatedEClass

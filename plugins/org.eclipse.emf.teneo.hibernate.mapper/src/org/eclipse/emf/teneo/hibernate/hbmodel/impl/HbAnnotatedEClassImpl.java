@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.14 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.15 2008/08/26 21:19:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
@@ -44,6 +45,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getDiscriminatorFormula <em>Discriminator Formula</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getForceDiscriminator <em>Force Discriminator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getImmutable <em>Immutable</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbEntity <em>Hb Entity</em>}</li>
  * </ul>
  * </p>
  *
@@ -149,6 +151,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @ordered
 	 */
 	protected Immutable immutable;
+
+	/**
+	 * The cached value of the '{@link #getHbEntity() <em>Hb Entity</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbEntity()
+	 * @generated
+	 * @ordered
+	 */
+	protected HbEntity hbEntity;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -492,6 +504,44 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HbEntity getHbEntity() {
+		if (hbEntity != null && hbEntity.eIsProxy()) {
+			InternalEObject oldHbEntity = (InternalEObject)hbEntity;
+			hbEntity = (HbEntity)eResolveProxy(oldHbEntity);
+			if (hbEntity != oldHbEntity) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY, oldHbEntity, hbEntity));
+			}
+		}
+		return hbEntity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HbEntity basicGetHbEntity() {
+		return hbEntity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbEntity(HbEntity newHbEntity) {
+		HbEntity oldHbEntity = hbEntity;
+		hbEntity = newHbEntity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY, oldHbEntity, hbEntity));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -541,6 +591,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return getForceDiscriminator();
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
 				return getImmutable();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				if (resolve) return getHbEntity();
+				return basicGetHbEntity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -586,6 +639,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
 				setImmutable((Immutable)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				setHbEntity((HbEntity)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -627,6 +683,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
 				setImmutable((Immutable)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				setHbEntity((HbEntity)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -658,6 +717,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return forceDiscriminator != null;
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
 				return immutable != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_ENTITY:
+				return hbEntity != null;
 		}
 		return super.eIsSet(featureID);
 	}

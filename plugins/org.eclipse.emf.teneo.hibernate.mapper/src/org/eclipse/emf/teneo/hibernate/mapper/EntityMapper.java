@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.39 2008/08/11 21:54:55 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.40 2008/08/26 21:19:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -37,6 +37,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -147,8 +148,38 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		final HbAnnotatedEClass hbEntity = (HbAnnotatedEClass) entity;
+		// TODO: the immutable on the eclass should be removed as it is now
+		// covered through the HbEntity
 		if (superEntity == null && hbEntity.getImmutable() != null) {
 			target.addAttribute("mutable", "false");
+		}
+
+		if (hbEntity.getHbEntity() != null) {
+			final HbEntity hbEntityAnnon = hbEntity.getHbEntity();
+			if (superEntity == null) {
+				if (!hbEntityAnnon.isMutable() && target.getAttributeValue("mutable") == null) {
+					target.addAttribute("mutable", "false");
+				}
+				if (hbEntityAnnon.getPolymorphism() != null) {
+					target.addAttribute("polymorphism", hbEntityAnnon.getPolymorphism().getName().toLowerCase());
+				}
+				if (hbEntityAnnon.getOptimisticLock() != null) {
+					target.addAttribute("optimistic-lock", hbEntityAnnon.getOptimisticLock().getName().toLowerCase());
+				}
+			}
+			if (hbEntityAnnon.isDynamicInsert()) {
+				target.addAttribute("dynamic-insert", "true");
+			}
+			if (hbEntityAnnon.isDynamicUpdate()) {
+				target.addAttribute("dynamic-update", "true");
+			}
+			if (hbEntityAnnon.isSelectBeforeUpdate()) {
+				target.addAttribute("select-before-update", "true");
+			}
+			if (hbEntityAnnon.getPersister() != null) {
+				target.addAttribute("persister", hbEntityAnnon.getPersister());
+			}
+
 		}
 
 		if (superEntity != null) {

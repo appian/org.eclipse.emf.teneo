@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.12 2008/08/04 05:14:59 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.13 2008/08/26 21:19:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -100,6 +100,7 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.IMMUTABLE: return createImmutable();
 			case HbannotationPackage.FORMULA: return createFormula();
 			case HbannotationPackage.NOT_FOUND: return createNotFound();
+			case HbannotationPackage.HB_ENTITY: return createHbEntity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -122,6 +123,10 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 				return createGenerationTimeFromString(eDataType, initialValue);
 			case HbannotationPackage.NOT_FOUND_ACTION:
 				return createNotFoundActionFromString(eDataType, initialValue);
+			case HbannotationPackage.OPTIMISTIC_LOCK_TYPE:
+				return createOptimisticLockTypeFromString(eDataType, initialValue);
+			case HbannotationPackage.POLYMORPHISM_TYPE:
+				return createPolymorphismTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -144,6 +149,10 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 				return convertGenerationTimeToString(eDataType, instanceValue);
 			case HbannotationPackage.NOT_FOUND_ACTION:
 				return convertNotFoundActionToString(eDataType, instanceValue);
+			case HbannotationPackage.OPTIMISTIC_LOCK_TYPE:
+				return convertOptimisticLockTypeToString(eDataType, instanceValue);
+			case HbannotationPackage.POLYMORPHISM_TYPE:
+				return convertPolymorphismTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -397,6 +406,16 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HbEntity createHbEntity() {
+		HbEntityImpl hbEntity = new HbEntityImpl();
+		return hbEntity;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -487,6 +506,46 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	 * @generated
 	 */
 	public String convertNotFoundActionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OptimisticLockType createOptimisticLockTypeFromString(EDataType eDataType, String initialValue) {
+		OptimisticLockType result = OptimisticLockType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOptimisticLockTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PolymorphismType createPolymorphismTypeFromString(EDataType eDataType, String initialValue) {
+		PolymorphismType result = PolymorphismType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPolymorphismTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

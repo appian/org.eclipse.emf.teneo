@@ -34,6 +34,16 @@
       <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//NotFoundAction/EXCEPTION"/>
       <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//NotFoundAction/IGNORE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hbannotation.ecore#//OptimisticLockType">
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//OptimisticLockType/ALL"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//OptimisticLockType/DIRTY"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//OptimisticLockType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//OptimisticLockType/VERSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hbannotation.ecore#//PolymorphismType">
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//PolymorphismType/IMPLICIT"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//PolymorphismType/EXPLICIT"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="hbannotation.ecore#//HbAnnotation"/>
     <genClasses ecoreClass="hbannotation.ecore#//Cascade">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cascade/value"/>
@@ -127,6 +137,15 @@
     <genClasses ecoreClass="hbannotation.ecore#//NotFound">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//NotFound/action"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//HbEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/dynamicInsert"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/dynamicUpdate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/selectBeforeUpdate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/mutable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/persister"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/optimisticLock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//HbEntity/polymorphism"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Hbmodel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">
@@ -158,6 +177,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/discriminatorFormula"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/forceDiscriminator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/immutable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbEntity"/>
     </genClasses>
     <genClasses image="false" ecoreClass="hbmodel.ecore#//HbAnnotatedEModelElement"/>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEPackage">

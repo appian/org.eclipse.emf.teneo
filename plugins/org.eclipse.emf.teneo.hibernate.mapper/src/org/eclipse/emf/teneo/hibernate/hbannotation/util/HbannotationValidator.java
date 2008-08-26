@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.12 2008/08/04 05:15:00 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.13 2008/08/26 21:19:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -163,6 +163,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateFormula((Formula)value, diagnostics, context);
 			case HbannotationPackage.NOT_FOUND:
 				return validateNotFound((NotFound)value, diagnostics, context);
+			case HbannotationPackage.HB_ENTITY:
+				return validateHbEntity((HbEntity)value, diagnostics, context);
 			case HbannotationPackage.CACHE_CONCURRENCY_STRATEGY:
 				return validateCacheConcurrencyStrategy((CacheConcurrencyStrategy)value, diagnostics, context);
 			case HbannotationPackage.HB_FETCH_TYPE:
@@ -173,6 +175,10 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateGenerationTime((GenerationTime)value, diagnostics, context);
 			case HbannotationPackage.NOT_FOUND_ACTION:
 				return validateNotFoundAction((NotFoundAction)value, diagnostics, context);
+			case HbannotationPackage.OPTIMISTIC_LOCK_TYPE:
+				return validateOptimisticLockType((OptimisticLockType)value, diagnostics, context);
+			case HbannotationPackage.POLYMORPHISM_TYPE:
+				return validatePolymorphismType((PolymorphismType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -679,6 +685,24 @@ public class HbannotationValidator extends EObjectValidator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHbEntity(HbEntity hbEntity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_CompatibleEModelElementType(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validateHbAnnotation_AnnotationIsSupported(hbEntity, diagnostics, context);
+		return result;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -754,6 +778,24 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNotFoundAction(NotFoundAction notFoundAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOptimisticLockType(OptimisticLockType optimisticLockType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePolymorphismType(PolymorphismType polymorphismType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

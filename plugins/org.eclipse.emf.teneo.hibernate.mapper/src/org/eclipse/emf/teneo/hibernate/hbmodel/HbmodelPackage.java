@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.12 2008/08/04 05:14:59 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.13 2008/08/26 21:19:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -856,13 +856,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__IMMUTABLE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Hb Entity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_ENTITY = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 10;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1846,6 +1855,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_Immutable();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbEntity <em>Hb Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Hb Entity</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbEntity()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbEntity();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2285,6 +2305,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_ECLASS__IMMUTABLE = eINSTANCE.getHbAnnotatedEClass_Immutable();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Entity</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_ENTITY = eINSTANCE.getHbAnnotatedEClass_HbEntity();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
