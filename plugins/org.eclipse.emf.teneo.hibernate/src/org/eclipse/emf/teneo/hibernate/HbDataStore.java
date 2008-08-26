@@ -59,11 +59,9 @@ import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.engine.CascadeStyle;
-import org.hibernate.mapping.Bag;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Column;
 import org.hibernate.mapping.Component;
-import org.hibernate.mapping.List;
 import org.hibernate.mapping.ManyToOne;
 import org.hibernate.mapping.OneToMany;
 import org.hibernate.mapping.OneToOne;
@@ -77,7 +75,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -880,7 +878,7 @@ public abstract class HbDataStore implements DataStore {
 									prop.getCascadeStyle().hasOrphanDelete() ||
 											prop.getCascadeStyle() == CascadeStyle.ALL;
 						}
-					} else if (prop.getValue() instanceof List || prop.getValue() instanceof Bag) {
+					} else if (prop.getValue() instanceof Collection) {
 						isMany = true;
 						if (ef == null) { // TODO can this happen?
 							isContainer =
@@ -909,7 +907,7 @@ public abstract class HbDataStore implements DataStore {
 							} else if (ef instanceof EReference) {
 								final EReference er = (EReference) ef;
 								isContainer = er.isContainment(); // prop.getCascadeStyle().
-																	// hasOrphanDelete()
+								// hasOrphanDelete()
 								// ||
 								// prop.getCascadeStyle()
 								// ==

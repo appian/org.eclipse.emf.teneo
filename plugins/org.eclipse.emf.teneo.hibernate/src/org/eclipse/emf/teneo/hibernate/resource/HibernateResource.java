@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.25 2008/07/06 16:25:30 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.26 2008/08/26 20:19:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -60,7 +60,7 @@ import org.hibernate.impl.SessionImpl;
  * used to init a hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -187,48 +187,52 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 */
 	@Override
 	protected EObject getEObjectByID(String id) {
+		// try to find the different parts of the id
+		if (id == null) {
+			return super.getEObjectByID(id);
+		}
+		if (getIntrinsicIDToEObjectMap() != null) {
+			final EObject firstCheck = getIntrinsicIDToEObjectMap().get(id);
+			if (firstCheck != null) {
+				return firstCheck;
+			}
+		}
+
+		if (log.isDebugEnabled()) {
+			log.debug("Reading eobject using urifragment " + id);
+		}
+		final String[] parts = id.split("\\" + SEPARATOR);
+
+		if (parts.length != 2) {
+			if (log.isDebugEnabled()) {
+				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+			}
+			return super.getEObjectByID(id);
+		}
+
+		// build a query
+		final EClass eclass = emfDataStore.getEntityNameStrategy().toEClass(parts[0]);
+		final int splitIndex = parts[1].indexOf("=");
+		if (splitIndex == -1) {
+			if (log.isDebugEnabled()) {
+				log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
+			}
+			return super.getEObjectByID(id);
+		}
+		final String idStr = parts[1].substring(1 + splitIndex);
+
+		// try to find the object using the id-part
+		final EObject eObject = super.getEObjectByID(idStr);
+		if (eObject != null) {
+			return eObject;
+		}
+
+		final boolean oldLoading = isLoading();
+		boolean err = true;
 		try {
+			setIsLoading(true);
 			if (!hasSessionController) {
 				getSessionWrapper().beginTransaction();
-			}
-			// try to find the different parts of the id
-			if (id == null) {
-				return super.getEObjectByID(id);
-			}
-			if (getIntrinsicIDToEObjectMap() != null) {
-				final EObject firstCheck = getIntrinsicIDToEObjectMap().get(id);
-				if (firstCheck != null) {
-					return firstCheck;
-				}
-			}
-
-			if (log.isDebugEnabled()) {
-				log.debug("Reading eobject using urifragment " + id);
-			}
-			final String[] parts = id.split("\\" + SEPARATOR);
-
-			if (parts.length != 2) {
-				if (log.isDebugEnabled()) {
-					log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
-				}
-				return super.getEObjectByID(id);
-			}
-
-			// build a query
-			final EClass eclass = emfDataStore.getEntityNameStrategy().toEClass(parts[0]);
-			final int splitIndex = parts[1].indexOf("=");
-			if (splitIndex == -1) {
-				if (log.isDebugEnabled()) {
-					log.debug("Not a valid urifragment (" + id + ") for the hibernate resource, trying the superclass");
-				}
-				return super.getEObjectByID(id);
-			}
-			final String idStr = parts[1].substring(1 + splitIndex);
-
-			// try to find the object using the id-part
-			final EObject eObject = super.getEObjectByID(idStr);
-			if (eObject != null) {
-				return eObject;
 			}
 
 			final Object result =
@@ -237,6 +241,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 				if (log.isDebugEnabled()) {
 					log.debug("Object not found in the db, trying the parent");
 				}
+				err = false;
 				return super.getEObjectByID(id);
 			}
 			final InternalEObject internalEObject = (InternalEObject) result;
@@ -244,10 +249,17 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (internalEObject.eResource() == null) {
 				addUsingContainmentStructure((InternalEObject) result);
 			}
+			err = false;
 			return (EObject) result;
 		} finally {
+			setIsLoading(oldLoading);
 			if (!hasSessionController) {
-				getSessionWrapper().commitTransaction();
+				if (err) {
+					getSessionWrapper().rollbackTransaction();
+					getSessionWrapper().close();
+				} else {
+					getSessionWrapper().commitTransaction();
+				}
 			}
 		}
 	}

@@ -9,10 +9,9 @@
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class IdentifierCacheHandler {
@@ -33,19 +32,7 @@ public class IdentifierCacheHandler {
 	private static Log log = LogFactory.getLog(IdentifierCacheHandler.class);
 
 	/** At this count the maps will be purged for stale entries */
-	private static final int PURGE_COUNT = 10000;
-
-	/** HashMap */
-	private static Map<Key, Object> idMap = new HashMap<Key, Object>();
-
-	/** Keeps track of the modifications to the versionMap */
-	private static int idModCount = 0;
-
-	/** HashMap */
-	private static Map<Key, Object> versionMap = new HashMap<Key, Object>();
-
-	/** Keeps track of the modifications to the versionMap */
-	private static int versionModCount = 0;
+	private static final int PURGE_TRESHOLD = 10000;
 
 	private static IdentifierCacheHandler instance = new IdentifierCacheHandler();
 
@@ -57,6 +44,16 @@ public class IdentifierCacheHandler {
 // }
 		return instance;
 	}
+
+	public static void setInstance(IdentifierCacheHandler identifierCacheHandler) {
+		instance = identifierCacheHandler;
+	}
+
+	private Map<Key, Object> idMap = new ConcurrentHashMap<Key, Object>();
+	private static int idModCount = 0;
+
+	private Map<Key, Object> versionMap = new ConcurrentHashMap<Key, Object>();
+	private int versionModCount = 0;
 
 	/** Clear the identifier cache */
 	public void clear() {
@@ -99,7 +96,7 @@ public class IdentifierCacheHandler {
 		}
 
 		idModCount++;
-		if (idModCount > PURGE_COUNT) {
+		if (idModCount > getPurgeTreshold()) {
 			purgeIDMap();
 		}
 	}
@@ -109,6 +106,10 @@ public class IdentifierCacheHandler {
 		return versionMap.get(new Key(obj));
 	}
 
+	protected int getPurgeTreshold() {
+		return PURGE_TRESHOLD;
+	}
+
 	/** Sets a version in the cache */
 	public void setVersion(Object obj, Object version) {
 		if (log.isDebugEnabled()) {
@@ -116,14 +117,14 @@ public class IdentifierCacheHandler {
 		}
 		versionMap.put(new Key(obj), version);
 		versionModCount++;
-		if (versionModCount > PURGE_COUNT) {
+		if (versionModCount > getPurgeTreshold()) {
 			purgeVersionMap();
 		}
 	}
 
 	/** Purge the versionmap for stale entries */
-	private synchronized void purgeIDMap() {
-		if (idModCount < PURGE_COUNT) {
+	private void purgeIDMap() {
+		if (idModCount < getPurgeTreshold()) {
 			return;
 		}
 		purgeMap(idMap);
@@ -131,8 +132,8 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purge the versionmap for stale entries */
-	private synchronized void purgeVersionMap() {
-		if (versionModCount < PURGE_COUNT) {
+	protected void purgeVersionMap() {
+		if (versionModCount < getPurgeTreshold()) {
 			return;
 		}
 		purgeMap(versionMap);
@@ -140,18 +141,12 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purges the passed map for stale entries */
-	private synchronized void purgeMap(Map<Key, Object> map) {
-		synchronized (map) {
-			final ArrayList<Object> toRemove = new ArrayList<Object>();
-			final Iterator<Key> it = map.keySet().iterator();
-			while (it.hasNext()) {
-				final Key key = it.next();
-				if (!key.isValid()) {
-					toRemove.add(key);
-				}
-			}
-			for (int i = 0; i < toRemove.size(); i++) {
-				map.remove(toRemove.get(i));
+	protected void purgeMap(Map<Key, Object> map) {
+		final Iterator<Key> it = map.keySet().iterator();
+		while (it.hasNext()) {
+			final Key key = it.next();
+			if (!key.isValid()) {
+				it.remove();
 			}
 		}
 	}
@@ -163,12 +158,10 @@ public class IdentifierCacheHandler {
 
 	/** Dumps the content of the passed map */
 	private void dumpContents(Map<Key, Object> map) {
-		synchronized (map) {
-			Iterator<Key> it = idMap.keySet().iterator();
-			while (it.hasNext()) {
-				Key key = it.next();
-				key.weakRef.get();
-			}
+		Iterator<Key> it = map.keySet().iterator();
+		while (it.hasNext()) {
+			Key key = it.next();
+			key.weakRef.get();
 		}
 	}
 
@@ -177,7 +170,7 @@ public class IdentifierCacheHandler {
 	 * cache is real memory location equality
 	 */
 
-	private static class Key {
+	protected static class Key {
 		/** The real object as a weakreference */
 		private final WeakReference<Object> weakRef;
 
