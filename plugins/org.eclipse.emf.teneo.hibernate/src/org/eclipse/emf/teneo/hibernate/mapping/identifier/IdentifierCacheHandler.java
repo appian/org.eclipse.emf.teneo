@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class IdentifierCacheHandler {
@@ -37,11 +37,6 @@ public class IdentifierCacheHandler {
 	private static IdentifierCacheHandler instance = new IdentifierCacheHandler();
 
 	public static IdentifierCacheHandler getInstance() {
-// IdentifierCacheHandler ich = null;
-// if ((ich = instance.get()) == null) {
-// instance.set(new IdentifierCacheHandler());
-// return instance.get();
-// }
 		return instance;
 	}
 
