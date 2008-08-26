@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.15 2008/04/23 15:45:26 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.16 2008/08/26 20:19:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.test.emf.sample;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -34,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * using resources. Most other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	public LibraryResourceAction() {
@@ -156,7 +157,12 @@ public class LibraryResourceAction extends AbstractTestAction {
 			{
 				Resource res = getResource(store);
 				Library lib = (Library) res.getEObject(libURI);
+
+				final StoreResource sr = (StoreResource) res;
+				assertFalse(sr.getNewEObjects().contains(lib));
+
 				Writer w = (Writer) res.getEObject(writerURI);
+				assertFalse(sr.getNewEObjects().contains(w));
 				assertEquals("JRR Tolkien", w.getName());
 				assertEquals(2, w.getBooks().size());
 				assertEquals("The Hobbit", w.getBooks().get(1).getTitle());
