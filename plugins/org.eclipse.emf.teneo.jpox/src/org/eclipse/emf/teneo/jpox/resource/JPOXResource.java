@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JPOXResource.java,v 1.10 2008/03/10 06:02:07 mtaal Exp $
+ * $Id: JPOXResource.java,v 1.11 2008/08/26 22:15:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.resource;
@@ -67,7 +67,7 @@ import org.jpox.store.OIDFactory;
  * used to init a jpox resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $ $Date: 2008/03/10 06:02:07 $
+ * @version $Revision: 1.11 $ $Date: 2008/08/26 22:15:37 $
  */
 
 public class JPOXResource extends StoreResource {
@@ -286,7 +286,13 @@ public class JPOXResource extends StoreResource {
 			log.debug("Reading eobject using urifragment " + id);
 			try {
 				final InternalEObject obj = (InternalEObject) getPersistenceManager().getObjectById(new OID(id));
-				addToContent(obj);
+				final boolean oldLoading = isLoading();
+				try {
+					setIsLoading(true);
+					addToContent(obj);
+				} finally {
+					setIsLoading(oldLoading);
+				}
 				err = false;
 				return obj;
 
