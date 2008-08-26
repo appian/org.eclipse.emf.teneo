@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceGenerator.java,v 1.6 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: SequenceGenerator.java,v 1.7 2008/08/26 20:19:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -52,7 +52,7 @@ public interface SequenceGenerator extends PAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Initial Value</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Initial Value</em>' attribute isn't clear, there really should be more of a
@@ -62,7 +62,7 @@ public interface SequenceGenerator extends PAnnotation {
 	 * @return the value of the '<em>Initial Value</em>' attribute.
 	 * @see #setInitialValue(int)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_InitialValue()
-	 * @model default="0"
+	 * @model default="1"
 	 * @generated
 	 */
 	int getInitialValue();

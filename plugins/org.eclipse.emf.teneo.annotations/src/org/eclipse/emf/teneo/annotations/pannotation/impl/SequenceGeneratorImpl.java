@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceGeneratorImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: SequenceGeneratorImpl.java,v 1.8 2008/08/26 20:19:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -77,7 +77,7 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int INITIAL_VALUE_EDEFAULT = 0;
+	protected static final int INITIAL_VALUE_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' attribute.
