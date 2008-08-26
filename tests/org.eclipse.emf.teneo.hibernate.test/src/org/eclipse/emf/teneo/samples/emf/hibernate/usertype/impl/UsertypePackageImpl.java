@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackageImpl.java,v 1.9 2008/03/30 20:54:58 mtaal Exp $
+ * $Id: UsertypePackageImpl.java,v 1.10 2008/08/26 21:20:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -367,7 +367,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\t\t\t\t\t\t@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")"
+			 "appinfo", "@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=VERSION, polymorphism=EXPLICIT)"
 		   });							
 	}
 

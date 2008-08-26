@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.6 2008/03/30 20:54:58 mtaal Exp $
+ * $Id: Person.java,v 1.7 2008/08/26 21:20:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson()
  * @model extendedMetaData="name='Person' kind='elementOnly'"
- *        annotation="teneo.hibernate appinfo='\t\t\t\t\t\t@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")'"
+ *        annotation="teneo.hibernate appinfo='@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=VERSION, polymorphism=EXPLICIT)'"
  * @generated
  */
 public interface Person extends EObject {

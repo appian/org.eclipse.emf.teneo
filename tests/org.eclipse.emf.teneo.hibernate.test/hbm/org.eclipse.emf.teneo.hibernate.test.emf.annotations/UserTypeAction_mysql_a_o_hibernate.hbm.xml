@@ -11,7 +11,7 @@
 		<param name="epackage">http://www.elver.org/samples/emf/hibernate/usertype</param>
 		<param name="edatatype">IntArray</param>
 	</typedef>
-	<class name="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" discriminator-value="Person" table="`person`">
+	<class name="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" polymorphism="explicit" optimistic-lock="version" dynamic-insert="true" dynamic-update="true" select-before-update="true" persister="org.hibernate.persister.entity.SingleTableEntityPersister" discriminator-value="Person" table="`person`">
 		<meta attribute="eclassName">Person</meta>
 		<meta attribute="epackage">http://www.elver.org/samples/emf/hibernate/usertype</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
