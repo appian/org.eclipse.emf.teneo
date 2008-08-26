@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: JpoxDataStore.java,v 1.26 2008/03/10 22:18:46 mtaal Exp $
+ * $Id: JpoxDataStore.java,v 1.27 2008/08/26 20:19:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox;
@@ -101,7 +101,7 @@ import org.jpox.store.StoreManager;
  * 'top' classes. The classes which are not contained in other classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $ $Date: 2008/03/10 22:18:46 $
+ * @version $Revision: 1.27 $ $Date: 2008/08/26 20:19:35 $
  */
 
 public class JpoxDataStore implements DataStore {
@@ -220,7 +220,7 @@ public class JpoxDataStore implements DataStore {
 			if (i > 0) {
 				classNameList.append(",");
 			}
-			classNameList.append(pcClassNames[i]);
+			classNameList.append(clz.getName());
 			pcClassNames[i++] = clz.getName();
 		}
 
