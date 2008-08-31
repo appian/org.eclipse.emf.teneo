@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class IdentifierCacheHandler {
@@ -32,7 +32,7 @@ public class IdentifierCacheHandler {
 	private static Log log = LogFactory.getLog(IdentifierCacheHandler.class);
 
 	/** At this count the maps will be purged for stale entries */
-	private static final int PURGE_TRESHOLD = 10000;
+	public static final int PURGE_TRESHOLD = 10000;
 
 	private static IdentifierCacheHandler instance = new IdentifierCacheHandler();
 
@@ -45,7 +45,7 @@ public class IdentifierCacheHandler {
 	}
 
 	private Map<Key, Object> idMap = new ConcurrentHashMap<Key, Object>();
-	private static int idModCount = 0;
+	private int idModCount = 0;
 
 	private Map<Key, Object> versionMap = new ConcurrentHashMap<Key, Object>();
 	private int versionModCount = 0;
@@ -53,7 +53,22 @@ public class IdentifierCacheHandler {
 	/** Clear the identifier cache */
 	public void clear() {
 		idMap.clear();
+		idModCount = 0;
 		versionMap.clear();
+		versionModCount = 0;
+	}
+
+	public Map<Key, Object> getIdMap() {
+		return idMap;
+	}
+
+	public Map<Key, Object> getVersionMap() {
+		return versionMap;
+	}
+
+	public void purgeMaps() {
+		purgeIDMap();
+		purgeVersionMap();
 	}
 
 	/** Get an identifier from the cache */
@@ -119,18 +134,12 @@ public class IdentifierCacheHandler {
 
 	/** Purge the versionmap for stale entries */
 	private void purgeIDMap() {
-		if (idModCount < getPurgeTreshold()) {
-			return;
-		}
 		purgeMap(idMap);
 		idModCount = 0;
 	}
 
 	/** Purge the versionmap for stale entries */
 	protected void purgeVersionMap() {
-		if (versionModCount < getPurgeTreshold()) {
-			return;
-		}
 		purgeMap(versionMap);
 		versionModCount = 0;
 	}
@@ -141,6 +150,9 @@ public class IdentifierCacheHandler {
 		while (it.hasNext()) {
 			final Key key = it.next();
 			if (!key.isValid()) {
+				if (!map.containsKey(key)) {
+					System.err.println("help");
+				}
 				it.remove();
 			}
 		}
@@ -189,17 +201,13 @@ public class IdentifierCacheHandler {
 			assert (arg0 instanceof Key);
 
 			final Key key0 = (Key) arg0;
-
-			// weakreference already gone compare on keys itself
 			final Object obj0 = key0.weakRef.get();
 			final Object obj1 = weakRef.get();
-			// always say false on this one, if obj1 is null then this handled later
-			if (obj0 == null) {
-				return false;
+
+			// weakreference already gone compare on keys itself
+			if (obj0 == null || obj1 == null) {
+				return this == key0;
 			}
-// if (obj0 == null || obj1 == null) {
-// return key0 == this;
-// }
 
 			// still present compare on values
 			// equals call should maybe also be done but goes wrong for
