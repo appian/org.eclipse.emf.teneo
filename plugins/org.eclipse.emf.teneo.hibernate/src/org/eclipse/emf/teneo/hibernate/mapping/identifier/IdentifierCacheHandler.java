@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class IdentifierCacheHandler {
@@ -150,9 +150,6 @@ public class IdentifierCacheHandler {
 		while (it.hasNext()) {
 			final Key key = it.next();
 			if (!key.isValid()) {
-				if (!map.containsKey(key)) {
-					System.err.println("help");
-				}
 				it.remove();
 			}
 		}
