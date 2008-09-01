@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Bz237361PackageImpl.java,v 1.1 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: Bz237361PackageImpl.java,v 1.2 2008/09/01 13:39:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz237361.impl;
 
@@ -245,7 +245,7 @@ public class Bz237361PackageImpl extends EPackageImpl implements Bz237361Package
 		  (getOne_Manies(), 
 		   source, 
 		   new String[] {
-			 "value", "@OneToMany(indexed=false)\n@JoinTable(name=\"maniesofone\")"
+			 "value", "@OneToMany(indexed=false, mappedBy=\"one\")\n@JoinTable(name=\"maniesofone\")"
 		   });		
 		addAnnotation
 		  (getMany_Name(), 

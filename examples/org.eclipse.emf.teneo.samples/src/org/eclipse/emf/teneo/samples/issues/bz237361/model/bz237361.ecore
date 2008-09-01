@@ -7,7 +7,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="manies" upperBound="-1"
         eType="#//Many" resolveProxies="false" eOpposite="#//Many/one">
       <eAnnotations source="teneo.jpa">
-        <details key="value" value="@OneToMany(indexed=false)&#xA;@JoinTable(name=&quot;maniesofone&quot;)"/>
+        <details key="value" value="@OneToMany(indexed=false, mappedBy=&quot;one&quot;)&#xA;@JoinTable(name=&quot;maniesofone&quot;)"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: One.java,v 1.1 2008/08/11 20:40:39 mtaal Exp $
+ * $Id: One.java,v 1.2 2008/09/01 13:39:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz237361;
 
@@ -41,7 +41,7 @@ public interface One extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.issues.bz237361.Bz237361Package#getOne_Manies()
 	 * @see org.eclipse.emf.teneo.samples.issues.bz237361.Many#getOne
 	 * @model opposite="one" resolveProxies="false"
-	 *        annotation="teneo.jpa value='@OneToMany(indexed=false)\n@JoinTable(name=\"maniesofone\")'"
+	 *        annotation="teneo.jpa value='@OneToMany(indexed=false, mappedBy=\"one\")\n@JoinTable(name=\"maniesofone\")'"
 	 * @generated
 	 */
 	EList<Many> getManies();
