@@ -2,36 +2,34 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Bz237498FactoryImpl.java,v 1.1 2008/06/28 22:41:35 mtaal Exp $
+ * $Id: Bz237498FactoryImpl.java,v 1.2 2008/09/01 12:45:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz237498.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.teneo.samples.issues.bz237498.*;
+import org.eclipse.emf.teneo.samples.issues.bz237498.Bz237498Factory;
+import org.eclipse.emf.teneo.samples.issues.bz237498.Bz237498Package;
+import org.eclipse.emf.teneo.samples.issues.bz237498.Many;
+import org.eclipse.emf.teneo.samples.issues.bz237498.One;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
  * @generated
  */
 public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static Bz237498Factory init() {
 		try {
-			Bz237498Factory theBz237498Factory = (Bz237498Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/issues/bz225296"); 
+			Bz237498Factory theBz237498Factory = (Bz237498Factory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/teneo/samples/issues/bz237498"); 
 			if (theBz237498Factory != null) {
 				return theBz237498Factory;
 			}
@@ -44,8 +42,7 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Bz237498FactoryImpl() {
@@ -53,8 +50,7 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -68,8 +64,7 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public One createOne() {
@@ -78,8 +73,7 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Many createMany() {
@@ -88,8 +82,7 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Bz237498Package getBz237498Package() {
@@ -97,8 +90,7 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -107,4 +99,4 @@ public class Bz237498FactoryImpl extends EFactoryImpl implements Bz237498Factory
 		return Bz237498Package.eINSTANCE;
 	}
 
-} //Bz237498FactoryImpl
+} // Bz237498FactoryImpl

@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Bz237498Package.java,v 1.2 2008/09/01 12:45:05 mtaal Exp $
+ * $Id: Bz243024Package.java,v 1.1 2008/09/01 12:45:05 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.issues.bz237498;
+package org.eclipse.emf.teneo.samples.issues.bz243024;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,18 +22,18 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.issues.bz237498.Bz237498Factory
+ * @see org.eclipse.emf.teneo.samples.issues.bz243024.Bz243024Factory
  * @model kind="package"
  * @generated
  */
-public interface Bz237498Package extends EPackage {
+public interface Bz243024Package extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "bz237498";
+	String eNAME = "bz243024";
 
 	/**
 	 * The package namespace URI.
@@ -41,7 +41,7 @@ public interface Bz237498Package extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/issues/bz237498";
+	String eNS_URI = "http://www.eclipse.org/emf/teneo/samples/issues/bz243024";
 
 	/**
 	 * The package namespace name.
@@ -49,7 +49,7 @@ public interface Bz237498Package extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "bz237498";
+	String eNS_PREFIX = "bz243024";
 
 	/**
 	 * The singleton instance of the package.
@@ -57,14 +57,14 @@ public interface Bz237498Package extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	Bz237498Package eINSTANCE = org.eclipse.emf.teneo.samples.issues.bz237498.impl.Bz237498PackageImpl.init();
+	Bz243024Package eINSTANCE = org.eclipse.emf.teneo.samples.issues.bz243024.impl.Bz243024PackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.issues.bz237498.impl.OneImpl <em>One</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.issues.bz243024.impl.OneImpl <em>One</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.OneImpl
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.Bz237498PackageImpl#getOne()
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.OneImpl
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.Bz243024PackageImpl#getOne()
 	 * @generated
 	 */
 	int ONE = 0;
@@ -88,11 +88,11 @@ public interface Bz237498Package extends EPackage {
 	int ONE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.issues.bz237498.impl.ManyImpl <em>Many</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.issues.bz243024.impl.ManyImpl <em>Many</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.ManyImpl
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.Bz237498PackageImpl#getMany()
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.ManyImpl
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.Bz243024PackageImpl#getMany()
 	 * @generated
 	 */
 	int MANY = 1;
@@ -117,42 +117,42 @@ public interface Bz237498Package extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.issues.bz237498.One <em>One</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.issues.bz243024.One <em>One</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>One</em>'.
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.One
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.One
 	 * @generated
 	 */
 	EClass getOne();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.issues.bz237498.One#getManies <em>Manies</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.issues.bz243024.One#getManies <em>Manies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Manies</em>'.
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.One#getManies()
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.One#getManies()
 	 * @see #getOne()
 	 * @generated
 	 */
 	EReference getOne_Manies();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.issues.bz237498.Many <em>Many</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.issues.bz243024.Many <em>Many</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Many</em>'.
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.Many
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.Many
 	 * @generated
 	 */
 	EClass getMany();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.issues.bz237498.Many#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.issues.bz243024.Many#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.emf.teneo.samples.issues.bz237498.Many#getName()
+	 * @see org.eclipse.emf.teneo.samples.issues.bz243024.Many#getName()
 	 * @see #getMany()
 	 * @generated
 	 */
@@ -165,7 +165,7 @@ public interface Bz237498Package extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	Bz237498Factory getBz237498Factory();
+	Bz243024Factory getBz243024Factory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,11 +181,11 @@ public interface Bz237498Package extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.bz237498.impl.OneImpl <em>One</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.bz243024.impl.OneImpl <em>One</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.OneImpl
-		 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.Bz237498PackageImpl#getOne()
+		 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.OneImpl
+		 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.Bz243024PackageImpl#getOne()
 		 * @generated
 		 */
 		EClass ONE = eINSTANCE.getOne();
@@ -199,11 +199,11 @@ public interface Bz237498Package extends EPackage {
 		EReference ONE__MANIES = eINSTANCE.getOne_Manies();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.bz237498.impl.ManyImpl <em>Many</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.issues.bz243024.impl.ManyImpl <em>Many</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.ManyImpl
-		 * @see org.eclipse.emf.teneo.samples.issues.bz237498.impl.Bz237498PackageImpl#getMany()
+		 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.ManyImpl
+		 * @see org.eclipse.emf.teneo.samples.issues.bz243024.impl.Bz243024PackageImpl#getMany()
 		 * @generated
 		 */
 		EClass MANY = eINSTANCE.getMany();
@@ -218,4 +218,4 @@ public interface Bz237498Package extends EPackage {
 
 	}
 
-} //Bz237498Package
+} //Bz243024Package
