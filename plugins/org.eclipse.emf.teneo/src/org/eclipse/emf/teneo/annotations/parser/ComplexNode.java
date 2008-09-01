@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.3 2008/09/01 12:45:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -53,101 +52,85 @@ class ComplexNode extends NamedParserNode {
 	}
 
 	/** Translate into an eclass */
+	@Override
 	@SuppressWarnings("unchecked")
 	Object convert(EClassResolver ecr) {
 		log.debug("Converting " + getName() + " to EObject ");
 
 		// special case in which the main type is just a list of other types
 		// for example SecondaryTables which is just a list of SecondaryTable
-		if (isList()) {
+		// TODO: repair this hard link to a separate type!
+		final EClass eClass = ecr.getEClass(getName());
+		if (isList() && eClass == null) {
 			assert (children.size() == 1);
 			assert (children.get(0) instanceof ArrayValueNode);
 			return ((ArrayValueNode) children.get(0)).convert(ecr);
 		}
 
-		final EClass eClass = ecr.getEClass(getName());
 		if (eClass == null) {
-			throw new AnnotationParserException("No eclass found with name "
-					+ getName());
+			throw new AnnotationParserException("No eclass found with name " + getName());
 		}
 		final EObject eobj = EcoreUtil.create(eClass);
 
 		for (NamedParserNode child : children) {
-			final EStructuralFeature efeature = ecr.getEStructuralFeature(
-					eClass, child.getName());
+			final EStructuralFeature efeature = ecr.getEStructuralFeature(eClass, child.getName());
 			if (child instanceof PrimitiveValueNode) {
 				final PrimitiveValueNode pvn = (PrimitiveValueNode) child;
-				log.debug("Primitive child: " + pvn.getName() + ": "
-						+ pvn.getValue());
+				log.debug("Primitive child: " + pvn.getName() + ": " + pvn.getValue());
 				if (!(efeature instanceof EAttribute)) {
-					throw new AnnotationParserException("The EFeature "
-							+ efeature.getName() + "/" + eClass.getName()
-							+ " is not an eattribute but a "
-							+ efeature.getClass().getName());
+					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" + eClass.getName() +
+							" is not an eattribute but a " + efeature.getClass().getName());
 				}
 				final EClassifier eType = efeature.getEType();
 				if (!efeature.isMany()) {
-					eobj.eSet(efeature, ParserUtil.convertValue(
-							(EDataType) eType, pvn.getValue()));
+					eobj.eSet(efeature, ParserUtil.convertValue((EDataType) eType, pvn.getValue()));
 				} else {
 					final String[] sources = pvn.getValue().split("\\s+");
-					log.debug("Child is many, splitting content into "
-							+ sources.length + " parts");
-					final List<Object> referenced = new ArrayList<Object>(
-							sources.length);
-					for (int i = 0; i < sources.length; i++) {
-						referenced.add(ParserUtil.convertValue(
-								(EDataType) eType, sources[i]));
+					log.debug("Child is many, splitting content into " + sources.length + " parts");
+					final List<Object> referenced = new ArrayList<Object>(sources.length);
+					for (String source : sources) {
+						referenced.add(ParserUtil.convertValue((EDataType) eType, source));
 					}
 					final List currentList = (List) eobj.eGet(efeature);
 					currentList.addAll(referenced);
 				}
-			} else if (child instanceof ArrayValueNode
-					&& efeature instanceof EAttribute) {
+			} else if (child instanceof ArrayValueNode && efeature instanceof EAttribute) {
 				final EAttribute eattr = (EAttribute) efeature;
 				if (!eattr.isMany()) {
-					throw new AnnotationParserException("The EFeature "
-							+ efeature.getName() + "/" + eClass.getName()
-							+ " is not ismany");
+					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" + eClass.getName() +
+							" is not ismany");
 				}
 				log.debug("Array child with primitive values");
 				List<Object> list = ((ArrayValueNode) child).convert(ecr);
 				List<Object> convertedList = new ArrayList<Object>();
-				for (Iterator<Object> lit = list.iterator(); lit.hasNext();) {
-					final String val = (String) lit.next();
+				for (Object object : list) {
+					final String val = (String) object;
 					log.debug("Value " + val);
-					convertedList.add(ParserUtil.convertValue((EDataType) eattr
-							.getEType(), val));
+					convertedList.add(ParserUtil.convertValue((EDataType) eattr.getEType(), val));
 				}
 				final List currentList = (List) eobj.eGet(efeature);
 				currentList.addAll(convertedList);
 			} else if (child instanceof ArrayValueNode) {
 				if (!(efeature instanceof EReference)) {
-					throw new AnnotationParserException("The EFeature "
-							+ efeature.getName() + "/" + eClass.getName()
-							+ " is not an ereference but a "
-							+ efeature.getClass().getName());
+					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" + eClass.getName() +
+							" is not an ereference but a " + efeature.getClass().getName());
 				}
 				final EReference eref = (EReference) efeature;
 				if (!eref.isMany()) {
-					throw new AnnotationParserException("The EFeature "
-							+ efeature.getName() + "/" + eClass.getName()
-							+ " is not ismany");
+					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" + eClass.getName() +
+							" is not ismany");
 				}
 				log.debug("Array child");
 				eobj.eSet(eref, ((ArrayValueNode) child).convert(ecr));
 			} else if (child instanceof ReferenceValueNode) {
 				if (!(efeature instanceof EReference)) {
-					throw new AnnotationParserException("The EFeature "
-							+ efeature.getName() + "/" + eClass.getName()
-							+ " is not an ereference but a "
-							+ efeature.getClass().getName());
+					throw new AnnotationParserException("The EFeature " + efeature.getName() + "/" + eClass.getName() +
+							" is not an ereference but a " + efeature.getClass().getName());
 				}
 				final EReference eref = (EReference) efeature;
 				log.debug("Reference child " + child.getName());
 				if (eref.isMany()) {
-					((List) eobj.eGet(eref)).add(((ReferenceValueNode) child)
-							.convert(ecr));
+					((List) eobj.eGet(eref)).add(((ReferenceValueNode) child).convert(ecr));
 				} else {
 					eobj.eSet(eref, ((ReferenceValueNode) child).convert(ecr));
 				}
