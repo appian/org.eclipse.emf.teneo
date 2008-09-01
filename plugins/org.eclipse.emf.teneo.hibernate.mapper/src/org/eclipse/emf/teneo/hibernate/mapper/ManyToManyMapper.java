@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToManyMapper.java,v 1.29 2008/08/11 21:54:55 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.30 2008/09/01 12:45:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -74,7 +74,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 		}
 
 		addFetchType(collElement, mtm.getFetch());
-		addCascades(collElement, mtm.getCascade(), false);
+		addCascades(collElement, getCascades(hbReference.getHbCascade(), mtm.getCascade()), false);
 
 		final PAnnotatedEClass referedToAClass = hbReference.getAReferenceType();
 		String targetName = mtm.getTargetEntity();

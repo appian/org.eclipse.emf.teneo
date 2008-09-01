@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.28 2008/08/11 21:54:55 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.29 2008/09/01 12:45:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -98,7 +98,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 					getHbmContext().isCurrentElementFeatureMap());
 		}
 
-		addCascadesForSingle(associationElement, mto.getCascade());
+		addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), mto.getCascade()));
 
 		if (hbReference.getHbFetch() != null) {
 			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());

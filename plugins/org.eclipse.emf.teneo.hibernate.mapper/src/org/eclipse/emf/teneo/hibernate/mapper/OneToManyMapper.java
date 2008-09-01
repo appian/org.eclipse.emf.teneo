@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.37 2008/08/11 21:54:55 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.38 2008/09/01 12:45:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -20,12 +20,10 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
@@ -147,14 +145,11 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		}
 
 		final CollectionOfElements coe = hbReference.getHbCollectionOfElements();
-		final Cascade hbCascade = hbReference.getHbCascade();
-		final List<CascadeType> hbCascadeList =
-				(null == hbCascade) ? new ArrayList<CascadeType>() : hbCascade.getValue();
 
 		// TODO OneToMany and CollectionOfElements are mutually exclusive.
 		// Should throw exception if both there?
 		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm.getFetch());
-		addCascadesForMany(collElement, (null != coe) ? hbCascadeList : otm.getCascade());
+		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(), otm.getCascade()));
 		List<JoinColumn> inverseJoinColumns =
 				jt != null && jt.getInverseJoinColumns() != null ? jt.getInverseJoinColumns()
 						: new ArrayList<JoinColumn>();
@@ -261,7 +256,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		}
 
 		addFetchType(collElement, otm.getFetch());
-		addCascadesForMany(collElement, otm.getCascade());
+		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(), otm.getCascade()));
 
 		boolean isMap = StoreUtil.isMap(eref) && getHbmContext().isMapEMapAsTrueMap();
 		boolean isMapValueIsEntity = false;

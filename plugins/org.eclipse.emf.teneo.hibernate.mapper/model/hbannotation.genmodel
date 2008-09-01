@@ -44,6 +44,19 @@
       <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//PolymorphismType/IMPLICIT"/>
       <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//PolymorphismType/EXPLICIT"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="hbannotation.ecore#//HbCascadeType">
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/ALL"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/PERSIST"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/MERGE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/REMOVE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/REFRESH"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/SAVE_UPDATE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/REPLICATE"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/DELETE_ORPHAN"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/LOCK"/>
+      <genEnumLiterals ecoreEnumLiteral="hbannotation.ecore#//HbCascadeType/EVICT"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="hbannotation.ecore#//HbAnnotation"/>
     <genClasses ecoreClass="hbannotation.ecore#//Cascade">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Cascade/value"/>

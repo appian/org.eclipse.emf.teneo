@@ -16,7 +16,7 @@
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" upperBound="-1"
-        eType="ecore:EEnum ../../org.eclipse.emf.teneo.annotations/model/pannotation.ecore#//CascadeType"/>
+        eType="#//HbCascadeType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CollectionOfElements" eSuperTypes="#//HbAnnotation">
     <eAnnotations source="http://annotation.elver.org/internal/Target">
@@ -268,5 +268,18 @@
   <eClassifiers xsi:type="ecore:EEnum" name="PolymorphismType">
     <eLiterals name="IMPLICIT" literal="IMPLICIT"/>
     <eLiterals name="EXPLICIT" value="1" literal="EXPLICIT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HbCascadeType">
+    <eLiterals name="ALL"/>
+    <eLiterals name="PERSIST" value="1"/>
+    <eLiterals name="MERGE" value="2"/>
+    <eLiterals name="REMOVE" value="3"/>
+    <eLiterals name="REFRESH" value="4"/>
+    <eLiterals name="DELETE" value="5" literal="DELETE"/>
+    <eLiterals name="SAVE_UPDATE" value="6" literal="SAVE_UPDATE"/>
+    <eLiterals name="REPLICATE" value="7" literal="REPLICATE"/>
+    <eLiterals name="DELETE_ORPHAN" value="8" literal="DELETE_ORPHAN"/>
+    <eLiterals name="LOCK" value="9"/>
+    <eLiterals name="EVICT" value="10"/>
   </eClassifiers>
 </ecore:EPackage>

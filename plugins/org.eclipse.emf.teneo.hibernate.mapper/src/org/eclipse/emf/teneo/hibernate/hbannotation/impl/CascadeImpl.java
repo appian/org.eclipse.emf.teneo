@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeImpl.java,v 1.7 2008/01/18 06:21:36 mtaal Exp $
+ * $Id: CascadeImpl.java,v 1.8 2008/09/01 12:45:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
@@ -37,7 +38,7 @@ public class CascadeImpl extends HbAnnotationImpl implements Cascade {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CascadeType> value;
+	protected EList<HbCascadeType> value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,9 +64,9 @@ public class CascadeImpl extends HbAnnotationImpl implements Cascade {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CascadeType> getValue() {
+	public EList<HbCascadeType> getValue() {
 		if (value == null) {
-			value = new EDataTypeUniqueEList<CascadeType>(CascadeType.class, this, HbannotationPackage.CASCADE__VALUE);
+			value = new EDataTypeUniqueEList<HbCascadeType>(HbCascadeType.class, this, HbannotationPackage.CASCADE__VALUE);
 		}
 		return value;
 	}
@@ -95,7 +96,7 @@ public class CascadeImpl extends HbAnnotationImpl implements Cascade {
 		switch (featureID) {
 			case HbannotationPackage.CASCADE__VALUE:
 				getValue().clear();
-				getValue().addAll((Collection<? extends CascadeType>)newValue);
+				getValue().addAll((Collection<? extends HbCascadeType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

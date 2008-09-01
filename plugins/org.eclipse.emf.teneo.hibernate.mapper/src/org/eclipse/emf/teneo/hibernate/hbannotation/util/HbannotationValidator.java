@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationValidator.java,v 1.13 2008/08/26 21:19:08 mtaal Exp $
+ * $Id: HbannotationValidator.java,v 1.14 2008/09/01 12:45:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -179,6 +179,8 @@ public class HbannotationValidator extends EObjectValidator {
 				return validateOptimisticLockType((OptimisticLockType)value, diagnostics, context);
 			case HbannotationPackage.POLYMORPHISM_TYPE:
 				return validatePolymorphismType((PolymorphismType)value, diagnostics, context);
+			case HbannotationPackage.HB_CASCADE_TYPE:
+				return validateHbCascadeType((HbCascadeType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -796,6 +798,15 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePolymorphismType(PolymorphismType polymorphismType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateHbCascadeType(HbCascadeType hbCascadeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

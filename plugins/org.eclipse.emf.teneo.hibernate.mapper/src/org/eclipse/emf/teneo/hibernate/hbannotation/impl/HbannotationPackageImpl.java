@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.12 2008/08/26 21:19:07 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.13 2008/09/01 12:45:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
@@ -291,6 +292,13 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	private EEnum polymorphismTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum hbCascadeTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1090,6 +1098,15 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getHbCascadeType() {
+		return hbCascadeTypeEEnum;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1227,6 +1244,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		notFoundActionEEnum = createEEnum(NOT_FOUND_ACTION);
 		optimisticLockTypeEEnum = createEEnum(OPTIMISTIC_LOCK_TYPE);
 		polymorphismTypeEEnum = createEEnum(POLYMORPHISM_TYPE);
+		hbCascadeTypeEEnum = createEEnum(HB_CASCADE_TYPE);
 	}
 
 	/**
@@ -1291,7 +1309,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(cascadeEClass, Cascade.class, "Cascade", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCascade_Value(), thePannotationPackage.getCascadeType(), "value", null, 0, -1, Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCascade_Value(), this.getHbCascadeType(), "value", null, 0, -1, Cascade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(collectionOfElementsEClass, CollectionOfElements.class, "CollectionOfElements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCollectionOfElements_TargetElement(), ecorePackage.getEString(), "targetElement", null, 0, 1, CollectionOfElements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1428,6 +1446,19 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEEnum(polymorphismTypeEEnum, PolymorphismType.class, "PolymorphismType");
 		addEEnumLiteral(polymorphismTypeEEnum, PolymorphismType.IMPLICIT);
 		addEEnumLiteral(polymorphismTypeEEnum, PolymorphismType.EXPLICIT);
+
+		initEEnum(hbCascadeTypeEEnum, HbCascadeType.class, "HbCascadeType");
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.ALL);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.PERSIST);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.MERGE);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.REMOVE);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.REFRESH);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.DELETE);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.SAVE_UPDATE);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.REPLICATE);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.DELETE_ORPHAN);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.LOCK);
+		addEEnumLiteral(hbCascadeTypeEEnum, HbCascadeType.EVICT);
 
 		// Create resource
 		createResource(eNS_URI);

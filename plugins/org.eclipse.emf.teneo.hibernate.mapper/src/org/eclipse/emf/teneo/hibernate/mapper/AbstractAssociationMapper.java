@@ -8,6 +8,7 @@
 
 package org.eclipse.emf.teneo.hibernate.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -26,6 +27,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
@@ -68,6 +71,36 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 		}
 		return element;
+	}
+
+	// translates jpa CascadeType to HbCascadeType
+	protected List<HbCascadeType> getCascades(Cascade cascade, List<CascadeType> cascades) {
+		if (cascade != null) {
+			return cascade.getValue();
+		}
+		return convertCascade(cascades);
+	}
+
+	protected List<HbCascadeType> convertCascade(List<CascadeType> cascades) {
+		final List<HbCascadeType> res = new ArrayList<HbCascadeType>();
+		for (CascadeType ct : cascades) {
+			if (ct == CascadeType.ALL) {
+				res.add(HbCascadeType.ALL);
+			} else if (ct == CascadeType.MERGE) {
+				res.add(HbCascadeType.MERGE);
+			} else if (ct == CascadeType.PERSIST) {
+				res.add(HbCascadeType.PERSIST);
+				res.add(HbCascadeType.SAVE_UPDATE);
+				res.add(HbCascadeType.LOCK);
+			} else if (ct == CascadeType.REFRESH) {
+				res.add(HbCascadeType.REFRESH);
+			} else if (ct == CascadeType.REMOVE) {
+				res.add(HbCascadeType.REMOVE);
+			} else if (ct == CascadeType.NONE) {
+				return new ArrayList<HbCascadeType>();
+			}
+		}
+		return res;
 	}
 
 	/** Adds a manytoone tag to the current element of the hbmcontext */
@@ -194,7 +227,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param cascade
 	 *            : list of cascade annotation types
 	 */
-	protected void addCascadesForSingle(Element associationElement, List<CascadeType> cascades) {
+	protected void addCascadesForSingle(Element associationElement, List<HbCascadeType> cascades) {
 		addCascades(associationElement, cascades, false);
 	}
 
@@ -214,7 +247,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param cascade
 	 *            : list of cascade annotation types
 	 */
-	protected void addCascadesForMany(Element associationElement, List<CascadeType> cascades) {
+	protected void addCascadesForMany(Element associationElement, List<HbCascadeType> cascades) {
 		addCascades(associationElement, cascades, true);
 	}
 
@@ -229,26 +262,36 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @param addDeleteOrphan
 	 *            : if true then delete-orphan is added in case of cascade all
 	 */
-	protected void addCascades(Element associationElement, List<CascadeType> cascades, boolean addDeleteOrphan) {
+	protected void addCascades(Element associationElement, List<HbCascadeType> cascades, boolean addDeleteOrphan) {
 		if (!cascades.isEmpty()) {
 			StringBuffer sb = new StringBuffer();
-			for (CascadeType cascade : cascades) {
-				if (cascade == CascadeType.ALL) {
+			for (HbCascadeType cascade : cascades) {
+				if (cascade == HbCascadeType.ALL) {
 					sb.append("all,"); // assuming all appears alone
-
 					if (addDeleteOrphan) {
 						sb.append("delete-orphan,");
 					}
-				} else if (cascade == CascadeType.PERSIST) {
-					sb.append("persist,save-update,lock,");
-				} else if (cascade == CascadeType.MERGE) {
+					break;
+				} else if (cascade == HbCascadeType.PERSIST) {
+					sb.append("persist,");
+				} else if (cascade == HbCascadeType.MERGE) {
 					sb.append("merge,");
-				} else if (cascade == CascadeType.REFRESH) {
+				} else if (cascade == HbCascadeType.REFRESH) {
 					sb.append("refresh,");
-				} else if (cascade == CascadeType.NONE) {
-					return;
-				} else if (cascade == CascadeType.REMOVE) {
+				} else if (cascade == HbCascadeType.REMOVE) {
 					sb.append("delete,");
+				} else if (cascade == HbCascadeType.DELETE) {
+					sb.append("delete,");
+				} else if (cascade == HbCascadeType.DELETE_ORPHAN) {
+					sb.append("delete-orphan,");
+				} else if (cascade == HbCascadeType.EVICT) {
+					sb.append("evict,");
+				} else if (cascade == HbCascadeType.LOCK) {
+					sb.append("lock,");
+				} else if (cascade == HbCascadeType.REPLICATE) {
+					sb.append("replicate,");
+				} else if (cascade == HbCascadeType.SAVE_UPDATE) {
+					sb.append("save-update,");
 				} else {
 					throw new MappingException("Cascade " + cascade.getName() + " not supported");
 				}

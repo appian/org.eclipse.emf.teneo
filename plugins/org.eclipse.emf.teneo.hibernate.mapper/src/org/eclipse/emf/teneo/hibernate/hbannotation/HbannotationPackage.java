@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackage.java,v 1.12 2008/08/26 21:19:08 mtaal Exp $
+ * $Id: HbannotationPackage.java,v 1.13 2008/09/01 12:45:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -1337,6 +1337,16 @@ public interface HbannotationPackage extends EPackage {
 	int POLYMORPHISM_TYPE = 34;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType <em>Hb Cascade Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbCascadeType()
+	 * @generated
+	 */
+	int HB_CASCADE_TYPE = 35;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Hb Annotation</em>'.
@@ -2184,6 +2194,16 @@ public interface HbannotationPackage extends EPackage {
 	EEnum getPolymorphismType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType <em>Hb Cascade Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Hb Cascade Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType
+	 * @generated
+	 */
+	EEnum getHbCascadeType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -2923,6 +2943,16 @@ public interface HbannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum POLYMORPHISM_TYPE = eINSTANCE.getPolymorphismType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType <em>Hb Cascade Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbCascadeType()
+		 * @generated
+		 */
+		EEnum HB_CASCADE_TYPE = eINSTANCE.getHbCascadeType();
 
 	}
 

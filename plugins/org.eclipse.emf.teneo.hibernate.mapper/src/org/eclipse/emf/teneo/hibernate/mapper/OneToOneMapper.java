@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.31 2008/08/11 21:54:55 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.32 2008/09/01 12:45:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -89,17 +89,17 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			specifiedName = getHbmContext().getEntityName(eref.getEReferenceType());
 		}
 
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		final Element associationElement =
 				addManyToOne(getHbmContext().getCurrent(), paReference, specifiedName, false);
 		addAccessor(associationElement);
 
-		addCascadesForSingle(associationElement, oto.getCascade());
+		addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), oto.getCascade()));
 
 		associationElement.addAttribute("not-null", (oto.isOptional() ? "false" : "true"));
 
 		addLazyProxy(associationElement, oto.getFetch(), paReference);
 
-		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		if (hbReference.getHbFetch() != null) {
 			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
 		}
@@ -136,16 +136,16 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			targetName = getHbmContext().getEntityName(paReference.getEReferenceType());
 		}
 
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		final EReference eref = paReference.getModelEReference();
 		final EReference otherSide = eref.getEOpposite();
 		final Element associationElement = addOneToOne(paReference, getHbmContext().getPropertyName(eref), targetName);
 		addAccessor(associationElement);
 
 		addForeignKeyAttribute(associationElement, paReference);
-		addCascadesForSingle(associationElement, oto.getCascade());
+		addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), oto.getCascade()));
 		addLazyProxy(associationElement, oto.getFetch(), paReference);
 
-		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		if (hbReference.getHbFetch() != null) {
 			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
 		}
@@ -159,10 +159,32 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
 		}
 
-		addLazyProxy(associationElement, oto.getFetch(), paReference);
+		// apparently is always allowed for a one-to-one, if it is bidirectional
+		// if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
 
-		if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
+		// place constrained when:
+		// 1) this side has a primary key join column annotation
+		boolean addConstrained = !paReference.getPrimaryKeyJoinColumns().isEmpty();
+		if (!addConstrained && otherSide == null) {
+			// 2) there is no other side and it is mandatory see here:
+			// http://www.hibernate.org/162.html
+			addConstrained = eref.isRequired();
+		} else if (!addConstrained && otherSide != null) {
+			// 3) the most difficult one, the other side must be a many-to-one
+			// this is the case when it does not have a pk join column and mappedby is
+			// null, or when it has a many-to-one annotation.
+			final PAnnotatedEReference aOpposite = paReference.getPaModel().getPAnnotated(otherSide);
+			addConstrained = aOpposite.getManyToOne() != null && eref.isRequired();
+			if (!addConstrained) {
+				addConstrained =
+						eref.isRequired() && aOpposite.getPrimaryKeyJoinColumns().isEmpty() &&
+								aOpposite.getOneToOne() != null && aOpposite.getOneToOne().getMappedBy() == null;
+			}
+		}
+
+		if (addConstrained) {
 			associationElement.addAttribute("constrained", "true");
 		}
+// }
 	}
 }

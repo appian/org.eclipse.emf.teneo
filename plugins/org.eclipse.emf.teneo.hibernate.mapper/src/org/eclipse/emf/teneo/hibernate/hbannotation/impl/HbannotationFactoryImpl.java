@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.13 2008/08/26 21:19:07 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.14 2008/09/01 12:45:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -127,6 +127,8 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 				return createOptimisticLockTypeFromString(eDataType, initialValue);
 			case HbannotationPackage.POLYMORPHISM_TYPE:
 				return createPolymorphismTypeFromString(eDataType, initialValue);
+			case HbannotationPackage.HB_CASCADE_TYPE:
+				return createHbCascadeTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -153,6 +155,8 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 				return convertOptimisticLockTypeToString(eDataType, instanceValue);
 			case HbannotationPackage.POLYMORPHISM_TYPE:
 				return convertPolymorphismTypeToString(eDataType, instanceValue);
+			case HbannotationPackage.HB_CASCADE_TYPE:
+				return convertHbCascadeTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -546,6 +550,26 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	 * @generated
 	 */
 	public String convertPolymorphismTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HbCascadeType createHbCascadeTypeFromString(EDataType eDataType, String initialValue) {
+		HbCascadeType result = HbCascadeType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertHbCascadeTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
