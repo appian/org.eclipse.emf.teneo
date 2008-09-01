@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.11 2008/08/11 20:41:47 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.12 2008/09/01 13:39:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -170,7 +170,7 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 		// only use a jointable if the relation is non unique
 		final boolean isEObject = EntityNameStrategy.EOBJECT_ECLASS_NAME.compareTo(otm.getTargetEntity()) == 0;
 		// in case of eobject always a join table is required
-		if (isEObject ||
+		if (aReference.getJoinTable() != null || isEObject ||
 				(getPersistenceOptions().isJoinTableForNonContainedAssociations() && !eReference.isContainment()) ||
 				!otm.isUnique()) {
 			JoinTable joinTable = aReference.getJoinTable();
