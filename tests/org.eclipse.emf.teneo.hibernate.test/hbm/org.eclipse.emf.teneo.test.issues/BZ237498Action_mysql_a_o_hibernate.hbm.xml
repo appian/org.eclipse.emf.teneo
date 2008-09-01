@@ -4,7 +4,7 @@
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz237498.impl.OneImpl" entity-name="One" abstract="false" lazy="false" discriminator-value="One" table="`one`">
 		<meta attribute="eclassName">One</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz237498</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
@@ -22,7 +22,7 @@
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz237498.impl.ManyImpl" entity-name="Many" abstract="false" lazy="false" discriminator-value="Many" table="`many`">
 		<meta attribute="eclassName">Many</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz237498</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
