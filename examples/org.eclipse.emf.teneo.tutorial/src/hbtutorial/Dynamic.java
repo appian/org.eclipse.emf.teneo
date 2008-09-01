@@ -11,14 +11,19 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: Dynamic.java,v 1.6 2008/02/28 07:08:40 mtaal Exp $
+ * $Id: Dynamic.java,v 1.7 2008/09/01 12:45:20 mtaal Exp $
  */
 
 package hbtutorial;
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -26,12 +31,17 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.change.ChangeDescription;
+import org.eclipse.emf.ecore.change.FeatureChange;
+import org.eclipse.emf.ecore.change.util.ChangeRecorder;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.example.library.Book;
 import org.eclipse.example.library.BookCategory;
 import org.eclipse.example.library.LibraryFactory;
 import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -41,7 +51,7 @@ import org.hibernate.Transaction;
  * Dynamic Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class Dynamic {
 
@@ -175,5 +185,24 @@ public class Dynamic {
 
 		tx.commit();
 		session.close();
+
+		URI uri1 = URI.createURI("hibernate://?dsname=Library&query1=FROM Course");
+		Resource res1 = new ResourceSetImpl().createResource(uri1);
+		try {
+			res1.load(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		eobject = res1.getContents().get(0);
+		ChangeRecorder cr = new ChangeRecorder(res1);
+		eobject.eSet(courseName, "English 1");
+		System.out.println(eobject);
+
+		ChangeDescription changeDescription = cr.endRecording();
+
+		EMap<EObject, EList<FeatureChange>> objectChanges = changeDescription.getObjectChanges();
+		System.out.println("change size: " + objectChanges.size());
+		course.eSet(courseName, "Dutch Literature Level 1");
 	}
 }
