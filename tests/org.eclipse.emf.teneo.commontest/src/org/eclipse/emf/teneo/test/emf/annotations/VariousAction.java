@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: VariousAction.java,v 1.1 2008/07/12 13:11:27 mtaal Exp $
+ * $Id: VariousAction.java,v 1.2 2008/09/01 13:41:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.test.emf.annotations;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for bz 239757, 239802, 239756
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class VariousAction extends AbstractTestAction {
 	/**
@@ -42,7 +42,6 @@ public class VariousAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final VariousFactory factory = VariousFactory.eINSTANCE;
 		{
 			store.beginTransaction();

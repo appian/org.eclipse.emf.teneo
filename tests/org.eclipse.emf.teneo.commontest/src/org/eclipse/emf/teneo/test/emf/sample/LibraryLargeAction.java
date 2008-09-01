@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryLargeAction.java,v 1.1 2008/06/28 22:41:29 mtaal Exp $
+ * $Id: LibraryLargeAction.java,v 1.2 2008/09/01 13:41:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a larger dataset.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryLargeAction extends AbstractTestAction {
 
@@ -59,7 +59,6 @@ public class LibraryLargeAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		{
 			long t = System.currentTimeMillis();
 			for (int j = 0; j < NUM_OF_TRANS; j++) {
