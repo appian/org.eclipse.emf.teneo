@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XSDDuration.java,v 1.3 2008/06/02 07:15:33 mtaal Exp $
+ * $Id: XSDDuration.java,v 1.4 2008/09/04 10:43:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -84,6 +84,9 @@ public class XSDDuration implements UserType {
 	 * @return the value always.
 	 */
 	public Object deepCopy(Object value) {
+		if (value == null) {
+			return null;
+		}
 		return factory.newDuration(((Duration) value).toString());
 	}
 
