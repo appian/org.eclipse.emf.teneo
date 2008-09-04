@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XSDDuration.java,v 1.4 2008/09/04 10:43:36 mtaal Exp $
+ * $Id: XSDDuration.java,v 1.5 2008/09/04 10:45:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -165,6 +165,9 @@ public class XSDDuration implements UserType {
 	 * @return the value passed in.
 	 */
 	public Serializable disassemble(Object value) {
+		if (value == null) {
+			return null;
+		}
 		return ((Duration) value).toString();
 	}
 
