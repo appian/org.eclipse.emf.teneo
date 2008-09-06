@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAnnotator.java,v 1.4 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: AbstractAnnotator.java,v 1.5 2008/09/06 00:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * The parent class of all annotator classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class AbstractAnnotator implements ExtensionManagerAware, ExtensionInitializable {
@@ -42,6 +42,7 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 	private SQLNameStrategy sqlNameStrategy;
 	private EntityNameStrategy entityNameStrategy;
 	private PersistenceOptions persistenceOptions;
+	private EFeatureAnnotator eFeatureAnnotator;
 
 	/*
 	 * (non-Javadoc)
@@ -149,6 +150,21 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware, Extens
 		annotator.setFactory(getFactory());
 		annotator.initialize();
 		return annotator;
+	}
+
+	/**
+	 * @return the eFeatureAnnotator
+	 */
+	public EFeatureAnnotator getEFeatureAnnotator() {
+		return eFeatureAnnotator;
+	}
+
+	/**
+	 * @param featureAnnotator
+	 *            the eFeatureAnnotator to set
+	 */
+	public void setEFeatureAnnotator(EFeatureAnnotator featureAnnotator) {
+		eFeatureAnnotator = featureAnnotator;
 	}
 
 }

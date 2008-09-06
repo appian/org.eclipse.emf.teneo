@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.7 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.8 2008/09/06 00:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -58,12 +58,19 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 	protected void initialize() {
 		super.initialize();
 		otmAttributeAnnotator = createAnnotator(OneToManyAttributeAnnotator.class);
+		otmAttributeAnnotator.setEFeatureAnnotator(this);
 		singleAttributeAnnotator = createAnnotator(SingleAttributeAnnotator.class);
+		singleAttributeAnnotator.setEFeatureAnnotator(this);
 		bidirectionalManyToManyAnnotator = createAnnotator(BidirectionalManyToManyAnnotator.class);
+		bidirectionalManyToManyAnnotator.setEFeatureAnnotator(this);
 		unidirectionalManyToManyAnnotator = createAnnotator(UnidirectionalManyToManyAnnotator.class);
+		unidirectionalManyToManyAnnotator.setEFeatureAnnotator(this);
 		oneToManyReferenceAnnotator = createAnnotator(OneToManyReferenceAnnotator.class);
+		oneToManyReferenceAnnotator.setEFeatureAnnotator(this);
 		oneToOneReferenceAnnotator = createAnnotator(OneToOneReferenceAnnotator.class);
+		oneToOneReferenceAnnotator.setEFeatureAnnotator(this);
 		manyToOneReferenceAnnotator = createAnnotator(ManyToOneReferenceAnnotator.class);
+		manyToOneReferenceAnnotator.setEFeatureAnnotator(this);
 	}
 
 	/** Process the features of the eclass */
@@ -222,6 +229,13 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 	/** Map the feature if it is volatile, default is false */
 	protected boolean mapVolitatileFeature() {
 		return false;
+	}
+
+	/**
+	 * @return the manyToOneReferenceAnnotator
+	 */
+	public ManyToOneReferenceAnnotator getManyToOneReferenceAnnotator() {
+		return manyToOneReferenceAnnotator;
 	}
 
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.12 2008/09/01 13:39:20 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.13 2008/09/06 00:14:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -21,6 +21,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -41,7 +42,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -199,8 +200,14 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			}
 		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
 			boolean borrowJoinColumnsOtherSide = false;
-			if (eReference.getEOpposite() != null) {
-				final PAnnotatedEReference aOther = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
+
+			final EReference eOther = getOpposite(aReference);
+			if (eOther != null) {
+				final PAnnotatedEReference aOther = aReference.getPaModel().getPAnnotated(eOther);
+
+				// map the other side, before checking if there are joincolumns
+				getEFeatureAnnotator().getManyToOneReferenceAnnotator().annotate(aOther);
+
 				if (aOther.getJoinColumns() != null && !aOther.getJoinColumns().isEmpty()) {
 					borrowJoinColumnsOtherSide = true;
 					for (JoinColumn jc : aOther.getJoinColumns()) {
@@ -224,15 +231,50 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			// joincolumns
 			// on the other side is set to false.
 			// See the hibernate manual: 6.3.3. Bidirectional associations with indexed collections
-			if (otm.isList() && eReference.getEOpposite() != null) {
-				final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
-				if (aOpposite.getJoinColumns().size() > 0) {
-					for (JoinColumn jc : aOpposite.getJoinColumns()) {
-						jc.setInsertable(false);
-						jc.setUpdatable(false);
+			if (otm.isList() && eOther != null) {
+				final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eOther);
+				if (aReference.getTransient() == null) {
+					if (aOpposite.getJoinColumns().size() > 0) {
+						for (JoinColumn jc : aOpposite.getJoinColumns()) {
+							jc.setInsertable(false);
+							jc.setUpdatable(false);
+						}
 					}
 				}
 			}
+		}
+	}
+
+	protected EReference getOpposite(PAnnotatedEReference aReference) {
+		final EReference eReference = (EReference) aReference.getModelElement();
+		if (eReference.getEOpposite() != null) {
+			return eReference.getEOpposite();
+		}
+
+		// now handle a special case, the aReference is a map
+		// and there is a mapped by and a one to many
+		if (aReference.getOneToMany() == null || aReference.getOneToMany().getMappedBy() == null) {
+			return null;
+		}
+
+		final EClass eclass = eReference.getEReferenceType();
+		if (getPersistenceOptions().isMapEMapAsTrueMap() && StoreUtil.isMapEntry(eclass)) {
+			EStructuralFeature feature = eclass.getEStructuralFeature("value");
+			if (feature instanceof EReference) {
+				final String mappedBy = aReference.getOneToMany().getMappedBy();
+				final EReference valueERef = (EReference) feature;
+				final EClass valueEClass = valueERef.getEReferenceType();
+				final EStructuralFeature ef = valueEClass.getEStructuralFeature(mappedBy);
+				if (ef == null || ef instanceof EAttribute) {
+					return null;
+				}
+
+				return (EReference) ef;
+			} else {
+				return null;
+			}
+		} else {
+			return null;
 		}
 	}
 }
