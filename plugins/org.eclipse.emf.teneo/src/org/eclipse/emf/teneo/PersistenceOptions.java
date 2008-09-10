@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.45 2008/08/03 21:24:26 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.46 2008/09/10 22:23:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,17 +39,17 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.45 $
+ * @version $Revision: 1.46 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
 	public static final String DEFAULT_CLASSPATH_FILENAME = "/teneo-persistence.properties";
 
-	private static final String RUNTIME_PREFIX = "teneo.runtime.";
+	public static final String RUNTIME_PREFIX = "teneo.runtime.";
 
-	private static final String MAPPING_PREFIX = "teneo.mapping.";
+	public static final String MAPPING_PREFIX = "teneo.mapping.";
 
-	private static final String NAMING_PREFIX = "teneo.naming.";
+	public static final String NAMING_PREFIX = "teneo.naming.";
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(PersistenceOptions.class);
@@ -123,14 +123,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * see bugzilla 227673, option can be used to set the hibernate usertype used for xsd date and
 	 * xsd date time fields.
 	 */
-	private static String USER_XSDDATE_TYPE = MAPPING_PREFIX + "UserDateType";
-	private static String USER_XSDDATETIME_TYPE = MAPPING_PREFIX + "UserDateTimeType";
+	public static final String USER_XSDDATE_TYPE = MAPPING_PREFIX + "UserDateType";
+	public static final String USER_XSDDATETIME_TYPE = MAPPING_PREFIX + "UserDateTimeType";
 
 	/**
 	 * This option can be used to control the actual xsd date class used, as a default the
 	 * javax.xml.datatype.XMLGregorianCalendar class is used.
 	 */
-	private static String XSDDATE_CLASS = MAPPING_PREFIX + "XSDDateClass";
+	public static final String XSDDATE_CLASS = MAPPING_PREFIX + "XSDDateClass";
 
 	/** The default length of a varchar column. Normally hibernate will choose to set this to 255. */
 	public static final String DEFAULT_VARCHAR_LENGTH = MAPPING_PREFIX + "default_varchar_length";
