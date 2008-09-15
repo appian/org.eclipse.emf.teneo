@@ -11,22 +11,22 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.17 2008/09/15 11:33:40 mtaal Exp $
+ * $Id: SupInterfacesAction.java,v 1.1 2008/09/15 11:33:40 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.test.emf.sample;
+package org.eclipse.emf.teneo.test.issues;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
-import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
-import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
-import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
-import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
-import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
+import org.eclipse.emf.teneo.samples.issues.library.Book;
+import org.eclipse.emf.teneo.samples.issues.library.BookCategory;
+import org.eclipse.emf.teneo.samples.issues.library.Library;
+import org.eclipse.emf.teneo.samples.issues.library.LibraryFactory;
+import org.eclipse.emf.teneo.samples.issues.library.LibraryPackage;
+import org.eclipse.emf.teneo.samples.issues.library.Writer;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -34,15 +34,15 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.1 $
  */
-public class LibraryAction extends AbstractTestAction {
+public class SupInterfacesAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
 	 * 
 	 * @param arg0
 	 */
-	public LibraryAction() {
+	public SupInterfacesAction() {
 		super(LibraryPackage.eINSTANCE);
 	}
 
@@ -101,13 +101,13 @@ public class LibraryAction extends AbstractTestAction {
 			book.setAuthor(writer);
 			book.setPages(5);
 			book.setTitle("The Hobbit");
-			book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			book.setCategory(BookCategory.SCIENCE_FICTION);
 
 			final Book book2 = factory.createBook();
 			book2.setAuthor(writer);
 			book2.setPages(5);
 			book2.setTitle("The fellowship of the ring");
-			book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			book2.setCategory(BookCategory.SCIENCE_FICTION);
 
 			final Library library = factory.createLibrary();
 			library.getBooks().add(book);
@@ -140,7 +140,7 @@ public class LibraryAction extends AbstractTestAction {
 			assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0);
 			assertTrue(wBook.getPages() == lBook.getPages());
 			assertTrue(wBook.getCategory() instanceof BookCategory);
-			assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL);
+			assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION);
 			store.commitTransaction();
 		}
 
