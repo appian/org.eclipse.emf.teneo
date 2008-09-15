@@ -32,13 +32,14 @@ import org.eclipse.emf.teneo.test.issues.MultipleInheritanceAction;
 import org.eclipse.emf.teneo.test.issues.ResourceAction;
 import org.eclipse.emf.teneo.test.issues.SecondarytableInheritanceAction;
 import org.eclipse.emf.teneo.test.issues.SimplenmAction;
+import org.eclipse.emf.teneo.test.issues.SupInterfacesAction;
 import org.eclipse.emf.teneo.test.issues.TopClassesAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class AllTests {
 
@@ -46,6 +47,8 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(SupInterfacesAction.class);
+
 		suite.addTestSuite(BZ237361Action.class);
 
 		suite.addTestSuite(Bz243024Action.class);
