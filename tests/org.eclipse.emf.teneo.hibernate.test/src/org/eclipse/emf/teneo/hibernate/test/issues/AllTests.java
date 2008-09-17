@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 public class AllTests {
 
@@ -47,6 +47,7 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(SupInterfacesAction.class);
 
 		suite.addTestSuite(BZ237361Action.class);
@@ -76,7 +77,6 @@ public class AllTests {
 		suite.addTestSuite(BagDuplicateAction.class);
 		suite.addTestSuite(EnumTestAction.class);
 		suite.addTestSuite(AbstractReferenceAction.class);
-		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(SimplenmAction.class);
 		suite.addTestSuite(TopClassesAction.class);
 		return suite;
