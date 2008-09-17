@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfacetrueFactory.java,v 1.1 2006/07/11 16:57:00 mtaal Exp $
+ * $Id: InterfacetrueFactory.java,v 1.2 2008/09/17 20:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.interfacetrue;
 
@@ -23,7 +23,7 @@ public interface InterfacetrueFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InterfacetrueFactory eINSTANCE = new org.eclipse.emf.teneo.samples.issues.interfacetrue.impl.InterfacetrueFactoryImpl();
+	InterfacetrueFactory eINSTANCE = org.eclipse.emf.teneo.samples.issues.interfacetrue.impl.InterfacetrueFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>US Address</em>'.
@@ -33,6 +33,15 @@ public interface InterfacetrueFactory extends EFactory {
 	 * @generated
 	 */
 	USAddress createUSAddress();
+
+	/**
+	 * Returns a new object of class '<em>Address List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Address List</em>'.
+	 * @generated
+	 */
+	AddressList createAddressList();
 
 	/**
 	 * Returns the package supported by this factory.

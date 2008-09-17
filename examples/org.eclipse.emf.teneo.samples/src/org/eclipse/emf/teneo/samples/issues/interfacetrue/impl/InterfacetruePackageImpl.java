@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfacetruePackageImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: InterfacetruePackageImpl.java,v 1.2 2008/09/17 20:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.interfacetrue.impl;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecore.xml.type.impl.XMLTypePackageImpl;
 
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.Address;
+import org.eclipse.emf.teneo.samples.issues.interfacetrue.AddressList;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.InterfacetrueFactory;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.InterfacetruePackage;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.USAddress;
@@ -44,6 +46,13 @@ public class InterfacetruePackageImpl extends EPackageImpl implements Interfacet
 	 * @generated
 	 */
 	private EClass usAddressEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addressListEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -102,9 +111,7 @@ public class InterfacetruePackageImpl extends EPackageImpl implements Interfacet
 		isInited = true;
 
 		// Initialize simple dependencies
-		EcorePackageImpl.init();
-		XMLNamespacePackageImpl.init();
-		XMLTypePackageImpl.init();
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theInterfacetruePackage.createPackageContents();
@@ -159,6 +166,24 @@ public class InterfacetruePackageImpl extends EPackageImpl implements Interfacet
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAddressList() {
+		return addressListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAddressList_Addresses() {
+		return (EReference)addressListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InterfacetrueFactory getInterfacetrueFactory() {
 		return (InterfacetrueFactory)getEFactoryInstance();
 	}
@@ -187,6 +212,9 @@ public class InterfacetruePackageImpl extends EPackageImpl implements Interfacet
 
 		usAddressEClass = createEClass(US_ADDRESS);
 		createEAttribute(usAddressEClass, US_ADDRESS__STATE);
+
+		addressListEClass = createEClass(ADDRESS_LIST);
+		createEReference(addressListEClass, ADDRESS_LIST__ADDRESSES);
 	}
 
 	/**
@@ -213,7 +241,11 @@ public class InterfacetruePackageImpl extends EPackageImpl implements Interfacet
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XMLTypePackageImpl theXMLTypePackage = (XMLTypePackageImpl)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		usAddressEClass.getESuperTypes().add(this.getAddress());
@@ -224,6 +256,9 @@ public class InterfacetruePackageImpl extends EPackageImpl implements Interfacet
 
 		initEClass(usAddressEClass, USAddress.class, "USAddress", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUSAddress_State(), theXMLTypePackage.getString(), "state", null, 1, 1, USAddress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(addressListEClass, AddressList.class, "AddressList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAddressList_Addresses(), this.getAddress(), null, "addresses", null, 0, -1, AddressList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

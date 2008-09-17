@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: USAddressImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: USAddressImpl.java,v 1.2 2008/09/17 20:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.interfacetrue.impl;
 
@@ -86,8 +86,9 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return InterfacetruePackage.eINSTANCE.getUSAddress();
+		return InterfacetruePackage.Literals.US_ADDRESS;
 	}
 
 	/**
@@ -137,14 +138,15 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case InterfacetruePackage.US_ADDRESS__NAME:
 				return getName();
 			case InterfacetruePackage.US_ADDRESS__STATE:
 				return getState();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -152,8 +154,9 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case InterfacetruePackage.US_ADDRESS__NAME:
 				setName((String)newValue);
 				return;
@@ -161,7 +164,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 				setState((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -169,8 +172,9 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case InterfacetruePackage.US_ADDRESS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -178,7 +182,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 				setState(STATE_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -186,14 +190,15 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case InterfacetruePackage.US_ADDRESS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case InterfacetruePackage.US_ADDRESS__STATE:
 				return STATE_EDEFAULT == null ? state != null : !STATE_EDEFAULT.equals(state);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -201,6 +206,7 @@ public class USAddressImpl extends EObjectImpl implements USAddress {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

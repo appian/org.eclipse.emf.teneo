@@ -2,15 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfacetrueFactoryImpl.java,v 1.1 2006/07/11 16:57:09 mtaal Exp $
+ * $Id: InterfacetrueFactoryImpl.java,v 1.2 2008/09/17 20:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.interfacetrue.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.teneo.samples.issues.interfacetrue.*;
 
 /**
@@ -20,6 +22,25 @@ import org.eclipse.emf.teneo.samples.issues.interfacetrue.*;
  * @generated
  */
 public class InterfacetrueFactoryImpl extends EFactoryImpl implements InterfacetrueFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static InterfacetrueFactory init() {
+		try {
+			InterfacetrueFactory theInterfacetrueFactory = (InterfacetrueFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/elver/store/test/issues/interfacetrue.ecore"); 
+			if (theInterfacetrueFactory != null) {
+				return theInterfacetrueFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new InterfacetrueFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -35,9 +56,11 @@ public class InterfacetrueFactoryImpl extends EFactoryImpl implements Interfacet
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case InterfacetruePackage.US_ADDRESS: return createUSAddress();
+			case InterfacetruePackage.ADDRESS_LIST: return createAddressList();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -58,6 +81,16 @@ public class InterfacetrueFactoryImpl extends EFactoryImpl implements Interfacet
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public AddressList createAddressList() {
+		AddressListImpl addressList = new AddressListImpl();
+		return addressList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InterfacetruePackage getInterfacetruePackage() {
 		return (InterfacetruePackage)getEPackage();
 	}
@@ -68,6 +101,7 @@ public class InterfacetrueFactoryImpl extends EFactoryImpl implements Interfacet
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static InterfacetruePackage getPackage() {
 		return InterfacetruePackage.eINSTANCE;
 	}

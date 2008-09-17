@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InterfacetrueAdapterFactory.java,v 1.1 2006/07/11 16:57:17 mtaal Exp $
+ * $Id: InterfacetrueAdapterFactory.java,v 1.2 2008/09/17 20:28:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.interfacetrue.util;
 
@@ -52,6 +52,7 @@ public class InterfacetrueAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -63,20 +64,27 @@ public class InterfacetrueAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterfacetrueSwitch modelSwitch =
-		new InterfacetrueSwitch() {
-			public Object caseAddress(Address object) {
+	protected InterfacetrueSwitch<Adapter> modelSwitch =
+		new InterfacetrueSwitch<Adapter>() {
+			@Override
+			public Adapter caseAddress(Address object) {
 				return createAddressAdapter();
 			}
-			public Object caseUSAddress(USAddress object) {
+			@Override
+			public Adapter caseUSAddress(USAddress object) {
 				return createUSAddressAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter caseAddressList(AddressList object) {
+				return createAddressListAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -89,8 +97,9 @@ public class InterfacetrueAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
@@ -119,6 +128,20 @@ public class InterfacetrueAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUSAddressAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.interfacetrue.AddressList <em>Address List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.issues.interfacetrue.AddressList
+	 * @generated
+	 */
+	public Adapter createAddressListAdapter() {
 		return null;
 	}
 
