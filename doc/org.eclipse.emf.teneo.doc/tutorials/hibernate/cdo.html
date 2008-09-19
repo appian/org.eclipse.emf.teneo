@@ -293,6 +293,9 @@
 <li>
 <a href="#Runtime+in-memory+mapping">Runtime in-memory mapping</a>
 </li>
+<li>
+<a href="#Override+Teneo+standard+behavior+using+Teneo%27s+extension+mechanism">Override Teneo standard behavior using Teneo's extension mechanism</a>
+</li>
 </ul>
 		
 <p>Teneo can be used in combination with <a class="external" href="http://www.eclipse.org/modeling/emf/?project=cdo">CDO</a>.
@@ -428,13 +431,22 @@ private void addHibernateTeneoProperties(Map&lt;String, String&gt; props)
 @Override
 public IStore createStore()
 {
-  IHibernateMappingProvider mappingProvider = new TeneoHibernateMappingProvider();
+  IHibernateMappingProvider mappingProvider = TeneoUtil.createMappingProvider();
   return new HibernateStore(mappingProvider);
 }	
 	</pre>		
 		
 <p>After this the repository can be used as a normal CDO repository while it works through Hibernate on
 		the relational database.</p>
+	
+</div>
+	
+<a name="N10083"></a><a name="Override+Teneo+standard+behavior+using+Teneo%27s+extension+mechanism"></a>
+<div class="h3">
+<h3>Override Teneo standard behavior using Teneo's extension mechanism</h3>
+	
+<p>Teneo's standard behavior can be overridden through the Teneo extension mechanism (see <a href="extensions.html">here</a>).
+	The extension manager can be obtained from the TeneoHibernateMappingProvider (cast the mappingProvider to TeneoHibernateMappingProvider).</p>
 	
 </div>
 	
