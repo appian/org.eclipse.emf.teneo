@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -75,7 +76,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -169,7 +170,23 @@ public abstract class HbDataStore implements DataStore {
 	 *            the epackages to set
 	 */
 	public void setEPackages(EPackage[] epackages) {
-		this.ePackages = epackages;
+		// automatically add EPackage
+		final List<EPackage> epacks = new ArrayList<EPackage>();
+		for (EPackage epack : epackages) {
+			resolveSubPackages(epack, epacks);
+		}
+
+		this.ePackages = epacks.toArray(new EPackage[epacks.size()]);
+	}
+
+	private void resolveSubPackages(EPackage epack, List<EPackage> epacks) {
+		if (!epacks.contains(epack)) {
+			epacks.add(epack);
+		}
+
+		for (EPackage subEPackage : epack.getESubpackages()) {
+			resolveSubPackages(subEPackage, epacks);
+		}
 	}
 
 	/**
