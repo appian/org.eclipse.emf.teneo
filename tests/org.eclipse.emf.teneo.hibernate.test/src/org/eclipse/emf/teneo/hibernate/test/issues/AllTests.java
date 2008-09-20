@@ -21,6 +21,8 @@ import org.eclipse.emf.teneo.test.issues.BZ237361Action;
 import org.eclipse.emf.teneo.test.issues.BZ237498Action;
 import org.eclipse.emf.teneo.test.issues.BZ237790Action;
 import org.eclipse.emf.teneo.test.issues.BZ237994Action;
+import org.eclipse.emf.teneo.test.issues.BZ247785Action;
+import org.eclipse.emf.teneo.test.issues.BZ247939Action;
 import org.eclipse.emf.teneo.test.issues.BagDuplicateAction;
 import org.eclipse.emf.teneo.test.issues.EnumTestAction;
 import org.eclipse.emf.teneo.test.issues.GeneralTestAction;
@@ -39,7 +41,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public class AllTests {
 
@@ -47,6 +49,10 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues", HibernateTestbed
 					.instance().getConfigurations());
+		suite.addTestSuite(BZ247785Action.class);
+
+		suite.addTestSuite(BZ247939Action.class);
+
 		suite.addTestSuite(InterfaceTrueAction.class);
 		suite.addTestSuite(SupInterfacesAction.class);
 

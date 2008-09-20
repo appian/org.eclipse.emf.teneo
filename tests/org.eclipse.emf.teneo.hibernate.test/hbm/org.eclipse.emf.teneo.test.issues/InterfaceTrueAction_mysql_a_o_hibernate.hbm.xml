@@ -24,4 +24,23 @@
 			<column not-null="false" unique="false" name="`state`"/>
 		</property>
 	</subclass>
+	<class name="org.eclipse.emf.teneo.samples.issues.interfacetrue.impl.AddressListImpl" entity-name="AddressList" abstract="false" lazy="false" discriminator-value="AddressList" table="`addresslist`">
+		<meta attribute="eclassName">AddressList</meta>
+		<meta attribute="epackage">http:///org/elver/store/test/issues/interfacetrue.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="addresses" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="addresslist_addresses">
+				<column name="`addresslist_addresses_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`addresslist_addresses_idx`"/>
+			<one-to-many entity-name="Address"/>
+		</list>
+	</class>
 </hibernate-mapping>
