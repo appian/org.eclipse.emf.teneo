@@ -11,18 +11,10 @@
 package org.eclipse.emf.teneo.hibernate.cdo;
 
 import java.util.List;
-import java.util.Properties;
 
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.extension.ExtensionManager;
-import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
-import org.eclipse.emf.teneo.extension.ExtensionUtil;
 import org.eclipse.emf.teneo.hibernate.mapper.EntityMapper;
-import org.eclipse.emf.teneo.hibernate.mapper.MappingContext;
-import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.simpledom.Element;
 
 /**
@@ -31,10 +23,11 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
 public class CDOEntityMapper extends EntityMapper {
-	
+
 	private PAnnotatedEClass currentEntity = null;
 	private boolean addedExtraMappings = false;
-	
+
+	@Override
 	public void processEntity(PAnnotatedEClass entity) {
 		// not the nicest solution
 		currentEntity = entity;
@@ -45,28 +38,31 @@ public class CDOEntityMapper extends EntityMapper {
 			currentEntity = null;
 		}
 	}
-	
+
 	// add container and resource mappings
+	@Override
 	protected void processFeatures(List<PAnnotatedEStructuralFeature> features) {
 		super.processFeatures(features);
-		
+
 		if (!addedExtraMappings && currentEntity.getPaSuperEntity() == null) {
 			final Element entityElement = getHbmContext().getCurrent();
 			final Element resourceElement = entityElement.addElement("property");
 			resourceElement.addAttribute("name", "resourceID");
-			resourceElement.addElement("column").addAttribute("name", "_resID_Entity");
-			resourceElement.addElement("column").addAttribute("name", "_resID_ID");
-			resourceElement.addElement("column").addAttribute("name", "_resID_class");
-			resourceElement.addAttribute("type", "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
+			resourceElement.addElement("column").addAttribute("name", "resID_Entity");
+			resourceElement.addElement("column").addAttribute("name", "resID_ID");
+			resourceElement.addElement("column").addAttribute("name", "resID_class");
+			resourceElement
+				.addAttribute("type", "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
 			final Element containerElement = entityElement.addElement("property");
 			containerElement.addAttribute("name", "containerID");
-			containerElement.addElement("column").addAttribute("name", "_contID_Entity");
-			containerElement.addElement("column").addAttribute("name", "_contID_ID");
-			containerElement.addElement("column").addAttribute("name", "_contID_class");
-			containerElement.addAttribute("type", "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
+			containerElement.addElement("column").addAttribute("name", "contID_Entity");
+			containerElement.addElement("column").addAttribute("name", "contID_ID");
+			containerElement.addElement("column").addAttribute("name", "contID_class");
+			containerElement.addAttribute("type",
+				"org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOIDUserType");
 			final Element containingFeatureElement = entityElement.addElement("property");
 			containingFeatureElement.addAttribute("name", "containingFeatureID");
-			containingFeatureElement.addAttribute("column", "_contFeatureID");
+			containingFeatureElement.addAttribute("column", "contFeatureID");
 			containingFeatureElement.addAttribute("type", "int");
 			addedExtraMappings = true;
 		}

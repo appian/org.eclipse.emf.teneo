@@ -194,7 +194,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			// associationElement.addAttribute("unique", joinColumn.isUnique() ?
 			// "true" : "false");
 			// if
-			//(joinColumn.eIsSet(PannotationPackage.eINSTANCE.getJoinColumn_ReferencedColumnName()))
+			// (joinColumn.eIsSet(PannotationPackage.eINSTANCE.getJoinColumn_ReferencedColumnName()))
 			// TODO is this foreign key ?
 			// MT: see the property-ref in hibernate, is used when the reference
 			// is not on the primary key
@@ -671,10 +671,11 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				}
 			}
 
-			if (joinColumn.getTable() != null) {
-				log.error("Unsupported secondary table in " + joinColumn);
-				throw new MappingException("Unsupported secondary table", joinColumn);
-			}
+			// bz247939, after disabling these lines it all seemed to work fine
+// if (joinColumn.getTable() != null) {
+// log.error("Unsupported secondary table in " + joinColumn);
+// throw new MappingException("Unsupported secondary table", joinColumn);
+// }
 
 			if (joinColumn.getColumnDefinition() != null) {
 				log.error("Unsupported column definition in " + joinColumn);
