@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.8 2008/09/06 00:14:04 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.9 2008/09/20 21:20:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -192,7 +192,7 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 					unidirectionalManyToManyAnnotator.annotate(aReference);
 				} else if (otmBidirectionalRelation || otmUnidirectionalRelation) {
 					oneToManyReferenceAnnotator.annotate(aReference);
-				} else if (otoBidirectionalRelation || otoUnidirectionalRelation) {
+				} else if (aReference.getManyToOne() == null && (otoBidirectionalRelation || otoUnidirectionalRelation)) {
 					oneToOneReferenceAnnotator.annotate(aReference);
 				} else if (mtoBidirectionalRelation) {
 					manyToOneReferenceAnnotator.annotate(aReference);

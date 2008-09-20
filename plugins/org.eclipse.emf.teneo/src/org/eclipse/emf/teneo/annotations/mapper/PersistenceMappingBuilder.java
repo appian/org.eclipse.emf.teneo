@@ -10,6 +10,7 @@ package org.eclipse.emf.teneo.annotations.mapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -40,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -69,9 +70,12 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	/**
 	 * Builds a persistence mapping for one or more epackages
 	 */
-	public PAnnotatedModel buildMapping(List<EPackage> epackages, PersistenceOptions po,
-			ExtensionManager extensionManager) {
-		// create the pamodel
+	public PAnnotatedModel buildMapping(List<EPackage> epacks, PersistenceOptions po, ExtensionManager extensionManager) {
+		// read the subepackages
+		final List<EPackage> epackages = new ArrayList<EPackage>();
+		for (EPackage epack : epacks) {
+			resolveSubPackages(epack, epackages);
+		}
 
 		// DCB: Introduce indirection so that extensions to annotation
 		// processing mechanism
@@ -143,6 +147,16 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 
 		log.debug("Returning created pamodel");
 		return pam;
+	}
+
+	private void resolveSubPackages(EPackage epack, List<EPackage> epacks) {
+		if (!epacks.contains(epack)) {
+			epacks.add(epack);
+		}
+
+		for (EPackage subEPackage : epack.getESubpackages()) {
+			resolveSubPackages(subEPackage, epacks);
+		}
 	}
 
 	/**
