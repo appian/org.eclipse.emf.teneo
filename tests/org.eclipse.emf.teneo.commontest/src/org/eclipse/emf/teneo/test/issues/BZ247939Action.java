@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BZ247939Action.java,v 1.1 2008/09/20 21:20:11 mtaal Exp $
+ * $Id: BZ247939Action.java,v 1.2 2008/09/20 21:25:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for bugzilla 247939
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class BZ247939Action extends AbstractTestAction {
 	public BZ247939Action() {
@@ -38,7 +38,6 @@ public class BZ247939Action extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final Bz247939Factory factory = Bz247939Factory.eINSTANCE;
 		{
 			store.beginTransaction();
