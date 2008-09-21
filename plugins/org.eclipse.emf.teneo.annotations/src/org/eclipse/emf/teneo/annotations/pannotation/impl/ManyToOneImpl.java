@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToOneImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: ManyToOneImpl.java,v 1.8 2008/09/21 19:03:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -86,6 +86,15 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	protected FetchType fetch = FETCH_EDEFAULT;
 
 	/**
+	 * This is true if the Fetch attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean fetchESet;
+
+	/**
 	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -137,8 +146,33 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 	public void setFetch(FetchType newFetch) {
 		FetchType oldFetch = fetch;
 		fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
+		boolean oldFetchESet = fetchESet;
+		fetchESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__FETCH, oldFetch, fetch));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.MANY_TO_ONE__FETCH, oldFetch, fetch, !oldFetchESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetFetch() {
+		FetchType oldFetch = fetch;
+		boolean oldFetchESet = fetchESet;
+		fetch = FETCH_EDEFAULT;
+		fetchESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, PannotationPackage.MANY_TO_ONE__FETCH, oldFetch, FETCH_EDEFAULT, oldFetchESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetFetch() {
+		return fetchESet;
 	}
 
 	/**
@@ -218,7 +252,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 				getCascade().clear();
 				return;
 			case PannotationPackage.MANY_TO_ONE__FETCH:
-				setFetch(FETCH_EDEFAULT);
+				unsetFetch();
 				return;
 			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
 				setOptional(OPTIONAL_EDEFAULT);
@@ -239,7 +273,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 			case PannotationPackage.MANY_TO_ONE__CASCADE:
 				return cascade != null && !cascade.isEmpty();
 			case PannotationPackage.MANY_TO_ONE__FETCH:
-				return fetch != FETCH_EDEFAULT;
+				return isSetFetch();
 			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
 				return optional != OPTIONAL_EDEFAULT;
 		}
@@ -290,7 +324,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 		result.append(", cascade: ");
 		result.append(cascade);
 		result.append(", fetch: ");
-		result.append(fetch);
+		if (fetchESet) result.append(fetch); else result.append("<unset>");
 		result.append(", optional: ");
 		result.append(optional);
 		result.append(')');

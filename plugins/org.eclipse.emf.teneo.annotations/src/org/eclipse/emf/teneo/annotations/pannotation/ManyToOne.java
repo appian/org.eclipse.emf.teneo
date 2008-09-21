@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToOne.java,v 1.5 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: ManyToOne.java,v 1.6 2008/09/21 19:03:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -52,10 +52,35 @@ public interface ManyToOne extends PAnnotation{
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Fetch</em>' attribute.
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
+	 * @see #isSetFetch()
+	 * @see #unsetFetch()
 	 * @see #getFetch()
 	 * @generated
 	 */
 	void setFetch(FetchType value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#getFetch <em>Fetch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetFetch()
+	 * @see #getFetch()
+	 * @see #setFetch(FetchType)
+	 * @generated
+	 */
+	void unsetFetch();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.ManyToOne#getFetch <em>Fetch</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Fetch</em>' attribute is set.
+	 * @see #unsetFetch()
+	 * @see #getFetch()
+	 * @see #setFetch(FetchType)
+	 * @generated
+	 */
+	boolean isSetFetch();
 
 	/**
 	 * Returns the value of the '<em><b>Optional</b></em>' attribute.
