@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.CityImpl" entity-name="City" abstract="false" lazy="true" discriminator-value="City" table="`city`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.City">
+		<meta attribute="eclassName">City</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="mayor" entity-name="Mayor" cascade="merge,persist,save-update,lock,refresh" not-null="false" lazy="proxy" insert="true" update="true"/>
+		<one-to-one name="policeChief" entity-name="PoliceChief" cascade="merge,persist,save-update,lock,refresh" lazy="proxy" property-ref="city"/>
+		<many-to-one name="country" entity-name="Country" lazy="proxy" cascade="merge,persist,save-update,lock,refresh" foreign-key="city_country" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`country_country_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.MayorImpl" entity-name="Mayor" abstract="false" lazy="true" discriminator-value="Mayor" table="`mayor`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.Mayor">
+		<meta attribute="eclassName">Mayor</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<one-to-one name="city" entity-name="City" cascade="merge,persist,save-update,lock,refresh" lazy="proxy" property-ref="mayor"/>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.PoliceChiefImpl" entity-name="PoliceChief" abstract="false" lazy="true" discriminator-value="PoliceChief" table="`policechief`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.PoliceChief">
+		<meta attribute="eclassName">PoliceChief</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="city" entity-name="City" cascade="merge,persist,save-update,lock,refresh" not-null="false" lazy="proxy" insert="true" update="true"/>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.CountryImpl" entity-name="Country" abstract="false" lazy="true" discriminator-value="Country" table="`country`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.Country">
+		<meta attribute="eclassName">Country</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>
