@@ -701,8 +701,9 @@
 					
 <strong>PersistenceOptions.SET_PROXY</strong>
 					(default: false): this option controls if Hibernate will use a cglib
-					proxy when loading objects for many-to-one relations. If set to true then Teneo
-					will automatically add a @Proxy annotation to each type. If this option is false
+					proxy when loading objects for many-to-one/one-to-one relations. If set to true then Teneo
+					will automatically add a @Proxy annotation to each type. In addition the fetch of the
+					many-to-one and one-to-one is set to LAZY (if not set by the user). If this option is false
 					then for individual types the @Proxy annotation can also be used (see the
 					Hibernate annotation extensions).
 				</li>
