@@ -11,27 +11,33 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbOneToOneReferenceAnnotator.java,v 1.3 2008/05/27 07:42:29 mtaal Exp $
+ * $Id: HbOneToOneReferenceAnnotator.java,v 1.4 2008/09/21 18:36:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 
 /**
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class HbOneToOneReferenceAnnotator extends OneToOneReferenceAnnotator {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(HbOneToOneReferenceAnnotator.class);
+
+	private boolean optionSetProxy = false;
 
 	/** Annotate it */
 	@Override
@@ -41,4 +47,22 @@ public class HbOneToOneReferenceAnnotator extends OneToOneReferenceAnnotator {
 		}
 		super.annotate(aReference);
 	}
+
+	@Override
+	protected FetchType getFetch(PAnnotatedEClass aClass) {
+		if (optionSetProxy) {
+			return FetchType.LAZY;
+		}
+		if (((HbAnnotatedEClass) aClass).getHbProxy() != null) {
+			return FetchType.LAZY;
+		}
+		return super.getFetch(aClass);
+	}
+
+	@Override
+	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
+		super.setPersistenceOptions(persistenceOptions);
+		optionSetProxy = persistenceOptions.isSetProxy();
+	}
+
 }
