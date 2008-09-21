@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.10 2008/08/11 20:41:47 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.11 2008/09/21 18:36:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,10 +30,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
@@ -46,7 +48,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -61,6 +63,10 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		final ForeignKey fk = getFactory().createForeignKey();
 		fk.setName(getSqlNameStrategy().getForeignKeyName(aFeature));
 		return fk;
+	}
+
+	protected FetchType getFetch(PAnnotatedEClass aClass) {
+		return FetchType.EAGER;
 	}
 
 	/*

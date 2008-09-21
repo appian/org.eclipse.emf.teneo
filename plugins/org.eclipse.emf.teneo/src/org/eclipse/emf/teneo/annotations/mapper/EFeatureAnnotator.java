@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.9 2008/09/20 21:20:15 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.10 2008/09/21 18:36:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (one-to-many, many-to-many etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -179,9 +179,10 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				// note as a default if the system has to choose between oto uni
 				// or mto uni then it will
 				// place a mto
-				final boolean otoBidirectionalRelation = !isMany && eOpposite != null && !isOppositeMany;
+				final boolean otoBidirectionalRelation =
+						aReference.getManyToOne() == null && !isMany && eOpposite != null && !isOppositeMany;
 				final boolean otoUnidirectionalRelation =
-						!isMany && eOpposite == null &&
+						aReference.getManyToOne() == null && !isMany && eOpposite == null &&
 								(aReference.getOneToOne() != null || !aReference.getPrimaryKeyJoinColumns().isEmpty());
 				final boolean mtoBidirectionalRelation = !isMany && eOpposite != null && isOppositeMany;
 				final boolean mtoUnidirectionalRelation = !isMany && eOpposite == null && !otoUnidirectionalRelation;
