@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbManyToOneReferenceAnnotator.java,v 1.4 2008/09/21 18:36:04 mtaal Exp $
+ * $Id: HbManyToOneReferenceAnnotator.java,v 1.5 2008/09/21 19:26:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbManyToOneReferenceAnnotator extends ManyToOneReferenceAnnotator {
@@ -50,6 +50,10 @@ public class HbManyToOneReferenceAnnotator extends ManyToOneReferenceAnnotator {
 
 	@Override
 	protected FetchType getFetch(PAnnotatedEClass aClass) {
+		if (aClass == null) {
+			// happens when any type
+			return FetchType.EAGER;
+		}
 		if (optionSetProxy) {
 			return FetchType.LAZY;
 		}
