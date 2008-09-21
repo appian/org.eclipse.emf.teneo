@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneReferenceAnnotator.java,v 1.8 2008/09/21 18:36:02 mtaal Exp $
+ * $Id: OneToOneReferenceAnnotator.java,v 1.9 2008/09/21 19:03:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -60,9 +60,12 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 // oto.setOptional(!eReference.isRequired() || eReference.isUnsettable());
 			oto.setOptional(!eReference.isRequired());
 			oto.setEModelElement(eReference);
-			oto.setFetch(getFetch(aReference.getAReferenceType()));
 		} else {
 			log.debug("EReference + " + logStr + " has an onetoone annotation setting defaults if required");
+		}
+
+		if (!oto.isSetFetch()) {
+			oto.setFetch(getFetch(aReference.getAReferenceType()));
 		}
 
 		// determine where to put the mapped-by
