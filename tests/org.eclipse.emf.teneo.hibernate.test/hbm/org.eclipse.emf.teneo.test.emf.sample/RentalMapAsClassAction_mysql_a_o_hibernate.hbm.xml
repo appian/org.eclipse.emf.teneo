@@ -30,7 +30,7 @@
 				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalBicycleType</param>
 			</type>
 		</property>
-		<many-to-one name="manufacturer" entity-name="Manufacturer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="rentalbicycle_manufacturer" insert="true" update="true" not-null="false">
+		<many-to-one name="manufacturer" entity-name="Manufacturer" lazy="proxy" cascade="merge,persist,save-update,lock,refresh" foreign-key="rentalbicycle_manufacturer" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`manufacturer_manufacturer_e_id`"/>
 		</many-to-one>
 	</subclass>
