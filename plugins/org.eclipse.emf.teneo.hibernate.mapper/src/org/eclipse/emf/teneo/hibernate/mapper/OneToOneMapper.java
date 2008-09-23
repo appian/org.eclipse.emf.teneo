@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.32 2008/09/01 12:45:16 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.33 2008/09/23 22:11:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -98,7 +98,9 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 		associationElement.addAttribute("not-null", (oto.isOptional() ? "false" : "true"));
 
-		addLazyProxy(associationElement, oto.getFetch(), paReference);
+		if (!associationElement.getName().equals("any")) {
+			addLazyProxy(associationElement, oto.getFetch(), paReference);
+		}
 
 		if (hbReference.getHbFetch() != null) {
 			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
