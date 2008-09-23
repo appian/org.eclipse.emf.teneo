@@ -38,7 +38,7 @@ import org.hibernate.property.Setter;
  * and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -95,14 +95,14 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
-		return ((EObject) owner).eGet(eReference);
+		return ((EObject) owner).eGet(eReference, false);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
-	 *      org.hibernate.engine.SessionImplementor)
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return get(owner);
@@ -112,7 +112,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		final Object curValue = get(target);
