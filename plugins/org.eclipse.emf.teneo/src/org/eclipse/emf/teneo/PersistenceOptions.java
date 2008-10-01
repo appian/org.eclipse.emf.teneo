@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.46 2008/09/10 22:23:51 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.47 2008/10/01 16:27:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -300,7 +300,7 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * Option to specify that for non-contained one-to-many always a join table is used, default is
-	 * false
+	 * true
 	 */
 	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS =
 			MAPPING_PREFIX + "join_table_for_non_contained_associations";
