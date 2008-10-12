@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.12 2008/09/21 19:03:20 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.13 2008/10/12 11:24:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -107,8 +107,7 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 				if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
 					final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
 
-					boolean hasJoinTable = false;
-					hasJoinTable =
+					boolean hasJoinTable =
 							(!aOpposite.getModelEReference().isContainment() && getPersistenceOptions()
 								.isJoinTableForNonContainedAssociations()) ||
 									aOpposite.getJoinTable() != null;
