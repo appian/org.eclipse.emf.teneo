@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.40 2008/08/26 21:19:08 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.41 2008/10/12 21:03:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -426,6 +426,17 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 		entityElement.add(0, meta1);
 		entityElement.add(1, meta2);
+
+		// and move the joins to the back
+		final List<Element> toMove = new ArrayList<Element>();
+		for (Element elem : entityElement.getChildren()) {
+			if (elem.getName().equals("join")) {
+				toMove.add(elem);
+			}
+		}
+		entityElement.getChildren().removeAll(toMove);
+		entityElement.getChildren().addAll(toMove);
+
 	}
 
 	// reorganize the elements which have a natural-id inside a natural-id tag
@@ -550,7 +561,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 
 			// Create <join> element
 			// See
-			//http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration
+			// http://www.hibernate.org/hib_docs/v3/reference/en/html/mapping.html#mapping-declaration
 			// -join
 			final Element joinElement = getHbmContext().getCurrent().addElement("join");
 			joinElement.addAttribute("table", getHbmContext().trunc(secondaryTable.getName().toUpperCase(), false));
