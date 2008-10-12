@@ -22,8 +22,8 @@
 		<key>
 			<column name="`person_e_id`"/>
 		</key>
-		<property name="id" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`id`"/>
+		<property name="id" lazy="false" insert="true" update="true" not-null="true" unique="true" type="java.lang.String">
+			<column not-null="true" unique="true" name="`id`"/>
 		</property>
 	</joined-subclass>
 </hibernate-mapping>
