@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.emf.teneo.commontest,
  org.junit;bundle-version="[3.8.0,4.0.0)",
  org.eclipse.emf.teneo.hibernate.libraries,
  org.eclipse.emf.teneo.hibernate,
- org.eclipse.emf.ecore.xmi
+ org.eclipse.emf.ecore.xmi,
+ test2;bundle-version="1.0.0"
 Export-Package: org.eclipse.emf.teneo.hibernate.test,
  org.eclipse.emf.teneo.hibernate.test.emf.annotations,
  org.eclipse.emf.teneo.hibernate.test.emf.detach,

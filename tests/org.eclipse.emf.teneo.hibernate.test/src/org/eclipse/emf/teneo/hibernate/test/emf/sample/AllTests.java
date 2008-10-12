@@ -26,7 +26,6 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryColLengthAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryFKAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryJoinTableNamingAction;
-import org.eclipse.emf.teneo.test.emf.sample.LibraryLargeAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryListAsBagAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
@@ -51,7 +50,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.86 $
+ * @version $Revision: 1.87 $
  */
 public class AllTests {
 
@@ -59,10 +58,7 @@ public class AllTests {
 		TestSuite suite =
 				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
 					.instance().getConfigurations());
-		suite.addTestSuite(LibraryLargeAction.class);
-		if (true) {
-			return suite;
-		}
+// suite.addTestSuite(LibraryLargeAction.class);
 
 		suite.addTestSuite(LibraryTest.class);
 

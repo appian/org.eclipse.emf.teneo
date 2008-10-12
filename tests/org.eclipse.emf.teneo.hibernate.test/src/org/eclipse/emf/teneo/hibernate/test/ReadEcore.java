@@ -29,11 +29,13 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 
+import RandL.RandLPackage;
+
 /**
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class ReadEcore {
 
@@ -47,23 +49,27 @@ public class ReadEcore {
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			final String[] ecores = new String[] { "/home/mtaal/mytmp/ops.ecore" };
-			for (String ecore : ecores) {
-				final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
-				res.load(new HashMap());
+			if (false) {
+				final String[] ecores = new String[] { "/home/mtaal/mytmp/ops.ecore" };
+				for (String ecore : ecores) {
+					final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
+					res.load(new HashMap());
 
-				Iterator it = res.getAllContents();
-				while (it.hasNext()) {
-					final Object obj = it.next();
-					if (obj instanceof EPackage) {
-						EPackage epack = (EPackage) obj;
-						if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
-							EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+					Iterator it = res.getAllContents();
+					while (it.hasNext()) {
+						final Object obj = it.next();
+						if (obj instanceof EPackage) {
+							EPackage epack = (EPackage) obj;
+							if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
+								EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+							}
+							epackages.add(epack);
 						}
-						epackages.add(epack);
 					}
 				}
 			}
+
+			epackages.add(RandLPackage.eINSTANCE);
 
 			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 // epacks =
@@ -99,9 +105,9 @@ public class ReadEcore {
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
-		props.setProperty(PersistenceOptions.PERSISTENCE_XML,
-			"org/eclipse/emf/teneo/hibernate/test/ops_persistence.xml");
-		props.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
+// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+// "org/eclipse/emf/teneo/hibernate/test/ops_persistence.xml");
+// props.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
 
 		// props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
 // "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
@@ -115,13 +121,13 @@ public class ReadEcore {
 // props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
 // props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
 
-		System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
+// System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 
 		hbds.setProperties(props);
 		hbds.setEPackages(epacks);
 		// initialize, also creates the database tables
 		try {
-// hbds.initialize();
+			hbds.initialize();
 		} finally {
 			System.err.println(hbds.getMappingXML());
 		}
