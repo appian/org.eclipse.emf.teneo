@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryLargeAction.java,v 1.2 2008/09/01 13:41:52 mtaal Exp $
+ * $Id: LibraryLargeAction.java,v 1.3 2008/10/12 11:24:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a larger dataset.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryLargeAction extends AbstractTestAction {
 
@@ -53,7 +53,8 @@ public class LibraryLargeAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
+// props.setProperty(PersistenceOptions.MAP_ALL_LISTS_AS_IDBAG, "true");
+		props.setProperty(PersistenceOptions.ALWAYS_MAP_LIST_AS_BAG, "true");
 		return props;
 	}
 
@@ -67,10 +68,12 @@ public class LibraryLargeAction extends AbstractTestAction {
 					store.store(createLibrary(i + " Number " + j));
 				}
 				System.err.println("before commit");
+				long commitTime = System.currentTimeMillis();
 				store.commitTransaction();
 				System.err.println("Transaction " + (j + 1) + " inserted library(#" + LIB_CNT + ") and Writer(#" +
 						NUM_WRITER_TRANSACTION + ") and Book(#" + NUM_BOOK_TRANSACTION + ") in " +
-						((System.currentTimeMillis() - t) / 1000) + " seconds ");
+						((System.currentTimeMillis() - t) / 1000) + " seconds of which the commit took " +
+						((System.currentTimeMillis() - commitTime) / 1000));
 				t = System.currentTimeMillis();
 			}
 		}
