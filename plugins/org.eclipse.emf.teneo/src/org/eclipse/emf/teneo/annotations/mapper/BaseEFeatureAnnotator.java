@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.11 2008/09/21 18:36:02 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.12 2008/10/12 11:38:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -98,9 +98,21 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			if (maxLength == null) {
 				maxLength = getExtendedMetaData(eAttribute, "length");
 			}
+			if (maxLength == null && defaultVarCharLength > 0) {
+				maxLength = "" + defaultVarCharLength;
+			}
 			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
 			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
-			if (maxLength != null || totalDigits != null || fractionDigits != null || defaultVarCharLength > -1) {
+			boolean setUnique = false;
+			// bugzilla 249246
+			if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID() && aAttribute.getId() == null) {
+				if (aAttribute.getPaEClass().getPaSuperEntity() != null &&
+						aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
+					setUnique = true;
+				}
+			}
+			if (maxLength != null || setUnique || totalDigits != null || fractionDigits != null ||
+					defaultVarCharLength > -1) {
 				final Column column = getFactory().createColumn();
 				// only support this for the string class, the length/maxlength
 				// is also
@@ -122,6 +134,9 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 				}
 				if (aAttribute.getBasic() != null) {
 					column.setNullable(aAttribute.getBasic().isOptional());
+				}
+				if (setUnique) {
+					column.setUnique(true);
 				}
 				aAttribute.setColumn(column);
 			}
