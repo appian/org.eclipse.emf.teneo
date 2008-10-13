@@ -511,7 +511,7 @@ doc.setContent(blob);
 		&lt;xsd:element name="rght" type="xsd:IDREF" ecore:reference="this:Rght" maxOccurs="unbounded" ecore:opposite="cntr"&gt;
 			&lt;xsd:annotation&gt;
 				&lt;xsd:appinfo source="teneo.jpa"&gt;
-					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Rght" indexed="false")
+					@ManyToMany(fetch=EAGER cascade={MERGE, PERSIST} targetEntity="Rght" indexed="false")
 					@JoinTable(name="RightCenter")
 				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
@@ -519,7 +519,7 @@ doc.setContent(blob);
 		&lt;xsd:element name="lft" type="xsd:IDREF" ecore:reference="this:Lft" maxOccurs="unbounded" ecore:opposite="cntr"&gt;
 			&lt;xsd:annotation&gt;
 				&lt;xsd:appinfo source="teneo.jpa"&gt;
-					@ManyToMany(fetch=EAGER cascade={MERGE PERSIST} targetEntity="Lft")
+					@ManyToMany(fetch=EAGER cascade={MERGE, PERSIST} targetEntity="Lft")
 				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
@@ -531,7 +531,7 @@ doc.setContent(blob);
 		&lt;xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="lft"&gt;
 			&lt;xsd:annotation&gt;
 				&lt;xsd:appinfo source="teneo.jpa"&gt;
-					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="lft")
+					@ManyToMany(fetch=LAZY cascade={MERGE,PERSIST} targetEntity="Cntr" mappedBy="lft")
 				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
 		&lt;/xsd:element&gt;
@@ -543,7 +543,7 @@ doc.setContent(blob);
 		&lt;xsd:element name="cntr" type="xsd:IDREF" ecore:reference="this:Cntr" maxOccurs="unbounded" ecore:opposite="rght"&gt;
 			&lt;xsd:annotation&gt;
 				&lt;xsd:appinfo source="teneo.jpa"&gt;
-					@ManyToMany(fetch=LAZY cascade={MERGE PERSIST} targetEntity="Cntr" mappedBy="rght" indexed="false")
+					@ManyToMany(fetch=LAZY cascade={MERGE, PERSIST} targetEntity="Cntr" mappedBy="rght" indexed="false")
 					@JoinTable(name="RightCenter")
 				&lt;/xsd:appinfo&gt;
 			&lt;/xsd:annotation&gt;
