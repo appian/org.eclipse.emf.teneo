@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.27 2008/08/11 21:54:55 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.28 2008/10/13 05:37:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
@@ -58,6 +59,8 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		GENERATOR_CLASS_NAMES[GenerationType.IDENTITY.getValue()] = "identity";
 		GENERATOR_CLASS_NAMES[GenerationType.SEQUENCE.getValue()] = "sequence";
 		GENERATOR_CLASS_NAMES[GenerationType.TABLE.getValue()] = "hilo";
+		GENERATOR_CLASS_NAMES[GenerationType.SEQUENCESTYLE.getValue()] =
+				"org.hibernate.id.enhanced.SequenceStyleGenerator";
 	}
 
 	/** Util method to create an id or composite-id element */
@@ -289,22 +292,46 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 					generatorElement.addElement("param").addAttribute("name", "column").setText(
 						tg.getValueColumnName() != null ? tg.getValueColumnName() : "next_hi_value_column"); // externalize
 					generatorElement.addElement("param").addAttribute("name", "max_lo").setText(
-						tg.getInitialValue() + "");
+						(tg.getAllocationSize() - 1) + "");
 				} else {
 					generatorElement.addElement("param").addAttribute("name", "table").setText("uid_table"); // externalize
 					generatorElement.addElement("param").addAttribute("name", "column").setText("next_hi_value_column"); // externalize
 				}
 			} else if (GenerationType.SEQUENCE.equals(generatedValue.getStrategy())) {
-				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
 				if (generatedValue.getGenerator() != null) {
 					final SequenceGenerator sg =
 							id.getPaModel()
 								.getSequenceGenerator(id.getModelEAttribute(), generatedValue.getGenerator());
-					generatorElement.addElement("param").addAttribute("name", "sequence").setText(sg.getSequenceName());
-					generatorElement.addElement("param").addAttribute("name", "initialValue").setText(
+					if (sg.isSetAllocationSize()) {
+						generatorElement.addAttribute("class", "seqhilo");
+						generatorElement.addElement("param").addAttribute("name", "sequence").setText(
+							sg.getSequenceName());
+// generatorElement.addElement("param").addAttribute("name", "initialValue").setText(
+// Integer.toString(sg.getInitialValue()));
+						generatorElement.addElement("param").addAttribute("name", "max_lo").setText(
+							Integer.toString(sg.getAllocationSize() - 1));
+					} else {
+						generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+						generatorElement.addElement("param").addAttribute("name", "sequence").setText(
+							sg.getSequenceName());
+					}
+				} else {
+					generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+				}
+			} else if (GenerationType.SEQUENCESTYLE.equals(generatedValue.getStrategy())) {
+				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
+				if (generatedValue.getGenerator() != null) {
+					final SequenceStyleGenerator sg =
+							id.getPaModel().getSequenceStyleGenerator(id.getModelEAttribute(),
+								generatedValue.getGenerator());
+					generatorElement.addElement("param").addAttribute("name", "sequence_name").setText(
+						sg.getSequenceName());
+					generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
+						sg.getOptimizer().getName().toLowerCase());
+					generatorElement.addElement("param").addAttribute("name", "initial_value").setText(
 						Integer.toString(sg.getInitialValue()));
-					generatorElement.addElement("param").addAttribute("name", "allocationSize").setText(
-						Integer.toString(sg.getAllocationSize()));
+					generatorElement.addElement("param").addAttribute("name", "increment_size").setText(
+						Integer.toString(sg.getIncrementSize()));
 				}
 			} else {
 				generatorElement.addAttribute("class", IdMapper.hbGeneratorClass(generatedValue.getStrategy()));
