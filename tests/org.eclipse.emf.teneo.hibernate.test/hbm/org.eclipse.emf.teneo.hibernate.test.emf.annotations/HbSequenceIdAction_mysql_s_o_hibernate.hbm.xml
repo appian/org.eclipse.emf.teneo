@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl.IdentityIDImpl" entity-name="IdentityID" abstract="false" lazy="false" table="`identityid`">
+		<meta attribute="eclassName">IdentityID</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id</meta>
+		<id name="myid" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`myid`"/>
+			<generator class="identity"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl.SimpleIDImpl" entity-name="SimpleID" abstract="false" lazy="false" table="`simpleid`">
+		<meta attribute="eclassName">SimpleID</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id</meta>
+		<id name="autoID" type="long" unsaved-value="0">
+			<column not-null="false" unique="false" name="`autod`"/>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="generated" lazy="false" insert="false" update="false" not-null="true" unique="false" type="long" generated="always">
+			<column not-null="true" unique="false" name="`generated`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl.TableIDImpl" entity-name="TableID" abstract="false" lazy="false" table="`tableid`">
+		<meta attribute="eclassName">TableID</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id</meta>
+		<id name="myid" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`myid`"/>
+			<generator class="hilo">
+				<param name="table">hilo_table</param>
+				<param name="column">the_hilo_column</param>
+			</generator>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>
