@@ -29,13 +29,11 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 
-import RandL.RandLPackage;
-
 /**
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class ReadEcore {
 
@@ -69,7 +67,7 @@ public class ReadEcore {
 				}
 			}
 
-			epackages.add(RandLPackage.eINSTANCE);
+// epackages.add(RandLPackage.eINSTANCE);
 
 			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
 // epacks =
