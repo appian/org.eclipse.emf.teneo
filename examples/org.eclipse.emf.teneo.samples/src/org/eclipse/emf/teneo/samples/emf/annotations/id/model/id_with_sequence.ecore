@@ -4,7 +4,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="id"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id" nsPrefix="id">
   <eAnnotations source="teneo.jpa">
-    <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATOR&quot; sequenceName=&quot;mySequenceName&quot; initialValue=10 allocationSize=100)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATORTWO&quot; sequenceName=&quot;myOtherSequenceName&quot; initialValue=5 allocationSize=50)"/>
+    <details key="appinfo" value="&#x9;&#x9;&#x9;@SequenceStyleGenerator(name=&quot;StyleGENERATOR&quot; sequenceName=&quot;myOtherSequenceName&quot; optimizer=HILO initialValue=5 incrementSize=25)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATOR&quot; sequenceName=&quot;mySequenceName&quot; initialValue=10 allocationSize=100)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATORTWO&quot; sequenceName=&quot;myOtherSequenceName&quot; initialValue=5 allocationSize=50)"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="IdentityID">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
