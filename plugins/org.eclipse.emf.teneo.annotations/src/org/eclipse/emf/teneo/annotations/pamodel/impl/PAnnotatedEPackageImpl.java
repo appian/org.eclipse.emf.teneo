@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageImpl.java,v 1.14 2008/01/29 12:58:06 mtaal Exp $
+ * $Id: PAnnotatedEPackageImpl.java,v 1.15 2008/10/13 05:35:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
@@ -39,6 +40,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getTableGenerators <em>Table Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getPaEDataTypes <em>Pa EData Types</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEPackageImpl#getSequenceStyleGenerators <em>Sequence Style Generators</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,6 +82,16 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	 * @ordered
 	 */
 	protected EList<PAnnotatedEDataType> paEDataTypes;
+
+	/**
+	 * The cached value of the '{@link #getSequenceStyleGenerators() <em>Sequence Style Generators</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequenceStyleGenerators()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SequenceStyleGenerator> sequenceStyleGenerators;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -199,6 +211,18 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SequenceStyleGenerator> getSequenceStyleGenerators() {
+		if (sequenceStyleGenerators == null) {
+			sequenceStyleGenerators = new EObjectContainmentEList<SequenceStyleGenerator>(SequenceStyleGenerator.class, this, PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_STYLE_GENERATORS);
+		}
+		return sequenceStyleGenerators;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -235,6 +259,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				return ((InternalEList<?>)getTableGenerators()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
 				return ((InternalEList<?>)getPaEDataTypes()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_STYLE_GENERATORS:
+				return ((InternalEList<?>)getSequenceStyleGenerators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -272,6 +298,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				return getTableGenerators();
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
 				return getPaEDataTypes();
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_STYLE_GENERATORS:
+				return getSequenceStyleGenerators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -303,6 +331,10 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				getPaEDataTypes().clear();
 				getPaEDataTypes().addAll((Collection<? extends PAnnotatedEDataType>)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_STYLE_GENERATORS:
+				getSequenceStyleGenerators().clear();
+				getSequenceStyleGenerators().addAll((Collection<? extends SequenceStyleGenerator>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -329,6 +361,9 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
 				getPaEDataTypes().clear();
 				return;
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_STYLE_GENERATORS:
+				getSequenceStyleGenerators().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -352,6 +387,8 @@ public class PAnnotatedEPackageImpl extends PAnnotatedEModelElementImpl implemen
 				return tableGenerators != null && !tableGenerators.isEmpty();
 			case PamodelPackage.PANNOTATED_EPACKAGE__PA_EDATA_TYPES:
 				return paEDataTypes != null && !paEDataTypes.isEmpty();
+			case PamodelPackage.PANNOTATED_EPACKAGE__SEQUENCE_STYLE_GENERATORS:
+				return sequenceStyleGenerators != null && !sequenceStyleGenerators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

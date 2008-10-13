@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.15 2008/08/11 20:42:23 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.16 2008/10/13 05:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -1812,13 +1812,86 @@ public interface PannotationPackage extends EPackage {
 	int FOREIGN_KEY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl <em>Sequence Style Generator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSequenceStyleGenerator()
+	 * @generated
+	 */
+	int SEQUENCE_STYLE_GENERATOR = 36;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__SEQUENCE_NAME = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__INITIAL_VALUE = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Increment Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__INCREMENT_SIZE = PANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Optimizer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__OPTIMIZER = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Sequence Style Generator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 39;
+	int FETCH_TYPE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -1827,7 +1900,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 37;
+	int DISCRIMINATOR_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -1836,7 +1909,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 38;
+	int ENUM_TYPE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -1845,7 +1918,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 41;
+	int INHERITANCE_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -1854,7 +1927,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 36;
+	int CASCADE_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -1863,7 +1936,17 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 42;
+	int TEMPORAL_TYPE = 43;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OptimizerType
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOptimizerType()
+	 * @generated
+	 */
+	int OPTIMIZER_TYPE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -1872,7 +1955,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 40;
+	int GENERATION_TYPE = 41;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -3117,6 +3200,71 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getForeignKey_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator <em>Sequence Style Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence Style Generator</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator
+	 * @generated
+	 */
+	EClass getSequenceStyleGenerator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getName()
+	 * @see #getSequenceStyleGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleGenerator_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getSequenceName <em>Sequence Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sequence Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getSequenceName()
+	 * @see #getSequenceStyleGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleGenerator_SequenceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getInitialValue <em>Initial Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Initial Value</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getInitialValue()
+	 * @see #getSequenceStyleGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleGenerator_InitialValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getIncrementSize <em>Increment Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Increment Size</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getIncrementSize()
+	 * @see #getSequenceStyleGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleGenerator_IncrementSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizer <em>Optimizer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optimizer</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizer()
+	 * @see #getSequenceStyleGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleGenerator_Optimizer();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Association Override</em>'.
@@ -3198,6 +3346,16 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getTemporalType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Optimizer Type</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OptimizerType
+	 * @generated
+	 */
+	EEnum getOptimizerType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}'.
@@ -4342,6 +4500,56 @@ public interface PannotationPackage extends EPackage {
 		EAttribute FOREIGN_KEY__NAME = eINSTANCE.getForeignKey_Name();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl <em>Sequence Style Generator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSequenceStyleGenerator()
+		 * @generated
+		 */
+		EClass SEQUENCE_STYLE_GENERATOR = eINSTANCE.getSequenceStyleGenerator();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_GENERATOR__NAME = eINSTANCE.getSequenceStyleGenerator_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_GENERATOR__SEQUENCE_NAME = eINSTANCE.getSequenceStyleGenerator_SequenceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Initial Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_GENERATOR__INITIAL_VALUE = eINSTANCE.getSequenceStyleGenerator_InitialValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Increment Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_GENERATOR__INCREMENT_SIZE = eINSTANCE.getSequenceStyleGenerator_IncrementSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Optimizer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_GENERATOR__OPTIMIZER = eINSTANCE.getSequenceStyleGenerator_Optimizer();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4410,6 +4618,16 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TEMPORAL_TYPE = eINSTANCE.getTemporalType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.OptimizerType
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOptimizerType()
+		 * @generated
+		 */
+		EEnum OPTIMIZER_TYPE = eINSTANCE.getOptimizerType();
 
 	}
 

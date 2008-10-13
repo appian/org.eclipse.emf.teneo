@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.24 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.25 2008/10/13 05:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -370,6 +370,13 @@ public class PannotationSwitch<T> {
 				ForeignKey foreignKey = (ForeignKey)theEObject;
 				T result = caseForeignKey(foreignKey);
 				if (result == null) result = casePAnnotation(foreignKey);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR: {
+				SequenceStyleGenerator sequenceStyleGenerator = (SequenceStyleGenerator)theEObject;
+				T result = caseSequenceStyleGenerator(sequenceStyleGenerator);
+				if (result == null) result = casePAnnotation(sequenceStyleGenerator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -899,6 +906,21 @@ public class PannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseForeignKey(ForeignKey object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sequence Style Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sequence Style Generator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSequenceStyleGenerator(SequenceStyleGenerator object) {
 		return null;
 	}
 

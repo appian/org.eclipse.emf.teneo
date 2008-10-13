@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.28 2008/07/13 13:12:49 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.29 2008/10/13 05:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -204,6 +204,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateVersion((Version)value, diagnostics, context);
 			case PannotationPackage.FOREIGN_KEY:
 				return validateForeignKey((ForeignKey)value, diagnostics, context);
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR:
+				return validateSequenceStyleGenerator((SequenceStyleGenerator)value, diagnostics, context);
 			case PannotationPackage.CASCADE_TYPE:
 				return validateCascadeType((CascadeType)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_TYPE:
@@ -218,6 +220,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateInheritanceType((InheritanceType)value, diagnostics, context);
 			case PannotationPackage.TEMPORAL_TYPE:
 				return validateTemporalType((TemporalType)value, diagnostics, context);
+			case PannotationPackage.OPTIMIZER_TYPE:
+				return validateOptimizerType((OptimizerType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -1541,6 +1545,24 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateSequenceStyleGenerator(SequenceStyleGenerator sequenceStyleGenerator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(sequenceStyleGenerator, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateCascadeType(CascadeType cascadeType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -1596,6 +1618,15 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTemporalType(TemporalType temporalType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOptimizerType(OptimizerType optimizerType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

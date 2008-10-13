@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.27 2008/01/29 12:58:06 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.28 2008/10/13 05:35:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -137,6 +137,7 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.UNIQUE_CONSTRAINT: return createUniqueConstraint();
 			case PannotationPackage.VERSION: return createVersion();
 			case PannotationPackage.FOREIGN_KEY: return createForeignKey();
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR: return createSequenceStyleGenerator();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -164,6 +165,8 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 				return createInheritanceTypeFromString(eDataType, initialValue);
 			case PannotationPackage.TEMPORAL_TYPE:
 				return createTemporalTypeFromString(eDataType, initialValue);
+			case PannotationPackage.OPTIMIZER_TYPE:
+				return createOptimizerTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -191,6 +194,8 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 				return convertInheritanceTypeToString(eDataType, instanceValue);
 			case PannotationPackage.TEMPORAL_TYPE:
 				return convertTemporalTypeToString(eDataType, instanceValue);
+			case PannotationPackage.OPTIMIZER_TYPE:
+				return convertOptimizerTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -541,6 +546,16 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SequenceStyleGenerator createSequenceStyleGenerator() {
+		SequenceStyleGeneratorImpl sequenceStyleGenerator = new SequenceStyleGeneratorImpl();
+		return sequenceStyleGenerator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CascadeType createCascadeTypeFromString(EDataType eDataType, String initialValue) {
 		CascadeType result = CascadeType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -673,6 +688,26 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * @generated
 	 */
 	public String convertTemporalTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OptimizerType createOptimizerTypeFromString(EDataType eDataType, String initialValue) {
+		OptimizerType result = OptimizerType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOptimizerTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.25 2008/01/29 12:58:06 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.26 2008/10/13 05:35:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -50,6 +50,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
@@ -167,8 +168,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 	 * 
 	 * <p>
 	 * In order to mantain the consistency of the model, whenever an association among a
-	 * PAnnotatedEModelElement <code>pa</code> and an EModelElement <code>e</code> is broken,
-	 * the annotatedElement feature of <code>pa</code> is unset.
+	 * PAnnotatedEModelElement <code>pa</code> and an EModelElement <code>e</code> is broken, the
+	 * annotatedElement feature of <code>pa</code> is unset.
 	 */
 	protected void addMapping(PAnnotatedEModelElement target) {
 		final EModelElement eModelElement = target.getModelElement();
@@ -184,8 +185,8 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 
 	/**
 	 * Unregister the association between an <code>EModelElement</code> and the
-	 * <code>PAnnotatedEModelElement</code> that references it via the
-	 * <code>annotatedElement</code> feature.
+	 * <code>PAnnotatedEModelElement</code> that references it via the <code>annotatedElement</code>
+	 * feature.
 	 */
 	protected void removeMapping(EModelElement eModelElement) {
 		final Object prevAssoc = eElement_to_pElement.remove(eModelElement);
@@ -459,6 +460,19 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 		// TODO: should not only the paepackage of the efeature be checked?
 		for (PAnnotatedEPackage pae : getPaEPackages()) {
 			for (SequenceGenerator sg : pae.getSequenceGenerators()) {
+				if (sg.getName() != null && sg.getName().compareTo(name) == 0) {
+					return sg;
+				}
+			}
+		}
+		throw new IllegalStateException("No sequence generator found with the name: " + name + ", name is used in " +
+				"annotation of element " + efeature.getEContainingClass().getName() + "/" + efeature.getName());
+	}
+
+	public SequenceStyleGenerator getSequenceStyleGenerator(EStructuralFeature efeature, String name) {
+		// TODO: should not only the paepackage of the efeature be checked?
+		for (PAnnotatedEPackage pae : getPaEPackages()) {
+			for (SequenceStyleGenerator sg : pae.getSequenceStyleGenerators()) {
 				if (sg.getName() != null && sg.getName().compareTo(name) == 0) {
 					return sg;
 				}

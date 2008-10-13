@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.27 2008/07/13 13:12:49 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.28 2008/10/13 05:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -247,6 +247,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseForeignKey(ForeignKey object) {
 				return createForeignKeyAdapter();
+			}
+			@Override
+			public Adapter caseSequenceStyleGenerator(SequenceStyleGenerator object) {
+				return createSequenceStyleGeneratorAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -755,6 +759,20 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createForeignKeyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator <em>Sequence Style Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator
+	 * @generated
+	 */
+	public Adapter createSequenceStyleGeneratorAdapter() {
 		return null;
 	}
 

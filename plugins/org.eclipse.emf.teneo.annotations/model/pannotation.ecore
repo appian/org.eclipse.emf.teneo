@@ -331,9 +331,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="1"/>
+        defaultValueLiteral="1" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allocationSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="50"/>
+        defaultValueLiteral="50" unsettable="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Table" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">
@@ -419,6 +419,7 @@
     <eLiterals name="SEQUENCE" value="1"/>
     <eLiterals name="IDENTITY" value="2"/>
     <eLiterals name="AUTO" value="3"/>
+    <eLiterals name="SEQUENCESTYLE" value="4" literal="SEQUENCESTYLE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InheritanceType">
     <eLiterals name="SINGLE_TABLE"/>
@@ -435,5 +436,25 @@
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceStyleGenerator" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EClass"/>
+      <details key="1" value="EStructuralFeature"/>
+      <details key="2" value="EPackage"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="50"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizer" eType="#//OptimizerType"
+        defaultValueLiteral="NONE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OptimizerType">
+    <eLiterals name="NONE" literal="NONE"/>
+    <eLiterals name="HILO" value="1" literal="HILO"/>
+    <eLiterals name="POOLED" value="2" literal="POOLED"/>
   </eClassifiers>
 </ecore:EPackage>

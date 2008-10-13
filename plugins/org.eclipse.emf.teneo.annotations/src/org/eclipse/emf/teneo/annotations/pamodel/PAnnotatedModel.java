@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModel.java,v 1.14 2007/11/14 16:37:54 mtaal Exp $
+ * $Id: PAnnotatedModel.java,v 1.15 2008/10/13 05:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
@@ -43,8 +44,8 @@ public interface PAnnotatedModel extends EObject {
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage#getPaModel <em>Pa Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pa EPackages</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Pa EPackages</em>' containment reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pa EPackages</em>' containment reference list.
@@ -102,6 +103,8 @@ public interface PAnnotatedModel extends EObject {
 	 * thrown. efeature is passed for debugging purposes.
 	 */
 	public SequenceGenerator getSequenceGenerator(EStructuralFeature efeature, String name);
+
+	public SequenceStyleGenerator getSequenceStyleGenerator(EStructuralFeature efeature, String name);
 
 	/**
 	 * Returns a table generator on the basis of its name, if not found then an exception is thrown.

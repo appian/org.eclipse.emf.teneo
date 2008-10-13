@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.27 2008/09/21 19:03:18 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.28 2008/10/13 05:35:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -52,6 +52,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
+import org.eclipse.emf.teneo.annotations.pannotation.OptimizerType;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
@@ -59,6 +60,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
@@ -289,6 +291,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	private EClass foreignKeyEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sequenceStyleGeneratorEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -329,6 +338,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EEnum temporalTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum optimizerTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1436,6 +1452,60 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSequenceStyleGenerator() {
+		return sequenceStyleGeneratorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceStyleGenerator_Name() {
+		return (EAttribute)sequenceStyleGeneratorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceStyleGenerator_SequenceName() {
+		return (EAttribute)sequenceStyleGeneratorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceStyleGenerator_InitialValue() {
+		return (EAttribute)sequenceStyleGeneratorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceStyleGenerator_IncrementSize() {
+		return (EAttribute)sequenceStyleGeneratorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceStyleGenerator_Optimizer() {
+		return (EAttribute)sequenceStyleGeneratorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1505,6 +1575,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EEnum getTemporalType() {
 		return temporalTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getOptimizerType() {
+		return optimizerTypeEEnum;
 	}
 
 	/**
@@ -1707,6 +1786,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		foreignKeyEClass = createEClass(FOREIGN_KEY);
 		createEAttribute(foreignKeyEClass, FOREIGN_KEY__NAME);
 
+		sequenceStyleGeneratorEClass = createEClass(SEQUENCE_STYLE_GENERATOR);
+		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__NAME);
+		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__SEQUENCE_NAME);
+		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__INITIAL_VALUE);
+		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__INCREMENT_SIZE);
+		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__OPTIMIZER);
+
 		// Create enums
 		cascadeTypeEEnum = createEEnum(CASCADE_TYPE);
 		discriminatorTypeEEnum = createEEnum(DISCRIMINATOR_TYPE);
@@ -1715,6 +1801,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		generationTypeEEnum = createEEnum(GENERATION_TYPE);
 		inheritanceTypeEEnum = createEEnum(INHERITANCE_TYPE);
 		temporalTypeEEnum = createEEnum(TEMPORAL_TYPE);
+		optimizerTypeEEnum = createEEnum(OPTIMIZER_TYPE);
 	}
 
 	/**
@@ -1779,6 +1866,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		uniqueConstraintEClass.getESuperTypes().add(this.getPAnnotation());
 		versionEClass.getESuperTypes().add(this.getPAnnotation());
 		foreignKeyEClass.getESuperTypes().add(this.getPAnnotation());
+		sequenceStyleGeneratorEClass.getESuperTypes().add(this.getPAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1913,8 +2001,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEClass(sequenceGeneratorEClass, SequenceGenerator.class, "SequenceGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSequenceGenerator_Name(), ecorePackage.getEString(), "name", null, 1, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceGenerator_SequenceName(), ecorePackage.getEString(), "sequenceName", null, 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSequenceGenerator_InitialValue(), ecorePackage.getEInt(), "initialValue", "1", 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSequenceGenerator_AllocationSize(), ecorePackage.getEInt(), "allocationSize", "50", 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceGenerator_InitialValue(), ecorePackage.getEInt(), "initialValue", "1", 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceGenerator_AllocationSize(), ecorePackage.getEInt(), "allocationSize", "50", 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableEClass, Table.class, "Table", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1947,6 +2035,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEClass(foreignKeyEClass, ForeignKey.class, "ForeignKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getForeignKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, ForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(sequenceStyleGeneratorEClass, SequenceStyleGenerator.class, "SequenceStyleGenerator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSequenceStyleGenerator_Name(), ecorePackage.getEString(), "name", null, 1, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceStyleGenerator_SequenceName(), ecorePackage.getEString(), "sequenceName", null, 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceStyleGenerator_InitialValue(), ecorePackage.getEInt(), "initialValue", "1", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceStyleGenerator_IncrementSize(), ecorePackage.getEInt(), "incrementSize", "50", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceStyleGenerator_Optimizer(), this.getOptimizerType(), "optimizer", "NONE", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL);
@@ -1975,6 +2070,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(generationTypeEEnum, GenerationType.SEQUENCE);
 		addEEnumLiteral(generationTypeEEnum, GenerationType.IDENTITY);
 		addEEnumLiteral(generationTypeEEnum, GenerationType.AUTO);
+		addEEnumLiteral(generationTypeEEnum, GenerationType.SEQUENCESTYLE);
 
 		initEEnum(inheritanceTypeEEnum, InheritanceType.class, "InheritanceType");
 		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.SINGLE_TABLE);
@@ -1985,6 +2081,11 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(temporalTypeEEnum, TemporalType.DATE);
 		addEEnumLiteral(temporalTypeEEnum, TemporalType.TIME);
 		addEEnumLiteral(temporalTypeEEnum, TemporalType.TIMESTAMP);
+
+		initEEnum(optimizerTypeEEnum, OptimizerType.class, "OptimizerType");
+		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.NONE);
+		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.HILO);
+		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.POOLED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -2019,7 +2120,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																								
+		   });																																																									
 	}
 
 	/**
@@ -2036,7 +2137,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																							
+		   });																																																								
 	}
 
 	/**
@@ -2159,7 +2260,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });	
+		   });		
 	}
 
 	/**
@@ -2380,6 +2481,14 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (sequenceStyleGeneratorEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass",
+			 "1", "EStructuralFeature",
+			 "2", "EPackage"
 		   });
 	}
 
@@ -2395,7 +2504,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																																					
+		   });																																																						
 	}
 
 	/**
@@ -2411,7 +2520,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																									
+		   });																																										
 	}
 
 	/**

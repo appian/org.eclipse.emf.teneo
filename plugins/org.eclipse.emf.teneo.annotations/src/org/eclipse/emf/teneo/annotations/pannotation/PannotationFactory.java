@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.9 2007/07/11 17:15:10 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.10 2008/10/13 05:35:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -295,6 +295,15 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	ForeignKey createForeignKey();
+
+	/**
+	 * Returns a new object of class '<em>Sequence Style Generator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequence Style Generator</em>'.
+	 * @generated
+	 */
+	SequenceStyleGenerator createSequenceStyleGenerator();
 
 	/**
 	 * Returns a new object of class '<em>Association Override</em>'.
