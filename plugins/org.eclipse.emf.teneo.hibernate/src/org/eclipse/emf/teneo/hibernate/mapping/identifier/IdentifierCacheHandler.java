@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class IdentifierCacheHandler {
@@ -44,10 +44,10 @@ public class IdentifierCacheHandler {
 		instance = identifierCacheHandler;
 	}
 
-	private Map<Key, WeakReference<Object>> idMap = new ConcurrentHashMap<Key, WeakReference<Object>>();
+	private Map<Key, Object> idMap = new ConcurrentHashMap<Key, Object>();
 	private int idModCount = 0;
 
-	private Map<Key, WeakReference<Object>> versionMap = new ConcurrentHashMap<Key, WeakReference<Object>>();
+	private Map<Key, Object> versionMap = new ConcurrentHashMap<Key, Object>();
 	private int versionModCount = 0;
 
 	/** Clear the identifier cache */
@@ -58,11 +58,11 @@ public class IdentifierCacheHandler {
 		versionModCount = 0;
 	}
 
-	public Map<Key, WeakReference<Object>> getIdMap() {
+	public Map<Key, Object> getIdMap() {
 		return idMap;
 	}
 
-	public Map<Key, WeakReference<Object>> getVersionMap() {
+	public Map<Key, Object> getVersionMap() {
 		return versionMap;
 	}
 
@@ -73,12 +73,15 @@ public class IdentifierCacheHandler {
 
 	/** Get an identifier from the cache */
 	public Object getID(Object obj) {
-		final WeakReference<Object> id = idMap.get(new Key(obj));
+		final Object id = idMap.get(new Key(obj));
 		if (id == null) {
 			log.debug("ID for object " + obj.getClass().getName() + " not found in id cache");
 			return null;
 		}
-		return id.get();
+		if (id instanceof WeakReference<?>) {
+			return ((WeakReference<?>) id).get();
+		}
+		return id;
 	}
 
 	/** Set an identifier in the cache */
@@ -89,8 +92,10 @@ public class IdentifierCacheHandler {
 
 		if (id == null) { // actually a remove of the id
 			idMap.remove(new Key(obj));
-		} else {
+		} else if (useWeakReference(id)) {
 			idMap.put(new Key(obj), new WeakReference<Object>(id));
+		} else {
+			idMap.put(new Key(obj), id);
 		}
 
 		// also set the id in the resource
@@ -114,11 +119,21 @@ public class IdentifierCacheHandler {
 
 	/** Gets a version from the cache */
 	public Object getVersion(Object obj) {
-		final WeakReference<Object> version = versionMap.get(new Key(obj));
+		final Object version = versionMap.get(new Key(obj));
 		if (version == null) {
 			return version;
 		}
-		return version.get();
+		return version;
+	}
+
+	private boolean useWeakReference(Object id) {
+		if (Number.class.isAssignableFrom(id.getClass())) {
+			return false;
+		}
+		if (String.class.isAssignableFrom(id.getClass())) {
+			return false;
+		}
+		return true;
 	}
 
 	protected int getPurgeTreshold() {
@@ -130,7 +145,11 @@ public class IdentifierCacheHandler {
 		if (log.isDebugEnabled()) {
 			log.debug("Setting version: " + version + " for object " + obj.getClass().getName() + " in idcache ");
 		}
-		versionMap.put(new Key(obj), new WeakReference<Object>(version));
+		if (version == null) {
+			versionMap.remove(new Key(obj));
+		} else {
+			versionMap.put(new Key(obj), version);
+		}
 		versionModCount++;
 		if (versionModCount > getPurgeTreshold()) {
 			purgeVersionMap();
@@ -150,7 +169,7 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Purges the passed map for stale entries */
-	protected void purgeMap(Map<Key, WeakReference<Object>> map) {
+	protected void purgeMap(Map<Key, Object> map) {
 		final Iterator<Key> it = map.keySet().iterator();
 		while (it.hasNext()) {
 			final Key key = it.next();
@@ -166,7 +185,7 @@ public class IdentifierCacheHandler {
 	}
 
 	/** Dumps the content of the passed map */
-	private void dumpContents(Map<Key, WeakReference<Object>> map) {
+	private void dumpContents(Map<Key, Object> map) {
 		Iterator<Key> it = map.keySet().iterator();
 		while (it.hasNext()) {
 			Key key = it.next();
