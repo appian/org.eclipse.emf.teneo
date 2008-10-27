@@ -21,7 +21,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Bz245167Action extends AbstractTestAction {
 
@@ -62,6 +62,7 @@ public class Bz245167Action extends AbstractTestAction {
 
 		// note that the statPart arraylist needs to be used after the above assertEquals
 		// otherwise the compiler will optimize them away
+		ich.dumpID();
 		for (Library lib : statPart) {
 			assertTrue(ich.getID(lib) != null);
 			assertTrue(ich.getVersion(lib) != null);
