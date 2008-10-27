@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToManyMapper.java,v 1.30 2008/09/01 12:45:16 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.31 2008/10/27 13:18:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -109,6 +109,20 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements Exten
 		} else if (mtm.getMappedBy() != null && mtm.isIndexed()) {
 			log
 				.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
+		}
+
+		// check for a special case that mapped by is set on both sides
+		// should always be unequal to null
+		if (hbReference.getModelEReference().getEOpposite() != null) {
+			final PAnnotatedEReference aOpposite =
+					hbReference.getPaModel().getPAnnotated(hbReference.getModelEReference().getEOpposite());
+			if (aOpposite.getManyToMany() != null && aOpposite.getManyToMany().getMappedBy() != null &&
+					mtm.getMappedBy() != null) {
+				log
+					.error("Mappedby is set on both sides of the many-to-many relation, this does not work, see the efeature: " +
+							hbReference.getModelElement().toString() + ". Ignoring the mappedby in this efeature");
+				mtm.setMappedBy(null);
+			}
 		}
 
 		addJoinTable(hbReference, collElement, keyElement, jt);
