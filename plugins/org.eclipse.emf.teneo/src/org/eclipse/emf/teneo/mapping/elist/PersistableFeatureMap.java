@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.10 2008/04/11 23:43:43 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.11 2008/10/27 13:18:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -25,7 +25,6 @@ import java.util.ListIterator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -45,7 +44,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * entries of the right type are passed to the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements
@@ -220,29 +219,27 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	public abstract boolean isPersistencyWrapped();
 
 	/** Override the didadd to enable opposite setting */
-	@Override
-	protected void didAdd(int index, FeatureMap.Entry obj) {
-		final NotificationChain nc = inverseAdd(obj, null);
-		if (nc != null && isNotificationRequired()) {
-			nc.dispatch();
-		}
-		super.didAdd(index, obj);
-	}
-
-	/** Override the didremove to enable opposite setting */
-	@Override
-	protected void didRemove(int index, FeatureMap.Entry obj) {
-		final NotificationChain nc = inverseRemove(obj, null);
-		if (nc != null && isNotificationRequired()) {
-			nc.dispatch();
-		}
-		super.didRemove(index, obj);
-	}
-
+	// MT not necessary anymore in new EMF versions
+// @Override
+// protected void didAdd(int index, FeatureMap.Entry obj) {
+// final NotificationChain nc = inverseAdd(obj, null);
+// if (nc != null && isNotificationRequired()) {
+// nc.dispatch();
+// }
+// super.didAdd(index, obj);
+// }
+	/* Override the didremove to enable opposite setting */
+// @Override
+// protected void didRemove(int index, FeatureMap.Entry obj) {
+// final NotificationChain nc = inverseRemove(obj, null);
+// if (nc != null && isNotificationRequired()) {
+// nc.dispatch();
+// }
+// super.didRemove(index, obj);
+// }
 	// ---------------------------- Overloaded delegate methods --------------------------
 	// These methods have been overridden to a load action before the backing list is
 	// accessed.
-
 	/** OVerridden to create the correct featuremap entry */
 	@Override
 	protected abstract FeatureMap.Entry createEntry(EStructuralFeature eStructuralFeature, Object value);
@@ -272,7 +269,9 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique(java.util.Collection)
+	 * @see
+	 * org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique(java.util.Collection
+	 * )
 	 */
 	@Override
 	public boolean addAllUnique(Collection<? extends FeatureMap.Entry> collection) {
@@ -283,7 +282,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique(int,
-	 *      java.util.Collection)
+	 * java.util.Collection)
 	 */
 	@Override
 	public boolean addAllUnique(int index, Collection<? extends FeatureMap.Entry> collection) {
@@ -294,7 +293,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique(int,
-	 *      java.lang.Object)
+	 * java.lang.Object)
 	 */
 	@Override
 	public void addUnique(int index, FeatureMap.Entry object) {
@@ -304,7 +303,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique(java.lang.Object)
+	 * @see
+	 * org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique(java.lang.Object)
 	 */
 	@Override
 	public void addUnique(FeatureMap.Entry object) {
@@ -315,7 +315,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#setUnique(int,
-	 *      java.lang.Object)
+	 * java.lang.Object)
 	 */
 	@Override
 	public FeatureMap.Entry setUnique(int index, FeatureMap.Entry object) {
