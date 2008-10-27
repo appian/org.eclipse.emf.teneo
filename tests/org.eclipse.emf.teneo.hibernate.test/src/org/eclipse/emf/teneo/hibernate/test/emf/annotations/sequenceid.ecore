@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="id"
-    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id" nsPrefix="id">
+    nsURI="http://www.eclipse.org/emf/teneo/samples/issues/bz250239" nsPrefix="id">
   <eAnnotations source="teneo.jpa">
     <details key="appinfo" value="&#x9;&#x9;&#x9;@SequenceStyleGenerator(name=&quot;GENERATORSTYLE&quot; sequenceName=&quot;mySequenceStyle&quot; optimizer=HILO initialValue=5 incrementSize=25)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATOR&quot; sequenceName=&quot;mySequenceName&quot; initialValue=10 allocationSize=100)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATORTWO&quot; sequenceName=&quot;myOtherSequenceName&quot; initialValue=5 allocationSize=50)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;mySequence&quot; sequenceName=&quot;mySequence&quot;)"/>
   </eAnnotations>

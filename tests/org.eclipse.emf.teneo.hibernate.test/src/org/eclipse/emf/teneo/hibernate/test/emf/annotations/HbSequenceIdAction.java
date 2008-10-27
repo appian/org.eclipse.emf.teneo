@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSequenceIdAction.java,v 1.1 2008/10/13 05:35:14 mtaal Exp $
+ * $Id: HbSequenceIdAction.java,v 1.2 2008/10/27 13:19:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -35,11 +35,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbSequenceIdAction extends AbstractTestAction {
-	/** How many test objects are created */
-	private static final int NO_TEST_OBJECTS = 10;
 
 	// this epackage is actually not tested!
 	public HbSequenceIdAction() {

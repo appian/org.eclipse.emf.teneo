@@ -46,7 +46,7 @@
 			<generator class="hilo">
 				<param name="table">TGEN</param>
 				<param name="column">VAL_COL</param>
-				<param name="max_lo">2</param>
+				<param name="max_lo">49</param>
 			</generator>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
@@ -75,7 +75,7 @@
 			<generator class="hilo">
 				<param name="table">OTHERTGEN</param>
 				<param name="column">VAL_COL</param>
-				<param name="max_lo">2</param>
+				<param name="max_lo">49</param>
 			</generator>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
