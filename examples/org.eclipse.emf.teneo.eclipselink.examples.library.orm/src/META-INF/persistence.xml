@@ -12,7 +12,7 @@
 
 			<property name="eclipselink.target-database" value="Derby"/>
 			<property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-			<property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/sample;create=true"/>
+			<property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/teneo;create=true"/>
 			<property name="eclipselink.jdbc.user" value="app"/>
 			<property name="eclipselink.jdbc.password" value="app"/>
 
