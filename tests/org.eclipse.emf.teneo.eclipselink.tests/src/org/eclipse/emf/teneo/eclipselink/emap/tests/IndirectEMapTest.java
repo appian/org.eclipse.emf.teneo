@@ -26,7 +26,7 @@ public class IndirectEMapTest extends TestCase {
   protected static final class TestEmfIndirectEMap<K, V> extends IndirectEMap<K, V> {
 		public boolean isDelegateNull() {
 			return delegate == null;
-		}
+		}	
 	}
 
 	protected Field delegateField = null;
@@ -137,22 +137,6 @@ public class IndirectEMapTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.containsKey(Object)'
-	 */
-	public void testContainsKeyObject() throws Exception {
-		indirectEMap.containsKey(null);
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.containsValue(Object)'
-	 */
-	public void testContainsValueObject() throws Exception {
-		indirectEMap.containsValue(null);
-		assertDelegateInstantiated();		
-	}
-
-	/*
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.entrySet()'
 	 */
 	public void testEntrySet() throws Exception {
@@ -165,14 +149,6 @@ public class IndirectEMapTest extends TestCase {
 	 */
 	public void testEqualsObject() throws Exception {
 		indirectEMap.equals(null);
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.get(Object)'
-	 */
-	public void testGetObject() throws Exception {
-		indirectEMap.get(null);
 		assertDelegateInstantiated();		
 	}
 
@@ -217,41 +193,12 @@ public class IndirectEMapTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.keySet()'
-	 */
-	public void testKeySet() throws Exception {
-		indirectEMap.keySet();
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.put(Object, Object)'
-	 */
-	public void testPutObjectObject() throws Exception {
-		indirectEMap.put(null, null);
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.putAll(Map)'
-	 */
-	public void testPutAllMap() throws Exception {
-		try {
-			indirectEMap.putAll((Map<?, ?>)null);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
-		}
-		assertDelegateInstantiated();		
-	}
-
-	/*
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.remove(int)'
 	 */
 	public void testRemoveInt() throws Exception {
 		try {
 			indirectEMap.remove(0);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
+		} catch (IndexOutOfBoundsException e) {
 		}
 		assertDelegateInstantiated();		
 	}
@@ -269,14 +216,6 @@ public class IndirectEMapTest extends TestCase {
 	 */
 	public void testRemoveAllCollection() throws Exception {
 		indirectEMap.removeAll(null);
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.removeKey(Object)'
-	 */
-	public void testRemoveKeyObject() throws Exception {
-		indirectEMap.removeKey(null);
 		assertDelegateInstantiated();		
 	}
 
@@ -325,21 +264,12 @@ public class IndirectEMapTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.values()'
-	 */
-	public void testValues() throws Exception {
-		indirectEMap.values();
-		assertDelegateInstantiated();		
-	}
-
-	/*
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.add(int, Object)'
 	 */
 	public void testAddIntObject() throws Exception {
 		try {
 			indirectEMap.add(0, null);
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -351,7 +281,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.add(null);
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -363,7 +292,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.addAll(null);
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -375,7 +303,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.addAll(0, null);
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -387,7 +314,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.containsAll(null);
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -399,7 +325,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.get(0);
 		} catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -409,14 +334,6 @@ public class IndirectEMapTest extends TestCase {
 	 */
 	public void testIndexOfObject() throws Exception {
 		indirectEMap.indexOf(null);
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.indexOfKey(Object)'
-	 */
-	public void testIndexOfKeyObject() throws Exception {
-		indirectEMap.indexOfKey(null);
 		assertDelegateInstantiated();		
 	}
 
@@ -437,21 +354,12 @@ public class IndirectEMapTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.map()'
-	 */
-	public void testMap() throws Exception {
-		indirectEMap.map();
-		assertDelegateInstantiated();		
-	}
-
-	/*
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.move(int, int)'
 	 */
 	public void testMoveIntInt() throws Exception {
 		try {
 			indirectEMap.move(0,1);
 		} catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -463,19 +371,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.move(0, null);
 		} catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}
-		assertDelegateInstantiated();		
-	}
-
-	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.emap.EmfIndirectEMap.putAll(EMap)'
-	 */
-	public void testPutAllEMap() throws Exception {
-		try {
-			indirectEMap.putAll((EMap<?, ?>)null);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -494,8 +389,7 @@ public class IndirectEMapTest extends TestCase {
 	public void testSetIntObject() throws Exception {
 		try {
 			indirectEMap.set(0,null);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
+		} catch (IndexOutOfBoundsException e) {
 		}
 		assertDelegateInstantiated();		
 	}
@@ -507,7 +401,6 @@ public class IndirectEMapTest extends TestCase {
 		try {
 			indirectEMap.subList(0,1);
 		} catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
 		}
 		assertDelegateInstantiated();		
 	}
@@ -526,8 +419,7 @@ public class IndirectEMapTest extends TestCase {
 	public void testToArrayObjectArray() throws Exception {
 		try {
 			indirectEMap.toArray(null);
-		} catch (RuntimeException e) {
-			e.printStackTrace();
+		} catch (NullPointerException e) {
 		}
 		assertDelegateInstantiated();		
 	}
