@@ -33,7 +33,8 @@ public abstract class JPATest extends ManagedTest {
 	public EntityManagerFactory getEntityManagerFactory() {
 		if (factory == null) {
 			HashMap<String, Object> properties = new HashMap<String, Object>();
-			properties.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+			ClassLoader classLoader = this.getClass().getClassLoader();
+			properties.put(PersistenceUnitProperties.CLASSLOADER, classLoader);
 			factory = new PersistenceProvider().createEntityManagerFactory(getPersistenceUnitName(), properties);
 		}
 		return factory;
