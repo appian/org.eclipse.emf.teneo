@@ -138,20 +138,18 @@ public final class EElementUtil {
 
   public static int getDerivedStructuralFeatureID(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature) throws ClassNotFoundException {
 
-    EClass eContainingClass = eStructuralFeature.getEContainingClass();
-    String eQualifiedContainingClassName = EElementUtil.getQualifiedInterfaceName(eContainingClass);
-    Class containingClass = Class.forName(eQualifiedContainingClassName);
-    return ((InternalEObject) eOwnerObject).eDerivedStructuralFeatureID(eStructuralFeature.getFeatureID(), containingClass);
+    int featureID = eStructuralFeature.getFeatureID();
+    Class<?> containingClass = eStructuralFeature.getEContainingClass().getInstanceClass();
+	return ((InternalEObject) eOwnerObject).eDerivedStructuralFeatureID(featureID, containingClass);
   }
 
   public static String getQualifiedInterfacePackageName(final EClassifier eClassifier) {
 
-    Class ePackageClass = eClassifier.getEPackage().getClass();
-    String ePackageClassName = getSimpleTypeName(ePackageClass.getName());
-    Class ePackageInterface = null;
+    Class<? extends EPackage> ePackageClass = eClassifier.getEPackage().getClass();
+    Class<?> ePackageInterface = null;
     for (int i = 0; (i < ePackageClass.getInterfaces().length) && (ePackageInterface == null); i++) {
-      String interfaceName = getSimpleTypeName(ePackageClass.getInterfaces()[i].getName());
-      if (ePackageClassName.startsWith(interfaceName)) {
+      String interfaceName = ePackageClass.getInterfaces()[i].getSimpleName();
+      if (ePackageClass.getSimpleName().startsWith(interfaceName)) {
         ePackageInterface = ePackageClass.getInterfaces()[i];
       }
     }
@@ -193,16 +191,10 @@ public final class EElementUtil {
     return qualifiedTypeName.substring(0, qualifiedTypeName.lastIndexOf("."));
   }
 
-  public static String getSimpleTypeName(String qualifiedTypeName) {
-
-    String rawSimpleTypeName = qualifiedTypeName.substring(qualifiedTypeName.lastIndexOf(".") + 1, qualifiedTypeName.length());
-    return rawSimpleTypeName.replace('$', '.');
-  }
-
   public static boolean isPrimitiveType(final EClassifier eClassifier) {
 
     boolean result = false;
-    Class instanceClass = eClassifier.getInstanceClass();
+    Class<?> instanceClass = eClassifier.getInstanceClass();
     if (instanceClass != null) {
       result = instanceClass.isPrimitive();
     }
@@ -211,7 +203,7 @@ public final class EElementUtil {
 
   public static String getQualifiedPrimitiveObjectTypeName(final EClassifier eClassifier) {
 
-    Class instanceClass = eClassifier.getInstanceClass();
+    Class<?> instanceClass = eClassifier.getInstanceClass();
     if (instanceClass == java.lang.Boolean.TYPE)
       return "java.lang.Boolean";
     if (instanceClass == java.lang.Byte.TYPE)
@@ -246,10 +238,9 @@ public final class EElementUtil {
     return ePackage;
   }
 
-  public static EClass findEClass(final EPackage ePackage, final Class javaClass) {
+  public static EClass findEClass(final EPackage ePackage, final Class<?> javaClass) {
     
-    String simpleJavaClassName = getSimpleTypeName(javaClass.getName());
-    return findEClass(ePackage, simpleJavaClassName.replaceFirst("Impl$", ""));
+    return findEClass(ePackage, javaClass.getSimpleName().replaceFirst("Impl$", ""));
   }
   
   public static EClass findEClass(final EPackage ePackage, final String eClassName) {

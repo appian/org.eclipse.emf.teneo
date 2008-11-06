@@ -45,9 +45,9 @@ public class ExtendedMetaDataUtil {
   // helper methods
   //
 
-  private static void populateExtendedMetaData(final ExtendedMetaData extendedMetaData, final List ePackages) {
+  private static void populateExtendedMetaData(final ExtendedMetaData extendedMetaData, final List<EPackage> ePackages) {
 
-    for (Iterator iter = ePackages.iterator(); iter.hasNext();) {
+    for (Iterator<EPackage> iter = ePackages.iterator(); iter.hasNext();) {
       EPackage ePackage = (EPackage) iter.next();
       if (ePackage != null) {
         if (!EcorePackage.eNS_URI.equals(ePackage.getNsURI())) {

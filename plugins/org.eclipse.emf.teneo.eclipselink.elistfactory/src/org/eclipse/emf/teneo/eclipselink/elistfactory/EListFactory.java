@@ -77,8 +77,8 @@ public interface EListFactory {
    * @param ePackageNsURI
    *          namespace URI of the Ecore package containing
    *          <em>eQualifiedOwnerClassName</em>.
-   * @param eQualifiedOwnerClassName
-   *          class name of the <em>eStructuralFeatureName</em>'s and the
+   * @param eOwnerClassName
+   *          simple class name of the <em>eStructuralFeatureName</em>'s and the
    *          resulting {@link org.eclipse.emf.common.util.EList <em>EList</em>}
    *          instance's owner object.
    * @param eStructuralFeatureName
@@ -90,7 +90,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  EList createEList(final String ePackageNsURI, final String eQualifiedOwnerClassName, final String eStructuralFeatureName) throws ClassNotFoundException;
+  <E> EList<E> createEList(final String ePackageNsURI, final String eOwnerClassName, final String eStructuralFeatureName) throws ClassNotFoundException;
 
   /**
    * Creates a new
@@ -126,7 +126,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  EList createEList(final EObject eOwnerObject, final String eStructuralFeatureName) throws ClassNotFoundException;
+  <E> EList<E> createEList(final EObject eOwnerObject, final String eStructuralFeatureName) throws ClassNotFoundException;
 
   /**
    * Creates a new
@@ -162,7 +162,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  EList createEList(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature) throws ClassNotFoundException;
+  <E> EList<E> createEList(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature) throws ClassNotFoundException;
 
   /**
    * Creates a new {@link org.eclipse.emf.common.util.EMap <em><b>EMap</b></em>}
@@ -188,8 +188,8 @@ public interface EListFactory {
    * @param ePackageNsURI
    *          namespace URI of the Ecore package containing
    *          <em>eQualifiedOwnerClassName</em>.
-   * @param eQualifiedOwnerClassName
-   *          class name of the <em>eStructuralFeatureName</em>'s and the
+   * @param eOwnerClassName
+   *          simple class name of the <em>eStructuralFeatureName</em>'s and the
    *          resulting {@link org.eclipse.emf.common.util.EMap <em>EMap</em>}
    *          instance's owner object.
    * @param eStructuralFeatureName
@@ -201,7 +201,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  EMap createEMap(final String ePackageNsURI, final String eQualifiedOwnerClassName, final String eStructuralFeatureName) throws ClassNotFoundException;
+  <K, V> EMap<K, V> createEMap(final String ePackageNsURI, final String eOwnerClassName, final String eStructuralFeatureName) throws ClassNotFoundException;
 
   /**
    * Creates a new {@link org.eclipse.emf.common.util.EMap <em><b>EMap</b></em>}
@@ -232,7 +232,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  EMap createEMap(final EObject eOwnerObject, final String eStructuralFeatureName) throws ClassNotFoundException;
+  <K, V> EMap<K, V> createEMap(final EObject eOwnerObject, final String eStructuralFeatureName) throws ClassNotFoundException;
 
   /**
    * Creates a new {@link org.eclipse.emf.common.util.EMap <em><b>EMap</b></em>}
@@ -263,7 +263,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  EMap createEMap(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature) throws ClassNotFoundException;
+  <K, V> EMap<K, V> createEMap(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature) throws ClassNotFoundException;
 
   /**
    * Creates a new
@@ -290,8 +290,8 @@ public interface EListFactory {
    * @param ePackageNsURI
    *          namespace URI of the Ecore package containing
    *          <em>eQualifiedOwnerClassName</em>.
-   * @param eQualifiedOwnerClassName
-   *          class name of the <em>eStructuralFeatureName</em>'s and the
+   * @param eOwnerClassName
+   *          simple class name of the <em>eStructuralFeatureName</em>'s and the
    *          resulting
    *          {@link org.eclipse.emf.ecore.util.FeatureMap <em>FeatureMap</em>}
    *          instance's owner object.
@@ -304,7 +304,7 @@ public interface EListFactory {
    *         instance.
    * @throws ClassNotFoundException
    */
-  FeatureMap createFeatureMap(final String ePackageNsURI, final String eQualifiedOwnerClassName, final String eStructuralFeatureName) throws ClassNotFoundException;
+  FeatureMap createFeatureMap(final String ePackageNsURI, final String eOwnerClassName, final String eStructuralFeatureName) throws ClassNotFoundException;
 
   /**
    * Creates a new
