@@ -11,11 +11,9 @@
 package org.eclipse.emf.teneo.eclipselink.emap.tests;
 
 import java.lang.reflect.Field;
-import java.util.Map;
 
 import junit.framework.TestCase;
 
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.teneo.eclipselink.emap.IndirectEMap;
 import org.eclipse.persistence.internal.helper.Helper;
 import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
