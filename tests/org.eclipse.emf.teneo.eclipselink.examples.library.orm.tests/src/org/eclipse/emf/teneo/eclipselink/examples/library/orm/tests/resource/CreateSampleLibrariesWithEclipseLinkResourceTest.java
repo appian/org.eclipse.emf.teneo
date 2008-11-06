@@ -72,7 +72,7 @@ public class CreateSampleLibrariesWithEclipseLinkResourceTest extends BasicEclip
 
     // save all library model instances in database
     ResourceSet resourceSet = new ResourceSetImpl();
-    resourceSet.getLoadOptions().putAll(getTestDatabaseLoginProperties());
+    resourceSet.getLoadOptions().putAll(getTestPersistenceUnitProperties());
     resource = resourceSet.createResource(uri);
     resource.getContents().add(library1);
     resource.getContents().add(library2);

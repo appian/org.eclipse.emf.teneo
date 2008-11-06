@@ -99,7 +99,7 @@ public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
 
     // save library model instance in database
     ResourceSet resourceSet1 = new ResourceSetImpl();
-    resourceSet1.getLoadOptions().putAll(getTestDatabaseLoginProperties());
+    resourceSet1.getLoadOptions().putAll(getTestPersistenceUnitProperties());
     libraryResource1 = resourceSet1.createResource(libraryURI);
 
     assertTrue(libraryResource1 instanceof EclipseLinkResourceImpl);
@@ -125,7 +125,7 @@ public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
 
     // load second forum model instance from XMI resource
     ResourceSet resourceSet2 = new ResourceSetImpl();
-    resourceSet2.getLoadOptions().putAll(getTestDatabaseLoginProperties());
+    resourceSet2.getLoadOptions().putAll(getTestPersistenceUnitProperties());
     forumResource2 = resourceSet2.getResource(forumURI, true);
 
     assertTrue(forumResource2 instanceof XMIResourceImpl);
@@ -173,7 +173,7 @@ public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
 
     // load third forum model instance from XMI resource
     ResourceSet resourceSet3 = new ResourceSetImpl();
-    resourceSet3.getLoadOptions().putAll(getTestDatabaseLoginProperties());
+    resourceSet3.getLoadOptions().putAll(getTestPersistenceUnitProperties());
     forumResource3 = resourceSet3.getResource(forumURI, true);
 
     assertTrue(forumResource3 instanceof XMIResourceImpl);

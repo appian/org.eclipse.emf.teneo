@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.junit,
  javax.persistence;bundle-version="1.99.0",
  org.eclipse.emf.teneo.eclipselink.examples.derby;bundle-version="10.3.2"
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Activator: org.eclipse.emf.teneo.eclipselink.examples.library.orm.osgi.Activator
