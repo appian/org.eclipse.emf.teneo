@@ -53,7 +53,7 @@ public class EListFactoryTest extends TestCase {
 
   public void testEListFactory() throws ClassNotFoundException {
 
-    for (Iterator i = ePackage.getEClassifiers().iterator(); i.hasNext();) {
+    for (Iterator<?> i = ePackage.getEClassifiers().iterator(); i.hasNext();) {
       EClassifier eClassifier = (EClassifier) i.next();
 
       if (eClassifier instanceof EClass) {
@@ -62,14 +62,14 @@ public class EListFactoryTest extends TestCase {
         if (!eClass.isInterface() && !eClass.isAbstract()) {
           System.out.println(eClass.getName());
 
-          for (Iterator j = eClass.getEAllStructuralFeatures().iterator(); j.hasNext();) {
+          for (Iterator<?> j = eClass.getEAllStructuralFeatures().iterator(); j.hasNext();) {
             EStructuralFeature eStructuralFeature = (EStructuralFeature) j.next();
             System.out.println("  " + eStructuralFeature.getName());
 
             if (!eStructuralFeature.isVolatile() && EElementUtil.isListType(eStructuralFeature)) {
               try {
                 EObject eObject = ePackage.getEFactoryInstance().create(eClass);
-                EList eList = EListFactory.eINSTANCE.createEList(eObject, eStructuralFeature);
+                EList<?> eList = EListFactory.eINSTANCE.createEList(eObject, eStructuralFeature);
 
                 String actualEListConstructor = EListFactoryTestUtil.getListConstructor(eList);
                 String expectedEListConstructor = EListFactoryTestUtil.getListConstructorFromGenModel(genModel, eList);

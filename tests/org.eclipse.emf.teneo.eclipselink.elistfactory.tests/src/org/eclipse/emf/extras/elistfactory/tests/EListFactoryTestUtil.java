@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.teneo.eclipselink.elistfactory.EElementUtil;
 
 public class EListFactoryTestUtil {
 
@@ -44,13 +43,13 @@ public class EListFactoryTestUtil {
     return (GenModel) genModelResource.getContents().get(0);
   }
 
-  public static String getListConstructor(final EList eList) {
+  public static String getListConstructor(final EList<?> eList) {
 
     String result = "";
     if (eList instanceof FeatureMap) {
       FeatureMap.Internal internalFeatureMap = (FeatureMap.Internal) eList;
       
-      result += EElementUtil.getSimpleTypeName(internalFeatureMap.getClass().getName());
+      result += internalFeatureMap.getClass().getSimpleName();
       result += "(";
       result += "this";
       result += ", ";
@@ -64,11 +63,12 @@ public class EListFactoryTestUtil {
       result += ")";
     }
     else if (eList instanceof EcoreEMap) {
-      EcoreEMap ecoreEMap = (EcoreEMap) eList;
+      EcoreEMap<?, ?> ecoreEMap = (EcoreEMap<?, ?>) eList;
       
-      result += EElementUtil.getSimpleTypeName(ecoreEMap.getClass().getName());
+      result += ecoreEMap.getClass().getSimpleName();
+      result += "<" + getEntryFeatureInstanceClassSimpleName(ecoreEMap, "key") + "," + getEntryFeatureInstanceClassSimpleName(ecoreEMap, "value") + ">";
       result += "(";
-      result += getEntryEClassName(ecoreEMap);
+      result += getEntryEClassLiteralName(ecoreEMap);
       result += ", ";
       result += ecoreEMap.getEStructuralFeature().getEType().getName() + "Impl.class";
       result += ", ";
@@ -78,11 +78,12 @@ public class EListFactoryTestUtil {
       result += ")";
     }
     else if (eList instanceof EcoreEList) {
-      EcoreEList ecoreEList = (EcoreEList) eList;
+      EcoreEList<?> ecoreEList = (EcoreEList<?>) eList;
 
-      result += EElementUtil.getSimpleTypeName(ecoreEList.getClass().getName());
+      result += getSimpleEcoreEListTypeName(ecoreEList.getClass().getName());
+      result += "<" + ecoreEList.getEStructuralFeature().getEType().getInstanceClass().getSimpleName() + ">";
       result += "(";
-      result += ecoreEList.getEStructuralFeature().getEType().getName() + ".class";
+      result += ecoreEList.getEStructuralFeature().getEType().getInstanceClass().getSimpleName() + ".class";
       result += ", ";
       result += "this";
       result += ", ";
@@ -97,8 +98,8 @@ public class EListFactoryTestUtil {
     }
     return result;
   }
-
-  public static String getListConstructorFromGenModel(final GenModel genModel, final EList eList) {
+  
+  public static String getListConstructorFromGenModel(final GenModel genModel, final EList<?> eList) {
 
     String result = "";
     EClass eOwnerClass = getOwnerClass(eList);
@@ -130,7 +131,17 @@ public class EListFactoryTestUtil {
   // helper methods
   //
 
-  private static String getEntryEClassName(final EcoreEMap ecoreEMap) {
+  private static String getEntryFeatureInstanceClassSimpleName(EcoreEMap<?, ?> ecoreEMap, String entryFeatureName) {
+
+    EClass eEntryType = (EClass) ecoreEMap.getEStructuralFeature().getEType();
+    EStructuralFeature entryFeature = eEntryType.getEStructuralFeature(entryFeatureName);
+    if (entryFeature != null) {
+    	return entryFeature.getEType().getInstanceClass().getSimpleName();
+    }
+	return "";
+  }
+
+  private static String getEntryEClassLiteralName(final EcoreEMap<?, ?> ecoreEMap) {
     
     String result = getSimplePackageInterfaceName(ecoreEMap.getEObject().eClass());
     result += ".Literals.";
@@ -148,36 +159,41 @@ public class EListFactoryTestUtil {
     return result;
   }
 
+  private static String getSimpleEcoreEListTypeName(String qualifiedEcoreEListTypeName) {
+
+    String rawSimpleEcoreEListTypeName = qualifiedEcoreEListTypeName.substring(qualifiedEcoreEListTypeName.lastIndexOf(".") + 1, qualifiedEcoreEListTypeName.length());
+    return rawSimpleEcoreEListTypeName.replace('$', '.');
+  }
+
   private static String getSimplePackageInterfaceName(final EClass eClass) {
 
-    String eQualifiedPackageClassName = eClass.getEPackage().getClass().getName();
-    String eSimplePackageClassName = EElementUtil.getSimpleTypeName(eQualifiedPackageClassName);
+    String eSimplePackageClassName = eClass.getEPackage().getClass().getSimpleName();
     return eSimplePackageClassName.replaceFirst("Impl$", "");
   }
 
-  private static EClass getOwnerClass(final EList eList) {
+  private static EClass getOwnerClass(final EList<?> eList) {
 
     EClass result = null;
     if (eList instanceof EcoreEList) {
-      EcoreEList ecoreEList = (EcoreEList) eList;
+      EcoreEList<?> ecoreEList = (EcoreEList<?>) eList;
       result = ecoreEList.getEObject().eClass();
     }
     if (eList instanceof EcoreEMap) {
-      EcoreEMap ecoreEMap = (EcoreEMap) eList;
+      EcoreEMap<?, ?> ecoreEMap = (EcoreEMap<?, ?>) eList;
       result = ecoreEMap.getEObject().eClass();
     }
     return result;
   }
 
-  private static EStructuralFeature getImplementedFeature(final EList eList) {
+  private static EStructuralFeature getImplementedFeature(final EList<?> eList) {
 
     EStructuralFeature result = null;
     if (eList instanceof EcoreEList) {
-      EcoreEList ecoreEList = (EcoreEList) eList;
+      EcoreEList<?> ecoreEList = (EcoreEList<?>) eList;
       result = ecoreEList.getEStructuralFeature();
     }
     if (eList instanceof EcoreEMap) {
-      EcoreEMap ecoreEMap = (EcoreEMap) eList;
+      EcoreEMap<?, ?> ecoreEMap = (EcoreEMap<?, ?>) eList;
       result = ecoreEMap.getEStructuralFeature();
     }
     return result;
@@ -188,7 +204,7 @@ public class EListFactoryTestUtil {
     GenClass result = null;
     GenPackage genPackage = genModel.findGenPackage(eClass.getEPackage());
     if (genPackage != null) {
-      for (Iterator iter = genPackage.getGenClasses().iterator(); iter.hasNext();) {
+      for (Iterator<?> iter = genPackage.getGenClasses().iterator(); iter.hasNext();) {
         GenClass genClass = (GenClass) iter.next();
         if (eClass.getName().equals(genClass.getEcoreClass().getName())) {
           result = genClass;
@@ -202,7 +218,7 @@ public class EListFactoryTestUtil {
 
     GenFeature result = null;
     GenClass genClass = findGenClass(genModel, eStructuralFeature.getEContainingClass());
-    for (Iterator i = genClass.getGenFeatures().iterator(); i.hasNext();) {
+    for (Iterator<?> i = genClass.getGenFeatures().iterator(); i.hasNext();) {
       GenFeature genFeature = (GenFeature) i.next();
       if (eStructuralFeature.getName().equals(genFeature.getEcoreFeature().getName())) {
         result = genFeature;
