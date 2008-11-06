@@ -13,4 +13,4 @@ Export-Package: org.eclipse.emf.teneo.eclipselink.examples.library.edit,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.teneo.eclipselink.examples.library;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
