@@ -301,11 +301,13 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
   }
   
   protected void initDatabaseURLField() {
+    databaseURLField.add("jdbc:derby://localhost:1527/sample;create=true");
     databaseURLField.add("jdbc:oracle:thin:@localhost:1521:XE");
     databaseURLField.add("jdbc:oracle:thin:@localhost:1521:ORCL");
   }
 
   protected void initJDBCDriverField() {
+    jdbcDriverField.add("org.apache.derby.jdbc.ClientDriver");
     jdbcDriverField.add("oracle.jdbc.OracleDriver");
     jdbcDriverField.add("com.mysql.jdbc.Driver");
   }

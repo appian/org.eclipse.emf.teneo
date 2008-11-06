@@ -15,13 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -217,7 +218,9 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
   
   protected abstract URI createDatabaseURI(String persistenceUnitName, EObject eObject);
 
-  protected abstract Map<String, String> createDatabaseLoginOptionsFromPreviousPage();
+  protected abstract Map<String, Object> getPersistenceUnitProperties();
+
+  protected abstract Map<String, Object> getDatabaseLoginOptionsFromPreviousPage();
 
   //
   // helper methods
@@ -238,8 +241,9 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
     URI uri = createDatabaseURI(getTypedPreviousPage().getPersistenceUnitName(), eRootClass);
     
     ResourceSet resourceSet = new ResourceSetImpl();
+    resourceSet.getLoadOptions().putAll(getPersistenceUnitProperties());
     if (IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES.equals(getTypedPreviousPage().getUseLoginFrom())) {
-      resourceSet.getLoadOptions().putAll(createDatabaseLoginOptionsFromPreviousPage());
+      resourceSet.getLoadOptions().putAll(getDatabaseLoginOptionsFromPreviousPage());
     }
     Resource resource = null;
     try {
@@ -253,7 +257,8 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
       }
     }
     catch (Exception exception) {
-      setErrorMessage("Failed to open database. Go back and make sure that model and database access parameters are correct.");
+      setErrorMessage("Failed to open database. Go back and make sure that model and database access parameters are correct. See Error Log for details if this problem still occurs.");
+      Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), exception));
     }
     finally {
       if (resource != null) {
