@@ -97,6 +97,7 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
@@ -1800,9 +1801,11 @@ public class LibraryEditor
 		return true;
 	}
 
-	protected Map<String, String> getLoadOptions() {
+	protected Map<String, Object> getLoadOptions() {
 
-		Map<String, String> result = new HashMap<String, String>();
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+
 		IPreferenceStore store = org.eclipse.emf.teneo.eclipselink.common.ui.Activator.getDefault().getPreferenceStore();
 		String useLoginFrom = store.getString(IDatabasePreferenceConstants.USE_LOGIN_FROM);
 		if (IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES.equals(useLoginFrom)) {
@@ -1811,6 +1814,6 @@ public class LibraryEditor
 			result.put("eclipselink.jdbc.user", store.getString(IDatabasePreferenceConstants.USER_NAME));
 			result.put("eclipselink.jdbc.password", store.getString(IDatabasePreferenceConstants.PASSWORD));
 		}
-			return result;
-		}
+		return result;
+	}
 }

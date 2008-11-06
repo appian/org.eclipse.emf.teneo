@@ -11,10 +11,12 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.teneo.eclipselink.examples.library.editor
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
- org.eclipse.emf.teneo.eclipselink.examples.library.edit;visibility:=reexport,
+ org.eclipse.ui.ide;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport,
  org.eclipse.emf.teneo.eclipselink,
- org.eclipse.emf.teneo.eclipselink.common.ui
-Eclipse-LazyStart: true
+ org.eclipse.emf.teneo.eclipselink.common.ui,
+ org.eclipse.emf.teneo.eclipselink.examples.library.edit;visibility:=reexport,
+ org.eclipse.emf.teneo.eclipselink.examples.library.orm,
+ org.eclipse.emf.teneo.eclipselink.examples.derby
+Bundle-ActivationPolicy: lazy
