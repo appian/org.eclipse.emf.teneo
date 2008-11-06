@@ -11,7 +11,6 @@
 package org.eclipse.emf.teneo.eclipselink;
 
 import java.lang.reflect.Field;
-import java.util.Enumeration;
 
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.impl.EObjectImpl;

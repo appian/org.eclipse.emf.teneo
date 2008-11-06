@@ -45,12 +45,12 @@ import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
  * This class implements the {@link EclipseLinkResource} interface and
  * represents a EclipseLink resource.
  * <p>
- * EclipseLink resources provide a link between modeling using EMF and persistence
- * using relational databases. They are implementations of EMF's intrinsic
- * persistence API and can be used to load, work on, and save EMF models in a
- * relational database according to a given EclipseLink O/R mapping definition and a
- * EclipseLink session configuration. As such, EclipseLink resources offer the following
- * benefits:
+ * EclipseLink resources provide a link between modeling using EMF and
+ * persistence using relational databases. They are implementations of EMF's
+ * intrinsic persistence API and can be used to load, work on, and save EMF
+ * models in a relational database according to a given EclipseLink O/R mapping
+ * definition and a EclipseLink session configuration. As such, EclipseLink
+ * resources offer the following benefits:
  * </p>
  * <ul>
  * <li>Database persistence for EMF models through same API as XML/XMI file
@@ -58,8 +58,8 @@ import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
  * <li>Fully tree-oriented handling of models during load and save</li>
  * <li>Automatic registration/deletion of objects being added/removed in EMF
  * model in underlying EclipseLink unit of work</li>
- * <li>Support of cross-resource references and lazy loading across EclipseLink and
- * XML/XMI resources</li>
+ * <li>Support of cross-resource references and lazy loading across EclipseLink
+ * and XML/XMI resources</li>
  * </ul>
  * <p>
  * However, several features of regular EMF resources do not apply here, notably
@@ -68,23 +68,23 @@ import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
  * for XML/XMI resources and therefore has been disabled completely.
  * </p>
  * <p>
- * A EclipseLink resource typically contains a certain subset of objects stored in
- * the underlying database. It is identified by the URI passed to or created by
- * its constructor. This URI must or will be a EclipseLink URI and indicates an
- * optional database login, a database session declared in the EclipseLink sessions
- * configuration (sessions.xml), and a query returning the objects which
- * constitute the contents of the EclipseLink resource.
+ * A EclipseLink resource typically contains a certain subset of objects stored
+ * in the underlying database. It is identified by the URI passed to or created
+ * by its constructor. This URI must or will be a EclipseLink URI and indicates
+ * an optional database login, a database session declared in the EclipseLink
+ * sessions configuration (sessions.xml), and a query returning the objects
+ * which constitute the contents of the EclipseLink resource.
  * </p>
  * <p>
- * Technically, a EclipseLink resource encapsulates a EclipseLink database session and
- * unit of work. Both are created lazily either when the EclipseLink resource is
- * loaded or when it is filled with contents. Their destruction or release
- * respectively takes place during unlaod. The same database session may be
- * shared among multiple EclipseLink resources but each EclipseLink resource will have
- * an individual unit of work. In order to guarantee a consistent lifecycle
- * management of database session(s) and unit(s) of work, applications have to
- * make sure that EclipseLink resources are always explicitly unloaded when they are
- * no longer needed.
+ * Technically, a EclipseLink resource encapsulates a EclipseLink database
+ * session and unit of work. Both are created lazily either when the EclipseLink
+ * resource is loaded or when it is filled with contents. Their destruction or
+ * release respectively takes place during unlaod. The same database session may
+ * be shared among multiple EclipseLink resources but each EclipseLink resource
+ * will have an individual unit of work. In order to guarantee a consistent
+ * lifecycle management of database session(s) and unit(s) of work, applications
+ * have to make sure that EclipseLink resources are always explicitly unloaded
+ * when they are no longer needed.
  * </p>
  * <p>
  * EclipseLink supports the customization of database sessions for all kinds of
@@ -93,11 +93,11 @@ import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
  * enumeration types. However, as the database session is encapsulated inside
  * the EclipseLink resource it should not and typically never will be accessed
  * directly through the application. Therefore, applications have to provide a
- * session pre-login listener and register it with EclipseLink through the EclipseLink
- * sessions configuration. This pre-login listener is invoked by EclipseLink when a
- * EclipseLink resource is loaded or created and filled with contents and gives an
- * oppertunity to do session customizations according to application-specific
- * requirements.
+ * session pre-login listener and register it with EclipseLink through the
+ * EclipseLink sessions configuration. This pre-login listener is invoked by
+ * EclipseLink when a EclipseLink resource is loaded or created and filled with
+ * contents and gives an oppertunity to do session customizations according to
+ * application-specific requirements.
  * </p>
  */
 public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLinkResource {
@@ -138,8 +138,8 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
   private List<EObject> eObjectsToBeRemovedFromDatabase = new ArrayList<EObject>();
 
   /**
-   * Creates an instance with the given
-   * {@link org.eclipse.emf.common.util.URI URI}.
+   * Creates an instance with the given {@link org.eclipse.emf.common.util.URI
+   * URI}.
    * <p>
    * The {@link org.eclipse.emf.common.util.URI URI} must be a EclipseLink
    * {@link org.eclipse.emf.common.util.URI URI}. EclipseLink
@@ -156,24 +156,24 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
    * <li>A protocol which is always <code><b>eclipselink:</b></code></li>
    * <li>An optional authority which is an <b>alias for</b> a <b>database
    * login</b> to be used. It refers to a
-   * {@link org.eclipse.persistence.sessions.DatabaseLogin DatabaseLogin} instance which
-   * has been made available through the
-   * {@link EclipseLinkSettingsRegistry}. When omitted, the database
-   * login specified within the EclipseLink session configuration will be taken as a
+   * {@link org.eclipse.persistence.sessions.DatabaseLogin DatabaseLogin}
+   * instance which has been made available through the
+   * {@link EclipseLinkSettingsRegistry}. When omitted, the database login
+   * specified within the EclipseLink session configuration will be taken as a
    * default.</li>
    * <li>A segment representing the <b>name of</b> the applicable <b>database
-   * session</b> declared in the EclipseLink sessions configuration. The sessions
-   * configuration is expected to be provided in a file on the application's
-   * classpath, and therefore doesn't need to be specified explicitly. The name
-   * of this file has either to be left at its default
+   * session</b> declared in the EclipseLink sessions configuration. The
+   * sessions configuration is expected to be provided in a file on the
+   * application's classpath, and therefore doesn't need to be specified
+   * explicitly. The name of this file has either to be left at its default
    * <code>sesssions.xml</code> or must be specified using
-   * {@link org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResource.OPTION_SESSIONS_CONFIGURATION_FILE_NAME OPTION_SESSIONS_CONFIGURATION_FILE_NAME}.</li>
-   * <li>A query string which is an <b>alias for</b> a <b>contents query</b>.
-   * It refers to a
-   * {@link org.eclipse.persistence.queries.ReadAllQuery ReadAllQuery} instance
-   * which has been made available through the
-   * {@link EclipseLinkSettingsRegistry}. If the alias is a qualified
-   * Java class name and no matching contents query can be found, a new
+   * {@link org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResource.OPTION_SESSIONS_CONFIGURATION_FILE_NAME
+   * OPTION_SESSIONS_CONFIGURATION_FILE_NAME}.</li>
+   * <li>A query string which is an <b>alias for</b> a <b>contents query</b>. It
+   * refers to a {@link org.eclipse.persistence.queries.ReadAllQuery
+   * ReadAllQuery} instance which has been made available through the
+   * {@link EclipseLinkSettingsRegistry}. If the alias is a qualified Java class
+   * name and no matching contents query can be found, a new
    * {@link org.eclipse.persistence.queries.ReadAllQuery contents query} for
    * reading all instances of the given class will be created on the fly and
    * added to the {@link EclipseLinkSettingsRegistry}.
@@ -213,31 +213,31 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
    * 
    * @param loginAlias
    *          the alias for a database login to be used. It refers to a
-   *          {@link org.eclipse.persistence.sessions.DatabaseLogin DatabaseLogin}
-   *          instance which has been made available through the
-   *          {@link EclipseLinkSettingsRegistry}. If set to null, the
-   *          database login specified within the EclipseLink session configuration
-   *          will be taken as a default.
+   *          {@link org.eclipse.persistence.sessions.DatabaseLogin
+   *          DatabaseLogin} instance which has been made available through the
+   *          {@link EclipseLinkSettingsRegistry}. If set to null, the database
+   *          login specified within the EclipseLink session configuration will
+   *          be taken as a default.
    * @param persistenceUnitName
-   *          the name of applicable database session declared in the EclipseLink
-   *          sessions configuration. Must not be null nor empty. The sessions
-   *          configuration is expected to be provided in a file on the
-   *          application's classpath, and therefore doesn't need to be
+   *          the name of applicable database session declared in the
+   *          EclipseLink sessions configuration. Must not be null nor empty.
+   *          The sessions configuration is expected to be provided in a file on
+   *          the application's classpath, and therefore doesn't need to be
    *          specified explicitly. The name of this file has either to be left
    *          at its default <code>sesssions.xml</code> or must be specified
    *          using
-   *          {@link org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResource.OPTION_SESSIONS_CONFIGURATION_FILE_NAME OPTION_SESSIONS_CONFIGURATION_FILE_NAME}.
+   *          {@link org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResource.OPTION_SESSIONS_CONFIGURATION_FILE_NAME
+   *          OPTION_SESSIONS_CONFIGURATION_FILE_NAME}.
    * @param contentsQueryAlias
    *          the alias for a contents query. Must not be null nor empty. It
-   *          refers to a
-   *          {@link org.eclipse.persistence.queries.ReadAllQuery ReadAllQuery}
-   *          instance which has been made available through the
-   *          {@link EclipseLinkSettingsRegistry}. If the alias is a
-   *          qualified Java class name and no matching contents query can be
-   *          found, a new
-   *          {@link org.eclipse.persistence.queries.ReadAllQuery contents query}
-   *          for reading all instances of the given class will be created on
-   *          the fly and added to the {@link EclipseLinkSettingsRegistry}.
+   *          refers to a {@link org.eclipse.persistence.queries.ReadAllQuery
+   *          ReadAllQuery} instance which has been made available through the
+   *          {@link EclipseLinkSettingsRegistry}. If the alias is a qualified
+   *          Java class name and no matching contents query can be found, a new
+   *          {@link org.eclipse.persistence.queries.ReadAllQuery contents
+   *          query} for reading all instances of the given class will be
+   *          created on the fly and added to the
+   *          {@link EclipseLinkSettingsRegistry}.
    * @return the newly created {@link EclipseLinkResourceImpl} instance.
    */
   public EclipseLinkResourceImpl(String persistenceUnitName, String contentsQueryAlias) {
@@ -282,10 +282,10 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
     protected void loaded() {
 
       if (!isLoaded()) {
-        Map<Object, Object> options = defaultLoadOptions;
+        Map<?, ?> options = defaultLoadOptions;
         ResourceSet resourceSet = getResourceSet();
         if (resourceSet != null) {
-          options = (Map<Object, Object>) mergeMaps(resourceSet.getLoadOptions(), options);
+          options = mergeMaps(resourceSet.getLoadOptions(), options);
         }
         openDatabase(options);
       }
@@ -312,17 +312,18 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
    * and setting objects to be proxies after unloading resources of any kind.
    * Both Ecore ID attribute based and structured URI
    * {@link org.eclipse.emf.common.util.URI#fragment fragment}s as per
-   * {@link org.eclipse.emf.ecore.InternalEObject#eURIFragmentSegment InternalEObject.eURIFragmentSegment}
-   * are supported. When an ID attribute has been defined on the
-   * {@link org.eclipse.emf.ecore.EObject#eClass eClass} of the given object,
-   * the URI {@link org.eclipse.emf.common.util.URI#fragment fragment} will not
-   * only consist of the ID itself but also contain the qualified owner class
-   * name as well as the name of the ID attribute. The resulting format is as
-   * follows:
+   * {@link org.eclipse.emf.ecore.InternalEObject#eURIFragmentSegment
+   * InternalEObject.eURIFragmentSegment} are supported. When an ID attribute
+   * has been defined on the {@link org.eclipse.emf.ecore.EObject#eClass eClass}
+   * of the given object, the URI
+   * {@link org.eclipse.emf.common.util.URI#fragment fragment} will not only
+   * consist of the ID itself but also contain the qualified owner class name as
+   * well as the name of the ID attribute. The resulting format is as follows:
    * </p>
    * <ul>
    * <code>ownerTypeName|idAttributeName='id'</code>
-   * </ul>.
+   * </ul>
+   * .
    * 
    * @param eObject
    *          the object to identify.
@@ -338,8 +339,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       // create decorated ID
       EAttribute eIDAttribute = eObject.eClass().getEIDAttribute();
       result = eObject.eClass().getName() + "|" + eIDAttribute.getName() + "='" + id + "'";
-    }
-    else {
+    } else {
       result = super.getURIFragment(eObject);
     }
     return result;
@@ -368,7 +368,8 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
    * </p>
    * <ul>
    * <code>ownerTypeName|idAttributeName='id'</code>
-   * </ul>.
+   * </ul>
+   * .
    * 
    * @param fragment
    *          the URI {@link org.eclipse.emf.common.util.URI#fragment fragment}
@@ -389,8 +390,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       boolean valid = true;
       if (idComponents.length < 3) {
         valid = false;
-      }
-      else {
+      } else {
         for (int i = 0; i < 3; i++) {
           if (idComponents[i] == null || idComponents[i].trim().length() == 0) {
             valid = false;
@@ -412,8 +412,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       }
 
       return result;
-    }
-    catch (RuntimeException exception) {
+    } catch (RuntimeException exception) {
       throw new WrappedException(exception);
     }
   }
@@ -431,12 +430,13 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
     // be sure that object to be attached has been created by application
     // and is not just read from database
     if (!readingContentsFromDatabase) {
-        // TODO replace content iterator by automatic validation/fixing of orm cascading settings
-        Iterator<EObject> allContents = new EclipseLinkContentTreeIterator<EObject>(Collections.singletonList(eObject), true);
-        while (allContents.hasNext()) {
-          EObject eContainedObject = allContents.next();
-          entityManager.persist(eContainedObject);
-        }
+      // TODO replace content iterator by automatic validation/fixing of orm
+      // cascading settings
+      Iterator<EObject> allContents = new EclipseLinkContentTreeIterator<EObject>(Collections.singletonList(eObject), true);
+      while (allContents.hasNext()) {
+        EObject eContainedObject = allContents.next();
+        entityManager.persist(eContainedObject);
+      }
     }
   }
 
@@ -469,8 +469,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
         // reading from database goes via entity manager rather than input
         // stream
         load(null, options);
-      }
-      catch (WrappedException exception) {
+      } catch (WrappedException exception) {
         setLoaded(false);
         throw exception;
       }
@@ -486,9 +485,9 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
    * iterator over all available content objects, which have already been read
    * from the database, is required but a retrieval of new content objects from
    * the database has to be avoided. I.e. the iterator will only walk through
-   * contained objects which exist as clones in the underlying EclipseLink unit of
-   * work. All other contained objects will be skipped and therefore won't get
-   * on demand loaded.
+   * contained objects which exist as clones in the underlying EclipseLink unit
+   * of work. All other contained objects will be skipped and therefore won't
+   * get on demand loaded.
    * </p>
    */
   public static class EclipseLinkContentTreeIterator<E> extends ContentTreeIterator<E> {
@@ -521,12 +520,10 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
               if (indirectEContainer.isInstantiated()) {
                 eLoadedContainmentReferences.add(eReference);
               }
-            }
-            else {
+            } else {
               eLoadedContainmentReferences.add(eReference);
             }
-          }
-          else {
+          } else {
             // TODO fix to check woven ValueHolder
             // Object childObject = eObject.eGet(eReference);
             // ProxyIndirectionPolicy policy = new ProxyIndirectionPolicy();
@@ -536,8 +533,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
           }
         }
         result = new EContentsEList<EObject>(eObject, eLoadedContainmentReferences).iterator();
-      }
-      else {
+      } else {
         result = super.getEObjectChildren(eObject);
       }
       return result;
@@ -556,7 +552,8 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       // actually delete objects which have previously been detached
       if (eObjectsToBeRemovedFromDatabase.size() > 0) {
         for (EObject eObject : eObjectsToBeRemovedFromDatabase) {
-          // TODO replace content iterator by automatic validation/fixing of orm cascading settings
+          // TODO replace content iterator by automatic validation/fixing of orm
+          // cascading settings
           Iterator<EObject> allContents = new EclipseLinkContentTreeIterator<EObject>(Collections.singletonList(eObject), true);
           while (allContents.hasNext()) {
             EObject eContainedObject = allContents.next();
@@ -569,8 +566,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       // commit but continue transaction
       entityManager.getTransaction().commit();
       entityManager.getTransaction().begin();
-    }
-    catch (RuntimeException exception) {
+    } catch (RuntimeException exception) {
       throw new WrappedException(exception);
     }
   }
@@ -578,7 +574,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
   @Override
   protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
 
-    openDatabase((Map<Object, Object>) options);
+    openDatabase(options);
     readContentsFromDatabase(options);
   }
 
@@ -639,7 +635,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
     defaultLoadOptions.put("eclipselink.logging.level", "FINE");
   }
 
-  protected void openDatabase(Map<Object, Object> options) {
+  protected void openDatabase(Map<?, ?> options) {
 
     if (options == null) {
       String msg = "Argument for parameter 'options' must not be null.";
@@ -653,15 +649,18 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       if (!persistenceUnitNameToEntityManagerFactoryInstanceMap.containsKey(persistenceUnitName)) {
         // create and register new entity manager factory for given persistence
         // unit name according to sessions configuration file
-		options.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+        if (!options.containsKey(PersistenceUnitProperties.CLASSLOADER)) {
+          throw new RuntimeException(
+              "Persistence unit property 'PersistenceUnitProperties.CLASSLOADER' must be initialized with some classloader which has persistence unit named '"
+                  + persistenceUnitName + "' on its classpath.");
+        }
         EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(persistenceUnitName, options);
         if (entityManagerFactory == null) {
-        	throw new RuntimeException("Unable to create entity manager factory for persistence unit named '" + persistenceUnitName + "'.");
+          throw new RuntimeException("Unable to create entity manager factory for persistence unit named '" + persistenceUnitName + "'.");
         }
         entityManagerFactoryInstance = new EntityManagerFactoryInstance(entityManagerFactory);
         persistenceUnitNameToEntityManagerFactoryInstanceMap.put(persistenceUnitName, entityManagerFactoryInstance);
-      }
-      else {
+      } else {
         // retrieve existing entity manager factory for given persistence unit
         // name
         entityManagerFactoryInstance = persistenceUnitNameToEntityManagerFactoryInstanceMap.get(persistenceUnitName);
@@ -677,8 +676,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       EntityManagerFactory entityManagerFactory = entityManagerFactoryInstance.getEntityManagerFactory();
       entityManager = entityManagerFactory.createEntityManager();
       entityManager.getTransaction().begin();
-    }
-    catch (RuntimeException exception) {
+    } catch (RuntimeException exception) {
       closeDatabase();
       throw new WrappedException(exception);
     }
@@ -693,8 +691,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
       List<EObject> contents = entityManager.createQuery(contentsQuery).getResultList();
       getContents().addAll(contents);
       readingContentsFromDatabase = false;
-    }
-    catch (RuntimeException exception) {
+    } catch (RuntimeException exception) {
       throw new WrappedException(exception);
     }
   }

@@ -53,7 +53,7 @@ public class EmfQueryBasedValueHolder extends QueryBasedValueHolder implements E
 
   @Override
   protected Object instantiate(AbstractSession session) throws DatabaseException {
-    return doInstantiate(session);
+      return doInstantiate(session);
   }
   
   @SuppressWarnings("unchecked")

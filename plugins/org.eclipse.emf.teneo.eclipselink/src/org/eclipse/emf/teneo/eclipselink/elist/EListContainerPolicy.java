@@ -96,7 +96,6 @@ public class EListContainerPolicy extends ListContainerPolicy {
     }
   }
 
-  @SuppressWarnings("unchecked")
   @Override
   public Object cloneFor(Object container) {
     return doCloneFor(container);

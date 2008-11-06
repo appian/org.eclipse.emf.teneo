@@ -1,3 +1,6 @@
-#Tue Aug 02 17:03:35 CEST 2005
+#Sun Nov 02 00:13:12 CET 2008
 eclipse.preferences.version=1
+formatter_profile=_Teneo EclipseLink
+formatter_settings_version=11
 internal.default.compliance=default
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
