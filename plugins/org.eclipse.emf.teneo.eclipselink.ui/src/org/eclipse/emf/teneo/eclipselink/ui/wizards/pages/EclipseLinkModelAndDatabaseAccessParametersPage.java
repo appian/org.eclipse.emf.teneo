@@ -10,19 +10,19 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.ui.wizards.pages;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+
+import javax.persistence.spi.PersistenceUnitInfo;
 
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.BasicModelAndDatabaseAccessParametersPage;
 import org.eclipse.persistence.internal.jpa.deployment.Archive;
 import org.eclipse.persistence.internal.jpa.deployment.PersistenceUnitProcessor;
-import org.eclipse.persistence.internal.jpa.deployment.SEPersistenceUnitInfo;
 
 public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelAndDatabaseAccessParametersPage {
 
-  private List<SEPersistenceUnitInfo> persistenceUnits;
+  private Map<String, PersistenceUnitInfo> persistenceUnits;
 
   public EclipseLinkModelAndDatabaseAccessParametersPage(String pageName) {
     super(pageName);
@@ -34,11 +34,7 @@ public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelA
   
   @Override
   protected Set<String> getPersistenceUnitNames() {
-    Set<String> result = new HashSet<String>();
-    for (SEPersistenceUnitInfo persistenceUnit : getPersistenceUnits()) {
-      result.add(persistenceUnit.getPersistenceUnitName());
-    }
-    return result;
+    return getPersistenceUnits().keySet();
   }
   
   @Override
@@ -54,31 +50,23 @@ public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelA
   // helper methods
   //
 
-  private List<SEPersistenceUnitInfo> getPersistenceUnits() {
+  protected Map<String, PersistenceUnitInfo> getPersistenceUnits() {
     if (persistenceUnits == null) {
-      persistenceUnits = new ArrayList<SEPersistenceUnitInfo>();
+      persistenceUnits = new HashMap<String, PersistenceUnitInfo>();
       ClassLoader classLoader = this.getClass().getClassLoader();
       Set<Archive> archives = PersistenceUnitProcessor.findPersistenceArchives(classLoader);
       for (Archive archive : archives) {
-        persistenceUnits.addAll(PersistenceUnitProcessor.getPersistenceUnits(archive, classLoader));
+    	for (PersistenceUnitInfo persistenceUnit : PersistenceUnitProcessor.getPersistenceUnits(archive, classLoader)) {
+          persistenceUnits.put(persistenceUnit.getPersistenceUnitName(), persistenceUnit);
+    	}
       }
     }
     return persistenceUnits;
   }
 
-  private SEPersistenceUnitInfo getPersistenceUnit(String persistenceUnitName) {
-    SEPersistenceUnitInfo result = null;
-    for (SEPersistenceUnitInfo persistenceUnit : getPersistenceUnits()) {
-      if (persistenceUnit.getPersistenceUnitName().equals(persistenceUnitName)) {
-        result = persistenceUnit;
-      }
-    }
-    return result;
-  }
-
   protected String getPersistenceUnitProperty(String persistenceUnitName, String propertyName) {
     String result = "";
-    SEPersistenceUnitInfo persistenceUnit = getPersistenceUnit(persistenceUnitName);
+    PersistenceUnitInfo persistenceUnit = getPersistenceUnits().get(persistenceUnitName);
     if (persistenceUnit != null) {
       if (persistenceUnit.getProperties().containsKey(propertyName)) {
         result = (String) persistenceUnit.getProperties().get(propertyName);

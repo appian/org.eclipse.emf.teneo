@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.AbstractRootObjectAndModelEditorPage;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
+import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 public class EclipseLinkRootObjectAndModelEditorPage extends AbstractRootObjectAndModelEditorPage {
   
@@ -42,8 +43,15 @@ public class EclipseLinkRootObjectAndModelEditorPage extends AbstractRootObjectA
   }
 
   @Override
-  protected Map<String, String> createDatabaseLoginOptionsFromPreviousPage() {
-    Map<String, String> result = new HashMap<String, String>();
+  protected Map<String, Object> getPersistenceUnitProperties() {
+    Map<String, Object> result = new HashMap<String, Object>();
+    result.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+    return result;
+  }
+  
+  @Override
+  protected Map<String, Object> getDatabaseLoginOptionsFromPreviousPage() {
+    Map<String, Object> result = new HashMap<String, Object>();
     result.put("eclipselink.jdbc.url", getTypedPreviousPage().getDatabaseURL());
     result.put("eclipselink.jdbc.driver", getTypedPreviousPage().getJDBCDriver());
     result.put("eclipselink.jdbc.user", getTypedPreviousPage().getUserName());
