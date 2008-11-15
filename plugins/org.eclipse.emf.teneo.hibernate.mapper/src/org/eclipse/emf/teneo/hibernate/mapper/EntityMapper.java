@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.41 2008/10/12 21:03:12 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.42 2008/11/15 21:37:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -18,19 +18,14 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
@@ -520,7 +515,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				new HashMap<String, List<PAnnotatedEStructuralFeature>>();
 		for (PAnnotatedEStructuralFeature feature : entity.getPaEStructuralFeatures()) {
 			// find the table for the feature
-			final String tableName = getSecondaryTableName(feature);
+			final String tableName = getHbmContext().getSecondaryTableName(feature);
 			// if there put it in the correct list
 			if (!tableNames.contains(tableName)) {
 				final String message =
@@ -592,68 +587,6 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				getHbmContext().setCurrent(joinElement.getParent());
 			}
 		}
-	}
-
-	/**
-	 * Returns the table name from the column annotation or the joincolumn annotation Also takes
-	 * associationoverride or attributeoverride into account
-	 */
-	public String getSecondaryTableName(PAnnotatedEStructuralFeature pef) {
-		String tableName = null;
-
-		if (pef instanceof PAnnotatedEAttribute) {
-			final PAnnotatedEAttribute pea = (PAnnotatedEAttribute) pef;
-			Column c = getHbmContext().getAttributeOverride(pea);
-			if (c == null) {
-				c = pef.getColumn();
-			}
-			if (c != null) {
-				tableName = c.getTable();
-			}
-		} else {
-			final PAnnotatedEReference per = (PAnnotatedEReference) pef;
-			final MappingContext mc = getHbmContext();
-			mc.pushOverrideOnStack();
-			mc.addAttributeOverrides(per.getAttributeOverrides());
-			mc.addAssociationOverrides(per.getAssociationOverrides());
-
-			try {
-				if (per.getEmbedded() != null) {
-					// check the embedded efeatures
-					// take the first feature of the target type
-					// assume that they are all handled in the same table
-					final EClass eClass = per.getModelEReference().getEReferenceType();
-					for (EAttribute ea : eClass.getEAllAttributes()) {
-						final Column c = mc.getAttributeOverride(ea.getName());
-						if (c != null && c.getTable() != null) {
-							return c.getTable();
-						}
-					}
-					for (EReference er : eClass.getEAllReferences()) {
-						final List<JoinColumn> jcs = mc.getAssociationOverrides(er.getName());
-						if (jcs != null && jcs.size() > 0) {
-							return jcs.get(0).getTable();
-						}
-					}
-				} else {
-					List<JoinColumn> jcs = getHbmContext().getAssociationOverrides(per);
-					if (jcs == null || jcs.size() == 0) {
-						jcs = per.getJoinColumns();
-					}
-					if (jcs != null && jcs.size() > 0) {
-						for (JoinColumn jc : jcs) {
-							if (jc.getTable() != null) {
-								tableName = jc.getTable();
-								break;
-							}
-						}
-					}
-				}
-			} finally {
-				getHbmContext().popOverrideStack();
-			}
-		}
-		return tableName;
 	}
 
 	/** Process one feature */

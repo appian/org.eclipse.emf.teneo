@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToOneMapper.java,v 1.33 2008/09/23 22:11:49 mtaal Exp $
+ * </copyright> $Id: OneToOneMapper.java,v 1.34 2008/11/15 21:37:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -96,7 +96,11 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 		addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), oto.getCascade()));
 
-		associationElement.addAttribute("not-null", (oto.isOptional() ? "false" : "true"));
+		final boolean isNullable =
+				(oto.isOptional() || getHbmContext().isDoForceOptional(paReference) || getHbmContext()
+					.isCurrentElementFeatureMap());
+
+		associationElement.addAttribute("not-null", (isNullable ? "false" : "true"));
 
 		if (!associationElement.getName().equals("any")) {
 			addLazyProxy(associationElement, oto.getFetch(), paReference);
@@ -113,14 +117,11 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			addForeignKeyAttribute(associationElement, paReference);
 			addLazyProxy(associationElement, oto.getFetch(), paReference);
 			final List<JoinColumn> joinColumns = getJoinColumns(paReference);
-			final boolean forceNullable =
-					(oto.isOptional() || getHbmContext().isForceOptional() || getHbmContext()
-						.isCurrentElementFeatureMap());
-			addJoinColumns(paReference, associationElement, joinColumns, forceNullable);
+			addJoinColumns(paReference, associationElement, joinColumns, isNullable);
 
 			// apparently sql server does not like a unique constraint on a nullable column
 			// null values also seem to be seen as a unique value.
-			if (!forceNullable) {
+			if (!isNullable) {
 				associationElement.addAttribute("unique", "true");
 			}
 		}

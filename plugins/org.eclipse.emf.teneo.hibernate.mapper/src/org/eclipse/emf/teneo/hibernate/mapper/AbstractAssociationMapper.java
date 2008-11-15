@@ -164,8 +164,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 			Element columnElement =
 					associationElement.addElement("column").addAttribute("not-null",
-						joinColumn.isNullable() || forceNullable ? "false" : "true").addAttribute("unique",
-						joinColumn.isUnique() ? "true" : "false");
+						(joinColumn.isNullable() && joinColumn.isSetNullable()) || forceNullable ? "false" : "true")
+						.addAttribute("unique", joinColumn.isUnique() ? "true" : "false");
 			if (joinColumn.getName() != null) {
 
 				columnElement.addAttribute("name", getHbmContext().trunc(joinColumn.getName()));

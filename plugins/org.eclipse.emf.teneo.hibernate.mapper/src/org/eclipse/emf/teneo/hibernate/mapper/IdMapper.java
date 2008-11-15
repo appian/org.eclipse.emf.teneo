@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.28 2008/10/13 05:37:05 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.29 2008/11/15 21:37:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -168,8 +168,8 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		addForeignKeyAttribute(associationElement, paReference);
 		addLazyProxy(associationElement, mto.getFetch(), paReference);
 
-		addJoinColumns(paReference, associationElement, jcs, getHbmContext().isForceOptional() || mto.isOptional() ||
-				getHbmContext().isCurrentElementFeatureMap());
+		addJoinColumns(paReference, associationElement, jcs, getHbmContext().isDoForceOptional(paReference) ||
+				mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 
 		// MT: TODO; the characteristic of the other side should be checked (if
 		// present), if the otherside is a onetoone
@@ -229,7 +229,9 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		if (id.getEnumerated() == null) {
 			setType(id, usedIdElement);
 
-			if (eAttribute.getEType().getDefaultValue() != null) {
+			if (eAttribute.getDefaultValue() != null) {
+				usedIdElement.addAttribute("unsaved-value", eAttribute.getDefaultValue().toString());
+			} else if (eAttribute.getEType().getDefaultValue() != null) {
 				usedIdElement.addAttribute("unsaved-value", eAttribute.getEType().getDefaultValue().toString());
 			}
 

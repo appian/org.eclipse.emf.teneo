@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: MappingContext.java,v 1.31 2008/07/13 13:12:31 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.32 2008/11/15 21:37:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -16,6 +16,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.AbstractProcessingContext;
@@ -24,6 +25,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
@@ -41,7 +44,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -650,8 +653,9 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	/**
 	 * @return the forceOptional
 	 */
-	public boolean isForceOptional() {
-		return forceOptional;
+	public boolean isDoForceOptional(PAnnotatedEStructuralFeature aFeature) {
+		final boolean hasSecondaryTable = getSecondaryTableName(aFeature) != null;
+		return !hasSecondaryTable && forceOptional;
 	}
 
 	/**
@@ -745,4 +749,66 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	public PersistenceOptions getPersistenceOptions() {
 		return persistenceOptions;
 	}
+
+	/**
+	 * Returns the table name from the column annotation or the joincolumn annotation Also takes
+	 * associationoverride or attributeoverride into account
+	 */
+	public String getSecondaryTableName(PAnnotatedEStructuralFeature pef) {
+		String tableName = null;
+
+		if (pef instanceof PAnnotatedEAttribute) {
+			final PAnnotatedEAttribute pea = (PAnnotatedEAttribute) pef;
+			Column c = getAttributeOverride(pea);
+			if (c == null) {
+				c = pef.getColumn();
+			}
+			if (c != null) {
+				tableName = c.getTable();
+			}
+		} else {
+			final PAnnotatedEReference per = (PAnnotatedEReference) pef;
+			pushOverrideOnStack();
+			addAttributeOverrides(per.getAttributeOverrides());
+			addAssociationOverrides(per.getAssociationOverrides());
+
+			try {
+				if (per.getEmbedded() != null) {
+					// check the embedded efeatures
+					// take the first feature of the target type
+					// assume that they are all handled in the same table
+					final EClass eClass = per.getModelEReference().getEReferenceType();
+					for (EAttribute ea : eClass.getEAllAttributes()) {
+						final Column c = getAttributeOverride(ea.getName());
+						if (c != null && c.getTable() != null) {
+							return c.getTable();
+						}
+					}
+					for (EReference er : eClass.getEAllReferences()) {
+						final List<JoinColumn> jcs = getAssociationOverrides(er.getName());
+						if (jcs != null && jcs.size() > 0) {
+							return jcs.get(0).getTable();
+						}
+					}
+				} else {
+					List<JoinColumn> jcs = getAssociationOverrides(per);
+					if (jcs == null || jcs.size() == 0) {
+						jcs = per.getJoinColumns();
+					}
+					if (jcs != null && jcs.size() > 0) {
+						for (JoinColumn jc : jcs) {
+							if (jc.getTable() != null) {
+								tableName = jc.getTable();
+								break;
+							}
+						}
+					}
+				}
+			} finally {
+				popOverrideStack();
+			}
+		}
+		return tableName;
+	}
+
 }

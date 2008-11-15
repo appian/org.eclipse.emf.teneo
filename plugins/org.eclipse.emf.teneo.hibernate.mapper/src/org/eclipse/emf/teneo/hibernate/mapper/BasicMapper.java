@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: BasicMapper.java,v 1.32 2008/07/12 13:10:34 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.33 2008/11/15 21:37:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -53,7 +53,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
 		addColumnsAndFormula(propElement, paAttribute, getColumns(paAttribute), isNullable(basic, paAttribute), true);
 		// todo check: not-null is also set in the call to addcolumns, decide were to do what!
-		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
+		final boolean isNullable = isNullable(basic, paAttribute);
+		propElement.addAttribute("not-null", isNullable ? "false" : "true");
 		setType(paAttribute, propElement);
 
 		if (((HbAnnotatedEAttribute) paAttribute).getGenerated() != null &&
@@ -123,7 +124,9 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
 		addColumnsAndFormula(propElement, paAttribute, getColumns(paAttribute), isNullable(basic, paAttribute), true);
-		propElement.addAttribute("not-null", isNullable(basic, paAttribute) ? "false" : "true");
+		final boolean isNullable = isNullable(basic, paAttribute);
+		final boolean isNullable2 = isNullable(basic, paAttribute);
+		propElement.addAttribute("not-null", isNullable ? "false" : "true");
 		setType(paAttribute, propElement);
 
 		addAccessor(propElement);
@@ -209,7 +212,8 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 // return getHbmContext().isForceOptional() || basic.isOptional() ||
 // getHbmContext().isCurrentElementFeatureMap() &&
 // (aattr.getColumn() != null || aattr.getColumn().isNullable());
-		return getHbmContext().isForceOptional() || (aattr.getColumn() == null && basic.isOptional()) ||
+		return getHbmContext().isDoForceOptional(aattr) ||
+				((aattr.getColumn() == null || !aattr.getColumn().isSetNullable()) && basic.isOptional()) ||
 				getHbmContext().isCurrentElementFeatureMap() ||
 				(aattr.getColumn() != null && aattr.getColumn().isNullable());
 	}
