@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceVisitTreeAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryUseMappingFileAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
@@ -50,7 +51,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.87 $
+ * @version $Revision: 1.88 $
  */
 public class AllTests {
 
@@ -60,6 +61,7 @@ public class AllTests {
 					.instance().getConfigurations());
 // suite.addTestSuite(LibraryLargeAction.class);
 
+		suite.addTestSuite(LibraryResourceVisitTreeAction.class);
 		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(LibraryResourceAction.class);

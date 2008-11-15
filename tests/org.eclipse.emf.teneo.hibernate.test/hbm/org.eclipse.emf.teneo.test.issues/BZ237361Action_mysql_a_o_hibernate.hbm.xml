@@ -41,7 +41,7 @@
 				<column name="`many_e_id`" not-null="true" unique="false"/>
 			</key>
 			<many-to-one name="one" entity-name="One" lazy="false" insert="true" update="true" cascade="merge,persist,save-update,lock,refresh" foreign-key="many_one">
-				<column not-null="true" unique="false" name="`one_e_id`"/>
+				<column not-null="false" unique="false" name="`one_e_id`"/>
 			</many-to-one>
 		</join>
 	</class>

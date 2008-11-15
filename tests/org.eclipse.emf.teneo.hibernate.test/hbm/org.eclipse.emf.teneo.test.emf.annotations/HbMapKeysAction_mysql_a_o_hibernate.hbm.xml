@@ -30,7 +30,7 @@
 				<column name="`join_column_city`" not-null="false" unique="false"/>
 			</key>
 			<map-key-many-to-many entity-name="Writer">
-				<column not-null="false" unique="false" name="`the_citywriter_id`"/>
+				<column not-null="true" unique="false" name="`the_citywriter_id`"/>
 			</map-key-many-to-many>
 			<one-to-many entity-name="City"/>
 		</map>

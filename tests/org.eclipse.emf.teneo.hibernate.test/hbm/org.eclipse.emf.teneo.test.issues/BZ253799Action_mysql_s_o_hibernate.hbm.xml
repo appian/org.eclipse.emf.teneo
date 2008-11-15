@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz253799.impl.OneImpl" entity-name="One" abstract="false" lazy="false" table="`one`">
+		<meta attribute="eclassName">One</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz253799</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="ref" entity-name="Two" cascade="merge,persist,save-update,lock,refresh" not-null="true" lazy="false" foreign-key="one_ref" insert="true" update="true" unique="true">
+			<column not-null="true" unique="false" name="`ref1`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz253799.impl.TwoImpl" entity-name="Two" abstract="false" lazy="false" table="`two`">
+		<meta attribute="eclassName">Two</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz253799</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="ref" entity-name="One" cascade="merge,persist,save-update,lock,refresh" not-null="true" lazy="false" foreign-key="two_ref" insert="true" update="true" unique="true">
+			<column not-null="true" unique="false" name="`ref1`"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>
