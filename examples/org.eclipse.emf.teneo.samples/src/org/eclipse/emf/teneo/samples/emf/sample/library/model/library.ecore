@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="library"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/sample/Library" nsPrefix="library">
-  <eClassifiers xsi:type="ecore:EClass" name="Book">
+  <eClassifiers xsi:type="ecore:EClass" name="Book" instanceTypeName="asdasd">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Book"/>
       <details key="kind" value="elementOnly"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/08/31 23:47:18 mtaal Exp $
+ * $Id: Person.java,v 1.3 2008/11/15 21:37:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate;
 
@@ -42,7 +42,7 @@ public interface Person extends EObject {
 	 * @see #unsetId()
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson_Id()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
 	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='id'"
 	 * @generated
@@ -95,7 +95,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -122,8 +122,8 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Address</em>' attribute.
 	 * @see #setAddress(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson_Address()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
-	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"person_address\")'"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"person_address\" nullable=false)\n\t\t\t\t\t@Basic(optional=false)\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='address'"
 	 * @generated
 	 */
@@ -150,7 +150,7 @@ public interface Person extends EObject {
 	 * @return the value of the '<em>Photo</em>' attribute.
 	 * @see #setPhoto(byte[])
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.SecondarytablehibernatePackage#getPerson_Photo()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
 	 *        annotation="teneo.jpa appinfo='@Lob\n\t\t\t\t\t@Column(table=\"person_photo\" length=\"1000000\")'"
 	 *        extendedMetaData="kind='element' name='photo'"
 	 * @generated

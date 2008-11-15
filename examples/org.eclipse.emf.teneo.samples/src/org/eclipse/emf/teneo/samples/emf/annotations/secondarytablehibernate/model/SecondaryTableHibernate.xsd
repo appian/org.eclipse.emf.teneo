@@ -18,7 +18,9 @@
 			<xsd:element name="address" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.jpa">@Lob
-					@Column(table="person_address")</xsd:appinfo>
+					@Column(table="person_address" nullable=false)
+					@Basic(optional=false)
+					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="photo" type="xsd:base64Binary" minOccurs="0">

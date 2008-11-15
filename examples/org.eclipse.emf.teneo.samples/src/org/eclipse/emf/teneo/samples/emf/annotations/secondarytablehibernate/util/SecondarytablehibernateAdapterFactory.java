@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateAdapterFactory.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: SecondarytablehibernateAdapterFactory.java,v 1.4 2008/11/15 21:37:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.util;
 
@@ -64,7 +64,7 @@ public class SecondarytablehibernateAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

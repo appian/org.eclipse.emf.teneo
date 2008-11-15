@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.4 2008/11/15 21:37:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.impl;
 
@@ -60,7 +60,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean idESet = false;
+	protected boolean idESet;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

@@ -29,7 +29,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tonerMake" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@Column(table=&quot;THETONER&quot;)"/>
+        <details key="appinfo" value="@Column(table=&quot;THETONER&quot; nullable=false)&#xA;@Basic(optional=false)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

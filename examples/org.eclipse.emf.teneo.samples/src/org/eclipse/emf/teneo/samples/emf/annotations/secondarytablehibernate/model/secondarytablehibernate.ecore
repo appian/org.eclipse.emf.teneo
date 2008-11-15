@@ -12,8 +12,8 @@
       <details key="name" value="Person"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" unique="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        unsettable="true">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Id"/>
       </eAnnotations>
@@ -22,24 +22,22 @@
         <details key="name" value="id"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="name"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;person_address&quot;)"/>
+        <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;person_address&quot; nullable=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Basic(optional=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="address"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="photo" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Base64Binary">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="photo" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Base64Binary">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Lob&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Column(table=&quot;person_photo&quot; length=&quot;1000000&quot;)"/>
       </eAnnotations>
