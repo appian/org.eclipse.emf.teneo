@@ -7,7 +7,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Child" containment="true">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@JoinColumns({@JoinColumn(name=&quot;myParentFirstName&quot; referencedColumnName=&quot;firstName&quot;),&#xA;&#x9;@JoinColumn(name=&quot;myParentLastName&quot; referencedColumnName=&quot;lastName&quot;)})"/>
+        <details key="appinfo" value="//this is a comment&#xA;@JoinColumns({@JoinColumn(name=&quot;myParentFirstName&quot; referencedColumnName=&quot;firstName&quot;),&#xA;&#x9;@JoinColumn(name=&quot;myParentLastName&quot; referencedColumnName=&quot;lastName&quot;)})"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -44,7 +44,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="visitors" upperBound="-1"
         eType="#//Person">
       <eAnnotations source="teneo.jpa">
-        <details key="value" value="@JoinColumns({@JoinColumn(name=&quot;wrongcolumn&quot;)})&#xA;@JoinTable(joinColumns={@JoinColumn(name=&quot;rightcolumn&quot;)})"/>
+        <details key="value" value="@JoinColumns({@JoinColumn(name=&quot;wrongcolumn&quot;)})&#xA;// This is a comment&#xA;@JoinTable(joinColumns={@JoinColumn(name=&quot;rightcolumn&quot;)})"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

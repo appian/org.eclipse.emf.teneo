@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsAdapterFactory.java,v 1.3 2007/07/17 17:37:32 mtaal Exp $
+ * $Id: JoincolumnsAdapterFactory.java,v 1.4 2008/12/07 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.util;
 
@@ -65,7 +65,7 @@ public class JoincolumnsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

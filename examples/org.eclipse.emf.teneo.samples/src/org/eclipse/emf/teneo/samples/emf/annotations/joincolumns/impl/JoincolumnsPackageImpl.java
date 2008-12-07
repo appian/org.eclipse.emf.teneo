@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoincolumnsPackageImpl.java,v 1.5 2007/07/18 16:11:39 mtaal Exp $
+ * $Id: JoincolumnsPackageImpl.java,v 1.6 2008/12/07 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.impl;
 
@@ -333,7 +333,7 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		  (getParent_Children(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@JoinColumns({@JoinColumn(name=\"myParentFirstName\" referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\" referencedColumnName=\"lastName\")})"
+			 "appinfo", "//this is a comment\n@JoinColumns({@JoinColumn(name=\"myParentFirstName\" referencedColumnName=\"firstName\"),\n\t@JoinColumn(name=\"myParentLastName\" referencedColumnName=\"lastName\")})"
 		   });		
 		addAnnotation
 		  (personEClass, 
@@ -369,7 +369,7 @@ public class JoincolumnsPackageImpl extends EPackageImpl implements JoincolumnsP
 		  (getHouse_Visitors(), 
 		   source, 
 		   new String[] {
-			 "value", "@JoinColumns({@JoinColumn(name=\"wrongcolumn\")})\n@JoinTable(joinColumns={@JoinColumn(name=\"rightcolumn\")})"
+			 "value", "@JoinColumns({@JoinColumn(name=\"wrongcolumn\")})\n// This is a comment\n@JoinTable(joinColumns={@JoinColumn(name=\"rightcolumn\")})"
 		   });
 	}
 

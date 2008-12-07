@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: House.java,v 1.1 2007/07/17 17:37:32 mtaal Exp $
+ * $Id: House.java,v 1.2 2008/12/07 21:59:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
@@ -65,7 +65,7 @@ public interface House extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Visitors</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.joincolumns.JoincolumnsPackage#getHouse_Visitors()
-	 * @model annotation="teneo.jpa value='@JoinColumns({@JoinColumn(name=\"wrongcolumn\")})\n@JoinTable(joinColumns={@JoinColumn(name=\"rightcolumn\")})'"
+	 * @model annotation="teneo.jpa value='@JoinColumns({@JoinColumn(name=\"wrongcolumn\")})\n// This is a comment\n@JoinTable(joinColumns={@JoinColumn(name=\"rightcolumn\")})'"
 	 * @generated
 	 */
 	EList<Person> getVisitors();
