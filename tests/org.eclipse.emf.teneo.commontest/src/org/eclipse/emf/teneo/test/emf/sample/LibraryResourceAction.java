@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.16 2008/08/26 20:19:37 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.17 2008/12/07 13:50:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -31,11 +31,12 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests the library example of emf/xsd using a resource. Actually tests bidirectional references
- * using resources. Most other aspects of resources are handled in the Catalog example.
+ * Tests the library example of emf/xsd using a resource. Actually tests
+ * bidirectional references using resources. Most other aspects of resources are
+ * handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	public LibraryResourceAction() {
@@ -94,7 +95,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			String writerURI = null;
 			{
 				Resource res = getResource(store);
-				res.setTrackingModification(true);
+				// res.setTrackingModification(true);
 				res.load(null);
 
 				Library lib = (Library) res.getContents().get(0);
@@ -105,24 +106,30 @@ public class LibraryResourceAction extends AbstractTestAction {
 				writerURI = res.getURIFragment(tolkien);
 
 				/*
-				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int
-				 * i = 0; i < obj.length; i++) {
+				 * final Object[] obj =
+				 * ((StoreResource)res).getCrossReferencers(tolkien); for (int i
+				 * = 0; i < obj.length; i++) {
 				 */
 
 				/*
 				 * assertEquals(3, tolkien.getBooks().size());
 				 * 
-				 * assertEquals(0 , tolkien.getName().compareTo("JRR Tolkien")); Book wBook =
-				 * (Book)tolkien.getBooks().get(0); Book lBook = (Book)lib.getBooks().get(0);
-				 * assertTrue("Book is contained in the library", wBook.eContainer() == lib);
-				 * assertTrue("Book is contained in the library", lBook.eContainer() == lib);
+				 * assertEquals(0 , tolkien.getName().compareTo("JRR Tolkien"));
+				 * Book wBook = (Book)tolkien.getBooks().get(0); Book lBook =
+				 * (Book)lib.getBooks().get(0);
+				 * assertTrue("Book is contained in the library",
+				 * wBook.eContainer() == lib);
+				 * assertTrue("Book is contained in the library",
+				 * lBook.eContainer() == lib);
 				 * 
 				 * assertTrue(lBook.getAuthor() == tolkien);
 				 * assertTrue(tolkien.getBooks().contains(lBook));
-				 * assertTrue(tolkien.getBooks().contains(wBook)); // ordering is the same
-				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0);
-				 * assertTrue(wBook.getPages() == lBook.getPages()); assertTrue(wBook.getCategory()
-				 * instanceof BookCategory); assertTrue(wBook.getCategory() ==
+				 * assertTrue(tolkien.getBooks().contains(wBook)); // ordering
+				 * is the same
+				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) ==
+				 * 0); assertTrue(wBook.getPages() == lBook.getPages());
+				 * assertTrue(wBook.getCategory() instanceof BookCategory);
+				 * assertTrue(wBook.getCategory() ==
 				 * BookCategory.SCIENCE_FICTION_LITERAL);
 				 */
 				// correct the mistake we made
@@ -144,7 +151,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.save(null);
 				res.save(null);
 
-				george.setName("G. Orwell"); // there was a bug in which this failed, reported by
+				george.setName("G. Orwell"); // there was a bug in which this
+												// failed, reported by
 				// Georgi Manev
 				res.save(null);
 				res.save(null);
@@ -196,14 +204,17 @@ public class LibraryResourceAction extends AbstractTestAction {
 			//				
 			// XMLResourceImpl xi = new XMLResourceImpl();
 			// xi.getContents().add(tolkien);
-			// FileOutputStream fos = new FileOutputStream("/home/mtaal/mytmp/test.xml");
+			// FileOutputStream fos = new
+			// FileOutputStream("/home/mtaal/mytmp/test.xml");
 			// xi.save(fos, Collections.EMPTY_MAP);
 			//
 			// ResourceSet rs = new ResourceSetImpl();
-			// Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xml", new
+			// Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xml",
+			// new
 			// XMLResourceFactoryImpl());
 			//
-			// Resource xi = rs.createResource(URI.createFileURI("/home/mtaal/mytmp/test.xml"));
+			// Resource xi =
+			// rs.createResource(URI.createFileURI("/home/mtaal/mytmp/test.xml"));
 			// //xi.load(fis, Collections.EMPTY_MAP);
 			// xi.load(Collections.EMPTY_MAP);
 			// Writer wt = (Writer)xi.getContents().get(0);
@@ -252,7 +263,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 			newLib.setName("tstlib");
 			res.getContents().add(newLib);
 			lib.getWriters().remove(writer);
-			assertTrue(lib.getBooks().size() > 0); // force load of books to prevent dangling error
+			assertTrue(lib.getBooks().size() > 0); // force load of books to
+													// prevent dangling error
 			// in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
