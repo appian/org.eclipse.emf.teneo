@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Tutorial1.java,v 1.51 2008/11/15 21:37:23 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.52 2008/12/07 21:59:30 mtaal Exp $
  */
 
 package jpoxtutorial;
@@ -50,7 +50,7 @@ import org.jpox.PMFConfiguration;
  * Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  */
 public class Tutorial1 {
 
