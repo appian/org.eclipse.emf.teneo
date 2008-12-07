@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -32,16 +31,18 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Implements the getter for an EReference field. Normally uses the eget/eset methods with
- * bidirectional relations the handling is a bit different using eInverseRemove and eInverseAdd.
- * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter
- * and getSetter methods are called it returns itself.
+ * Implements the getter for an EReference field. Normally uses the eget/eset
+ * methods with bidirectional relations the handling is a bit different using
+ * eInverseRemove and eInverseAdd. This class implements both the getter, setter
+ * and propertyaccessor interfaces. When the getGetter and getSetter methods are
+ * called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 @SuppressWarnings("unchecked")
-public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+public class EReferencePropertyHandler implements Getter, Setter,
+		PropertyAccessor, ExtensionPoint {
 
 	/**
 	 * Serial version id
@@ -63,8 +64,11 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 		this.eReference = eReference;
 		final EClass eClass = eReference.getEContainingClass();
 		featureId = eClass.getFeatureID(eReference);
-		isBidirectional = eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient();
-		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
+		isBidirectional = eReference.getEOpposite() != null
+				&& !eReference.getEOpposite().isTransient();
+		log
+				.debug("Created getter/setter for "
+						+ StoreUtil.toString(eReference));
 	}
 
 	public EReference getEReference() {
@@ -74,18 +78,22 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
+	 * java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
+	 * java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -101,20 +109,22 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
-	 * org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
+	 * java.util.Map, org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap,
+			SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
-	 * org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object,
+	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		final Object curValue = get(target);
 		if (isBidirectional) {// these are handled a bit differently because
 			// the opposite should not be set, this is
@@ -123,20 +133,24 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 				// curValue and value have been read in
 				// the same
 				// pm.
-				// Note that the eInverseRemove is called on the target itself and the value is
+				// Note that the eInverseRemove is called on the target itself
+				// and the value is
 				// passed
-				// therefore the eReference featureid is passed and not the opposite
+				// therefore the eReference featureid is passed and not the
+				// opposite
 				if (value == null) { // remove
-					final NotificationChain nots =
-							((InternalEObject) target).eInverseRemove((InternalEObject) curValue, featureId, eReference
-								.getEType().getInstanceClass(), null);
+					final NotificationChain nots = ((InternalEObject) target)
+							.eInverseRemove((InternalEObject) curValue,
+									featureId, eReference.getEType()
+											.getInstanceClass(), null);
 					if (nots != null) {
 						nots.dispatch();
 					}
 				} else {
-					final NotificationChain nots =
-							((InternalEObject) target).eInverseAdd((InternalEObject) value, featureId, eReference
-								.getEType().getInstanceClass(), null);
+					final NotificationChain nots = ((InternalEObject) target)
+							.eInverseAdd((InternalEObject) value, featureId,
+									eReference.getEType().getInstanceClass(),
+									null);
 					if (nots != null) {
 						nots.dispatch();
 					}
@@ -149,20 +163,28 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 			final EObject eobj = (EObject) target;
 			eobj.eSet(eReference, value);
 			Resource res = eobj.eResource();
-			if (value != null && res instanceof HibernateResource && ((EObject) value).eResource() == null) {
+			if (value != null && res instanceof HibernateResource
+					&& ((EObject) value).eResource() == null) {
 				final boolean loading = ((HibernateResource) res).isLoading();
 				try {
 					((HibernateResource) res).setIsLoading(true);
-					((HibernateResource) res).addToContentOrAttach((InternalEObject) value, eReference);
+					((HibernateResource) res).addToContentOrAttach(
+							(InternalEObject) value, eReference);
 				} finally {
 					((HibernateResource) res).setIsLoading(loading);
 				}
 			}
 		}
 
-		if (eReference.isContainment() && target instanceof InternalEObject && value instanceof InternalEObject) {
-			EContainerRepairControl.setContainer((InternalEObject) target, (InternalEObject) value, eReference);
-		}
+		// see vbbhttps://bugs.eclipse.org/bugs/show_bug.cgi?id=245634
+		// container relations should be modeled explicitly in the database or
+		// not at all
+		// see the relevant option in PersistenceOptions.
+		// if (eReference.isContainment() && target instanceof InternalEObject
+		// && value instanceof InternalEObject) {
+		// EContainerRepairControl.setContainer((InternalEObject) target,
+		// (InternalEObject) value, eReference);
+		// }
 	}
 
 	/*

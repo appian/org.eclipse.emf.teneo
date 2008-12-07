@@ -11,15 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.13 2008/06/28 22:41:47 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.14 2008/12/07 13:50:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -55,7 +56,7 @@ import org.hibernate.util.ReflectHelper;
  * object instantiator is used to make use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -169,12 +170,9 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
 		}
 
-		// get all the interfaces from the main class, add the hibernateproxy
+		// get all the interfaces from the main class, add the real interface
 		// first
-		final HashSet<Class<?>> proxyInterfaces = new HashSet<Class<?>>();
-		proxyInterfaces.add(HibernateProxy.class);
-		proxyInterfaces.add(TeneoInternalEObject.class);
-
+		final Set<Class<?>> proxyInterfaces = new LinkedHashSet<Class<?>>();
 		final Class<?> pInterface = persistentClass.getProxyInterface();
 		if (pInterface != null) {
 			proxyInterfaces.add(pInterface);
@@ -183,6 +181,9 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		if (mappedClass.isInterface()) {
 			proxyInterfaces.add(mappedClass);
 		}
+		proxyInterfaces.add(HibernateProxy.class);
+		proxyInterfaces.add(TeneoInternalEObject.class);
+
 		for (Class<?> interfaces : mappedClass.getInterfaces()) {
 			proxyInterfaces.add(interfaces);
 		}
