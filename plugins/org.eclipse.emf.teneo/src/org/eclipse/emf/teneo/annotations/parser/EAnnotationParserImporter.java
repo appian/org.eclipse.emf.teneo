@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.4 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.5 2008/12/07 21:59:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -39,14 +39,16 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Walks over the pamodel and the paepackages and translates eannotations to pannotation types and
- * sets the corresponding values in the pamodel.
+ * Walks over the pamodel and the paepackages and translates eannotations to
+ * pannotation types and sets the corresponding values in the pamodel.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint {
+public class EAnnotationParserImporter implements EClassResolver,
+		ExtensionPoint {
 	/** Log it */
-	private final static Log log = LogFactory.getLog(EAnnotationParserImporter.class);
+	private final static Log log = LogFactory
+			.getLog(EAnnotationParserImporter.class);
 
 	/** annotation parser */
 	private AnnotationParser annotationParser = new AnnotationParser();
@@ -68,11 +70,13 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	/** Process package */
 	protected void process(PAnnotatedEPackage pap) {
 		for (PAnnotatedEClass pac : pap.getPaEClasses()) {
-			processAnnotatedModelElement(pac, pac.getModelEClass().getEPackage());
+			processAnnotatedModelElement(pac, pac.getModelEClass()
+					.getEPackage());
 			process(pac);
 		}
 		for (PAnnotatedEDataType pac : pap.getPaEDataTypes()) {
-			processAnnotatedModelElement(pac, pac.getModelEDataType().getEPackage());
+			processAnnotatedModelElement(pac, pac.getModelEDataType()
+					.getEPackage());
 		}
 	}
 
@@ -80,13 +84,15 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 	protected void process(PAnnotatedEClass pac) {
 		log.debug("Processing eclass " + pac.getModelEClass().getName());
 		for (PAnnotatedEStructuralFeature paf : pac.getPaEStructuralFeatures()) {
-			processAnnotatedModelElement(paf, paf.getModelEStructuralFeature().eClass().getEPackage());
+			processAnnotatedModelElement(paf, paf.getModelEStructuralFeature()
+					.eClass().getEPackage());
 		}
 	}
 
 	/** Process a type with its eannotations */
 	@SuppressWarnings("unchecked")
-	protected void processAnnotatedModelElement(PAnnotatedEModelElement pee, EPackage epack) {
+	protected void processAnnotatedModelElement(PAnnotatedEModelElement pee,
+			EPackage epack) {
 		log.debug("Processing " + pee.getModelElement().getName());
 		final ArrayList<NamedParserNode> parsedNodes = new ArrayList<NamedParserNode>();
 		for (EAnnotation annotation : pee.getModelElement().getEAnnotations()) {
@@ -95,28 +101,34 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 
 		// now also do the annotations on the edatatype (if any)
 		/*
-		 * if (pee.getAnnotatedElement() instanceof EAttribute) { final EAttribute eattr =
-		 * (EAttribute)pee.getAnnotatedElement(); final EDataType edt = (EDataType)eattr.getEType();
-		 * for (Iterator it = edt.getEAnnotations().iterator(); it.hasNext();) {
-		 * parsedNodes.addAll(process((EAnnotation)it.next(), pee.getAnnotatedElement())); } }
+		 * if (pee.getAnnotatedElement() instanceof EAttribute) { final
+		 * EAttribute eattr = (EAttribute)pee.getAnnotatedElement(); final
+		 * EDataType edt = (EDataType)eattr.getEType(); for (Iterator it =
+		 * edt.getEAnnotations().iterator(); it.hasNext();) {
+		 * parsedNodes.addAll(process((EAnnotation)it.next(),
+		 * pee.getAnnotatedElement())); } }
 		 */
 
 		// now the parsed nodes should be translated into features of the
 		// enamedelement
 		// this is done multiplelevel
-		log.debug("Number of parsed typename annotations " + parsedNodes.size());
+		log
+				.debug("Number of parsed typename annotations "
+						+ parsedNodes.size());
 		for (NamedParserNode namedParserNode : parsedNodes) {
 			final ComplexNode cn = (ComplexNode) namedParserNode;
 			if (cn.isList()) {
 				// find the efeature
-				final EStructuralFeature ef = getEStructuralFeature(pee.eClass(), cn.getName());
+				final EStructuralFeature ef = getEStructuralFeature(pee
+						.eClass(), cn.getName());
 				pee.eSet(ef, cn.convert(this));
 			} else {
 				EObject eobj = (EObject) cn.convert(this);
 				boolean found = false;
 				for (EReference eref : pee.eClass().getEAllReferences()) {
 					if (eref.getEReferenceType().isInstance(eobj)) {
-						log.debug("Found EReference " + eref.getName() + " for " + eobj.eClass().getName());
+						log.debug("Found EReference " + eref.getName()
+								+ " for " + eobj.eClass().getName());
 						if (eref.isMany()) {
 							((List) pee.eGet(eref)).add(eobj);
 						} else {
@@ -127,8 +139,10 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 					}
 				}
 				if (!found) {
-					throw new AnnotationParserException("The eclass: " + pee.eClass().getName() +
-							" does not have an efeature for " + eobj.eClass().getName());
+					throw new AnnotationParserException("The eclass: "
+							+ pee.eClass().getName()
+							+ " does not have an efeature for "
+							+ eobj.eClass().getName());
 				}
 			}
 		}
@@ -151,21 +165,47 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 		}
 
 		log.debug("Processing annotations ");
-		for (Map.Entry<String, String> pAnnotationDetails : ea.getDetails().entrySet()) {
+		for (Map.Entry<String, String> pAnnotationDetails : ea.getDetails()
+				.entrySet()) {
 			final String fName = pAnnotationDetails.getKey();
 			// todo externalize
-			if (fName.compareToIgnoreCase("appinfo") == 0 || fName.compareToIgnoreCase("value") == 0) {
-				log.debug("Annotation content: \n " + pAnnotationDetails.getValue());
-				result.addAll(annotationParser.parse(ene, pAnnotationDetails.getValue()));
+			if (fName.compareToIgnoreCase("appinfo") == 0
+					|| fName.compareToIgnoreCase("value") == 0) {
+				log.debug("Annotation content: \n "
+						+ pAnnotationDetails.getValue());
+				final String content = removeCommentLines(pAnnotationDetails
+						.getValue());
+				result.addAll(annotationParser.parse(ene, content));
 			}
 		}
 		return result;
 	}
 
+	// removes the lines which start with a //
+	private String removeCommentLines(String content) {
+		if (content.indexOf("//") == -1) {
+			return content;
+		}
+		final String[] lines = content.split("\n");
+		final StringBuilder sb = new StringBuilder();
+		for (String line : lines) {
+			if (line.trim().startsWith("//")) {
+				continue;
+			}
+			if (sb.length() > 0) {
+				sb.append("\n");
+			}
+			sb.append(line);
+		}
+		return sb.toString();
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java.lang.String)
+	 * @see
+	 * org.eclipse.emf.teneo.annotations.parser.EClassResolver#getEClass(java
+	 * .lang.String)
 	 */
 	public EClass getEClass(String name) {
 		if (name.startsWith(JPA_PREFIX)) {
@@ -180,7 +220,8 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 			return false;
 		}
 		// todo externalize
-		return source.startsWith("teneo.jpa") || source.startsWith("teneo.mapping");
+		return source.startsWith("teneo.jpa")
+				|| source.startsWith("teneo.mapping");
 	}
 
 	/** Find the efeature */
