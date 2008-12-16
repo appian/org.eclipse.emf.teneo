@@ -68,6 +68,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/orderBy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/primaryKeyJoinColumns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/associationOverrides"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/external"/>
     </genClasses>
     <genClasses image="false" ecoreClass="pamodel.ecore#//PAnnotatedETypedElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedETypedElement/attributeOverrides"/>
@@ -301,6 +302,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/initialValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/incrementSize"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/optimizer"/>
+    </genClasses>
+    <genClasses ecoreClass="pannotation.ecore#//External">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//External/type"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

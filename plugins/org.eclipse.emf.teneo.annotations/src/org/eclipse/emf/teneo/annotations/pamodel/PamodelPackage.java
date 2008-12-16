@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.18 2008/10/13 05:35:42 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.19 2008/12/16 20:40:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -1036,13 +1036,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>External</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__EXTERNAL = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
+	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Model Element</b></em>' reference.
@@ -1836,6 +1845,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEReference_AssociationOverrides();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getExternal <em>External</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>External</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getExternal()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_External();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement <em>PAnnotated ETyped Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2478,6 +2498,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES = eINSTANCE.getPAnnotatedEReference_AssociationOverrides();
+
+		/**
+		 * The meta object literal for the '<em><b>External</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__EXTERNAL = eINSTANCE.getPAnnotatedEReference_External();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.

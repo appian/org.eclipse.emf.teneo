@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.29 2008/10/13 05:35:42 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.30 2008/12/16 20:40:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -206,6 +206,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateForeignKey((ForeignKey)value, diagnostics, context);
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR:
 				return validateSequenceStyleGenerator((SequenceStyleGenerator)value, diagnostics, context);
+			case PannotationPackage.EXTERNAL:
+				return validateExternal((External)value, diagnostics, context);
 			case PannotationPackage.CASCADE_TYPE:
 				return validateCascadeType((CascadeType)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_TYPE:
@@ -1555,6 +1557,24 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(sequenceStyleGenerator, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExternal(External external, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(external, diagnostics, context);
 		return result;
 	}
 
