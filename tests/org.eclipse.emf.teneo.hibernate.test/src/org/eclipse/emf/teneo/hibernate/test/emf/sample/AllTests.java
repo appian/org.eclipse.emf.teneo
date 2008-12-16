@@ -34,6 +34,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceVisitTreeAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibrarySerializationAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryUseMappingFileAction;
+import org.eclipse.emf.teneo.test.emf.sample.ListAsIdBagAction;
 import org.eclipse.emf.teneo.test.emf.sample.MindMapAction;
 import org.eclipse.emf.teneo.test.emf.sample.NoEscapeLibraryAction;
 import org.eclipse.emf.teneo.test.emf.sample.PlayAction;
@@ -51,7 +52,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.89 $
+ * @version $Revision: 1.90 $
  */
 public class AllTests {
 
@@ -60,6 +61,7 @@ public class AllTests {
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
 				HibernateTestbed.instance().getConfigurations());
 		// suite.addTestSuite(LibraryLargeAction.class);
+		suite.addTestSuite(ListAsIdBagAction.class);
 
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryResourceVisitTreeAction.class);
