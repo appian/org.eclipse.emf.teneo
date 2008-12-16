@@ -716,7 +716,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * Add Element element in given collection element.
 	 */
 	protected Element addElementElement(Element collElement,
-			PAnnotatedEAttribute paAttribute, List<Column> columns,
+			PAnnotatedEStructuralFeature paFeature, List<Column> columns,
 			String targetEntity) {
 		final Element elElement;
 		// if (targetEntity == null || paAttribute.getEnumerated() != null ||
@@ -724,15 +724,15 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		// MT: the target type name is ignored for a many element, it is always
 		// recomputed
 		elElement = collElement.addElement("element");
-		setType(paAttribute, elElement);
+		setType(paFeature, elElement);
 		// } else { // in this case the defaultannotator has set the
 		// targetentity!
 		// elElement = collElement.addElement("element").addAttribute("type",
 		// targetEntity);
 		// }
 		if (columns != null && columns.size() > 0) {
-			addColumnsAndFormula(elElement, paAttribute, columns,
-					getHbmContext().isCurrentElementFeatureMap(), true);
+			addColumnsAndFormula(elElement, paFeature, columns, getHbmContext()
+					.isCurrentElementFeatureMap(), true);
 		}
 		return elElement;
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MappingUtil.java,v 1.6 2008/07/12 13:10:34 mtaal Exp $
+ * $Id: MappingUtil.java,v 1.7 2008/12/16 20:40:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -54,46 +54,51 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class MappingUtil {
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of epackages and options.
-	 * The hibernate.hbm.xml is returned as a string. The mapping is not registered or used in any
-	 * other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of
+	 * epackages and options. The hibernate.hbm.xml is returned as a string. The
+	 * mapping is not registered or used in any other way by Elver.
 	 */
 	public static String generateMapping(EPackage[] epackages, Properties props) {
-		final ExtensionManager extensionManager = ExtensionManagerFactory.getInstance().create();
+		final ExtensionManager extensionManager = ExtensionManagerFactory
+				.getInstance().create();
 		return generateMapping(epackages, props, extensionManager);
 	}
 
-	public static String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
+	public static String generateMapping(EPackage[] epackages,
+			Properties props, ExtensionManager extensionManager) {
 		registerHbExtensions(extensionManager);
 
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of
 		// Hibernate-specific annotations.
-		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
-		final PAnnotatedModel paModel =
-				extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(epackages, po,
-					extensionManager);
-		final HibernateMappingGenerator hmg = extensionManager.getExtension(HibernateMappingGenerator.class);
+		final PersistenceOptions po = extensionManager.getExtension(
+				PersistenceOptions.class, new Object[] { props });
+		final PAnnotatedModel paModel = extensionManager.getExtension(
+				PersistenceMappingBuilder.class).buildMapping(epackages, po,
+				extensionManager);
+		final HibernateMappingGenerator hmg = extensionManager
+				.getExtension(HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);
 		return hmg.generateToString(paModel);
 	}
 
 	/**
-	 * Determine the collection element set, bag or list. Only used in case Teneo operates for
-	 * non-emf code
+	 * Determine the collection element set, bag or list. Only used in case
+	 * Teneo operates for non-emf code
 	 */
 	public static String getCollectionElement(HbAnnotatedETypeElement hbFeature) {
-		final boolean hasOrderBy =
-				hbFeature instanceof PAnnotatedEReference && ((PAnnotatedEReference) hbFeature).getOrderBy() != null;
+		final boolean hasOrderBy = hbFeature instanceof PAnnotatedEReference
+				&& ((PAnnotatedEReference) hbFeature).getOrderBy() != null;
 
 		if (!hbFeature.getOneToMany().isList() || hasOrderBy) {
 			return "set";
-		} else if (hbFeature.getOneToMany().isList() && !hbFeature.getOneToMany().isIndexed()) {
+		} else if (hbFeature.getOneToMany().isList()
+				&& !hbFeature.getOneToMany().isIndexed()) {
 			return "bag";
 		} else {
 			return "list";
@@ -102,28 +107,33 @@ public class MappingUtil {
 
 	/** Registers default hb extensions */
 	public static void registerHbExtensions(ExtensionManager extensionManager) {
-		extensionManager.registerExtension(ExtensionUtil.createExtension(BasicPamodelBuilder.class,
-			HbAnnotationModelBuilder.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(EAnnotationParserImporter.class,
-			HbEAnnotationParserImporter.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(XmlPersistenceMapper.class,
-			HbXmlPersistenceMapper.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(SingleAttributeAnnotator.class,
-			HbSingleAttributeAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil
-			.createExtension(EClassAnnotator.class, HbEClassAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(EFeatureAnnotator.class,
-			HbEFeatureAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(OneToManyAttributeAnnotator.class,
-			HbOneToManyAttributeAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(EDataTypeAnnotator.class,
-			HbEDataTypeAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(OneToManyReferenceAnnotator.class,
-			HbOneToManyReferenceAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(OneToOneReferenceAnnotator.class,
-			HbOneToOneReferenceAnnotator.class));
-		extensionManager.registerExtension(ExtensionUtil.createExtension(ManyToOneReferenceAnnotator.class,
-			HbManyToOneReferenceAnnotator.class));
-
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				BasicPamodelBuilder.class, HbAnnotationModelBuilder.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				EAnnotationParserImporter.class,
+				HbEAnnotationParserImporter.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				XmlPersistenceMapper.class, HbXmlPersistenceMapper.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				SingleAttributeAnnotator.class,
+				HbSingleAttributeAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				EClassAnnotator.class, HbEClassAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				EFeatureAnnotator.class, HbEFeatureAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				OneToManyAttributeAnnotator.class,
+				HbOneToManyAttributeAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				EDataTypeAnnotator.class, HbEDataTypeAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				OneToManyReferenceAnnotator.class,
+				HbOneToManyReferenceAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				OneToOneReferenceAnnotator.class,
+				HbOneToOneReferenceAnnotator.class));
+		extensionManager.registerExtension(ExtensionUtil.createExtension(
+				ManyToOneReferenceAnnotator.class,
+				HbManyToOneReferenceAnnotator.class));
 	}
 }

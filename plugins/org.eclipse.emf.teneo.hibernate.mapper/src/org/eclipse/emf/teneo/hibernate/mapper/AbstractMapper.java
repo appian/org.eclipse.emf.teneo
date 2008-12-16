@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.41 2008/12/07 13:50:09 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.42 2008/12/16 20:40:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
@@ -104,6 +105,42 @@ public abstract class AbstractMapper {
 
 	protected void addAccessor(Element element) {
 		addAccessor(element, hbmContext.getPropertyHandlerName());
+	}
+
+	protected void setType(PAnnotatedEStructuralFeature paFeature,
+			Element propElement) {
+		if (paFeature instanceof PAnnotatedEAttribute) {
+			setType((PAnnotatedEAttribute) paFeature, propElement);
+		} else {
+			setType((PAnnotatedEReference) paFeature, propElement);
+		}
+	}
+
+	/** Handles the External annotation */
+	protected void setType(PAnnotatedEReference paReference, Element propElement) {
+		final External external = paReference.getExternal();
+		if (external == null) {
+			throw new MappingException(
+					"External annotation not set on eReference "
+							+ StoreUtil.toString(paReference
+									.getModelEReference()));
+		}
+
+		final Element typeElement = propElement.addElement("type");
+		if (external.getType() == null) { // standard external
+			typeElement.addAttribute("name", getHbmContext()
+					.getExternalUserType());
+		} else {
+			typeElement.addAttribute("name", external.getType());
+		}
+		typeElement.addElement("param").addAttribute("name",
+				HbMapperConstants.ECLASS_NAME_META).addText(
+				paReference.getModelEReference().getEReferenceType().getName());
+		typeElement.addElement("param").addAttribute("name",
+				HbMapperConstants.EPACKAGE_PARAM).addText(
+				paReference.getModelEReference().getEReferenceType()
+						.getEPackage().getNsURI());
+
 	}
 
 	/** Handles the type or typedef annotations */
@@ -541,9 +578,9 @@ public abstract class AbstractMapper {
 	 * Returns the (possibly overridden) columns annotation for the given
 	 * attribute.
 	 */
-	protected List<Column> getColumns(PAnnotatedEAttribute paAttribute) {
-		final Column defaultColumn = paAttribute.getColumn();
-		final Column oc = getHbmContext().getAttributeOverride(paAttribute);
+	protected List<Column> getColumns(PAnnotatedEStructuralFeature paFeature) {
+		final Column defaultColumn = paFeature.getColumn();
+		final Column oc = getHbmContext().getAttributeOverride(paFeature);
 
 		if (oc != null) {
 			final ArrayList<Column> result = new ArrayList<Column>();
@@ -551,7 +588,7 @@ public abstract class AbstractMapper {
 			return result;
 		}
 		// try multiple columns
-		final HbAnnotatedEAttribute hae = (HbAnnotatedEAttribute) paAttribute;
+		final HbAnnotatedETypeElement hae = (HbAnnotatedETypeElement) paFeature;
 		if (hae.getHbColumns().size() > 0) {
 			return hae.getHbColumns();
 		}
