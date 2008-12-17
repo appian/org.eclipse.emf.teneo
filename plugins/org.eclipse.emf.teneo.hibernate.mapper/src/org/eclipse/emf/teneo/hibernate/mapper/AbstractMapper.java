@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.42 2008/12/16 20:40:29 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.43 2008/12/17 06:13:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -628,8 +628,10 @@ public abstract class AbstractMapper {
 				// MT05032006: After some more thought the column nullability
 				// can be used in case of
 				// single table inheritance mapping
-				propertyElement.addAttribute("not-null", isNullable
-						|| column.isNullable() ? "false" : "true");
+				if (!propertyElement.getName().equals("any")) {
+					propertyElement.addAttribute("not-null", isNullable
+							|| column.isNullable() ? "false" : "true");
+				}
 				propertyElement.addAttribute("unique",
 						column.isUnique() ? "true" : "false");
 			}
