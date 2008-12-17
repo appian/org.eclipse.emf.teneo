@@ -301,6 +301,9 @@
 <li>
 <a href="#Storing+container+relation">Storing container relation</a>
 </li>
+<li>
+<a href="#external">Storing external references (to non-persisted objects), customizing persisting references</a>
+</li>
 </ul>
 		
 <p>
@@ -497,6 +500,37 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 </p>
 		
 </div>
+		
+<a name="N100B8"></a><a name="external"></a>
+<div class="h3">
+<h3>Storing external references (to non-persisted objects), customizing persisting references</h3>
+			
+			
+<p>Teneo supports references to objects which are not part of the model which is being persisted in the Teneo datastore. 
+			These references are stored as EMF URI's in a string/varchar column in the database (this is customizable see below).</p>
+			
+<p>For example: assume that an Object A has an efeature b pointing to B. A is persisted in the database while B is loaded from a XML file.
+			Then by annotating the efeature b with the annotation @External Teneo will store the reference of B (the URI) in a varchar column in the database.
+			Then when retrieving A, B is created as a proxy object.</p>  
+			
+<p>Note:</p>
+			
+<ul>
+				
+<li>The External annotation can be used on single EReference efeatures as well as on many=true (lists) EReferences</li>
+				
+<li>External references can only be persisted when the refered object is contained in a resource.</li>
+				
+<li>Loading the refering object from the database should always occur using a resource which is contained in a resource set. Otherwise the external references can not be resolved.</li>
+			
+</ul>
+			
+<p>The <strong>External annotation has a type attribute</strong> which allows you to specify a specific Hibernate UserType class to store the reference to the non-persisted object.
+			The default user type (implemented by Teneo) is the org.eclipse.emf.teneo.hibernate.mapping.ExternalType. This UserType will persist the URI and create a proxy 
+			object when reading from the database. However, using your own hibernate UserType you can choose your own persistence logic and even use other types of columns to persist the external reference.
+			</p> 				
+		
+</div> 
 	
 </div>
 </div>
