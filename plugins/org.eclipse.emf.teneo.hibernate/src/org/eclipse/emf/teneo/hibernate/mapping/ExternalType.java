@@ -7,11 +7,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors:
- *   Michael Kanaley, TIBCO Software Inc.
  * </copyright>
  *
- * $Id: ExternalType.java,v 1.1 2008/12/16 20:40:32 mtaal Exp $
+ * $Id: ExternalType.java,v 1.2 2008/12/17 06:13:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -37,66 +35,32 @@ import org.hibernate.usertype.UserType;
  * Provides a way to store external references (references to objects not in the
  * same datastore) as a string/uri.
  * 
- * @author <a href="mailto:mkanaley@tibco.com">Mike Kanaley</a>
+ * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
 public class ExternalType implements UserType, ParameterizedType {
 
 	private static final int[] SQL_TYPES = { Types.VARCHAR };
 	private EClass eClass;
 
-	/**
-	 * Return the types of the columns that this UserType will serialize into.
-	 * 
-	 * @return a single column of type VARCHAR.
-	 */
 	public int[] sqlTypes() {
 		return SQL_TYPES;
 	}
 
-	/**
-	 * Return the Java class of the object that is serialized for the column.
-	 * 
-	 * @return the Java instance class associated with the EMF DataType.
-	 */
 	public Class<?> returnedClass() {
 		return eClass.getInstanceClass();
 	}
 
-	/**
-	 * Is this datatype mutable?
-	 * 
-	 * @return true
-	 */
 	public boolean isMutable() {
 		return true;
 	}
 
-	/**
-	 * Construct a new VARCHAR custom data type.
-	 */
 	public ExternalType() {
 	}
 
-	/**
-	 * Provide a copy of the datatypes.
-	 * 
-	 * @param value
-	 *            the value to copy.
-	 * @return the value always.
-	 */
 	public Object deepCopy(Object value) {
 		return value;
 	}
 
-	/**
-	 * Are the two objects equal?
-	 * 
-	 * @param x
-	 *            an object to compare.
-	 * @param y
-	 *            an object to compare.
-	 * @return a standard equals test between the objects.
-	 */
 	public boolean equals(Object x, Object y) {
 		if (x == y) {
 			return true;
@@ -107,21 +71,6 @@ public class ExternalType implements UserType, ParameterizedType {
 		return x.equals(y);
 	}
 
-	/**
-	 * Populate the model object property from the ResultSet.
-	 * 
-	 * @param resultSet
-	 *            the non-null ResultSet from which the field will be populated.
-	 * @param names
-	 *            the names of the columns.
-	 * @param owner
-	 *            the owning object.
-	 * @return null if the column's value is null; otherwise, use the EMF
-	 *         factory to construct a new instance of the custom EMF data type
-	 *         from the contents of the String value of the column.
-	 * @throws SQLException
-	 *             if the value cannot be retrieved from the ResultSet.
-	 */
 	public Object nullSafeGet(ResultSet resultSet, String[] names, Object owner)
 			throws SQLException {
 
@@ -138,19 +87,6 @@ public class ExternalType implements UserType, ParameterizedType {
 		return newValue;
 	}
 
-	/**
-	 * Populate the database statement from the model object property.
-	 * 
-	 * @param statement
-	 *            the non-null Statement to insert the value into.
-	 * @param value
-	 *            the object to convert.
-	 * @param index
-	 *            the index into the statement where to insert the converted
-	 *            value.
-	 * @throws SQLException
-	 *             if the converted value cannot be set in the statement.
-	 */
 	public void nullSafeSet(PreparedStatement statement, Object value, int index)
 			throws SQLException {
 		String pvalue = null;
@@ -168,68 +104,22 @@ public class ExternalType implements UserType, ParameterizedType {
 		}
 	}
 
-	/**
-	 * No-op implementation.
-	 * 
-	 * @param value
-	 *            the value to dissemble.
-	 * @return the value passed in.
-	 */
 	public Serializable disassemble(Object value) {
 		return (Serializable) value;
 	}
 
-	/**
-	 * No-op implementation.
-	 * 
-	 * @param cachedValue
-	 *            the value to assemble.
-	 * @param owner
-	 *            the owning object.
-	 * @return the cachedValue passed in.
-	 */
 	public Object assemble(Serializable cachedValue, Object owner) {
 		return cachedValue;
 	}
 
-	/**
-	 * No-op implementation.
-	 * 
-	 * @param original
-	 *            the value to replace.
-	 * @param target
-	 *            the target object.
-	 * @param owner
-	 *            the owning object.
-	 * @return the original value passed in.
-	 */
 	public Object replace(Object original, Object target, Object owner) {
 		return original;
 	}
 
-	/**
-	 * No-op implementation.
-	 * 
-	 * @param x
-	 *            the object to get the hashcode for.
-	 * @return x's hashcode.
-	 */
 	public int hashCode(Object x) {
 		return x.hashCode();
 	}
 
-	/************************************************************************
-	 * ParameterizedType implementation
-	 ************************************************************************/
-	/**
-	 * Read in the type parameters from the Hibernate mapping and determine the
-	 * EMF factory and custom data type to use.
-	 * 
-	 * @param properties
-	 *            the properties containing key value pairs for the
-	 *            {@link #PACKAGE_IMPLEMENTATION_CLASS_NAME_PROPERTY} and
-	 *            {@link #ATTRIBUTE_NAME_PROPERTY} parameters.
-	 */
 	public void setParameterValues(Properties properties) {
 		final String ePackageNsUri = properties
 				.getProperty(HbMapperConstants.EPACKAGE_PARAM);
