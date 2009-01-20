@@ -52,17 +52,9 @@ import org.eclipse.persistence.sessions.Session;
  * @author Doug Clarke
  * @author Stephan Eberle
  */
-public abstract class EmfSessionCustomizer implements SessionCustomizer {
-
-  protected static final String ECLIPSELINK_EMF_CONTAINER_MAPPING = "http://www.oracle.com/toplink/emf/2006/ContainerMapping";
+public class EmfSessionCustomizer implements SessionCustomizer {
 
   protected static EmfCollectionAdjuster collectionAdjuster = new EmfCollectionAdjuster();
-
-  protected EPackage ePackage;
-
-  public EmfSessionCustomizer(EPackage ePackage) {
-    this.ePackage = ePackage;
-  }
 
   /**
    * Invoked after the session is created but prior to login where the mappings
@@ -83,9 +75,6 @@ public abstract class EmfSessionCustomizer implements SessionCustomizer {
           enhanceAttributeAccesssor(dbMapping);
           if (dbMapping.isCollectionMapping()) {
             CollectionMapping collectionMapping = (CollectionMapping) dbMapping;
-            if (isContainmentRelationship(descriptor, collectionMapping)) {
-              establishEContainerMapping(session, descriptor, collectionMapping);
-            }
             adjustListMapping(collectionMapping);
             shouldAttachListener = true;
           }
@@ -110,71 +99,6 @@ public abstract class EmfSessionCustomizer implements SessionCustomizer {
       throw DescriptorException.noFieldNameForMapping(collectionMapping);
     }
     return result;
-  }
-
-  protected void establishEContainerMapping(Session session, ClassDescriptor desc, CollectionMapping mapping) {
-
-    // TODO Stubbed for use in automatic eContainer mapping definition
-  }
-
-  protected boolean isContainmentRelationship(ClassDescriptor desc, CollectionMapping collectionMapping) {
-
-    if (ePackage == null) {
-      return false;
-    }
-
-    boolean result = false;
-
-    // retrieve Ecore meta model information behind participating classes
-    // TODO add support for searching in multiple and nested Ecore packages
-    EClass eOwnerClass = EElementUtil.findEClass(ePackage, desc.getJavaClass());
-    EClass eOwnedClass = EElementUtil.findEClass(ePackage, collectionMapping.getReferenceClass());
-    EStructuralFeature eCollectionMappingFeature = eOwnerClass.getEStructuralFeature(collectionMapping.getAttributeName());
-
-    // owned object contained in owner object?
-    if (EElementUtil.isContainment(eCollectionMappingFeature)) {
-      result = true;
-
-      // explicit containing class mapping specified?
-      String eContainingClassName = getExplicitlyMappedContainingClassName(eOwnedClass);
-      if (eContainingClassName != null) {
-        // be sure that names of owner class and containing class are
-        // matching
-        if (!eOwnerClass.getName().equals(eContainingClassName)) {
-          result = false;
-        }
-
-        // package of explicitly mapped containing class specified?
-        String eContainingClassPackageName = getExplicitlyMappedContainingClassPackageName(eOwnedClass);
-        if (eContainingClassPackageName != null) {
-          // be sure that packages of owner class and containing class
-          // are matching
-          if (!eOwnedClass.getEPackage().getName().equals(eContainingClassPackageName)) {
-            result = false;
-          }
-        }
-      }
-    }
-
-    // TODO remove these lines after testing
-    if (result) {
-      System.out.println("Containment relationship detected: " + eOwnerClass.getName() + " -> " + eOwnedClass.getName());
-    }
-
-    // TODO remove this line to actually enable this method
-    result = false;
-
-    return result;
-  }
-
-  private String getExplicitlyMappedContainingClassName(EClass eOwnedClass) {
-
-    return EcoreUtil.getAnnotation(eOwnedClass, ECLIPSELINK_EMF_CONTAINER_MAPPING, "eContainingClassName");
-  }
-
-  private String getExplicitlyMappedContainingClassPackageName(EClass eOwnedClass) {
-
-    return EcoreUtil.getAnnotation(eOwnedClass, ECLIPSELINK_EMF_CONTAINER_MAPPING, "eContainingClassPackageName");
   }
 
   private void adjustListMapping(CollectionMapping collectionMapping) throws EclipseLinkException {
