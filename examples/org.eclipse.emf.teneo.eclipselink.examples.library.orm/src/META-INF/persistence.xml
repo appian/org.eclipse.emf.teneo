@@ -16,14 +16,14 @@
 			<property name="eclipselink.jdbc.user" value="app"/>
 			<property name="eclipselink.jdbc.password" value="app"/>
 
-			<property name="eclipselink.session.customizer" value="org.eclipse.emf.teneo.eclipselink.examples.library.orm.LibrarySessionCustomizer"/>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.teneo.eclipselink.EmfSessionCustomizer"/>
 			 
 			<property name="eclipselink.jdbc.read-connections.min" value="1"/>
 			<property name="eclipselink.jdbc.write-connections.min" value="1"/>
 			<!-- Uncomment to create database schema  
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
-			-->
+			 -->
 		</properties>
 	</persistence-unit>
 </persistence>
