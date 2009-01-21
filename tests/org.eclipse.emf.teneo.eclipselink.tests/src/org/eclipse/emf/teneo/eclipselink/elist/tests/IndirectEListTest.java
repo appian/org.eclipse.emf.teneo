@@ -19,10 +19,9 @@ import org.eclipse.emf.teneo.eclipselink.elist.IndirectEList;
 import org.eclipse.persistence.internal.helper.Helper;
 import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
 
-
 public class IndirectEListTest extends TestCase {
 	@SuppressWarnings("serial")
-  protected static final class TestEmfIndirectEList<E> extends IndirectEList<E> {
+	protected static final class TestEmfIndirectEList<E> extends IndirectEList<E> {
 		public boolean isDelegateNull() {
 			return delegate == null;
 		}
@@ -30,12 +29,13 @@ public class IndirectEListTest extends TestCase {
 
 	protected Field delegateField = null;
 	protected TestEmfIndirectEList<Object> indirectEList;
-	
+
 	public IndirectEListTest(String arg0) {
 		super(arg0);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	@Override
@@ -50,7 +50,7 @@ public class IndirectEListTest extends TestCase {
 		assertNotNull("delegate should be instantiated", delegate);
 	}
 
-	protected void assertDelegateNotInstantiated()throws Exception {
+	protected void assertDelegateNotInstantiated() throws Exception {
 		Object delegate = getDelegateFromIndirectEList();
 		assertNull("delegate should not be instantiated", delegate);
 	}
@@ -129,7 +129,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.basicRemove(Object, NotificationChain)'
+	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.basicRemove(Object,
+	 * NotificationChain)'
 	 */
 	public void testBasicRemove() throws Exception {
 		try {
@@ -142,7 +143,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.basicAdd(Object, NotificationChain)'
+	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.basicAdd(Object,
+	 * NotificationChain)'
 	 */
 	public void testBasicAdd() throws Exception {
 		try {
@@ -154,13 +156,12 @@ public class IndirectEListTest extends TestCase {
 		assertDelegateInstantiated();
 	}
 
-
 	/*
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.add(int, Object)'
 	 */
 	public void testAddIntObject() throws Exception {
 		try {
-			indirectEList.add(1,null);
+			indirectEList.add(1, null);
 			fail("Adding to a temporary EclipseLinkEList should throw an exception.");
 		} catch (IndexOutOfBoundsException e) {
 			// expected but we are only testing for delegate instantiation
@@ -302,7 +303,7 @@ public class IndirectEListTest extends TestCase {
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.listIterator(int)'
 	 */
 	public void testListIteratorInt() throws Exception {
-		try{
+		try {
 			indirectEList.listIterator(10);
 			fail("Using a temporary EclipseLinkEList should throw an exception.");
 		} catch (IndexOutOfBoundsException e) {
@@ -374,7 +375,7 @@ public class IndirectEListTest extends TestCase {
 	 */
 	public void testSetIntObject() throws Exception {
 		try {
-			indirectEList.set(1,null);
+			indirectEList.set(1, null);
 			fail("Using a temporary EclipseLinkEList should throw an exception.");
 		} catch (IndexOutOfBoundsException e) {
 			// expected but we are only testing for delegate instantiation
@@ -396,7 +397,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.setValueHolder(ValueHolderInterface)'
+	 * ListTest method for
+	 * 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.setValueHolder(ValueHolderInterface)'
 	 */
 	public void testSetValueHolder() throws Exception {
 		indirectEList.setValueHolder(null);
@@ -408,7 +410,7 @@ public class IndirectEListTest extends TestCase {
 	 */
 	public void testSubListIntInt() throws Exception {
 		try {
-			indirectEList.subList(1,2);
+			indirectEList.subList(1, 2);
 			fail("Using a temporary EclipseLinkEList should throw an exception.");
 		} catch (IndexOutOfBoundsException e) {
 			// expected but we are only testing for delegate instantiation
@@ -428,7 +430,7 @@ public class IndirectEListTest extends TestCase {
 	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.toArray(Object[])'
 	 */
 	public void testToArrayObjectArray() throws Exception {
-		indirectEList.toArray(new Object[]{});
+		indirectEList.toArray(new Object[] {});
 		assertDelegateInstantiated();
 	}
 
@@ -445,7 +447,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.getEclipseLinkPropertyChangeListener()'
+	 * ListTest method for
+	 * 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.getEclipseLinkPropertyChangeListener()'
 	 */
 	public void testGetEclipseLinkPropertyChangeListener() throws Exception {
 		indirectEList.getEclipseLinkPropertyChangeListener();
@@ -453,7 +456,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.hasEclipseLinkPropertyChangeListener()'
+	 * ListTest method for
+	 * 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.hasEclipseLinkPropertyChangeListener()'
 	 */
 	public void testHasEclipseLinkPropertyChangeListener() throws Exception {
 		indirectEList.hasEclipseLinkPropertyChangeListener();
@@ -461,7 +465,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.setEclipseLinkPropertyChangeListener(PropertyChangeListener)'
+	 * ListTest method for
+	 * 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.setEclipseLinkPropertyChangeListener(PropertyChangeListener)'
 	 */
 	public void testSetEclipseLinkPropertyChangeListener() throws Exception {
 		indirectEList.setEclipseLinkPropertyChangeListener(null);
@@ -477,7 +482,8 @@ public class IndirectEListTest extends TestCase {
 	}
 
 	/*
-	 * ListTest method for 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.setEclipseLinkAttributeName(String)'
+	 * ListTest method for
+	 * 'org.eclipse.emf.teneo.eclipselink.elist.EmfIndirectEList.setEclipseLinkAttributeName(String)'
 	 */
 	public void testSetEclipseLinkAttributeName() throws Exception {
 		indirectEList.setEclipseLinkAttributeName(null);
@@ -489,7 +495,7 @@ public class IndirectEListTest extends TestCase {
 	 */
 	public void testMoveIntObject() throws Exception {
 		try {
-			indirectEList.move(1,null);
+			indirectEList.move(1, null);
 			fail("Using a temporary EclipseLinkEList should throw an exception.");
 		} catch (IndexOutOfBoundsException e) {
 			// expected but we are only testing for delegate instantiation
@@ -502,7 +508,7 @@ public class IndirectEListTest extends TestCase {
 	 */
 	public void testMoveIntInt() throws Exception {
 		try {
-			indirectEList.move(1,2);
+			indirectEList.move(1, 2);
 			fail("Using a temporary EclipseLinkEList should throw an exception.");
 		} catch (IndexOutOfBoundsException e) {
 			// expected but we are only testing for delegate instantiation

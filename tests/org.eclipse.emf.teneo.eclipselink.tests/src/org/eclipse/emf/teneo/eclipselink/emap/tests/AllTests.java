@@ -13,16 +13,13 @@ package org.eclipse.emf.teneo.eclipselink.emap.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-
-
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite(
-				"org.eclipse.emf.teneo.eclipselink.emap.test");
-		//$JUnit-BEGIN$
+		TestSuite suite = new TestSuite("org.eclipse.emf.teneo.eclipselink.emap.test");
+		// $JUnit-BEGIN$
 		suite.addTestSuite(IndirectEMapTest.class);
-		//$JUnit-END$
+		// $JUnit-END$
 		return suite;
 	}
 

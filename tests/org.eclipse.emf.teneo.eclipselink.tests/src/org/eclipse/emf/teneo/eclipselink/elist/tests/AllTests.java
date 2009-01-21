@@ -13,15 +13,13 @@ package org.eclipse.emf.teneo.eclipselink.elist.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite(
-				"org.eclipse.emf.teneo.eclipselink.elist.test");
-		//$JUnit-BEGIN$
+		TestSuite suite = new TestSuite("org.eclipse.emf.teneo.eclipselink.elist.test");
+		// $JUnit-BEGIN$
 		suite.addTestSuite(IndirectEListTest.class);
-		//$JUnit-END$
+		// $JUnit-END$
 		return suite;
 	}
 
