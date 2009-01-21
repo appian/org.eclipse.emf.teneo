@@ -11,7 +11,6 @@
 package org.eclipse.emf.teneo.eclipselink.elistfactory;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
@@ -24,37 +23,34 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 public class ExtendedMetaDataUtil {
 
-  private static ExtendedMetaData extendedMetaData = null;
+	private static ExtendedMetaData extendedMetaData = null;
 
-  public static ExtendedMetaData getExtendedMetaData(final EClassifier eClassifier) {
+	public static ExtendedMetaData getExtendedMetaData(final EClassifier eClassifier) {
 
-    if (extendedMetaData == null) {
-      extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
-    }
-    EPackage ePackage = eClassifier.getEPackage();
-    if (extendedMetaData.getPackage(ePackage.getNsURI()) == null) {
-      populateExtendedMetaData(extendedMetaData, Collections.singletonList(ePackage));
-    }
-    if (extendedMetaData.getPackage(ExtendedMetaData.XML_SCHEMA_URI) == null) {
-      extendedMetaData.putPackage(ExtendedMetaData.XML_SCHEMA_URI, extendedMetaData.getPackage(XMLTypePackage.eNS_URI));
-    }
-    return extendedMetaData;
-  }
+		if (extendedMetaData == null) {
+			extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
+		}
+		EPackage ePackage = eClassifier.getEPackage();
+		if (extendedMetaData.getPackage(ePackage.getNsURI()) == null) {
+			populateExtendedMetaData(extendedMetaData, Collections.singletonList(ePackage));
+		}
+		if (extendedMetaData.getPackage(ExtendedMetaData.XML_SCHEMA_URI) == null) {
+			extendedMetaData.putPackage(ExtendedMetaData.XML_SCHEMA_URI, extendedMetaData
+					.getPackage(XMLTypePackage.eNS_URI));
+		}
+		return extendedMetaData;
+	}
 
-  //
-  // helper methods
-  //
+	private static void populateExtendedMetaData(final ExtendedMetaData extendedMetaData, final List<EPackage> ePackages) {
 
-  private static void populateExtendedMetaData(final ExtendedMetaData extendedMetaData, final List<EPackage> ePackages) {
-
-    for (Iterator<EPackage> iter = ePackages.iterator(); iter.hasNext();) {
-      EPackage ePackage = (EPackage) iter.next();
-      if (ePackage != null) {
-        if (!EcorePackage.eNS_URI.equals(ePackage.getNsURI())) {
-          extendedMetaData.putPackage(ePackage.getNsURI(), ePackage);
-        }
-        populateExtendedMetaData(extendedMetaData, ePackage.getESubpackages());
-      }
-    }
-  }
+		for (EPackage package1 : ePackages) {
+			EPackage ePackage = package1;
+			if (ePackage != null) {
+				if (!EcorePackage.eNS_URI.equals(ePackage.getNsURI())) {
+					extendedMetaData.putPackage(ePackage.getNsURI(), ePackage);
+				}
+				populateExtendedMetaData(extendedMetaData, ePackage.getESubpackages());
+			}
+		}
+	}
 }
