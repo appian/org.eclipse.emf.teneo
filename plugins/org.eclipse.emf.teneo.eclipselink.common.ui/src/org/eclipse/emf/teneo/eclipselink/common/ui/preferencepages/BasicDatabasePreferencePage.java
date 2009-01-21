@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages;
 
-
 import org.eclipse.emf.teneo.eclipselink.common.ui.Activator;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -26,136 +25,111 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 public class BasicDatabasePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-  protected RadioGroupFieldEditor useLoginFromEditor;
-  protected Composite useLoginFromEditorComposite;
+	protected RadioGroupFieldEditor useLoginFromEditor;
+	protected Composite useLoginFromEditorComposite;
 
-  protected StringFieldEditor databaseURLEditor;
-  protected StringFieldEditor jdbcDriverEditor;
-  protected StringFieldEditor userNameEditor;
-  protected StringFieldEditor passwordEditor;
- 
-  public BasicDatabasePreferencePage() {
-    super("", GRID);
-  }
+	protected StringFieldEditor databaseURLEditor;
+	protected StringFieldEditor jdbcDriverEditor;
+	protected StringFieldEditor userNameEditor;
+	protected StringFieldEditor passwordEditor;
 
-  public BasicDatabasePreferencePage(String title) {
-    super(title, GRID);
-  }
+	public BasicDatabasePreferencePage() {
+		super("", GRID);
+	}
 
-  public BasicDatabasePreferencePage(String title, ImageDescriptor image) {
-    super(title, image, GRID);
-  }
+	public BasicDatabasePreferencePage(String title) {
+		super(title, GRID);
+	}
 
-  //
-  // IWorkbenchPreferencePage implementation
-  //
+	public BasicDatabasePreferencePage(String title, ImageDescriptor image) {
+		super(title, image, GRID);
+	}
 
-  public void init(IWorkbench workbench) {
+	public void init(IWorkbench workbench) {
 
-  }
+	}
 
-  //
-  // overrides
-  //
+	@Override
+	protected void createFieldEditors() {
+		// create use login from selection widgets
+		useLoginFromEditor = new RadioGroupFieldEditor(IDatabasePreferenceConstants.USE_LOGIN_FROM, "Database login:",
+				1, new String[][] {
+						{ "from Persistence Unit", IDatabasePreferenceConstants.USE_LOGIN_FROM_PERSISTENCE_UNIT },
+						{ "from user preferences", IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES } },
+				getFieldEditorParent(), true);
+		addField(useLoginFromEditor);
+		useLoginFromEditorComposite = useLoginFromEditor.getRadioBoxControl(getFieldEditorParent());
 
-  @Override
-  protected void createFieldEditors() {
-    // create use login from selection widgets
-    useLoginFromEditor = new RadioGroupFieldEditor(
-        IDatabasePreferenceConstants.USE_LOGIN_FROM, 
-        "Database login:", 
-        1, 
-        new String[][] { 
-            { "from Persistence Unit", IDatabasePreferenceConstants.USE_LOGIN_FROM_PERSISTENCE_UNIT }, 
-            { "from user preferences", IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES } }, 
-        getFieldEditorParent(), 
-        true);
-    addField(useLoginFromEditor);
-    useLoginFromEditorComposite = useLoginFromEditor.getRadioBoxControl(getFieldEditorParent());
+		// create database URL selection widgets
+		databaseURLEditor = new StringFieldEditor(IDatabasePreferenceConstants.DATABASE_URL, "Database URL:",
+				useLoginFromEditorComposite);
+		databaseURLEditor.setEnabled(false, useLoginFromEditorComposite);
+		addField(databaseURLEditor);
 
-    // create database URL selection widgets
-    databaseURLEditor = new StringFieldEditor(
-        IDatabasePreferenceConstants.DATABASE_URL, 
-        "Database URL:", 
-        useLoginFromEditorComposite);
-    databaseURLEditor.setEnabled(false, useLoginFromEditorComposite);
-    addField(databaseURLEditor);
+		// create JDBC driver selection widgets
+		jdbcDriverEditor = new StringFieldEditor(IDatabasePreferenceConstants.JDBC_DRIVER, "JDBC driver:",
+				useLoginFromEditorComposite);
+		addField(jdbcDriverEditor);
 
-    // create JDBC driver selection widgets
-    jdbcDriverEditor = new StringFieldEditor(
-        IDatabasePreferenceConstants.JDBC_DRIVER, 
-        "JDBC driver:", 
-        useLoginFromEditorComposite);
-    addField(jdbcDriverEditor);
+		// create user name widgets
+		userNameEditor = new StringFieldEditor(IDatabasePreferenceConstants.USER_NAME, "User name:",
+				useLoginFromEditorComposite);
+		addField(userNameEditor);
 
-    // create user name widgets
-    userNameEditor = new StringFieldEditor(
-        IDatabasePreferenceConstants.USER_NAME, 
-        "User name:", 
-        useLoginFromEditorComposite);
-    addField(userNameEditor);
+		// create password name widgets
+		passwordEditor = new StringFieldEditor(IDatabasePreferenceConstants.PASSWORD, "Password:",
+				useLoginFromEditorComposite);
+		Text passwordField = passwordEditor.getTextControl(useLoginFromEditorComposite);
+		passwordField.setEchoChar('*');
+		addField(passwordEditor);
 
-    // create password name widgets
-    passwordEditor = new StringFieldEditor(
-        IDatabasePreferenceConstants.PASSWORD, 
-        "Password:", 
-        useLoginFromEditorComposite);
-    Text passwordField = passwordEditor.getTextControl(useLoginFromEditorComposite);
-    passwordField.setEchoChar('*');
-    addField(passwordEditor);
+		// adjust layout of use login from selection widgets
+		GridLayout layout = (GridLayout) useLoginFromEditorComposite.getLayout();
+		layout.marginWidth = 5;
+		layout.marginHeight = 5;
 
-    // adjust layout of use login from selection widgets
-    GridLayout layout = (GridLayout) useLoginFromEditorComposite.getLayout();
-    layout.marginWidth = 5;
-    layout.marginHeight = 5;
+		// set the field editors's enabled state
+		IPreferenceStore store = getPreferenceStore();
+		setFieldEditorsEnabled(store.getString(IDatabasePreferenceConstants.USE_LOGIN_FROM));
+	}
 
-    // set the field editors's enabled state
-    IPreferenceStore store = getPreferenceStore();
-    setFieldEditorsEnabled(store.getString(IDatabasePreferenceConstants.USE_LOGIN_FROM));
-  }
+	@Override
+	protected IPreferenceStore doGetPreferenceStore() {
+		return Activator.getDefault().getPreferenceStore();
+	}
 
-  @Override
-  protected IPreferenceStore doGetPreferenceStore() {
-    return Activator.getDefault().getPreferenceStore();
-  }
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		super.propertyChange(event);
+		// event originating from use login from selection widgets?
+		if (event.getSource() == useLoginFromEditor) {
+			// set the field editors's enabled state
+			setFieldEditorsEnabled((String) event.getNewValue());
+		}
+	}
 
-  @Override
-  public void propertyChange(PropertyChangeEvent event) {
-    super.propertyChange(event);
-    // event originating from use login from selection widgets?
-    if (event.getSource() == useLoginFromEditor) {
-      // set the field editors's enabled state
-      setFieldEditorsEnabled((String) event.getNewValue());
-    }
-  }
+	protected void setFieldEditorsEnabled(String useLoginFromValue) {
+		if (IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES.equals(useLoginFromValue)) {
+			IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+			databaseURLEditor.setStringValue(store.getString(IDatabasePreferenceConstants.DATABASE_URL));
+			jdbcDriverEditor.setStringValue(store.getString(IDatabasePreferenceConstants.JDBC_DRIVER));
+			userNameEditor.setStringValue(store.getString(IDatabasePreferenceConstants.USER_NAME));
+			passwordEditor.setStringValue(store.getString(IDatabasePreferenceConstants.PASSWORD));
 
-  //
-  // helper methods
-  //
+			databaseURLEditor.setEnabled(true, useLoginFromEditorComposite);
+			jdbcDriverEditor.setEnabled(true, useLoginFromEditorComposite);
+			userNameEditor.setEnabled(true, useLoginFromEditorComposite);
+			passwordEditor.setEnabled(true, useLoginFromEditorComposite);
+		} else {
+			databaseURLEditor.setStringValue(null);
+			jdbcDriverEditor.setStringValue(null);
+			userNameEditor.setStringValue(null);
+			passwordEditor.setStringValue(null);
 
-  protected void setFieldEditorsEnabled(String useLoginFromValue) {
-    if (IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES.equals(useLoginFromValue)) {
-      IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-      databaseURLEditor.setStringValue(store.getString(IDatabasePreferenceConstants.DATABASE_URL));
-      jdbcDriverEditor.setStringValue(store.getString(IDatabasePreferenceConstants.JDBC_DRIVER));
-      userNameEditor.setStringValue(store.getString(IDatabasePreferenceConstants.USER_NAME));
-      passwordEditor.setStringValue(store.getString(IDatabasePreferenceConstants.PASSWORD));
-      
-      databaseURLEditor.setEnabled(true, useLoginFromEditorComposite);
-      jdbcDriverEditor.setEnabled(true, useLoginFromEditorComposite);
-      userNameEditor.setEnabled(true, useLoginFromEditorComposite);
-      passwordEditor.setEnabled(true, useLoginFromEditorComposite);
-    }
-    else {
-      databaseURLEditor.setStringValue(null);
-      jdbcDriverEditor.setStringValue(null);
-      userNameEditor.setStringValue(null);
-      passwordEditor.setStringValue(null);
-      
-      databaseURLEditor.setEnabled(false, useLoginFromEditorComposite);
-      jdbcDriverEditor.setEnabled(false, useLoginFromEditorComposite);
-      userNameEditor.setEnabled(false, useLoginFromEditorComposite);
-      passwordEditor.setEnabled(false, useLoginFromEditorComposite);
-    }
-  }
+			databaseURLEditor.setEnabled(false, useLoginFromEditorComposite);
+			jdbcDriverEditor.setEnabled(false, useLoginFromEditorComposite);
+			userNameEditor.setEnabled(false, useLoginFromEditorComposite);
+			passwordEditor.setEnabled(false, useLoginFromEditorComposite);
+		}
+	}
 }

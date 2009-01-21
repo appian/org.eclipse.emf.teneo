@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.common.ui;
 
-
 import org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages.IDatabasePreferenceConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -26,7 +25,7 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -39,7 +38,7 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	@Override
-  public void start(BundleContext context) throws Exception {
+	public void start(BundleContext context) throws Exception {
 		super.start(context);
 	}
 
@@ -48,30 +47,30 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
-  public void stop(BundleContext context) throws Exception {
+	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
 	}
 
 	/**
 	 * Returns the shared instance
-	 *
+	 * 
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
 		return plugin;
 	}
 
-  /**
-   * Returns the database settings which will show up when Preference dialog
-   * opens up for the first time.
-   */
-  @Override
-  protected void initializeDefaultPreferences(IPreferenceStore store) {
-    store.setDefault(IDatabasePreferenceConstants.USE_LOGIN_FROM, IDatabasePreferenceConstants.USE_LOGIN_FROM_DEFAULT);
-    store.setDefault(IDatabasePreferenceConstants.DATABASE_URL, IDatabasePreferenceConstants.DATABASE_URL_DEFAULT);
-    store.setDefault(IDatabasePreferenceConstants.JDBC_DRIVER, IDatabasePreferenceConstants.JDBC_DRIVER_DEFAULT);
-    store.setDefault(IDatabasePreferenceConstants.USER_NAME, IDatabasePreferenceConstants.USER_NAME_DEFAULT);
-    store.setDefault(IDatabasePreferenceConstants.PASSWORD, IDatabasePreferenceConstants.PASSWORD_DEFAULT);
-  }
+	/**
+	 * Returns the database settings which will show up when Preference dialog opens up for the first time.
+	 */
+	@Override
+	protected void initializeDefaultPreferences(IPreferenceStore store) {
+		store.setDefault(IDatabasePreferenceConstants.USE_LOGIN_FROM,
+				IDatabasePreferenceConstants.USE_LOGIN_FROM_DEFAULT);
+		store.setDefault(IDatabasePreferenceConstants.DATABASE_URL, IDatabasePreferenceConstants.DATABASE_URL_DEFAULT);
+		store.setDefault(IDatabasePreferenceConstants.JDBC_DRIVER, IDatabasePreferenceConstants.JDBC_DRIVER_DEFAULT);
+		store.setDefault(IDatabasePreferenceConstants.USER_NAME, IDatabasePreferenceConstants.USER_NAME_DEFAULT);
+		store.setDefault(IDatabasePreferenceConstants.PASSWORD, IDatabasePreferenceConstants.PASSWORD_DEFAULT);
+	}
 }
