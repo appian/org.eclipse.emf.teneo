@@ -10,12 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm;
 
-
 import org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType;
 import org.eclipse.persistence.mappings.DatabaseMapping;
 import org.eclipse.persistence.mappings.converters.Converter;
 import org.eclipse.persistence.sessions.Session;
-
 
 /*
  * TypeWriterEnumConverter is a singleton since it has no state.
@@ -23,15 +21,16 @@ import org.eclipse.persistence.sessions.Session;
 @SuppressWarnings("serial")
 public class TypeWriterEnumConverter implements Converter {
 	protected static TypeWriterEnumConverter instance = new TypeWriterEnumConverter();
-	
-	private TypeWriterEnumConverter() {}
-	
+
+	private TypeWriterEnumConverter() {
+	}
+
 	public static TypeWriterEnumConverter getInstance() {
 		return instance;
 	}
 
 	public Object convertDataValueToObjectValue(Object data, Session session) {
-		String typeName = (String)data;
+		String typeName = (String) data;
 		return TWriterType.get(typeName);
 	}
 
@@ -44,11 +43,11 @@ public class TypeWriterEnumConverter implements Converter {
 		}
 	}
 
-	public void initialize(DatabaseMapping arg0, Session arg1) {}
-	
+	public void initialize(DatabaseMapping arg0, Session arg1) {
+	}
+
 	public boolean isMutable() {
 		return false;
 	}
 
-	
 }

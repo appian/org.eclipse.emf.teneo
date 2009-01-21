@@ -15,17 +15,17 @@ import org.eclipse.persistence.descriptors.ClassDescriptor;
 import org.eclipse.persistence.indirection.IndirectList;
 import org.eclipse.persistence.mappings.OneToManyMapping;
 
-
 public class LibraryCustomizer implements DescriptorCustomizer {
 
 	/**
-	 *  <one-to-many name="books" target-entity="StringToBookMapEntryImpl" mapped-by="eContainer"/>
-	 *  <one-to-many name="writers" target-entity="WriterImpl" mapped-by="eContainer"/>
-     */
+	 * <one-to-many name="books" target-entity="StringToBookMapEntryImpl" mapped-by="eContainer"/> <one-to-many
+	 * name="writers" target-entity="WriterImpl" mapped-by="eContainer"/>
+	 */
 	public void customize(ClassDescriptor descriptor) throws Exception {
 		OneToManyMapping booksMapping = new OneToManyMapping();
 		booksMapping.setAttributeName("books");
-		booksMapping.setReferenceClass(org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl.class);
+		booksMapping
+				.setReferenceClass(org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl.class);
 		booksMapping.setCascadeMerge(true);
 		booksMapping.setCascadePersist(true);
 		booksMapping.setCascadeRefresh(true);
@@ -33,7 +33,7 @@ public class LibraryCustomizer implements DescriptorCustomizer {
 		booksMapping.useCollectionClass(IndirectList.class);
 		booksMapping.addTargetForeignKeyFieldName("EMFLIB_LIBRARY_BOOK_MAP.LIBRARY_ID", "EMFLIB_LIBRARY.ID");
 		descriptor.addMapping(booksMapping);
-		
+
 		OneToManyMapping writersMapping = new OneToManyMapping();
 		writersMapping.setAttributeName("writers");
 		writersMapping.setReferenceClass(org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl.class);

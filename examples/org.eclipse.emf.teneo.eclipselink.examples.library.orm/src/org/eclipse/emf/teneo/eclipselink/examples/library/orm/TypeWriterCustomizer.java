@@ -15,7 +15,6 @@ import org.eclipse.persistence.descriptors.ClassDescriptor;
 import org.eclipse.persistence.mappings.DirectToFieldMapping;
 import org.eclipse.persistence.mappings.converters.Converter;
 
-
 public class TypeWriterCustomizer implements DescriptorCustomizer {
 
 	/**

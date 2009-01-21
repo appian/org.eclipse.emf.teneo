@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm;
 
-
 public class MapEntryId {
 	private String key;
 	private long dbID;
-	
-	public MapEntryId() {}
-	
+
+	public MapEntryId() {
+	}
+
 	public MapEntryId(String key, long dbID) {
 		this.key = key;
 		this.dbID = dbID;
@@ -41,20 +41,26 @@ public class MapEntryId {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		final MapEntryId other = (MapEntryId) obj;
-		if (dbID != other.dbID)
+		if (dbID != other.dbID) {
 			return false;
+		}
 		if (key == null) {
-			if (other.key != null)
+			if (other.key != null) {
 				return false;
-		} else if (!key.equals(other.key))
+			}
+		} else if (!key.equals(other.key)) {
 			return false;
+		}
 		return true;
 	}
 
