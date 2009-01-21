@@ -16,15 +16,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 public interface BasicEclipseLinkResource extends Resource {
 
-  /**
-   * Returns the map of options that, in addition to the overriding options
-   * specified during load, are used to to control load behavior.
-   */
-  Map<Object, Object> getDefaultLoadOptions();
+	/**
+	 * Returns the map of options that, in addition to the overriding options specified during load, are used to to
+	 * control load behavior.
+	 */
+	Map<Object, Object> getDefaultLoadOptions();
 
-  /**
-   * Returns the map of options that, in addition to the overriding options
-   * specified during save, are used to to control save behavior.
-   */
-  Map<Object, Object> getDefaultSaveOptions();
+	/**
+	 * Returns the map of options that, in addition to the overriding options specified during save, are used to to
+	 * control save behavior.
+	 */
+	Map<Object, Object> getDefaultSaveOptions();
 }
