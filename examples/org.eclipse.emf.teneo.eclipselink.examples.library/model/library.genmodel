@@ -8,7 +8,6 @@
     modelPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.Activator"
     editPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator"
     editorPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator"
-    rootExtendsClass="org.eclipse.emf.teneo.eclipselink.common.eobject.DatabaseEObjectImpl"
     testsDirectory="" testSuiteClass="" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false">
   <foreignModel>library.ecore</foreignModel>
@@ -74,6 +73,10 @@
     </genClasses>
     <genClasses ecoreClass="library.ecore#//Cover">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Cover/colored"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Identifiable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/uuid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/version"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

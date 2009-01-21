@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: LibraryPackageImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import java.util.Map;
@@ -24,6 +20,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryFactory;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
@@ -117,6 +114,13 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 * @generated
 	 */
 	private EClass coverEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identifiableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -565,6 +569,33 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIdentifiable() {
+		return identifiableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Uuid() {
+		return (EAttribute)identifiableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentifiable_Version() {
+		return (EAttribute)identifiableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getBookCategory() {
 		return bookCategoryEEnum;
 	}
@@ -657,6 +688,10 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		coverEClass = createEClass(COVER);
 		createEAttribute(coverEClass, COVER__COLORED);
 
+		identifiableEClass = createEClass(IDENTIFIABLE);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__UUID);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__VERSION);
+
 		// Create enums
 		bookCategoryEEnum = createEEnum(BOOK_CATEGORY);
 		tWriterTypeEEnum = createEEnum(TWRITER_TYPE);
@@ -690,6 +725,17 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		bookEClass.getESuperTypes().add(this.getIdentifiable());
+		libraryEClass.getESuperTypes().add(this.getIdentifiable());
+		writerEClass.getESuperTypes().add(this.getIdentifiable());
+		stringToBookMapEntryEClass.getESuperTypes().add(this.getIdentifiable());
+		addressEClass.getESuperTypes().add(this.getIdentifiable());
+		publisherEClass.getESuperTypes().add(this.getIdentifiable());
+		styleEClass.getESuperTypes().add(this.getIdentifiable());
+		bookStylesMapEntryEClass.getESuperTypes().add(this.getIdentifiable());
+		translatorEClass.getESuperTypes().add(this.getIdentifiable());
+		typeWriterEClass.getESuperTypes().add(this.getIdentifiable());
+		coverEClass.getESuperTypes().add(this.getIdentifiable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bookEClass, Book.class, "Book", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -742,6 +788,10 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 
 		initEClass(coverEClass, Cover.class, "Cover", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCover_Colored(), ecorePackage.getEBoolean(), "colored", null, 0, 1, Cover.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentifiable_Uuid(), ecorePackage.getELong(), "uuid", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiable_Version(), ecorePackage.getELong(), "version", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(bookCategoryEEnum, BookCategory.class, "BookCategory");

@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: BookImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,8 +19,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.emf.teneo.eclipselink.common.eobject.DatabaseEObjectImpl;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory;
@@ -53,7 +47,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
  *
  * @generated
  */
-public class BookImpl extends DatabaseEObjectImpl implements Book {
+public class BookImpl extends IdentifiableImpl implements Book {
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->

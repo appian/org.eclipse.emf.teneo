@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: LibraryPackage.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -65,6 +61,43 @@ public interface LibraryPackage extends EPackage {
 	LibraryPackage eINSTANCE = org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl <em>Identifiable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getIdentifiable()
+	 * @generated
+	 */
+	int IDENTIFIABLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__UUID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE__VERSION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Identifiable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTIFIABLE_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl <em>Book</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,13 +108,31 @@ public interface LibraryPackage extends EPackage {
 	int BOOK = 0;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__TITLE = 0;
+	int BOOK__TITLE = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Pages</b></em>' attribute.
@@ -90,7 +141,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__PAGES = 1;
+	int BOOK__PAGES = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' attribute.
@@ -99,7 +150,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__CATEGORY = 2;
+	int BOOK__CATEGORY = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Author</b></em>' reference.
@@ -108,7 +159,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__AUTHOR = 3;
+	int BOOK__AUTHOR = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Styles</b></em>' map.
@@ -117,7 +168,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__STYLES = 4;
+	int BOOK__STYLES = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Translator</b></em>' reference.
@@ -126,7 +177,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__TRANSLATOR = 5;
+	int BOOK__TRANSLATOR = IDENTIFIABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Cover</b></em>' containment reference.
@@ -135,7 +186,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__COVER = 6;
+	int BOOK__COVER = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Book</em>' class.
@@ -144,7 +195,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_FEATURE_COUNT = 7;
+	int BOOK_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl <em>Library</em>}' class.
@@ -157,13 +208,31 @@ public interface LibraryPackage extends EPackage {
 	int LIBRARY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__NAME = 0;
+	int LIBRARY__NAME = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Writers</b></em>' containment reference list.
@@ -172,7 +241,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__WRITERS = 1;
+	int LIBRARY__WRITERS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Books</b></em>' map.
@@ -181,7 +250,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__BOOKS = 2;
+	int LIBRARY__BOOKS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Library</em>' class.
@@ -190,7 +259,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = 3;
+	int LIBRARY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl <em>Writer</em>}' class.
@@ -203,13 +272,31 @@ public interface LibraryPackage extends EPackage {
 	int WRITER = 2;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITER__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITER__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER__NAME = 0;
+	int WRITER__NAME = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Books</b></em>' reference list.
@@ -218,7 +305,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER__BOOKS = 1;
+	int WRITER__BOOKS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Address</b></em>' containment reference.
@@ -227,7 +314,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER__ADDRESS = 2;
+	int WRITER__ADDRESS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Publishers</b></em>' reference list.
@@ -236,7 +323,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER__PUBLISHERS = 3;
+	int WRITER__PUBLISHERS = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Typewriters</b></em>' reference list.
@@ -245,7 +332,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER__TYPEWRITERS = 4;
+	int WRITER__TYPEWRITERS = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Writer</em>' class.
@@ -254,7 +341,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER_FEATURE_COUNT = 5;
+	int WRITER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl <em>String To Book Map Entry</em>}' class.
@@ -267,13 +354,31 @@ public interface LibraryPackage extends EPackage {
 	int STRING_TO_BOOK_MAP_ENTRY = 3;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_TO_BOOK_MAP_ENTRY__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_TO_BOOK_MAP_ENTRY__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_TO_BOOK_MAP_ENTRY__KEY = 0;
+	int STRING_TO_BOOK_MAP_ENTRY__KEY = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -282,7 +387,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_TO_BOOK_MAP_ENTRY__VALUE = 1;
+	int STRING_TO_BOOK_MAP_ENTRY__VALUE = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>String To Book Map Entry</em>' class.
@@ -291,7 +396,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_TO_BOOK_MAP_ENTRY_FEATURE_COUNT = 2;
+	int STRING_TO_BOOK_MAP_ENTRY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.AddressImpl <em>Address</em>}' class.
@@ -304,13 +409,31 @@ public interface LibraryPackage extends EPackage {
 	int ADDRESS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Town</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADDRESS__TOWN = 0;
+	int ADDRESS__TOWN = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Address</em>' class.
@@ -319,7 +442,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADDRESS_FEATURE_COUNT = 1;
+	int ADDRESS_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.PublisherImpl <em>Publisher</em>}' class.
@@ -332,13 +455,31 @@ public interface LibraryPackage extends EPackage {
 	int PUBLISHER = 5;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISHER__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISHER__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLISHER__NAME = 0;
+	int PUBLISHER__NAME = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Writers</b></em>' reference list.
@@ -347,7 +488,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLISHER__WRITERS = 1;
+	int PUBLISHER__WRITERS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Publisher</em>' class.
@@ -356,7 +497,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLISHER_FEATURE_COUNT = 2;
+	int PUBLISHER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.StyleImpl <em>Style</em>}' class.
@@ -369,13 +510,31 @@ public interface LibraryPackage extends EPackage {
 	int STYLE = 6;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STYLE__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STYLE__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STYLE__NAME = 0;
+	int STYLE__NAME = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Style</em>' class.
@@ -384,7 +543,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STYLE_FEATURE_COUNT = 1;
+	int STYLE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookStylesMapEntryImpl <em>Book Styles Map Entry</em>}' class.
@@ -397,13 +556,31 @@ public interface LibraryPackage extends EPackage {
 	int BOOK_STYLES_MAP_ENTRY = 7;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK_STYLES_MAP_ENTRY__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK_STYLES_MAP_ENTRY__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_STYLES_MAP_ENTRY__KEY = 0;
+	int BOOK_STYLES_MAP_ENTRY__KEY = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' reference.
@@ -412,7 +589,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_STYLES_MAP_ENTRY__VALUE = 1;
+	int BOOK_STYLES_MAP_ENTRY__VALUE = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Book Styles Map Entry</em>' class.
@@ -421,7 +598,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_STYLES_MAP_ENTRY_FEATURE_COUNT = 2;
+	int BOOK_STYLES_MAP_ENTRY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.TranslatorImpl <em>Translator</em>}' class.
@@ -434,13 +611,31 @@ public interface LibraryPackage extends EPackage {
 	int TRANSLATOR = 8;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSLATOR__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSLATOR__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATOR__NAME = 0;
+	int TRANSLATOR__NAME = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -449,7 +644,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATOR__LOCATION = 1;
+	int TRANSLATOR__LOCATION = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Address</b></em>' containment reference.
@@ -458,7 +653,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATOR__ADDRESS = 2;
+	int TRANSLATOR__ADDRESS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Translator</em>' class.
@@ -467,7 +662,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATOR_FEATURE_COUNT = 3;
+	int TRANSLATOR_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.TypeWriterImpl <em>Type Writer</em>}' class.
@@ -480,13 +675,31 @@ public interface LibraryPackage extends EPackage {
 	int TYPE_WRITER = 9;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WRITER__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WRITER__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Maker</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_WRITER__MAKER = 0;
+	int TYPE_WRITER__MAKER = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -495,7 +708,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_WRITER__TYPE = 1;
+	int TYPE_WRITER__TYPE = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Type Writer</em>' class.
@@ -504,7 +717,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_WRITER_FEATURE_COUNT = 2;
+	int TYPE_WRITER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.CoverImpl <em>Cover</em>}' class.
@@ -517,13 +730,31 @@ public interface LibraryPackage extends EPackage {
 	int COVER = 10;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COVER__UUID = IDENTIFIABLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COVER__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
 	 * The feature id for the '<em><b>Colored</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COVER__COLORED = 0;
+	int COVER__COLORED = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Cover</em>' class.
@@ -532,7 +763,7 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COVER_FEATURE_COUNT = 1;
+	int COVER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}' enum.
@@ -542,7 +773,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getBookCategory()
 	 * @generated
 	 */
-	int BOOK_CATEGORY = 11;
+	int BOOK_CATEGORY = 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType <em>TWriter Type</em>}' enum.
@@ -552,7 +783,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getTWriterType()
 	 * @generated
 	 */
-	int TWRITER_TYPE = 12;
+	int TWRITER_TYPE = 13;
 
 
 	/**
@@ -989,6 +1220,38 @@ public interface LibraryPackage extends EPackage {
 	EAttribute getCover_Colored();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable <em>Identifiable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identifiable</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable
+	 * @generated
+	 */
+	EClass getIdentifiable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getUuid <em>Uuid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uuid</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getUuid()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Uuid();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getVersion()
+	 * @see #getIdentifiable()
+	 * @generated
+	 */
+	EAttribute getIdentifiable_Version();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1371,6 +1634,32 @@ public interface LibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COVER__COLORED = eINSTANCE.getCover_Colored();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl <em>Identifiable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl
+		 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getIdentifiable()
+		 * @generated
+		 */
+		EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__UUID = eINSTANCE.getIdentifiable_Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTIFIABLE__VERSION = eINSTANCE.getIdentifiable_Version();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}' enum.

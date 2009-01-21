@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: LibraryImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import java.util.Collection;
@@ -27,8 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.emf.teneo.eclipselink.common.eobject.DatabaseEObjectImpl;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
@@ -50,7 +44,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
  *
  * @generated
  */
-public class LibraryImpl extends DatabaseEObjectImpl implements Library {
+public class LibraryImpl extends IdentifiableImpl implements Library {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

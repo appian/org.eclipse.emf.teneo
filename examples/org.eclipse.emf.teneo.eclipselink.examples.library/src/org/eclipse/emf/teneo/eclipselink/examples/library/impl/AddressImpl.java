@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: AddressImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,8 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.teneo.eclipselink.common.eobject.DatabaseEObjectImpl;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
@@ -34,7 +28,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  *
  * @generated
  */
-public class AddressImpl extends DatabaseEObjectImpl implements Address {
+public class AddressImpl extends IdentifiableImpl implements Address {
 	/**
 	 * The default value of the '{@link #getTown() <em>Town</em>}' attribute.
 	 * <!-- begin-user-doc -->

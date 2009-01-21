@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeWriterImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: IdentifiableImpl.java,v 1.1 2009/01/21 21:34:20 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -11,72 +11,72 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
-import org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType;
-import org.eclipse.emf.teneo.eclipselink.examples.library.TypeWriter;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Type Writer</b></em>'.
+ * An implementation of the model object '<em><b>Identifiable</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.TypeWriterImpl#getMaker <em>Maker</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.TypeWriterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl#getUuid <em>Uuid</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
+public abstract class IdentifiableImpl extends EObjectImpl implements Identifiable {
 	/**
-	 * The default value of the '{@link #getMaker() <em>Maker</em>}' attribute.
+	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMaker()
+	 * @see #getUuid()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MAKER_EDEFAULT = null;
+	protected static final long UUID_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getMaker() <em>Maker</em>}' attribute.
+	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMaker()
+	 * @see #getUuid()
 	 * @generated
 	 * @ordered
 	 */
-	protected String maker = MAKER_EDEFAULT;
+	protected long uuid = UUID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getVersion()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TWriterType TYPE_EDEFAULT = TWriterType.TYPEWRITER;
+	protected static final long VERSION_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getVersion()
 	 * @generated
 	 * @ordered
 	 */
-	protected TWriterType type = TYPE_EDEFAULT;
+	protected long version = VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TypeWriterImpl() {
+	protected IdentifiableImpl() {
 		super();
 	}
 
@@ -87,7 +87,7 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return LibraryPackage.Literals.TYPE_WRITER;
+		return LibraryPackage.Literals.IDENTIFIABLE;
 	}
 
 	/**
@@ -95,8 +95,8 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMaker() {
-		return maker;
+	public long getUuid() {
+		return uuid;
 	}
 
 	/**
@@ -104,11 +104,11 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaker(String newMaker) {
-		String oldMaker = maker;
-		maker = newMaker;
+	public void setUuid(long newUuid) {
+		long oldUuid = uuid;
+		uuid = newUuid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.TYPE_WRITER__MAKER, oldMaker, maker));
+			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.IDENTIFIABLE__UUID, oldUuid, uuid));
 	}
 
 	/**
@@ -116,8 +116,8 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TWriterType getType() {
-		return type;
+	public long getVersion() {
+		return version;
 	}
 
 	/**
@@ -125,11 +125,11 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(TWriterType newType) {
-		TWriterType oldType = type;
-		type = newType == null ? TYPE_EDEFAULT : newType;
+	public void setVersion(long newVersion) {
+		long oldVersion = version;
+		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.TYPE_WRITER__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.IDENTIFIABLE__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -140,10 +140,10 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LibraryPackage.TYPE_WRITER__MAKER:
-				return getMaker();
-			case LibraryPackage.TYPE_WRITER__TYPE:
-				return getType();
+			case LibraryPackage.IDENTIFIABLE__UUID:
+				return new Long(getUuid());
+			case LibraryPackage.IDENTIFIABLE__VERSION:
+				return new Long(getVersion());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -156,11 +156,11 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LibraryPackage.TYPE_WRITER__MAKER:
-				setMaker((String)newValue);
+			case LibraryPackage.IDENTIFIABLE__UUID:
+				setUuid(((Long)newValue).longValue());
 				return;
-			case LibraryPackage.TYPE_WRITER__TYPE:
-				setType((TWriterType)newValue);
+			case LibraryPackage.IDENTIFIABLE__VERSION:
+				setVersion(((Long)newValue).longValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -174,11 +174,11 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LibraryPackage.TYPE_WRITER__MAKER:
-				setMaker(MAKER_EDEFAULT);
+			case LibraryPackage.IDENTIFIABLE__UUID:
+				setUuid(UUID_EDEFAULT);
 				return;
-			case LibraryPackage.TYPE_WRITER__TYPE:
-				setType(TYPE_EDEFAULT);
+			case LibraryPackage.IDENTIFIABLE__VERSION:
+				setVersion(VERSION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -192,10 +192,10 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LibraryPackage.TYPE_WRITER__MAKER:
-				return MAKER_EDEFAULT == null ? maker != null : !MAKER_EDEFAULT.equals(maker);
-			case LibraryPackage.TYPE_WRITER__TYPE:
-				return type != TYPE_EDEFAULT;
+			case LibraryPackage.IDENTIFIABLE__UUID:
+				return uuid != UUID_EDEFAULT;
+			case LibraryPackage.IDENTIFIABLE__VERSION:
+				return version != VERSION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,12 +210,12 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (maker: ");
-		result.append(maker);
-		result.append(", type: ");
-		result.append(type);
+		result.append(" (uuid: ");
+		result.append(uuid);
+		result.append(", version: ");
+		result.append(version);
 		result.append(')');
 		return result.toString();
 	}
 
-} //TypeWriterImpl
+} //IdentifiableImpl

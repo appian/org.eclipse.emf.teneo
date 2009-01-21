@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: LibrarySwitch.java,v 1.2 2009/01/21 21:34:21 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.util;
 
 import java.util.List;
@@ -95,66 +91,83 @@ public class LibrarySwitch<T> {
 			case LibraryPackage.BOOK: {
 				Book book = (Book)theEObject;
 				T result = caseBook(book);
+				if (result == null) result = caseIdentifiable(book);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.LIBRARY: {
 				Library library = (Library)theEObject;
 				T result = caseLibrary(library);
+				if (result == null) result = caseIdentifiable(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.WRITER: {
 				Writer writer = (Writer)theEObject;
 				T result = caseWriter(writer);
+				if (result == null) result = caseIdentifiable(writer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.STRING_TO_BOOK_MAP_ENTRY: {
 				@SuppressWarnings("unchecked") Map.Entry<String, Book> stringToBookMapEntry = (Map.Entry<String, Book>)theEObject;
 				T result = caseStringToBookMapEntry(stringToBookMapEntry);
+				if (result == null) result = caseIdentifiable((Identifiable)stringToBookMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.ADDRESS: {
 				Address address = (Address)theEObject;
 				T result = caseAddress(address);
+				if (result == null) result = caseIdentifiable(address);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.PUBLISHER: {
 				Publisher publisher = (Publisher)theEObject;
 				T result = casePublisher(publisher);
+				if (result == null) result = caseIdentifiable(publisher);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.STYLE: {
 				Style style = (Style)theEObject;
 				T result = caseStyle(style);
+				if (result == null) result = caseIdentifiable(style);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.BOOK_STYLES_MAP_ENTRY: {
 				@SuppressWarnings("unchecked") Map.Entry<String, Style> bookStylesMapEntry = (Map.Entry<String, Style>)theEObject;
 				T result = caseBookStylesMapEntry(bookStylesMapEntry);
+				if (result == null) result = caseIdentifiable((Identifiable)bookStylesMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.TRANSLATOR: {
 				Translator translator = (Translator)theEObject;
 				T result = caseTranslator(translator);
+				if (result == null) result = caseIdentifiable(translator);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.TYPE_WRITER: {
 				TypeWriter typeWriter = (TypeWriter)theEObject;
 				T result = caseTypeWriter(typeWriter);
+				if (result == null) result = caseIdentifiable(typeWriter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LibraryPackage.COVER: {
 				Cover cover = (Cover)theEObject;
 				T result = caseCover(cover);
+				if (result == null) result = caseIdentifiable(cover);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LibraryPackage.IDENTIFIABLE: {
+				Identifiable identifiable = (Identifiable)theEObject;
+				T result = caseIdentifiable(identifiable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -324,6 +337,21 @@ public class LibrarySwitch<T> {
 	 * @generated
 	 */
 	public T caseCover(Cover object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifiable(Identifiable object) {
 		return null;
 	}
 

@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: StringToBookMapEntryImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,8 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.teneo.eclipselink.common.eobject.DatabaseEObjectImpl;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
@@ -41,7 +35,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  *
  * @generated
  */
-public class StringToBookMapEntryImpl extends DatabaseEObjectImpl implements BasicEMap.Entry<String,Book> {
+public class StringToBookMapEntryImpl extends IdentifiableImpl implements BasicEMap.Entry<String,Book> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->

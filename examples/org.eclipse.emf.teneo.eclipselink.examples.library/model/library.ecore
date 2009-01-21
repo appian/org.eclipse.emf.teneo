@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="library"
     nsURI="http:///org/eclipse/emf/teneo/eclipselink/examples/library.ecore" nsPrefix="library">
-  <eClassifiers xsi:type="ecore:EClass" name="Book">
+  <eClassifiers xsi:type="ecore:EClass" name="Book" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pages" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -17,14 +17,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="cover" eType="#//Cover"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Library">
+  <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
         eType="#//Writer" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
         eType="#//StringToBookMapEntry" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="Writer" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
@@ -41,31 +41,33 @@
     <eLiterals name="ScienceFiction" value="1"/>
     <eLiterals name="Biography" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringToBookMapEntry" instanceClassName="java.util.Map$Entry">
+  <eClassifiers xsi:type="ecore:EClass" name="StringToBookMapEntry" instanceClassName="java.util.Map$Entry"
+      eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Book"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Address">
+  <eClassifiers xsi:type="ecore:EClass" name="Address" eSuperTypes="#//Identifiable">
     <eAnnotations source="http://www.oracle.com/toplink/emf/2006/ContainerMapping">
       <details key="eContainingClassName" value="Writer"/>
       <details key="eContainingClassPackageName" value="library"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="town" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Publisher">
+  <eClassifiers xsi:type="ecore:EClass" name="Publisher" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
         eType="#//Writer" eOpposite="#//Writer/publishers"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Style">
+  <eClassifiers xsi:type="ecore:EClass" name="Style" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BookStylesMapEntry" instanceClassName="java.util.Map$Entry">
+  <eClassifiers xsi:type="ecore:EClass" name="BookStylesMapEntry" instanceClassName="java.util.Map$Entry"
+      eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Style"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Translator">
+  <eClassifiers xsi:type="ecore:EClass" name="Translator" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="address" eType="#//Address"
@@ -75,11 +77,15 @@
     <eLiterals name="Typewriter"/>
     <eLiterals name="Computer" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeWriter">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeWriter" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maker" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TWriterType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Cover">
+  <eClassifiers xsi:type="ecore:EClass" name="Cover" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="colored" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifiable" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
 </ecore:EPackage>
