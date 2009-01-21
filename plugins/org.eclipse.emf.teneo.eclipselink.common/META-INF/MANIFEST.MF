@@ -8,6 +8,5 @@ Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore
-Export-Package: org.eclipse.emf.teneo.eclipselink.common.eobject,
- org.eclipse.emf.teneo.eclipselink.common.resource
+Export-Package: org.eclipse.emf.teneo.eclipselink.common.resource
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
