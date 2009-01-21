@@ -18,10 +18,10 @@ import junit.framework.TestCase;
 public abstract class ManagedTest extends TestCase {
 	private static List<ManagedTest> runningTests = new ArrayList<ManagedTest>();
 
-    public ManagedTest(String sTestName) {
-        super(sTestName);
-        registerTest();
-     }
+	public ManagedTest(String sTestName) {
+		super(sTestName);
+		registerTest();
+	}
 
 	private void registerTest() {
 		runningTests.add(this);
@@ -34,17 +34,15 @@ public abstract class ManagedTest extends TestCase {
 		}
 	}
 
-	/** 
-	 * Called when all the tests in the current suite are have
-	 * been run.
+	/**
+	 * Called when all the tests in the current suite are have been run.
 	 */
 	protected abstract void allTestsComplete();
 
 	@Override
-    protected void tearDown() throws Exception {
-        unregisterTest();
-        super.tearDown();
-    }
-
+	protected void tearDown() throws Exception {
+		unregisterTest();
+		super.tearDown();
+	}
 
 }

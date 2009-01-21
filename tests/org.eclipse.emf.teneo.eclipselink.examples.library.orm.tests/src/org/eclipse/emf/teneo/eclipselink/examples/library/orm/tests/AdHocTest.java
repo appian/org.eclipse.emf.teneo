@@ -14,13 +14,11 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Publisher;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 /**
- * 
  * @author ebk2fe
  * @version 1.0 (April 28th, 2006)
- * <p>
- * This test case creates a publisher object and assignes two writers
- * to the publisher. The objects are committed to the data base. The publisher
- * is fetched back from the data base. 
+ *          <p>
+ *          This test case creates a publisher object and assignes two writers to the publisher. The objects are
+ *          committed to the data base. The publisher is fetched back from the data base.
  */
 public class AdHocTest extends LibraryJPATest {
 
@@ -37,36 +35,36 @@ public class AdHocTest extends LibraryJPATest {
 
 	public void testRemovePublisherWriterWithCache() throws Exception {
 		boolean checkCache = true;
-		verifyRemovePublisherWriter(checkCache);		
+		verifyRemovePublisherWriter(checkCache);
 	}
-	
-//	public void testRemovePublisherWriterNoCache() throws Exception {
-//		boolean checkCache = false;
-//		verifyRemovePublisherWriter(checkCache);		
-//	}
+
+	// public void testRemovePublisherWriterNoCache() throws Exception {
+	// boolean checkCache = false;
+	// verifyRemovePublisherWriter(checkCache);
+	// }
 
 	private void verifyRemovePublisherWriter(boolean checkCache) {
 
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
-		}			
+		}
 		// dissassociate a writer from a publisher
 		beginTransaction();
 		Publisher dbPublisher = findPublisherWithName(em, publisherName);
 		Writer dbWriter1 = findWriterWithName(em, writer1Name);
-		
+
 		dbPublisher.getWriters().remove(dbWriter1);
 		dbWriter1.getPublishers().remove(dbPublisher);
 		commitTransaction();
-		
+
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
-		}		
+		}
 		// verify dissassociation
 		dbPublisher = findPublisherWithName(em, publisherName);
 		dbWriter1 = findWriterWithName(em, writer1Name);
 		Writer dbWriter2 = findWriterWithName(em, writer2Name);
-	
+
 		assertNotNull("publisher not found", dbPublisher);
 		assertNotNull("writer1 not found", dbWriter1);
 		assertNotNull("writer2 not found", dbWriter2);
@@ -76,8 +74,7 @@ public class AdHocTest extends LibraryJPATest {
 	}
 
 	/**
-	 * The test fixture consists of a single publisher
-	 * with two writers.
+	 * The test fixture consists of a single publisher with two writers.
 	 */
 	@Override
 	protected void setUp() throws Exception {
@@ -94,6 +91,5 @@ public class AdHocTest extends LibraryJPATest {
 		publisher.getWriters().add(writer2);
 		commitTransaction();
 	}
-
 
 }

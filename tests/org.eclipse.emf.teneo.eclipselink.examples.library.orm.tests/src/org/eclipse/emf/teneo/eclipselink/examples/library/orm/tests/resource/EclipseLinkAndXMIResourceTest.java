@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
@@ -31,223 +30,221 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
-import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 import org.eclipse.emf.teneo.eclipselink.examples.library.forum.Forum;
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
 
 public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
 
-  private IProject testProject;
-  private URI libraryURI, forumURI;
-  private Library library1;
-  private Forum forum1;
-  private Resource libraryResource1, libraryResource2, libraryResource3;
-  private Resource forumResource1, forumResource2, forumResource3;
+	private IProject testProject;
+	private URI libraryURI, forumURI;
+	private Library library1;
+	private Forum forum1;
+	private Resource libraryResource1, libraryResource2, libraryResource3;
+	private Resource forumResource1, forumResource2, forumResource3;
 
-  @Override
-  protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 
-    super.setUp();
+		super.setUp();
 
-    // create test project in runtime workspace
-    IWorkspace workspace = ResourcesPlugin.getWorkspace();
-    testProject = workspace.getRoot().getProject("Test");
-    IProjectDescription description = workspace.newProjectDescription("Test");
-    testProject.create(description, null);
-    testProject.open(null);
-  }
+		// create test project in runtime workspace
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		testProject = workspace.getRoot().getProject("Test");
+		IProjectDescription description = workspace.newProjectDescription("Test");
+		testProject.create(description, null);
+		testProject.open(null);
+	}
 
-  @Override
-  protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 
-    // delete test project including its contents from runtime workspace
-    try {
-      testProject.delete(true, true, null);
-    }
-    catch (CoreException cex) {
-      cex.printStackTrace();
-    }
-    
-    super.tearDown();
-  }
+		// delete test project including its contents from runtime workspace
+		try {
+			testProject.delete(true, true, null);
+		} catch (CoreException cex) {
+			cex.printStackTrace();
+		}
 
-  public void testEclipseLinkAndXMIResource() throws IOException {
+		super.tearDown();
+	}
 
-    // create library model instance
-    library1 = testLibraryFactory.createLibraryModel();
+	public void testEclipseLinkAndXMIResource() throws IOException {
 
-    // create forum model instance
-    forum1 = testLibraryFactory.createForumModel();
+		// create library model instance
+		library1 = testLibraryFactory.createLibraryModel();
 
-    saveLibraryModel1AndForumModel1();
-    loadLibraryModel2FromForumModel2ViaIDBasedCrossDocumentReference();
-    loadLibraryModel3FromForumModel3ViaIndexBasedCrossDocumentReference();
-    deleteLibraryModel1();
-    unloadAllLibraryAndForumModels();
-  }
+		// create forum model instance
+		forum1 = testLibraryFactory.createForumModel();
 
-  private void saveLibraryModel1AndForumModel1() throws IOException {
+		saveLibraryModel1AndForumModel1();
+		loadLibraryModel2FromForumModel2ViaIDBasedCrossDocumentReference();
+		loadLibraryModel3FromForumModel3ViaIndexBasedCrossDocumentReference();
+		deleteLibraryModel1();
+		unloadAllLibraryAndForumModels();
+	}
 
-    // create EclipseLink URI for saving/loading library model in/from database
-    String query = EclipseLinkResourceUtil.createContentsEqualQuery(LibraryPackage.eINSTANCE.getLibrary(), LibraryPackage.eINSTANCE.getLibrary_Name(), library1.getName());
-    libraryURI = EclipseLinkResourceUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, query);
+	private void saveLibraryModel1AndForumModel1() throws IOException {
 
-    // save library model instance in database
-    ResourceSet resourceSet1 = new ResourceSetImpl();
-    resourceSet1.getLoadOptions().putAll(getTestPersistenceUnitProperties());
-    libraryResource1 = resourceSet1.createResource(libraryURI);
+		// create EclipseLink URI for saving/loading library model in/from database
+		String query = EclipseLinkResourceUtil.createContentsEqualQuery(LibraryPackage.eINSTANCE.getLibrary(),
+				LibraryPackage.eINSTANCE.getLibrary_Name(), library1.getName());
+		libraryURI = EclipseLinkResourceUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, query);
 
-    assertTrue(libraryResource1 instanceof EclipseLinkResourceImpl);
+		// save library model instance in database
+		ResourceSet resourceSet1 = new ResourceSetImpl();
+		resourceSet1.getLoadOptions().putAll(getTestPersistenceUnitProperties());
+		libraryResource1 = resourceSet1.createResource(libraryURI);
 
-    libraryResource1.getContents().add(library1);
-    libraryResource1.save(Collections.EMPTY_MAP);
+		assertTrue(libraryResource1 instanceof EclipseLinkResourceImpl);
 
-    // create platform resource URI for saving/loading forum model in/from
-    // XMI file
-    String forumPathName = createForumModelPathName(testProject, forum1);
-    forumURI = URI.createPlatformResourceURI(forumPathName, false);
+		libraryResource1.getContents().add(library1);
+		libraryResource1.save(Collections.EMPTY_MAP);
 
-    // save forum model instance in XMI resource
-    forumResource1 = resourceSet1.createResource(forumURI);
+		// create platform resource URI for saving/loading forum model in/from
+		// XMI file
+		String forumPathName = createForumModelPathName(testProject, forum1);
+		forumURI = URI.createPlatformResourceURI(forumPathName, false);
 
-    assertTrue(forumResource1 instanceof XMIResourceImpl);
+		// save forum model instance in XMI resource
+		forumResource1 = resourceSet1.createResource(forumURI);
 
-    forumResource1.getContents().add(forum1);
-    forumResource1.save(Collections.EMPTY_MAP);
-  }
+		assertTrue(forumResource1 instanceof XMIResourceImpl);
 
-  private void loadLibraryModel2FromForumModel2ViaIDBasedCrossDocumentReference() {
+		forumResource1.getContents().add(forum1);
+		forumResource1.save(Collections.EMPTY_MAP);
+	}
 
-    // load second forum model instance from XMI resource
-    ResourceSet resourceSet2 = new ResourceSetImpl();
-    resourceSet2.getLoadOptions().putAll(getTestPersistenceUnitProperties());
-    forumResource2 = resourceSet2.getResource(forumURI, true);
+	private void loadLibraryModel2FromForumModel2ViaIDBasedCrossDocumentReference() {
 
-    assertTrue(forumResource2 instanceof XMIResourceImpl);
+		// load second forum model instance from XMI resource
+		ResourceSet resourceSet2 = new ResourceSetImpl();
+		resourceSet2.getLoadOptions().putAll(getTestPersistenceUnitProperties());
+		forumResource2 = resourceSet2.getResource(forumURI, true);
 
-    // analyse second forum model instance
-    List<EObject> forumContents2 = forumResource2.getContents();
-    assertNotNull(forumContents2);
-    assertEquals(1, forumContents2.size());
-    EObject forum2 = forumContents2.get(0);
+		assertTrue(forumResource2 instanceof XMIResourceImpl);
 
-    EPackage forumPack = forum2.eClass().getEPackage();
-    EClass forumCls = (EClass) forumPack.getEClassifier("Forum");
-    EStructuralFeature nameFeat = forumCls.getEStructuralFeature("name");
-    EStructuralFeature ratedAuthorsFeat = forumCls.getEStructuralFeature("ratedAuthors");
-    
-    assertNotNull(forum2.eGet(nameFeat));
-    assertEquals(forum1.eGet(nameFeat), forum2.eGet(nameFeat));
-    assertNotNull(forum2.eGet(ratedAuthorsFeat));
-    assertEquals(((EList<?>) forum1.eGet(ratedAuthorsFeat)).size(), ((EList<?>) forum2.eGet(ratedAuthorsFeat)).size());
+		// analyse second forum model instance
+		List<EObject> forumContents2 = forumResource2.getContents();
+		assertNotNull(forumContents2);
+		assertEquals(1, forumContents2.size());
+		EObject forum2 = forumContents2.get(0);
 
-    // navigate from second forum to referenced rated author and thereby
-    // lazily load second library model instance from database resource
-    Writer writer2 = (Writer) ((EList<?>) forum2.eGet(ratedAuthorsFeat)).get(0);
-    
-    assertNotNull(writer2);
-    
-    libraryResource2 = writer2.eResource();
+		EPackage forumPack = forum2.eClass().getEPackage();
+		EClass forumCls = (EClass) forumPack.getEClassifier("Forum");
+		EStructuralFeature nameFeat = forumCls.getEStructuralFeature("name");
+		EStructuralFeature ratedAuthorsFeat = forumCls.getEStructuralFeature("ratedAuthors");
 
-    assertTrue(libraryResource2 instanceof EclipseLinkResourceImpl);
-    assertEquals(libraryResource2.getURI(), libraryURI);
+		assertNotNull(forum2.eGet(nameFeat));
+		assertEquals(forum1.eGet(nameFeat), forum2.eGet(nameFeat));
+		assertNotNull(forum2.eGet(ratedAuthorsFeat));
+		assertEquals(((EList<?>) forum1.eGet(ratedAuthorsFeat)).size(), ((EList<?>) forum2.eGet(ratedAuthorsFeat))
+				.size());
 
-    // analyse second library model instance
-    assertTrue(writer2.eContainer() instanceof Library);
-    Library library2 = (Library) writer2.eContainer();
+		// navigate from second forum to referenced rated author and thereby
+		// lazily load second library model instance from database resource
+		Writer writer2 = (Writer) ((EList<?>) forum2.eGet(ratedAuthorsFeat)).get(0);
 
-    assertNotNull(library2.getName());
-    assertEquals(library1.getName(), library2.getName());
-    assertNotNull(library2.getWriters());
-    assertEquals(library1.getWriters().size(), library2.getWriters().size());
-    assertNotNull(library2.getBooks());
-    assertEquals(library1.getBooks().size(), library2.getBooks().size());
-  }
+		assertNotNull(writer2);
 
-  private void loadLibraryModel3FromForumModel3ViaIndexBasedCrossDocumentReference() {
+		libraryResource2 = writer2.eResource();
 
-    // load third forum model instance from XMI resource
-    ResourceSet resourceSet3 = new ResourceSetImpl();
-    resourceSet3.getLoadOptions().putAll(getTestPersistenceUnitProperties());
-    forumResource3 = resourceSet3.getResource(forumURI, true);
+		assertTrue(libraryResource2 instanceof EclipseLinkResourceImpl);
+		assertEquals(libraryResource2.getURI(), libraryURI);
 
-    assertTrue(forumResource3 instanceof XMIResourceImpl);
+		// analyse second library model instance
+		assertTrue(writer2.eContainer() instanceof Library);
+		Library library2 = (Library) writer2.eContainer();
 
-    // analyse third forum model instance
-    List<EObject> forumContents3 = forumResource3.getContents();
-    assertNotNull(forumContents3);
-    assertEquals(1, forumContents3.size());
-    EObject forum3 = forumContents3.get(0);
+		assertNotNull(library2.getName());
+		assertEquals(library1.getName(), library2.getName());
+		assertNotNull(library2.getWriters());
+		assertEquals(library1.getWriters().size(), library2.getWriters().size());
+		assertNotNull(library2.getBooks());
+		assertEquals(library1.getBooks().size(), library2.getBooks().size());
+	}
 
-    EPackage forumPack = forum3.eClass().getEPackage();
-    EClass forumCls = (EClass) forumPack.getEClassifier("Forum");
-    EStructuralFeature nameFeat = forumCls.getEStructuralFeature("name");
-    EStructuralFeature featuredBooksFeat = forumCls.getEStructuralFeature("featuredBooks");
-    
-    assertNotNull(forum3.eGet(nameFeat));
-    assertEquals(forum1.eGet(nameFeat), forum3.eGet(nameFeat));
-    assertNotNull(forum3.eGet(featuredBooksFeat));
-    assertEquals(((EList<?>) forum1.eGet(featuredBooksFeat)).size(), ((EList<?>) forum3.eGet(featuredBooksFeat)).size());
+	private void loadLibraryModel3FromForumModel3ViaIndexBasedCrossDocumentReference() {
 
-    // navigate from third forum to referenced featured book and thereby
-    // lazily load third library model instance from database resource
-    Book book3 = (Book) ((EList<?>) forum3.eGet(featuredBooksFeat)).get(0);
-    
-    assertNotNull(book3);
-    
-    libraryResource3 = book3.eResource();
+		// load third forum model instance from XMI resource
+		ResourceSet resourceSet3 = new ResourceSetImpl();
+		resourceSet3.getLoadOptions().putAll(getTestPersistenceUnitProperties());
+		forumResource3 = resourceSet3.getResource(forumURI, true);
 
-    assertTrue(libraryResource3 instanceof EclipseLinkResourceImpl);
-    assertEquals(libraryResource3.getURI(), libraryURI);
+		assertTrue(forumResource3 instanceof XMIResourceImpl);
 
-    // analyse third library model instance
-    assertTrue(book3.eContainer() instanceof StringToBookMapEntryImpl);
-    StringToBookMapEntryImpl bookEntry3 = (StringToBookMapEntryImpl) book3.eContainer();
-    assertTrue(bookEntry3.eContainer() instanceof Library);
-    Library library3 = (Library) bookEntry3.eContainer();
+		// analyse third forum model instance
+		List<EObject> forumContents3 = forumResource3.getContents();
+		assertNotNull(forumContents3);
+		assertEquals(1, forumContents3.size());
+		EObject forum3 = forumContents3.get(0);
 
-    assertNotNull(library3.getName());
-    assertEquals(library1.getName(), library3.getName());
-    assertNotNull(library3.getWriters());
-    assertEquals(library1.getWriters().size(), library3.getWriters().size());
-    assertNotNull(library3.getBooks());
-    assertEquals(library1.getBooks().size(), library3.getBooks().size());
-  }
+		EPackage forumPack = forum3.eClass().getEPackage();
+		EClass forumCls = (EClass) forumPack.getEClassifier("Forum");
+		EStructuralFeature nameFeat = forumCls.getEStructuralFeature("name");
+		EStructuralFeature featuredBooksFeat = forumCls.getEStructuralFeature("featuredBooks");
 
-  private void deleteLibraryModel1() throws IOException {
+		assertNotNull(forum3.eGet(nameFeat));
+		assertEquals(forum1.eGet(nameFeat), forum3.eGet(nameFeat));
+		assertNotNull(forum3.eGet(featuredBooksFeat));
+		assertEquals(((EList<?>) forum1.eGet(featuredBooksFeat)).size(), ((EList<?>) forum3.eGet(featuredBooksFeat))
+				.size());
 
-    // delete first library model instance in database
-    libraryResource1.getContents().remove(library1);
-    libraryResource1.save(Collections.EMPTY_MAP);
-  }
+		// navigate from third forum to referenced featured book and thereby
+		// lazily load third library model instance from database resource
+		Book book3 = (Book) ((EList<?>) forum3.eGet(featuredBooksFeat)).get(0);
 
-  private void unloadAllLibraryAndForumModels() {
+		assertNotNull(book3);
 
-    // unload resources of first library and forum model instance
-    libraryResource1.unload();
-    forumResource1.unload();
+		libraryResource3 = book3.eResource();
 
-    // unload resources of second library and forum model instance
-    libraryResource2.unload();
-    forumResource2.unload();
+		assertTrue(libraryResource3 instanceof EclipseLinkResourceImpl);
+		assertEquals(libraryResource3.getURI(), libraryURI);
 
-    // unload resources of third library and forum model instance
-    libraryResource3.unload();
-    forumResource3.unload();
-  }
+		// analyse third library model instance
+		assertTrue(book3.eContainer() instanceof StringToBookMapEntryImpl);
+		StringToBookMapEntryImpl bookEntry3 = (StringToBookMapEntryImpl) book3.eContainer();
+		assertTrue(bookEntry3.eContainer() instanceof Library);
+		Library library3 = (Library) bookEntry3.eContainer();
 
-  //
-  // helper methods
-  //
+		assertNotNull(library3.getName());
+		assertEquals(library1.getName(), library3.getName());
+		assertNotNull(library3.getWriters());
+		assertEquals(library1.getWriters().size(), library3.getWriters().size());
+		assertNotNull(library3.getBooks());
+		assertEquals(library1.getBooks().size(), library3.getBooks().size());
+	}
 
-  private String createForumModelPathName(IProject project, Forum forum) {
+	private void deleteLibraryModel1() throws IOException {
 
-    IPath result = project.getFullPath().append(forum.getName() + "." + forum.eClass().getEPackage().getName());
-    return result.toString();
-  }
+		// delete first library model instance in database
+		libraryResource1.getContents().remove(library1);
+		libraryResource1.save(Collections.EMPTY_MAP);
+	}
+
+	private void unloadAllLibraryAndForumModels() {
+
+		// unload resources of first library and forum model instance
+		libraryResource1.unload();
+		forumResource1.unload();
+
+		// unload resources of second library and forum model instance
+		libraryResource2.unload();
+		forumResource2.unload();
+
+		// unload resources of third library and forum model instance
+		libraryResource3.unload();
+		forumResource3.unload();
+	}
+
+	private String createForumModelPathName(IProject project, Forum forum) {
+
+		IPath result = project.getFullPath().append(forum.getName() + "." + forum.eClass().getEPackage().getName());
+		return result.toString();
+	}
 }

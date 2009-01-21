@@ -23,13 +23,13 @@ import org.eclipse.persistence.sessions.factories.SessionManager;
 
 public abstract class JPATest extends ManagedTest {
 	private static EntityManagerFactory factory;
-	
+
 	protected EntityManager em;
-	
+
 	public JPATest(String name) {
 		super(name);
 	}
-	
+
 	public EntityManagerFactory getEntityManagerFactory() {
 		if (factory == null) {
 			HashMap<String, Object> properties = new HashMap<String, Object>();
@@ -45,20 +45,19 @@ public abstract class JPATest extends ManagedTest {
 	}
 
 	@Override
-  protected void setUp() throws Exception  {
+	protected void setUp() throws Exception {
 		super.setUp();
 		em = getEntityManagerFactory().createEntityManager();
 		cleanDatabase();
-	}	
+	}
 
 	@Override
-  protected void tearDown() throws Exception {
+	protected void tearDown() throws Exception {
 		if (em != null) {
 			try {
 				em.close();
 			} catch (RuntimeException e) {
-				System.out.println("Exception closing EntityManager: "
-						+ e.getMessage());
+				System.out.println("Exception closing EntityManager: " + e.getMessage());
 				e.printStackTrace();
 				// not supposed to fail in tearDown
 			} finally {
@@ -66,20 +65,19 @@ public abstract class JPATest extends ManagedTest {
 		}
 		super.tearDown();
 	}
+
 	protected static long nextTitleInt = Calendar.getInstance().getTimeInMillis();
 
 	/**
-	 * Subclasses should define to return all objects that should be
-	 * deleted before a test is run.
+	 * Subclasses should define to return all objects that should be deleted before a test is run.
 	 * 
 	 * @param uow
 	 */
 	protected abstract void cleanDatabase(EntityManager em);
 
 	/**
-	 * Utility method used to generate Strings for "don't care"
-	 * attribute values of test objects:
-	 *           DON'T HARD WIRE VALUES IN TESTS
+	 * Utility method used to generate Strings for "don't care" attribute values of test objects: DON'T HARD WIRE VALUES
+	 * IN TESTS
 	 * 
 	 * @return String
 	 */
@@ -87,12 +85,11 @@ public abstract class JPATest extends ManagedTest {
 		return String.valueOf(nextTitleInt++);
 	}
 
-	/** 
-	 * Called when all the tests in the current suite are have
-	 * been run.
+	/**
+	 * Called when all the tests in the current suite are have been run.
 	 */
 	@Override
-  protected void allTestsComplete()	{
+	protected void allTestsComplete() {
 		factory.close();
 	}
 
@@ -113,6 +110,7 @@ public abstract class JPATest extends ManagedTest {
 	protected void rollbackTransaction() {
 		em.getTransaction().rollback();
 	}
+
 	protected void reinitializeCachesAndEntityManager() {
 		Session session = SessionManager.getManager().getSession(getPersistenceUnitName());
 		session.getIdentityMapAccessor().initializeAllIdentityMaps();

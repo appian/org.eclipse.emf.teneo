@@ -18,69 +18,68 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Style;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
-
 public class LibraryEnvironmentTest extends LibraryJPATest {
 
-  public LibraryEnvironmentTest(String name) {
+	public LibraryEnvironmentTest(String name) {
 
-    super(name);
-  }
+		super(name);
+	}
 
-  public void testLibraryEnvironmentWithCache() throws Exception {
+	public void testLibraryEnvironmentWithCache() throws Exception {
 
-    boolean checkCache = true;
-    verifyLibraryEnvironment(checkCache);
-  }
+		boolean checkCache = true;
+		verifyLibraryEnvironment(checkCache);
+	}
 
-  public void testLibraryEnvironmentNoCache() throws Exception {
+	public void testLibraryEnvironmentNoCache() throws Exception {
 
-    boolean checkCache = false;
-    verifyLibraryEnvironment(checkCache);
-  }
+		boolean checkCache = false;
+		verifyLibraryEnvironment(checkCache);
+	}
 
-  private void verifyLibraryEnvironment(boolean checkCache) {
+	private void verifyLibraryEnvironment(boolean checkCache) {
 
-	  beginTransaction();
+		beginTransaction();
 
-       // Create the Test Environment
-      
-      Library library = setupLibraryEnvironment(em);
-      
-      String libraryName = library.getName();
+		// Create the Test Environment
 
-      // put the data to the data base
+		Library library = setupLibraryEnvironment(em);
 
-      commitTransaction();
+		String libraryName = library.getName();
 
-      // set the cache usage
+		// put the data to the data base
 
-      if (!checkCache) {
-        reinitializeCachesAndEntityManager();
-      }
+		commitTransaction();
 
-      // fetch back the library
-      
-      Library dbLibrary = findLibraryWithName(em, libraryName);
+		// set the cache usage
 
-      // verify
-      
-      assertNotNull("dbLibray not found", dbLibrary);
-      assertEquals("dbLibrary.name", libraryName, dbLibrary.getName());
+		if (!checkCache) {
+			reinitializeCachesAndEntityManager();
+		}
 
-      Book dbBook = (Book) dbLibrary.getBooks().values().toArray()[0];
-      Writer dbWriter = dbLibrary.getWriters().get(0);
-      
-      assertNotNull("dbBook not found", dbBook);
-      assertNotNull("dbWriter not found", dbWriter);
+		// fetch back the library
 
-      Translator dbTranslator = dbBook.getTranslator();
-      Address dbAddress = dbWriter.getAddress();
-      Publisher dbPublisher = dbWriter.getPublishers().get(0);
-      Style dbStyle = (Style) dbBook.getStyles().values().toArray()[0];
+		Library dbLibrary = findLibraryWithName(em, libraryName);
 
-      assertNotNull("dbTranslator not found", dbTranslator);
-      assertNotNull("dbAddress not found", dbAddress);
-      assertNotNull("dbPublisher not found", dbPublisher);
-      assertNotNull("dbStyle not found", dbStyle);
-  }
+		// verify
+
+		assertNotNull("dbLibray not found", dbLibrary);
+		assertEquals("dbLibrary.name", libraryName, dbLibrary.getName());
+
+		Book dbBook = (Book) dbLibrary.getBooks().values().toArray()[0];
+		Writer dbWriter = dbLibrary.getWriters().get(0);
+
+		assertNotNull("dbBook not found", dbBook);
+		assertNotNull("dbWriter not found", dbWriter);
+
+		Translator dbTranslator = dbBook.getTranslator();
+		Address dbAddress = dbWriter.getAddress();
+		Publisher dbPublisher = dbWriter.getPublishers().get(0);
+		Style dbStyle = (Style) dbBook.getStyles().values().toArray()[0];
+
+		assertNotNull("dbTranslator not found", dbTranslator);
+		assertNotNull("dbAddress not found", dbAddress);
+		assertNotNull("dbPublisher not found", dbPublisher);
+		assertNotNull("dbStyle not found", dbStyle);
+	}
 }

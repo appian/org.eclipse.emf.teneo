@@ -27,15 +27,11 @@ public class OneToOneTest extends LibraryJPATest {
 		String addressTown = address.getTown();
 		writer.setAddress(address);
 		em.getTransaction().commit();
-		
-		Writer actualWriter = (Writer) em
-			.createQuery("select o from Writer o where o.name = :name")
-			.setParameter("name", writerName)
-			.getSingleResult();
-		Address actualAddress = (Address) em
-			.createQuery("select o from Address o where o.town = :town")
-			.setParameter("town", addressTown)
-			.getSingleResult();
+
+		Writer actualWriter = (Writer) em.createQuery("select o from Writer o where o.name = :name").setParameter(
+				"name", writerName).getSingleResult();
+		Address actualAddress = (Address) em.createQuery("select o from Address o where o.town = :town").setParameter(
+				"town", addressTown).getSingleResult();
 
 		assertEquals("writer address", actualWriter.getAddress(), actualAddress);
 	}

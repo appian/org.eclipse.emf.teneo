@@ -18,13 +18,11 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
  * @author ebk2fe
  * @version 1.0.1 June 9th, 2006
  *          <p>
- *          This test case creates a writer object and assigns a typewriter to
- *          the writer. The object model uses a 1:n association based on EList
- *          to store the reference from writer to the typewriter(s). The data
- *          base model provides an associative table to cover the list of
- *          references. The or-mapping uses the many-to-many mapping to
- *          implement the 1:n relationship. The benefit would be that no
- *          explicite backward reference is required at the object model.
+ *          This test case creates a writer object and assigns a typewriter to the writer. The object model uses a 1:n
+ *          association based on EList to store the reference from writer to the typewriter(s). The data base model
+ *          provides an associative table to cover the list of references. The or-mapping uses the many-to-many mapping
+ *          to implement the 1:n relationship. The benefit would be that no explicite backward reference is required at
+ *          the object model.
  */
 public class WriterTypewriterTest extends LibraryJPATest {
 

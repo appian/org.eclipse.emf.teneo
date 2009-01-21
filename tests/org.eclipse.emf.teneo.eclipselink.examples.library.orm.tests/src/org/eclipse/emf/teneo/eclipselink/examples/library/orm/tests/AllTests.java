@@ -16,9 +16,8 @@ import junit.framework.TestSuite;
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite(
-				"ListTest for org.eclipse.emf.teneo.eclipselink.examples.library");
-		//$JUnit-BEGIN$
+		TestSuite suite = new TestSuite("ListTest for org.eclipse.emf.teneo.eclipselink.examples.library");
+		// $JUnit-BEGIN$
 		suite.addTestSuite(EObjectTest.class);
 		suite.addTestSuite(TypeWriterTypeTest.class);
 		suite.addTestSuite(LibWriterEContainerTest.class);
@@ -41,7 +40,7 @@ public class AllTests {
 		suite.addTestSuite(PublisherWriterTest.class);
 		suite.addTestSuite(EContainerReferenceTest.class);
 		suite.addTestSuite(BookStylesTest.class);
-		//$JUnit-END$
+		// $JUnit-END$
 		return suite;
 	}
 

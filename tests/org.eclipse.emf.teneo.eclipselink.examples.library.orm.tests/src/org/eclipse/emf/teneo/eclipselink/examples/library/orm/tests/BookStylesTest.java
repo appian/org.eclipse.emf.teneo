@@ -33,19 +33,19 @@ public class BookStylesTest extends LibraryJPATest {
 	private void verifyInsertBookStyles(boolean checkCache) {
 
 		beginTransaction();
-		
+
 		Book book = createAnonymousBook(em);
-		String bookTitle = book.getTitle();		
+		String bookTitle = book.getTitle();
 		Style style1 = createAnonymousStyle(em);
 		String style1Name = style1.getName();
 		Style style2 = createAnonymousStyle(em);
 		String style2Name = style2.getName();
 		book.getStyles().put(style1Name, style1);
 		book.getStyles().put(style2Name, style2);
-		int eContFeatId = ((BookStylesMapEntryImpl)book.getStyles().get(0)).eContainerFeatureID(); 
-		
+		int eContFeatId = ((BookStylesMapEntryImpl) book.getStyles().get(0)).eContainerFeatureID();
+
 		commitTransaction();
-		
+
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
@@ -53,20 +53,20 @@ public class BookStylesTest extends LibraryJPATest {
 		Book dbBook = findBookWithTitle(em, bookTitle);
 		assertNotNull("dbBook not found", dbBook);
 		assertEquals("dbBook nbr of styles", book.getStyles().size(), dbBook.getStyles().size());
-		
+
 		// check the containment setting for the BookStyleMapEntry
-		
-		BookStylesMapEntryImpl bookStyleMapEntry = (BookStylesMapEntryImpl)dbBook.getStyles().get(0);
+
+		BookStylesMapEntryImpl bookStyleMapEntry = (BookStylesMapEntryImpl) dbBook.getStyles().get(0);
 		assertEquals("eContainer of the BookStylesMapEntryImpl", dbBook, bookStyleMapEntry.eContainer());
-		assertEquals("eContainerFeatureId of the BookStylesMapEntryImpl", eContFeatId,
-				((BookStylesMapEntryImpl)dbBook.getStyles().get(0)).eContainerFeatureID());
-		
+		assertEquals("eContainerFeatureId of the BookStylesMapEntryImpl", eContFeatId, ((BookStylesMapEntryImpl) dbBook
+				.getStyles().get(0)).eContainerFeatureID());
+
 		Style dbStyle1 = dbBook.getStyles().get(style1Name);
 		Style dbStyle2 = dbBook.getStyles().get(style2Name);
-		
+
 		assertNotNull("First Style", dbStyle1);
 		assertNotNull("Second Style", dbStyle2);
-		
+
 		// There is no containment relationshsip given for the Style objects
 		assertNull("no containment of the style object", dbStyle1.eContainer());
 		assertNull("no containment of the style object", dbStyle2.eContainer());

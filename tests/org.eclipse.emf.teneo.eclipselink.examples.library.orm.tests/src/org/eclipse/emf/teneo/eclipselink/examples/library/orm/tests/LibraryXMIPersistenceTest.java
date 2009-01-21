@@ -38,14 +38,11 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 	}
 
 	/**
-	 * The test case creates a library object model holding a library, writer and
-	 * book object.
-	 * It generates a XMI file using the build in persistency API of EMF.
-	 * The first XMI file is generated directly after creation of the library
-	 * object model.
-	 * A second XMI file is created based on the library object model which is 
-	 * read back from the data base. Both files shall be identical.
-	 *
+	 * The test case creates a library object model holding a library, writer and book object. It generates a XMI file
+	 * using the build in persistency API of EMF. The first XMI file is generated directly after creation of the library
+	 * object model. A second XMI file is created based on the library object model which is read back from the data
+	 * base. Both files shall be identical.
+	 * 
 	 * @param checkCache
 	 */
 	private void verifyInsertWriterBookLibrary(boolean checkCache) throws Exception {
@@ -59,53 +56,47 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 		library.getBooks().put(book.getTitle(), book);
 		library.getWriters().add(writer);
 
-		saveToXMIFile(library,
-				"file://c:/temp/LibraryXMIPersistenceTestBefore.library");
+		saveToXMIFile(library, "file://c:/temp/LibraryXMIPersistenceTestBefore.library");
 
 		commitTransaction();
-				// verify
-				if (!checkCache) {
-					reinitializeCachesAndEntityManager();
-				}
+		// verify
+		if (!checkCache) {
+			reinitializeCachesAndEntityManager();
+		}
 		Writer actualWriter = findWriterWithName(em, writerName);
 		assertNotNull("writer", actualWriter);
 		assertEquals("writer name", writerName, actualWriter.getName());
 
 		Book actualBook = findBookWithTitle(em, bookTitle);
 		assertNotNull("book", actualBook);
-		assertEquals("number of writer books", 1, actualWriter.getBooks()
-				.size());
+		assertEquals("number of writer books", 1, actualWriter.getBooks().size());
 		Book actualWriterBook = actualWriter.getBooks().get(0);
 		assertEquals("book/writer book", actualBook, actualWriterBook);
-		assertEquals("writer book", actualWriter.getBooks().get(0),
-				actualBook);
+		assertEquals("writer book", actualWriter.getBooks().get(0), actualBook);
 
 		Library actualLibrary = findLibraryWithName(em, libraryName);
-		Book actualLibraryBook = actualLibrary.getBooks().get(
-				bookTitle);
+		Book actualLibraryBook = actualLibrary.getBooks().get(bookTitle);
 		assertEquals("book/library book", actualBook, actualLibraryBook);
-		Writer actualLibraryWriter = actualLibrary.getWriters()
-				.get(0);
-		assertEquals("writer/library writer", actualWriter,
-				actualLibraryWriter);
+		Writer actualLibraryWriter = actualLibrary.getWriters().get(0);
+		assertEquals("writer/library writer", actualWriter, actualLibraryWriter);
 
 		// Start the writing to XMI
 
-		saveToXMIFile(actualLibrary,
-				"file://c:/temp/LibraryXMIPersistenceTestAfter.library");
+		saveToXMIFile(actualLibrary, "file://c:/temp/LibraryXMIPersistenceTestAfter.library");
 
 	}
 
 	/**
-	 * The private method saveToXMIFile allocates a resource set and
-	 * stores the contents of the library object model to a XMI file.
-	 *  
-	 * @param library The root object of the library object model
-	 * @param fileURI The name of the file "file://C:/<file name>"
+	 * The private method saveToXMIFile allocates a resource set and stores the contents of the library object model to
+	 * a XMI file.
+	 * 
+	 * @param library
+	 *            The root object of the library object model
+	 * @param fileURI
+	 *            The name of the file "file://C:/<file name>"
 	 * @throws IOException
 	 */
-	private void saveToXMIFile(Library library, String fileURI)
-			throws IOException {
+	private void saveToXMIFile(Library library, String fileURI) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		URI resURI = URI.createURI(fileURI);
 		Resource res = resourceSet.createResource(resURI);

@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
@@ -24,12 +23,12 @@ public class ContainerTest extends LibraryJPATest {
 	}
 
 	public void testMoveBetweenContainersWithCache() throws Exception {
-		boolean checkCache = true;	
+		boolean checkCache = true;
 		verifyMoveBetweenContainers(checkCache);
 	}
 
 	public void testMoveBetweenContainersNoCache() throws Exception {
-		boolean checkCache = false;	
+		boolean checkCache = false;
 		verifyMoveBetweenContainers(checkCache);
 	}
 
@@ -53,14 +52,14 @@ public class ContainerTest extends LibraryJPATest {
 		String libraryTwoName = libraryTwo.getName();
 		libraryTwo.getWriters().add(writer);
 		commitTransaction();
-		
+
 		// verify
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
 
-		Library dbLibraryOne = findLibraryWithName(em, libraryOneName);		
-		Library dbLibraryTwo = findLibraryWithName(em, libraryTwoName);		
+		Library dbLibraryOne = findLibraryWithName(em, libraryOneName);
+		Library dbLibraryTwo = findLibraryWithName(em, libraryTwoName);
 		Writer dbWriter = findWriterWithName(em, writerName);
 		EList<Writer> dbLibOneWriters = dbLibraryOne.getWriters();
 		EList<Writer> dbLibTwoWriters = dbLibraryTwo.getWriters();

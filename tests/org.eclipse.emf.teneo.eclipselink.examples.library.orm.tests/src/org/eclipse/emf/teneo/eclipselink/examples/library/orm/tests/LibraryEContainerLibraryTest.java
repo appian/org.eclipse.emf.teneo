@@ -31,16 +31,14 @@ public class LibraryEContainerLibraryTest extends LibraryJPATest {
 	}
 
 	/**
-	 * Create a library object model holding a library, writer and
-	 * book object.
-	 * Fetches back the library object from the data base. 
-	 * Check whether the containment relationship is correctly set up at the
-	 * field eContainer of the book and writer objects.
+	 * Create a library object model holding a library, writer and book object. Fetches back the library object from the
+	 * data base. Check whether the containment relationship is correctly set up at the field eContainer of the book and
+	 * writer objects.
 	 * 
 	 * @param checkCache
 	 */
 	private void verifyInsertWriterBookLibrary(boolean checkCache) {
-		
+
 		beginTransaction();
 		Writer writer = createAnonymousWriterWithOneBook(em);
 		String writerName = writer.getName();
@@ -65,7 +63,7 @@ public class LibraryEContainerLibraryTest extends LibraryJPATest {
 		Writer actualLibraryWriter = actualLibrary.getWriters().get(0);
 		assertNotNull("writer missing", actualLibraryWriter);
 		assertEquals("writer name", writerName, actualLibraryWriter.getName());
-		
+
 		// verify whether the field eContainer is set
 		assertNotNull("Field Library/Book.eContainer not set", actualLibraryBook.eContainer());
 		assertNotNull("Field Library/Writer.eContainer not set", actualLibraryWriter.eContainer());

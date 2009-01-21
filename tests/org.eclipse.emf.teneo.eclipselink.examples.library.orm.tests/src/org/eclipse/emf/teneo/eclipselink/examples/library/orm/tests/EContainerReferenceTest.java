@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
@@ -32,11 +31,11 @@ public class EContainerReferenceTest extends LibraryJPATest {
 	}
 
 	/**
-	 * This test creates a Library with a contained Writer and determines whether
-	 * the inverse eContainer relationship is established from Writer to Library.
+	 * This test creates a Library with a contained Writer and determines whether the inverse eContainer relationship is
+	 * established from Writer to Library.
 	 * 
 	 * @param checkCache
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	private void verifyLibaryWriterRelationship(boolean checkCache) throws Exception {
 		beginTransaction();
@@ -51,16 +50,14 @@ public class EContainerReferenceTest extends LibraryJPATest {
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
-		
+
 		beginTransaction();
 		Writer actualWriter = findWriterWithName(em, writerName);
 		assertNotNull("writer", actualWriter);
 
 		Library actualLibrary = findLibraryWithName(em, libraryName);
-		Writer actualLibraryWriter = actualLibrary.getWriters()
-				.get(0);
-		assertEquals("writer/library writer", actualWriter,
-				actualLibraryWriter);
+		Writer actualLibraryWriter = actualLibrary.getWriters().get(0);
+		assertEquals("writer/library writer", actualWriter, actualLibraryWriter);
 		EObject actualWriterEContainer = actualWriter.eContainer();
 		assertEquals("writer eContainer", actualLibrary, actualWriterEContainer);
 	}

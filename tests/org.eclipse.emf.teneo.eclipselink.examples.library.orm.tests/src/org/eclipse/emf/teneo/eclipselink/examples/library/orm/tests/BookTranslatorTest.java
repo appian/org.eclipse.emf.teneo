@@ -30,22 +30,22 @@ public class BookTranslatorTest extends LibraryJPATest {
 	}
 
 	private void verifyInsertBookTranslator(boolean checkCache) {
-		
+
 		beginTransaction();
 		Book book = createAnonymousBookWithTranslator(em);
 		String bookTitle = book.getTitle();
 		Translator translator = book.getTranslator();
 		commitTransaction();
-		
+
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
 
-		Book dbBook = findBookWithTitle(em, bookTitle);	
+		Book dbBook = findBookWithTitle(em, bookTitle);
 		assertNotNull("dbBook not found", dbBook);
 		Translator dbTranslator = dbBook.getTranslator();
 		assertNotNull("dbTranslator not found", dbTranslator);
 		assertEquals("dbTranslator.location", translator.getLocation(), dbTranslator.getLocation());
 	}
-	
+
 }

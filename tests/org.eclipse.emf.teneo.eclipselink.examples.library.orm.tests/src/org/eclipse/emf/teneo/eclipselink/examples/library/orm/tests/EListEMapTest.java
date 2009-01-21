@@ -10,16 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
-
-
-
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
-
 public class EListEMapTest extends LibraryJPATest {
-	
+
 	public EListEMapTest(String name) {
 		super(name);
 	}
@@ -49,7 +45,7 @@ public class EListEMapTest extends LibraryJPATest {
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
-		
+
 		Writer actualWriter = findWriterWithName(em, writerName);
 		assertNotNull("writer", actualWriter);
 		assertEquals("writer name", writerName, actualWriter.getName());
@@ -65,6 +61,5 @@ public class EListEMapTest extends LibraryJPATest {
 		Writer actualLibraryWriter = actualLibrary.getWriters().get(0);
 		assertEquals("writer/library writer", actualWriter, actualLibraryWriter);
 	}
-
 
 }

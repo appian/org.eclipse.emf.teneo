@@ -26,11 +26,9 @@ public class BasicTest extends LibraryJPATest {
 		em.getTransaction().begin();
 		em.persist(style);
 		em.getTransaction().commit();
-		
-		Style actualStyle = (Style) em
-			.createQuery("select s from Style s where s.name = :name")
-			.setParameter("name", expectedStyle)
-			.getSingleResult();
+
+		Style actualStyle = (Style) em.createQuery("select s from Style s where s.name = :name").setParameter("name",
+				expectedStyle).getSingleResult();
 		assertEquals("name", expectedStyle, actualStyle.getName());
 	}
 }

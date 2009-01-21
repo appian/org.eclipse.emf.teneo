@@ -16,15 +16,12 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.TypeWriter;
 /**
  * @author ebk2fe
  * @version 1.0 (April 28th, 2006)
- * <p>
- * This test case create a typewriter object which holds at the attribute
- * type an EMF enumeration type. To store the attribute EMF enumeration value
- * at the data base the transformation mapping is used. Two java classes
- * have been implemented: <code>TypewriterTypeAttributeTransformer</code> and
- * <code>TypewriterTypeFieldTransformer</code>.<br>
- * The correct EMF value for the attribute has to be fetched back from the
- * data base. 
- * 
+ *          <p>
+ *          This test case create a typewriter object which holds at the attribute type an EMF enumeration type. To
+ *          store the attribute EMF enumeration value at the data base the transformation mapping is used. Two java
+ *          classes have been implemented: <code>TypewriterTypeAttributeTransformer</code> and
+ *          <code>TypewriterTypeFieldTransformer</code>.<br>
+ *          The correct EMF value for the attribute has to be fetched back from the data base.
  */
 public class TypeWriterTypeTest extends LibraryJPATest {
 

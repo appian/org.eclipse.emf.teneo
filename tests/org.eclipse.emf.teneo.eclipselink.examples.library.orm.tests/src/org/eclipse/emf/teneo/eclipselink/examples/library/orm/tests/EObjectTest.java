@@ -16,7 +16,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 public class EObjectTest extends LibraryJPATest {
-	
+
 	public EObjectTest(String name) {
 		super(name);
 	}
@@ -36,18 +36,18 @@ public class EObjectTest extends LibraryJPATest {
 		Writer writer = createAnonymousWriter(em);
 		String writerName = writer.getName();
 		commitTransaction();
-		
+
 		// verify
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
-		
+
 		beginTransaction();
 		Writer actualWriter = findWriterWithName(em, writerName);
 		assertNotNull("writer", actualWriter);
 		rollbackTransaction();
 	}
-	
+
 	public void testInsertBookWithCache() throws Exception {
 		boolean checkCache = true;
 		verifyInsertBook(checkCache);
@@ -64,12 +64,12 @@ public class EObjectTest extends LibraryJPATest {
 		String title = book.getTitle();
 		BookCategory category = book.getCategory();
 		commitTransaction();
-		
+
 		// verify
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
-		
+
 		beginTransaction();
 		Book actualBook = findBookWithTitle(em, title);
 		assertNotNull("book", actualBook);
@@ -97,12 +97,11 @@ public class EObjectTest extends LibraryJPATest {
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
-		
+
 		beginTransaction();
 		Library actualLibrary = findLibraryWithName(em, name);
 		assertNotNull("library", actualLibrary);
 		rollbackTransaction();
 	}
-
 
 }

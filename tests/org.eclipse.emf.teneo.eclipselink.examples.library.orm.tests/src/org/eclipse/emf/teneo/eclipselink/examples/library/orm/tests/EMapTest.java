@@ -62,11 +62,9 @@ public class EMapTest extends LibraryJPATest {
 
 		EObject bookEntryContainer = bookContainer.eContainer();
 		EObject libraryBookEntryContainer = libraryBookContainer.eContainer();
-		assertEquals("entry container", bookEntryContainer,
-				libraryBookEntryContainer);
+		assertEquals("entry container", bookEntryContainer, libraryBookEntryContainer);
 		assertEquals("entry container", actualLibrary, bookEntryContainer);
-		assertEquals("entry container", actualLibrary,
-				libraryBookEntryContainer);
+		assertEquals("entry container", actualLibrary, libraryBookEntryContainer);
 	}
 
 	public void testAddBookToLibraryWithCache() throws Exception {
@@ -114,10 +112,8 @@ public class EMapTest extends LibraryJPATest {
 		Book actualBookTwo = findBookWithTitle(em, bookTwoTitle);
 		EMap<String, Book> libraryBooks = actualLibrary.getBooks();
 		assertEquals("number of books", 2, libraryBooks.size());
-		assertEquals("first library book", actualBookOne, libraryBooks
-				.get(bookOneTitle));
-		assertEquals("second library book", actualBookTwo, libraryBooks
-				.get(bookTwoTitle));
+		assertEquals("first library book", actualBookOne, libraryBooks.get(bookOneTitle));
+		assertEquals("second library book", actualBookTwo, libraryBooks.get(bookTwoTitle));
 	}
 
 	public void testRemoveBookFromLibraryWithCache() throws Exception {

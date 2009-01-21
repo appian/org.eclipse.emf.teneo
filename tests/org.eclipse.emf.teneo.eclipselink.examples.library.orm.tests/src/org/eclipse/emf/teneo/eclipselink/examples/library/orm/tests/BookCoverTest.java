@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
@@ -32,7 +31,7 @@ public class BookCoverTest extends LibraryJPATest {
 	}
 
 	private void verifyInsertWriterAddress(boolean checkCache) {
-		
+
 		beginTransaction();
 
 		Book book = createAnonymousBookWithCover(em);
@@ -41,22 +40,22 @@ public class BookCoverTest extends LibraryJPATest {
 
 		// put the data to the data base
 		commitTransaction();
-		
+
 		// verify
-		
+
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
 		// Check whether the Book as been allocated at the data base.
-		
+
 		Book dbBook = findBookWithTitle(em, bookTitle);
 		assertNotNull("Book not found", dbBook);
 		Cover dbCover = dbBook.getCover();
 
 		assertNotNull("dbCover not found", dbCover);
 		assertNotNull("eContainer not set", dbCover.eContainer());
-		int containerFeatureID = ((InternalEObject)cover).eContainerFeatureID();
-		int dbContainerFeatureID = ((InternalEObject)dbCover).eContainerFeatureID();
+		int containerFeatureID = ((InternalEObject) cover).eContainerFeatureID();
+		int dbContainerFeatureID = ((InternalEObject) dbCover).eContainerFeatureID();
 		assertEquals("Containment Feature Id DB Cover", containerFeatureID, dbContainerFeatureID);
 	}
 }

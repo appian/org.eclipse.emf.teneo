@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
@@ -35,13 +34,13 @@ public class LibBookEContainerTest extends LibraryJPATest {
 	 * Create the library and a book within the library.<br>
 	 * Store the library to the data base.<br>
 	 * Fetch back the library from the data base.<br>
-	 * Identify the book object assigned to libray.<br> 
+	 * Identify the book object assigned to libray.<br>
 	 * Check whether the attribute eContainer is set at the book object.
 	 * 
 	 * @param checkCache
 	 */
 	private void verifyInsertBookLibrary(boolean checkCache) {
-		
+
 		beginTransaction();
 		Book book = createAnonymousBook(em);
 		String bookTitle = book.getTitle();
@@ -49,18 +48,18 @@ public class LibBookEContainerTest extends LibraryJPATest {
 		String libraryName = library.getName();
 		library.getBooks().put(book.getTitle(), book);
 		commitTransaction();
-		
+
 		// verify
 		if (!checkCache) {
 			reinitializeCachesAndEntityManager();
 		}
-		
+
 		// Check whether the book as been allocated at the data base.
 		Book actualBook = findBookWithTitle(em, bookTitle);
 		assertNotNull("book", actualBook);
 		assertNotNull("Field Actual/Book.eContainer not set", actualBook.eContainer());
-		int containerFeatureID = ((InternalEObject)book).eContainerFeatureID();
-		int actualContainerFeatureID = ((InternalEObject)actualBook).eContainerFeatureID();
+		int containerFeatureID = ((InternalEObject) book).eContainerFeatureID();
+		int actualContainerFeatureID = ((InternalEObject) actualBook).eContainerFeatureID();
 		assertEquals("Containment Feature Id DB Book", containerFeatureID, actualContainerFeatureID);
 
 		Library actualLibrary = findLibraryWithName(em, libraryName);

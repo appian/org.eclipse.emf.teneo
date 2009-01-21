@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
@@ -35,13 +34,13 @@ public class LibWriterEContainerTest extends LibraryJPATest {
 	 * Create the library and a writer within the library.<br>
 	 * Store the library to the data base.<br>
 	 * Fetch back the library from the data base.<br>
-	 * Identify the writer object assigned to libray.<br> 
+	 * Identify the writer object assigned to libray.<br>
 	 * Check whether the attribute eContainer is set at the writer object.
 	 * 
 	 * @param checkCache
 	 */
 	private void verifyInsertWriterLibrary(boolean checkCache) {
-		
+
 		beginTransaction();
 
 		Writer writer = createAnonymousWriter(em);
@@ -58,10 +57,10 @@ public class LibWriterEContainerTest extends LibraryJPATest {
 		assertNotNull("writer", actualWriter);
 		assertEquals("writer name", writerName, actualWriter.getName());
 		assertNotNull("Field Actual/Writer.eContainer not set", actualWriter.eContainer());
-		int containerFeatureID = ((InternalEObject)writer).eContainerFeatureID();
-		int actualContainerFeatureID = ((InternalEObject)actualWriter).eContainerFeatureID();
+		int containerFeatureID = ((InternalEObject) writer).eContainerFeatureID();
+		int actualContainerFeatureID = ((InternalEObject) actualWriter).eContainerFeatureID();
 		assertEquals("Containment Feature Id DB Writer", containerFeatureID, actualContainerFeatureID);
-		
+
 		Library actualLibrary = findLibraryWithName(em, libraryName);
 		assertNotNull("library missing", actualLibrary);
 
@@ -69,7 +68,7 @@ public class LibWriterEContainerTest extends LibraryJPATest {
 		assertNotNull("writer missing", actualLibraryWriter);
 		assertEquals("writer name", writerName, actualLibraryWriter.getName());
 		assertEquals("Writer Check", actualWriter, actualLibraryWriter);
-		
+
 		// verify whether the field eContainer is set
 		assertNotNull("Field Library/Writer.eContainer not set", actualLibraryWriter.eContainer());
 		assertEquals("Containment Relationship", actualLibrary, actualLibraryWriter.eContainer());
