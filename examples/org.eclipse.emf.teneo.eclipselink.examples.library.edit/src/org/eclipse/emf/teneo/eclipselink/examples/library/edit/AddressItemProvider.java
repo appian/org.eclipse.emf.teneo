@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: AddressItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
 
@@ -17,8 +13,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -27,7 +21,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
@@ -40,12 +33,12 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  * @generated
  */
 public class AddressItemProvider
-	extends ItemProviderAdapter
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
+	extends IdentifiableItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
 		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -114,10 +107,8 @@ public class AddressItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Address)object).getTown();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Address_type") :
-			getString("_UI_Address_type") + " " + label;
+		Address address = (Address)object;
+		return getString("_UI_Address_type") + " " + address.getUuid();
 	}
 
 	/**
@@ -149,17 +140,6 @@ public class AddressItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return Activator.INSTANCE;
 	}
 
 }

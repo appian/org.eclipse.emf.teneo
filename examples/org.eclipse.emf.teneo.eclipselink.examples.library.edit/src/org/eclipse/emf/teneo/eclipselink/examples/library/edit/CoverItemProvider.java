@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: CoverItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
 
@@ -17,8 +13,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -27,7 +21,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
@@ -40,12 +33,12 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  * @generated
  */
 public class CoverItemProvider
-	extends ItemProviderAdapter
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
+	extends IdentifiableItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
 		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -115,7 +108,7 @@ public class CoverItemProvider
 	@Override
 	public String getText(Object object) {
 		Cover cover = (Cover)object;
-		return getString("_UI_Cover_type") + " " + cover.isColored();
+		return getString("_UI_Cover_type") + " " + cover.getUuid();
 	}
 
 	/**
@@ -147,17 +140,6 @@ public class CoverItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return Activator.INSTANCE;
 	}
 
 }

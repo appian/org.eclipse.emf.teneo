@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: ForumItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum.edit;
 
 
@@ -45,11 +41,11 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.forum.ForumPackage;
  */
 public class ForumItemProvider
 	extends ItemProviderAdapter
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
 		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.

@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
+ * $Id: StringToBookMapEntryItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
 
@@ -17,8 +13,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -30,7 +24,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryFactory;
@@ -43,12 +36,12 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  * @generated
  */
 public class StringToBookMapEntryItemProvider
-	extends ItemProviderAdapter
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
+	extends IdentifiableItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
 		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -188,17 +181,6 @@ public class StringToBookMapEntryItemProvider
 			(createChildParameter
 				(LibraryPackage.Literals.STRING_TO_BOOK_MAP_ENTRY__VALUE,
 				 LibraryFactory.eINSTANCE.createBook()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return Activator.INSTANCE;
 	}
 
 }
