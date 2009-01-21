@@ -23,37 +23,37 @@ import org.eclipse.persistence.sessions.SessionEventAdapter;
 
 public class EmfSessionEventListener extends SessionEventAdapter {
 
-  public EmfSessionEventListener() {
-    super();
-  }
+	public EmfSessionEventListener() {
+		super();
+	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see org.eclipse.persistence.sessions.SessionEventAdapter#preCalculateUnitOfWorkChangeSet(org.eclipse.persistence.sessions.SessionEvent)
-   */
-  @Override
-  public void preCalculateUnitOfWorkChangeSet(SessionEvent event) {
-    Field eContainerField;
-    try {
-      eContainerField = Helper.getField(EObjectImpl.class, "eContainer");
-      Session session = event.getSession();
-      UnitOfWorkImpl uow = (UnitOfWorkImpl) session;
-      for (Object object : uow.getCloneMapping().keySet()) {
-        if (object instanceof BasicEMap.Entry) {
-          EObjectImpl entry = (EObjectImpl) object;
-          if (entry.eContainer() == null) {
-            // restore the eContainer reference so the primary keys can be
-            // calculated
-            EObjectImpl backupEntry = (EObjectImpl) uow.getBackupClone(entry);
-            PrivilegedAccessHelper.setValueInField(eContainerField, entry, backupEntry.eContainer());
-          }
-        }
-      }
-    }
-    catch (Exception e) {
-      throw new RuntimeException("Error deleting EMap Entries", e);
-    }
-  }
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.persistence.sessions.SessionEventAdapter#preCalculateUnitOfWorkChangeSet(org.eclipse.persistence.
+	 * sessions.SessionEvent)
+	 */
+	@Override
+	public void preCalculateUnitOfWorkChangeSet(SessionEvent event) {
+		Field eContainerField;
+		try {
+			eContainerField = Helper.getField(EObjectImpl.class, "eContainer");
+			Session session = event.getSession();
+			UnitOfWorkImpl uow = (UnitOfWorkImpl) session;
+			for (Object object : uow.getCloneMapping().keySet()) {
+				if (object instanceof BasicEMap.Entry) {
+					EObjectImpl entry = (EObjectImpl) object;
+					if (entry.eContainer() == null) {
+						// restore the eContainer reference so the primary keys can be
+						// calculated
+						EObjectImpl backupEntry = (EObjectImpl) uow.getBackupClone(entry);
+						PrivilegedAccessHelper.setValueInField(eContainerField, entry, backupEntry.eContainer());
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Error deleting EMap Entries", e);
+		}
+	}
 
 }

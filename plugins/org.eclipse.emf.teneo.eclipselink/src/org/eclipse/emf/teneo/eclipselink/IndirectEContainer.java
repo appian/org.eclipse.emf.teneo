@@ -12,14 +12,12 @@ package org.eclipse.emf.teneo.eclipselink;
 
 import org.eclipse.persistence.indirection.IndirectContainer;
 
-
 public interface IndirectEContainer<E> extends IndirectContainer {
-  /**
-   * Add and object to the EMF container without triggering notification or
-   * updating the owner.
-   * 
-   * @param element
-   * @return boolean indicating success
-   */
-  boolean eAdd(E element);
+	/**
+	 * Add and object to the EMF container without triggering notification or updating the owner.
+	 * 
+	 * @param element
+	 * @return boolean indicating success
+	 */
+	boolean eAdd(E element);
 }

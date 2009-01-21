@@ -13,10 +13,9 @@ package org.eclipse.emf.teneo.eclipselink.resource;
 import org.eclipse.emf.teneo.eclipselink.common.resource.BasicEclipseLinkResource;
 
 /**
- * This interface extends the
- * {@link org.eclipse.emf.teneo.eclipselink.common.resource.BasicEclipseLinkResource BasicEclipseLinkResource}
- * interface and can be used to fine-tune the behavior of EclipseLink Essentials
- * resources when loading or saving contents from or to a relational database.
+ * This interface extends the {@link org.eclipse.emf.teneo.eclipselink.common.resource.BasicEclipseLinkResource
+ * BasicEclipseLinkResource} interface and can be used to fine-tune the behavior of EclipseLink Essentials resources
+ * when loading or saving contents from or to a relational database.
  */
 public interface EclipseLinkResource extends BasicEclipseLinkResource {
 

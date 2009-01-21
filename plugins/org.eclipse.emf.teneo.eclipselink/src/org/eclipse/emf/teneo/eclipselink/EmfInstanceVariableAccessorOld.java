@@ -18,46 +18,46 @@ import org.eclipse.persistence.internal.helper.Helper;
 
 public class EmfInstanceVariableAccessorOld extends InstanceVariableAttributeAccessor {
 
-  /**
+	/**
    * 
    */
-  private static final long serialVersionUID = 1L;
-  protected Field isSetEField;
+	private static final long serialVersionUID = 1L;
+	protected Field isSetEField;
 
-  public EmfInstanceVariableAccessorOld(InstanceVariableAttributeAccessor instanceVarAccessor) {
-    super();
-    setAttributeName(instanceVarAccessor.getAttributeName());
-  }
+	public EmfInstanceVariableAccessorOld(InstanceVariableAttributeAccessor instanceVarAccessor) {
+		super();
+		setAttributeName(instanceVarAccessor.getAttributeName());
+	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see org.eclipse.persistence.internal.descriptors.InstanceVariableAttributeAccessor#initializeAttributes(java.lang.Class)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void initializeAttributes(Class theJavaClass) throws DescriptorException {
-    super.initializeAttributes(theJavaClass);
-    String isSetEFieldName = getAttributeName() + "ESet";
-    try {
-      isSetEField = Helper.getField(theJavaClass, isSetEFieldName);
-    }
-    catch (NoSuchFieldException e) {
-      isSetEField = null;
-    }
-  }
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.persistence.internal.descriptors.InstanceVariableAttributeAccessor#initializeAttributes(java.lang
+	 * .Class)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void initializeAttributes(Class theJavaClass) throws DescriptorException {
+		super.initializeAttributes(theJavaClass);
+		String isSetEFieldName = getAttributeName() + "ESet";
+		try {
+			isSetEField = Helper.getField(theJavaClass, isSetEFieldName);
+		} catch (NoSuchFieldException e) {
+			isSetEField = null;
+		}
+	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see org.eclipse.persistence.internal.descriptors.InstanceVariableAttributeAccessor#setAttributeValueInObject(java.lang.Object,
-   *      java.lang.Object)
-   */
-  @Override
-  public void setAttributeValueInObject(Object anObject, Object value) throws DescriptorException {
-    super.setAttributeValueInObject(anObject, value);
-    if (isSetEField != null) {
-      Utils.setAttributeValueInObject(anObject, Boolean.TRUE, isSetEField);
-    }
-  }
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * org.eclipse.persistence.internal.descriptors.InstanceVariableAttributeAccessor#setAttributeValueInObject(java
+	 * .lang.Object, java.lang.Object)
+	 */
+	@Override
+	public void setAttributeValueInObject(Object anObject, Object value) throws DescriptorException {
+		super.setAttributeValueInObject(anObject, value);
+		if (isSetEField != null) {
+			Utils.setAttributeValueInObject(anObject, Boolean.TRUE, isSetEField);
+		}
+	}
 }

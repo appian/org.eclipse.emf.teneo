@@ -23,57 +23,57 @@ import org.eclipse.persistence.internal.sessions.UnitOfWorkImpl;
 import org.eclipse.persistence.mappings.ForeignReferenceMapping;
 
 public class EmfUnitOfWorkQueryBasedValueHolder extends UnitOfWorkQueryValueHolder implements EmfOwnedValueHolder {
-  /**
+	/**
    * 
    */
-  private static final long serialVersionUID = 1L;
-  private EObject owner;
-  private String ownerAttrName;
+	private static final long serialVersionUID = 1L;
+	private EObject owner;
+	private String ownerAttrName;
 
-  public EmfUnitOfWorkQueryBasedValueHolder(ValueHolderInterface attributeValue, Object clone, ForeignReferenceMapping mapping, AbstractRecord row, UnitOfWorkImpl unitOfWork) {
-    super(attributeValue, clone, mapping, row, unitOfWork);
-  }
-
-  @Override
-  protected Object instantiate() throws DatabaseException {
-    return doInstantiate();
-  }
-  
-  @SuppressWarnings("unchecked")
-  protected <E> Object doInstantiate() throws DatabaseException {
-	ValueHolderInterface wrappedVH = getWrappedValueHolder();
-	if (wrappedVH instanceof EmfQueryBasedValueHolder) {
-		EmfQueryBasedValueHolder emfVH = (EmfQueryBasedValueHolder) wrappedVH;
-		emfVH.setOwner(getOwner());
-		emfVH.setOwnerAttrName(getOwnerAttrName());
+	public EmfUnitOfWorkQueryBasedValueHolder(ValueHolderInterface attributeValue, Object clone,
+			ForeignReferenceMapping mapping, AbstractRecord row, UnitOfWorkImpl unitOfWork) {
+		super(attributeValue, clone, mapping, row, unitOfWork);
 	}
-    Collection<E> contents = (Collection<E>) super.instantiate();
-    EList<E> newList = null;
-    try {
-      newList = EListFactory.eINSTANCE.createEList(getOwner(), getOwnerAttrName());
-      EmfHelper.getInstance().setECollectionContents(contents, newList);
-    }
-    catch (ClassNotFoundException e) {
-      e.printStackTrace();
-      throw new RuntimeException("Exception building correct EList implementation", e);
-    }
-    return newList;
-  }
 
-  public EObject getOwner() {
-    return owner;
-  }
+	@Override
+	protected Object instantiate() throws DatabaseException {
+		return doInstantiate();
+	}
 
-  public void setOwner(EObject owner) {
-    this.owner = owner;
-  }
+	@SuppressWarnings("unchecked")
+	protected <E> Object doInstantiate() throws DatabaseException {
+		ValueHolderInterface wrappedVH = getWrappedValueHolder();
+		if (wrappedVH instanceof EmfQueryBasedValueHolder) {
+			EmfQueryBasedValueHolder emfVH = (EmfQueryBasedValueHolder) wrappedVH;
+			emfVH.setOwner(getOwner());
+			emfVH.setOwnerAttrName(getOwnerAttrName());
+		}
+		Collection<E> contents = (Collection<E>) super.instantiate();
+		EList<E> newList = null;
+		try {
+			newList = EListFactory.eINSTANCE.createEList(getOwner(), getOwnerAttrName());
+			EmfHelper.getInstance().setECollectionContents(contents, newList);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Exception building correct EList implementation", e);
+		}
+		return newList;
+	}
 
-  public String getOwnerAttrName() {
-    return ownerAttrName;
-  }
+	public EObject getOwner() {
+		return owner;
+	}
 
-  public void setOwnerAttrName(String ownerAttrName) {
-    this.ownerAttrName = ownerAttrName;
-  }
+	public void setOwner(EObject owner) {
+		this.owner = owner;
+	}
+
+	public String getOwnerAttrName() {
+		return ownerAttrName;
+	}
+
+	public void setOwnerAttrName(String ownerAttrName) {
+		this.ownerAttrName = ownerAttrName;
+	}
 
 }

@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface EmfOwnedValueHolder {
 
-  public abstract EObject getOwner();
+	public abstract EObject getOwner();
 
-  public abstract void setOwner(EObject owner);
+	public abstract void setOwner(EObject owner);
 
-  public abstract String getOwnerAttrName();
+	public abstract String getOwnerAttrName();
 
-  public abstract void setOwnerAttrName(String ownerAttrName);
+	public abstract void setOwnerAttrName(String ownerAttrName);
 
 }

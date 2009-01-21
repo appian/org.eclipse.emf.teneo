@@ -28,96 +28,99 @@ import org.eclipse.persistence.queries.ReadQuery;
 
 public class EmfTransparentIndirectionPolicy extends TransparentIndirectionPolicy {
 
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @Override
-  public Object valueFromQuery(ReadQuery query, AbstractRecord row, AbstractSession session) {
-    return this.buildIndirectContainer(new EmfQueryBasedValueHolder(query, row, session));
-  }
+	@Override
+	public Object valueFromQuery(ReadQuery query, AbstractRecord row, AbstractSession session) {
+		return this.buildIndirectContainer(new EmfQueryBasedValueHolder(query, row, session));
+	}
 
-  public void setAttributeOwner(String attrName, EObject owner) {
-    Object value = getMapping().getAttributeValueFromObject(owner);
-    IndirectContainer container = (IndirectContainer) value;
-    ValueHolderInterface valueHolder = container.getValueHolder();
-    EmfOwnedValueHolder emfOwnedValueHolder = (EmfOwnedValueHolder) valueHolder;
-    emfOwnedValueHolder.setOwner(owner);
-    emfOwnedValueHolder.setOwnerAttrName(attrName);
-  }
+	public void setAttributeOwner(String attrName, EObject owner) {
+		Object value = getMapping().getAttributeValueFromObject(owner);
+		IndirectContainer container = (IndirectContainer) value;
+		ValueHolderInterface valueHolder = container.getValueHolder();
+		EmfOwnedValueHolder emfOwnedValueHolder = (EmfOwnedValueHolder) valueHolder;
+		emfOwnedValueHolder.setOwner(owner);
+		emfOwnedValueHolder.setOwnerAttrName(attrName);
+	}
 
-  /**
-   * Return a clone of the attribute.
-   * @param buildDirectlyFromRow
-   *          indicates that we are building the clone directly from a row as
-   *          opposed to building the original from the row, putting it in the
-   *          shared cache, and then cloning the original.
-   */
-  @Override
-  public Object cloneAttribute(Object attributeValue, Object original, Object clone, UnitOfWorkImpl unitOfWork, boolean buildDirectlyFromRow) {
-    ValueHolderInterface valueHolder = null;
-    Object container = null;
-    if (attributeValue instanceof IndirectContainer) {
-      valueHolder = ((IndirectContainer) attributeValue).getValueHolder();
-    }
-    if (!buildDirectlyFromRow && unitOfWork.isOriginalNewObject(original)) {
-      // CR#3156435 Throw a meaningful exception if a serialized/dead value
-      // holder is detected.
-      // This can occur if an existing serialized object is attempt to be
-      // registered as new.
-      if (valueHolder instanceof DatabaseValueHolder && !((DatabaseValueHolder) valueHolder).isInstantiated() && ((DatabaseValueHolder) valueHolder).getSession() == null && !((DatabaseValueHolder) valueHolder).isSerializedRemoteUnitOfWorkValueHolder()) {
-        throw DescriptorException.attemptToRegisterDeadIndirection(original, getMapping());
-      }
-      if (getMapping().getRelationshipPartner() == null) {
-        container = getMapping().buildCloneForPartObject(attributeValue, original, clone, unitOfWork, false);
-      }
-      else {
-        if (!(attributeValue instanceof IndirectContainer)) {
-          valueHolder = new ValueHolder(attributeValue);
-        }
-        AbstractRecord row = null;
-        if (valueHolder instanceof DatabaseValueHolder) {
-          row = ((DatabaseValueHolder) valueHolder).getRow();
-        }
+	/**
+	 * Return a clone of the attribute.
+	 * 
+	 * @param buildDirectlyFromRow
+	 *            indicates that we are building the clone directly from a row as opposed to building the original from
+	 *            the row, putting it in the shared cache, and then cloning the original.
+	 */
+	@Override
+	public Object cloneAttribute(Object attributeValue, Object original, Object clone, UnitOfWorkImpl unitOfWork,
+			boolean buildDirectlyFromRow) {
+		ValueHolderInterface valueHolder = null;
+		Object container = null;
+		if (attributeValue instanceof IndirectContainer) {
+			valueHolder = ((IndirectContainer) attributeValue).getValueHolder();
+		}
+		if (!buildDirectlyFromRow && unitOfWork.isOriginalNewObject(original)) {
+			// CR#3156435 Throw a meaningful exception if a serialized/dead value
+			// holder is detected.
+			// This can occur if an existing serialized object is attempt to be
+			// registered as new.
+			if (valueHolder instanceof DatabaseValueHolder && !((DatabaseValueHolder) valueHolder).isInstantiated()
+					&& ((DatabaseValueHolder) valueHolder).getSession() == null
+					&& !((DatabaseValueHolder) valueHolder).isSerializedRemoteUnitOfWorkValueHolder()) {
+				throw DescriptorException.attemptToRegisterDeadIndirection(original, getMapping());
+			}
+			if (getMapping().getRelationshipPartner() == null) {
+				container = getMapping().buildCloneForPartObject(attributeValue, original, clone, unitOfWork, false);
+			} else {
+				if (!(attributeValue instanceof IndirectContainer)) {
+					valueHolder = new ValueHolder(attributeValue);
+				}
+				AbstractRecord row = null;
+				if (valueHolder instanceof DatabaseValueHolder) {
+					row = ((DatabaseValueHolder) valueHolder).getRow();
+				}
 
-        // If a new object is being cloned then we must build a new
-        // UOWValueHolder
-        // this is so that new clones can also have their relationships managed
-        // here the code instantiates the valueholder in a privledged manner
-        // because a
-        // UOWValueHolder will assume the objects in the collection are existing
-        // if the valueholder
-        // Goes through it's own instantiation process.
-        UnitOfWorkValueHolder newValueHolder = getMapping().createUnitOfWorkValueHolder(valueHolder, original, clone, row, unitOfWork, buildDirectlyFromRow);
-        container = buildIndirectContainer(newValueHolder);
-        Object cloneCollection = getMapping().buildCloneForPartObject(attributeValue, original, clone, unitOfWork, false);
-        newValueHolder.privilegedSetValue(cloneCollection);
-        newValueHolder.setInstantiated();
-      }
-    }
-    else {
-      if (!(attributeValue instanceof IndirectContainer)) {
-        valueHolder = new ValueHolder(attributeValue);
-      }
-      AbstractRecord row = null;
-      if (valueHolder instanceof DatabaseValueHolder) {
-        row = ((DatabaseValueHolder) valueHolder).getRow();
-      }
-      // TODO: This method is overriden solely to change a single line
-      // so it doesn't delegate value holder creation to the mapping which is a 
-      // ForeignReferenceMapping that hard wires the value holder creation--no policy!
-      //
-      // container = buildIndirectContainer(getMapping().createUnitOfWorkValueHolder(valueHolder, original, clone, row, unitOfWork, buildDirectlyFromRow));
-      container = buildIndirectContainer(new EmfUnitOfWorkQueryBasedValueHolder(valueHolder, clone, (ForeignReferenceMapping) getMapping(), row, unitOfWork));
-    }
-    if ( (getMapping().getDescriptor().getObjectChangePolicy().isObjectChangeTrackingPolicy())
-            && (((ChangeTracker)clone)._persistence_getPropertyChangeListener() != null)
-            && (container instanceof CollectionChangeTracker) ) {
-              ((CollectionChangeTracker)container).setTrackedAttributeName(getMapping().getAttributeName());
-              ((CollectionChangeTracker)container)._persistence_setPropertyChangeListener(((ChangeTracker)clone)._persistence_getPropertyChangeListener());
-          }
-    return container;
-  }
+				// If a new object is being cloned then we must build a new
+				// UOWValueHolder
+				// this is so that new clones can also have their relationships managed
+				// here the code instantiates the valueholder in a privledged manner
+				// because a
+				// UOWValueHolder will assume the objects in the collection are existing
+				// if the valueholder
+				// Goes through it's own instantiation process.
+				UnitOfWorkValueHolder newValueHolder = getMapping().createUnitOfWorkValueHolder(valueHolder, original,
+						clone, row, unitOfWork, buildDirectlyFromRow);
+				container = buildIndirectContainer(newValueHolder);
+				Object cloneCollection = getMapping().buildCloneForPartObject(attributeValue, original, clone,
+						unitOfWork, false);
+				newValueHolder.privilegedSetValue(cloneCollection);
+				newValueHolder.setInstantiated();
+			}
+		} else {
+			if (!(attributeValue instanceof IndirectContainer)) {
+				valueHolder = new ValueHolder(attributeValue);
+			}
+			AbstractRecord row = null;
+			if (valueHolder instanceof DatabaseValueHolder) {
+				row = ((DatabaseValueHolder) valueHolder).getRow();
+			}
+			// TODO: This method is overriden solely to change a single line
+			// so it doesn't delegate value holder creation to the mapping which is a
+			// ForeignReferenceMapping that hard wires the value holder creation--no policy!
+			//
+			// container = buildIndirectContainer(getMapping().createUnitOfWorkValueHolder(valueHolder, original, clone,
+			// row, unitOfWork, buildDirectlyFromRow));
+			container = buildIndirectContainer(new EmfUnitOfWorkQueryBasedValueHolder(valueHolder, clone,
+					(ForeignReferenceMapping) getMapping(), row, unitOfWork));
+		}
+		if ((getMapping().getDescriptor().getObjectChangePolicy().isObjectChangeTrackingPolicy())
+				&& (((ChangeTracker) clone)._persistence_getPropertyChangeListener() != null)
+				&& (container instanceof CollectionChangeTracker)) {
+			((CollectionChangeTracker) container).setTrackedAttributeName(getMapping().getAttributeName());
+			((CollectionChangeTracker) container)._persistence_setPropertyChangeListener(((ChangeTracker) clone)
+					._persistence_getPropertyChangeListener());
+		}
+		return container;
+	}
 
 }

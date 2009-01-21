@@ -19,44 +19,44 @@ import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
 
 public class Utils {
 
-  /**
-   * Sets the value of the instance variable in the object to the value.
-   * 
-   * @param field
-   *          TODO
-   */
-  public static void setAttributeValueInObject(Object anObject, Object value, Field field) throws DescriptorException {
-    String fieldName = field.getName();
-    try {
-      // PERF: Direct variable access.
-      PrivilegedAccessHelper.setValueInField(field, anObject, value);
-    }
-    catch (IllegalArgumentException exception) {
-      throw DescriptorException.illegalArgumentWhileSettingValueThruInstanceVariableAccessor(fieldName, field.getType().getName(), value, exception);
-    }
-    catch (IllegalAccessException exception) {
-      throw DescriptorException.illegalAccessWhileSettingValueThruInstanceVariableAccessor(fieldName, anObject.getClass().getName(), value, exception);
-    }
-    catch (NullPointerException exception) {
-      try {
-        if (anObject != null) {
-          Class<?> fieldClass = field.getType();
-          if (Helper.isPrimitiveWrapper(fieldClass) && value == null) {
-            PrivilegedAccessHelper.setValueInField(field, anObject, ConversionManager.getDefaultManager().convertObject(new Integer(0), fieldClass));
-          }
-          else {
-            throw DescriptorException.nullPointerWhileSettingValueThruInstanceVariableAccessor(fieldName, value, exception);
-          }
-        }
-        else {
-          // Some JVM's throw this exception for some very odd reason
-          throw DescriptorException.nullPointerWhileSettingValueThruInstanceVariableAccessor(fieldName, value, exception);
-        }
-      }
-      catch (IllegalAccessException accessException) {
-        throw DescriptorException.nullPointerWhileSettingValueThruInstanceVariableAccessor(fieldName, value, exception);
-      }
-    }
-  }
+	/**
+	 * Sets the value of the instance variable in the object to the value.
+	 * 
+	 * @param field
+	 *            TODO
+	 */
+	public static void setAttributeValueInObject(Object anObject, Object value, Field field) throws DescriptorException {
+		String fieldName = field.getName();
+		try {
+			// PERF: Direct variable access.
+			PrivilegedAccessHelper.setValueInField(field, anObject, value);
+		} catch (IllegalArgumentException exception) {
+			throw DescriptorException.illegalArgumentWhileSettingValueThruInstanceVariableAccessor(fieldName, field
+					.getType().getName(), value, exception);
+		} catch (IllegalAccessException exception) {
+			throw DescriptorException.illegalAccessWhileSettingValueThruInstanceVariableAccessor(fieldName, anObject
+					.getClass().getName(), value, exception);
+		} catch (NullPointerException exception) {
+			try {
+				if (anObject != null) {
+					Class<?> fieldClass = field.getType();
+					if (Helper.isPrimitiveWrapper(fieldClass) && value == null) {
+						PrivilegedAccessHelper.setValueInField(field, anObject, ConversionManager.getDefaultManager()
+								.convertObject(new Integer(0), fieldClass));
+					} else {
+						throw DescriptorException.nullPointerWhileSettingValueThruInstanceVariableAccessor(fieldName,
+								value, exception);
+					}
+				} else {
+					// Some JVM's throw this exception for some very odd reason
+					throw DescriptorException.nullPointerWhileSettingValueThruInstanceVariableAccessor(fieldName,
+							value, exception);
+				}
+			} catch (IllegalAccessException accessException) {
+				throw DescriptorException.nullPointerWhileSettingValueThruInstanceVariableAccessor(fieldName, value,
+						exception);
+			}
+		}
+	}
 
 }
