@@ -12,6 +12,7 @@ package org.eclipse.emf.teneo.eclipselink.examples.library.forum.editor;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,76 +21,51 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
-import org.eclipse.emf.common.CommonPlugin;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator;
+import org.eclipse.emf.teneo.eclipselink.examples.library.forum.ForumFactory;
+import org.eclipse.emf.teneo.eclipselink.examples.library.forum.ForumPackage;
 import org.eclipse.jface.dialogs.MessageDialog;
-
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-
 import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
-
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.ui.part.ISetSelectionTarget;
-
-import org.eclipse.emf.teneo.eclipselink.examples.library.forum.ForumFactory;
-import org.eclipse.emf.teneo.eclipselink.examples.library.forum.ForumPackage;
-import org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator;
-
-
-import org.eclipse.core.runtime.Path;
-
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
 
 
 /**
@@ -99,6 +75,24 @@ import org.eclipse.ui.PartInitException;
  * @generated
  */
 public class ForumModelWizard extends Wizard implements INewWizard {
+	/**
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<String> FILE_EXTENSIONS =
+		Collections.unmodifiableList(Arrays.asList(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameExtensions").split("\\s*,\\s*")));
+
+	/**
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String FORMATTED_FILE_EXTENSIONS =
+		org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+
 	/**
 	 * This caches an instance of the model package.
 	 * <!-- begin-user-doc -->
@@ -316,24 +310,18 @@ public class ForumModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-	@Override
+		@Override
 		protected boolean validatePage() {
 			if (super.validatePage()) {
-				// Make sure the file ends in ".forum".
-				//
-				String requiredExt = org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameExtension");
-				String enteredExt = new Path(getFileName()).getFileExtension();
-				if (enteredExt == null || !enteredExt.equals(requiredExt)) {
-					setErrorMessage(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_WARN_FilenameExtension", new Object [] { requiredExt }));
+				String extension = new Path(getFileName()).getFileExtension();
+				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+					setErrorMessage(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
-				else {
-					return true;
-				}
+				return true;
 			}
-			else {
-				return false;
-			}
+			return false;
 		}
 
 		/**
@@ -568,7 +556,7 @@ public class ForumModelWizard extends Wizard implements INewWizard {
 		newFileCreationPage = new ForumModelWizardNewFileCreationPage("Whatever", selection);
 		newFileCreationPage.setTitle(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumModelWizard_label"));
 		newFileCreationPage.setDescription(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumModelWizard_description"));
-		newFileCreationPage.setFileName(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameDefaultBase") + "." + org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameExtension"));
+		newFileCreationPage.setFileName(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -595,7 +583,7 @@ public class ForumModelWizard extends Wizard implements INewWizard {
 					// Make up a unique new name here.
 					//
 					String defaultModelBaseFilename = org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameDefaultBase");
-					String defaultModelFilenameExtension = org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_ForumEditorFilenameExtension");
+					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;

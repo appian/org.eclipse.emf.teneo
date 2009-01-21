@@ -12,6 +12,7 @@ package org.eclipse.emf.teneo.eclipselink.examples.library.editor;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -74,6 +75,24 @@ import org.eclipse.ui.part.ISetSelectionTarget;
  * @generated
  */
 public class LibraryModelWizard extends Wizard implements INewWizard {
+	/**
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<String> FILE_EXTENSIONS =
+		Collections.unmodifiableList(Arrays.asList(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameExtensions").split("\\s*,\\s*")));
+
+	/**
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String FORMATTED_FILE_EXTENSIONS =
+		org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+
 	/**
 	 * This caches an instance of the model package.
 	 * <!-- begin-user-doc -->
@@ -291,24 +310,18 @@ public class LibraryModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-	@Override
+		@Override
 		protected boolean validatePage() {
 			if (super.validatePage()) {
-				// Make sure the file ends in ".library".
-				//
-				String requiredExt = org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameExtension");
-				String enteredExt = new Path(getFileName()).getFileExtension();
-				if (enteredExt == null || !enteredExt.equals(requiredExt)) {
-					setErrorMessage(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_WARN_FilenameExtension", new Object [] { requiredExt }));
+				String extension = new Path(getFileName()).getFileExtension();
+				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+					setErrorMessage(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
-				else {
-					return true;
-				}
+				return true;
 			}
-			else {
-				return false;
-			}
+			return false;
 		}
 
 		/**
@@ -543,7 +556,7 @@ public class LibraryModelWizard extends Wizard implements INewWizard {
 		newFileCreationPage = new LibraryModelWizardNewFileCreationPage("Whatever", selection);
 		newFileCreationPage.setTitle(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryModelWizard_label"));
 		newFileCreationPage.setDescription(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryModelWizard_description"));
-		newFileCreationPage.setFileName(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameDefaultBase") + "." + org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameExtension"));
+		newFileCreationPage.setFileName(org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -570,7 +583,7 @@ public class LibraryModelWizard extends Wizard implements INewWizard {
 					// Make up a unique new name here.
 					//
 					String defaultModelBaseFilename = org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameDefaultBase");
-					String defaultModelFilenameExtension = org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator.INSTANCE.getString("_UI_LibraryEditorFilenameExtension");
+					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
