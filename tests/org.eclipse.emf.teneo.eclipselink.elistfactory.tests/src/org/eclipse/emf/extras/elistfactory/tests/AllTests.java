@@ -13,17 +13,16 @@ package org.eclipse.emf.extras.elistfactory.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-
 public class AllTests {
 
-  public static Test suite() {
+	public static Test suite() {
 
-    TestSuite suite = new TestSuite("Tests for org.eclipse.emf.extras.elistfactory");
-    //$JUnit-BEGIN$
-    suite.addTestSuite(EListFactoryUsageTest.class);
-    suite.addTestSuite(EListFactoryTest.class);
-    //$JUnit-END$
-    return suite;
-  }
+		TestSuite suite = new TestSuite("Tests for org.eclipse.emf.extras.elistfactory");
+		// $JUnit-BEGIN$
+		suite.addTestSuite(EListFactoryUsageTest.class);
+		suite.addTestSuite(EListFactoryTest.class);
+		// $JUnit-END$
+		return suite;
+	}
 
 }
