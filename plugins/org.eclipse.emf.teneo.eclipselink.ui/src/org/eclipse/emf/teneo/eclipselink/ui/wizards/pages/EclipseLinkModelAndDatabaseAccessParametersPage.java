@@ -22,56 +22,49 @@ import org.eclipse.persistence.internal.jpa.deployment.PersistenceUnitProcessor;
 
 public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelAndDatabaseAccessParametersPage {
 
-  private Map<String, PersistenceUnitInfo> persistenceUnits;
+	private Map<String, PersistenceUnitInfo> persistenceUnits;
 
-  public EclipseLinkModelAndDatabaseAccessParametersPage(String pageName) {
-    super(pageName);
-  }
+	public EclipseLinkModelAndDatabaseAccessParametersPage(String pageName) {
+		super(pageName);
+	}
 
-  //
-  // overrides
-  //
-  
-  @Override
-  protected Set<String> getPersistenceUnitNames() {
-    return getPersistenceUnits().keySet();
-  }
-  
-  @Override
-  protected void updateDatabaseLoginFieldsFromPersistenceUnit() {
-    String name = persistenceUnitNameField.getText();
-    databaseURLField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.url"));
-    jdbcDriverField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.driver"));
-    userNameField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.user"));
-    passwordField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.password"));
-  }
+	@Override
+	protected Set<String> getPersistenceUnitNames() {
+		return getPersistenceUnits().keySet();
+	}
 
-  //
-  // helper methods
-  //
+	@Override
+	protected void updateDatabaseLoginFieldsFromPersistenceUnit() {
+		String name = persistenceUnitNameField.getText();
+		databaseURLField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.url"));
+		jdbcDriverField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.driver"));
+		userNameField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.user"));
+		passwordField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.password"));
+	}
 
-  protected Map<String, PersistenceUnitInfo> getPersistenceUnits() {
-    if (persistenceUnits == null) {
-      persistenceUnits = new HashMap<String, PersistenceUnitInfo>();
-      ClassLoader classLoader = this.getClass().getClassLoader();
-      Set<Archive> archives = PersistenceUnitProcessor.findPersistenceArchives(classLoader);
-      for (Archive archive : archives) {
-    	for (PersistenceUnitInfo persistenceUnit : PersistenceUnitProcessor.getPersistenceUnits(archive, classLoader)) {
-          persistenceUnits.put(persistenceUnit.getPersistenceUnitName(), persistenceUnit);
-    	}
-      }
-    }
-    return persistenceUnits;
-  }
+	protected Map<String, PersistenceUnitInfo> getPersistenceUnits() {
+		if (persistenceUnits == null) {
+			persistenceUnits = new HashMap<String, PersistenceUnitInfo>();
+			ClassLoader classLoader = this.getClass().getClassLoader();
+			Set<Archive> archives = PersistenceUnitProcessor.findPersistenceArchives(classLoader);
+			for (Archive archive : archives) {
+				for (PersistenceUnitInfo persistenceUnit : PersistenceUnitProcessor.getPersistenceUnits(archive,
+						classLoader)) {
+					persistenceUnits.put(persistenceUnit.getPersistenceUnitName(), persistenceUnit);
+				}
+			}
+		}
+		return persistenceUnits;
+	}
 
-  protected String getPersistenceUnitProperty(String persistenceUnitName, String propertyName) {
-    String result = "";
-    PersistenceUnitInfo persistenceUnit = getPersistenceUnits().get(persistenceUnitName);
-    if (persistenceUnit != null) {
-      if (persistenceUnit.getProperties().containsKey(propertyName)) {
-        result = (String) persistenceUnit.getProperties().get(propertyName);
-      }
-    }
-    return result;
-  }
+	protected String getPersistenceUnitProperty(String persistenceUnitName, String propertyName) {
+		String result = "";
+		PersistenceUnitInfo persistenceUnit = getPersistenceUnits().get(persistenceUnitName);
+		if (persistenceUnit != null) {
+			if (persistenceUnit.getProperties().containsKey(propertyName)) {
+				result = (String) persistenceUnit.getProperties().get(propertyName);
+			}
+		}
+		return result;
+	}
 }

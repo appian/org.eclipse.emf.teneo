@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.ui.actions;
 
-
 import org.eclipse.emf.teneo.eclipselink.ui.wizards.EclipseLinkLoadModelFromDatabaseWizard;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -20,28 +19,30 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
-public class EclipseLinkLoadModelFromDatabaseAction implements IWorkbenchWindowActionDelegate {
+public class EclipseLinkLoadModelFromDatabaseAction implements
+		IWorkbenchWindowActionDelegate {
 
-  public void init(IWorkbenchWindow window) {
-    // do nothing
-  }
+	public void init(IWorkbenchWindow window) {
+		// do nothing
+	}
 
-  public void run(IAction action) {
-    // create the wizard
-    IWizard wizard = new EclipseLinkLoadModelFromDatabaseWizard();
+	public void run(IAction action) {
+		// create the wizard
+		IWizard wizard = new EclipseLinkLoadModelFromDatabaseWizard();
 
-    // create the wizard dialog
-    WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+		// create the wizard dialog
+		WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell(), wizard);
 
-    // open the wizard dialog
-    dialog.open();
-  }
+		// open the wizard dialog
+		dialog.open();
+	}
 
-  public void selectionChanged(IAction action, ISelection selection) {
-    // do nothing
-  }
+	public void selectionChanged(IAction action, ISelection selection) {
+		// do nothing
+	}
 
-  public void dispose() {
-    // do nothing
-  }
+	public void dispose() {
+		// do nothing
+	}
 }

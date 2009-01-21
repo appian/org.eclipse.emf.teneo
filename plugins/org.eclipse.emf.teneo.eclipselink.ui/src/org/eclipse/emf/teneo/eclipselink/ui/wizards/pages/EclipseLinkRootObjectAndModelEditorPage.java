@@ -21,41 +21,37 @@ import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 public class EclipseLinkRootObjectAndModelEditorPage extends AbstractRootObjectAndModelEditorPage {
-  
-  public EclipseLinkRootObjectAndModelEditorPage(String pageName) {
-    super(pageName);
-  }
 
-  //
-  // overrides
-  //
+	public EclipseLinkRootObjectAndModelEditorPage(String pageName) {
+		super(pageName);
+	}
 
-  @Override
-  protected URI createDatabaseURI(String persistenceUnitName, EClass eClass) {
-    String query = EclipseLinkResourceUtil.createContentsInstancesOfQuery(eClass);
-    return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
-  }
+	@Override
+	protected URI createDatabaseURI(String persistenceUnitName, EClass eClass) {
+		String query = EclipseLinkResourceUtil.createContentsInstancesOfQuery(eClass);
+		return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
+	}
 
-  @Override
-  protected URI createDatabaseURI(String persistenceUnitName, EObject eObject) {
-    String query = EclipseLinkResourceUtil.createContentsExampleQuery(eObject);
-    return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
-  }
+	@Override
+	protected URI createDatabaseURI(String persistenceUnitName, EObject eObject) {
+		String query = EclipseLinkResourceUtil.createContentsExampleQuery(eObject);
+		return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
+	}
 
-  @Override
-  protected Map<String, Object> getPersistenceUnitProperties() {
-    Map<String, Object> result = new HashMap<String, Object>();
-    result.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
-    return result;
-  }
-  
-  @Override
-  protected Map<String, Object> getDatabaseLoginOptionsFromPreviousPage() {
-    Map<String, Object> result = new HashMap<String, Object>();
-    result.put("eclipselink.jdbc.url", getTypedPreviousPage().getDatabaseURL());
-    result.put("eclipselink.jdbc.driver", getTypedPreviousPage().getJDBCDriver());
-    result.put("eclipselink.jdbc.user", getTypedPreviousPage().getUserName());
-    result.put("eclipselink.jdbc.password", getTypedPreviousPage().getPassword());
-    return result;
-  }
+	@Override
+	protected Map<String, Object> getPersistenceUnitProperties() {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+		return result;
+	}
+
+	@Override
+	protected Map<String, Object> getDatabaseLoginOptionsFromPreviousPage() {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("eclipselink.jdbc.url", getTypedPreviousPage().getDatabaseURL());
+		result.put("eclipselink.jdbc.driver", getTypedPreviousPage().getJDBCDriver());
+		result.put("eclipselink.jdbc.user", getTypedPreviousPage().getUserName());
+		result.put("eclipselink.jdbc.password", getTypedPreviousPage().getPassword());
+		return result;
+	}
 }

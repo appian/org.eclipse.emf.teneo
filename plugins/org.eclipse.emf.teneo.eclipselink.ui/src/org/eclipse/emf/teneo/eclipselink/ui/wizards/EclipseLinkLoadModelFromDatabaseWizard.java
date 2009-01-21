@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.ui.wizards;
 
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.AbstractLoadModelFromDatabaseWizard;
@@ -22,23 +21,19 @@ import org.eclipse.emf.teneo.eclipselink.ui.wizards.pages.EclipseLinkRootObjectA
 
 public class EclipseLinkLoadModelFromDatabaseWizard extends AbstractLoadModelFromDatabaseWizard {
 
-  //
-  // overrides
-  //
-  
-  @Override
-  protected BasicModelAndDatabaseAccessParametersPage createModelAndDatabaseAccessParametersPage(String pageName) {
-    return new EclipseLinkModelAndDatabaseAccessParametersPage(pageName);
-  }    
+	@Override
+	protected BasicModelAndDatabaseAccessParametersPage createModelAndDatabaseAccessParametersPage(String pageName) {
+		return new EclipseLinkModelAndDatabaseAccessParametersPage(pageName);
+	}
 
-  @Override
-  protected AbstractRootObjectAndModelEditorPage createRootObjectAndModelEditorPage(String pageName) {
-    return new EclipseLinkRootObjectAndModelEditorPage(pageName);
-  }
+	@Override
+	protected AbstractRootObjectAndModelEditorPage createRootObjectAndModelEditorPage(String pageName) {
+		return new EclipseLinkRootObjectAndModelEditorPage(pageName);
+	}
 
-  @Override
-  protected URI createDatabaseURI(String persistenceUnitName, EObject rootObject) {
-    String query = EclipseLinkResourceUtil.createContentsExampleQuery(rootObject);
-    return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
-  }
+	@Override
+	protected URI createDatabaseURI(String persistenceUnitName, EObject rootObject) {
+		String query = EclipseLinkResourceUtil.createContentsExampleQuery(rootObject);
+		return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
+	}
 }
