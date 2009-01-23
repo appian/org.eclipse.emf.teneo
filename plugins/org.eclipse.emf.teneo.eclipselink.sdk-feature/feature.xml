@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.teneo.eclipselink_feature"
-      label="%featureName"
+      id="org.eclipse.emf.teneo.eclipselink.sdk_feature"
+      label="EMF Teneo Eclipselink SDK"
       version="1.0.1.qualifier"
-      provider-name="%providerName">
+      provider-name="Eclipse.org">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -17,39 +17,8 @@
       [Enter License Description here.]
    </license>
 
-   <plugin
-         id="org.eclipse.emf.teneo.eclipselink"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.teneo.eclipselink.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.teneo.eclipselink.common.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.teneo.eclipselink.elistfactory"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.teneo.eclipselink.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="org.eclipse.emf.teneo.eclipselink_feature"
+         version="0.0.0"/>
 
 </feature>
