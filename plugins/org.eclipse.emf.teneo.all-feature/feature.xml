@@ -29,4 +29,8 @@
          id="org.eclipse.emf.teneo.examples"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.emf.teneo.eclipselink.sdk_feature"
+         version="0.0.0"/>
+
 </feature>
