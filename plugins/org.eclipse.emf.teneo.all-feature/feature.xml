@@ -30,7 +30,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.teneo.eclipselink.sdk_feature"
+         id="org.eclipse.emf.teneo.eclipselink.sdk-feature"
          version="0.0.0"/>
 
 </feature>
