@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Identifiable.java,v 1.1 2009/01/21 21:34:20 seberle Exp $
+ * $Id: Identifiable.java,v 1.2 2009/01/26 22:31:48 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getUuid <em>Uuid</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
@@ -27,30 +27,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Identifiable extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uuid</em>' attribute.
-	 * @see #setUuid(long)
-	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getIdentifiable_Uuid()
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(long)
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getIdentifiable_Id()
 	 * @model
 	 * @generated
 	 */
-	long getUuid();
+	long getId();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getUuid <em>Uuid</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Uuid</em>' attribute.
-	 * @see #getUuid()
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
 	 * @generated
 	 */
-	void setUuid(long value);
+	void setId(long value);
 
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: LibraryPackage.java,v 1.3 2009/01/26 22:31:48 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -71,13 +71,13 @@ public interface LibraryPackage extends EPackage {
 	int IDENTIFIABLE = 11;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTIFIABLE__UUID = 0;
+	int IDENTIFIABLE__ID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -108,13 +108,13 @@ public interface LibraryPackage extends EPackage {
 	int BOOK = 0;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK__UUID = IDENTIFIABLE__UUID;
+	int BOOK__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -208,13 +208,13 @@ public interface LibraryPackage extends EPackage {
 	int LIBRARY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__UUID = IDENTIFIABLE__UUID;
+	int LIBRARY__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -272,13 +272,13 @@ public interface LibraryPackage extends EPackage {
 	int WRITER = 2;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER__UUID = IDENTIFIABLE__UUID;
+	int WRITER__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -354,13 +354,13 @@ public interface LibraryPackage extends EPackage {
 	int STRING_TO_BOOK_MAP_ENTRY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_TO_BOOK_MAP_ENTRY__UUID = IDENTIFIABLE__UUID;
+	int STRING_TO_BOOK_MAP_ENTRY__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -409,13 +409,13 @@ public interface LibraryPackage extends EPackage {
 	int ADDRESS = 4;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADDRESS__UUID = IDENTIFIABLE__UUID;
+	int ADDRESS__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -455,13 +455,13 @@ public interface LibraryPackage extends EPackage {
 	int PUBLISHER = 5;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLISHER__UUID = IDENTIFIABLE__UUID;
+	int PUBLISHER__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -510,13 +510,13 @@ public interface LibraryPackage extends EPackage {
 	int STYLE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STYLE__UUID = IDENTIFIABLE__UUID;
+	int STYLE__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -556,13 +556,13 @@ public interface LibraryPackage extends EPackage {
 	int BOOK_STYLES_MAP_ENTRY = 7;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_STYLES_MAP_ENTRY__UUID = IDENTIFIABLE__UUID;
+	int BOOK_STYLES_MAP_ENTRY__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -611,13 +611,13 @@ public interface LibraryPackage extends EPackage {
 	int TRANSLATOR = 8;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATOR__UUID = IDENTIFIABLE__UUID;
+	int TRANSLATOR__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -675,13 +675,13 @@ public interface LibraryPackage extends EPackage {
 	int TYPE_WRITER = 9;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_WRITER__UUID = IDENTIFIABLE__UUID;
+	int TYPE_WRITER__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -730,13 +730,13 @@ public interface LibraryPackage extends EPackage {
 	int COVER = 10;
 
 	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COVER__UUID = IDENTIFIABLE__UUID;
+	int COVER__ID = IDENTIFIABLE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1230,15 +1230,15 @@ public interface LibraryPackage extends EPackage {
 	EClass getIdentifiable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getUuid <em>Uuid</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uuid</em>'.
-	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getUuid()
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getId()
 	 * @see #getIdentifiable()
 	 * @generated
 	 */
-	EAttribute getIdentifiable_Uuid();
+	EAttribute getIdentifiable_Id();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable#getVersion <em>Version</em>}'.
@@ -1646,12 +1646,12 @@ public interface LibraryPackage extends EPackage {
 		EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
 
 		/**
-		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IDENTIFIABLE__UUID = eINSTANCE.getIdentifiable_Uuid();
+		EAttribute IDENTIFIABLE__ID = eINSTANCE.getIdentifiable_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.

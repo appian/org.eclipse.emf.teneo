@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: LibraryPackageImpl.java,v 1.3 2009/01/26 22:31:49 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -578,7 +578,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIdentifiable_Uuid() {
+	public EAttribute getIdentifiable_Id() {
 		return (EAttribute)identifiableEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -689,7 +689,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		createEAttribute(coverEClass, COVER__COLORED);
 
 		identifiableEClass = createEClass(IDENTIFIABLE);
-		createEAttribute(identifiableEClass, IDENTIFIABLE__UUID);
+		createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
 		createEAttribute(identifiableEClass, IDENTIFIABLE__VERSION);
 
 		// Create enums
@@ -790,7 +790,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		initEAttribute(getCover_Colored(), ecorePackage.getEBoolean(), "colored", null, 0, 1, Cover.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIdentifiable_Uuid(), ecorePackage.getELong(), "uuid", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiable_Id(), ecorePackage.getELong(), "id", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIdentifiable_Version(), ecorePackage.getELong(), "version", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals

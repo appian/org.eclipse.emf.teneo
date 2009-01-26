@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdentifiableImpl.java,v 1.1 2009/01/21 21:34:20 seberle Exp $
+ * $Id: IdentifiableImpl.java,v 1.2 2009/01/26 22:31:49 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl#getUuid <em>Uuid</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
@@ -32,24 +32,24 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
  */
 public abstract class IdentifiableImpl extends EObjectImpl implements Identifiable {
 	/**
-	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUuid()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long UUID_EDEFAULT = 0L;
+	protected static final long ID_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUuid()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected long uuid = UUID_EDEFAULT;
+	protected long id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -95,8 +95,8 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getUuid() {
-		return uuid;
+	public long getId() {
+		return id;
 	}
 
 	/**
@@ -104,11 +104,11 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUuid(long newUuid) {
-		long oldUuid = uuid;
-		uuid = newUuid;
+	public void setId(long newId) {
+		long oldId = id;
+		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.IDENTIFIABLE__UUID, oldUuid, uuid));
+			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.IDENTIFIABLE__ID, oldId, id));
 	}
 
 	/**
@@ -140,8 +140,8 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LibraryPackage.IDENTIFIABLE__UUID:
-				return new Long(getUuid());
+			case LibraryPackage.IDENTIFIABLE__ID:
+				return new Long(getId());
 			case LibraryPackage.IDENTIFIABLE__VERSION:
 				return new Long(getVersion());
 		}
@@ -156,8 +156,8 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LibraryPackage.IDENTIFIABLE__UUID:
-				setUuid(((Long)newValue).longValue());
+			case LibraryPackage.IDENTIFIABLE__ID:
+				setId(((Long)newValue).longValue());
 				return;
 			case LibraryPackage.IDENTIFIABLE__VERSION:
 				setVersion(((Long)newValue).longValue());
@@ -174,8 +174,8 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LibraryPackage.IDENTIFIABLE__UUID:
-				setUuid(UUID_EDEFAULT);
+			case LibraryPackage.IDENTIFIABLE__ID:
+				setId(ID_EDEFAULT);
 				return;
 			case LibraryPackage.IDENTIFIABLE__VERSION:
 				setVersion(VERSION_EDEFAULT);
@@ -192,8 +192,8 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LibraryPackage.IDENTIFIABLE__UUID:
-				return uuid != UUID_EDEFAULT;
+			case LibraryPackage.IDENTIFIABLE__ID:
+				return id != ID_EDEFAULT;
 			case LibraryPackage.IDENTIFIABLE__VERSION:
 				return version != VERSION_EDEFAULT;
 		}
@@ -210,8 +210,8 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (uuid: ");
-		result.append(uuid);
+		result.append(" (id: ");
+		result.append(id);
 		result.append(", version: ");
 		result.append(version);
 		result.append(')');

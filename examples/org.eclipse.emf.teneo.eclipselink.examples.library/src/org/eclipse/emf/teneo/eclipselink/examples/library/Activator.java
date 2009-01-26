@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Activator.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: Activator.java,v 1.3 2009/01/26 22:31:49 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -11,7 +11,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Forum model plugin.
+ * This is the central singleton for the Library model plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
