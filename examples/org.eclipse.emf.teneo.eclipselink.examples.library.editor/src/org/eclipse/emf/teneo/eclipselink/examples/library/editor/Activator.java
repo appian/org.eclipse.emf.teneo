@@ -15,7 +15,7 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Forum editor plugin.
+ * This is the central singleton for the Library editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -46,7 +46,6 @@ public final class Activator extends EMFPlugin {
 	public Activator() {
 		super
 			(new ResourceLocator [] {
-				org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator.INSTANCE,
 			});
 	}
 
