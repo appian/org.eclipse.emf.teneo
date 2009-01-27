@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: BookItemProvider.java,v 1.3 2009/01/27 22:05:25 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -234,7 +234,7 @@ public class BookItemProvider
 	@Override
 	public String getText(Object object) {
 		Book book = (Book)object;
-		return getString("_UI_Book_type") + " " + book.getUuid();
+		return getString("_UI_Book_type") + " " + book.getId();
 	}
 
 	/**

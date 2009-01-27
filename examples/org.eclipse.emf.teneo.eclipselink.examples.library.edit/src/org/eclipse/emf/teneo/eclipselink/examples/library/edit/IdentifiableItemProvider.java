@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdentifiableItemProvider.java,v 1.1 2009/01/21 21:34:02 seberle Exp $
+ * $Id: IdentifiableItemProvider.java,v 1.2 2009/01/27 22:05:25 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -64,26 +64,26 @@ public class IdentifiableItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addUuidPropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Uuid feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addUuidPropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Identifiable_uuid_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_uuid_feature", "_UI_Identifiable_type"),
-				 LibraryPackage.Literals.IDENTIFIABLE__UUID,
+				 getString("_UI_Identifiable_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_id_feature", "_UI_Identifiable_type"),
+				 LibraryPackage.Literals.IDENTIFIABLE__ID,
 				 true,
 				 false,
 				 false,
@@ -134,7 +134,7 @@ public class IdentifiableItemProvider
 	@Override
 	public String getText(Object object) {
 		Identifiable identifiable = (Identifiable)object;
-		return getString("_UI_Identifiable_type") + " " + identifiable.getUuid();
+		return getString("_UI_Identifiable_type") + " " + identifiable.getId();
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class IdentifiableItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Identifiable.class)) {
-			case LibraryPackage.IDENTIFIABLE__UUID:
+			case LibraryPackage.IDENTIFIABLE__ID:
 			case LibraryPackage.IDENTIFIABLE__VERSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
