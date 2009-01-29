@@ -17,6 +17,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.teneo.eclipselink,
  org.eclipse.emf.teneo.eclipselink.common.ui,
  org.eclipse.emf.teneo.eclipselink.examples.library.edit;visibility:=reexport,
- org.eclipse.emf.teneo.eclipselink.examples.library.orm,
  org.eclipse.emf.teneo.eclipselink.examples.derby
 Bundle-ActivationPolicy: lazy
