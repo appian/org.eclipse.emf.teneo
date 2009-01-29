@@ -8,13 +8,15 @@ Bundle-Activator: org.eclipse.emf.teneo.eclipselink.examples.library.Activator$I
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.teneo.eclipselink.examples.library,
+Export-Package: META-INF,
+ org.eclipse.emf.teneo.eclipselink.examples.library,
  org.eclipse.emf.teneo.eclipselink.examples.library.forum,
  org.eclipse.emf.teneo.eclipselink.examples.library.forum.impl,
  org.eclipse.emf.teneo.eclipselink.examples.library.forum.util,
  org.eclipse.emf.teneo.eclipselink.examples.library.impl,
+ org.eclipse.emf.teneo.eclipselink.examples.library.orm,
  org.eclipse.emf.teneo.eclipselink.examples.library.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.teneo.eclipselink.common
+ org.eclipse.emf.teneo.eclipselink
 Bundle-ActivationPolicy: lazy
