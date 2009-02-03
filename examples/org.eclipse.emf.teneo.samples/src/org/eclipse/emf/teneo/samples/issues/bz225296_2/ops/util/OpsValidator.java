@@ -2,17 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OpsValidator.java,v 1.2 2009/02/01 18:42:52 mtaal Exp $
+ * $Id: OpsValidator.java,v 1.3 2009/02/03 08:51:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.util;
 
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.Block;
 import org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.DWHCluster;
@@ -414,17 +411,17 @@ public class OpsValidator extends EObjectValidator {
 		// -> verify the diagnostic details, including severity, code, and
 		// message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE, 0, EcorePlugin.INSTANCE.getString(
-								"_UI_GenericConstraint_diagnostic",
-								new Object[] { "Default",
-										getObjectLabel(dwhCluster, context) }),
-						new Object[] { dwhCluster }));
-			}
-			return false;
-		}
+		// if (false) {
+		// if (diagnostics != null) {
+		// diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
+		// DIAGNOSTIC_SOURCE, 0, EcorePlugin.INSTANCE.getString(
+		// "_UI_GenericConstraint_diagnostic",
+		// new Object[] { "Default",
+		// getObjectLabel(dwhCluster, context) }),
+		// new Object[] { dwhCluster }));
+		// }
+		// return false;
+		// }
 		return true;
 	}
 
@@ -479,21 +476,21 @@ public class OpsValidator extends EObjectValidator {
 		// -> verify the diagnostic details, including severity, code, and
 		// message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-						.add(new BasicDiagnostic(Diagnostic.ERROR,
-								DIAGNOSTIC_SOURCE, 0,
-								EcorePlugin.INSTANCE.getString(
-										"_UI_GenericConstraint_diagnostic",
-										new Object[] {
-												"Default",
-												getObjectLabel(dwhInstance,
-														context) }),
-								new Object[] { dwhInstance }));
-			}
-			return false;
-		}
+		// if (false) {
+		// if (diagnostics != null) {
+		// diagnostics
+		// .add(new BasicDiagnostic(Diagnostic.ERROR,
+		// DIAGNOSTIC_SOURCE, 0,
+		// EcorePlugin.INSTANCE.getString(
+		// "_UI_GenericConstraint_diagnostic",
+		// new Object[] {
+		// "Default",
+		// getObjectLabel(dwhInstance,
+		// context) }),
+		// new Object[] { dwhInstance }));
+		// }
+		// return false;
+		// }
 		return true;
 	}
 
