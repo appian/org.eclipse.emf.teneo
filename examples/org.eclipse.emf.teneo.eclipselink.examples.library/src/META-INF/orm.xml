@@ -21,6 +21,19 @@
     <!--=============================-->
 
     <package>org.eclipse.emf.teneo.eclipselink.examples.library.impl</package>
+    <mapped-superclass class="IdentifiableImpl">
+    	<attributes>
+    		<id name="id">
+        		<column name="ID"/>
+         		<generated-value/>
+    		</id>
+			<basic name="eContainerFeatureID">
+				<column name="ECONT_FEAT_ID"/>
+			</basic>
+    		<version name="version">
+    		</version>
+    	</attributes>
+    </mapped-superclass>
 
     <!--=========-->
     <!-- Queries -->
@@ -38,14 +51,7 @@
     <entity name="Address" class="AddressImpl">
         <table name="EMFLIB_ADDRESS"/>
         <attributes>
-        	<id name="id">
-        		<column name="ID"/>
-        		<generated-value/>
-        	</id>
         	<basic name="town"/>
-			<basic name="eContainerFeatureID">
-				<column name="ECONT_FEAT_ID"/>
-			</basic>
         	<one-to-one name="eContainer" target-entity="WriterImpl"  mapped-by="address">
        		</one-to-one>
         </attributes>
@@ -54,15 +60,8 @@
     <entity name="Book" class="BookImpl" access="FIELD">
         <table name="EMFLIB_BOOK"/>
         <attributes>
-            <id name="id">
-        		<column name="ID"/>
-         		<generated-value/>
-        	</id>
         	<basic name="title"/>
 			<basic name="pages"/>
-			<basic name="eContainerFeatureID">
-				<column name="ECONT_FEAT_ID"/>
-			</basic>
         	<many-to-one name="author" target-entity="WriterImpl">
         		<join-column name="AUTHOR_ID"/>
 				<cascade>
@@ -98,20 +97,20 @@
         	<transient name="category"/>
         </attributes>
     </entity>
- 	
+ 
     <entity class="BookStylesMapEntryImpl">
         <table name="EMFLIB_BOOK_STYLE_MAP"/>
-        <id-class class="org.eclipse.emf.teneo.eclipselink.examples.library.orm.MapEntryId"/>
+        <id-class class="org.eclipse.emf.teneo.eclipselink.util.MapEntryId"/>
+        <attribute-override name="id">
+        	<column name="BOOK_ID" updatable="false" insertable="false"/>
+        </attribute-override>
         <attributes>
         	<id name="key">
         		<column name="MAPKEY"/>
         	</id>
-        	<id name="id">
-        		<column name="BOOK_ID" updatable="false" insertable="false"/>
-        	</id>
-        	<basic name="eContainerFeatureID">
-        		<column name="ECONT_FEAT_ID"/>
-        	</basic>
+        	<many-to-one name="eContainer" target-entity="BookImpl">
+        		<join-column name="BOOK_ID"/>
+        	</many-to-one>
 			<one-to-one name="value" target-entity="StyleImpl">
 				<join-column name="STYLE_ID"/>
 				<cascade>
@@ -120,24 +119,14 @@
 					<cascade-refresh/>
 				</cascade>
 			</one-to-one>
-        	<one-to-one name="eContainer" target-entity="BookImpl">
-        		<join-column name="BOOK_ID"/>
-        	</one-to-one>
         	<transient name="hash"/>
         </attributes>
     </entity>
-    
+
     <entity name="Cover" class="CoverImpl">
         <table name="EMFLIB_COVER"/>
         <attributes>
-	       	<id name="id">
-        		<column name="ID"/>
-         		<generated-value/>
-        	</id>
         	<basic name="colored"/>
-        	<basic name="eContainerFeatureID">
-        		<column name="ECONT_FEAT_ID"/>
-        	</basic>
 			<one-to-one name="eContainer" target-entity="BookImpl">
 				<join-column name="ECONTAINER_ID"/>
 			</one-to-one>
@@ -147,10 +136,6 @@
     <entity name="Library" class="LibraryImpl">
         <table name="EMFLIB_LIBRARY"/>
         <attributes>
-           	<id name="id">
-        		<column name="ID"/>
-         		<generated-value/>
-        	</id>
         	<basic name="name"/>
         	<one-to-many name="books" target-entity="StringToBookMapEntryImpl" mapped-by="eContainer">
 				<cascade>
@@ -170,10 +155,6 @@
    <entity name="Publisher" class="PublisherImpl">
         <table name="EMFLIB_PUBLISHER"/>
         <attributes>
-        	<id name="id">
-        		<column name="ID"/>
-        		<generated-value/>
-        	</id>
         	<basic name="name"/>
         	<many-to-many name="writers" target-entity="WriterImpl">
         		<join-table name="EMFLIB_PUBLISHER_WRITER"></join-table>
@@ -188,17 +169,17 @@
 
     <entity class="StringToBookMapEntryImpl">
         <table name="EMFLIB_LIBRARY_BOOK_MAP"/>
-        <id-class class="org.eclipse.emf.teneo.eclipselink.examples.library.orm.MapEntryId"/>
+        <id-class class="org.eclipse.emf.teneo.eclipselink.util.MapEntryId"/>
+        <attribute-override name="id">
+        	<column name="LIBRARY_ID" updatable="false" insertable="false"/>
+        </attribute-override>
         <attributes>
         	<id name="key">
         		<column name="MAPKEY"/>
         	</id>
-        	<id name="id">
-        		<column name="LIBRARY_ID" updatable="false" insertable="false"/>
-        	</id>
-        	<basic name="eContainerFeatureID">
-        		<column name="ECONT_FEAT_ID"/>
-        	</basic>
+        	<many-to-one name="eContainer" target-entity="LibraryImpl">
+        		<join-column name="LIBRARY_ID"/>
+        	</many-to-one>
 			<one-to-one name="value" target-entity="BookImpl">
 				<join-column name="BOOK_ID" referenced-column-name="ID"/>
 				<cascade>
@@ -207,9 +188,6 @@
 					<cascade-refresh/>
 				</cascade>
 			</one-to-one>
-        	<one-to-one name="eContainer" target-entity="LibraryImpl">
-        		<join-column name="LIBRARY_ID"/>
-        	</one-to-one>
         	<transient name="hash"/>
         </attributes>
     </entity>
@@ -217,10 +195,6 @@
     <entity name="Style" class="StyleImpl">
         <table name="EMFLIB_STYLE"/>
         <attributes>
-	       	<id name="id">
-        		<column name="ID"/>
-         		<generated-value/>
-        	</id>
         	<basic name="name"/>
         </attributes>
     </entity>
@@ -228,10 +202,6 @@
     <entity name="Translator" class="TranslatorImpl">
         <table name="EMFLIB_TRANSLATOR"/>
         <attributes>
-	       	<id name="id">
-        		<column name="ID"/>
-         		<generated-value/>
-        	</id>
         	<basic name="location"/>
         	<basic name="name"/>
         	<!-- address should be removed from Translator -->
@@ -242,10 +212,6 @@
    <entity name="TypeWriter" class="TypeWriterImpl">
         <table name="EMFLIB_TYPEWRITER"/>
         <attributes>
-	       	<id name="id">
-        		<column name="ID"/>
-         		<generated-value/>
-        	</id>
         	<basic name="maker"/>
         	<basic name="type">
         		<enumerated>STRING</enumerated>
@@ -256,14 +222,10 @@
    <entity name="Writer" class="WriterImpl">
         <table name="EMFLIB_WRITER"/>
         <attributes>
-	       	<id name="id">
-        		<column name="ID"/>
-        		<generated-value/>
-        	</id>
         	<basic name="name"/>
-			<basic name="eContainerFeatureID">
-				<column name="ECONT_FEAT_ID"/>
-			</basic>
+        	<many-to-one name="eContainer" target-entity="LibraryImpl">
+        		<join-column name="ECONTAINER_ID"/>
+        	</many-to-one>
 			<one-to-many name="books" mapped-by="author" target-entity="BookImpl">
 				<cascade>
 					<cascade-all/>
@@ -276,9 +238,6 @@
 					<cascade-merge/>
 					<cascade-refresh/>
 				</cascade>
-       		</one-to-one>
-       		<one-to-one name="eContainer" target-entity="LibraryImpl">
-       			<join-column name="ECONTAINER_ID"/>
        		</one-to-one>
   			<many-to-many name="publishers" target-entity="PublisherImpl" mapped-by="writers">
 				<cascade>
