@@ -16,5 +16,6 @@ Bundle-ClassPath: .
 Export-Package: org.eclipse.emf.teneo.eclipselink,
  org.eclipse.emf.teneo.eclipselink.elist,
  org.eclipse.emf.teneo.eclipselink.emap,
- org.eclipse.emf.teneo.eclipselink.resource
+ org.eclipse.emf.teneo.eclipselink.resource,
+ org.eclipse.emf.teneo.eclipselink.util
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
