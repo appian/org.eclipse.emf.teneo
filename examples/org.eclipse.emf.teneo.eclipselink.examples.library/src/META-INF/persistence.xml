@@ -11,10 +11,8 @@
             <property name="eclipselink.jdbc.bind-parameters" value="false"/>
 
             <property name="eclipselink.target-database" value="Derby"/>
-            <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-            <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/teneo;create=true"/>
-            <property name="eclipselink.jdbc.user" value="app"/>
-            <property name="eclipselink.jdbc.password" value="app"/>
+            <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:derby:teneo;create=true"/>
 
             <property name="eclipselink.session.customizer" value="org.eclipse.emf.teneo.eclipselink.EmfSessionCustomizer"/>
              
