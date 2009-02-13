@@ -19,10 +19,9 @@
             <property name="eclipselink.jdbc.read-connections.min" value="1"/>
             <property name="eclipselink.jdbc.write-connections.min" value="1"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database" />
-            <!-- Uncomment to create database schema  
+            <!-- Uncomment to create database schema -->  
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
-             -->
         </properties>
     </persistence-unit>
 </persistence>
