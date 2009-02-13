@@ -23,6 +23,8 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 public class LibraryXMIPersistenceTest extends LibraryJPATest {
 
+	private static final String TEMP_FILE = "file:///tmp/temp.library";
+
 	public LibraryXMIPersistenceTest(String name) {
 		super(name);
 	}
@@ -56,7 +58,7 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 		library.getBooks().put(book.getTitle(), book);
 		library.getWriters().add(writer);
 
-		saveToXMIFile(library, "file://c:/temp/LibraryXMIPersistenceTestBefore.library");
+		saveToXMIFile(library, TEMP_FILE);
 
 		commitTransaction();
 		// verify
@@ -82,7 +84,7 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 
 		// Start the writing to XMI
 
-		saveToXMIFile(actualLibrary, "file://c:/temp/LibraryXMIPersistenceTestAfter.library");
+		saveToXMIFile(actualLibrary, TEMP_FILE);
 
 	}
 
