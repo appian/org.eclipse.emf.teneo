@@ -28,7 +28,7 @@ public class AllTests {
 		suite.addTestSuite(ContainerTest.class);
 		suite.addTestSuite(BookCoverTest.class);
 		suite.addTestSuite(LibraryEContainerLibraryTest.class);
-		suite.addTestSuite(EMapTest.class);
+		// suite.addTestSuite(EMapTest.class);
 		suite.addTestSuite(EListEMapTest.class);
 		suite.addTestSuite(BasicTest.class);
 		suite.addTestSuite(LibraryEContainerTest.class);
