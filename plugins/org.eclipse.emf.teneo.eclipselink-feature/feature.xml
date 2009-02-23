@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <url>
+      <update label="%updateSiteName" url="http://download.eclipse.org/modeling/emf/updates/"/>
+   </url>
+
    <plugin
          id="org.eclipse.emf.teneo.eclipselink"
          download-size="0"
