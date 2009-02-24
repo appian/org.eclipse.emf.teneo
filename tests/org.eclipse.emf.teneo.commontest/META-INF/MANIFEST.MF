@@ -13,8 +13,19 @@ Require-Bundle: org.eclipse.emf.ecore.xmi,
 Eclipse-LazyStart: true
 Eclipse-BuddyPolicy: dependent
 Bundle-ClassPath: lib/tools.jar,
- .
+ .,
+ lib/mysql-connector-java-5.1.6-bin.jar
 Export-Package: 
+ com.mysql.jdbc,
+ com.mysql.jdbc.exceptions,
+ com.mysql.jdbc.exceptions.jdbc4,
+ com.mysql.jdbc.integration.c3p0,
+ com.mysql.jdbc.integration.jboss,
+ com.mysql.jdbc.interceptors,
+ com.mysql.jdbc.jdbc2.optional,
+ com.mysql.jdbc.log,
+ com.mysql.jdbc.profiler,
+ com.mysql.jdbc.util,
  org.eclipse.emf.teneo.test,
  org.eclipse.emf.teneo.test.conf,
  org.eclipse.emf.teneo.test.emf.annotations,
