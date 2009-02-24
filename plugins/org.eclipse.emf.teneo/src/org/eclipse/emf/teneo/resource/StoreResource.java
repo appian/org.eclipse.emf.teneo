@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.36 2008/12/16 20:40:34 mtaal Exp $
+ * $Id: StoreResource.java,v 1.37 2009/02/24 12:05:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -34,6 +34,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
+import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -58,7 +59,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -681,7 +682,11 @@ public abstract class StoreResource extends ResourceImpl {
 			assert (loadedEObjects.contains(eObject));
 		}
 		assert (!removedEObjects.contains(eObject));
-		removedEObjects.add(eObject);
+
+		if (!(eObject instanceof BasicEMap.Entry)) {
+			removedEObjects.add(eObject);
+		}
+
 		loadedEObjects.remove(eObject);
 		loadedEObjectSet.remove(eObject);
 		modifiedEObjects.remove(eObject);
@@ -799,7 +804,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// contained
 		for (EReference eref : eObject.eClass().getEAllReferences()) {
 			if (!eref.isMany() && eObject.eGet(eref, false) != null) { // the
-																		// ismanies
+				// ismanies
 				// are handled
 				// differently
 				final Resource res = ((EObject) eObject.eGet(eref)).eResource();

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.10 2008/12/16 20:40:34 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.11 2009/02/24 12:05:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.mapper.ManyToOneReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyAttributeAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToManyReferenceAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.OneToOneReferenceAnnotator;
+import org.eclipse.emf.teneo.annotations.mapper.PersistenceFileProvider;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.mapper.SingleAttributeAnnotator;
 import org.eclipse.emf.teneo.annotations.mapper.UnidirectionalManyToManyAnnotator;
@@ -44,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class ExtensionUtil {
@@ -98,6 +99,10 @@ public class ExtensionUtil {
 				PersistenceMappingBuilder.class));
 		em.registerExtension(createExtension(XmlPersistenceMapper.class,
 				XmlPersistenceMapper.class));
+
+		em.registerExtension(createExtension(PersistenceFileProvider.class,
+				PersistenceFileProvider.class));
+
 		// from now on always use the classloader
 		// em.registerExtension(createExtension(ClassLoaderStrategy.class,
 		// ContextClassLoaderStrategy.class));
