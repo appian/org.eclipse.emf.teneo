@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * strategies. The mapping model is returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -122,8 +122,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 			try {
 				final PersistenceFileProvider fileProvider = extensionManager
 						.getExtension(PersistenceFileProvider.class);
-				final InputStream in = fileProvider.getFileContent(this
-						.getClass(), po.getPersistenceXmlPath());
+				final InputStream in = fileProvider.getFileContent(null, po
+						.getPersistenceXmlPath());
 				if (in == null) {
 					throw new RuntimeException(
 							"Could not find persistence XML resource in classpath: \""

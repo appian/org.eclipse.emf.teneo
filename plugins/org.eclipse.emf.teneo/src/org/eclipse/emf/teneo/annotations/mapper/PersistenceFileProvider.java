@@ -20,7 +20,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * ExtensionManager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class PersistenceFileProvider implements ExtensionPoint {
 
@@ -44,6 +44,10 @@ public class PersistenceFileProvider implements ExtensionPoint {
 	 * @return an InputStream if found, or null otherwise
 	 */
 	public InputStream getFileContent(Class<?> clz, String path) {
-		return clz.getClassLoader().getResourceAsStream(path);
+		if (clz == null) {
+			return this.getClass().getClassLoader().getResourceAsStream(path);
+		} else {
+			return clz.getResourceAsStream(path);
+		}
 	}
 }
