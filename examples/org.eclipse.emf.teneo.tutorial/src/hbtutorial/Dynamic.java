@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: Dynamic.java,v 1.7 2008/09/01 12:45:20 mtaal Exp $
+ * $Id: Dynamic.java,v 1.8 2009/02/24 12:05:03 mtaal Exp $
  */
 
 package hbtutorial;
@@ -51,7 +51,7 @@ import org.hibernate.Transaction;
  * Dynamic Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class Dynamic {
 
@@ -67,7 +67,8 @@ public class Dynamic {
 		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
 		final EcorePackage epackage = EcorePackage.eINSTANCE;
 
-		// This tutorial will create a new type of book which inherits from the standard
+		// This tutorial will create a new type of book which inherits from the
+		// standard
 		// Book
 
 		// create the SchoolBook EClass
@@ -81,7 +82,8 @@ public class Dynamic {
 		schoolBookEClass.getEStructuralFeatures().add(level);
 
 		// Set the supertype of SchoolBook to the Book
-		schoolBookEClass.getESuperTypes().add(LibraryPackage.eINSTANCE.getBook());
+		schoolBookEClass.getESuperTypes().add(
+				LibraryPackage.eINSTANCE.getBook());
 
 		// create a course
 		EClass courseEClass = efactory.createEClass();
@@ -110,7 +112,8 @@ public class Dynamic {
 		EPackage.Registry.INSTANCE.put(schoolPackage.getNsURI(), schoolPackage);
 
 		// Now reset the epackages in the datastore
-		hbds.setEPackages(new EPackage[] { LibraryPackage.eINSTANCE, schoolPackage });
+		hbds.setEPackages(new EPackage[] { LibraryPackage.eINSTANCE,
+				schoolPackage });
 
 		// recreate the database
 		hbds.initialize();
@@ -123,8 +126,10 @@ public class Dynamic {
 		writer.setName("Teacher");
 
 		// now create a schoolBook
-		// NOTE: because schoolBook inherits from Book, the create method will return a Book
-		Book bk = (Book) schoolPackage.getEFactoryInstance().create(schoolBookEClass);
+		// NOTE: because schoolBook inherits from Book, the create method will
+		// return a Book
+		Book bk = (Book) schoolPackage.getEFactoryInstance().create(
+				schoolBookEClass);
 		bk.setAuthor(writer);
 		bk.setTitle("Biografie van Multatuli");
 		bk.setCategory(BookCategory.BIOGRAPHY);
@@ -132,7 +137,8 @@ public class Dynamic {
 		bk.eSet(level, new Integer(1));
 
 		// and create a course
-		EObject course = schoolPackage.getEFactoryInstance().create(courseEClass);
+		EObject course = schoolPackage.getEFactoryInstance().create(
+				courseEClass);
 		course.eSet(courseName, "Dutch Literature Level 1");
 		course.eSet(courseBook, bk);
 
@@ -157,7 +163,8 @@ public class Dynamic {
 			Book book = (Book) it.next();
 			if (book.eClass() == schoolBookEClass) {
 				if (schoolBook != null) {
-					throw new Error("More than one schoolbook? Was the database not empty?");
+					throw new Error(
+							"More than one schoolbook? Was the database not empty?");
 				}
 				schoolBook = book;
 			}
@@ -167,7 +174,8 @@ public class Dynamic {
 		}
 
 		// now query for all courses the right name
-		qry = session.createQuery("from Course where courseName='Dutch Literature Level 1'");
+		qry = session
+				.createQuery("from Course where courseName='Dutch Literature Level 1'");
 		list = qry.list();
 		EObject eobject = (EObject) list.get(0);
 		if (eobject.eClass() != courseEClass) {
@@ -186,7 +194,8 @@ public class Dynamic {
 		tx.commit();
 		session.close();
 
-		URI uri1 = URI.createURI("hibernate://?dsname=Library&query1=FROM Course");
+		URI uri1 = URI
+				.createURI("hibernate://?dsname=Library&query1=FROM Course");
 		Resource res1 = new ResourceSetImpl().createResource(uri1);
 		try {
 			res1.load(Collections.EMPTY_MAP);
@@ -201,7 +210,8 @@ public class Dynamic {
 
 		ChangeDescription changeDescription = cr.endRecording();
 
-		EMap<EObject, EList<FeatureChange>> objectChanges = changeDescription.getObjectChanges();
+		EMap<EObject, EList<FeatureChange>> objectChanges = changeDescription
+				.getObjectChanges();
 		System.out.println("change size: " + objectChanges.size());
 		course.eSet(courseName, "Dutch Literature Level 1");
 	}
