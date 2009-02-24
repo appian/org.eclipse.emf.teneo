@@ -8,15 +8,11 @@
 package org.eclipse.emf.teneo.hibernate.test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
@@ -33,7 +29,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class ReadEcore {
 
@@ -45,49 +41,58 @@ public class ReadEcore {
 		try {
 			final ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("*", new EcoreResourceFactoryImpl());
+					.put("*", new EcoreResourceFactoryImpl());
 			final ArrayList epackages = new ArrayList();
-			if (false) {
-				final String[] ecores = new String[] { "/home/mtaal/mytmp/ops.ecore" };
-				for (String ecore : ecores) {
-					final Resource res = resourceSet.getResource(URI.createFileURI(ecore), true);
-					res.load(new HashMap());
+			// if (false) {
+			// final String[] ecores = new String[] {
+			// "/home/mtaal/mytmp/ops.ecore" };
+			// for (String ecore : ecores) {
+			// final Resource res =
+			// resourceSet.getResource(URI.createFileURI(ecore), true);
+			// res.load(new HashMap());
+			//
+			// Iterator it = res.getAllContents();
+			// while (it.hasNext()) {
+			// final Object obj = it.next();
+			// if (obj instanceof EPackage) {
+			// EPackage epack = (EPackage) obj;
+			// if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) ==
+			// null) {
+			// EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+			// }
+			// epackages.add(epack);
+			// }
+			// }
+			// }
+			// }
 
-					Iterator it = res.getAllContents();
-					while (it.hasNext()) {
-						final Object obj = it.next();
-						if (obj instanceof EPackage) {
-							EPackage epack = (EPackage) obj;
-							if (EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI()) == null) {
-								EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
-							}
-							epackages.add(epack);
-						}
-					}
-				}
-			}
+			// epackages.add(RandLPackage.eINSTANCE);
 
-// epackages.add(RandLPackage.eINSTANCE);
+			EPackage[] epacks = (EPackage[]) epackages
+					.toArray(new EPackage[epackages.size()]);
+			// epacks =
+			// new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
+			// customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+			// customs.ru.common.leaf.types._3._0._1._1Package.eINSTANCE,
+			// customs.ru.esad.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+			// customs.ru.esad.common.leaf.types._3._0._1._1Package.eINSTANCE,
+			// customs.ru.information.customs.documents.dt.sout._3._0._1._1Package.eINSTANCE,
+			// customs.ru.esaddts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+			// customs.ru.ekts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
+			// customs.ru.information.customs.documents.kt.sout._3._0._1._1Package.eINSTANCE
+			// };
 
-			EPackage[] epacks = (EPackage[]) epackages.toArray(new EPackage[epackages.size()]);
-// epacks =
-// new EPackage[] { _1Package.eINSTANCE, _0Package.eINSTANCE,
-// customs.ru.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-// customs.ru.common.leaf.types._3._0._1._1Package.eINSTANCE,
-// customs.ru.esad.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-// customs.ru.esad.common.leaf.types._3._0._1._1Package.eINSTANCE,
-// customs.ru.information.customs.documents.dt.sout._3._0._1._1Package.eINSTANCE,
-// customs.ru.esaddts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-// customs.ru.ekts.common.aggregate.types._3._0._1._1Package.eINSTANCE,
-// customs.ru.information.customs.documents.kt.sout._3._0._1._1Package.eINSTANCE };
+			// final Properties props = new Properties();
+			// props.setProperty(PersistenceOptions.INHERITANCE_MAPPING,
+			// "JOINED");
+			// props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
+			// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+			// "test.persistence.xml");
+			// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH,
+			// "25");
 
-// final Properties props = new Properties();
-// props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
-// props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-// props.setProperty(PersistenceOptions.PERSISTENCE_XML, "test.persistence.xml");
-// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-
-// System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
+			// System.err.println(HbHelper.INSTANCE.generateMapping(epacks,
+			// props));
 			initSimpleDataStore(epacks);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage(), e);
@@ -102,24 +107,29 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
-// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
-// "org/eclipse/emf/teneo/hibernate/test/ops_persistence.xml");
-// props.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
+		props.setProperty(Environment.DIALECT,
+				org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+		// "org/eclipse/emf/teneo/hibernate/test/ops_persistence.xml");
+		// props.setProperty(PersistenceOptions.IGNORE_EANNOTATIONS, "true");
 
 		// props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
-// "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
-// props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
-// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-//
-// props.setProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY, "true");
-// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "18");
-// props.setProperty(PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY, "simple");
-// props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
-// props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
-// props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING, "true");
+		// "/org/eclipse/emf/teneo/hibernate/test/claim.hbm.xml");
+		// props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY,
+		// "false");
+		// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
+		//
+		// props.setProperty(PersistenceOptions.FETCH_CONTAINMENT_EAGERLY,
+		// "true");
+		// props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "18");
+		// props.setProperty(PersistenceOptions.JOIN_COLUMN_NAMING_STRATEGY,
+		// "simple");
+		// props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
+		// props.setProperty(PersistenceOptions.DEFAULT_TEMPORAL_VALUE, "DATE");
+		// props.setProperty(PersistenceOptions.DISABLE_ECONTAINER_MAPPING,
+		// "true");
 
-// System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
+		// System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 
 		hbds.setProperties(props);
 		hbds.setEPackages(epacks);
@@ -140,20 +150,24 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/claim");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props.setProperty(Environment.DIALECT,
+				org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
-		hbds.getExtensionManager().registerExtension(EntityNameStrategy.class.getName(),
-			QualifyingEntityNameStrategy.class.getName());
-// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
-// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
+		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS,
+				"true");
+		hbds.getExtensionManager().registerExtension(
+				EntityNameStrategy.class.getName(),
+				QualifyingEntityNameStrategy.class.getName());
+		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+		// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 		hbds.setProperties(props);
 
 		// sets its epackages stored in this datastore
-		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE, XMLTypePackage.eINSTANCE });
+		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE,
+				XMLTypePackage.eINSTANCE });
 
 		// initialize, also creates the database tables
 		try {
@@ -167,7 +181,8 @@ public class ReadEcore {
 			s.getTransaction().commit();
 
 			s = hbds.getSessionFactory().openSession();
-			final List l = s.createQuery("select e from ecore.EPackage e").list();
+			final List l = s.createQuery("select e from ecore.EPackage e")
+					.list();
 			final EPackage[] newEpacks = new EPackage[l.size()];
 			int i = 0;
 			for (Object o : l) {
@@ -192,15 +207,18 @@ public class ReadEcore {
 		props.setProperty(Environment.USER, "root");
 		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/test");
 		props.setProperty(Environment.PASS, "root");
-		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		props.setProperty(Environment.DIALECT,
+				org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 		props.put(PersistenceOptions.JOIN_TABLE_NAMING_STRATEGY, "ejb3");
-		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
-		hbds.getExtensionManager().registerExtension(EntityNameStrategy.class.getName(),
-			QualifyingEntityNameStrategy.class.getName());
-// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
-// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
+		props.put(PersistenceOptions.JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS,
+				"true");
+		hbds.getExtensionManager().registerExtension(
+				EntityNameStrategy.class.getName(),
+				QualifyingEntityNameStrategy.class.getName());
+		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+		// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
 		hbds.setProperties(props);
 

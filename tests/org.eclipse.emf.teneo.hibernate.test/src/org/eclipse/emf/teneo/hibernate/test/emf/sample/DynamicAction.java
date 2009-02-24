@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -66,38 +66,38 @@ public class DynamicAction extends AbstractTestAction {
 		}
 
 		// add new attributes to person
-		if (false) {
-			final EAttribute hairColor = efactory.createEAttribute();
-			hairColor.setName("hairColor");
-			hairColor.setEType(epackage.getEString());
-			DynamicPackage.eINSTANCE.getPerson().getEStructuralFeatures().add(hairColor);
-
-			store.updateSchema();
-
-			store.beginTransaction();
-			Person p = factory.createPerson();
-			p.setName("davide");
-			p.getAge().add(new Integer(32));
-			p.eSet(hairColor, "black");
-			store.store(p);
-			store.commitTransaction();
-			store.beginTransaction();
-			// and read martin and set his haircolor also
-			final List<?> list = store.getObjects(Person.class);
-			assertEquals(2, list.size());
-			for (Object name : list) {
-				Person person = (Person) name;
-				if (person.getName().compareTo("martin") == 0) {
-					person.eSet(hairColor, "blond");
-					store.store(person);
-				} else if (person.getName().compareTo("davide") == 0) {
-					assertEquals("black", (String) person.eGet(hairColor));
-				} else {
-					fail("Person with name: " + person.getName() + " not expected");
-				}
-			}
-			store.commitTransaction();
-		}
+		// if (false) {
+		// final EAttribute hairColor = efactory.createEAttribute();
+		// hairColor.setName("hairColor");
+		// hairColor.setEType(epackage.getEString());
+		// DynamicPackage.eINSTANCE.getPerson().getEStructuralFeatures().add(hairColor);
+		//
+		// store.updateSchema();
+		//
+		// store.beginTransaction();
+		// Person p = factory.createPerson();
+		// p.setName("davide");
+		// p.getAge().add(new Integer(32));
+		// p.eSet(hairColor, "black");
+		// store.store(p);
+		// store.commitTransaction();
+		// store.beginTransaction();
+		// // and read martin and set his haircolor also
+		// final List<?> list = store.getObjects(Person.class);
+		// assertEquals(2, list.size());
+		// for (Object name : list) {
+		// Person person = (Person) name;
+		// if (person.getName().compareTo("martin") == 0) {
+		// person.eSet(hairColor, "blond");
+		// store.store(person);
+		// } else if (person.getName().compareTo("davide") == 0) {
+		// assertEquals("black", (String) person.eGet(hairColor));
+		// } else {
+		// fail("Person with name: " + person.getName() + " not expected");
+		// }
+		// }
+		// store.commitTransaction();
+		// }
 
 		// add a new eclass which inherits from person
 		EClass employeeClass = null;
@@ -118,7 +118,8 @@ public class DynamicAction extends AbstractTestAction {
 			employeeManager.setUnique(false);
 			employeeClass.getEStructuralFeatures().add(employeeManager);
 
-			employeeClass.getESuperTypes().add(DynamicPackage.eINSTANCE.getPerson());
+			employeeClass.getESuperTypes().add(
+					DynamicPackage.eINSTANCE.getPerson());
 
 			departmentClass = efactory.createEClass();
 			departmentClass.setName("Department");
@@ -131,7 +132,8 @@ public class DynamicAction extends AbstractTestAction {
 			departmentManager = efactory.createEReference();
 			departmentManager.setName("manager");
 			departmentManager.setEType(employeeClass);
-			departmentManager.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
+			departmentManager
+					.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
 			departmentManager.setContainment(true);
 			departmentClass.getEStructuralFeatures().add(departmentManager);
 
@@ -157,7 +159,8 @@ public class DynamicAction extends AbstractTestAction {
 			companyPackage.getEClassifiers().add(employeeClass);
 			companyPackage.getEClassifiers().add(departmentClass);
 			companyPackage.getEClassifiers().add(dt);
-			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
+			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(),
+					companyPackage);
 			store.addEPackage(companyPackage);
 			store.updateSchema();
 		}
@@ -186,10 +189,12 @@ public class DynamicAction extends AbstractTestAction {
 			store.commitTransaction();
 
 			// the dynamiceobjectimpl should not be present in the mapping xml
-			assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(DynamicEObjectImpl.class.getName()) == -1);
+			assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(
+					DynamicEObjectImpl.class.getName()) == -1);
 		}
 
-		// read them all (incl. the person), create a department and add the managers
+		// read them all (incl. the person), create a department and add the
+		// managers
 		{
 			store.beginTransaction();
 			List<?> employees = store.query("select e from Employee e");
