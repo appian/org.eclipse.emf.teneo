@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.10 2008/03/16 20:20:19 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.11 2009/02/24 12:04:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -34,19 +34,21 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles many==false
- * properties.
+ * Is a getter and setter for EMF eattribute which uses eGet and eSet.Handles
+ * many==false properties.
  * 
- * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter
- * and getSetter methods are called it returns itself.
+ * This class implements both the getter, setter and propertyaccessor
+ * interfaces. When the getGetter and getSetter methods are called it returns
+ * itself.
  * 
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 @SuppressWarnings("unchecked")
-public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
+public class EAttributePropertyHandler implements Getter, Setter,
+		PropertyAccessor {
 	/**
 	 * Generated Serial Version ID
 	 */
@@ -65,9 +67,12 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	public EAttributePropertyHandler(EAttribute eAttribute) {
 		this.eAttribute = eAttribute;
 		instanceClass = eAttribute.getEType().getInstanceClass();
-		AssertUtil.assertTrue(eAttribute.getName() + " is a many feature which is not handled by this accessor ",
-			!eAttribute.isMany());
-		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
+		AssertUtil.assertTrue(eAttribute.getName()
+				+ " is a many feature which is not handled by this accessor ",
+				!eAttribute.isMany());
+		log
+				.debug("Created getter/setter for "
+						+ StoreUtil.toString(eAttribute));
 	}
 
 	public EAttribute getEAttribute() {
@@ -77,18 +82,22 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
+	 * java.lang.String)
 	 */
-	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
+	 * java.lang.String)
 	 */
-	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -104,10 +113,11 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
-	 *      org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
+	 * java.util.Map, org.hibernate.engine.SessionImplementor)
 	 */
-	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2) throws HibernateException {
+	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2)
+			throws HibernateException {
 		return get(arg0);
 	}
 
@@ -141,10 +151,11 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Setter#set(java.lang.Object,
+	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 
 		if (value == null) {
 			// do not overwrite the defaults in the eobject
@@ -162,7 +173,8 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 		EObject eobj = (EObject) target;
 
 		final Object setValue;
-		if (value != null && instanceClass != null && value.getClass() != instanceClass) {
+		if (value != null && instanceClass != null
+				&& value.getClass() != instanceClass) {
 			final Class valClass = value.getClass();
 			if (valClass == Integer[].class) {
 				setValue = convert((Integer[]) value);
@@ -191,8 +203,9 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Integer[] arr) {
 		if (instanceClass != int[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: " +
-						arr.getClass().getName());
+				log.debug("Expecting " + instanceClass.getName()
+						+ " as instance class but it is: "
+						+ arr.getClass().getName());
 			}
 			return arr;
 		}
@@ -207,8 +220,9 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Boolean[] arr) {
 		if (instanceClass != boolean[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: " +
-						arr.getClass().getName());
+				log.debug("Expecting " + instanceClass.getName()
+						+ " as instance class but it is: "
+						+ arr.getClass().getName());
 			}
 			return arr;
 		}
@@ -223,8 +237,9 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Byte[] arr) {
 		if (instanceClass != byte[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: " +
-						arr.getClass().getName());
+				log.debug("Expecting " + instanceClass.getName()
+						+ " as instance class but it is: "
+						+ arr.getClass().getName());
 			}
 			return arr;
 		}
@@ -239,8 +254,9 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Double[] arr) {
 		if (instanceClass != double[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: " +
-						arr.getClass().getName());
+				log.debug("Expecting " + instanceClass.getName()
+						+ " as instance class but it is: "
+						+ arr.getClass().getName());
 			}
 			return arr;
 		}
@@ -255,8 +271,9 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Float[] arr) {
 		if (instanceClass != float[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: " +
-						arr.getClass().getName());
+				log.debug("Expecting " + instanceClass.getName()
+						+ " as instance class but it is: "
+						+ arr.getClass().getName());
 			}
 			return arr;
 		}
@@ -271,7 +288,8 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Long[] arr) {
 		if (instanceClass != long[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting [] as instance class but it is: " + instanceClass.getName());
+				log.debug("Expecting [] as instance class but it is: "
+						+ instanceClass.getName());
 			}
 			return arr;
 		}
@@ -286,7 +304,8 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	private Object convert(Short[] arr) {
 		if (instanceClass != short[].class) {
 			if (log.isDebugEnabled()) {
-				log.debug("Expecting short[] as instance class but it is: " + instanceClass.getName());
+				log.debug("Expecting short[] as instance class but it is: "
+						+ instanceClass.getName());
 			}
 			return arr;
 		}
@@ -299,9 +318,13 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 
 	/** Capature all, do not convert */
 	private Object convert(Object arr) {
-		if (arr != null && instanceClass != null && (!instanceClass.isPrimitive() || !arr.getClass().isPrimitive())) {
-			log.debug("Expecting " + instanceClass.getName() + " as instance class but it is: " +
-					arr.getClass().getName());
+		if (arr != null
+				&& instanceClass != null
+				&& (!instanceClass.isPrimitive() || !arr.getClass()
+						.isPrimitive())) {
+			log.debug("Expecting " + instanceClass.getName()
+					+ " as instance class but it is: "
+					+ arr.getClass().getName());
 		}
 		return arr;
 	}
