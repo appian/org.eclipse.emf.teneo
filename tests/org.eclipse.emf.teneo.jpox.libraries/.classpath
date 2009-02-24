@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="mysql-connector-java-5.1.6-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="jpox-1.1.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="jpox-enhancer-1.1.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="bcel-5.1.jar"/>
