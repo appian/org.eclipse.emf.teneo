@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.17 2008/04/07 15:14:13 mtaal Exp $
+ * $Id: AllTests.java,v 1.18 2009/02/25 10:48:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -25,7 +25,6 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.AnyTypeAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DurationAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
-import org.eclipse.emf.teneo.test.emf.schemaconstructs.ExtensionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.GroupAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListUnionAction;
@@ -42,14 +41,14 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite =
-				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs", JPOXTestbed
-					.instance().getConfigurations());
+		TestSuite suite = new MultiCfgTestSuite(
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
+				JPOXTestbed.instance().getConfigurations());
 
 		suite.addTestSuite(AnyTypeAction.class);
 		suite.addTestSuite(DurationAction.class);
@@ -58,14 +57,16 @@ public class AllTests {
 
 		suite.addTestSuite(SimpleTypeAction.class);
 
-		suite.addTestSuite(ExtensionAction.class);
+		// suite.addTestSuite(ExtensionAction.class);
 
 		suite.addTestSuite(EMapAction.class);
 
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
 			// on the emft server these fail with
-			// java.lang.UnsatisfiedLinkError: /opt/j2sdk1.4.2_12/jre/lib/i386/libawt.so:
-			// libXp.so.6: cannot open shared object file: No such file or directory
+			// java.lang.UnsatisfiedLinkError:
+			// /opt/j2sdk1.4.2_12/jre/lib/i386/libawt.so:
+			// libXp.so.6: cannot open shared object file: No such file or
+			// directory
 			suite.addTestSuite(EcoreAttrsAction.class);
 			suite.addTestSuite(SimplefeaturemapAction.class);
 			suite.addTestSuite(SubstitutionAction.class);
