@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdPackageImpl.java,v 1.6 2008/04/04 11:50:25 mtaal Exp $
+ * $Id: IdPackageImpl.java,v 1.7 2009/02/25 20:08:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.impl;
 
@@ -306,7 +306,7 @@ public class IdPackageImpl extends EPackageImpl implements IdPackage {
 		  (getSimpleID_Generated(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Generated(ALWAYS)"
+			 "appinfo", "@Version @Generated(ALWAYS)"
 		   });				
 		addAnnotation
 		  (getTableID_Myid(), 

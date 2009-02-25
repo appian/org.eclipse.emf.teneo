@@ -41,7 +41,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="generated" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
       <eAnnotations source="teneo.hibernate">
-        <details key="appinfo" value="@Generated(ALWAYS)"/>
+        <details key="appinfo" value="@Version @Generated(ALWAYS)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

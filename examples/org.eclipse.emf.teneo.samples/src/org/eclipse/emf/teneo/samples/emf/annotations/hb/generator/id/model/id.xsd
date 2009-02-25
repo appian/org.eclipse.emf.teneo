@@ -27,7 +27,7 @@
 			</xsd:element>
 			<xsd:element name="generated" type="xsd:long">
 				<xsd:annotation>
-					<xsd:appinfo source="teneo.hibernate">@Generated(ALWAYS)</xsd:appinfo>
+					<xsd:appinfo source="teneo.hibernate">@Version @Generated(ALWAYS)</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleID.java,v 1.4 2008/04/04 11:50:27 mtaal Exp $
+ * $Id: SimpleID.java,v 1.5 2009/02/25 20:08:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id;
 
@@ -97,7 +97,7 @@ public interface SimpleID extends EObject {
 	 * @see #setGenerated(long)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.hb.generator.id.IdPackage#getSimpleID_Generated()
 	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
-	 *        annotation="teneo.hibernate appinfo='@Generated(ALWAYS)'"
+	 *        annotation="teneo.hibernate appinfo='@Version @Generated(ALWAYS)'"
 	 *        extendedMetaData="kind='element' name='generated'"
 	 * @generated
 	 */
