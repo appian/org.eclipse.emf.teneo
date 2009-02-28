@@ -9,13 +9,21 @@
       %description
    </description>
 
-   <copyright url="http://">
-      [Enter Copyright Description here.]
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Copyright (c) 2009 Oracle, GeenSys and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
    </copyright>
 
-   <license url="%license">
-      EPL
+   <license url="%licenseURL">
+      %license
    </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://download.eclipse.org/modeling/emf/updates/"/>
+   </url>
 
    <includes
          id="org.eclipse.emf.teneo.eclipselink"
