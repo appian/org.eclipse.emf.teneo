@@ -673,8 +673,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			String direction = " asc";
 			if (ob.indexOf(" ") != -1) {
 				final int index = ob.lastIndexOf(" ");
-				ob = ob.substring(0, index).trim();
 				direction = ob.substring(index);
+				ob = ob.substring(0, index).trim();
 				if (ob.trim().startsWith(getHbmContext().getEscapeCharacter())) {
 					ob = ob.trim().substring(
 							getHbmContext().getEscapeCharacter().length());
