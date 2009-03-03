@@ -675,6 +675,17 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				final int index = ob.lastIndexOf(" ");
 				ob = ob.substring(0, index).trim();
 				direction = ob.substring(index);
+				if (ob.trim().startsWith(getHbmContext().getEscapeCharacter())) {
+					ob = ob.trim().substring(
+							getHbmContext().getEscapeCharacter().length());
+				}
+				if (ob.trim().endsWith(getHbmContext().getEscapeCharacter())) {
+					ob = ob.trim().substring(
+							0,
+							ob.trim().length()
+									- getHbmContext().getEscapeCharacter()
+											.length());
+				}
 			}
 			boolean found = false;
 			for (PAnnotatedEStructuralFeature aFeature : getAllFeatures(aClass)) {
@@ -692,13 +703,13 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 						if (sb.length() > 0) {
 							sb.append(",");
 						}
-						sb.append(getColumnName(attr) + direction);
+						sb.append(escapeName(getColumnName(attr)) + direction);
 					} else {
 						for (Column c : cs) {
 							if (sb.length() > 0) {
 								sb.append(",");
 							}
-							sb.append(c.getName() + direction);
+							sb.append(escapeName(c.getName()) + direction);
 						}
 					}
 				}
@@ -710,6 +721,15 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 		}
 		return sb.toString();
+	}
+
+	private String escapeName(String name) {
+		// assume it also ends with it...
+		if (name.startsWith(getHbmContext().getEscapeCharacter())) {
+			return name;
+		}
+		return getHbmContext().getEscapeCharacter() + name
+				+ getHbmContext().getEscapeCharacter();
 	}
 
 	/**
