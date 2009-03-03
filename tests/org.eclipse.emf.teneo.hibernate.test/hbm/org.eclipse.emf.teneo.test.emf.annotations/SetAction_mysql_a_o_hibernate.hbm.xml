@@ -55,19 +55,17 @@
 			</key>
 			<one-to-many entity-name="testSet.ContainedItem"/>
 		</bag>
-		<bag name="item" order-by="`NAME`" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+		<bag name="item" order-by="`NAME` desc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
 			<key update="true">
 				<column name="`ITEM_ITEMLIST_E_ID`" not-null="false" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.Item"/>
 		</bag>
-		<bag name="joinedItem" table="`TESTSET_ITEMLIST_TESTSET_ITEM`" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true">
-				<column name="`ITEMLIST_E_ID`" not-null="true" unique="false"/>
+		<bag name="joinedItem" order-by="`NAME` desc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="TESTSET_ITEMLIST_JOINEDITEM">
+				<column name="`ITEMLIST_JOINEDITEM_E_ID`" not-null="false" unique="false"/>
 			</key>
-			<many-to-many entity-name="testSet.Item" unique="false" foreign-key="TESTSET_ITEMLIST_JOINEDITEM">
-				<column name="`ITEM_E_ID`" not-null="true" unique="false"/>
-			</many-to-many>
+			<one-to-many entity-name="testSet.Item"/>
 		</bag>
 	</class>
 </hibernate-mapping>
