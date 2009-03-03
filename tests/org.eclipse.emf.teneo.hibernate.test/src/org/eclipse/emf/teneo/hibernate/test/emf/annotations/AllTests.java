@@ -55,7 +55,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.75 $
+ * @version $Revision: 1.76 $
  */
 public class AllTests {
 
@@ -63,6 +63,8 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(SetAction.class);
 
 		suite.addTestSuite(HbIdAction.class);
 		suite.addTestSuite(ExternalAction.class);
@@ -104,8 +106,6 @@ public class AllTests {
 		suite.addTestSuite(EntityAction.class);
 
 		suite.addTestSuite(ExtraLazyAction.class);
-
-		suite.addTestSuite(SetAction.class);
 
 		suite.addTestSuite(TransientAction.class);
 
