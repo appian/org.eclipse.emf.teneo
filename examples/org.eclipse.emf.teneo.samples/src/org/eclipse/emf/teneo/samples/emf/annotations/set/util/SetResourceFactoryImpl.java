@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: SetResourceFactoryImpl.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.util;
 
@@ -22,13 +22,6 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @generated
  */
 public class SetResourceFactoryImpl extends ResourceFactoryImpl {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->

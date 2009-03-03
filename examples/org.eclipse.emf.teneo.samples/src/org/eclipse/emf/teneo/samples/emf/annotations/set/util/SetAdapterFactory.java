@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetAdapterFactory.java,v 1.2 2007/02/08 23:09:25 mtaal Exp $
+ * $Id: SetAdapterFactory.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.util;
 
@@ -24,12 +24,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.*;
  * @generated
  */
 public class SetAdapterFactory extends AdapterFactoryImpl {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
@@ -70,7 +64,7 @@ public class SetAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

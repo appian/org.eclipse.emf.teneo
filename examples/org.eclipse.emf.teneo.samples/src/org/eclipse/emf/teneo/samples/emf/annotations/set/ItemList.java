@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemList.java,v 1.5 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: ItemList.java,v 1.6 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -29,13 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ItemList extends EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "";
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,7 +67,7 @@ public interface ItemList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contained Item</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_ContainedItem()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.ContainedItem" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false)'"
 	 *        extendedMetaData="kind='element' name='containedItem'"
 	 * @generated
@@ -94,7 +87,7 @@ public interface ItemList extends EObject {
 	 * @return the value of the '<em>Item</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_Item()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getItemList
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.Item" opposite="itemList" required="true"
+	 * @model opposite="itemList" required="true"
 	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false) @OrderBy(\"name desc\")'"
 	 *        extendedMetaData="kind='element' name='item'"
 	 * @generated
@@ -112,8 +105,8 @@ public interface ItemList extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Joined Item</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_JoinedItem()
-	 * @model type="org.eclipse.emf.teneo.samples.emf.annotations.set.Item" required="true"
-	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false unique=false)'"
+	 * @model required="true" ordered="false"
+	 *        annotation="teneo.jpa appinfo='@OrderBy(\"name desc\")'"
 	 *        extendedMetaData="kind='element' name='joinedItem'"
 	 * @generated
 	 */

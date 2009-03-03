@@ -68,10 +68,10 @@
         <details key="name" value="item"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinedItem" lowerBound="1"
-        upperBound="-1" eType="#//Item">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinedItem" ordered="false"
+        lowerBound="1" upperBound="-1" eType="#//Item">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OneToMany(indexed=false unique=false)"/>
+        <details key="appinfo" value="@OrderBy(&quot;name desc&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

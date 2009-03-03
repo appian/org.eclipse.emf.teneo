@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemListImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: ItemListImpl.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -47,13 +47,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  */
 public class ItemListImpl extends EObjectImpl implements ItemList {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
-	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,7 +74,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ContainedItem> containedItem = null;
+	protected EList<ContainedItem> containedItem;
 
 	/**
 	 * The cached value of the '{@link #getItem() <em>Item</em>}' reference list.
@@ -91,7 +84,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Item> item = null;
+	protected EList<Item> item;
 
 	/**
 	 * The cached value of the '{@link #getJoinedItem() <em>Joined Item</em>}' reference list.
@@ -101,7 +94,7 @@ public class ItemListImpl extends EObjectImpl implements ItemList {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Item> joinedItem = null;
+	protected EList<Item> joinedItem;
 
 	/**
 	 * <!-- begin-user-doc -->

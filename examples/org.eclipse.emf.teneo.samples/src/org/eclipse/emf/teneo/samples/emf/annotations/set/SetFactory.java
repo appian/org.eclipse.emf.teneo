@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetFactory.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: SetFactory.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -17,12 +17,6 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface SetFactory extends EFactory {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "";
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->

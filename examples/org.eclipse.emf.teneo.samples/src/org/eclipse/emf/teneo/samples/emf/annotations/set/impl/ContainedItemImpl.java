@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ContainedItemImpl.java,v 1.2 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: ContainedItemImpl.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -30,13 +30,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  * @generated
  */
 public class ContainedItemImpl extends EObjectImpl implements ContainedItem {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

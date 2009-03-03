@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackageImpl.java,v 1.5 2007/02/08 23:09:19 mtaal Exp $
+ * $Id: SetPackageImpl.java,v 1.6 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -28,13 +28,6 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  * @generated
  */
 public class SetPackageImpl extends EPackageImpl implements SetPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "";
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -303,7 +296,7 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		initEAttribute(getItemList_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, ItemList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItemList_ContainedItem(), this.getContainedItem(), null, "containedItem", null, 1, -1, ItemList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItemList_Item(), this.getItem(), this.getItem_ItemList(), "item", null, 1, -1, ItemList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getItemList_JoinedItem(), this.getItem(), null, "joinedItem", null, 1, -1, ItemList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItemList_JoinedItem(), this.getItem(), null, "joinedItem", null, 1, -1, ItemList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -419,7 +412,7 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		  (getItemList_JoinedItem(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@OneToMany(indexed=false unique=false)"
+			 "appinfo", "@OrderBy(\"name desc\")"
 		   });	
 	}
 

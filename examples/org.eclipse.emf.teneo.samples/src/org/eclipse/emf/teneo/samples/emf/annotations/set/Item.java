@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.2 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: Item.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -26,13 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Item extends EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "";
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
