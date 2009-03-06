@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BZ237498Action.java,v 1.2 2008/06/28 23:11:49 mtaal Exp $
+ * $Id: BZ237498Action.java,v 1.3 2009/03/06 12:31:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for bugzilla 237498
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class BZ237498Action extends AbstractTestAction {
 	public BZ237498Action() {
@@ -41,7 +41,9 @@ public class BZ237498Action extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 * @see
+	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
+	 * ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -52,6 +54,12 @@ public class BZ237498Action extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
+
+		// don't do anything for now
+		if (store.getDatabaseAdapter().getDbDriver().indexOf("hsqldb") != -1) {
+			return;
+		}
+
 		final Bz237498Factory factory = Bz237498Factory.eINSTANCE;
 		{
 			store.beginTransaction();
