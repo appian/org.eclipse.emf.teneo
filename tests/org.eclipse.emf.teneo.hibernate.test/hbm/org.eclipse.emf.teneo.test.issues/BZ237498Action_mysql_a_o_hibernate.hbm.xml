@@ -13,7 +13,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<bag name="manies" order-by="myname asc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+		<bag name="manies" order-by="`myname` asc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
 			<key update="true" foreign-key="one_manies">
 				<column name="`one_manies_e_id`" not-null="false" unique="false"/>
 			</key>

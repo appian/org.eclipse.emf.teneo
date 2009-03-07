@@ -52,19 +52,17 @@
 			</key>
 			<one-to-many entity-name="ContainedItem"/>
 		</bag>
-		<bag name="item" order-by="name" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+		<bag name="item" order-by="`name` desc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
 			<key update="true">
 				<column name="`item_itemlist_e_id`" not-null="false" unique="false"/>
 			</key>
 			<one-to-many entity-name="Item"/>
 		</bag>
-		<bag name="joinedItem" table="`itemlist_item`" lazy="true" cascade="merge,persist,save-update,lock,refresh">
-			<key update="true">
-				<column name="`itemlist_e_id`" not-null="true" unique="false"/>
+		<bag name="joinedItem" order-by="`name` desc" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="itemlist_joineditem">
+				<column name="`itemlist_joineditem_e_id`" not-null="false" unique="false"/>
 			</key>
-			<many-to-many entity-name="Item" unique="false" foreign-key="itemlist_joineditem">
-				<column name="`item_e_id`" not-null="true" unique="false"/>
-			</many-to-many>
+			<one-to-many entity-name="Item"/>
 		</bag>
 	</class>
 </hibernate-mapping>
