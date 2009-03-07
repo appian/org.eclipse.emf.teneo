@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReference.java,v 1.11 2008/09/01 12:45:16 mtaal Exp $
+ * $Id: HbAnnotatedEReference.java,v 1.12 2009/03/07 21:15:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -14,6 +14,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NotFound;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Hb Annotated EReference</b></em>'. <!--
@@ -28,6 +29,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNaturalId <em>Natural Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getImmutable <em>Immutable</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType <em>Hb Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -190,5 +192,31 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	 * @generated
 	 */
 	void setNotFound(NotFound value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb Type</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb Type</em>' containment reference.
+	 * @see #setHbType(Type)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_HbType()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Type getHbType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType <em>Hb Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb Type</em>' containment reference.
+	 * @see #getHbType()
+	 * @generated
+	 */
+	void setHbType(Type value);
 
 } // HbAnnotatedEReference

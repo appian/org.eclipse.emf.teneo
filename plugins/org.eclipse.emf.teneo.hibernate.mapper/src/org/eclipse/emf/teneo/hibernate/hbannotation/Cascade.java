@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Cascade.java,v 1.7 2008/09/01 12:45:17 mtaal Exp $
+ * $Id: Cascade.java,v 1.8 2009/03/07 21:15:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -11,14 +11,14 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Cascade</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cascade#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbannotation.Cascade#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getCascade()
  * @model annotation="http://annotation.elver.org/internal/Target 0='EStructuralFeature'"
  * @generated

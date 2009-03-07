@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.39 2009/03/03 15:48:42 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.40 2009/03/07 21:15:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -397,7 +397,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 					"unique", unique ? "true" : "false");
 		}
 		addKeyColumns(hbReference, manyToMany, invJoinColumns); // pass null for
-																// jointable
+		// jointable
 
 		return manyToMany;
 	}

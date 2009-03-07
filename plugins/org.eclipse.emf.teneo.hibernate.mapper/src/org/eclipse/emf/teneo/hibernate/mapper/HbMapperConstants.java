@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbMapperConstants.java,v 1.10 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: HbMapperConstants.java,v 1.11 2009/03/07 21:15:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -20,7 +20,7 @@ package org.eclipse.emf.teneo.hibernate.mapper;
  * AnnotationUtil used by the hibernate mapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class HbMapperConstants {
 	// the natural-id, the value of the attribute is mutable true/false
@@ -35,8 +35,8 @@ public class HbMapperConstants {
 	public static final String ECLASSIFIER_PARAM = "eclassifier";
 
 	/**
-	 * Name of the Hibernate type param that holds the name of the EMF attribute for the EMF custom
-	 * data type.
+	 * Name of the Hibernate type param that holds the name of the EMF attribute
+	 * for the EMF custom data type.
 	 */
 	public static final String EDATATYPE_PARAM = "edatatype";
 

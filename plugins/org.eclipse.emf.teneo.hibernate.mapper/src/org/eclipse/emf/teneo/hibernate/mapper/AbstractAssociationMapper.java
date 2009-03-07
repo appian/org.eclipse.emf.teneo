@@ -32,6 +32,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
@@ -125,7 +127,25 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 
 		final String tagName;
-		if (isPartOfKey) {
+		if (((HbAnnotatedEReference) aReference).getHbType() != null) {
+			tagName = "property";
+			final Element element = currentParent.addElement(tagName)
+					.addAttribute("name", assocName);
+			final Type hbType = ((HbAnnotatedEReference) aReference)
+					.getHbType();
+			final List<Parameter> params = hbType.getParameters();
+			if (params == null || params.isEmpty()) {
+				element.addAttribute("type", hbType.getType());
+			} else {
+				final Element typeElement = element.addElement("type")
+						.addAttribute("name", hbType.getType());
+				for (Parameter param : params) {
+					typeElement.addElement("param").addAttribute("name",
+							param.getName()).addText(param.getValue());
+				}
+			}
+			return element;
+		} else if (isPartOfKey) {
 			tagName = "key-many-to-one";
 		} else {
 			tagName = "many-to-one";
@@ -153,6 +173,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 						.getName().toLowerCase());
 			}
 		}
+
 		return element;
 	}
 

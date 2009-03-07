@@ -12,7 +12,7 @@
  *   Michael Kanaley, TIBCO Software Inc., custom type handling
  * </copyright>
  *
- * $Id: HibernateMappingGenerator.java,v 1.23 2008/05/27 07:42:29 mtaal Exp $
+ * $Id: HibernateMappingGenerator.java,v 1.24 2009/03/07 21:15:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -49,14 +49,17 @@ import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * The main starting point for generating a hibernate mapping from a PAnnotated model.
+ * The main starting point for generating a hibernate mapping from a PAnnotated
+ * model.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManagerAware {
+public class HibernateMappingGenerator implements ExtensionPoint,
+		ExtensionManagerAware {
 
 	/** The logger */
-	private static final Log log = LogFactory.getLog(HibernateMappingGenerator.class);
+	private static final Log log = LogFactory
+			.getLog(HibernateMappingGenerator.class);
 
 	/** The list of processed annotated classes */
 	private Set<PAnnotatedEClass> processedPAClasses = null;
@@ -73,11 +76,13 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 	/**
 	 * Register the entity names in context.
 	 */
-	protected void initEntityNames(MappingContext hbmContext, PAnnotatedModel paModel) {
+	protected void initEntityNames(MappingContext hbmContext,
+			PAnnotatedModel paModel) {
 		for (PAnnotatedEPackage pae : paModel.getPaEPackages()) {
 			for (PAnnotatedEClass paClass : pae.getPaEClasses()) {
 				if (paClass.getEntity() != null) {
-					hbmContext.setEntityName(paClass.getModelEClass(), getEntityName(paClass));
+					hbmContext.setEntityName(paClass.getModelEClass(),
+							getEntityName(paClass));
 				}
 			}
 		}
@@ -92,8 +97,10 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 		String name = paClass.getEntity().getName();
 		if (name == null) {
 			// TODO sure we do not need package here?
-			// MT: I think for 99.9% of the cases there are no name clashes but it is possible to
-			// that a package name is required to make things unique. This can be done in a next
+			// MT: I think for 99.9% of the cases there are no name clashes but
+			// it is possible to
+			// that a package name is required to make things unique. This can
+			// be done in a next
 			// release as an
 			// optional feature.
 			name = hbmContext.getEntityNameStrategy().toEntityName(eclass);
@@ -107,7 +114,8 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			log.debug("Geneting Hibernate mapping for " + paModel);
 		}
 		try {
-			this.hbmContext = getExtensionManager().getExtension(MappingContext.class);
+			this.hbmContext = getExtensionManager().getExtension(
+					MappingContext.class);
 			this.hbmContext.setMappingProperties(getPersistenceOptions());
 			hbmContext.setPaModel(paModel);
 			hbmContext.beginDocument(createDocument());
@@ -117,7 +125,8 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			// Process Named Queries
 			// Added by PhaneeshN
 			// This will emit the named query implementation into the mapping
-			// based on model annotation @NamedQuery(name={name}, query={query});
+			// based on model annotation @NamedQuery(name={name},
+			// query={query});
 			// Named queries can be parameterized
 			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
 				processPANamedQueries(paPackage);
@@ -127,14 +136,16 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			}
 			return hbmContext.endDocument();
 		} catch (MappingException exc) {
-			throw new MappingException("Hibernate mapping generation failed", exc);
+			throw new MappingException("Hibernate mapping generation failed",
+					exc);
 		}
 	}
 
 	/**
 	 * Generate the hibernate mapping xml as a string
 	 */
-	public String generateToString(PAnnotatedModel annotatedModel) throws MappingException {
+	public String generateToString(PAnnotatedModel annotatedModel)
+			throws MappingException {
 		return generate(annotatedModel).emitXML();
 	}
 
@@ -143,12 +154,15 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 	 */
 	protected Document createDocument() {
 		Document mappingDoc = new Document();
-		mappingDoc.setDocType("<!DOCTYPE hibernate-mapping PUBLIC \"-//Hibernate/Hibernate Mapping DTD 3.0//EN\" "
-				+ "\"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
+		mappingDoc
+				.setDocType("<!DOCTYPE hibernate-mapping PUBLIC \"-//Hibernate/Hibernate Mapping DTD 3.0//EN\" "
+						+ "\"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
 		mappingDoc.setRoot(DocumentHelper.createElement("hibernate-mapping"));
-		// set auto-import is false if the default eclass naming strategy is not used
+		// set auto-import is false if the default eclass naming strategy is not
+		// used
 		if (!(hbmContext.getEntityNameStrategy() instanceof ClassicEntityNameStrategy)) {
-			log.debug("Setting auto-import=false because eclassnamingstrategy is not the defaulteclassnamestrategy");
+			log
+					.debug("Setting auto-import=false because eclassnamingstrategy is not the defaulteclassnamestrategy");
 			mappingDoc.getRoot().addAttribute("auto-import", "false");
 		}
 		return mappingDoc;
@@ -161,20 +175,24 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			for (PAnnotatedEPackage paPackage : paModel.getPaEPackages()) {
 				for (PAnnotatedEClass paEClass : paPackage.getPaEClasses()) {
 					// here, we eliminate map.enties
-					if (!hbmContext.isMapEMapAsTrueMap() || !StoreUtil.isMapEntry(paEClass.getModelEClass())) {
+					if (!hbmContext.isMapEMapAsTrueMap()
+							|| !StoreUtil.isMapEntry(paEClass.getModelEClass())) {
 						processPAClass(paEClass);
 
 					}
-					mapFilterDef(hbmContext.getCurrent(), ((HbAnnotatedEClass) paEClass).getFilterDef());
+					mapFilterDef(hbmContext.getCurrent(),
+							((HbAnnotatedEClass) paEClass).getFilterDef());
 				}
-				mapFilterDef(hbmContext.getCurrent(), ((HbAnnotatedEPackage) paPackage).getFilterDef());
+				mapFilterDef(hbmContext.getCurrent(),
+						((HbAnnotatedEPackage) paPackage).getFilterDef());
 			}
 		} finally {
 			processedPAClasses = null;
 		}
 	}
 
-	protected void mapFilterDef(Element parentElement, List<FilterDef> filterDefs) {
+	protected void mapFilterDef(Element parentElement,
+			List<FilterDef> filterDefs) {
 		for (FilterDef fd : filterDefs) {
 			final Element fdElement = parentElement.addElement("filter-def");
 			fdElement.addAttribute("name", fd.getName());
@@ -190,24 +208,29 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 	}
 
 	/**
-	 * Process the given class, ensures that processing order is consistent with inheritance order.
-	 * The given paEClass is added to the processedPAClasses.
+	 * Process the given class, ensures that processing order is consistent with
+	 * inheritance order. The given paEClass is added to the processedPAClasses.
 	 */
 	protected void processPAClass(PAnnotatedEClass paEClass) {
 		if (processedPAClasses.add(paEClass)) {
 			// also mapped superclasses can have an entity but ignore them here
-			if (paEClass.getEntity() != null && paEClass.getMappedSuperclass() == null) {
+			if (paEClass.getEntity() != null
+					&& paEClass.getMappedSuperclass() == null) {
 				// this is a persistent entity
 				PAnnotatedEClass paSuperEntity = paEClass.getPaSuperEntity();
 				if (paSuperEntity != null) {
-					// enforce processing order consistent with inheritance order
+					// enforce processing order consistent with inheritance
+					// order
 					processPAClass(paSuperEntity);
 				}
 
 				// ignore the map entries which do not have an explicit entity
-				if (paEClass.getModelEClass().getInstanceClass() == Map.Entry.class && paEClass.getEntity() == null) {
-					log.debug("Ignoring " + paEClass.getModelEClass().getName() + " ignored, is a map entry");
-					paEClass.setTransient(PannotationFactory.eINSTANCE.createTransient());
+				if (paEClass.getModelEClass().getInstanceClass() == Map.Entry.class
+						&& paEClass.getEntity() == null) {
+					log.debug("Ignoring " + paEClass.getModelEClass().getName()
+							+ " ignored, is a map entry");
+					paEClass.setTransient(PannotationFactory.eINSTANCE
+							.createTransient());
 					return;
 				}
 
@@ -221,7 +244,8 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 	}
 
 	/**
-	 * Processes the typedef annotations and creates corresponding typedef instances in the mapping.
+	 * Processes the typedef annotations and creates corresponding typedef
+	 * instances in the mapping.
 	 */
 	protected void processTypedefs(PAnnotatedModel paModel) {
 		// Walk thru all the packages looking for custom EDataTypes.
@@ -234,7 +258,8 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 			}
 
 			// Walk thru all the classifiers of the given package.
-			for (PAnnotatedEDataType annotatedEDataType : paPackage.getPaEDataTypes()) {
+			for (PAnnotatedEDataType annotatedEDataType : paPackage
+					.getPaEDataTypes()) {
 				final HbAnnotatedEDataType hed = (HbAnnotatedEDataType) annotatedEDataType;
 				if (hed.getHbTypeDef() != null) {
 					emitTypeDef(hed.getHbTypeDef());
@@ -244,47 +269,63 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 	}
 
 	/**
-	 * Process the given class and declare named queries that are annotated as Model Annotations
+	 * Process the given class and declare named queries that are annotated as
+	 * Model Annotations
 	 * 
 	 * @author PhaneeshN <a
-	 *         href="mailto:phaneesh.nagararaja@sos.sungard.com">phaneesh.nagararaja@sos.sungard.com</a>
-	 *         <a href="http://www.sungardhe.com">SunGard Higher Education</a>
+	 *         href="mailto:phaneesh.nagararaja@sos.sungard.com">phaneesh
+	 *         .nagararaja@sos.sungard.com</a> <a
+	 *         href="http://www.sungardhe.com">SunGard Higher Education</a>
 	 */
 	protected void processPANamedQueries(PAnnotatedEClass paEClass) {
-		// TODO: Should be refactored into a NamedQueryMapper Extension and register it into
+		// TODO: Should be refactored into a NamedQueryMapper Extension and
+		// register it into
 		// extension Manager
 		if (log.isDebugEnabled()) {
-			log.debug("Processing Queries for " + paEClass.getModelEClass().getName());
+			log.debug("Processing Queries for "
+					+ paEClass.getModelEClass().getName());
 		}
 		if (log.isDebugEnabled()) {
-			log.debug("********************** Named Queries ***************************");
-			for (NamedQuery namedQuery : ((HbAnnotatedEClass) paEClass).getHbNamedQuery()) {
+			log
+					.debug("********************** Named Queries ***************************");
+			for (NamedQuery namedQuery : ((HbAnnotatedEClass) paEClass)
+					.getHbNamedQuery()) {
 				log.info(namedQuery.getName() + ":" + namedQuery.getQuery());
 			}
-			log.debug("****************************************************************");
+			log
+					.debug("****************************************************************");
 		}
-		for (NamedQuery namedQuery : ((HbAnnotatedEClass) paEClass).getHbNamedQuery()) {
-			final Element target = this.hbmContext.getCurrent().addElement("query");
+		for (NamedQuery namedQuery : ((HbAnnotatedEClass) paEClass)
+				.getHbNamedQuery()) {
+			final Element target = this.hbmContext.getCurrent().addElement(
+					"query");
 			target.addAttribute("name", namedQuery.getName());
 			target.addText("<![CDATA[" + namedQuery.getQuery() + "]]>");
 		}
 	}
 
 	protected void processPANamedQueries(PAnnotatedEPackage paEPackage) {
-		// TODO: Should be refactored into a NamedQueryMapper Extension and register it into
+		// TODO: Should be refactored into a NamedQueryMapper Extension and
+		// register it into
 		// extension Manager
 		if (log.isDebugEnabled()) {
-			log.debug("Processing Queries for " + paEPackage.getModelEPackage().getName());
+			log.debug("Processing Queries for "
+					+ paEPackage.getModelEPackage().getName());
 		}
 		if (log.isDebugEnabled()) {
-			log.debug("********************** Named Queries ***************************");
-			for (NamedQuery namedQuery : ((HbAnnotatedEPackage) paEPackage).getHbNamedQuery()) {
+			log
+					.debug("********************** Named Queries ***************************");
+			for (NamedQuery namedQuery : ((HbAnnotatedEPackage) paEPackage)
+					.getHbNamedQuery()) {
 				log.info(namedQuery.getName() + ":" + namedQuery.getQuery());
 			}
-			log.debug("****************************************************************");
+			log
+					.debug("****************************************************************");
 		}
-		for (NamedQuery namedQuery : ((HbAnnotatedEPackage) paEPackage).getHbNamedQuery()) {
-			final Element target = this.hbmContext.getCurrent().addElement("query");
+		for (NamedQuery namedQuery : ((HbAnnotatedEPackage) paEPackage)
+				.getHbNamedQuery()) {
+			final Element target = this.hbmContext.getCurrent().addElement(
+					"query");
 			target.addAttribute("name", namedQuery.getName());
 			target.addText("<![CDATA[" + namedQuery.getQuery() + "]]>");
 		}
@@ -292,11 +333,13 @@ public class HibernateMappingGenerator implements ExtensionPoint, ExtensionManag
 
 	/** Emit a typedef */
 	protected void emitTypeDef(TypeDef td) {
-		final Element target = this.hbmContext.getCurrent().addElement("typedef");
+		final Element target = this.hbmContext.getCurrent().addElement(
+				"typedef");
 		target.addAttribute("name", td.getName());
 		target.addAttribute("class", td.getTypeClass());
 		for (Parameter param : td.getParameters()) {
-			target.addElement("param").addAttribute("name", param.getName()).addText(param.getValue());
+			target.addElement("param").addAttribute("name", param.getName())
+					.addText(param.getValue());
 		}
 	}
 
