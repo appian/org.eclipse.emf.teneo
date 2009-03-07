@@ -304,6 +304,9 @@
 <li>
 <a href="#external">Storing external references (to non-persisted objects), customizing persisting references</a>
 </li>
+<li>
+<a href="#ecorereferences">Storing references to Ecore Model Elements</a>
+</li>
 </ul>
 		
 <p>
@@ -529,6 +532,53 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 			The default user type (implemented by Teneo) is the org.eclipse.emf.teneo.hibernate.mapping.ExternalType. This UserType will persist the URI and create a proxy 
 			object when reading from the database. However, using your own hibernate UserType you can choose your own persistence logic and even use other types of columns to persist the external reference.
 			</p> 				
+		
+</div> 
+		
+<a name="N100DA"></a><a name="ecorereferences"></a>
+<div class="h3">
+<h3>Storing references to Ecore Model Elements</h3>
+			
+			
+<p>A common use case is to refer to the model itself from your domain model. Concretely this means that your domain object references an EClass, EPackage or EReference. 
+			Teneo supports persisting Ecore models themselves. However, for this case where only the reference to the model needs to be stored and not the whole model, this is too much.
+			In addition it is not correct to persist model elements in the database which are also initialized in-memory directly by the EPackage implementation classes. This because loading the model
+			from the database will 'clash' with the model which is present in memory.</p>
+			
+<p>To support the case of only persisting references Teneo has a special custom user type: org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType.
+			This user type can be specified for an EReference using the type annotation. Here is an example of setting the usertype on EReferences to model elements
+			(in this case the Ecore Change model is being annotated):</p>
+						
+<pre class="code">
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;persistence-mapping xmlns="http://www.eclipse.org/emft/teneo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+	&lt;epackage
+		namespace-uri="http://www.eclipse.org/emf/2003/Change"&gt;
+		&lt;eclass name="FeatureChange"&gt;
+			&lt;property name="feature"&gt;
+				&lt;type type="org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType"/&gt;
+			&lt;/property&gt;
+		&lt;/eclass&gt;
+		&lt;eclass name="ListChange"&gt;
+			&lt;property name="feature"&gt;
+				&lt;type type="org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType"/&gt;
+			&lt;/property&gt;
+		&lt;/eclass&gt;
+		&lt;eclass name="FeatureMapEntry"&gt;
+			&lt;property name="feature"&gt;
+				&lt;type type="org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType"/&gt;
+			&lt;/property&gt;
+		&lt;/eclass&gt;
+	&lt;/epackage&gt;
+&lt;/persistence-mapping&gt;</pre>
+			
+<p>The custom user type used here will persist the reference to the model element as a varchar/string.</p>
+			
+<p>
+<strong>Note that instead of using the Type annotation one can probably (==not-yet-tested) also use the External annotation (see section above) with the type attribute set to:
+			org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType</strong>
+</p>
 		
 </div> 
 	

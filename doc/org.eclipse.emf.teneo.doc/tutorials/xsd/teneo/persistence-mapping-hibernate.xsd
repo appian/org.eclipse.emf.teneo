@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xsd:schema targetNamespace="http://www.eclipse.org/emft/teneo" elementFormDefault="qualified"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.eclipse.org/emft/teneo">
 	<xsd:element name="persistence-mapping" type="PersistenceMapping" />
@@ -156,6 +157,7 @@
 			<xsd:element name="column" type="Column" />
 			<xsd:element name="embedded" type="Embedded" />
 			<xsd:element name="embedded-id" type="EmbeddedId" />
+			<xsd:element name="external" type="xsd:string" />
 			<xsd:element name="foreign-key" type="xsd:string" />
 			<xsd:element name="formula" type="xsd:string" />
 			<xsd:element name="cache" type="Cache" />
@@ -175,6 +177,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="on-delete" type="OnDeleteAction" />
+			<xsd:element name="type" type="Type" />
 			<xsd:element name="where" type="xsd:string" />
 			<xsd:element name="immutable" type="Immutable" />
 			<xsd:element name="join-column" type="JoinColumn">
@@ -224,6 +227,7 @@
 			<xsd:element name="embedded" type="Embedded" />
 			<xsd:element name="embedded-id" type="EmbeddedId" />
 			<xsd:element name="enumerated" type="EnumType" />
+			<xsd:element name="external" type="xsd:string" />
 			<xsd:element name="foreign-key" type="xsd:string" />
 			<xsd:element name="formula" type="xsd:string" />
 			<xsd:element name="generated" type="GenerationTime" />

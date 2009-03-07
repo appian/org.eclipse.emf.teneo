@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: Dynamic.java,v 1.52 2008/12/17 06:14:33 mtaal Exp $
+ * $Id: Dynamic.java,v 1.53 2009/03/07 21:15:01 mtaal Exp $
  */
 
 package hbtutorial;
@@ -41,7 +41,7 @@ import org.hibernate.Transaction;
  * Dynamic Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.52 $
+ * @version $Revision: 1.53 $
 */
 public class Dynamic {
 
