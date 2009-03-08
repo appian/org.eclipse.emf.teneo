@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.InternalEObject.EStore;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
+import org.eclipse.emf.ecore.impl.EStoreEObjectImpl;
 import org.eclipse.emf.ecore.impl.EStoreEObjectImpl.EStoreEList;
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EcoreEMap;
@@ -56,7 +57,7 @@ import org.hibernate.property.Setter;
  * interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -181,9 +182,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 		if (o instanceof EStoreEList<?>) {
 			return true;
 		}
-		// this really ugly check is to make this code backwards compatible with emf 2.3
-		// the BasicEStoreEList is introduced in emf 2.3
-		if (o.getClass().getName().compareTo("org.eclipse.emf.ecore.impl.EStoreEObjectImpl.BasicEStoreEList") == 0) {
+		if (o instanceof EStoreEObjectImpl.BasicEStoreEList) {
 			return true;
 		}
 		return false;
