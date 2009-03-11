@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 
@@ -23,7 +24,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 public class LibraryXMIPersistenceTest extends LibraryJPATest {
 
-	private static final String TEMP_FILE = "file:///tmp/temp.library";
+	private static final String TEMP_FILE = "/tmp/temp.library";
 
 	public LibraryXMIPersistenceTest(String name) {
 		super(name);
@@ -58,7 +59,8 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 		library.getBooks().put(book.getTitle(), book);
 		library.getWriters().add(writer);
 
-		saveToXMIFile(library, TEMP_FILE);
+		File tempFile = File.createTempFile("temp", "library");
+		saveToXMIFile(library, tempFile);
 
 		commitTransaction();
 		// verify
@@ -84,7 +86,7 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 
 		// Start the writing to XMI
 
-		saveToXMIFile(actualLibrary, TEMP_FILE);
+		saveToXMIFile(actualLibrary, tempFile);
 
 	}
 
@@ -98,9 +100,9 @@ public class LibraryXMIPersistenceTest extends LibraryJPATest {
 	 *            The name of the file "file://C:/<file name>"
 	 * @throws IOException
 	 */
-	private void saveToXMIFile(Library library, String fileURI) throws IOException {
+	private void saveToXMIFile(Library library, File aFile) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
-		URI resURI = URI.createURI(fileURI);
+		URI resURI = URI.createFileURI(aFile.getAbsolutePath());
 		Resource res = resourceSet.createResource(resURI);
 
 		res.getContents().add(library);
