@@ -21,7 +21,7 @@
     <!--=============================-->
 
     <package>org.eclipse.emf.teneo.eclipselink.examples.library.impl</package>
-    <mapped-superclass class="IdentifiableImpl">
+    <mapped-superclass class="IdentifiableImpl" access="FIELD">
     	<attributes>
     		<id name="id">
         		<column name="ID"/>
