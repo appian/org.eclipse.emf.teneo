@@ -14,7 +14,6 @@ Export-Package: META-INF,
  org.eclipse.emf.teneo.eclipselink.examples.library.forum.impl,
  org.eclipse.emf.teneo.eclipselink.examples.library.forum.util,
  org.eclipse.emf.teneo.eclipselink.examples.library.impl,
- org.eclipse.emf.teneo.eclipselink.examples.library.orm,
  org.eclipse.emf.teneo.eclipselink.examples.library.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
