@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Parent.java,v 1.1 2008/07/12 13:09:07 mtaal Exp $
+ * $Id: Parent.java,v 1.2 2009/03/15 15:08:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.various;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.various.VariousPackage#getParent()
- * @model annotation="teneo.jpa value='@ForceDiscriminator'"
+ * @model annotation="teneo.jpa value='@ForceDiscriminator\n@BatchSize(size=9)'"
  * @generated
  */
 public interface Parent extends EObject {
@@ -39,7 +39,7 @@ public interface Parent extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.various.VariousPackage#getParent_Children()
-	 * @model
+	 * @model annotation="teneo.jpa value='@BatchSize(size=11)'"
 	 * @generated
 	 */
 	EList<Child> getChildren();

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: VariousPackageImpl.java,v 1.1 2008/07/12 13:09:07 mtaal Exp $
+ * $Id: VariousPackageImpl.java,v 1.2 2009/03/15 15:08:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.various.impl;
 
@@ -278,7 +278,13 @@ public class VariousPackageImpl extends EPackageImpl implements VariousPackage {
 		  (parentEClass, 
 		   source, 
 		   new String[] {
-			 "value", "@ForceDiscriminator"
+			 "value", "@ForceDiscriminator\n@BatchSize(size=9)"
+		   });		
+		addAnnotation
+		  (getParent_Children(), 
+		   source, 
+		   new String[] {
+			 "value", "@BatchSize(size=11)"
 		   });		
 		addAnnotation
 		  (getParent_TotalPeople(), 
