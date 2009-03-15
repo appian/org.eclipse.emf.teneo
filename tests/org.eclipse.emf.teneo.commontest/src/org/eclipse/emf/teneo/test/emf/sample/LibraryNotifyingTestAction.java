@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryNotifyingTestAction.java,v 1.1 2009/03/15 08:09:27 mtaal Exp $
+ * $Id: LibraryNotifyingTestAction.java,v 1.2 2009/03/15 23:26:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persistentList in the adapter.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryNotifyingTestAction extends AbstractTestAction {
 	public LibraryNotifyingTestAction() {
@@ -56,7 +56,6 @@ public class LibraryNotifyingTestAction extends AbstractTestAction {
 			writer.setName("JRR Tolkien");
 
 			final Book book = factory.createBook();
-
 			book.setAuthor(writer);
 			book.setPages(5);
 			book.setTitle("The Hobbit");
@@ -168,6 +167,31 @@ public class LibraryNotifyingTestAction extends AbstractTestAction {
 				checkEqualList(persistentLibraryBooks, libraryBooks);
 				checkEqualList(persistentWriterBooks, writerBooks);
 			}
+		}
+		{
+			store.beginTransaction();
+			final Library lib = store.getObject(Library.class);
+			final List<?> libBooks = lib.getBooks();
+			final List<?> libWriters = lib.getWriters();
+			lib.setName(lib.getName() + "0");
+			assertEquals(2, lib.getBooks().size());
+
+			assertTrue(libBooks == lib.getBooks());
+			assertTrue(libWriters == lib.getWriters());
+
+			final Book book = factory.createBook();
+			book.setAuthor(lib.getWriters().get(0));
+			book.setPages(5);
+			book.setTitle("The Hobbit AGAIN");
+			book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+			lib.getBooks().add(book);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Library lib = store.getObject(Library.class);
+			assertEquals(3, lib.getBooks().size());
+			store.commitTransaction();
 		}
 	}
 
