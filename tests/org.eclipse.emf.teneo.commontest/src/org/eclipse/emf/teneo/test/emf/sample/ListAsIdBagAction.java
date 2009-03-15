@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ListAsIdBagAction.java,v 1.1 2008/12/16 20:40:36 mtaal Exp $
+ * $Id: ListAsIdBagAction.java,v 1.2 2009/03/15 14:49:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ListAsIdBagAction extends AbstractTestAction {
 
@@ -49,7 +49,6 @@ public class ListAsIdBagAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		{
 			store.beginTransaction();
 			addDataSet(store, 1);

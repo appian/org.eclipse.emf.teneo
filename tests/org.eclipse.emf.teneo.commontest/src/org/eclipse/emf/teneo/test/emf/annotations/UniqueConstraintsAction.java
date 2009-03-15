@@ -19,7 +19,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class UniqueConstraintsAction extends AbstractTestAction {
 	/**
@@ -32,7 +32,6 @@ public class UniqueConstraintsAction extends AbstractTestAction {
 	/** Test */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final UniqueconstraintsFactory factory = UniqueconstraintsFactory.eINSTANCE;
 		// create a book, writer and library
 		{
