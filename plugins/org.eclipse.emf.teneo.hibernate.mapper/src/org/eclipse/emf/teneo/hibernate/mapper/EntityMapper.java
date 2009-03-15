@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.44 2009/03/15 09:26:04 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.45 2009/03/15 15:08:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -162,6 +162,11 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		// covered through the HbEntity
 		if (superEntity == null && hbEntity.getImmutable() != null) {
 			target.addAttribute("mutable", "false");
+		}
+
+		if (hbEntity.getBatchSize() != null) {
+			target.addAttribute("batch-size", ""
+					+ hbEntity.getBatchSize().getSize());
 		}
 
 		if (hbEntity.getHbEntity() != null) {
