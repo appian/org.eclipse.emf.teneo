@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.23 2009/03/15 08:09:23 mtaal Exp $
+ * $Id: HbUtil.java,v 1.24 2009/03/15 14:49:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapping.HibernatePersistentStoreAdapter;
+import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
@@ -52,7 +53,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 public class HbUtil {
 
@@ -127,6 +128,10 @@ public class HbUtil {
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				HbConstants.PROPERTY_ECONTAINER) == 0) {
 			return ds.getHbContext().createEContainerAccessor();
+		} else if (mappedProperty.getName().compareToIgnoreCase(
+				HbConstants.PROPERTY_ECONTAINER_FEATURE_NAME) == 0) {
+			return ds.getExtensionManager().getExtension(
+					NewEContainerFeatureIDPropertyHandler.class);
 		} else if (mappedProperty.getName().compareToIgnoreCase(
 				HbConstants.PROPERTY_ECONTAINER_FEATURE_ID) == 0) {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
