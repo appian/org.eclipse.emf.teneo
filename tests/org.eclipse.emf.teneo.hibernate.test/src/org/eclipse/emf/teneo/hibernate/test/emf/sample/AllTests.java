@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.test.emf.sample.LibraryGlobalEagerAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryJoinTableNamingAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryListAsBagAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryNonResolvingAction;
+import org.eclipse.emf.teneo.test.emf.sample.LibraryNotifyingTestAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryQualifyActionHB;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryResourceCutPasteAction;
@@ -51,7 +52,7 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.91 $
+ * @version $Revision: 1.92 $
  */
 public class AllTests {
 
@@ -60,11 +61,13 @@ public class AllTests {
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
 				HibernateTestbed.instance().getConfigurations());
 		// suite.addTestSuite(LibraryLargeAction.class);
+		suite.addTestSuite(LibraryNotifyingTestAction.class);
+		suite.addTestSuite(LibraryTest.class);
+
 		suite.addTestSuite(ListAsIdBagAction.class);
 
 		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryResourceVisitTreeAction.class);
-		suite.addTestSuite(LibraryTest.class);
 
 		suite.addTestSuite(LibraryInterfaceQueryTest.class);
 
