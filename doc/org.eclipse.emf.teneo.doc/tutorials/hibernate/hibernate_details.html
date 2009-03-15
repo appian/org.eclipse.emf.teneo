@@ -331,6 +331,9 @@
 <li>
 <a href="#Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider">Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</a>
 </li>
+<li>
+<a href="#Convert+e_container_feature_id+to+e_container_feature_name">Convert e_container_feature_id to e_container_feature_name</a>
+</li>
 </ul>
 		
 <a name="N10011"></a><a name="Foreign-Key+Constraint%3A+deleting+parent+in+parent-child+relation+%28inverse%3Dtrue%29"></a>
@@ -678,6 +681,59 @@ public class MyValidator extends EObjectValidator
 			
 <p>The HashtableCacheProvider is not for production use. You can override this default setting by setting the hibernate.cache.provider_class property with the cache provider class you want to use.
 			</p>
+		
+</div>
+		
+		
+<a name="N10165"></a><a name="Convert+e_container_feature_id+to+e_container_feature_name"></a>
+<div class="h3">
+<h3>Convert e_container_feature_id to e_container_feature_name</h3>
+			
+			
+<p>From the 1.0.4 build of mid-March 2009 the econtainer relations are stored differently.
+			Instead of the feature id, the feature name is stored. The reason for the change is that the
+			feature id is not stable when the model changes. However, this means that current users when 
+			upgrading need to convert the feature id to the featurename approach. The conversion consists 
+			of the following steps:</p>
+			
+<ol>
+			
+<li>set the ECONTAINER_FEATURE_PERSISTENCE_STRATEGY option (see <a href="options.html">here</a>) to the value "both" and let Teneo update the database schema (this adds an econtainer_feature_name column to each table).</li>
+			
+<li>write a program which iterates through all objects in all tables and generates an update sql statement to update the econtainer_feature_name column. An example program is shown below.</li>
+			
+<li>use the generated sql to update the database</li>
+			
+<li>set the ECONTAINER_FEATURE_PERSISTENCE_STRATEGY option to the value "featurename". The conversion is finished and the econtainer_feature_id column is not used anymore.</li> 
+			
+</ol>
+			
+<p>Example program for iterating through all EClasses and generating a SQL update statement (note the eObject.getId() call which is just a fake, you need to use your own code to get the id of an object):</p>						
+
+<pre class="code">
+for (Iterator&lt;?&gt; it = dataStore.getClassMappings(); it.hasNext();) {
+	final Object opc = it.next();
+	final PersistentClass pc = (PersistentClass) opc;
+	final Session s = dataStore.getSessionFactory().openSession();
+	s.beginTransaction();
+	final List&lt;?&gt; list = s.createQuery("from " + pc.getEntityName())
+			.list();
+	for (Object o : list) {
+		final EObject eObject = (EObject) o;
+		if (eObject.eContainer() != null) {
+			final EObject container = eObject.eContainer();
+			final String featureNameValue = EContainerFeatureIDUserType
+					.convertEContainerRelationToString(container
+							.eClass(), eObject.eContainmentFeature());
+			System.err.println("update " + pc.getTable().getName()
+					+ " set e_container_feature_name='"
+					+ featureNameValue + "'  where id=" + eObject.getId());
+		}
+	}
+	s.getTransaction().commit();
+}
+</pre>
+			
 		
 </div>
 		

@@ -53,6 +53,7 @@
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="batch-size" type="xsd:int" />
 			<xsd:element name="discriminator-column" type="DiscriminatorColumn" />
 			<xsd:element name="discriminator-formula" type="xsd:string" />
 			<xsd:element name="discriminator-value" type="xsd:string" />
@@ -154,6 +155,7 @@
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">attributeOverrides</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="batch-size" type="xsd:int" />
 			<xsd:element name="column" type="Column" />
 			<xsd:element name="embedded" type="Embedded" />
 			<xsd:element name="embedded-id" type="EmbeddedId" />
@@ -223,6 +225,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="basic" type="Basic" />
+			<xsd:element name="batch-size" type="xsd:int" />
 			<xsd:element name="column" type="Column" />
 			<xsd:element name="embedded" type="Embedded" />
 			<xsd:element name="embedded-id" type="EmbeddedId" />

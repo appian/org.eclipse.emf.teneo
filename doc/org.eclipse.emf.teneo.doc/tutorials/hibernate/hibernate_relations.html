@@ -460,9 +460,13 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 				
 <li>ECONTAINER: stores the database identification of the container eobject (as a varchar),</li>
 				
-<li>ECONTAINER_FEATUREID: stores the id of the container feature which holds the eobject</li>
+<li>ECONTAINER_FEATURENAME: stores the name of the container feature which holds the eobject</li>
 			
-</ul> 
+</ul>
+			
+<p>
+<em>See also the ECONTAINER_FEATURE_PERSISTENCE_STRATEGY option <a href="options.html">here</a>.</em>
+</p> 
 			
 <p>These fields are not present as properties in the hibernate.hbm.xml file. 
 			These fields are added at startup because at that moment it is possible to determine
@@ -504,7 +508,7 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div>
 		
-<a name="N100B8"></a><a name="external"></a>
+<a name="N100C0"></a><a name="external"></a>
 <div class="h3">
 <h3>Storing external references (to non-persisted objects), customizing persisting references</h3>
 			
@@ -535,7 +539,7 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div> 
 		
-<a name="N100DA"></a><a name="ecorereferences"></a>
+<a name="N100E2"></a><a name="ecorereferences"></a>
 <div class="h3">
 <h3>Storing references to Ecore Model Elements</h3>
 			

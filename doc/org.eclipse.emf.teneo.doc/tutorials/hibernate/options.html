@@ -485,6 +485,16 @@
 				
 <li>
 					
+<strong>PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT</strong>
+					(default: not set): this option allows you to set the default cascade policy for 
+					non containment relations. It can be set to a comma delimited set of cascade values,
+					for example MERGE, PERSIST, REFRESH. If this option is not set then then the system will use the 
+					following set: MERGE, PERSIST, REFRESH.
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.DEFAULT_CACHE_STRATEGY</strong>
 					(default: NONE): this option allows you to set second level caching at a global level. If set
 					to a value other than NONE then all EClasses and collection EFeatures will have
@@ -530,6 +540,31 @@
 					<a href="hibernate_relations.html#Storing+container+relation">here</a>
 					.
 				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.ECONTAINER_FEATURE_PERSISTENCE_STRATEGY</strong>
+					(default: featurename): this option determines how the eContainerFeatureID member of an EObject
+					is persisted. There are three possible values:
+					<ul>
+					
+<li>featurename: the feature name of the containment feature is stored. This is the preferred value.</li>
+					
+					
+<li>featureid: this value is there for backward compatibility, the id of the containment feature is stored, however this value is not stable when 
+					the model changes. This value is not recommended.
+					</li>
+					
+<li>both: both the featurename and featureid are stored. This is for cases in which both the old and the new situation need to be supported. 
+					This is recommended when converting from an old (featureid) to a new approach (using featurenames). For a possible conversion approach see 
+					<a href="hibernate_details.html#Convert+e_container_feature_id+to+e_container_feature_name">here</a>
+</li>
+					
+</ul>
+					For a possible conversion approach see <a href="hibernate_details.html#Convert+e_container_feature_id+to+e_container_feature_name">here</a>
+				
+</li>
 
 				
 <li>
@@ -669,16 +704,6 @@
 				
 <li>
 					
-<strong>PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT</strong>
-					(default: not set): this option allows you to set the default cascade policy for 
-					non containment relations. It can be set to a comma delimited set of cascade values,
-					for example MERGE, PERSIST, REFRESH. If this option is not set then then the system will use the 
-					following set: MERGE, PERSIST, REFRESH.
-				</li>
-
-				
-<li>
-					
 <strong>PersistenceOptions.SET_ENTITY_AUTOMATICALLY</strong>
 					(default: true): if set to "false" then only EClasses which have an Entity annotation will be
 					mapped. Default is "true", this means that all EClasses are mapped to the
@@ -706,6 +731,16 @@
 					many-to-one and one-to-one is set to LAZY (if not set by the user). If this option is false
 					then for individual types the @Proxy annotation can also be used (see the
 					Hibernate annotation extensions).
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS</strong>
+					(default: true): this option controls if a non-mutable class should also have a
+					discriminator and version column. This is not strictly required as instances of non-mutable eclasses
+					are not persisted. From a database schema perspective it can however be nicer to
+					have these columns (as all mutable tables have them).
 				</li>
 
 				
