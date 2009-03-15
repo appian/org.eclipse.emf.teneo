@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.12 2008/04/11 03:21:48 mtaal Exp $
+ * $Id: EMapAction.java,v 1.13 2009/03/15 08:09:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,12 +36,14 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class EMapAction extends AbstractTestAction {
 
@@ -59,7 +62,9 @@ public class EMapAction extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties()
+	 * @see
+	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
+	 * ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -108,7 +113,8 @@ public class EMapAction extends AbstractTestAction {
 						// disabled as hibernate and jpox differ here
 						// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
 					} else {
-						fail("Type not supported " + bk.getWriters().getClass().getName());
+						fail("Type not supported "
+								+ bk.getWriters().getClass().getName());
 					}
 					bks.add(bk);
 				} else {
@@ -131,7 +137,8 @@ public class EMapAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
 		} catch (Exception e) {
-			throw new StoreTestException("Exception when testing with resource", e);
+			throw new StoreTestException(
+					"Exception when testing with resource", e);
 		}
 
 		{
@@ -151,7 +158,40 @@ public class EMapAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			store.commitTransaction();
 		} catch (Exception e) {
-			throw new StoreTestException("Exception when testing with resource", e);
+			throw new StoreTestException(
+					"Exception when testing with resource", e);
+		}
+
+		{
+			store.beginTransaction();
+			final Book bk = createTestSet("prefix10");
+			store.store(bk);
+			store.commitTransaction();
+
+			final Writer w1 = EmapFactory.eINSTANCE.createWriter();
+			w1.setName("10name1");
+			bk.getWriters().put(w1.getName(), w1);
+			bk.getCityByWriter().put(w1, "Utrecht");
+
+			final PersistentStoreAdapter adapter = StoreUtil
+					.getPersistentStoreAdapter(bk);
+			final Object ws = adapter.getStoreCollection(EmapPackage.eINSTANCE
+					.getBook_Writers());
+			final Object cbws = adapter
+					.getStoreCollection(EmapPackage.eINSTANCE
+							.getBook_CityByWriter());
+			checkEqual(ws, bk.getWriters());
+			checkEqual(cbws, bk.getCityByWriter());
+		}
+	}
+
+	protected void checkEqual(Object o, List<?> l2) {
+		final Map<?, ?> m1 = (Map<?, ?>) o;
+		assertTrue(m1 != l2);
+		assertTrue(m1.size() == l2.size());
+		for (Object c : l2) {
+			final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) c;
+			assertTrue(m1.get(entry.getKey()) != null);
 		}
 	}
 

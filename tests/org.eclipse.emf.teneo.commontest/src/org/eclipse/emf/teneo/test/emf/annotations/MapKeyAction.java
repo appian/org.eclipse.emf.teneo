@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapKeyAction.java,v 1.6 2008/03/30 15:12:08 mtaal Exp $
+ * $Id: MapKeyAction.java,v 1.7 2009/03/15 08:09:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -19,8 +19,10 @@ package org.eclipse.emf.teneo.test.emf.annotations;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
@@ -31,12 +33,14 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.Writer;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class MapKeyAction extends AbstractTestAction {
 	/**
@@ -49,12 +53,14 @@ public class MapKeyAction extends AbstractTestAction {
 	}
 
 	// set the table/column names to uppercase otherwise this testcase will fail
-	// with hsqldb because hibernate does not escape the order by clause in a query.
+	// with hsqldb because hibernate does not escape the order by clause in a
+	// query.
 	// Caused by: java.sql.SQLException: Column not found: ITEM0_.NAME in
 	// statement [select item0_."item_itemlist_e_id" as item4_1_,
 	// item0_.e_id as e1_1_, item0_.e_id as e1_575_0_, item0_.e_version as
 	// e2_575_0_, item0_."name" as name3_575_0_, item0_."item_itemlist_e_id"
-	// as item4_575_0_ from "testset_item" item0_ where item0_."item_itemlist_e_id"=?
+	// as item4_575_0_ from "testset_item" item0_ where
+	// item0_."item_itemlist_e_id"=?
 	// order by item0_.name desc]
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -65,8 +71,8 @@ public class MapKeyAction extends AbstractTestAction {
 	}
 
 	/**
-	 * Check test set, note a where clause has been set on the relation Only writers with name
-	 * martin are returned
+	 * Check test set, note a where clause has been set on the relation Only
+	 * writers with name martin are returned
 	 */
 	private void checkTestSet(Book bk) {
 		// final String prefix = bk.getTitle();
@@ -139,9 +145,11 @@ public class MapKeyAction extends AbstractTestAction {
 						}
 
 						// disabled as hibernate and jpox differ here
-						assertTrue(!((PersistableDelegateList<?>) bk.getWriters()).isLoaded());
+						assertTrue(!((PersistableDelegateList<?>) bk
+								.getWriters()).isLoaded());
 					} else {
-						fail("Type not supported " + bk.getWriters().getClass().getName());
+						fail("Type not supported "
+								+ bk.getWriters().getClass().getName());
 					}
 					bks.add(bk);
 				} else {
@@ -154,7 +162,38 @@ public class MapKeyAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
 		} catch (final Exception e) {
-			throw new StoreTestException("Exception when testing with resource", e);
+			throw new StoreTestException(
+					"Exception when testing with resource", e);
+		}
+
+		// test PersistentStoreAdapter
+		{
+			store.beginTransaction();
+			final Book bk = createTestSet("PSA");
+			store.store(bk);
+			store.commitTransaction();
+			final Writer w = MapkeyFactory.eINSTANCE.createWriter();
+			w.setName("PSAmartin2");
+			bk.getWriters().put(w.getName(), w);
+
+			PersistentStoreAdapter adapter = StoreUtil
+					.getPersistentStoreAdapter(bk);
+			final Object value = adapter
+					.getStoreCollection(MapkeyPackage.eINSTANCE
+							.getBook_Writers());
+			compareMaps((Map<?, ?>) value, bk.getWriters());
 		}
 	}
+
+	// compare maps
+	private void compareMaps(Map<?, ?> m1, EMap<?, ?> m2) {
+		assertTrue(m1 != m2);
+		assertEquals(m1.size(), m2.size());
+		for (Object key1 : m1.keySet()) {
+			final Object v2 = m2.get(key1);
+			final Object v1 = m1.get(key1);
+			assertTrue(v1 == v2);
+		}
+	}
+
 }

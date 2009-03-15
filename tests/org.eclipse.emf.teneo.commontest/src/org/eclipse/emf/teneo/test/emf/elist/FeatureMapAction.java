@@ -16,6 +16,7 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -29,21 +30,19 @@ import org.eclipse.emf.teneo.samples.emf.elist.featuremap.TranslatedDescriptionT
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Tests the feature map example Tests: - Creating Feature maps with simple types, containment and
- * non-containment relations - Retrieval of feature map entries - AddAll - Removal of contained and
- * non-contained feature map entries (cascading delete) - Delete restrictions
+ * Tests the feature map example Tests: - Creating Feature maps with simple
+ * types, containment and non-containment relations - Retrieval of feature map
+ * entries - AddAll - Removal of contained and non-contained feature map entries
+ * (cascading delete) - Delete restrictions
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ $Date: 2008/03/07 13:13:53 $
+ * @version $Revision: 1.7 $ $Date: 2009/03/15 08:09:27 $
  */
 public class FeatureMapAction extends AbstractTestAction {
-	/**
-	 * Constructor for ClassHierarchyParsing.
-	 * 
-	 * @param arg0
-	 */
 	public FeatureMapAction() {
 		super(FeaturemapPackage.eINSTANCE);
 	}
@@ -51,7 +50,9 @@ public class FeatureMapAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		props.setProperty(
+				PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT,
+				"true");
 		return props;
 	}
 
@@ -81,18 +82,26 @@ public class FeatureMapAction extends AbstractTestAction {
 					ProductType prod = (ProductType) obj;
 
 					// check some things, desc1 and desc2
-					List<?> list = prod.getGroup().list(FeaturemapPackage.eINSTANCE.getProductType_Description());
+					List<?> list = prod.getGroup().list(
+							FeaturemapPackage.eINSTANCE
+									.getProductType_Description());
 					assertTrue(((String) list.get(0)).compareTo("desc11") == 0);
 					assertTrue(((String) list.get(1)).compareTo("desc21") == 0);
 
-					list = prod.getGroup().list(FeaturemapPackage.eINSTANCE.getProductType_TranslatedDescription());
-					assertTrue(((TranslatedDescriptionType) list.get(0)).getLanguage().compareTo("en") == 0);
-					assertTrue(((TranslatedDescriptionType) list.get(1)).getLanguage().compareTo("nl") == 0);
+					list = prod.getGroup().list(
+							FeaturemapPackage.eINSTANCE
+									.getProductType_TranslatedDescription());
+					assertTrue(((TranslatedDescriptionType) list.get(0))
+							.getLanguage().compareTo("en") == 0);
+					assertTrue(((TranslatedDescriptionType) list.get(1))
+							.getLanguage().compareTo("nl") == 0);
 
 					list = prod.getGroup1();
 					assertTrue(((Entry) list.get(0)).getValue() instanceof Double);
-					assertEquals(53.5, ((PriceByQuantityType) ((Entry) list.get(1)).getValue()).getPrice(), 0.01);
-					assertTrue(((SupplierPriceType) ((Entry) list.get(2)).getValue()).getName().compareTo("supplier1") == 0);
+					assertEquals(53.5, ((PriceByQuantityType) ((Entry) list
+							.get(1)).getValue()).getPrice(), 0.01);
+					assertTrue(((SupplierPriceType) ((Entry) list.get(2))
+							.getValue()).getName().compareTo("supplier1") == 0);
 				}
 			}
 
@@ -124,42 +133,55 @@ public class FeatureMapAction extends AbstractTestAction {
 			assertTrue(product2.getName().compareTo("_2") == 0);
 
 			// check container property
-			assertTrue(((PriceByQuantityType) product1.getGroup1().getValue(1)).eContainer() == product1);
+			assertTrue(((PriceByQuantityType) product1.getGroup1().getValue(1))
+					.eContainer() == product1);
 
-			Object[] eobjs = store.getCrossReferencers((EObject) product1.getGroup1().getValue(1), false);
+			Object[] eobjs = store.getCrossReferencers((EObject) product1
+					.getGroup1().getValue(1), false);
 			assertEquals(1, eobjs.length);
 			assertTrue(eobjs[0] == product1);
 
 			// should give same result because the pricebyquantity is contained
-			eobjs = store.getCrossReferencers((EObject) product1.getGroup1().getValue(1), true);
+			eobjs = store.getCrossReferencers((EObject) product1.getGroup1()
+					.getValue(1), true);
 			assertEquals(1, eobjs.length);
 			assertTrue(eobjs[0] == product1);
 
 			// add something!
 			// after this at position 0, 1 and 3 there should be a Double
-			// note that the set 1 means that the price by quantity is deleted as it is contained!
-			Entry entry =
-					FeatureMapUtil.createEntry(FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(), new Double(
-						254.0));
+			// note that the set 1 means that the price by quantity is deleted
+			// as it is contained!
+			Entry entry = FeatureMapUtil.createEntry(
+					FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(),
+					new Double(254.0));
 			product1.getGroup1().set(1, entry);
-			product1.getGroup1().add(FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(), new Double(154.0));
+			product1.getGroup1().add(
+					FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(),
+					new Double(154.0));
 
 			// remove the price by quantity, this should remove it
 			product1.getGroup1().remove(1);
 
 			ArrayList<TranslatedDescriptionType> trans = new ArrayList<TranslatedDescriptionType>();
-			TranslatedDescriptionType transDesc1 = factory.createTranslatedDescriptionType();
-			transDesc1.setDescription("transdesca.12"); // note the string ends on 2 is used below
+			TranslatedDescriptionType transDesc1 = factory
+					.createTranslatedDescriptionType();
+			transDesc1.setDescription("transdesca.12"); // note the string ends
+			// on 2 is used below
 			transDesc1.setLanguage("en");
-			TranslatedDescriptionType transDesc2 = factory.createTranslatedDescriptionType();
-			transDesc2.setDescription("transdesca.22"); // note the string ends on 2 is used below
+			TranslatedDescriptionType transDesc2 = factory
+					.createTranslatedDescriptionType();
+			transDesc2.setDescription("transdesca.22"); // note the string ends
+			// on 2 is used below
 			transDesc2.setLanguage("nl");
 			trans.add(transDesc1);
 			trans.add(transDesc2);
 
-			product2.getGroup().addAll(FeaturemapPackage.eINSTANCE.getProductType_TranslatedDescription(), trans);
+			product2.getGroup().addAll(
+					FeaturemapPackage.eINSTANCE
+							.getProductType_TranslatedDescription(), trans);
 
-			// remove one translated description in the map, this should not delete it
+			// remove one translated description in the map, this should not
+			// delete it
 			product2.getGroup().remove(1);
 
 			store.commitTransaction();
@@ -187,7 +209,8 @@ public class FeatureMapAction extends AbstractTestAction {
 			List<?> products = store.getObjects(ProductType.class);
 			ProductType product2 = (ProductType) products.get(1);
 
-			// remove a translated description entry, this should not delete it (see check for 6
+			// remove a translated description entry, this should not delete it
+			// (see check for 6
 			// below)
 			product2.getGroup().remove(1);
 			store.commitTransaction();
@@ -218,18 +241,23 @@ public class FeatureMapAction extends AbstractTestAction {
 			store.checkNumber(PriceByQuantityType.class, 0);
 			store.checkNumber(ProductType.class, 1);
 
-			// now delete of some of the suppliers and translated description should be possible
-			Iterator<?> suppliers = store.getObjects(SupplierPriceType.class).iterator();
+			// now delete of some of the suppliers and translated description
+			// should be possible
+			Iterator<?> suppliers = store.getObjects(SupplierPriceType.class)
+					.iterator();
 			while (suppliers.hasNext()) {
-				SupplierPriceType supplier = (SupplierPriceType) suppliers.next();
+				SupplierPriceType supplier = (SupplierPriceType) suppliers
+						.next();
 				if (supplier.getName().endsWith("2")) {
 					store.deleteObject(supplier);
 				}
 			}
 
-			Iterator<?> transs = store.getObjects(TranslatedDescriptionType.class).iterator();
+			Iterator<?> transs = store.getObjects(
+					TranslatedDescriptionType.class).iterator();
 			while (transs.hasNext()) {
-				TranslatedDescriptionType trans = (TranslatedDescriptionType) transs.next();
+				TranslatedDescriptionType trans = (TranslatedDescriptionType) transs
+						.next();
 				if (trans.getDescription().endsWith("2")) {
 					store.deleteObject(trans);
 				}
@@ -266,6 +294,47 @@ public class FeatureMapAction extends AbstractTestAction {
 			assertTrue((product1.getGroup().get(3)).getValue() instanceof TranslatedDescriptionType);
 			store.commitTransaction();
 		}
+
+		// add tests to see if PersistentStoreAdapter works fine
+		{
+			store.beginTransaction();
+			ProductType pt = createProduct(10, null);
+			store.store(pt);
+			store.commitTransaction();
+			pt.getGroup().add(
+					FeaturemapPackage.eINSTANCE.getProductType_Description(),
+					"desc110");
+
+			pt.getGroup1().add(
+					FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(),
+					new Double(54.0));
+
+			PersistentStoreAdapter adapter = StoreUtil
+					.getPersistentStoreAdapter(pt);
+			final Object value = adapter
+					.getStoreCollection(FeaturemapPackage.eINSTANCE
+							.getProductType_Group());
+			final Object value1 = adapter
+					.getStoreCollection(FeaturemapPackage.eINSTANCE
+							.getProductType_Group1());
+			compareFeatureMaps((List<?>) value, pt.getGroup());
+			compareFeatureMaps((List<?>) value1, pt.getGroup1());
+		}
+
+	}
+
+	// compare lists which both contain feature map entries
+	private void compareFeatureMaps(List<?> l1, List<?> l2) {
+		assertTrue(l1 != l2);
+		assertEquals(l1.size(), l2.size());
+		for (Object o : l1) {
+			final FeatureMap.Entry fe1 = (FeatureMap.Entry) o;
+			final FeatureMap.Entry fe2 = (FeatureMap.Entry) l2.get(l1
+					.indexOf(o));
+			assertEquals(fe1.getEStructuralFeature(), fe2
+					.getEStructuralFeature());
+			assertEquals(fe1.getValue(), fe2.getValue());
+		}
 	}
 
 	/** Creates a product, adding the passed int as an extra argument */
@@ -275,28 +344,44 @@ public class FeatureMapAction extends AbstractTestAction {
 		product.setName("_" + index);
 		product.setProductClassification(ProductClassification.NORMAL_LITERAL);
 
-		TranslatedDescriptionType transDesc1 = factory.createTranslatedDescriptionType();
+		TranslatedDescriptionType transDesc1 = factory
+				.createTranslatedDescriptionType();
 		transDesc1.setDescription("transdesc1" + index);
 		transDesc1.setLanguage("en");
-		TranslatedDescriptionType transDesc2 = factory.createTranslatedDescriptionType();
+		TranslatedDescriptionType transDesc2 = factory
+				.createTranslatedDescriptionType();
 		transDesc2.setDescription("transdesc2" + index);
 		transDesc2.setLanguage("nl");
-		product.getGroup().add(FeaturemapPackage.eINSTANCE.getProductType_Description(), "desc1" + index);
-		product.getGroup().add(FeaturemapPackage.eINSTANCE.getProductType_TranslatedDescription(), transDesc1);
-		product.getGroup().add(FeaturemapPackage.eINSTANCE.getProductType_Description(), "desc2" + index);
-		product.getGroup().add(FeaturemapPackage.eINSTANCE.getProductType_TranslatedDescription(), transDesc2);
+		product.getGroup().add(
+				FeaturemapPackage.eINSTANCE.getProductType_Description(),
+				"desc1" + index);
+		product.getGroup().add(
+				FeaturemapPackage.eINSTANCE
+						.getProductType_TranslatedDescription(), transDesc1);
+		product.getGroup().add(
+				FeaturemapPackage.eINSTANCE.getProductType_Description(),
+				"desc2" + index);
+		product.getGroup().add(
+				FeaturemapPackage.eINSTANCE
+						.getProductType_TranslatedDescription(), transDesc2);
 
-		product.getGroup1().add(FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(), new Double(54.0));
+		product.getGroup1().add(
+				FeaturemapPackage.eINSTANCE.getProductType_SimplePrice(),
+				new Double(54.0));
 
 		PriceByQuantityType priceQuantity = factory.createPriceByQuantityType();
 		priceQuantity.setPrice(53.5);
 		priceQuantity.setQuantity(100.0);
-		product.getGroup1().add(1, FeaturemapPackage.eINSTANCE.getProductType_PriceByQuantity(), priceQuantity);
+		product.getGroup1().add(1,
+				FeaturemapPackage.eINSTANCE.getProductType_PriceByQuantity(),
+				priceQuantity);
 
 		SupplierPriceType supplier = factory.createSupplierPriceType();
 		supplier.setName("supplier" + index);
 		supplier.setPrice(51.6);
-		product.getGroup1().add(FeaturemapPackage.eINSTANCE.getProductType_PriceFromSupplier(), supplier);
+		product.getGroup1().add(
+				FeaturemapPackage.eINSTANCE.getProductType_PriceFromSupplier(),
+				supplier);
 
 		if (res != null) {
 			res.getContents().add(product);

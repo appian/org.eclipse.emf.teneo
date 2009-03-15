@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryListAsBagAction.java,v 1.3 2008/02/28 07:08:15 mtaal Exp $
+ * $Id: LibraryListAsBagAction.java,v 1.4 2009/03/15 08:09:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,14 +32,10 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryListAsBagAction extends AbstractTestAction {
-	/**
-	 * Constructor for ClassHierarchyParsing.
-	 * 
-	 * @param arg0
-	 */
+
 	public LibraryListAsBagAction() {
 		super(LibraryPackage.eINSTANCE);
 	}
@@ -51,7 +47,6 @@ public class LibraryListAsBagAction extends AbstractTestAction {
 		return props;
 	}
 
-	/** Creates an item, an address and links them to a po. */
 	@Override
 	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
@@ -89,9 +84,9 @@ public class LibraryListAsBagAction extends AbstractTestAction {
 		// move the books arround
 		{
 			store.beginTransaction();
-			final Library lib = (Library) store.getObject(Library.class);
-			assertEquals(1, ((Book) lib.getBooks().get(0)).getPages());
-			assertEquals(2, ((Book) lib.getBooks().get(1)).getPages());
+			final Library lib = store.getObject(Library.class);
+			assertEquals(1, (lib.getBooks().get(0)).getPages());
+			assertEquals(2, (lib.getBooks().get(1)).getPages());
 			lib.getBooks().move(0, 1); // moved second book to first location
 			store.commitTransaction();
 		}
@@ -99,9 +94,9 @@ public class LibraryListAsBagAction extends AbstractTestAction {
 		// check if it succeeded, should not
 		{
 			store.beginTransaction();
-			final Library lib = (Library) store.getObject(Library.class);
-			assertEquals(1, ((Book) lib.getBooks().get(0)).getPages());
-			assertEquals(2, ((Book) lib.getBooks().get(1)).getPages());
+			final Library lib = store.getObject(Library.class);
+			assertEquals(1, (lib.getBooks().get(0)).getPages());
+			assertEquals(2, (lib.getBooks().get(1)).getPages());
 			store.commitTransaction();
 		}
 	}
