@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<class name="org.eclipse.emf.teneo.samples.emf.annotations.various.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" table="`parent`">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.various.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" batch-size="9" table="`parent`">
 		<meta attribute="eclassName">Parent</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/various</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
@@ -12,7 +12,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<list name="children" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+		<list name="children" batch-size="11" lazy="true" cascade="merge,persist,save-update,lock,refresh">
 			<key update="true" foreign-key="parent_children">
 				<column name="`parent_children_e_id`" not-null="false" unique="false"/>
 			</key>
