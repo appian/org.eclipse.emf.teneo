@@ -15,6 +15,7 @@
       <xsd:element name="author" type="xsd:anyURI"
           ecore:reference="lib:Writer" ecore:opposite="books"/>
     </xsd:sequence>
+    <xsd:attribute name="test" type="xsd:int"/>
   </xsd:complexType>
   <xsd:complexType name="Writer">
     <xsd:sequence>
