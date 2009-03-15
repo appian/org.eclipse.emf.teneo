@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.48 2009/03/15 09:26:02 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.49 2009/03/15 14:49:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.48 $
+ * @version $Revision: 1.49 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -131,6 +131,9 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String SQL_NAME_STRATEGY = NAMING_PREFIX
 			+ "sql_name_strategy";
 
+	// END: ++++++++++++++++++++++ SQL Naming related Options
+	// ++++++++++++++++++++++++++++++++++++
+
 	/**
 	 * Controls if non-mutable eclasses should have a discriminator or version
 	 * column. Default is false.
@@ -140,8 +143,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS = NAMING_PREFIX
 			+ "sql_discriminator_version_immutable_eclass";
 
-	// END: ++++++++++++++++++++++ SQL Naming related Options
-	// ++++++++++++++++++++++++++++++++++++
+	/**
+	 * Controls how the econtainer feature id is persisted. There are three
+	 * values: featureid or featurename
+	 * 
+	 * @Deprecated use the extensionManager concept
+	 */
+	public static final String ECONTAINER_FEATURE_PERSISTENCE_STRATEGY = NAMING_PREFIX
+			+ "econtainer_feature_persistence_strategy";
 
 	/**
 	 * see bugzilla 227673, option can be used to set the hibernate usertype
@@ -434,6 +443,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(XSDDATE_CLASS,
 				"javax.xml.datatype.XMLGregorianCalendar");
 		props.setProperty(SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS, "true");
+		props.setProperty(ECONTAINER_FEATURE_PERSISTENCE_STRATEGY,
+				"FEATURENAME");
 		return props;
 	}
 
@@ -932,5 +943,27 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	public String getXSDDateClass() {
 		return properties.getProperty(XSDDATE_CLASS);
+	}
+
+	public EContainerFeaturePersistenceStrategy getEContainerFeaturePersistenceStrategy() {
+		String strategy = properties
+				.getProperty(ECONTAINER_FEATURE_PERSISTENCE_STRATEGY);
+		if (strategy == null) {
+			throw new TeneoException(
+					"Option ECONTAINER_FEATURE_PERSISTENCE_STRATEGY not set, please set it to one of: featureid, featurename, both");
+		}
+		EContainerFeaturePersistenceStrategy result = EContainerFeaturePersistenceStrategy
+				.valueOf(strategy.toUpperCase());
+		if (result == null) {
+			throw new TeneoException(
+					"Option ECONTAINER_FEATURE_PERSISTENCE_STRATEGY not set correctly ("
+							+ strategy
+							+ "), please set it to one of: featureid, featurename, both");
+		}
+		return result;
+	}
+
+	public enum EContainerFeaturePersistenceStrategy {
+		FEATURENAME, FEATUREID, BOTH
 	}
 }
