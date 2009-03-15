@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.18 2009/02/25 10:48:25 mtaal Exp $
+ * $Id: AllTests.java,v 1.19 2009/03/15 16:22:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.schemaconstructs;
@@ -23,7 +23,6 @@ import org.eclipse.emf.teneo.jpox.test.JPOXTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.AnyTypeAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DurationAction;
-import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.GroupAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListAction;
@@ -41,7 +40,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class AllTests {
 
@@ -59,7 +58,7 @@ public class AllTests {
 
 		// suite.addTestSuite(ExtensionAction.class);
 
-		suite.addTestSuite(EMapAction.class);
+		// suite.addTestSuite(EMapAction.class);
 
 		if (!JPOXTestbed.isRunningOnEMFTServer()) {
 			// on the emft server these fail with
