@@ -11,10 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: VariousAction.java,v 1.2 2008/09/01 13:41:52 mtaal Exp $
+ * $Id: VariousAction.java,v 1.3 2009/03/15 09:26:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.test.emf.annotations;
 
+import java.util.Properties;
+
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.annotations.various.Child;
 import org.eclipse.emf.teneo.samples.emf.annotations.various.ImmutableCity;
 import org.eclipse.emf.teneo.samples.emf.annotations.various.Parent;
@@ -27,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for bz 239757, 239802, 239756
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class VariousAction extends AbstractTestAction {
 	/**
@@ -37,6 +40,16 @@ public class VariousAction extends AbstractTestAction {
 	 */
 	public VariousAction() {
 		super(VariousPackage.eINSTANCE);
+	}
+
+	/** Add an option to force to use an idbag */
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(
+				PersistenceOptions.SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS,
+				"false");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
