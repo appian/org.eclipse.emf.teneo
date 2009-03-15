@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.43 2009/03/07 21:15:20 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.44 2009/03/15 09:26:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -422,7 +422,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				// after discriminator
 				Element versionElement = entityElement.element("version");
 				if (versionElement == null) {
-					versionElement = addVersionProperty();
+					versionElement = addVersionProperty(hbEntity);
 				}
 
 				if (null != versionElement) { // In case this is not versioned
@@ -757,10 +757,16 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 	/**
 	 * Add a synthetic version if the entity does not define one
 	 */
-	private Element addVersionProperty() {
+	private Element addVersionProperty(HbAnnotatedEClass aClass) {
 		assert (getHbmContext().getCurrent().element("version") == null);
 
 		if (!getHbmContext().alwaysVersion()) {
+			return null;
+		}
+		final boolean skipVersionOnImmutable = !getHbmContext()
+				.getPersistenceOptions()
+				.isDiscriminatorVersionOnImmutableEClass();
+		if (aClass.getImmutable() != null && skipVersionOnImmutable) {
 			return null;
 		}
 
