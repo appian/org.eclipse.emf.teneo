@@ -158,7 +158,10 @@
         <attributes>
         	<basic name="name"/>
         	<many-to-many name="writers" target-entity="WriterImpl">
-        		<join-table name="EMFLIB_PUBLISHER_WRITER"></join-table>
+        		<join-table name="EMFLIB_PUBLISHER_WRITER">
+         			<join-column insertable="true" name="publisher_id" nullable="false" unique="false" updatable="true"/>
+         			<inverse-join-column insertable="true" name="writer_id" nullable="false" unique="false" updatable="true"/>
+        		</join-table>
 				<cascade>
 					<cascade-persist/>
 					<cascade-merge/>
