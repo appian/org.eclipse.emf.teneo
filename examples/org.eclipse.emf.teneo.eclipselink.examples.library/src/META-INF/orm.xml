@@ -60,6 +60,9 @@
     <entity name="Book" class="BookImpl" access="FIELD">
         <table name="EMFLIB_BOOK"/>
         <attributes>
+        	<basic name="category">
+        		<enumerated/>
+        	</basic>
         	<basic name="title"/>
 			<basic name="pages"/>
         	<many-to-one name="author" target-entity="WriterImpl">
@@ -93,8 +96,6 @@
 					<cascade-refresh/>
 				</cascade>
 			</one-to-one>
-			<!-- TODO: category requires conversion/transformation/enum -->
-        	<transient name="category"/>
         </attributes>
     </entity>
  
