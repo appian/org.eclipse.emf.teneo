@@ -86,7 +86,7 @@ public abstract class LibraryJPATest extends JPATest {
 	protected Book createAnonymousBook(EntityManager em) {
 		Book book = factory.createBook();
 		em.persist(book);
-		book.setCategory(BookCategory.MYSTERY);
+		book.setCategory(BookCategory.BIOGRAPHY);
 		book.setPages(100);
 		book.setTitle(getAnonymousString());
 		return book;
