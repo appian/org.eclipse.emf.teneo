@@ -61,7 +61,7 @@
         <table name="EMFLIB_BOOK"/>
         <attributes>
         	<basic name="category">
-        		<enumerated/>
+        		<enumerated>STRING</enumerated>
         	</basic>
         	<basic name="title"/>
 			<basic name="pages"/>
