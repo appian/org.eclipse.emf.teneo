@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Identifiable.java,v 1.2 2009/01/26 22:31:48 seberle Exp $
+ * $Id: Identifiable.java,v 1.3 2009/03/18 11:16:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getIdentifiable()
  * @model abstract="true"
+ *        annotation="teneo.jpa value='@MappedSuperclass'"
  * @generated
  */
 public interface Identifiable extends EObject {
@@ -37,7 +38,7 @@ public interface Identifiable extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(long)
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getIdentifiable_Id()
-	 * @model
+	 * @model annotation="teneo.jpa value='@Id\n@GeneratedValue'"
 	 * @generated
 	 */
 	long getId();
@@ -63,7 +64,7 @@ public interface Identifiable extends EObject {
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(long)
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getIdentifiable_Version()
-	 * @model
+	 * @model annotation="teneo.jpa value='@Version'"
 	 * @generated
 	 */
 	long getVersion();

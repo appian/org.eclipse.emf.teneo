@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Translator.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: Translator.java,v 1.3 2009/03/18 11:16:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -90,6 +90,7 @@ public interface Translator extends Identifiable {
 	 * @see #setAddress(Address)
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getTranslator_Address()
 	 * @model containment="true"
+	 *        annotation="teneo.jpa value='@Transient'"
 	 * @generated
 	 */
 	Address getAddress();

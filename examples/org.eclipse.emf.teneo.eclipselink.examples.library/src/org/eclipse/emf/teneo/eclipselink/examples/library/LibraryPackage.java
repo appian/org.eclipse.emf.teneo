@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.3 2009/01/26 22:31:48 seberle Exp $
+ * $Id: LibraryPackage.java,v 1.4 2009/03/18 11:16:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -989,6 +989,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see java.util.Map.Entry
 	 * @model keyDataType="org.eclipse.emf.ecore.EString"
 	 *        valueType="org.eclipse.emf.teneo.eclipselink.examples.library.Book" valueContainment="true"
+	 *        annotation="teneo.jpa value='@Table(name=\"EMFLIB_LIBRARY_BOOK_MAP\")'"
 	 * @generated
 	 */
 	EClass getStringToBookMapEntry();
@@ -1097,6 +1098,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see java.util.Map.Entry
 	 * @model keyDataType="org.eclipse.emf.ecore.EString"
 	 *        valueType="org.eclipse.emf.teneo.eclipselink.examples.library.Style"
+	 *        annotation="teneo.jpa value='@Table(name=\"EMFLIB_BOOK_STYLE_MAP\")'"
 	 * @generated
 	 */
 	EClass getBookStylesMapEntry();

@@ -43,6 +43,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringToBookMapEntry" instanceClassName="java.util.Map$Entry"
       eSuperTypes="#//Identifiable">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Table(name=&quot;EMFLIB_LIBRARY_BOOK_MAP&quot;)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Book"
         containment="true"/>
@@ -57,13 +60,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="Publisher" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
-        eType="#//Writer" eOpposite="#//Writer/publishers"/>
+        eType="#//Writer" eOpposite="#//Writer/publishers">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@JoinTable(name=&quot;EMFLIB_PUBLISHER_WRITERS&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Style" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BookStylesMapEntry" instanceClassName="java.util.Map$Entry"
       eSuperTypes="#//Identifiable">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Table(name=&quot;EMFLIB_BOOK_STYLE_MAP&quot;)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Style"/>
   </eClassifiers>
@@ -71,7 +81,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="address" eType="#//Address"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Transient"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TWriterType">
     <eLiterals name="Typewriter"/>
@@ -85,7 +99,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="colored" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Identifiable" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@MappedSuperclass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id&#xA;@GeneratedValue"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Version"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

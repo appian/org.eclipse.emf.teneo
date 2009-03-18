@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Publisher.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: Publisher.java,v 1.3 2009/03/18 11:16:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -66,6 +66,7 @@ public interface Publisher extends Identifiable {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getPublisher_Writers()
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getPublishers
 	 * @model opposite="publishers"
+	 *        annotation="teneo.jpa value='@JoinTable(name=\"EMFLIB_PUBLISHER_WRITERS\")'"
 	 * @generated
 	 */
 	EList<Writer> getWriters();

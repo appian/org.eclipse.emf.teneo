@@ -75,7 +75,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Cover/colored"/>
     </genClasses>
     <genClasses ecoreClass="library.ecore#//Identifiable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/uuid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/version"/>
     </genClasses>
   </genPackages>
