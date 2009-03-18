@@ -45,8 +45,8 @@ public abstract class LibraryJPATest extends JPATest {
 	protected void cleanDatabase(EntityManager em) {
 		// delete does not cascade so order is important
 		em.createQuery("delete from Publisher o").executeUpdate();
-		em.createQuery("delete from StringToBookMapEntryImpl o").executeUpdate();
-		em.createQuery("delete from BookStylesMapEntryImpl o").executeUpdate();
+		em.createQuery("delete from StringToBookMapEntry o").executeUpdate();
+		em.createQuery("delete from BookStylesMapEntry o").executeUpdate();
 		em.createQuery("delete from Cover o").executeUpdate();
 		em.createQuery("delete from Book o").executeUpdate();
 		em.createQuery("delete from Translator o").executeUpdate();
