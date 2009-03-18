@@ -99,7 +99,7 @@
         </attributes>
     </entity>
  
-    <entity class="BookStylesMapEntryImpl">
+    <entity class="BookStylesMapEntryImpl" name="BookStylesMapEntry">
         <table name="EMFLIB_BOOK_STYLE_MAP"/>
         <id-class class="org.eclipse.emf.teneo.eclipselink.util.MapEntryId"/>
         <attribute-override name="id">
@@ -171,7 +171,7 @@
        </attributes>
     </entity>
 
-    <entity class="StringToBookMapEntryImpl">
+    <entity class="StringToBookMapEntryImpl" name="StringToBookMapEntry">
         <table name="EMFLIB_LIBRARY_BOOK_MAP"/>
         <id-class class="org.eclipse.emf.teneo.eclipselink.util.MapEntryId"/>
         <attribute-override name="id">
