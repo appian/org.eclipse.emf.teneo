@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.3 2009/01/26 22:31:49 seberle Exp $
+ * $Id: LibraryPackageImpl.java,v 1.4 2009/03/23 18:53:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -807,8 +807,62 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// teneo.jpa
+		createTeneoAnnotations();
 		// http://www.oracle.com/toplink/emf/2006/ContainerMapping
 		createContainerMappingAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.jpa";		
+		addAnnotation
+		  (stringToBookMapEntryEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@Table(name=\"EMFLIB_LIBRARY_BOOK_MAP\")"
+		   });			
+		addAnnotation
+		  (getPublisher_Writers(), 
+		   source, 
+		   new String[] {
+			 "value", "@JoinTable(name=\"EMFLIB_PUBLISHER_WRITERS\")"
+		   });		
+		addAnnotation
+		  (bookStylesMapEntryEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@Table(name=\"EMFLIB_BOOK_STYLE_MAP\")"
+		   });		
+		addAnnotation
+		  (getTranslator_Address(), 
+		   source, 
+		   new String[] {
+			 "value", "@Transient"
+		   });		
+		addAnnotation
+		  (identifiableEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@MappedSuperclass"
+		   });		
+		addAnnotation
+		  (getIdentifiable_Id(), 
+		   source, 
+		   new String[] {
+			 "value", "@Id\n@GeneratedValue"
+		   });		
+		addAnnotation
+		  (getIdentifiable_Version(), 
+		   source, 
+		   new String[] {
+			 "value", "@Version"
+		   });
 	}
 
 	/**
@@ -818,14 +872,14 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 * @generated
 	 */
 	protected void createContainerMappingAnnotations() {
-		String source = "http://www.oracle.com/toplink/emf/2006/ContainerMapping";		
+		String source = "http://www.oracle.com/toplink/emf/2006/ContainerMapping";			
 		addAnnotation
 		  (addressEClass, 
 		   source, 
 		   new String[] {
 			 "eContainingClassName", "Writer",
 			 "eContainingClassPackageName", "library"
-		   });
+		   });						
 	}
 
 } //LibraryPackageImpl
