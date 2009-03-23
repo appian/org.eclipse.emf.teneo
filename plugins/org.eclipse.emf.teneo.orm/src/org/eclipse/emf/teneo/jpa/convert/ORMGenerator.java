@@ -12,20 +12,21 @@
  *
  * </copyright>
  *
- * $Id: PAnnotatedToORMConverter.java,v 1.2 2009/03/18 11:19:01 mtaal Exp $
+ * $Id: ORMGenerator.java,v 1.1 2009/03/23 19:01:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpa.convert;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -46,7 +47,6 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
-import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 import org.eclipse.emf.teneo.extension.DefaultExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.jpa.orm.AccessType;
@@ -77,19 +77,52 @@ import org.eclipse.emf.teneo.jpa.orm.Version;
  * Converts a PAnnotatedModel to an ORM model.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
 
-// How to set mapped-by
-// - on a mto/otm set it on the otm side
-// - on a oto/oto set it on the container side (not the containment side)
-public class PAnnotatedToORMConverter {
+public class ORMGenerator {
 
 	private OrmFactory factory = OrmFactory.eINSTANCE;
 
-	public static void main(String[] args) {
-		final PAnnotatedToORMConverter converter = new PAnnotatedToORMConverter();
-		final Properties props = new Properties();
+	// public void main(String[] args) {
+	// final ORMGenerator ormGenerator = new ORMGenerator();
+	// ormGenerator.testGenerateORM();
+	// }
+	//
+	// public void testGenerateORM() {
+	// final Properties props = new Properties();
+	// props.setProperty(PersistenceOptions.SQL_TABLE_NAME_PREFIX, "EMFLIB_");
+	//
+	// final ORMGenerator converter = new ORMGenerator();
+	// final String orm = converter.generateORM(
+	// new EPackage[] { LibraryPackage.eINSTANCE }, converter
+	// .getDefaultPersistenceOptions(props));
+	// writeToFile(orm, "bin/META-INF/orm.xml");
+	// writeToFile(orm, "src/META-INF/orm.xml");
+	// }
+	//
+	// private void writeToFile(String content, String path) {
+	// try {
+	// FileWriter fw = new FileWriter(
+	// "/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.eclipselink.examples.library/"
+	// + path);
+	// fw.write(content);
+	// fw.close();
+	// } catch (Exception e) {
+	// throw new IllegalStateException(e);
+	// }
+	// }
+
+	/**
+	 * Returns the default settings of some persistence options
+	 * 
+	 * @param props
+	 *            properties set by the user, new properties override current
+	 *            ones
+	 * @return the PersistenceOptions object
+	 */
+	public PersistenceOptions getDefaultPersistenceOptions(Properties props) {
+		props.setProperty(PersistenceOptions.SQL_NAME_ESCAPE_CHARACTER, "");
 		props.setProperty(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
 		props.setProperty(
 				PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT,
@@ -99,34 +132,53 @@ public class PAnnotatedToORMConverter {
 		props
 				.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY,
 						"false");
-		props.setProperty(PersistenceOptions.SQL_TABLE_NAME_PREFIX, "EMFLIB_");
 		props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
-		converter.generateMapping(new EPackage[] { LibraryPackage.eINSTANCE },
-				props);
+		final ExtensionManager extensionManager = new DefaultExtensionManager();
+		return extensionManager.getExtension(PersistenceOptions.class,
+				new Object[] { props });
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of
-	 * epackages and options. The hibernate.hbm.xml is returned as a string. The
-	 * mapping is not registered or used in any other way by Elver.
+	 * Generate the ORM for a set of EPackages. Uses the default
+	 * PersistenceOptions settings.
+	 * 
+	 * @param ePackages
+	 *            the ePackages to generate an ORM for
+	 * @return the orm.xml as a String
 	 */
-	public void generateMapping(EPackage[] epackages, Properties props) {
-		ERuntime.INSTANCE.register(epackages);
-
-		// DCB: Use Hibernate-specific annotation processing mechanism. This
-		// allows use of
-		// Hibernate-specific annotations.
-		final ExtensionManager extensionManager = new DefaultExtensionManager();
-		final PersistenceOptions po = extensionManager.getExtension(
-				PersistenceOptions.class, new Object[] { props });
-		final PAnnotatedModel paModel = extensionManager.getExtension(
-				PersistenceMappingBuilder.class).buildMapping(epackages, po,
-				extensionManager);
-
-		printXML(paModel.getPaEPackages());
+	public String generateORM(EPackage[] ePackages) {
+		return generateORM(ePackages,
+				getDefaultPersistenceOptions(new Properties()));
 	}
 
-	public void printXML(List<PAnnotatedEPackage> annotatedEPackages) {
+	/**
+	 * Generate the ORM for a set of EPackages
+	 * 
+	 * @param ePackages
+	 *            the ePackages to generate an ORM for
+	 * @param po
+	 *            the PersistenceOptions to use for generation
+	 * @return the orm.xml as a String
+	 */
+	public String generateORM(EPackage[] ePackages, PersistenceOptions po) {
+		final ExtensionManager extensionManager = new DefaultExtensionManager();
+		final PAnnotatedModel paModel = extensionManager.getExtension(
+				PersistenceMappingBuilder.class).buildMapping(ePackages, po,
+				extensionManager);
+		return generateORM(paModel.getPaEPackages(), po);
+	}
+
+	/**
+	 * Convert a PAnnotated model to an ORM model.
+	 * 
+	 * @param annotatedEPackages
+	 *            the annotated EPackages to convert
+	 * @param po
+	 *            some {@link PersistenceOptions}
+	 * @return the orm model as a XML string
+	 */
+	public String generateORM(List<PAnnotatedEPackage> annotatedEPackages,
+			PersistenceOptions po) {
 		final XMLResource res = new XMLResourceImpl();
 		final Map<String, Object> options = new HashMap<String, Object>();
 		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
@@ -136,7 +188,9 @@ public class PAnnotatedToORMConverter {
 
 		final StringWriter sw = new StringWriter();
 		final DocumentRoot dr = factory.createDocumentRoot();
-		dr.setEntityMappings(convertPAnnotatedEPackages(annotatedEPackages));
+		dr
+				.setEntityMappings(convertPAnnotatedEPackages(
+						annotatedEPackages, po));
 		dr.getXMLNSPrefixMap().put("xsi",
 				"http://www.w3.org/2001/XMLSchema-instance");
 		dr.getXSISchemaLocation().put(
@@ -145,23 +199,23 @@ public class PAnnotatedToORMConverter {
 		res.getContents().add(dr);
 		try {
 			res.save(sw, options);
-			writeToFile(sw.toString(), "bin/META-INF/orm.xml");
-			writeToFile(sw.toString(), "src/META-INF/orm.xml");
+			return sw.toString();
 		} catch (IOException e) {
-			throw new Error(e);
+			throw new IllegalStateException(e);
 		}
 	}
 
-	private void writeToFile(String content, String path) throws IOException {
-		FileWriter fw = new FileWriter(
-				"/home/mtaal/mydata/dev/workspaces/nextspace/org.eclipse.emf.teneo.eclipselink.examples.library/"
-						+ path);
-		fw.write(content);
-		fw.close();
-	}
-
+	/**
+	 * Convert an annotated model to an instance of an ORM model
+	 * 
+	 * @param annotatedEPackages
+	 *            the annotated model
+	 * @param po
+	 *            the persistence options influencing the mapping
+	 * @return an instance of an ORM model
+	 */
 	public EntityMappingsType convertPAnnotatedEPackages(
-			List<PAnnotatedEPackage> annotatedEPackages) {
+			List<PAnnotatedEPackage> annotatedEPackages, PersistenceOptions po) {
 		final EntityMappingsType entityMappings = OrmFactory.eINSTANCE
 				.createEntityMappingsType();
 		entityMappings.setVersion("1.0");
@@ -171,15 +225,62 @@ public class PAnnotatedToORMConverter {
 			copyFeatures(pPackage, entityMappings);
 
 			for (PAnnotatedEClass pClass : pPackage.getPaEClasses()) {
-				convertPAnnotatedEClass(entityMappings, pClass,
-						annotatedEPackages);
+				if (pClass.getEntity() == null) {
+					continue;
+				}
+				convertPAnnotatedEClass(entityMappings, pClass);
 			}
 		}
+		escape(entityMappings, po.getSqlNameEscapeCharacter());
+
 		return entityMappings;
 	}
 
+	/**
+	 * Escape the table and column names in the model, using an eannotation flag
+	 * on the orm meta model.
+	 * 
+	 * @param entityMappings
+	 *            the model containing the table/column instances of which the
+	 *            names will be escaped
+	 * @param escapeChar
+	 *            the character to use for escaping
+	 */
+	private void escape(EntityMappingsType entityMappings, String escapeChar) {
+		if (escapeChar == null || escapeChar.trim().length() == 0) {
+			return;
+		}
+		for (Iterator<EObject> it = entityMappings.eAllContents(); it.hasNext();) {
+			final EObject eObject = it.next();
+			for (EStructuralFeature eFeature : eObject.eClass()
+					.getEAllAttributes()) {
+				final EAnnotation eAnnotation = eFeature
+						.getEAnnotation("teneo.escape");
+				if (eAnnotation != null) {
+					final String value = (String) eObject.eGet(eFeature);
+					if (value != null && value.trim().length() > 0
+							&& !value.startsWith(escapeChar)
+							&& !value.endsWith(escapeChar)) {
+						eObject.eSet(eFeature, "'\"" + value + "\"'");
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Converts an annotated EClass by creating an ORM model equivalent and
+	 * adding it to the passed entityTypes.
+	 * 
+	 * @param entityTypes
+	 *            the ORM model to fill
+	 * @param pClass
+	 *            the annotated EClass to convert to ORM
+	 */
 	private void convertPAnnotatedEClass(EntityMappingsType entityTypes,
-			PAnnotatedEClass pClass, List<PAnnotatedEPackage> annotatedEPackages) {
+			PAnnotatedEClass pClass) {
+		List<PAnnotatedEPackage> annotatedEPackages = pClass.getPaModel()
+				.getPaEPackages();
 		final EObject mainType;
 		if (pClass.getMappedSuperclass() != null) {
 			final MappedSuperclass mappedSuperclass = factory
@@ -258,6 +359,15 @@ public class PAnnotatedToORMConverter {
 
 	}
 
+	/**
+	 * Translate one annotated EStructuralFeature to its ORM equivalent and add
+	 * it to the ORM attributes
+	 * 
+	 * @param pFeature
+	 *            the annotated EFeature to map
+	 * @param attributes
+	 *            the ORM attributes
+	 */
 	private void mapEFeature(PAnnotatedEStructuralFeature pFeature,
 			Attributes attributes) {
 		if (isMapEntry(pFeature.getPaEClass().getModelEClass())
@@ -406,9 +516,14 @@ public class PAnnotatedToORMConverter {
 		final Id id = factory.createId();
 		id.setName("key");
 		final Column idColumn = factory.createColumn();
-		idColumn.setName("_key");
+		// TODO: uses special prefix to prevent use of reserved name
+		idColumn.setName("e_key");
 		id.setColumn(idColumn);
 		attributes.getId().add(id);
+
+		final Transient t = factory.createTransient();
+		t.setName("hash");
+		attributes.getTransient().add(t);
 
 		// add an attribute overrides
 		if (hasSuperTypeWithId(aClass)) {

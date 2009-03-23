@@ -298,6 +298,9 @@
         <details key="kind" value="attribute"/>
         <details key="name" value="name"/>
       </eAnnotations>
+      <eAnnotations source="teneo.escape">
+        <details key="value" value="true"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"
         unsettable="true">
@@ -388,6 +391,9 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
         <details key="name" value="name"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.escape">
+        <details key="value" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1287,6 +1293,9 @@
         <details key="kind" value="attribute"/>
         <details key="name" value="name"/>
       </eAnnotations>
+      <eAnnotations source="teneo.escape">
+        <details key="value" value="true"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"
         unsettable="true">
@@ -1364,6 +1373,9 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="attribute"/>
         <details key="name" value="name"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.escape">
+        <details key="value" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
@@ -2248,6 +2260,9 @@
         <details key="kind" value="attribute"/>
         <details key="name" value="name"/>
       </eAnnotations>
+      <eAnnotations source="teneo.escape">
+        <details key="value" value="true"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -2384,6 +2399,9 @@
         <details key="kind" value="element"/>
         <details key="name" value="column-name"/>
         <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+      <eAnnotations source="teneo.escape">
+        <details key="value" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrmPackageImpl.java,v 1.1 2009/03/15 23:45:02 mtaal Exp $
+ * $Id: OrmPackageImpl.java,v 1.2 2009/03/23 19:01:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -4411,6 +4411,8 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.escape
+		createTeneoAnnotations();
 	}
 
 	/**
@@ -4706,7 +4708,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "name"
-		   });		
+		   });			
 		addAnnotation
 		  (getColumn_Nullable(), 
 		   source, 
@@ -4797,7 +4799,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "name"
-		   });			
+		   });				
 		addAnnotation
 		  (discriminatorTypeEEnum, 
 		   source, 
@@ -5665,7 +5667,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "name"
-		   });		
+		   });			
 		addAnnotation
 		  (getJoinColumn_Nullable(), 
 		   source, 
@@ -5745,7 +5747,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "name"
-		   });		
+		   });			
 		addAnnotation
 		  (getJoinTable_Schema(), 
 		   source, 
@@ -6616,7 +6618,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "name"
-		   });		
+		   });			
 		addAnnotation
 		  (getTable_Schema(), 
 		   source, 
@@ -6750,7 +6752,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 			 "kind", "element",
 			 "name", "column-name",
 			 "namespace", "##targetNamespace"
-		   });			
+		   });				
 		addAnnotation
 		  (versionEClass, 
 		   source, 
@@ -6789,6 +6791,52 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 			 "baseType", "http://www.eclipse.org/emf/2003/XMLType#token",
 			 "pattern", "[0-9]+(\\.[0-9]+)*"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.escape</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneoAnnotations() {
+		String source = "teneo.escape";																																																
+		addAnnotation
+		  (getColumn_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "true"
+		   });																	
+		addAnnotation
+		  (getDiscriminatorColumn_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "true"
+		   });																																																																																																																																											
+		addAnnotation
+		  (getJoinColumn_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "true"
+		   });														
+		addAnnotation
+		  (getJoinTable_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "true"
+		   });																																																																																																																																																	
+		addAnnotation
+		  (getTable_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "true"
+		   });																										
+		addAnnotation
+		  (getUniqueConstraint_ColumnName(), 
+		   source, 
+		   new String[] {
+			 "value", "true"
+		   });						
 	}
 
 } //OrmPackageImpl

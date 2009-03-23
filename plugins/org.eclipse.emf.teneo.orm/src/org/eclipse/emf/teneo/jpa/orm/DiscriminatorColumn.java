@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumn.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: DiscriminatorColumn.java,v 1.2 2009/03/23 19:01:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm;
 
@@ -193,6 +193,7 @@ public interface DiscriminatorColumn extends EObject {
 	 * @see org.eclipse.emf.teneo.jpa.orm.OrmPackage#getDiscriminatorColumn_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='name'"
+	 *        annotation="teneo.escape value='true'"
 	 * @generated
 	 */
 	String getName();
