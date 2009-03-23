@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.eclipse.emf.teneo.orm.eclipse.contribution9"
+            nameFilter="*.ecore"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="Teneo"
+               path="additions"
+               id="org.eclipse.emf.teneo.eclipse.teneomenu">
+            <separator
+                  name="group5">
+            </separator>
+         </menu>
+         <action
+               label="Generate ORM File"
+               class="org.eclipse.emf.teneo.orm.eclipse.popup.actions.GenerateORMAction"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group5"
+               enablesFor="+"
+               id="org.eclipse.emf.teneo.orm.eclipse.generateorm">
+               tooltip="Select to generate an orm.xml file from the ecore model(s).">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
