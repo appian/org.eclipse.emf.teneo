@@ -63,12 +63,12 @@ public class CDOMappingContext extends MappingContext {
 
 	@Override
 	public String getEnumUserType() {
-		return "string";
+		return "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOENumStringType";
 	}
 
 	@Override
 	public String getEnumIntegerUserType() {
-		return "int";
+		return "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOENumIntegerType";
 	}
 
 	@Override
@@ -83,12 +83,12 @@ public class CDOMappingContext extends MappingContext {
 
 	@Override
 	public String getDynamicEnumUserType() {
-		return "string";
+		return "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOENumStringType";
 	}
 
 	@Override
 	public String getDynamicEnumIntegerUserType() {
-		return "int";
+		return "org.eclipse.emf.cdo.server.internal.hibernate.tuplizer.CDOENumIntegerType";
 	}
 
 	@Override
