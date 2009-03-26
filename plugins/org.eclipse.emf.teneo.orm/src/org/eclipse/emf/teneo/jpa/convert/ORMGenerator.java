@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ORMGenerator.java,v 1.1 2009/03/23 19:01:40 mtaal Exp $
+ * $Id: ORMGenerator.java,v 1.2 2009/03/26 01:35:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpa.convert;
@@ -77,14 +77,14 @@ import org.eclipse.emf.teneo.jpa.orm.Version;
  * Converts a PAnnotatedModel to an ORM model.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class ORMGenerator {
 
 	private OrmFactory factory = OrmFactory.eINSTANCE;
 
-	// public void main(String[] args) {
+	// public static void main(String[] args) {
 	// final ORMGenerator ormGenerator = new ORMGenerator();
 	// ormGenerator.testGenerateORM();
 	// }
@@ -402,7 +402,9 @@ public class ORMGenerator {
 			}
 		} else {
 			final PAnnotatedEReference pReference = (PAnnotatedEReference) pFeature;
-			if (pReference.getTransient() != null) {
+			if (pReference.getModelEReference().isContainer()) {
+				// do nothing ignore
+			} else if (pReference.getTransient() != null) {
 				final Transient t = factory.createTransient();
 				t.setName(pReference.getModelEReference().getName());
 				attributes.getTransient().add(t);
