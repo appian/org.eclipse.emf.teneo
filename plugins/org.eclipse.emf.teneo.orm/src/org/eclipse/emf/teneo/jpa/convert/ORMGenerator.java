@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ORMGenerator.java,v 1.2 2009/03/26 01:35:52 mtaal Exp $
+ * $Id: ORMGenerator.java,v 1.3 2009/03/26 04:05:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpa.convert;
@@ -77,7 +77,7 @@ import org.eclipse.emf.teneo.jpa.orm.Version;
  * Converts a PAnnotatedModel to an ORM model.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class ORMGenerator {
@@ -95,10 +95,11 @@ public class ORMGenerator {
 	//
 	// final ORMGenerator converter = new ORMGenerator();
 	// final String orm = converter.generateORM(
-	// new EPackage[] { LibraryPackage.eINSTANCE }, converter
+	// new EPackage[] { DataPackage.eINSTANCE }, converter
 	// .getDefaultPersistenceOptions(props));
-	// writeToFile(orm, "bin/META-INF/orm.xml");
-	// writeToFile(orm, "src/META-INF/orm.xml");
+	// System.err.println(orm);
+	// // writeToFile(orm, "bin/META-INF/orm.xml");
+	// // writeToFile(orm, "src/META-INF/orm.xml");
 	// }
 	//
 	// private void writeToFile(String content, String path) {
