@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.45 2009/03/15 15:08:01 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.46 2009/03/26 01:35:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -214,7 +214,12 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			log.debug("Extends " + extendsEntity);
 		}
 
-		if (dValue != null) {
+		if (dValue != null
+				&& !target.getName().equals(
+						INHERITANCE_STRATEGY_NAMES[InheritanceType.JOINED
+								.getValue()])
+				&& !target.getName().equals(
+						InheritanceType.TABLE_PER_CLASS.getValue())) {
 			target.addAttribute("discriminator-value", dValue.getValue());
 			log.debug("DValue " + dValue.getValue());
 		}
