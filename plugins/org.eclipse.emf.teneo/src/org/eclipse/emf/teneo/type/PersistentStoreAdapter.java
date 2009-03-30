@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.1 2009/03/15 08:09:24 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.2 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -27,17 +27,17 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
- * Keeps a list of PersistentLists by efeature. Is used when a new object is
- * persisted and the OR-layer wants to replace the list implementation.
+ * Keeps a list of PersistentLists by efeature. Is used when a new object is persisted and the
+ * OR-layer wants to replace the list implementation.
  * 
- * This adapter keeps the PersistentList and ensures that any updates in the
- * original list are also done in the persistent store.
+ * This adapter keeps the PersistentList and ensures that any updates in the original list are also
+ * done in the persistent store.
  * 
- * This adapter only operates in case the target object is not read from the
- * persistent store but is persisted there for the first time.
+ * This adapter only operates in case the target object is not read from the persistent store but is
+ * persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -48,8 +48,7 @@ public class PersistentStoreAdapter implements Adapter {
 
 	private Map<EStructuralFeature, Object> storeCollections = new HashMap<EStructuralFeature, Object>();
 
-	public void addStoreCollection(EStructuralFeature eFeature,
-			Object storeCollection) {
+	public void addStoreCollection(EStructuralFeature eFeature, Object storeCollection) {
 		// note that when refresh is called on a persisted object
 		// then this call replaces the current collection
 		storeCollections.put(eFeature, storeCollection);
@@ -71,8 +70,7 @@ public class PersistentStoreAdapter implements Adapter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
+	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
 	public boolean isAdapterForType(Object type) {
 		return true;
@@ -81,13 +79,11 @@ public class PersistentStoreAdapter implements Adapter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common
+	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common
 	 * .notify.Notification)
 	 */
 	public void notifyChanged(Notification notification) {
-		final EStructuralFeature eFeature = (EStructuralFeature) notification
-				.getFeature();
+		final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
 
 		final Object collectionObject = storeCollections.get(eFeature);
 		if (collectionObject == null) {
@@ -95,103 +91,89 @@ public class PersistentStoreAdapter implements Adapter {
 		}
 
 		@SuppressWarnings("unchecked")
-		final List<Object> list = (collectionObject instanceof List ? (List<Object>) collectionObject
-				: null);
-		final Map<Object, Object> map = (collectionObject instanceof Map<?, ?> ? (Map<Object, Object>) collectionObject
-				: null);
+		final List<Object> list = (collectionObject instanceof List ? (List<Object>) collectionObject : null);
+		final Map<Object, Object> map =
+				(collectionObject instanceof Map<?, ?> ? (Map<Object, Object>) collectionObject : null);
 
 		switch (notification.getEventType()) {
-		case Notification.ADD:
-			if (list != null) {
-				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.add(notification.getPosition(), replaceValue(
-							notification.getNewValue(), eFeature));
-				} else {
-					list
-							.add(replaceValue(notification.getNewValue(),
-									eFeature));
+			case Notification.ADD:
+				if (list != null) {
+					if (notification.getPosition() != Notification.NO_INDEX) {
+						list.add(notification.getPosition(), replaceValue(notification.getNewValue(), eFeature));
+					} else {
+						list.add(replaceValue(notification.getNewValue(), eFeature));
+					}
 				}
-			}
-			if (map != null) {
-				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification
-						.getNewValue();
-				map.put(entry.getKey(), entry.getValue());
-			}
-			break;
-		case Notification.ADD_MANY:
-			if (list != null) {
-				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.addAll(notification.getPosition(),
-							replaceValues((List<Object>) notification
-									.getNewValue(), eFeature));
-
-				} else {
-					list.addAll(replaceValues((List<Object>) notification
-							.getNewValue(), eFeature));
-				}
-			}
-			if (map != null) {
-				for (Object o : (List<?>) notification.getNewValue()) {
-					final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+				if (map != null) {
+					final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getNewValue();
 					map.put(entry.getKey(), entry.getValue());
 				}
-			}
-			break;
-		case Notification.REMOVE:
-			if (list != null) {
-				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.remove(notification.getPosition());
-				} else {
-					list.remove(replaceValue(notification.getOldValue(),
-							eFeature));
+				break;
+			case Notification.ADD_MANY:
+				if (list != null) {
+					if (notification.getPosition() != Notification.NO_INDEX) {
+						list.addAll(notification.getPosition(), replaceValues(
+							(List<Object>) notification.getNewValue(), eFeature));
+
+					} else {
+						list.addAll(replaceValues((List<Object>) notification.getNewValue(), eFeature));
+					}
 				}
-			}
-			if (map != null) {
-				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification
-						.getNewValue();
-				map.remove(entry.getKey());
-			}
-			break;
-		case Notification.REMOVE_MANY:
-			if (list != null) {
-				list.removeAll(replaceValues((List<Object>) notification
-						.getOldValue(), eFeature));
-			}
-			if (map != null) {
-				for (Object o : (List<?>) notification.getNewValue()) {
-					final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+				if (map != null) {
+					for (Object o : (List<?>) notification.getNewValue()) {
+						final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+						map.put(entry.getKey(), entry.getValue());
+					}
+				}
+				break;
+			case Notification.REMOVE:
+				if (list != null) {
+					if (notification.getPosition() != Notification.NO_INDEX) {
+						list.remove(notification.getPosition());
+					} else {
+						list.remove(replaceValue(notification.getOldValue(), eFeature));
+					}
+				}
+				if (map != null) {
+					final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getNewValue();
 					map.remove(entry.getKey());
 				}
-			}
-			break;
-		case Notification.MOVE:
-			if (list != null) {
-				final int oldPosition = (Integer) notification.getOldValue();
-				final int newPosition = notification.getPosition();
-				final Object o = list.remove(oldPosition);
-				if (o != notification.getNewValue()) {
-					throw new IllegalStateException(
-							"Persistent list and EList are out of sync");
+				break;
+			case Notification.REMOVE_MANY:
+				if (list != null) {
+					list.removeAll(replaceValues((List<Object>) notification.getOldValue(), eFeature));
 				}
-				list.add(newPosition, o);
-			}
-			break;
-		case Notification.SET:
-			if (list != null) {
-				final int position = notification.getPosition();
-				list.set(position, replaceValue(notification.getNewValue(),
-						eFeature));
-			}
-			break;
+				if (map != null) {
+					for (Object o : (List<?>) notification.getNewValue()) {
+						final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+						map.remove(entry.getKey());
+					}
+				}
+				break;
+			case Notification.MOVE:
+				if (list != null) {
+					final int oldPosition = (Integer) notification.getOldValue();
+					final int newPosition = notification.getPosition();
+					final Object o = list.remove(oldPosition);
+					if (o != notification.getNewValue()) {
+						throw new IllegalStateException("Persistent list and EList are out of sync");
+					}
+					list.add(newPosition, o);
+				}
+				break;
+			case Notification.SET:
+				if (list != null) {
+					final int position = notification.getPosition();
+					list.set(position, replaceValue(notification.getNewValue(), eFeature));
+				}
+				break;
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common
-	 * .notify.Notifier)
+	 * @see org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common .notify.Notifier)
 	 */
 	public void setTarget(Notifier newTarget) {
 		target = newTarget;
@@ -223,8 +205,7 @@ public class PersistentStoreAdapter implements Adapter {
 		return value;
 	}
 
-	protected List<Object> replaceValues(List<Object> values,
-			EStructuralFeature eFeature) {
+	protected List<Object> replaceValues(List<Object> values, EStructuralFeature eFeature) {
 		return values;
 	}
 }

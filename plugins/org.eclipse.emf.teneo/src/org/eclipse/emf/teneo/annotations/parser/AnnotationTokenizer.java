@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnnotationTokenizer.java,v 1.11 2009/03/03 15:33:23 mtaal Exp $
+ * $Id: AnnotationTokenizer.java,v 1.12 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 
 /**
- * Tokenizes a java annotation. The main tokens are: - TypeName - Identifier -
- * Value - Array
+ * Tokenizes a java annotation. The main tokens are: - TypeName - Identifier - Value - Array
  * 
  * For example the following java annotation
  * 
@@ -33,16 +32,13 @@ import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
  * @Parameter(name="table", value = "hilo_table"),
  * @Parameter(name="column", value="the_hilo_column")} )
  * 
- *                           Here GenericGenerator is a TypeName, name and
- *                           strategy are Identifiers and "hilo_table" is a
- *                           value, the array is the part between the {}.
+ *                           Here GenericGenerator is a TypeName, name and strategy are Identifiers
+ *                           and "hilo_table" is a value, the array is the part between the {}.
  * 
- *                           There is a special case where the typename is
- *                           actually a list of values, e.g. SecondaryTables.
- *                           These are treated as a special type of TypeName
- *                           which is translated into a ComplexNode with
- *                           isList=true. This is currently only supported at
- *                           the top level.
+ *                           There is a special case where the typename is actually a list of
+ *                           values, e.g. SecondaryTables. These are treated as a special type of
+ *                           TypeName which is translated into a ComplexNode with isList=true. This
+ *                           is currently only supported at the top level.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -187,120 +183,112 @@ class AnnotationTokenizer {
 			char lChar = data[lCur]; // Grab next character.
 
 			switch (lChar) {
-			case ' ': // Skip leading whitespace!
-			case '\n': // new line
-			case '\r': // Carriage Return.
-			case '\f': // Line Feed.
-			case '\t': {
-				lCur++;
-				continue Loop; // --> Keep on skipping leading whitespace!
-			}
+				case ' ': // Skip leading whitespace!
+				case '\n': // new line
+				case '\r': // Carriage Return.
+				case '\f': // Line Feed.
+				case '\t': {
+					lCur++;
+					continue Loop; // --> Keep on skipping leading whitespace!
+				}
 
-			case 0: // End of buffer.
-			{
-				if (lCur == length) // Guard against embedded nulls in the
-				// Source.
+				case 0: // End of buffer.
 				{
-					// EOBuf may only occur at the first non whitespace char.
+					if (lCur == length) // Guard against embedded nulls in the
+					// Source.
+					{
+						// EOBuf may only occur at the first non whitespace char.
 
-					return T_EOF; // --> End of file.
+						return T_EOF; // --> End of file.
+					}
+					throw new AnnotationParserException("Char is 0 but end not reached " + lCur + " " + length);
 				}
-				throw new AnnotationParserException(
-						"Char is 0 but end not reached " + lCur + " " + length);
-			}
 
-				// TYPENAME
-			case '@': {
-				++lCur; // get rid of the @
-				tokBeg = lCur; // Save starting point of current lexeme.
+					// TYPENAME
+				case '@': {
+					++lCur; // get rid of the @
+					tokBeg = lCur; // Save starting point of current lexeme.
 
-				do {
-					lChar = data[++lCur];
-				} while (lChar == '-' || lChar == '_' || lChar == '/'
-						|| lChar == '@' || ('0' <= lChar && lChar <= '9')
-						|| lChar == ':' || ('a' <= lChar && lChar <= 'z')
-						|| ('A' <= lChar && lChar <= 'Z'));
+					do {
+						lChar = data[++lCur];
+					} while (lChar == '-' || lChar == '_' || lChar == '/' || lChar == '@' ||
+							('0' <= lChar && lChar <= '9') || lChar == ':' || ('a' <= lChar && lChar <= 'z') ||
+							('A' <= lChar && lChar <= 'Z'));
 
-				tokEnd = lCur; // Save endpoint of current lexeme.
+					tokEnd = lCur; // Save endpoint of current lexeme.
 
-				return T_TYPENAME; // --> Identifier.
-			}
-				// VALUE with double quotes
-			case '"': {
-				// after the dollar the identifier part needs to be found
-				tokBeg = lCur; // Save starting point of current lexeme.
-
-				do {
-					lChar = data[++lCur];
-				} while (lChar == ',' || lChar == '-' || lChar == '.'
-						|| lChar == ' ' || lChar == '_' || lChar == '/'
-						|| lChar == '`' || lChar == '@' || lChar == ':'
-						|| lChar == '=' || lChar == '(' || lChar == ')'
-						|| lChar == '{' || lChar == '}' || lChar == '\''
-						|| lChar == '#' || lChar == '&' || lChar == '<'
-						|| lChar == '>' || lChar == '$' || lChar == ';'
-						|| lChar == '%' || lChar == '*' || lChar == '\''
-						|| ('0' <= lChar && lChar <= '9')
-						|| ('a' <= lChar && lChar <= 'z') || lChar == '?'
-						|| ('A' <= lChar && lChar <= 'Z'));
-
-				if (lChar != '"') {
-					final AnnotationParserException e = new AnnotationParserException(
-							"Value not closed with double quote, see the _ for the location "
-									+ getErrorText());
-					tokEnd = lCur + 1; // prevent infinite looping
-					throw e;
+					return T_TYPENAME; // --> Identifier.
 				}
-				tokEnd = lCur + 1;
-				return T_VALUE;
-			}
-			case '(': {
-				tokBeg = lCur;
-				tokEnd = lCur + 1;
-				return T_CONTENTSTART;
-			}
-			case ')': {
-				tokBeg = lCur;
-				tokEnd = lCur + 1;
-				return T_CONTENTEND;
-			}
-			case '{': {
-				tokBeg = lCur;
-				tokEnd = lCur + 1;
-				return T_ARRAYSTART;
-			}
-			case '}': {
-				tokBeg = lCur;
-				tokEnd = lCur + 1;
-				return T_ARRAYEND;
-			}
-			case ',': {
-				tokBeg = lCur;
-				tokEnd = lCur + 1;
-				return T_COMMA;
-			}
-			case '=': {
-				tokBeg = lCur;
-				tokEnd = lCur + 1;
-				return T_IS;
-			}
-			default: // the rest must be identifiers
-			{
-				// after the dollar the identifier part needs to be found
-				tokBeg = lCur; // Save starting point of current lexeme.
+					// VALUE with double quotes
+				case '"': {
+					// after the dollar the identifier part needs to be found
+					tokBeg = lCur; // Save starting point of current lexeme.
 
-				do {
-					lChar = data[++lCur];
-				} while (lChar == '.' || lChar == '-' || lChar == '_'
-						|| lChar == '/' || lChar == '@'
-						|| ('0' <= lChar && lChar <= '9')
-						|| ('a' <= lChar && lChar <= 'z')
-						|| ('A' <= lChar && lChar <= 'Z'));
+					do {
+						lChar = data[++lCur];
+					} while (lChar == ',' || lChar == '-' || lChar == '.' || lChar == ' ' || lChar == '_' ||
+							lChar == '/' || lChar == '`' || lChar == '@' || lChar == ':' || lChar == '=' ||
+							lChar == '(' || lChar == ')' || lChar == '{' || lChar == '}' || lChar == '\'' ||
+							lChar == '#' || lChar == '&' || lChar == '<' || lChar == '>' || lChar == '$' ||
+							lChar == ';' || lChar == '%' || lChar == '*' || lChar == '\'' ||
+							('0' <= lChar && lChar <= '9') || ('a' <= lChar && lChar <= 'z') || lChar == '?' ||
+							('A' <= lChar && lChar <= 'Z'));
 
-				tokEnd = lCur; // Save endpoint of current lexeme.
+					if (lChar != '"') {
+						final AnnotationParserException e =
+								new AnnotationParserException(
+									"Value not closed with double quote, see the _ for the location " + getErrorText());
+						tokEnd = lCur + 1; // prevent infinite looping
+						throw e;
+					}
+					tokEnd = lCur + 1;
+					return T_VALUE;
+				}
+				case '(': {
+					tokBeg = lCur;
+					tokEnd = lCur + 1;
+					return T_CONTENTSTART;
+				}
+				case ')': {
+					tokBeg = lCur;
+					tokEnd = lCur + 1;
+					return T_CONTENTEND;
+				}
+				case '{': {
+					tokBeg = lCur;
+					tokEnd = lCur + 1;
+					return T_ARRAYSTART;
+				}
+				case '}': {
+					tokBeg = lCur;
+					tokEnd = lCur + 1;
+					return T_ARRAYEND;
+				}
+				case ',': {
+					tokBeg = lCur;
+					tokEnd = lCur + 1;
+					return T_COMMA;
+				}
+				case '=': {
+					tokBeg = lCur;
+					tokEnd = lCur + 1;
+					return T_IS;
+				}
+				default: // the rest must be identifiers
+				{
+					// after the dollar the identifier part needs to be found
+					tokBeg = lCur; // Save starting point of current lexeme.
 
-				return T_IDENTIFIER; // --> Identifier.
-			}
+					do {
+						lChar = data[++lCur];
+					} while (lChar == '.' || lChar == '-' || lChar == '_' || lChar == '/' || lChar == '@' ||
+							('0' <= lChar && lChar <= '9') || ('a' <= lChar && lChar <= 'z') ||
+							('A' <= lChar && lChar <= 'Z'));
+
+					tokEnd = lCur; // Save endpoint of current lexeme.
+
+					return T_IDENTIFIER; // --> Identifier.
+				}
 			}
 		}
 	}
@@ -326,9 +314,8 @@ class AnnotationTokenizer {
 		// result.append("Last part: " + new String(data, tokEnd, data.length -
 		// tokEnd - 2) + "\n");
 
-		return new String(data, 0, tokEnd) + "_"
-				+ new String(data, tokEnd, data.length - tokEnd - 2)
-				+ "\nCurrent lexeme: " + getLexeme();
+		return new String(data, 0, tokEnd) + "_" + new String(data, tokEnd, data.length - tokEnd - 2) +
+				"\nCurrent lexeme: " + getLexeme();
 	}
 
 	/**

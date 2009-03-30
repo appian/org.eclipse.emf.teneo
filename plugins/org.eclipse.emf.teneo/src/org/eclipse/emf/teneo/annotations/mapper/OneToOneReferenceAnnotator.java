@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToOneReferenceAnnotator.java,v 1.10 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: OneToOneReferenceAnnotator.java,v 1.11 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -27,39 +27,31 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
-public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
-		ExtensionPoint {
+public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
-	protected static final Log log = LogFactory
-			.getLog(OneToOneReferenceAnnotator.class);
+	protected static final Log log = LogFactory.getLog(OneToOneReferenceAnnotator.class);
 
 	/** Annotate it */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String logStr = aReference.getModelEReference().getName()
-				+ "/"
-				+ aReference.getModelEReference().getEContainingClass()
-						.getName();
+		final String logStr =
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getManyToMany() != null
-				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ logStr
-							+ " should be a OneToOne but "
-							+ "it already has a OneToMany, ManyToMany or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null ||
+				aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToOne but " +
+					"it already has a OneToMany, ManyToMany or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
 
 		OneToOne oto = aReference.getOneToOne();
 		if (oto == null) {
-			log.debug("EReference + " + logStr
-					+ " does not have a onetoone annotation, adding one");
+			log.debug("EReference + " + logStr + " does not have a onetoone annotation, adding one");
 			oto = getFactory().createOneToOne();
 			aReference.setOneToOne(oto);
 			// removed unsettable because it is not used to define optional, it
@@ -72,10 +64,7 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			oto.setOptional(!eReference.isRequired());
 			oto.setEModelElement(eReference);
 		} else {
-			log
-					.debug("EReference + "
-							+ logStr
-							+ " has an onetoone annotation setting defaults if required");
+			log.debug("EReference + " + logStr + " has an onetoone annotation setting defaults if required");
 		}
 
 		if (!oto.isSetFetch()) {
@@ -87,8 +76,7 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames()
-				&& aReference.getForeignKey() == null) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			// See bugzilla 211798: handle a specific case when this is a
 			// bidirectional
 			// association. In that case the foreign key name has to be
@@ -96,10 +84,8 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			// annotated reference from the other side to ensure that the same
 			// foreign key name
 			// is used.
-			if (eReference.getEOpposite() != null
-					&& !eReference.getEOpposite().isTransient()) {
-				final PAnnotatedEReference aOpposite = aReference.getPaModel()
-						.getPAnnotated(eReference.getEOpposite());
+			if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
+				final PAnnotatedEReference aOpposite = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
 				if (aOpposite != null && aOpposite.getTransient() == null) {
 					// don't do anything as otherwise hibernate will create two
 					// fk's with the same name
@@ -121,8 +107,8 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 
 		setCascade(oto.getCascade(), eReference.isContainment());
 
-		if (getPersistenceOptions().isMapEmbeddableAsEmbedded()
-				&& aReference.getAReferenceType().getEmbeddable() != null) {
+		if (getPersistenceOptions().isMapEmbeddableAsEmbedded() &&
+				aReference.getAReferenceType().getEmbeddable() != null) {
 			aReference.setEmbedded(getFactory().createEmbedded());
 		}
 

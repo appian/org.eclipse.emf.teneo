@@ -12,17 +12,16 @@
  *
  * </copyright>
  *
- * $Id: ExtensionManagerFactory.java,v 1.3 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: ExtensionManagerFactory.java,v 1.4 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
 /**
- * Factory which creates ExtensionManagers. A customer factory can be set by
- * calling setInstance().
+ * Factory which creates ExtensionManagers. A customer factory can be set by calling setInstance().
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ExtensionManagerFactory {
 

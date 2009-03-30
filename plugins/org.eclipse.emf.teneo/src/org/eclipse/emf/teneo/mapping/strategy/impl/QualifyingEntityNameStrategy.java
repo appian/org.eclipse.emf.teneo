@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: QualifyingEntityNameStrategy.java,v 1.6 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: QualifyingEntityNameStrategy.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -27,12 +27,11 @@ import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
- * This implementation prefixes the eclass names with the epackage nsprefix.
- * This makes it possible to handle eclass name clashes between different
- * packages.
+ * This implementation prefixes the eclass names with the epackage nsprefix. This makes it possible
+ * to handle eclass name clashes between different packages.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 
@@ -70,8 +69,7 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 		final int index = eClassStr.lastIndexOf(".");
 		if (index == -1) {
 			throw new IllegalArgumentException(
-					"Illegal eClassStr for this resolver (no dot separating the epackage nsprefix and name): "
-							+ eClassStr);
+				"Illegal eClassStr for this resolver (no dot separating the epackage nsprefix and name): " + eClassStr);
 		}
 		final String nsPrefix = eClassStr.substring(0, index);
 		final String eClassName = eClassStr.substring(index + 1);
@@ -80,8 +78,7 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 		EClass eClass = null;
 		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
 			final EPackage ePackage = aPackage.getModelEPackage();
-			if (ePackage.getNsPrefix().compareTo(nsPrefix) != 0
-					&& ePackage.getName().compareTo(nsPrefix) != 0) {
+			if (ePackage.getNsPrefix().compareTo(nsPrefix) != 0 && ePackage.getName().compareTo(nsPrefix) != 0) {
 				continue;
 			}
 			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
@@ -90,21 +87,16 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
 						throw new IllegalArgumentException(
-								"There is more than one EClass with the same identifying String ("
-										+ eClassStr
-										+ " in EPackage "
-										+ eClass.getEPackage().getName()
-										+ " and "
-										+ ePackage.getName()
-										+ ". A different EClassResolver should be used.");
+							"There is more than one EClass with the same identifying String (" + eClassStr +
+									" in EPackage " + eClass.getEPackage().getName() + " and " + ePackage.getName() +
+									". A different EClassResolver should be used.");
 					}
 					eClass = checkEClass;
 				}
 			}
 		}
 		if (eClass == null) {
-			throw new IllegalArgumentException("No EClass found using "
-					+ eClassStr);
+			throw new IllegalArgumentException("No EClass found using " + eClassStr);
 		}
 		return eClass;
 	}
@@ -127,8 +119,7 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
+	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
 	 * (org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Constants.java,v 1.8 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: Constants.java,v 1.9 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -25,25 +25,21 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  * AnnotationUtil used when reading a property file is also used by resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class Constants {
 	/** StructuralFeatures for TEXT content (part of a mixed complex type) */
-	public static final EStructuralFeature TEXT = XMLTypePackage.eINSTANCE
-			.getXMLTypeDocumentRoot_Text();
+	public static final EStructuralFeature TEXT = XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text();
 
 	/** StructuralFeatures for CDATA content (part of a mixed complex type) */
-	public static final EStructuralFeature CDATA = XMLTypePackage.eINSTANCE
-			.getXMLTypeDocumentRoot_CDATA();
+	public static final EStructuralFeature CDATA = XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_CDATA();
 
 	/** StructuralFeatures for COMMENT content (part of a mixed complex type) */
-	public static final EStructuralFeature COMMENT = XMLTypePackage.eINSTANCE
-			.getXMLTypeDocumentRoot_Comment();
+	public static final EStructuralFeature COMMENT = XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Comment();
 
 	/**
-	 * The name under which this connection (PersistenceManagerFactory) is
-	 * registered
+	 * The name under which this connection (PersistenceManagerFactory) is registered
 	 */
 	public static final String PROP_NAME = "name";
 
@@ -54,8 +50,8 @@ public class Constants {
 	public static final String PROP_EDITOR_ID = "editorid";
 
 	/**
-	 * The NS URI of the epackage handled by this database (can be more than
-	 * one, then should be a comma delimited list)
+	 * The NS URI of the epackage handled by this database (can be more than one, then should be a
+	 * comma delimited list)
 	 */
 	public static final String PROP_EPACKAGE_NSURI = "nsuri";
 

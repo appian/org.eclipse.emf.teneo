@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: MixedFeatureMapEntry.java,v 1.6 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: MixedFeatureMapEntry.java,v 1.7 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -21,12 +21,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.Constants;
 
 /**
- * Is a specific EMF feature map for handling mixed content. Mixed content is
- * content which consists of normal nodes and other content. The other content
- * supported here is text, cdata and comment.
+ * Is a specific EMF feature map for handling mixed content. Mixed content is content which consists
+ * of normal nodes and other content. The other content supported here is text, cdata and comment.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
@@ -75,8 +74,7 @@ public abstract class MixedFeatureMapEntry extends FeatureMapEntry {
 	/** Returns true if the feature is a TEXT, CDATA or COMMENT */
 	protected boolean isMixedFeature() {
 		final EStructuralFeature structuralFeature = getEStructuralFeature();
-		return structuralFeature == Constants.TEXT
-				|| structuralFeature == Constants.CDATA
-				|| structuralFeature == Constants.COMMENT;
+		return structuralFeature == Constants.TEXT || structuralFeature == Constants.CDATA ||
+				structuralFeature == Constants.COMMENT;
 	}
 }

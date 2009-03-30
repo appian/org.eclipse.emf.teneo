@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ReferenceValueNode.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ReferenceValueNode.java,v 1.3 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -50,9 +50,7 @@ class ReferenceValueNode extends NamedParserNode {
 	Object convert(EClassResolver ecr) {
 		log.debug("Converting reference node " + getName());
 		if (!(value instanceof ComplexNode)) {
-			throw new AnnotationParserException(
-					"A reference annotation value may only "
-							+ "contain a typename");
+			throw new AnnotationParserException("A reference annotation value may only " + "contain a typename");
 		}
 		final ComplexNode cn = (ComplexNode) value;
 		return cn.convert(ecr);

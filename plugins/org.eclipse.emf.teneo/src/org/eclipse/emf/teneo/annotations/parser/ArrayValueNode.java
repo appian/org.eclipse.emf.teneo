@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ArrayValueNode.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ArrayValueNode.java,v 1.3 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -57,8 +57,7 @@ class ArrayValueNode extends NamedParserNode {
 				final ArrayValueNode avn = (ArrayValueNode) ob;
 				result.addAll((List<Object>) avn.convert(ecr));
 			} else {
-				throw new AnnotationParserException("Type "
-						+ ob.getClass().getName() + " not supported here");
+				throw new AnnotationParserException("Type " + ob.getClass().getName() + " not supported here");
 			}
 		}
 		return result;

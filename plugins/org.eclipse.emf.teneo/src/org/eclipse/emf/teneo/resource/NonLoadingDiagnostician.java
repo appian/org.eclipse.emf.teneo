@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NonLoadingDiagnostician.java,v 1.6 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: NonLoadingDiagnostician.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -26,11 +26,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
 /**
- * Extends the default EMF Diagnostican to prevent the validation to load
- * unloaded lists.
+ * Extends the default EMF Diagnostican to prevent the validation to load unloaded lists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class NonLoadingDiagnostician extends Diagnostician {
@@ -40,10 +39,8 @@ public class NonLoadingDiagnostician extends Diagnostician {
 
 	/** Overriden to prevent loading of complete content */
 	@Override
-	protected boolean doValidateContents(EObject eObject,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		List<EObject> eContents = NonLoadingEContentsEList
-				.create(eObject, true);
+	protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		List<EObject> eContents = NonLoadingEContentsEList.create(eObject, true);
 		if (!eContents.isEmpty()) {
 			Iterator<EObject> i = eContents.iterator();
 			EObject child = i.next();

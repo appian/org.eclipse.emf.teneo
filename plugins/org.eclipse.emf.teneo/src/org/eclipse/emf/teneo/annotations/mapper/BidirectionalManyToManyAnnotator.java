@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BidirectionalManyToManyAnnotator.java,v 1.9 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: BidirectionalManyToManyAnnotator.java,v 1.10 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,31 +30,23 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a bidirectional many-to-many ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
-public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
-		implements ExtensionPoint {
+public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
-	protected static final Log log = LogFactory
-			.getLog(BidirectionalManyToManyAnnotator.class);
+	protected static final Log log = LogFactory.getLog(BidirectionalManyToManyAnnotator.class);
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String featureLogStr = aReference.getModelEReference().getName()
-				+ "/"
-				+ aReference.getModelEReference().getEContainingClass()
-						.getName();
+		final String featureLogStr =
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getOneToOne() != null
-				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ featureLogStr
-							+ " should be a ManyToMany but "
-							+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
+					"it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
@@ -64,19 +56,15 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		ManyToMany mtm = aReference.getManyToMany();
 		final boolean mtmWasSet = mtm != null; // mtm was set manually
 		if (mtm == null) {
-			log.debug("Adding manytomany annotations to ereference: "
-					+ featureLogStr);
+			log.debug("Adding manytomany annotations to ereference: " + featureLogStr);
 			mtm = getFactory().createManyToMany();
 			aReference.setManyToMany(mtm);
 			mtm.setEModelElement(eReference);
 		} else {
-			log
-					.debug("ManyToMany present check if default information should be added");
+			log.debug("ManyToMany present check if default information should be added");
 		}
 
-		if (eReference.isContainment()
-				|| getPersistenceOptions()
-						.isSetDefaultCascadeOnNonContainment()) {
+		if (eReference.isContainment() || getPersistenceOptions().isSetDefaultCascadeOnNonContainment()) {
 			setCascade(mtm.getCascade(), eReference.isContainment());
 		}
 
@@ -84,8 +72,7 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 			mtm.setTargetEntity(getEntityName(eReference.getEReferenceType()));
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames()
-				&& aReference.getForeignKey() == null) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			aReference.setForeignKey(createFK(aReference));
 		}
 
@@ -101,12 +88,9 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		// also check if the other side has a (manual) manytomany with mappedby
 		// set
 		// bugzilla: 164808
-		final PAnnotatedEReference otherPA = aReference.getPaModel()
-				.getPAnnotated(eOpposite);
-		if (mtm.getMappedBy() == null
-				&& setMappedBy(eReference)
-				&& (otherPA.getManyToMany() == null || otherPA.getManyToMany()
-						.getMappedBy() == null)) {
+		final PAnnotatedEReference otherPA = aReference.getPaModel().getPAnnotated(eOpposite);
+		if (mtm.getMappedBy() == null && setMappedBy(eReference) &&
+				(otherPA.getManyToMany() == null || otherPA.getManyToMany().getMappedBy() == null)) {
 			mtm.setMappedBy(eOpposite.getName());
 		}
 
@@ -121,11 +105,9 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		// disabled because indexed = false now for mtm,
 		// to overcome this the user has to explicitly set a mtm annotation.
 		if (!mtmWasSet) {
-			log
-					.debug("Setting indexed and unique from ereference.isOrdered/isUnique "
-							+ "because mtm was not set manually!");
-			mtm.setIndexed(!getPersistenceOptions().alwaysMapListAsBag()
-					&& eReference.isOrdered());
+			log.debug("Setting indexed and unique from ereference.isOrdered/isUnique "
+					+ "because mtm was not set manually!");
+			mtm.setIndexed(!getPersistenceOptions().alwaysMapListAsBag() && eReference.isOrdered());
 		}
 
 		// NOTE that the ejb3 spec states that the jointable should be the
@@ -137,20 +119,15 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		// if the inheritance strategy is single_table.
 		// now possibility to use a different naming strategy
 		if (joinTable.getName() == null) {
-			joinTable
-					.setName(getSqlNameStrategy().getJoinTableName(aReference));
+			joinTable.setName(getSqlNameStrategy().getJoinTableName(aReference));
 		}
 		if (joinTable.getJoinColumns().size() == 0) {
-			final List<String> names = getSqlNameStrategy()
-					.getJoinTableJoinColumns(aReference, false);
-			joinTable.getJoinColumns().addAll(
-					getJoinColumns(names, false, true, mtm));
+			final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, false);
+			joinTable.getJoinColumns().addAll(getJoinColumns(names, false, true, mtm));
 		}
 		if (joinTable.getInverseJoinColumns().size() == 0) {
-			final List<String> names = getSqlNameStrategy()
-					.getJoinTableJoinColumns(aReference, true);
-			joinTable.getInverseJoinColumns().addAll(
-					getJoinColumns(names, false, true, mtm));
+			final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, true);
+			joinTable.getInverseJoinColumns().addAll(getJoinColumns(names, false, true, mtm));
 		}
 	}
 }

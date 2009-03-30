@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AnnotationGenerator.java,v 1.6 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: AnnotationGenerator.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -41,19 +41,16 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 
 /**
- * Adds default annotations to an existing pamodel. Default annotations are
- * added on the basis of the emf type information. It sets the default
- * annotations according to the ejb3 spec.
+ * Adds default annotations to an existing pamodel. Default annotations are added on the basis of
+ * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
-public class AnnotationGenerator implements ExtensionPoint,
-		ExtensionManagerAware {
+public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAware {
 
 	// The logger
-	protected static final Log log = LogFactory
-			.getLog(AnnotationGenerator.class);
+	protected static final Log log = LogFactory.getLog(AnnotationGenerator.class);
 
 	protected PersistenceOptions persistenceOptions;
 
@@ -71,12 +68,10 @@ public class AnnotationGenerator implements ExtensionPoint,
 	private EDataTypeAnnotator eDataTypeAnnotator;
 
 	/**
-	 * Adds default annotations to a pamodel, the method is synchronized because
-	 * globals are set. Not necessary because this class should always be used
-	 * single threaded but okay.
+	 * Adds default annotations to a pamodel, the method is synchronized because globals are set.
+	 * Not necessary because this class should always be used single threaded but okay.
 	 */
-	public synchronized void map(PAnnotatedModel annotatedModel,
-			PersistenceOptions po) {
+	public synchronized void map(PAnnotatedModel annotatedModel, PersistenceOptions po) {
 
 		persistenceOptions = po;
 
@@ -89,21 +84,17 @@ public class AnnotationGenerator implements ExtensionPoint,
 		}
 
 		final EModelResolver eModelResolver = EModelResolver.instance();
-		log
-				.debug("Registering epackages in model resolver, modelresolver instance is: "
-						+ eModelResolver.getClass().getName());
+		log.debug("Registering epackages in model resolver, modelresolver instance is: " +
+				eModelResolver.getClass().getName());
 		eModelResolver.register(epacks);
 
 		// if force fully classify typename then use the EModelResolver/ERuntime
 		if (persistenceOptions.isAlsoMapAsClass()) {
-			log
-					.debug("Class names are to be fully classified, registering all the "
-							+ "epackages");
+			log.debug("Class names are to be fully classified, registering all the " + "epackages");
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
-					aclass.setOnlyMapAsEntity(!eModelResolver
-							.hasImplementationClass(aclass.getModelEClass()));
+					aclass.setOnlyMapAsEntity(!eModelResolver.hasImplementationClass(aclass.getModelEClass()));
 				}
 			}
 		}
@@ -112,22 +103,15 @@ public class AnnotationGenerator implements ExtensionPoint,
 		// eSuperTypes
 		// see bugzilla: https://bugs.eclipse.org/bugs/show_bug.cgi?id=205790
 		for (EPackage epack : epacks) {
-			if (epack.getNsURI() != null
-					&& epack.getNsURI().compareTo(
-							EcorePackage.eINSTANCE.getNsURI()) == 0) {
+			if (epack.getNsURI() != null && epack.getNsURI().compareTo(EcorePackage.eINSTANCE.getNsURI()) == 0) {
 				// now find the
 				for (EClassifier eClassifier : epack.getEClassifiers()) {
-					if (eClassifier.eClass() == EcorePackage.eINSTANCE
-							.getEClass()) {
+					if (eClassifier.eClass() == EcorePackage.eINSTANCE.getEClass()) {
 						final EClass eClass = (EClass) eClassifier;
-						for (EStructuralFeature eFeature : eClass
-								.getEAllStructuralFeatures()) {
+						for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
 							if (eFeature.getName().compareTo("eSuperTypes") == 0) {
 								if (eFeature.getEAnnotation("teneo.jpa") == null) {
-									EcoreUtil
-											.setAnnotation(eFeature,
-													"teneo.jpa", "value",
-													"@ManyToMany");
+									EcoreUtil.setAnnotation(eFeature, "teneo.jpa", "value", "@ManyToMany");
 									break;
 								}
 							}
@@ -142,11 +126,9 @@ public class AnnotationGenerator implements ExtensionPoint,
 
 		// initialize the strategies so they have the correct information
 		// TODO this should be handled in aware like interfaces
-		final EntityNameStrategy entityNameStrategy = extensionManager
-				.getExtension(EntityNameStrategy.class);
+		final EntityNameStrategy entityNameStrategy = extensionManager.getExtension(EntityNameStrategy.class);
 		entityNameStrategy.setPaModel(annotatedModel); // is maybe already set?
-		final SQLNameStrategy sqlNameStrategy = extensionManager
-				.getExtension(SQLNameStrategy.class);
+		final SQLNameStrategy sqlNameStrategy = extensionManager.getExtension(SQLNameStrategy.class);
 		sqlNameStrategy.setPersistenceOptions(po);
 
 		setAnnotators();
@@ -174,12 +156,10 @@ public class AnnotationGenerator implements ExtensionPoint,
 
 	/** Maps one epackage */
 	protected void processPackage(PAnnotatedEPackage aPackage) {
-		log.debug(">>>> Adding default annotations for EPackage "
-				+ aPackage.getModelElement().getName());
+		log.debug(">>>> Adding default annotations for EPackage " + aPackage.getModelElement().getName());
 
 		log.debug("Processing EDataTypes");
-		for (PAnnotatedEDataType annotatedEDataType : aPackage
-				.getPaEDataTypes()) {
+		for (PAnnotatedEDataType annotatedEDataType : aPackage.getPaEDataTypes()) {
 			eDataTypeAnnotator.annotate(annotatedEDataType);
 		}
 

@@ -12,17 +12,16 @@
  *
  * </copyright>
  *
- * $Id: PersistableDelegateList.java,v 1.7 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: PersistableDelegateList.java,v 1.8 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
 
 /**
- * A tag which signals that a list is either a persistable map, featuremap or
- * elist.
+ * A tag which signals that a list is either a persistable map, featuremap or elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public interface PersistableDelegateList<E> {

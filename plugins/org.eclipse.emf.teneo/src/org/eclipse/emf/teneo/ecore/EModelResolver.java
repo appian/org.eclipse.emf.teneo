@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EModelResolver.java,v 1.8 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: EModelResolver.java,v 1.9 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.ecore;
@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
 
 /**
- * The EModelResolver allows pluggable access to the underlying ecore model. It
- * maps from eclass/efeature names to java member names or to real eclass names.
- * This default implementation only returns null.
+ * The EModelResolver allows pluggable access to the underlying ecore model. It maps from
+ * eclass/efeature names to java member names or to real eclass names. This default implementation
+ * only returns null.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
@@ -53,8 +53,8 @@ public abstract class EModelResolver {
 	public abstract void clear();
 
 	/**
-	 * @return the EClass for a java class, if not found then the superclass of
-	 *         the javaclass is tried
+	 * @return the EClass for a java class, if not found then the superclass of the javaclass is
+	 *         tried
 	 */
 	public abstract EClass getEClass(Class<?> javaClass);
 
@@ -86,15 +86,14 @@ public abstract class EModelResolver {
 	public Object create(EPackage epackage, String eclassName) {
 		final EClass eclass = (EClass) epackage.getEClassifier(eclassName);
 		if (eclass == null) {
-			throw new IllegalArgumentException("No EClass " + eclassName
-					+ " found in epackage " + epackage.getName());
+			throw new IllegalArgumentException("No EClass " + eclassName + " found in epackage " + epackage.getName());
 		}
 		return create(eclass);
 	}
 
 	/**
-	 * Returns a java instance of an EClass defined by name, all epackages are
-	 * searched for this eclass.
+	 * Returns a java instance of an EClass defined by name, all epackages are searched for this
+	 * eclass.
 	 */
 	public Object create(String eclassName) {
 		for (EPackage epackage : getEPackages()) {
@@ -103,7 +102,6 @@ public abstract class EModelResolver {
 				return create(eclass);
 			}
 		}
-		throw new IllegalArgumentException("No EClass " + eclassName
-				+ " found.");
+		throw new IllegalArgumentException("No EClass " + eclassName + " found.");
 	}
 }

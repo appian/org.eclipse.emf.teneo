@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: MapPersistableEMap.java,v 1.5 2009/03/16 00:09:01 mtaal Exp $
+ * $Id: MapPersistableEMap.java,v 1.6 2009/03/30 07:53:04 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -31,17 +31,16 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
- * A persistable emap which is mapped as a real map to the db. It differs from
- * its parent class (PersistableEMap) because that class assumes that the EMap
- * is mapped to the db as a list.
+ * A persistable emap which is mapped as a real map to the db. It differs from its parent class
+ * (PersistableEMap) because that class assumes that the EMap is mapped to the db as a list.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
-public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
-		implements PersistableDelegateList<BasicEMap.Entry<K, V>> {
+public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> implements
+		PersistableDelegateList<BasicEMap.Entry<K, V>> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,9 +48,9 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 	private static Log log = LogFactory.getLog(MapPersistableEMap.class);
 
 	/**
-	 * The persisted map handled by the orm layer. This delegate is the map we
-	 * receive from the database provider. It is kept all the time, any changes
-	 * to the PersistableEMap are replicated to the ormMap.
+	 * The persisted map handled by the orm layer. This delegate is the map we receive from the
+	 * database provider. It is kept all the time, any changes to the PersistableEMap are replicated
+	 * to the ormMap.
 	 * 
 	 * This field will be null unless there is a map waiting to be lazy loaded
 	 */
@@ -61,35 +60,31 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 	private final boolean mapValueIsEAttribute;
 
 	/** Not supported constructor */
-	public MapPersistableEMap(EClass entryEClass,
-			EList<BasicEMap.Entry<K, V>> delegateEList) {
+	public MapPersistableEMap(EClass entryEClass, EList<BasicEMap.Entry<K, V>> delegateEList) {
 		super(entryEClass, delegateEList);
-		throw new UnsupportedOperationException(
-				"Explicitly passing delegate list is not supported!");
+		throw new UnsupportedOperationException("Explicitly passing delegate list is not supported!");
 	}
 
 	/** Constructor */
-	public MapPersistableEMap(EClass entryEClass, Class<?> entryClass,
-			InternalEObject owner, EStructuralFeature feature) {
+	public MapPersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, EStructuralFeature feature) {
 		// invoke constructor with no lazyLoadMapDelegate
 		this(entryEClass, owner, feature, (java.util.Map<K, V>) null);
 	}
 
 	/**
-	 * This version will set the lazyLoadMapDelegate if it is set. This version
-	 * will prepare lazy lading if available
+	 * This version will set the lazyLoadMapDelegate if it is set. This version will prepare lazy
+	 * lading if available
 	 * 
 	 * @param entryEClass
 	 * @param entryClass
 	 * @param owner
 	 * @param featureID
 	 * @param lazyLoadDelegate
-	 *            a java.util.map that is a proxy collection taht will be used
-	 *            when lazy load is invoked. if it is null, then the map is
-	 *            considered as loaded
+	 *            a java.util.map that is a proxy collection taht will be used when lazy load is
+	 *            invoked. if it is null, then the map is considered as loaded
 	 */
-	public MapPersistableEMap(EClass entryEClass, InternalEObject owner,
-			EStructuralFeature feature, Map<K, V> ormMapDelegate) {
+	public MapPersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
+			Map<K, V> ormMapDelegate) {
 		super(entryEClass, owner, feature, new ArrayList<Entry<K, V>>());
 
 		setORMMapDelegate(ormMapDelegate);
@@ -105,26 +100,23 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 			size();
 		}
 
-		log.debug("Created persistable emap for entry eclass "
-				+ entryEClass.getName());
+		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
 		mapValueIsEAttribute = entryEClass.getEStructuralFeature("value") instanceof EAttribute;
 	}
 
 	/**
-	 * This version will create the lsit completely, there is no lazy lading
-	 * from this constructor
+	 * This version will create the lsit completely, there is no lazy lading from this constructor
 	 * 
 	 * @param entryEClass
 	 * @param entryClass
 	 * @param owner
 	 * @param featureID
 	 * @param ormMapDelegate
-	 *            a java.util.map that is a proxy collection taht will be used
-	 *            when lazy load is invoked. if it is null, then the map is
-	 *            considered as loaded
+	 *            a java.util.map that is a proxy collection taht will be used when lazy load is
+	 *            invoked. if it is null, then the map is considered as loaded
 	 */
-	public MapPersistableEMap(EClass entryEClass, InternalEObject owner,
-			EStructuralFeature feature, List<BasicEMap.Entry<K, V>> list) {
+	public MapPersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
+			List<BasicEMap.Entry<K, V>> list) {
 		super(entryEClass, owner, feature, list);
 		this.setORMMapDelegate(null);
 
@@ -134,39 +126,35 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 		// sets the size of this map
 		size();
 
-		log.debug("Created persistable emap for entry eclass "
-				+ entryEClass.getName());
+		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
 
 		mapValueIsEAttribute = entryEClass.getEStructuralFeature("value") instanceof EAttribute;
 	}
 
 	/** Does nothing here */
 	@Override
-	protected void setDelegateEList(InternalEObject owner,
-			EStructuralFeature feature,
+	protected void setDelegateEList(InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> delegateORMList) {
 	}
 
 	/** Needs to be implemented by concrete subclass, does nothing here */
 	@Override
-	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(
-			InternalEObject owner, EStructuralFeature feature,
+	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> delegateORMList) {
-		throw new UnsupportedOperationException(
-				"This method should not be called!");
+		throw new UnsupportedOperationException("This method should not be called!");
 	}
 
 	/**
-	 * Override this method to determine if the ormmapdelegate colelction has
-	 * been eagerly loaded or not
+	 * Override this method to determine if the ormmapdelegate colelction has been eagerly loaded or
+	 * not
 	 * 
 	 * @return
 	 */
 	protected abstract boolean isORMMapDelegateLoaded();
 
 	/**
-	 * this method will check the status of the lazy loaded delegate and if ti
-	 * is eager lodaed, perform our loading too.
+	 * this method will check the status of the lazy loaded delegate and if ti is eager lodaed,
+	 * perform our loading too.
 	 */
 	protected void setLoaded() {
 		// now, we do a check to see if the lazyLoadedDelegate was eager loaded.
@@ -230,8 +218,7 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 	 * @see org.eclipse.emf.common.util.BasicEMap#didAdd(org.eclipse.emf.common.util.BasicEMap.Entry)
 	 */
 	@Override
-	protected void didAdd(
-			org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry) {
+	protected void didAdd(org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry) {
 		if (getORMMapDelegate() != null) {
 			getORMMapDelegate().put(entry.getKey(), entry.getValue());
 		}
@@ -245,8 +232,7 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 	 *      java.lang.Object)
 	 */
 	@Override
-	protected void didModify(
-			org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry, V oldValue) {
+	protected void didModify(org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry, V oldValue) {
 		if (getORMMapDelegate() != null) {
 			getORMMapDelegate().put(entry.getKey(), entry.getValue());
 		}
@@ -259,8 +245,7 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V>
 	 * @see org.eclipse.emf.common.util.BasicEMap#didRemove(org.eclipse.emf.common.util.BasicEMap.Entry)
 	 */
 	@Override
-	protected void didRemove(
-			org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry) {
+	protected void didRemove(org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry) {
 		if (getORMMapDelegate() != null) {
 			getORMMapDelegate().remove(entry.getKey());
 		}

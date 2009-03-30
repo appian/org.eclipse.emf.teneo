@@ -15,26 +15,23 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Provides files to the mapping as well as to the runtime layers. It can be
- * customized with an own implementation by replacing the class in the
- * ExtensionManager.
+ * Provides files to the mapping as well as to the runtime layers. It can be customized with an own
+ * implementation by replacing the class in the ExtensionManager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class PersistenceFileProvider implements ExtensionPoint {
 
 	/** The logger */
-	protected static final Log log = LogFactory
-			.getLog(PersistenceFileProvider.class);
+	protected static final Log log = LogFactory.getLog(PersistenceFileProvider.class);
 
 	/**
-	 * Returns an InputStream with the file content, note if the file does not
-	 * exist then null may be returned. This implementation searches for the
-	 * file in the classpath using the path parameters.
+	 * Returns an InputStream with the file content, note if the file does not exist then null may
+	 * be returned. This implementation searches for the file in the classpath using the path
+	 * parameters.
 	 * 
-	 * Custom implementations of this class may use any other method to find the
-	 * file.
+	 * Custom implementations of this class may use any other method to find the file.
 	 * 
 	 * @param clz
 	 *            the class to use when reading the file through a classloader

@@ -12,18 +12,18 @@
  *
  * </copyright>
  *
- * $Id: ExtensionPoint.java,v 1.3 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: ExtensionPoint.java,v 1.4 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
 /**
- * Is a marker interface to mark a class to be replacable by a user extension.
- * The classname or interface implementing this interface is also the name of
- * the ExtensionPoint (the value of the point attribute in the extension).
+ * Is a marker interface to mark a class to be replacable by a user extension. The classname or
+ * interface implementing this interface is also the name of the ExtensionPoint (the value of the
+ * point attribute in the extension).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public interface ExtensionPoint {

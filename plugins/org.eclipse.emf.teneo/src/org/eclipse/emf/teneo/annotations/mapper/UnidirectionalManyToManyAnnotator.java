@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: UnidirectionalManyToManyAnnotator.java,v 1.8 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: UnidirectionalManyToManyAnnotator.java,v 1.9 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,31 +30,23 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a many-to-many which is handled from one side.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
-public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
-		implements ExtensionPoint {
+public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
 
 	// The logger
-	protected static final Log log = LogFactory
-			.getLog(UnidirectionalManyToManyAnnotator.class);
+	protected static final Log log = LogFactory.getLog(UnidirectionalManyToManyAnnotator.class);
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String featureLogStr = aReference.getModelEReference().getName()
-				+ "/"
-				+ aReference.getModelEReference().getEContainingClass()
-						.getName();
+		final String featureLogStr =
+				aReference.getModelEReference().getName() + "/" +
+						aReference.getModelEReference().getEContainingClass().getName();
 
-		if (aReference.getOneToMany() != null
-				|| aReference.getOneToOne() != null
-				|| aReference.getManyToOne() != null) {
-			throw new StoreMappingException(
-					"The feature/eclass "
-							+ featureLogStr
-							+ " should be a ManyToMany but "
-							+ "it already has a OneToMany, OneToOne or ManyToOne annotation");
+		if (aReference.getOneToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
+			throw new StoreMappingException("The feature/eclass " + featureLogStr + " should be a ManyToMany but " +
+					"it already has a OneToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
@@ -62,13 +54,10 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		// note that mtm is always present because this case can not be
 		// discovered by Teneo
 		final ManyToMany mtm = aReference.getManyToMany();
-		log
-				.debug("ManyToMany present check if default information should be added");
+		log.debug("ManyToMany present check if default information should be added");
 		mtm.setEModelElement(eReference);
 
-		if (eReference.isContainment()
-				|| getPersistenceOptions()
-						.isSetDefaultCascadeOnNonContainment()) {
+		if (eReference.isContainment() || getPersistenceOptions().isSetDefaultCascadeOnNonContainment()) {
 			setCascade(mtm.getCascade(), eReference.isContainment());
 		}
 
@@ -84,8 +73,7 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		}
 		joinTable.setEModelElement(eReference);
 
-		if (getPersistenceOptions().isSetForeignKeyNames()
-				&& aReference.getForeignKey() == null) {
+		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			aReference.setForeignKey(createFK(aReference));
 		}
 
@@ -93,14 +81,11 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator
 		// the name of the targetentity
 		// because that's the one which is known here
 		if (joinTable.getName() == null) {
-			joinTable
-					.setName(getSqlNameStrategy().getJoinTableName(aReference));
+			joinTable.setName(getSqlNameStrategy().getJoinTableName(aReference));
 		}
 		if (joinTable.getJoinColumns() == null) {
-			final List<String> names = getSqlNameStrategy()
-					.getJoinTableJoinColumns(aReference, false);
-			joinTable.getJoinColumns().addAll(
-					getJoinColumns(names, false, true, mtm));
+			final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, false);
+			joinTable.getJoinColumns().addAll(getJoinColumns(names, false, true, mtm));
 		}
 	}
 }

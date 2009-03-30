@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NonLoadingEContentsEList.java,v 1.6 2009/03/16 08:33:26 mtaal Exp $
+ * $Id: NonLoadingEContentsEList.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -35,14 +35,13 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Is a contents elist which will only iterate over loaded efeatures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
 
 	/** Creates an instance of a NonResolvingEContentsEList for the EObject */
-	public static EContentsEList<EObject> create(EObject eObject,
-			boolean forValidation) {
+	public static EContentsEList<EObject> create(EObject eObject, boolean forValidation) {
 		final ArrayList<EStructuralFeature> result = new ArrayList<EStructuralFeature>();
 		for (EReference eref : eObject.eClass().getEAllReferences()) {
 			if (!eref.isContainment()) {
@@ -56,25 +55,20 @@ public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
 				// way
 				if (StoreUtil.isEStoreList(list)) {
 					final EStore eStore = ((InternalEObject) eObject).eStore();
-					list = (List<?>) eStore.get((InternalEObject) eObject,
-							eref, EStore.NO_INDEX);
+					list = (List<?>) eStore.get((InternalEObject) eObject, eref, EStore.NO_INDEX);
 				}
 
-				if ((list instanceof PersistableEList)
-						&& ((PersistableEList<?>) list).isLoaded()) {
+				if ((list instanceof PersistableEList) && ((PersistableEList<?>) list).isLoaded()) {
 					result.add(eref);
-				} else if ((list instanceof PersistableEMap)
-						&& ((PersistableEMap<?, ?>) list).isLoaded()) {
+				} else if ((list instanceof PersistableEMap) && ((PersistableEMap<?, ?>) list).isLoaded()) {
 					result.add(eref);
-				} else if ((list instanceof PersistableFeatureMap)
-						&& ((PersistableFeatureMap) list).isLoaded()) {
+				} else if ((list instanceof PersistableFeatureMap) && ((PersistableFeatureMap) list).isLoaded()) {
 					result.add(eref);
 				} else if (eref.getLowerBound() > 0 && forValidation) {
 					result.add(eref);
 				}
-				if (!(list instanceof PersistableEList)
-						&& !(list instanceof PersistableFeatureMap)
-						&& !(list instanceof PersistableEMap)) {
+				if (!(list instanceof PersistableEList) && !(list instanceof PersistableFeatureMap) &&
+						!(list instanceof PersistableEMap)) {
 					result.add(eref);
 				}
 
@@ -85,8 +79,7 @@ public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
 		return new NonLoadingEContentsEList<EObject>(eObject, result);
 	}
 
-	private NonLoadingEContentsEList(EObject eObject,
-			List<? extends EStructuralFeature> eStructuralFeatures) {
+	private NonLoadingEContentsEList(EObject eObject, List<? extends EStructuralFeature> eStructuralFeatures) {
 		super(eObject, eStructuralFeatures);
 	}
 }

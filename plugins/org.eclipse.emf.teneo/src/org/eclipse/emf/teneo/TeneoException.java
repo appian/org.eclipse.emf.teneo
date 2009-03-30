@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: TeneoException.java,v 1.3 2009/03/30 06:41:00 mtaal Exp $
+ * implementation </copyright> $Id: TeneoException.java,v 1.4 2009/03/30 07:53:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -12,14 +12,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Is used to throw runtime store exceptions. This class offers automatic
- * logging to commons logging. Note that this class extends RuntimeException, so
- * no forced throws and catch statements. Although there are very differing
- * views on this topic but it is our experience that to many checked exceptions
- * only distract the programmer and have no added value.
+ * Is used to throw runtime store exceptions. This class offers automatic logging to commons
+ * logging. Note that this class extends RuntimeException, so no forced throws and catch statements.
+ * Although there are very differing views on this topic but it is our experience that to many
+ * checked exceptions only distract the programmer and have no added value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class TeneoException extends RuntimeException {

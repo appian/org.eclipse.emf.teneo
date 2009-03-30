@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractAnnotator.java,v 1.6 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: AbstractAnnotator.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -31,11 +31,10 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * The parent class of all annotator classes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
-public abstract class AbstractAnnotator implements ExtensionManagerAware,
-		ExtensionInitializable {
+public abstract class AbstractAnnotator implements ExtensionManagerAware, ExtensionInitializable {
 
 	protected PannotationFactory factory = PannotationFactory.eINSTANCE;
 	private ExtensionManager extensionManager;
@@ -48,15 +47,11 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension
-	 * ()
+	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension ()
 	 */
 	public void initializeExtension() {
-		sqlNameStrategy = getExtensionManager().getExtension(
-				SQLNameStrategy.class);
-		entityNameStrategy = getExtensionManager().getExtension(
-				EntityNameStrategy.class);
+		sqlNameStrategy = getExtensionManager().getExtension(SQLNameStrategy.class);
+		entityNameStrategy = getExtensionManager().getExtension(EntityNameStrategy.class);
 	}
 
 	/** Method is called after all the important members have been set */
@@ -65,12 +60,11 @@ public abstract class AbstractAnnotator implements ExtensionManagerAware,
 	}
 
 	/**
-	 * Returns the entity name of the eclass, note that in case of maps a
-	 * different approach is followed (the entity name of the value is returned.
+	 * Returns the entity name of the eclass, note that in case of maps a different approach is
+	 * followed (the entity name of the value is returned.
 	 */
 	public String getEntityName(EClass eClass) {
-		return StrategyUtil.getEntityName(entityNameStrategy,
-				persistenceOptions, annotatedModel, eClass);
+		return StrategyUtil.getEntityName(entityNameStrategy, persistenceOptions, annotatedModel, eClass);
 	}
 
 	/**

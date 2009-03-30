@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Document.java,v 1.8 2009/03/30 06:40:59 mtaal Exp $
+ * $Id: Document.java,v 1.9 2009/03/30 07:53:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -21,7 +21,7 @@ package org.eclipse.emf.teneo.simpledom;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class Document {
@@ -50,8 +50,7 @@ public class Document {
 
 	/** Emit ourselve as a XML string */
 	public String emitXML() {
-		final StringBuffer result = new StringBuffer(
-				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+		final StringBuffer result = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		if (docType.length() > 0) {
 			result.append(docType + "\n");
 		}
