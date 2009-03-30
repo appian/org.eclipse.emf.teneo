@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.12 2008/07/13 13:13:38 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.13 2009/03/30 07:53:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
@@ -32,15 +33,16 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class LibraryTest extends AbstractActionTest {
 
 	private static LibraryAction testAction = new LibraryAction() {
 		@Override
 		protected void checkContainerAfterLibraryRetrieve(TestStore store, Writer writ) {
-// Session s = ((HibernateTestStore) store).getSession();
-// List<?> l = s.createSQLQuery("SELECT * FROM book").addEntity("Book").list();
+			// Session s = ((HibernateTestStore) store).getSession();
+			// List<?> l =
+			// s.createSQLQuery("SELECT * FROM book").addEntity("Book").list();
 		};
 
 		@Override
@@ -51,6 +53,9 @@ public class LibraryTest extends AbstractActionTest {
 			path = path.replaceAll("\\.", "/").substring(0, path.length() - 5) + "/library.ecore";
 			final Properties props = super.getExtraConfigurationProperties();
 			props.setProperty(HibernateTestStore.EPACKAGE_INIT_MODE, HibernateTestStore.EPACKAGE_INIT_MODE_CLASS);
+			props.setProperty(PersistenceOptions.SQL_FOREIGN_KEY_NAME_PREFIX, "FKPRE_");
+			props.setProperty(PersistenceOptions.SQL_COLUMN_NAME_PREFIX, "COL_");
+			props.setProperty(PersistenceOptions.SQL_TABLE_NAME_PREFIX, "TAB_");
 			return props;
 		}
 
