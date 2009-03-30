@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.19 2009/03/15 14:49:53 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.20 2009/03/30 07:53:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class LibraryAction extends AbstractTestAction {
 
@@ -45,8 +45,7 @@ public class LibraryAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY,
-				"READ_WRITE");
+		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY, "READ_WRITE");
 		props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
 		props.setProperty(PersistenceOptions.DEFAULT_VARCHAR_LENGTH, "50");
 		return props;
@@ -56,6 +55,7 @@ public class LibraryAction extends AbstractTestAction {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
 		// {
@@ -120,10 +120,8 @@ public class LibraryAction extends AbstractTestAction {
 		// walk through the structure starting from the library
 		{
 			store.beginTransaction();
-			Library lib = (Library) store.query(Library.class, "name",
-					"Science Fiction Library", 1).get(0);
-			assertTrue((lib.getWriters().get(0)).getName().compareTo(
-					"JRR Tolkien") == 0);
+			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
+			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
 
 			// final Object[] eobjs =
 			// store.getCrossReferencers((EObject)lib.getWriters().get(0),
@@ -170,15 +168,13 @@ public class LibraryAction extends AbstractTestAction {
 			checkDetachCopy(store, writ);
 
 			// now set the container of the writer
-			assertTrue("The container of the writer should be set!", store
-					.setContainer(writ));
+			assertTrue("The container of the writer should be set!", store.setContainer(writ));
 
-			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers()
-					.getFeatureID(), writ.eContainingFeature().getFeatureID());
+			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers().getFeatureID(), writ.eContainingFeature()
+				.getFeatureID());
 
-			assertTrue(
-					"The container of the writer should be equal to the earlier retrieved Library",
-					lib == writ.eContainer());
+			assertTrue("The container of the writer should be equal to the earlier retrieved Library", lib == writ
+				.eContainer());
 
 			final Object[] eobjs = store.getCrossReferencers(writ, false);
 			assertEquals(3, eobjs.length);
@@ -195,8 +191,7 @@ public class LibraryAction extends AbstractTestAction {
 			assertTrue(bk.eContainer() == lib);
 
 			// check if the containing feature is also set correctly
-			assertTrue(bk.eContainingFeature() == LibraryPackage.eINSTANCE
-					.getLibrary_Books());
+			assertTrue(bk.eContainingFeature() == LibraryPackage.eINSTANCE.getLibrary_Books());
 
 			assertTrue(lib.getBooks().contains(bk));
 
@@ -240,8 +235,7 @@ public class LibraryAction extends AbstractTestAction {
 	protected void checkDetachCopy(TestStore store, Writer writ) {
 	}
 
-	protected void checkContainerAfterLibraryRetrieve(TestStore store,
-			final Writer writ) {
+	protected void checkContainerAfterLibraryRetrieve(TestStore store, final Writer writ) {
 		// TODO specialize for Hibernate/JPOX, was:
 		// if (store instanceof JPOXTestStore)
 		// {
@@ -252,8 +246,7 @@ public class LibraryAction extends AbstractTestAction {
 		// }
 	}
 
-	protected void checkContainerAfterWriterRetrieve(TestStore store,
-			final Writer writ) {
+	protected void checkContainerAfterWriterRetrieve(TestStore store, final Writer writ) {
 		// TODO specialize for Hibernate/JPOX, was:
 		// if (store instanceof HibernateTestStore)
 		// {
