@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.49 2009/03/15 14:49:49 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.50 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.49 $
+ * @version $Revision: 1.50 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -130,6 +130,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String SQL_NAME_STRATEGY = NAMING_PREFIX
 			+ "sql_name_strategy";
+
+	/**
+	 * The Table name prefix, as a default set to "".
+	 * 
+	 * @Deprecated use the extensionManager concept
+	 */
+	public static final String SQL_TABLE_NAME_PREFIX = NAMING_PREFIX
+			+ "sql_table_name_prefix";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
@@ -445,6 +453,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS, "true");
 		props.setProperty(ECONTAINER_FEATURE_PERSISTENCE_STRATEGY,
 				"FEATURENAME");
+		props.setProperty(SQL_TABLE_NAME_PREFIX, "");
 		return props;
 	}
 
@@ -507,6 +516,10 @@ public class PersistenceOptions implements ExtensionPoint {
 		for (Object key : properties.keySet()) {
 			log.debug(key + ": " + properties.get(key));
 		}
+	}
+
+	public String getSQLTableNamePrefix() {
+		return properties.getProperty(SQL_TABLE_NAME_PREFIX);
 	}
 
 	/** Return the default temporal value */

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityInterfaceNameStrategy.java,v 1.1 2008/08/03 21:24:26 mtaal Exp $
+ * $Id: EntityInterfaceNameStrategy.java,v 1.2 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -30,15 +30,17 @@ import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * This implementation will first use the name of the entity annotation and then the interface name
+ * This implementation will first use the name of the entity annotation and then
+ * the interface name
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EntityInterfaceNameStrategy extends EntityResolvingNameStrategy {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(EntityInterfaceNameStrategy.class);
+	private static Log log = LogFactory
+			.getLog(EntityInterfaceNameStrategy.class);
 
 	/** The singleton instance as it is thread safe */
 	public static final EntityInterfaceNameStrategy INSTANCE = new EntityInterfaceNameStrategy();
@@ -54,7 +56,9 @@ public class EntityInterfaceNameStrategy extends EntityResolvingNameStrategy {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.elver.ecore.spring.EClassResolver#deResolve(org.eclipse.emf.ecore.EClass)
+	 * @see
+	 * org.elver.ecore.spring.EClassResolver#deResolve(org.eclipse.emf.ecore
+	 * .EClass)
 	 */
 	@Override
 	public String toEntityName(EClass eClass) {
@@ -64,25 +68,26 @@ public class EntityInterfaceNameStrategy extends EntityResolvingNameStrategy {
 
 		if (eClass == null) {
 			throw new IllegalArgumentException(
-				"Passed eclass is null."
-						+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
-						+ "and they are not read using one resource set. The reference from one epackage to another must be "
-						+ "resolvable by EMF.");
+					"Passed eclass is null."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
 
 		if (eClass.getName() == null) {
 			throw new IllegalArgumentException(
-				"EClass " +
-						eClass.toString() +
-						" has a null name." +
-						"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
-						"and they are not read using one resource set. The reference from one epackage to another must be " +
-						"resolvable by EMF.");
+					"EClass "
+							+ eClass.toString()
+							+ " has a null name."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
 
 		// check if there is an entity annotation on the eclass with a name set
 		final PAnnotatedEClass aClass = getPaModel().getPAnnotated(eClass);
-		if (aClass != null && aClass.getEntity() != null && aClass.getEntity().getName() != null) {
+		if (aClass != null && aClass.getEntity() != null
+				&& aClass.getEntity().getName() != null) {
 			return aClass.getEntity().getName();
 		}
 
@@ -115,15 +120,23 @@ public class EntityInterfaceNameStrategy extends EntityResolvingNameStrategy {
 		// first try the entityname
 		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
 			for (final PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
-						aClass.getEntity().getName().compareTo(eClassName) == 0 &&
-						!StoreUtil.isMapEntry(aClass.getModelEClass())) { // map entries are
+				if (aClass.getEntity() != null
+						&& aClass.getEntity().getName() != null
+						&& aClass.getEntity().getName().compareTo(eClassName) == 0
+						&& !StoreUtil.isMapEntry(aClass.getModelEClass())) { // map
+																				// entries
+																				// are
 					// ignored
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
-						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
-								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
-								aPackage.getModelEPackage().getName() + ". A different EClassResolver should be used.");
+						throw new IllegalArgumentException(
+								"There is more than one EClass with the same name ("
+										+ eClassName
+										+ " in EPackage "
+										+ eClass.getEPackage().getName()
+										+ " and "
+										+ aPackage.getModelEPackage().getName()
+										+ ". A different EClassResolver should be used.");
 					}
 					eClass = aClass.getModelEClass();
 				}
@@ -136,35 +149,43 @@ public class EntityInterfaceNameStrategy extends EntityResolvingNameStrategy {
 		// now try the eclassname itself
 		for (final PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
 			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
-				if (aClass.getEntity() != null && aClass.getEntity().getName() != null &&
-						aClass.getEntity().getName().compareTo(eClassName) == 0) {
+				if (aClass.getEntity() != null
+						&& aClass.getEntity().getName() != null
+						&& aClass.getEntity().getName().compareTo(eClassName) == 0) {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
-						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
-								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
-								aPackage.getModelEPackage().getName() + ". A different EClassResolver should be used.");
+						throw new IllegalArgumentException(
+								"There is more than one EClass with the same name ("
+										+ eClassName
+										+ " in EPackage "
+										+ eClass.getEPackage().getName()
+										+ " and "
+										+ aPackage.getModelEPackage().getName()
+										+ ". A different EClassResolver should be used.");
 					}
 					eClass = aClass.getModelEClass();
 				}
 			}
 		}
 
-		// we didn'y find it, perhaps it is fully qualified, lets try by full class name
-// if (eClass == null) {
-// try {
-// final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
-// eClass = EModelResolver.instance().getEClass(cls);
-// } catch (StoreClassLoadException e) {
-// log.debug("Failed to retreive EClass for name: " + eClassName +
-// ". This is no problem if this is a featuremap.");
-// }
-// }
+		// we didn'y find it, perhaps it is fully qualified, lets try by full
+		// class name
+		// if (eClass == null) {
+		// try {
+		// final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
+		// eClass = EModelResolver.instance().getEClass(cls);
+		// } catch (StoreClassLoadException e) {
+		// log.debug("Failed to retreive EClass for name: " + eClassName +
+		// ". This is no problem if this is a featuremap.");
+		// }
+		// }
 
 		if (eClass == null) {
-			log.debug("Failed to retreive EClass for name: " + eClassName +
-					". This is no problem if this is a featuremap.");
+			log.debug("Failed to retreive EClass for name: " + eClassName
+					+ ". This is no problem if this is a featuremap.");
 			return null;
-// throw new IllegalArgumentException("No EClass found using " + eClassName);
+			// throw new IllegalArgumentException("No EClass found using " +
+			// eClassName);
 		}
 		entityNameToEClass.put(eClassName, eClass);
 		return eClass;
@@ -191,8 +212,8 @@ public class EntityInterfaceNameStrategy extends EntityResolvingNameStrategy {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf
-	 * .teneo.extension.ExtensionManager)
+	 * org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
+	 * (org.eclipse.emf .teneo.extension.ExtensionManager)
 	 */
 	@Override
 	public void setExtensionManager(ExtensionManager extensionManager) {

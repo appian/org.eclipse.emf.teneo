@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.23 2009/03/16 08:33:26 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.24 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 
 public class StoreUtil {
@@ -150,7 +150,7 @@ public class StoreUtil {
 		}
 		return false;
 	}
-	
+
 	/** The nsprefix, eclass separator */
 	// private static final String NSPREFIX_ECLASS_SEPARATOR = ".";
 	/** Returns the name of the entity used for this feature map entry */

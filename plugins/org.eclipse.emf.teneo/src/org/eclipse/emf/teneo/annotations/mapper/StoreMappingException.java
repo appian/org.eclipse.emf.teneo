@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: StoreMappingException.java,v 1.4 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: StoreMappingException.java,v 1.5 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -19,14 +19,15 @@ package org.eclipse.emf.teneo.annotations.mapper;
 import org.eclipse.emf.teneo.TeneoException;
 
 /**
- * This exception is the base class of all exceptions which occur in the mapping process. This class
- * offers automatic logging to commons logging. Note that this class extends RuntimeException, so no
- * forced throws and catch statements. Although there are very differing views on this topic but it
- * is our experience that to many checked exceptions only distract the programmer and have no added
- * value.
+ * This exception is the base class of all exceptions which occur in the mapping
+ * process. This class offers automatic logging to commons logging. Note that
+ * this class extends RuntimeException, so no forced throws and catch
+ * statements. Although there are very differing views on this topic but it is
+ * our experience that to many checked exceptions only distract the programmer
+ * and have no added value.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class StoreMappingException extends TeneoException {

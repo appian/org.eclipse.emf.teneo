@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: TeneoSQLNameStrategy.java,v 1.6 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: TeneoSQLNameStrategy.java,v 1.7 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -28,52 +28,63 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 
 /**
- * Differences between this implementation and the ClassicSQLNameStrategy is the way truncation is
- * done if a name is longer than the sql name length constraint. To truncate a name this class will
- * first remove vowels (in the order: u, o, a, e, i) and if that is not enough it will truncate the
+ * Differences between this implementation and the ClassicSQLNameStrategy is the
+ * way truncation is done if a name is longer than the sql name length
+ * constraint. To truncate a name this class will first remove vowels (in the
+ * order: u, o, a, e, i) and if that is not enough it will truncate the
  * different parts of a name (separated by _).
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
 	// The logger
-	protected static final Log log = LogFactory.getLog(TeneoSQLNameStrategy.class);
+	protected static final Log log = LogFactory
+			.getLog(TeneoSQLNameStrategy.class);
 
 	private static String[] removables = new String[] { "u", "o", "a", "e", "i" };
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#getManyToOneJoinColumnNames(org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
+	 * @seeorg.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#
+	 * getManyToOneJoinColumnNames
+	 * (org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference)
 	 */
 	@Override
-	public List<String> getManyToOneJoinColumnNames(PAnnotatedEReference aReference) {
+	public List<String> getManyToOneJoinColumnNames(
+			PAnnotatedEReference aReference) {
 		final EReference eref = aReference.getModelEReference();
 
-		// isTransient occurs for computed featuremap features, these are ignored
+		// isTransient occurs for computed featuremap features, these are
+		// ignored
 		// later on
-		assert (eref.isTransient() || !eref.isMany()); // otherwise this should have been a mtm
+		assert (eref.isTransient() || !eref.isMany()); // otherwise this should
+														// have been a mtm
 
-		// in case of many-to-one to qualify use the name of the class to which is refered
-		// this is only used in case of non-simple naming (simple naming is better readable)!
+		// in case of many-to-one to qualify use the name of the class to which
+		// is refered
+		// this is only used in case of non-simple naming (simple naming is
+		// better readable)!
 		final PAnnotatedEClass aClass;
 		if (eref.getEOpposite() == null) {
 			aClass = aReference.getAReferenceType();
 		} else {
 			// the aclass is just the class of the structuralfeature itself.
-			// This is done so that both sides of the relationship use the same columns
+			// This is done so that both sides of the relationship use the same
+			// columns
 			aClass = aReference.getPaEClass();
 		}
 		final String typeName = aClass.getModelEClass().getName();
 		final String featureName = eref.getName();
 
 		final List<String> result = new ArrayList<String>();
-		final List<String> names =
-				StrategyUtil.getIDFeaturesNames(aReference.getAReferenceType(), persistenceOptions
-					.getDefaultIDFeatureName());
-		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
+		final List<String> names = StrategyUtil.getIDFeaturesNames(aReference
+				.getAReferenceType(), persistenceOptions
+				.getDefaultIDFeatureName());
+		final boolean simpleNaming = optionJoinColumnNamingStrategy
+				.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;
 			if (names.size() == 1 && simpleNaming) {
@@ -96,8 +107,9 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy#trunc(int,
-	 *      java.lang.String, boolean)
+	 * @see
+	 * org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy#trunc
+	 * (int, java.lang.String, boolean)
 	 */
 	@Override
 	public String trunc(int maxSqlLength, String truncName, boolean truncPrefix) {
@@ -129,11 +141,14 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 		char correctedNameFirstChar = correctedName.charAt(0);
 		String correctedNameTail = correctedName.substring(1);
 		for (String vowel : getRemovableCharacters()) {
-			while (correctedNameTail.indexOf(vowel) != -1 || correctedNameTail.indexOf(vowel.toUpperCase()) != -1) {
+			while (correctedNameTail.indexOf(vowel) != -1
+					|| correctedNameTail.indexOf(vowel.toUpperCase()) != -1) {
 				if (correctedNameTail.indexOf(vowel) != -1) {
-					correctedNameTail = correctedNameTail.replaceFirst(vowel, "");
+					correctedNameTail = correctedNameTail.replaceFirst(vowel,
+							"");
 				} else {
-					correctedNameTail = correctedNameTail.replaceFirst(vowel.toUpperCase(), "");
+					correctedNameTail = correctedNameTail.replaceFirst(vowel
+							.toUpperCase(), "");
 				}
 				correctedNameTail = correctedNameTail.replaceAll("__", "_");
 				if ((correctedNameTail.length() + 1) <= maxSqlLength) {
@@ -143,7 +158,8 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 		}
 
 		// still failed do length truncation
-		return doLengthTruncation(maxSqlLength, correctedNameFirstChar + correctedNameTail);
+		return doLengthTruncation(maxSqlLength, correctedNameFirstChar
+				+ correctedNameTail);
 	}
 
 	private String doLengthTruncation(int maxSqlLength, String correctedName) {
@@ -192,8 +208,9 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	}
 
 	/**
-	 * Return the characters to remove, the character removal is done in order of the returned
-	 * array. This method is provided to be overridden to pass a custom set of removable characters.
+	 * Return the characters to remove, the character removal is done in order
+	 * of the returned array. This method is provided to be overridden to pass a
+	 * custom set of removable characters.
 	 */
 	protected String[] getRemovableCharacters() {
 		return removables;

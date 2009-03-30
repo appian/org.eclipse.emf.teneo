@@ -12,17 +12,17 @@
  *
  * </copyright>
  *
- * $Id: Extension.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: Extension.java,v 1.3 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
 /**
- * An Extension sets a certain ExtensionPoint in Teneo. Teneo will register default Extensions which
- * can be overridden by a user.
+ * An Extension sets a certain ExtensionPoint in Teneo. Teneo will register
+ * default Extensions which can be overridden by a user.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class Extension {
@@ -77,8 +77,8 @@ public class Extension {
 	}
 
 	/**
-	 * Default is false, this is the correct value for extensions created by users of Teneo. So
-	 * normally this method does not need to be called.
+	 * Default is false, this is the correct value for extensions created by
+	 * users of Teneo. So normally this method does not need to be called.
 	 * 
 	 * @param defaultExtension
 	 *            the defaultExtension to set
@@ -89,7 +89,8 @@ public class Extension {
 
 	@Override
 	public String toString() {
-		return " point: " + getPoint() + " classname: " + getClassName() + " default: " + isDefaultExtension();
+		return " point: " + getPoint() + " classname: " + getClassName()
+				+ " default: " + isDefaultExtension();
 	}
 
 	/**

@@ -12,18 +12,17 @@
  *
  * </copyright>
  *
- * $Id: ExtensionInitializable.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ExtensionInitializable.java,v 1.3 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
-
 /**
- * Defines an initialize method which is called after creating the object and after setting the
- * extensionmanager (if the object is ExtensionManagerAware).
+ * Defines an initialize method which is called after creating the object and
+ * after setting the extensionmanager (if the object is ExtensionManagerAware).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public interface ExtensionInitializable {

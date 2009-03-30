@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.12 2008/08/11 20:41:47 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.13 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -45,32 +45,35 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
-public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
+public class EClassAnnotator extends AbstractAnnotator implements
+		ExtensionPoint {
 
 	// The logger
 	protected static final Log log = LogFactory.getLog(EClassAnnotator.class);
 
 	private InheritanceType optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE;
 
-	// The list of processed eclasses, is used to ensure that a superclass is done before a subclass
+	// The list of processed eclasses, is used to ensure that a superclass is
+	// done before a subclass
 	private final ArrayList<PAnnotatedEClass> processedAClasses = new ArrayList<PAnnotatedEClass>();
 
 	private EFeatureAnnotator eFeatureAnnotator = null;
 
 	/**
-	 * Returns the annotated version of an EClass, Returns false if no efeatures of this eclass
-	 * should be annotated, true if its features can be annotated.
+	 * Returns the annotated version of an EClass, Returns false if no efeatures
+	 * of this eclass should be annotated, true if its features can be
+	 * annotated.
 	 */
 	protected boolean annotate(PAnnotatedEClass aClass) {
 
 		if (aClass == null) {
 			throw new StoreAnnotationsException(
-				"Mapping Exception, no Annotated Class for EClass, "
-						+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
-						+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+					"Mapping Exception, no Annotated Class for EClass, "
+							+ "a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
+							+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 		}
 
 		final EClass eclass = (EClass) aClass.getModelElement();
@@ -89,27 +92,29 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 
 		// first do the superclasses
 		for (EClass superEclass : aClass.getModelEClass().getESuperTypes()) {
-			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEclass);
+			final PAnnotatedEClass superAClass = aClass.getPaModel()
+					.getPAnnotated(superEclass);
 			if (superAClass == null) {
 				throw new StoreAnnotationsException(
-					"Mapping Exception, no Annotated Class for EClass: " +
-							superEclass.getName() +
-							" a common cause is that you did not register all EPackages in the DataStore/Helper Class. " +
-							"When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
+						"Mapping Exception, no Annotated Class for EClass: "
+								+ superEclass.getName()
+								+ " a common cause is that you did not register all EPackages in the DataStore/Helper Class. "
+								+ "When there are references between EClasses in different EPackages then they need to be handled in one DataStore/Helper Class.");
 			}
 			if (!processedAClasses.contains(superAClass)) {
 				annotate(superAClass);
 			}
 		}
 
-		log.debug(" Adding default annotations for EClass: " + aClass.getModelElement().getName());
+		log.debug(" Adding default annotations for EClass: "
+				+ aClass.getModelElement().getName());
 
 		processedAClasses.add(aClass);
 
 		log.debug("Setting the superentity of the eclass");
 		setSuperEntity(aClass);
-		final boolean isInheritanceRoot =
-				aClass.getPaSuperEntity() == null || aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
+		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null
+				|| aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
 
 		// A not mappable type will not get an entity annotation.
 		// Even the features of non-mappable types are mapped because
@@ -117,13 +122,15 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		final boolean mappable = isMappableAnnotatedClass(aClass);
 
 		// add entity or set entity name
-		if (mappable && aClass.getEntity() == null && aClass.getEmbeddable() == null) {
+		if (mappable && aClass.getEntity() == null
+				&& aClass.getEmbeddable() == null) {
 			Entity entity = getFactory().createEntity();
 			entity.setEModelElement(eclass);
 			aClass.setEntity(entity);
 		}
 		if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
-			aClass.getEntity().setName(getEntityNameStrategy().toEntityName(eclass));
+			aClass.getEntity().setName(
+					getEntityNameStrategy().toEntityName(eclass));
 		}
 
 		// get the inheritance from the supertype or use the global inheritance
@@ -136,12 +143,13 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		} else {
 			// get the inheritance from the supers, if defined there
 			final Inheritance inheritanceFromSupers = getInheritanceFromSupers(aClass);
-			inheritanceType =
-					inheritanceFromSupers != null ? inheritanceFromSupers.getStrategy()
-							: optionDefaultInheritanceMapping;
+			inheritanceType = inheritanceFromSupers != null ? inheritanceFromSupers
+					.getStrategy()
+					: optionDefaultInheritanceMapping;
 			// if this is the root then add a specific inheritance annotation
 			if (isInheritanceRoot) {
-				final Inheritance inheritance = getFactory().createInheritance();
+				final Inheritance inheritance = getFactory()
+						.createInheritance();
 				inheritance.setStrategy(inheritanceType);
 				inheritance.setEModelElement(eclass);
 				aClass.setInheritance(inheritance);
@@ -149,22 +157,25 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		}
 
 		// add PrimaryKeyJoinColumn in case of a joined
-		if (!isInheritanceRoot && inheritanceType.equals(InheritanceType.JOINED) &&
-				aClass.getPrimaryKeyJoinColumns().size() == 0) {
+		if (!isInheritanceRoot
+				&& inheritanceType.equals(InheritanceType.JOINED)
+				&& aClass.getPrimaryKeyJoinColumns().size() == 0) {
 			ArrayList<String> idFeatures = new ArrayList<String>();
 			PAnnotatedEClass aSuperClass = null;
 			for (EClass eSuperClass : aClass.getModelEClass().getESuperTypes()) {
 				aSuperClass = getAnnotatedModel().getPAnnotated(eSuperClass);
-				idFeatures.addAll(StrategyUtil.getIDFeaturesNames(aSuperClass, getPersistenceOptions()
-					.getDefaultIDFeatureName()));
+				idFeatures.addAll(StrategyUtil.getIDFeaturesNames(aSuperClass,
+						getPersistenceOptions().getDefaultIDFeatureName()));
 				if (!idFeatures.isEmpty()) {
 					break;
 				}
 			}
 
 			for (String idFeature : idFeatures) {
-				final PrimaryKeyJoinColumn pkjc = getFactory().createPrimaryKeyJoinColumn();
-				pkjc.setName(getSqlNameStrategy().getPrimaryKeyJoinColumnName(aSuperClass, idFeature));
+				final PrimaryKeyJoinColumn pkjc = getFactory()
+						.createPrimaryKeyJoinColumn();
+				pkjc.setName(getSqlNameStrategy().getPrimaryKeyJoinColumnName(
+						aSuperClass, idFeature));
 				aClass.getPrimaryKeyJoinColumns().add(pkjc);
 			}
 		}
@@ -172,47 +183,54 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		// add the table annotation or the name annotation of the table
 		// only do this if this is the root in case of singletable or when this
 		// is the joined table strategy
-		if (aClass.getTable() == null &&
-				((isInheritanceRoot && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) ||
-						inheritanceType.equals(InheritanceType.JOINED) || inheritanceType
-					.equals(InheritanceType.TABLE_PER_CLASS))) {
+		if (aClass.getTable() == null
+				&& ((isInheritanceRoot && inheritanceType
+						.equals(InheritanceType.SINGLE_TABLE))
+						|| inheritanceType.equals(InheritanceType.JOINED) || inheritanceType
+						.equals(InheritanceType.TABLE_PER_CLASS))) {
 			final Table table = getFactory().createTable();
 			table.setEModelElement(eclass);
 			// name is set in next step
 			aClass.setTable(table);
 		}
 		if (aClass.getTable() != null && aClass.getTable().getName() == null) {
-			aClass.getTable().setName(getSqlNameStrategy().getTableName(aClass));
+			aClass.getTable()
+					.setName(getSqlNameStrategy().getTableName(aClass));
 		}
 
 		if (addDiscriminator(aClass)) {
 			// For hibernate as well as jpox the discriminator column is only
 			// required for single table, the ejb3 spec does not make a clear
-			// statement about the requirement to also have a discriminator column for joined
-			if (isInheritanceRoot && aClass.getDiscriminatorColumn() == null &&
-					inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
+			// statement about the requirement to also have a discriminator
+			// column for joined
+			if (isInheritanceRoot && aClass.getDiscriminatorColumn() == null
+					&& inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
 				// note defaults of primitive types are all defined in the model
-				final DiscriminatorColumn dc = getFactory().createDiscriminatorColumn();
+				final DiscriminatorColumn dc = getFactory()
+						.createDiscriminatorColumn();
 				dc.setEModelElement(eclass);
 				dc.setName(getSqlNameStrategy().getDiscriminatorColumnName());
 				aClass.setDiscriminatorColumn(dc);
 			}
 
 			// add a discriminator value
-			if (aClass.getDiscriminatorValue() == null && inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
-				final DiscriminatorValue dv = getFactory().createDiscriminatorValue();
+			if (aClass.getDiscriminatorValue() == null
+					&& inheritanceType.equals(InheritanceType.SINGLE_TABLE)) {
+				final DiscriminatorValue dv = getFactory()
+						.createDiscriminatorValue();
 
 				final DiscriminatorColumn dc = getDiscriminatorColumn(aClass);
-				if (dc != null && dc.getDiscriminatorType() != null &&
-						dc.getDiscriminatorType().getValue() == DiscriminatorType.INTEGER_VALUE) {
+				if (dc != null
+						&& dc.getDiscriminatorType() != null
+						&& dc.getDiscriminatorType().getValue() == DiscriminatorType.INTEGER_VALUE) {
 
 					// use the entityname to translate to an int value,
 					// hopefully hashcode is more or less unique...
 					final String entityName = getEntityName(eclass);
 					log
-						.warn("Generating an integer discriminator value for entity " +
-								entityName +
-								". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
+							.warn("Generating an integer discriminator value for entity "
+									+ entityName
+									+ ". The hashcode of the entityName is used as the discriminatorvalue. This may not be unique! To ensure uniques you should set a @DiscriminatorValue annotation");
 					dv.setValue("" + entityName.hashCode());
 				} else {
 					dv.setValue(getEntityName(eclass));
@@ -224,21 +242,26 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 
 		// Add default PkJoinColumns for SecondaryTables.
 		for (SecondaryTable secondaryTable : aClass.getSecondaryTables()) {
-			final EList<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable.getPkJoinColumns();
+			final EList<PrimaryKeyJoinColumn> pkJoinColumns = secondaryTable
+					.getPkJoinColumns();
 			if (pkJoinColumns.size() == 0) {
 				// No PkJoinColumns configured for this secondary table, so
 				// populate with defaults based on the ID
 				// attributes of the primary table.
-				final List<PAnnotatedEStructuralFeature> aIdFeatures = aClass.getPaIdFeatures();
+				final List<PAnnotatedEStructuralFeature> aIdFeatures = aClass
+						.getPaIdFeatures();
 				for (PAnnotatedEStructuralFeature idef : aIdFeatures) {
-					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE.createPrimaryKeyJoinColumn();
-					pkJoinColumn.setName(getSqlNameStrategy().getSecondaryTablePrimaryKeyJoinColumnName(idef));
+					final PrimaryKeyJoinColumn pkJoinColumn = PannotationFactory.eINSTANCE
+							.createPrimaryKeyJoinColumn();
+					pkJoinColumn.setName(getSqlNameStrategy()
+							.getSecondaryTablePrimaryKeyJoinColumnName(idef));
 					pkJoinColumns.add(pkJoinColumn);
 				}
 			}
 		}
 
-		for (PAnnotatedEStructuralFeature aStructuralFeature : aClass.getPaEStructuralFeatures()) {
+		for (PAnnotatedEStructuralFeature aStructuralFeature : aClass
+				.getPaEStructuralFeatures()) {
 			eFeatureAnnotator.annotate(aStructuralFeature);
 		}
 		return true;
@@ -269,8 +292,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	}
 
 	/**
-	 * Returns the inheritance of the passed annotated class or from one of its super annotated
-	 * class
+	 * Returns the inheritance of the passed annotated class or from one of its
+	 * super annotated class
 	 */
 	protected Inheritance getInheritanceFromSupers(PAnnotatedEClass childPA) {
 		if (childPA == null) {
@@ -290,9 +313,12 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			return;
 		}
 		// check for overridden using extends
-		if (aClass.getEntity() != null && aClass.getEntity().getExtends() != null) {
-			final EClass superEClass = aClass.getPaModel().getEClass(aClass.getEntity().getExtends());
-			final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(superEClass);
+		if (aClass.getEntity() != null
+				&& aClass.getEntity().getExtends() != null) {
+			final EClass superEClass = aClass.getPaModel().getEClass(
+					aClass.getEntity().getExtends());
+			final PAnnotatedEClass superAClass = aClass.getPaModel()
+					.getPAnnotated(superEClass);
 			if (!processedAClasses.contains(superAClass)) {
 				annotate(superAClass);
 			}
@@ -300,8 +326,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			return;
 		}
 
-		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(eclass.getESuperTypes().get(0));
-		if (superAClass.getEntity() != null || superAClass.getMappedSuperclass() != null) {
+		final PAnnotatedEClass superAClass = aClass.getPaModel().getPAnnotated(
+				eclass.getESuperTypes().get(0));
+		if (superAClass.getEntity() != null
+				|| superAClass.getMappedSuperclass() != null) {
 			aClass.setPaSuperEntity(superAClass);
 		}
 	}
@@ -312,7 +340,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		final EClass eclass = aClass.getModelEClass();
 
 		if (!mapInterfaceEClass() && eclass.isInterface()) {
-			log.debug("Not mapping interfaces and this is an interface eclass, ignore it");
+			log
+					.debug("Not mapping interfaces and this is an interface eclass, ignore it");
 			return false;
 		}
 
@@ -320,10 +349,11 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			return false; // not mappable
 		}
 
-		if (!getPersistenceOptions().isSetEntityAutomatically() && aClass.getEntity() == null &&
-				aClass.getEmbeddable() == null) {
-			log.debug("Entities are not added automatically and this eclass: " + aClass.getModelEClass().getName() +
-					" does not have an entity/embeddable annotation.");
+		if (!getPersistenceOptions().isSetEntityAutomatically()
+				&& aClass.getEntity() == null && aClass.getEmbeddable() == null) {
+			log.debug("Entities are not added automatically and this eclass: "
+					+ aClass.getModelEClass().getName()
+					+ " does not have an entity/embeddable annotation.");
 			return false;
 		}
 
@@ -331,9 +361,9 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (!mapMappedSuperEClass() && aClass.getMappedSuperclass() != null) {
 			if (aClass.getEntity() != null) {
 				log
-					.warn("EClass " +
-							eclass.getName() +
-							" has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
+						.warn("EClass "
+								+ eclass.getName()
+								+ " has entity as well as mappedsuperclass annotation, following mappedsuperclass annotation, therefore ignoring it for the mapping");
 			}
 			return false;
 		}
@@ -342,7 +372,8 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	}
 
 	/**
-	 * Map Interface EClasses, default false, overridden by hibernate to return true
+	 * Map Interface EClasses, default false, overridden by hibernate to return
+	 * true
 	 */
 	protected boolean mapInterfaceEClass() {
 		return false;
@@ -356,15 +387,15 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse
-	 * .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
+	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
 		super.setPersistenceOptions(persistenceOptions);
 		if (persistenceOptions.getInheritanceMapping() != null) {
-			InheritanceType it = InheritanceType.get(persistenceOptions.getInheritanceMapping());
+			InheritanceType it = InheritanceType.get(persistenceOptions
+					.getInheritanceMapping());
 			if (it == InheritanceType.JOINED) {
 				optionDefaultInheritanceMapping = InheritanceType.JOINED;
 				log.debug("Option inheritance: joined");
@@ -375,8 +406,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 				optionDefaultInheritanceMapping = InheritanceType.TABLE_PER_CLASS;
 				log.debug("Option inheritance: table per class");
 			} else {
-				throw new IllegalArgumentException("Inheritance mapping option: " +
-						persistenceOptions.getInheritanceMapping() + " is not supported");
+				throw new IllegalArgumentException(
+						"Inheritance mapping option: "
+								+ persistenceOptions.getInheritanceMapping()
+								+ " is not supported");
 			}
 		}
 	}

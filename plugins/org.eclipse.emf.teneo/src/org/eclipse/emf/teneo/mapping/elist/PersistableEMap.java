@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.11 2008/06/03 08:30:15 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.12 2009/03/30 06:41:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -37,14 +37,15 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 
 /**
- * A persistable emap which uses the PersistableEList as its delegate. Note that this implementation
- * is based on the implementation of the superclass. The superclass makes use of a delegate list to
- * store its content. This implementation puts a persistent list in this member.
+ * A persistable emap which uses the PersistableEList as its delegate. Note that
+ * this implementation is based on the implementation of the superclass. The
+ * superclass makes use of a delegate list to store its content. This
+ * implementation puts a persistent list in this member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -67,52 +68,60 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	private boolean isLoading = false;
 
 	/**
-	 * The owner of the objet. we must keep a copy since emap does not have one and the delegate
-	 * EList does not expose this field publicly
+	 * The owner of the objet. we must keep a copy since emap does not have one
+	 * and the delegate EList does not expose this field publicly
 	 */
 	private InternalEObject owner;
 
 	/**
-	 * The persisted map handled by the orm layer. This delegate is the map we receive from the
-	 * database provider. It is kept all the time, any changes to the PersistableEMap are replicated
-	 * to the ormMap.
+	 * The persisted map handled by the orm layer. This delegate is the map we
+	 * receive from the database provider. It is kept all the time, any changes
+	 * to the PersistableEMap are replicated to the ormMap.
 	 * 
 	 * This field will be null unless there is a map waiting to be lazy loaded
 	 */
 	protected Map<K, V> ormMapDelegate = null;
 
 	/** Not supported constructor */
-	public PersistableEMap(EClass entryEClass, EList<BasicEMap.Entry<K, V>> delegateEList) {
+	public PersistableEMap(EClass entryEClass,
+			EList<BasicEMap.Entry<K, V>> delegateEList) {
 		super(entryEClass, Map.Entry.class, delegateEList);
-		throw new UnsupportedOperationException("Explicitly passing delegate list is not supported!");
+		throw new UnsupportedOperationException(
+				"Explicitly passing delegate list is not supported!");
 	}
 
 	/** Constructor */
-	public PersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, EStructuralFeature feature) {
+	public PersistableEMap(EClass entryEClass, Class<?> entryClass,
+			InternalEObject owner, EStructuralFeature feature) {
 		// invoke constructor with no lazyLoadMapDelegate
-		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(feature));
+		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(
+				feature));
 
 		setDelegateEList(owner, feature, new ArrayList<Entry<K, V>>());
 
 		this.owner = owner;
 		this.featureID = owner.eClass().getFeatureID(feature);
-		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		log.debug("Created persistable emap for entry eclass "
+				+ entryEClass.getName());
 	}
 
 	/**
-	 * This version will create the lsit completely, there is no lazy lading from this constructor
+	 * This version will create the lsit completely, there is no lazy lading
+	 * from this constructor
 	 * 
 	 * @param entryEClass
 	 * @param entryClass
 	 * @param owner
 	 * @param featureID
 	 * @param ormMapDelegate
-	 *            a java.util.map that is a proxy collection taht will be used when lazy load is
-	 *            invoked. if it is null, then the map is considered as loaded
+	 *            a java.util.map that is a proxy collection taht will be used
+	 *            when lazy load is invoked. if it is null, then the map is
+	 *            considered as loaded
 	 */
-	public PersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
-			List<BasicEMap.Entry<K, V>> list) {
-		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(feature));
+	public PersistableEMap(EClass entryEClass, InternalEObject owner,
+			EStructuralFeature feature, List<BasicEMap.Entry<K, V>> list) {
+		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(
+				feature));
 
 		this.owner = owner;
 		this.featureID = owner.eClass().getFeatureID(feature);
@@ -123,44 +132,52 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		// sets the size of this map
 		// size();
 
-		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		log.debug("Created persistable emap for entry eclass "
+				+ entryEClass.getName());
 	}
 
 	/** Sets the delegatelist to a persistablelist */
-	protected void setDelegateEList(InternalEObject owner, EStructuralFeature feature,
+	protected void setDelegateEList(InternalEObject owner,
+			EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> delegateORMList) {
 		assert (owner.eClass().getFeatureID(feature) == featureID);
 
 		// NOTE BEWARE: the delegateEList is a member of the superclass!
 		delegateEList = createDelegateEList(owner, feature, delegateORMList);
 
-		logString =
-				"EMap with entry eclass: " + entryEClass.getName() + " of member " + feature.getName() + " owned by " +
-						owner.getClass().getName() + " with delegate list " + delegateORMList.getClass().getName();
+		logString = "EMap with entry eclass: " + entryEClass.getName()
+				+ " of member " + feature.getName() + " owned by "
+				+ owner.getClass().getName() + " with delegate list "
+				+ delegateORMList.getClass().getName();
 
 		log.debug("Created/reset elist " + logString);
 
 		if (delegateORMList instanceof EList) {
 			setLoaded(true);
-		} else if (delegateORMList instanceof ArrayList) { // already loaded lists are packaged in
+		} else if (delegateORMList instanceof ArrayList) { // already loaded
+															// lists are
+															// packaged in
 			// an elist
 			setLoaded(delegateORMList.size() > 0);
 		}
 	}
 
 	/** Needs to be implemented by concrete subclass */
-	protected abstract EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner,
-			EStructuralFeature feature, List<BasicEMap.Entry<K, V>> delegateORMList);
+	protected abstract EList<BasicEMap.Entry<K, V>> createDelegateEList(
+			InternalEObject owner, EStructuralFeature feature,
+			List<BasicEMap.Entry<K, V>> delegateORMList);
 
 	/** Replace the delegate */
 	@SuppressWarnings("unchecked")
 	public void replaceDelegate(Object newDelegate) {
-		setDelegateEList(owner, getEStructuralFeature(), (List<BasicEMap.Entry<K, V>>) newDelegate);
+		setDelegateEList(owner, getEStructuralFeature(),
+				(List<BasicEMap.Entry<K, V>>) newDelegate);
 		setLoaded(false);
 	}
 
 	/**
-	 * Performs the load action if not yet oaded and sends out the load notification.
+	 * Performs the load action if not yet oaded and sends out the load
+	 * notification.
 	 */
 	protected void load() {
 		if (isLoaded) {
@@ -187,7 +204,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		try {
 			// only set to false if it was true
 			if (eDeliver) {
-				log.debug("Owner " + getOwner().getClass() + " set eDeliver to false");
+				log.debug("Owner " + getOwner().getClass()
+						+ " set eDeliver to false");
 				getOwner().eSetDeliver(false);
 				setDeliver = true;
 			}
@@ -211,20 +229,21 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/**
-	 * The load method which should be overridden by the subclass to add lazyloading
+	 * The load method which should be overridden by the subclass to add
+	 * lazyloading
 	 */
 	protected abstract void doLoad();
 
-//
-// /**
-// * Overridden to prevent the super
-// */
-// @Override
-// public void initializeDelegateEList() {
-// this.isLoaded = false;
-// this.size = 0;
-// this.delegateEList = null;
-// }
+	//
+	// /**
+	// * Overridden to prevent the super
+	// */
+	// @Override
+	// public void initializeDelegateEList() {
+	// this.isLoaded = false;
+	// this.size = 0;
+	// this.delegateEList = null;
+	// }
 
 	/** Return ourselves, this class assumes that the emap is mapped as a list */
 	public Object getDelegate() {
@@ -250,7 +269,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 */
 	@Override
 	public int size() {
-		// the subclass can override the size to perform smart size determination
+		// the subclass can override the size to perform smart size
+		// determination
 		if (!this.isLoaded()) {
 			load();
 		}
@@ -272,7 +292,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/*
-	 * Javadoc copied from interface. Overridden because of access to size attribute
+	 * Javadoc copied from interface. Overridden because of access to size
+	 * attribute
 	 */
 	@Override
 	public boolean containsKey(Object key) {
@@ -281,7 +302,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/*
-	 * Javadoc copied from interface. Overridden because of access to size attribute
+	 * Javadoc copied from interface. Overridden because of access to size
+	 * attribute
 	 */
 	@Override
 	public Set<K> keySet() {
@@ -290,7 +312,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/*
-	 * Javadoc copied from interface. Overridden because of access to size attribute
+	 * Javadoc copied from interface. Overridden because of access to size
+	 * attribute
 	 */
 	@Override
 	public Collection<V> values() {
@@ -299,7 +322,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/*
-	 * Javadoc copied from interface. Overridden because of access to size attribute
+	 * Javadoc copied from interface. Overridden because of access to size
+	 * attribute
 	 */
 	@Override
 	public Set<Map.Entry<K, V>> entrySet() {
@@ -308,7 +332,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/*
-	 * Javadoc copied from interface. Overridden because of access to size attribute
+	 * Javadoc copied from interface. Overridden because of access to size
+	 * attribute
 	 */
 	@Override
 	public boolean containsValue(Object value) {
@@ -317,7 +342,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	/*
-	 * Javadoc copied from interface. Overridden because of access to size attribute
+	 * Javadoc copied from interface. Overridden because of access to size
+	 * attribute
 	 */
 	@Override
 	public V get(Object key) {
@@ -372,7 +398,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	public NotificationChain basicAdd(java.util.Map.Entry<K, V> object, NotificationChain notifications) {
+	public NotificationChain basicAdd(java.util.Map.Entry<K, V> object,
+			NotificationChain notifications) {
 		load();
 		return super.basicAdd(object, notifications);
 	}
@@ -408,7 +435,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	public NotificationChain basicRemove(Object object, NotificationChain notifications) {
+	public NotificationChain basicRemove(Object object,
+			NotificationChain notifications) {
 		load();
 		return super.basicRemove(object, notifications);
 	}
@@ -426,7 +454,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	public java.util.Map.Entry<K, V> setUnique(int index, java.util.Map.Entry<K, V> object) {
+	public java.util.Map.Entry<K, V> setUnique(int index,
+			java.util.Map.Entry<K, V> object) {
 		load();
 		return super.setUnique(index, object);
 	}
@@ -444,13 +473,15 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends java.util.Map.Entry<K, V>> collection) {
+	public boolean addAll(
+			Collection<? extends java.util.Map.Entry<K, V>> collection) {
 		load();
 		return super.addAll(collection);
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends java.util.Map.Entry<K, V>> collection) {
+	public boolean addAll(int index,
+			Collection<? extends java.util.Map.Entry<K, V>> collection) {
 		load();
 		return super.addAll(index, collection);
 	}
@@ -540,7 +571,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	protected V putEntry(org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry, V value) {
+	protected V putEntry(
+			org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry, V value) {
 		load();
 		return super.putEntry(entry, value);
 	}
@@ -589,7 +621,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	}
 
 	@Override
-	public java.util.Map.Entry<K, V> set(int index, java.util.Map.Entry<K, V> object) {
+	public java.util.Map.Entry<K, V> set(int index,
+			java.util.Map.Entry<K, V> object) {
 		load();
 		return super.set(index, object);
 	}

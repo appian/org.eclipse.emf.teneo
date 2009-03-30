@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PaModelAware.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: PaModelAware.java,v 1.3 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -20,11 +20,11 @@ package org.eclipse.emf.teneo.extension;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 
 /**
- * A extension implementing this interface will be able to 'receive' an instance of a
- * PAnnotatedModel.
+ * A extension implementing this interface will be able to 'receive' an instance
+ * of a PAnnotatedModel.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public interface PaModelAware {

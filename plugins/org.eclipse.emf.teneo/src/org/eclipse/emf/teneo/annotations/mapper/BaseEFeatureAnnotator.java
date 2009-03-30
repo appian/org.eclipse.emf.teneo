@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.12 2008/10/12 11:38:11 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.13 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,17 +44,18 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
- * Placeholder for several utility methods which are relevant for annotating ereferences and
- * eattributes.
+ * Placeholder for several utility methods which are relevant for annotating
+ * ereferences and eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 
 	// The logger
-	protected static final Log log = LogFactory.getLog(BaseEFeatureAnnotator.class);
+	protected static final Log log = LogFactory
+			.getLog(BaseEFeatureAnnotator.class);
 
 	private int defaultVarCharLength = -1;
 
@@ -72,9 +73,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse
-	 * .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
+	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
@@ -84,7 +84,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	}
 
 	/**
-	 * Adds the column level constraints on the basis of the xsd extended meta data
+	 * Adds the column level constraints on the basis of the xsd extended meta
+	 * data
 	 */
 	protected void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
 
@@ -101,26 +102,31 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			if (maxLength == null && defaultVarCharLength > 0) {
 				maxLength = "" + defaultVarCharLength;
 			}
-			final String totalDigits = getExtendedMetaData(eAttribute, "totalDigits");
-			final String fractionDigits = getExtendedMetaData(eAttribute, "fractionDigits");
+			final String totalDigits = getExtendedMetaData(eAttribute,
+					"totalDigits");
+			final String fractionDigits = getExtendedMetaData(eAttribute,
+					"fractionDigits");
 			boolean setUnique = false;
 			// bugzilla 249246
-			if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID() && aAttribute.getId() == null) {
-				if (aAttribute.getPaEClass().getPaSuperEntity() != null &&
-						aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
+			if (getPersistenceOptions().isIDFeatureAsPrimaryKey()
+					&& eAttribute.isID() && aAttribute.getId() == null) {
+				if (aAttribute.getPaEClass().getPaSuperEntity() != null
+						&& aAttribute.getPaEClass().getPaSuperEntity()
+								.getMappedSuperclass() == null) {
 					setUnique = true;
 				}
 			}
-			if (maxLength != null || setUnique || totalDigits != null || fractionDigits != null ||
-					defaultVarCharLength > -1) {
+			if (maxLength != null || setUnique || totalDigits != null
+					|| fractionDigits != null || defaultVarCharLength > -1) {
 				final Column column = getFactory().createColumn();
 				// only support this for the string class, the length/maxlength
 				// is also
 				// used in case of the xsd list/union types but this can not be
 				// enforced using a constraint on the
 				// columnlength
-				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
-						eAttribute.getEAttributeType().getInstanceClass() == String.class) {
+				if (maxLength != null
+						&& eAttribute.getEAttributeType().getInstanceClass() != null
+						&& eAttribute.getEAttributeType().getInstanceClass() == String.class) {
 					column.setLength(Integer.parseInt(maxLength)); // you'll
 					// find
 					// parse
@@ -140,13 +146,16 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 				}
 				aAttribute.setColumn(column);
 			}
-		} else if (aAttribute.getBasic() != null && !aAttribute.getColumn().isSetNullable()) {
+		} else if (aAttribute.getBasic() != null
+				&& !aAttribute.getColumn().isSetNullable()) {
 			// bugzilla 226775
-			aAttribute.getColumn().setNullable(aAttribute.getBasic().isOptional());
+			aAttribute.getColumn().setNullable(
+					aAttribute.getBasic().isOptional());
 		}
 
 		final Column c = aAttribute.getColumn();
-		if (isStringType(aAttribute.getModelEAttribute()) && c != null && defaultVarCharLength > 0 && !c.isSetLength()) {
+		if (isStringType(aAttribute.getModelEAttribute()) && c != null
+				&& defaultVarCharLength > 0 && !c.isSetLength()) {
 			c.setLength(defaultVarCharLength);
 		}
 	}
@@ -156,26 +165,32 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		if (clz != null && String.class.isAssignableFrom(clz)) {
 			return true;
 		}
-		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getString()) {
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE
+				.getString()) {
 			return true;
 		}
-		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getName_()) {
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE
+				.getName_()) {
 			return true;
 		}
-		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getNCName()) {
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE
+				.getNCName()) {
 			return true;
 		}
-		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getToken()) {
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE
+				.getToken()) {
 			return true;
 		}
-		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE.getQName()) {
+		if (eAttribute.getEAttributeType() == XMLTypePackage.eINSTANCE
+				.getQName()) {
 			return true;
 		}
 		return false;
 	}
 
 	/** Return a list of join columns */
-	protected List<JoinColumn> getJoinColumns(List<String> names, boolean optional, boolean isUpdateInsertable,
+	protected List<JoinColumn> getJoinColumns(List<String> names,
+			boolean optional, boolean isUpdateInsertable,
 			PAnnotation pAnnotation) {
 		final List<JoinColumn> result = new ArrayList<JoinColumn>();
 		for (String name : names) {
@@ -195,13 +210,12 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 
 	/** Get a specific extended metadate */
 	protected String getExtendedMetaData(EAttribute eAttribute, String key) {
-		String value =
-				EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute,
-					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		String value = EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute,
+				"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		if (value == null) {
-			value =
-					EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute.getEAttributeType(),
-						"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+			value = EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute
+					.getEAttributeType(),
+					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		}
 		return value;
 	}
@@ -218,8 +232,10 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			return false;
 		}
 
-		final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eOpposite);
-		if (aOpposite.getOneToOne() != null && aOpposite.getOneToOne().getMappedBy() != null) {
+		final PAnnotatedEReference aOpposite = getAnnotatedModel()
+				.getPAnnotated(eOpposite);
+		if (aOpposite.getOneToOne() != null
+				&& aOpposite.getOneToOne().getMappedBy() != null) {
 			return false;
 		}
 
@@ -229,8 +245,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	}
 
 	/**
-	 * Determines where to place a certain annotation/characteristic, this is done by comparing
-	 * names..
+	 * Determines where to place a certain annotation/characteristic, this is
+	 * done by comparing names..
 	 */
 	protected boolean compareNames(EReference here, EReference there) {
 		final String nameHere = here.eClass().getName() + here.getName();
@@ -240,9 +256,11 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	}
 
 	/**
-	 * Checks if the cascade should be set in the cascade list, is only done if the list is empty
+	 * Checks if the cascade should be set in the cascade list, is only done if
+	 * the list is empty
 	 */
-	protected void setCascade(List<CascadeType> cascadeList, boolean isContainment) {
+	protected void setCascade(List<CascadeType> cascadeList,
+			boolean isContainment) {
 		if (!cascadeList.isEmpty()) {
 			return;
 		}
@@ -264,7 +282,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 					cascadeList.add(CascadeType.REFRESH);
 				}
 			}
-		} else if (getPersistenceOptions().isSetCascadePolicyForNonContainment()) {
+		} else if (getPersistenceOptions()
+				.isSetCascadePolicyForNonContainment()) {
 			if (getPersistenceOptions().isSetCascadeMergeOnNonContainment()) {
 				cascadeList.add(CascadeType.MERGE);
 			}
@@ -281,13 +300,14 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		}
 	}
 
-	protected void setTemporal(PAnnotatedEAttribute aAttribute, TemporalType defaultTemporal) {
+	protected void setTemporal(PAnnotatedEAttribute aAttribute,
+			TemporalType defaultTemporal) {
 		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
 		// clazz is hidden somewhere
 		if (clazz == null || Object.class.equals(clazz)) {
-			ArrayList<EClassifier> eclassifiers =
-					EcoreDataTypes.INSTANCE.getItemTypes((EDataType) eAttribute.getEType());
+			ArrayList<EClassifier> eclassifiers = EcoreDataTypes.INSTANCE
+					.getItemTypes((EDataType) eAttribute.getEType());
 			for (EClassifier eclassifier : eclassifiers) {
 				if (eclassifier.getInstanceClass() != null) {
 					clazz = eclassifier.getInstanceClass();
@@ -296,10 +316,12 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			}
 		}
 
-		final EDataType eDataType = aAttribute.getModelEAttribute().getEAttributeType();
-		if (clazz != null &&
-				(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
-					.getDateTime())) {
+		final EDataType eDataType = aAttribute.getModelEAttribute()
+				.getEAttributeType();
+		if (clazz != null
+				&& (Date.class.isAssignableFrom(clazz)
+						|| eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+						.getDateTime())) {
 			final Temporal temporal = getFactory().createTemporal();
 			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
 				temporal.setValue(TemporalType.DATE);
@@ -310,9 +332,10 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			}
 			aAttribute.setTemporal(temporal);
 			temporal.setEModelElement(eAttribute);
-		} else if (clazz != null &&
-				(Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
-					.getDateTime())) {
+		} else if (clazz != null
+				&& (Calendar.class.isAssignableFrom(clazz)
+						|| eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+						.getDateTime())) {
 			final Temporal temporal = getFactory().createTemporal();
 			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
 				temporal.setValue(TemporalType.DATE);

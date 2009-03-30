@@ -12,11 +12,11 @@ package org.eclipse.emf.teneo;
 import org.eclipse.emf.common.util.Diagnostic;
 
 /**
- * Is used to contain a list of Diagnostics which contain error messages found during the save of a
- * resource.
+ * Is used to contain a list of Diagnostics which contain error messages found
+ * during the save of a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class StoreValidationException extends TeneoException {
@@ -36,8 +36,8 @@ public class StoreValidationException extends TeneoException {
 
 			for (Diagnostic childDiagnostic : diagnostics[i].getChildren()) {
 				switch (childDiagnostic.getSeverity()) {
-					case Diagnostic.ERROR:
-						result.append("\n\t" + childDiagnostic.getMessage());
+				case Diagnostic.ERROR:
+					result.append("\n\t" + childDiagnostic.getMessage());
 				}
 			}
 		}

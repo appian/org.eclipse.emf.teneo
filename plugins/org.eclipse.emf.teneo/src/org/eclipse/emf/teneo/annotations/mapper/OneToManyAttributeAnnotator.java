@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyAttributeAnnotator.java,v 1.8 2008/05/27 07:42:10 mtaal Exp $
+ * $Id: OneToManyAttributeAnnotator.java,v 1.9 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -35,25 +35,28 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Annotates a one-to-many attribute (an eattribute with ismany=true), an example is a list of
- * primitives (list of ints).
+ * Annotates a one-to-many attribute (an eattribute with ismany=true), an
+ * example is a list of primitives (list of ints).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
-public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
+public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
+		implements ExtensionPoint {
 
 	// The logger
-	protected static final Log log = LogFactory.getLog(OneToManyAttributeAnnotator.class);
+	protected static final Log log = LogFactory
+			.getLog(OneToManyAttributeAnnotator.class);
 
 	private TemporalType optionDefaultTemporal = null;
 
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEAttribute aAttribute) {
-		final String logStr =
-				aAttribute.getModelEAttribute().getName() + "/" +
-						aAttribute.getModelEAttribute().getEContainingClass().getName();
+		final String logStr = aAttribute.getModelEAttribute().getName()
+				+ "/"
+				+ aAttribute.getModelEAttribute().getEContainingClass()
+						.getName();
 
 		log.debug("EAttribute " + logStr + " needs a onetomany");
 
@@ -71,15 +74,18 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 				otm.setFetch(FetchType.EAGER);
 			}
 		} else {
-			log.debug("One to many present adding default information if required");
+			log
+					.debug("One to many present adding default information if required");
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames() && aAttribute.getForeignKey() == null) {
+		if (getPersistenceOptions().isSetForeignKeyNames()
+				&& aAttribute.getForeignKey() == null) {
 			aAttribute.setForeignKey(createFK(aAttribute));
 		}
 
 		// handle list of enums
-		if (eAttribute.getEType() instanceof EEnum && aAttribute.getEnumerated() == null) {
+		if (eAttribute.getEType() instanceof EEnum
+				&& aAttribute.getEnumerated() == null) {
 			final Enumerated enumerated = getFactory().createEnumerated();
 			enumerated.setValue(EnumType.STRING);
 			enumerated.setEModelElement(eAttribute);
@@ -107,15 +113,18 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 		}
 
 		if (aAttribute.getJoinColumns().size() == 0) {
-			final List<String> names = getSqlNameStrategy().getOneToManyEAttributeJoinColumns(aAttribute);
+			final List<String> names = getSqlNameStrategy()
+					.getOneToManyEAttributeJoinColumns(aAttribute);
 			aAttribute.getJoinColumns().addAll(
-				getJoinColumns(names, FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
+					getJoinColumns(names, FeatureMapUtil
+							.isFeatureMap(eAttribute), true, otm));
 		}
 
 		// set unique and indexed
 		if (!otmWasSet) {
-			log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
-					+ "because otm was not set manually");
+			log
+					.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
+							+ "because otm was not set manually");
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
 		}
@@ -124,15 +133,18 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator implement
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
+	 * setPersistenceOptions(org.eclipse.emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
 		super.setPersistenceOptions(persistenceOptions);
 
-		optionDefaultTemporal = TemporalType.get(persistenceOptions.getDefaultTemporalValue());
+		optionDefaultTemporal = TemporalType.get(persistenceOptions
+				.getDefaultTemporalValue());
 		if (optionDefaultTemporal == null) {
-			throw new StoreMappingException("Temporal value not found: " + persistenceOptions.getDefaultTemporalValue());
+			throw new StoreMappingException("Temporal value not found: "
+					+ persistenceOptions.getDefaultTemporalValue());
 		}
 	}
 

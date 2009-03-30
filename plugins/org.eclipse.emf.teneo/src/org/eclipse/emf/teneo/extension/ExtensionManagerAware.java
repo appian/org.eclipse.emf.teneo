@@ -12,18 +12,17 @@
  *
  * </copyright>
  *
- * $Id: ExtensionManagerAware.java,v 1.2 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: ExtensionManagerAware.java,v 1.3 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
 
-
 /**
- * An extension implementing this interface will be able to 'receive' an instance of the
- * ExtensionManager which created it.
+ * An extension implementing this interface will be able to 'receive' an
+ * instance of the ExtensionManager which created it.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public interface ExtensionManagerAware {

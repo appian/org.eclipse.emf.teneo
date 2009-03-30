@@ -12,17 +12,16 @@
  *
  * </copyright>
  *
- * $Id: ClassLoaderStrategy.java,v 1.5 2008/06/14 22:27:57 mtaal Exp $
+ * $Id: ClassLoaderStrategy.java,v 1.6 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.classloader;
-
 
 /**
  * Interface for classes which determine which classloader to use.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public interface ClassLoaderStrategy {

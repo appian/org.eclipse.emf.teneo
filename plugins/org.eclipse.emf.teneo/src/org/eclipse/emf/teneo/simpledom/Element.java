@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Element.java,v 1.8 2008/06/29 14:23:09 mtaal Exp $
+ * $Id: Element.java,v 1.9 2009/03/30 06:40:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.simpledom;
@@ -24,7 +24,7 @@ import java.util.List;
  * This simple class is part of the replacement of dom4j.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class Element extends Node {
@@ -63,7 +63,8 @@ public class Element extends Node {
 	}
 
 	/**
-	 * Return the value of an attribute the attribute name, if not found then null is returned
+	 * Return the value of an attribute the attribute name, if not found then
+	 * null is returned
 	 */
 	public String getAttributeValue(String name) {
 		for (Attribute attr : attributes) {

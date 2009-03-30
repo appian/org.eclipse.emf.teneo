@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Constants.java,v 1.7 2008/02/28 07:08:33 mtaal Exp $
+ * $Id: Constants.java,v 1.8 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  * AnnotationUtil used when reading a property file is also used by resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
- */ 
+ * @version $Revision: 1.8 $
+ */
 
 public class Constants {
 	/** StructuralFeatures for TEXT content (part of a mixed complex type) */

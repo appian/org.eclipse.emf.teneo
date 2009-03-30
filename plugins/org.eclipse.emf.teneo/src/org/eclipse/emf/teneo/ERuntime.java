@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.17 2008/09/15 11:33:38 mtaal Exp $
+ * $Id: ERuntime.java,v 1.18 2009/03/30 06:41:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -41,13 +41,15 @@ import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * The ERuntime contains references to EPackages which are persistable, i.e. are persisted.
+ * The ERuntime contains references to EPackages which are persistable, i.e. are
+ * persisted.
  * 
- * It is used to compute information related to concrete class - eclass mapping, interface to
- * concrete class, references for cross reference computation, contained computations.
+ * It is used to compute information related to concrete class - eclass mapping,
+ * interface to concrete class, references for cross reference computation,
+ * contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class ERuntime extends EModelResolver {
@@ -100,8 +102,8 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Computes which classes are contained and which are non-contained. Method must be called after
-	 * the computeReferers method!
+	 * Computes which classes are contained and which are non-contained. Method
+	 * must be called after the computeReferers method!
 	 */
 	private void computeContainedClasses() {
 
@@ -165,11 +167,13 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Walks through a interface inheritance structure and determines if a superclass is contained
-	 * if so then the class is added to the containedclasses
+	 * Walks through a interface inheritance structure and determines if a
+	 * superclass is contained if so then the class is added to the
+	 * containedclasses
 	 */
-	private boolean isSelfOrSuperContained(Class<?> checkClass, ArrayList<Class<?>> containedClasses) {
-// assert (checkClass.isInterface());
+	private boolean isSelfOrSuperContained(Class<?> checkClass,
+			ArrayList<Class<?>> containedClasses) {
+		// assert (checkClass.isInterface());
 		if (containedClasses.contains(checkClass)) {
 			return true;
 		}
@@ -198,8 +202,8 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Retains only the root parent class in a list, so if an entry in the list as a parent in the
-	 * same list then the child is deleted from the list
+	 * Retains only the root parent class in a list, so if an entry in the list
+	 * as a parent in the same list then the child is deleted from the list
 	 */
 	private void cleanList(ArrayList<Class<?>> list) {
 		final ArrayList<Class<?>> toRemove = new ArrayList<Class<?>>();
@@ -229,11 +233,13 @@ public class ERuntime extends EModelResolver {
 			final EPackage epack = epackages.get(i);
 
 			if (ignorePackage(epack)) {
-				log.debug("Not determining concrete classes for package " + epack.getName());
+				log.debug("Not determining concrete classes for package "
+						+ epack.getName());
 				continue;
 			}
 
-			log.debug("Determining concrete classes for package " + epack.getName());
+			log.debug("Determining concrete classes for package "
+					+ epack.getName());
 
 			for (EClassifier eclassifier : epack.getEClassifiers()) {
 				if (!(eclassifier instanceof EClass)) {
@@ -241,27 +247,31 @@ public class ERuntime extends EModelResolver {
 				}
 
 				final Object instance = create((EClass) eclassifier);
-				if (instance != null && !(instance instanceof DynamicEObjectImpl)) {
+				if (instance != null
+						&& !(instance instanceof DynamicEObjectImpl)) {
 					eclassifierToConcrete.put(eclassifier, instance.getClass());
-					concreteToEClass.put(instance.getClass(), (EClass) eclassifier);
+					concreteToEClass.put(instance.getClass(),
+							(EClass) eclassifier);
 				}
 				if (eclassifier.getInstanceClass() != null) {
-					interfaceToEClass.put(eclassifier.getInstanceClass(), (EClass) eclassifier);
+					interfaceToEClass.put(eclassifier.getInstanceClass(),
+							(EClass) eclassifier);
 				}
 			}
 		}
 
 		// packaged in an extra arraylist to prevent concurrent modification
 		// exception.
-		final List<Class<?>> classes = new ArrayList<Class<?>>(concreteToEClass.keySet());
+		final List<Class<?>> classes = new ArrayList<Class<?>>(concreteToEClass
+				.keySet());
 		for (Class<?> clz : classes) {
 			addAbstractSupers(clz);
 		}
 	}
 
 	/**
-	 * Walks up the class hierarchy and adds the superclasses to the concrete-interface mapping
-	 * class sets
+	 * Walks up the class hierarchy and adds the superclasses to the
+	 * concrete-interface mapping class sets
 	 */
 	private void addAbstractSupers(Class<?> clazz) {
 
@@ -365,7 +375,8 @@ public class ERuntime extends EModelResolver {
 			// log but do nothing because this happens when we try to create an
 			// object
 			// with an invalid classifier, which is a eclass!
-			log.debug("The classifier: " + eclass.getName() + " is not a valid eclass");
+			log.debug("The classifier: " + eclass.getName()
+					+ " is not a valid eclass");
 
 			return null;
 		}
@@ -391,10 +402,11 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Returns the structural feature for a certain field and object comby. Null is returned if
-	 * nothing is found
+	 * Returns the structural feature for a certain field and object comby. Null
+	 * is returned if nothing is found
 	 */
-	public EStructuralFeature getStructuralFeature(Class<?> clazz, String FieldName) {
+	public EStructuralFeature getStructuralFeature(Class<?> clazz,
+			String FieldName) {
 		final EClass eclass = getEClass(clazz);
 		if (eclass == null) {
 			return null;
@@ -403,9 +415,9 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/**
-	 * Returns the list of EMF interfaces which are contained. Only the topmost interface in a class
-	 * hierarchy is returned. This can be used to automatically create the econtainer field
-	 * mappings.
+	 * Returns the list of EMF interfaces which are contained. Only the topmost
+	 * interface in a class hierarchy is returned. This can be used to
+	 * automatically create the econtainer field mappings.
 	 * 
 	 * Note that multiple classes in one inheritance structure can be present.
 	 */
@@ -416,7 +428,8 @@ public class ERuntime extends EModelResolver {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.ecore.EModelResolver#getAllClassesAndInterfaces()
+	 * @see
+	 * org.eclipse.emf.teneo.ecore.EModelResolver#getAllClassesAndInterfaces()
 	 */
 	@Override
 	public List<Class<?>> getAllClassesAndInterfaces() {
