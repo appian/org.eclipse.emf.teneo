@@ -75,7 +75,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
         eType="#//Writer" containment="true" resolveProxies="false">
       <eAnnotations source="teneo.hibernate">
-        <details key="appinfo" value="@Fetch(SUBSELECT) @ForeignKey=(name=&quot;schrijvers&quot;)"/>
+        <details key="appinfo" value="@Fetch(SUBSELECT) @ForeignKey(name=&quot;schrijvers&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

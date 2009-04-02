@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.2 2007/12/28 14:38:19 mtaal Exp $
+ * $Id: LibraryPackage.java,v 1.3 2009/04/02 20:46:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -108,13 +108,22 @@ public interface LibraryPackage extends EPackage {
 	int BOOK__AUTHOR = 3;
 
 	/**
+	 * The feature id for the '<em><b>Test</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK__TEST = 4;
+
+	/**
 	 * The number of structural features of the '<em>Book</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_FEATURE_COUNT = 4;
+	int BOOK_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl <em>Library</em>}' class.
@@ -273,6 +282,17 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBook_Author();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getTest <em>Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Test</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.Book#getTest()
+	 * @see #getBook()
+	 * @generated
+	 */
+	EAttribute getBook_Test();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.sample.library.Library <em>Library</em>}'.
@@ -434,6 +454,14 @@ public interface LibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BOOK__AUTHOR = eINSTANCE.getBook_Author();
+
+		/**
+		 * The meta object literal for the '<em><b>Test</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK__TEST = eINSTANCE.getBook_Test();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl <em>Library</em>}' class.

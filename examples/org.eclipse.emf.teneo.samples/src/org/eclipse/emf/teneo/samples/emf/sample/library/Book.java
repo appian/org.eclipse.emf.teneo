@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.3 2006/09/07 22:27:45 mtaal Exp $
+ * $Id: Book.java,v 1.4 2009/04/02 20:46:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -20,6 +20,7 @@ package org.eclipse.emf.teneo.samples.emf.sample.library;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getPages <em>Pages</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getCategory <em>Category</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getAuthor <em>Author</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getTest <em>Test</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,7 +41,7 @@ public interface Book extends SerializableEObject {
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBook_Title()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.ID" required="true"
 	 *        extendedMetaData="kind='element' name='title'"
 	 * @generated
 	 */
@@ -69,7 +70,7 @@ public interface Book extends SerializableEObject {
 	 * @see #unsetPages()
 	 * @see #setPages(int)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBook_Pages()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='element' name='pages'"
 	 * @generated
 	 */
@@ -112,7 +113,6 @@ public interface Book extends SerializableEObject {
 
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' attribute.
-	 * The default value is <code>"Mystery"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -126,7 +126,7 @@ public interface Book extends SerializableEObject {
 	 * @see #unsetCategory()
 	 * @see #setCategory(BookCategory)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBook_Category()
-	 * @model default="Mystery" unique="false" unsettable="true" required="true"
+	 * @model unsettable="true" required="true"
 	 *        annotation="teneo.jpa appinfo='@Enumerated(ORDINAL)'"
 	 *        extendedMetaData="kind='element' name='category'"
 	 * @generated
@@ -197,5 +197,59 @@ public interface Book extends SerializableEObject {
 	 * @generated
 	 */
 	void setAuthor(Writer value);
+
+	/**
+	 * Returns the value of the '<em><b>Test</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Test</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Test</em>' attribute.
+	 * @see #isSetTest()
+	 * @see #unsetTest()
+	 * @see #setTest(int)
+	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getBook_Test()
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int"
+	 *        extendedMetaData="kind='attribute' name='test'"
+	 * @generated
+	 */
+	int getTest();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getTest <em>Test</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Test</em>' attribute.
+	 * @see #isSetTest()
+	 * @see #unsetTest()
+	 * @see #getTest()
+	 * @generated
+	 */
+	void setTest(int value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getTest <em>Test</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetTest()
+	 * @see #getTest()
+	 * @see #setTest(int)
+	 * @generated
+	 */
+	void unsetTest();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.samples.emf.sample.library.Book#getTest <em>Test</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Test</em>' attribute is set.
+	 * @see #unsetTest()
+	 * @see #getTest()
+	 * @see #setTest(int)
+	 * @generated
+	 */
+	boolean isSetTest();
 
 } // Book

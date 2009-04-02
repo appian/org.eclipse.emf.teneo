@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.5 2007/07/09 12:55:19 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.6 2009/04/02 20:46:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
  *
  * @generated
  */
-public class WriterImpl extends EObjectImpl implements Writer {
+public class WriterImpl extends MinimalEObjectImpl.Container implements Writer {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

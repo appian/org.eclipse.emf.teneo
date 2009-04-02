@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryImpl.java,v 1.4 2007/07/09 12:55:19 mtaal Exp $
+ * $Id: LibraryImpl.java,v 1.5 2009/04/02 20:46:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
  *
  * @generated
  */
-public class LibraryImpl extends EObjectImpl implements Library {
+public class LibraryImpl extends MinimalEObjectImpl.Container implements Library {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -125,7 +125,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 */
 	public EList<Writer> getWriters() {
 		if (writers == null) {
-			writers = new EObjectContainmentEList.Resolving<Writer>(Writer.class, this, LibraryPackage.LIBRARY__WRITERS);
+			writers = new EObjectContainmentEList<Writer>(Writer.class, this, LibraryPackage.LIBRARY__WRITERS);
 		}
 		return writers;
 	}
@@ -137,7 +137,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 */
 	public EList<Book> getBooks() {
 		if (books == null) {
-			books = new EObjectContainmentEList.Resolving<Book>(Book.class, this, LibraryPackage.LIBRARY__BOOKS);
+			books = new EObjectContainmentEList<Book>(Book.class, this, LibraryPackage.LIBRARY__BOOKS);
 		}
 		return books;
 	}

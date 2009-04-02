@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.4 2007/07/09 12:55:19 mtaal Exp $
+ * $Id: BookImpl.java,v 1.5 2009/04/02 20:46:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
@@ -29,12 +29,13 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl#getPages <em>Pages</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl#getAuthor <em>Author</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl#getTest <em>Test</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BookImpl extends EObjectImpl implements Book {
+public class BookImpl extends MinimalEObjectImpl.Container implements Book {
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -122,6 +123,35 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @ordered
 	 */
 	protected Writer author;
+
+	/**
+	 * The default value of the '{@link #getTest() <em>Test</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTest()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TEST_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getTest() <em>Test</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTest()
+	 * @generated
+	 * @ordered
+	 */
+	protected int test = TEST_EDEFAULT;
+
+	/**
+	 * This is true if the Test attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean testESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,6 +350,52 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getTest() {
+		return test;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTest(int newTest) {
+		int oldTest = test;
+		test = newTest;
+		boolean oldTestESet = testESet;
+		testESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.BOOK__TEST, oldTest, test, !oldTestESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetTest() {
+		int oldTest = test;
+		boolean oldTestESet = testESet;
+		test = TEST_EDEFAULT;
+		testESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, LibraryPackage.BOOK__TEST, oldTest, TEST_EDEFAULT, oldTestESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetTest() {
+		return testESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -356,12 +432,14 @@ public class BookImpl extends EObjectImpl implements Book {
 			case LibraryPackage.BOOK__TITLE:
 				return getTitle();
 			case LibraryPackage.BOOK__PAGES:
-				return new Integer(getPages());
+				return getPages();
 			case LibraryPackage.BOOK__CATEGORY:
 				return getCategory();
 			case LibraryPackage.BOOK__AUTHOR:
 				if (resolve) return getAuthor();
 				return basicGetAuthor();
+			case LibraryPackage.BOOK__TEST:
+				return getTest();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -378,13 +456,16 @@ public class BookImpl extends EObjectImpl implements Book {
 				setTitle((String)newValue);
 				return;
 			case LibraryPackage.BOOK__PAGES:
-				setPages(((Integer)newValue).intValue());
+				setPages((Integer)newValue);
 				return;
 			case LibraryPackage.BOOK__CATEGORY:
 				setCategory((BookCategory)newValue);
 				return;
 			case LibraryPackage.BOOK__AUTHOR:
 				setAuthor((Writer)newValue);
+				return;
+			case LibraryPackage.BOOK__TEST:
+				setTest((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -410,6 +491,9 @@ public class BookImpl extends EObjectImpl implements Book {
 			case LibraryPackage.BOOK__AUTHOR:
 				setAuthor((Writer)null);
 				return;
+			case LibraryPackage.BOOK__TEST:
+				unsetTest();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -430,6 +514,8 @@ public class BookImpl extends EObjectImpl implements Book {
 				return isSetCategory();
 			case LibraryPackage.BOOK__AUTHOR:
 				return author != null;
+			case LibraryPackage.BOOK__TEST:
+				return isSetTest();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -450,6 +536,8 @@ public class BookImpl extends EObjectImpl implements Book {
 		if (pagesESet) result.append(pages); else result.append("<unset>");
 		result.append(", category: ");
 		if (categoryESet) result.append(category); else result.append("<unset>");
+		result.append(", test: ");
+		if (testESet) result.append(test); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

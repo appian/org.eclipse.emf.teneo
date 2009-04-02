@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryAdapterFactory.java,v 1.2 2007/07/09 12:55:20 mtaal Exp $
+ * $Id: LibraryAdapterFactory.java,v 1.3 2009/04/02 20:46:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.util;
 
@@ -64,7 +64,7 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.5 2007/12/28 14:38:19 mtaal Exp $
+ * $Id: Library.java,v 1.6 2009/04/02 20:46:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -39,7 +39,7 @@ public interface Library extends SerializableEObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -66,9 +66,9 @@ public interface Library extends SerializableEObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Writers</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Writers()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
+	 *        annotation="teneo.hibernate appinfo='@Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")'"
 	 *        extendedMetaData="kind='element' name='writers'"
-	 *        annotation="teneo.hibernate appinfo='@Fetch(SUBSELECT)\n@ForeignKey(name=\"schrijvers\")'"
 	 * @generated
 	 */
 	EList<Writer> getWriters();
@@ -84,7 +84,7 @@ public interface Library extends SerializableEObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Books</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Books()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='books'"
 	 * @generated
 	 */
