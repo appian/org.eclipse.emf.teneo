@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.10 2008/06/28 22:41:50 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.11 2009/04/02 20:46:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -54,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $ $Date: 2008/06/28 22:41:50 $
+ * @version $Revision: 1.11 $ $Date: 2009/04/02 20:46:34 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
@@ -278,6 +278,13 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	 */
 	@Override
 	public Object assemble(Serializable cached, SessionImplementor session, Object owner) throws HibernateException {
+	    
+	    // palash: fix for ALL our teneo/ehcache woes!!
+        // if cache is null, just return null, without guessing; hibernate is smart enough to fetch it from the db
+        if (cached == null) {
+            return null;
+        }
+	    
 		// already correct
 		if (!(cached instanceof ContainerPointer)) {
 			final String entityName = session.bestGuessEntityName(cached);

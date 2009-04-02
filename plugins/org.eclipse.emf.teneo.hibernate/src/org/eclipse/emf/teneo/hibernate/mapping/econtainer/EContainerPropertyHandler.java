@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerPropertyHandler.java,v 1.6 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EContainerPropertyHandler.java,v 1.7 2009/04/02 20:46:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -39,7 +39,7 @@ import org.hibernate.property.Setter;
  * Implements the accessor for eContainer member
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint {
@@ -93,7 +93,7 @@ public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint
 			ecField.set(target, value);
 		} catch (Exception e) {
 			throw new HbMapperException("Exception when setting econtainer for: " + target.getClass().getName() +
-					" to value: " + value);
+					" to value: " + value, e);
 		}
 	}
 
