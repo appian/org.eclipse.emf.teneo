@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.11 2009/04/02 20:46:34 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.10.2.1 2009/04/03 04:23:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -54,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $ $Date: 2009/04/02 20:46:34 $
+ * @version $Revision: 1.10.2.1 $ $Date: 2009/04/03 04:23:46 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
