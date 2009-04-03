@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.15 2008/02/28 07:07:34 mtaal Exp $
+ * $Id: AllTests.java,v 1.16 2009/04/03 14:22:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.annotations;
@@ -36,7 +36,6 @@ import org.eclipse.emf.teneo.test.emf.annotations.MappedSuperClassAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SecondaryTableActionJDO;
 import org.eclipse.emf.teneo.test.emf.annotations.SetAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetNMAction;
-import org.eclipse.emf.teneo.test.emf.annotations.SetResourceAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ToOneAction;
 import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
 
@@ -44,14 +43,13 @@ import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite =
-				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations", JPOXTestbed
-					.instance().getConfigurations());
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
+				JPOXTestbed.instance().getConfigurations());
 
 		suite.addTestSuite(InheritanceAnnotationAction.class);
 
@@ -60,7 +58,7 @@ public class AllTests {
 		suite.addTestSuite(BookAction.class);
 
 		suite.addTestSuite(MappedSuperClassAction.class);
-		suite.addTestSuite(SetResourceAction.class);
+		// suite.addTestSuite(SetResourceAction.class);
 		suite.addTestSuite(SetAction.class);
 
 		suite.addTestSuite(IdAction.class);
@@ -86,12 +84,10 @@ public class AllTests {
 
 		/*
 		 * // fails because of jpox bug, see: http://www.jpox.org/servlet/jira/browse/CORE-2567
-		 * suite.addTestSuite(EmbeddedAction.class);
-		 * suite.addTestSuite(AttributeOverridesAction.class); // set is not supported by jpox
-		 * suite.addTestSuite(SetAction.class);
+		 * suite.addTestSuite(EmbeddedAction.class); suite.addTestSuite(AttributeOverridesAction.class); // set is not
+		 * supported by jpox suite.addTestSuite(SetAction.class);
 		 * 
 		 * JoinColumns is not supported by jpox suite.addTestSuite(JoinColumnsAction.class);
-		 * 
 		 */
 		return suite;
 	}
