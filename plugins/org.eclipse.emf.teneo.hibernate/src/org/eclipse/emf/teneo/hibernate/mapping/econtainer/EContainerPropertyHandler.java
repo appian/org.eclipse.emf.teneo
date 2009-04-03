@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerPropertyHandler.java,v 1.7 2009/04/02 20:46:34 mtaal Exp $
+ * $Id: EContainerPropertyHandler.java,v 1.8 2009/04/03 06:15:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -25,6 +25,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -39,7 +40,7 @@ import org.hibernate.property.Setter;
  * Implements the accessor for eContainer member
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint {
@@ -73,7 +74,7 @@ public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
-	 *      org.hibernate.engine.SessionImplementor)
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	@SuppressWarnings("unchecked")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
@@ -84,16 +85,21 @@ public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
-		AssertUtil.assertInstanceOfNotNull(target, InternalEObject.class);
-		AssertUtil.assertInstanceOf(value, EObject.class);
-		try {
-			ecField.set(target, value);
-		} catch (Exception e) {
-			throw new HbMapperException("Exception when setting econtainer for: " + target.getClass().getName() +
-					" to value: " + value, e);
+		if (target instanceof MinimalEObjectImpl) {
+			// TODO: externalize this
+			FieldUtil.callMethod(target, "eBasicSetContainer", new Object[] { value });
+		} else {
+			AssertUtil.assertInstanceOfNotNull(target, InternalEObject.class);
+			AssertUtil.assertInstanceOf(value, EObject.class);
+			try {
+				ecField.set(target, value);
+			} catch (Exception e) {
+				throw new HbMapperException("Exception when setting econtainer for: " + target.getClass().getName()
+						+ " to value: " + value, e);
+			}
 		}
 	}
 

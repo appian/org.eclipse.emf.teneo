@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerFeatureIDPropertyHandler.java,v 1.7 2008/11/15 21:35:00 mtaal Exp $
+ * $Id: EContainerFeatureIDPropertyHandler.java,v 1.8 2009/04/03 06:15:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -22,7 +22,9 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.util.FieldUtil;
@@ -36,7 +38,7 @@ import org.hibernate.property.Setter;
  * Implements the setter for the eContainerFeatureID member of an EObject.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 @SuppressWarnings("unchecked")
 public class EContainerFeatureIDPropertyHandler implements Getter, Setter, ExtensionPoint {
@@ -82,13 +84,18 @@ public class EContainerFeatureIDPropertyHandler implements Getter, Setter, Exten
 	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
-		assert (target instanceof EObjectImpl);
-		assert (value instanceof Integer);
-		try {
-			ecField.set(target, value);
-		} catch (Exception e) {
-			throw new HbMapperException("Exception when setting eContainerFeatureID for: " +
-					target.getClass().getName() + " to value: " + value, e);
+		if (target instanceof MinimalEObjectImpl) {
+			// TODO: externalize this
+			FieldUtil.callMethod(target, "eBasicSetContainerFeatureID", new Object[] { value });
+		} else {
+			assert (target instanceof EObjectImpl);
+			assert (value instanceof Integer);
+			try {
+				ecField.set(target, value);
+			} catch (Exception e) {
+				throw new HbMapperException("Exception when setting eContainerFeatureID for: "
+						+ target.getClass().getName() + " to value: " + value, e);
+			}
 		}
 	}
 
@@ -98,7 +105,7 @@ public class EContainerFeatureIDPropertyHandler implements Getter, Setter, Exten
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
-		return new Integer(((EObjectImpl) owner).eContainerFeatureID());
+		return new Integer(((BasicEObjectImpl) owner).eContainerFeatureID());
 	}
 
 	/*
@@ -108,7 +115,7 @@ public class EContainerFeatureIDPropertyHandler implements Getter, Setter, Exten
 	 * org.hibernate.engine.SessionImplementor)
 	 */
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
-		return new Integer(((EObjectImpl) owner).eContainerFeatureID());
+		return new Integer(((BasicEObjectImpl) owner).eContainerFeatureID());
 	}
 
 	/*
