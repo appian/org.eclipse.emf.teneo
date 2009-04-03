@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryListAsBagAction.java,v 1.4 2009/03/15 08:09:27 mtaal Exp $
+ * $Id: LibraryListAsBagAction.java,v 1.5 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LibraryListAsBagAction extends AbstractTestAction {
 
@@ -82,11 +82,13 @@ public class LibraryListAsBagAction extends AbstractTestAction {
 		}
 
 		// move the books arround
+		int page0 = 0;
+		int page1 = 1;
 		{
 			store.beginTransaction();
 			final Library lib = store.getObject(Library.class);
-			assertEquals(1, (lib.getBooks().get(0)).getPages());
-			assertEquals(2, (lib.getBooks().get(1)).getPages());
+			page0 = lib.getBooks().get(0).getPages();
+			page1 = lib.getBooks().get(1).getPages();
 			lib.getBooks().move(0, 1); // moved second book to first location
 			store.commitTransaction();
 		}
@@ -95,8 +97,8 @@ public class LibraryListAsBagAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final Library lib = store.getObject(Library.class);
-			assertEquals(1, (lib.getBooks().get(0)).getPages());
-			assertEquals(2, (lib.getBooks().get(1)).getPages());
+			assertEquals(page0, (lib.getBooks().get(0)).getPages());
+			assertEquals(page1, (lib.getBooks().get(1)).getPages());
 			store.commitTransaction();
 		}
 	}

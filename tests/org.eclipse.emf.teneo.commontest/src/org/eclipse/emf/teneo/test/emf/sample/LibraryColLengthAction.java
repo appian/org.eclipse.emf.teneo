@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryColLengthAction.java,v 1.8 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: LibraryColLengthAction.java,v 1.9 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibraryColLengthAction extends AbstractTestAction {
 	/**
@@ -55,13 +55,14 @@ public class LibraryColLengthAction extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see
+	 * org.eclipse.emf.teneo.test.AbstractTestAction#setExtensions(org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
 		extensionManager.registerExtension(SQLNameStrategy.class.getName(), ClassicSQLNameStrategy.class.getName());
 		extensionManager.registerExtension("org.eclipse.emf.teneo.hibernate.mapper.MappingContext",
-			"org.eclipse.emf.teneo.hibernate.mapper.classic.ClassicMappingContext");
+				"org.eclipse.emf.teneo.hibernate.mapper.classic.ClassicMappingContext");
 		super.setExtensions(extensionManager);
 	}
 
@@ -75,6 +76,7 @@ public class LibraryColLengthAction extends AbstractTestAction {
 		final Properties props = new Properties();
 		props.put(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "5");
 		props.put(PersistenceOptions.ID_COLUMN_NAME, "myID");
+		props.put(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
 		return props;
 	}
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SimpleLibraryResourceAction.java,v 1.1 2008/03/31 07:04:20 mtaal Exp $
+ * $Id: SimpleLibraryResourceAction.java,v 1.2 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 /**
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SimpleLibraryResourceAction extends AbstractTestAction {
 	/**
@@ -60,16 +60,16 @@ public class SimpleLibraryResourceAction extends AbstractTestAction {
 				res.load(null);
 
 				final Writer writer = factory.createWriter();
-				writer.setName("JRR Tolkien");
+				writer.setName("JRR_Tolkien");
 
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
 				book.setPages(510);
-				book.setTitle("Fellowship of the Ring");
+				book.setTitle("Fellowship_of_the_Ring");
 				book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 
 				final Library library = factory.createLibrary();
-				library.setName("Science Fiction");
+				library.setName("Science_Fiction");
 				library.getBooks().add(book);
 				library.getWriters().add(writer);
 
@@ -89,7 +89,7 @@ public class SimpleLibraryResourceAction extends AbstractTestAction {
 
 				Library lib = (Library) res.getContents().get(0);
 				Writer tolkien = lib.getWriters().get(0);
-				assertEquals("JRR Tolkien", tolkien.getName());
+				assertEquals("JRR_Tolkien", tolkien.getName());
 				tolkien.setName("Tolkien");
 				assertTrue(tolkien.eDeliver());
 				res.save(null);

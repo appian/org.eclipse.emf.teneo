@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceVisitTreeAction.java,v 1.1 2008/11/15 21:37:37 mtaal Exp $
+ * $Id: LibraryResourceVisitTreeAction.java,v 1.2 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests how children are added to a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryResourceVisitTreeAction extends AbstractTestAction {
 	public LibraryResourceVisitTreeAction() {
@@ -51,27 +51,27 @@ public class LibraryResourceVisitTreeAction extends AbstractTestAction {
 				res.load(null);
 
 				final Writer writer = factory.createWriter();
-				writer.setName("JRR Tolkien");
+				writer.setName("JRR_Tolkien");
 
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
 				book.setPages(510);
-				book.setTitle("Fellowship of the Ring");
+				book.setTitle("Fellowship_of_the_Ring");
 				book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 				final Book book2 = factory.createBook();
 				book2.setAuthor(writer);
 				book2.setPages(500);
-				book2.setTitle("The Hobbit");
+				book2.setTitle("The_Hobbit");
 				book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 
 				// sorry george making a mistake here, will correct this below
 				final Book book3 = factory.createBook();
 				book3.setAuthor(writer);
 				book3.setPages(500);
-				book3.setTitle("1984");
+				book3.setTitle("nineteeneightyfour");
 				book3.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 				final Library library = factory.createLibrary();
-				library.setName("Science Fiction");
+				library.setName("Science_Fiction");
 				library.getBooks().add(book);
 				library.getBooks().add(book2);
 				library.getBooks().add(book3);
@@ -85,7 +85,7 @@ public class LibraryResourceVisitTreeAction extends AbstractTestAction {
 			{
 				Resource res = store.getResource("query1=From " + LibraryImpl.class.getName());
 
-// res.setTrackingModification(true);
+				// res.setTrackingModification(true);
 				res.load(null);
 
 				Library lib = (Library) res.getContents().get(0);

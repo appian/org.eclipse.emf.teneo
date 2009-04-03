@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryValidateResourceAction.java,v 1.8 2008/06/02 07:15:40 mtaal Exp $
+ * $Id: LibraryValidateResourceAction.java,v 1.9 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple validation works for the resource implementation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibraryValidateResourceAction extends AbstractTestAction {
 	/**
@@ -72,7 +72,7 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 				res.load(null);
 
 				final Writer writer = factory.createWriter();
-				writer.setName("JRR Tolkien");
+				writer.setName("JRR_Tolkien");
 
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
@@ -88,8 +88,8 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 					res.save(null);
 					fail("Validation did not work");
 				} catch (StoreValidationException e) {
-					library.setName("Science Fiction");
-					book.setTitle("Fellowship of the Ring");
+					library.setName("Science_Fiction");
+					book.setTitle("Fellowship_of_the_Ring");
 					res.save(null);
 					res.save(null);
 				}
@@ -117,10 +117,10 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 				assert (lib != null);
 				Writer tolkien = lib.getWriters().get(0);
 
-				tolkien.setName("Mr. Tolkien");
+				tolkien.setName("Mr._Tolkien");
 
 				Writer orwell = factory.createWriter();
-				orwell.setName("G. Orwell");
+				orwell.setName("G._Orwell");
 				lib.getWriters().add(orwell);
 
 				final StoreResource sr = (StoreResource) res;
@@ -176,11 +176,10 @@ public class LibraryValidateResourceAction extends AbstractTestAction {
 	/** Specific Hibernate flush test */
 	protected void testFlush(Resource res) {
 		/*
-		 * if (res instanceof HibernateResource) { HibernateResource hres = (HibernateResource)res;
-		 * Session session = hres.getSession(); Transaction tx = session.beginTransaction(); // this
-		 * should not fail! try { tx.commit(); } // there should be a finally block but this is only
-		 * a test catch (Exception e) { fail("The transaction commit should not flush illegal
-		 * objects to the database"); } }
+		 * if (res instanceof HibernateResource) { HibernateResource hres = (HibernateResource)res; Session session =
+		 * hres.getSession(); Transaction tx = session.beginTransaction(); // this should not fail! try { tx.commit(); }
+		 * // there should be a finally block but this is only a test catch (Exception e) { fail("The transaction commit
+		 * should not flush illegal objects to the database"); } }
 		 */
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.20 2009/03/30 07:53:10 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.21 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class LibraryAction extends AbstractTestAction {
 
@@ -55,7 +55,7 @@ public class LibraryAction extends AbstractTestAction {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
-		store.disableDrop();
+		// store.disableDrop();
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
 		// {
@@ -171,10 +171,10 @@ public class LibraryAction extends AbstractTestAction {
 			assertTrue("The container of the writer should be set!", store.setContainer(writ));
 
 			assertEquals(LibraryPackage.eINSTANCE.getLibrary_Writers().getFeatureID(), writ.eContainingFeature()
-				.getFeatureID());
+					.getFeatureID());
 
 			assertTrue("The container of the writer should be equal to the earlier retrieved Library", lib == writ
-				.eContainer());
+					.eContainer());
 
 			final Object[] eobjs = store.getCrossReferencers(writ, false);
 			assertEquals(3, eobjs.length);

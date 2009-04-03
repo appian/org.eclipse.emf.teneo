@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.17 2008/12/07 13:50:10 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.18 2009/04/03 06:15:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -31,12 +31,11 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests the library example of emf/xsd using a resource. Actually tests
- * bidirectional references using resources. Most other aspects of resources are
- * handled in the Catalog example.
+ * Tests the library example of emf/xsd using a resource. Actually tests bidirectional references using resources. Most
+ * other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	public LibraryResourceAction() {
@@ -55,27 +54,27 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.load(null);
 
 				final Writer writer = factory.createWriter();
-				writer.setName("JRR Tolkien");
+				writer.setName("JRR_Tolkien");
 
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
 				book.setPages(510);
-				book.setTitle("Fellowship of the Ring");
+				book.setTitle("Fellowship_of_the_Ring");
 				book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 				final Book book2 = factory.createBook();
 				book2.setAuthor(writer);
 				book2.setPages(500);
-				book2.setTitle("The Hobbit");
+				book2.setTitle("The_Hobbit");
 				book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 
 				// sorry george making a mistake here, will correct this below
 				final Book book3 = factory.createBook();
 				book3.setAuthor(writer);
 				book3.setPages(500);
-				book3.setTitle("1984");
+				book3.setTitle("nineteeneightyfour");
 				book3.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 				final Library library = factory.createLibrary();
-				library.setName("Science Fiction");
+				library.setName("Science_Fiction");
 				library.getBooks().add(book);
 				library.getBooks().add(book2);
 				library.getBooks().add(book3);
@@ -106,39 +105,31 @@ public class LibraryResourceAction extends AbstractTestAction {
 				writerURI = res.getURIFragment(tolkien);
 
 				/*
-				 * final Object[] obj =
-				 * ((StoreResource)res).getCrossReferencers(tolkien); for (int i
-				 * = 0; i < obj.length; i++) {
+				 * final Object[] obj = ((StoreResource)res).getCrossReferencers(tolkien); for (int i = 0; i <
+				 * obj.length; i++) {
 				 */
 
 				/*
 				 * assertEquals(3, tolkien.getBooks().size());
 				 * 
-				 * assertEquals(0 , tolkien.getName().compareTo("JRR Tolkien"));
-				 * Book wBook = (Book)tolkien.getBooks().get(0); Book lBook =
-				 * (Book)lib.getBooks().get(0);
-				 * assertTrue("Book is contained in the library",
-				 * wBook.eContainer() == lib);
-				 * assertTrue("Book is contained in the library",
-				 * lBook.eContainer() == lib);
+				 * assertEquals(0 , tolkien.getName().compareTo("JRR Tolkien")); Book wBook =
+				 * (Book)tolkien.getBooks().get(0); Book lBook = (Book)lib.getBooks().get(0);
+				 * assertTrue("Book is contained in the library", wBook.eContainer() == lib);
+				 * assertTrue("Book is contained in the library", lBook.eContainer() == lib);
 				 * 
-				 * assertTrue(lBook.getAuthor() == tolkien);
-				 * assertTrue(tolkien.getBooks().contains(lBook));
-				 * assertTrue(tolkien.getBooks().contains(wBook)); // ordering
-				 * is the same
-				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) ==
-				 * 0); assertTrue(wBook.getPages() == lBook.getPages());
-				 * assertTrue(wBook.getCategory() instanceof BookCategory);
-				 * assertTrue(wBook.getCategory() ==
-				 * BookCategory.SCIENCE_FICTION_LITERAL);
+				 * assertTrue(lBook.getAuthor() == tolkien); assertTrue(tolkien.getBooks().contains(lBook));
+				 * assertTrue(tolkien.getBooks().contains(wBook)); // ordering is the same
+				 * assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0); assertTrue(wBook.getPages() ==
+				 * lBook.getPages()); assertTrue(wBook.getCategory() instanceof BookCategory);
+				 * assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL);
 				 */
 				// correct the mistake we made
 				Book orwellsBook = tolkien.getBooks().get(2);
-				assertTrue(orwellsBook.getTitle().compareTo("1984") == 0);
+				assertTrue(orwellsBook.getTitle().compareTo("nineteeneightyfour") == 0);
 
 				// add orwell as a writer
 				final Writer george = factory.createWriter();
-				george.setName("George Orwell");
+				george.setName("George_Orwell");
 				orwellsBook.setAuthor(george);
 
 				// and put george in our library
@@ -151,8 +142,8 @@ public class LibraryResourceAction extends AbstractTestAction {
 				res.save(null);
 				res.save(null);
 
-				george.setName("G. Orwell"); // there was a bug in which this
-												// failed, reported by
+				george.setName("G._Orwell"); // there was a bug in which this
+				// failed, reported by
 				// Georgi Manev
 				res.save(null);
 				res.save(null);
@@ -171,10 +162,10 @@ public class LibraryResourceAction extends AbstractTestAction {
 
 				Writer w = (Writer) res.getEObject(writerURI);
 				assertFalse(sr.getNewEObjects().contains(w));
-				assertEquals("JRR Tolkien", w.getName());
+				assertEquals("JRR_Tolkien", w.getName());
 				assertEquals(2, w.getBooks().size());
-				assertEquals("The Hobbit", w.getBooks().get(1).getTitle());
-				assertEquals(lib.getName(), "Science Fiction");
+				assertEquals("The_Hobbit", w.getBooks().get(1).getTitle());
+				assertEquals(lib.getName(), "Science_Fiction");
 				assertTrue(lib.getWriters().contains(w));
 				assertTrue(lib.getBooks().contains(w.getBooks().get(0)));
 				res.unload();
@@ -264,7 +255,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			res.getContents().add(newLib);
 			lib.getWriters().remove(writer);
 			assertTrue(lib.getBooks().size() > 0); // force load of books to
-													// prevent dangling error
+			// prevent dangling error
 			// in jpox
 			newLib.getWriters().add(writer);
 			res.save(null);
