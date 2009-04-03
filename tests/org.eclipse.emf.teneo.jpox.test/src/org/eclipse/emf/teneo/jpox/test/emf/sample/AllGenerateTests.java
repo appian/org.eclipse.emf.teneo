@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllGenerateTests.java,v 1.25 2008/08/11 20:41:26 mtaal Exp $
+ * $Id: AllGenerateTests.java,v 1.26 2009/04/03 11:38:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpox.test.emf.sample;
@@ -44,14 +44,13 @@ import org.eclipse.emf.teneo.test.emf.sample.WorkFlowAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class AllGenerateTests {
 	public static Test suite() {
-		MultiCfgTestSuite suite =
-				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed.instance()
-					.getConfigurations());
-// suite.addTest(new JPOXGenerateTest(LibraryLargeAction.class));
+		MultiCfgTestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.test.samples", JPOXTestbed
+				.instance().getConfigurations());
+		// suite.addTest(new JPOXGenerateTest(LibraryLargeAction.class));
 
 		suite.addTest(new JPOXGenerateTest(LibraryTest.testAction));
 
@@ -66,7 +65,7 @@ public class AllGenerateTests {
 
 		suite.addTest(new JPOXGenerateTest(SchoolLibraryTest.testAction));
 
-		suite.addTest(new JPOXGenerateTest(LibraryPMControllerAction.class));
+		// suite.addTest(new JPOXGenerateTest(LibraryPMControllerAction.class));
 
 		suite.addTest(new JPOXGenerateTest(LibraryResourceCutPasteAction.class));
 		suite.addTest(new JPOXGenerateTest(LibraryNonResolvingAction.class));
