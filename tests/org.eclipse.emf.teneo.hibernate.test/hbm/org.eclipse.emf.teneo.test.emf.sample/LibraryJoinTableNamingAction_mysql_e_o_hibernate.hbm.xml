@@ -10,16 +10,12 @@
 		<meta attribute="eclassName">Book</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<cache usage="read-write"/>
-		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
-			<generator class="native"/>
+		<id name="title" type="java.lang.String">
+			<column not-null="true" unique="false" name="`TITLE`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`TITLE`"/>
-		</property>
 		<property name="pages" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
 			<column not-null="true" unique="false" name="`PAGES`"/>
 		</property>
@@ -29,9 +25,12 @@
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
 			</type>
 		</property>
+		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`TEST`"/>
+		</property>
 		<join table="WRITER_BOOKS" inverse="true" optional="true">
 			<key update="true">
-				<column name="`BOOK_E_ID`" not-null="true" unique="false"/>
+				<column name="`BOOK_TITLE`" not-null="true" unique="false"/>
 			</key>
 			<many-to-one name="author" entity-name="Writer" lazy="false" insert="true" update="true" cascade="merge,persist,save-update,lock,refresh" foreign-key="BOOK_AUTHOR">
 				<column not-null="false" unique="false" name="`WRITER_E_ID`"/>
@@ -87,7 +86,7 @@
 				<column name="`WRITER_E_ID`" not-null="true" unique="false"/>
 			</key>
 			<many-to-many entity-name="Book" unique="true">
-				<column name="`BOOK_E_ID`" not-null="true" unique="false"/>
+				<column name="`BOOK_TITLE`" not-null="true" unique="false"/>
 			</many-to-many>
 		</bag>
 	</class>

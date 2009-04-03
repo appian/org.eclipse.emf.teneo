@@ -11,13 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryInterfaceQueryTest.java,v 1.1 2008/08/03 21:24:24 mtaal Exp $
+ * $Id: LibraryInterfaceQueryTest.java,v 1.2 2009/04/03 06:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
+import java.util.Properties;
+
 import javax.persistence.EntityManager;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
@@ -38,18 +41,25 @@ import org.hibernate.Session;
  * Test interface entity naming strategy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryInterfaceQueryTest extends AbstractTestAction {
 	public LibraryInterfaceQueryTest() {
 		super(LibraryPackage.eINSTANCE);
 	}
 
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY, "false");
+		return props;
+	}
+
 	/** Add extensions if you want */
 	@Override
 	public void setExtensions(ExtensionManager extensionManager) {
 		extensionManager.registerExtension(EntityNameStrategy.class.getName(), EntityInterfaceNameStrategy.class
-			.getName());
+				.getName());
 	}
 
 	@Override
@@ -91,7 +101,7 @@ public class LibraryInterfaceQueryTest extends AbstractTestAction {
 		{
 			final HibernateTestStore hbstore = (HibernateTestStore) store;
 			assertTrue(hbstore.getMappingXML().indexOf(
-				"entity-name=\"org.eclipse.emf.teneo.samples.emf.sample.library.Writer\"") != -1);
+					"entity-name=\"org.eclipse.emf.teneo.samples.emf.sample.library.Writer\"") != -1);
 			System.err.println(hbstore.getMappingXML());
 			store.beginTransaction();
 			final SessionWrapper sw = ((HibernateTestStore) store).getSessionWrapper();

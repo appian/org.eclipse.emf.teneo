@@ -54,16 +54,20 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.95 $
+ * @version $Revision: 1.96 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite =
-				new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample", HibernateTestbed
-					.instance().getConfigurations());
-		// suite.addTestSuite(LibraryLargeAction.class);
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
+				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(LibraryColLengthAction.class);
 
+		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
+		suite.addTestSuite(LibrarySessionControllerAction.class);
+
+		// suite.addTestSuite(LibraryLargeAction.class);
+		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(LibraryNotifyingTestAction.class);
 		suite.addTestSuite(LibraryContainerFeatureIDFeatureIDAction.class);
@@ -73,7 +77,6 @@ public class AllTests {
 
 		suite.addTestSuite(ListAsIdBagAction.class);
 
-		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryResourceVisitTreeAction.class);
 
 		suite.addTestSuite(LibraryInterfaceQueryTest.class);
@@ -82,13 +85,10 @@ public class AllTests {
 		// possibly regenerating code
 		// suite.addTestSuite(EcoreAction.class);
 
-		suite.addTestSuite(LibrarySessionControllerAction.class);
-
 		suite.addTestSuite(SchoolLibraryTest.class);
 
 		suite.addTestSuite(EmployeeAction.class);
 
-		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
 		suite.addTestSuite(ResourceUnloadAction.class);
 
 		suite.addTestSuite(SimpleLibraryResourceAction.class);
@@ -97,7 +97,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryUseMappingFileAction.class);
 
 		suite.addTestSuite(LibraryCheckNameAction.class);
-		suite.addTestSuite(LibraryColLengthAction.class);
 
 		suite.addTestSuite(LibraryFKAction.class);
 

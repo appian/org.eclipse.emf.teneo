@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAddContentAction.java,v 1.8 2008/04/20 10:33:17 mtaal Exp $
+ * $Id: LibrarySessionControllerAddContentAction.java,v 1.9 2009/04/03 06:16:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibrarySessionControllerAddContentAction extends AbstractTestAction {
 	/**
@@ -80,22 +80,22 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				sc.getSessionWrapper().commitTransaction();
 
 				final Writer writer = factory.createWriter();
-				writer.setName("JRR Tolkien");
+				writer.setName("JRR_Tolkien");
 				res2.getContents().add(writer);
 
 				final Book book = factory.createBook();
 				book.setAuthor(writer);
 				book.setPages(510);
-				book.setTitle("Fellowship of the Ring");
+				book.setTitle("Fellowship_of_the_Ring");
 				book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 				final Book book2 = factory.createBook();
 				book2.setAuthor(writer);
 				book2.setPages(500);
-				book2.setTitle("The Hobbit");
+				book2.setTitle("The_Hobbit");
 				book2.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
 
 				final Library library = factory.createLibrary();
-				library.setName("Science Fiction");
+				library.setName("Science_Fiction");
 				library.getBooks().add(book);
 				library.getBooks().add(book2);
 				library.getWriters().add(writer);

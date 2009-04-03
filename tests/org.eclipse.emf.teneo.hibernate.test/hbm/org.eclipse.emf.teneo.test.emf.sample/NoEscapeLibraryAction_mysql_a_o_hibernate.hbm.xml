@@ -10,17 +10,13 @@
 		<meta attribute="eclassName">Book</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<cache usage="read-write"/>
-		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
-			<generator class="native"/>
+		<id name="title" type="java.lang.String">
+			<column not-null="false" unique="false" name="title" length="50"/>
 		</id>
 		<discriminator column="dtype" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="title" length="50"/>
-		</property>
 		<property name="pages" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
 			<column not-null="true" unique="false" name="pages"/>
 		</property>
@@ -33,6 +29,9 @@
 		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="book_author" insert="false" update="false" not-null="false">
 			<column not-null="false" unique="false" name="book_author_e_id"/>
 		</many-to-one>
+		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="test"/>
+		</property>
 	</class>
 	<class entity-name="Library" abstract="false" lazy="false" discriminator-value="Library" table="library">
 		<meta attribute="eclassName">Library</meta>
