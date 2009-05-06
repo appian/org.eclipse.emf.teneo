@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: StoreExportXML.java,v 1.4 2008/02/28 07:07:29 mtaal Exp $
+ * $Id: StoreExportXML.java,v 1.5 2009/05/06 18:40:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.eclipse.resourcehandler;
@@ -31,6 +31,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.teneo.eclipse.Messages;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -49,7 +50,7 @@ import org.eclipse.ui.dialogs.SaveAsDialog;
  * Generic action class for exporting xml from a resource file.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public abstract class StoreExportXML implements IObjectActionDelegate {
@@ -77,8 +78,8 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		try {
-			final SaveAsDialog saDialog =
-					new ExportSaveAsDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+			final SaveAsDialog saDialog = new ExportSaveAsDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+					.getShell());
 			saDialog.open();
 			final IPath path = saDialog.getResult();
 
@@ -146,11 +147,11 @@ public abstract class StoreExportXML implements IObjectActionDelegate {
 		protected Control createContents(Composite parent) {
 			Control contents = super.createContents(parent);
 			if (isXMLExport()) {
-				setTitle("Export the contents of the datastore to XML");
+				setTitle(Messages.getString("teneo.export.xml"));
 			} else {
-				setTitle("Export the contents of the datastore to XMI");
+				setTitle(Messages.getString("teneo.export.xmi"));
 			}
-			setMessage("Select a parent location and enter a file name");
+			setMessage(Messages.getString("teneo.select.parent"));
 			return contents;
 		}
 	}

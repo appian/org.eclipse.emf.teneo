@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.teneo.eclipse.Messages;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -33,7 +34,7 @@ import org.eclipse.ui.dialogs.ResourceSelectionDialog;
  * Performs the import xml action
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public abstract class StoreImportXML implements IObjectActionDelegate {
@@ -68,14 +69,13 @@ public abstract class StoreImportXML implements IObjectActionDelegate {
 		try {
 			final String title;
 			if (isXMLImport()) {
-				title = "Select one or more XML resources to import from.";
+				title = Messages.getString("teneo.import.xml");
 			} else {
-				title = "Select one or more XMI resources to import from.";
+				title = Messages.getString("teneo.import.xmi");
 			}
 
-			final ResourceSelectionDialog dialog =
-					new ResourceSelectionDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-						ResourcesPlugin.getWorkspace().getRoot(), title);
+			final ResourceSelectionDialog dialog = new ResourceSelectionDialog(PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getShell(), ResourcesPlugin.getWorkspace().getRoot(), title);
 			dialog.open();
 			final Object[] fileObjs = dialog.getResult();
 
@@ -117,7 +117,7 @@ public abstract class StoreImportXML implements IObjectActionDelegate {
 		private Properties props;
 
 		LocalJob(IFile[] files, Properties props) {
-			super("Import");
+			super(Messages.getString("teneo.import"));
 			this.files = files;
 			this.props = props;
 		}

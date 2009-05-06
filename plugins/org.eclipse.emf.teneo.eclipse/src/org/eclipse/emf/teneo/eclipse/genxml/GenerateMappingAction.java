@@ -18,6 +18,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.emf.teneo.eclipse.Messages;
 import org.eclipse.emf.teneo.eclipse.StoreEclipseUtil;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
@@ -34,7 +35,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * Is superclass for different generate descriptor file subclasses.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public abstract class GenerateMappingAction implements IObjectActionDelegate {
@@ -73,8 +74,8 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 
 		if (ecoreFiles.size() == 0) {
 			Shell shell = new Shell();
-			MessageDialog.openInformation(shell, "Create EMF OR Mapping File",
-					"Please select a ecore file.");
+			MessageDialog.openInformation(shell, Messages.getString("teneo.create.or.mapping"), Messages
+					.getString("teneo.select.ecore.file"));
 			return;
 		}
 
@@ -98,14 +99,13 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 				}
 			}
 
-			RunGenerateJob rgj = new RunGenerateJob(jprojects, ecoreLocations, targetFileName,
-					mainClass, options);
+			RunGenerateJob rgj = new RunGenerateJob(jprojects, ecoreLocations, targetFileName, mainClass, options);
 
 			rgj.schedule();
 
 			Shell shell = new Shell();
-			MessageDialog.openInformation(shell, resultTitle1, "The " + targetFileName
-					+ " file has been created here: " + container.getName());
+			MessageDialog.openInformation(shell, resultTitle1, Messages.getString("teneo.file.created")
+					+ container.getName());
 
 			// is refresh a dangerous action, eclipse crashes?
 			container.refreshLocal(IResource.DEPTH_INFINITE, null);
@@ -118,7 +118,8 @@ public abstract class GenerateMappingAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
-		if (!(selection instanceof IStructuredSelection)) return;
+		if (!(selection instanceof IStructuredSelection))
+			return;
 
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 		final Iterator<?> it = structuredSelection.iterator();
