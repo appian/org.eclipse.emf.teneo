@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="hibernate3.jar"/>
 	<classpathentry exported="true" kind="lib" path="mysql-connector-java-5.1.6-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="hsqldb.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
