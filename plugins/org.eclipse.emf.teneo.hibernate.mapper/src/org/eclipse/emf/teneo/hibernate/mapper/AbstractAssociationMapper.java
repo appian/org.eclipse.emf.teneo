@@ -57,13 +57,11 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final PAnnotatedEClass referedToAClass = aReference.getAReferenceType();
 		final Element element;
 		if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
-			element =
-					getHbmContext().getCurrent().addElement("one-to-one").addAttribute("name", assocName).addAttribute(
-						"entity-name", targetEntity);
+			element = getHbmContext().getCurrent().addElement("one-to-one").addAttribute("name", assocName)
+					.addAttribute("entity-name", targetEntity);
 		} else {
-			element =
-					getHbmContext().getCurrent().addElement("one-to-one").addAttribute("name", assocName).addAttribute(
-						"class", getHbmContext().getInstanceClassName(referedToAClass.getModelEClass()));
+			element = getHbmContext().getCurrent().addElement("one-to-one").addAttribute("name", assocName)
+					.addAttribute("class", getHbmContext().getInstanceClassName(referedToAClass.getModelEClass()));
 		}
 
 		if (aReference instanceof HbAnnotatedEReference) {
@@ -113,7 +111,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 		if (isEObject(referedTo)) {
 			return getHbmContext().getCurrent().addElement("any").addAttribute("name", assocName).addAttribute(
-				"id-type", "long");
+					"id-type", "long");
 		}
 
 		final String tagName;
@@ -141,13 +139,11 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final PAnnotatedEClass referedToAClass = aReference.getPaModel().getPAnnotated(referedToEClass);
 		final Element element;
 		if (referedToAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedToAClass)) {
-			element =
-					currentParent.addElement(tagName).addAttribute("name", assocName).addAttribute("entity-name",
-						referedTo);
+			element = currentParent.addElement(tagName).addAttribute("name", assocName).addAttribute("entity-name",
+					referedTo);
 		} else {
-			element =
-					currentParent.addElement(tagName).addAttribute("name", assocName).addAttribute("class",
-						getHbmContext().getInstanceClassName(referedToEClass));
+			element = currentParent.addElement(tagName).addAttribute("name", assocName).addAttribute("class",
+					getHbmContext().getInstanceClassName(referedToEClass));
 		}
 
 		if (aReference instanceof HbAnnotatedEReference) {
@@ -161,10 +157,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Adds joincolumns to the associationElement, sets the insert and update attributes of the
-	 * associationElement on the basis of the insertable/updatable attributes of the joinColumns.
-	 * Note that the joinColumns list can be empty. forcenullable is set to true when a feature map
-	 * entry is being processed.
+	 * Adds joincolumns to the associationElement, sets the insert and update attributes of the associationElement on
+	 * the basis of the insertable/updatable attributes of the joinColumns. Note that the joinColumns list can be empty.
+	 * forcenullable is set to true when a feature map entry is being processed.
 	 */
 	protected void addJoinColumns(PAnnotatedEReference per, Element associationElement, List<JoinColumn> joinColumns,
 			boolean forceNullable) {
@@ -179,10 +174,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		for (JoinColumn joinColumn : joinColumns) {
 			log.debug("JoinColumn " + joinColumn.getName());
 
-			Element columnElement =
-					associationElement.addElement("column").addAttribute("not-null",
-						(joinColumn.isNullable() && joinColumn.isSetNullable()) || forceNullable ? "false" : "true")
-						.addAttribute("unique", joinColumn.isUnique() ? "true" : "false");
+			Element columnElement = associationElement.addElement("column").addAttribute("not-null",
+					(joinColumn.isNullable() && joinColumn.isSetNullable()) || forceNullable ? "false" : "true")
+					.addAttribute("unique", joinColumn.isUnique() ? "true" : "false");
 			if (joinColumn.getName() != null) {
 
 				columnElement.addAttribute("name", getHbmContext().trunc(joinColumn.getName()));
@@ -227,17 +221,16 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 		}
 		// ugly but effective
-		if (associationElement.getName().compareTo("map-key-many-to-many") != 0 &&
-				associationElement.getName().compareTo("join") != 0 &&
-				associationElement.getName().compareTo("key-many-to-one") != 0) {
+		if (associationElement.getName().compareTo("map-key-many-to-many") != 0
+				&& associationElement.getName().compareTo("join") != 0
+				&& associationElement.getName().compareTo("key-many-to-one") != 0) {
 			associationElement.addAttribute("insert", Boolean.toString(insertable));
 			associationElement.addAttribute("update", Boolean.toString(updatable));
 		}
 	}
 
 	/**
-	 * Creates cascades for onetoone/manytoone, they differ from many relations because no
-	 * delete-orphan is supported.
+	 * Creates cascades for onetoone/manytoone, they differ from many relations because no delete-orphan is supported.
 	 * 
 	 * @param associationElement
 	 *            : the element to which the cascades are added.
@@ -258,8 +251,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Creates cascades for onetomany, it differs from single relations because delete-orphan is
-	 * supported when cascade=all
+	 * Creates cascades for onetomany, it differs from single relations because delete-orphan is supported when
+	 * cascade=all
 	 * 
 	 * @param associationElement
 	 *            : the element to which the cascades are added.
@@ -271,8 +264,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Creates cascades for onetoone/manytoone, they differ from many relations because no
-	 * delete-orphan is supported.
+	 * Creates cascades for onetoone/manytoone, they differ from many relations because no delete-orphan is supported.
 	 * 
 	 * @param associationElement
 	 *            : the element to which the cascades are added.
@@ -359,9 +351,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	protected String getIndexColumnName(PAnnotatedEStructuralFeature aFeature) {
-		return getHbmContext().getPersistenceOptions().getSQLColumnNamePrefix() +
-				(aFeature.getPaEClass().getModelEClass().getName() + "_" +
-						aFeature.getModelEStructuralFeature().getName() + "_IDX").toUpperCase();
+		return getHbmContext().getPersistenceOptions().getSQLColumnNamePrefix()
+				+ (aFeature.getPaEClass().getModelEClass().getName() + "_"
+						+ aFeature.getModelEStructuralFeature().getName() + "_IDX").toUpperCase();
 	}
 
 	/**
@@ -413,9 +405,15 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 		if (hbRef.getHbMapKey() != null && hbRef.getMapKey() != null) {
 			log
-				.warn("The EReference " +
-						aref.getModelElement().getName() +
-						" has both a javax.persistence.MapKey as well as a hibernate MapKey annotation this is not correct, only one of the two should be used.");
+					.warn("The EReference "
+							+ aref.getModelElement().getName()
+							+ " has both a javax.persistence.MapKey as well as a hibernate MapKey annotation this is not correct, only one of the two should be used.");
+		}
+
+		if (keyFeature == null) {
+			throw new IllegalArgumentException("The EFeature " + eref.getName() + " of EClass "
+					+ eref.getEContainingClass().getName() + " does not have a keyfeature. "
+					+ "Are you sure that this feature is an EMap");
 		}
 
 		if (hbRef.getHbMapKey() != null) {
@@ -429,18 +427,17 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else if (hbRef.getMapKey() != null) {
 			final MapKey mapKey = hbRef.getMapKey();
 			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref.getPaModel().getPAnnotated(keyFeature);
-			final Element mapKeyElement =
-					collElement.addElement("map-key").addAttribute("column", getHbmContext().trunc(mapKey.getName()));
+			final Element mapKeyElement = collElement.addElement("map-key").addAttribute("column",
+					getHbmContext().trunc(mapKey.getName()));
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKeyManyToMany() != null) {
 			final MapKeyManyToMany mkm = hbRef.getMapKeyManyToMany();
-			final PAnnotatedEClass referedAClass =
-					aref.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
+			final PAnnotatedEClass referedAClass = aref.getPaModel().getPAnnotated(
+					((EReference) keyFeature).getEReferenceType());
 			final Element mkmElement = collElement.addElement("map-key-many-to-many");
 			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
-				final String entityName =
-						mkm.getTargetEntity() != null ? mkm.getTargetEntity() : hbmContext
-							.getEntityName(((EReference) keyFeature).getEReferenceType());
+				final String entityName = mkm.getTargetEntity() != null ? mkm.getTargetEntity() : hbmContext
+						.getEntityName(((EReference) keyFeature).getEReferenceType());
 				mkmElement.addAttribute("entity-name", entityName);
 			} else {
 				mkmElement.addAttribute("class", getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
@@ -449,14 +446,14 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				addJoinColumns(hbRef, mkmElement, mkm.getJoinColumns(), false);
 			}
 		} else if (keyFeature instanceof EReference) {
-			final PAnnotatedEClass referedAClass =
-					aref.getPaModel().getPAnnotated(((EReference) keyFeature).getEReferenceType());
+			final PAnnotatedEClass referedAClass = aref.getPaModel().getPAnnotated(
+					((EReference) keyFeature).getEReferenceType());
 			if (referedAClass.isOnlyMapAsEntity() || !getHbmContext().forceUseOfInstance(referedAClass)) {
 				final String entityName = hbmContext.getEntityName(((EReference) keyFeature).getEReferenceType());
 				collElement.addElement("map-key-many-to-many").addAttribute("entity-name", entityName);
 			} else {
 				collElement.addElement("map-key-many-to-many").addAttribute("class",
-					getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
+						getHbmContext().getInstanceClassName(referedAClass.getModelEClass()));
 			}
 		} else {
 			// final String type =
@@ -472,9 +469,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 * @return a newly added hibernate for given collection
 	 * @deprecated use addCollectionElement(PAnnotatedEStructuralFeature) instead. protected Element
 	 *             addCollectionElement(String name, boolean isIndexed) { return
-	 *             getHbmContext().getCurrent().addElement(isIndexed ? "list" :
-	 *             "bag").addAttribute("name", name); // .addAttribute("access",
-	 *             "org.eclipse.emf.teneo.hibernate.mapping.elist.EListPropertyAccessor" ); }
+	 *             getHbmContext().getCurrent().addElement(isIndexed ? "list" : "bag").addAttribute("name", name); //
+	 *             .addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.elist.EListPropertyAccessor" ); }
 	 */
 
 	/**
@@ -495,9 +491,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final IdBag idBag = hbFeature.getHbIdBag();
 
 		final EStructuralFeature estruct = paFeature.getModelEStructuralFeature();
-		final boolean isArray =
-				estruct instanceof EAttribute && estruct.getEType().getInstanceClass() != null &&
-						estruct.getEType().getInstanceClass().isArray();
+		final boolean isArray = estruct instanceof EAttribute && estruct.getEType().getInstanceClass() != null
+				&& estruct.getEType().getInstanceClass().isArray();
 		final boolean isMap = StoreUtil.isMap(estruct) && getHbmContext().isMapEMapAsTrueMap();
 
 		// disabled following check because it also failed for many eattribute
@@ -509,10 +504,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		// without jointable in combination with
 		// IdBag.");
 		// }
-		final boolean hasOrderBy =
-				paFeature instanceof PAnnotatedEReference && ((PAnnotatedEReference) paFeature).getOrderBy() != null;
-		final boolean hasWhereClause =
-				paFeature instanceof PAnnotatedEReference && ((HbAnnotatedEReference) paFeature).getHbWhere() != null;
+		final boolean hasOrderBy = paFeature instanceof PAnnotatedEReference
+				&& ((PAnnotatedEReference) paFeature).getOrderBy() != null;
+		final boolean hasWhereClause = paFeature instanceof PAnnotatedEReference
+				&& ((HbAnnotatedEReference) paFeature).getHbWhere() != null;
 
 		if (isArray) { // array type
 			collectionElement = getHbmContext().getCurrent().addElement("array");
@@ -520,12 +515,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionElement = getHbmContext().getCurrent().addElement("map");
 		} else if (idBag != null) {
 			collectionElement = getHbmContext().getCurrent().addElement("idbag");
-		} else if (getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null &&
-				hbFeature.getOneToMany().isList()) {
+		} else if (getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null
+				&& hbFeature.getOneToMany().isList()) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
 				log
-					.warn("One to many ereference has indexed=true and has orderby set. Ignoring indexed and using orderby, assuming set " +
-							hbFeature);
+						.warn("One to many ereference has indexed=true and has orderby set. Ignoring indexed and using orderby, assuming set "
+								+ hbFeature);
 			}
 
 			if (hasOrderBy || !hbFeature.getOneToMany().isIndexed()) {
@@ -535,8 +530,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 		} else if (!getHbmContext().isGeneratedByEMF() && hbFeature.getOneToMany() != null) {
 			if (hasOrderBy && hbFeature.getOneToMany().isIndexed()) {
-				log.warn("One to many ereference has indexed=true and has orderby set. " +
-						"Ignoring indexed and using orderby, assuming set " + hbFeature);
+				log.warn("One to many ereference has indexed=true and has orderby set. "
+						+ "Ignoring indexed and using orderby, assuming set " + hbFeature);
 			}
 
 			if (!hbFeature.getOneToMany().isList() || hasOrderBy) {
@@ -546,9 +541,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			} else {
 				collectionElement = getHbmContext().getCurrent().addElement("list");
 			}
-		} else if (hbFeature instanceof PAnnotatedEReference &&
-				((PAnnotatedEReference) hbFeature).getManyToMany() != null &&
-				((PAnnotatedEReference) hbFeature).getManyToMany().isList()) {
+		} else if (hbFeature instanceof PAnnotatedEReference
+				&& ((PAnnotatedEReference) hbFeature).getManyToMany() != null
+				&& ((PAnnotatedEReference) hbFeature).getManyToMany().isList()) {
 			collectionElement = getHbmContext().getCurrent().addElement("list");
 		} else {
 			collectionElement = getHbmContext().getCurrent().addElement("bag");
@@ -577,8 +572,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 		if (hasOrderBy) {
 			final PAnnotatedEClass aClass = ((PAnnotatedEReference) paFeature).getAReferenceType();
-			final String name =
-					getColumnNameForOrderBy(aClass, ((PAnnotatedEReference) paFeature).getOrderBy().getValue());
+			final String name = getColumnNameForOrderBy(aClass, ((PAnnotatedEReference) paFeature).getOrderBy()
+					.getValue());
 			collectionElement.addAttribute("order-by", name);
 		}
 
@@ -586,13 +581,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			collectionElement.addAttribute("where", ((HbAnnotatedEReference) paFeature).getHbWhere().getClause());
 		}
 
-		final boolean hasBatchSize =
-				paFeature instanceof HbAnnotatedEReference &&
-						((HbAnnotatedEReference) paFeature).getBatchSize() != null;
+		final boolean hasBatchSize = paFeature instanceof HbAnnotatedEReference
+				&& ((HbAnnotatedEReference) paFeature).getBatchSize() != null;
 
 		if (hasBatchSize) {
-			collectionElement.addAttribute("batch-size", "" +
-					((HbAnnotatedEReference) paFeature).getBatchSize().getSize());
+			collectionElement.addAttribute("batch-size", ""
+					+ ((HbAnnotatedEReference) paFeature).getBatchSize().getSize());
 		}
 
 		return collectionElement;
@@ -643,8 +637,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				}
 			}
 			if (!found) {
-				throw new MappingException("Feature " + ob + " not found in eclass " +
-						aClass.getModelEClass().getName());
+				throw new MappingException("Feature " + ob + " not found in eclass "
+						+ aClass.getModelEClass().getName());
 			}
 		}
 		return sb.toString();
@@ -682,8 +676,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	/**
-	 * Adds columns to a key element. Also sets update on the key element based on the values in the
-	 * columns.
+	 * Adds columns to a key element. Also sets update on the key element based on the values in the columns.
 	 */
 	protected void addKeyColumns(HbAnnotatedETypeElement per, Element keyElement, List<JoinColumn> joinColumns) {
 		log.debug("Adding key columns");
@@ -710,10 +703,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				throw new MappingException("Unsupported join column updatable", joinColumn);
 			}
 
-			final Element ce =
-					keyElement.addElement("column").addAttribute("name", getHbmContext().trunc(joinColumn.getName()))
-						.addAttribute("not-null", joinColumn.isNullable() ? "false" : "true").addAttribute("unique",
-							joinColumn.isUnique() ? "true" : "false");
+			final Element ce = keyElement.addElement("column").addAttribute("name",
+					getHbmContext().trunc(joinColumn.getName())).addAttribute("not-null",
+					joinColumn.isNullable() ? "false" : "true").addAttribute("unique",
+					joinColumn.isUnique() ? "true" : "false");
 
 			// --- JJH, adapted by Martin Taal
 			addCommentElement(per.getModelElement(), ce);
@@ -767,10 +760,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			throw new MappingException("Unsupported unique constraints", joinTable);
 		}
 		addKeyColumns(hbAnnotatedElement, keyElement, joinTable.getJoinColumns()/*
-																				 * == null ? new
-																				 * ArrayList() :
-																				 * (List)joinTable.
-																				 * getJoinColumns
+																				 * == null ? new ArrayList() :
+																				 * (List)joinTable. getJoinColumns
 																				 * ().getValue()
 																				 */);
 	}
