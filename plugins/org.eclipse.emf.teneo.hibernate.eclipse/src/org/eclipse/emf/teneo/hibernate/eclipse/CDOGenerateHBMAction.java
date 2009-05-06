@@ -23,7 +23,7 @@ import org.eclipse.ui.IActionDelegate;
  * Eclipse popup action to generate a hibernate file based on ecore files.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class CDOGenerateHBMAction extends GenerateMappingAction {
@@ -35,7 +35,7 @@ public class CDOGenerateHBMAction extends GenerateMappingAction {
 		final HashMap<String, String> options = new HashMap<String, String>();
 		options.put(PersistenceOptions.INHERITANCE_MAPPING, InheritanceType.JOINED.getName());
 		options.put(CDOHelper.GENERATE_FOR_CDO, CDOHelper.GENERATE_FOR_CDO);
-		super.run(action, "cdo_" + HbConstants.HBM_FILE_NAME, "Generate Hibernate mapping file for CDO", options,
-			GenerateHBM.class.getName());
+		super.run(action, "cdo_" + HbConstants.HBM_FILE_NAME, Messages.getString("teneo.generate.hbm.cdo"), options,
+				GenerateHBM.class.getName());
 	}
 }

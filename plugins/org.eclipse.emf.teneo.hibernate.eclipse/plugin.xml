@@ -9,7 +9,7 @@
             nameFilter="*.ecore"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="Teneo"
+               label="%teneo"
                path="additions"
                id="org.eclipse.emf.teneo.eclipse.teneomenu">
             <separator
@@ -20,9 +20,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.GenerateHBMAction"
                enablesFor="+"
                id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbm"
-               label="Generate EMF - Hibernate OR Mapping (joined-subclass)"
+               label="%teneo.hbm.label.0"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group2"
-               tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s). Uses joined-subclass inheritance mapping strategy.">
+               tooltip="%teneo.hbm.tooltip.0">
          </action>
       </objectContribution>
       <objectContribution
@@ -30,7 +30,7 @@
             nameFilter="*.ecore"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="Teneo"
+               label="%teneo"
                path="additions"
                id="org.eclipse.emf.teneo.eclipse.teneomenu">
             <separator
@@ -41,9 +41,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.GenerateHBMActionSuperClass"
                enablesFor="+"
                id="org.eclipse.emf.teneo.hibernate.eclipse.generatehbmsuperclass"
-               label="Generate EMF - Hibernate OR Mapping (super-class)"
+               label="%teneo.hbm.label.1"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group2"
-               tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s). Uses superclass-table inheritance mapping strategy.">
+               tooltip="%teneo.hbm.tooltip.1">
          </action>
       </objectContribution>
       <objectContribution
@@ -51,7 +51,7 @@
             nameFilter="*.ehb"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="Teneo"
+               label="%teneo"
                path="additions"
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu">
             <separator
@@ -62,9 +62,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.OpenResource"
                enablesFor="1"
                id="org.eclipse.emf.teneo.hibernate.eclipse.openResource"
-               label="Open Resource"
+               label="%teneo.openresource.label.0"
                menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group2"
-               tooltip="Opens a resource using the specified editor">
+               tooltip="%teneo.openresource.tooltip.0">
          </action>
       </objectContribution>
       <objectContribution
@@ -73,7 +73,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="Teneo"
+               label="%teneo"
                path="additions">
             <separator name="group4"/>
          </menu>
@@ -81,9 +81,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.ImportXMI"
                enablesFor="1"
                id="org.eclipse.emf.teneo.hibernate.eclipse.importXMI"
-               label="Import from XMI"
+               label="%teneo.import.label.0"
                menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group4"
-               tooltip="Imports an XMI file into a datastore"/>
+               tooltip="%teneo.import.tooltip.0"/>
       </objectContribution>
       <objectContribution
             id="org.eclipse.emf.teneo.hibernate.eclipse.contribution4"
@@ -91,7 +91,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="Teneo"
+               label="%teneo"
                path="additions">
             <separator name="group4"/>
          </menu>
@@ -99,9 +99,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.ExportXMI"
                enablesFor="1"
                id="org.eclipse.emf.teneo.hibernate.eclipse.exportXMI"
-               label="Export to XMI"
+               label="%teneo.export.label.0"
                menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group4"
-               tooltip="Exports a complete datastore to xmi"/>
+               tooltip="%teneo.export.tooltip.0"/>
       </objectContribution>
       <objectContribution
             id="org.eclipse.emf.teneo.hibernate.eclipse.contribution5"
@@ -109,7 +109,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="Teneo"
+               label="%teneo"
                path="additions">
             <separator name="group3"/>
          </menu>
@@ -117,9 +117,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.ImportXML"
                enablesFor="1"
                id="org.eclipse.emf.teneo.hibernate.eclipse.importXML"
-               label="Import from XML"
+               label="%teneo.import.label.1"
                menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group3"
-               tooltip="Imports an XML file into a datastore"/>
+               tooltip="%teneo.import.tooltip.1"/>
       </objectContribution>
       <objectContribution
             id="org.eclipse.emf.teneo.hibernate.eclipse.contribution6"
@@ -127,7 +127,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <menu
                id="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu"
-               label="Teneo"
+               label="%teneo"
                path="additions">
             <separator name="group3"/>
          </menu>
@@ -135,16 +135,16 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.ExportXML"
                enablesFor="1"
                id="org.eclipse.emf.teneo.hibernate.eclipse.exportXML"
-               label="Export to XML"
+               label="%teneo.export.label.1"
                menubarPath="org.eclipse.emf.teneo.hibernate.eclipse.teneomenu/group3"
-               tooltip="Exports a complete datastore to xml"/>
+               tooltip="%teneo.export.tooltip.1"/>
       </objectContribution>
       <objectContribution
             id="org.eclipse.emf.teneo.hibernate.eclipse.contribution7"
             nameFilter="*.ecore"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="Teneo"
+               label="%teneo"
                path="additions"
                id="org.eclipse.emf.teneo.eclipse.teneomenu">
             <separator
@@ -155,9 +155,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.CDOGenerateHBMAction"
                enablesFor="+"
                id="org.eclipse.emf.teneo.hibernate.eclipse.cdogeneratehbm"
-               label="Generate CDO - Hibernate OR Mapping (joined-subclass)"
+               label="%teneo.cdo.label.0"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group4"
-               tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s) for use in a CDO server. Uses joined-subclass inheritance mapping strategy.">
+               tooltip="%teneo.cdo.tooltip.0">
          </action>
       </objectContribution>
       <objectContribution
@@ -176,9 +176,9 @@
                class="org.eclipse.emf.teneo.hibernate.eclipse.CDOGenerateHBMActionSuperClass"
                enablesFor="+"
                id="org.eclipse.emf.teneo.hibernate.eclipse.cdogeneratehbmsuperclass"
-               label="Generate CDO - Hibernate OR Mapping (super-class)"
+               label="%teneo.cdo.label.1"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group4"
-               tooltip="Select to generate a hibernate.hbm.xml file from the ecore model(s) for use in a cdo server. Uses superclass-table inheritance mapping strategy.">
+               tooltip="%teneo.cdo.tooltip.1">
          </action>
       </objectContribution>
    </extension>
