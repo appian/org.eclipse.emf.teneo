@@ -6,13 +6,10 @@ Bundle-Version: 1.0.1.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.teneo.hibernate,
- org.eclipse.emf.teneo.jpox,
  org.eclipse.emf.teneo.samples
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %Plugin.providerName
-Import-Package: javax.jdo,
- org.hibernate,
+Import-Package: org.hibernate,
  org.hibernate.cfg,
- org.hibernate.dialect,
- org.jpox
+ org.hibernate.dialect
