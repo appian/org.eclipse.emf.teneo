@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial1.java,v 1.9 2008/03/07 13:14:54 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.10 2009/05/08 04:01:01 mtaal Exp $
  */
 
 package hbtutorial;
@@ -27,15 +27,15 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.example.library.Book;
 import org.eclipse.example.library.BookCategory;
 import org.eclipse.example.library.Library;
 import org.eclipse.example.library.LibraryFactory;
 import org.eclipse.example.library.LibraryPackage;
 import org.eclipse.example.library.Writer;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
-import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,7 +45,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class Tutorial1 {
 
@@ -176,9 +176,8 @@ public class Tutorial1 {
 			}
 
 			// Retrieve George Orwell's book.
-			query =
-					session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
-							+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
+			query = session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
+					+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
 			books = query.list();
 
 			// Show some results
@@ -189,9 +188,8 @@ public class Tutorial1 {
 			System.out.println(book.getAuthor().getName()); // should be G. Orwell
 
 			// Count the number of books in the library
-			query =
-					session.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
-							+ " WHERE lib.name='My Library'");
+			query = session.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
+					+ " WHERE lib.name='My Library'");
 			int count = ((Number) query.uniqueResult()).intValue();
 			// there should be 2 books
 			System.out.println("There are " + count + " books in the library");
