@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.2"?>
+<?eclipse version="3.0"?>
 <plugin>
 
    <extension
@@ -17,14 +17,13 @@
             </separator>
          </menu>
          <action
-               label="%teneo.orm.file"
                class="org.eclipse.emf.teneo.orm.eclipse.popup.actions.GenerateORMAction"
-               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group5"
                enablesFor="+"
-               id="org.eclipse.emf.teneo.orm.eclipse.generateorm" 
-               tooltip="%teneo.tooltip.orm">
+               id="org.eclipse.emf.teneo.orm.eclipse.generateorm"
+               label="%teneo.orm.file"
+               menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group5"
+               tooltip="%teneo.hbm.tooltip">
          </action>
       </objectContribution>
    </extension>
-
 </plugin>
