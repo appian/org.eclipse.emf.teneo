@@ -17,7 +17,7 @@
             </separator>
          </menu>
          <action
-               label="%teneo.generate.orm"
+               label="%teneo.orm.file"
                class="org.eclipse.emf.teneo.orm.eclipse.popup.actions.GenerateORMAction"
                menubarPath="org.eclipse.emf.teneo.eclipse.teneomenu/group5"
                enablesFor="+"
