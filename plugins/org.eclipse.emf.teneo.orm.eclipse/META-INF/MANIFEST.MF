@@ -4,6 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.teneo.orm.eclipse; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.emf.teneo.orm.eclipse.Activator
+Bundle-Localization: plugin
 Bundle-Vendor: %pluginProvider
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
