@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.orm;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Eclipse-BuddyPolicy: dependent
-Bundle-Vendor: %providerName
+Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.core.runtime,
