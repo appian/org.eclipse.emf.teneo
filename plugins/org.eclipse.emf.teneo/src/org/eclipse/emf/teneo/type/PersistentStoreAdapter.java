@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.2 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.2.2.1 2009/05/21 04:03:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.2.2.1 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -73,7 +73,7 @@ public class PersistentStoreAdapter implements Adapter {
 	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
 	public boolean isAdapterForType(Object type) {
-		return true;
+		return false;
 	}
 
 	/*
