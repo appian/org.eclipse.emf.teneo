@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  org.eclipse.emf.teneo.eclipselink.elistfactory;visibility:=reexport,
  org.eclipse.emf.teneo.eclipselink.common;visibility:=reexport,
- org.eclipse.persistence.jpa;visibility:=reexport,
+ org.eclipse.persistence.jpa;bundle-version="1.1.0";visibility:=reexport,
  javax.persistence;bundle-version="1.99.0"
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
