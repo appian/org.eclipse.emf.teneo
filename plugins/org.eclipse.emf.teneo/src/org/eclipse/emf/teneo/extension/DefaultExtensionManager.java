@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultExtensionManager.java,v 1.8 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: DefaultExtensionManager.java,v 1.8.2.1 2009/05/22 21:34:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -29,7 +29,7 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
  * extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.8.2.1 $
  */
 
 public class DefaultExtensionManager implements ExtensionManager {
@@ -163,9 +163,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 				registerForAllExtensionPoints(extensionInstance.getClass(), extensionInstance);
 			}
 			if (extension.isSingleton() && constructorUsed) {
-				log.warn("The extension: " + extension.getPoint() +
-						" is declared as a singleton but this getInstance call " +
-						" passed initialization parameters so it is not cached, " + clz.getName());
+				// disabled warning as it is not so meaningfull
+//				log.warn("The extension: " + extension.getPoint() +
+//						" is declared as a singleton but this getInstance call " +
+//						" passed initialization parameters so it is not cached, " + clz.getName());
 			}
 
 			return extensionInstance;
