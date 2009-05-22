@@ -24,7 +24,6 @@ Export-Package: org.eclipse.emf.teneo.hibernate.test,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: javax.jdo,
  javax.jdo.spi,
- javax.persistence,
  org.apache.commons.logging,
  org.hibernate,
  org.hibernate.cfg,
