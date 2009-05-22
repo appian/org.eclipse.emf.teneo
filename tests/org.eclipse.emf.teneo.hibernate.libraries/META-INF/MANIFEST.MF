@@ -65,6 +65,9 @@ Export-Package: com.mchange,
  javax.ejb.spi,
  javax.interceptor,
  javax.jms,
+ javax.persistence,
+ javax.persistence.osgi,
+ javax.persistence.spi,
  javax.sql,
  net.sf.cglib.beans,
  net.sf.cglib.core,
@@ -245,6 +248,6 @@ Bundle-ClassPath: antlr-2.7.6.jar,
  xerces-2.6.2.jar,
  xml-apis.jar,
  hibernate3.jar,
- ejb3-persistence.jar
+ javax.persistence_1.99.0.jar
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %Plugin.providerName
