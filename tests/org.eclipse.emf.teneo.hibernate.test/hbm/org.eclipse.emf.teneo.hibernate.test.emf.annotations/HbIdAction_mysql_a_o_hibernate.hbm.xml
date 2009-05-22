@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">IdentityID</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id</meta>
 		<id name="myid" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`myid`"/>
+			<column not-null="true" unique="true" name="`myid`"/>
 			<generator class="identity"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
@@ -18,7 +18,7 @@
 		<meta attribute="eclassName">SimpleID</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id</meta>
 		<id name="autoID" type="long" unsaved-value="0">
-			<column not-null="false" unique="false" name="`autod`"/>
+			<column not-null="true" unique="true" name="`autod`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
@@ -30,7 +30,7 @@
 		<meta attribute="eclassName">TableID</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/hb/generator/id</meta>
 		<id name="myid" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`myid`"/>
+			<column not-null="true" unique="true" name="`myid`"/>
 			<generator class="hilo">
 				<param name="table">hilo_table</param>
 				<param name="column">the_hilo_column</param>
