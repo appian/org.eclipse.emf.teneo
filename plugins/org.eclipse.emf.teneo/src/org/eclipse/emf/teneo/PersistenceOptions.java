@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.51 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.52 2009/05/22 22:12:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -71,9 +71,9 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String JOIN_TABLE_NAMING_STRATEGY_OLD = MAPPING_PREFIX + "join_table_naming_strategy";
 
 	/**
-	 * Join column naming strategy, two values: unique and simple. unique is the default and results
-	 * in guaranteed unique naming for the join columns simple will always try to use minimal name
-	 * lengths and will most of the time just use the efeaturename.
+	 * Join column naming strategy, two values: unique and simple. unique is the default and results in guaranteed
+	 * unique naming for the join columns simple will always try to use minimal name lengths and will most of the time
+	 * just use the efeaturename.
 	 */
 	public static final String JOIN_COLUMN_NAMING_STRATEGY = NAMING_PREFIX + "join_column_naming_strategy";
 
@@ -87,27 +87,26 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String ID_COLUMN_NAME = NAMING_PREFIX + "default_id_column";
 
 	/**
-	 * Truncate the column name if the length is larger than this property. In case of concatenating
-	 * property names for foreign keys
+	 * Truncate the column name if the length is larger than this property. In case of concatenating property names for
+	 * foreign keys
 	 */
 	public static final String MAXIMUM_SQL_NAME_LENGTH = NAMING_PREFIX + "max_sql_name_length";
 
 	/**
-	 * The option which determines the casing of columns and table names, lowercase will result in
-	 * lowercase letters, uppercase in uppercase, none will just work as it did until now
+	 * The option which determines the casing of columns and table names, lowercase will result in lowercase letters,
+	 * uppercase in uppercase, none will just work as it did until now
 	 */
 	public static final String SQL_CASE_STRATEGY = NAMING_PREFIX + "strategy";
 
 	/**
-	 * If set then the system will generate readable foreign key names. The default is true. Set to
-	 * false for backward compatibility. Note that before the default value of this property was
-	 * false.
+	 * If set then the system will generate readable foreign key names. The default is true. Set to false for backward
+	 * compatibility. Note that before the default value of this property was false.
 	 */
 	public static final String SET_FOREIGN_KEY_NAME = NAMING_PREFIX + "set_foreign_key_name";
 
 	/**
-	 * The escape character to use when escaping table and column names. Standard Hibernate uses the
-	 * ` (backtick). This is the default value.
+	 * The escape character to use when escaping table and column names. Standard Hibernate uses the ` (backtick). This
+	 * is the default value.
 	 */
 	public static final String SQL_NAME_ESCAPE_CHARACTER = MAPPING_PREFIX + "sql_name_escape_character";
 
@@ -137,26 +136,23 @@ public class PersistenceOptions implements ExtensionPoint {
 	// ++++++++++++++++++++++++++++++++++++
 
 	/**
-	 * Controls if non-mutable eclasses should have a discriminator or version column. Default is
-	 * false.
+	 * Controls if non-mutable eclasses should have a discriminator or version column. Default is false.
 	 * 
 	 * @Deprecated use the extensionManager concept
 	 */
-	public static final String SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS =
-			NAMING_PREFIX + "sql_discriminator_version_immutable_eclass";
+	public static final String SQL_DISCRIMINATOR_VERSION_IMMUTABLE_ECLASS = NAMING_PREFIX
+			+ "sql_discriminator_version_immutable_eclass";
 
 	/**
-	 * Controls how the econtainer feature id is persisted. There are three values: featureid or
-	 * featurename
+	 * Controls how the econtainer feature id is persisted. There are three values: featureid or featurename
 	 * 
 	 * @Deprecated use the extensionManager concept
 	 */
-	public static final String ECONTAINER_FEATURE_PERSISTENCE_STRATEGY =
-			NAMING_PREFIX + "econtainer_feature_persistence_strategy";
+	public static final String ECONTAINER_FEATURE_PERSISTENCE_STRATEGY = NAMING_PREFIX
+			+ "econtainer_feature_persistence_strategy";
 
 	/**
-	 * see bugzilla 227673, option can be used to set the hibernate usertype used for xsd date and
-	 * xsd date time fields.
+	 * see bugzilla 227673, option can be used to set the hibernate usertype used for xsd date and xsd date time fields.
 	 */
 	public static final String USER_XSDDATE_TYPE = MAPPING_PREFIX + "UserDateType";
 	public static final String USER_XSDDATETIME_TYPE = MAPPING_PREFIX + "UserDateTimeType";
@@ -173,14 +169,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String DEFAULT_VARCHAR_LENGTH = MAPPING_PREFIX + "default_varchar_length";
 
 	/**
-	 * The maximum length of the comments which are copied from the model to the mapping file. The
-	 * default is zero which means no comments are copied from the model to the mapping.
+	 * The maximum length of the comments which are copied from the model to the mapping file. The default is zero which
+	 * means no comments are copied from the model to the mapping.
 	 */
 	public static final String MAX_COMMENT_LENGTH = MAPPING_PREFIX + "max_comment_length";
 
 	/**
-	 * EClass marked with Embeddable is always embedded, default is false. If this is set to true
-	 * then it is not required anymore to set a
+	 * EClass marked with Embeddable is always embedded, default is false. If this is set to true then it is not
+	 * required anymore to set a
 	 * 
 	 * @Embedded annotation on an ereference,
 	 * @Embeddable on the EClass is then sufficient.
@@ -191,28 +187,26 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String OPTIMISTIC = MAPPING_PREFIX + "optimistic_locking";
 
 	/**
-	 * Add an index for each foreign key mapping. Some databases do not add an index for a foreign
-	 * key automatically. Setting this to true will automatically add an index field to each foreign
-	 * key.
+	 * Add an index for each foreign key mapping. Some databases do not add an index for a foreign key automatically.
+	 * Setting this to true will automatically add an index field to each foreign key.
 	 */
 	public static final String ADD_INDEX_FOR_FOREIGN_KEY = MAPPING_PREFIX + "add_index_for_fk";
 
 	/**
-	 * Set or not set the cascade attribute on a mto, mtm or otm non-containment relation. The
-	 * backward compatible value is true. The better performing value is false. The default is
-	 * false.
+	 * Set or not set the cascade attribute on a mto, mtm or otm non-containment relation. The backward compatible value
+	 * is true. The better performing value is false. The default is false.
 	 * 
 	 * @Deprecated use CASCADE_POLICY_ON_NON_CONTAINMENT
 	 */
-	public static final String SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT =
-			MAPPING_PREFIX + "set_default_cascade_on_non_containment";
+	public static final String SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT = MAPPING_PREFIX
+			+ "set_default_cascade_on_non_containment";
 
 	/** Inheritance mapping */
 	public static final String INHERITANCE_MAPPING = MAPPING_PREFIX + "inheritance";
 
 	/**
-	 * Can be set to force an update of the schema when the application starts. Note this option is
-	 * only meaningfull for jpox, for hibernate use the hibernate property: hibernate.hbm2ddl_auto
+	 * Can be set to force an update of the schema when the application starts. Note this option is only meaningfull for
+	 * jpox, for hibernate use the hibernate property: hibernate.hbm2ddl_auto
 	 */
 	public static final String UPDATE_SCHEMA = RUNTIME_PREFIX + "update_schema";
 
@@ -228,8 +222,8 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * Can be used to set custom cascade policy for containment : <br>
-	 * <code>ALL</code> or a combination of (<code>REMOVE</code>, <code>REFRESH</code>,
-	 * <code>PERSIST</code>,<code>MERGE</code>) <br>
+	 * <code>ALL</code> or a combination of (<code>REMOVE</code>, <code>REFRESH</code>, <code>PERSIST</code>,
+	 * <code>MERGE</code>) <br>
 	 * e.g. : REMOVE,PERSIST,MERGE <br>
 	 * Warning : ALL != REMOVE,REFRESH,PERSIST,MERGE <br>
 	 * but ALL == REMOVE with delete Orphan, REFRESH,PERSIST,MERGE
@@ -238,14 +232,13 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/**
 	 * Can be used to set custom cascade policy for non containment : <br>
-	 * a combination of (<code>REFRESH</code>,<code>PERSIST</code>, <code>MERGE</code>) e.g. :
-	 * PERSIST,MERGE
+	 * a combination of (<code>REFRESH</code>,<code>PERSIST</code>, <code>MERGE</code>) e.g. : PERSIST,MERGE
 	 */
 	public static final String CASCADE_POLICY_ON_NON_CONTAINMENT = MAPPING_PREFIX + "cascade_policy_on_non_containment";
 
 	/**
-	 * Can be used to control if the entity ann. should be added automatically to the model elements
-	 * or that the default annotator should work according to the ejb3 spec.
+	 * Can be used to control if the entity ann. should be added automatically to the model elements or that the default
+	 * annotator should work according to the ejb3 spec.
 	 */
 	public static final String SET_ENTITY_AUTOMATICALLY = MAPPING_PREFIX + "set_entity_automatically";
 
@@ -255,8 +248,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String ALWAYS_MAP_LIST_AS_BAG = MAPPING_PREFIX + "always_map_list_as_bag";
 
 	/**
-	 * Map all lists as a hibernate idbag to the db (does not map the list index to the db), default
-	 * is false
+	 * Map all lists as a hibernate idbag to the db (does not map the list index to the db), default is false
 	 */
 	public static final String MAP_ALL_LISTS_AS_IDBAG = MAPPING_PREFIX + "map_all_lists_as_idbag";
 
@@ -264,8 +256,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String USE_MAPPING_FILE = MAPPING_PREFIX + "hibernate_mapping_file";
 
 	/**
-	 * The complete resource path to the mapping file, can be used instead of the USE_MAPPING_FILE
-	 * option
+	 * The complete resource path to the mapping file, can be used instead of the USE_MAPPING_FILE option
 	 */
 	public static final String MAPPING_FILE_PATH = MAPPING_PREFIX + "mapping_file_name";
 
@@ -299,36 +290,34 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String PERSISTENCE_XML = MAPPING_PREFIX + "persistence_xml";
 
 	/**
-	 * Ignore mapping EAnnotations. Primarily meant for test cases that use Persistence XML mapping,
-	 * so that they can reuse the same sample models.
+	 * Ignore mapping EAnnotations. Primarily meant for test cases that use Persistence XML mapping, so that they can
+	 * reuse the same sample models.
 	 */
 	public static final String IGNORE_EANNOTATIONS = MAPPING_PREFIX + "ignore_eannotations";
 
 	/**
-	 * Map all emaps as true hibernate maps, default is true. In EMF an EMap is in fact an EList
-	 * with Map entries. Originally Teneo maps this as a hibernate list. In the new behavior
-	 * hibernate can map the emap as a real map. The default is true.
+	 * Map all emaps as true hibernate maps, default is true. In EMF an EMap is in fact an EList with Map entries.
+	 * Originally Teneo maps this as a hibernate list. In the new behavior hibernate can map the emap as a real map. The
+	 * default is true.
 	 */
 	public static final String EMAP_AS_TRUE_MAP = MAPPING_PREFIX + "emap_as_true_map";
 
 	/**
-	 * This option controls if in case of hibernate also a name attribute should be added to the
-	 * class/subclass tag. By adding this a class is mapped as an entity as well as a normal class.
-	 * Also mapping as a normal class has the advantage that proxies can be used and that queries
-	 * can use actual class names and interface names. This option is really there for backward
-	 * compatibility. There are no apparent dis-advantages of adding a name attribute so the default
-	 * of this option is true. Note that an eclass must have an implementation class otherwise this
-	 * option has no effect. Interfaces are for example always mapped as an entity.
+	 * This option controls if in case of hibernate also a name attribute should be added to the class/subclass tag. By
+	 * adding this a class is mapped as an entity as well as a normal class. Also mapping as a normal class has the
+	 * advantage that proxies can be used and that queries can use actual class names and interface names. This option
+	 * is really there for backward compatibility. There are no apparent dis-advantages of adding a name attribute so
+	 * the default of this option is true. Note that an eclass must have an implementation class otherwise this option
+	 * has no effect. Interfaces are for example always mapped as an entity.
 	 */
 	public static final String ALSO_MAP_AS_CLASS = MAPPING_PREFIX + "also_map_as_class";
 
 	/**
-	 * This option controls if as a default all classes should be proxied (for hibernate). This
-	 * means that you don't need to add a
+	 * This option controls if as a default all classes should be proxied (for hibernate). This means that you don't
+	 * need to add a
 	 * 
-	 * @Proxy annotation to each eclass. As a default Teneo will use the eclass interface as the
-	 *        proxy class. When this is set to true then the option ALSO_MAP_AS_CLASS should also be
-	 *        true.
+	 * @Proxy annotation to each eclass. As a default Teneo will use the eclass interface as the proxy class. When this
+	 *        is set to true then the option ALSO_MAP_AS_CLASS should also be true.
 	 */
 	public static final String SET_PROXY = MAPPING_PREFIX + "set_proxy";
 
@@ -338,22 +327,19 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String DISABLE_ECONTAINER_MAPPING = MAPPING_PREFIX + "disable_econtainer";
 
 	/**
-	 * Option to specify that for non-contained one-to-many always a join table is used, default is
-	 * true
+	 * Option to specify that for non-contained one-to-many always a join table is used, default is true
 	 */
-	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS =
-			MAPPING_PREFIX + "join_table_for_non_contained_associations";
+	public static final String JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS = MAPPING_PREFIX
+			+ "join_table_for_non_contained_associations";
 
 	/**
-	 * Determines whether to always include a version mapping even if one is not specified. Defaults
-	 * to "true"
+	 * Determines whether to always include a version mapping even if one is not specified. Defaults to "true"
 	 */
 	public static final String ALWAYS_VERSION = MAPPING_PREFIX + "always_version";
 
 	/**
-	 * The default cache strategy, can be one of: NONE, READ_ONLY, NONSTRICT_READ_ONLY, READ_WRITE,
-	 * TRANSACTIONAl. If different than NONE (=default) then for Hibernate every class will be
-	 * second-level cached!
+	 * The default cache strategy, can be one of: NONE, READ_ONLY, NONSTRICT_READ_ONLY, READ_WRITE, TRANSACTIONAl. If
+	 * different than NONE (=default) then for Hibernate every class will be second-level cached!
 	 */
 	public static final String DEFAULT_CACHE_STRATEGY = MAPPING_PREFIX + "default_cache_strategy";
 
@@ -370,7 +356,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(SET_CASCADE_ALL_ON_CONTAINMENT, "");
 		props.setProperty(CASCADE_POLICY_ON_CONTAINMENT, "ALL");
 		props.setProperty(OPTIMISTIC, "true");
-		props.setProperty(UPDATE_SCHEMA, "true");
+		props.setProperty(UPDATE_SCHEMA, "false");
 		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
 		props.setProperty(SET_ENTITY_AUTOMATICALLY, "true");
 		props.setProperty(VERSION_COLUMN_NAME, "e_version");
@@ -432,8 +418,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	}
 
 	/**
-	 * Constructs a new instance by loading properties from "/elver-persistence.properties" at the
-	 * root of the classpath.
+	 * Constructs a new instance by loading properties from "/elver-persistence.properties" at the root of the
+	 * classpath.
 	 */
 	public PersistenceOptions() {
 		this.properties = getDefaultProperties();
@@ -447,8 +433,8 @@ public class PersistenceOptions implements ExtensionPoint {
 				props.load(in);
 			}
 		} catch (IOException e) {
-			throw new RuntimeException("Error loading \"" + DEFAULT_CLASSPATH_FILENAME + "\" from classpath:" +
-					e.getMessage(), e);
+			throw new RuntimeException("Error loading \"" + DEFAULT_CLASSPATH_FILENAME + "\" from classpath:"
+					+ e.getMessage(), e);
 		} finally {
 			try {
 				if (in != null) {
@@ -516,32 +502,28 @@ public class PersistenceOptions implements ExtensionPoint {
 	}
 
 	/**
-	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the merge cascade
-	 * type
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the merge cascade type
 	 */
 	public boolean isSetCascadeMergeOnNonContainment() {
 		return isSetCascadeOnNonContainement(CascadeType.MERGE.getName());
 	}
 
 	/**
-	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the persist cascade
-	 * type
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the persist cascade type
 	 */
 	public boolean isSetCascadePersistOnNonContainment() {
 		return isSetCascadeOnNonContainement(CascadeType.PERSIST.getName());
 	}
 
 	/**
-	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the refresh cascade
-	 * type
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the refresh cascade type
 	 */
 	public boolean isSetCascadeRefreshOnNonContainment() {
 		return isSetCascadeOnNonContainement(CascadeType.REFRESH.getName());
 	}
 
 	/**
-	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the given cascade
-	 * type
+	 * Returns true if the CASCADE_POLICY_ON_NON_CONTAINMENT property contains the given cascade type
 	 */
 	private boolean isSetCascadeOnNonContainement(String cascadeType) {
 		return isSetCascade(properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT), cascadeType);
@@ -722,8 +704,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Returns the value of the join table naming strategy */
 	public String getJoinTableNamingStrategy() {
 		if (properties.get(JOIN_TABLE_NAMING_STRATEGY_OLD) != null) {
-			log.warn("The option " + JOIN_TABLE_NAMING_STRATEGY_OLD + " is deprecated, please use: " +
-					JOIN_TABLE_NAMING_STRATEGY);
+			log.warn("The option " + JOIN_TABLE_NAMING_STRATEGY_OLD + " is deprecated, please use: "
+					+ JOIN_TABLE_NAMING_STRATEGY);
 			return properties.getProperty(JOIN_TABLE_NAMING_STRATEGY);
 		}
 		return properties.getProperty(JOIN_TABLE_NAMING_STRATEGY);
@@ -735,8 +717,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	}
 
 	/**
-	 * Returns the default second level caching strategy, default value is NONE (no second level
-	 * caching).
+	 * Returns the default second level caching strategy, default value is NONE (no second level caching).
 	 */
 	public String getDefaultCacheStrategy() {
 		return properties.getProperty(DEFAULT_CACHE_STRATEGY);
@@ -759,8 +740,8 @@ public class PersistenceOptions implements ExtensionPoint {
 			final int maxLength = Integer.parseInt(colLength);
 			return maxLength;
 		} catch (NumberFormatException e) {
-			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength +
-					" value is ignored");
+			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength
+					+ " value is ignored");
 			return 0;
 		}
 	}
@@ -776,13 +757,13 @@ public class PersistenceOptions implements ExtensionPoint {
 						+ "Please change this option to a more usable value.");
 			}
 			if (maxLength < 4 && maxLength > -1) {
-				log.warn("The option MAXIMUM_SQL_NAME_LENGTH has a low value: " + maxLength +
-						". Are you sure this is correct?");
+				log.warn("The option MAXIMUM_SQL_NAME_LENGTH has a low value: " + maxLength
+						+ ". Are you sure this is correct?");
 			}
 			return maxLength;
 		} catch (NumberFormatException e) {
-			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength +
-					" value is ignored");
+			log.error("Property " + MAXIMUM_SQL_NAME_LENGTH + " as a non-integer value: " + colLength
+					+ " value is ignored");
 			return -1;
 		}
 	}
@@ -795,8 +776,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	}
 
 	/**
-	 * Returns the path of the XML persistence mapping file or null if the property has not been
-	 * defined.
+	 * Returns the path of the XML persistence mapping file or null if the property has not been defined.
 	 */
 	public String getPersistenceXmlPath() {
 		return properties.getProperty(PERSISTENCE_XML);
@@ -867,13 +847,13 @@ public class PersistenceOptions implements ExtensionPoint {
 		String strategy = properties.getProperty(ECONTAINER_FEATURE_PERSISTENCE_STRATEGY);
 		if (strategy == null) {
 			throw new TeneoException(
-				"Option ECONTAINER_FEATURE_PERSISTENCE_STRATEGY not set, please set it to one of: featureid, featurename, both");
+					"Option ECONTAINER_FEATURE_PERSISTENCE_STRATEGY not set, please set it to one of: featureid, featurename, both");
 		}
-		EContainerFeaturePersistenceStrategy result =
-				EContainerFeaturePersistenceStrategy.valueOf(strategy.toUpperCase());
+		EContainerFeaturePersistenceStrategy result = EContainerFeaturePersistenceStrategy.valueOf(strategy
+				.toUpperCase());
 		if (result == null) {
-			throw new TeneoException("Option ECONTAINER_FEATURE_PERSISTENCE_STRATEGY not set correctly (" + strategy +
-					"), please set it to one of: featureid, featurename, both");
+			throw new TeneoException("Option ECONTAINER_FEATURE_PERSISTENCE_STRATEGY not set correctly (" + strategy
+					+ "), please set it to one of: featureid, featurename, both");
 		}
 		return result;
 	}

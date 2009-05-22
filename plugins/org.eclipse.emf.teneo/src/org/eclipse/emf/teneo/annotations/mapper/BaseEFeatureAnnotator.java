@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.14 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.15 2009/05/22 22:12:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -44,11 +44,10 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
- * Placeholder for several utility methods which are relevant for annotating ereferences and
- * eattributes.
+ * Placeholder for several utility methods which are relevant for annotating ereferences and eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -72,8 +71,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
-	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator# setPersistenceOptions(org.eclipse
+	 * .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {
@@ -86,6 +85,10 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	 * Adds the column level constraints on the basis of the xsd extended meta data
 	 */
 	protected void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
+
+		if (aAttribute.getId() != null) {
+			aAttribute.getModelEAttribute().setLowerBound(1);
+		}
 
 		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 
@@ -105,21 +108,21 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			boolean setUnique = false;
 			// bugzilla 249246
 			if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID() && aAttribute.getId() == null) {
-				if (aAttribute.getPaEClass().getPaSuperEntity() != null &&
-						aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
+				if (aAttribute.getPaEClass().getPaSuperEntity() != null
+						&& aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
 					setUnique = true;
 				}
 			}
-			if (maxLength != null || setUnique || totalDigits != null || fractionDigits != null ||
-					defaultVarCharLength > -1) {
+			if (maxLength != null || setUnique || totalDigits != null || fractionDigits != null
+					|| defaultVarCharLength > -1) {
 				final Column column = getFactory().createColumn();
 				// only support this for the string class, the length/maxlength
 				// is also
 				// used in case of the xsd list/union types but this can not be
 				// enforced using a constraint on the
 				// columnlength
-				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null &&
-						eAttribute.getEAttributeType().getInstanceClass() == String.class) {
+				if (maxLength != null && eAttribute.getEAttributeType().getInstanceClass() != null
+						&& eAttribute.getEAttributeType().getInstanceClass() == String.class) {
 					column.setLength(Integer.parseInt(maxLength)); // you'll
 					// find
 					// parse
@@ -194,13 +197,11 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 
 	/** Get a specific extended metadate */
 	protected String getExtendedMetaData(EAttribute eAttribute, String key) {
-		String value =
-				EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute,
-					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+		String value = EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute,
+				"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		if (value == null) {
-			value =
-					EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute.getEAttributeType(),
-						"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
+			value = EcoreDataTypes.INSTANCE.getEAnnotationValue(eAttribute.getEAttributeType(),
+					"http:///org/eclipse/emf/ecore/util/ExtendedMetaData", key);
 		}
 		return value;
 	}
@@ -228,8 +229,7 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	}
 
 	/**
-	 * Determines where to place a certain annotation/characteristic, this is done by comparing
-	 * names..
+	 * Determines where to place a certain annotation/characteristic, this is done by comparing names..
 	 */
 	protected boolean compareNames(EReference here, EReference there) {
 		final String nameHere = here.eClass().getName() + here.getName();
@@ -285,8 +285,8 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		Class<?> clazz = eAttribute.getEAttributeType().getInstanceClass();
 		// clazz is hidden somewhere
 		if (clazz == null || Object.class.equals(clazz)) {
-			ArrayList<EClassifier> eclassifiers =
-					EcoreDataTypes.INSTANCE.getItemTypes((EDataType) eAttribute.getEType());
+			ArrayList<EClassifier> eclassifiers = EcoreDataTypes.INSTANCE.getItemTypes((EDataType) eAttribute
+					.getEType());
 			for (EClassifier eclassifier : eclassifiers) {
 				if (eclassifier.getInstanceClass() != null) {
 					clazz = eclassifier.getInstanceClass();
@@ -296,9 +296,9 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		}
 
 		final EDataType eDataType = aAttribute.getModelEAttribute().getEAttributeType();
-		if (clazz != null &&
-				(Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
-					.getDateTime())) {
+		if (clazz != null
+				&& (Date.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+						.getDateTime())) {
 			final Temporal temporal = getFactory().createTemporal();
 			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
 				temporal.setValue(TemporalType.DATE);
@@ -309,9 +309,9 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 			}
 			aAttribute.setTemporal(temporal);
 			temporal.setEModelElement(eAttribute);
-		} else if (clazz != null &&
-				(Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
-					.getDateTime())) {
+		} else if (clazz != null
+				&& (Calendar.class.isAssignableFrom(clazz) || eDataType == XMLTypePackage.eINSTANCE.getDate() || eDataType == XMLTypePackage.eINSTANCE
+						.getDateTime())) {
 			final Temporal temporal = getFactory().createTemporal();
 			if (eDataType == XMLTypePackage.eINSTANCE.getDate()) {
 				temporal.setValue(TemporalType.DATE);
