@@ -11,11 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.22 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.23 2009/05/22 21:22:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
+import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -33,20 +38,25 @@ import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.hibernate.HibernateException;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentIdentifierBag;
 import org.hibernate.collection.PersistentList;
+import org.hibernate.engine.SessionImplementor;
+import org.hibernate.loader.CollectionAliases;
+import org.hibernate.persister.collection.CollectionPersister;
+import org.hibernate.type.Type;
 
 /**
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 
-public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
+public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint, PersistentCollection {
 	/**
 	 * Serial Version ID
 	 */
@@ -65,8 +75,8 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
-	 * the scenes, this happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind the scenes, this
+	 * happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {
@@ -74,9 +84,8 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		// HibernatePersistableEList did
 		// not yet notice it then do the local load behavior.
 		// delegate is loaded in case of subselect or eager loading
-		final boolean isDelegateLoaded =
-				delegate instanceof AbstractPersistentCollection &&
-						((AbstractPersistentCollection) delegate).wasInitialized();
+		final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
+				&& ((AbstractPersistentCollection) delegate).wasInitialized();
 		if (!super.isLoaded() && !isLoading() && isDelegateLoaded) {
 			if (log.isDebugEnabled()) {
 				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
@@ -112,9 +121,8 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 				{
 					// if the delegate is already loaded then no transaction is
 					// required
-					final boolean isDelegateLoaded =
-							delegate instanceof AbstractPersistentCollection &&
-									((AbstractPersistentCollection) delegate).wasInitialized();
+					final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
+							&& ((AbstractPersistentCollection) delegate).wasInitialized();
 					if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
 						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
 						controlsTransaction = true;
@@ -144,7 +152,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 					for (Object element : objs) {
 						if (element instanceof InternalEObject) {
 							EContainerRepairControl.setContainer(owner, (InternalEObject) element,
-								getEStructuralFeature());
+									getEStructuralFeature());
 						}
 					}
 				}
@@ -156,7 +164,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 					for (Object element : objs) {
 						if (element instanceof EObject) {
 							((StoreResource) res).addToContentOrAttach((InternalEObject) element,
-								(EReference) getEStructuralFeature());
+									(EReference) getEStructuralFeature());
 						}
 					}
 				}
@@ -220,8 +228,8 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		{
 
 		} else {
-			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be " +
-					" used as a replacement for elist " + logString);
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
+					+ " used as a replacement for elist " + logString);
 		}
 	}
 
@@ -230,4 +238,364 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	public boolean isPersistencyWrapped() {
 		return delegate instanceof PersistentCollection;
 	}
+
+	@Override
+	public boolean afterInitialize() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).afterInitialize();
+		}
+		return false;
+	}
+
+	@Override
+	public void afterRowInsert(CollectionPersister persister, Object entry, int i) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).afterRowInsert(persister, entry, i);
+		}
+	}
+
+	@Override
+	public void beforeInitialize(CollectionPersister persister, int anticipatedSize) {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).beforeInitialize(persister, anticipatedSize);
+		}
+	}
+
+	@Override
+	public void beginRead() {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).beginRead();
+		}
+	}
+
+	@Override
+	public void clearDirty() {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).clearDirty();
+		}
+	}
+
+	@Override
+	public void dirty() {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).dirty();
+		}
+	}
+
+	@Override
+	public Serializable disassemble(CollectionPersister persister) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).disassemble(persister);
+		}
+		return null;
+	}
+
+	@Override
+	public boolean empty() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).empty();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean endRead() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).endRead();
+		}
+		return false;
+	}
+
+	@Override
+	public Iterator<?> entries(CollectionPersister persister) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).entries(persister);
+		}
+		return null;
+	}
+
+	@Override
+	public boolean entryExists(Object entry, int i) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).entryExists(entry, i);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean equalsSnapshot(CollectionPersister persister) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).equalsSnapshot(persister);
+		}
+		return false;
+	}
+
+	@Override
+	public void forceInitialization() throws HibernateException {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).forceInitialization();
+		}
+	}
+
+	@Override
+	public Iterator<?> getDeletes(CollectionPersister persister, boolean indexIsFormula) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getDeletes(persister, indexIsFormula);
+		}
+		return null;
+	}
+
+	@Override
+	public Object getElement(Object entry) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getElement(entry);
+		}
+		return null;
+	}
+
+	@Override
+	public Object getIdentifier(Object entry, int i) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getIdentifier(entry, i);
+		}
+		return null;
+	}
+
+	@Override
+	public Object getIndex(Object entry, int i, CollectionPersister persister) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getIndex(entry, i, persister);
+		}
+		return null;
+	}
+
+	@Override
+	public Serializable getKey() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getKey();
+		}
+		return null;
+	}
+
+	@Override
+	public Collection<?> getOrphans(Serializable snapshot, String entityName) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getOrphans(snapshot, entityName);
+		}
+		return null;
+	}
+
+	@Override
+	public Object getOwner() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getOwner();
+		}
+		return null;
+	}
+
+	@Override
+	public Collection<?> getQueuedOrphans(String entityName) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getQueuedOrphans(entityName);
+		}
+		return null;
+	}
+
+	@Override
+	public String getRole() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getRole();
+		}
+		return null;
+	}
+
+	@Override
+	public Serializable getSnapshot(CollectionPersister persister) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getSnapshot(persister);
+		}
+		return null;
+	}
+
+	@Override
+	public Object getSnapshotElement(Object entry, int i) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getSnapshotElement(entry, i);
+		}
+		return null;
+	}
+
+	@Override
+	public Serializable getStoredSnapshot() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getStoredSnapshot();
+		}
+		return null;
+	}
+
+	@Override
+	public Object getValue() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).getValue();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean hasQueuedOperations() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).hasQueuedOperations();
+		}
+		return false;
+	}
+
+	@Override
+	public void initializeFromCache(CollectionPersister persister, Serializable disassembled, Object owner)
+			throws HibernateException {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).initializeFromCache(persister, disassembled, owner);
+		}
+	}
+
+	@Override
+	public boolean isDirectlyAccessible() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).isDirectlyAccessible();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isDirty() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).isDirty();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isRowUpdatePossible() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).isRowUpdatePossible();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isSnapshotEmpty(Serializable snapshot) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).isSnapshotEmpty(snapshot);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isUnreferenced() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).isUnreferenced();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isWrapper(Object collection) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).isWrapper(collection);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean needsInserting(Object entry, int i, Type elemType) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).needsInserting(entry, i, elemType);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean needsRecreate(CollectionPersister persister) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).needsRecreate(persister);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean needsUpdating(Object entry, int i, Type elemType) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).needsUpdating(entry, i, elemType);
+		}
+		return false;
+	}
+
+	@Override
+	public void postAction() {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).postAction();
+		}
+	}
+
+	@Override
+	public void preInsert(CollectionPersister persister) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).preInsert(persister);
+		}
+	}
+
+	@Override
+	public Iterator<?> queuedAdditionIterator() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).queuedAdditionIterator();
+		}
+		return null;
+	}
+
+	@Override
+	public Object readFrom(ResultSet rs, CollectionPersister role, CollectionAliases descriptor, Object owner)
+			throws HibernateException, SQLException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).readFrom(rs, role, descriptor, owner);
+		}
+		return null;
+	}
+
+	@Override
+	public boolean setCurrentSession(SessionImplementor session) throws HibernateException {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).setCurrentSession(session);
+		}
+		return false;
+	}
+
+	@Override
+	public void setOwner(Object entity) {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).setOwner(entity);
+		}
+	}
+
+	@Override
+	public void setSnapshot(Serializable key, String role, Serializable snapshot) {
+		if (isPersistencyWrapped()) {
+			((PersistentCollection) delegate).setSnapshot(key, role, snapshot);
+		}
+	}
+
+	@Override
+	public boolean unsetSession(SessionImplementor currentSession) {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).unsetSession(currentSession);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean wasInitialized() {
+		if (isPersistencyWrapped()) {
+			return ((PersistentCollection) delegate).wasInitialized();
+		}
+		return false;
+	}
+
 }
