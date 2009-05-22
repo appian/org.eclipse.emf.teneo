@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DefaultExtensionManager.java,v 1.8 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: DefaultExtensionManager.java,v 1.9 2009/05/22 21:35:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -25,11 +25,10 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 
 /**
- * Manages a set of extensions. Currently for each extension point there will always be only one
- * extension instance.
+ * Manages a set of extensions. Currently for each extension point there will always be only one extension instance.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class DefaultExtensionManager implements ExtensionManager {
@@ -40,12 +39,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 	private ConcurrentHashMap<String, Extension> extensionRegistry = new ConcurrentHashMap<String, Extension>();
 
 	// The instances of the extensions
-	private ConcurrentHashMap<String, ExtensionPoint> extensionInstances =
-			new ConcurrentHashMap<String, ExtensionPoint>();
+	private ConcurrentHashMap<String, ExtensionPoint> extensionInstances = new ConcurrentHashMap<String, ExtensionPoint>();
 
 	// The constructor cache
-	private ConcurrentHashMap<String, Constructor<?>> constructorCache =
-			new ConcurrentHashMap<String, Constructor<?>>();
+	private ConcurrentHashMap<String, Constructor<?>> constructorCache = new ConcurrentHashMap<String, Constructor<?>>();
 
 	public DefaultExtensionManager() {
 		ExtensionUtil.registerDefaultExtensions(this);
@@ -84,8 +81,8 @@ public class DefaultExtensionManager implements ExtensionManager {
 	public void registerExtension(String point, String className) {
 		final Extension currentExtension = extensionRegistry.get(point);
 		if (currentExtension == null) {
-			throw new TeneoExtensionException("No default extension found using point: " + point +
-					" is the point value correct?");
+			throw new TeneoExtensionException("No default extension found using point: " + point
+					+ " is the point value correct?");
 		}
 		final Extension newExtension = new Extension();
 		newExtension.setPoint(point);
@@ -123,8 +120,8 @@ public class DefaultExtensionManager implements ExtensionManager {
 
 		// check if this class indeed implements ExtensionPoint
 		if (!(ExtensionPoint.class.isAssignableFrom(clz))) {
-			throw new TeneoExtensionException("The requested extension " + clz.getName() +
-					" does not implement the interface " + ExtensionPoint.class.getName());
+			throw new TeneoExtensionException("The requested extension " + clz.getName()
+					+ " does not implement the interface " + ExtensionPoint.class.getName());
 		}
 
 		try {
@@ -163,9 +160,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 				registerForAllExtensionPoints(extensionInstance.getClass(), extensionInstance);
 			}
 			if (extension.isSingleton() && constructorUsed) {
-				log.warn("The extension: " + extension.getPoint() +
-						" is declared as a singleton but this getInstance call " +
-						" passed initialization parameters so it is not cached, " + clz.getName());
+				// disabled as it is not so meaningfull
+				// log.warn("The extension: " + extension.getPoint() +
+				// " is declared as a singleton but this getInstance call " +
+				// " passed initialization parameters so it is not cached, " + clz.getName());
 			}
 
 			return extensionInstance;
@@ -224,8 +222,8 @@ public class DefaultExtensionManager implements ExtensionManager {
 			}
 		}
 		if (result == null) {
-			throw new TeneoExtensionException("No constructor found for : " + clz.getName() +
-					" and constructor argument types: " + keyStr);
+			throw new TeneoExtensionException("No constructor found for : " + clz.getName()
+					+ " and constructor argument types: " + keyStr);
 		}
 		return result;
 	}
@@ -251,8 +249,8 @@ public class DefaultExtensionManager implements ExtensionManager {
 	}
 
 	/**
-	 * Registers an instance for all other extensionpoints it implements if no other instance was
-	 * already registered for it.
+	 * Registers an instance for all other extensionpoints it implements if no other instance was already registered for
+	 * it.
 	 */
 	private void registerForAllExtensionPoints(Class<?> cls, ExtensionPoint extensionInstance) {
 		if (cls == null) {
@@ -278,10 +276,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 		if (extension == null) {
 			return;
 		}
-		if (extension.getClassName().compareTo(extensionInstance.getClass().getName()) == 0 &&
-				extension.isSingleton() && extensionInstances.get(extension.getPoint()) == null) {
-			log.debug("Also registering extensioninstance: " + extensionInstance.getClass().getName() +
-					" for extension " + extension.getPoint());
+		if (extension.getClassName().compareTo(extensionInstance.getClass().getName()) == 0 && extension.isSingleton()
+				&& extensionInstances.get(extension.getPoint()) == null) {
+			log.debug("Also registering extensioninstance: " + extensionInstance.getClass().getName()
+					+ " for extension " + extension.getPoint());
 			extensionInstances.put(extension.getPoint(), extensionInstance);
 		}
 	}
