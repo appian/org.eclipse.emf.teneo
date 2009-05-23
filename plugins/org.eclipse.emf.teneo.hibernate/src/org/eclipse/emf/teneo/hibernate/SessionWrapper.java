@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.9 2009/05/23 13:57:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,13 +25,12 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.hibernate.Session;
 
 /**
- * Wraps a session or an entity manager. Is used to support both standard hibernate as well as
- * hibernate entitymanager. The differences between these two are hidden behind this interface (with
- * different implementations for either case). The Teneo runtime code uses this interface to start
- * and commit transactions and perform queries.
+ * Wraps a session or an entity manager. Is used to support both standard hibernate as well as hibernate entitymanager.
+ * The differences between these two are hidden behind this interface (with different implementations for either case).
+ * The Teneo runtime code uses this interface to start and commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public interface SessionWrapper {
 
@@ -101,6 +100,9 @@ public interface SessionWrapper {
 
 	/** Persist a new object */
 	public void persist(Object obj);
+
+	/** Merge with the datastore */
+	public Object merge(Object obj);
 
 	/** Return the underlying session */
 	public Session getHibernateSession();

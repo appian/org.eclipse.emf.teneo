@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.14 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.15 2009/05/23 13:57:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -67,8 +67,7 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	}
 
 	/**
-	 * Return the session or entityManager, return is an object to support both session as well as
-	 * entitymanager.
+	 * Return the session or entityManager, return is an object to support both session as well as entitymanager.
 	 */
 	public Object getClassicSession() {
 		if (entityManager == null) {
@@ -78,8 +77,7 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	}
 
 	/**
-	 * Return the session or entityManager, return is an object to support both session as well as
-	 * entitymanager.
+	 * Return the session or entityManager, return is an object to support both session as well as entitymanager.
 	 */
 	public Object getSession() {
 		if (entityManager == null) {
@@ -192,8 +190,8 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 		final String entityName = hbEntityDataStore.getInterceptor().getEntityName(obj);
 		if (((SessionImplementor) session).getPersistenceContext().isEntryFor(obj)) {
 			getEntityManager().persist(obj);
-		} else if (ForeignKeys.isNotTransient(entityName, obj, false, (SessionImplementor) session) ||
-				!ForeignKeys.isTransient(entityName, obj, false, (SessionImplementor) session)) {
+		} else if (ForeignKeys.isNotTransient(entityName, obj, false, (SessionImplementor) session)
+				|| !ForeignKeys.isTransient(entityName, obj, false, (SessionImplementor) session)) {
 			// this is a trick because ejb3 does not support saveOrUpdate (why did they not add
 			// this behavior!)
 			session.saveOrUpdate(obj);
@@ -242,6 +240,11 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Clear the session */
 	public void clear() {
 		getEntityManager().clear();
+	}
+
+	/** Merge with the datastore */
+	public Object merge(Object obj) {
+		return getEntityManager().merge(obj);
 	}
 
 	public void persist(Object obj) {
