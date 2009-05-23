@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.adept.impl.BazImpl" entity-name="Baz" abstract="true" lazy="false" discriminator-value="Baz" table="`baz`">
+		<meta attribute="eclassName">Baz</meta>
+		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="true" name="`id`"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.adept.impl.FooImpl" entity-name="Foo" abstract="false" lazy="false" discriminator-value="Foo" table="`foo`">
+		<meta attribute="eclassName">Foo</meta>
+		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="true" name="`id`"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<list name="bars" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="foo_bars">
+				<column name="`foo_bars_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`foo_bars_idx`"/>
+			<one-to-many entity-name="Bar"/>
+		</list>
+		<list name="biffs" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="foo_biffs">
+				<column name="`foo_biffs_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`foo_biffs_idx`"/>
+			<one-to-many entity-name="Biff"/>
+		</list>
+	</class>
+	<subclass name="org.eclipse.emf.teneo.samples.issues.adept.impl.BarImpl" entity-name="Bar" abstract="false" lazy="false" extends="Baz" discriminator-value="Bar">
+		<meta attribute="eclassName">Bar</meta>
+		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<many-to-one name="baz" entity-name="Baz" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="bar_baz" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`baz_baz_id`"/>
+		</many-to-one>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.samples.issues.adept.impl.BiffImpl" entity-name="Biff" abstract="false" lazy="false" extends="Baz" discriminator-value="Biff">
+		<meta attribute="eclassName">Biff</meta>
+		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+	</subclass>
+</hibernate-mapping>

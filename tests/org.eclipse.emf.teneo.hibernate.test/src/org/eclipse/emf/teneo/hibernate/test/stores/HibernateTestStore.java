@@ -53,7 +53,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.30.2.1 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -258,6 +258,10 @@ public class HibernateTestStore extends AbstractTestStore {
 		refresh();
 	}
 
+	public Object merge(Object object) {
+		return sessionWrapper.merge(object);
+	}
+	
 	/** Store/Makepersistent */
 	public void store(Object object) {
 		sessionWrapper.saveOrUpdate(object);
