@@ -20,11 +20,11 @@ import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 
 /**
- * The test store encapsulates the datastore actions to different store types (ojb, jpox, etc.). In
- * this way different test cases can be reused.
+ * The test store encapsulates the datastore actions to different store types (ojb, jpox, etc.). In this way different
+ * test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public interface TestStore {
 
@@ -43,8 +43,7 @@ public interface TestStore {
 	public void tearDown(boolean successFullCompletion);
 
 	/**
-	 * Can be used to disabled dropping of the store, convenience for testing (for example when an
-	 * error occured)
+	 * Can be used to disabled dropping of the store, convenience for testing (for example when an error occured)
 	 */
 	public void disableDrop();
 
@@ -65,6 +64,9 @@ public interface TestStore {
 
 	/** Store/Makepersistent */
 	public void store(Object object);
+
+	/** Merge */
+	public Object merge(Object object);
 
 	/** Add an epackage to the list of epackages */
 	public void addEPackage(EPackage epackage);
