@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.14 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.14.2.1 2009/05/23 06:09:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -48,7 +48,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.14.2.1 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -86,6 +86,11 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	 * Adds the column level constraints on the basis of the xsd extended meta data
 	 */
 	protected void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
+
+		// id attributes are always mandatory
+		if (aAttribute.getId() != null) {
+			aAttribute.getModelEAttribute().setLowerBound(1);
+		}
 
 		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 
