@@ -57,7 +57,7 @@ import org.jpox.metadata.InheritanceStrategy;
  * The jpox test store encapsulates the datastore actions to a jpox store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.24.2.1 $
  */
 public class JPOXTestStore extends AbstractTestStore {
 	/** The logger */
@@ -468,6 +468,10 @@ public class JPOXTestStore extends AbstractTestStore {
 	/** Gets a database connection using the adapters connection info */
 	public Connection getConnection() {
 		return getDatabaseAdapter().getConnection();
+	}
+
+	public Object merge(Object object) {
+		return object;
 	}
 
 	/**
