@@ -11,7 +11,7 @@
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<cache usage="read-write"/>
 		<id name="title" type="java.lang.String">
-			<column not-null="false" unique="false" name="`col_title`" length="50"/>
+			<column not-null="true" unique="true" name="`col_title`" length="50"/>
 		</id>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>

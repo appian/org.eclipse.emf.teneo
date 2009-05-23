@@ -10,7 +10,7 @@
 		<meta attribute="eclassName">Book</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<id name="title" type="java.lang.String">
-			<column not-null="true" unique="false" name="`title`"/>
+			<column not-null="true" unique="true" name="`title`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>

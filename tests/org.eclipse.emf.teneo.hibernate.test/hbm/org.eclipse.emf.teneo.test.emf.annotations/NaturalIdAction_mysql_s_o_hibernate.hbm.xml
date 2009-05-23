@@ -34,7 +34,7 @@
 		<meta attribute="eclassName">Family</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/naturalid</meta>
 		<id name="id" type="int" unsaved-value="0">
-			<column not-null="true" unique="false" name="`id`"/>
+			<column not-null="true" unique="true" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<natural-id mutable="false">

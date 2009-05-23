@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">BookDefinition</meta>
 		<meta attribute="epackage">http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsd</meta>
 		<id name="uniqueName" type="java.lang.String">
-			<column not-null="true" unique="false" name="`uniquename`"/>
+			<column not-null="true" unique="true" name="`uniquename`"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
@@ -93,7 +93,7 @@
 		<meta attribute="eclassName">Library</meta>
 		<meta attribute="epackage">http://www.ibm.com/websphere/appserver/schemas/6.0/ibm-portal-test.xsd</meta>
 		<id name="uniqueName" type="java.lang.String">
-			<column not-null="true" unique="false" name="`uniquename`"/>
+			<column not-null="true" unique="true" name="`uniquename`"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">

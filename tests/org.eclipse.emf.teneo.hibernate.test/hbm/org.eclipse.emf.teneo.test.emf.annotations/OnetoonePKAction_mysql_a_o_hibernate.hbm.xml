@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">Employee</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/otopk</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`id`"/>
+			<column not-null="true" unique="true" name="`id`"/>
 			<generator class="foreign">
 				<param name="property">employeeInfo</param>
 			</generator>
@@ -21,7 +21,7 @@
 		<meta attribute="eclassName">EmployeeInfo</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/otopk</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`id`"/>
+			<column not-null="true" unique="true" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
