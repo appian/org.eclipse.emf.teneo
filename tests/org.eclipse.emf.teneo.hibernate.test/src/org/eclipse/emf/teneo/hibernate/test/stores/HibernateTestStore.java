@@ -53,7 +53,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -109,8 +109,8 @@ public class HibernateTestStore extends AbstractTestStore {
 		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, inheritanceType.getName());
 
 		for (EPackage element : epackages) {
-			log.debug("Creating HibernateTeststore for " + element.getName() + " adapter " +
-					adapter.getClass().getName());
+			log.debug("Creating HibernateTeststore for " + element.getName() + " adapter "
+					+ adapter.getClass().getName());
 		}
 
 		setDataStore();
@@ -166,8 +166,8 @@ public class HibernateTestStore extends AbstractTestStore {
 
 		// do a special trick for hsqldb, because hsqldb expects all identifiers to be
 		// escaped or otherwise uppercases them, so uppercase everything automatically
-		if (getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter &&
-				!props.containsKey(PersistenceOptions.SQL_CASE_STRATEGY)) {
+		if (getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter
+				&& !props.containsKey(PersistenceOptions.SQL_CASE_STRATEGY)) {
 			props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
 		}
 		emfDataStore.setProperties(props);
@@ -283,7 +283,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		// final Class interf = replaceClass(clazz);
 		if (sessionWrapper.isEJB3EntityManager()) {
 			return query("select o from " + getEntityName(clazz) + " o where o." + field + "=\'" + value + "\'",
-				checkCount);
+					checkCount);
 		} else {
 			return query("from " + getEntityName(clazz) + " where " + field + "=\'" + value + "\'", checkCount);
 		}
@@ -301,8 +301,8 @@ public class HibernateTestStore extends AbstractTestStore {
 		final List<?> result = sessionWrapper.executeQuery(qryStr);
 
 		if (checkCount > 0) {
-			TestCase.assertTrue("Expected " + checkCount + " object(s) for this query but there are " + result.size() +
-					" object(s) for the query " + qryStr, result.size() == checkCount);
+			TestCase.assertTrue("Expected " + checkCount + " object(s) for this query but there are " + result.size()
+					+ " object(s) for the query " + qryStr, result.size() == checkCount);
 		}
 		return result;
 	}
@@ -316,11 +316,11 @@ public class HibernateTestStore extends AbstractTestStore {
 				sessionWrapper.delete(l.get(i));
 			}
 			commitTransaction();
-			TestCase.assertTrue("The objects of class: " + clazz.getName() +
-					" was deleted while this should not be possible", shouldSucceed);
+			TestCase.assertTrue("The objects of class: " + clazz.getName()
+					+ " was deleted while this should not be possible", shouldSucceed);
 		} catch (Exception e) {
-			TestCase.assertTrue("The objects of class: " + clazz.getName() +
-					" was not deleted while this should be possible", !shouldSucceed);
+			TestCase.assertTrue("The objects of class: " + clazz.getName()
+					+ " was not deleted while this should be possible", !shouldSucceed);
 			if (sessionWrapper.isTransactionActive()) {
 				rollbackTransaction();
 			}
@@ -333,8 +333,10 @@ public class HibernateTestStore extends AbstractTestStore {
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> clazz) {
 		List<?> l = getObjects(clazz); // replace class is called in getObjects
-		TestCase.assertTrue("There are " + l.size() +
-				" object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l.size() == 1);
+		TestCase
+				.assertTrue("There are " + l.size()
+						+ " object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l
+						.size() == 1);
 		return (T) l.get(0);
 	}
 
@@ -353,8 +355,8 @@ public class HibernateTestStore extends AbstractTestStore {
 	@Override
 	public void checkNumber(Class<?> clazz, int count) {
 		final List<?> list = getObjects(clazz);
-		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size() +
-				" object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
+		TestCase.assertTrue("Expected " + count + " object(s) but there are " + list.size()
+				+ " object(s) of this class in the datastore: " + clazz.getName(), list.size() == count);
 	}
 
 	/** Flushes all updates to the underlying datastore */
@@ -369,8 +371,7 @@ public class HibernateTestStore extends AbstractTestStore {
 	}
 
 	/**
-	 * Is called just after the test, the dropStore parameter can be used to prevent dropping the
-	 * database when an error
+	 * Is called just after the test, the dropStore parameter can be used to prevent dropping the database when an error
 	 */
 	@Override
 	public void doTearDown() {
@@ -415,10 +416,9 @@ public class HibernateTestStore extends AbstractTestStore {
 	}
 
 	/**
-	 * Replaces a passed EMF Interface by its concrete class private Class replaceClass(Class
-	 * interfaze) { if (!interfaze.isInterface()) return interfaze; if
-	 * (!EObject.class.isAssignableFrom(interfaze)) return interfaze; return
-	 * HibernateHelper.INSTANCE.getInstanceClass(interfaze); }
+	 * Replaces a passed EMF Interface by its concrete class private Class replaceClass(Class interfaze) { if
+	 * (!interfaze.isInterface()) return interfaze; if (!EObject.class.isAssignableFrom(interfaze)) return interfaze;
+	 * return HibernateHelper.INSTANCE.getInstanceClass(interfaze); }
 	 */
 
 	/** Gets the referedto list */
@@ -445,6 +445,10 @@ public class HibernateTestStore extends AbstractTestStore {
 	/** Refreshes the object from the datastore */
 	public void refresh(Object obj) {
 		sessionWrapper.refresh(obj);
+	}
+
+	public Object merge(Object object) {
+		return sessionWrapper.merge(object);
 	}
 
 	/** Check inheritance strategy */
