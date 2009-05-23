@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: SessionWrapper.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: SessionWrapper.java,v 1.8.2.1 2009/05/23 13:09:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -31,7 +31,7 @@ import org.hibernate.Session;
  * and commit transactions and perform queries.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.8.2.1 $
  */
 public interface SessionWrapper {
 
@@ -83,6 +83,9 @@ public interface SessionWrapper {
 
 	/** Delete the object */
 	void delete(Object obj);
+
+	/** Merge the object */
+	Object merge(Object obj);
 
 	/** Flush the session */
 	void flush();

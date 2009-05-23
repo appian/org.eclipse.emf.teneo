@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.14 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.14.2.1 2009/05/23 13:09:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.14.2.1 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -215,6 +215,11 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Is transaction active */
 	public boolean isTransactionActive() {
 		return entityTransaction != null && entityTransaction.isActive();
+	}
+
+	/** Merge the object */
+	public Object merge(Object obj) {
+		return getEntityManager().merge(obj);
 	}
 
 	/** Refresh the object */
