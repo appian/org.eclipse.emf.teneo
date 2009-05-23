@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.23 2009/05/22 21:22:53 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.24 2009/05/23 16:35:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -53,7 +53,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements ExtensionPoint, PersistentCollection {
@@ -234,12 +234,10 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	}
 
 	/** Returns true if the wrapped list is a persistency layer specific list */
-	@Override
 	public boolean isPersistencyWrapped() {
 		return delegate instanceof PersistentCollection;
 	}
 
-	@Override
 	public boolean afterInitialize() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).afterInitialize();
@@ -247,42 +245,36 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public void afterRowInsert(CollectionPersister persister, Object entry, int i) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).afterRowInsert(persister, entry, i);
 		}
 	}
 
-	@Override
 	public void beforeInitialize(CollectionPersister persister, int anticipatedSize) {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).beforeInitialize(persister, anticipatedSize);
 		}
 	}
 
-	@Override
 	public void beginRead() {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).beginRead();
 		}
 	}
 
-	@Override
 	public void clearDirty() {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).clearDirty();
 		}
 	}
 
-	@Override
 	public void dirty() {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).dirty();
 		}
 	}
 
-	@Override
 	public Serializable disassemble(CollectionPersister persister) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).disassemble(persister);
@@ -290,7 +282,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public boolean empty() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).empty();
@@ -298,7 +289,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean endRead() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).endRead();
@@ -306,7 +296,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public Iterator<?> entries(CollectionPersister persister) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).entries(persister);
@@ -314,7 +303,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public boolean entryExists(Object entry, int i) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).entryExists(entry, i);
@@ -322,7 +310,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean equalsSnapshot(CollectionPersister persister) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).equalsSnapshot(persister);
@@ -330,14 +317,12 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public void forceInitialization() throws HibernateException {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).forceInitialization();
 		}
 	}
 
-	@Override
 	public Iterator<?> getDeletes(CollectionPersister persister, boolean indexIsFormula) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getDeletes(persister, indexIsFormula);
@@ -345,7 +330,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object getElement(Object entry) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getElement(entry);
@@ -353,7 +337,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object getIdentifier(Object entry, int i) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getIdentifier(entry, i);
@@ -361,7 +344,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object getIndex(Object entry, int i, CollectionPersister persister) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getIndex(entry, i, persister);
@@ -369,7 +351,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Serializable getKey() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getKey();
@@ -377,7 +358,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Collection<?> getOrphans(Serializable snapshot, String entityName) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getOrphans(snapshot, entityName);
@@ -385,7 +365,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object getOwner() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getOwner();
@@ -393,7 +372,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Collection<?> getQueuedOrphans(String entityName) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getQueuedOrphans(entityName);
@@ -401,7 +379,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public String getRole() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getRole();
@@ -409,7 +386,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Serializable getSnapshot(CollectionPersister persister) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getSnapshot(persister);
@@ -417,7 +393,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object getSnapshotElement(Object entry, int i) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getSnapshotElement(entry, i);
@@ -425,7 +400,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Serializable getStoredSnapshot() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getStoredSnapshot();
@@ -433,7 +407,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object getValue() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getValue();
@@ -441,7 +414,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public boolean hasQueuedOperations() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).hasQueuedOperations();
@@ -449,7 +421,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public void initializeFromCache(CollectionPersister persister, Serializable disassembled, Object owner)
 			throws HibernateException {
 		if (isPersistencyWrapped()) {
@@ -457,7 +428,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		}
 	}
 
-	@Override
 	public boolean isDirectlyAccessible() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).isDirectlyAccessible();
@@ -465,7 +435,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean isDirty() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).isDirty();
@@ -473,7 +442,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean isRowUpdatePossible() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).isRowUpdatePossible();
@@ -481,7 +449,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean isSnapshotEmpty(Serializable snapshot) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).isSnapshotEmpty(snapshot);
@@ -489,7 +456,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean isUnreferenced() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).isUnreferenced();
@@ -497,7 +463,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean isWrapper(Object collection) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).isWrapper(collection);
@@ -505,7 +470,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean needsInserting(Object entry, int i, Type elemType) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).needsInserting(entry, i, elemType);
@@ -513,7 +477,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean needsRecreate(CollectionPersister persister) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).needsRecreate(persister);
@@ -521,7 +484,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean needsUpdating(Object entry, int i, Type elemType) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).needsUpdating(entry, i, elemType);
@@ -529,21 +491,18 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public void postAction() {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).postAction();
 		}
 	}
 
-	@Override
 	public void preInsert(CollectionPersister persister) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).preInsert(persister);
 		}
 	}
 
-	@Override
 	public Iterator<?> queuedAdditionIterator() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).queuedAdditionIterator();
@@ -551,7 +510,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public Object readFrom(ResultSet rs, CollectionPersister role, CollectionAliases descriptor, Object owner)
 			throws HibernateException, SQLException {
 		if (isPersistencyWrapped()) {
@@ -560,7 +518,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return null;
 	}
 
-	@Override
 	public boolean setCurrentSession(SessionImplementor session) throws HibernateException {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).setCurrentSession(session);
@@ -568,21 +525,18 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public void setOwner(Object entity) {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).setOwner(entity);
 		}
 	}
 
-	@Override
 	public void setSnapshot(Serializable key, String role, Serializable snapshot) {
 		if (isPersistencyWrapped()) {
 			((PersistentCollection) delegate).setSnapshot(key, role, snapshot);
 		}
 	}
 
-	@Override
 	public boolean unsetSession(SessionImplementor currentSession) {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).unsetSession(currentSession);
@@ -590,7 +544,6 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		return false;
 	}
 
-	@Override
 	public boolean wasInitialized() {
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).wasInitialized();
