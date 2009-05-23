@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.eclipse.org/emf/teneo/samples/issues/bz277546" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:lib="http://www.eclipse.org/emf/teneo/samples/issues/bz277546" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/bz277546">
+
+	<xsd:complexType name="DateVersion">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">
+						@Id @GeneratedValue
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="version" type="theDate">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">@Version</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SimpleVersion">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">
+						@Id @GeneratedValue
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="version" type="theDate">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">@Version</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType ecore:instanceClass="java.util.Date" name="theDate">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="AnotherVersion">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">
+						@Id @GeneratedValue
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="version" type="theDate">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">@Version @Temporal(TIMESTAMP)</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
