@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: GMFEListPropertyHandler.java,v 1.29 2009/05/23 10:51:24 mtaal Exp $
+ * $Id: GMFEListPropertyHandler.java,v 1.30 2009/06/06 20:16:57 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap.diagram.db;
 

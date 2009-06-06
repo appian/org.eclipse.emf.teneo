@@ -320,6 +320,9 @@
 <a href="#Default+ID+Feature+Name">Default ID Feature Name</a>
 </li>
 <li>
+<a href="#%40Version+as+timestamp">@Version as timestamp</a>
+</li>
+<li>
 <a href="#Synthetic+ID+and+Version+properties">Synthetic ID and Version properties</a>
 </li>
 <li>
@@ -581,7 +584,22 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1010E"></a><a name="Synthetic+ID+and+Version+properties"></a>
+<a name="N1010E"></a><a name="%40Version+as+timestamp"></a>
+<div class="h3">
+<h3>@Version as timestamp</h3>
+			
+<p>An EAttribute is tagged as the Version property by annotating it with the @Version annotation. If the EAttribute is a date time then 
+			this does not work directly as EMF uses the XMLGregorianCalendar as a default java type for these XML Schema types.</p>
+			
+<p>For versions of Teneo build after 23th May 2009 you just have to set the
+			instance class of the EAttribute (its EDataType) to java.util.Date or one of its subclasses (so that the generated source code uses that class).</p>
+			
+<p>For earlier versions you <strong>also</strong> have to set the PersistenceOptions.USER_XSDDATETIME_TYPE to timestamp or set the 
+			@Temporal(TIMESTAMP) annotation on the EAttribute.</p>
+		
+</div>
+		
+<a name="N10120"></a><a name="Synthetic+ID+and+Version+properties"></a>
 <div class="h3">
 <h3>Synthetic ID and Version properties</h3>
 			
@@ -597,7 +615,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1011E"></a><a name="cutpaste"></a>
+<a name="N10130"></a><a name="cutpaste"></a>
 <div class="h3">
 <h3>Move an EObject between EContainers or support cut and paste in the EMF editor</h3>
 			
@@ -631,7 +649,7 @@ public NotificationChain basicSetClaim(Claim newClaim, NotificationChain msgs) {
 		
 </div>
 		
-<a name="N1013F"></a><a name="Validation"></a>
+<a name="N10151"></a><a name="Validation"></a>
 <div class="h3">
 <h3>Validation</h3>
 			
@@ -667,7 +685,7 @@ public class MyValidator extends EObjectValidator
 		
 </div>
 		
-<a name="N10153"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
+<a name="N10165"></a><a name="Default+cacheprovider+is+org.hibernate.cache.HashtableCacheProvider"></a>
 <div class="h3">
 <h3>Default cacheprovider is org.hibernate.cache.HashtableCacheProvider</h3>
 			
@@ -685,7 +703,7 @@ public class MyValidator extends EObjectValidator
 </div>
 		
 		
-<a name="N10165"></a><a name="Convert+e_container_feature_id+to+e_container_feature_name"></a>
+<a name="N10177"></a><a name="Convert+e_container_feature_id+to+e_container_feature_name"></a>
 <div class="h3">
 <h3>Convert e_container_feature_id to e_container_feature_name</h3>
 			
