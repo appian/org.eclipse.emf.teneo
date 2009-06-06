@@ -81,7 +81,7 @@
 		<meta attribute="eclassName">OneTimeWonder</meta>
 		<meta attribute="epackage">http:///org/eclipse/example/library.ecore</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`id`"/>
+			<column not-null="true" unique="true" name="`id`"/>
 			<generator class="foreign">
 				<param name="property">theAuthor</param>
 			</generator>
@@ -98,7 +98,7 @@
 		<meta attribute="eclassName">Author</meta>
 		<meta attribute="epackage">http:///org/eclipse/example/library.ecore</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`id`"/>
+			<column not-null="true" unique="true" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">

@@ -68,7 +68,7 @@
 		<meta attribute="eclassName">Child</meta>
 		<meta attribute="epackage">http://xsd.tns.example.com/testinheritance/model</meta>
 		<id name="testId" type="long" unsaved-value="0">
-			<column not-null="true" unique="false" name="`testid`"/>
+			<column not-null="true" unique="true" name="`testid`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
@@ -103,7 +103,7 @@
 		<meta attribute="eclassName">SomeReference</meta>
 		<meta attribute="epackage">http://xsd.tns.example.com/testinheritance/model</meta>
 		<id name="name" type="java.lang.String">
-			<column not-null="true" unique="false" name="`name`"/>
+			<column not-null="true" unique="true" name="`name`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
