@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: GMFNotationAction.java,v 1.7 2008/02/28 07:08:14 mtaal Exp $
+ * $Id: GMFNotationAction.java,v 1.8 2009/06/08 07:44:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -21,8 +21,6 @@ import java.util.HashMap;
 import java.util.Properties;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -31,20 +29,19 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
-import org.example.mindmap.MindmapPackage;
 
 /**
  * Tests persisting of gmf diagram.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ 
+ * @version $Revision: 1.8 $
  */
 public class GMFNotationAction extends AbstractTestAction {
 
 	/** Constructor */
 	public GMFNotationAction() {
-		super(new EPackage[] { EcorePackage.eINSTANCE, NotationPackage.eINSTANCE, MindmapPackage.eINSTANCE });
+		throw new UnsupportedOperationException("Not supported");
+		// super(new EPackage[] { EcorePackage.eINSTANCE, NotationPackage.eINSTANCE, MindmapPackage.eINSTANCE });
 	}
 
 	/*
