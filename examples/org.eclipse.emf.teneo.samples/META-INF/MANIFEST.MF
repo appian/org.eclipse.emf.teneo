@@ -1709,21 +1709,6 @@ Export-Package: com.example.car;uses:="org.eclipse.emf.common.util,org.eclipse.e
  org.eclipse.example.library.model,
  org.eclipse.example.library.util,
  org.eclipse.example.library.validation,
- org.eclipse.gmf.runtime.notation;uses:="org.eclipse.emf.common,org.eclipse.emf.common.util,org.eclipse.emf.ecore",
- org.eclipse.gmf.runtime.notation.datatype,
- org.eclipse.gmf.runtime.notation.impl;
-  uses:="org.eclipse.emf.ecore.impl,
-   org.eclipse.gmf.runtime.notation,
-   org.eclipse.emf.common.notify,
-   org.eclipse.emf.common.util,
-   org.eclipse.emf.ecore",
- org.eclipse.gmf.runtime.notation.stylepooling,
- org.eclipse.gmf.runtime.notation.util;
-  uses:="org.eclipse.emf.common.notify.impl,
-   org.eclipse.gmf.runtime.notation,
-   org.eclipse.emf.common.notify,
-   org.eclipse.emf.ecore.util,
-   org.eclipse.emf.ecore",
  org.example.mindmap;uses:="org.eclipse.emf.common.util,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore",
  org.example.mindmap.impl;
   uses:="org.example.mindmap,
