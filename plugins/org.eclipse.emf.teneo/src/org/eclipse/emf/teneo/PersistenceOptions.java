@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.52 2009/05/22 22:12:00 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.53 2009/06/11 04:59:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.52 $
+ * @version $Revision: 1.53 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -346,9 +346,16 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** The default time/date type used */
 	public static final String DEFAULT_TEMPORAL_VALUE = MAPPING_PREFIX + "default_temporal";
 
+	/**
+	 * If true then EAttributes which are not set are stored as null in the database, if false then the default values
+	 * is stored in the database.
+	 */
+	public static final String HANDLE_UNSET_AS_NULL = RUNTIME_PREFIX + "handle_unset_as_null";
+
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
+		props.setProperty(HANDLE_UNSET_AS_NULL, "false");
 		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
 		props.setProperty(USE_MAPPING_FILE, "false");
 		// props.setProperty(MAPPING_FILE_PATH, null); // null is the default
@@ -403,6 +410,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of the {@link #HANDLE_UNSET_AS_NULL} option
+	 */
+	public boolean getHandleUnsetAsNull() {
+		return Boolean.valueOf(properties.getProperty(HANDLE_UNSET_AS_NULL)).booleanValue();
+	}
 
 	/**
 	 * Construct a new instance using Properties.

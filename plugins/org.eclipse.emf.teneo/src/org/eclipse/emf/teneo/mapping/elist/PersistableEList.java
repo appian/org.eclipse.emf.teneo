@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.23 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.24 2009/06/11 04:59:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -35,12 +35,11 @@ import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * A persistable elist which can be used by different or mappers. This persistable elist works
- * around the idea that the persisted list (e.g. PersistentList in Hibernate) is the delegate for
- * this elist.
+ * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the
+ * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 
 public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
@@ -89,20 +88,22 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 			delegate = list;
 		}
 
-		logString =
-				"EList of type: " + this.getClass().getName() + " of member " + estructuralFeature.getName() +
-						" owned by " + owner.getClass().getName() + " with delegate list " +
-						delegate.getClass().getName();
+		logString = "EList of type: " + this.getClass().getName() + " of member " + estructuralFeature.getName()
+				+ " owned by " + owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
 
 		log.debug("Created persistable list " + logString);
 	}
 
 	/** Takes care of serializing the efeature */
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+		EStructuralFeature estructuralFeatureOld = estructuralFeature;
 		eFeaturePath = StoreUtil.structuralFeatureToString(estructuralFeature);
+		// Commented to fix the bug due to which the attribute structuralFeature
+		// was getting chnaged to null
 		estructuralFeature = null;
 		additionalWriteObject();
 		out.defaultWriteObject();
+		estructuralFeature = estructuralFeatureOld;
 	}
 
 	/** Do your subclass thing for serialization */
@@ -168,9 +169,9 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	}
 
 	/**
-	 * If this instance is again wrapped by a NotifyingList then assume that the wrapper will be
-	 * smart enough to do all the inverse things.... Note that the check if a list is wrapped is
-	 * done once and then the result is cached. So this assumes that a list will not be re-wrapped.
+	 * If this instance is again wrapped by a NotifyingList then assume that the wrapper will be smart enough to do all
+	 * the inverse things.... Note that the check if a list is wrapped is done once and then the result is cached. So
+	 * this assumes that a list will not be re-wrapped.
 	 * 
 	 * @return false if the list is wrapped, otherwise the super hasInverse is called.
 	 */
@@ -595,11 +596,10 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	}
 
 	/**
-	 * Is overridden because it can't use delegates for equality because the delegate (a hibernate
-	 * or jpox list) will try to be equal with this persistable elist.
+	 * Is overridden because it can't use delegates for equality because the delegate (a hibernate or jpox list) will
+	 * try to be equal with this persistable elist.
 	 * 
-	 * This method does jvm instance equality because doing a full-fledge equal would result in a
-	 * load of the list.
+	 * This method does jvm instance equality because doing a full-fledge equal would result in a load of the list.
 	 */
 	@Override
 	public boolean equals(Object object) {
