@@ -420,6 +420,7 @@
     <eLiterals name="IDENTITY" value="2"/>
     <eLiterals name="AUTO" value="3"/>
     <eLiterals name="SEQUENCESTYLE" value="4" literal="SEQUENCESTYLE"/>
+    <eLiterals name="ASSIGNED" value="5"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InheritanceType">
     <eLiterals name="SINGLE_TABLE"/>

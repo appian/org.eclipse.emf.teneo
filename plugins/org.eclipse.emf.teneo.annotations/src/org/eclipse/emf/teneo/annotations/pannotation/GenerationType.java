@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenerationType.java,v 1.8 2008/10/13 05:35:42 mtaal Exp $
+ * $Id: GenerationType.java,v 1.8.2.1 2009/06/11 04:51:05 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -68,7 +68,15 @@ public enum GenerationType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SEQUENCESTYLE(4, "SEQUENCESTYLE", "SEQUENCESTYLE");
+	SEQUENCESTYLE(4, "SEQUENCESTYLE", "SEQUENCESTYLE"), /**
+	 * The '<em><b>ASSIGNED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ASSIGNED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ASSIGNED(5, "ASSIGNED", "ASSIGNED");
 
 	/**
 	 * The '<em><b>TABLE</b></em>' literal value.
@@ -146,6 +154,21 @@ public enum GenerationType implements Enumerator {
 	public static final int SEQUENCESTYLE_VALUE = 4;
 
 	/**
+	 * The '<em><b>ASSIGNED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ASSIGNED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ASSIGNED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ASSIGNED_VALUE = 5;
+
+	/**
 	 * An array of all the '<em><b>Generation Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +181,7 @@ public enum GenerationType implements Enumerator {
 			IDENTITY,
 			AUTO,
 			SEQUENCESTYLE,
+			ASSIGNED,
 		};
 
 	/**
@@ -213,6 +237,7 @@ public enum GenerationType implements Enumerator {
 			case IDENTITY_VALUE: return IDENTITY;
 			case AUTO_VALUE: return AUTO;
 			case SEQUENCESTYLE_VALUE: return SEQUENCESTYLE;
+			case ASSIGNED_VALUE: return ASSIGNED;
 		}
 		return null;
 	}

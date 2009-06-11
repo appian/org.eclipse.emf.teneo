@@ -122,6 +122,7 @@
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//GenerationType/IDENTITY"/>
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//GenerationType/AUTO"/>
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//GenerationType/SEQUENCESTYLE"/>
+      <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//GenerationType/ASSIGNED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="pannotation.ecore#//InheritanceType">
       <genEnumLiterals ecoreEnumLiteral="pannotation.ecore#//InheritanceType/SINGLE_TABLE"/>
