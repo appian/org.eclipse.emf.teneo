@@ -6,9 +6,15 @@
   <foreignModel>usertype.ecore</foreignModel>
   <genPackages prefix="Usertype" basePackage="org.eclipse.emf.teneo.samples.emf.hibernate"
       resource="XML" disposableProviderFactory="true" ecorePackage="usertype.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="usertype.ecore#//CitySize">
+      <genEnumLiterals ecoreEnumLiteral="usertype.ecore#//CitySize/SMALL"/>
+      <genEnumLiterals ecoreEnumLiteral="usertype.ecore#//CitySize/MEDIUM"/>
+      <genEnumLiterals ecoreEnumLiteral="usertype.ecore#//CitySize/LARGE"/>
+    </genEnums>
     <genDataTypes ecoreDataType="usertype.ecore#//Name"/>
     <genDataTypes ecoreDataType="usertype.ecore#//PhoneNumber"/>
     <genDataTypes ecoreDataType="usertype.ecore#//IntArray"/>
+    <genDataTypes ecoreDataType="usertype.ecore#//myDoubleType"/>
     <genClasses ecoreClass="usertype.ecore#//Person">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/numbers"/>
@@ -16,10 +22,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/emergencyContact"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usertype.ecore#//Person/addresses"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/birthPlace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/double"/>
     </genClasses>
     <genClasses ecoreClass="usertype.ecore#//Address">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Address/addressInfo"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usertype.ecore#//Address/person"/>
+    </genClasses>
+    <genClasses ecoreClass="usertype.ecore#//City">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//City/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//City/size"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

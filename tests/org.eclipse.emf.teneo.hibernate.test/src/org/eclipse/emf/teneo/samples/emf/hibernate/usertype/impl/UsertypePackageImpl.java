@@ -2,19 +2,22 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackageImpl.java,v 1.10 2008/08/26 21:20:34 mtaal Exp $
+ * $Id: UsertypePackageImpl.java,v 1.10.2.1 2009/06/11 04:50:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
@@ -47,6 +50,20 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass cityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum citySizeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType nameEDataType = null;
 
 	/**
@@ -62,6 +79,13 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * @generated
 	 */
 	private EDataType intArrayEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType myDoubleTypeEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -199,6 +223,15 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPerson_Double() {
+		return (EAttribute)personEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAddress() {
 		return addressEClass;
 	}
@@ -226,6 +259,42 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCity() {
+		return cityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCity_Id() {
+		return (EAttribute)cityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCity_Size() {
+		return (EAttribute)cityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getCitySize() {
+		return citySizeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getName_() {
 		return nameEDataType;
 	}
@@ -246,6 +315,15 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 */
 	public EDataType getIntArray() {
 		return intArrayEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getmyDoubleType() {
+		return myDoubleTypeEDataType;
 	}
 
 	/**
@@ -283,15 +361,24 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		createEAttribute(personEClass, PERSON__EMERGENCY_CONTACT);
 		createEReference(personEClass, PERSON__ADDRESSES);
 		createEAttribute(personEClass, PERSON__BIRTH_PLACE);
+		createEAttribute(personEClass, PERSON__DOUBLE);
 
 		addressEClass = createEClass(ADDRESS);
 		createEAttribute(addressEClass, ADDRESS__ADDRESS_INFO);
 		createEReference(addressEClass, ADDRESS__PERSON);
 
+		cityEClass = createEClass(CITY);
+		createEAttribute(cityEClass, CITY__ID);
+		createEAttribute(cityEClass, CITY__SIZE);
+
+		// Create enums
+		citySizeEEnum = createEEnum(CITY_SIZE);
+
 		// Create data types
 		nameEDataType = createEDataType(NAME);
 		phoneNumberEDataType = createEDataType(PHONE_NUMBER);
 		intArrayEDataType = createEDataType(INT_ARRAY);
+		myDoubleTypeEDataType = createEDataType(MY_DOUBLE_TYPE);
 	}
 
 	/**
@@ -327,15 +414,27 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		initEAttribute(getPerson_EmergencyContact(), this.getPhoneNumber(), "emergencyContact", "", 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Addresses(), this.getAddress(), this.getAddress_Person(), "addresses", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_BirthPlace(), ecorePackage.getEString(), "birthPlace", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPerson_Double(), this.getmyDoubleType(), "double", "0", 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAddress_AddressInfo(), ecorePackage.getEString(), "addressInfo", null, 1, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAddress_Person(), this.getPerson(), this.getPerson_Addresses(), "person", null, 0, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(cityEClass, City.class, "City", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCity_Id(), ecorePackage.getELong(), "id", "0", 0, 1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCity_Size(), this.getCitySize(), "size", "MEDIUM", 0, 1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(citySizeEEnum, CitySize.class, "CitySize");
+		addEEnumLiteral(citySizeEEnum, CitySize.SMALL_LITERAL);
+		addEEnumLiteral(citySizeEEnum, CitySize.MEDIUM_LITERAL);
+		addEEnumLiteral(citySizeEEnum, CitySize.LARGE_LITERAL);
+
 		// Initialize data types
 		initEDataType(nameEDataType, Name.class, "Name", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(phoneNumberEDataType, UsaPhoneNumber.class, "PhoneNumber", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(intArrayEDataType, int[].class, "IntArray", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(myDoubleTypeEDataType, Double.class, "myDoubleType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -368,7 +467,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "appinfo", "@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=VERSION, polymorphism=EXPLICIT)"
-		   });							
+		   });											
 	}
 
 	/**
@@ -390,13 +489,25 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "appinfo", "@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)"
-		   });			
+		   });				
 		addAnnotation
 		  (intArrayEDataType, 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t\t@TypeDef(name=\"intArrayType\" typeClass=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"IntArray\")})\n\t\t\t\t\t"
+		   });					
+		addAnnotation
+		  (myDoubleTypeEDataType, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"myDoubleType\")})\n\t\t\t\t\t"
 		   });		
+		addAnnotation
+		  (getCity_Id(), 
+		   source, 
+		   new String[] {
+			 "value", "@GeneratedValue(strategy=\"ASSIGNED\")"
+		   });
 	}
 
 	/**
@@ -435,6 +546,13 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 			 "name", "intArray"
 		   });			
 		addAnnotation
+		  (getPerson_Double(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "intArray"
+		   });		
+		addAnnotation
 		  (intArrayEDataType, 
 		   source, 
 		   new String[] {
@@ -453,7 +571,13 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "name"
-		   });
+		   });		
+		addAnnotation
+		  (myDoubleTypeEDataType, 
+		   source, 
+		   new String[] {
+			 "name", "IntArray"
+		   });		
 	}
 
 } //UsertypePackageImpl

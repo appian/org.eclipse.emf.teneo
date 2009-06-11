@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.9 2008/03/30 20:54:58 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.9.2.1 2009/06/11 04:50:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -44,6 +44,7 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getEmergencyContact <em>Emergency Contact</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getBirthPlace <em>Birth Place</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getDouble <em>Double</em>}</li>
  * </ul>
  * </p>
  *
@@ -149,6 +150,26 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected String birthPlace = BIRTH_PLACE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDouble() <em>Double</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDouble()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Double DOUBLE_EDEFAULT = new Double(0.0);
+
+	/**
+	 * The cached value of the '{@link #getDouble() <em>Double</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDouble()
+	 * @generated
+	 * @ordered
+	 */
+	protected Double double_ = DOUBLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,6 +302,27 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Double getDouble() {
+		return double_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDouble(Double newDouble) {
+		Double oldDouble = double_;
+		double_ = newDouble;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UsertypePackage.PERSON__DOUBLE, oldDouble, double_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UsertypePackage.PERSON__ADDRESSES:
@@ -321,6 +363,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return getAddresses();
 			case UsertypePackage.PERSON__BIRTH_PLACE:
 				return getBirthPlace();
+			case UsertypePackage.PERSON__DOUBLE:
+				return getDouble();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -352,6 +396,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__BIRTH_PLACE:
 				setBirthPlace((String)newValue);
 				return;
+			case UsertypePackage.PERSON__DOUBLE:
+				setDouble((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -381,6 +428,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__BIRTH_PLACE:
 				setBirthPlace(BIRTH_PLACE_EDEFAULT);
 				return;
+			case UsertypePackage.PERSON__DOUBLE:
+				setDouble(DOUBLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -404,6 +454,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return addresses != null && !addresses.isEmpty();
 			case UsertypePackage.PERSON__BIRTH_PLACE:
 				return BIRTH_PLACE_EDEFAULT == null ? birthPlace != null : !BIRTH_PLACE_EDEFAULT.equals(birthPlace);
+			case UsertypePackage.PERSON__DOUBLE:
+				return DOUBLE_EDEFAULT == null ? double_ != null : !DOUBLE_EDEFAULT.equals(double_);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -427,6 +479,8 @@ public class PersonImpl extends EObjectImpl implements Person {
 		result.append(emergencyContact);
 		result.append(", birthPlace: ");
 		result.append(birthPlace);
+		result.append(", double: ");
+		result.append(double_);
 		result.append(')');
 		return result.toString();
 	}

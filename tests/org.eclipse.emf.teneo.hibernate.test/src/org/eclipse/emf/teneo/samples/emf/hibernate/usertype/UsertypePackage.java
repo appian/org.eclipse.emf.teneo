@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackage.java,v 1.9 2008/03/30 20:54:58 mtaal Exp $
+ * $Id: UsertypePackage.java,v 1.9.2.1 2009/06/11 04:50:51 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -126,13 +127,22 @@ public interface UsertypePackage extends EPackage {
 	int PERSON__BIRTH_PLACE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Double</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__DOUBLE = 6;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 6;
+	int PERSON_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
@@ -172,6 +182,53 @@ public interface UsertypePackage extends EPackage {
 	int ADDRESS_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl <em>City</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCity()
+	 * @generated
+	 */
+	int CITY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CITY__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CITY__SIZE = 1;
+
+	/**
+	 * The number of structural features of the '<em>City</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CITY_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize <em>City Size</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCitySize()
+	 * @generated
+	 */
+	int CITY_SIZE = 3;
+
+	/**
 	 * The meta object id for the '<em>Name</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,7 +236,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getName_()
 	 * @generated
 	 */
-	int NAME = 2;
+	int NAME = 4;
 
 
 	/**
@@ -190,7 +247,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getPhoneNumber()
 	 * @generated
 	 */
-	int PHONE_NUMBER = 3;
+	int PHONE_NUMBER = 5;
 
 
 	/**
@@ -200,7 +257,18 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getIntArray()
 	 * @generated
 	 */
-	int INT_ARRAY = 4;
+	int INT_ARRAY = 6;
+
+
+	/**
+	 * The meta object id for the '<em>my Double Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Double
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getmyDoubleType()
+	 * @generated
+	 */
+	int MY_DOUBLE_TYPE = 7;
 
 
 	/**
@@ -280,6 +348,17 @@ public interface UsertypePackage extends EPackage {
 	EAttribute getPerson_BirthPlace();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getDouble <em>Double</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Double</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getDouble()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EAttribute getPerson_Double();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -310,6 +389,48 @@ public interface UsertypePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAddress_Person();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City <em>City</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>City</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City
+	 * @generated
+	 */
+	EClass getCity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City#getId()
+	 * @see #getCity()
+	 * @generated
+	 */
+	EAttribute getCity_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City#getSize <em>Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City#getSize()
+	 * @see #getCity()
+	 * @generated
+	 */
+	EAttribute getCity_Size();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize <em>City Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>City Size</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize
+	 * @generated
+	 */
+	EEnum getCitySize();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name <em>Name</em>}'.
@@ -346,6 +467,19 @@ public interface UsertypePackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getIntArray();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Double <em>my Double Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>my Double Type</em>'.
+	 * @see java.lang.Double
+	 * @model instanceClass="java.lang.Double"
+	 *        extendedMetaData="name='IntArray'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Type(type=\"org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType\", parameters={@Parameter(name=\"epackage\" value=\"http://www.elver.org/samples/emf/hibernate/usertype\"), @Parameter(name=\"edatatype\", value=\"myDoubleType\")})\n\t\t\t\t\t'"
+	 * @generated
+	 */
+	EDataType getmyDoubleType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -428,6 +562,14 @@ public interface UsertypePackage extends EPackage {
 		EAttribute PERSON__BIRTH_PLACE = eINSTANCE.getPerson_BirthPlace();
 
 		/**
+		 * The meta object literal for the '<em><b>Double</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSON__DOUBLE = eINSTANCE.getPerson_Double();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -452,6 +594,42 @@ public interface UsertypePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADDRESS__PERSON = eINSTANCE.getAddress_Person();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl <em>City</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCity()
+		 * @generated
+		 */
+		EClass CITY = eINSTANCE.getCity();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CITY__ID = eINSTANCE.getCity_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CITY__SIZE = eINSTANCE.getCity_Size();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize <em>City Size</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCitySize()
+		 * @generated
+		 */
+		EEnum CITY_SIZE = eINSTANCE.getCitySize();
 
 		/**
 		 * The meta object literal for the '<em>Name</em>' data type.
@@ -481,6 +659,16 @@ public interface UsertypePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType INT_ARRAY = eINSTANCE.getIntArray();
+
+		/**
+		 * The meta object literal for the '<em>my Double Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Double
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getmyDoubleType()
+		 * @generated
+		 */
+		EDataType MY_DOUBLE_TYPE = eINSTANCE.getmyDoubleType();
 
 	}
 

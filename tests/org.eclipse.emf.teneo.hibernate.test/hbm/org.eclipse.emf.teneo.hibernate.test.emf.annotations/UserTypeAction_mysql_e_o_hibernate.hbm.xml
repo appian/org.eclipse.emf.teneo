@@ -47,6 +47,13 @@
 		<property name="birthPlace" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`birthplace`"/>
 		</property>
+		<property name="double" lazy="false" insert="true" update="true" not-null="true" unique="false">
+			<column not-null="true" unique="false" name="`double`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+				<param name="epackage">http://www.elver.org/samples/emf/hibernate/usertype</param>
+				<param name="edatatype">myDoubleType</param>
+			</type>
+		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl" entity-name="Address" abstract="false" lazy="false" table="`address`">
 		<meta attribute="eclassName">Address</meta>
@@ -64,6 +71,23 @@
 		<many-to-one name="person" entity-name="Person" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="address_person" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`address_person_e_id`"/>
 		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CityImpl" entity-name="City" abstract="false" lazy="false" table="`city`">
+		<meta attribute="eclassName">City</meta>
+		<meta attribute="epackage">http://www.elver.org/samples/emf/hibernate/usertype</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="true" name="`id`"/>
+			<generator class="assigned"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="size" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`size`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize</param>
+			</type>
+		</property>
 	</class>
 	<query name="getPersonByBirthPlace2"><![CDATA[select p from Person p where p.birthPlace=?]]></query>
 	<query name="getPersonByBirthPlace"><![CDATA[select p from Person p where p.birthPlace=?]]></query>

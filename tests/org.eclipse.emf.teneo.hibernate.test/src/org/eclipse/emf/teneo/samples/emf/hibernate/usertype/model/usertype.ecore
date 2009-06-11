@@ -48,6 +48,13 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="birthPlace" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="double" unique="false"
+        lowerBound="1" eType="#//myDoubleType" defaultValueLiteral="0">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="intArray"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="PhoneNumber" instanceClassName="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IntArray" instanceClassName="int[]">
@@ -72,5 +79,28 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="#//Person"
         eOpposite="#//Person/addresses"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="myDoubleType" instanceClassName="java.lang.Double">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="IntArray"/>
+    </eAnnotations>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Type(type=&quot;org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType&quot;, parameters={@Parameter(name=&quot;epackage&quot; value=&quot;http://www.elver.org/samples/emf/hibernate/usertype&quot;), @Parameter(name=&quot;edatatype&quot;, value=&quot;myDoubleType&quot;)})&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="City">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        defaultValueLiteral="0" iD="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@GeneratedValue(strategy=&quot;ASSIGNED&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="#//CitySize"
+        defaultValueLiteral="MEDIUM" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CitySize">
+    <eLiterals name="SMALL"/>
+    <eLiterals name="MEDIUM" value="1"/>
+    <eLiterals name="LARGE" value="2"/>
   </eClassifiers>
 </ecore:EPackage>
