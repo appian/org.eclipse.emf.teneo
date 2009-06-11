@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NaturalIdImpl.java,v 1.1 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: NaturalIdImpl.java,v 1.2 2009/06/11 04:59:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -105,7 +105,7 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbannotationPackage.NATURAL_ID__MUTABLE:
-				return isMutable() ? Boolean.TRUE : Boolean.FALSE;
+				return isMutable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,7 +120,7 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbannotationPackage.NATURAL_ID__MUTABLE:
-				setMutable(((Boolean)newValue).booleanValue());
+				setMutable((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

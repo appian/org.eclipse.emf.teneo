@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BatchSizeImpl.java,v 1.1 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: BatchSizeImpl.java,v 1.2 2009/06/11 04:59:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -98,7 +98,7 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbannotationPackage.BATCH_SIZE__SIZE:
-				return new Integer(getSize());
+				return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,7 +112,7 @@ public class BatchSizeImpl extends HbAnnotationImpl implements BatchSize {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbannotationPackage.BATCH_SIZE__SIZE:
-				setSize(((Integer)newValue).intValue());
+				setSize((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

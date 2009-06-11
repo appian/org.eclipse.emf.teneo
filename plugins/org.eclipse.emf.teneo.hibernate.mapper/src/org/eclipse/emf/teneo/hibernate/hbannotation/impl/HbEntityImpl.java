@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbEntityImpl.java,v 1.1 2008/08/26 21:19:07 mtaal Exp $
+ * $Id: HbEntityImpl.java,v 1.2 2009/06/11 04:59:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -352,13 +352,13 @@ public class HbEntityImpl extends HbAnnotationImpl implements HbEntity {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case HbannotationPackage.HB_ENTITY__DYNAMIC_INSERT:
-				return isDynamicInsert() ? Boolean.TRUE : Boolean.FALSE;
+				return isDynamicInsert();
 			case HbannotationPackage.HB_ENTITY__DYNAMIC_UPDATE:
-				return isDynamicUpdate() ? Boolean.TRUE : Boolean.FALSE;
+				return isDynamicUpdate();
 			case HbannotationPackage.HB_ENTITY__SELECT_BEFORE_UPDATE:
-				return isSelectBeforeUpdate() ? Boolean.TRUE : Boolean.FALSE;
+				return isSelectBeforeUpdate();
 			case HbannotationPackage.HB_ENTITY__MUTABLE:
-				return isMutable() ? Boolean.TRUE : Boolean.FALSE;
+				return isMutable();
 			case HbannotationPackage.HB_ENTITY__PERSISTER:
 				return getPersister();
 			case HbannotationPackage.HB_ENTITY__OPTIMISTIC_LOCK:
@@ -378,16 +378,16 @@ public class HbEntityImpl extends HbAnnotationImpl implements HbEntity {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HbannotationPackage.HB_ENTITY__DYNAMIC_INSERT:
-				setDynamicInsert(((Boolean)newValue).booleanValue());
+				setDynamicInsert((Boolean)newValue);
 				return;
 			case HbannotationPackage.HB_ENTITY__DYNAMIC_UPDATE:
-				setDynamicUpdate(((Boolean)newValue).booleanValue());
+				setDynamicUpdate((Boolean)newValue);
 				return;
 			case HbannotationPackage.HB_ENTITY__SELECT_BEFORE_UPDATE:
-				setSelectBeforeUpdate(((Boolean)newValue).booleanValue());
+				setSelectBeforeUpdate((Boolean)newValue);
 				return;
 			case HbannotationPackage.HB_ENTITY__MUTABLE:
-				setMutable(((Boolean)newValue).booleanValue());
+				setMutable((Boolean)newValue);
 				return;
 			case HbannotationPackage.HB_ENTITY__PERSISTER:
 				setPersister((String)newValue);

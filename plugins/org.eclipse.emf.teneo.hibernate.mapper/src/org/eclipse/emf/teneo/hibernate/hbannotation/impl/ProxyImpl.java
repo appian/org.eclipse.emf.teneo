@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProxyImpl.java,v 1.6 2008/01/18 06:21:36 mtaal Exp $
+ * $Id: ProxyImpl.java,v 1.7 2009/06/11 04:59:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -139,7 +139,7 @@ public class ProxyImpl extends HbAnnotationImpl implements Proxy {
 			case HbannotationPackage.PROXY__PROXY_CLASS:
 				return getProxyClass();
 			case HbannotationPackage.PROXY__LAZY:
-				return isLazy() ? Boolean.TRUE : Boolean.FALSE;
+				return isLazy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -156,7 +156,7 @@ public class ProxyImpl extends HbAnnotationImpl implements Proxy {
 				setProxyClass((String)newValue);
 				return;
 			case HbannotationPackage.PROXY__LAZY:
-				setLazy(((Boolean)newValue).booleanValue());
+				setLazy((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

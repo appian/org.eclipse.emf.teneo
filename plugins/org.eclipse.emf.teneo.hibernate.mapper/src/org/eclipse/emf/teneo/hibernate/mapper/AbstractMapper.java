@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.45 2009/05/23 10:49:56 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.46 2009/06/11 04:59:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -147,6 +147,9 @@ public abstract class AbstractMapper {
 		if (hea.getHbType() != null) {
 			name = hea.getHbType().getType();
 			params = hea.getHbType().getParameters();
+		} else if (hed != null && hed.getHbType() != null) {
+			name = hed.getHbType().getType();
+			params = hed.getHbType().getParameters();
 		} else if (hed != null && hed.getHbTypeDef() != null) {
 			name = hed.getHbTypeDef().getName();
 			params = null;
