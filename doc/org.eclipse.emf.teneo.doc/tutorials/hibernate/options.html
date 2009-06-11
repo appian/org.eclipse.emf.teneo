@@ -614,6 +614,17 @@
 				
 <li>
 					
+<strong>PersistenceOptions.HANDLE_UNSET_AS_NULL</strong>
+					(default: false): if false then always the value of the EAttribute is stored eventhough the 
+					EAttribute is not set (unset==true), reading an object from the database will always set the 
+					value if it has a default. If true then if the EAttribute value is not set on an
+					EObject then null is set in the database and when reading the object from the database the EAttribute
+					remains not-set.
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.ID_FEATURE_AS_PRIMARY_KEY</strong>
 					(default: true): as a default eattributes with ID=true will be denoted as the primary key of
 					the eclass. If this feature (default is true) is set to false then this default
