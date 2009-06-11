@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.11 2009/02/24 12:04:50 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.11.2.1 2009/06/11 04:51:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
@@ -44,7 +45,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.11.2.1 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter,
@@ -62,6 +63,8 @@ public class EAttributePropertyHandler implements Getter, Setter,
 
 	/** The instanceclass */
 	protected final Class instanceClass;
+
+	private boolean handleUnsetAsNull = false;
 
 	/** Constructor */
 	public EAttributePropertyHandler(EAttribute eAttribute) {
@@ -107,6 +110,12 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
+		if (handleUnsetAsNull) {
+			EObject eobj = (EObject) owner;
+			if (!eobj.eIsSet(eAttribute)) {
+				return null;
+			}
+		}
 		return ((EObject) owner).eGet(eAttribute);
 	}
 
@@ -158,8 +167,10 @@ public class EAttributePropertyHandler implements Getter, Setter,
 			SessionFactoryImplementor factory) throws HibernateException {
 
 		if (value == null) {
-			// do not overwrite the defaults in the eobject
-			// TODO is this really a correct approach?
+			if (handleUnsetAsNull) {
+				EObject eobj = (EObject) target;
+				eobj.eUnset(eAttribute);
+			}
 			return;
 		}
 
@@ -327,5 +338,12 @@ public class EAttributePropertyHandler implements Getter, Setter,
 					+ arr.getClass().getName());
 		}
 		return arr;
+	}
+
+	/**
+	 * Pass in the persistion options.
+	 */
+	public void setPersistenceOptions(PersistenceOptions po) {
+		handleUnsetAsNull = po.getHandleUnsetAsNull();
 	}
 }

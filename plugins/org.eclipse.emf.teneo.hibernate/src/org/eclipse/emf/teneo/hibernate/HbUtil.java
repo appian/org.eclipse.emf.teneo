@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.24 2009/03/15 14:49:46 mtaal Exp $
+ * $Id: HbUtil.java,v 1.24.2.1 2009/06/11 04:51:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -34,6 +34,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.HibernatePersistentStoreAdapter;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.cfg.Environment;
@@ -53,7 +54,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.24.2.1 $
  */
 public class HbUtil {
 
@@ -174,7 +175,17 @@ public class HbUtil {
 						ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
 				// note also array types are going here!
-				return ds.getHbContext().createEAttributeAccessor(eattr);
+				final PropertyAccessor pa = ds.getHbContext()
+						.createEAttributeAccessor(eattr);
+				// note this check is necessary because maybe somebody override
+				// HBContext.createEAttributeAccessor
+				// to not return a EAttributePropertyHandler
+				if (pa instanceof EAttributePropertyHandler) {
+					final EAttributePropertyHandler eAttributePropertyHandler = (EAttributePropertyHandler) pa;
+					eAttributePropertyHandler.setPersistenceOptions(ds
+							.getPersistenceOptions());
+				}
+				return pa;
 			}
 		}
 	}
