@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.51.2.1 2009/05/22 21:29:10 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.51.2.2 2009/06/11 04:50:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.51.2.1 $
+ * @version $Revision: 1.51.2.2 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -360,6 +360,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** The default time/date type used */
 	public static final String DEFAULT_TEMPORAL_VALUE = MAPPING_PREFIX + "default_temporal";
 
+	/** If true then EAttributes which are not set are stored as null in the database, if false
+	 * then the default values is stored in the database.
+	 */
+	public static final String HANDLE_UNSET_AS_NULL = RUNTIME_PREFIX + "handle_unset_as_null"; 
+	
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -382,6 +387,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(ALWAYS_VERSION, "true");
 		props.setProperty(DEFAULT_CACHE_STRATEGY, "NONE");
 		props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "unique");
+		props.setProperty(HANDLE_UNSET_AS_NULL, "false");
 		// props.setProperty(JOIN_TABLE_NAMING_STRATEGY_OLD, "unique");
 		props.setProperty(JOIN_COLUMN_NAMING_STRATEGY, "unique");
 		props.setProperty(DEFAULT_TEMPORAL_VALUE, "TIMESTAMP");
@@ -829,6 +835,13 @@ public class PersistenceOptions implements ExtensionPoint {
 		}
 		Collections.sort(names);
 		return names.toArray(new String[names.size()]);
+	}
+
+	/**
+	 * @return value of the {@link #HANDLE_UNSET_AS_NULL} option
+	 */
+	public boolean getHandleUnsetAsNull() {
+		return Boolean.valueOf(properties.getProperty(HANDLE_UNSET_AS_NULL)).booleanValue();
 	}
 
 	public boolean getAlwaysVersion() {
