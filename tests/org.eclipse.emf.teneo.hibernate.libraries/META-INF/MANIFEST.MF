@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.libraries
 Bundle-Version: 1.0.1.qualifier
 Eclipse-BuddyPolicy: dependent
 Bundle-Localization: plugin
-Export-Package: .,
+Export-Package: 
  antlr,
  antlr.ASdebug,
  antlr.actions.cpp,
