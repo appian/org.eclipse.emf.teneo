@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.43.2.2 2009/05/23 10:33:43 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.43.2.3 2009/06/11 04:51:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -157,6 +157,9 @@ public abstract class AbstractMapper {
 		if (hea.getHbType() != null) {
 			name = hea.getHbType().getType();
 			params = hea.getHbType().getParameters();
+		} else if (hed != null && hed.getHbType() != null) {
+			name = hed.getHbType().getType();
+			params = hed.getHbType().getParameters();
 		} else if (hed != null && hed.getHbTypeDef() != null) {
 			name = hed.getHbTypeDef().getName();
 			params = null;
@@ -430,7 +433,8 @@ public abstract class AbstractMapper {
 		}
 
 		// bugzilla 277546
-		if (eDataType.getInstanceClass() != null && Date.class.isAssignableFrom(eDataType.getInstanceClass())) {
+		if (eDataType.getInstanceClass() != null
+				&& Date.class.isAssignableFrom(eDataType.getInstanceClass())) {
 			return eDataType.getInstanceClass().getName();
 		}
 
@@ -517,11 +521,11 @@ public abstract class AbstractMapper {
 		}
 
 		// if only one id column then it is not nullable!
-		if (isIdProperty && columns.size() == 1 && pef.getPaEClass().getIdClass() == null) {
+		if (isIdProperty && columns.size() == 1
+				&& pef.getPaEClass().getIdClass() == null) {
 			columns.get(0).setNullable(false);
 			columns.get(0).setUnique(true);
 		}
-
 
 		for (Column column : columns) {
 			addColumn(propertyElement, pef, column, isNullable,

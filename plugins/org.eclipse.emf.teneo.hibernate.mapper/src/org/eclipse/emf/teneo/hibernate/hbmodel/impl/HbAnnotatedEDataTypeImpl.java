@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEDataTypeImpl.java,v 1.11 2008/01/18 06:21:37 mtaal Exp $
+ * $Id: HbAnnotatedEDataTypeImpl.java,v 1.11.2.1 2009/06/11 04:51:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -38,6 +39,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbColumns <em>Hb Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbIndex <em>Hb Index</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl#getHbType <em>Hb Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,6 +97,16 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	 * @ordered
 	 */
 	protected Index hbIndex;
+
+	/**
+	 * The cached value of the '{@link #getHbType() <em>Hb Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type hbType;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -316,6 +328,49 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getHbType() {
+		return hbType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetHbType(Type newHbType, NotificationChain msgs) {
+		Type oldHbType = hbType;
+		hbType = newHbType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, oldHbType, newHbType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbType(Type newHbType) {
+		if (newHbType != hbType) {
+			NotificationChain msgs = null;
+			if (hbType != null)
+				msgs = ((InternalEObject)hbType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, null, msgs);
+			if (newHbType != null)
+				msgs = ((InternalEObject)newHbType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, null, msgs);
+			msgs = basicSetHbType(newHbType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE, newHbType, newHbType));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -330,6 +385,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 				return ((InternalEList<?>)getHbColumns()).basicRemove(otherEnd, msgs);
 			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_ID_BAG:
 				return basicSetHbIdBag(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				return basicSetHbType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -352,6 +409,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
 				if (resolve) return getHbIndex();
 				return basicGetHbIndex();
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				return getHbType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -380,6 +439,9 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
 				setHbIndex((Index)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				setHbType((Type)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -406,6 +468,9 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
 				setHbIndex((Index)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				setHbType((Type)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -427,6 +492,8 @@ public class HbAnnotatedEDataTypeImpl extends PAnnotatedEDataTypeImpl implements
 				return hbIdBag != null;
 			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_INDEX:
 				return hbIndex != null;
+			case HbmodelPackage.HB_ANNOTATED_EDATA_TYPE__HB_TYPE:
+				return hbType != null;
 		}
 		return super.eIsSet(featureID);
 	}

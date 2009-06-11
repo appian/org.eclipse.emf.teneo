@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEDataType.java,v 1.6 2007/11/14 16:38:34 mtaal Exp $
+ * $Id: HbAnnotatedEDataType.java,v 1.6.2.1 2009/06/11 04:51:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -11,6 +11,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.TypeDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 
@@ -26,6 +27,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbColumns <em>Hb Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbIdBag <em>Hb Id Bag</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbIndex <em>Hb Index</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbType <em>Hb Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -152,5 +154,31 @@ public interface HbAnnotatedEDataType extends PAnnotatedEDataType, HbAnnotatedEM
 	 * @generated
 	 */
 	void setHbIndex(Index value);
+
+	/**
+	 * Returns the value of the '<em><b>Hb Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hb Type</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hb Type</em>' containment reference.
+	 * @see #setHbType(Type)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEDataType_HbType()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Type getHbType();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbType <em>Hb Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hb Type</em>' containment reference.
+	 * @see #getHbType()
+	 * @generated
+	 */
+	void setHbType(Type value);
 
 } // HbAnnotatedEDataType

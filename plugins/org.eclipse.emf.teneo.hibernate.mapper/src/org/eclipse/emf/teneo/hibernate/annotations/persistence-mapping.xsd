@@ -300,6 +300,7 @@
 			</xsd:element>
 			<xsd:element name="id-bag" type="IdBag"/>
 			<xsd:element name="index" type="xsd:string"/>
+			<xsd:element name="type" type="Type"/>
 			<xsd:element name="type-def" type="TypeDef"/>
 			<xsd:element name="where" type="xsd:string"/>
 			<xsd:element name="id" type="Id"/>
@@ -558,6 +559,7 @@
 		<xsd:enumeration value="IDENTITY"/>
 		<xsd:enumeration value="AUTO"/>
 		<xsd:enumeration value="SEQUENCESTYLE"/>
+		<xsd:enumeration value="ASSIGNED"/>
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="Id"/>

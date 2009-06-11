@@ -101,5 +101,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbIdBag" eType="ecore:EClass hbannotation.ecore#//IdBag"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hbIndex" eType="ecore:EClass hbannotation.ecore#//Index"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hbType" eType="ecore:EClass hbannotation.ecore#//Type"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

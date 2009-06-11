@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.15 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.15.2.1 2009/06/11 04:51:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -1607,13 +1607,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EDATA_TYPE__HB_INDEX = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EDATA_TYPE__HB_TYPE = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EData Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EDATA_TYPE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 5;
+	int HB_ANNOTATED_EDATA_TYPE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EDATA_TYPE_FEATURE_COUNT + 6;
 
 
 	/**
@@ -2149,6 +2158,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEDataType_HbIndex();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbType <em>Hb Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType#getHbType()
+	 * @see #getHbAnnotatedEDataType()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEDataType_HbType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2575,6 +2595,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EDATA_TYPE__HB_INDEX = eINSTANCE.getHbAnnotatedEDataType_HbIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EDATA_TYPE__HB_TYPE = eINSTANCE.getHbAnnotatedEDataType_HbType();
 
 	}
 

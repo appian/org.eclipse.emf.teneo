@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.30 2009/03/07 21:15:19 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.30.2.1 2009/06/11 04:51:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -61,6 +61,7 @@ public class IdMapper extends AbstractAssociationMapper implements
 		GENERATOR_CLASS_NAMES[GenerationType.SEQUENCE.getValue()] = "sequence";
 		GENERATOR_CLASS_NAMES[GenerationType.TABLE.getValue()] = "hilo";
 		GENERATOR_CLASS_NAMES[GenerationType.SEQUENCESTYLE.getValue()] = "org.hibernate.id.enhanced.SequenceStyleGenerator";
+		GENERATOR_CLASS_NAMES[GenerationType.ASSIGNED.getValue()] = "assigned";
 	}
 
 	/** Util method to create an id or composite-id element */
