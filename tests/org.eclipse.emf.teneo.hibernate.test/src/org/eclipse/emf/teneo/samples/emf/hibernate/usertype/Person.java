@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.7 2008/08/26 21:20:34 mtaal Exp $
+ * $Id: Person.java,v 1.8 2009/06/11 04:59:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getEmergencyContact <em>Emergency Contact</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getBirthPlace <em>Birth Place</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getDouble <em>Double</em>}</li>
  * </ul>
  * </p>
  *
@@ -174,5 +175,33 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setBirthPlace(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Double</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Double</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Double</em>' attribute.
+	 * @see #setDouble(Double)
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson_Double()
+	 * @model default="0" unique="false" dataType="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.myDoubleType" required="true"
+	 *        extendedMetaData="kind='element' name='intArray'"
+	 * @generated
+	 */
+	Double getDouble();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getDouble <em>Double</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Double</em>' attribute.
+	 * @see #getDouble()
+	 * @generated
+	 */
+	void setDouble(Double value);
 
 } // Person

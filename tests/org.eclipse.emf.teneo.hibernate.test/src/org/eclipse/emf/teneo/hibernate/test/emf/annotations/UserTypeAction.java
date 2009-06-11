@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.11 2008/05/27 07:42:33 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.12 2009/06/11 04:59:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -18,9 +18,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
@@ -33,7 +37,7 @@ import org.hibernate.Query;
 /**
  * Test
  * 
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 @SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {
@@ -47,17 +51,53 @@ public class UserTypeAction extends AbstractTestAction {
 	}
 
 	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.HANDLE_UNSET_AS_NULL, "true");
+		return props;
+	}
+
+	@Override
 	public void doAction(TestStore store) {
 		storePerson(store);
 		testPerson(store);
 		testDatabase(store);
 		removePerson(store);
+
+		{
+			final City c = UsertypeFactory.eINSTANCE.createCity();
+			assertTrue(c.getSize() != null);
+			assertTrue(!c.isSetSize());
+			c.setId(105);
+			store.beginTransaction();
+			store.store(c);
+			store.commitTransaction();
+		}
+		{
+			final City c = store.getObject(City.class);
+			assertTrue(c.getSize() != null);
+			assertTrue(!c.isSetSize());
+			assertEquals(105, c.getId());
+			c.setSize(CitySize.MEDIUM_LITERAL);
+			assertTrue(c.isSetSize());
+			store.beginTransaction();
+			store.store(c);
+			store.commitTransaction();
+			assertTrue(c.isSetSize());
+		}
+		{
+			final City c = store.getObject(City.class);
+			assertEquals(105, c.getId());
+			assertEquals(CitySize.MEDIUM_LITERAL, c.getSize());
+			assertTrue(c.isSetSize());
+		}
 	}
 
 	private void storePerson(TestStore store) {
 		store.beginTransaction();
 		Person person = UsertypeFactory.eINSTANCE.createPerson();
 		person.setName(NAME);
+		person.setDouble(new Double(5));
 		UsaPhoneNumber up1 = new UsaPhoneNumber(100, 200, 300);
 		UsaPhoneNumber up2 = new UsaPhoneNumber(400, 500, 600);
 		UsaPhoneNumber up3 = new UsaPhoneNumber(700, 800, 900);

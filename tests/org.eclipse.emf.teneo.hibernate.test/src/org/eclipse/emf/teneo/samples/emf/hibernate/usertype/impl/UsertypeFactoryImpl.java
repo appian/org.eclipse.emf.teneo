@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeFactoryImpl.java,v 1.6 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: UsertypeFactoryImpl.java,v 1.7 2009/06/11 04:59:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -62,6 +62,7 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 		switch (eClass.getClassifierID()) {
 			case UsertypePackage.PERSON: return createPerson();
 			case UsertypePackage.ADDRESS: return createAddress();
+			case UsertypePackage.CITY: return createCity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,12 +75,16 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 	 */
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case UsertypePackage.CITY_SIZE:
+				return createCitySizeFromString(eDataType, initialValue);
 			case UsertypePackage.NAME:
 				return createNameFromString(eDataType, initialValue);
 			case UsertypePackage.PHONE_NUMBER:
 				return createPhoneNumberFromString(eDataType, initialValue);
 			case UsertypePackage.INT_ARRAY:
 				return createIntArrayFromString(eDataType, initialValue);
+			case UsertypePackage.MY_DOUBLE_TYPE:
+				return createmyDoubleTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -92,12 +97,16 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 	 */
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case UsertypePackage.CITY_SIZE:
+				return convertCitySizeToString(eDataType, instanceValue);
 			case UsertypePackage.NAME:
 				return convertNameToString(eDataType, instanceValue);
 			case UsertypePackage.PHONE_NUMBER:
 				return convertPhoneNumberToString(eDataType, instanceValue);
 			case UsertypePackage.INT_ARRAY:
 				return convertIntArrayToString(eDataType, instanceValue);
+			case UsertypePackage.MY_DOUBLE_TYPE:
+				return convertmyDoubleTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -121,6 +130,36 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 	public Address createAddress() {
 		AddressImpl address = new AddressImpl();
 		return address;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public City createCity() {
+		CityImpl city = new CityImpl();
+		return city;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CitySize createCitySizeFromString(EDataType eDataType, String initialValue) {
+		CitySize result = CitySize.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCitySizeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
@@ -187,6 +226,24 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 			result.append(vals[i] + "");
 		}
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double createmyDoubleTypeFromString(EDataType eDataType, String initialValue) {
+		return (Double)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertmyDoubleTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
