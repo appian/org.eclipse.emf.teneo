@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: BasicImpl.java,v 1.8 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -140,7 +140,7 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 			case PannotationPackage.BASIC__FETCH:
 				return getFetch();
 			case PannotationPackage.BASIC__OPTIONAL:
-				return isOptional() ? Boolean.TRUE : Boolean.FALSE;
+				return isOptional();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,7 +157,7 @@ public class BasicImpl extends PAnnotationImpl implements Basic {
 				setFetch((FetchType)newValue);
 				return;
 			case PannotationPackage.BASIC__OPTIONAL:
-				setOptional(((Boolean)newValue).booleanValue());
+				setOptional((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

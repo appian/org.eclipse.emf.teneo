@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnImpl.java,v 1.9 2008/04/11 23:42:48 mtaal Exp $
+ * $Id: ColumnImpl.java,v 1.10 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -398,23 +398,23 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 			case PannotationPackage.COLUMN__NAME:
 				return getName();
 			case PannotationPackage.COLUMN__UNIQUE:
-				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+				return isUnique();
 			case PannotationPackage.COLUMN__NULLABLE:
-				return isNullable() ? Boolean.TRUE : Boolean.FALSE;
+				return isNullable();
 			case PannotationPackage.COLUMN__INSERTABLE:
-				return isInsertable() ? Boolean.TRUE : Boolean.FALSE;
+				return isInsertable();
 			case PannotationPackage.COLUMN__UPDATABLE:
-				return isUpdatable() ? Boolean.TRUE : Boolean.FALSE;
+				return isUpdatable();
 			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
 				return getColumnDefinition();
 			case PannotationPackage.COLUMN__TABLE:
 				return getTable();
 			case PannotationPackage.COLUMN__LENGTH:
-				return new Integer(getLength());
+				return getLength();
 			case PannotationPackage.COLUMN__PRECISION:
-				return new Integer(getPrecision());
+				return getPrecision();
 			case PannotationPackage.COLUMN__SCALE:
-				return new Integer(getScale());
+				return getScale();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -430,16 +430,16 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 				setName((String)newValue);
 				return;
 			case PannotationPackage.COLUMN__UNIQUE:
-				setUnique(((Boolean)newValue).booleanValue());
+				setUnique((Boolean)newValue);
 				return;
 			case PannotationPackage.COLUMN__NULLABLE:
-				setNullable(((Boolean)newValue).booleanValue());
+				setNullable((Boolean)newValue);
 				return;
 			case PannotationPackage.COLUMN__INSERTABLE:
-				setInsertable(((Boolean)newValue).booleanValue());
+				setInsertable((Boolean)newValue);
 				return;
 			case PannotationPackage.COLUMN__UPDATABLE:
-				setUpdatable(((Boolean)newValue).booleanValue());
+				setUpdatable((Boolean)newValue);
 				return;
 			case PannotationPackage.COLUMN__COLUMN_DEFINITION:
 				setColumnDefinition((String)newValue);
@@ -448,13 +448,13 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 				setTable((String)newValue);
 				return;
 			case PannotationPackage.COLUMN__LENGTH:
-				setLength(((Integer)newValue).intValue());
+				setLength((Integer)newValue);
 				return;
 			case PannotationPackage.COLUMN__PRECISION:
-				setPrecision(((Integer)newValue).intValue());
+				setPrecision((Integer)newValue);
 				return;
 			case PannotationPackage.COLUMN__SCALE:
-				setScale(((Integer)newValue).intValue());
+				setScale((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

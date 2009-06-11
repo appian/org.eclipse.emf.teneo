@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.29 2008/12/16 20:40:19 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.30 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -2104,6 +2104,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(generationTypeEEnum, GenerationType.IDENTITY);
 		addEEnumLiteral(generationTypeEEnum, GenerationType.AUTO);
 		addEEnumLiteral(generationTypeEEnum, GenerationType.SEQUENCESTYLE);
+		addEEnumLiteral(generationTypeEEnum, GenerationType.ASSIGNED);
 
 		initEEnum(inheritanceTypeEEnum, InheritanceType.class, "InheritanceType");
 		addEEnumLiteral(inheritanceTypeEEnum, InheritanceType.SINGLE_TABLE);

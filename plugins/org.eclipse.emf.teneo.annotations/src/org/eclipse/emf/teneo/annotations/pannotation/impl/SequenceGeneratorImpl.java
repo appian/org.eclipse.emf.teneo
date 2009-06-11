@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceGeneratorImpl.java,v 1.9 2008/10/13 05:35:43 mtaal Exp $
+ * $Id: SequenceGeneratorImpl.java,v 1.10 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -293,9 +293,9 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 			case PannotationPackage.SEQUENCE_GENERATOR__SEQUENCE_NAME:
 				return getSequenceName();
 			case PannotationPackage.SEQUENCE_GENERATOR__INITIAL_VALUE:
-				return new Integer(getInitialValue());
+				return getInitialValue();
 			case PannotationPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
-				return new Integer(getAllocationSize());
+				return getAllocationSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,10 +315,10 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 				setSequenceName((String)newValue);
 				return;
 			case PannotationPackage.SEQUENCE_GENERATOR__INITIAL_VALUE:
-				setInitialValue(((Integer)newValue).intValue());
+				setInitialValue((Integer)newValue);
 				return;
 			case PannotationPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
-				setAllocationSize(((Integer)newValue).intValue());
+				setAllocationSize((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

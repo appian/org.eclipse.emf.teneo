@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToManyImpl.java,v 1.14 2008/08/11 20:42:23 mtaal Exp $
+ * $Id: OneToManyImpl.java,v 1.15 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -286,9 +286,9 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 			case PannotationPackage.ONE_TO_MANY__MAPPED_BY:
 				return getMappedBy();
 			case PannotationPackage.ONE_TO_MANY__INDEXED:
-				return isIndexed() ? Boolean.TRUE : Boolean.FALSE;
+				return isIndexed();
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
-				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+				return isUnique();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,10 +315,10 @@ public class OneToManyImpl extends PAnnotationImpl implements OneToMany {
 				setMappedBy((String)newValue);
 				return;
 			case PannotationPackage.ONE_TO_MANY__INDEXED:
-				setIndexed(((Boolean)newValue).booleanValue());
+				setIndexed((Boolean)newValue);
 				return;
 			case PannotationPackage.ONE_TO_MANY__UNIQUE:
-				setUnique(((Boolean)newValue).booleanValue());
+				setUnique((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

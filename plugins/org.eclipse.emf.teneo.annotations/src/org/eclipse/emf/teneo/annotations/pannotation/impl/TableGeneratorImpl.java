@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGeneratorImpl.java,v 1.7 2007/11/14 16:37:52 mtaal Exp $
+ * $Id: TableGeneratorImpl.java,v 1.8 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -524,9 +524,9 @@ public class TableGeneratorImpl extends PAnnotationImpl implements TableGenerato
 			case PannotationPackage.TABLE_GENERATOR__PK_COLUMN_VALUE:
 				return getPkColumnValue();
 			case PannotationPackage.TABLE_GENERATOR__INITIAL_VALUE:
-				return new Integer(getInitialValue());
+				return getInitialValue();
 			case PannotationPackage.TABLE_GENERATOR__ALLOCATION_SIZE:
-				return new Integer(getAllocationSize());
+				return getAllocationSize();
 			case PannotationPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINTS:
 				return getUniqueConstraints();
 		}
@@ -564,10 +564,10 @@ public class TableGeneratorImpl extends PAnnotationImpl implements TableGenerato
 				setPkColumnValue((String)newValue);
 				return;
 			case PannotationPackage.TABLE_GENERATOR__INITIAL_VALUE:
-				setInitialValue(((Integer)newValue).intValue());
+				setInitialValue((Integer)newValue);
 				return;
 			case PannotationPackage.TABLE_GENERATOR__ALLOCATION_SIZE:
-				setAllocationSize(((Integer)newValue).intValue());
+				setAllocationSize((Integer)newValue);
 				return;
 			case PannotationPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINTS:
 				getUniqueConstraints().clear();

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumnImpl.java,v 1.7 2007/11/14 16:37:53 mtaal Exp $
+ * $Id: DiscriminatorColumnImpl.java,v 1.8 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -241,7 +241,7 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 			case PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN_DEFINITION:
 				return getColumnDefinition();
 			case PannotationPackage.DISCRIMINATOR_COLUMN__LENGTH:
-				return new Integer(getLength());
+				return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,7 +264,7 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 				setColumnDefinition((String)newValue);
 				return;
 			case PannotationPackage.DISCRIMINATOR_COLUMN__LENGTH:
-				setLength(((Integer)newValue).intValue());
+				setLength((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

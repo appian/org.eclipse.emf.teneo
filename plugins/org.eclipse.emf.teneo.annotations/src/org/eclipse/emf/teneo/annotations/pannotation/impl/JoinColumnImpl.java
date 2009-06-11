@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoinColumnImpl.java,v 1.8 2008/04/13 11:10:25 mtaal Exp $
+ * $Id: JoinColumnImpl.java,v 1.9 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -406,13 +406,13 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 			case PannotationPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
 				return getReferencedColumnName();
 			case PannotationPackage.JOIN_COLUMN__UNIQUE:
-				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+				return isUnique();
 			case PannotationPackage.JOIN_COLUMN__NULLABLE:
-				return isNullable() ? Boolean.TRUE : Boolean.FALSE;
+				return isNullable();
 			case PannotationPackage.JOIN_COLUMN__INSERTABLE:
-				return isInsertable() ? Boolean.TRUE : Boolean.FALSE;
+				return isInsertable();
 			case PannotationPackage.JOIN_COLUMN__UPDATABLE:
-				return isUpdatable() ? Boolean.TRUE : Boolean.FALSE;
+				return isUpdatable();
 			case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
 				return getColumnDefinition();
 			case PannotationPackage.JOIN_COLUMN__TABLE:
@@ -436,16 +436,16 @@ public class JoinColumnImpl extends PAnnotationImpl implements JoinColumn {
 				setReferencedColumnName((String)newValue);
 				return;
 			case PannotationPackage.JOIN_COLUMN__UNIQUE:
-				setUnique(((Boolean)newValue).booleanValue());
+				setUnique((Boolean)newValue);
 				return;
 			case PannotationPackage.JOIN_COLUMN__NULLABLE:
-				setNullable(((Boolean)newValue).booleanValue());
+				setNullable((Boolean)newValue);
 				return;
 			case PannotationPackage.JOIN_COLUMN__INSERTABLE:
-				setInsertable(((Boolean)newValue).booleanValue());
+				setInsertable((Boolean)newValue);
 				return;
 			case PannotationPackage.JOIN_COLUMN__UPDATABLE:
-				setUpdatable(((Boolean)newValue).booleanValue());
+				setUpdatable((Boolean)newValue);
 				return;
 			case PannotationPackage.JOIN_COLUMN__COLUMN_DEFINITION:
 				setColumnDefinition((String)newValue);

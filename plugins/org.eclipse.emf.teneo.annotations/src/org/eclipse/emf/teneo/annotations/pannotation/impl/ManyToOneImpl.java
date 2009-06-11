@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToOneImpl.java,v 1.8 2008/09/21 19:03:18 mtaal Exp $
+ * $Id: ManyToOneImpl.java,v 1.9 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -208,7 +208,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 			case PannotationPackage.MANY_TO_ONE__FETCH:
 				return getFetch();
 			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
-				return isOptional() ? Boolean.TRUE : Boolean.FALSE;
+				return isOptional();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -232,7 +232,7 @@ public class ManyToOneImpl extends PAnnotationImpl implements ManyToOne {
 				setFetch((FetchType)newValue);
 				return;
 			case PannotationPackage.MANY_TO_ONE__OPTIONAL:
-				setOptional(((Boolean)newValue).booleanValue());
+				setOptional((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

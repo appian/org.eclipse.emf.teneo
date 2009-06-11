@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToOneImpl.java,v 1.8 2008/09/21 19:03:18 mtaal Exp $
+ * $Id: OneToOneImpl.java,v 1.9 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -278,7 +278,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 			case PannotationPackage.ONE_TO_ONE__FETCH:
 				return getFetch();
 			case PannotationPackage.ONE_TO_ONE__OPTIONAL:
-				return isOptional() ? Boolean.TRUE : Boolean.FALSE;
+				return isOptional();
 			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
 				return getMappedBy();
 		}
@@ -304,7 +304,7 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 				setFetch((FetchType)newValue);
 				return;
 			case PannotationPackage.ONE_TO_ONE__OPTIONAL:
-				setOptional(((Boolean)newValue).booleanValue());
+				setOptional((Boolean)newValue);
 				return;
 			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
 				setMappedBy((String)newValue);

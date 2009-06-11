@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceStyleGeneratorImpl.java,v 1.1 2008/10/13 05:35:43 mtaal Exp $
+ * $Id: SequenceStyleGeneratorImpl.java,v 1.2 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -271,9 +271,9 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__SEQUENCE_NAME:
 				return getSequenceName();
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__INITIAL_VALUE:
-				return new Integer(getInitialValue());
+				return getInitialValue();
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__INCREMENT_SIZE:
-				return new Integer(getIncrementSize());
+				return getIncrementSize();
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER:
 				return getOptimizer();
 		}
@@ -295,10 +295,10 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 				setSequenceName((String)newValue);
 				return;
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__INITIAL_VALUE:
-				setInitialValue(((Integer)newValue).intValue());
+				setInitialValue((Integer)newValue);
 				return;
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__INCREMENT_SIZE:
-				setIncrementSize(((Integer)newValue).intValue());
+				setIncrementSize((Integer)newValue);
 				return;
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER:
 				setOptimizer((OptimizerType)newValue);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToManyImpl.java,v 1.14 2008/08/11 20:42:23 mtaal Exp $
+ * $Id: ManyToManyImpl.java,v 1.15 2009/06/11 04:59:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -246,7 +246,7 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 			case PannotationPackage.MANY_TO_MANY__MAPPED_BY:
 				return getMappedBy();
 			case PannotationPackage.MANY_TO_MANY__INDEXED:
-				return isIndexed() ? Boolean.TRUE : Boolean.FALSE;
+				return isIndexed();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -273,7 +273,7 @@ public class ManyToManyImpl extends PAnnotationImpl implements ManyToMany {
 				setMappedBy((String)newValue);
 				return;
 			case PannotationPackage.MANY_TO_MANY__INDEXED:
-				setIndexed(((Boolean)newValue).booleanValue());
+				setIndexed((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

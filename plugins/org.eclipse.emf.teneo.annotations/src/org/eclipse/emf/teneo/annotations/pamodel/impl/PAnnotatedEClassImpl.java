@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.24 2008/07/13 13:12:49 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.25 2009/06/11 04:59:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -227,7 +227,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	public PAnnotatedEPackage getPaEPackage() {
-		if (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE) return null;
+		if (eContainerFeatureID() != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE) return null;
 		return (PAnnotatedEPackage)eContainer();
 	}
 
@@ -245,7 +245,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @generated
 	 */
 	public void setPaEPackage(PAnnotatedEPackage newPaEPackage) {
-		if (newPaEPackage != eInternalContainer() || (eContainerFeatureID != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE && newPaEPackage != null)) {
+		if (newPaEPackage != eInternalContainer() || (eContainerFeatureID() != PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE && newPaEPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newPaEPackage))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
@@ -759,7 +759,7 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case PamodelPackage.PANNOTATED_ECLASS__PA_EPACKAGE:
 				return eInternalContainer().eInverseRemove(this, PamodelPackage.PANNOTATED_EPACKAGE__PA_ECLASSES, PAnnotatedEPackage.class, msgs);
 		}
