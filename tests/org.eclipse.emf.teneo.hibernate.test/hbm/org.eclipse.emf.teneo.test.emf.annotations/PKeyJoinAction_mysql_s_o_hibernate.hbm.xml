@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">Body</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/primarykeyjoin</meta>
 		<id name="theID" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`theid`"/>
+			<column not-null="true" unique="false" name="`theid`"/>
 			<generator class="foreign">
 				<param name="property">head</param>
 			</generator>
@@ -20,7 +20,7 @@
 		<meta attribute="eclassName">Head</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/primarykeyjoin</meta>
 		<id name="myID" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`myid`"/>
+			<column not-null="true" unique="false" name="`myid`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>

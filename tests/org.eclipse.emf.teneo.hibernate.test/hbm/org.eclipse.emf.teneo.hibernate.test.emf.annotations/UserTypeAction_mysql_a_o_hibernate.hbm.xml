@@ -78,7 +78,7 @@
 		<meta attribute="eclassName">City</meta>
 		<meta attribute="epackage">http://www.elver.org/samples/emf/hibernate/usertype</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="assigned"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
