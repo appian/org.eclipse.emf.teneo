@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.15 2009/05/22 22:12:00 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.16 2009/06/13 21:29:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * Placeholder for several utility methods which are relevant for annotating ereferences and eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -150,6 +150,13 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 		final Column c = aAttribute.getColumn();
 		if (isStringType(aAttribute.getModelEAttribute()) && c != null && defaultVarCharLength > 0 && !c.isSetLength()) {
 			c.setLength(defaultVarCharLength);
+		}
+
+		// disable unique constraint as the uniqueness is covered by the primary
+		// key
+		// constraints. See issue 280169
+		if (c != null && aAttribute.getId() != null) {
+			c.setUnique(false);
 		}
 	}
 
