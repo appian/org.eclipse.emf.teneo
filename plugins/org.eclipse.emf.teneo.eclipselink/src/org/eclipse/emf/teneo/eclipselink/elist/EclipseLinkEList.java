@@ -20,11 +20,11 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 
 public class EclipseLinkEList<E> extends BasicEList<E> implements InternalEList.Unsettable<E>,
 		EStructuralFeature.Setting {
 
-	private static final String PLACEHOLDER_ERROR_MESSAGE = "EclipseLinkEList is a temporary placeholder--usage implies a bug in Teneo.";
 	private static final long serialVersionUID = 1L;
 
 	public EclipseLinkEList() {
@@ -64,58 +64,58 @@ public class EclipseLinkEList<E> extends BasicEList<E> implements InternalEList.
 	}
 
 	public NotificationChain basicRemove(Object object, NotificationChain notifications) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public NotificationChain basicAdd(E object, NotificationChain notifications) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public boolean isSet() {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public void unset() {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public Object get(boolean resolve) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public EObject getEObject() {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public EStructuralFeature getEStructuralFeature() {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public void set(Object newValue) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public boolean basicContains(Object arg0) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public boolean basicContainsAll(Collection<?> arg0) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public int basicIndexOf(Object arg0) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public int basicLastIndexOf(Object arg0) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public Object[] basicToArray() {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 
 	public <T> T[] basicToArray(T[] arg0) {
-		throw new RuntimeException(PLACEHOLDER_ERROR_MESSAGE);
+		throw new RuntimeException(Messages.EclipseLinkEList_unusableTemporaryPlaceholderClass);
 	}
 }

@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.eclipselink.EmfHelper;
 import org.eclipse.emf.teneo.eclipselink.IndirectEContainer;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 import org.eclipse.persistence.indirection.ValueHolder;
 import org.eclipse.persistence.indirection.ValueHolderInterface;
 import org.eclipse.persistence.internal.helper.Helper;
@@ -225,11 +226,10 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 		IndirectEList<E> result = (IndirectEList<E>) super.clone();
 		try {
-			Method cloneMethod = this.getDelegate().getClass().getMethod("clone", new Class[] {});
+			Method cloneMethod = this.getDelegate().getClass().getMethod("clone", new Class[] {}); //$NON-NLS-1$
 			result.delegate = (InternalEList<E>) cloneMethod.invoke(this.getDelegate(), new Object[] {});
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Exception invoking clone method on delegate", e);
+			throw new RuntimeException(Messages.IndirectEList_errorInvokingCloneOnDelegate, e);
 		}
 		result.attributeName = null;
 		result.changeListener = null;
@@ -649,9 +649,9 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 			return this.getDelegate().toString();
 		}
 		if (this.isInstantiated()) {
-			return "{" + this.getDelegate().toString() + "}";
+			return "{" + this.getDelegate().toString() + "}"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
-			return "{" + Helper.getShortClassName(this.getClass()) + ": not instantiated}";
+			return "{" + Helper.getShortClassName(this.getClass()) + ": not instantiated}"; //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -768,6 +768,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#addUnique(int, E)
 	 */
 	public void addUnique(int index, E element) {
@@ -777,6 +778,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#addUnique(E)
 	 */
 	public void addUnique(E element) {
@@ -786,6 +788,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#basicGet(int)
 	 */
 	public E basicGet(int index) {
@@ -795,6 +798,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEList#setUnique(int, E)
 	 */
 	public E setUnique(int index, E element) {
@@ -804,6 +808,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.util.ArrayList#ensureCapacity(int)
 	 */
 	@Override
@@ -814,6 +819,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.util.ArrayList#trimToSize()
 	 */
 	@Override

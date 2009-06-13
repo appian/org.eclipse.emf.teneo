@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.elistfactory.EListFactory;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 import org.eclipse.persistence.exceptions.DatabaseException;
 import org.eclipse.persistence.indirection.ValueHolderInterface;
 import org.eclipse.persistence.internal.indirection.UnitOfWorkQueryValueHolder;
@@ -54,8 +55,7 @@ public class EmfUnitOfWorkQueryBasedValueHolder extends UnitOfWorkQueryValueHold
 			newList = EListFactory.eINSTANCE.createEList(getOwner(), getOwnerAttrName());
 			EmfHelper.getInstance().setECollectionContents(contents, newList);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Exception building correct EList implementation", e);
+			throw new RuntimeException(Messages.EmfUnitOfWorkQueryBasedValueHolder_errorBuildingEListImplementation, e);
 		}
 		return newList;
 	}

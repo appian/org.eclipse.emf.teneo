@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.eclipselink.EmfHelper;
 import org.eclipse.emf.teneo.eclipselink.IndirectEContainer;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 import org.eclipse.persistence.indirection.ValueHolder;
 import org.eclipse.persistence.indirection.ValueHolderInterface;
 import org.eclipse.persistence.internal.helper.Helper;
@@ -159,11 +160,10 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 		IndirectEMap<K, V> result = (IndirectEMap<K, V>) super.clone();
 		try {
-			Method cloneMethod = this.getDelegate().getClass().getMethod("clone", new Class[] {});
+			Method cloneMethod = this.getDelegate().getClass().getMethod("clone", new Class[] {}); //$NON-NLS-1$
 			result.delegate = (EMap<K, V>) cloneMethod.invoke(this.getDelegate(), new Object[] {});
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Exception invoking clone method on delegate", e);
+			throw new RuntimeException(Messages.IndirectEMap_errorInvokingCloneOnDelegate, e);
 		}
 		return result;
 	}
@@ -606,7 +606,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 	 */
 	protected void rehash() {
 
-		throw new InternalError("unsupported");
+		throw new UnsupportedOperationException(Messages.IndirectEMap_rehashNotImplemented);
 	}
 
 	/**
@@ -711,9 +711,9 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 			return this.getDelegate().toString();
 		}
 		if (this.isInstantiated()) {
-			return "{" + this.getDelegate().toString() + "}";
+			return "{" + this.getDelegate().toString() + "}"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
-			return "{" + Helper.getShortClassName(this.getClass()) + ": not instantiated}";
+			return "{" + Helper.getShortClassName(this.getClass()) + ": not instantiated}"; //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -888,6 +888,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#add(int, java.lang.Object)
 	 */
 	@Override
@@ -898,6 +899,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#add(java.lang.Object)
 	 */
 	@Override
@@ -908,6 +910,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#addAll(java.util.Collection)
 	 */
 	@Override
@@ -918,6 +921,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#addAll(int, java.util.Collection)
 	 */
 	@Override
@@ -928,6 +932,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#containsAll(java.util.Collection)
 	 */
 	@Override
@@ -938,6 +943,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#get(int)
 	 */
 	@Override
@@ -948,6 +954,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#indexOf(java.lang.Object)
 	 */
 	@Override
@@ -958,6 +965,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#indexOfKey(java.lang.Object)
 	 */
 	@Override
@@ -968,6 +976,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#lastIndexOf(java.lang.Object)
 	 */
 	@Override
@@ -978,6 +987,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#listIterator()
 	 */
 	@Override
@@ -988,6 +998,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#listIterator(int)
 	 */
 	@Override
@@ -998,6 +1009,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#map()
 	 */
 	@Override
@@ -1008,6 +1020,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#move(int, int)
 	 */
 	@Override
@@ -1018,6 +1031,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#move(int, java.lang.Object)
 	 */
 	@Override
@@ -1028,6 +1042,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#putAll(org.eclipse.emf.common.util.EMap)
 	 */
 	@Override
@@ -1038,6 +1053,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#retainAll(java.util.Collection)
 	 */
 	@Override
@@ -1048,6 +1064,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#set(int, java.lang.Object)
 	 */
 	@Override
@@ -1058,6 +1075,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#subList(int, int)
 	 */
 	@Override
@@ -1068,6 +1086,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#toArray()
 	 */
 	@Override
@@ -1078,6 +1097,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.common.util.BasicEMap#toArray(java.lang.Object[])
 	 */
 	@Override
@@ -1188,30 +1208,37 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean addAllUnique(int index, Collection<? extends java.util.Map.Entry<K, V>> collection) {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).addAllUnique(index, collection);
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean basicContains(Object object) {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).basicContains(object);
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean basicContainsAll(Collection<?> collection) {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).basicContainsAll(collection);
 	}
 
+	@SuppressWarnings("unchecked")
 	public int basicIndexOf(Object object) {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).basicIndexOf(object);
 	}
 
+	@SuppressWarnings("unchecked")
 	public int basicLastIndexOf(Object object) {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).basicLastIndexOf(object);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Object[] basicToArray() {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).basicToArray();
 	}
 
+	@SuppressWarnings("unchecked")
 	public <T> T[] basicToArray(T[] array) {
 		return ((InternalEList.Unsettable<Map.Entry<K, V>>) getDelegate()).basicToArray(array);
 	}

@@ -78,7 +78,7 @@ public class EMapContainerPolicy extends MapContainerPolicy {
 	public boolean isValidContainer(Object container) {
 		// PERF: Use instanceof which is inlined, not isAssignable which is very
 		// inefficent.
-		return container instanceof EMap;
+		return container instanceof EMap<?, ?>;
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class EMapContainerPolicy extends MapContainerPolicy {
 			}
 			return found;
 		} catch (UnsupportedOperationException ex) {
-			throw QueryException.methodNotValid(container, "remove(Object element)");
+			throw QueryException.methodNotValid(container, "remove(Object element)"); //$NON-NLS-1$
 		}
 	}
 
@@ -125,7 +125,7 @@ public class EMapContainerPolicy extends MapContainerPolicy {
 				return true;
 			}
 		} catch (UnsupportedOperationException ex) {
-			throw QueryException.methodNotValid(container, "remove(Object element)");
+			throw QueryException.methodNotValid(container, "remove(Object element)"); //$NON-NLS-1$
 		}
 	}
 
@@ -155,7 +155,7 @@ public class EMapContainerPolicy extends MapContainerPolicy {
 		try {
 			((EMap<?, ?>) container).clear();
 		} catch (UnsupportedOperationException ex) {
-			throw QueryException.methodNotValid(container, "clear()");
+			throw QueryException.methodNotValid(container, "clear()"); //$NON-NLS-1$
 		}
 	}
 

@@ -47,8 +47,8 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
    */
 	private static final long serialVersionUID = 1L;
 	protected static Set<String> nonBeanLikeAttributes;
-	protected static String[] emfAttributesNames = { "eAdapters", "eContainer", "eContainerFeatureID", "eFlags",
-			"eProperties" };
+	protected static String[] emfAttributesNames = { "eAdapters", "eContainer", "eContainerFeatureID", "eFlags", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+			"eProperties" }; //$NON-NLS-1$
 
 	static {
 		nonBeanLikeAttributes = new HashSet<String>();
@@ -225,13 +225,13 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
 					getAttributeName(), theJavaClass.getName(), exception);
 		} catch (NoSuchMethodException ex) {
 			DescriptorException descriptorException = DescriptorException
-					.noSuchMethodWhileInitializingAttributesInMethodAccessor("", getGetMethodName(), theJavaClass
+					.noSuchMethodWhileInitializingAttributesInMethodAccessor("", getGetMethodName(), theJavaClass //$NON-NLS-1$
 							.getName());
 			descriptorException.setInternalException(ex);
 			throw descriptorException;
 		} catch (SecurityException exception) {
 			DescriptorException descriptorException = DescriptorException
-					.securityWhileInitializingAttributesInMethodAccessor("", getGetMethodName(), theJavaClass.getName());
+					.securityWhileInitializingAttributesInMethodAccessor("", getGetMethodName(), theJavaClass.getName()); //$NON-NLS-1$
 			descriptorException.setInternalException(exception);
 			throw descriptorException;
 		}

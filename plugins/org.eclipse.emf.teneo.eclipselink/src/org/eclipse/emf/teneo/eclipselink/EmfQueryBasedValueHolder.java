@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.elistfactory.EListFactory;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 import org.eclipse.persistence.exceptions.DatabaseException;
 import org.eclipse.persistence.internal.indirection.QueryBasedValueHolder;
 import org.eclipse.persistence.internal.indirection.UnitOfWorkValueHolder;
@@ -58,14 +59,14 @@ public class EmfQueryBasedValueHolder extends QueryBasedValueHolder implements E
 			newList = EListFactory.eINSTANCE.createEList(getOwner(), getOwnerAttrName());
 			EmfHelper.getInstance().setECollectionContents(contents, newList);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Exception building correct EList implementation", e);
+			throw new RuntimeException(Messages.EmfQueryBasedValueHolder_errorBuildingEListImplementation, e);
 		}
 		return newList;
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.eclipselink.EmfOwnedValueHolder#getOwner()
 	 */
 	public EObject getOwner() {
@@ -74,6 +75,7 @@ public class EmfQueryBasedValueHolder extends QueryBasedValueHolder implements E
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.eclipselink.EmfOwnedValueHolder#setOwner(org.eclipse.emf.ecore.EObject)
 	 */
 	public void setOwner(EObject owner) {
@@ -82,6 +84,7 @@ public class EmfQueryBasedValueHolder extends QueryBasedValueHolder implements E
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.eclipselink.EmfOwnedValueHolder#getOwnerAttrName()
 	 */
 	public String getOwnerAttrName() {
@@ -90,6 +93,7 @@ public class EmfQueryBasedValueHolder extends QueryBasedValueHolder implements E
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.teneo.eclipselink.EmfOwnedValueHolder#setOwnerAttrName(java.lang.String)
 	 */
 	public void setOwnerAttrName(String ownerAttrName) {

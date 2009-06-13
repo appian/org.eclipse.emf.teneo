@@ -17,6 +17,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.teneo.eclipselink.elist.EclipseLinkEList;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 
 public class EclipseLinkEMap<K, V> extends EclipseLinkEList<Map.Entry<K, V>> implements EMap<K, V> {
 
@@ -39,39 +40,39 @@ public class EclipseLinkEMap<K, V> extends EclipseLinkEList<Map.Entry<K, V>> imp
 	}
 
 	public V get(Object key) {
-		throw new RuntimeException("EclipseLinkEMap.get not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_getNotImplemented);
 	}
 
 	public V put(Object key, Object value) {
-		throw new RuntimeException("EclipseLinkEMap.put not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_putNotImplemented);
 	}
 
 	public void putAll(Map<? extends K, ? extends V> map) {
-		throw new RuntimeException("EclipseLinkEMap.putAll not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_putAllNotImplemented);
 	}
 
 	public void putAll(EMap<? extends K, ? extends V> map) {
-		throw new RuntimeException("EclipseLinkEMap.putAll not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_putAllNotImplemented);
 	}
 
 	public int indexOfKey(Object key) {
-		throw new RuntimeException("EclipseLinkEMap.indexOfKey not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_indexOfKeyNotImplemented);
 	}
 
 	public boolean containsKey(Object key) {
-		throw new RuntimeException("EclipseLinkEMap.containsKey not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_containsKeyNotImplemented);
 	}
 
 	public boolean containsValue(Object value) {
-		throw new RuntimeException("EclipseLinkEMap.containsValue not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_containsValueNotImplemented);
 	}
 
 	public V removeKey(Object key) {
-		throw new RuntimeException("EclipseLinkEMap.removeKey not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_removeKeyNotImplemented);
 	}
 
 	public Map<K, V> map() {
-		throw new RuntimeException("EclipseLinkEMap.map not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_mapNotImplemented);
 	}
 
 	/**
@@ -82,10 +83,10 @@ public class EclipseLinkEMap<K, V> extends EclipseLinkEList<Map.Entry<K, V>> imp
 	}
 
 	public Set<K> keySet() {
-		throw new RuntimeException("EclipseLinkEMap.keySet not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_keySetNotImplmplemented);
 	}
 
 	public Collection<V> values() {
-		throw new RuntimeException("EclipseLinkEMap.values not implemented");
+		throw new UnsupportedOperationException(Messages.EclipseLinkEMap_valuesNotImplemented);
 	}
 }

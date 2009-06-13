@@ -45,12 +45,12 @@ public class EListContainerPolicy extends ListContainerPolicy {
 	@Override
 	protected boolean removeFrom(Object key, Object element, Object container) {
 		try {
-			if (container instanceof EcoreEMap) {
+			if (container instanceof EcoreEMap<?, ?>) {
 				EcoreEMap<?, ?> map = (EcoreEMap<?, ?>) container;
 				map.basicRemove(element, null);
 				return true;
 			} else {
-				if (container instanceof BasicEList) {
+				if (container instanceof BasicEList<?>) {
 					BasicEList<?> eList = (BasicEList<?>) container;
 					return EmfHelper.getInstance().removeFromEList(eList, element);
 				} else {
@@ -58,7 +58,7 @@ public class EListContainerPolicy extends ListContainerPolicy {
 				}
 			}
 		} catch (UnsupportedOperationException ex) {
-			throw QueryException.methodNotValid(element, "remove(Object element)");
+			throw QueryException.methodNotValid(element, "remove(Object element)"); //$NON-NLS-1$
 		}
 	}
 

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.elist.IndirectEList;
 import org.eclipse.emf.teneo.eclipselink.elistfactory.EListFactory;
 import org.eclipse.emf.teneo.eclipselink.emap.IndirectEMap;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 import org.eclipse.persistence.descriptors.ClassDescriptor;
 import org.eclipse.persistence.descriptors.DescriptorEvent;
 import org.eclipse.persistence.descriptors.DescriptorEventAdapter;
@@ -84,7 +85,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 	private void configureEMapMapping(EObject source, CollectionMapping collectionMapping) {
 		if (collectionMapping.usesIndirection()) {
 			Object collectionValue = collectionMapping.getAttributeValueFromObject(source);
-			if (collectionValue instanceof IndirectEMap) {
+			if (collectionValue instanceof IndirectEMap<?, ?>) {
 				IndirectEMap<?, ?> contentsMap = (IndirectEMap<?, ?>) collectionValue;
 				if (contentsMap.isInstantiated()) {
 					replaceWithEmfMap(source, collectionMapping);
@@ -102,7 +103,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 	private void configureEListMapping(EObject source, CollectionMapping collectionMapping) {
 		if (collectionMapping.usesIndirection()) {
 			Object collectionValue = collectionMapping.getAttributeValueFromObject(source);
-			if (collectionValue instanceof IndirectEList) {
+			if (collectionValue instanceof IndirectEList<?>) {
 				IndirectEList<?> contentsList = (IndirectEList<?>) collectionValue;
 				if (contentsList.isInstantiated()) {
 					replaceWithEmfList(source, collectionMapping);
@@ -132,8 +133,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 				collectionMapping.setAttributeValueInObject(source, newMap);
 			}
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Exception building correct EList implementation", e);
+			throw new RuntimeException(Messages.EmfCollectionAdjuster_errorBuildingEListImplementation, e);
 		}
 	}
 
@@ -148,8 +148,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 			newList.setData(contentsList.size(), contentsList.toArray());
 			collectionMapping.setAttributeValueInObject(source, newList);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Exception building correct EList implementation", e);
+			throw new RuntimeException(Messages.EmfCollectionAdjuster_errorBuildingEListImplementation, e);
 		}
 	}
 }

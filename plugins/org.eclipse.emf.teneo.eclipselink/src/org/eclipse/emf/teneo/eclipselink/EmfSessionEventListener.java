@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
 
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
 import org.eclipse.persistence.internal.helper.Helper;
 import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
 import org.eclipse.persistence.internal.sessions.UnitOfWorkImpl;
@@ -29,6 +30,7 @@ public class EmfSessionEventListener extends SessionEventAdapter {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * org.eclipse.persistence.sessions.SessionEventAdapter#preCalculateUnitOfWorkChangeSet(org.eclipse.persistence.
 	 * sessions.SessionEvent)
@@ -37,11 +39,11 @@ public class EmfSessionEventListener extends SessionEventAdapter {
 	public void preCalculateUnitOfWorkChangeSet(SessionEvent event) {
 		Field eContainerField;
 		try {
-			eContainerField = Helper.getField(EObjectImpl.class, "eContainer");
+			eContainerField = Helper.getField(EObjectImpl.class, "eContainer"); //$NON-NLS-1$
 			Session session = event.getSession();
 			UnitOfWorkImpl uow = (UnitOfWorkImpl) session;
 			for (Object object : uow.getCloneMapping().keySet()) {
-				if (object instanceof BasicEMap.Entry) {
+				if (object instanceof BasicEMap.Entry<?, ?>) {
 					EObjectImpl entry = (EObjectImpl) object;
 					if (entry.eContainer() == null) {
 						// restore the eContainer reference so the primary keys can be
@@ -52,7 +54,7 @@ public class EmfSessionEventListener extends SessionEventAdapter {
 				}
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Error deleting EMap Entries", e);
+			throw new RuntimeException(Messages.EmfSessionEventListener_errorDeletingEMapEntries, e);
 		}
 	}
 

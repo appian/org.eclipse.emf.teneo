@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.resource;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 /**
  * This class contains convenient static methods for working with EclipseLink resources.
  */
-public class EclipseLinkResourceUtil {
+public class EclipseLinkURIUtil {
+
+	public static final String URI_SCHEME_ECLIPSELINK = "eclipselink"; //$NON-NLS-1$
 
 	/**
 	 * Creates a EclipseLink {@link org.eclipse.emf.common.util.URI URI} from the given EclipseLink settings.
@@ -54,17 +56,10 @@ public class EclipseLinkResourceUtil {
 	 * @return the newly created EclipseLink {@link org.eclipse.emf.common.util.URI URI} instance.
 	 */
 	public static URI createEclipseLinkURI(String persistenceUnitName, String contentsQueryAlias) {
+		Assert.isLegal(persistenceUnitName != null && persistenceUnitName.trim().length() > 0);
+		Assert.isLegal(contentsQueryAlias != null && contentsQueryAlias.trim().length() > 0);
 
-		if (persistenceUnitName == null || persistenceUnitName.trim().length() == 0) {
-			String msg = "Argument for parameter 'persistenceUnitName' must not be blank.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-		if (contentsQueryAlias == null || contentsQueryAlias.trim().length() == 0) {
-			String msg = "Argument for parameter 'contentsQueryAlias' must not be blank.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-
-		String result = "eclipselink:///" + persistenceUnitName + "?" + contentsQueryAlias;
+		String result = URI_SCHEME_ECLIPSELINK + ":///" + persistenceUnitName + "?" + contentsQueryAlias; //$NON-NLS-1$ //$NON-NLS-2$
 		return URI.createURI(result);
 	}
 
@@ -76,13 +71,9 @@ public class EclipseLinkResourceUtil {
 	 * @return true if URI is a EclipseLink URI, false otherwise.
 	 */
 	public static boolean isEclipseLinkURI(URI uri) {
+		Assert.isNotNull(uri);
 
-		if (uri == null) {
-			String msg = "Argument for parameter 'uri' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-
-		return "eclipselink".equals(uri.scheme());
+		return URI_SCHEME_ECLIPSELINK.equals(uri.scheme());
 	}
 
 	/**
@@ -92,13 +83,9 @@ public class EclipseLinkResourceUtil {
 	 * @return
 	 */
 	public static String createContentsInstancesOfQuery(EClass contentsType) {
+		Assert.isNotNull(contentsType);
 
-		if (contentsType == null) {
-			String msg = "Argument for parameter 'contentsType' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-
-		return "select o from " + contentsType.getName() + " o";
+		return "select o from " + contentsType.getName() + " o"; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -115,37 +102,23 @@ public class EclipseLinkResourceUtil {
 	 * @return the newly created {@link org.eclipse.persistence.queries.ReadAllQuery contents query}
 	 */
 	public static String createContentsEqualQuery(EClass contentsType, EStructuralFeature feature, Object value) {
+		Assert.isNotNull(contentsType);
+		Assert.isNotNull(feature);
+		Assert.isNotNull(value);
 
-		if (contentsType == null) {
-			String msg = "Argument for parameter 'contentsType' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-		if (feature == null) {
-			String msg = "Argument for parameter 'feature' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-		if (value == null) {
-			String msg = "Argument for parameter 'value' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-
-		return "select o from " + contentsType.getName() + " o where o." + feature.getName() + " = '" + value + "'";
+		return "select o from " + contentsType.getName() + " o where o." + feature.getName() + " = '" + value + "'"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	}
 
 	/**
 	 * TODO add comment
 	 */
 	public static String createContentsExampleQuery(EObject contentsExample) {
-
-		if (contentsExample == null) {
-			String msg = "Argument for parameter 'contentsExample' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
+		Assert.isNotNull(contentsExample);
 
 		EAttribute idAttribute = contentsExample.eClass().getEIDAttribute();
 		if (idAttribute != null) {
 			return createContentsEqualQuery(contentsExample.eClass(), idAttribute, contentsExample.eGet(idAttribute));
 		}
-		return "";
+		return ""; //$NON-NLS-1$
 	}
 }

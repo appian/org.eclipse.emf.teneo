@@ -10,13 +10,25 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.resource;
 
-import org.eclipse.emf.teneo.eclipselink.common.resource.BasicEclipseLinkResource;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
- * This interface extends the {@link org.eclipse.emf.teneo.eclipselink.common.resource.BasicEclipseLinkResource
- * BasicEclipseLinkResource} interface and can be used to fine-tune the behavior of EclipseLink Essentials resources
- * when loading or saving contents from or to a relational database.
+ * This interface extends EMF's {@link Resource} interface and can be used to fine-tune the behavior of EclipseLink
+ * resources when loading or saving contents from or to a relational database.
  */
-public interface EclipseLinkResource extends BasicEclipseLinkResource {
+public interface EclipseLinkResource extends Resource {
 
+	/**
+	 * Returns the map of options that, in addition to the overriding options specified during load, are used to to
+	 * control load behavior.
+	 */
+	Map<Object, Object> getDefaultLoadOptions();
+
+	/**
+	 * Returns the map of options that, in addition to the overriding options specified during save, are used to to
+	 * control save behavior.
+	 */
+	Map<Object, Object> getDefaultSaveOptions();
 }

@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.teneo.eclipselink.emap.EclipseLinkEMap;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.persistence.internal.helper.Helper;
 import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
 
@@ -38,13 +40,13 @@ public class EmfHelper {
 
 	private EmfHelper() {
 		try {
-			delegateEListField = Helper.getField(BasicEMap.class, "delegateEList");
-			eObjectEListFeatureIDField = Helper.getField(EObjectEList.class, "featureID");
-			eObjectEListOwnerField = Helper.getField(EObjectEList.class, "owner");
-			ecoreEMapEntryEClassField = Helper.getField(EcoreEMap.class, "entryEClass");
-			ecoreEMapEntryClassField = Helper.getField(EcoreEMap.class, "entryClass");
+			delegateEListField = Helper.getField(BasicEMap.class, "delegateEList"); //$NON-NLS-1$
+			eObjectEListFeatureIDField = Helper.getField(EObjectEList.class, "featureID"); //$NON-NLS-1$
+			eObjectEListOwnerField = Helper.getField(EObjectEList.class, "owner"); //$NON-NLS-1$
+			ecoreEMapEntryEClassField = Helper.getField(EcoreEMap.class, "entryEClass"); //$NON-NLS-1$
+			ecoreEMapEntryClassField = Helper.getField(EcoreEMap.class, "entryClass"); //$NON-NLS-1$
 		} catch (NoSuchFieldException e) {
-			throw new RuntimeException("Can't get delegateEList field from BasicEMap", e);
+			throw new RuntimeException(Messages.EmfHelper_unableToFindDelegateEListFieldOnBasicEMap, e);
 		}
 	}
 
@@ -62,7 +64,7 @@ public class EmfHelper {
 	}
 
 	public <E> void setEListContents(Collection<E> listContents, EList<E> targetList) {
-		if (targetList instanceof EcoreEList) {
+		if (targetList instanceof EcoreEList<?>) {
 			Object[] contentsArray = listContents.toArray();
 			try {
 				basicSetEListContents(targetList, contentsArray);
@@ -84,37 +86,35 @@ public class EmfHelper {
 				// }
 				// }
 			} catch (Exception e) {
-				e.printStackTrace();
-				new RuntimeException("Cannot set owner on Elist", e);
+				new RuntimeException(Messages.EmfHelper_cannotSetOwnerOnEList, e);
 			}
 		} else {
-			throw new RuntimeException("Exception setting EList contents: unsupported collection class: "
-					+ targetList.getClass());
+			String msg = NLS.bind(Messages.EmfHelper_errorSettingEListContents$0, targetList.getClass());
+			throw new RuntimeException(msg);
 		}
 	}
 
 	public <E> boolean addToEList(EList<E> eList, E element) {
-		if (eList instanceof BasicEList) {
+		if (eList instanceof BasicEList<?>) {
 			int size = eList.size();
 			int newSize = size + 1;
 
 			try {
 				// use reflection to: delegate.grow(index);
-				Method growMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEList.class, "grow",
+				Method growMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEList.class, "grow", //$NON-NLS-1$
 						new Class[] { int.class });
 				growMethod.setAccessible(true);
 				growMethod.invoke(eList, new Object[] { newSize });
 				// update EList size
-				Field sizeField = PrivilegedAccessHelper.getDeclaredField(BasicEList.class, "size", true);
+				Field sizeField = PrivilegedAccessHelper.getDeclaredField(BasicEList.class, "size", true); //$NON-NLS-1$
 				sizeField.set(eList, newSize);
 				// use reflection to: delegate.assign(index, object);
-				Method assignMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEList.class, "assign", new Class[] {
+				Method assignMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEList.class, "assign", new Class[] { //$NON-NLS-1$
 						int.class, Object.class });
 				assignMethod.setAccessible(true);
 				assignMethod.invoke(eList, new Object[] { size, element });
 			} catch (Exception e) {
-				e.printStackTrace();
-				new RuntimeException("Exception adding element to EList:", e);
+				new RuntimeException(Messages.EmfHelper_errorAddingElementToEList, e);
 			}
 			return true;
 		} else {
@@ -123,13 +123,13 @@ public class EmfHelper {
 	}
 
 	public boolean removeFromEList(EList<?> eList, Object object) {
-		if (eList instanceof BasicEList) {
+		if (eList instanceof BasicEList<?>) {
 			try {
 				// adapted from BasicEList.remove(Object object)
 				// to avoid relationship management
 				int size = eList.size();
 				int index = eList.indexOf(object);
-				Field dataField = Helper.getField(eList.getClass(), "data");
+				Field dataField = Helper.getField(eList.getClass(), "data"); //$NON-NLS-1$
 				Object[] data = (Object[]) dataField.get(eList);
 				if (index >= 0) {
 					int shifted = size - index - 1;
@@ -140,11 +140,10 @@ public class EmfHelper {
 					data[--size] = null;
 				}
 				// update EList size
-				Field sizeField = PrivilegedAccessHelper.getDeclaredField(BasicEList.class, "size", true);
+				Field sizeField = PrivilegedAccessHelper.getDeclaredField(BasicEList.class, "size", true); //$NON-NLS-1$
 				sizeField.set(eList, size);
 			} catch (Exception e) {
-				e.printStackTrace();
-				new RuntimeException("Exception removing element from EList:", e);
+				new RuntimeException(Messages.EmfHelper_errorRemovingElementFromEList, e);
 			}
 			return true;
 		} else {
@@ -154,9 +153,9 @@ public class EmfHelper {
 
 	private void basicSetEListContents(EList<?> targetList, Object[] contentsArray) throws NoSuchFieldException,
 			IllegalAccessException {
-		Field dataField = Helper.getField(targetList.getClass(), "data");
+		Field dataField = Helper.getField(targetList.getClass(), "data"); //$NON-NLS-1$
 		PrivilegedAccessHelper.setValueInField(dataField, targetList, contentsArray);
-		Field sizeField = Helper.getField(targetList.getClass(), "size");
+		Field sizeField = Helper.getField(targetList.getClass(), "size"); //$NON-NLS-1$
 		PrivilegedAccessHelper.setValueInField(sizeField, targetList, contentsArray.length);
 	}
 
@@ -169,10 +168,10 @@ public class EmfHelper {
 				BasicEMap<K, V> basicEMap = (BasicEMap<K, V>) targetMap;
 				// set the entry list
 				Method basicEMapEnsureEntryDataExistsMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEMap.class,
-						"ensureEntryDataExists", new Class[] {});
+						"ensureEntryDataExists", new Class[] {}); //$NON-NLS-1$
 				basicEMapEnsureEntryDataExistsMethod.setAccessible(true);
 				basicEMapEnsureEntryDataExistsMethod.invoke(basicEMap, new Object[] {});
-				Method basicEMapDoPutMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEMap.class, "doPut",
+				Method basicEMapDoPutMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEMap.class, "doPut", //$NON-NLS-1$
 						new Class[] { BasicEMap.Entry.class });
 				basicEMapDoPutMethod.setAccessible(true);
 				for (Object entry : mapContents.entrySet()) {
@@ -183,8 +182,7 @@ public class EmfHelper {
 				basicSetEListContents(delegateEList, mapContents.toArray());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			new RuntimeException("Exception setting EMap contents:", e);
+			new RuntimeException(Messages.EmfHelper_errorSettingEMapContents, e);
 		}
 	}
 
@@ -200,10 +198,10 @@ public class EmfHelper {
 					BasicEMap<K, V> basicEMap = (BasicEMap<K, V>) eMap;
 					// add the entry
 					Method basicEMapEnsureEntryDataExistsMethod = PrivilegedAccessHelper.getDeclaredMethod(
-							BasicEMap.class, "ensureEntryDataExists", new Class[] {});
+							BasicEMap.class, "ensureEntryDataExists", new Class[] {}); //$NON-NLS-1$
 					basicEMapEnsureEntryDataExistsMethod.setAccessible(true);
 					basicEMapEnsureEntryDataExistsMethod.invoke(basicEMap, new Object[] {});
-					Method basicEMapDoPutMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEMap.class, "doPut",
+					Method basicEMapDoPutMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEMap.class, "doPut", //$NON-NLS-1$
 							new Class[] { BasicEMap.Entry.class });
 					basicEMapDoPutMethod.setAccessible(true);
 					basicEMapDoPutMethod.invoke(basicEMap, new Object[] { entry });
@@ -211,12 +209,12 @@ public class EmfHelper {
 					EList<Map.Entry<K, V>> delegateEList = (EList<Map.Entry<K, V>>) delegateEListField.get(basicEMap);
 					addToEList(delegateEList, entry);
 				} catch (Exception e) {
-					e.printStackTrace();
-					new RuntimeException("Exception adding to EMap:", e);
+					new RuntimeException(Messages.EmfHelper_errorAddingEntryToEMap, e);
 				}
 				return true;
 			} else {
-				throw new RuntimeException("Collection class not supported: " + eMap.getClass().getName());
+				String msg = NLS.bind(Messages.EmfHelper_collectionClassNotSupported$0, eMap.getClass().getName());
+				throw new RuntimeException(msg);
 			}
 		}
 	}
@@ -227,7 +225,7 @@ public class EmfHelper {
 			return (BasicEList<Map.Entry<K, V>>) delegateEListField.get(originalEMap);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException("Exception getting delegate list");
+			throw new RuntimeException(Messages.EmfHelper_errorGettingDelegateList);
 		}
 	}
 
@@ -237,7 +235,7 @@ public class EmfHelper {
 			return (Class<? extends Map.Entry>) ecoreEMapEntryClassField.get(map);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException("Exception getting delegate list");
+			throw new RuntimeException(Messages.EmfHelper_errorGettingDelegateList);
 		}
 	}
 
@@ -246,7 +244,7 @@ public class EmfHelper {
 			return (EClass) ecoreEMapEntryEClassField.get(map);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException("Exception getting entryEClass");
+			throw new RuntimeException(Messages.EmfHelper_errorGettingEntryEClass);
 		}
 	}
 
@@ -255,7 +253,7 @@ public class EmfHelper {
 			return (InternalEObject) eObjectEListOwnerField.get(map);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException("Exception getting list owner");
+			throw new RuntimeException(Messages.EmfHelper_errorGettingListOwner);
 		}
 	}
 
@@ -264,7 +262,7 @@ public class EmfHelper {
 			eObjectEListOwnerField.set(list, owner);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException("Exception setting list owner");
+			throw new RuntimeException(Messages.EmfHelper_errorSettingListOwner);
 		}
 	}
 
@@ -273,7 +271,7 @@ public class EmfHelper {
 			return eObjectEListFeatureIDField.getInt(list);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException("Exception getting featureID");
+			throw new RuntimeException(Messages.EmfHelper_errorGettingFeatureID);
 		}
 	}
 }

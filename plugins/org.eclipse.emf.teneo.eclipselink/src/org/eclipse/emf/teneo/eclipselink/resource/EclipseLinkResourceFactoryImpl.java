@@ -17,12 +17,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 public class EclipseLinkResourceFactoryImpl extends ResourceFactoryImpl {
 
 	public EclipseLinkResourceFactoryImpl() {
-
 	}
 
 	@Override
 	public Resource createResource(URI uri) {
-
 		return new EclipseLinkResourceImpl(uri);
 	}
 }

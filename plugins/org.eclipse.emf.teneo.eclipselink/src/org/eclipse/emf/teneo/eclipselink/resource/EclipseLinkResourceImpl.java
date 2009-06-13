@@ -24,6 +24,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -38,16 +39,27 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.ContentTreeIterator;
 import org.eclipse.emf.teneo.eclipselink.IndirectEContainer;
+import org.eclipse.emf.teneo.eclipselink.internal.messages.Messages;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
 
 /**
- * This class implements the {@link EclipseLinkResource} interface and represents a EclipseLink resource.
  * <p>
- * EclipseLink resources provide a link between modeling using EMF and persistence using relational databases. They are
- * implementations of EMF's intrinsic persistence API and can be used to load, work on, and save EMF models in a
- * relational database according to a given EclipseLink O/R mapping definition and a EclipseLink session configuration.
- * As such, EclipseLink resources offer the following benefits:
+ * TODO Replace session configuration with persistence unit
+ * </p>
+ * <p>
+ * TODO Double check relevance of database session and unit of work and their destruction or release
+ * </p>
+ * <p>
+ * TODO Check relevance of session customizers and pre-login listeners
+ * </p>
+ * This class implements the {@link EclipseLinkResource} interface and represents an EclipseLink resource.
+ * <p>
+ * EclipseLink resources provide a link between modeling using EMF and persistence using relational databases and
+ * EclipseLink O/R mapping. They are implementations of EMF's intrinsic persistence API and can be used to load, work
+ * on, and save EMF models in a relational database according to a given EclipseLink O/R mapping definition and a
+ * EclipseLink session configuration. As such, EclipseLink resources offer the following benefits:
  * </p>
  * <ul>
  * <li>Database persistence for EMF models through same API as XML/XMI file persistence</li>
@@ -159,21 +171,12 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	 * @return the newly created {@link EclipseLinkResourceImpl} instance.
 	 */
 	public EclipseLinkResourceImpl(URI uri) {
-
 		super(uri);
 
-		if (!EclipseLinkResourceUtil.isEclipseLinkURI(uri)) {
-			String msg = "Argument for parameter 'uri' must contain a 'eclipselink:' scheme.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-		if (uri.segmentCount() != 1) {
-			String msg = "Argument for parameter 'uri' must contain one segment representing the name of a database session.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
-		if (!uri.hasQuery()) {
-			String msg = "Argument for parameter 'uri' must contain a query string representing an alias of a query for the contents of this resource.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
+		Assert.isLegal(EclipseLinkURIUtil.isEclipseLinkURI(uri),
+				Messages.EclipseLinkResourceImpl_uriMustContainEclipseLinkScheme);
+		Assert.isLegal(uri.segmentCount() == 1, Messages.EclipseLinkResourceImpl_uriMustContainPersistenceUnitSegment);
+		Assert.isLegal(uri.hasQuery(), Messages.EclipseLinkResourceImpl_uriMustContainContentsQueryString);
 
 		persistenceUnitName = uri.segments()[0];
 		contentsQuery = uri.query();
@@ -206,8 +209,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	 * @return the newly created {@link EclipseLinkResourceImpl} instance.
 	 */
 	public EclipseLinkResourceImpl(String persistenceUnitName, String contentsQueryAlias) {
-
-		uri = EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, contentsQueryAlias);
+		uri = EclipseLinkURIUtil.createEclipseLinkURI(persistenceUnitName, contentsQueryAlias);
 
 		this.persistenceUnitName = persistenceUnitName;
 		contentsQuery = contentsQueryAlias;
@@ -216,18 +218,15 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	}
 
 	public Map<Object, Object> getDefaultSaveOptions() {
-
 		return defaultSaveOptions;
 	}
 
 	public Map<Object, Object> getDefaultLoadOptions() {
-
 		return defaultLoadOptions;
 	}
 
 	@Override
 	public void setURI(URI uri) {
-
 		// cannot change the URI of a EclipseLinkResource on the fly
 	}
 
@@ -240,7 +239,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 		@Override
 		protected void loaded() {
-
 			if (!isLoaded()) {
 				Map<?, ?> options = defaultLoadOptions;
 				ResourceSet resourceSet = getResourceSet();
@@ -255,7 +253,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public EList<EObject> getContents() {
-
 		if (contents == null) {
 			contents = new DatabaseContentsEList<EObject>();
 		}
@@ -286,13 +283,12 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	 */
 	@Override
 	public String getURIFragment(EObject eObject) {
-
 		String result;
 		String id = EcoreUtil.getID(eObject);
 		if (id != null) {
 			// create decorated ID
 			EAttribute eIDAttribute = eObject.eClass().getEIDAttribute();
-			result = eObject.eClass().getName() + "|" + eIDAttribute.getName() + "='" + id + "'";
+			result = eObject.eClass().getName() + "|" + eIDAttribute.getName() + "='" + id + "'"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		} else {
 			result = super.getURIFragment(eObject);
 		}
@@ -326,12 +322,11 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	@Override
 	@SuppressWarnings("unchecked")
 	protected EObject getEObjectByID(String fragment) {
-
 		try {
 			EObject result = null;
 
 			// break decorated ID into its components
-			String[] idComponents = fragment.split("\\||='|'");
+			String[] idComponents = fragment.split("\\||='|'"); //$NON-NLS-1$
 
 			// validate the decorated ID's components
 			boolean valid = true;
@@ -345,15 +340,12 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 					}
 				}
 			}
-			if (!valid) {
-				String msg = "Invalid object id (expected format: ownerTypeName|idAttributeName='id').";
-				throw new WrappedException(new IllegalArgumentException(msg));
-			}
+			Assert.isLegal(valid, Messages.EclipseLinkResourceImpl_invalidObjectId);
 
 			// build and execute query based on the decorated ID's components;
 			// take first object in case that query result is not unique
-			String queryString = "select o from " + idComponents[0] + " o where o." + idComponents[1] + " = '"
-					+ idComponents[2] + "'";
+			String queryString = "select o from " + idComponents[0] + " o where o." + idComponents[1] + " = '" //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					+ idComponents[2] + "'"; //$NON-NLS-1$
 			List<EObject> eObjects = entityManager.createQuery(queryString).getResultList();
 			if (eObjects.size() > 0) {
 				result = eObjects.get(0);
@@ -367,7 +359,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public void attached(EObject eObject) {
-
 		// if attached object is a previously detached one simply remove it from
 		// the to be removed list
 		if (eObjectsToBeRemovedFromDatabase.contains(eObject)) {
@@ -391,7 +382,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public void detached(EObject eObject) {
-
 		// don't delete detached objects immediately in entity manager, but keep
 		// them in a to be removed list first so that they can easily reattached if
 		// required by application
@@ -400,10 +390,8 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public final void save(Map<?, ?> options) throws IOException {
-
 		if (!isLoaded) {
-			String msg = "Cannot save a resource which is not loaded.";
-			throw new WrappedException(new IllegalStateException(msg));
+			throw new IllegalStateException(Messages.EclipseLinkResourceImpl_cannotSaveUnloadedResource);
 		}
 
 		// writing to database goes via entity manager rather than output stream
@@ -412,7 +400,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public final void load(Map<?, ?> options) throws IOException {
-
 		if (!isLoaded) {
 			try {
 				// reading from database goes via entity manager rather than input
@@ -449,14 +436,13 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 		@Override
 		public Iterator<? extends EObject> getEObjectChildren(EObject eObject) {
-
 			Iterator<? extends EObject> result;
 			if (!loadOnDemand) {
 				List<EReference> eLoadedContainmentReferences = new ArrayList<EReference>();
 				for (EReference eReference : eObject.eClass().getEAllContainments()) {
 					if (eReference.isMany()) {
 						EList<?> eChildrenList = (EList<?>) eObject.eGet(eReference);
-						if (eChildrenList instanceof IndirectEContainer) {
+						if (eChildrenList instanceof IndirectEContainer<?>) {
 							IndirectEContainer<?> indirectEContainer = (IndirectEContainer<?>) eChildrenList;
 							if (indirectEContainer.isInstantiated()) {
 								eLoadedContainmentReferences.add(eReference);
@@ -483,11 +469,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
-
-		if (options == null) {
-			String msg = "Argument for parameter 'options' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
+		Assert.isNotNull(options);
 
 		try {
 			// actually delete objects which have previously been detached
@@ -515,14 +497,12 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
-
 		openDatabase(options);
 		readContentsFromDatabase(options);
 	}
 
 	@Override
 	protected void doUnload() {
-
 		Iterator<EObject> allContents = new EclipseLinkContentTreeIterator<EObject>(new ArrayList<EObject>(
 				getContents()), false);
 
@@ -544,42 +524,33 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public final boolean isTrackingModification() {
-
 		return false;
 	}
 
 	@Override
 	public final void setTrackingModification(boolean isTrackingModification) {
-
 		// do nothing
 	}
 
 	@Override
 	public boolean isModified() {
-
 		return false;
 	}
 
 	@Override
 	public void setModified(boolean isModified) {
-
 		// do nothing
 	}
 
 	protected void initDefaultOptions() {
-
 		defaultSaveOptions = new HashMap<Object, Object>();
 
 		defaultLoadOptions = new HashMap<Object, Object>();
-		defaultLoadOptions.put("eclipselink.logging.level", "FINE");
+		defaultLoadOptions.put("eclipselink.logging.level", "FINE"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	protected void openDatabase(Map<?, ?> options) {
-
-		if (options == null) {
-			String msg = "Argument for parameter 'options' must not be null.";
-			throw new WrappedException(new IllegalArgumentException(msg));
-		}
+		Assert.isNotNull(options);
 
 		try {
 			// entity manager factory for given persistence unit name already
@@ -589,15 +560,16 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 				// create and register new entity manager factory for given persistence
 				// unit name according to sessions configuration file
 				if (!options.containsKey(PersistenceUnitProperties.CLASSLOADER)) {
-					throw new RuntimeException(
-							"Persistence unit property 'PersistenceUnitProperties.CLASSLOADER' must be initialized with some classloader which has persistence unit named '"
-									+ persistenceUnitName + "' on its classpath.");
+					throw new IllegalStateException(NLS.bind(
+							Messages.EclipseLinkResourceImpl_classloaderMustHavePersistenceUnit$0OnClasspath,
+							persistenceUnitName));
 				}
 				EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(
 						persistenceUnitName, options);
 				if (entityManagerFactory == null) {
-					throw new RuntimeException("Unable to create entity manager factory for persistence unit named '"
-							+ persistenceUnitName + "'.");
+					throw new IllegalStateException(NLS.bind(
+							Messages.EclipseLinkResourceImpl_unableToCreateEntityManangerFactoryforPersistenceUnit$0,
+							persistenceUnitName));
 				}
 				entityManagerFactoryInstance = new EntityManagerFactoryInstance(entityManagerFactory);
 				persistenceUnitNameToEntityManagerFactoryInstanceMap.put(persistenceUnitName,
@@ -627,7 +599,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@SuppressWarnings("unchecked")
 	protected void readContentsFromDatabase(Map<?, ?> options) {
-
 		try {
 			// execute contents query and initialize contents list
 			readingContentsFromDatabase = true;
@@ -640,7 +611,6 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	}
 
 	protected void closeDatabase() {
-
 		// entity manager existing and open?
 		if (entityManager != null && entityManager.isOpen()) {
 			// close entity manager
