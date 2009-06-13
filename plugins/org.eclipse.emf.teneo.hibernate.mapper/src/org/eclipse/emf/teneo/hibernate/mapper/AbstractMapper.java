@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.46 2009/06/11 04:59:21 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.47 2009/06/13 21:29:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -466,7 +466,8 @@ public abstract class AbstractMapper {
 		// if only one id column then it is not nullable!
 		if (isIdProperty && columns.size() == 1 && pef.getPaEClass().getIdClass() == null) {
 			columns.get(0).setNullable(false);
-			columns.get(0).setUnique(true);
+			// set to false, see bugzilla 280169
+			columns.get(0).setUnique(false);
 		}
 
 		for (Column column : columns) {
