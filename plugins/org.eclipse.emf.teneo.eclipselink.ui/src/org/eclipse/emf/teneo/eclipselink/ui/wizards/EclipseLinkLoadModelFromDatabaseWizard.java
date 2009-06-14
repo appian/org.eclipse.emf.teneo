@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.AbstractLoadModelFromDatabaseWizard;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.AbstractRootObjectAndModelEditorPage;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.BasicModelAndDatabaseAccessParametersPage;
-import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 import org.eclipse.emf.teneo.eclipselink.ui.wizards.pages.EclipseLinkModelAndDatabaseAccessParametersPage;
 import org.eclipse.emf.teneo.eclipselink.ui.wizards.pages.EclipseLinkRootObjectAndModelEditorPage;
 
@@ -33,7 +33,7 @@ public class EclipseLinkLoadModelFromDatabaseWizard extends AbstractLoadModelFro
 
 	@Override
 	protected URI createDatabaseURI(String persistenceUnitName, EObject rootObject) {
-		String query = EclipseLinkResourceUtil.createContentsExampleQuery(rootObject);
-		return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
+		String query = EclipseLinkURIUtil.createContentsExampleQuery(rootObject);
+		return EclipseLinkURIUtil.createEclipseLinkURI(persistenceUnitName, query);
 	}
 }

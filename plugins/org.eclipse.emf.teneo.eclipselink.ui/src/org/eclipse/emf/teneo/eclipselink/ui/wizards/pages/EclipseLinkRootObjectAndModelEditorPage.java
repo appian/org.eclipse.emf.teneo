@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.AbstractRootObjectAndModelEditorPage;
-import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 public class EclipseLinkRootObjectAndModelEditorPage extends AbstractRootObjectAndModelEditorPage {
@@ -28,14 +28,14 @@ public class EclipseLinkRootObjectAndModelEditorPage extends AbstractRootObjectA
 
 	@Override
 	protected URI createDatabaseURI(String persistenceUnitName, EClass eClass) {
-		String query = EclipseLinkResourceUtil.createContentsInstancesOfQuery(eClass);
-		return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
+		String query = EclipseLinkURIUtil.createContentsInstancesOfQuery(eClass);
+		return EclipseLinkURIUtil.createEclipseLinkURI(persistenceUnitName, query);
 	}
 
 	@Override
 	protected URI createDatabaseURI(String persistenceUnitName, EObject eObject) {
-		String query = EclipseLinkResourceUtil.createContentsExampleQuery(eObject);
-		return EclipseLinkResourceUtil.createEclipseLinkURI(persistenceUnitName, query);
+		String query = EclipseLinkURIUtil.createContentsExampleQuery(eObject);
+		return EclipseLinkURIUtil.createEclipseLinkURI(persistenceUnitName, query);
 	}
 
 	@Override
@@ -48,10 +48,10 @@ public class EclipseLinkRootObjectAndModelEditorPage extends AbstractRootObjectA
 	@Override
 	protected Map<String, Object> getDatabaseLoginOptionsFromPreviousPage() {
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("eclipselink.jdbc.url", getTypedPreviousPage().getDatabaseURL());
-		result.put("eclipselink.jdbc.driver", getTypedPreviousPage().getJDBCDriver());
-		result.put("eclipselink.jdbc.user", getTypedPreviousPage().getUserName());
-		result.put("eclipselink.jdbc.password", getTypedPreviousPage().getPassword());
+		result.put("eclipselink.jdbc.url", getTypedPreviousPage().getDatabaseURL()); //$NON-NLS-1$
+		result.put("eclipselink.jdbc.driver", getTypedPreviousPage().getJDBCDriver()); //$NON-NLS-1$
+		result.put("eclipselink.jdbc.user", getTypedPreviousPage().getUserName()); //$NON-NLS-1$
+		result.put("eclipselink.jdbc.password", getTypedPreviousPage().getPassword()); //$NON-NLS-1$
 		return result;
 	}
 }

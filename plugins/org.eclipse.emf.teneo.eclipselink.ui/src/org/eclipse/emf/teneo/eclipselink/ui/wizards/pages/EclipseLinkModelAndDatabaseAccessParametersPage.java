@@ -36,10 +36,10 @@ public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelA
 	@Override
 	protected void updateDatabaseLoginFieldsFromPersistenceUnit() {
 		String name = persistenceUnitNameField.getText();
-		databaseURLField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.url"));
-		jdbcDriverField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.driver"));
-		userNameField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.user"));
-		passwordField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.password"));
+		databaseURLField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.url")); //$NON-NLS-1$
+		jdbcDriverField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.driver")); //$NON-NLS-1$
+		userNameField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.user")); //$NON-NLS-1$
+		passwordField.setText(getPersistenceUnitProperty(name, "eclipselink.jdbc.password")); //$NON-NLS-1$
 	}
 
 	protected Map<String, PersistenceUnitInfo> getPersistenceUnits() {
@@ -58,7 +58,7 @@ public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelA
 	}
 
 	protected String getPersistenceUnitProperty(String persistenceUnitName, String propertyName) {
-		String result = "";
+		String result = ""; //$NON-NLS-1$
 		PersistenceUnitInfo persistenceUnit = getPersistenceUnits().get(persistenceUnitName);
 		if (persistenceUnit != null) {
 			if (persistenceUnit.getProperties().containsKey(propertyName)) {
