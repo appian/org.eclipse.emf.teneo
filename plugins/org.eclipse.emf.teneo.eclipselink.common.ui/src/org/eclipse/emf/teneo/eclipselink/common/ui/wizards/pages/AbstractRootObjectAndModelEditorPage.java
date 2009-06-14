@@ -35,8 +35,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.teneo.eclipselink.common.ui.Activator;
+import org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages.Messages;
 import org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages.IDatabasePreferenceConstants;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -49,9 +51,9 @@ import org.eclipse.swt.widgets.Label;
 public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
 
 	protected static QualifiedName rootObjectName = new QualifiedName(Activator.getDefault().getBundle()
-			.getSymbolicName(), "rootObject");
+			.getSymbolicName(), "rootObject"); //$NON-NLS-1$
 	protected static QualifiedName editorIdName = new QualifiedName(Activator.getDefault().getBundle()
-			.getSymbolicName(), "editorId");
+			.getSymbolicName(), "editorId"); //$NON-NLS-1$
 
 	protected Combo rootObjectField;
 	protected Combo editorIdField;
@@ -85,7 +87,7 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
 		composite.setLayout(new GridLayout(2, false));
 		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-		new Label(composite, SWT.LEFT).setText("Root object:");
+		new Label(composite, SWT.LEFT).setText(Messages.label_rootObject);
 
 		rootObjectField = new Combo(composite, SWT.BORDER);
 		rootObjectField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -96,12 +98,12 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
 				EObject rootObject = getRootObject();
 				if (rootObject != null) {
 					URI uri = createDatabaseURI(getTypedPreviousPage().getPersistenceUnitName(), rootObject);
-					setMessage("Loads model from database using following URI:\n" + uri);
+					setMessage(NLS.bind(Messages.message_loadsModelFromDatabaseUsingURI$0, uri));
 				}
 			}
 		});
 
-		new Label(composite, SWT.LEFT).setText("Editor ID:");
+		new Label(composite, SWT.LEFT).setText(Messages.label_editorID);
 
 		editorIdField = new Combo(composite, SWT.BORDER);
 		editorIdField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -169,19 +171,19 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
 	protected boolean validatePage() {
 		setErrorMessage(null);
 		if (isBlank(rootObjectField.getText())) {
-			setErrorMessage("Root object must be specified.");
+			setErrorMessage(Messages.error_rootObjectMissing);
 			return false;
 		}
 		if (!Arrays.asList(rootObjectField.getItems()).contains(rootObjectField.getText())) {
-			setErrorMessage("Root object must be member of existing root object candidates.");
+			setErrorMessage(Messages.error_rootObjectMustBeExistingRootObjectCandidate);
 			return false;
 		}
 		if (isBlank(editorIdField.getText())) {
-			setErrorMessage("Editor ID must be specified.");
+			setErrorMessage(Messages.error_editorIDMissing);
 			return false;
 		}
 		if (!Arrays.asList(editorIdField.getItems()).contains(editorIdField.getText())) {
-			setErrorMessage("Editor ID must identify existing database-enabled editor.");
+			setErrorMessage(Messages.error_editorIDMustIdentifyExistingEditor);
 			return false;
 		}
 		return true;
@@ -231,11 +233,10 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
 			if (contents.size() > 0) {
 				result.addAll(contents);
 			} else {
-				setErrorMessage("Database contains no '" + eRootClass.getName()
-						+ "' objects. Go back and select another EMF model package and/or root object type.");
+				setErrorMessage(NLS.bind(Messages.error_databaseContainsNo$0Objects, eRootClass.getName()));
 			}
 		} catch (Exception exception) {
-			setErrorMessage("Failed to open database. Go back and make sure that model and database access parameters are correct. See Error Log for details if this problem still occurs.");
+			setErrorMessage(Messages.error_failedToOpenDatabase);
 			Activator.getDefault().getLog().log(
 					new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), exception));
 		} finally {
@@ -250,12 +251,12 @@ public abstract class AbstractRootObjectAndModelEditorPage extends WizardPage {
 	protected List<String> getEditorIds() {
 		List<String> result = new ArrayList<String>();
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		IConfigurationElement[] elements = registry.getConfigurationElementsFor("org.eclipse.ui.editors");
+		IConfigurationElement[] elements = registry.getConfigurationElementsFor("org.eclipse.ui.editors"); //$NON-NLS-1$
 		if (elements != null) {
 			for (IConfigurationElement element : elements) {
-				String extensions = element.getAttribute("extensions");
-				if (extensions != null && extensions.indexOf("database") != -1) {
-					result.add(element.getAttribute("id"));
+				String extensions = element.getAttribute("extensions"); //$NON-NLS-1$
+				if (extensions != null && extensions.indexOf("database") != -1) { //$NON-NLS-1$
+					result.add(element.getAttribute("id")); //$NON-NLS-1$
 				}
 			}
 		}

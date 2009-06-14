@@ -11,6 +11,7 @@
 package org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages;
 
 import org.eclipse.emf.teneo.eclipselink.common.ui.Activator;
+import org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages.Messages;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.RadioGroupFieldEditor;
@@ -34,7 +35,7 @@ public class BasicDatabasePreferencePage extends FieldEditorPreferencePage imple
 	protected StringFieldEditor passwordEditor;
 
 	public BasicDatabasePreferencePage() {
-		super("", GRID);
+		super("", GRID); //$NON-NLS-1$
 	}
 
 	public BasicDatabasePreferencePage(String title) {
@@ -52,32 +53,34 @@ public class BasicDatabasePreferencePage extends FieldEditorPreferencePage imple
 	@Override
 	protected void createFieldEditors() {
 		// create use login from selection widgets
-		useLoginFromEditor = new RadioGroupFieldEditor(IDatabasePreferenceConstants.USE_LOGIN_FROM, "Database login:",
-				1, new String[][] {
-						{ "from Persistence Unit", IDatabasePreferenceConstants.USE_LOGIN_FROM_PERSISTENCE_UNIT },
-						{ "from user preferences", IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES } },
+		useLoginFromEditor = new RadioGroupFieldEditor(IDatabasePreferenceConstants.USE_LOGIN_FROM,
+				Messages.value_databaseLogin, 1, new String[][] {
+						{ Messages.value_fromPersistenceUnit,
+								IDatabasePreferenceConstants.USE_LOGIN_FROM_PERSISTENCE_UNIT },
+						{ Messages.value_fromUserPreferences,
+								IDatabasePreferenceConstants.USE_LOGIN_FROM_USER_PREFERENCES } },
 				getFieldEditorParent(), true);
 		addField(useLoginFromEditor);
 		useLoginFromEditorComposite = useLoginFromEditor.getRadioBoxControl(getFieldEditorParent());
 
 		// create database URL selection widgets
-		databaseURLEditor = new StringFieldEditor(IDatabasePreferenceConstants.DATABASE_URL, "Database URL:",
-				useLoginFromEditorComposite);
+		databaseURLEditor = new StringFieldEditor(IDatabasePreferenceConstants.DATABASE_URL,
+				Messages.value_databaseURL, useLoginFromEditorComposite);
 		databaseURLEditor.setEnabled(false, useLoginFromEditorComposite);
 		addField(databaseURLEditor);
 
 		// create JDBC driver selection widgets
-		jdbcDriverEditor = new StringFieldEditor(IDatabasePreferenceConstants.JDBC_DRIVER, "JDBC driver:",
+		jdbcDriverEditor = new StringFieldEditor(IDatabasePreferenceConstants.JDBC_DRIVER, Messages.value_jdbcDriver,
 				useLoginFromEditorComposite);
 		addField(jdbcDriverEditor);
 
 		// create user name widgets
-		userNameEditor = new StringFieldEditor(IDatabasePreferenceConstants.USER_NAME, "User name:",
+		userNameEditor = new StringFieldEditor(IDatabasePreferenceConstants.USER_NAME, Messages.value_userName,
 				useLoginFromEditorComposite);
 		addField(userNameEditor);
 
 		// create password name widgets
-		passwordEditor = new StringFieldEditor(IDatabasePreferenceConstants.PASSWORD, "Password:",
+		passwordEditor = new StringFieldEditor(IDatabasePreferenceConstants.PASSWORD, Messages.value_password,
 				useLoginFromEditorComposite);
 		Text passwordField = passwordEditor.getTextControl(useLoginFromEditorComposite);
 		passwordField.setEchoChar('*');

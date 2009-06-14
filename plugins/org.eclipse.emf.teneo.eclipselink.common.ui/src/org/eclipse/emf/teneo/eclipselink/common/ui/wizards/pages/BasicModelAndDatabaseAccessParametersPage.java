@@ -23,9 +23,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.eclipselink.common.ui.Activator;
+import org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages.Messages;
 import org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages.IDatabasePreferenceConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -43,11 +45,11 @@ import org.eclipse.swt.widgets.Text;
 public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 
 	protected static QualifiedName packageNsURIName = new QualifiedName(Activator.getDefault().getBundle()
-			.getSymbolicName(), "packageNsURI");
+			.getSymbolicName(), "packageNsURI"); //$NON-NLS-1$
 	protected static QualifiedName rootObjectTypeName = new QualifiedName(Activator.getDefault().getBundle()
-			.getSymbolicName(), "rootObjectType");
+			.getSymbolicName(), "rootObjectType"); //$NON-NLS-1$
 	protected static QualifiedName persistenceUnitNameName = new QualifiedName(Activator.getDefault().getBundle()
-			.getSymbolicName(), "persistenceUnitName");
+			.getSymbolicName(), "persistenceUnitName"); //$NON-NLS-1$
 
 	protected Combo packageNsURIField;
 	protected Combo rootObjectTypeField;
@@ -124,7 +126,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		// create Ecore package namespace URI selection widgets
-		new Label(composite, SWT.LEFT).setText("Package namespace URI:");
+		new Label(composite, SWT.LEFT).setText(Messages.label_packageNamespaceURI);
 
 		packageNsURIField = new Combo(composite, SWT.BORDER);
 		packageNsURIField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -137,7 +139,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 		});
 
 		// create root object type selection widgets
-		new Label(composite, SWT.LEFT).setText("Root object type:");
+		new Label(composite, SWT.LEFT).setText(Messages.label_rootObjectType);
 
 		rootObjectTypeField = new Combo(composite, SWT.BORDER);
 		rootObjectTypeField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -148,7 +150,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 		});
 
 		// create persistence unit name selection widgets
-		new Label(composite, SWT.LEFT).setText("Persistence Unit name:");
+		new Label(composite, SWT.LEFT).setText(Messages.label_persistenceUnitName);
 
 		persistenceUnitNameField = new Combo(composite, SWT.BORDER);
 		persistenceUnitNameField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -164,18 +166,18 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 
 	private void createDatabaseLoginGroup(Composite parent) {
 		Group group = new Group(parent, SWT.NONE);
-		group.setText("Database login:");
+		group.setText(Messages.group_databaseLogin);
 		group.setLayout(new GridLayout(2, false));
 		group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		// create use login from selection widgets
 		useLoginFromPersistenceUnitButton = new Button(group, SWT.RADIO);
-		useLoginFromPersistenceUnitButton.setText("from Persistence Unit");
+		useLoginFromPersistenceUnitButton.setText(Messages.button_fromPersistenceUnit);
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 2;
 		useLoginFromPersistenceUnitButton.setLayoutData(gridData);
 		useLoginFromUserPreferencesButton = new Button(group, SWT.RADIO);
-		useLoginFromUserPreferencesButton.setText("from user preferences");
+		useLoginFromUserPreferencesButton.setText(Messages.button_fromUserPreferences);
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 2;
 		useLoginFromUserPreferencesButton.setLayoutData(gridData);
@@ -190,7 +192,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 
 		// create database URL selection widgets
 		databaseURLLabel = new Label(group, SWT.LEFT);
-		databaseURLLabel.setText("Database URL:");
+		databaseURLLabel.setText(Messages.label_DatabaseURL);
 
 		databaseURLField = new Combo(group, SWT.BORDER);
 		databaseURLField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -203,7 +205,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 
 		// create JDBC driver selection widgets
 		jdbcDriverLabel = new Label(group, SWT.LEFT);
-		jdbcDriverLabel.setText("JDBC driver:");
+		jdbcDriverLabel.setText(Messages.label_jdbcDriver);
 
 		jdbcDriverField = new Combo(group, SWT.BORDER);
 		jdbcDriverField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -216,7 +218,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 
 		// create user name widgets
 		userNameLabel = new Label(group, SWT.LEFT);
-		userNameLabel.setText("User name:");
+		userNameLabel.setText(Messages.label_userName);
 
 		userNameField = new Text(group, SWT.BORDER);
 		userNameField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -228,7 +230,7 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 
 		// create password name widgets
 		passwordLabel = new Label(group, SWT.LEFT);
-		passwordLabel.setText("Password:");
+		passwordLabel.setText(Messages.label_password);
 
 		passwordField = new Text(group, SWT.BORDER);
 		passwordField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -291,15 +293,15 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 	}
 
 	protected void initDatabaseURLField() {
-		databaseURLField.add("jdbc:derby://localhost:1527/sample;create=true");
-		databaseURLField.add("jdbc:oracle:thin:@localhost:1521:XE");
-		databaseURLField.add("jdbc:oracle:thin:@localhost:1521:ORCL");
+		databaseURLField.add("jdbc:derby://localhost:1527/sample;create=true"); //$NON-NLS-1$
+		databaseURLField.add("jdbc:oracle:thin:@localhost:1521:XE"); //$NON-NLS-1$
+		databaseURLField.add("jdbc:oracle:thin:@localhost:1521:ORCL"); //$NON-NLS-1$
 	}
 
 	protected void initJDBCDriverField() {
-		jdbcDriverField.add("org.apache.derby.jdbc.ClientDriver");
-		jdbcDriverField.add("oracle.jdbc.OracleDriver");
-		jdbcDriverField.add("com.mysql.jdbc.Driver");
+		jdbcDriverField.add("org.apache.derby.jdbc.ClientDriver"); //$NON-NLS-1$
+		jdbcDriverField.add("oracle.jdbc.OracleDriver"); //$NON-NLS-1$
+		jdbcDriverField.add("com.mysql.jdbc.Driver"); //$NON-NLS-1$
 	}
 
 	protected void updateRootObjectTypeField() {
@@ -354,44 +356,44 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 	protected boolean validatePage() {
 		setErrorMessage(null);
 		if (isBlank(packageNsURIField.getText())) {
-			setErrorMessage("Package namespace URI must be specified.");
+			setErrorMessage(Messages.error_packageNamespaceURIMissing);
 			return false;
 		}
 		if (!Arrays.asList(packageNsURIField.getItems()).contains(packageNsURIField.getText())) {
-			setErrorMessage("Package namespace URI must identify existing Ecore package registred in global Ecore package registry.");
+			setErrorMessage(Messages.error_packageNamespaceURIMustIdentifyExistingEcorePackage);
 			return false;
 		}
 		if (isBlank(rootObjectTypeField.getText())) {
-			setErrorMessage("Root object type must be specified.");
+			setErrorMessage(Messages.error_rootObjectTypeMissing);
 			return false;
 		}
 		if (!Arrays.asList(rootObjectTypeField.getItems()).contains(rootObjectTypeField.getText())) {
-			setErrorMessage("Root object type must be member of Ecore package '" + packageNsURIField.getText() + "'.");
+			setErrorMessage(NLS.bind(Messages.error_rootObjectMustBeInEcorePackage$0, packageNsURIField.getText()));
 			return false;
 		}
 		if (isBlank(persistenceUnitNameField.getText())) {
-			setErrorMessage("Persistence Unit name must be specified.");
+			setErrorMessage(Messages.error_persistenceUnitNameMissing);
 			return false;
 		}
 		if (!Arrays.asList(persistenceUnitNameField.getItems()).contains(persistenceUnitNameField.getText())) {
-			setErrorMessage("Persistence Unit name must identify existing Persistence Unit.");
+			setErrorMessage(Messages.error_persistenceUnitNameMustIdentifyExistingPersistenceUnit);
 			return false;
 		}
 		if (useLoginFromUserPreferencesButton != null && useLoginFromUserPreferencesButton.getSelection()) {
 			if (isBlank(databaseURLField.getText())) {
-				setErrorMessage("Database URL name must be specified.");
+				setErrorMessage(Messages.error_databaseURLMissing);
 				return false;
 			}
 			if (isBlank(jdbcDriverField.getText())) {
-				setErrorMessage("JDBC driver must be specified.");
+				setErrorMessage(Messages.error_jdbcDriverMissing);
 				return false;
 			}
 			if (isBlank(userNameField.getText())) {
-				setErrorMessage("User name must be specified.");
+				setErrorMessage(Messages.error_userNameMissing);
 				return false;
 			}
 			if (isBlank(passwordField.getText())) {
-				setErrorMessage("Password must be specified.");
+				setErrorMessage(Messages.error_passwordMissing);
 				return false;
 			}
 		}
@@ -416,10 +418,10 @@ public class BasicModelAndDatabaseAccessParametersPage extends WizardPage {
 	}
 
 	protected void updateDatabaseLoginFieldsFromPersistenceUnit() {
-		databaseURLField.setText("");
-		jdbcDriverField.setText("");
-		userNameField.setText("");
-		passwordField.setText("");
+		databaseURLField.setText(""); //$NON-NLS-1$
+		jdbcDriverField.setText(""); //$NON-NLS-1$
+		userNameField.setText(""); //$NON-NLS-1$
+		passwordField.setText(""); //$NON-NLS-1$
 	}
 
 	protected boolean isBlank(String string) {

@@ -14,6 +14,7 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.eclipselink.common.ui.Activator;
+import org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages.Messages;
 import org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages.IDatabasePreferenceConstants;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.AbstractRootObjectAndModelEditorPage;
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.BasicModelAndDatabaseAccessParametersPage;
@@ -31,19 +32,19 @@ public abstract class AbstractLoadModelFromDatabaseWizard extends Wizard {
 	protected AbstractRootObjectAndModelEditorPage rootObjectAndModelEditorPage;
 
 	public AbstractLoadModelFromDatabaseWizard() {
-		setWindowTitle("Load EMF Model from Database");
+		setWindowTitle(Messages.wizard_loadEMFModelFromDatabase_title);
 	}
 
 	@Override
 	public void addPages() {
-		modelAndDatabaseAccessParametersPage = createModelAndDatabaseAccessParametersPage("Page1");
-		modelAndDatabaseAccessParametersPage.setTitle("EMF Model and Database");
-		modelAndDatabaseAccessParametersPage.setDescription("Set access parameters for EMF model and database.");
+		modelAndDatabaseAccessParametersPage = createModelAndDatabaseAccessParametersPage("Page1"); //$NON-NLS-1$
+		modelAndDatabaseAccessParametersPage.setTitle(Messages.page_emfModelAndDatabase_title);
+		modelAndDatabaseAccessParametersPage.setDescription(Messages.page_emfModelAndDatabase_description);
 		addPage(modelAndDatabaseAccessParametersPage);
 
-		rootObjectAndModelEditorPage = createRootObjectAndModelEditorPage("Page2");
-		rootObjectAndModelEditorPage.setTitle("Root Object and EMF Model Editor");
-		rootObjectAndModelEditorPage.setDescription("Select root object and database-enabled EMF model editor.");
+		rootObjectAndModelEditorPage = createRootObjectAndModelEditorPage("Page2"); //$NON-NLS-1$
+		rootObjectAndModelEditorPage.setTitle(Messages.page_rootObjectAndEMFModelEditor_title);
+		rootObjectAndModelEditorPage.setDescription(Messages.page_rootObjectAndEMFModelEditor_description);
 		addPage(rootObjectAndModelEditorPage);
 	}
 
