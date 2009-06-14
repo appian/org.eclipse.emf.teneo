@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TranslatorImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: TranslatorImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -290,9 +290,9 @@ public class TranslatorImpl extends IdentifiableImpl implements Translator {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
-		result.append(", location: ");
+		result.append(", location: "); //$NON-NLS-1$
 		result.append(location);
 		result.append(')');
 		return result.toString();

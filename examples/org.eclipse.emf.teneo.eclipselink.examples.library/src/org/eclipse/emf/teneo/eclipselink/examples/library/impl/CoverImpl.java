@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoverImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: CoverImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -98,7 +98,7 @@ public class CoverImpl extends IdentifiableImpl implements Cover {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LibraryPackage.COVER__COLORED:
-				return isColored() ? Boolean.TRUE : Boolean.FALSE;
+				return isColored();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,7 +112,7 @@ public class CoverImpl extends IdentifiableImpl implements Cover {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibraryPackage.COVER__COLORED:
-				setColored(((Boolean)newValue).booleanValue());
+				setColored((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -157,7 +157,7 @@ public class CoverImpl extends IdentifiableImpl implements Cover {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (colored: ");
+		result.append(" (colored: "); //$NON-NLS-1$
 		result.append(colored);
 		result.append(')');
 		return result.toString();

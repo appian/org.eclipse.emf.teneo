@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: StringToBookMapEntryImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: StringToBookMapEntryImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -241,7 +241,7 @@ public class StringToBookMapEntryImpl extends IdentifiableImpl implements BasicE
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (key: ");
+		result.append(" (key: "); //$NON-NLS-1$
 		result.append(key);
 		result.append(')');
 		return result.toString();

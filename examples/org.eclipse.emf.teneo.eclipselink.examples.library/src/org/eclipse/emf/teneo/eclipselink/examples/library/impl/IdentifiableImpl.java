@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdentifiableImpl.java,v 1.2 2009/01/26 22:31:49 seberle Exp $
+ * $Id: IdentifiableImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -141,9 +141,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LibraryPackage.IDENTIFIABLE__ID:
-				return new Long(getId());
+				return getId();
 			case LibraryPackage.IDENTIFIABLE__VERSION:
-				return new Long(getVersion());
+				return getVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,10 +157,10 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case LibraryPackage.IDENTIFIABLE__ID:
-				setId(((Long)newValue).longValue());
+				setId((Long)newValue);
 				return;
 			case LibraryPackage.IDENTIFIABLE__VERSION:
-				setVersion(((Long)newValue).longValue());
+				setVersion((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -210,9 +210,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: ");
+		result.append(" (id: "); //$NON-NLS-1$
 		result.append(id);
-		result.append(", version: ");
+		result.append(", version: "); //$NON-NLS-1$
 		result.append(version);
 		result.append(')');
 		return result.toString();

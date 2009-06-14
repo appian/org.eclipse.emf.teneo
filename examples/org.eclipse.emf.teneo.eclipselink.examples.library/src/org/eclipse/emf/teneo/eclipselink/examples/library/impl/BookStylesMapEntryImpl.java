@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookStylesMapEntryImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: BookStylesMapEntryImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -222,7 +222,7 @@ public class BookStylesMapEntryImpl extends IdentifiableImpl implements BasicEMa
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (key: ");
+		result.append(" (key: "); //$NON-NLS-1$
 		result.append(key);
 		result.append(')');
 		return result.toString();

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumPackageImpl.java,v 1.2 2009/01/21 21:34:21 seberle Exp $
+ * $Id: ForumPackageImpl.java,v 1.3 2009/06/14 21:00:30 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum.impl;
 
@@ -85,7 +85,7 @@ public class ForumPackageImpl extends EPackageImpl implements ForumPackage {
 		if (isInited) return (ForumPackage)EPackage.Registry.INSTANCE.getEPackage(ForumPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ForumPackageImpl theForumPackage = (ForumPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof ForumPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new ForumPackageImpl());
+		ForumPackageImpl theForumPackage = (ForumPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ForumPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ForumPackageImpl());
 
 		isInited = true;
 
@@ -207,10 +207,10 @@ public class ForumPackageImpl extends EPackageImpl implements ForumPackage {
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(forumEClass, Forum.class, "Forum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getForum_Name(), ecorePackage.getEString(), "name", null, 0, 1, Forum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getForum_RatedAuthors(), theLibraryPackage.getWriter(), null, "ratedAuthors", null, 0, -1, Forum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getForum_FeaturedBooks(), theLibraryPackage.getBook(), null, "featuredBooks", null, 0, -1, Forum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(forumEClass, Forum.class, "Forum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getForum_Name(), ecorePackage.getEString(), "name", null, 0, 1, Forum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getForum_RatedAuthors(), theLibraryPackage.getWriter(), null, "ratedAuthors", null, 0, -1, Forum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getForum_FeaturedBooks(), theLibraryPackage.getBook(), null, "featuredBooks", null, 0, -1, Forum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);

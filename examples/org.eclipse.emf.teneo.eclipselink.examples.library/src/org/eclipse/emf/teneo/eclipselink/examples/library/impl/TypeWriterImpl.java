@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeWriterImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: TypeWriterImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -210,9 +210,9 @@ public class TypeWriterImpl extends IdentifiableImpl implements TypeWriter {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (maker: ");
+		result.append(" (maker: "); //$NON-NLS-1$
 		result.append(maker);
-		result.append(", type: ");
+		result.append(", type: "); //$NON-NLS-1$
 		result.append(type);
 		result.append(')');
 		return result.toString();

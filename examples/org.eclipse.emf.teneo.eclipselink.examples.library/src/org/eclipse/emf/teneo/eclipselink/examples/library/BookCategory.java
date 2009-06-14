@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookCategory.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: BookCategory.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -30,7 +30,7 @@ public enum BookCategory implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MYSTERY(0, "Mystery", "Mystery"),
+	MYSTERY(0, "Mystery", "Mystery"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Science Fiction</b></em>' literal object.
@@ -40,7 +40,7 @@ public enum BookCategory implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SCIENCE_FICTION(1, "ScienceFiction", "ScienceFiction"),
+	SCIENCE_FICTION(1, "ScienceFiction", "ScienceFiction"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Biography</b></em>' literal object.
@@ -50,7 +50,7 @@ public enum BookCategory implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BIOGRAPHY(2, "Biography", "Biography");
+	BIOGRAPHY(2, "Biography", "Biography"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Mystery</b></em>' literal value.

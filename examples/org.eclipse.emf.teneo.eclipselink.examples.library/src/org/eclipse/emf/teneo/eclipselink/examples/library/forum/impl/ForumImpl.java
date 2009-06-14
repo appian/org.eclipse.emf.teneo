@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumImpl.java,v 1.2 2009/01/21 21:34:21 seberle Exp $
+ * $Id: ForumImpl.java,v 1.3 2009/06/14 21:00:30 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum.impl;
 
@@ -236,7 +236,7 @@ public class ForumImpl extends EObjectImpl implements Forum {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');
 		return result.toString();

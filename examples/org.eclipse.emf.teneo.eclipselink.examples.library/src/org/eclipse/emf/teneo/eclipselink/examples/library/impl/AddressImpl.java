@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: AddressImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -157,7 +157,7 @@ public class AddressImpl extends IdentifiableImpl implements Address {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (town: ");
+		result.append(" (town: "); //$NON-NLS-1$
 		result.append(town);
 		result.append(')');
 		return result.toString();

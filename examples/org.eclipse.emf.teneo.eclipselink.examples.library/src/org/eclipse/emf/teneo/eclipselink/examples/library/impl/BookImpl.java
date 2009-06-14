@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: BookImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -56,7 +56,7 @@ public class BookImpl extends IdentifiableImpl implements Book {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TITLE_EDEFAULT = "";
+	protected static final String TITLE_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -428,7 +428,7 @@ public class BookImpl extends IdentifiableImpl implements Book {
 			case LibraryPackage.BOOK__TITLE:
 				return getTitle();
 			case LibraryPackage.BOOK__PAGES:
-				return new Integer(getPages());
+				return getPages();
 			case LibraryPackage.BOOK__CATEGORY:
 				return getCategory();
 			case LibraryPackage.BOOK__AUTHOR:
@@ -458,7 +458,7 @@ public class BookImpl extends IdentifiableImpl implements Book {
 				setTitle((String)newValue);
 				return;
 			case LibraryPackage.BOOK__PAGES:
-				setPages(((Integer)newValue).intValue());
+				setPages((Integer)newValue);
 				return;
 			case LibraryPackage.BOOK__CATEGORY:
 				setCategory((BookCategory)newValue);
@@ -548,11 +548,11 @@ public class BookImpl extends IdentifiableImpl implements Book {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (title: ");
+		result.append(" (title: "); //$NON-NLS-1$
 		result.append(title);
-		result.append(", pages: ");
+		result.append(", pages: "); //$NON-NLS-1$
 		result.append(pages);
-		result.append(", category: ");
+		result.append(", category: "); //$NON-NLS-1$
 		result.append(category);
 		result.append(')');
 		return result.toString();

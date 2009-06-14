@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TWriterType.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: TWriterType.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -30,7 +30,7 @@ public enum TWriterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TYPEWRITER(0, "Typewriter", "Typewriter"),
+	TYPEWRITER(0, "Typewriter", "Typewriter"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Computer</b></em>' literal object.
@@ -40,7 +40,7 @@ public enum TWriterType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	COMPUTER(1, "Computer", "Computer");
+	COMPUTER(1, "Computer", "Computer"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Typewriter</b></em>' literal value.

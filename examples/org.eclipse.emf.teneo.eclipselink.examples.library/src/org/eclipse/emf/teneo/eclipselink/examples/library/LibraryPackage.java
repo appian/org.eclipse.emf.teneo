@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.4 2009/03/18 11:16:52 mtaal Exp $
+ * $Id: LibraryPackage.java,v 1.5 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -34,7 +34,7 @@ public interface LibraryPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "library";
+	String eNAME = "library"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
@@ -42,7 +42,7 @@ public interface LibraryPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/emf/teneo/eclipselink/examples/library.ecore";
+	String eNS_URI = "http:///org/eclipse/emf/teneo/eclipselink/examples/library.ecore"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -50,7 +50,7 @@ public interface LibraryPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "library";
+	String eNS_PREFIX = "library"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

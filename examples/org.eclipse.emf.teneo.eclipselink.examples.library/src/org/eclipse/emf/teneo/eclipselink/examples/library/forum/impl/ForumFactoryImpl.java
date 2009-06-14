@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumFactoryImpl.java,v 1.2 2009/01/21 21:34:21 seberle Exp $
+ * $Id: ForumFactoryImpl.java,v 1.3 2009/06/14 21:00:30 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum.impl;
 
@@ -31,7 +31,7 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 	 */
 	public static ForumFactory init() {
 		try {
-			ForumFactory theForumFactory = (ForumFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/emf/teneo/eclipselink/examples/forum.ecore"); 
+			ForumFactory theForumFactory = (ForumFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/emf/teneo/eclipselink/examples/forum.ecore"); //$NON-NLS-1$ 
 			if (theForumFactory != null) {
 				return theForumFactory;
 			}
@@ -62,7 +62,7 @@ public class ForumFactoryImpl extends EFactoryImpl implements ForumFactory {
 		switch (eClass.getClassifierID()) {
 			case ForumPackage.FORUM: return createForum();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 

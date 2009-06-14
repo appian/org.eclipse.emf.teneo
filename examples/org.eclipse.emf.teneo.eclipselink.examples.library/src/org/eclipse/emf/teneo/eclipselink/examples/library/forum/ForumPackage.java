@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumPackage.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: ForumPackage.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum;
 
@@ -33,7 +33,7 @@ public interface ForumPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "forum";
+	String eNAME = "forum"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
@@ -41,7 +41,7 @@ public interface ForumPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/emf/teneo/eclipselink/examples/forum.ecore";
+	String eNS_URI = "http:///org/eclipse/emf/teneo/eclipselink/examples/forum.ecore"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -49,7 +49,7 @@ public interface ForumPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "forum";
+	String eNS_PREFIX = "forum"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

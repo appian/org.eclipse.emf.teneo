@@ -7,7 +7,7 @@
     modelPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.Activator"
     editPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator"
     editorPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator"
-    testsDirectory="" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
+    nonNLSMarkers="true" testsDirectory="" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false" usedGenPackages="library.genmodel#//library">
   <foreignModel>forum.ecore</foreignModel>
   <genPackages prefix="Forum" basePackage="org.eclipse.emf.teneo.eclipselink.examples.library"

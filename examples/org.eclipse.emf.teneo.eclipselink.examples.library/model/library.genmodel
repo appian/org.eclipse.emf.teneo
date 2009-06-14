@@ -8,8 +8,8 @@
     modelPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.Activator"
     editPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator"
     editorPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator"
-    testsDirectory="" testSuiteClass="" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false">
+    nonNLSMarkers="true" testsDirectory="" testSuiteClass="" booleanFlagsField=""
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false">
   <foreignModel>library.ecore</foreignModel>
   <genPackages prefix="Library" basePackage="org.eclipse.emf.teneo.eclipselink.examples"
       disposableProviderFactory="true" providerPackageSuffix="edit" presentationPackageSuffix="editor"
