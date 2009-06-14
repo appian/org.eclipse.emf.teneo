@@ -10,6 +10,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.emf.teneo.eclipselink.common.ui,
+ org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages;x-internal:=true,
  org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages,
  org.eclipse.emf.teneo.eclipselink.common.ui.wizards,
  org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages
