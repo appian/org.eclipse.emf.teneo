@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.elistfactory;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EAttribute;
@@ -32,6 +33,8 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.teneo.eclipselink.elistfactory.internal.messages.Messages;
+import org.eclipse.osgi.util.NLS;
 
 /**
  * An extensible EList factory implementation.
@@ -52,49 +55,43 @@ public class BasicEListFactoryImpl implements EListFactory {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createEList(java.lang. String, java.lang.String,
 	 * java.lang.String)
 	 */
 	public <E> EList<E> createEList(final String ePackageNsURI, final String eOwnerClassName,
 			final String eStructuralFeatureName) throws ClassNotFoundException {
-
 		EObject eOwnerObject = createEOwnerObject(ePackageNsURI, eOwnerClassName);
 		return createEList(eOwnerObject, eStructuralFeatureName);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createEList(org.eclipse .emf.ecore.EObject,
 	 * java.lang.String)
 	 */
 	public <E> EList<E> createEList(final EObject eOwnerObject, final String eStructuralFeatureName)
 			throws ClassNotFoundException {
-
 		EStructuralFeature eStructuralFeature = getEStructuralFeature(eOwnerObject, eStructuralFeatureName);
 		return createEList(eOwnerObject, eStructuralFeature);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createEList(org.eclipse .emf.ecore.EObject,
 	 * org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	@SuppressWarnings("unchecked")
 	public <E> EList<E> createEList(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature)
 			throws ClassNotFoundException {
-
-		if (eOwnerObject == null) {
-			String msg = "Argument for parameter 'eOwnerObject' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if (eStructuralFeature == null) {
-			String msg = "Argument for parameter 'eStructuralFeature' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if (eStructuralFeature.isVolatile() || !EElementUtil.isListType(eStructuralFeature)) {
-			String msg = "Argument for parameter 'eStructuralFeature' must be configured as non-volatile and many or has to be a non-volatile feature map entry type";
-			throw new IllegalArgumentException(msg);
-		}
+		Assert.isNotNull(eOwnerObject);
+		Assert.isNotNull(eStructuralFeature);
+		Assert
+				.isLegal(
+						!eStructuralFeature.isVolatile() && EElementUtil.isListType(eStructuralFeature),
+						Messages.assert_featureMustBeNonVolatileListItemType);
 
 		EList<E> result = null;
 		int derivedReferenceID = EElementUtil.getDerivedStructuralFeatureID(eOwnerObject, eStructuralFeature);
@@ -240,48 +237,42 @@ public class BasicEListFactoryImpl implements EListFactory {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createEMap(java.lang.String , java.lang.String,
 	 * java.lang.String)
 	 */
 	public <K, V> EMap<K, V> createEMap(final String ePackageNsURI, final String eOwnerClassName,
 			final String eStructuralFeatureName) throws ClassNotFoundException {
-
 		EObject eOwnerObject = createEOwnerObject(ePackageNsURI, eOwnerClassName);
 		return createEMap(eOwnerObject, eStructuralFeatureName);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createEMap(org.eclipse .emf.ecore.EObject,
 	 * java.lang.String)
 	 */
 	public <K, V> EMap<K, V> createEMap(final EObject eOwnerObject, final String eStructuralFeatureName)
 			throws ClassNotFoundException {
-
 		EStructuralFeature eStructuralFeature = getEStructuralFeature(eOwnerObject, eStructuralFeatureName);
 		return createEMap(eOwnerObject, eStructuralFeature);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createEMap(org.eclipse .emf.ecore.EObject,
 	 * org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	public <K, V> EMap<K, V> createEMap(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature)
 			throws ClassNotFoundException {
-
-		if (eOwnerObject == null) {
-			String msg = "Argument for parameter 'eOwnerObject' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if (eStructuralFeature == null) {
-			String msg = "Argument for parameter 'eStructuralFeature' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if (eStructuralFeature.isVolatile() || !EElementUtil.isMapType(eStructuralFeature)) {
-			String msg = "Argument for parameter 'eStructuralFeature' must be configured as non-volatile and many and has to be a map entry type";
-			throw new IllegalArgumentException(msg);
-		}
+		Assert.isNotNull(eOwnerObject);
+		Assert.isNotNull(eStructuralFeature);
+		Assert
+				.isLegal(
+						!eStructuralFeature.isVolatile() && EElementUtil.isMapType(eStructuralFeature),
+						Messages.assert_featureMustBeNonVolatileMapEntryType);
 
 		EClass eMapEntryClass = (EClass) eStructuralFeature.getEType();
 		Class<?> mapEntryClass = eStructuralFeature.getEType().getInstanceClass();
@@ -298,48 +289,41 @@ public class BasicEListFactoryImpl implements EListFactory {
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createFeatureMap(java. lang.String, java.lang.String,
 	 * java.lang.String)
 	 */
 	public FeatureMap createFeatureMap(final String ePackageNsURI, final String eOwnerClassName,
 			final String eStructuralFeatureName) throws ClassNotFoundException {
-
 		EObject eOwnerObject = createEOwnerObject(ePackageNsURI, eOwnerClassName);
 		return createFeatureMap(eOwnerObject, eStructuralFeatureName);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createFeatureMap(org.eclipse .emf.ecore.EObject,
 	 * java.lang.String)
 	 */
 	public FeatureMap createFeatureMap(final EObject eOwnerObject, final String eStructuralFeatureName)
 			throws ClassNotFoundException {
-
 		EStructuralFeature eStructuralFeature = getEStructuralFeature(eOwnerObject, eStructuralFeatureName);
 		return createFeatureMap(eOwnerObject, eStructuralFeature);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.emf.extras.elistfactory.EListFactory#createFeatureMap(org.eclipse .emf.ecore.EObject,
 	 * org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	public FeatureMap createFeatureMap(final EObject eOwnerObject, final EStructuralFeature eStructuralFeature)
 			throws ClassNotFoundException {
-
-		if (eOwnerObject == null) {
-			String msg = "Argument for parameter 'eOwnerObject' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if (eStructuralFeature == null) {
-			String msg = "Argument for parameter 'eStructuralFeature' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if (eStructuralFeature.isVolatile() || !EElementUtil.isFeatureMapType(eStructuralFeature)) {
-			String msg = "Argument for parameter 'eStructuralFeature' must be configured as non-volatile and has to be a feature map entry type";
-			throw new IllegalArgumentException(msg);
-		}
+		Assert.isNotNull(eOwnerObject);
+		Assert.isNotNull(eStructuralFeature);
+		Assert
+				.isLegal(!eStructuralFeature.isVolatile() && EElementUtil.isFeatureMapType(eStructuralFeature),
+						Messages.assert_featureMustBeNonVolatileFeatureMapEntryType);
 
 		int derivedReferenceID = EElementUtil.getDerivedStructuralFeatureID(eOwnerObject, eStructuralFeature);
 
@@ -348,57 +332,47 @@ public class BasicEListFactoryImpl implements EListFactory {
 	}
 
 	protected boolean isContainmentProxies(final EStructuralFeature eStructuralFeature) {
-
 		return false;
 	}
 
 	protected boolean isSuppressContainment(final EStructuralFeature eStructuralFeature) {
-
 		return false;
 	}
 
 	protected boolean isSuppressNotification() {
-
 		return false;
 	}
 
 	protected FeatureMap createWrappedFeatureMap(final FeatureMap featureMap) {
-
 		return featureMap;
 	}
 
 	protected <E> BasicInternalEList<E> createBasicInternalEList(final Class<? extends E> listItemClass) {
-
 		return new BasicInternalEList<E>(listItemClass);
 	}
 
 	protected <E> EObjectEList<E> createEObjectEList(final Class<?> listItemClass, final EObject eOwnerObject,
 			final int eReferenceID) {
-
 		return new EObjectEList<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <E> EObjectEList.Unsettable<E> createEObjectEListUnsettable(final Class<?> listItemClass,
 			final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EObjectEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <E> EObjectResolvingEList<E> createEObjectResolvingEList(final Class<?> listItemClass,
 			final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EObjectResolvingEList<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <E> EObjectResolvingEList.Unsettable<E> createEObjectResolvingEListUnsettable(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EObjectResolvingEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <E> EObjectWithInverseEList<E> createEObjectWithInverseEList(final Class<?> listItemClass,
 			final EObject eOwnerObject, final int eReferenceID, final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseEList<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID,
 				eOppositeReferenceID);
 	}
@@ -406,7 +380,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectWithInverseEList.Unsettable<E> createEObjectWithInverseEListUnsettable(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID,
 				eOppositeReferenceID);
 	}
@@ -414,7 +387,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectWithInverseEList.ManyInverse<E> createEObjectWithInverseEListManyInverse(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseEList.ManyInverse<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID,
 				eOppositeReferenceID);
 	}
@@ -422,7 +394,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectWithInverseEList.Unsettable.ManyInverse<E> createEObjectWithInverseEListUnsettableManyInverse(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseEList.Unsettable.ManyInverse<E>(listItemClass, (InternalEObject) eOwnerObject,
 				eReferenceID, eOppositeReferenceID);
 	}
@@ -430,7 +401,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectWithInverseResolvingEList<E> createEObjectWithInverseResolvingEList(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseResolvingEList<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID,
 				eOppositeReferenceID);
 	}
@@ -438,7 +408,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectWithInverseResolvingEList.Unsettable<E> createEObjectWithInverseResolvingEListUnsettable(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseResolvingEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject,
 				eReferenceID, eOppositeReferenceID);
 	}
@@ -454,7 +423,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectWithInverseResolvingEList.Unsettable.ManyInverse<E> createEObjectWithInverseResolvingEListUnsettableManyInverse(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectWithInverseResolvingEList.Unsettable.ManyInverse<E>(listItemClass,
 				(InternalEObject) eOwnerObject, eReferenceID, eOppositeReferenceID);
 	}
@@ -467,19 +435,16 @@ public class BasicEListFactoryImpl implements EListFactory {
 
 	protected <E> EObjectContainmentEList.Unsettable<E> createEObjectContainmentEListUnsettable(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EObjectContainmentEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <E> EObjectContainmentEList.Resolving<E> createEObjectContainmentEListResolving(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EObjectContainmentEList.Resolving<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <E> EObjectContainmentEList.Unsettable.Resolving<E> createEObjectContainmentEListUnsettableResolving(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EObjectContainmentEList.Unsettable.Resolving<E>(listItemClass, (InternalEObject) eOwnerObject,
 				eReferenceID);
 	}
@@ -487,7 +452,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectContainmentWithInverseEList<E> createEObjectContainmentWithInverseEList(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectContainmentWithInverseEList<E>(listItemClass, (InternalEObject) eOwnerObject, eReferenceID,
 				eOppositeReferenceID);
 	}
@@ -495,7 +459,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectContainmentWithInverseEList.Unsettable<E> createEObjectContainmentWithInverseEListUnsettable(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectContainmentWithInverseEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject,
 				eReferenceID, eOppositeReferenceID);
 	}
@@ -503,7 +466,6 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectContainmentWithInverseEList.Resolving<E> createEObjectContainmentWithInverseEListResolving(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectContainmentWithInverseEList.Resolving<E>(listItemClass, (InternalEObject) eOwnerObject,
 				eReferenceID, eOppositeReferenceID);
 	}
@@ -511,55 +473,46 @@ public class BasicEListFactoryImpl implements EListFactory {
 	protected <E> EObjectContainmentWithInverseEList.Unsettable.Resolving<E> createEObjectContainmentWithInverseEListUnsettableResolving(
 			final Class<?> listItemClass, final EObject eOwnerObject, final int eReferenceID,
 			final int eOppositeReferenceID) {
-
 		return new EObjectContainmentWithInverseEList.Unsettable.Resolving<E>(listItemClass,
 				(InternalEObject) eOwnerObject, eReferenceID, eOppositeReferenceID);
 	}
 
 	protected <E> EDataTypeEList<E> createEDataTypeEList(final Class<?> listItemClass, final EObject eOwnerObject,
 			final int eAttributeID) {
-
 		return new EDataTypeEList<E>(listItemClass, (InternalEObject) eOwnerObject, eAttributeID);
 	}
 
 	protected <E> EDataTypeEList.Unsettable<E> createEDataTypeEListUnsettable(final Class<?> listItemClass,
 			final EObject eOwnerObject, final int eAttributeID) {
-
 		return new EDataTypeEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject, eAttributeID);
 	}
 
 	protected <E> EDataTypeUniqueEList<E> createEDataTypeUniqueEList(final Class<?> listItemClass,
 			final EObject eOwnerObject, final int eAttributeID) {
-
 		return new EDataTypeUniqueEList<E>(listItemClass, (InternalEObject) eOwnerObject, eAttributeID);
 	}
 
 	protected <E> EDataTypeUniqueEList.Unsettable<E> createEDataTypeUniqueEListUnsettable(final Class<?> listItemClass,
 			final EObject eOwnerObject, final int eAttributeID) {
-
 		return new EDataTypeUniqueEList.Unsettable<E>(listItemClass, (InternalEObject) eOwnerObject, eAttributeID);
 	}
 
 	protected <K, V> EcoreEMap<K, V> createEcoreEMap(final EClass eMapEntryClass, final Class<?> mapEntryClass,
 			final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EcoreEMap<K, V>(eMapEntryClass, mapEntryClass, (InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	protected <K, V> EcoreEMap.Unsettable<K, V> createEcoreEMapUnsettable(final EClass eMapEntryClass,
 			final Class<?> mapEntryClass, final EObject eOwnerObject, final int eReferenceID) {
-
 		return new EcoreEMap.Unsettable<K, V>(eMapEntryClass, mapEntryClass, (InternalEObject) eOwnerObject,
 				eReferenceID);
 	}
 
 	protected BasicFeatureMap createBasicFeatureMap(final EObject eOwnerObject, final int eReferenceID) {
-
 		return new BasicFeatureMap((InternalEObject) eOwnerObject, eReferenceID);
 	}
 
 	private EObject createEOwnerObject(final String ePackageNsURI, final String eOwnerClassName) {
-
 		EPackage ePackage = EElementUtil.findEPackage(ePackageNsURI);
 		EClass eOwnerClass = EElementUtil.findEClass(ePackage, eOwnerClassName);
 		EFactory eFactory = ePackage.getEFactoryInstance();
@@ -567,22 +520,13 @@ public class BasicEListFactoryImpl implements EListFactory {
 	}
 
 	private EStructuralFeature getEStructuralFeature(final EObject eOwnerObject, final String eStructuralFeatureName) {
-
-		if (eOwnerObject == null) {
-			String msg = "Argument for parameter 'eOwnerObject' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if ((eStructuralFeatureName == null) || (eStructuralFeatureName.trim().length() == 0)) {
-			String msg = "Argument for parameter 'eStructuralFeatureName' must not be blank.";
-			throw new IllegalArgumentException(msg);
-		}
+		Assert.isNotNull(eOwnerObject);
+		Assert.isLegal(eStructuralFeatureName != null && eStructuralFeatureName.trim().length() > 0);
 
 		EStructuralFeature eStructuralFeature = eOwnerObject.eClass().getEStructuralFeature(eStructuralFeatureName);
-		if (eStructuralFeature == null) {
-			String msg = "Could not find Ecore feature named '" + eStructuralFeatureName + "' on Ecore class '"
-					+ eOwnerObject.eClass().getName() + "'.";
-			throw new IllegalStateException(msg);
-		}
+		Assert.isTrue(eStructuralFeature != null, NLS.bind(
+				Messages.assert_couldNotFindFeature$0InEClass$1, eStructuralFeatureName, eOwnerObject
+						.eClass().getName()));
 		return eStructuralFeature;
 	}
 }

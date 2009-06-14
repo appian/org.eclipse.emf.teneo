@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.elistfactory;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
@@ -19,44 +20,39 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.teneo.eclipselink.elistfactory.internal.messages.Messages;
+import org.eclipse.osgi.util.NLS;
 
 public final class EElementUtil {
 
 	private EElementUtil() {
-
 	}
 
 	public static boolean isListType(final EStructuralFeature eStructuralFeature) {
-
 		return eStructuralFeature.isMany() || isFeatureMapEntryType(eStructuralFeature);
 	}
 
 	public static boolean isMapType(final EStructuralFeature eStructuralFeature) {
-
 		return !isContainer(eStructuralFeature) && eStructuralFeature.isMany()
 				&& (eStructuralFeature.getEType() instanceof EClass) && isJavaUtilMapEntryType(eStructuralFeature);
 	}
 
 	public static boolean isFeatureMapType(final EStructuralFeature eStructuralFeature) {
-
 		return isFeatureMapEntryType(eStructuralFeature);
 	}
 
 	public static boolean isJavaUtilMapEntryType(final EStructuralFeature eStructuralFeature) {
-
 		String instanceClassName = eStructuralFeature.getEType().getInstanceClassName();
-		return "java.util.Map.Entry".equals(instanceClassName) || "java.util.Map$Entry".equals(instanceClassName);
+		return "java.util.Map.Entry".equals(instanceClassName) || "java.util.Map$Entry".equals(instanceClassName); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static boolean isFeatureMapEntryType(final EStructuralFeature eStructuralFeature) {
-
 		String instanceClassName = eStructuralFeature.getEType().getInstanceClassName();
-		return "org.eclipse.emf.ecore.util.FeatureMap.Entry".equals(instanceClassName)
-				|| "org.eclipse.emf.ecore.util.FeatureMap$Entry".equals(instanceClassName);
+		return "org.eclipse.emf.ecore.util.FeatureMap.Entry".equals(instanceClassName) //$NON-NLS-1$
+				|| "org.eclipse.emf.ecore.util.FeatureMap$Entry".equals(instanceClassName); //$NON-NLS-1$
 	}
 
 	public static boolean isContainer(final EStructuralFeature eStructuralFeature) {
-
 		boolean result = false;
 		if (eStructuralFeature instanceof EReference) {
 			EReference eReference = (EReference) eStructuralFeature;
@@ -67,7 +63,6 @@ public final class EElementUtil {
 	}
 
 	public static boolean isContainment(final EStructuralFeature eStructuralFeature) {
-
 		boolean result = false;
 		if (eStructuralFeature instanceof EReference) {
 			EReference eReference = (EReference) eStructuralFeature;
@@ -77,7 +72,6 @@ public final class EElementUtil {
 	}
 
 	public static boolean isBidirectional(final EStructuralFeature eStructuralFeature) {
-
 		boolean result = false;
 		if (eStructuralFeature instanceof EReference) {
 			EReference eReference = (EReference) eStructuralFeature;
@@ -87,12 +81,10 @@ public final class EElementUtil {
 	}
 
 	public static boolean isResolveProxies(final EStructuralFeature eStructuralFeature) {
-
 		return isResolveProxies(eStructuralFeature, false);
 	}
 
 	public static boolean isResolveProxies(final EStructuralFeature eStructuralFeature, final boolean containmentProxies) {
-
 		boolean result = false;
 		if (eStructuralFeature instanceof EReference) {
 			EReference eReference = (EReference) eStructuralFeature;
@@ -103,8 +95,7 @@ public final class EElementUtil {
 	}
 
 	public static String getQualifiedListItemTypeName(final EStructuralFeature eStructuralFeature) {
-
-		String result = "";
+		String result = ""; //$NON-NLS-1$
 		EClassifier eType = eStructuralFeature.getEType();
 		if (eType instanceof EClass) {
 			if (eType.getInstanceClassName() != null) {
@@ -121,7 +112,7 @@ public final class EElementUtil {
 		if (eType instanceof EDataType) {
 			if (isPrimitiveType(eType)) {
 				result = getQualifiedPrimitiveObjectTypeName(eType);
-			} else if ("org.eclipse.emf.common.util.Enumerator".equals(eType.getInstanceClassName())) {
+			} else if ("org.eclipse.emf.common.util.Enumerator".equals(eType.getInstanceClassName())) { //$NON-NLS-1$
 				EDataType eBaseType = ExtendedMetaDataUtil.getExtendedMetaData(eType).getBaseType((EDataType) eType);
 				if (eBaseType instanceof EEnum) {
 					result = getQualifiedInterfaceName(eBaseType);
@@ -138,14 +129,12 @@ public final class EElementUtil {
 
 	public static int getDerivedStructuralFeatureID(final EObject eOwnerObject,
 			final EStructuralFeature eStructuralFeature) throws ClassNotFoundException {
-
 		int featureID = eStructuralFeature.getFeatureID();
 		Class<?> containingClass = eStructuralFeature.getEContainingClass().getInstanceClass();
 		return ((InternalEObject) eOwnerObject).eDerivedStructuralFeatureID(featureID, containingClass);
 	}
 
 	public static String getQualifiedInterfacePackageName(final EClassifier eClassifier) {
-
 		Class<? extends EPackage> ePackageClass = eClassifier.getEPackage().getClass();
 		Class<?> ePackageInterface = null;
 		for (int i = 0; (i < ePackageClass.getInterfaces().length) && (ePackageInterface == null); i++) {
@@ -154,47 +143,39 @@ public final class EElementUtil {
 				ePackageInterface = ePackageClass.getInterfaces()[i];
 			}
 		}
-		if (ePackageInterface == null) {
-			String msg = "Could not find Ecore package interface of Ecore package class '" + ePackageClass.getName()
-					+ "'.";
-			throw new IllegalStateException(msg);
-		}
+		Assert.isTrue(ePackageInterface != null, NLS.bind(
+				Messages.assert_couldNotFindEPackageInterfaceOfEPackageClass$0, ePackageClass.getName()));
 		return ePackageInterface.getPackage().getName();
 	}
 
 	public static String getQualifiedClassPackageName(final EClassifier eClassifier) {
-
 		String eQualifiedPackageClassName = eClassifier.getEPackage().getClass().getName();
 		return getPackageName(eQualifiedPackageClassName);
 	}
 
 	public static String getQualifiedInterfaceName(final EClassifier eClassifier) {
-
-		return getQualifiedInterfacePackageName(eClassifier) + "." + getSimpleInterfaceName(eClassifier);
+		return getQualifiedInterfacePackageName(eClassifier) + "." + getSimpleInterfaceName(eClassifier); //$NON-NLS-1$
 	}
 
 	public static String getQualifiedClassName(final EClassifier eClassifier) {
 
-		return getQualifiedClassPackageName(eClassifier) + "." + getSimpleClassName(eClassifier);
+		return getQualifiedClassPackageName(eClassifier) + "." + getSimpleClassName(eClassifier); //$NON-NLS-1$
 	}
 
 	public static String getSimpleInterfaceName(final EClassifier eClassifier) {
-
 		return eClassifier.getName();
 	}
 
 	public static String getSimpleClassName(final EClassifier eClassifier) {
 
-		return getSimpleInterfaceName(eClassifier) + "Impl";
+		return getSimpleInterfaceName(eClassifier) + "Impl"; //$NON-NLS-1$
 	}
 
 	public static String getPackageName(String qualifiedTypeName) {
-
-		return qualifiedTypeName.substring(0, qualifiedTypeName.lastIndexOf("."));
+		return qualifiedTypeName.substring(0, qualifiedTypeName.lastIndexOf(".")); //$NON-NLS-1$
 	}
 
 	public static boolean isPrimitiveType(final EClassifier eClassifier) {
-
 		boolean result = false;
 		Class<?> instanceClass = eClassifier.getInstanceClass();
 		if (instanceClass != null) {
@@ -204,77 +185,58 @@ public final class EElementUtil {
 	}
 
 	public static String getQualifiedPrimitiveObjectTypeName(final EClassifier eClassifier) {
-
 		Class<?> instanceClass = eClassifier.getInstanceClass();
 		if (instanceClass == java.lang.Boolean.TYPE) {
-			return "java.lang.Boolean";
+			return "java.lang.Boolean"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Byte.TYPE) {
-			return "java.lang.Byte";
+			return "java.lang.Byte"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Character.TYPE) {
-			return "java.lang.Character";
+			return "java.lang.Character"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Double.TYPE) {
-			return "java.lang.Double";
+			return "java.lang.Double"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Float.TYPE) {
-			return "java.lang.Float";
+			return "java.lang.Float"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Integer.TYPE) {
-			return "java.lang.Integer";
+			return "java.lang.Integer"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Long.TYPE) {
-			return "java.lang.Long";
+			return "java.lang.Long"; //$NON-NLS-1$
 		}
 		if (instanceClass == java.lang.Short.TYPE) {
-			return "java.lang.Short";
+			return "java.lang.Short"; //$NON-NLS-1$
 		}
 		return null;
 	}
 
 	public static EPackage findEPackage(final String ePackageNsURI) {
-
-		if ((ePackageNsURI == null) || (ePackageNsURI.trim().length() == 0)) {
-			String msg = "Argument for parameter 'ePackageNsURI' must not be blank.";
-			throw new IllegalArgumentException(msg);
-		}
+		Assert.isLegal(ePackageNsURI != null && ePackageNsURI.trim().length() > 0);
 
 		EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(ePackageNsURI);
-		if (ePackage == null) {
-			String msg = "Could not find Ecore package for namespace URI '" + ePackageNsURI + "'.";
-			throw new IllegalStateException(msg);
-		}
+		Assert.isTrue(ePackage != null, NLS
+				.bind(Messages.assert_couldNotFindEPackageForNamespaceURI$0, ePackageNsURI));
 		return ePackage;
 	}
 
 	public static EClass findEClass(final EPackage ePackage, final Class<?> javaClass) {
-
-		return findEClass(ePackage, javaClass.getSimpleName().replaceFirst("Impl$", ""));
+		return findEClass(ePackage, javaClass.getSimpleName().replaceFirst("Impl$", "")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static EClass findEClass(final EPackage ePackage, final String eClassName) {
-
-		if (ePackage == null) {
-			String msg = "Argument for parameter 'ePackage' must not be null.";
-			throw new IllegalArgumentException(msg);
-		}
-		if ((eClassName == null) || (eClassName.trim().length() == 0)) {
-			String msg = "Argument for parameter 'eClassName' must not be blank.";
-			throw new IllegalArgumentException(msg);
-		}
+		Assert.isNotNull(ePackage);
+		Assert.isLegal(eClassName != null && eClassName.trim().length() > 0);
 
 		EClassifier eOwnerClassifier = ePackage.getEClassifier(eClassName);
-		if (eOwnerClassifier == null) {
-			String msg = "Could not find Ecore classifier named '" + eOwnerClassifier + "' in Ecore package '"
-					+ ePackage.getName() + "'.";
-			throw new IllegalStateException(msg);
-		}
-		if (!(eOwnerClassifier instanceof EClass)) {
-			String msg = "Type of Ecore classifier '" + eOwnerClassifier.getName() + "' in Ecore package '"
-					+ ePackage.getName() + "' is not 'EClass'.";
-			throw new IllegalStateException(msg);
-		}
+		Assert.isTrue(eOwnerClassifier != null, NLS.bind(
+				Messages.assert_couldNotFindEClassifier$0InEPackage$1, eOwnerClassifier, ePackage
+						.getName()));
+		Assert.isTrue(eOwnerClassifier instanceof EClass, NLS.bind(
+				Messages.assert_typeOfEClassifier$0InEPackage$1IsNotEClass, eOwnerClassifier.getName(),
+				ePackage.getName()));
 		return (EClass) eOwnerClassifier;
 	}
 }

@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore
-Export-Package: org.eclipse.emf.teneo.eclipselink.elistfactory
+Export-Package: org.eclipse.emf.teneo.eclipselink.elistfactory,
+ org.eclipse.emf.teneo.eclipselink.elistfactory.internal.messages;x-internal:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

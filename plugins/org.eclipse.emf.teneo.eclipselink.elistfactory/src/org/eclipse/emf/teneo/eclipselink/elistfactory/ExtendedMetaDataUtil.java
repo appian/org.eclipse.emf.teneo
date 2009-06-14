@@ -26,7 +26,6 @@ public class ExtendedMetaDataUtil {
 	private static ExtendedMetaData extendedMetaData = null;
 
 	public static ExtendedMetaData getExtendedMetaData(final EClassifier eClassifier) {
-
 		if (extendedMetaData == null) {
 			extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
 		}
@@ -42,7 +41,6 @@ public class ExtendedMetaDataUtil {
 	}
 
 	private static void populateExtendedMetaData(final ExtendedMetaData extendedMetaData, final List<EPackage> ePackages) {
-
 		for (EPackage package1 : ePackages) {
 			EPackage ePackage = package1;
 			if (ePackage != null) {
