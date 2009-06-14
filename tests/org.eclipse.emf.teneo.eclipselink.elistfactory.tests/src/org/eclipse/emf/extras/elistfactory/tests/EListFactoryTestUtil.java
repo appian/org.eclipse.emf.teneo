@@ -53,16 +53,16 @@ public class EListFactoryTestUtil {
 			result += ", ";
 			result += getFeatureIDName(internalFeatureMap.getEObject().eClass(), internalFeatureMap
 					.getEStructuralFeature());
-			if ((internalFeatureMap instanceof EObjectWithInverseEList)
-					|| (internalFeatureMap instanceof EObjectWithInverseResolvingEList)
-					|| (internalFeatureMap instanceof EObjectContainmentWithInverseEList)) {
+			if ((internalFeatureMap instanceof EObjectWithInverseEList<?>)
+					|| (internalFeatureMap instanceof EObjectWithInverseResolvingEList<?>)
+					|| (internalFeatureMap instanceof EObjectContainmentWithInverseEList<?>)) {
 				EReference eReference = ((EReference) internalFeatureMap.getEStructuralFeature());
 				EReference eOppositeReference = eReference.getEOpposite();
 				result += ", ";
 				result += getFeatureIDName(eOppositeReference.getEContainingClass(), eOppositeReference);
 			}
 			result += ")";
-		} else if (eList instanceof EcoreEMap) {
+		} else if (eList instanceof EcoreEMap<?, ?>) {
 			EcoreEMap<?, ?> ecoreEMap = (EcoreEMap<?, ?>) eList;
 
 			result += ecoreEMap.getClass().getSimpleName();
@@ -77,7 +77,7 @@ public class EListFactoryTestUtil {
 			result += ", ";
 			result += getFeatureIDName(ecoreEMap.getEObject().eClass(), ecoreEMap.getEStructuralFeature());
 			result += ")";
-		} else if (eList instanceof EcoreEList) {
+		} else if (eList instanceof EcoreEList<?>) {
 			EcoreEList<?> ecoreEList = (EcoreEList<?>) eList;
 
 			result += getSimpleEcoreEListTypeName(ecoreEList.getClass().getName());
@@ -88,9 +88,9 @@ public class EListFactoryTestUtil {
 			result += "this";
 			result += ", ";
 			result += getFeatureIDName(ecoreEList.getEObject().eClass(), ecoreEList.getEStructuralFeature());
-			if ((ecoreEList instanceof EObjectWithInverseEList)
-					|| (ecoreEList instanceof EObjectWithInverseResolvingEList)
-					|| (ecoreEList instanceof EObjectContainmentWithInverseEList)) {
+			if ((ecoreEList instanceof EObjectWithInverseEList<?>)
+					|| (ecoreEList instanceof EObjectWithInverseResolvingEList<?>)
+					|| (ecoreEList instanceof EObjectContainmentWithInverseEList<?>)) {
 				EReference eReference = ((EReference) ecoreEList.getEStructuralFeature());
 				EReference eOppositeReference = eReference.getEOpposite();
 				result += ", ";
@@ -174,11 +174,11 @@ public class EListFactoryTestUtil {
 	private static EClass getOwnerClass(final EList<?> eList) {
 
 		EClass result = null;
-		if (eList instanceof EcoreEList) {
+		if (eList instanceof EcoreEList<?>) {
 			EcoreEList<?> ecoreEList = (EcoreEList<?>) eList;
 			result = ecoreEList.getEObject().eClass();
 		}
-		if (eList instanceof EcoreEMap) {
+		if (eList instanceof EcoreEMap<?, ?>) {
 			EcoreEMap<?, ?> ecoreEMap = (EcoreEMap<?, ?>) eList;
 			result = ecoreEMap.getEObject().eClass();
 		}
@@ -188,11 +188,11 @@ public class EListFactoryTestUtil {
 	private static EStructuralFeature getImplementedFeature(final EList<?> eList) {
 
 		EStructuralFeature result = null;
-		if (eList instanceof EcoreEList) {
+		if (eList instanceof EcoreEList<?>) {
 			EcoreEList<?> ecoreEList = (EcoreEList<?>) eList;
 			result = ecoreEList.getEStructuralFeature();
 		}
-		if (eList instanceof EcoreEMap) {
+		if (eList instanceof EcoreEMap<?, ?>) {
 			EcoreEMap<?, ?> ecoreEMap = (EcoreEMap<?, ?>) eList;
 			result = ecoreEMap.getEStructuralFeature();
 		}
