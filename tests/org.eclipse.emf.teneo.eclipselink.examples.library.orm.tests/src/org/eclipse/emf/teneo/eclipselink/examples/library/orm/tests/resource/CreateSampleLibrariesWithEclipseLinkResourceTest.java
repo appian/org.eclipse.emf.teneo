@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryFactory;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
-import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
 public class CreateSampleLibrariesWithEclipseLinkResourceTest extends BasicEclipseLinkTest {
 
@@ -68,7 +68,7 @@ public class CreateSampleLibrariesWithEclipseLinkResourceTest extends BasicEclip
 
 		// create EclipseLink URI for saving/loading all library models in/from
 		// database
-		uri = EclipseLinkResourceUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, Library.class.getName());
+		uri = EclipseLinkURIUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, Library.class.getName());
 
 		// save all library model instances in database
 		ResourceSet resourceSet = new ResourceSetImpl();

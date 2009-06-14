@@ -25,8 +25,6 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 public class LibraryXMIPersistenceTest extends LibraryJPATest {
 
-	private static final String TEMP_FILE = "/tmp/temp.library";
-
 	public LibraryXMIPersistenceTest(String name) {
 		super(name);
 	}

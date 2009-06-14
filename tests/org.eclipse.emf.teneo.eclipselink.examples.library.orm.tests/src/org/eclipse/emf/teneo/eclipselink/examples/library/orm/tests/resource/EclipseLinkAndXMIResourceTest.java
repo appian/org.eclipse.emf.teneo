@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 import org.eclipse.emf.teneo.eclipselink.examples.library.forum.Forum;
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
-import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceUtil;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
 public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
 
@@ -92,9 +92,9 @@ public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
 	private void saveLibraryModel1AndForumModel1() throws IOException {
 
 		// create EclipseLink URI for saving/loading library model in/from database
-		String query = EclipseLinkResourceUtil.createContentsEqualQuery(LibraryPackage.eINSTANCE.getLibrary(),
+		String query = EclipseLinkURIUtil.createContentsEqualQuery(LibraryPackage.eINSTANCE.getLibrary(),
 				LibraryPackage.eINSTANCE.getLibrary_Name(), library1.getName());
-		libraryURI = EclipseLinkResourceUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, query);
+		libraryURI = EclipseLinkURIUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, query);
 
 		// save library model instance in database
 		ResourceSet resourceSet1 = new ResourceSetImpl();

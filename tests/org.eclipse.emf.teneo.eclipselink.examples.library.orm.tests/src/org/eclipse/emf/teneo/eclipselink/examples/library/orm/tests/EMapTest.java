@@ -150,7 +150,7 @@ public class EMapTest extends LibraryJPATest {
 		assertEquals(bookTwo, bookTwoFromLibrary);
 		// TODO: ResourceImpl will get callback to delete MapEntry
 		EObject bookTwoEContainer = bookTwo.eContainer();
-		if ((bookTwoEContainer != null) && (bookTwoEContainer instanceof Entry)) {
+		if ((bookTwoEContainer != null) && (bookTwoEContainer instanceof Entry<?, ?>)) {
 			em.remove(bookTwoEContainer);
 		}
 		em.remove(bookTwo);
