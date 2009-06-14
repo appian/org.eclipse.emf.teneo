@@ -133,7 +133,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 				collectionMapping.setAttributeValueInObject(source, newMap);
 			}
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(Messages.EmfCollectionAdjuster_errorBuildingEListImplementation, e);
+			throw new RuntimeException(Messages.exception_errorBuildingEListImplementation, e);
 		}
 	}
 
@@ -148,7 +148,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 			newList.setData(contentsList.size(), contentsList.toArray());
 			collectionMapping.setAttributeValueInObject(source, newList);
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(Messages.EmfCollectionAdjuster_errorBuildingEListImplementation, e);
+			throw new RuntimeException(Messages.exception_errorBuildingEListImplementation, e);
 		}
 	}
 }

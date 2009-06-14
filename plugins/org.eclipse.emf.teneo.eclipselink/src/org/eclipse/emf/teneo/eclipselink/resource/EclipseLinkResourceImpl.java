@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -126,7 +127,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 		}
 	}
 
-	private static Map<String, EntityManagerFactoryInstance> persistenceUnitNameToEntityManagerFactoryInstanceMap = new HashMap<String, EntityManagerFactoryInstance>();
+	private static Map<String, EntityManagerFactoryInstance> persistenceUnitNameToEntityManagerFactoryInstanceMap = new WeakHashMap<String, EntityManagerFactoryInstance>();
 
 	private String persistenceUnitName;
 	private String contentsQuery;
@@ -173,10 +174,9 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	public EclipseLinkResourceImpl(URI uri) {
 		super(uri);
 
-		Assert.isLegal(EclipseLinkURIUtil.isEclipseLinkURI(uri),
-				Messages.EclipseLinkResourceImpl_uriMustContainEclipseLinkScheme);
-		Assert.isLegal(uri.segmentCount() == 1, Messages.EclipseLinkResourceImpl_uriMustContainPersistenceUnitSegment);
-		Assert.isLegal(uri.hasQuery(), Messages.EclipseLinkResourceImpl_uriMustContainContentsQueryString);
+		Assert.isLegal(EclipseLinkURIUtil.isEclipseLinkURI(uri), Messages.assert_uriMustContainEclipseLinkScheme);
+		Assert.isLegal(uri.segmentCount() == 1, Messages.assert_uriMustContainPersistenceUnitSegment);
+		Assert.isLegal(uri.hasQuery(), Messages.assert_uriMustContainContentsQueryString);
 
 		persistenceUnitName = uri.segments()[0];
 		contentsQuery = uri.query();
@@ -340,7 +340,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 					}
 				}
 			}
-			Assert.isLegal(valid, Messages.EclipseLinkResourceImpl_invalidObjectId);
+			Assert.isLegal(valid, Messages.assert_invalidObjectId);
 
 			// build and execute query based on the decorated ID's components;
 			// take first object in case that query result is not unique
@@ -390,9 +390,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 
 	@Override
 	public final void save(Map<?, ?> options) throws IOException {
-		if (!isLoaded) {
-			throw new IllegalStateException(Messages.EclipseLinkResourceImpl_cannotSaveUnloadedResource);
-		}
+		Assert.isTrue(isLoaded, Messages.assert_cannotSaveUnloadedResource);
 
 		// writing to database goes via entity manager rather than output stream
 		save(null, options);
@@ -559,18 +557,12 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 			if (!persistenceUnitNameToEntityManagerFactoryInstanceMap.containsKey(persistenceUnitName)) {
 				// create and register new entity manager factory for given persistence
 				// unit name according to sessions configuration file
-				if (!options.containsKey(PersistenceUnitProperties.CLASSLOADER)) {
-					throw new IllegalStateException(NLS.bind(
-							Messages.EclipseLinkResourceImpl_classloaderMustHavePersistenceUnit$0OnClasspath,
-							persistenceUnitName));
-				}
+				Assert.isTrue(options.containsKey(PersistenceUnitProperties.CLASSLOADER), NLS.bind(
+						Messages.assert_classloaderMustHavePersistenceUnit$0OnClasspath, persistenceUnitName));
 				EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(
 						persistenceUnitName, options);
-				if (entityManagerFactory == null) {
-					throw new IllegalStateException(NLS.bind(
-							Messages.EclipseLinkResourceImpl_unableToCreateEntityManangerFactoryforPersistenceUnit$0,
-							persistenceUnitName));
-				}
+				Assert.isTrue(entityManagerFactory != null, NLS.bind(
+						Messages.assert_unableToCreateEntityManangerFactoryforPersistenceUnit$0, persistenceUnitName));
 				entityManagerFactoryInstance = new EntityManagerFactoryInstance(entityManagerFactory);
 				persistenceUnitNameToEntityManagerFactoryInstanceMap.put(persistenceUnitName,
 						entityManagerFactoryInstance);

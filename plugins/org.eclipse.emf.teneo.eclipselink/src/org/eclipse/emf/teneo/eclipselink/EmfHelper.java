@@ -46,7 +46,7 @@ public class EmfHelper {
 			ecoreEMapEntryEClassField = Helper.getField(EcoreEMap.class, "entryEClass"); //$NON-NLS-1$
 			ecoreEMapEntryClassField = Helper.getField(EcoreEMap.class, "entryClass"); //$NON-NLS-1$
 		} catch (NoSuchFieldException e) {
-			throw new RuntimeException(Messages.EmfHelper_unableToFindDelegateEListFieldOnBasicEMap, e);
+			throw new RuntimeException(Messages.exception_unableToFindDelegateEListFieldOnBasicEMap, e);
 		}
 	}
 
@@ -86,10 +86,10 @@ public class EmfHelper {
 				// }
 				// }
 			} catch (Exception e) {
-				new RuntimeException(Messages.EmfHelper_cannotSetOwnerOnEList, e);
+				new RuntimeException(Messages.exception_cannotSetOwnerOnEList, e);
 			}
 		} else {
-			String msg = NLS.bind(Messages.EmfHelper_errorSettingEListContents$0, targetList.getClass());
+			String msg = NLS.bind(Messages.exception_errorSettingEListContents$0, targetList.getClass());
 			throw new RuntimeException(msg);
 		}
 	}
@@ -114,7 +114,7 @@ public class EmfHelper {
 				assignMethod.setAccessible(true);
 				assignMethod.invoke(eList, new Object[] { size, element });
 			} catch (Exception e) {
-				new RuntimeException(Messages.EmfHelper_errorAddingElementToEList, e);
+				new RuntimeException(Messages.exception_errorAddingElementToEList, e);
 			}
 			return true;
 		} else {
@@ -143,7 +143,7 @@ public class EmfHelper {
 				Field sizeField = PrivilegedAccessHelper.getDeclaredField(BasicEList.class, "size", true); //$NON-NLS-1$
 				sizeField.set(eList, size);
 			} catch (Exception e) {
-				new RuntimeException(Messages.EmfHelper_errorRemovingElementFromEList, e);
+				new RuntimeException(Messages.exception_errorRemovingElementFromEList, e);
 			}
 			return true;
 		} else {
@@ -182,7 +182,7 @@ public class EmfHelper {
 				basicSetEListContents(delegateEList, mapContents.toArray());
 			}
 		} catch (Exception e) {
-			new RuntimeException(Messages.EmfHelper_errorSettingEMapContents, e);
+			new RuntimeException(Messages.exception_errorSettingEMapContents, e);
 		}
 	}
 
@@ -209,11 +209,11 @@ public class EmfHelper {
 					EList<Map.Entry<K, V>> delegateEList = (EList<Map.Entry<K, V>>) delegateEListField.get(basicEMap);
 					addToEList(delegateEList, entry);
 				} catch (Exception e) {
-					new RuntimeException(Messages.EmfHelper_errorAddingEntryToEMap, e);
+					new RuntimeException(Messages.exception_errorAddingEntryToEMap, e);
 				}
 				return true;
 			} else {
-				String msg = NLS.bind(Messages.EmfHelper_collectionClassNotSupported$0, eMap.getClass().getName());
+				String msg = NLS.bind(Messages.exception_collectionClassNotSupported$0, eMap.getClass().getName());
 				throw new RuntimeException(msg);
 			}
 		}
@@ -225,7 +225,7 @@ public class EmfHelper {
 			return (BasicEList<Map.Entry<K, V>>) delegateEListField.get(originalEMap);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException(Messages.EmfHelper_errorGettingDelegateList);
+			throw new RuntimeException(Messages.exception_errorGettingDelegateList);
 		}
 	}
 
@@ -235,7 +235,7 @@ public class EmfHelper {
 			return (Class<? extends Map.Entry>) ecoreEMapEntryClassField.get(map);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException(Messages.EmfHelper_errorGettingDelegateList);
+			throw new RuntimeException(Messages.exception_errorGettingDelegateList);
 		}
 	}
 
@@ -244,7 +244,7 @@ public class EmfHelper {
 			return (EClass) ecoreEMapEntryEClassField.get(map);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException(Messages.EmfHelper_errorGettingEntryEClass);
+			throw new RuntimeException(Messages.exception_errorGettingEntryEClass);
 		}
 	}
 
@@ -253,7 +253,7 @@ public class EmfHelper {
 			return (InternalEObject) eObjectEListOwnerField.get(map);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException(Messages.EmfHelper_errorGettingListOwner);
+			throw new RuntimeException(Messages.exception_errorGettingListOwner);
 		}
 	}
 
@@ -262,7 +262,7 @@ public class EmfHelper {
 			eObjectEListOwnerField.set(list, owner);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException(Messages.EmfHelper_errorSettingListOwner);
+			throw new RuntimeException(Messages.exception_errorSettingListOwner);
 		}
 	}
 
@@ -271,7 +271,7 @@ public class EmfHelper {
 			return eObjectEListFeatureIDField.getInt(list);
 		} catch (Exception e) {
 			// TODO Throw EclipseLinkEMF Exception
-			throw new RuntimeException(Messages.EmfHelper_errorGettingFeatureID);
+			throw new RuntimeException(Messages.exception_errorGettingFeatureID);
 		}
 	}
 }

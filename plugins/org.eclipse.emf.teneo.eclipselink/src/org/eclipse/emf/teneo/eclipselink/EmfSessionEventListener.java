@@ -54,7 +54,7 @@ public class EmfSessionEventListener extends SessionEventAdapter {
 				}
 			}
 		} catch (Exception e) {
-			throw new RuntimeException(Messages.EmfSessionEventListener_errorDeletingEMapEntries, e);
+			throw new RuntimeException(Messages.exception_errorDeletingEMapEntries, e);
 		}
 	}
 

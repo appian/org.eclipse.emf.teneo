@@ -229,7 +229,7 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 			Method cloneMethod = this.getDelegate().getClass().getMethod("clone", new Class[] {}); //$NON-NLS-1$
 			result.delegate = (InternalEList<E>) cloneMethod.invoke(this.getDelegate(), new Object[] {});
 		} catch (Exception e) {
-			throw new RuntimeException(Messages.IndirectEList_errorInvokingCloneOnDelegate, e);
+			throw new RuntimeException(Messages.exception_errorInvokingCloneOnDelegate, e);
 		}
 		result.attributeName = null;
 		result.changeListener = null;

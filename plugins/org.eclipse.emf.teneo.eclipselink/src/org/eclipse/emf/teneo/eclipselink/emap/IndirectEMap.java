@@ -163,7 +163,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 			Method cloneMethod = this.getDelegate().getClass().getMethod("clone", new Class[] {}); //$NON-NLS-1$
 			result.delegate = (EMap<K, V>) cloneMethod.invoke(this.getDelegate(), new Object[] {});
 		} catch (Exception e) {
-			throw new RuntimeException(Messages.IndirectEMap_errorInvokingCloneOnDelegate, e);
+			throw new RuntimeException(Messages.exception_errorInvokingCloneOnDelegate, e);
 		}
 		return result;
 	}
@@ -606,7 +606,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 	 */
 	protected void rehash() {
 
-		throw new UnsupportedOperationException(Messages.IndirectEMap_rehashNotImplemented);
+		throw new UnsupportedOperationException(Messages.exception_rehashNotImplemented);
 	}
 
 	/**

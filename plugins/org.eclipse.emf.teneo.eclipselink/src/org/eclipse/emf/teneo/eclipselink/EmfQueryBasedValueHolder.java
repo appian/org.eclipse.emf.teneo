@@ -59,7 +59,7 @@ public class EmfQueryBasedValueHolder extends QueryBasedValueHolder implements E
 			newList = EListFactory.eINSTANCE.createEList(getOwner(), getOwnerAttrName());
 			EmfHelper.getInstance().setECollectionContents(contents, newList);
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(Messages.EmfQueryBasedValueHolder_errorBuildingEListImplementation, e);
+			throw new RuntimeException(Messages.exception_errorBuildingEListImplementation, e);
 		}
 		return newList;
 	}
