@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: WriterItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -83,8 +83,8 @@ public class WriterItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Writer_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_name_feature", "_UI_Writer_type"),
+				 getString("_UI_Writer_name_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_name_feature", "_UI_Writer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.WRITER__NAME,
 				 true,
 				 false,
@@ -105,8 +105,8 @@ public class WriterItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Writer_books_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_books_feature", "_UI_Writer_type"),
+				 getString("_UI_Writer_books_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_books_feature", "_UI_Writer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.WRITER__BOOKS,
 				 true,
 				 false,
@@ -127,8 +127,8 @@ public class WriterItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Writer_publishers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_publishers_feature", "_UI_Writer_type"),
+				 getString("_UI_Writer_publishers_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_publishers_feature", "_UI_Writer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.WRITER__PUBLISHERS,
 				 true,
 				 false,
@@ -149,8 +149,8 @@ public class WriterItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Writer_typewriters_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_typewriters_feature", "_UI_Writer_type"),
+				 getString("_UI_Writer_typewriters_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Writer_typewriters_feature", "_UI_Writer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.WRITER__TYPEWRITERS,
 				 true,
 				 false,
@@ -198,7 +198,7 @@ public class WriterItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Writer"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Writer")); //$NON-NLS-1$
 	}
 
 	/**
@@ -211,8 +211,8 @@ public class WriterItemProvider
 	public String getText(Object object) {
 		String label = ((Writer)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Writer_type") :
-			getString("_UI_Writer_type") + " " + label;
+			getString("_UI_Writer_type") : //$NON-NLS-1$
+			getString("_UI_Writer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

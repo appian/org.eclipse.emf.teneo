@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: LibraryItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -80,8 +80,8 @@ public class LibraryItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Library_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Library_name_feature", "_UI_Library_type"),
+				 getString("_UI_Library_name_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Library_name_feature", "_UI_Library_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.LIBRARY__NAME,
 				 true,
 				 false,
@@ -130,7 +130,7 @@ public class LibraryItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Library"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Library")); //$NON-NLS-1$
 	}
 
 	/**
@@ -143,8 +143,8 @@ public class LibraryItemProvider
 	public String getText(Object object) {
 		String label = ((Library)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Library_type") :
-			getString("_UI_Library_type") + " " + label;
+			getString("_UI_Library_type") : //$NON-NLS-1$
+			getString("_UI_Library_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

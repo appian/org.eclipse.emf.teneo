@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoverItemProvider.java,v 1.3 2009/01/27 22:05:25 seberle Exp $
+ * $Id: CoverItemProvider.java,v 1.4 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -77,8 +77,8 @@ public class CoverItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Cover_colored_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Cover_colored_feature", "_UI_Cover_type"),
+				 getString("_UI_Cover_colored_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cover_colored_feature", "_UI_Cover_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.COVER__COLORED,
 				 true,
 				 false,
@@ -96,7 +96,7 @@ public class CoverItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Cover"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Cover")); //$NON-NLS-1$
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class CoverItemProvider
 	@Override
 	public String getText(Object object) {
 		Cover cover = (Cover)object;
-		return getString("_UI_Cover_type") + " " + cover.getId();
+		return getString("_UI_Cover_type") + " " + cover.getId(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

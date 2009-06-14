@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Activator.java,v 1.3 2009/01/27 22:05:25 seberle Exp $
+ * $Id: Activator.java,v 1.4 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -11,7 +11,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Library edit plugin.
+ * This is the central singleton for the Forum edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -42,6 +42,7 @@ public final class Activator extends EMFPlugin {
 	public Activator() {
 		super
 		  (new ResourceLocator [] {
+		     Activator.INSTANCE,
 		   });
 	}
 

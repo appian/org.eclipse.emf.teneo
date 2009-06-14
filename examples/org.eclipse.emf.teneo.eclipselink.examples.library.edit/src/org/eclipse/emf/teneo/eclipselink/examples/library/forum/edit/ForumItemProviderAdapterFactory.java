@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumItemProviderAdapterFactory.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: ForumItemProviderAdapterFactory.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum.edit;
 
@@ -148,7 +148,7 @@ public class ForumItemProviderAdapterFactory extends ForumAdapterFactory impleme
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

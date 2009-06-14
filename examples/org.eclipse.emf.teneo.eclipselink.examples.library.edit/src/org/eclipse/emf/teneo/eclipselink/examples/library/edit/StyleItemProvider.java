@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: StyleItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: StyleItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -77,8 +77,8 @@ public class StyleItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Style_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Style_name_feature", "_UI_Style_type"),
+				 getString("_UI_Style_name_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Style_name_feature", "_UI_Style_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.STYLE__NAME,
 				 true,
 				 false,
@@ -96,7 +96,7 @@ public class StyleItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Style"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Style")); //$NON-NLS-1$
 	}
 
 	/**
@@ -109,8 +109,8 @@ public class StyleItemProvider
 	public String getText(Object object) {
 		String label = ((Style)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Style_type") :
-			getString("_UI_Style_type") + " " + label;
+			getString("_UI_Style_type") : //$NON-NLS-1$
+			getString("_UI_Style_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

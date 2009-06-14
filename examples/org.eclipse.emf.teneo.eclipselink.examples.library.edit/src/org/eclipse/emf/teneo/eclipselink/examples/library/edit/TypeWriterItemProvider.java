@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeWriterItemProvider.java,v 1.3 2009/01/27 22:05:25 seberle Exp $
+ * $Id: TypeWriterItemProvider.java,v 1.4 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -78,8 +78,8 @@ public class TypeWriterItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TypeWriter_maker_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TypeWriter_maker_feature", "_UI_TypeWriter_type"),
+				 getString("_UI_TypeWriter_maker_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_TypeWriter_maker_feature", "_UI_TypeWriter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.TYPE_WRITER__MAKER,
 				 true,
 				 false,
@@ -100,8 +100,8 @@ public class TypeWriterItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TypeWriter_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TypeWriter_type_feature", "_UI_TypeWriter_type"),
+				 getString("_UI_TypeWriter_type_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_TypeWriter_type_feature", "_UI_TypeWriter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.TYPE_WRITER__TYPE,
 				 true,
 				 false,
@@ -119,7 +119,7 @@ public class TypeWriterItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TypeWriter"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TypeWriter")); //$NON-NLS-1$
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class TypeWriterItemProvider
 	@Override
 	public String getText(Object object) {
 		TypeWriter typeWriter = (TypeWriter)object;
-		return getString("_UI_TypeWriter_type") + " " + typeWriter.getId();
+		return getString("_UI_TypeWriter_type") + " " + typeWriter.getId(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

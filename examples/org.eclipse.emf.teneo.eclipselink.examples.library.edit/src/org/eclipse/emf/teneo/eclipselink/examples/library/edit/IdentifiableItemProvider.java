@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdentifiableItemProvider.java,v 1.2 2009/01/27 22:05:25 seberle Exp $
+ * $Id: IdentifiableItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -81,8 +81,8 @@ public class IdentifiableItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Identifiable_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_id_feature", "_UI_Identifiable_type"),
+				 getString("_UI_Identifiable_id_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_id_feature", "_UI_Identifiable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.IDENTIFIABLE__ID,
 				 true,
 				 false,
@@ -103,8 +103,8 @@ public class IdentifiableItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Identifiable_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_version_feature", "_UI_Identifiable_type"),
+				 getString("_UI_Identifiable_version_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_version_feature", "_UI_Identifiable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.IDENTIFIABLE__VERSION,
 				 true,
 				 false,
@@ -122,7 +122,7 @@ public class IdentifiableItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Identifiable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Identifiable")); //$NON-NLS-1$
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class IdentifiableItemProvider
 	@Override
 	public String getText(Object object) {
 		Identifiable identifiable = (Identifiable)object;
-		return getString("_UI_Identifiable_type") + " " + identifiable.getId();
+		return getString("_UI_Identifiable_type") + " " + identifiable.getId(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

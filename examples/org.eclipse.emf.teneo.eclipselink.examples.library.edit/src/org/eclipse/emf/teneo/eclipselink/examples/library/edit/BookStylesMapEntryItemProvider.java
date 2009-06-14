@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookStylesMapEntryItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: BookStylesMapEntryItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -78,8 +78,8 @@ public class BookStylesMapEntryItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_BookStylesMapEntry_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BookStylesMapEntry_key_feature", "_UI_BookStylesMapEntry_type"),
+				 getString("_UI_BookStylesMapEntry_key_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_BookStylesMapEntry_key_feature", "_UI_BookStylesMapEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK_STYLES_MAP_ENTRY__KEY,
 				 true,
 				 false,
@@ -100,8 +100,8 @@ public class BookStylesMapEntryItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_BookStylesMapEntry_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BookStylesMapEntry_value_feature", "_UI_BookStylesMapEntry_type"),
+				 getString("_UI_BookStylesMapEntry_value_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_BookStylesMapEntry_value_feature", "_UI_BookStylesMapEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK_STYLES_MAP_ENTRY__VALUE,
 				 true,
 				 false,
@@ -119,7 +119,7 @@ public class BookStylesMapEntryItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/BookStylesMapEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BookStylesMapEntry")); //$NON-NLS-1$
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class BookStylesMapEntryItemProvider
 	@Override
 	public String getText(Object object) {
 		Map.Entry<?, ?> bookStylesMapEntry = (Map.Entry<?, ?>)object;
-		return "" + bookStylesMapEntry.getKey() + " -> " + bookStylesMapEntry.getValue();
+		return "" + bookStylesMapEntry.getKey() + " -> " + bookStylesMapEntry.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

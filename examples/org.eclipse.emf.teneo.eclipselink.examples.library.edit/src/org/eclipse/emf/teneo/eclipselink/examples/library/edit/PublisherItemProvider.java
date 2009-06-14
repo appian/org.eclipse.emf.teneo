@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PublisherItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: PublisherItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -78,8 +78,8 @@ public class PublisherItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Publisher_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Publisher_name_feature", "_UI_Publisher_type"),
+				 getString("_UI_Publisher_name_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Publisher_name_feature", "_UI_Publisher_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.PUBLISHER__NAME,
 				 true,
 				 false,
@@ -100,8 +100,8 @@ public class PublisherItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Publisher_writers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Publisher_writers_feature", "_UI_Publisher_type"),
+				 getString("_UI_Publisher_writers_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Publisher_writers_feature", "_UI_Publisher_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.PUBLISHER__WRITERS,
 				 true,
 				 false,
@@ -119,7 +119,7 @@ public class PublisherItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Publisher"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Publisher")); //$NON-NLS-1$
 	}
 
 	/**
@@ -132,8 +132,8 @@ public class PublisherItemProvider
 	public String getText(Object object) {
 		String label = ((Publisher)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Publisher_type") :
-			getString("_UI_Publisher_type") + " " + label;
+			getString("_UI_Publisher_type") : //$NON-NLS-1$
+			getString("_UI_Publisher_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

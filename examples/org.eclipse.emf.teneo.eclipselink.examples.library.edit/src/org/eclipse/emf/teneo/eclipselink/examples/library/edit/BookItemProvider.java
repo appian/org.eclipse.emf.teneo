@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookItemProvider.java,v 1.3 2009/01/27 22:05:25 seberle Exp $
+ * $Id: BookItemProvider.java,v 1.4 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -84,8 +84,8 @@ public class BookItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Book_title_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Book_title_feature", "_UI_Book_type"),
+				 getString("_UI_Book_title_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Book_title_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK__TITLE,
 				 true,
 				 false,
@@ -106,8 +106,8 @@ public class BookItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Book_pages_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Book_pages_feature", "_UI_Book_type"),
+				 getString("_UI_Book_pages_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Book_pages_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK__PAGES,
 				 true,
 				 false,
@@ -128,8 +128,8 @@ public class BookItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Book_category_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Book_category_feature", "_UI_Book_type"),
+				 getString("_UI_Book_category_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Book_category_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK__CATEGORY,
 				 true,
 				 false,
@@ -150,8 +150,8 @@ public class BookItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Book_author_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Book_author_feature", "_UI_Book_type"),
+				 getString("_UI_Book_author_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Book_author_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK__AUTHOR,
 				 true,
 				 false,
@@ -172,8 +172,8 @@ public class BookItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Book_translator_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Book_translator_feature", "_UI_Book_type"),
+				 getString("_UI_Book_translator_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Book_translator_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.BOOK__TRANSLATOR,
 				 true,
 				 false,
@@ -222,7 +222,7 @@ public class BookItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Book"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Book")); //$NON-NLS-1$
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class BookItemProvider
 	@Override
 	public String getText(Object object) {
 		Book book = (Book)object;
-		return getString("_UI_Book_type") + " " + book.getId();
+		return getString("_UI_Book_type") + " " + book.getId(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

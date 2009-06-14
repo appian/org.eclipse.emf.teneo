@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForumItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: ForumItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.forum.edit;
 
@@ -86,8 +86,8 @@ public class ForumItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Forum_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Forum_name_feature", "_UI_Forum_type"),
+				 getString("_UI_Forum_name_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Forum_name_feature", "_UI_Forum_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 ForumPackage.Literals.FORUM__NAME,
 				 true,
 				 false,
@@ -108,8 +108,8 @@ public class ForumItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Forum_ratedAuthors_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Forum_ratedAuthors_feature", "_UI_Forum_type"),
+				 getString("_UI_Forum_ratedAuthors_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Forum_ratedAuthors_feature", "_UI_Forum_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 ForumPackage.Literals.FORUM__RATED_AUTHORS,
 				 true,
 				 false,
@@ -130,8 +130,8 @@ public class ForumItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Forum_featuredBooks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Forum_featuredBooks_feature", "_UI_Forum_type"),
+				 getString("_UI_Forum_featuredBooks_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Forum_featuredBooks_feature", "_UI_Forum_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 ForumPackage.Literals.FORUM__FEATURED_BOOKS,
 				 true,
 				 false,
@@ -180,7 +180,7 @@ public class ForumItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Forum"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Forum")); //$NON-NLS-1$
 	}
 
 	/**
@@ -193,8 +193,8 @@ public class ForumItemProvider
 	public String getText(Object object) {
 		String label = ((Forum)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Forum_type") :
-			getString("_UI_Forum_type") + " " + label;
+			getString("_UI_Forum_type") : //$NON-NLS-1$
+			getString("_UI_Forum_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

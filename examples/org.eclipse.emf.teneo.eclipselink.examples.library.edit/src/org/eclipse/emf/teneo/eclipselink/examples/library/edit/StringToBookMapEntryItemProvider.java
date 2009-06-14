@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: StringToBookMapEntryItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: StringToBookMapEntryItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -80,8 +80,8 @@ public class StringToBookMapEntryItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StringToBookMapEntry_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StringToBookMapEntry_key_feature", "_UI_StringToBookMapEntry_type"),
+				 getString("_UI_StringToBookMapEntry_key_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StringToBookMapEntry_key_feature", "_UI_StringToBookMapEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.STRING_TO_BOOK_MAP_ENTRY__KEY,
 				 true,
 				 false,
@@ -129,7 +129,7 @@ public class StringToBookMapEntryItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StringToBookMapEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StringToBookMapEntry")); //$NON-NLS-1$
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class StringToBookMapEntryItemProvider
 	@Override
 	public String getText(Object object) {
 		Map.Entry<?, ?> stringToBookMapEntry = (Map.Entry<?, ?>)object;
-		return "" + stringToBookMapEntry.getKey() + " -> " + stringToBookMapEntry.getValue();
+		return "" + stringToBookMapEntry.getKey() + " -> " + stringToBookMapEntry.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

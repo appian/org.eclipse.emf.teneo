@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TranslatorItemProvider.java,v 1.2 2009/01/21 21:34:02 seberle Exp $
+ * $Id: TranslatorItemProvider.java,v 1.3 2009/06/14 21:00:39 seberle Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.edit;
 
@@ -81,8 +81,8 @@ public class TranslatorItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Translator_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Translator_name_feature", "_UI_Translator_type"),
+				 getString("_UI_Translator_name_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Translator_name_feature", "_UI_Translator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.TRANSLATOR__NAME,
 				 true,
 				 false,
@@ -103,8 +103,8 @@ public class TranslatorItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Translator_location_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Translator_location_feature", "_UI_Translator_type"),
+				 getString("_UI_Translator_location_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Translator_location_feature", "_UI_Translator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 LibraryPackage.Literals.TRANSLATOR__LOCATION,
 				 true,
 				 false,
@@ -152,7 +152,7 @@ public class TranslatorItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Translator"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Translator")); //$NON-NLS-1$
 	}
 
 	/**
@@ -165,8 +165,8 @@ public class TranslatorItemProvider
 	public String getText(Object object) {
 		String label = ((Translator)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Translator_type") :
-			getString("_UI_Translator_type") + " " + label;
+			getString("_UI_Translator_type") : //$NON-NLS-1$
+			getString("_UI_Translator_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
