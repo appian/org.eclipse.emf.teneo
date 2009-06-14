@@ -44,7 +44,7 @@ public class BasicEclipseLinkTest extends TestCase {
 		EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(
 				TEST_PERSISTENCE_UNIT_NAME, properties);
 
-		// create entity manager and begin transaction
+		// create entity manager
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		// destroy library model in database and memory
