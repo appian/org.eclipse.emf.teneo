@@ -19,8 +19,9 @@ public class AllTests {
 
 		TestSuite suite = new TestSuite("TestSuite for EclipseLinkResourceImpl");
 		// $JUnit-BEGIN$
-		suite.addTestSuite(EclipseLinkResourceTest.class);
 		suite.addTestSuite(EclipseLinkAndXMIResourceTest.class);
+		suite.addTestSuite(CreateSampleLibrariesWithEclipseLinkResourceTest.class);
+		suite.addTestSuite(EclipseLinkResourceTest.class);
 		// $JUnit-END$
 		return suite;
 	}
