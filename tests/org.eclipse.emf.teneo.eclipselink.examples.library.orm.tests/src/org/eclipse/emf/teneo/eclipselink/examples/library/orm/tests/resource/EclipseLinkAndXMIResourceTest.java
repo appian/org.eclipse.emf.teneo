@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEn
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
-public class EclipseLinkAndXMIResourceTest extends BasicEclipseLinkTest {
+public class EclipseLinkAndXMIResourceTest extends AbstractEclipseLinkTest {
 
 	private IProject testProject;
 	private URI libraryURI, forumURI;

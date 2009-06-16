@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
-public class CreateSampleLibrariesWithEclipseLinkResourceTest extends BasicEclipseLinkTest {
+public class CreateSampleLibrariesWithEclipseLinkResourceTest extends AbstractEclipseLinkTest {
 
 	private URI uri;
 	private Resource resource;

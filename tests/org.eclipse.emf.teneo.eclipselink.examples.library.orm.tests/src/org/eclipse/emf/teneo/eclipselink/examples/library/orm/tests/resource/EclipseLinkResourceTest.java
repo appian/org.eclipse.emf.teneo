@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
-public class EclipseLinkResourceTest extends BasicEclipseLinkTest {
+public class EclipseLinkResourceTest extends AbstractEclipseLinkTest {
 
 	private URI uri;
 	private Resource resource1, resource2;

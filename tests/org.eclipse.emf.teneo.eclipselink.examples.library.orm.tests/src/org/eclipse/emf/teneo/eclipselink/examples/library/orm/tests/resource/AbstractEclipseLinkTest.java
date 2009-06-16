@@ -21,7 +21,7 @@ import junit.framework.TestCase;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
 
-public abstract class BasicEclipseLinkTest extends TestCase {
+public abstract class AbstractEclipseLinkTest extends TestCase {
 
 	protected static final String TEST_PERSISTENCE_UNIT_NAME = "library";
 
