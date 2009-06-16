@@ -68,8 +68,8 @@ public class TestModelFactory {
 			// delete library model from database; delete does not cascade so order is
 			// important
 			entityManager.createQuery("delete from Publisher o").executeUpdate();
-			entityManager.createQuery("delete from StringToBookMapEntryImpl o").executeUpdate();
-			entityManager.createQuery("delete from BookStylesMapEntryImpl o").executeUpdate();
+			entityManager.createQuery("delete from StringToBookMapEntry o").executeUpdate();
+			entityManager.createQuery("delete from BookStylesMapEntry o").executeUpdate();
 			entityManager.createQuery("delete from Cover o").executeUpdate();
 			entityManager.createQuery("delete from Book o").executeUpdate();
 			entityManager.createQuery("delete from Translator o").executeUpdate();
