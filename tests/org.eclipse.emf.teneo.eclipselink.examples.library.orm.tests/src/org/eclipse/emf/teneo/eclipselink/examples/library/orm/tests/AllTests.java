@@ -40,6 +40,9 @@ public class AllTests {
 		suite.addTestSuite(PublisherWriterTest.class);
 		suite.addTestSuite(EContainerReferenceTest.class);
 		suite.addTestSuite(BookStylesTest.class);
+
+		suite.addTest(org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests.resource.AllTests.suite());
+
 		// $JUnit-END$
 		return suite;
 	}
