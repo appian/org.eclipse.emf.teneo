@@ -3,7 +3,7 @@ package org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.emf.teneo.eclipselink.common.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.eclipse.emf.teneo.eclipselink.common.ui.internal.messages.messages"; //$NON-NLS-1$
 	public static String button_fromPersistenceUnit;
 	public static String button_fromUserPreferences;
 	public static String error_databaseContainsNo$0Objects;
