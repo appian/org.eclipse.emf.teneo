@@ -46,7 +46,7 @@ public class EclipseLinkURIUtil {
 	 *            has either to be left at its default <code>sesssions.xml</code> or must be specified using
 	 *            {@link org.eclipse.emf.teneo.eclipselink.common.resource.EclipseLinkResource.OPTION_SESSIONS_CONFIGURATION_FILE_NAME
 	 *            OPTION_SESSIONS_CONFIGURATION_FILE_NAME}.
-	 * @param contentsQueryAlias
+	 * @param contentsQuery
 	 *            the alias for a contents query. Must not be null nor empty. It refers to a
 	 *            {@link org.eclipse.persistence.queries.ReadAllQuery ReadAllQuery} instance which has been made
 	 *            available through the {@link EclipseLinkSettingsRegistry}. If the alias is a qualified Java class name
@@ -55,11 +55,11 @@ public class EclipseLinkURIUtil {
 	 *            given class will be created on the fly and added to the {@link EclipseLinkSettingsRegistry}.
 	 * @return the newly created EclipseLink {@link org.eclipse.emf.common.util.URI URI} instance.
 	 */
-	public static URI createEclipseLinkURI(String persistenceUnitName, String contentsQueryAlias) {
+	public static URI createEclipseLinkURI(String persistenceUnitName, String contentsQuery) {
 		Assert.isLegal(persistenceUnitName != null && persistenceUnitName.trim().length() > 0);
-		Assert.isLegal(contentsQueryAlias != null && contentsQueryAlias.trim().length() > 0);
+		Assert.isLegal(contentsQuery != null && contentsQuery.trim().length() > 0);
 
-		String result = URI_SCHEME_ECLIPSELINK + ":///" + persistenceUnitName + "?" + contentsQueryAlias; //$NON-NLS-1$ //$NON-NLS-2$
+		String result = URI_SCHEME_ECLIPSELINK + ":///" + persistenceUnitName + "?" + contentsQuery; //$NON-NLS-1$ //$NON-NLS-2$
 		return URI.createURI(result);
 	}
 

@@ -199,7 +199,7 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	 *            has either to be left at its default <code>sesssions.xml</code> or must be specified using
 	 *            {@link org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResource.OPTION_SESSIONS_CONFIGURATION_FILE_NAME
 	 *            OPTION_SESSIONS_CONFIGURATION_FILE_NAME}.
-	 * @param contentsQueryAlias
+	 * @param contentsQuery
 	 *            the alias for a contents query. Must not be null nor empty. It refers to a
 	 *            {@link org.eclipse.persistence.queries.ReadAllQuery ReadAllQuery} instance which has been made
 	 *            available through the {@link EclipseLinkSettingsRegistry}. If the alias is a qualified Java class name
@@ -208,11 +208,11 @@ public class EclipseLinkResourceImpl extends ResourceImpl implements EclipseLink
 	 *            given class will be created on the fly and added to the {@link EclipseLinkSettingsRegistry}.
 	 * @return the newly created {@link EclipseLinkResourceImpl} instance.
 	 */
-	public EclipseLinkResourceImpl(String persistenceUnitName, String contentsQueryAlias) {
-		uri = EclipseLinkURIUtil.createEclipseLinkURI(persistenceUnitName, contentsQueryAlias);
+	public EclipseLinkResourceImpl(String persistenceUnitName, String contentsQuery) {
+		uri = EclipseLinkURIUtil.createEclipseLinkURI(persistenceUnitName, contentsQuery);
 
 		this.persistenceUnitName = persistenceUnitName;
-		contentsQuery = contentsQueryAlias;
+		this.contentsQuery = contentsQuery;
 
 		initDefaultOptions();
 	}
