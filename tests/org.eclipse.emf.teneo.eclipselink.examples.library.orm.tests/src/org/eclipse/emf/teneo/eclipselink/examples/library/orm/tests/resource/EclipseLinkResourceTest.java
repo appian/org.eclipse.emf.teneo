@@ -52,7 +52,7 @@ public class EclipseLinkResourceTest extends AbstractEclipseLinkTest {
 
 		// save library model instance in database
 		ResourceSet resourceSet1 = new ResourceSetImpl();
-		resourceSet1.getLoadOptions().putAll(getTestPersistenceUnitProperties());
+		resourceSet1.getLoadOptions().putAll(getTestPersistenceUnitProperties(this.getClass().getClassLoader()));
 		resource1 = resourceSet1.createResource(uri);
 
 		assertTrue(resource1 instanceof EclipseLinkResourceImpl);
@@ -69,7 +69,7 @@ public class EclipseLinkResourceTest extends AbstractEclipseLinkTest {
 
 		// load second library model instance from database
 		ResourceSet resourceSet2 = new ResourceSetImpl();
-		resourceSet2.getLoadOptions().putAll(getTestPersistenceUnitProperties());
+		resourceSet2.getLoadOptions().putAll(getTestPersistenceUnitProperties(this.getClass().getClassLoader()));
 		resource2 = resourceSet2.getResource(uri, true);
 
 		assertTrue(resource2 instanceof EclipseLinkResourceImpl);

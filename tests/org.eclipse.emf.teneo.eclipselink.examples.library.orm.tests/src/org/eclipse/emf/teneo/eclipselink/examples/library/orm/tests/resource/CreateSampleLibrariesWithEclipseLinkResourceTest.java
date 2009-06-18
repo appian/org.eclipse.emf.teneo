@@ -12,8 +12,12 @@ package org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests.resource;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
+
+import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -21,25 +25,29 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryFactory;
+import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
-public class CreateSampleLibrariesWithEclipseLinkResourceTest extends AbstractEclipseLinkTest {
+public class CreateSampleLibrariesWithEclipseLinkResourceTest extends TestCase {
 
 	private URI uri;
 	private Resource resource;
-	private Library library1, library2, library3;
+	private Library libraryEclipseCon, libraryIBM, libraryOracle;
 
-	public void testEclipseLinkResource() throws IOException {
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
 
 		// create and populate first library model instance
-		library1 = LibraryFactory.eINSTANCE.createLibrary();
-		library1.setName("EclipseCon Library");
+		libraryEclipseCon = LibraryFactory.eINSTANCE.createLibrary();
+		libraryEclipseCon.setName("EclipseCon Library");
 
 		Writer writer1 = LibraryFactory.eINSTANCE.createWriter();
 		writer1.setName("The True Eclipse Expert");
-		library1.getWriters().add(writer1);
+		libraryEclipseCon.getWriters().add(writer1);
 
 		Address address1 = LibraryFactory.eINSTANCE.createAddress();
 		address1.setTown("Sin City");
@@ -47,7 +55,7 @@ public class CreateSampleLibrariesWithEclipseLinkResourceTest extends AbstractEc
 
 		Book book1 = LibraryFactory.eINSTANCE.createBook();
 		book1.setTitle("Eclipse Tips & Tricks");
-		library1.getBooks().put(book1.getTitle(), book1);
+		libraryEclipseCon.getBooks().put(book1.getTitle(), book1);
 
 		Translator translator1 = LibraryFactory.eINSTANCE.createTranslator();
 		translator1.setName("Mr. Babelfish");
@@ -59,27 +67,45 @@ public class CreateSampleLibrariesWithEclipseLinkResourceTest extends AbstractEc
 		translator1.setAddress(address2);
 
 		// create and populate second library model instance
-		library2 = LibraryFactory.eINSTANCE.createLibrary();
-		library2.setName("IBM Library");
+		libraryIBM = LibraryFactory.eINSTANCE.createLibrary();
+		libraryIBM.setName("IBM Library");
 
 		// create and populate third library model instance
-		library3 = LibraryFactory.eINSTANCE.createLibrary();
-		library3.setName("ORACLE Library");
+		libraryOracle = LibraryFactory.eINSTANCE.createLibrary();
+		libraryOracle.setName("ORACLE Library");
 
 		// create EclipseLink URI for saving/loading all library models in/from
 		// database
-		uri = EclipseLinkURIUtil.createEclipseLinkURI(TEST_PERSISTENCE_UNIT_NAME, Library.class.getName());
+		String query = EclipseLinkURIUtil.createContentsInstancesOfQuery(LibraryPackage.eINSTANCE.getLibrary());
+		uri = EclipseLinkURIUtil.createEclipseLinkURI(AbstractEclipseLinkTest.TEST_PERSISTENCE_UNIT_NAME, query);
 
 		// save all library model instances in database
 		ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getLoadOptions().putAll(getTestPersistenceUnitProperties());
+		resourceSet.getLoadOptions().putAll(
+				AbstractEclipseLinkTest.getTestPersistenceUnitProperties(this.getClass().getClassLoader()));
 		resource = resourceSet.createResource(uri);
-		resource.getContents().add(library1);
-		resource.getContents().add(library2);
-		resource.getContents().add(library3);
+		resource.getContents().add(libraryEclipseCon);
+		resource.getContents().add(libraryIBM);
+		resource.getContents().add(libraryOracle);
 		resource.save(Collections.EMPTY_MAP);
 
 		// unload resource of library model instances
 		resource.unload();
+	}
+
+	public void testEclipseLinkResourceContentPresent() throws IOException {
+		// load second library model instance from database
+		ResourceSet resourceSet2 = new ResourceSetImpl();
+		resourceSet2.getLoadOptions().putAll(
+				AbstractEclipseLinkTest.getTestPersistenceUnitProperties(this.getClass().getClassLoader()));
+		Resource resource2 = resourceSet2.getResource(uri, true);
+
+		assertTrue(resource2 instanceof EclipseLinkResourceImpl);
+		assertTrue(resource2.isLoaded());
+
+		// analyse second library model instance
+		List<EObject> contents2 = resource2.getContents();
+		assertNotNull(contents2);
+		assertEquals(3, contents2.size());
 	}
 }

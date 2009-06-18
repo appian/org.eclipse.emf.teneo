@@ -23,16 +23,16 @@ import org.eclipse.persistence.jpa.osgi.PersistenceProvider;
 
 public abstract class AbstractEclipseLinkTest extends TestCase {
 
-	protected static final String TEST_PERSISTENCE_UNIT_NAME = "library";
+	public static final String TEST_PERSISTENCE_UNIT_NAME = "library";
 
-	protected TestModelFactory testLibraryFactory = new TestModelFactory();
-
-	protected Map<String, Object> getTestPersistenceUnitProperties() {
+	public static Map<String, Object> getTestPersistenceUnitProperties(ClassLoader classloader) {
 
 		HashMap<String, Object> options = new HashMap<String, Object>();
-		options.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
+		options.put(PersistenceUnitProperties.CLASSLOADER, classloader);
 		return options;
 	}
+
+	protected TestModelFactory testLibraryFactory = new TestModelFactory();
 
 	@Override
 	protected void tearDown() throws Exception {
@@ -40,7 +40,7 @@ public abstract class AbstractEclipseLinkTest extends TestCase {
 		super.tearDown();
 
 		// create entity manager factory for given persistence unit name
-		Map<String, Object> properties = getTestPersistenceUnitProperties();
+		Map<String, Object> properties = getTestPersistenceUnitProperties(this.getClass().getClassLoader());
 		EntityManagerFactory entityManagerFactory = new PersistenceProvider().createEntityManagerFactory(
 				TEST_PERSISTENCE_UNIT_NAME, properties);
 
