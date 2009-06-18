@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2008 Oracle and Geensys.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     Oracle and Geensys - initial API and implementation
- *******************************************************************************/
 package org.eclipse.emf.teneo.eclipselink.ui.wizards;
 
 import org.eclipse.emf.common.util.URI;
@@ -18,8 +8,17 @@ import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.BasicModelAndDa
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 import org.eclipse.emf.teneo.eclipselink.ui.wizards.pages.EclipseLinkModelAndDatabaseAccessParametersPage;
 import org.eclipse.emf.teneo.eclipselink.ui.wizards.pages.EclipseLinkRootObjectAndModelEditorPage;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IImportWizard;
+import org.eclipse.ui.IWorkbench;
 
-public class EclipseLinkLoadModelFromDatabaseWizard extends AbstractLoadModelFromDatabaseWizard {
+public class EclipseLinkModelFromDatabaseImportWizard extends AbstractLoadModelFromDatabaseWizard implements
+		IImportWizard {
+
+	@Override
+	public void init(IWorkbench workbench, IStructuredSelection selection) {
+		// nothing to do
+	}
 
 	@Override
 	protected BasicModelAndDatabaseAccessParametersPage createModelAndDatabaseAccessParametersPage(String pageName) {
