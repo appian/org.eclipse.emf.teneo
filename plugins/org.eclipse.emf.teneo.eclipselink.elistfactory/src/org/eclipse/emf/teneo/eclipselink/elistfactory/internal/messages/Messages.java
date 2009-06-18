@@ -3,7 +3,7 @@ package org.eclipse.emf.teneo.eclipselink.elistfactory.internal.messages;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.emf.teneo.eclipselink.elistfactory.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.eclipse.emf.teneo.eclipselink.elistfactory.internal.messages.messages"; //$NON-NLS-1$
 	public static String assert_couldNotFindEClassifier$0InEPackage$1;
 	public static String assert_couldNotFindEPackageForNamespaceURI$0;
 	public static String assert_couldNotFindEPackageInterfaceOfEPackageClass$0;
