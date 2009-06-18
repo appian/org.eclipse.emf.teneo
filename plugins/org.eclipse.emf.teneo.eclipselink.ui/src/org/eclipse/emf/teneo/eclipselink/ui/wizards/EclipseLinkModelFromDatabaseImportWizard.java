@@ -15,7 +15,6 @@ import org.eclipse.ui.IWorkbench;
 public class EclipseLinkModelFromDatabaseImportWizard extends AbstractLoadModelFromDatabaseWizard implements
 		IImportWizard {
 
-	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		// nothing to do
 	}
