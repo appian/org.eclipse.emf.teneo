@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackage.java,v 1.14 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbannotationPackage.java,v 1.15 2009/06/27 09:19:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -1307,13 +1307,187 @@ public interface HbannotationPackage extends EPackage {
 	int BATCH_SIZE_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyImpl <em>Any</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getAny()
+	 * @generated
+	 */
+	int ANY = 29;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Meta Def</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY__META_DEF = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Meta Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY__META_COLUMN = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Fetch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY__FETCH = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Optional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY__OPTIONAL = HB_ANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Any</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MetaValueImpl <em>Meta Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.MetaValueImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getMetaValue()
+	 * @generated
+	 */
+	int META_VALUE = 30;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_VALUE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Target Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_VALUE__TARGET_ENTITY = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_VALUE__VALUE = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Meta Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_VALUE_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyMetaDefImpl <em>Any Meta Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyMetaDefImpl
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getAnyMetaDef()
+	 * @generated
+	 */
+	int ANY_META_DEF = 31;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF__NAME = HB_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Meta Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF__META_TYPE = HB_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Id Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF__ID_TYPE = HB_ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Meta Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF__META_VALUES = HB_ANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Any Meta Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF_FEATURE_COUNT = HB_ANNOTATION_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getCacheConcurrencyStrategy()
 	 * @generated
 	 */
-	int CACHE_CONCURRENCY_STRATEGY = 29;
+	int CACHE_CONCURRENCY_STRATEGY = 32;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbFetchType <em>Hb Fetch Type</em>}' enum.
@@ -1322,7 +1496,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbFetchType()
 	 * @generated
 	 */
-	int HB_FETCH_TYPE = 30;
+	int HB_FETCH_TYPE = 33;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction <em>On Delete Action</em>}' enum.
@@ -1331,7 +1505,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOnDeleteAction()
 	 * @generated
 	 */
-	int ON_DELETE_ACTION = 31;
+	int ON_DELETE_ACTION = 34;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime <em>Generation Time</em>}' enum.
@@ -1341,7 +1515,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getGenerationTime()
 	 * @generated
 	 */
-	int GENERATION_TIME = 32;
+	int GENERATION_TIME = 35;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction <em>Not Found Action</em>}' enum.
@@ -1351,7 +1525,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getNotFoundAction()
 	 * @generated
 	 */
-	int NOT_FOUND_ACTION = 33;
+	int NOT_FOUND_ACTION = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType <em>Optimistic Lock Type</em>}' enum.
@@ -1361,7 +1535,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getOptimisticLockType()
 	 * @generated
 	 */
-	int OPTIMISTIC_LOCK_TYPE = 34;
+	int OPTIMISTIC_LOCK_TYPE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.PolymorphismType <em>Polymorphism Type</em>}' enum.
@@ -1371,7 +1545,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getPolymorphismType()
 	 * @generated
 	 */
-	int POLYMORPHISM_TYPE = 35;
+	int POLYMORPHISM_TYPE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType <em>Hb Cascade Type</em>}' enum.
@@ -1381,7 +1555,7 @@ public interface HbannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getHbCascadeType()
 	 * @generated
 	 */
-	int HB_CASCADE_TYPE = 36;
+	int HB_CASCADE_TYPE = 39;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.HbAnnotation <em>Hb Annotation</em>}'.
@@ -2185,6 +2359,146 @@ public interface HbannotationPackage extends EPackage {
 	EAttribute getBatchSize_Size();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Any</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any
+	 * @generated
+	 */
+	EClass getAny();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any#getMetaDef <em>Meta Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meta Def</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any#getMetaDef()
+	 * @see #getAny()
+	 * @generated
+	 */
+	EAttribute getAny_MetaDef();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any#getMetaColumn <em>Meta Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Meta Column</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any#getMetaColumn()
+	 * @see #getAny()
+	 * @generated
+	 */
+	EReference getAny_MetaColumn();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any#getFetch <em>Fetch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fetch</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any#getFetch()
+	 * @see #getAny()
+	 * @generated
+	 */
+	EAttribute getAny_Fetch();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any#isOptional <em>Optional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optional</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any#isOptional()
+	 * @see #getAny()
+	 * @generated
+	 */
+	EAttribute getAny_Optional();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue <em>Meta Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Meta Value</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue
+	 * @generated
+	 */
+	EClass getMetaValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue#getTargetEntity <em>Target Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Entity</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue#getTargetEntity()
+	 * @see #getMetaValue()
+	 * @generated
+	 */
+	EAttribute getMetaValue_TargetEntity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue#getValue()
+	 * @see #getMetaValue()
+	 * @generated
+	 */
+	EAttribute getMetaValue_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef <em>Any Meta Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Any Meta Def</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef
+	 * @generated
+	 */
+	EClass getAnyMetaDef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getName()
+	 * @see #getAnyMetaDef()
+	 * @generated
+	 */
+	EAttribute getAnyMetaDef_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getMetaType <em>Meta Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meta Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getMetaType()
+	 * @see #getAnyMetaDef()
+	 * @generated
+	 */
+	EAttribute getAnyMetaDef_MetaType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getIdType <em>Id Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getIdType()
+	 * @see #getAnyMetaDef()
+	 * @generated
+	 */
+	EAttribute getAnyMetaDef_IdType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getMetaValues <em>Meta Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Meta Values</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef#getMetaValues()
+	 * @see #getAnyMetaDef()
+	 * @generated
+	 */
+	EReference getAnyMetaDef_MetaValues();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Cache Concurrency Strategy</em>'.
@@ -2952,6 +3266,116 @@ public interface HbannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BATCH_SIZE__SIZE = eINSTANCE.getBatchSize_Size();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyImpl <em>Any</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getAny()
+		 * @generated
+		 */
+		EClass ANY = eINSTANCE.getAny();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Def</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANY__META_DEF = eINSTANCE.getAny_MetaDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANY__META_COLUMN = eINSTANCE.getAny_MetaColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Fetch</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANY__FETCH = eINSTANCE.getAny_Fetch();
+
+		/**
+		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANY__OPTIONAL = eINSTANCE.getAny_Optional();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.MetaValueImpl <em>Meta Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.MetaValueImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getMetaValue()
+		 * @generated
+		 */
+		EClass META_VALUE = eINSTANCE.getMetaValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Entity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute META_VALUE__TARGET_ENTITY = eINSTANCE.getMetaValue_TargetEntity();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute META_VALUE__VALUE = eINSTANCE.getMetaValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyMetaDefImpl <em>Any Meta Def</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.AnyMetaDefImpl
+		 * @see org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl#getAnyMetaDef()
+		 * @generated
+		 */
+		EClass ANY_META_DEF = eINSTANCE.getAnyMetaDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANY_META_DEF__NAME = eINSTANCE.getAnyMetaDef_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANY_META_DEF__META_TYPE = eINSTANCE.getAnyMetaDef_MetaType();
+
+		/**
+		 * The meta object literal for the '<em><b>Id Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANY_META_DEF__ID_TYPE = eINSTANCE.getAnyMetaDef_IdType();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Values</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANY_META_DEF__META_VALUES = eINSTANCE.getAnyMetaDef_MetaValues();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy <em>Cache Concurrency Strategy</em>}' enum.

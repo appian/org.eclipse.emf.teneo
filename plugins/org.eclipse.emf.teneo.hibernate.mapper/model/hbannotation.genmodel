@@ -162,6 +162,22 @@
     <genClasses ecoreClass="hbannotation.ecore#//BatchSize">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//BatchSize/size"/>
     </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//Any">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Any/metaDef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//Any/metaColumn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Any/fetch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//Any/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//MetaValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//MetaValue/targetEntity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//MetaValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="hbannotation.ecore#//AnyMetaDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//AnyMetaDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//AnyMetaDef/metaType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute hbannotation.ecore#//AnyMetaDef/idType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbannotation.ecore#//AnyMetaDef/metaValues"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Hbmodel" basePackage="org.eclipse.emf.teneo.hibernate" disposableProviderFactory="true"
       ecorePackage="hbmodel.ecore#/">

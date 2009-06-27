@@ -8,7 +8,7 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="EPackage">
-		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:choice minOccurs="0" maxOccurs="10">
 			<xsd:element name="filter-def" type="FilterDef"/>
 			<xsd:element name="generic-generator" type="GenericGenerator">
 				<xsd:annotation>
@@ -39,7 +39,7 @@
 		<xsd:attribute name="namespace-uri" type="xsd:anyURI" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="EClass">
-		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:choice minOccurs="0" maxOccurs="29">
 			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="filter-def" type="FilterDef"/>
 			<xsd:element name="association-override" type="AssociationOverride">
@@ -89,7 +89,7 @@
 		<xsd:attribute name="name" type="xsd:token" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="EAttribute">
-		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:choice minOccurs="0" maxOccurs="28">
 			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="attribute-override" type="AttributeOverride">
 				<xsd:annotation>
@@ -142,7 +142,7 @@
 		<xsd:attribute name="name" type="xsd:token" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="EReference">
-		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:choice minOccurs="0" maxOccurs="36">
 			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="association-override" type="AssociationOverride">
 				<xsd:annotation>
@@ -211,7 +211,7 @@
 		<xsd:attribute name="name" type="xsd:token" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="Property">
-		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:choice minOccurs="0" maxOccurs="44">
 			<xsd:element name="filter" type="Filter"/>
 			<xsd:element name="association-override" type="AssociationOverride">
 				<xsd:annotation>
@@ -288,7 +288,7 @@
 		<xsd:attribute name="name" type="xsd:token" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="EDataType">
-		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:choice minOccurs="0" maxOccurs="15">
 			<xsd:element name="basic" type="Basic"/>
 			<xsd:element name="column" type="Column"/>
 			<xsd:element name="enumerated" type="EnumType"/>
@@ -311,6 +311,26 @@
 		</xsd:choice>
 		<xsd:attribute name="name" type="xsd:token" use="required"/>
 	</xsd:complexType>
+<xsd:complexType name="Any">
+	<xsd:sequence>
+		<xsd:element name="meta-column" type="Column"/>
+	</xsd:sequence>
+	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="meta-def" type="xsd:string" use="optional"/>
+	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="AnyMetaDef">
+	<xsd:sequence>
+		<xsd:element name="meta-value" type="MetaValue">
+			<xsd:annotation>
+				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">metaValues</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:sequence>
+	<xsd:attribute name="id-type" type="xsd:string" use="required"/>
+	<xsd:attribute name="meta-type" type="xsd:string" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="Cache">
 	<xsd:attribute name="include" type="xsd:string" use="optional"/>
 	<xsd:attribute name="region" type="xsd:string" use="optional"/>
@@ -334,13 +354,13 @@
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="FilterDef">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="parameter" type="ParamDef">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">parameters</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="default-condition" type="xsd:string" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
@@ -353,13 +373,13 @@
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="GenericGenerator">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="parameter" type="Parameter">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">parameters</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="strategy" type="xsd:string" use="required"/>
 </xsd:complexType>
@@ -401,14 +421,18 @@
 </xsd:complexType>
 <xsd:complexType name="Immutable"/>
 <xsd:complexType name="MapKeyManyToMany">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="join-column" type="JoinColumn">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="MetaValue">
+	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
+	<xsd:attribute name="value" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="NamedQuery">
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
@@ -453,40 +477,40 @@
 	<xsd:attribute name="proxy-class" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="Type">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="parameter" type="Parameter">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">parameters</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="type" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="TypeDef">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="parameter" type="Parameter">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">parameters</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="type-class" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="AssociationOverride">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="join-column" type="JoinColumn">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="AttributeOverride">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="column" type="Column"/>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="Basic">
@@ -581,7 +605,7 @@
 	<xsd:attribute name="updatable" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="JoinTable">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:choice minOccurs="0" maxOccurs="3">
 		<xsd:element name="inverse-join-column" type="JoinColumn">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">inverseJoinColumns</xsd:appinfo>
@@ -604,9 +628,9 @@
 </xsd:complexType>
 <xsd:complexType name="Lob"/>
 <xsd:complexType name="ManyToMany">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType"/>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
 	<xsd:attribute name="indexed" type="xsd:boolean" use="optional"/>
@@ -614,9 +638,9 @@
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="ManyToOne">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType"/>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
@@ -624,9 +648,9 @@
 </xsd:complexType>
 <xsd:complexType name="MappedSuperclass"/>
 <xsd:complexType name="OneToMany">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType"/>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
 	<xsd:attribute name="indexed" type="xsd:boolean" use="optional"/>
@@ -635,9 +659,9 @@
 	<xsd:attribute name="unique" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="OneToOne">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType"/>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
 	<xsd:attribute name="mapped-by" type="xsd:string" use="optional"/>
@@ -657,7 +681,7 @@
 	<xsd:attribute name="referenced-column-name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="SecondaryTable">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:choice minOccurs="0" maxOccurs="2">
 		<xsd:element name="pk-join-column" type="PrimaryKeyJoinColumn">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">pkJoinColumns</xsd:appinfo>
@@ -687,25 +711,25 @@
 	<xsd:attribute name="sequence-name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="Table">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="unique-constraint" type="xsd:string">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">uniqueConstraints</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="schema" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="TableGenerator">
-	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	<xsd:sequence>
 		<xsd:element name="unique-constraint" type="xsd:string">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">uniqueConstraints</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:choice>
+	</xsd:sequence>
 	<xsd:attribute name="allocation-size" type="xsd:int" use="optional"/>
 	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
 	<xsd:attribute name="initial-value" type="xsd:int" use="optional"/>

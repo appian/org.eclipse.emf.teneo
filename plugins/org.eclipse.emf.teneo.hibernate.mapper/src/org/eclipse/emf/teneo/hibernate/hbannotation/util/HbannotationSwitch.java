@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationSwitch.java,v 1.12 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbannotationSwitch.java,v 1.13 2009/06/27 09:19:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -322,6 +322,30 @@ public class HbannotationSwitch<T> {
 				T result = caseBatchSize(batchSize);
 				if (result == null) result = caseHbAnnotation(batchSize);
 				if (result == null) result = casePAnnotation(batchSize);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.ANY: {
+				Any any = (Any)theEObject;
+				T result = caseAny(any);
+				if (result == null) result = caseHbAnnotation(any);
+				if (result == null) result = casePAnnotation(any);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.META_VALUE: {
+				MetaValue metaValue = (MetaValue)theEObject;
+				T result = caseMetaValue(metaValue);
+				if (result == null) result = caseHbAnnotation(metaValue);
+				if (result == null) result = casePAnnotation(metaValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case HbannotationPackage.ANY_META_DEF: {
+				AnyMetaDef anyMetaDef = (AnyMetaDef)theEObject;
+				T result = caseAnyMetaDef(anyMetaDef);
+				if (result == null) result = caseHbAnnotation(anyMetaDef);
+				if (result == null) result = casePAnnotation(anyMetaDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -751,6 +775,51 @@ public class HbannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseBatchSize(BatchSize object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Any</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Any</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAny(Any object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Meta Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Meta Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMetaValue(MetaValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Any Meta Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Any Meta Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnyMetaDef(AnyMetaDef object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.14 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.15 2009/06/27 09:19:01 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
+import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.BatchSize;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CacheConcurrencyStrategy;
@@ -43,6 +45,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
+import org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NotFound;
@@ -254,6 +257,27 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	 * @generated
 	 */
 	private EClass batchSizeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass anyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass metaValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass anyMetaDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1064,6 +1088,123 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAny() {
+		return anyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAny_MetaDef() {
+		return (EAttribute)anyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAny_MetaColumn() {
+		return (EReference)anyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAny_Fetch() {
+		return (EAttribute)anyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAny_Optional() {
+		return (EAttribute)anyEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMetaValue() {
+		return metaValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMetaValue_TargetEntity() {
+		return (EAttribute)metaValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMetaValue_Value() {
+		return (EAttribute)metaValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnyMetaDef() {
+		return anyMetaDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnyMetaDef_Name() {
+		return (EAttribute)anyMetaDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnyMetaDef_MetaType() {
+		return (EAttribute)anyMetaDefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnyMetaDef_IdType() {
+		return (EAttribute)anyMetaDefEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnyMetaDef_MetaValues() {
+		return (EReference)anyMetaDefEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1265,6 +1406,22 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		batchSizeEClass = createEClass(BATCH_SIZE);
 		createEAttribute(batchSizeEClass, BATCH_SIZE__SIZE);
 
+		anyEClass = createEClass(ANY);
+		createEAttribute(anyEClass, ANY__META_DEF);
+		createEReference(anyEClass, ANY__META_COLUMN);
+		createEAttribute(anyEClass, ANY__FETCH);
+		createEAttribute(anyEClass, ANY__OPTIONAL);
+
+		metaValueEClass = createEClass(META_VALUE);
+		createEAttribute(metaValueEClass, META_VALUE__TARGET_ENTITY);
+		createEAttribute(metaValueEClass, META_VALUE__VALUE);
+
+		anyMetaDefEClass = createEClass(ANY_META_DEF);
+		createEAttribute(anyMetaDefEClass, ANY_META_DEF__NAME);
+		createEAttribute(anyMetaDefEClass, ANY_META_DEF__META_TYPE);
+		createEAttribute(anyMetaDefEClass, ANY_META_DEF__ID_TYPE);
+		createEReference(anyMetaDefEClass, ANY_META_DEF__META_VALUES);
+
 		// Create enums
 		cacheConcurrencyStrategyEEnum = createEEnum(CACHE_CONCURRENCY_STRATEGY);
 		hbFetchTypeEEnum = createEEnum(HB_FETCH_TYPE);
@@ -1334,6 +1491,9 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		notFoundEClass.getESuperTypes().add(this.getHbAnnotation());
 		hbEntityEClass.getESuperTypes().add(this.getHbAnnotation());
 		batchSizeEClass.getESuperTypes().add(this.getHbAnnotation());
+		anyEClass.getESuperTypes().add(this.getHbAnnotation());
+		metaValueEClass.getESuperTypes().add(this.getHbAnnotation());
+		anyMetaDefEClass.getESuperTypes().add(this.getHbAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(hbAnnotationEClass, HbAnnotation.class, "HbAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1444,6 +1604,22 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		initEClass(batchSizeEClass, BatchSize.class, "BatchSize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBatchSize_Size(), ecorePackage.getEInt(), "size", null, 1, 1, BatchSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(anyEClass, Any.class, "Any", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAny_MetaDef(), ecorePackage.getEString(), "metaDef", null, 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAny_MetaColumn(), thePannotationPackage.getColumn(), null, "metaColumn", null, 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAny_Fetch(), thePannotationPackage.getFetchType(), "fetch", "EAGER", 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAny_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1, Any.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(metaValueEClass, MetaValue.class, "MetaValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMetaValue_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, MetaValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetaValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, MetaValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(anyMetaDefEClass, AnyMetaDef.class, "AnyMetaDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnyMetaDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyMetaDef_MetaType(), ecorePackage.getEString(), "metaType", null, 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyMetaDef_IdType(), ecorePackage.getEString(), "idType", null, 1, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnyMetaDef_MetaValues(), this.getMetaValue(), null, "metaValues", null, 0, -1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.class, "CacheConcurrencyStrategy");
 		addEEnumLiteral(cacheConcurrencyStrategyEEnum, CacheConcurrencyStrategy.NONE);
@@ -1522,7 +1698,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "1", "http://hibernate.elver.org/"
-		   });																															
+		   });																																	
 	}
 
 	/**
@@ -1538,7 +1714,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "constraints", "CompatibleEModelElementType AnnotationIsSupported"
-		   });																														
+		   });																																
 	}
 
 	/**
@@ -1696,7 +1872,21 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   source, 
 		   new String[] {
 			 "0", "EStructuralFeature"
-		   });	
+		   });			
+		addAnnotation
+		  (anyEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
+		  (anyMetaDefEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature",
+			 "1", "EClass",
+			 "2", "EPackage"
+		   });
 	}
 
 	/**
@@ -1720,7 +1910,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "name", "GenericGenerators",
 			 "packageNS", "http://www.eclipse.org/emf/teneo/2006/HbAnnotation"
-		   });																				
+		   });																						
 	}
 
 	/**
@@ -1762,7 +1952,7 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 		   new String[] {
 			 "0", "EClass",
 			 "1", "EReference"
-		   });
+		   });		
 	}
 
 } // HbannotationPackageImpl

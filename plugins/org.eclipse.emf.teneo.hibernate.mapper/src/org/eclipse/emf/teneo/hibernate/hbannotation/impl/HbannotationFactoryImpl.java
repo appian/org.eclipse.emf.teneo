@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationFactoryImpl.java,v 1.15 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbannotationFactoryImpl.java,v 1.16 2009/06/27 09:19:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -102,6 +102,9 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 			case HbannotationPackage.NOT_FOUND: return createNotFound();
 			case HbannotationPackage.HB_ENTITY: return createHbEntity();
 			case HbannotationPackage.BATCH_SIZE: return createBatchSize();
+			case HbannotationPackage.ANY: return createAny();
+			case HbannotationPackage.META_VALUE: return createMetaValue();
+			case HbannotationPackage.ANY_META_DEF: return createAnyMetaDef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -428,6 +431,36 @@ public class HbannotationFactoryImpl extends EFactoryImpl implements Hbannotatio
 	public BatchSize createBatchSize() {
 		BatchSizeImpl batchSize = new BatchSizeImpl();
 		return batchSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Any createAny() {
+		AnyImpl any = new AnyImpl();
+		return any;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MetaValue createMetaValue() {
+		MetaValueImpl metaValue = new MetaValueImpl();
+		return metaValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnyMetaDef createAnyMetaDef() {
+		AnyMetaDefImpl anyMetaDef = new AnyMetaDefImpl();
+		return anyMetaDef;
 	}
 
 	/**
