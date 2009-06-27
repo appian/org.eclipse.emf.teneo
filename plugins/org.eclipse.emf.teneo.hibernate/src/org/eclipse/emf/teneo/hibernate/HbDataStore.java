@@ -54,9 +54,11 @@ import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateXMLResourceFactory;
+import org.eclipse.emf.teneo.hibernate.tuplizer.EMFEntityNameResolver;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.EntityMode;
+import org.hibernate.EntityNameResolver;
 import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -80,7 +82,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.50 $
+ * @version $Revision: 1.51 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -144,6 +146,8 @@ public abstract class HbDataStore implements DataStore {
 
 	/** the entitynamestrategy is read from the extensionManager */
 	private EntityNameStrategy entityNameStrategy;
+
+	private EMFEntityNameResolver entityNameResolver;
 
 	/**
 	 * @return the dsName
@@ -1152,6 +1156,18 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public Interceptor getInterceptor() {
 		return interceptor;
+	}
+
+	/**
+	 * @return the EntityNameResolver
+	 * @see org.hibernate.EntityNameResolver
+	 */
+	public EntityNameResolver getEntityNameResolver() {
+		if (entityNameResolver == null) {
+			entityNameResolver = getExtensionManager().getExtension(EMFEntityNameResolver.class);
+			entityNameResolver.setQualifyStrategy(getEntityNameStrategy());
+		}
+		return entityNameResolver;
 	}
 
 	/** Returns the persistent class for a certain EObject */
