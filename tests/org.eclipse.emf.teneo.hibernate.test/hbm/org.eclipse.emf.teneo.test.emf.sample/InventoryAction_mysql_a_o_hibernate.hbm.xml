@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">PType</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/inv</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
@@ -42,7 +42,7 @@
 		<meta attribute="eclassName">PDeclaration</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/inv</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>

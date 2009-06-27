@@ -30,7 +30,7 @@
 		<meta attribute="eclassName">CarLink</meta>
 		<meta attribute="epackage">http://www.example.com/car.xsd</meta>
 		<id name="carLinkId" type="java.lang.String">
-			<column not-null="true" unique="true" name="`carlinkid`"/>
+			<column not-null="true" unique="false" name="`carlinkid`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
@@ -68,7 +68,7 @@
 		<meta attribute="eclassName">CarTire</meta>
 		<meta attribute="epackage">http://www.example.com/car.xsd</meta>
 		<id name="name" type="java.lang.String">
-			<column not-null="true" unique="true" name="`name`"/>
+			<column not-null="true" unique="false" name="`name`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
@@ -78,7 +78,7 @@
 		<meta attribute="eclassName">CarType</meta>
 		<meta attribute="epackage">http://www.example.com/car.xsd</meta>
 		<id name="carID" type="java.lang.String">
-			<column not-null="true" unique="true" name="`carid`"/>
+			<column not-null="true" unique="false" name="`carid`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>

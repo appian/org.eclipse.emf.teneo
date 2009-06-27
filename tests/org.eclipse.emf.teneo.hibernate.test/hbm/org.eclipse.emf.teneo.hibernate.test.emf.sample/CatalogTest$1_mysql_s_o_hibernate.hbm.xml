@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">CatalogType</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/catalog</meta>
 		<id name="name" type="java.lang.String">
-			<column not-null="true" unique="true" name="`name`"/>
+			<column not-null="true" unique="false" name="`name`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
@@ -56,7 +56,7 @@
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/catalog</meta>
 		<comment>My product</comment>
 		<id name="code" type="java.lang.String">
-			<column not-null="true" unique="true" name="`code`"/>
+			<column not-null="true" unique="false" name="`code`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
