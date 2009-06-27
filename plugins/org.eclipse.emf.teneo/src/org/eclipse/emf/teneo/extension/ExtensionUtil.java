@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ExtensionUtil.java,v 1.13 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: ExtensionUtil.java,v 1.14 2009/06/27 09:19:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.extension;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
  * Contains simple utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class ExtensionUtil {
@@ -100,7 +100,7 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension(SQLNameStrategy.class, TeneoSQLNameStrategy.class));
 		em.registerExtension(createExtension(XmlPersistenceContentHandler.class, XmlPersistenceContentHandler.class));
 		em.registerExtension(createExtension(XmlElementToEStructuralFeatureMapper.class,
-			XmlElementToEStructuralFeatureMapper.class));
+				XmlElementToEStructuralFeatureMapper.class));
 		em.registerExtension(createExtension(PersistenceOptions.class, PersistenceOptions.class));
 
 		// annotator related
@@ -109,9 +109,9 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension(OneToManyAttributeAnnotator.class, OneToManyAttributeAnnotator.class));
 		em.registerExtension(createExtension(SingleAttributeAnnotator.class, SingleAttributeAnnotator.class));
 		em.registerExtension(createExtension(BidirectionalManyToManyAnnotator.class,
-			BidirectionalManyToManyAnnotator.class));
+				BidirectionalManyToManyAnnotator.class));
 		em.registerExtension(createExtension(UnidirectionalManyToManyAnnotator.class,
-			UnidirectionalManyToManyAnnotator.class));
+				UnidirectionalManyToManyAnnotator.class));
 		em.registerExtension(createExtension(EDataTypeAnnotator.class, EDataTypeAnnotator.class));
 		em.registerExtension(createExtension(OneToManyReferenceAnnotator.class, OneToManyReferenceAnnotator.class));
 		em.registerExtension(createExtension(OneToOneReferenceAnnotator.class, OneToOneReferenceAnnotator.class));
@@ -120,47 +120,49 @@ public class ExtensionUtil {
 		// from the hibernate plugin
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.HbContext", true));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerAccessor",
-			false));
+				false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDAccessor", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDAccessor", false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDPropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDPropertyHandler", false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerPropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerPropertyHandler", false));
 
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.property.EListPropertyHandler",
-			false));
+				false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler", false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryFeatureURIPropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryFeatureURIPropertyHandler", false));
 
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler", false));
 
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryPropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapEntryPropertyHandler", false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapPropertyHandler", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.property.FeatureMapPropertyHandler", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler",
-			false));
+				false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.EMFInterceptor", false));
 
+		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.tuplizer.EMFEntityNameResolver", false));
+
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList",
-			false));
+				false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEMap",
-			false));
+				false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableFeatureMap", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableFeatureMap", false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList", false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.elist.MapHibernatePersistableEMap", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.elist.MapHibernatePersistableEMap", false));
 
 		// hibernate mapper
 		em
-			.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator",
-				false));
+				.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator",
+						false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.MappingContext", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.BasicMapper", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.EmbeddedMapper", false));
@@ -174,9 +176,9 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.OneToManyMapper", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.OneToOneMapper", false));
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.hibernate.mapper.ManyExternalReferenceMapper",
-			false));
+				false));
 		em.registerExtension(createExtension(
-			"org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener", false));
+				"org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener", false));
 
 		// jpox mapping
 		em.registerExtension(createExtension("org.eclipse.emf.teneo.jpox.mapper.association.EmbeddedMapper", false));

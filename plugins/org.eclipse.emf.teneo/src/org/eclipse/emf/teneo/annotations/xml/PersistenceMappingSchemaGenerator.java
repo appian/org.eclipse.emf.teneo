@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.4 2008/06/29 14:49:50 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.5 2009/06/27 09:19:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -103,16 +103,15 @@ public class PersistenceMappingSchemaGenerator {
 		final Document doc = new Document();
 
 		// The root Element
-		final Element root =
-				new Element("xsd:schema").addAttribute("targetNamespace", nameSpace).addAttribute("elementFormDefault",
-					"qualified").addAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema").addAttribute("xmlns",
-					nameSpace);
+		final Element root = new Element("xsd:schema").addAttribute("targetNamespace", nameSpace).addAttribute(
+				"elementFormDefault", "qualified").addAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
+				.addAttribute("xmlns", nameSpace);
 
 		root.addElement("xsd:element").addAttribute("name", "persistence-mapping").addAttribute("type",
-			"PersistenceMapping");
+				"PersistenceMapping");
 		root.addElement("xsd:complexType").addAttribute("name", "PersistenceMapping").addElement("xsd:sequence")
-			.addAttribute("minOccurs", "1").addAttribute("maxOccurs", "unbounded").addElement("xsd:element")
-			.addAttribute("name", "epackage").addAttribute("type", "EPackage");
+				.addAttribute("minOccurs", "1").addAttribute("maxOccurs", "unbounded").addElement("xsd:element")
+				.addAttribute("name", "epackage").addAttribute("type", "EPackage");
 
 		// first determine which types have only one string field, these are handled
 		// slightly different because this makes the xml easier
@@ -186,10 +185,9 @@ public class PersistenceMappingSchemaGenerator {
 				if (oneMappableFeature(eClass)) {
 					/*
 					 * final EStructuralFeature eStructuralFeature = (EStructuralFeature)
-					 * eClass.getEStructuralFeatures().get(0); final EClassifier eType =
-					 * eStructuralFeature.getEType(); schemaTypeName = (String)
-					 * schemaTypeNamesByAnnotationType.get(eType.getName()); if (schemaTypeName ==
-					 * null) { schemaTypeName = eType.getName(); }
+					 * eClass.getEStructuralFeatures().get(0); final EClassifier eType = eStructuralFeature.getEType();
+					 * schemaTypeName = (String) schemaTypeNamesByAnnotationType.get(eType.getName()); if
+					 * (schemaTypeName == null) { schemaTypeName = eType.getName(); }
 					 * schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
 					 */
 					continue;
@@ -199,10 +197,17 @@ public class PersistenceMappingSchemaGenerator {
 				elemList.add(complexTypeElement);
 
 				final Element choiceElement = complexTypeElement.addElement("xsd:choice");
-				addZeroUnbounded(choiceElement);
 				processStructuralFeatures(choiceElement, eStructuralFeatures);
 				if (choiceElement.getChildren().size() == 0) {
 					complexTypeElement.getChildren().remove(choiceElement);
+				} else if (choiceElement.getChildren().size() == 1) {
+					complexTypeElement.remove(choiceElement);
+					final Element sequenceElement = complexTypeElement.addElement("xsd:sequence");
+					complexTypeElement.remove(sequenceElement);
+					sequenceElement.add(choiceElement.getChildren().get(0));
+					complexTypeElement.add(0, sequenceElement);
+				} else {
+					addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
 				}
 			} else if (eClassifier instanceof EEnum) {
 				elemList.add(processEnum((EEnum) eClassifier));
@@ -245,13 +250,15 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createEPackageElement() {
 		final Element epackElement = new Element("xsd:complexType").addAttribute("name", "EPackage");
 		final Element choiceElement = epackElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEPackage().getEAllStructuralFeatures());
 		choiceElement.addElement("xsd:element").addAttribute("name", "eclass").addAttribute("type", "EClass");
 		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
+
+		addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
+
 		// add the namespace-uri attribute
 		epackElement.addElement("xsd:attribute").addAttribute("name", "namespace-uri").addAttribute("type",
-			"xsd:anyURI").addAttribute("use", "required");
+				"xsd:anyURI").addAttribute("use", "required");
 		return epackElement;
 	}
 
@@ -259,7 +266,6 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createEClassElement() {
 		final Element eclassElement = new Element("xsd:complexType").addAttribute("name", "EClass");
 		final Element choiceElement = eclassElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEClass().getEAllStructuralFeatures());
 
 		choiceElement.addElement("xsd:element").addAttribute("name", "eattribute").addAttribute("type", "EAttribute");
@@ -267,8 +273,10 @@ public class PersistenceMappingSchemaGenerator {
 		choiceElement.addElement("xsd:element").addAttribute("name", "property").addAttribute("type", "Property");
 		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
 
+		addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
+
 		eclassElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+				.addAttribute("use", "required");
 		return eclassElement;
 	}
 
@@ -276,10 +284,10 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createEReferenceElement() {
 		final Element erefElement = new Element("xsd:complexType").addAttribute("name", "EReference");
 		final Element choiceElement = erefElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEReference().getEAllStructuralFeatures());
+		addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
 		erefElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+				.addAttribute("use", "required");
 		return erefElement;
 	}
 
@@ -287,10 +295,10 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createEAttributeElement() {
 		final Element eattrElement = new Element("xsd:complexType").addAttribute("name", "EAttribute");
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEAttribute().getEAllStructuralFeatures());
+		addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
 		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+				.addAttribute("use", "required");
 		return eattrElement;
 	}
 
@@ -298,10 +306,10 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createEDataTypeElement() {
 		final Element eattrElement = new Element("xsd:complexType").addAttribute("name", "EDataType");
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
 		processStructuralFeatures(choiceElement, getPAnnotatedEDataType().getEAllStructuralFeatures());
+		addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
 		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+				.addAttribute("use", "required");
 		return eattrElement;
 	}
 
@@ -309,15 +317,15 @@ public class PersistenceMappingSchemaGenerator {
 	private Element createPropertyElement() {
 		final Element propertyElement = new Element("xsd:complexType").addAttribute("name", "Property");
 		final Element choiceElement = propertyElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		final List<EStructuralFeature> features =
-				new ArrayList<EStructuralFeature>(getPAnnotatedEAttribute().getEAllStructuralFeatures());
+		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(getPAnnotatedEAttribute()
+				.getEAllStructuralFeatures());
 		features.removeAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 		features.addAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 
 		processStructuralFeatures(choiceElement, features);
+		addMinMaxOccurs(choiceElement, "0", "" + choiceElement.getChildren().size());
 		propertyElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+				.addAttribute("use", "required");
 		return propertyElement;
 	}
 
@@ -387,13 +395,13 @@ public class PersistenceMappingSchemaGenerator {
 		} else {
 			// EAttributes are represented by attributes and optional child elements in case of many
 			// multiplicity.
-			final Element attributeElement =
-					createSchemaAttribute(eStructuralFeature.getName(), typeName, eStructuralFeature.getName());
+			final Element attributeElement = createSchemaAttribute(eStructuralFeature.getName(), typeName,
+					eStructuralFeature.getName());
 			attributeElement.addAttribute(new Attribute("use", (minOccurs == 0 ? "optional" : "required")));
 			parentElement.getParent().addElement(attributeElement);
 			if (eStructuralFeature.isMany()) {
-				final Element element =
-						createSchemaElement(eStructuralFeature.getName(), typeName, eStructuralFeature.getName());
+				final Element element = createSchemaElement(eStructuralFeature.getName(), typeName, eStructuralFeature
+						.getName());
 				parentElement.addElement(element);
 				if (parentElement.getName().compareTo("xsd:choice") != 0) {
 					element.addAttribute(new Attribute("minOccurs", "0"));
