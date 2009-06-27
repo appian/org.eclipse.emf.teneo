@@ -11,13 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.15 2009/03/15 23:26:04 mtaal Exp $
+ * $Id: HbHelper.java,v 1.16 2009/06/27 07:32:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -34,11 +36,10 @@ import org.hibernate.mapping.Component;
 import org.hibernate.mapping.PersistentClass;
 
 /**
- * Is the main entry point for 'outside' users to create, register and retrieve
- * EMF Data stores.
+ * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class HbHelper {
 	/** The logger */
@@ -64,8 +65,7 @@ public class HbHelper {
 	 * @param emfDataStoreFactory
 	 *            the emfDataStoreFactory to set
 	 */
-	public static void setHbDataStoreFactory(
-			HbDataStoreFactory hbDataStoreFactory) {
+	public static void setHbDataStoreFactory(HbDataStoreFactory hbDataStoreFactory) {
 		HbHelper.emfDataStoreFactory = hbDataStoreFactory;
 	}
 
@@ -74,22 +74,17 @@ public class HbHelper {
 		for (Iterator<?> it = ds.getClassMappings(); it.hasNext();) {
 			final PersistentClass pc = (PersistentClass) it.next();
 			if (dataStoreByPersistentClass.get(pc) != null) {
-				throw new HbMapperException(
-						"There is already a datastore registered for this pc: "
-								+ pc.getEntityName()
-								+ (dataStoreByPersistentClass.get(pc))
-										.getName() + "/" + ds.getName());
+				throw new HbMapperException("There is already a datastore registered for this pc: "
+						+ pc.getEntityName() + (dataStoreByPersistentClass.get(pc)).getName() + "/" + ds.getName());
 			}
-			log.debug("Datastore: " + ds.getName() + " registered for pc: "
-					+ pc.getEntityName());
+			log.debug("Datastore: " + ds.getName() + " registered for pc: " + pc.getEntityName());
 			dataStoreByPersistentClass.put(pc, ds);
 		}
 	}
 
 	/** Register the datastore also for the components */
 	void registerDataStoreByComponent(HbDataStore ds, Component component) {
-		log.debug("Datastore: " + ds.getName() + " registered for component: "
-				+ component.getComponentClassName());
+		log.debug("Datastore: " + ds.getName() + " registered for component: " + component.getComponentClassName());
 		dataStoreByPersistentClass.put(component, ds);
 	}
 
@@ -97,8 +92,7 @@ public class HbHelper {
 	public HbDataStore getDataStore(PersistentClass pc) {
 		final HbDataStore ds = dataStoreByPersistentClass.get(pc);
 		if (ds == null) {
-			throw new HbMapperException("No datastore for pc "
-					+ pc.getEntityName());
+			throw new HbMapperException("No datastore for pc " + pc.getEntityName());
 		}
 		return ds;
 	}
@@ -107,8 +101,7 @@ public class HbHelper {
 	public HbDataStore getDataStore(Component component) {
 		final HbDataStore ds = dataStoreByPersistentClass.get(component);
 		if (ds == null) {
-			throw new HbMapperException("No datastore for pc "
-					+ component.getComponentClassName());
+			throw new HbMapperException("No datastore for pc " + component.getComponentClassName());
 		}
 		return ds;
 	}
@@ -125,8 +118,7 @@ public class HbHelper {
 	/** Deregisters a session factory from the registry */
 	public synchronized void deRegisterDataStore(String name) {
 		if (name == null) {
-			throw new HbMapperException(
-					"An unique name should be specified when deregistering a session factory");
+			throw new HbMapperException("An unique name should be specified when deregistering a session factory");
 		}
 		final HbDataStore emfds = emfDataStores.get(name);
 		if (emfds == null) {
@@ -134,15 +126,15 @@ public class HbHelper {
 			return;
 		}
 
-		for (Iterator<?> it = emfds.getClassMappings(); it.hasNext();) {
-			final PersistentClass pc = (PersistentClass) it.next();
-			HbDataStore removedDS = dataStoreByPersistentClass.remove(pc);
-			if (removedDS != emfds) {
-				throw new HbMapperException(
-						"Removed datastore is unequal to deregistered ds: "
-								+ removedDS.getName() + "/" + emfds.getName()
-								+ "/" + pc.getEntityName());
+		// changed for bugzilla 281036
+		final List<Object> toRemove = new ArrayList<Object>();
+		for (Object key : dataStoreByPersistentClass.keySet()) {
+			if (emfds == dataStoreByPersistentClass.get(key)) {
+				toRemove.add(key);
 			}
+		}
+		for (Object key : toRemove) {
+			dataStoreByPersistentClass.remove(key);
 		}
 
 		log.debug("Removing and closing emf data store: " + name);
@@ -151,25 +143,21 @@ public class HbHelper {
 	}
 
 	/**
-	 * Creates and register a HibernateEMFDataStore, initialization has to be
-	 * done by the caller
+	 * Creates and register a HibernateEMFDataStore, initialization has to be done by the caller
 	 */
 	public synchronized HbDataStore createRegisterDataStore(String name) {
 		HbDataStore emfds = emfDataStores.get(name);
 		if (emfds != null) {
-			log.warn("EMF Data Store already registered under name: " + name
-					+ ", returning it");
+			log.warn("EMF Data Store already registered under name: " + name + ", returning it");
 			return emfds;
 		}
 
-		log.info("Creating emf data store and registering it under name: "
-				+ name);
+		log.info("Creating emf data store and registering it under name: " + name);
 		emfds = emfDataStoreFactory.createHbDataStore();
 		emfds.setName(name);
 		// next call is done automatically
 		// emfDataStores.put(name, emfds);
-		log
-				.info("Returning created emf data store, initialize this newly created data store!");
+		log.info("Returning created emf data store, initialize this newly created data store!");
 		return emfds;
 	}
 
@@ -188,35 +176,28 @@ public class HbHelper {
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of
-	 * epackages and options. The hibernate.hbm.xml is returned as a string. The
-	 * mapping is not registered or used in any other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The hibernate.hbm.xml
+	 * is returned as a string. The mapping is not registered or used in any other way by Elver.
 	 */
 	public String generateMapping(EPackage[] epackages, Properties props) {
-		return generateMapping(epackages, props, ExtensionManagerFactory
-				.getInstance().create());
+		return generateMapping(epackages, props, ExtensionManagerFactory.getInstance().create());
 	}
 
 	/**
-	 * Separate utility method, generates a hibernate mapping for a set of
-	 * epackages and options. The hibernate.hbm.xml is returned as a string. The
-	 * mapping is not registered or used in any other way by Elver.
+	 * Separate utility method, generates a hibernate mapping for a set of epackages and options. The hibernate.hbm.xml
+	 * is returned as a string. The mapping is not registered or used in any other way by Elver.
 	 */
-	public String generateMapping(EPackage[] epackages, Properties props,
-			ExtensionManager extensionManager) {
+	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
 		MappingUtil.registerHbExtensions(extensionManager);
 
 		log.debug("Generating mapping file passed epackages");
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of
 		// Hibernate-specific annotations.
-		final PersistenceOptions po = extensionManager.getExtension(
-				PersistenceOptions.class, new Object[] { props });
-		final PAnnotatedModel paModel = extensionManager.getExtension(
-				PersistenceMappingBuilder.class).buildMapping(epackages, po,
-				extensionManager);
-		final HibernateMappingGenerator hmg = extensionManager
-				.getExtension(HibernateMappingGenerator.class);
+		final PersistenceOptions po = extensionManager.getExtension(PersistenceOptions.class, new Object[] { props });
+		final PAnnotatedModel paModel = extensionManager.getExtension(PersistenceMappingBuilder.class).buildMapping(
+				epackages, po, extensionManager);
+		final HibernateMappingGenerator hmg = extensionManager.getExtension(HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);
 
 		return hmg.generateToString(paModel);

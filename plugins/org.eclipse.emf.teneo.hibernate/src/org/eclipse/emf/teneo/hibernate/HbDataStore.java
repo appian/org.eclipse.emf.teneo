@@ -80,7 +80,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.49 $
+ * @version $Revision: 1.50 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -240,7 +240,7 @@ public abstract class HbDataStore implements DataStore {
 
 		if (getPersistenceOptions().isUpdateSchema()) {
 			log
-				.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
+					.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
 		}
 
 		log.debug("Registering datastore with persistent classes");
@@ -258,16 +258,15 @@ public abstract class HbDataStore implements DataStore {
 	public abstract void close();
 
 	/** Return the hibernate configuration */
-	protected abstract Configuration getHibernateConfiguration();
+	public abstract Configuration getHibernateConfiguration();
 
 	/**
-	 * Gets the persistence options. The persistence options is a type representation of the
-	 * persistence options. If not set through the setPersistenceProperties method then a properties
-	 * file is searched If found it is used to set the persistence options.
+	 * Gets the persistence options. The persistence options is a type representation of the persistence options. If not
+	 * set through the setPersistenceProperties method then a properties file is searched If found it is used to set the
+	 * persistence options.
 	 * <p>
 	 * If no properties have been set explicitly, the method will attempt to load them from the file
-	 * "/elver-persistence.properties" at the root of the classpath. (A mechanism similar to
-	 * "hibernate.properties".)
+	 * "/elver-persistence.properties" at the root of the classpath. (A mechanism similar to "hibernate.properties".)
 	 * 
 	 * @throws HbMapperException
 	 *             if an error occured reading the properties file.
@@ -302,8 +301,8 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	@Deprecated
 	public void setPersistenceProperties(Properties persistenceOptions) {
-		this.persistenceOptions =
-				getExtensionManager().getExtension(PersistenceOptions.class, new Object[] { persistenceOptions });
+		this.persistenceOptions = getExtensionManager().getExtension(PersistenceOptions.class,
+				new Object[] { persistenceOptions });
 	}
 
 	/**
@@ -391,9 +390,9 @@ public abstract class HbDataStore implements DataStore {
 	public abstract Iterator<?> getClassMappings();
 
 	/**
-	 * Returns an array of EObjects and FeatureMapEntries which refer to a certain EObject, note if
-	 * the array is of length zero then no refering EObjects where found. The passed Session is used
-	 * to create a query. The transaction handling should be done by the caller.
+	 * Returns an array of EObjects and FeatureMapEntries which refer to a certain EObject, note if the array is of
+	 * length zero then no refering EObjects where found. The passed Session is used to create a query. The transaction
+	 * handling should be done by the caller.
 	 */
 	public Object[] getCrossReferencers(Session session, Object referedTo) {
 		final ArrayList<Object> result = getCrossReferencers(new HbSessionWrapper(this, session), referedTo, false);
@@ -402,9 +401,9 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * Returns an array of EObjects and FeatureMapEntries which refer to a certain EObject, note if
-	 * the array is of length zero then no refering EObjects where found. The passed Session is used
-	 * to create a query. The transaction handling should be done by the caller.
+	 * Returns an array of EObjects and FeatureMapEntries which refer to a certain EObject, note if the array is of
+	 * length zero then no refering EObjects where found. The passed Session is used to create a query. The transaction
+	 * handling should be done by the caller.
 	 */
 	public Object[] getCrossReferencers(SessionWrapper sessionWrapper, Object referedTo) {
 		final ArrayList<Object> result = getCrossReferencers(sessionWrapper, referedTo, false);
@@ -412,10 +411,9 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length
-	 * zero then no refering EObjects where found. The passed Session is used to create a query. The
-	 * transaction handling should be done by the caller. onlyContainers means to only check
-	 * containment relations.
+	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length zero then no
+	 * refering EObjects where found. The passed Session is used to create a query. The transaction handling should be
+	 * done by the caller. onlyContainers means to only check containment relations.
 	 */
 	private ArrayList<Object> getCrossReferencers(SessionWrapper sessionWrapper, Object referedTo,
 			boolean onlyContainers) {
@@ -451,8 +449,8 @@ public abstract class HbDataStore implements DataStore {
 					// search then again with the
 					final ArrayList<Object> fms = getCrossReferencers(sessionWrapper, obj, false);
 					if (fms.size() == 0) {
-						new AssertionError("The featuremap for featuremap entry " + obj.getClass().getName() +
-								" can not be found");
+						new AssertionError("The featuremap for featuremap entry " + obj.getClass().getName()
+								+ " can not be found");
 					}
 					obj = fms.get(0);
 				}
@@ -529,14 +527,14 @@ public abstract class HbDataStore implements DataStore {
 			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
 				// entry
 				pc.addTuplizer(EntityMode.MAP, getHbContext().getFeatureMapEntryTuplizer(getHibernateConfiguration())
-					.getName());
+						.getName());
 			} else if (pc.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META) != null) {
 				// only the pc's with this meta should get a tuplizer
 
 				pc.addTuplizer(EntityMode.MAP, getHbContext().getEMFTuplizerClass(getHibernateConfiguration())
-					.getName());
+						.getName());
 				pc.addTuplizer(EntityMode.POJO, getHbContext().getEMFTuplizerClass(getHibernateConfiguration())
-					.getName());
+						.getName());
 			} else if (pc.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META) == null) {
 				// don't change these pc's any further, these are not eclasses
 				continue;
@@ -632,7 +630,7 @@ public abstract class HbDataStore implements DataStore {
 		// Hibernate-specific annotations.
 		final PersistenceOptions po = getPersistenceOptions();
 		setPaModel(getExtensionManager().getExtension(PersistenceMappingBuilder.class).buildMapping(getEPackages(), po,
-			getExtensionManager()));
+				getExtensionManager()));
 		final HibernateMappingGenerator hmg = getExtensionManager().getExtension(HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);
 		return hmg.generateToString(getPaModel());
@@ -669,8 +667,8 @@ public abstract class HbDataStore implements DataStore {
 	// log.debug(">>> Update of schema finished");
 	// }
 	/**
-	 * Adds a econtainer mapping to the class mapping, is only called for eclasses which do not have
-	 * am explicit feature which points to the container
+	 * Adds a econtainer mapping to the class mapping, is only called for eclasses which do not have am explicit feature
+	 * which points to the container
 	 */
 	protected void addContainerMapping(PersistentClass pc) {
 
@@ -710,14 +708,14 @@ public abstract class HbDataStore implements DataStore {
 		for (EReference eref : eclass.getEAllReferences()) {
 			if (eref.isContainer()) {
 				log
-					.debug("There are container ereferences present, assuming that no separate econtainer columns are required.");
+						.debug("There are container ereferences present, assuming that no separate econtainer columns are required.");
 				return;
 			}
 		}
 
 		log.debug("Adding eContainer and econtainerfeatureid properties to " + pc.getClassName());
-		final EContainerFeaturePersistenceStrategy featurePersistenceStrategy =
-				getPersistenceOptions().getEContainerFeaturePersistenceStrategy();
+		final EContainerFeaturePersistenceStrategy featurePersistenceStrategy = getPersistenceOptions()
+				.getEContainerFeaturePersistenceStrategy();
 
 		final Property eContainer = new Property();
 		eContainer.setName(HbConstants.PROPERTY_ECONTAINER);
@@ -728,19 +726,19 @@ public abstract class HbDataStore implements DataStore {
 		final SimpleValue sv = new SimpleValue(pc.getTable());
 		sv.setTypeName(EContainerUserType.class.getName());
 
-		final Column eccColumn =
-				new Column(getPersistenceOptions().getSQLColumnNamePrefix() + HbConstants.COLUMN_ECONTAINER_CLASS);
+		final Column eccColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
+				+ HbConstants.COLUMN_ECONTAINER_CLASS);
 		sv.addColumn(checkColumnExists(pc.getTable(), eccColumn));
 
-		final Column ecColumn =
-				new Column(getPersistenceOptions().getSQLColumnNamePrefix() + HbConstants.COLUMN_ECONTAINER);
+		final Column ecColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
+				+ HbConstants.COLUMN_ECONTAINER);
 		sv.addColumn(checkColumnExists(pc.getTable(), ecColumn));
 
 		eContainer.setValue(sv);
 		pc.addProperty(eContainer);
 
-		if (featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.FEATUREID) ||
-				featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.BOTH)) {
+		if (featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.FEATUREID)
+				|| featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.BOTH)) {
 			final Property ecFID = new Property();
 			ecFID.setName(HbConstants.PROPERTY_ECONTAINER_FEATURE_ID);
 			ecFID.setMetaAttributes(new HashMap<Object, Object>());
@@ -749,16 +747,15 @@ public abstract class HbDataStore implements DataStore {
 			final SimpleValue svfid = new SimpleValue(pc.getTable());
 			svfid.setTypeName("integer");
 
-			final Column ecfColumn =
-					new Column(getPersistenceOptions().getSQLColumnNamePrefix() +
-							HbConstants.COLUMN_ECONTAINER_FEATUREID);
+			final Column ecfColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
+					+ HbConstants.COLUMN_ECONTAINER_FEATUREID);
 			svfid.addColumn(checkColumnExists(pc.getTable(), ecfColumn));
 
 			ecFID.setValue(svfid);
 			pc.addProperty(ecFID);
 		}
-		if (featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.FEATURENAME) ||
-				featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.BOTH)) {
+		if (featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.FEATURENAME)
+				|| featurePersistenceStrategy.equals(EContainerFeaturePersistenceStrategy.BOTH)) {
 			final Property ecFID = new Property();
 			ecFID.setName(HbConstants.PROPERTY_ECONTAINER_FEATURE_NAME);
 			ecFID.setMetaAttributes(new HashMap<Object, Object>());
@@ -767,9 +764,8 @@ public abstract class HbDataStore implements DataStore {
 			final SimpleValue svfid = new SimpleValue(pc.getTable());
 			svfid.setTypeName(EContainerFeatureIDUserType.class.getName());
 
-			final Column ecfColumn =
-					new Column(getPersistenceOptions().getSQLColumnNamePrefix() +
-							HbConstants.COLUMN_ECONTAINER_FEATURE_NAME);
+			final Column ecfColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
+					+ HbConstants.COLUMN_ECONTAINER_FEATURE_NAME);
 
 			ecfColumn.setLength(getEContainerFeatureNameColumnLength());
 
@@ -815,8 +811,8 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * Import the complete content from an inputstream into the EMF Data Store. The ExportTarget is
-	 * the constant defined in the EMFDataStore interface.
+	 * Import the complete content from an inputstream into the EMF Data Store. The ExportTarget is the constant defined
+	 * in the EMFDataStore interface.
 	 */
 	public void importDataStore(InputStream is, int importFormat) {
 		final Resource importResource;
@@ -839,8 +835,8 @@ public abstract class HbDataStore implements DataStore {
 
 	/**
 	 * Export the complete content of the EMF Data Store to an outputstream, the exportFormat is a
-	 * HbConstants.EXCHANGE_FORMAT_XML or HbConstants.EXCHANGE_FORMAT_XMI, the encoding can be null
-	 * and is used to set XMLResource.OPTION_ENCODING.
+	 * HbConstants.EXCHANGE_FORMAT_XML or HbConstants.EXCHANGE_FORMAT_XMI, the encoding can be null and is used to set
+	 * XMLResource.OPTION_ENCODING.
 	 */
 	public void exportDataStore(OutputStream os, int exportFormat, String encoding) {
 		final HibernateResource hibResource = new HibernateResource(URI.createFileURI("." + name));
@@ -912,8 +908,8 @@ public abstract class HbDataStore implements DataStore {
 					}
 				}
 
-				final EStructuralFeature ef =
-						eClass == null ? null : StoreUtil.getEStructuralFeature(eClass, prop.getName());
+				final EStructuralFeature ef = eClass == null ? null : StoreUtil.getEStructuralFeature(eClass, prop
+						.getName());
 				try {
 					String toEntity = "";
 					boolean isContainer = false;
@@ -924,8 +920,8 @@ public abstract class HbDataStore implements DataStore {
 						if (ef != null) {
 							isContainer = ef instanceof EReference && ((EReference) ef).isContainment();
 						} else {
-							isContainer =
-									prop.getCascadeStyle().hasOrphanDelete() || prop.getCascade().compareTo("all") == 0; // ugly
+							isContainer = prop.getCascadeStyle().hasOrphanDelete()
+									|| prop.getCascade().compareTo("all") == 0; // ugly
 							// but
 						}
 						// this was
@@ -939,16 +935,14 @@ public abstract class HbDataStore implements DataStore {
 						if (ef != null) {
 							isContainer = ef instanceof EReference && ((EReference) ef).isContainment();
 						} else {
-							isContainer =
-									prop.getCascadeStyle().hasOrphanDelete() ||
-											prop.getCascadeStyle() == CascadeStyle.ALL;
+							isContainer = prop.getCascadeStyle().hasOrphanDelete()
+									|| prop.getCascadeStyle() == CascadeStyle.ALL;
 						}
 					} else if (prop.getValue() instanceof Collection) {
 						isMany = true;
 						if (ef == null) { // TODO can this happen?
-							isContainer =
-									prop.getCascadeStyle().hasOrphanDelete() ||
-											prop.getCascadeStyle() == CascadeStyle.ALL;
+							isContainer = prop.getCascadeStyle().hasOrphanDelete()
+									|| prop.getCascadeStyle() == CascadeStyle.ALL;
 							if (((Collection) prop.getValue()).getElement() instanceof OneToMany) {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((OneToMany) coll.getElement()).getReferencedEntityName();
@@ -956,16 +950,16 @@ public abstract class HbDataStore implements DataStore {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((ManyToOne) coll.getElement()).getReferencedEntityName();
 							} else {
-								throw new HbMapperException("Type " +
-										((Collection) prop.getValue()).getElement().getClass().getName() +
-										" not supported");
+								throw new HbMapperException("Type "
+										+ ((Collection) prop.getValue()).getElement().getClass().getName()
+										+ " not supported");
 							}
 						} else {
 							// in case of featuremap set containment always on
 							// true because only the featuremap entries
 							// themselves know if they are containment
-							if (ef instanceof EAttribute &&
-									((EAttribute) ef).getEType().getInstanceClass() == Entry.class) {
+							if (ef instanceof EAttribute
+									&& ((EAttribute) ef).getEType().getInstanceClass() == Entry.class) {
 								isContainer = true;
 								final OneToMany otm = (OneToMany) ((Collection) prop.getValue()).getElement();
 								toEntity = otm.getReferencedEntityName();
@@ -1031,8 +1025,8 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * Add the refersto for each superclass/interface to the subclass refersto list. As a
-	 * convenience returns the set list
+	 * Add the refersto for each superclass/interface to the subclass refersto list. As a convenience returns the set
+	 * list
 	 */
 	private java.util.List<ReferenceTo> setRefersToOfSupers(String eClassUri,
 			HashMap<String, java.util.List<ReferenceTo>> refersTo, ArrayList<EClass> classDone) {
@@ -1098,9 +1092,8 @@ public abstract class HbDataStore implements DataStore {
 		public ReferenceTo(String fromEntity, Property prop, boolean isContainer, boolean isMany, String toEntity) {
 			this.isContainer = isContainer;
 			if (isMany) {
-				qryStr =
-						"SELECT ref FROM " + fromEntity + " as ref, " + toEntity +
-								" as refTo WHERE refTo = :to and refTo in elements(ref." + prop.getName() + ")";
+				qryStr = "SELECT ref FROM " + fromEntity + " as ref, " + toEntity
+						+ " as refTo WHERE refTo = :to and refTo in elements(ref." + prop.getName() + ")";
 			} else {
 				qryStr = "SELECT ref FROM " + fromEntity + " as ref WHERE :to = ref." + prop.getName();
 			}
@@ -1120,8 +1113,8 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * Return the list of mapping files. If the mapping file path property of persistenceoptions was
-	 * set then this is returned, otherwise the classpath is searched for the mapping file.
+	 * Return the list of mapping files. If the mapping file path property of persistenceoptions was set then this is
+	 * returned, otherwise the classpath is searched for the mapping file.
 	 */
 	protected String[] getMappingFileList() {
 		if (getPersistenceOptions().getMappingFilePath() != null) {
@@ -1135,7 +1128,7 @@ public abstract class HbDataStore implements DataStore {
 			return StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, null);
 		} else {
 			throw new HbStoreException(
-				"This method may only be called if either the useMappingFile property or the MappingFilePath property has been set");
+					"This method may only be called if either the useMappingFile property or the MappingFilePath property has been set");
 		}
 	}
 
@@ -1188,9 +1181,8 @@ public abstract class HbDataStore implements DataStore {
 		if (paModel == null) {
 			// happens in case a hbm file is used
 			// just create the pamodel with the default values
-			paModel =
-					getExtensionManager().getExtension(PersistenceMappingBuilder.class).buildMapping(getEPackages(),
-						getPersistenceOptions(), getExtensionManager());
+			paModel = getExtensionManager().getExtension(PersistenceMappingBuilder.class).buildMapping(getEPackages(),
+					getPersistenceOptions(), getExtensionManager());
 		}
 		return paModel;
 	}
