@@ -11,13 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.15 2009/03/15 23:26:04 mtaal Exp $
+ * $Id: HbHelper.java,v 1.15.2.1 2009/06/27 07:32:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -38,7 +40,7 @@ import org.hibernate.mapping.PersistentClass;
  * EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.15.2.1 $
  */
 public class HbHelper {
 	/** The logger */
@@ -134,15 +136,15 @@ public class HbHelper {
 			return;
 		}
 
-		for (Iterator<?> it = emfds.getClassMappings(); it.hasNext();) {
-			final PersistentClass pc = (PersistentClass) it.next();
-			HbDataStore removedDS = dataStoreByPersistentClass.remove(pc);
-			if (removedDS != emfds) {
-				throw new HbMapperException(
-						"Removed datastore is unequal to deregistered ds: "
-								+ removedDS.getName() + "/" + emfds.getName()
-								+ "/" + pc.getEntityName());
+		// changed for bugzilla 281036
+		final List<Object> toRemove = new ArrayList<Object>();
+		for (Object key : dataStoreByPersistentClass.keySet()) {
+			if (emfds == dataStoreByPersistentClass.get(key)) {
+				toRemove.add(key);
 			}
+		}
+		for (Object key : toRemove) {
+			dataStoreByPersistentClass.remove(key);
 		}
 
 		log.debug("Removing and closing emf data store: " + name);
