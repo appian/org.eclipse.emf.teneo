@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbMapperConstants.java,v 1.11 2009/03/07 21:15:20 mtaal Exp $
+ * $Id: HbMapperConstants.java,v 1.12 2009/06/28 02:05:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -20,7 +20,7 @@ package org.eclipse.emf.teneo.hibernate.mapper;
  * AnnotationUtil used by the hibernate mapper
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class HbMapperConstants {
 	// the natural-id, the value of the attribute is mutable true/false
@@ -35,8 +35,7 @@ public class HbMapperConstants {
 	public static final String ECLASSIFIER_PARAM = "eclassifier";
 
 	/**
-	 * Name of the Hibernate type param that holds the name of the EMF attribute
-	 * for the EMF custom data type.
+	 * Name of the Hibernate type param that holds the name of the EMF attribute for the EMF custom data type.
 	 */
 	public static final String EDATATYPE_PARAM = "edatatype";
 
@@ -51,6 +50,12 @@ public class HbMapperConstants {
 
 	/** Name used for the text property in a mixed featuremap entry */
 	public static final String PROPERTY_MIXED_CDATA = "fme_mixed_cdata";
+
+	/** Name used for the primitive value in a wildcard feature map */
+	public static final String PROPERTY_ANY_PRIMITIVE = "fme_any_data";
+
+	/** Name used for the reference value in a wildcard feature map */
+	public static final String PROPERTY_ANY_REFERENCE = "fme_any_reference";
 
 	/** Used to tag an entity as a featuremap */
 	public static final String FEATUREMAP_META = "featureMap";

@@ -109,10 +109,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final String assocName = getHbmContext().getPropertyName(aReference.getModelEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
 
-		if (isEObject(referedTo)) {
-			return getHbmContext().getCurrent().addElement("any").addAttribute("name", assocName).addAttribute(
-					"id-type", "long");
-		}
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) aReference;
 
 		final String tagName;
 		if (((HbAnnotatedEReference) aReference).getHbType() != null) {
@@ -261,54 +258,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	 */
 	protected void addCascadesForMany(Element associationElement, List<HbCascadeType> cascades) {
 		addCascades(associationElement, cascades, true);
-	}
-
-	/**
-	 * Creates cascades for onetoone/manytoone, they differ from many relations because no delete-orphan is supported.
-	 * 
-	 * @param associationElement
-	 *            : the element to which the cascades are added.
-	 * @param cascade
-	 *            : list of cascade annotation types
-	 * @param addDeleteOrphan
-	 *            : if true then delete-orphan is added in case of cascade all
-	 */
-	protected void addCascades(Element associationElement, List<HbCascadeType> cascades, boolean addDeleteOrphan) {
-		if (!cascades.isEmpty()) {
-			StringBuffer sb = new StringBuffer();
-			for (HbCascadeType cascade : cascades) {
-				if (cascade == HbCascadeType.ALL) {
-					sb.append("all,"); // assuming all appears alone
-					if (addDeleteOrphan) {
-						sb.append("delete-orphan,");
-					}
-					break;
-				} else if (cascade == HbCascadeType.PERSIST) {
-					sb.append("persist,");
-				} else if (cascade == HbCascadeType.MERGE) {
-					sb.append("merge,");
-				} else if (cascade == HbCascadeType.REFRESH) {
-					sb.append("refresh,");
-				} else if (cascade == HbCascadeType.REMOVE) {
-					sb.append("delete,");
-				} else if (cascade == HbCascadeType.DELETE) {
-					sb.append("delete,");
-				} else if (cascade == HbCascadeType.DELETE_ORPHAN) {
-					sb.append("delete-orphan,");
-				} else if (cascade == HbCascadeType.EVICT) {
-					sb.append("evict,");
-				} else if (cascade == HbCascadeType.LOCK) {
-					sb.append("lock,");
-				} else if (cascade == HbCascadeType.REPLICATE) {
-					sb.append("replicate,");
-				} else if (cascade == HbCascadeType.SAVE_UPDATE) {
-					sb.append("save-update,");
-				} else {
-					throw new MappingException("Cascade " + cascade.getName() + " not supported");
-				}
-			}
-			associationElement.addAttribute("cascade", sb.substring(0, sb.length() - 1));
-		}
 	}
 
 	/**

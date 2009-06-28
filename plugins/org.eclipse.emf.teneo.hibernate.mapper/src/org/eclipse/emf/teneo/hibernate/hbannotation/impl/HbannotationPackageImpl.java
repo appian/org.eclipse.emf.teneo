@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.15 2009/06/27 09:19:01 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.16 2009/06/28 02:05:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -1616,8 +1616,8 @@ public class HbannotationPackageImpl extends EPackageImpl implements Hbannotatio
 
 		initEClass(anyMetaDefEClass, AnyMetaDef.class, "AnyMetaDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnyMetaDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnyMetaDef_MetaType(), ecorePackage.getEString(), "metaType", null, 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnyMetaDef_IdType(), ecorePackage.getEString(), "idType", null, 1, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyMetaDef_MetaType(), ecorePackage.getEString(), "metaType", "string", 0, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyMetaDef_IdType(), ecorePackage.getEString(), "idType", "string", 1, 1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAnyMetaDef_MetaValues(), this.getMetaValue(), null, "metaValues", null, 0, -1, AnyMetaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals

@@ -2,11 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEReference.java,v 1.13 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbAnnotatedEReference.java,v 1.14 2009/06/28 02:05:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
+import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.BatchSize;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
@@ -32,6 +34,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getNotFound <em>Not Found</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getHbType <em>Hb Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getBatchSize <em>Batch Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef <em>Any Meta Def</em>}</li>
  * </ul>
  * </p>
  *
@@ -246,5 +250,57 @@ public interface HbAnnotatedEReference extends PAnnotatedEReference, HbAnnotated
 	 * @generated
 	 */
 	void setBatchSize(BatchSize value);
+
+	/**
+	 * Returns the value of the '<em><b>Any</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Any</em>' reference.
+	 * @see #setAny(Any)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_Any()
+	 * @model
+	 * @generated
+	 */
+	Any getAny();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Any</em>' reference.
+	 * @see #getAny()
+	 * @generated
+	 */
+	void setAny(Any value);
+
+	/**
+	 * Returns the value of the '<em><b>Any Meta Def</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any Meta Def</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Any Meta Def</em>' reference.
+	 * @see #setAnyMetaDef(AnyMetaDef)
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage#getHbAnnotatedEReference_AnyMetaDef()
+	 * @model
+	 * @generated
+	 */
+	AnyMetaDef getAnyMetaDef();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef <em>Any Meta Def</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Any Meta Def</em>' reference.
+	 * @see #getAnyMetaDef()
+	 * @generated
+	 */
+	void setAnyMetaDef(AnyMetaDef value);
 
 } // HbAnnotatedEReference

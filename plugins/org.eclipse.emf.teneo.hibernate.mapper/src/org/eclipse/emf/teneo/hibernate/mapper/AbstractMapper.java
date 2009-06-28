@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.47 2009/06/13 21:29:34 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.48 2009/06/28 02:05:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -31,15 +31,20 @@ import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
+import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cache;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -592,6 +597,123 @@ public abstract class AbstractMapper {
 				filterElement.addAttribute("condition", filter.getCondition());
 			}
 		}
+	}
+
+	/**
+	 * Creates cascades for onetoone/manytoone, they differ from many relations because no delete-orphan is supported.
+	 * 
+	 * @param associationElement
+	 *            : the element to which the cascades are added.
+	 * @param cascade
+	 *            : list of cascade annotation types
+	 * @param addDeleteOrphan
+	 *            : if true then delete-orphan is added in case of cascade all
+	 */
+	protected void addCascades(Element associationElement, List<HbCascadeType> cascades, boolean addDeleteOrphan) {
+		if (!cascades.isEmpty()) {
+			StringBuffer sb = new StringBuffer();
+			for (HbCascadeType cascade : cascades) {
+				if (cascade == HbCascadeType.ALL) {
+					sb.append("all,"); // assuming all appears alone
+					if (addDeleteOrphan) {
+						sb.append("delete-orphan,");
+					}
+					break;
+				} else if (cascade == HbCascadeType.PERSIST) {
+					sb.append("persist,");
+				} else if (cascade == HbCascadeType.MERGE) {
+					sb.append("merge,");
+				} else if (cascade == HbCascadeType.REFRESH) {
+					sb.append("refresh,");
+				} else if (cascade == HbCascadeType.REMOVE) {
+					sb.append("delete,");
+				} else if (cascade == HbCascadeType.DELETE) {
+					sb.append("delete,");
+				} else if (cascade == HbCascadeType.DELETE_ORPHAN) {
+					sb.append("delete-orphan,");
+				} else if (cascade == HbCascadeType.EVICT) {
+					sb.append("evict,");
+				} else if (cascade == HbCascadeType.LOCK) {
+					sb.append("lock,");
+				} else if (cascade == HbCascadeType.REPLICATE) {
+					sb.append("replicate,");
+				} else if (cascade == HbCascadeType.SAVE_UPDATE) {
+					sb.append("save-update,");
+				} else {
+					throw new MappingException("Cascade " + cascade.getName() + " not supported");
+				}
+			}
+			associationElement.addAttribute("cascade", sb.substring(0, sb.length() - 1));
+		}
+	}
+
+	/**
+	 * Create an any Element
+	 */
+	public Element createAny(String name, PAnnotatedEStructuralFeature paFeature, Any any, AnyMetaDef anyMetaDef,
+			boolean isMany) {
+
+		final AnyMetaDef localAnyMetaDef;
+		if (anyMetaDef == null) {
+			localAnyMetaDef = HbannotationFactory.eINSTANCE.createAnyMetaDef();
+			localAnyMetaDef.setIdType("long");
+		} else {
+			localAnyMetaDef = anyMetaDef;
+		}
+		final Any localAny;
+		if (any == null) {
+			localAny = HbannotationFactory.eINSTANCE.createAny();
+		} else {
+			localAny = any;
+		}
+
+		final String tagName;
+		if (isMany) {
+			tagName = "many-to-any";
+		} else {
+			tagName = "any";
+		}
+
+		// don't know how to create an element, so add an remove it...
+		final Element anyElement = getHbmContext().getCurrent().addElement(tagName).addAttribute("id-type",
+				localAnyMetaDef.getIdType()).addAttribute("meta-type", localAnyMetaDef.getMetaType());
+		getHbmContext().getCurrent().remove(anyElement);
+
+		if (!isMany) {
+			anyElement.addAttribute("name", name);
+			final List<HbCascadeType> cascades = new ArrayList<HbCascadeType>();
+			if (paFeature instanceof HbAnnotatedEReference) {
+				if (((HbAnnotatedEReference) paFeature).getHbCascade() == null) {
+					cascades.add(HbCascadeType.ALL);
+				} else {
+					cascades.addAll(((HbAnnotatedEReference) paFeature).getHbCascade().getValue());
+				}
+			} else {
+				cascades.add(HbCascadeType.ALL);
+			}
+			addCascades(anyElement, cascades, isMany);
+		}
+
+		final List<Column> columns = new ArrayList<Column>();
+		if (localAny.getMetaColumn() != null) {
+			columns.add(localAny.getMetaColumn());
+		} else {
+			final Column typeColumn = PannotationFactory.eINSTANCE.createColumn();
+			typeColumn.setName(hbmContext.trunc(paFeature.getModelEStructuralFeature().getName() + "_type"));
+			typeColumn.setNullable(localAny.isOptional());
+			columns.add(typeColumn);
+		}
+
+		if (paFeature.getColumn() != null) {
+			columns.add(paFeature.getColumn());
+		} else {
+			final Column idColumn = PannotationFactory.eINSTANCE.createColumn();
+			idColumn.setName(hbmContext.trunc(paFeature.getModelEStructuralFeature().getName() + "_id"));
+			idColumn.setNullable(localAny.isOptional());
+			columns.add(idColumn);
+		}
+		addColumnsAndFormula(anyElement, paFeature, columns, paFeature.getModelEStructuralFeature().isRequired(), false);
+		return anyElement;
 	}
 
 	/**

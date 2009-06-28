@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyMetaDef.java,v 1.1 2009/06/27 09:19:10 mtaal Exp $
+ * $Id: AnyMetaDef.java,v 1.2 2009/06/28 02:05:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
@@ -56,6 +56,7 @@ public interface AnyMetaDef extends HbAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Meta Type</b></em>' attribute.
+	 * The default value is <code>"string"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Meta Type</em>' attribute isn't clear,
@@ -65,7 +66,7 @@ public interface AnyMetaDef extends HbAnnotation {
 	 * @return the value of the '<em>Meta Type</em>' attribute.
 	 * @see #setMetaType(String)
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getAnyMetaDef_MetaType()
-	 * @model
+	 * @model default="string"
 	 * @generated
 	 */
 	String getMetaType();
@@ -82,6 +83,7 @@ public interface AnyMetaDef extends HbAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Id Type</b></em>' attribute.
+	 * The default value is <code>"string"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Id Type</em>' attribute isn't clear,
@@ -91,7 +93,7 @@ public interface AnyMetaDef extends HbAnnotation {
 	 * @return the value of the '<em>Id Type</em>' attribute.
 	 * @see #setIdType(String)
 	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage#getAnyMetaDef_IdType()
-	 * @model required="true"
+	 * @model default="string" required="true"
 	 * @generated
 	 */
 	String getIdType();

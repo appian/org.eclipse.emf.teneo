@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEAttributeImpl.java,v 1.12 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: HbAnnotatedEAttributeImpl.java,v 1.13 2009/06/28 02:05:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
+import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.CollectionOfElements;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
@@ -56,6 +58,8 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getHbType <em>Hb Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getGenerated <em>Generated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getNaturalId <em>Natural Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getAny <em>Any</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEAttributeImpl#getAnyMetaDef <em>Any Meta Def</em>}</li>
  * </ul>
  * </p>
  *
@@ -190,6 +194,26 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	 * @ordered
 	 */
 	protected NaturalId naturalId;
+
+	/**
+	 * The cached value of the '{@link #getAny() <em>Any</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAny()
+	 * @generated
+	 * @ordered
+	 */
+	protected Any any;
+
+	/**
+	 * The cached value of the '{@link #getAnyMetaDef() <em>Any Meta Def</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnyMetaDef()
+	 * @generated
+	 * @ordered
+	 */
+	protected AnyMetaDef anyMetaDef;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -679,6 +703,82 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Any getAny() {
+		if (any != null && any.eIsProxy()) {
+			InternalEObject oldAny = (InternalEObject)any;
+			any = (Any)eResolveProxy(oldAny);
+			if (any != oldAny) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY, oldAny, any));
+			}
+		}
+		return any;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Any basicGetAny() {
+		return any;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAny(Any newAny) {
+		Any oldAny = any;
+		any = newAny;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY, oldAny, any));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnyMetaDef getAnyMetaDef() {
+		if (anyMetaDef != null && anyMetaDef.eIsProxy()) {
+			InternalEObject oldAnyMetaDef = (InternalEObject)anyMetaDef;
+			anyMetaDef = (AnyMetaDef)eResolveProxy(oldAnyMetaDef);
+			if (anyMetaDef != oldAnyMetaDef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF, oldAnyMetaDef, anyMetaDef));
+			}
+		}
+		return anyMetaDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnyMetaDef basicGetAnyMetaDef() {
+		return anyMetaDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAnyMetaDef(AnyMetaDef newAnyMetaDef) {
+		AnyMetaDef oldAnyMetaDef = anyMetaDef;
+		anyMetaDef = newAnyMetaDef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF, oldAnyMetaDef, anyMetaDef));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -744,6 +844,12 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return getGenerated();
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__NATURAL_ID:
 				return getNaturalId();
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY:
+				if (resolve) return getAny();
+				return basicGetAny();
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF:
+				if (resolve) return getAnyMetaDef();
+				return basicGetAnyMetaDef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -797,6 +903,12 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__NATURAL_ID:
 				setNaturalId((NaturalId)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY:
+				setAny((Any)newValue);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF:
+				setAnyMetaDef((AnyMetaDef)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -847,6 +959,12 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__NATURAL_ID:
 				setNaturalId((NaturalId)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY:
+				setAny((Any)null);
+				return;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF:
+				setAnyMetaDef((AnyMetaDef)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -884,6 +1002,10 @@ public class HbAnnotatedEAttributeImpl extends PAnnotatedEAttributeImpl implemen
 				return generated != null;
 			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__NATURAL_ID:
 				return naturalId != null;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY:
+				return any != null;
+			case HbmodelPackage.HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF:
+				return anyMetaDef != null;
 		}
 		return super.eIsSet(featureID);
 	}

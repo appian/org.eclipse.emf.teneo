@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.33 2009/03/07 21:15:20 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.34 2009/06/28 02:05:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -26,8 +26,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
 /**
  * Maps a {@link ManyToOne} element to its {@link MappingContext}.
  * <p>
- * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal
- * ManyToOne, i.e.
+ * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal ManyToOne, i.e.
  * <ul>
  * <li>it is a {@link PAnnotatedEReference};
  * <li>it has a {@link ManyToOne} annotation;
@@ -35,8 +34,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class ManyToOneMapper extends AbstractAssociationMapper implements
-		ExtensionPoint {
+public class ManyToOneMapper extends AbstractAssociationMapper implements ExtensionPoint {
 
 	/** Log it */
 	private static final Log log = LogFactory.getLog(ManyToOneMapper.class);
@@ -47,14 +45,25 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 	public void process(PAnnotatedEReference paReference) {
 		log.debug("Process many-to-one " + paReference);
 
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
 
-		final EClass referedTo = paReference.getModelEReference()
-				.getEReferenceType();
+		final EClass referedTo = paReference.getModelEReference().getEReferenceType();
 		final ManyToOne mto = paReference.getManyToOne();
 		String targetName = mto.getTargetEntity();
 		if (targetName == null) {
 			targetName = getHbmContext().getEntityName(referedTo);
+		}
+
+		final boolean isAny = hbReference.getAny() != null || hbReference.getAnyMetaDef() != null
+				|| isEObject(targetName);
+		if (isAny) {
+			final String assocName = getHbmContext().getPropertyName(hbReference.getModelEStructuralFeature());
+			final Element anyElement = createAny(assocName, hbReference, hbReference.getAny(), hbReference
+					.getAnyMetaDef(), false);
+			getHbmContext().getCurrent().add(anyElement);
+			return;
 		}
 
 		log.debug("Target " + targetName);
@@ -62,10 +71,8 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 		JoinTable joinTable = null;
 		PAnnotatedEReference aOpposite = null;
 		if (paReference.getModelEReference().getEOpposite() != null) {
-			aOpposite = paReference.getPaModel().getPAnnotated(
-					paReference.getModelEReference().getEOpposite());
-			if (aOpposite.getOneToMany() != null
-					&& !aOpposite.getOneToMany().isList()
+			aOpposite = paReference.getPaModel().getPAnnotated(paReference.getModelEReference().getEOpposite());
+			if (aOpposite.getOneToMany() != null && !aOpposite.getOneToMany().isList()
 					&& aOpposite.getJoinTable() != null) {
 				joinTable = aOpposite.getJoinTable();
 			}
@@ -73,14 +80,11 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 
 		final Element currentElement;
 		if (joinTable != null) {
-			final boolean addInverse = aOpposite != null
-					&& aOpposite.getOneToMany() != null
+			final boolean addInverse = aOpposite != null && aOpposite.getOneToMany() != null
 					&& aOpposite.getOneToMany().getMappedBy() == null;
 
-			currentElement = getHbmContext().getCurrent().addElement("join")
-					.addAttribute("table", joinTable.getName()).addAttribute(
-							"inverse", Boolean.toString(addInverse))
-					.addAttribute("optional",
+			currentElement = getHbmContext().getCurrent().addElement("join").addAttribute("table", joinTable.getName())
+					.addAttribute("inverse", Boolean.toString(addInverse)).addAttribute("optional",
 							Boolean.toString(mto.isOptional()));
 
 		} else {
@@ -89,69 +93,47 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 
 		if (joinTable != null) {
 			final Element keyElement = currentElement.addElement("key");
-			addKeyColumns((HbAnnotatedETypeElement) paReference, keyElement,
-					joinTable.getInverseJoinColumns());
+			addKeyColumns((HbAnnotatedETypeElement) paReference, keyElement, joinTable.getInverseJoinColumns());
 		}
 
-		final Element associationElement = addManyToOne(currentElement,
-				paReference, targetName, false);
+		final Element associationElement = addManyToOne(currentElement, paReference, targetName, false);
 		addAccessor(associationElement);
 
-		if (!associationElement.getName().equals("any")) {
-			addLazyProxy(associationElement, mto.getFetch(), paReference);
-		}
-
-		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		final boolean isProperty = hbReference.getHbType() != null;
-
+		addLazyProxy(associationElement, mto.getFetch(), paReference);
 		if (!isProperty && hbReference.getNaturalId() != null) {
-			associationElement.addAttribute(HbMapperConstants.NATURAL_ID_ATTR,
-					Boolean.toString(hbReference.getNaturalId().isMutable()));
+			associationElement.addAttribute(HbMapperConstants.NATURAL_ID_ATTR, Boolean.toString(hbReference
+					.getNaturalId().isMutable()));
 		}
 
 		if (!isProperty && joinTable != null) {
-			addJoinColumns(paReference, associationElement, joinTable
-					.getJoinColumns(), mto.isOptional()
-					|| getHbmContext().isDoForceOptional(paReference)
-					|| getHbmContext().isCurrentElementFeatureMap());
+			addJoinColumns(paReference, associationElement, joinTable.getJoinColumns(), mto.isOptional()
+					|| getHbmContext().isDoForceOptional(paReference) || getHbmContext().isCurrentElementFeatureMap());
 		}
 
 		if (!isProperty) {
-			addCascadesForSingle(associationElement, getCascades(hbReference
-					.getHbCascade(), mto.getCascade()));
+			addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), mto.getCascade()));
 		}
 
 		if (hbReference.getHbFetch() != null) {
-			associationElement.addAttribute("fetch", hbReference.getHbFetch()
-					.getValue().getName().toLowerCase());
+			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
 		}
 
-		final boolean nullable = getHbmContext().isDoForceOptional(paReference)
-				|| mto.isOptional()
+		final boolean nullable = getHbmContext().isDoForceOptional(paReference) || mto.isOptional()
 				|| getHbmContext().isCurrentElementFeatureMap();
 
-		if (isEObject(targetName)) {
-			final String erefName = paReference.getModelEReference().getName();
-			addColumnsAndFormula(associationElement, paReference,
-					getAnyTypeColumns(erefName, true), true, false);
-			// foreign key is not added when the reference is to a generic
-			// EObject
-		} else if (!isProperty) {
+		if (!isProperty) {
 			addForeignKeyAttribute(associationElement, paReference);
 			addLazyProxy(associationElement, mto.getFetch(), paReference);
 
 			if (joinTable == null) {
-				addJoinColumns(paReference, associationElement, jcs,
-						getHbmContext().isDoForceOptional(paReference)
-								|| mto.isOptional()
-								|| getHbmContext().isCurrentElementFeatureMap());
+				addJoinColumns(paReference, associationElement, jcs, getHbmContext().isDoForceOptional(paReference)
+						|| mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
 
-				associationElement.addAttribute("not-null", nullable ? "false"
-						: "true");
+				associationElement.addAttribute("not-null", nullable ? "false" : "true");
 			}
 		} else if (isProperty) {
-			associationElement.addAttribute("not-null", nullable ? "false"
-					: "true");
+			associationElement.addAttribute("not-null", nullable ? "false" : "true");
 		}
 
 		// note that the reference must be required, nullable and unique columns

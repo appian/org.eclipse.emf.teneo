@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyMetaDefImpl.java,v 1.1 2009/06/27 09:19:10 mtaal Exp $
+ * $Id: AnyMetaDefImpl.java,v 1.2 2009/06/28 02:05:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -70,7 +70,7 @@ public class AnyMetaDefImpl extends HbAnnotationImpl implements AnyMetaDef {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String META_TYPE_EDEFAULT = null;
+	protected static final String META_TYPE_EDEFAULT = "string";
 
 	/**
 	 * The cached value of the '{@link #getMetaType() <em>Meta Type</em>}' attribute.
@@ -90,7 +90,7 @@ public class AnyMetaDefImpl extends HbAnnotationImpl implements AnyMetaDef {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_TYPE_EDEFAULT = null;
+	protected static final String ID_TYPE_EDEFAULT = "string";
 
 	/**
 	 * The cached value of the '{@link #getIdType() <em>Id Type</em>}' attribute.

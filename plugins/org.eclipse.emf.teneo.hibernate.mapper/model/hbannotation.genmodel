@@ -197,6 +197,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/hbType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/generated"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/naturalId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/any"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEAttribute/anyMetaDef"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEClass">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbCache"/>
@@ -218,6 +220,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbTypeDef"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/hbNamedQuery"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/FilterDef"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEPackage/anyMetaDef"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEReference">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbCache"/>
@@ -228,6 +231,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/notFound"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/hbType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/batchSize"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/any"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEReference/anyMetaDef"/>
     </genClasses>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEDataType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEDataType/hbTypeDef"/>
