@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.12 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.13 2009/06/28 02:05:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -33,11 +33,11 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Sets the annotation on an efeature. In fact determines which efeature annotator to use
- * (one-to-many, many-to-many etc.).
+ * Sets the annotation on an efeature. In fact determines which efeature annotator to use (one-to-many, many-to-many
+ * etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -85,12 +85,11 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 			// - transietn is true and it's opposite is not a containment
 			// relation
 			// - it refers to an eclass which is transient
-			boolean isTransient =
-					eStructuralFeature.isTransient() &&
-							(eStructuralFeature instanceof EAttribute ||
-									((EReference) eStructuralFeature).getEOpposite() == null ||
-									!((EReference) eStructuralFeature).getEOpposite().isContainment() || ((EReference) eStructuralFeature)
-								.getEOpposite().isTransient());
+			boolean isTransient = eStructuralFeature.isTransient()
+					&& (eStructuralFeature instanceof EAttribute
+							|| ((EReference) eStructuralFeature).getEOpposite() == null
+							|| !((EReference) eStructuralFeature).getEOpposite().isContainment() || ((EReference) eStructuralFeature)
+							.getEOpposite().isTransient());
 
 			// check if the refered to eclass is transient if so then this
 			// efeature is
@@ -102,10 +101,10 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				}
 			}
 
-			if (aStructuralFeature.getTransient() == null &&
-					((!mapVolitatileFeature() && eStructuralFeature.isVolatile()) || isTransient)) {
-				log.debug("Structural feature " + eStructuralFeature.getName() +
-						" is transient, therefore adding transient annotation");
+			if (aStructuralFeature.getTransient() == null
+					&& ((!mapVolitatileFeature() && eStructuralFeature.isVolatile()) || isTransient)) {
+				log.debug("Structural feature " + eStructuralFeature.getName()
+						+ " is transient, therefore adding transient annotation");
 				final Transient trans = getFactory().createTransient();
 				trans.setEModelElement(eStructuralFeature);
 				aStructuralFeature.setTransient(trans);
@@ -130,11 +129,11 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				// eattributes with a hibernate type annotations should not be
 				// treated as a list
 				if (instanceClass != null && aAttribute.getLob() == null) {
-					isMany =
-							eStructuralFeature.isMany() || instanceClass.isArray() ||
-									Collection.class.isAssignableFrom(instanceClass) ||
-									Set.class.isAssignableFrom(instanceClass) ||
-									List.class.isAssignableFrom(instanceClass);
+					isMany = eStructuralFeature.isMany() || instanceClass.isArray()
+							|| Collection.class.isAssignableFrom(instanceClass)
+							|| Set.class.isAssignableFrom(instanceClass) || List.class.isAssignableFrom(instanceClass);
+					// note this causes a featuremap within a featuremap to get the
+					// basic annotation!
 					isMany = isMany && !StoreUtil.isElementOfAGroup(eStructuralFeature);
 				}
 
@@ -168,23 +167,23 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				// multi-occurence is
 				// handled by the containing featuremap
 				final boolean isMany = eReference.isMany() && !StoreUtil.isElementOfAGroup(eReference);
-				final boolean isOppositeMany =
-						eOpposite != null && eOpposite.isMany() && !StoreUtil.isElementOfAGroup(eOpposite);
+				final boolean isOppositeMany = eOpposite != null && eOpposite.isMany()
+						&& !StoreUtil.isElementOfAGroup(eOpposite);
 
 				final boolean mtmBidirectionalRelation = isMany && eOpposite != null && isOppositeMany;
-				final boolean mtmUnidirectionalRelation =
-						isMany && eOpposite == null && aReference.getManyToMany() != null;
+				final boolean mtmUnidirectionalRelation = isMany && eOpposite == null
+						&& aReference.getManyToMany() != null;
 				final boolean otmBidirectionalRelation = isMany && eOpposite != null && !isOppositeMany;
 				final boolean otmUnidirectionalRelation = isMany && eOpposite == null;
 
 				// note as a default if the system has to choose between oto uni
 				// or mto uni then it will
 				// place a mto
-				final boolean otoBidirectionalRelation =
-						aReference.getManyToOne() == null && !isMany && eOpposite != null && !isOppositeMany;
-				final boolean otoUnidirectionalRelation =
-						aReference.getManyToOne() == null && !isMany && eOpposite == null &&
-								(aReference.getOneToOne() != null || !aReference.getPrimaryKeyJoinColumns().isEmpty());
+				final boolean otoBidirectionalRelation = aReference.getManyToOne() == null && !isMany
+						&& eOpposite != null && !isOppositeMany;
+				final boolean otoUnidirectionalRelation = aReference.getManyToOne() == null && !isMany
+						&& eOpposite == null
+						&& (aReference.getOneToOne() != null || !aReference.getPrimaryKeyJoinColumns().isEmpty());
 				final boolean mtoBidirectionalRelation = !isMany && eOpposite != null && isOppositeMany;
 				final boolean mtoUnidirectionalRelation = !isMany && eOpposite == null && !otoUnidirectionalRelation;
 
@@ -208,8 +207,8 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				}
 
 			} else {
-				throw new IllegalArgumentException("This type of StructuralFeature is not supported: " +
-						aStructuralFeature.getClass().getName());
+				throw new IllegalArgumentException("This type of StructuralFeature is not supported: "
+						+ aStructuralFeature.getClass().getName());
 			}
 			errorOccured = false;
 		} finally {
@@ -217,12 +216,12 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 			// check that at least one ann was set
 			if (aStructuralFeature instanceof PAnnotatedEAttribute) {
 				PAnnotatedEAttribute pae = (PAnnotatedEAttribute) aStructuralFeature;
-				assert (errorOccured || pae.getBasic() != null || pae.getVersion() != null || pae.getId() != null ||
-						pae.getTransient() != null || pae.getOneToMany() != null);
+				assert (errorOccured || pae.getBasic() != null || pae.getVersion() != null || pae.getId() != null
+						|| pae.getTransient() != null || pae.getOneToMany() != null);
 			} else {
 				PAnnotatedEReference par = (PAnnotatedEReference) aStructuralFeature;
-				assert (errorOccured || par.getTransient() != null || par.getOneToMany() != null ||
-						par.getManyToMany() != null || par.getManyToOne() != null || par.getOneToOne() != null);
+				assert (errorOccured || par.getTransient() != null || par.getOneToMany() != null
+						|| par.getManyToMany() != null || par.getManyToOne() != null || par.getOneToOne() != null);
 			}
 
 		}
