@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreController.java,v 1.2 2009/06/07 08:59:15 mtaal Exp $
+ * $Id: StoreController.java,v 1.3 2009/06/28 20:06:17 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap.diagram.db;
 
@@ -94,7 +94,7 @@ public class StoreController {
 		// load the properties from the teneo.properties file
 		try {
 			final Properties props = new Properties();
-			props.load(this.getClass().getResourceAsStream("teneo.properties"));
+			props.load(this.getClass().getResourceAsStream("/teneo.properties"));
 
 			// handle multiple inheritance in the GMF model
 			props.setProperty(PersistenceOptions.PERSISTENCE_XML, "/annotations.xml");
