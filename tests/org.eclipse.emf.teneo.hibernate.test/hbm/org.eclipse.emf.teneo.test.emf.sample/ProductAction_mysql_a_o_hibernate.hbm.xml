@@ -24,7 +24,7 @@
 		<property name="createdOn" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDate">
 			<column not-null="true" unique="false" name="`createdon`"/>
 		</property>
-		<any name="AnyOne" id-type="long" cascade="merge,persist,save-update,lock,refresh">
+		<any id-type="long" meta-type="string" name="AnyOne" cascade="all">
 			<column not-null="false" unique="false" name="`anyone_type`"/>
 			<column not-null="false" unique="false" name="`anyone_id`"/>
 		</any>
@@ -33,9 +33,9 @@
 				<column name="`producttype_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`producttype_anylist_idx`"/>
-			<many-to-any id-type="long">
-				<column not-null="true" unique="false" name="`anylist_type`"/>
-				<column not-null="true" unique="false" name="`anylist_id`"/>
+			<many-to-any id-type="long" meta-type="string">
+				<column not-null="false" unique="false" name="`anylist_type`"/>
+				<column not-null="false" unique="false" name="`anylist_id`"/>
 			</many-to-any>
 		</list>
 	</class>

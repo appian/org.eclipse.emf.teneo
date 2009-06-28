@@ -46,13 +46,16 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(BZ225296_2Action.class);
+		suite.addTestSuite(Bz280480Action.class);
 		suite.addTestSuite(Bz281730Action.class);
 		suite.addTestSuite(BZ277570Action.class);
 		suite.addTestSuite(BZ277546Action.class);
@@ -82,8 +85,6 @@ public class AllTests {
 
 		suite.addTestSuite(SecondarytableInheritanceAction.class);
 		suite.addTestSuite(LargeMapValueAction.class);
-
-		suite.addTestSuite(BZ225296_2Action.class);
 
 		suite.addTestSuite(BZ224991Action.class);
 
