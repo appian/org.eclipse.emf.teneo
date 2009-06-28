@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MindmapFactory.java,v 1.1 2008/03/16 21:20:25 mtaal Exp $
+ * $Id: MindmapFactory.java,v 1.2 2009/06/28 20:18:46 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap;
 
@@ -68,7 +68,7 @@ public interface MindmapFactory extends EFactory {
 	 * @return a new object of class '<em>Thread</em>'.
 	 * @generated
 	 */
-	org.eclipse.gmf.examples.mindmap.Thread createThread();
+	Thread createThread();
 
 	/**
 	 * Returns a new object of class '<em>Thread Item</em>'.

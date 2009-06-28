@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Topic.java,v 1.1 2008/03/16 21:20:25 mtaal Exp $
+ * $Id: Topic.java,v 1.2 2009/06/28 20:18:46 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap;
 
@@ -52,7 +52,7 @@ public interface Topic extends EObject {
 	 *        extendedMetaData="kind='element' name='comments'"
 	 * @generated
 	 */
-	EList<org.eclipse.gmf.examples.mindmap.Thread> getComments();
+	EList<Thread> getComments();
 
 	/**
 	 * Returns the value of the '<em><b>Duration</b></em>' attribute.
