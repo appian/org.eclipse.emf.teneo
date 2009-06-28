@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryTuplizer.java,v 1.14 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: FeatureMapEntryTuplizer.java,v 1.15 2009/06/28 02:04:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -27,20 +27,21 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
+import org.eclipse.emf.teneo.hibernate.mapping.property.WildCardAttributePropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.WildCardReferencePropertyHandler;
 import org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
 import org.hibernate.property.PropertyAccessor;
-import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.tuple.Instantiator;
+import org.hibernate.tuple.entity.EntityMetamodel;
 
 /**
- * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of
- * Hibernate.
+ * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class FeatureMapEntryTuplizer extends EMFTuplizer {
@@ -93,6 +94,10 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.COMMENT);
 		} else if (mappedProperty.getName().compareToIgnoreCase(HbMapperConstants.PROPERTY_MIXED_TEXT) == 0) {
 			return hds.getHbContext().createFeatureMapEntryAccessor(Constants.TEXT);
+		} else if (mappedProperty.getName().endsWith(HbMapperConstants.PROPERTY_ANY_PRIMITIVE)) {
+			return hds.getExtensionManager().getExtension(WildCardAttributePropertyHandler.class);
+		} else if (mappedProperty.getName().endsWith(HbMapperConstants.PROPERTY_ANY_REFERENCE)) {
+			return hds.getExtensionManager().getExtension(WildCardReferencePropertyHandler.class);
 		}
 
 		final String eclassUri = HbUtil.getEClassNameFromFeatureMapMeta(pc);
@@ -100,13 +105,13 @@ public class FeatureMapEntryTuplizer extends EMFTuplizer {
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
 
 		if (efeature == null) {
-			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName() + "/" +
-					mappedProperty.getName());
+			throw new HbMapperException("Feature not found for entity/property " + pc.getEntityName() + "/"
+					+ mappedProperty.getName());
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + pc.getEntityName() + "/" +
-					eclassUri + "/" + efeature.getName());
+			log.debug("Creating property accessor for " + mappedProperty.getName() + "/" + pc.getEntityName() + "/"
+					+ eclassUri + "/" + efeature.getName());
 		}
 
 		return hds.getHbContext().createFeatureMapEntryAccessor(efeature);

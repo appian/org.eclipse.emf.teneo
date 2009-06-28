@@ -82,7 +82,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -954,9 +954,10 @@ public abstract class HbDataStore implements DataStore {
 								final Collection coll = (Collection) prop.getValue();
 								toEntity = ((ManyToOne) coll.getElement()).getReferencedEntityName();
 							} else {
-								throw new HbMapperException("Type "
-										+ ((Collection) prop.getValue()).getElement().getClass().getName()
-										+ " not supported");
+								continue;
+								// throw new HbMapperException("Type "
+								// + ((Collection) prop.getValue()).getElement().getClass().getName()
+								// + " not supported, property " + prop.getName());
 							}
 						} else {
 							// in case of featuremap set containment always on
