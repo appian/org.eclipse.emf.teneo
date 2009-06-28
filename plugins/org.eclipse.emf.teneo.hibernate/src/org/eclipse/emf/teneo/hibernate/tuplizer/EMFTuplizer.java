@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.15 2009/06/27 09:20:05 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.16 2009/06/28 02:32:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -58,7 +58,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -105,7 +105,6 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * @see org.hibernate.tuple.entity.EntityTuplizer#determineConcreteSubclassEntityName(java.lang.Object,
 	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	@Override
 	public String determineConcreteSubclassEntityName(Object entityInstance, SessionFactoryImplementor factory) {
 		final Class<?> concreteEntityClass = entityInstance.getClass();
 		if (concreteEntityClass == getMappedClass()) {
@@ -126,7 +125,6 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.entity.EntityTuplizer#getEntityNameResolvers()
 	 */
-	@Override
 	public EntityNameResolver[] getEntityNameResolvers() {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
 		return new EntityNameResolver[] { ds.getEntityNameResolver() };
@@ -261,7 +259,6 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 * 
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#getEntityMode()
 	 */
-	@Override
 	public EntityMode getEntityMode() {
 		return EntityMode.POJO;
 	}
