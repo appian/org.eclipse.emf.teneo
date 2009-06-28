@@ -97,7 +97,7 @@
 <a href="../hibernate/index.html">Introduction</a>
 </div>
 <div class="menuitem">
-<a href="../hibernate/status.html">Status</a>
+<a href="../hibernate/backward_compatible.html">Backward Compatibility</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/features.html">Features</a>
@@ -448,6 +448,10 @@
 			
 <ul>
 				
+<li>Any</li>
+				
+<li>AnyMetaDef (only on EReferences, not on EPackage, meta-value not yet supported)</li>
+				
 <li>BatchSize</li>
 				
 <li>Cache</li>
@@ -506,19 +510,19 @@
 		
 </div>
 		
-<a name="N1010D"></a><a name="Annotation+notes"></a>
+<a name="N10113"></a><a name="Annotation+notes"></a>
 <div class="h3">
 <h3>Annotation notes</h3>
 			
 			
-<a name="N10113"></a><a name="entityannotation"></a>
+<a name="N10119"></a><a name="entityannotation"></a>
 <div class="h4">
 <h4>@Entity annotation has a new field: extends</h4>
 <p>The @Entity annotation has a new field which is not specified in the jpa spec: extends. This annotation
 			can be used to handle multiple-inheritance, see <a href="inheritance.html#The+%40Entity.extends+annotation%2C+choosing+a+different+supertype+for+relational+mapping">here</a> for more information</p>
 </div>
 			
-<a name="N10120"></a><a name="edatatype"></a>
+<a name="N10126"></a><a name="edatatype"></a>
 <div class="h4">
 <h4>Annotations on EDataType</h4>
 <p>Every JPA annotation which is relevant for a non-reference type java member can also be specified on an EDataType. 
@@ -528,7 +532,7 @@
 			and the EDataType have the same annotation then the annotation on the EAttribute is used.</p>
 </div>
 			
-<a name="N10129"></a><a name="External+annotation%3A+persisting+references+to+external%2Fnon-persisted+objects"></a>
+<a name="N1012F"></a><a name="External+annotation%3A+persisting+references+to+external%2Fnon-persisted+objects"></a>
 <div class="h4">
 <h4>External annotation: persisting references to external/non-persisted objects</h4>
 <p>Teneo allows you to persist references to objects in a custom way. To support this the @External 
@@ -538,7 +542,7 @@
 <p>See <a href="hibernate_relations.html#external">here</a> for more information</p>
 </div>
 			
-<a name="N10139"></a><a name="transient"></a>
+<a name="N1013F"></a><a name="transient"></a>
 <div class="h4">
 <h4>Transient on EClass</h4>
 <p>The Transient annotation can also be used on an EClass. This prevents an EClass from being mapped and be persisted.</p>
@@ -547,13 +551,13 @@
 </div>
 
 		
-<a name="N10146"></a><a name="Derby+and+IDBAG+issue"></a>
+<a name="N1014C"></a><a name="Derby+and+IDBAG+issue"></a>
 <div class="h4">
 <h4>Derby and IDBAG issue</h4>
 <p>There is an issue with the combination of Derby and IDBAG, see <a href="troubleshooting.html#derbyandidbag">here</a> for more information.</p>
 </div>		
 		
-<a name="N10153"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
+<a name="N10159"></a><a name="Unique+annotation+added+to+OneToMany+to+force+a+join+table+for+1%3An+relations"></a>
 <div class="h4">
 <h4>Unique annotation added to OneToMany to force a join table for 1:n relations</h4>
 <p>In a relational database 1:n relations are often modeled by adding a foreign-key (to the 
@@ -575,7 +579,7 @@
 </div>
 		
 		
-<a name="N10167"></a><a name="indexed"></a>
+<a name="N1016D"></a><a name="indexed"></a>
 <div class="h4">
 <h4>Indexed Annotation</h4>
 <p>The http://annotation.elver.org/Indexed annotation can be used to signal to Elver that a certain association does
@@ -585,7 +589,7 @@
 </div>
 			
 			
-<a name="N10174"></a><a name="EmbeddedID+annotation"></a>
+<a name="N1017A"></a><a name="EmbeddedID+annotation"></a>
 <div class="h4">
 <h4>EmbeddedID annotation</h4>
 <p>EmbeddedID lets you use an embedded class as an entity's composite primary key.</p>
@@ -597,7 +601,7 @@
 </div>
 			
 			
-<a name="N10185"></a><a name="lob_notes"></a>
+<a name="N1018B"></a><a name="lob_notes"></a>
 <div class="h4">
 <h4>Lob annotation</h4>
 <p>
@@ -621,7 +625,7 @@
 				</pre>
 </div>
 						
-<a name="N10199"></a><a name="EMF+ID+Attribute"></a>
+<a name="N1019F"></a><a name="EMF+ID+Attribute"></a>
 <div class="h4">
 <h4>EMF ID Attribute</h4>
 <p>When an eattribute has its ID property set to true and there is no @Id annotated eattribute in the 
@@ -629,7 +633,7 @@
 			<a href="options.html">ID_FEATURE_AS_PRIMARY_KEY</a>.</p>
 </div>
 			
-<a name="N101A6"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
+<a name="N101AC"></a><a name="Extra+CASCADE+type%3A+NONE"></a>
 <div class="h4">
 <h4>Extra CASCADE type: NONE</h4>
 <p>Teneo will automatically set the cascade annotation when no cascade annotation has been set on an 
