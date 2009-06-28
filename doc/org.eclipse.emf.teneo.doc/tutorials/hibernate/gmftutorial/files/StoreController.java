@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreController.java,v 1.35 2009/06/28 02:21:45 mtaal Exp $
+ * $Id: StoreController.java,v 1.36 2009/06/28 20:18:39 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap.diagram.db;
 
@@ -27,15 +27,13 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbSessionDataStore;
 import org.eclipse.emf.teneo.hibernate.mapping.property.EListPropertyHandler;
-import org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler;
 import org.eclipse.gmf.examples.mindmap.MindmapPackage;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.hibernate.Session;
 
 /**
- * This class manages one Hibernate Datastore, it offers static access to a
- * singleton DataStore. It initializes the datastore using the GMF and Ecore
- * epackages and the properties in the teneo.properties.
+ * This class manages one Hibernate Datastore, it offers static access to a singleton DataStore. It initializes the
+ * datastore using the GMF and Ecore epackages and the properties in the teneo.properties.
  * 
  * @author mtaal@elver.org
  */
@@ -46,8 +44,7 @@ public class StoreController {
 	// Map and the Diagram are loaded in the top of the resource. The dsname
 	// parameter
 	// is the name of the datastore initialized below.
-	public static final URI DATABASE_URI = URI
-			.createURI("hbxml://?dsname=mindmap&query1=from Map&query2=from Diagram");
+	public static final URI DATABASE_URI = URI.createURI("hbxml://?dsname=mindmap&query1=from Map&query2=from Diagram");
 
 	// provide easy access to the datastore
 	private static StoreController instance = new StoreController();
@@ -90,19 +87,17 @@ public class StoreController {
 		// 2) the GMF model
 		// 3) the ecore model because GMF depends on it
 		// 4) and the ecore XML type package
-		final EPackage[] ePackages = new EPackage[] { MindmapPackage.eINSTANCE,
-				NotationPackage.eINSTANCE, EcorePackage.eINSTANCE,
-				XMLTypePackage.eINSTANCE };
+		final EPackage[] ePackages = new EPackage[] { MindmapPackage.eINSTANCE, NotationPackage.eINSTANCE,
+				EcorePackage.eINSTANCE, XMLTypePackage.eINSTANCE };
 		localDataStore.setEPackages(ePackages);
 
 		// load the properties from the teneo.properties file
 		try {
 			final Properties props = new Properties();
-			props.load(this.getClass().getResourceAsStream("teneo.properties"));
+			props.load(this.getClass().getResourceAsStream("/teneo.properties"));
 
 			// handle multiple inheritance in the GMF model
-			props.setProperty(PersistenceOptions.PERSISTENCE_XML,
-					"annotations.xml");
+			props.setProperty(PersistenceOptions.PERSISTENCE_XML, "/annotations.xml");
 
 			localDataStore.setProperties(props);
 		} catch (IOException e) {
@@ -110,8 +105,7 @@ public class StoreController {
 		}
 
 		// solve a specific issue with the GMF model
-		localDataStore.getExtensionManager().registerExtension(
-				EListPropertyHandler.class.getName(),
+		localDataStore.getExtensionManager().registerExtension(EListPropertyHandler.class.getName(),
 				GMFEListPropertyHandler.class.getName());
 
 		localDataStore.initialize();
