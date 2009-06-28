@@ -57,7 +57,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -125,11 +125,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public Object get(Object owner) throws HibernateException {
 
 		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) owner);
-		if (!adapter.isTargetCreatedByORM()) {
-			final Object value = adapter.getStoreCollection(eFeature);
-			if (value != null) {
-				return value;
-			}
+		final Object value = adapter.getStoreCollection(eFeature);
+		if (value != null) {
+			return value;
 		}
 
 		Object obj = ((EObject) owner).eGet(eFeature);
@@ -204,11 +202,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 */
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) owner);
-		if (!adapter.isTargetCreatedByORM()) {
-			final Object value = adapter.getStoreCollection(eFeature);
-			if (value != null) {
-				return value;
-			}
+		final Object value = adapter.getStoreCollection(eFeature);
+		if (value != null) {
+			return value;
 		}
 
 		Object obj = ((EObject) owner).eGet(eFeature);
@@ -321,6 +317,13 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			// are multiple implementors. FieldUtil does caching of fieldnames
 			// and fields.
 			final Field javaField = FieldUtil.getField(target.getClass(), getFieldName(target));
+
+			// do not set the java field if not present, but use the store adapter
+			// this happens in case of gmf see bugzilla: 280040
+			if (javaField == null) {
+				adapter.addStoreCollection(eFeature, value);
+				return;
+			}
 
 			try {
 				final Object currentValue = javaField.get(target);
