@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.4 2008/06/29 14:49:50 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.4.2.1 2009/06/29 23:02:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.4.2.1 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -64,14 +64,17 @@ public class PersistenceMappingSchemaGenerator {
 	/** The main method, ugly but effective */
 	public static void main(String[] args) {
 		final PersistenceMappingSchemaGenerator pmsg = new PersistenceMappingSchemaGenerator();
-		pmsg.setAnnotationEPackages(new EPackage[] { PannotationPackage.eINSTANCE });
+		pmsg
+				.setAnnotationEPackages(new EPackage[] { PannotationPackage.eINSTANCE });
 		pmsg.setModelEPackage(PamodelPackage.eINSTANCE);
 		try {
-			final FileWriter fw = new FileWriter("/home/mtaal/mytmp/persistence-mapping.xsd");
+			final FileWriter fw = new FileWriter(
+					"/home/mtaal/mytmp/persistence-mapping.xsd");
 			fw.write(pmsg.generate());
 			fw.close();
 		} catch (Exception e) {
-			throw new StoreAnnotationsException("Exception while generating mapping.xsd", e);
+			throw new StoreAnnotationsException(
+					"Exception while generating mapping.xsd", e);
 		}
 	}
 
@@ -103,47 +106,59 @@ public class PersistenceMappingSchemaGenerator {
 		final Document doc = new Document();
 
 		// The root Element
-		final Element root =
-				new Element("xsd:schema").addAttribute("targetNamespace", nameSpace).addAttribute("elementFormDefault",
-					"qualified").addAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema").addAttribute("xmlns",
-					nameSpace);
+		final Element root = new Element("xsd:schema").addAttribute(
+				"targetNamespace", nameSpace).addAttribute(
+				"elementFormDefault", "qualified").addAttribute("xmlns:xsd",
+				"http://www.w3.org/2001/XMLSchema").addAttribute("xmlns",
+				nameSpace);
 
-		root.addElement("xsd:element").addAttribute("name", "persistence-mapping").addAttribute("type",
-			"PersistenceMapping");
-		root.addElement("xsd:complexType").addAttribute("name", "PersistenceMapping").addElement("xsd:sequence")
-			.addAttribute("minOccurs", "1").addAttribute("maxOccurs", "unbounded").addElement("xsd:element")
-			.addAttribute("name", "epackage").addAttribute("type", "EPackage");
+		root.addElement("xsd:element").addAttribute("name",
+				"persistence-mapping").addAttribute("type",
+				"PersistenceMapping");
+		root.addElement("xsd:complexType").addAttribute("name",
+				"PersistenceMapping").addElement("xsd:sequence").addAttribute(
+				"minOccurs", "1").addAttribute("maxOccurs", "unbounded")
+				.addElement("xsd:element").addAttribute("name", "epackage")
+				.addAttribute("type", "EPackage");
 
-		// first determine which types have only one string field, these are handled
+		// first determine which types have only one string field, these are
+		// handled
 		// slightly different because this makes the xml easier
 		for (EPackage annotationEPackage : annotationEPackages) {
-			final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(annotationEPackage.getEClassifiers());
+			final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(
+					annotationEPackage.getEClassifiers());
 			for (EClassifier eClassifier : eclassifiers) {
 				String schemaTypeName = eClassifier.getName();
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass) eClassifier;
 
-					// Annotation types with a single feature are converted to simple type
+					// Annotation types with a single feature are converted to
+					// simple type
 					// references in the schema.
 					if (oneMappableFeature(eClass)) {
-						final EStructuralFeature eStructuralFeature = eClass.getEStructuralFeatures().get(0);
+						final EStructuralFeature eStructuralFeature = eClass
+								.getEStructuralFeatures().get(0);
 						final EClassifier eType = eStructuralFeature.getEType();
-						schemaTypeName = schemaTypeNamesByAnnotationType.get(eType.getName());
+						schemaTypeName = schemaTypeNamesByAnnotationType
+								.get(eType.getName());
 						if (schemaTypeName == null) {
 							schemaTypeName = eType.getName();
 						}
-						schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+						schemaTypeNamesByAnnotationType.put(eClassifier
+								.getName(), schemaTypeName);
 						continue;
 					}
 				}
-				schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+				schemaTypeNamesByAnnotationType.put(eClassifier.getName(),
+						schemaTypeName);
 			}
 		}
 
 		// process the annotations first to get the correct typing
 		final List<Element> annotationList = new ArrayList<Element>();
 		for (EPackage annotationEPackage : annotationEPackages) {
-			annotationList.addAll(processAnnotationEPackage(annotationEPackage));
+			annotationList
+					.addAll(processAnnotationEPackage(annotationEPackage));
 		}
 
 		root.addElement(createEPackageElement());
@@ -161,7 +176,8 @@ public class PersistenceMappingSchemaGenerator {
 	/** process annotation packages */
 	private List<Element> processAnnotationEPackage(EPackage epackage) {
 		final ArrayList<Element> elemList = new ArrayList<Element>();
-		final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(epackage.getEClassifiers());
+		final List<EClassifier> eclassifiers = new ArrayList<EClassifier>(
+				epackage.getEClassifiers());
 		Collections.sort(eclassifiers, new ENamedElementComparator());
 
 		for (EClassifier eClassifier : eclassifiers) {
@@ -176,41 +192,60 @@ public class PersistenceMappingSchemaGenerator {
 					continue;
 				}
 
-				final List<EStructuralFeature> eStructuralFeatures = eClass.getEAllStructuralFeatures();
+				final List<EStructuralFeature> eStructuralFeatures = eClass
+						.getEAllStructuralFeatures();
 				if (eStructuralFeatures.isEmpty()) {
 					continue;
 				}
 
-				// Annotation types with a single feature are converted to simple type references in
+				// Annotation types with a single feature are converted to
+				// simple type references in
 				// the schema.
 				if (oneMappableFeature(eClass)) {
 					/*
-					 * final EStructuralFeature eStructuralFeature = (EStructuralFeature)
-					 * eClass.getEStructuralFeatures().get(0); final EClassifier eType =
-					 * eStructuralFeature.getEType(); schemaTypeName = (String)
-					 * schemaTypeNamesByAnnotationType.get(eType.getName()); if (schemaTypeName ==
-					 * null) { schemaTypeName = eType.getName(); }
-					 * schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+					 * final EStructuralFeature eStructuralFeature =
+					 * (EStructuralFeature)
+					 * eClass.getEStructuralFeatures().get(0); final EClassifier
+					 * eType = eStructuralFeature.getEType(); schemaTypeName =
+					 * (String)
+					 * schemaTypeNamesByAnnotationType.get(eType.getName()); if
+					 * (schemaTypeName == null) { schemaTypeName =
+					 * eType.getName(); }
+					 * schemaTypeNamesByAnnotationType.put(eClassifier
+					 * .getName(), schemaTypeName);
 					 */
 					continue;
 				}
 
-				final Element complexTypeElement = createSchemaComplexType(eClass.getName());
+				final Element complexTypeElement = createSchemaComplexType(eClass
+						.getName());
 				elemList.add(complexTypeElement);
 
-				final Element choiceElement = complexTypeElement.addElement("xsd:choice");
-				addZeroUnbounded(choiceElement);
+				final Element choiceElement = complexTypeElement
+						.addElement("xsd:choice");
 				processStructuralFeatures(choiceElement, eStructuralFeatures);
 				if (choiceElement.getChildren().size() == 0) {
 					complexTypeElement.getChildren().remove(choiceElement);
+				} else if (choiceElement.getChildren().size() == 1) {
+					complexTypeElement.remove(choiceElement);
+					final Element sequenceElement = complexTypeElement
+							.addElement("xsd:sequence");
+					complexTypeElement.remove(sequenceElement);
+					sequenceElement.add(choiceElement.getChildren().get(0));
+					complexTypeElement.add(0, sequenceElement);
+				} else {
+					addMinMaxOccurs(choiceElement, "0", ""
+							+ choiceElement.getChildren().size());
 				}
 			} else if (eClassifier instanceof EEnum) {
 				elemList.add(processEnum((EEnum) eClassifier));
 			} else {
-				throw new RuntimeException("Unexpected EClassifier: " + eClassifier.eClass().getName());
+				throw new RuntimeException("Unexpected EClassifier: "
+						+ eClassifier.eClass().getName());
 			}
 
-			schemaTypeNamesByAnnotationType.put(eClassifier.getName(), schemaTypeName);
+			schemaTypeNamesByAnnotationType.put(eClassifier.getName(),
+					schemaTypeName);
 		}
 		return elemList;
 	}
@@ -228,7 +263,8 @@ public class PersistenceMappingSchemaGenerator {
 
 	/** Process an enum */
 	private Element processEnum(EEnum eEnum) {
-		final Element simpleTypeElement = createSchemaSimpleType(eEnum.getName(), null);
+		final Element simpleTypeElement = createSchemaSimpleType(eEnum
+				.getName(), null);
 		final Element restrictionElement = new Element("xsd:restriction");
 		restrictionElement.addAttribute(new Attribute("base", "xsd:token"));
 		simpleTypeElement.addElement(restrictionElement);
@@ -236,94 +272,134 @@ public class PersistenceMappingSchemaGenerator {
 		for (EEnumLiteral literal : literals) {
 			final Element enumerationElement = new Element("xsd:enumeration");
 			restrictionElement.addElement(enumerationElement);
-			enumerationElement.addAttribute(new Attribute("value", literal.getLiteral()));
+			enumerationElement.addAttribute(new Attribute("value", literal
+					.getLiteral()));
 		}
 		return simpleTypeElement;
 	}
 
 	/** Do the epackage */
 	private Element createEPackageElement() {
-		final Element epackElement = new Element("xsd:complexType").addAttribute("name", "EPackage");
+		final Element epackElement = new Element("xsd:complexType")
+				.addAttribute("name", "EPackage");
 		final Element choiceElement = epackElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		processStructuralFeatures(choiceElement, getPAnnotatedEPackage().getEAllStructuralFeatures());
-		choiceElement.addElement("xsd:element").addAttribute("name", "eclass").addAttribute("type", "EClass");
-		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
+		processStructuralFeatures(choiceElement, getPAnnotatedEPackage()
+				.getEAllStructuralFeatures());
+		choiceElement.addElement("xsd:element").addAttribute("name", "eclass")
+				.addAttribute("type", "EClass");
+		choiceElement.addElement("xsd:element").addAttribute("name",
+				"edatatype").addAttribute("type", "EDataType");
+
+		addMinMaxOccurs(choiceElement, "0", ""
+				+ choiceElement.getChildren().size());
+
 		// add the namespace-uri attribute
-		epackElement.addElement("xsd:attribute").addAttribute("name", "namespace-uri").addAttribute("type",
-			"xsd:anyURI").addAttribute("use", "required");
+		epackElement.addElement("xsd:attribute").addAttribute("name",
+				"namespace-uri").addAttribute("type", "xsd:anyURI")
+				.addAttribute("use", "required");
 		return epackElement;
 	}
 
 	/** Do the eClass */
 	private Element createEClassElement() {
-		final Element eclassElement = new Element("xsd:complexType").addAttribute("name", "EClass");
+		final Element eclassElement = new Element("xsd:complexType")
+				.addAttribute("name", "EClass");
 		final Element choiceElement = eclassElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		processStructuralFeatures(choiceElement, getPAnnotatedEClass().getEAllStructuralFeatures());
+		processStructuralFeatures(choiceElement, getPAnnotatedEClass()
+				.getEAllStructuralFeatures());
 
-		choiceElement.addElement("xsd:element").addAttribute("name", "eattribute").addAttribute("type", "EAttribute");
-		choiceElement.addElement("xsd:element").addAttribute("name", "ereference").addAttribute("type", "EReference");
-		choiceElement.addElement("xsd:element").addAttribute("name", "property").addAttribute("type", "Property");
-		choiceElement.addElement("xsd:element").addAttribute("name", "edatatype").addAttribute("type", "EDataType");
+		choiceElement.addElement("xsd:element").addAttribute("name",
+				"eattribute").addAttribute("type", "EAttribute");
+		choiceElement.addElement("xsd:element").addAttribute("name",
+				"ereference").addAttribute("type", "EReference");
+		choiceElement.addElement("xsd:element")
+				.addAttribute("name", "property").addAttribute("type",
+						"Property");
+		choiceElement.addElement("xsd:element").addAttribute("name",
+				"edatatype").addAttribute("type", "EDataType");
 
-		eclassElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+		addMinMaxOccurs(choiceElement, "0", ""
+				+ choiceElement.getChildren().size());
+
+		eclassElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use",
+						"required");
 		return eclassElement;
 	}
 
 	/** Do the eReference element */
 	private Element createEReferenceElement() {
-		final Element erefElement = new Element("xsd:complexType").addAttribute("name", "EReference");
+		final Element erefElement = new Element("xsd:complexType")
+				.addAttribute("name", "EReference");
 		final Element choiceElement = erefElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		processStructuralFeatures(choiceElement, getPAnnotatedEReference().getEAllStructuralFeatures());
-		erefElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+		processStructuralFeatures(choiceElement, getPAnnotatedEReference()
+				.getEAllStructuralFeatures());
+		addMinMaxOccurs(choiceElement, "0", ""
+				+ choiceElement.getChildren().size());
+		erefElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use",
+						"required");
 		return erefElement;
 	}
 
 	/** Do the eAttribute */
 	private Element createEAttributeElement() {
-		final Element eattrElement = new Element("xsd:complexType").addAttribute("name", "EAttribute");
+		final Element eattrElement = new Element("xsd:complexType")
+				.addAttribute("name", "EAttribute");
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		processStructuralFeatures(choiceElement, getPAnnotatedEAttribute().getEAllStructuralFeatures());
-		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+		processStructuralFeatures(choiceElement, getPAnnotatedEAttribute()
+				.getEAllStructuralFeatures());
+		addMinMaxOccurs(choiceElement, "0", ""
+				+ choiceElement.getChildren().size());
+		eattrElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use",
+						"required");
 		return eattrElement;
 	}
 
 	/** Do the eDataType */
 	private Element createEDataTypeElement() {
-		final Element eattrElement = new Element("xsd:complexType").addAttribute("name", "EDataType");
+		final Element eattrElement = new Element("xsd:complexType")
+				.addAttribute("name", "EDataType");
 		final Element choiceElement = eattrElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		processStructuralFeatures(choiceElement, getPAnnotatedEDataType().getEAllStructuralFeatures());
-		eattrElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+		processStructuralFeatures(choiceElement, getPAnnotatedEDataType()
+				.getEAllStructuralFeatures());
+		addMinMaxOccurs(choiceElement, "0", ""
+				+ choiceElement.getChildren().size());
+		eattrElement.addElement("xsd:attribute").addAttribute("name", "name")
+				.addAttribute("type", "xsd:token").addAttribute("use",
+						"required");
 		return eattrElement;
 	}
 
 	/** Do the property (comb. of ereference and eattribute */
 	private Element createPropertyElement() {
-		final Element propertyElement = new Element("xsd:complexType").addAttribute("name", "Property");
+		final Element propertyElement = new Element("xsd:complexType")
+				.addAttribute("name", "Property");
 		final Element choiceElement = propertyElement.addElement("xsd:choice");
-		addZeroUnbounded(choiceElement);
-		final List<EStructuralFeature> features =
-				new ArrayList<EStructuralFeature>(getPAnnotatedEAttribute().getEAllStructuralFeatures());
-		features.removeAll(getPAnnotatedEReference().getEAllStructuralFeatures());
+		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(
+				getPAnnotatedEAttribute().getEAllStructuralFeatures());
+		features.removeAll(getPAnnotatedEReference()
+				.getEAllStructuralFeatures());
 		features.addAll(getPAnnotatedEReference().getEAllStructuralFeatures());
 
 		processStructuralFeatures(choiceElement, features);
-		propertyElement.addElement("xsd:attribute").addAttribute("name", "name").addAttribute("type", "xsd:token")
-			.addAttribute("use", "required");
+		addMinMaxOccurs(choiceElement, "0", ""
+				+ choiceElement.getChildren().size());
+		propertyElement.addElement("xsd:attribute")
+				.addAttribute("name", "name").addAttribute("type", "xsd:token")
+				.addAttribute("use", "required");
 		return propertyElement;
 	}
 
-	/** Walk through a pamodel type and add references to each type to the passed element */
-	private void processStructuralFeatures(Element mainElement, List<EStructuralFeature> eStructuralFeatures) {
-		final List<EStructuralFeature> eFeatures = new ArrayList<EStructuralFeature>(eStructuralFeatures);
+	/**
+	 * Walk through a pamodel type and add references to each type to the passed
+	 * element
+	 */
+	private void processStructuralFeatures(Element mainElement,
+			List<EStructuralFeature> eStructuralFeatures) {
+		final List<EStructuralFeature> eFeatures = new ArrayList<EStructuralFeature>(
+				eStructuralFeatures);
 		Collections.sort(eFeatures, new ENamedElementComparator());
 		for (EStructuralFeature ef : eFeatures) {
 			processStructuralFeature(mainElement, ef);
@@ -333,26 +409,31 @@ public class PersistenceMappingSchemaGenerator {
 	/**
 	 * Processes the EStructuralFeatures of a Pamodel EClass.
 	 */
-	private void processStructuralFeature(Element parentElement, EStructuralFeature eStructuralFeature) {
+	private void processStructuralFeature(Element parentElement,
+			EStructuralFeature eStructuralFeature) {
 		final EClassifier eType = eStructuralFeature.getEType();
 
-		if (isIgnorable(eStructuralFeature) || isIgnorable(eType) || isUnsupported(eType)) {
+		if (isIgnorable(eStructuralFeature) || isIgnorable(eType)
+				|| isUnsupported(eType)) {
 			return;
 		}
 
 		final int minOccurs = (eStructuralFeature.isRequired() ? 1 : 0);
 
 		// Determine the element name.
-		final EAnnotation eAnnotation = eStructuralFeature.getEAnnotation(PERSISTENCE_MAPPING_SOURCE);
+		final EAnnotation eAnnotation = eStructuralFeature
+				.getEAnnotation(PERSISTENCE_MAPPING_SOURCE);
 		String elementName = null;
 		if (eAnnotation != null) {
 			elementName = eAnnotation.getDetails().get("elementName");
 		}
 		if (elementName == null) {
-			// No explicit XML element name specified, so derive from the name instead.
+			// No explicit XML element name specified, so derive from the name
+			// instead.
 			elementName = eStructuralFeature.getName();
 			if (eStructuralFeature.isMany() && elementName.endsWith("s")) {
-				elementName = elementName.substring(0, elementName.length() - 1);
+				elementName = elementName
+						.substring(0, elementName.length() - 1);
 			}
 		}
 
@@ -361,7 +442,8 @@ public class PersistenceMappingSchemaGenerator {
 		final String xmlName = convertToXmlName(elementName);
 		for (Element otherElem : parentElement.getChildren()) {
 			String name;
-			if ((name = otherElem.getAttributeValue("name")) != null && name.compareTo(xmlName) == 0) {
+			if ((name = otherElem.getAttributeValue("name")) != null
+					&& name.compareTo(xmlName) == 0) {
 				return;
 			}
 		}
@@ -376,28 +458,37 @@ public class PersistenceMappingSchemaGenerator {
 
 		if (eStructuralFeature instanceof EReference) {
 			// EReferences are represented by child elements.
-			final Element element = createSchemaElement(elementName, typeName, eStructuralFeature.getName());
+			final Element element = createSchemaElement(elementName, typeName,
+					eStructuralFeature.getName());
 			if (parentElement.getName().compareTo("xsd:choice") != 0) {
-				element.addAttribute(new Attribute("minOccurs", String.valueOf(minOccurs)));
+				element.addAttribute(new Attribute("minOccurs", String
+						.valueOf(minOccurs)));
 				if (eStructuralFeature.isMany()) {
-					element.addAttribute(new Attribute("maxOccurs", "unbounded"));
+					element
+							.addAttribute(new Attribute("maxOccurs",
+									"unbounded"));
 				}
 			}
 			parentElement.addElement(element);
 		} else {
-			// EAttributes are represented by attributes and optional child elements in case of many
+			// EAttributes are represented by attributes and optional child
+			// elements in case of many
 			// multiplicity.
-			final Element attributeElement =
-					createSchemaAttribute(eStructuralFeature.getName(), typeName, eStructuralFeature.getName());
-			attributeElement.addAttribute(new Attribute("use", (minOccurs == 0 ? "optional" : "required")));
+			final Element attributeElement = createSchemaAttribute(
+					eStructuralFeature.getName(), typeName, eStructuralFeature
+							.getName());
+			attributeElement.addAttribute(new Attribute("use",
+					(minOccurs == 0 ? "optional" : "required")));
 			parentElement.getParent().addElement(attributeElement);
 			if (eStructuralFeature.isMany()) {
-				final Element element =
-						createSchemaElement(eStructuralFeature.getName(), typeName, eStructuralFeature.getName());
+				final Element element = createSchemaElement(eStructuralFeature
+						.getName(), typeName, eStructuralFeature.getName());
 				parentElement.addElement(element);
 				if (parentElement.getName().compareTo("xsd:choice") != 0) {
 					element.addAttribute(new Attribute("minOccurs", "0"));
-					element.addAttribute(new Attribute("maxOccurs", "unbounded"));
+					element
+							.addAttribute(new Attribute("maxOccurs",
+									"unbounded"));
 				}
 			}
 		}
@@ -433,10 +524,12 @@ public class PersistenceMappingSchemaGenerator {
 	 * 
 	 */
 	protected static boolean isIgnorable(EModelElement eModelElement) {
-		final EAnnotation eAnnotation = eModelElement.getEAnnotation(PERSISTENCE_MAPPING_SOURCE);
+		final EAnnotation eAnnotation = eModelElement
+				.getEAnnotation(PERSISTENCE_MAPPING_SOURCE);
 		boolean ignore = false;
 		if (eAnnotation != null) {
-			ignore = Boolean.valueOf(eAnnotation.getDetails().get("ignore")).booleanValue();
+			ignore = Boolean.valueOf(eAnnotation.getDetails().get("ignore"))
+					.booleanValue();
 		}
 		return ignore;
 	}
@@ -444,7 +537,8 @@ public class PersistenceMappingSchemaGenerator {
 	/**
 	 * Creates an XML Schema element. (&lt;xsd:element&gt;)
 	 */
-	private Element createSchemaElement(String name, String type, String eStructuralFeatureName) {
+	private Element createSchemaElement(String name, String type,
+			String eStructuralFeatureName) {
 		final Element element = new Element("xsd:element");
 		element.addAttribute(new Attribute("name", convertToXmlName(name)));
 		element.addAttribute(new Attribute("type", type));
@@ -469,7 +563,8 @@ public class PersistenceMappingSchemaGenerator {
 	/**
 	 * Creates an XML Schema attribute element. (&lt;xsd:attribute&gt;)
 	 */
-	private Element createSchemaAttribute(String name, String type, String eStructuralFeatureName) {
+	private Element createSchemaAttribute(String name, String type,
+			String eStructuralFeatureName) {
 		final Element element = new Element("xsd:attribute");
 		element.addAttribute(new Attribute("name", convertToXmlName(name)));
 		element.addAttribute(new Attribute("type", type));
@@ -479,11 +574,13 @@ public class PersistenceMappingSchemaGenerator {
 		return element;
 	}
 
-	private static void addAppInfoElement(final Element element, String eStructuralFeatureName) {
+	private static void addAppInfoElement(final Element element,
+			String eStructuralFeatureName) {
 		final Element annotationElement = new Element("xsd:annotation");
 		element.addElement(annotationElement);
 		final Element appInfoElement = new Element("xsd:appinfo");
-		appInfoElement.addAttribute(new Attribute("source", ESTRUCTURAL_FEATURE_SOURCE_NAME));
+		appInfoElement.addAttribute(new Attribute("source",
+				ESTRUCTURAL_FEATURE_SOURCE_NAME));
 		appInfoElement.setText(eStructuralFeatureName);
 		annotationElement.addElement(appInfoElement);
 	}
