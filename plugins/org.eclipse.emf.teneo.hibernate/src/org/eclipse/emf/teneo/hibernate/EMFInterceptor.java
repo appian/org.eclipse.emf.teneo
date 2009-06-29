@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.12 2008/03/10 21:30:18 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.12.2.1 2009/06/29 23:03:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -23,29 +23,29 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.extension.ExtensionInitializable;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
-import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.FieldUtil;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.collection.AbstractPersistentCollection;
 
 /**
- * Intercepts the getEntityName call to return the EClass name as the entity name.
+ * Intercepts the getEntityName call to return the EClass name as the entity
+ * name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.12.2.1 $
  */
 
-public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, ExtensionManagerAware,
-		ExtensionInitializable {
+public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint,
+		ExtensionManagerAware, ExtensionInitializable {
 
-	// is kept to do dereferencing of collections, see the description in the deReferenceCollections
+	// is kept to do dereferencing of collections, see the description in the
+	// deReferenceCollections
 	// method
 	// clear all session instances in the persistentcollection to solve
 	// this issue which still occured with Teneo in hibernate 3.2.5
@@ -57,8 +57,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	// undo the delete (possible in the editor) and then
 	// save the resource a 'Found two representations of same collection:'
 	// exception occurs
-	private static ThreadLocal<List<AbstractPersistentCollection>> persistentCollections =
-			new ThreadLocal<List<AbstractPersistentCollection>>();
+	private static ThreadLocal<List<AbstractPersistentCollection>> persistentCollections = new ThreadLocal<List<AbstractPersistentCollection>>();
 
 	// note is also used for non-deleted objects in HbResource
 	public static void registerCollectionsForDereferencing(EObject eObject) {
@@ -66,12 +65,15 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 			if (eReference.isMany()) {
 				final Object refValue = eObject.eGet(eReference);
 				if (refValue instanceof PersistableDelegateList<?>) {
-					final Object delegate = ((PersistableDelegateList<?>) refValue).getDelegate();
+					final Object delegate = ((PersistableDelegateList<?>) refValue)
+							.getDelegate();
 					if (delegate instanceof AbstractPersistentCollection) {
 						if (persistentCollections.get() == null) {
-							persistentCollections.set(new ArrayList<AbstractPersistentCollection>());
+							persistentCollections
+									.set(new ArrayList<AbstractPersistentCollection>());
 						}
-						final List<AbstractPersistentCollection> list = persistentCollections.get();
+						final List<AbstractPersistentCollection> list = persistentCollections
+								.get();
 						list.add((AbstractPersistentCollection) delegate);
 					}
 				}
@@ -79,10 +81,13 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 		}
 	}
 
-	// is used to unset a session in a collection. Note that it would be better to use the
-	// AbstractPersistentCollection.unsetSession/getSession method but these give me a
+	// is used to unset a session in a collection. Note that it would be better
+	// to use the
+	// AbstractPersistentCollection.unsetSession/getSession method but these
+	// give me a
 	// java.lang.AccessError
-	private static final Field sessionField = FieldUtil.getField(AbstractPersistentCollection.class, "session");
+	private static final Field sessionField = FieldUtil.getField(
+			AbstractPersistentCollection.class, "session");
 
 	/**
 	 * Generated Serial Version ID
@@ -97,7 +102,9 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager(org.eclipse.emf.teneo.extension.ExtensionManager)
+	 * @see
+	 * org.eclipse.emf.teneo.extension.ExtensionManagerAware#setExtensionManager
+	 * (org.eclipse.emf.teneo.extension.ExtensionManager)
 	 */
 	public void setExtensionManager(ExtensionManager extensionManager) {
 		this.extensionManager = extensionManager;
@@ -106,10 +113,13 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension()
+	 * @see
+	 * org.eclipse.emf.teneo.extension.ExtensionInitializable#initializeExtension
+	 * ()
 	 */
 	public void initializeExtension() {
-		qualifyStrategy = extensionManager.getExtension(EntityNameStrategy.class);
+		qualifyStrategy = extensionManager
+				.getExtension(EntityNameStrategy.class);
 	}
 
 	/**
@@ -131,7 +141,8 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	@Override
 	@SuppressWarnings("unchecked")
 	public void postFlush(Iterator entities) {
-		final List<AbstractPersistentCollection> list = persistentCollections.get();
+		final List<AbstractPersistentCollection> list = persistentCollections
+				.get();
 		if (list == null) {
 			return;
 		}
@@ -149,26 +160,30 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	}
 
 	/**
-	 * Returns true if the eobject belongs to the newEObject set of a hibernateResource, in all
-	 * other cases returns null.
+	 * Returns true if the eobject belongs to the newEObject set of a
+	 * hibernateResource, in all other cases returns null.
 	 */
-	@Override
-	public Boolean isTransient(Object entity) {
-		if (!(entity instanceof EObject)) {
-			return null;
-		}
-
-		final EObject eObject = (EObject) entity;
-		final Resource res = eObject.eResource();
-		if (res == null || !(res instanceof StoreResource)) {
-			return null;
-		}
-
-		final StoreResource storeResource = (StoreResource) res;
-		if (storeResource.getNewEObjectSet().contains(entity)) {
-			return true;
-		}
-		// in all other cases let hibernate do it
-		return null;
-	}
+	// Disabled this method because an object can be new to a resource but
+	// already
+	// exist in the database.
+	// See bugzilla 280355 and the related testcase
+	// @Override
+	// public Boolean isTransient(Object entity) {
+	// if (!(entity instanceof EObject)) {
+	// return null;
+	// }
+	//
+	// final EObject eObject = (EObject) entity;
+	// final Resource res = eObject.eResource();
+	// if (res == null || !(res instanceof StoreResource)) {
+	// return null;
+	// }
+	//
+	// final StoreResource storeResource = (StoreResource) res;
+	// if (storeResource.getNewEObjectSet().contains(entity)) {
+	// return true;
+	// }
+	// // in all other cases let hibernate do it
+	// return null;
+	// }
 }
