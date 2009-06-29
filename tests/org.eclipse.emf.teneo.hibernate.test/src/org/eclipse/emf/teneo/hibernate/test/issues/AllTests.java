@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.45 $
+ * @version $Revision: 1.46 $
  */
 public class AllTests {
 
@@ -84,7 +84,10 @@ public class AllTests {
 		suite.addTestSuite(BZ237498Action.class);
 
 		suite.addTestSuite(SecondarytableInheritanceAction.class);
-		suite.addTestSuite(LargeMapValueAction.class);
+		if (!HibernateTestbed.isRunningOnBuildServer()) {
+			// gives out-of-mem on build server but not locally
+			suite.addTestSuite(LargeMapValueAction.class);
+		}
 
 		suite.addTestSuite(BZ224991Action.class);
 
