@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">Head</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/resource</meta>
 		<id name="hair" type="java.lang.String">
-			<column not-null="true" unique="true" name="`hair`"/>
+			<column not-null="true" unique="false" name="`hair`"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
@@ -17,7 +17,7 @@
 		<meta attribute="eclassName">Person</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/resource</meta>
 		<id name="name" type="java.lang.String">
-			<column not-null="true" unique="true" name="`name`"/>
+			<column not-null="true" unique="false" name="`name`"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">

@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">Animal</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz247939</meta>
 		<id name="id" type="java.lang.Long">
-			<column not-null="true" unique="true" name="`animal_id`"/>
+			<column not-null="true" unique="false" name="`animal_id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`animal_type`" type="string"/>
@@ -18,7 +18,7 @@
 		<meta attribute="eclassName">Owner</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz247939</meta>
 		<id name="id" type="java.lang.Long">
-			<column not-null="true" unique="true" name="`owner_id`"/>
+			<column not-null="true" unique="false" name="`owner_id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>

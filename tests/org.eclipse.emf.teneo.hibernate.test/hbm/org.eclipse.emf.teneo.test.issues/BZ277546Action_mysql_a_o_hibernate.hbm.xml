@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">AnotherVersion</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
@@ -18,7 +18,7 @@
 		<meta attribute="eclassName">DateVersion</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
@@ -30,7 +30,7 @@
 		<meta attribute="eclassName">SimpleVersion</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>

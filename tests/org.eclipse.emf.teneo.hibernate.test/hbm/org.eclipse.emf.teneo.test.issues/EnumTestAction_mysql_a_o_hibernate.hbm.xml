@@ -10,7 +10,7 @@
 		<meta attribute="eclassName">Item</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/enumtest</meta>
 		<id name="itemType">
-			<column not-null="true" unique="true" name="`itemtype`"/>
+			<column not-null="true" unique="false" name="`itemtype`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.enumtest.ItemType</param>
 			</type>

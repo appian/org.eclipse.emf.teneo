@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">Block</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -32,7 +32,7 @@
 		<meta attribute="eclassName">DataCenter</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -58,7 +58,7 @@
 		<meta attribute="eclassName">Domain</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -83,7 +83,7 @@
 		<meta attribute="eclassName">DomainSystem</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -125,7 +125,7 @@
 		<meta attribute="eclassName">FailoverType</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -142,7 +142,7 @@
 		<meta attribute="eclassName">Host</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -195,7 +195,7 @@
 		<meta attribute="eclassName">HostBlock</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -221,7 +221,7 @@
 		<meta attribute="eclassName">Interface</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -261,7 +261,7 @@
 		<meta attribute="eclassName">IP</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -309,7 +309,7 @@
 		<meta attribute="eclassName">MuninInfo</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -341,7 +341,7 @@
 		<meta attribute="eclassName">IPName</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -366,7 +366,7 @@
 		<meta attribute="eclassName">Parameter</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -386,7 +386,7 @@
 		<meta attribute="eclassName">Role</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -431,7 +431,7 @@
 		<meta attribute="eclassName">OpsSystem</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -470,7 +470,7 @@
 		<meta attribute="eclassName">VServer</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -518,7 +518,7 @@
 		<meta attribute="eclassName">DWHCluster</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">
@@ -544,7 +544,7 @@
 		<meta attribute="eclassName">DWHInstance</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
 		<version name="revision" type="int">

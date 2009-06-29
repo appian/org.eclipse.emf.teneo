@@ -6,7 +6,7 @@
 		<meta attribute="eclassName">Parent</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
 		<id name="id" type="long" unsaved-value="0">
-			<column not-null="true" unique="true" name="`id`"/>
+			<column not-null="true" unique="false" name="`id`"/>
 		</id>
 		<discriminator column="`dtype`" type="string"/>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
