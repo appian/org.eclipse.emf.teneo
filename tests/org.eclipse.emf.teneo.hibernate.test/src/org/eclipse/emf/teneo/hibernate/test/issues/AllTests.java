@@ -46,13 +46,15 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(Bz280355Action.class);
 
 		suite.addTestSuite(BZ225296_2Action.class);
 		suite.addTestSuite(Bz280480Action.class);
