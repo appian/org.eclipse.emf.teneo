@@ -51,9 +51,6 @@
 			<column not-null="false" unique="false" name="`any_type`"/>
 			<column not-null="false" unique="false" name="`any_id`"/>
 		</any>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class entity-name="AnyObject_group" lazy="false" table="`anyobject_group`">
 		<meta attribute="featureMap">AnyObject</meta>
@@ -80,9 +77,6 @@
 			<column not-null="false" unique="false" name="`any_type`"/>
 			<column not-null="false" unique="false" name="`any1_id`"/>
 		</any>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.any.impl.GlobalObjectTypeImpl" entity-name="GlobalObjectType" abstract="false" lazy="false" discriminator-value="GlobalObjectType" table="`globalobjecttype`">
 		<meta attribute="eclassName">GlobalObjectType</meta>
