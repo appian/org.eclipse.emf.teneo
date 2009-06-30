@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: FeatureMapMapping.java,v 1.18 2009/06/28 02:05:07 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.19 2009/06/30 07:34:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -95,6 +95,7 @@ public class FeatureMapMapping extends AbstractMapper {
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
 		final boolean isWildCard = StoreUtil.isWildCard(paAttribute.getModelEAttribute());
+		final boolean isMixed = StoreUtil.isMixed(paAttribute.getModelEAttribute());
 		if (isWildCard) {
 			addWildCardFeatureMapping(mainElement, paAttribute);
 		} else {
@@ -102,7 +103,11 @@ public class FeatureMapMapping extends AbstractMapper {
 			for (PAnnotatedEStructuralFeature paFeature : paClass.getPaEStructuralFeatures()) {
 				EStructuralFeature eFeature = paFeature.getModelEStructuralFeature();
 				final EStructuralFeature modelGroupFeature = ExtendedMetaData.INSTANCE.getGroup(eFeature);
-				if (modelGroupFeature != null && modelGroupFeature == paAttribute.getModelEStructuralFeature()) {
+				final boolean isEFeatureMixed = StoreUtil.isMixed(eFeature);
+				// note with mixed everyone is part of the group except the
+				// mixed feature itself
+				if ((isMixed && !isEFeatureMixed)
+						|| (modelGroupFeature != null && modelGroupFeature == paAttribute.getModelEStructuralFeature())) {
 					log.debug("Feature " + StoreUtil.toString(eFeature) + " belongs to this featuremap");
 
 					// continue if it is a id
