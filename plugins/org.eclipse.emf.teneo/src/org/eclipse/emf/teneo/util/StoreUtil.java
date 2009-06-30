@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.25 2009/03/30 07:53:04 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.26 2009/06/30 07:34:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -53,7 +53,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 
 public class StoreUtil {
@@ -113,8 +113,8 @@ public class StoreUtil {
 	}
 
 	/**
-	 * Returns true if the passed EStructuralFeature represents a map. Note that the method also
-	 * handles EAttribute (returns false) for convenience reasons.
+	 * Returns true if the passed EStructuralFeature represents a map. Note that the method also handles EAttribute
+	 * (returns false) for convenience reasons.
 	 */
 	public static boolean isMap(EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature instanceof EAttribute) {
@@ -126,10 +126,10 @@ public class StoreUtil {
 
 	/** Same method only for an eclass */
 	public static boolean isMapEntry(EClass eclass) {
-		return eclass != null && eclass.getInstanceClass() != null &&
-				Map.Entry.class.isAssignableFrom(eclass.getInstanceClass()) &&
-				eclass.getEStructuralFeatures().size() == 2 && eclass.getEStructuralFeature("key") != null &&
-				eclass.getEStructuralFeature("value") != null;
+		return eclass != null && eclass.getInstanceClass() != null
+				&& Map.Entry.class.isAssignableFrom(eclass.getInstanceClass())
+				&& eclass.getEStructuralFeatures().size() == 2 && eclass.getEStructuralFeature("key") != null
+				&& eclass.getEStructuralFeature("value") != null;
 	}
 
 	public static boolean isEStoreList(Object o) {
@@ -162,50 +162,40 @@ public class StoreUtil {
 	}
 
 	/**
-	 * Translates an ECLass to a string representation public static String getEClassURI(EClass
-	 * eclass, String qualify) { if (eclass == EOBJECT_ECLASS) { return EOBJECT_ECLASS_URI; } if
-	 * (qualify == null || qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) {
-	 * return eclass.getName(); } else if
+	 * Translates an ECLass to a string representation public static String getEClassURI(EClass eclass, String qualify)
+	 * { if (eclass == EOBJECT_ECLASS) { return EOBJECT_ECLASS_URI; } if (qualify == null ||
+	 * qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NO) == 0) { return eclass.getName(); } else if
 	 * (qualify.compareTo(PersistenceOptions.QUALIFY_ENTITY_NAME_NSPREFIX) == 0) { return
-	 * eclass.getEPackage().getNsPrefix() + "." + eclass.getName(); } throw new
-	 * StoreException("Qualify type " + qualify + " unknown"); } /** Returns an estructuralfeature
-	 * on the basis of the name of the eclass and the name of the feature itself. public static
-	 * EStructuralFeature getEStructuralFeature(String eclassURI, String featureName, EPackage[]
-	 * epackages) { EClass eclass = getEClassFromURI(eclassURI, epackages); if (eclass == null)
-	 * return null; return eclass.getEStructuralFeature(featureName); } /* /** Translates an eclass
-	 * uri back to an eclass / public static EClass getEClassFromURI(String theEClassURI) { final
-	 * Registry packageRegistry = Registry.INSTANCE; final EPackage[] epacks = new
-	 * EPackage[packageRegistry.size()]; int cnt = 0; for (Iterator it =
-	 * packageRegistry.values().iterator(); it.hasNext();) { final EPackage epack = (EPackage)
-	 * it.next(); epacks[cnt++] = epack; } return getEClassFromURI(theEClassURI, epacks); } /**
-	 * Translates an eclass uri back to an eclass / public static EClass getEClassFromURI(String
-	 * theEClassURI, EPackage[] epackages, EClassNameStrategy nameStrategy) { if
-	 * (theEClassURI.compareTo(EOBJECT_ECLASS_URI) == 0) { return
-	 * EcorePackage.eINSTANCE.getEObject(); } String nsPrefix = null; String eClassName =
-	 * theEClassURI; if (eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR) != -1) { nsPrefix =
-	 * theEClassURI.substring(0, eClassName.lastIndexOf(NSPREFIX_ECLASS_SEPARATOR)); eClassName =
-	 * theEClassURI.substring(1 + eClassName.lastIndexOf(NSPREFIX_ECLASS_SEPARATOR)); } ArrayList
-	 * eclasses = new ArrayList(); for (int i = 0; i < epackages.length; i++) { EPackage epack =
-	 * epackages[i]; if (nsPrefix != null && epack.getNsPrefix() != null &&
-	 * epack.getNsPrefix().compareTo(nsPrefix) != 0) { continue; } EClassifier eclassifier =
-	 * epack.getEClassifier(eClassName); if (eclassifier instanceof EClass) {
-	 * eclasses.add(eclassifier); } } if (eclasses.size() == 1) { return (EClass) eclasses.get(0); }
-	 * else if (eclasses.size() == 0) { return null; // throw new StoreException("The uri " +
-	 * eclassURI + " can not be translated to an eclass"); } else { StringBuffer eclassList = new
-	 * StringBuffer(); for (Iterator it = eclasses.iterator(); it.hasNext();) { EClass eclass =
-	 * (EClass) it.next(); eclassList.append(eclass.getEPackage().getNsURI() + "/" +
-	 * eclass.getName()); } throw new StoreException("The uri " + eClassName + " maps to multiple
-	 * eclasses: " + eclassList.toString()); } /* int lastIndex =
-	 * eclassURI.lastIndexOf(PATH_SEPARATOR); if (lastIndex == -1) { throw new
-	 * StoreAnnotationsException("The uri: " + eclassURI + " has an illegal format, it can not
-	 * parsed to an eclass."); } final String nsuri = eclassURI.substring(0, lastIndex); final
-	 * String name = eclassURI.substring(lastIndex + 1); final EPackage epack =
-	 * EPackage.Registry.INSTANCE.getEPackage(nsuri); if (epack == null) { throw new
-	 * StoreAnnotationsException("No package found for the nsuri: " + nsuri +
-	 * " using the eclassURI " + eclassURI); } final EClass eclass =
-	 * (EClass)epack.getEClassifier(name); if (eclass == null) { throw new
-	 * StoreAnnotationsException("The nsuri " + nsuri + " and eclassname: " + name +
-	 * " does not resolve to an EClass"); } return eclass; / }
+	 * eclass.getEPackage().getNsPrefix() + "." + eclass.getName(); } throw new StoreException("Qualify type " + qualify
+	 * + " unknown"); } /** Returns an estructuralfeature on the basis of the name of the eclass and the name of the
+	 * feature itself. public static EStructuralFeature getEStructuralFeature(String eclassURI, String featureName,
+	 * EPackage[] epackages) { EClass eclass = getEClassFromURI(eclassURI, epackages); if (eclass == null) return null;
+	 * return eclass.getEStructuralFeature(featureName); } /* /** Translates an eclass uri back to an eclass / public
+	 * static EClass getEClassFromURI(String theEClassURI) { final Registry packageRegistry = Registry.INSTANCE; final
+	 * EPackage[] epacks = new EPackage[packageRegistry.size()]; int cnt = 0; for (Iterator it =
+	 * packageRegistry.values().iterator(); it.hasNext();) { final EPackage epack = (EPackage) it.next(); epacks[cnt++]
+	 * = epack; } return getEClassFromURI(theEClassURI, epacks); } /** Translates an eclass uri back to an eclass /
+	 * public static EClass getEClassFromURI(String theEClassURI, EPackage[] epackages, EClassNameStrategy nameStrategy)
+	 * { if (theEClassURI.compareTo(EOBJECT_ECLASS_URI) == 0) { return EcorePackage.eINSTANCE.getEObject(); } String
+	 * nsPrefix = null; String eClassName = theEClassURI; if (eClassName.indexOf(NSPREFIX_ECLASS_SEPARATOR) != -1) {
+	 * nsPrefix = theEClassURI.substring(0, eClassName.lastIndexOf(NSPREFIX_ECLASS_SEPARATOR)); eClassName =
+	 * theEClassURI.substring(1 + eClassName.lastIndexOf(NSPREFIX_ECLASS_SEPARATOR)); } ArrayList eclasses = new
+	 * ArrayList(); for (int i = 0; i < epackages.length; i++) { EPackage epack = epackages[i]; if (nsPrefix != null &&
+	 * epack.getNsPrefix() != null && epack.getNsPrefix().compareTo(nsPrefix) != 0) { continue; } EClassifier
+	 * eclassifier = epack.getEClassifier(eClassName); if (eclassifier instanceof EClass) { eclasses.add(eclassifier); }
+	 * } if (eclasses.size() == 1) { return (EClass) eclasses.get(0); } else if (eclasses.size() == 0) { return null; //
+	 * throw new StoreException("The uri " + eclassURI + " can not be translated to an eclass"); } else { StringBuffer
+	 * eclassList = new StringBuffer(); for (Iterator it = eclasses.iterator(); it.hasNext();) { EClass eclass =
+	 * (EClass) it.next(); eclassList.append(eclass.getEPackage().getNsURI() + "/" + eclass.getName()); } throw new
+	 * StoreException("The uri " + eClassName + " maps to multiple eclasses: " + eclassList.toString()); } /* int
+	 * lastIndex = eclassURI.lastIndexOf(PATH_SEPARATOR); if (lastIndex == -1) { throw new
+	 * StoreAnnotationsException("The uri: " + eclassURI + " has an illegal format, it can not parsed to an eclass."); }
+	 * final String nsuri = eclassURI.substring(0, lastIndex); final String name = eclassURI.substring(lastIndex + 1);
+	 * final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri); if (epack == null) { throw new
+	 * StoreAnnotationsException("No package found for the nsuri: " + nsuri + " using the eclassURI " + eclassURI); }
+	 * final EClass eclass = (EClass)epack.getEClassifier(name); if (eclass == null) { throw new
+	 * StoreAnnotationsException("The nsuri " + nsuri + " and eclassname: " + name + " does not resolve to an EClass");
+	 * } return eclass; / }
 	 */
 	/** Sends out a notification of an elist load */
 	public static void dispatchEListLoadNotification(final EObject notifier, final EList<? extends EObject> elist,
@@ -229,8 +219,7 @@ public class StoreUtil {
 	}
 
 	/**
-	 * Returns the string which is used to store the unique identification of this structuralfeature
-	 * in the db
+	 * Returns the string which is used to store the unique identification of this structuralfeature in the db
 	 */
 	public static String structuralFeatureToString(EStructuralFeature structuralFeature) {
 		// the unique id will consist of three part: 1) package NSURI, 2) EClass
@@ -248,31 +237,34 @@ public class StoreUtil {
 		if (eAnnotation == null) {
 			return false;
 		}
-		return eAnnotation.getDetails().get("kind") != null &&
-				(eAnnotation.getDetails().get("kind")).compareTo("elementWildcard") == 0;
+		final String kind = eAnnotation.getDetails().get("kind");
+		final String wildcards = eAnnotation.getDetails().get("wildcards");
+		return kind != null && kind.compareTo("elementWildcard") == 0 && wildcards != null;
 		/*
 		 * // todo optimise this with a cache final EAnnotation eannotation = feature
-		 * .getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData" ); if (eannotation
-		 * != null) { final String kind = (String)eannotation.getDetails().get("kind"); final String
-		 * wildcards = (String)eannotation.getDetails().get("wildcards"); if (wildcards != null &&
-		 * kind != null && "elementWildcard".compareTo(kind) == 0) { return true; } } return false;
+		 * .getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData" ); if (eannotation != null) { final
+		 * String kind = (String)eannotation.getDetails().get("kind"); final String wildcards =
+		 * (String)eannotation.getDetails().get("wildcards"); if (wildcards != null && kind != null &&
+		 * "elementWildcard".compareTo(kind) == 0) { return true; } } return false;
 		 */
 	}
 
-	/**
-	 * Returns true if the passed feature is a mixed feature, a mixed feature is almost the same as
-	 * a wildcard
-	 */
+	/** Returns true if the passed feature is a wildcard feature */
 	public static boolean isMixed(EStructuralFeature feature) {
-		// todo optimise this with a cache
-		final EAnnotation eannotation = feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
-		if (eannotation != null) {
-			final String kind = eannotation.getDetails().get("kind");
-			if (kind != null && "elementWildcard".compareTo(kind) == 0) {
-				return true;
-			}
+		EAnnotation eAnnotation = feature.getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData");
+		if (eAnnotation == null) {
+			return false;
 		}
-		return false;
+		final String kind = eAnnotation.getDetails().get("kind");
+		final String name = eAnnotation.getDetails().get("name");
+		return kind != null && kind.compareTo("elementWildcard") == 0 && name != null && name.compareTo(":mixed") == 0;
+		/*
+		 * // todo optimise this with a cache final EAnnotation eannotation = feature
+		 * .getEAnnotation("http:///org/eclipse/emf/ecore/util/ExtendedMetaData" ); if (eannotation != null) { final
+		 * String kind = (String)eannotation.getDetails().get("kind"); final String wildcards =
+		 * (String)eannotation.getDetails().get("wildcards"); if (wildcards != null && kind != null &&
+		 * "elementWildcard".compareTo(kind) == 0) { return true; } } return false;
+		 */
 	}
 
 	/** Translates a string to a structural feature */
@@ -283,7 +275,8 @@ public class StoreUtil {
 
 		if (lastIndex == -1 || beforeLastIndex == -1) {
 			throw new TeneoException(
-				"The database id stored for a structuralfeature used in a featuremap entry is invalid, dbid: " + strid);
+					"The database id stored for a structuralfeature used in a featuremap entry is invalid, dbid: "
+							+ strid);
 		}
 
 		final String nsuri = strid.substring(0, beforeLastIndex);
@@ -297,14 +290,14 @@ public class StoreUtil {
 
 		final EClass eclass = (EClass) epack.getEClassifier(eclassName);
 		if (eclass == null) {
-			throw new TeneoException("The dbid " + strid + " and eclassname: " + eclassName +
-					" does not resolve to an eclass");
+			throw new TeneoException("The dbid " + strid + " and eclassname: " + eclassName
+					+ " does not resolve to an eclass");
 		}
 
 		final EStructuralFeature structFeature = eclass.getEStructuralFeature(featureName);
 		if (structFeature == null) {
-			throw new TeneoException("The dbid " + strid + " and featurename: " + featureName +
-					" does not resolve to a structural feature");
+			throw new TeneoException("The dbid " + strid + " and featurename: " + featureName
+					+ " does not resolve to a structural feature");
 		}
 
 		return structFeature;
@@ -339,23 +332,21 @@ public class StoreUtil {
 
 		final EDataType edatatype = (EDataType) epack.getEClassifier(name);
 		if (edatatype == null) {
-			throw new TeneoException("The dbid " + strid + " and eclassname: " + name +
-					" does not resolve to an EDataType");
+			throw new TeneoException("The dbid " + strid + " and eclassname: " + name
+					+ " does not resolve to an EDataType");
 		}
 		return edatatype;
 	}
 
 	/**
-	 * Based on the eobject and the fieldname returns the structural feature. Caching should be
-	 * added here.
+	 * Based on the eobject and the fieldname returns the structural feature. Caching should be added here.
 	 */
 	public static EStructuralFeature getEStructuralFeature(EObject emfObj, String fieldName) {
 		return getEStructuralFeature(emfObj.eClass(), fieldName);
 	}
 
 	/**
-	 * Returns all the direct content based on the eclass of the object, null content is not
-	 * returned
+	 * Returns all the direct content based on the eclass of the object, null content is not returned
 	 */
 	public static Object[] getObjectContent(EObject eo) {
 		final ArrayList<Object> result = new ArrayList<Object>();
@@ -369,8 +360,7 @@ public class StoreUtil {
 	}
 
 	/**
-	 * Based on the eclass and the fieldname returns the structural feature. Caching should be added
-	 * here.
+	 * Based on the eclass and the fieldname returns the structural feature. Caching should be added here.
 	 */
 	public static EStructuralFeature getEStructuralFeature(EClass eclass, String fieldName) {
 		EStructuralFeature reserve = null;
@@ -404,8 +394,8 @@ public class StoreUtil {
 	public static EReference[] getManyGroupEReferences(EObject emfObj) {
 		final ArrayList<EReference> manyRefs = new ArrayList<EReference>();
 		for (EStructuralFeature estruct : emfObj.eClass().getEAllStructuralFeatures()) {
-			if (estruct instanceof EReference &&
-					(((EReference) estruct).isMany() || isGroupFeature(estruct) || isWildCard(estruct))) {
+			if (estruct instanceof EReference
+					&& (((EReference) estruct).isMany() || isGroupFeature(estruct) || isWildCard(estruct))) {
 				manyRefs.add((EReference) estruct);
 			}
 		}
@@ -431,8 +421,7 @@ public class StoreUtil {
 	}
 
 	/**
-	 * Returns the name used for the group feature, if the feature is not a group then null is
-	 * returned
+	 * Returns the name used for the group feature, if the feature is not a group then null is returned
 	 */
 	public static String getGroupName(EStructuralFeature estruct) {
 		final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE);
@@ -469,13 +458,12 @@ public class StoreUtil {
 		final EStructuralFeature ef = ExtendedMetaData.INSTANCE.getGroup(estruct);
 		return ef == groupFeature;
 		/*
-		 * final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE); if (annotation
-		 * == null) return false; final EMap map = annotation.getDetails(); final Iterator keys =
-		 * map.keySet().iterator(); while (keys.hasNext()) { final String key = (String)keys.next();
-		 * final String value = (String)map.get(key); // for a choice the groupName in the group
-		 * element starts with # for substitution it // doesn't therefore the endsWith if
-		 * ("group".compareTo(key) == 0 && value != null && groupName.endsWith(value)) { return
-		 * true; } } return false;
+		 * final EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE); if (annotation == null) return
+		 * false; final EMap map = annotation.getDetails(); final Iterator keys = map.keySet().iterator(); while
+		 * (keys.hasNext()) { final String key = (String)keys.next(); final String value = (String)map.get(key); // for
+		 * a choice the groupName in the group element starts with # for substitution it // doesn't therefore the
+		 * endsWith if ("group".compareTo(key) == 0 && value != null && groupName.endsWith(value)) { return true; } }
+		 * return false;
 		 */
 	}
 
@@ -484,12 +472,11 @@ public class StoreUtil {
 		final EStructuralFeature ef = ExtendedMetaData.INSTANCE.getGroup(estruct);
 		return ef != null;
 		/*
-		 * // group elements are always transient if (!estruct.isTransient()) return false; final
-		 * EAnnotation annotation = estruct.getEAnnotation(ANNOTATION_SOURCE); if (annotation ==
-		 * null) return false; final EMap map = annotation.getDetails(); final Iterator keys =
-		 * map.keySet().iterator(); while (keys.hasNext()) { final String key = (String)keys.next();
-		 * final String value = (String)map.get(key); if ("group".compareTo(key) == 0 && value !=
-		 * null) return true; } return false;
+		 * // group elements are always transient if (!estruct.isTransient()) return false; final EAnnotation annotation
+		 * = estruct.getEAnnotation(ANNOTATION_SOURCE); if (annotation == null) return false; final EMap map =
+		 * annotation.getDetails(); final Iterator keys = map.keySet().iterator(); while (keys.hasNext()) { final String
+		 * key = (String)keys.next(); final String value = (String)map.get(key); if ("group".compareTo(key) == 0 &&
+		 * value != null) return true; } return false;
 		 */
 	}
 
@@ -527,8 +514,8 @@ public class StoreUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; " +
-					field.getName());
+			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; "
+					+ field.getName());
 		}
 	}
 
@@ -607,14 +594,13 @@ public class StoreUtil {
 			in.close();
 			out.close();
 		} catch (Exception e) {
-			throw new TeneoException("Exception while copying from/to " + src.getAbsolutePath() + "/" +
-					dst.getAbsolutePath(), e);
+			throw new TeneoException("Exception while copying from/to " + src.getAbsolutePath() + "/"
+					+ dst.getAbsolutePath(), e);
 		}
 	}
 
 	/**
-	 * Checks if an object has a HibernatePersistentStoreAdapter and if it doesn't creates one and
-	 * returns it.
+	 * Checks if an object has a HibernatePersistentStoreAdapter and if it doesn't creates one and returns it.
 	 */
 	public static PersistentStoreAdapter getPersistentStoreAdapter(EObject eObject) {
 		for (Adapter adapter : eObject.eAdapters()) {
