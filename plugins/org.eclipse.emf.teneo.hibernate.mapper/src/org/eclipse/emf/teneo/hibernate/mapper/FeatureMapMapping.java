@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: FeatureMapMapping.java,v 1.17 2009/03/07 21:15:20 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.17.2.1 2009/06/30 07:29:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -12,12 +12,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.Transient;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -30,7 +32,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class FeatureMapMapping {
+public class FeatureMapMapping extends AbstractMapper {
 
 	/** Log it here */
 	private static final Log log = LogFactory.getLog(FeatureMapMapping.class);
@@ -47,6 +49,7 @@ public class FeatureMapMapping {
 	 */
 	public FeatureMapMapping(MappingContext hbmContext,
 			PAnnotatedEAttribute paAttribute) {
+		super.setHbmContext(hbmContext);
 		log.debug("Created featuremap mapping instance for " + paAttribute);
 		this.hbmContext = hbmContext;
 		this.paAttribute = paAttribute;
@@ -79,8 +82,6 @@ public class FeatureMapMapping {
 		final FeatureMapper fp = hbmContext.getFeatureMapper();
 		hbmContext.setCurrent(mainElement);
 		hbmContext.setCurrentElementFeatureMap(true);
-		hbmContext.setNamePrefix(paAttribute.getModelEAttribute().getName()
-				+ "_");
 
 		// TODO: check if id of parent can be used instead
 		mainElement.addElement("id").addAttribute("type", "long").addElement(
@@ -104,46 +105,61 @@ public class FeatureMapMapping {
 
 		// and now process the features of this group
 		final PAnnotatedEClass paClass = paAttribute.getPaEClass();
+		final boolean isWildCard = StoreUtil.isWildCard(paAttribute
+				.getModelEAttribute());
 		final boolean isMixed = StoreUtil.isMixed(paAttribute
 				.getModelEAttribute());
-		for (PAnnotatedEStructuralFeature paFeature : paClass
-				.getPaEStructuralFeatures()) {
-			EStructuralFeature eFeature = paFeature
-					.getModelEStructuralFeature();
-			if ((isMixed && eFeature.getFeatureID() != paAttribute
-					.getModelEAttribute().getFeatureID())
-					|| StoreUtil.isElementOfGroup(eFeature, paAttribute
-							.getModelEAttribute())) {
-				log.debug("Feature " + StoreUtil.toString(eFeature)
-						+ " belongs to this featuremap");
+		if (isWildCard) {
+			addWildCardFeatureMapping(mainElement, paAttribute);
+		} else {
+			hbmContext.setNamePrefix(paAttribute.getModelEAttribute().getName()
+					+ "_");
+			for (PAnnotatedEStructuralFeature paFeature : paClass
+					.getPaEStructuralFeatures()) {
+				EStructuralFeature eFeature = paFeature
+						.getModelEStructuralFeature();
+				final EStructuralFeature modelGroupFeature = ExtendedMetaData.INSTANCE
+						.getGroup(eFeature);
+				final boolean isEFeatureMixed = StoreUtil.isMixed(eFeature);
+				// note with mixed everyone is part of the group except the
+				// mixed feature itself
+				if ((isMixed && !isEFeatureMixed)
+						|| (modelGroupFeature != null && modelGroupFeature == paAttribute
+								.getModelEStructuralFeature())) {
+					log.debug("Feature " + StoreUtil.toString(eFeature)
+							+ " belongs to this featuremap");
 
-				// continue if it is a id
-				Id id = null;
-				if (paFeature instanceof PAnnotatedEAttribute
-						&& ((PAnnotatedEAttribute) paFeature).getId() != null) {
-					// Feature is an id, temporarily removing the id, otherwise
-					// the fm gets confused
-					id = ((PAnnotatedEAttribute) paFeature).getId();
-					((PAnnotatedEAttribute) paFeature).setId(null);
-				}
+					// continue if it is a id
+					Id id = null;
+					if (paFeature instanceof PAnnotatedEAttribute
+							&& ((PAnnotatedEAttribute) paFeature).getId() != null) {
+						// Feature is an id, temporarily removing the id,
+						// otherwise
+						// the fm gets confused
+						id = ((PAnnotatedEAttribute) paFeature).getId();
+						((PAnnotatedEAttribute) paFeature).setId(null);
+					}
 
-				// temporarily remove the transient otherwise the feature is not
-				// processed
-				Transient tt = paFeature.getTransient();
-				paFeature.setTransient(null);
-				try {
-					fp.process(paFeature);
-				} finally {
-					// and set the temp values back
-					paFeature.setTransient(tt);
-					if (id != null) {
-						((PAnnotatedEAttribute) paFeature).setId(id);
+					// temporarily remove the transient otherwise the feature is
+					// not
+					// processed
+					Transient tt = paFeature.getTransient();
+					paFeature.setTransient(null);
+					try {
+						fp.process(paFeature);
+					} finally {
+						// and set the temp values back
+						paFeature.setTransient(tt);
+						if (id != null) {
+							((PAnnotatedEAttribute) paFeature).setId(id);
+						}
 					}
 				}
 			}
+			hbmContext.setNamePrefix("");
 		}
 
-		if (isMixed) {
+		if (StoreUtil.isMixed(paAttribute.getModelEAttribute())) {
 			mainElement.addElement("property").addAttribute("name",
 					HbMapperConstants.PROPERTY_MIXED_TEXT).addAttribute("type",
 					"java.lang.String");
@@ -156,8 +172,22 @@ public class FeatureMapMapping {
 		}
 		hbmContext.setCurrent(mainElement.getParent());
 		hbmContext.setCurrentElementFeatureMap(false);
-		hbmContext.setNamePrefix("");
 		log.debug("Finished processing featuremap");
+	}
+
+	private void addWildCardFeatureMapping(Element mainElement,
+			PAnnotatedEStructuralFeature paFeature) {
+		mainElement.addElement("property").addAttribute(
+				"name",
+				paFeature.getModelEStructuralFeature().getName() + "_"
+						+ HbMapperConstants.PROPERTY_ANY_PRIMITIVE)
+				.addAttribute("type", "java.lang.String");
+		final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
+		final String assocName = getHbmContext().getPropertyName(
+				paFeature.getModelEStructuralFeature());
+		mainElement.addElement(createAny(assocName + "_"
+				+ HbMapperConstants.PROPERTY_ANY_REFERENCE, paFeature,
+				hbAttribute.getAny(), hbAttribute.getAnyMetaDef(), false));
 	}
 
 	/** Returns the eattribute */

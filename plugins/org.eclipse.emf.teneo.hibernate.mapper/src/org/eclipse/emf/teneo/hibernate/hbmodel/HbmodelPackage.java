@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.15.2.1 2009/06/11 04:51:16 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.15.2.2 2009/06/30 07:29:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
@@ -585,13 +585,31 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Any</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__ANY = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Any Meta Def</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 14;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 13;
+	int HB_ANNOTATED_EATTRIBUTE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EATTRIBUTE_FEATURE_COUNT + 15;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -1435,13 +1453,31 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_EREFERENCE__BATCH_SIZE = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Any</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__ANY = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 18;
+
+	/**
+	 * The feature id for the '<em><b>Any Meta Def</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__ANY_META_DEF = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 19;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 18;
+	int HB_ANNOTATED_EREFERENCE_FEATURE_COUNT = PamodelPackage.PANNOTATED_EREFERENCE_FEATURE_COUNT + 20;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.
@@ -1789,6 +1825,28 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEAttribute_NaturalId();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAny <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Any</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAny()
+	 * @see #getHbAnnotatedEAttribute()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEAttribute_Any();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAnyMetaDef <em>Any Meta Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Any Meta Def</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute#getAnyMetaDef()
+	 * @see #getHbAnnotatedEAttribute()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEAttribute_AnyMetaDef();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass <em>Hb Annotated EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2093,6 +2151,28 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEReference_BatchSize();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Any</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAny()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_Any();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef <em>Any Meta Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Any Meta Def</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference#getAnyMetaDef()
+	 * @see #getHbAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEReference_AnyMetaDef();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType <em>Hb Annotated EData Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2313,6 +2393,22 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EATTRIBUTE__NATURAL_ID = eINSTANCE.getHbAnnotatedEAttribute_NaturalId();
+
+		/**
+		 * The meta object literal for the '<em><b>Any</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EATTRIBUTE__ANY = eINSTANCE.getHbAnnotatedEAttribute_Any();
+
+		/**
+		 * The meta object literal for the '<em><b>Any Meta Def</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EATTRIBUTE__ANY_META_DEF = eINSTANCE.getHbAnnotatedEAttribute_AnyMetaDef();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl <em>Hb Annotated EClass</em>}' class.
@@ -2545,6 +2641,22 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_EREFERENCE__BATCH_SIZE = eINSTANCE.getHbAnnotatedEReference_BatchSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Any</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__ANY = eINSTANCE.getHbAnnotatedEReference_Any();
+
+		/**
+		 * The meta object literal for the '<em><b>Any Meta Def</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_EREFERENCE__ANY_META_DEF = eINSTANCE.getHbAnnotatedEReference_AnyMetaDef();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEDataTypeImpl <em>Hb Annotated EData Type</em>}' class.

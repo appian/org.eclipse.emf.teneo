@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationAdapterFactory.java,v 1.13 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbannotationAdapterFactory.java,v 1.13.2.1 2009/06/30 07:29:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
@@ -200,6 +200,18 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBatchSize(BatchSize object) {
 				return createBatchSizeAdapter();
+			}
+			@Override
+			public Adapter caseAny(Any object) {
+				return createAnyAdapter();
+			}
+			@Override
+			public Adapter caseMetaValue(MetaValue object) {
+				return createMetaValueAdapter();
+			}
+			@Override
+			public Adapter caseAnyMetaDef(AnyMetaDef object) {
+				return createAnyMetaDefAdapter();
 			}
 			@Override
 			public Adapter casePAnnotation(PAnnotation object) {
@@ -628,6 +640,48 @@ public class HbannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBatchSizeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.Any <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.Any
+	 * @generated
+	 */
+	public Adapter createAnyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue <em>Meta Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue
+	 * @generated
+	 */
+	public Adapter createMetaValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef <em>Any Meta Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef
+	 * @generated
+	 */
+	public Adapter createAnyMetaDefAdapter() {
 		return null;
 	}
 
