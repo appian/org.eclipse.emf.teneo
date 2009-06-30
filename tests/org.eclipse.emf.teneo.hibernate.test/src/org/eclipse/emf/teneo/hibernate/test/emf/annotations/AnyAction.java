@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyAction.java,v 1.1 2009/06/28 02:04:48 mtaal Exp $
+ * $Id: AnyAction.java,v 1.2 2009/06/30 05:30:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests simple @Any annotation on an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AnyAction extends AbstractTestAction {
 	private final AnyFactory factory = AnyFactory.eINSTANCE;
@@ -52,7 +52,7 @@ public class AnyAction extends AbstractTestAction {
 		store.beginTransaction();
 		{
 			for (AnyObject ao : store.getObjects(AnyObject.class)) {
-				if (ao.getId() > testSize) {
+				if (Long.parseLong(ao.getId()) > testSize) {
 					// ignore these ones
 					continue;
 				}
@@ -64,13 +64,14 @@ public class AnyAction extends AbstractTestAction {
 	}
 
 	private void testData(AnyObject ao) {
-		final long index = ao.getId();
+		final long index = Long.parseLong(ao.getId());
+		final long otherIndex = Long.parseLong(((AnyObject) ao.getAnyOne()).getId());
 		assertEquals(ao.getAny().get(0).getValue(), (int) index);
 		assertEquals(ao.getAny().get(1).getValue(), "hello" + index);
 		final GlobalObjectType ot = (GlobalObjectType) ao.getAny().get(2).getValue();
 		assertEquals(ot.getName(), "name" + index);
 
-		assertEquals(((AnyObject) ao.getAnyOne()).getId(), (index * 10));
+		assertEquals(otherIndex, (index * 10));
 
 		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(0)).getValue()).getValue(), (int) (index + 1));
 		assertEquals(((FeatureMap.Entry) (ao.getGroup().get(1)).getValue()).getValue(), "hello" + (index + 1));
@@ -81,16 +82,17 @@ public class AnyAction extends AbstractTestAction {
 	private void createTestData(TestStore store, int index) {
 		final GlobalObjectType objectType = factory.createGlobalObjectType();
 		objectType.setName("name" + index);
+		objectType.setId("" + index);
 		store.store(objectType);
 
 		final AnyObject ao = factory.createAnyObject();
-		ao.setId(index);
+		ao.setId("" + index);
 		ao.getAny().add(AnyPackage.eINSTANCE.getAnyObject_GlobalInt(), index);
 		ao.getAny().add(AnyPackage.eINSTANCE.getAnyObject_GlobalString(), "hello" + index);
 		ao.getAny().add(AnyPackage.eINSTANCE.getDocumentRoot_GlobalObject(), objectType);
 
 		final AnyObject ao2 = factory.createAnyObject();
-		ao2.setId((index * 10));
+		ao2.setId("" + (index * 10));
 
 		ao.setAnyOne(ao2);
 		ao.getGroup().add(createEntry(AnyPackage.eINSTANCE.getDocumentRoot_GlobalInt(), index + 1));
