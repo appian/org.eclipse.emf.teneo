@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyPackage.java,v 1.1 2009/06/28 02:03:50 mtaal Exp $
+ * $Id: AnyPackage.java,v 1.2 2009/06/30 05:30:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.any;
 
@@ -226,13 +226,22 @@ public interface AnyPackage extends EPackage {
 	int GLOBAL_OBJECT_TYPE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_OBJECT_TYPE__ID = 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_OBJECT_TYPE__NAME = 0;
+	int GLOBAL_OBJECT_TYPE__NAME = 1;
 
 	/**
 	 * The number of structural features of the '<em>Global Object Type</em>' class.
@@ -241,7 +250,7 @@ public interface AnyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_OBJECT_TYPE_FEATURE_COUNT = 1;
+	int GLOBAL_OBJECT_TYPE_FEATURE_COUNT = 2;
 
 
 	/**
@@ -418,6 +427,17 @@ public interface AnyPackage extends EPackage {
 	EClass getGlobalObjectType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.any.GlobalObjectType#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.any.GlobalObjectType#getId()
+	 * @see #getGlobalObjectType()
+	 * @generated
+	 */
+	EAttribute getGlobalObjectType_Id();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.any.GlobalObjectType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -583,6 +603,14 @@ public interface AnyPackage extends EPackage {
 		 * @generated
 		 */
 		EClass GLOBAL_OBJECT_TYPE = eINSTANCE.getGlobalObjectType();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL_OBJECT_TYPE__ID = eINSTANCE.getGlobalObjectType_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -7,13 +7,13 @@
 
 	<xsd:complexType name="AnyObject">
 		<xsd:sequence>
-			<xsd:element name="id" type="xsd:long">
+			<xsd:element name="id" type="xsd:string">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element ref="this:globalInt" minOccurs="0"/>
-			<xsd:element ref="this:globalString" minOccurs="0"/>
+			<xsd:element ref="this:globalInt" minOccurs="0" />
+			<xsd:element ref="this:globalString" minOccurs="0" />
 			<xsd:element name="anyOne" type="xsd:anyType">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo.jpa">
@@ -21,13 +21,33 @@
 						"any_type" ), fetch=FetchType.EAGER
 						)
 						@AnyMetaDef(idType =
-						"long",metaType = "string") 
+						"string",metaType = "string") 
 					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:any namespace="##any" processContents="lax" />
+			<xsd:any namespace="##any" processContents="lax">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">
+						@Any( metaColumn = @Column( name =
+						"any_type" ), fetch=FetchType.EAGER
+						)
+						@AnyMetaDef(idType =
+						"string",metaType = "string") 
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:any>
 			<xsd:choice maxOccurs="unbounded">
-				<xsd:any namespace="##any" processContents="lax" />
+				<xsd:any namespace="##any" processContents="lax">
+					<xsd:annotation>
+						<xsd:appinfo source="teneo.jpa">
+							@Any( metaColumn = @Column( name =
+							"any_type" ), fetch=FetchType.EAGER
+							)
+							@AnyMetaDef(idType =
+							"string",metaType = "string") 
+					</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:any>
 			</xsd:choice>
 		</xsd:sequence>
 	</xsd:complexType>
@@ -35,12 +55,17 @@
 	<xsd:element name="globalObject">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="name" type="xsd:string"/>
+				<xsd:element name="id" type="xsd:string">
+					<xsd:annotation>
+						<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="name" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
-	<xsd:element name="globalInt" type="xsd:int"/>
-	<xsd:element name="globalString" type="xsd:string"/>
-	
+
+	<xsd:element name="globalInt" type="xsd:int" />
+	<xsd:element name="globalString" type="xsd:string" />
+
 </xsd:schema>

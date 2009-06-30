@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyPackageImpl.java,v 1.1 2009/06/28 02:03:49 mtaal Exp $
+ * $Id: AnyPackageImpl.java,v 1.2 2009/06/30 05:30:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.any.impl;
 
@@ -75,20 +75,10 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link AnyPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -100,7 +90,7 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		if (isInited) return (AnyPackage)EPackage.Registry.INSTANCE.getEPackage(AnyPackage.eNS_URI);
 
 		// Obtain or create and register package
-		AnyPackageImpl theAnyPackage = (AnyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof AnyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new AnyPackageImpl());
+		AnyPackageImpl theAnyPackage = (AnyPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AnyPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AnyPackageImpl());
 
 		isInited = true;
 
@@ -116,6 +106,9 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		// Mark meta-data to indicate it can't be changed
 		theAnyPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(AnyPackage.eNS_URI, theAnyPackage);
 		return theAnyPackage;
 	}
 
@@ -268,8 +261,17 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGlobalObjectType_Name() {
+	public EAttribute getGlobalObjectType_Id() {
 		return (EAttribute)globalObjectTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGlobalObjectType_Name() {
+		return (EAttribute)globalObjectTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -318,6 +320,7 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		createEAttribute(documentRootEClass, DOCUMENT_ROOT__GLOBAL_STRING);
 
 		globalObjectTypeEClass = createEClass(GLOBAL_OBJECT_TYPE);
+		createEAttribute(globalObjectTypeEClass, GLOBAL_OBJECT_TYPE__ID);
 		createEAttribute(globalObjectTypeEClass, GLOBAL_OBJECT_TYPE__NAME);
 	}
 
@@ -355,7 +358,7 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(anyObjectEClass, AnyObject.class, "AnyObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAnyObject_Id(), theXMLTypePackage.getLong(), "id", null, 1, 1, AnyObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnyObject_Id(), theXMLTypePackage.getString(), "id", null, 1, 1, AnyObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnyObject_GlobalInt(), theXMLTypePackage.getInt(), "globalInt", null, 0, 1, AnyObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnyObject_GlobalString(), theXMLTypePackage.getString(), "globalString", null, 0, 1, AnyObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAnyObject_AnyOne(), ecorePackage.getEObject(), null, "anyOne", null, 1, 1, AnyObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -372,6 +375,7 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		initEAttribute(getDocumentRoot_GlobalString(), theXMLTypePackage.getString(), "globalString", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(globalObjectTypeEClass, GlobalObjectType.class, "GlobalObjectType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGlobalObjectType_Id(), theXMLTypePackage.getString(), "id", null, 1, 1, GlobalObjectType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGlobalObjectType_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, GlobalObjectType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
@@ -428,7 +432,7 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "anyOne"
-		   });		
+		   });			
 		addAnnotation
 		  (getAnyObject_Any(), 
 		   source, 
@@ -444,7 +448,7 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		   new String[] {
 			 "kind", "group",
 			 "name", "group:5"
-		   });		
+		   });			
 		addAnnotation
 		  (getAnyObject_Any1(), 
 		   source, 
@@ -513,6 +517,13 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		   new String[] {
 			 "name", "globalObject_._type",
 			 "kind", "elementOnly"
+		   });			
+		addAnnotation
+		  (getGlobalObjectType_Id(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "id"
 		   });		
 		addAnnotation
 		  (getGlobalObjectType_Name(), 
@@ -541,8 +552,26 @@ public class AnyPackageImpl extends EPackageImpl implements AnyPackage {
 		  (getAnyObject_AnyOne(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t)\n\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\"long\",metaType = \"string\") \n\t\t\t\t\t"
-		   });													
+			 "appinfo", "\n\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t)\n\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\"string\",metaType = \"string\") \n\t\t\t\t\t"
+		   });			
+		addAnnotation
+		  (getAnyObject_Any(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t)\n\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\"string\",metaType = \"string\") \n\t\t\t\t\t"
+		   });				
+		addAnnotation
+		  (getAnyObject_Any1(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\t\"string\",metaType = \"string\") \n\t\t\t\t\t"
+		   });											
+		addAnnotation
+		  (getGlobalObjectType_Id(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Id"
+		   });		
 	}
 
 } //AnyPackageImpl

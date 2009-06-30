@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyObject.java,v 1.1 2009/06/28 02:03:50 mtaal Exp $
+ * $Id: AnyObject.java,v 1.2 2009/06/30 05:30:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.any;
 
@@ -41,51 +41,24 @@ public interface AnyObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #isSetId()
-	 * @see #unsetId()
-	 * @see #setId(long)
+	 * @see #setId(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.any.AnyPackage#getAnyObject_Id()
-	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Long" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        annotation="teneo.jpa appinfo='@Id'"
 	 *        extendedMetaData="kind='element' name='id'"
 	 * @generated
 	 */
-	long getId();
+	String getId();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.any.AnyObject#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #isSetId()
-	 * @see #unsetId()
 	 * @see #getId()
 	 * @generated
 	 */
-	void setId(long value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.any.AnyObject#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetId()
-	 * @see #getId()
-	 * @see #setId(long)
-	 * @generated
-	 */
-	void unsetId();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.any.AnyObject#getId <em>Id</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Id</em>' attribute is set.
-	 * @see #unsetId()
-	 * @see #getId()
-	 * @see #setId(long)
-	 * @generated
-	 */
-	boolean isSetId();
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Global Int</b></em>' attribute.
@@ -180,7 +153,7 @@ public interface AnyObject extends EObject {
 	 * @see #setAnyOne(EObject)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.any.AnyPackage#getAnyObject_AnyOne()
 	 * @model containment="true" required="true"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t)\n\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\"long\",metaType = \"string\") \n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t)\n\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\"string\",metaType = \"string\") \n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='anyOne'"
 	 * @generated
 	 */
@@ -208,6 +181,7 @@ public interface AnyObject extends EObject {
 	 * @return the value of the '<em>Any</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.any.AnyPackage#getAnyObject_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" required="true" many="false"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t)\n\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\"string\",metaType = \"string\") \n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':4' processing='lax'"
 	 * @generated
 	 */
@@ -242,6 +216,7 @@ public interface AnyObject extends EObject {
 	 * @return the value of the '<em>Any1</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.any.AnyPackage#getAnyObject_Any1()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true" transient="true" volatile="true" derived="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t\t@Any( metaColumn = @Column( name =\n\t\t\t\t\t\t\t\"any_type\" ), fetch=FetchType.EAGER\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t@AnyMetaDef(idType =\n\t\t\t\t\t\t\t\"string\",metaType = \"string\") \n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':6' processing='lax' group='#group:5'"
 	 * @generated
 	 */

@@ -8,8 +8,7 @@
       <details key="name" value="AnyObject"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Id"/>
       </eAnnotations>
@@ -37,7 +36,7 @@
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"
         resolveProxies="false">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Any( metaColumn = @Column( name =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;any_type&quot; ), fetch=FetchType.EAGER&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@AnyMetaDef(idType =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;long&quot;,metaType = &quot;string&quot;) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Any( metaColumn = @Column( name =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;any_type&quot; ), fetch=FetchType.EAGER&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@AnyMetaDef(idType =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;string&quot;,metaType = &quot;string&quot;) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
@@ -45,6 +44,9 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Any( metaColumn = @Column( name =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;any_type&quot; ), fetch=FetchType.EAGER&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@AnyMetaDef(idType =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;string&quot;,metaType = &quot;string&quot;) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="elementWildcard"/>
         <details key="wildcards" value="##any"/>
@@ -62,6 +64,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="any1" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry"
         volatile="true" transient="true" derived="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Any( metaColumn = @Column( name =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;any_type&quot; ), fetch=FetchType.EAGER&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@AnyMetaDef(idType =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&quot;string&quot;,metaType = &quot;string&quot;) &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="elementWildcard"/>
         <details key="wildcards" value="##any"/>
@@ -132,6 +137,15 @@
       <details key="name" value="globalObject_._type"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Id"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GlobalObjectTypeImpl.java,v 1.1 2009/06/28 02:03:49 mtaal Exp $
+ * $Id: GlobalObjectTypeImpl.java,v 1.2 2009/06/30 05:30:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.any.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.any.GlobalObjectType;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.any.impl.GlobalObjectTypeImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.any.impl.GlobalObjectTypeImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -30,6 +31,26 @@ import org.eclipse.emf.teneo.samples.emf.annotations.any.GlobalObjectType;
  * @generated
  */
 public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectType {
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,6 +95,27 @@ public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectTyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnyPackage.GLOBAL_OBJECT_TYPE__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -98,6 +140,8 @@ public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectTyp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AnyPackage.GLOBAL_OBJECT_TYPE__ID:
+				return getId();
 			case AnyPackage.GLOBAL_OBJECT_TYPE__NAME:
 				return getName();
 		}
@@ -112,6 +156,9 @@ public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectTyp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AnyPackage.GLOBAL_OBJECT_TYPE__ID:
+				setId((String)newValue);
+				return;
 			case AnyPackage.GLOBAL_OBJECT_TYPE__NAME:
 				setName((String)newValue);
 				return;
@@ -127,6 +174,9 @@ public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectTyp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AnyPackage.GLOBAL_OBJECT_TYPE__ID:
+				setId(ID_EDEFAULT);
+				return;
 			case AnyPackage.GLOBAL_OBJECT_TYPE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -142,6 +192,8 @@ public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectTyp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AnyPackage.GLOBAL_OBJECT_TYPE__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case AnyPackage.GLOBAL_OBJECT_TYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
@@ -158,7 +210,9 @@ public class GlobalObjectTypeImpl extends EObjectImpl implements GlobalObjectTyp
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (id: ");
+		result.append(id);
+		result.append(", name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();

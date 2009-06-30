@@ -25,6 +25,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute any.ecore#//DocumentRoot/globalString"/>
     </genClasses>
     <genClasses ecoreClass="any.ecore#//GlobalObjectType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute any.ecore#//GlobalObjectType/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute any.ecore#//GlobalObjectType/name"/>
     </genClasses>
   </genPackages>

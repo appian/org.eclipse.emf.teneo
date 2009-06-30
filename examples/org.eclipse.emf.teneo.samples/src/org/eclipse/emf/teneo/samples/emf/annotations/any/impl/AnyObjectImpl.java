@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyObjectImpl.java,v 1.1 2009/06/28 02:03:49 mtaal Exp $
+ * $Id: AnyObjectImpl.java,v 1.2 2009/06/30 05:30:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.any.impl;
 
@@ -50,7 +50,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long ID_EDEFAULT = 0L;
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -60,16 +60,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	 * @generated
 	 * @ordered
 	 */
-	protected long id = ID_EDEFAULT;
-
-	/**
-	 * This is true if the Id attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean idESet;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getGlobalInt() <em>Global Int</em>}' attribute.
@@ -174,7 +165,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -183,36 +174,11 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(long newId) {
-		long oldId = id;
+	public void setId(String newId) {
+		String oldId = id;
 		id = newId;
-		boolean oldIdESet = idESet;
-		idESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AnyPackage.ANY_OBJECT__ID, oldId, id, !oldIdESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetId() {
-		long oldId = id;
-		boolean oldIdESet = idESet;
-		id = ID_EDEFAULT;
-		idESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, AnyPackage.ANY_OBJECT__ID, oldId, ID_EDEFAULT, oldIdESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetId() {
-		return idESet;
+			eNotify(new ENotificationImpl(this, Notification.SET, AnyPackage.ANY_OBJECT__ID, oldId, id));
 	}
 
 	/**
@@ -416,7 +382,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AnyPackage.ANY_OBJECT__ID:
-				setId((Long)newValue);
+				setId((String)newValue);
 				return;
 			case AnyPackage.ANY_OBJECT__GLOBAL_INT:
 				setGlobalInt((Integer)newValue);
@@ -449,7 +415,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AnyPackage.ANY_OBJECT__ID:
-				unsetId();
+				setId(ID_EDEFAULT);
 				return;
 			case AnyPackage.ANY_OBJECT__GLOBAL_INT:
 				unsetGlobalInt();
@@ -482,7 +448,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AnyPackage.ANY_OBJECT__ID:
-				return isSetId();
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case AnyPackage.ANY_OBJECT__GLOBAL_INT:
 				return isSetGlobalInt();
 			case AnyPackage.ANY_OBJECT__GLOBAL_STRING:
@@ -510,7 +476,7 @@ public class AnyObjectImpl extends EObjectImpl implements AnyObject {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
-		if (idESet) result.append(id); else result.append("<unset>");
+		result.append(id);
 		result.append(", globalInt: ");
 		if (globalIntESet) result.append(globalInt); else result.append("<unset>");
 		result.append(", globalString: ");
