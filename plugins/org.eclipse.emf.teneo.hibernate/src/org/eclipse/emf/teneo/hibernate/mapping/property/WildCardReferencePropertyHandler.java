@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryFeatureURIPropertyHandler.java,v 1.5.2.1 2009/06/30 07:29:40 mtaal Exp $
+ * $Id: WildCardReferencePropertyHandler.java,v 1.1.2.2 2009/06/30 07:29:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -19,10 +19,10 @@ package org.eclipse.emf.teneo.hibernate.mapping.property;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
 import org.hibernate.engine.SessionFactoryImplementor;
@@ -32,17 +32,22 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Handles the string representation of the feature of the feature map entry in the database.
+ * Implements the getter/setter for a wild card reference property. This type of property is used in a feature map
+ * created for wild cards.
+ * 
+ * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter and getSetter
+ * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5.2.1 $
+ * @version $Revision: 1.1.2.2 $
  */
 @SuppressWarnings("unchecked")
-public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+public class WildCardReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+
 	/**
 	 * Generated Version ID
 	 */
-	private static final long serialVersionUID = 7334975651233065801L;
+	private static final long serialVersionUID = -2659637883475733107L;
 
 	/*
 	 * (non-Javadoc)
@@ -62,23 +67,53 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter,
 		return this;
 	}
 
-	/**
-	 * Reads the version from the versioncache
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
+		Object value = null;
 		if (!(owner instanceof HibernateFeatureMapEntry)) {
-			final FeatureMap.Entry smf = (FeatureMap.Entry) owner;
-			return StoreUtil.structuralFeatureToString(smf.getEStructuralFeature());
+			value = ((FeatureMap.Entry) owner).getValue();
+		} else {
+			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) owner;
+			value = fme.getValue();
 		}
-		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) owner;
-		return fme.getFeatureURI();
+		// handled by this one
+		if (value instanceof EObject) {
+			return value;
+		}
+		// are handled by other property handler
+		return null;
 	}
 
-	/**
-	 * Reads the version from the versioncache
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
+	 * org.hibernate.engine.SessionImplementor)
 	 */
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
-		return get(owner);
+		final Object value = get(owner);
+		return value;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
+	 * org.hibernate.engine.SessionFactoryImplementor)
+	 */
+	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+		if (!(target instanceof HibernateFeatureMapEntry)) {
+			// happens during initial save, value has not changed do nothing
+			return;
+		}
+		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) target;
+		if (value != null && value instanceof EObject) {
+			fme.setValue(value);
+		}
 	}
 
 	/*
@@ -99,18 +134,12 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter,
 		return null;
 	}
 
-	/** Returns Integer.class */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getReturnType()
+	 */
 	public Class getReturnType() {
-		return String.class;
-	}
-
-	/** Sets the version in the internal version cache */
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
-		if (!(target instanceof HibernateFeatureMapEntry)) {
-			// do nothing as value has not change...
-			return;
-		}
-		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) target;
-		fme.setEStructuralFeature((String) value);
+		return EObject.class;
 	}
 }

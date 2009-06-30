@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateFeatureMapEntry.java,v 1.9 2009/03/15 08:09:22 mtaal Exp $
+ * $Id: HibernateFeatureMapEntry.java,v 1.9.2.1 2009/06/30 07:29:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -23,6 +23,8 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -43,7 +45,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.9.2.1 $
  */
 
 public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
@@ -133,6 +135,9 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 	/** The feature value map */
 	private ArrayList<FeatureValue> featureValues = new ArrayList<FeatureValue>();
 
+	// is used to hold a value temporarily until a feature is set.
+	private Object tempValue;
+
 	/**
 	 * The entity name of this entry, is filled when the object is read from the
 	 * db
@@ -203,6 +208,12 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 	 */
 	private void setEStructuralFeature(EStructuralFeature structuralFeature) {
 		eStructuralFeature = structuralFeature;
+		if (tempValue != null) {
+			// is a string needs to be translated
+			final Object value = doPossibleConversion(tempValue);
+			addFeatureValue(eStructuralFeature, value);
+			tempValue = null;
+		}
 	}
 
 	/** Return the string repr. of the feature */
@@ -225,7 +236,42 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 	 * the valid one but the other nullable values are stored in the db
 	 */
 	public void addFeatureValue(EStructuralFeature feature, Object value) {
+		// final FeatureValue fv = getFeatureValue(feature);
+		// if (fv != null) {
+		// featureValues.add(createFeatureValue(feature, value));
+		// } else {
 		featureValues.add(createFeatureValue(feature, value));
+		// }
+	}
+
+	/**
+	 * Sets a value in this feature map entry, if no eStructuralFeature is set
+	 * then it is set in the tempValue until an estructural feature is set. This
+	 * is done because it is not certain in which order hibernate calls the
+	 * property handlers.
+	 */
+	public void setValue(Object value) {
+		if (getEStructuralFeature() != null) {
+			// is a string needs to be translated
+			addFeatureValue(getEStructuralFeature(),
+					doPossibleConversion(value));
+		} else {
+			tempValue = value;
+		}
+	}
+
+	private Object doPossibleConversion(Object value) {
+		// is a string needs to be translated
+		if (getEStructuralFeature() instanceof EAttribute) {
+			final EAttribute eAttribute = (EAttribute) getEStructuralFeature();
+			final EDataType eDataType = eAttribute.getEAttributeType();
+
+			final Object realValue = eDataType.getEPackage()
+					.getEFactoryInstance().createFromString(eDataType,
+							(String) value);
+			return realValue;
+		}
+		return value;
 	}
 
 	/** Sets the exact feature value for this entry */
@@ -244,6 +290,15 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 			}
 		}
 		return null; // TODO: maybe throw error?
+	}
+
+	private FeatureValue getFeatureValue(EStructuralFeature eFeature) {
+		for (FeatureValue fv : featureValues) {
+			if (fv.matchesFeature(eFeature)) {
+				return fv;
+			}
+		}
+		return null;
 	}
 
 	/** get the real feature value */
@@ -409,7 +464,7 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 		private String featurePath;
 
 		/** Its value (can be null) */
-		protected final Object value;
+		protected Object value;
 
 		/** Constructor */
 		private FeatureValue(EStructuralFeature feature, Object value) {
@@ -439,6 +494,11 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 		private boolean matchesFeature(EStructuralFeature eFeature) {
 			if (feature.equals(eFeature)) {
 				return true;
+			}
+
+			// an entry which is the value of another entry
+			if (owningMap == null) {
+				return false;
 			}
 
 			// compare on the basis of the affiliates (substitutiongroup)
@@ -496,6 +556,10 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal,
 						+ "' does not permit a value of type '" + valueClass
 						+ "'");
 			}
+		}
+
+		public void setValue(Object value) {
+			this.value = value;
 		}
 	}
 

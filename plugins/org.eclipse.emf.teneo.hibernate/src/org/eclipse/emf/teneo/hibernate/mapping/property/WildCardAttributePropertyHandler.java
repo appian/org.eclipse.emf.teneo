@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryPropertyHandler.java,v 1.6.2.1 2009/06/30 07:29:43 mtaal Exp $
+ * $Id: WildCardAttributePropertyHandler.java,v 1.1.2.2 2009/06/30 07:29:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -19,13 +19,13 @@ package org.eclipse.emf.teneo.hibernate.mapping.property;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
 import org.hibernate.engine.SessionFactoryImplementor;
@@ -35,33 +35,24 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Implements the getter/setter for the featuremap entry.
+ * Implements the getter/setter for a wild card EAttribute property. This type of property is used in a feature map
+ * created for wild cards.
  * 
  * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter and getSetter
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6.2.1 $
+ * @version $Revision: 1.1.2.2 $
  */
 @SuppressWarnings("unchecked")
-public class FeatureMapEntryPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+public class WildCardAttributePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+
+	private final static String SEPARATOR = "_;_";
 
 	/**
 	 * Generated Version ID
 	 */
 	private static final long serialVersionUID = -2659637883475733107L;
-
-	/** The logger */
-	private static Log log = LogFactory.getLog(FeatureMapEntryPropertyHandler.class);
-
-	/** The feature */
-	protected EStructuralFeature eFeature;
-
-	/** Constructor */
-	public void initialize(EStructuralFeature eFeature) {
-		this.eFeature = eFeature;
-		log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -87,17 +78,28 @@ public class FeatureMapEntryPropertyHandler implements Getter, Setter, PropertyA
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
+		final Object value;
+		final EStructuralFeature eFeature;
 		if (!(owner instanceof HibernateFeatureMapEntry)) {
-			final FeatureMap.Entry smf = (FeatureMap.Entry) owner;
-			if (smf.getEStructuralFeature() == eFeature) {
-				return smf.getValue();
-			} else {
-				return null;
-			}
+			final FeatureMap.Entry fme = (FeatureMap.Entry) owner;
+			value = fme.getValue();
+			eFeature = fme.getEStructuralFeature();
+		} else {
+			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) owner;
+			value = fme.getValue();
+			eFeature = fme.getEStructuralFeature();
 		}
-		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) owner;
-		final Object value = fme.getValue(eFeature);
-		return value;
+		// not handled by this one
+		if (value instanceof EObject) {
+			return null;
+		}
+		if (value == null) {
+			return null;
+		}
+		final EAttribute eAttribute = (EAttribute) eFeature;
+		final EDataType eDataType = eAttribute.getEAttributeType();
+		final String valueString = eDataType.getEPackage().getEFactoryInstance().convertToString(eDataType, value);
+		return valueString;
 	}
 
 	/*
@@ -119,11 +121,14 @@ public class FeatureMapEntryPropertyHandler implements Getter, Setter, PropertyA
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		if (!(target instanceof HibernateFeatureMapEntry)) {
-			// happens during initial save, value has not changed do nothing!
+			// happens during initial save
 			return;
 		}
 		final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) target;
-		fme.addFeatureValue(eFeature, value);
+		if (value != null && !(value instanceof EObject)) {
+			// will be converted inside the HibernateFeatureMapEntry
+			fme.setValue(value);
+		}
 	}
 
 	/*
@@ -150,6 +155,6 @@ public class FeatureMapEntryPropertyHandler implements Getter, Setter, PropertyA
 	 * @see org.hibernate.property.Getter#getReturnType()
 	 */
 	public Class getReturnType() {
-		return HibernateFeatureMapEntry.class;
+		return EObject.class;
 	}
 }
