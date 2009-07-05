@@ -216,6 +216,30 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			addCommentElement(per.getModelEReference(), columnElement);
 			// --- JJH
 
+			if (joinColumn.getReferencedColumnName() != null) {
+				String propName = null;
+				final String colName = joinColumn.getReferencedColumnName();
+				for (PAnnotatedEStructuralFeature pef : per.getPaEClass().getPaEStructuralFeatures()) {
+					if (pef instanceof PAnnotatedEReference) {
+						final PAnnotatedEReference paEreference = (PAnnotatedEReference) pef;
+						// set a default, by looking for the efeature name
+						if (pef.getModelElement().getName().equals(colName) && propName == null) {
+							propName = getHbmContext().getPropertyName(paEreference.getModelEReference());
+						}
+						// use the columnname, that's according to the standard
+						if (paEreference.getColumn() != null && paEreference.getColumn().getName().equals(colName)) {
+							propName = getHbmContext().getPropertyName(paEreference.getModelEReference());
+						}
+					}
+				}
+				if (propName != null) {
+					associationElement.addAttribute("property-ref", propName);
+				} else {
+					log.warn("No property found for the referencedColumnName  " + colName + " and EReference "
+							+ per.getModelElement().getName());
+				}
+			}
+
 		}
 		// ugly but effective
 		if (associationElement.getName().compareTo("map-key-many-to-many") != 0
@@ -665,6 +689,27 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				final Index index = (per).getHbIndex();
 				if (index != null) {
 					ce.addAttribute("index", index.getName());
+				}
+			}
+
+			if (joinColumn.getReferencedColumnName() != null) {
+				String propName = null;
+				final String colName = joinColumn.getReferencedColumnName();
+				for (PAnnotatedEStructuralFeature pef : per.getPaEClass().getPaEStructuralFeatures()) {
+					// set a default, by looking for the efeature name
+					if (pef.getModelElement().getName().equals(colName) && propName == null) {
+						propName = getHbmContext().getPropertyName(pef.getModelEStructuralFeature());
+					}
+					// use the columnname, that's according to the standard
+					if (pef.getColumn() != null && pef.getColumn().getName().equals(colName)) {
+						propName = getHbmContext().getPropertyName(pef.getModelEStructuralFeature());
+					}
+				}
+				if (propName != null) {
+					keyElement.addAttribute("property-ref", propName);
+				} else {
+					log.warn("No property found for the referencedColumnName  " + colName + " and EReference "
+							+ per.getModelElement().getName());
 				}
 			}
 
