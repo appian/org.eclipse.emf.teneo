@@ -32,14 +32,34 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
-			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		<list name="any" table="`mixed_canonicalizationmethodtype_any`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_canonicalizationmethodtype_any_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_canonicalizationmethodtype_any_idx`"/>
+			<one-to-many entity-name="CanonicalizationMethodType_any"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_algorithm`"/>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="CanonicalizationMethodType_any" lazy="false" table="`canonicalizationmethodtype_any`">
+		<meta attribute="featureMap">CanonicalizationMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.DigestMethodTypeImpl" entity-name="DigestMethodType" abstract="false" lazy="false" table="`digestmethodtype`">
 		<meta attribute="eclassName">DigestMethodType</meta>
@@ -71,14 +91,34 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
-			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		<list name="any" table="`mixed_digestmethodtype_any`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_digestmethodtype_any_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_digestmethodtype_any_idx`"/>
+			<one-to-many entity-name="DigestMethodType_any"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_algorithm`"/>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="DigestMethodType_any" lazy="false" table="`digestmethodtype_any`">
+		<meta attribute="featureMap">DigestMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.DSAKeyValueTypeImpl" entity-name="DSAKeyValueType" abstract="false" lazy="false" table="`dsakeyvaluetype`">
 		<meta attribute="eclassName">DSAKeyValueType</meta>
@@ -166,14 +206,88 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
+		<list name="group" table="`mixed_keyinfotype_group`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_keyinfotype_group_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_keyinfotype_group_idx`"/>
+			<one-to-many entity-name="KeyInfoType_group"/>
+		</list>
+		<property name="keyName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_keyname`"/>
+		</property>
+		<many-to-one name="keyValue" entity-name="KeyValueType" lazy="false" cascade="all" foreign-key="keyinfotype_keyvalue" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_keyvaluetype_keyvalue_e_id`"/>
+		</many-to-one>
+		<many-to-one name="retrievalMethod" entity-name="RetrievalMethodType" lazy="false" cascade="all" foreign-key="keyinfotype_retrievalmethod" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_retrievalmethodtype_retrievalmethod_e_id`"/>
+		</many-to-one>
+		<many-to-one name="x509Data" entity-name="X509DataType" lazy="false" cascade="all" foreign-key="keyinfotype_x509data" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_x509datatype_x509data_e_id`"/>
+		</many-to-one>
+		<many-to-one name="pGPData" entity-name="PGPDataType" lazy="false" cascade="all" foreign-key="keyinfotype_pgpdata" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_pgpdatatype_pgpdata_e_id`"/>
+		</many-to-one>
+		<many-to-one name="sPKIData" entity-name="SPKIDataType" lazy="false" cascade="all" foreign-key="keyinfotype_spkidata" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_spkidatatype_spkidata_e_id`"/>
+		</many-to-one>
+		<property name="mgmtData" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_mgmtdata`"/>
+		</property>
+		<many-to-one name="any" entity-name="KeyInfoType_any" cascade="all" not-null="false"/>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="KeyInfoType_group" lazy="false" table="`keyinfotype_group`">
+		<meta attribute="featureMap">KeyInfoType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="keyName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`group_keyname`"/>
+		</property>
+		<many-to-one name="keyValue" entity-name="KeyValueType" lazy="false" cascade="all" foreign-key="keyinfotype_keyvalue" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`group_keyvaluetype_keyvalue_e_id`"/>
+		</many-to-one>
+		<many-to-one name="retrievalMethod" entity-name="RetrievalMethodType" lazy="false" cascade="all" foreign-key="keyinfotype_retrievalmethod" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`group_retrievalmethodtype_retrievalmethod_e_id`"/>
+		</many-to-one>
+		<many-to-one name="x509Data" entity-name="X509DataType" lazy="false" cascade="all" foreign-key="keyinfotype_x509data" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`group_x509datatype_x509data_e_id`"/>
+		</many-to-one>
+		<many-to-one name="pGPData" entity-name="PGPDataType" lazy="false" cascade="all" foreign-key="keyinfotype_pgpdata" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`group_pgpdatatype_pgpdata_e_id`"/>
+		</many-to-one>
+		<many-to-one name="sPKIData" entity-name="SPKIDataType" lazy="false" cascade="all" foreign-key="keyinfotype_spkidata" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`group_spkidatatype_spkidata_e_id`"/>
+		</many-to-one>
+		<property name="mgmtData" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`group_mgmtdata`"/>
+		</property>
+		<many-to-one name="any" entity-name="KeyInfoType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="KeyInfoType_any" lazy="false" table="`keyinfotype_any`">
+		<meta attribute="featureMap">KeyInfoType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.KeyValueTypeImpl" entity-name="KeyValueType" abstract="false" lazy="false" table="`keyvaluetype`">
 		<meta attribute="eclassName">KeyValueType</meta>
@@ -202,14 +316,37 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
-			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		<many-to-one name="dSAKeyValue" entity-name="DSAKeyValueType" lazy="false" cascade="all" foreign-key="keyvaluetype_dsakeyvalue" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_dsakeyvaluetype_dsakeyvalue_e_id`"/>
+		</many-to-one>
+		<many-to-one name="rSAKeyValue" entity-name="RSAKeyValueType" lazy="false" cascade="all" foreign-key="keyvaluetype_rsakeyvalue" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_rsakeyvaluetype_rsakeyvalue_e_id`"/>
+		</many-to-one>
+		<list name="any" table="`mixed_keyvaluetype_any`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_keyvaluetype_any_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_keyvaluetype_any_idx`"/>
+			<one-to-many entity-name="KeyValueType_any"/>
+		</list>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="KeyValueType_any" lazy="false" table="`keyvaluetype_any`">
+		<meta attribute="featureMap">KeyValueType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.ManifestTypeImpl" entity-name="ManifestType" abstract="false" lazy="false" table="`manifesttype`">
 		<meta attribute="eclassName">ManifestType</meta>
@@ -260,14 +397,52 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
+		<list name="group" table="`mixed_objecttype_group`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_objecttype_group_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_objecttype_group_idx`"/>
+			<one-to-many entity-name="ObjectType_group"/>
+		</list>
+		<many-to-one name="any" entity-name="ObjectType_any" cascade="all" not-null="false"/>
+		<property name="encoding" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_encoding`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		</property>
+		<property name="mimeType" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_mimetype`"/>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="ObjectType_group" lazy="false" table="`objecttype_group`">
+		<meta attribute="featureMap">ObjectType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="any" entity-name="ObjectType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="ObjectType_any" lazy="false" table="`objecttype_any`">
+		<meta attribute="featureMap">ObjectType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl" entity-name="PGPDataType" abstract="false" lazy="false" table="`pgpdatatype`">
 		<meta attribute="eclassName">PGPDataType</meta>
@@ -329,9 +504,6 @@
 			<column not-null="false" unique="false" name="`any_type`"/>
 			<column not-null="false" unique="false" name="`any_id`"/>
 		</any>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class entity-name="PGPDataType_any1" lazy="false" table="`pgpdatatype_any1`">
 		<meta attribute="featureMap">PGPDataType</meta>
@@ -347,9 +519,6 @@
 			<column not-null="false" unique="false" name="`any1_type`"/>
 			<column not-null="false" unique="false" name="`any1_id`"/>
 		</any>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.ReferenceTypeImpl" entity-name="ReferenceType" abstract="false" lazy="false" table="`referencetype`">
 		<meta attribute="eclassName">ReferenceType</meta>
@@ -455,14 +624,37 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
-			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		<property name="hMACOutputLength" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+			<column not-null="false" unique="false" name="`mixed_hmacoutputlength`"/>
+		</property>
+		<list name="any" table="`mixed_signaturemethodtype_any`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_signaturemethodtype_any_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_signaturemethodtype_any_idx`"/>
+			<one-to-many entity-name="SignatureMethodType_any"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_algorithm`"/>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="SignatureMethodType_any" lazy="false" table="`signaturemethodtype_any`">
+		<meta attribute="featureMap">SignatureMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.SignaturePropertiesTypeImpl" entity-name="SignaturePropertiesType" abstract="false" lazy="false" table="`signaturepropertiestype`">
 		<meta attribute="eclassName">SignaturePropertiesType</meta>
@@ -510,14 +702,49 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
+		<list name="group" table="`mixed_signaturepropertytype_group`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_signaturepropertytype_group_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_signaturepropertytype_group_idx`"/>
+			<one-to-many entity-name="SignaturePropertyType_group"/>
+		</list>
+		<many-to-one name="any" entity-name="SignaturePropertyType_any" cascade="all" not-null="false"/>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		</property>
+		<property name="target" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_target`"/>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="SignaturePropertyType_group" lazy="false" table="`signaturepropertytype_group`">
+		<meta attribute="featureMap">SignaturePropertyType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="any" entity-name="SignaturePropertyType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="SignaturePropertyType_any" lazy="false" table="`signaturepropertytype_any`">
+		<meta attribute="featureMap">SignaturePropertyType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.SignatureTypeImpl" entity-name="SignatureType" abstract="false" lazy="false" table="`signaturetype`">
 		<meta attribute="eclassName">SignatureType</meta>
@@ -631,9 +858,6 @@
 			<column not-null="false" unique="false" name="`any_type`"/>
 			<column not-null="false" unique="false" name="`any_id`"/>
 		</any>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.TransformsTypeImpl" entity-name="TransformsType" abstract="false" lazy="false" table="`transformstype`">
 		<meta attribute="eclassName">TransformsType</meta>
@@ -683,14 +907,52 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<property name="mixed_fme_any_data" type="java.lang.String"/>
-		<any id-type="long" meta-type="string" name="mixed_fme_any_reference" cascade="all">
-			<column not-null="false" unique="false" name="`mixed_type`"/>
-			<column not-null="false" unique="false" name="`mixed_id`"/>
-		</any>
+		<list name="group" table="`mixed_transformtype_group`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_transformtype_group_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_transformtype_group_idx`"/>
+			<one-to-many entity-name="TransformType_group"/>
+		</list>
+		<many-to-one name="any" entity-name="TransformType_any" cascade="all" not-null="false"/>
+		<property name="xPath" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_xpath`"/>
+		</property>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_algorithm`"/>
+		</property>
 		<property name="fme_mixed_text" type="java.lang.String"/>
 		<property name="fme_mixed_cdata" type="java.lang.String"/>
 		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="TransformType_group" lazy="false" table="`transformtype_group`">
+		<meta attribute="featureMap">TransformType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="any" entity-name="TransformType_any" cascade="all" not-null="false"/>
+		<property name="xPath" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`group_xpath`"/>
+		</property>
+	</class>
+	<class entity-name="TransformType_any" lazy="false" table="`transformtype_any`">
+		<meta attribute="featureMap">TransformType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.X509DataTypeImpl" entity-name="X509DataType" abstract="false" lazy="false" table="`x509datatype`">
 		<meta attribute="eclassName">X509DataType</meta>
@@ -750,9 +1012,6 @@
 			<column not-null="false" unique="false" name="`any_type`"/>
 			<column not-null="false" unique="false" name="`any_id`"/>
 		</any>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class name="org.w3._2000._09.xmldsig.impl.X509IssuerSerialTypeImpl" entity-name="X509IssuerSerialType" abstract="false" lazy="false" table="`x509issuerserialtype`">
 		<meta attribute="eclassName">X509IssuerSerialType</meta>
