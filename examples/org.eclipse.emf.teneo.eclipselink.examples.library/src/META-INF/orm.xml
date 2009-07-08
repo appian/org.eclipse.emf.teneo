@@ -27,9 +27,7 @@
         		<column name="ID"/>
          		<generated-value/>
     		</id>
-			<basic name="eContainerFeatureID">
-				<column name="ECONT_FEAT_ID"/>
-			</basic>
+			<basic name="eContainerFeatureID"/>
     		<version name="version">
     		</version>
     	</attributes>
