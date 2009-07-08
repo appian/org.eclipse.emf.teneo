@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.3 2009/05/22 20:56:09 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.4 2009/07/08 09:09:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -134,7 +134,7 @@ public class PersistentStoreAdapter implements Adapter {
 				}
 			}
 			if (map != null) {
-				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getNewValue();
+				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getOldValue();
 				map.remove(entry.getKey());
 			}
 			break;
@@ -143,7 +143,7 @@ public class PersistentStoreAdapter implements Adapter {
 				list.removeAll(replaceValues((List<Object>) notification.getOldValue(), eFeature));
 			}
 			if (map != null) {
-				for (Object o : (List<?>) notification.getNewValue()) {
+				for (Object o : (List<?>) notification.getOldValue()) {
 					final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
 					map.remove(entry.getKey());
 				}
