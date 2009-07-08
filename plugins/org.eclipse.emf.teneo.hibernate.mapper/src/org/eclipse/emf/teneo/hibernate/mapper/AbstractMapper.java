@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.48 2009/06/28 02:05:07 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.49 2009/07/08 13:16:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -199,12 +199,23 @@ public abstract class AbstractMapper {
 		final EClassifier eclassifier = eattr.getEType();
 		if (!getHbmContext().isGeneratedByEMF() && getHbmContext().getInstanceClass(eclassifier) != null) {
 			final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
-			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
-					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(instanceClass.getName());
+			final Element typeElement = propElement.addElement("type")
+					.addAttribute("name", getEnumUserType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+					instanceClass.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					eclassifier.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					eclassifier.getEPackage().getNsURI());
 		} else if (getHbmContext().isGeneratedByEMF() && eclassifier.getInstanceClass() != null) {
-			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
-					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
-							eclassifier.getInstanceClass().getName());
+			final Element typeElement = propElement.addElement("type")
+					.addAttribute("name", getEnumUserType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+					eclassifier.getInstanceClass().getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					eclassifier.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					eclassifier.getEPackage().getNsURI());
 		} else { // must be emf dynamic
 			final Element typeElement = propElement.addElement("type").addAttribute("name",
 					hbDynamicEnumType(enumerated));
@@ -213,7 +224,6 @@ public abstract class AbstractMapper {
 			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
 					eclassifier.getEPackage().getNsURI());
 		}
-
 	}
 
 	// gather the pafeatures of the supertypes also
@@ -416,7 +426,10 @@ public abstract class AbstractMapper {
 	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
 		List<JoinColumn> joinColumns = getHbmContext().getAssociationOverrides(paReference);
 		if (joinColumns == null) {
-			return paReference.getJoinColumns();
+			joinColumns = paReference.getJoinColumns();
+		}
+		if (joinColumns == null) {
+			return new ArrayList<JoinColumn>();
 		}
 		return joinColumns;
 	}

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.41 2009/06/28 02:05:07 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.42 2009/07/08 13:16:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -107,8 +107,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
 
 		// TODO: throw error if both jointable and joincolumns have been set
-		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference
-				.getJoinColumns();
+		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(hbReference, collElement, keyElement, jt);
@@ -244,9 +243,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		final Element keyElement = collElement.addElement("key");
 		handleOndelete(keyElement, ((HbAnnotatedEReference) paReference).getHbOnDelete());
 
-		// MT: added handling of join info
-		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference
-				.getJoinColumns();
+		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(hbReference, collElement, keyElement, jt);
