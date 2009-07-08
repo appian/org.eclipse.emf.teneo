@@ -99,6 +99,8 @@
 			<column not-null="true" unique="false" name="`category`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.forum.TopicCategory</param>
+				<param name="eclassifier">TopicCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</param>
 			</type>
 		</property>
 		<many-to-one name="creator" entity-name="Member" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="topic_creator" insert="false" update="false" not-null="false">

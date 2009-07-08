@@ -101,6 +101,8 @@
 			<column not-null="true" unique="false" name="`state`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.USState</param>
+				<param name="eclassifier">USState</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/inheritancemapping</param>
 			</type>
 		</property>
 		<property name="zip" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigInteger">

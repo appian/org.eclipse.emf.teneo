@@ -45,6 +45,8 @@
 			<column not-null="true" unique="false" name="`productclassification`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductClassification</param>
+				<param name="eclassifier">ProductClassification</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/elist/featuremap</param>
 			</type>
 		</property>
 		<list name="group1" table="`producttype_group1`" lazy="true" cascade="all,delete-orphan">

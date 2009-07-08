@@ -23,6 +23,8 @@
 			<column not-null="true" unique="false" name="`CATEGORY`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
+				<param name="eclassifier">BookCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
 			</type>
 		</property>
 		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">

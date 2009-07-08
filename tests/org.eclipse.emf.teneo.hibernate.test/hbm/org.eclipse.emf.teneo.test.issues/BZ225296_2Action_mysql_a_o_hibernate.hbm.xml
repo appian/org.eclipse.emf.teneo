@@ -289,6 +289,8 @@
 			<column not-null="false" unique="false" name="`type`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.IpType</param>
+				<param name="eclassifier">IpType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</param>
 			</type>
 		</property>
 		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">

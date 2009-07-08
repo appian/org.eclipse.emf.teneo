@@ -89,6 +89,8 @@
 			<column not-null="false" unique="false" name="`size`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize</param>
+				<param name="eclassifier">CitySize</param>
+				<param name="epackage">http://www.elver.org/samples/emf/hibernate/usertype</param>
 			</type>
 		</property>
 	</class>

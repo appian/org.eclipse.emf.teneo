@@ -28,6 +28,8 @@
 			<column not-null="false" unique="false" name="`type`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalBicycleType</param>
+				<param name="eclassifier">RentalBicycleType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/rental</param>
 			</type>
 		</property>
 		<many-to-one name="manufacturer" entity-name="Manufacturer" lazy="proxy" cascade="merge,persist,save-update,lock,refresh" foreign-key="rentalbicycle_manufacturer" insert="true" update="true" not-null="false">
@@ -56,6 +58,8 @@
 			<column not-null="false" unique="false" name="`size`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.rental.RentalCarSize</param>
+				<param name="eclassifier">RentalCarSize</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/rental</param>
 			</type>
 		</property>
 	</subclass>

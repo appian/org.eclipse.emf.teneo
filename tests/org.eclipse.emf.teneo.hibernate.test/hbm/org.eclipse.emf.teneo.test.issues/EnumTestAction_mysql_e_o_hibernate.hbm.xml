@@ -22,6 +22,8 @@
 			<column not-null="false" unique="false" name="`nullableitemtype`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.enumtest.ItemType</param>
+				<param name="eclassifier">ItemType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/enumtest</param>
 			</type>
 		</property>
 	</class>

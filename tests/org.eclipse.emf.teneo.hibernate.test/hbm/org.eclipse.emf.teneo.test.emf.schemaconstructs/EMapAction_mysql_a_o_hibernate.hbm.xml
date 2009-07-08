@@ -49,6 +49,8 @@
 			<element>
 				<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 					<param name="enumClass">org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category</param>
+					<param name="eclassifier">Category</param>
+					<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/emap</param>
 				</type>
 			</element>
 		</map>

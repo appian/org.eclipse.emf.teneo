@@ -27,6 +27,8 @@
 			<column not-null="true" unique="false" name="`category`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.library.BookCategory</param>
+				<param name="eclassifier">BookCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/supinterfaces</param>
 			</type>
 		</property>
 		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="book_author" insert="false" update="false" not-null="false">

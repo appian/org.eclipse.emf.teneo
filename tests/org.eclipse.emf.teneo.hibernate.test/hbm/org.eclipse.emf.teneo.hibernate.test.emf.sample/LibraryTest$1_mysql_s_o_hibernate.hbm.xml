@@ -23,6 +23,8 @@
 			<column not-null="true" unique="false" name="`col_category`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
+				<param name="eclassifier">BookCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
 			</type>
 		</property>
 		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="FKPRE_book_author" insert="false" update="false" not-null="false">

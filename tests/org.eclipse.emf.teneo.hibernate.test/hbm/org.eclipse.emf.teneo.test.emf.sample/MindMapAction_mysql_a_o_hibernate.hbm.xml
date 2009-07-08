@@ -70,6 +70,8 @@
 			<column not-null="false" unique="false" name="`type`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.example.mindmap.RelationshipType</param>
+				<param name="eclassifier">RelationshipType</param>
+				<param name="epackage">http://www.example.org/mindmap</param>
 			</type>
 		</property>
 	</class>
@@ -190,6 +192,8 @@
 			<column not-null="false" unique="false" name="`priority`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.example.mindmap.Priority</param>
+				<param name="eclassifier">Priority</param>
+				<param name="epackage">http://www.example.org/mindmap</param>
 			</type>
 		</property>
 		<list name="resources" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`topic_resource`">
