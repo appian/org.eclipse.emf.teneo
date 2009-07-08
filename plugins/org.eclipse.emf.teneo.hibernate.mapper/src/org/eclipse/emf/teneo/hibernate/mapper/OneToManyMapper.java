@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.40.2.1 2009/06/30 07:29:00 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.40.2.2 2009/07/08 22:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -72,8 +72,8 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 	}
 
 	/**
-	 * joinTable.getInverseJoinColumns must be null TODO choose appropriate mapping according to the presence of
-	 * JoinTable
+	 * joinTable.getInverseJoinColumns must be null TODO choose appropriate
+	 * mapping according to the presence of JoinTable
 	 */
 	private void processOtMUni(PAnnotatedEReference paReference) {
 		if (log.isDebugEnabled()) {
@@ -107,8 +107,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		handleOndelete(keyElement, hbReference.getHbOnDelete());
 
 		// TODO: throw error if both jointable and joincolumns have been set
-		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference
-				.getJoinColumns();
+		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(hbReference, collElement, keyElement, jt);
@@ -245,8 +244,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 		handleOndelete(keyElement, ((HbAnnotatedEReference) paReference).getHbOnDelete());
 
 		// MT: added handling of join info
-		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paReference
-				.getJoinColumns();
+		final List<JoinColumn> jcs = getJoinColumns(paReference);
 		final JoinTable jt = paReference.getJoinTable();
 		if (jt != null) {
 			addJoinTable(hbReference, collElement, keyElement, jt);
@@ -337,8 +335,9 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 	}
 
 	/**
-	 * Creates a many-to-many to handle the unidirectional manytomany. A unidirectional manytomany is now specified
-	 * using the one to many annotation while its implementation has a join table.
+	 * Creates a many-to-many to handle the unidirectional manytomany. A
+	 * unidirectional manytomany is now specified using the one to many
+	 * annotation while its implementation has a join table.
 	 */
 	private Element addManyToMany(HbAnnotatedEReference hbReference, PAnnotatedEClass referedToAClass,
 			Element collElement, String targetEntity, List<JoinColumn> invJoinColumns, boolean unique) {

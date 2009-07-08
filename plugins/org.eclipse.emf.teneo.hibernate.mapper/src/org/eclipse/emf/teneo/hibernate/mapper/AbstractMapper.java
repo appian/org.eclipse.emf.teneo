@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.43.2.5 2009/06/30 07:28:58 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.43.2.6 2009/07/08 22:58:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -199,12 +199,23 @@ public abstract class AbstractMapper {
 		final EClassifier eclassifier = eattr.getEType();
 		if (!getHbmContext().isGeneratedByEMF() && getHbmContext().getInstanceClass(eclassifier) != null) {
 			final Class<?> instanceClass = getHbmContext().getInstanceClass(eclassifier);
-			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
-					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(instanceClass.getName());
+			final Element typeElement = propElement.addElement("type")
+					.addAttribute("name", getEnumUserType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+					instanceClass.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					eclassifier.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					eclassifier.getEPackage().getNsURI());
 		} else if (getHbmContext().isGeneratedByEMF() && eclassifier.getInstanceClass() != null) {
-			propElement.addElement("type").addAttribute("name", getEnumUserType(enumerated)).addElement("param")
-					.addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
-							eclassifier.getInstanceClass().getName());
+			final Element typeElement = propElement.addElement("type")
+					.addAttribute("name", getEnumUserType(enumerated));
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ENUM_CLASS_PARAM).addText(
+					eclassifier.getInstanceClass().getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.ECLASSIFIER_PARAM).addText(
+					eclassifier.getName());
+			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
+					eclassifier.getEPackage().getNsURI());
 		} else { // must be emf dynamic
 			final Element typeElement = propElement.addElement("type").addAttribute("name",
 					hbDynamicEnumType(enumerated));
@@ -213,7 +224,6 @@ public abstract class AbstractMapper {
 			typeElement.addElement("param").addAttribute("name", HbMapperConstants.EPACKAGE_PARAM).addText(
 					eclassifier.getEPackage().getNsURI());
 		}
-
 	}
 
 	// gather the pafeatures of the supertypes also
@@ -318,7 +328,8 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type.
+	 * Returns the correct enum primitive hibernate type, for Elver this is a
+	 * hibernate user type.
 	 */
 	public String getEnumUserType(Enumerated enumerated) {
 		if (EnumType.STRING == enumerated.getValue()) {
@@ -329,7 +340,8 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Returns the correct enum primitive hibernate type, for Elver this is a hibernate user type.
+	 * Returns the correct enum primitive hibernate type, for Elver this is a
+	 * hibernate user type.
 	 */
 	protected String hbDynamicEnumType(Enumerated enumerated) {
 		if (EnumType.STRING == enumerated.getValue()) {
@@ -373,7 +385,8 @@ public abstract class AbstractMapper {
 	}
 
 	/*
-	 * @return The name of the java class needed to map the datetime/timestamp type
+	 * @return The name of the java class needed to map the datetime/timestamp
+	 * type
 	 */
 	public String getEDateTimeClass(PAnnotatedEAttribute paAttribute) {
 		final EDataType eDataType = paAttribute.getModelEAttribute().getEAttributeType();
@@ -410,13 +423,16 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Returns the (possibly overridden) JoinColumns annotations for the given reference or an empty list if no
-	 * JoinColumns were defined.
+	 * Returns the (possibly overridden) JoinColumns annotations for the given
+	 * reference or an empty list if no JoinColumns were defined.
 	 */
 	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
 		List<JoinColumn> joinColumns = getHbmContext().getAssociationOverrides(paReference);
 		if (joinColumns == null) {
 			return paReference.getJoinColumns();
+		}
+		if (joinColumns == null) {
+			return new ArrayList<JoinColumn>();
 		}
 		return joinColumns;
 	}
@@ -497,7 +513,8 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Add a comment element, if the eModelElement has documentation, returns the comment element
+	 * Add a comment element, if the eModelElement has documentation, returns
+	 * the comment element
 	 */
 	protected Element addCommentElement(EModelElement eModelElement, Element hbmElement) {
 		if (hbmContext.getMaximumCommentLength() == 0) {
@@ -531,7 +548,8 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Returns the (possibly overridden) columns annotation for the given attribute.
+	 * Returns the (possibly overridden) columns annotation for the given
+	 * attribute.
 	 */
 	protected List<Column> getColumns(PAnnotatedEStructuralFeature paFeature) {
 		final Column defaultColumn = paFeature.getColumn();
@@ -600,7 +618,8 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Creates cascades for onetoone/manytoone, they differ from many relations because no delete-orphan is supported.
+	 * Creates cascades for onetoone/manytoone, they differ from many relations
+	 * because no delete-orphan is supported.
 	 * 
 	 * @param associationElement
 	 *            : the element to which the cascades are added.
@@ -717,8 +736,8 @@ public abstract class AbstractMapper {
 	}
 
 	/**
-	 * Add a columnelement to the property, takes into account length, precision etc. forceNullable is set when the
-	 * feature belongs to a featuremap
+	 * Add a columnelement to the property, takes into account length, precision
+	 * etc. forceNullable is set when the feature belongs to a featuremap
 	 */
 	private void addColumnElement(Element propertyElement, PAnnotatedEStructuralFeature pef, Column column,
 			boolean forceNullable) {
