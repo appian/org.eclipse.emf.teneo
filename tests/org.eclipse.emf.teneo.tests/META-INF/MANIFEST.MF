@@ -8,6 +8,5 @@ Bundle-Localization: plugin
 Require-Bundle: org.junit;bundle-version="[3.8.0,4.0.0)",
  org.eclipse.core.runtime,
  org.eclipse.emf.teneo.hibernate.test,
- org.eclipse.emf.teneo.jpox.test,
  org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
