@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.26 2009/06/30 07:34:34 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.27 2009/07/22 21:08:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -45,6 +45,7 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
@@ -53,7 +54,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 
 public class StoreUtil {
@@ -97,13 +98,14 @@ public class StoreUtil {
 				final EObject obj = it.next();
 				if (obj instanceof EPackage) {
 					final EPackage epack = (EPackage) obj;
-					final EPackage currentEPackage = EPackage.Registry.INSTANCE.getEPackage(epack.getNsURI());
+					final EPackage currentEPackage = PackageRegistryProvider.getInstance().getPackageRegistry()
+							.getEPackage(epack.getNsURI());
 					if (currentEPackage != null) { // use the existing epackage
 						if (!epackages.contains(currentEPackage)) {
 							epackages.add(currentEPackage);
 						}
 					} else {
-						EPackage.Registry.INSTANCE.put(epack.getNsURI(), epack);
+						PackageRegistryProvider.getInstance().getPackageRegistry().put(epack.getNsURI(), epack);
 						epackages.add(epack);
 					}
 				}
@@ -191,11 +193,11 @@ public class StoreUtil {
 	 * lastIndex = eclassURI.lastIndexOf(PATH_SEPARATOR); if (lastIndex == -1) { throw new
 	 * StoreAnnotationsException("The uri: " + eclassURI + " has an illegal format, it can not parsed to an eclass."); }
 	 * final String nsuri = eclassURI.substring(0, lastIndex); final String name = eclassURI.substring(lastIndex + 1);
-	 * final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri); if (epack == null) { throw new
-	 * StoreAnnotationsException("No package found for the nsuri: " + nsuri + " using the eclassURI " + eclassURI); }
-	 * final EClass eclass = (EClass)epack.getEClassifier(name); if (eclass == null) { throw new
-	 * StoreAnnotationsException("The nsuri " + nsuri + " and eclassname: " + name + " does not resolve to an EClass");
-	 * } return eclass; / }
+	 * final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(nsuri); if (epack
+	 * == null) { throw new StoreAnnotationsException("No package found for the nsuri: " + nsuri +
+	 * " using the eclassURI " + eclassURI); } final EClass eclass = (EClass)epack.getEClassifier(name); if (eclass ==
+	 * null) { throw new StoreAnnotationsException("The nsuri " + nsuri + " and eclassname: " + name +
+	 * " does not resolve to an EClass"); } return eclass; / }
 	 */
 	/** Sends out a notification of an elist load */
 	public static void dispatchEListLoadNotification(final EObject notifier, final EList<? extends EObject> elist,
@@ -283,7 +285,7 @@ public class StoreUtil {
 		final String eclassName = strid.substring(beforeLastIndex + 1, lastIndex);
 		final String featureName = strid.substring(lastIndex + 1);
 
-		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri);
+		final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(nsuri);
 		if (epack == null) {
 			throw new TeneoException("The dbid " + strid + " and nsuri: " + nsuri + " does not resolve to an epackage");
 		}
@@ -325,7 +327,7 @@ public class StoreUtil {
 		final String nsuri = strid.substring(0, lastIndex);
 		final String name = strid.substring(lastIndex + 1);
 
-		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(nsuri);
+		final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(nsuri);
 		if (epack == null) {
 			throw new TeneoException("The dbid " + strid + " and nsuri: " + nsuri + " does not resolve to an epackage");
 		}
@@ -500,7 +502,8 @@ public class StoreUtil {
 		final String[] epacknsuris = nsuris.split(",");
 		final EPackage[] epacks = new EPackage[epacknsuris.length];
 		for (int i = 0; i < epacknsuris.length; i++) {
-			final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(epacknsuris[i]);
+			final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
+					epacknsuris[i]);
 			if (epack == null) {
 				throw new TeneoException("EPackage with nsuri: " + epacknsuris[i] + " can not be found,");
 			}
