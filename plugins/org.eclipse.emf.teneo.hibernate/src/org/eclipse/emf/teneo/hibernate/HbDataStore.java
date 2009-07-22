@@ -82,7 +82,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.52 $
+ * @version $Revision: 1.53 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -843,7 +843,7 @@ public abstract class HbDataStore implements DataStore {
 	 * XMLResource.OPTION_ENCODING.
 	 */
 	public void exportDataStore(OutputStream os, int exportFormat, String encoding) {
-		final HibernateResource hibResource = new HibernateResource(URI.createFileURI("." + name));
+		final HibernateResource hibResource = new HibernateResource(URI.createFileURI("teneo." + name));
 		hibResource.load(Collections.EMPTY_MAP);
 
 		try {

@@ -9,7 +9,7 @@
  *
  * </copyright>
  *
- * $Id: ExternalType.java,v 1.2 2008/12/17 06:13:20 mtaal Exp $
+ * $Id: ExternalType.java,v 1.3 2009/07/22 21:06:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -27,13 +27,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
 /**
- * Provides a way to store external references (references to objects not in the
- * same datastore) as a string/uri.
+ * Provides a way to store external references (references to objects not in the same datastore) as a string/uri.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  */
@@ -71,8 +71,7 @@ public class ExternalType implements UserType, ParameterizedType {
 		return x.equals(y);
 	}
 
-	public Object nullSafeGet(ResultSet resultSet, String[] names, Object owner)
-			throws SQLException {
+	public Object nullSafeGet(ResultSet resultSet, String[] names, Object owner) throws SQLException {
 
 		final String data = resultSet.getString(names[0]);
 		if (data == null) {
@@ -80,15 +79,13 @@ public class ExternalType implements UserType, ParameterizedType {
 		}
 
 		// now create a new instance and set its proxyuri
-		final InternalEObject newValue = (InternalEObject) eClass.getEPackage()
-				.getEFactoryInstance().create(eClass);
+		final InternalEObject newValue = (InternalEObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
 		final URI uri = URI.createURI(data);
 		newValue.eSetProxyURI(uri);
 		return newValue;
 	}
 
-	public void nullSafeSet(PreparedStatement statement, Object value, int index)
-			throws SQLException {
+	public void nullSafeSet(PreparedStatement statement, Object value, int index) throws SQLException {
 		String pvalue = null;
 		if (value != null) {
 			final Resource res = ((InternalEObject) value).eResource();
@@ -121,37 +118,29 @@ public class ExternalType implements UserType, ParameterizedType {
 	}
 
 	public void setParameterValues(Properties properties) {
-		final String ePackageNsUri = properties
-				.getProperty(HbMapperConstants.EPACKAGE_PARAM);
+		final String ePackageNsUri = properties.getProperty(HbMapperConstants.EPACKAGE_PARAM);
 		if (ePackageNsUri == null || ePackageNsUri.length() == 0) {
-			throw new IllegalArgumentException(
-					"Could not find custom UserType property "
-							+ HbMapperConstants.EPACKAGE_PARAM);
+			throw new IllegalArgumentException("Could not find custom UserType property "
+					+ HbMapperConstants.EPACKAGE_PARAM);
 		}
-		final EPackage epackage = EPackage.Registry.INSTANCE
-				.getEPackage(ePackageNsUri);
+		final EPackage epackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(ePackageNsUri);
 		if (epackage == null) {
-			throw new IllegalArgumentException(
-					"Could not find ePackage using nsuri " + ePackageNsUri);
+			throw new IllegalArgumentException("Could not find ePackage using nsuri " + ePackageNsUri);
 		}
-		final String eClassName = properties
-				.getProperty(HbMapperConstants.ECLASS_NAME_META);
+		final String eClassName = properties.getProperty(HbMapperConstants.ECLASS_NAME_META);
 		if (eClassName == null) {
-			throw new IllegalArgumentException(
-					"Could not find custom UserType property "
-							+ HbMapperConstants.ECLASS_NAME_META);
+			throw new IllegalArgumentException("Could not find custom UserType property "
+					+ HbMapperConstants.ECLASS_NAME_META);
 		}
 		final EClassifier eclassifier = epackage.getEClassifier(eClassName);
 		if (eclassifier instanceof EClass) {
 			eClass = (EClass) eclassifier;
 		} else {
 			if (eclassifier == null) {
-				throw new IllegalArgumentException("Missing eClass "
-						+ eClassName + " in package implementation "
+				throw new IllegalArgumentException("Missing eClass " + eClassName + " in package implementation "
 						+ epackage.getName());
 			} else {
-				throw new IllegalArgumentException("Found property of type "
-						+ eclassifier.getClass().getName()
+				throw new IllegalArgumentException("Found property of type " + eclassifier.getClass().getName()
 						+ " when an EClass was expected.");
 			}
 		}

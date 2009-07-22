@@ -13,7 +13,7 @@ package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerFeatureIDUserType.java,v 1.1 2009/03/15 14:49:46 mtaal Exp $
+ * $Id: EContainerFeatureIDUserType.java,v 1.2 2009/07/22 21:06:16 mtaal Exp $
  */
 
 import java.io.Serializable;
@@ -26,15 +26,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.hibernate.HibernateException;
 import org.hibernate.usertype.UserType;
 
 /**
- * Persists an EContainerFeatureID as a varchar which contains both the EClass
- * of the container as the complete reference to the EFeature.
+ * Persists an EContainerFeatureID as a varchar which contains both the EClass of the container as the complete
+ * reference to the EFeature.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $ $Date: 2009/03/15 14:49:46 $
+ * @version $Revision: 1.2 $ $Date: 2009/07/22 21:06:16 $
  */
 
 public class EContainerFeatureIDUserType implements UserType {
@@ -42,8 +43,7 @@ public class EContainerFeatureIDUserType implements UserType {
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
 	private static final String SEPARATOR = "_;_";
 
-	public static String convertEContainerRelationToString(EClass eClass,
-			EStructuralFeature eFeature) {
+	public static String convertEContainerRelationToString(EClass eClass, EStructuralFeature eFeature) {
 		StringBuilder result = new StringBuilder();
 		{
 			final String uri = eClass.getEPackage().getNsURI();
@@ -52,18 +52,15 @@ public class EContainerFeatureIDUserType implements UserType {
 		}
 
 		{
-			final String uri = eFeature.getEContainingClass().getEPackage()
-					.getNsURI();
+			final String uri = eFeature.getEContainingClass().getEPackage().getNsURI();
 			final String eClassName = eFeature.getEContainingClass().getName();
 			final String eFeatureName = eFeature.getName();
-			result.append(SEPARATOR + uri + SEPARATOR + eClassName + SEPARATOR
-					+ eFeatureName);
+			result.append(SEPARATOR + uri + SEPARATOR + eClassName + SEPARATOR + eFeatureName);
 		}
 		return result.toString();
 	}
 
-	public Object assemble(Serializable cached, Object owner)
-			throws HibernateException {
+	public Object assemble(Serializable cached, Object owner) throws HibernateException {
 		final EContainerFeatureIDHolder holder = new EContainerFeatureIDHolder();
 		holder.convertFromString((String) cached);
 		return holder;
@@ -100,8 +97,7 @@ public class EContainerFeatureIDUserType implements UserType {
 		return false;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
-			throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
 		final String value = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -111,18 +107,15 @@ public class EContainerFeatureIDUserType implements UserType {
 		return holder;
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index)
-			throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
-			st.setString(index, ((EContainerFeatureIDHolder) value)
-					.convertToString());
+			st.setString(index, ((EContainerFeatureIDHolder) value).convertToString());
 		}
 	}
 
-	public Object replace(Object original, Object target, Object owner)
-			throws HibernateException {
+	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;
 	}
 
@@ -156,18 +149,16 @@ public class EContainerFeatureIDUserType implements UserType {
 		public void convertFromString(String value) {
 			final String[] values = value.split(SEPARATOR);
 			final String nsuri = values[0];
-			final EPackage eContainerPackage = EPackage.Registry.INSTANCE
-					.getEPackage(nsuri);
+			final EPackage eContainerPackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
+					nsuri);
 			final String eContainerEClassName = values[1];
-			eClass = (EClass) eContainerPackage
-					.getEClassifier(eContainerEClassName);
+			eClass = (EClass) eContainerPackage.getEClassifier(eContainerEClassName);
 
-			final EPackage eFeaturePackage = EPackage.Registry.INSTANCE
-					.getEPackage(values[2]);
+			final EPackage eFeaturePackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
+					values[2]);
 
 			final String eClassifierName = values[3];
-			final EClassifier eClassifier = eFeaturePackage
-					.getEClassifier(eClassifierName);
+			final EClassifier eClassifier = eFeaturePackage.getEClassifier(eClassifierName);
 			final EClass eClass = (EClass) eClassifier;
 			final String eFeatureName = values[4];
 			eFeature = eClass.getEStructuralFeature(eFeatureName);

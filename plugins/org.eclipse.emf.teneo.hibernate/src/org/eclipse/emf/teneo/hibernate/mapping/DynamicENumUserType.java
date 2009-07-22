@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserType.java,v 1.7 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.8 2009/07/22 21:06:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -27,6 +27,7 @@ import java.util.Properties;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
@@ -37,7 +38,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $ $Date: 2008/02/28 07:08:24 $
+ * @version $Revision: 1.8 $ $Date: 2009/07/22 21:06:16 $
  */
 
 public class DynamicENumUserType implements UserType, ParameterizedType {
@@ -111,8 +112,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[],
-	 *      java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[], java.lang.Object)
 	 */
 	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
 		final String name = rs.getString(names[0]);
@@ -127,8 +127,8 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 
 		enumValue = enumInstance.getEEnumLiteralByLiteral(name.trim());
 		if (enumValue == null) {
-			throw new HbMapperException("The enum value " + name + " is not valid for enumerator: " +
-					enumInstance.getName());
+			throw new HbMapperException("The enum value " + name + " is not valid for enumerator: "
+					+ enumInstance.getName());
 		}
 		localCache.put(name, enumValue);
 		return enumValue;
@@ -137,8 +137,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement,
-	 *      java.lang.Object, int)
+	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int)
 	 */
 	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
 		if (value == null) {
@@ -151,8 +150,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object,
-	 *      java.lang.Object)
+	 * @see org.hibernate.usertype.UserType#replace(java.lang.Object, java.lang.Object, java.lang.Object)
 	 */
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {
 		return original;
@@ -172,7 +170,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	public void setParameterValues(Properties parameters) {
 		final String epackUri = parameters.getProperty(HbMapperConstants.EPACKAGE_PARAM);
 		final String eclassifier = parameters.getProperty(HbMapperConstants.ECLASSIFIER_PARAM);
-		final EPackage epack = EPackage.Registry.INSTANCE.getEPackage(epackUri);
+		final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(epackUri);
 		enumInstance = (EEnum) epack.getEClassifier(eclassifier);
 	}
 }
