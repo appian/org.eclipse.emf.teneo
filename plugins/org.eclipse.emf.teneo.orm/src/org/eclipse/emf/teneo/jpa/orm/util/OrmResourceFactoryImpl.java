@@ -2,17 +2,22 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrmResourceFactoryImpl.java,v 1.1 2009/03/15 23:44:59 mtaal Exp $
+ * $Id: OrmResourceFactoryImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.util;
 
 import org.eclipse.emf.common.util.URI;
 
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 
+import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.teneo.jpa.orm.OrmPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +28,13 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  */
 public class OrmResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExtendedMetaData extendedMetaData;
+
+	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30,6 +42,8 @@ public class OrmResourceFactoryImpl extends ResourceFactoryImpl {
 	 */
 	public OrmResourceFactoryImpl() {
 		super();
+		extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
+		extendedMetaData.putPackage(null, OrmPackage.eINSTANCE);
 	}
 
 	/**
@@ -41,8 +55,8 @@ public class OrmResourceFactoryImpl extends ResourceFactoryImpl {
 	@Override
 	public Resource createResource(URI uri) {
 		XMLResource result = new OrmResourceImpl(uri);
-		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 

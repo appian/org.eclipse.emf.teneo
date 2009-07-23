@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TableGeneratorImpl.java,v 1.1 2009/03/15 23:45:02 mtaal Exp $
+ * $Id: TableGeneratorImpl.java,v 1.2 2009/07/23 11:16:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -552,11 +552,11 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 			case OrmPackage.TABLE_GENERATOR__UNIQUE_CONSTRAINT:
 				return getUniqueConstraint();
 			case OrmPackage.TABLE_GENERATOR__ALLOCATION_SIZE:
-				return new Integer(getAllocationSize());
+				return getAllocationSize();
 			case OrmPackage.TABLE_GENERATOR__CATALOG:
 				return getCatalog();
 			case OrmPackage.TABLE_GENERATOR__INITIAL_VALUE:
-				return new Integer(getInitialValue());
+				return getInitialValue();
 			case OrmPackage.TABLE_GENERATOR__NAME:
 				return getName();
 			case OrmPackage.TABLE_GENERATOR__PK_COLUMN_NAME:
@@ -587,13 +587,13 @@ public class TableGeneratorImpl extends EObjectImpl implements TableGenerator {
 				getUniqueConstraint().addAll((Collection<? extends UniqueConstraint>)newValue);
 				return;
 			case OrmPackage.TABLE_GENERATOR__ALLOCATION_SIZE:
-				setAllocationSize(((Integer)newValue).intValue());
+				setAllocationSize((Integer)newValue);
 				return;
 			case OrmPackage.TABLE_GENERATOR__CATALOG:
 				setCatalog((String)newValue);
 				return;
 			case OrmPackage.TABLE_GENERATOR__INITIAL_VALUE:
-				setInitialValue(((Integer)newValue).intValue());
+				setInitialValue((Integer)newValue);
 				return;
 			case OrmPackage.TABLE_GENERATOR__NAME:
 				setName((String)newValue);

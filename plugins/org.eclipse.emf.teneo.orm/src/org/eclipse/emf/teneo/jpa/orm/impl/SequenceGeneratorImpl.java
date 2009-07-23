@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceGeneratorImpl.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: SequenceGeneratorImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -293,9 +293,9 @@ public class SequenceGeneratorImpl extends EObjectImpl implements SequenceGenera
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case OrmPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
-				return new Integer(getAllocationSize());
+				return getAllocationSize();
 			case OrmPackage.SEQUENCE_GENERATOR__INITIAL_VALUE:
-				return new Integer(getInitialValue());
+				return getInitialValue();
 			case OrmPackage.SEQUENCE_GENERATOR__NAME:
 				return getName();
 			case OrmPackage.SEQUENCE_GENERATOR__SEQUENCE_NAME:
@@ -313,10 +313,10 @@ public class SequenceGeneratorImpl extends EObjectImpl implements SequenceGenera
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OrmPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
-				setAllocationSize(((Integer)newValue).intValue());
+				setAllocationSize((Integer)newValue);
 				return;
 			case OrmPackage.SEQUENCE_GENERATOR__INITIAL_VALUE:
-				setInitialValue(((Integer)newValue).intValue());
+				setInitialValue((Integer)newValue);
 				return;
 			case OrmPackage.SEQUENCE_GENERATOR__NAME:
 				setName((String)newValue);

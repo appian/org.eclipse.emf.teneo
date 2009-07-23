@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OneToOneImpl.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: OneToOneImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -537,7 +537,7 @@ public class OneToOneImpl extends EObjectImpl implements OneToOne {
 			case OrmPackage.ONE_TO_ONE__NAME:
 				return getName();
 			case OrmPackage.ONE_TO_ONE__OPTIONAL:
-				return isOptional() ? Boolean.TRUE : Boolean.FALSE;
+				return isOptional();
 			case OrmPackage.ONE_TO_ONE__TARGET_ENTITY:
 				return getTargetEntity();
 		}
@@ -577,7 +577,7 @@ public class OneToOneImpl extends EObjectImpl implements OneToOne {
 				setName((String)newValue);
 				return;
 			case OrmPackage.ONE_TO_ONE__OPTIONAL:
-				setOptional(((Boolean)newValue).booleanValue());
+				setOptional((Boolean)newValue);
 				return;
 			case OrmPackage.ONE_TO_ONE__TARGET_ENTITY:
 				setTargetEntity((String)newValue);

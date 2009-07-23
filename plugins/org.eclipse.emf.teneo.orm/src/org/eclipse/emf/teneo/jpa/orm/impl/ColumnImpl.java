@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnImpl.java,v 1.1 2009/03/15 23:45:02 mtaal Exp $
+ * $Id: ColumnImpl.java,v 1.2 2009/07/23 11:16:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -717,23 +717,23 @@ public class ColumnImpl extends EObjectImpl implements Column {
 			case OrmPackage.COLUMN__COLUMN_DEFINITION:
 				return getColumnDefinition();
 			case OrmPackage.COLUMN__INSERTABLE:
-				return isInsertable() ? Boolean.TRUE : Boolean.FALSE;
+				return isInsertable();
 			case OrmPackage.COLUMN__LENGTH:
-				return new Integer(getLength());
+				return getLength();
 			case OrmPackage.COLUMN__NAME:
 				return getName();
 			case OrmPackage.COLUMN__NULLABLE:
-				return isNullable() ? Boolean.TRUE : Boolean.FALSE;
+				return isNullable();
 			case OrmPackage.COLUMN__PRECISION:
-				return new Integer(getPrecision());
+				return getPrecision();
 			case OrmPackage.COLUMN__SCALE:
-				return new Integer(getScale());
+				return getScale();
 			case OrmPackage.COLUMN__TABLE:
 				return getTable();
 			case OrmPackage.COLUMN__UNIQUE:
-				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+				return isUnique();
 			case OrmPackage.COLUMN__UPDATABLE:
-				return isUpdatable() ? Boolean.TRUE : Boolean.FALSE;
+				return isUpdatable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -750,31 +750,31 @@ public class ColumnImpl extends EObjectImpl implements Column {
 				setColumnDefinition((String)newValue);
 				return;
 			case OrmPackage.COLUMN__INSERTABLE:
-				setInsertable(((Boolean)newValue).booleanValue());
+				setInsertable((Boolean)newValue);
 				return;
 			case OrmPackage.COLUMN__LENGTH:
-				setLength(((Integer)newValue).intValue());
+				setLength((Integer)newValue);
 				return;
 			case OrmPackage.COLUMN__NAME:
 				setName((String)newValue);
 				return;
 			case OrmPackage.COLUMN__NULLABLE:
-				setNullable(((Boolean)newValue).booleanValue());
+				setNullable((Boolean)newValue);
 				return;
 			case OrmPackage.COLUMN__PRECISION:
-				setPrecision(((Integer)newValue).intValue());
+				setPrecision((Integer)newValue);
 				return;
 			case OrmPackage.COLUMN__SCALE:
-				setScale(((Integer)newValue).intValue());
+				setScale((Integer)newValue);
 				return;
 			case OrmPackage.COLUMN__TABLE:
 				setTable((String)newValue);
 				return;
 			case OrmPackage.COLUMN__UNIQUE:
-				setUnique(((Boolean)newValue).booleanValue());
+				setUnique((Boolean)newValue);
 				return;
 			case OrmPackage.COLUMN__UPDATABLE:
-				setUpdatable(((Boolean)newValue).booleanValue());
+				setUpdatable((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumnImpl.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: DiscriminatorColumnImpl.java,v 1.2 2009/07/23 11:16:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -298,7 +298,7 @@ public class DiscriminatorColumnImpl extends EObjectImpl implements Discriminato
 			case OrmPackage.DISCRIMINATOR_COLUMN__DISCRIMINATOR_TYPE:
 				return getDiscriminatorType();
 			case OrmPackage.DISCRIMINATOR_COLUMN__LENGTH:
-				return new Integer(getLength());
+				return getLength();
 			case OrmPackage.DISCRIMINATOR_COLUMN__NAME:
 				return getName();
 		}
@@ -320,7 +320,7 @@ public class DiscriminatorColumnImpl extends EObjectImpl implements Discriminato
 				setDiscriminatorType((DiscriminatorType)newValue);
 				return;
 			case OrmPackage.DISCRIMINATOR_COLUMN__LENGTH:
-				setLength(((Integer)newValue).intValue());
+				setLength((Integer)newValue);
 				return;
 			case OrmPackage.DISCRIMINATOR_COLUMN__NAME:
 				setName((String)newValue);

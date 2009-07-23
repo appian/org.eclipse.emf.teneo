@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ManyToOneImpl.java,v 1.1 2009/03/15 23:45:02 mtaal Exp $
+ * $Id: ManyToOneImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -465,7 +465,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 			case OrmPackage.MANY_TO_ONE__NAME:
 				return getName();
 			case OrmPackage.MANY_TO_ONE__OPTIONAL:
-				return isOptional() ? Boolean.TRUE : Boolean.FALSE;
+				return isOptional();
 			case OrmPackage.MANY_TO_ONE__TARGET_ENTITY:
 				return getTargetEntity();
 		}
@@ -498,7 +498,7 @@ public class ManyToOneImpl extends EObjectImpl implements ManyToOne {
 				setName((String)newValue);
 				return;
 			case OrmPackage.MANY_TO_ONE__OPTIONAL:
-				setOptional(((Boolean)newValue).booleanValue());
+				setOptional((Boolean)newValue);
 				return;
 			case OrmPackage.MANY_TO_ONE__TARGET_ENTITY:
 				setTargetEntity((String)newValue);

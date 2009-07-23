@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EntityImpl.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: EntityImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -1605,7 +1605,7 @@ public class EntityImpl extends EObjectImpl implements Entity {
 			case OrmPackage.ENTITY__CLASS:
 				return getClass_();
 			case OrmPackage.ENTITY__METADATA_COMPLETE:
-				return isMetadataComplete() ? Boolean.TRUE : Boolean.FALSE;
+				return isMetadataComplete();
 			case OrmPackage.ENTITY__NAME:
 				return getName();
 		}
@@ -1713,7 +1713,7 @@ public class EntityImpl extends EObjectImpl implements Entity {
 				setClass((String)newValue);
 				return;
 			case OrmPackage.ENTITY__METADATA_COMPLETE:
-				setMetadataComplete(((Boolean)newValue).booleanValue());
+				setMetadataComplete((Boolean)newValue);
 				return;
 			case OrmPackage.ENTITY__NAME:
 				setName((String)newValue);

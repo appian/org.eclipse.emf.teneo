@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrmXMLProcessor.java,v 1.1 2009/03/15 23:44:59 mtaal Exp $
+ * $Id: OrmXMLProcessor.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.util;
 
@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
@@ -31,8 +32,8 @@ public class OrmXMLProcessor extends XMLProcessor {
 	 * @generated
 	 */
 	public OrmXMLProcessor() {
-		super((EPackage.Registry.INSTANCE));
-		OrmPackage.eINSTANCE.eClass();
+		super(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
+		extendedMetaData.putPackage(null, OrmPackage.eINSTANCE);
 	}
 	
 	/**

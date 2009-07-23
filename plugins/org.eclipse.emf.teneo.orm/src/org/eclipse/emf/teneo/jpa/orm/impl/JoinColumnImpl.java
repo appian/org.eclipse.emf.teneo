@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: JoinColumnImpl.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: JoinColumnImpl.java,v 1.2 2009/07/23 11:16:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -531,19 +531,19 @@ public class JoinColumnImpl extends EObjectImpl implements JoinColumn {
 			case OrmPackage.JOIN_COLUMN__COLUMN_DEFINITION:
 				return getColumnDefinition();
 			case OrmPackage.JOIN_COLUMN__INSERTABLE:
-				return isInsertable() ? Boolean.TRUE : Boolean.FALSE;
+				return isInsertable();
 			case OrmPackage.JOIN_COLUMN__NAME:
 				return getName();
 			case OrmPackage.JOIN_COLUMN__NULLABLE:
-				return isNullable() ? Boolean.TRUE : Boolean.FALSE;
+				return isNullable();
 			case OrmPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
 				return getReferencedColumnName();
 			case OrmPackage.JOIN_COLUMN__TABLE:
 				return getTable();
 			case OrmPackage.JOIN_COLUMN__UNIQUE:
-				return isUnique() ? Boolean.TRUE : Boolean.FALSE;
+				return isUnique();
 			case OrmPackage.JOIN_COLUMN__UPDATABLE:
-				return isUpdatable() ? Boolean.TRUE : Boolean.FALSE;
+				return isUpdatable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -560,13 +560,13 @@ public class JoinColumnImpl extends EObjectImpl implements JoinColumn {
 				setColumnDefinition((String)newValue);
 				return;
 			case OrmPackage.JOIN_COLUMN__INSERTABLE:
-				setInsertable(((Boolean)newValue).booleanValue());
+				setInsertable((Boolean)newValue);
 				return;
 			case OrmPackage.JOIN_COLUMN__NAME:
 				setName((String)newValue);
 				return;
 			case OrmPackage.JOIN_COLUMN__NULLABLE:
-				setNullable(((Boolean)newValue).booleanValue());
+				setNullable((Boolean)newValue);
 				return;
 			case OrmPackage.JOIN_COLUMN__REFERENCED_COLUMN_NAME:
 				setReferencedColumnName((String)newValue);
@@ -575,10 +575,10 @@ public class JoinColumnImpl extends EObjectImpl implements JoinColumn {
 				setTable((String)newValue);
 				return;
 			case OrmPackage.JOIN_COLUMN__UNIQUE:
-				setUnique(((Boolean)newValue).booleanValue());
+				setUnique((Boolean)newValue);
 				return;
 			case OrmPackage.JOIN_COLUMN__UPDATABLE:
-				setUpdatable(((Boolean)newValue).booleanValue());
+				setUpdatable((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

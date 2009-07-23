@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddableImpl.java,v 1.1 2009/03/15 23:45:01 mtaal Exp $
+ * $Id: EmbeddableImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -373,7 +373,7 @@ public class EmbeddableImpl extends EObjectImpl implements Embeddable {
 			case OrmPackage.EMBEDDABLE__CLASS:
 				return getClass_();
 			case OrmPackage.EMBEDDABLE__METADATA_COMPLETE:
-				return isMetadataComplete() ? Boolean.TRUE : Boolean.FALSE;
+				return isMetadataComplete();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -399,7 +399,7 @@ public class EmbeddableImpl extends EObjectImpl implements Embeddable {
 				setClass((String)newValue);
 				return;
 			case OrmPackage.EMBEDDABLE__METADATA_COMPLETE:
-				setMetadataComplete(((Boolean)newValue).booleanValue());
+				setMetadataComplete((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

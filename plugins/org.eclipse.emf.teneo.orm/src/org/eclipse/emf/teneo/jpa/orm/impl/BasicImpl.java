@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BasicImpl.java,v 1.1 2009/03/15 23:45:03 mtaal Exp $
+ * $Id: BasicImpl.java,v 1.2 2009/07/23 11:16:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -478,7 +478,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 			case OrmPackage.BASIC__NAME:
 				return getName();
 			case OrmPackage.BASIC__OPTIONAL:
-				return isOptional() ? Boolean.TRUE : Boolean.FALSE;
+				return isOptional();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -510,7 +510,7 @@ public class BasicImpl extends EObjectImpl implements Basic {
 				setName((String)newValue);
 				return;
 			case OrmPackage.BASIC__OPTIONAL:
-				setOptional(((Boolean)newValue).booleanValue());
+				setOptional((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

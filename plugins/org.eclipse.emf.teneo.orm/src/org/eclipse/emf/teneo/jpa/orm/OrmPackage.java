@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrmPackage.java,v 1.1 2009/03/15 23:44:59 mtaal Exp $
+ * $Id: OrmPackage.java,v 1.2 2009/07/23 11:16:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm;
 
@@ -81,6 +81,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-model-doc -->
  * @see org.eclipse.emf.teneo.jpa.orm.OrmFactory
  * @model kind="package"
+ *        extendedMetaData="qualified='false'"
  * @generated
  */
 public interface OrmPackage extends EPackage {

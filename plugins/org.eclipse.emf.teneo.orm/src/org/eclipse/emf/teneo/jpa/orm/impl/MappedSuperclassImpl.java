@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MappedSuperclassImpl.java,v 1.1 2009/03/15 23:45:02 mtaal Exp $
+ * $Id: MappedSuperclassImpl.java,v 1.2 2009/07/23 11:16:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -1021,7 +1021,7 @@ public class MappedSuperclassImpl extends EObjectImpl implements MappedSuperclas
 			case OrmPackage.MAPPED_SUPERCLASS__CLASS:
 				return getClass_();
 			case OrmPackage.MAPPED_SUPERCLASS__METADATA_COMPLETE:
-				return isMetadataComplete() ? Boolean.TRUE : Boolean.FALSE;
+				return isMetadataComplete();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1080,7 +1080,7 @@ public class MappedSuperclassImpl extends EObjectImpl implements MappedSuperclas
 				setClass((String)newValue);
 				return;
 			case OrmPackage.MAPPED_SUPERCLASS__METADATA_COMPLETE:
-				setMetadataComplete(((Boolean)newValue).booleanValue());
+				setMetadataComplete((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
