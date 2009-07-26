@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -23,6 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -32,16 +34,22 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.PersistenceOptions.EContainerFeaturePersistenceStrategy;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
@@ -51,6 +59,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerFeatureIDUse
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateXMLResourceFactory;
@@ -82,7 +91,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.53 $
+ * @version $Revision: 1.54 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -148,6 +157,8 @@ public abstract class HbDataStore implements DataStore {
 	private EntityNameStrategy entityNameStrategy;
 
 	private EMFEntityNameResolver entityNameResolver;
+
+	private Map<EClass, EStructuralFeature> idFeatureByEClass = null;
 
 	/**
 	 * @return the dsName
@@ -637,7 +648,73 @@ public abstract class HbDataStore implements DataStore {
 				getExtensionManager()));
 		final HibernateMappingGenerator hmg = getExtensionManager().getExtension(HibernateMappingGenerator.class);
 		hmg.setPersistenceOptions(po);
-		return hmg.generateToString(getPaModel());
+		final String hbm = hmg.generateToString(getPaModel());
+
+		log.debug("Computing id types of mapped EClasses");
+		idFeatureByEClass = new HashMap<EClass, EStructuralFeature>();
+		computeIdTypesByEClass(idFeatureByEClass);
+
+		return hbm;
+	}
+
+	/**
+	 * @return the type of the id of the passed EClass
+	 */
+	public EClassifier getIdType(EClass eClass) {
+		final EStructuralFeature feature = getIdFeature(eClass);
+		if (feature == null) {
+			return XMLTypePackage.eINSTANCE.getLong();
+		}
+		return feature.getEType();
+	}
+
+	/**
+	 * Return the ID value of an eObject.
+	 * 
+	 * @param eObject
+	 *            the object for which to return the id
+	 * @return the id, can be null when the object is new.
+	 */
+	public Object getId(EObject eObject) {
+		final EStructuralFeature feature = getIdFeature(eObject.eClass());
+		if (feature == null) {
+			return IdentifierCacheHandler.getInstance().getID(eObject);
+		}
+		return eObject.eGet(feature);
+	}
+
+	/**
+	 * The {@link EStructuralFeature} representing the id of the passed EClass.
+	 * 
+	 * @param eClass
+	 *            the id class to check
+	 * @return the EStructuralFeature
+	 */
+	public EStructuralFeature getIdFeature(EClass eClass) {
+		return idFeatureByEClass.get(eClass);
+	}
+
+	protected void computeIdTypesByEClass(Map<EClass, EStructuralFeature> result) {
+		for (PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
+			for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
+				for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
+					if (aFeature instanceof PAnnotatedEAttribute) {
+						final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
+						if (aAttribute.getId() != null) {
+							result.put(aClass.getModelEClass(), aAttribute.getModelEStructuralFeature());
+							break;
+						}
+					}
+					if (aFeature instanceof HbAnnotatedEReference) {
+						final HbAnnotatedEReference aReference = (HbAnnotatedEReference) aFeature;
+						if (aReference.getEmbeddedId() != null) {
+							result.put(aClass.getModelEClass(), aReference.getModelEStructuralFeature());
+							break;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/** Recursively check the container prop in the super hierarchy */
