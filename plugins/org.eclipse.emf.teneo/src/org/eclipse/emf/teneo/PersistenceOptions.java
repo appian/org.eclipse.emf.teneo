@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.53 2009/06/11 04:59:38 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.54 2009/07/26 23:42:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.53 $
+ * @version $Revision: 1.54 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -214,7 +214,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String FETCH_CONTAINMENT_EAGERLY = MAPPING_PREFIX + "fetch_containment_eagerly";
 
 	/**
-	 * Set cascade all (incl. orphan delete) on containment relation.
+	 * nu.nl/algemeen/2048745/brandweer-vindt-lichaam-in-stadskanaal.html Set cascade all (incl. orphan delete) on
+	 * containment relation.
 	 * 
 	 * @Deprecated use CASCADE_POLICY_ON_CONTAINMENT
 	 */
@@ -352,6 +353,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String HANDLE_UNSET_AS_NULL = RUNTIME_PREFIX + "handle_unset_as_null";
 
+	/**
+	 * If set to true then the document root is also mapped.
+	 */
+	public static final String MAP_DOCUMENT_ROOT = MAPPING_PREFIX + "map_document_root";
+
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -403,6 +409,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(SQL_TABLE_NAME_PREFIX, "");
 		props.setProperty(SQL_COLUMN_NAME_PREFIX, "");
 		props.setProperty(SQL_FOREIGN_KEY_NAME_PREFIX, "");
+		props.setProperty(MAP_DOCUMENT_ROOT, "false");
 		return props;
 	}
 
@@ -410,6 +417,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #MAP_DOCUMENT_ROOT}
+	 */
+	public boolean isMapDocumentRoot() {
+		return Boolean.valueOf(properties.getProperty(MAP_DOCUMENT_ROOT)).booleanValue();
+	}
 
 	/**
 	 * @return value of the {@link #HANDLE_UNSET_AS_NULL} option
