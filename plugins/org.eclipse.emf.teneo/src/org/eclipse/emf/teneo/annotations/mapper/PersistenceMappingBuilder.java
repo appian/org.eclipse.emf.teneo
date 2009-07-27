@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
@@ -37,11 +38,11 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Receives a list of ecore files and generates a mapping model using different strategies. The
- * mapping model is returned.
+ * Receives a list of ecore files and generates a mapping model using different strategies. The mapping model is
+ * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -87,6 +88,10 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 			pamodelBuilder.addRecurse(element);
 		}
 
+		if (po.isMapDocumentRoot()) {
+			pamodelBuilder.addSpecificEClass(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
+		}
+
 		log.debug("Create base pannotated model");
 		PAnnotatedModel pam = pamodelBuilder.getPAnnotatedModel();
 
@@ -112,15 +117,15 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 
 		if (po.getPersistenceXmlPath() != null) {
 			try {
-				final PersistenceFileProvider fileProvider =
-						extensionManager.getExtension(PersistenceFileProvider.class);
+				final PersistenceFileProvider fileProvider = extensionManager
+						.getExtension(PersistenceFileProvider.class);
 				final InputStream in = fileProvider.getFileContent(null, po.getPersistenceXmlPath());
 				if (in == null) {
-					throw new RuntimeException("Could not find persistence XML resource in classpath: \"" +
-							po.getPersistenceXmlPath() + "\".");
+					throw new RuntimeException("Could not find persistence XML resource in classpath: \""
+							+ po.getPersistenceXmlPath() + "\".");
 				}
-				final XmlPersistenceMapper xmlPersistenceMapper =
-						extensionManager.getExtension(XmlPersistenceMapper.class);
+				final XmlPersistenceMapper xmlPersistenceMapper = extensionManager
+						.getExtension(XmlPersistenceMapper.class);
 				xmlPersistenceMapper.setXmlMapping(in);
 				xmlPersistenceMapper.applyPersistenceMapping(pam);
 				in.close();
@@ -162,8 +167,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * For each pannotated eattribute find the pannotated edatatype and copy the values of the
-	 * estructuralfeature if not yet set in the eattribute
+	 * For each pannotated eattribute find the pannotated edatatype and copy the values of the estructuralfeature if not
+	 * yet set in the eattribute
 	 */
 	protected void processEDataTypeAnnotations(PAnnotatedModel pam) {
 		log.debug("Copying annotations on edatatypes over eattribute annotations!");
@@ -180,8 +185,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 						for (EStructuralFeature esf : ped.eClass().getEAllStructuralFeatures()) {
 							final EStructuralFeature asf = pea.eClass().getEStructuralFeature(esf.getName());
 							if (asf != null && !pea.eIsSet(asf) && ped.eIsSet(esf)) {
-								log.debug("Copying value for feature " + esf.getName() + " from edatatype " +
-										et.getName() + " to " + pea.getModelEAttribute().getName());
+								log.debug("Copying value for feature " + esf.getName() + " from edatatype "
+										+ et.getName() + " to " + pea.getModelEAttribute().getName());
 
 								final Object obj = ped.eGet(esf);
 								if (obj instanceof Collection) {
@@ -189,8 +194,8 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 								} else if (obj instanceof EObject) {
 									pea.eSet(asf, EcoreUtil.copy((EObject) obj));
 								} else {
-									throw new StoreAnnotationsException("Class " + obj.getClass().getName() +
-											" not supported should be eobject or collection");
+									throw new StoreAnnotationsException("Class " + obj.getClass().getName()
+											+ " not supported should be eobject or collection");
 								}
 							}
 						}

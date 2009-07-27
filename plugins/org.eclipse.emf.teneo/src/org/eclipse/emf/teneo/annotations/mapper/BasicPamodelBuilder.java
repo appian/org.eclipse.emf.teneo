@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: BasicPamodelBuilder.java,v 1.6 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: BasicPamodelBuilder.java,v 1.7 2009/07/27 22:09:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -77,9 +77,8 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * @return a <code>PAnnotatedModelElement</code> assoiciated to the given
-	 *         <code>EModelElement</code>. The element is created only if not already present in the
-	 *         model.
+	 * @return a <code>PAnnotatedModelElement</code> assoiciated to the given <code>EModelElement</code>. The element is
+	 *         created only if not already present in the model.
 	 */
 	protected PAnnotatedEModelElement create(EModelElement eModelElement) {
 		PAnnotatedEModelElement paElement = target.getPAnnotated(eModelElement);
@@ -93,48 +92,45 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * @return A newly created PAnnotatedEModelElement. This method is only responsible for the
-	 *         actual creation (and initialization) of this object. No other logic should happen
-	 *         here. This allows subclasses to alter how objects are created. If you'd like to alter
-	 *         any other logic around the creation, you should override the <code>create</code>
-	 *         method(s).
+	 * @return A newly created PAnnotatedEModelElement. This method is only responsible for the actual creation (and
+	 *         initialization) of this object. No other logic should happen here. This allows subclasses to alter how
+	 *         objects are created. If you'd like to alter any other logic around the creation, you should override the
+	 *         <code>create</code> method(s).
 	 * @throws AssertionError
 	 */
 	protected PAnnotatedEModelElement doCreate(EModelElement eModelElement) throws AssertionError {
 		final EClass eModelElementEClass = eModelElement.eClass();
 		PAnnotatedEModelElement paElement;
 		switch (eModelElementEClass.getClassifierID()) {
-			case EcorePackage.EATTRIBUTE:
-				paElement = PamodelFactory.eINSTANCE.createPAnnotatedEAttribute();
-				break;
-			case EcorePackage.EREFERENCE:
-				paElement = PamodelFactory.eINSTANCE.createPAnnotatedEReference();
-				break;
-			case EcorePackage.ECLASS:
-				paElement = PamodelFactory.eINSTANCE.createPAnnotatedEClass();
-				break;
-			case EcorePackage.EPACKAGE:
-				paElement = PamodelFactory.eINSTANCE.createPAnnotatedEPackage();
-				break;
-			case EcorePackage.EENUM:
-			case EcorePackage.EDATA_TYPE:
-				paElement = PamodelFactory.eINSTANCE.createPAnnotatedEDataType();
-				break;
-			default:
-				throw new AssertionError("Trying to build PAnnotatedEModelElement for a " + eModelElementEClass);
+		case EcorePackage.EATTRIBUTE:
+			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEAttribute();
+			break;
+		case EcorePackage.EREFERENCE:
+			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEReference();
+			break;
+		case EcorePackage.ECLASS:
+			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEClass();
+			break;
+		case EcorePackage.EPACKAGE:
+			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEPackage();
+			break;
+		case EcorePackage.EENUM:
+		case EcorePackage.EDATA_TYPE:
+			paElement = PamodelFactory.eINSTANCE.createPAnnotatedEDataType();
+			break;
+		default:
+			throw new AssertionError("Trying to build PAnnotatedEModelElement for a " + eModelElementEClass);
 		}
 		paElement.setModelElement((ENamedElement) eModelElement);
 		return paElement;
 	}
 
 	/**
-	 * @return a <code>PAnnotatedEPackage</code> associated to the given <code>EPackage</code> and
-	 *         adds it the model.
+	 * @return a <code>PAnnotatedEPackage</code> associated to the given <code>EPackage</code> and adds it the model.
 	 *         <p>
-	 *         The <code>PAnnotatedEPackage</code> is created only if not already present in the
-	 *         model.
+	 *         The <code>PAnnotatedEPackage</code> is created only if not already present in the model.
 	 */
-	protected PAnnotatedEPackage pElement(EPackage ePackage) {
+	public PAnnotatedEPackage pElement(EPackage ePackage) {
 		PAnnotatedEPackage pPackage = (PAnnotatedEPackage) create(ePackage);
 		if (pPackage.eContainer() == null) {
 			target.getPaEPackages().add(pPackage);
@@ -143,14 +139,12 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * @return a <code>PAnnotatedEClass</code> associated to the given <code>EClass</code> and adds
-	 *         it the model.
+	 * @return a <code>PAnnotatedEClass</code> associated to the given <code>EClass</code> and adds it the model.
 	 *         <p>
-	 *         The <code>PAnnotatedEClass</code> is created only if not already present in the
-	 *         model.
+	 *         The <code>PAnnotatedEClass</code> is created only if not already present in the model.
 	 *         <p>
-	 *         The operation may involve the creation of a <code>PAnnotatedEPackage</code>
-	 *         associated to the given <code>EClass</code> package.
+	 *         The operation may involve the creation of a <code>PAnnotatedEPackage</code> associated to the given
+	 *         <code>EClass</code> package.
 	 */
 	protected PAnnotatedEClass pElement(EClass eClass) {
 		PAnnotatedEClass pClass = (PAnnotatedEClass) create(eClass);
@@ -159,11 +153,10 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * @return a <code>PAnnotatedEStructuralFeature</code> associated to the given
-	 *         <code>EStructuralFeature</code> and adds it the model.
+	 * @return a <code>PAnnotatedEStructuralFeature</code> associated to the given <code>EStructuralFeature</code> and
+	 *         adds it the model.
 	 *         <p>
-	 *         The <code>PAnnotatedEStructuralFeature</code> is created only if not already present
-	 *         in the model.
+	 *         The <code>PAnnotatedEStructuralFeature</code> is created only if not already present in the model.
 	 *         <p>
 	 *         The operation may involve the creation of a <code>PAnnotatedEPackage</code> and a
 	 *         <code>PAnnotatedEClass</code>.
@@ -175,11 +168,10 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * @return a <code>PAnnotatedEStructuralFeature</code> associated to the given
-	 *         <code>EStructuralFeature</code> and adds it the model.
+	 * @return a <code>PAnnotatedEStructuralFeature</code> associated to the given <code>EStructuralFeature</code> and
+	 *         adds it the model.
 	 *         <p>
-	 *         The <code>PAnnotatedEStructuralFeature</code> is created only if not already present
-	 *         in the model.
+	 *         The <code>PAnnotatedEStructuralFeature</code> is created only if not already present in the model.
 	 *         <p>
 	 *         The operation may involve the creation of a <code>PAnnotatedEPackage</code> and a
 	 *         <code>PAnnotatedEClass</code>.
@@ -191,8 +183,8 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * @return a <code>PAnnotatedEModelElement</code> associated to the given
-	 *         <code>EModelElement</code> and adds it the model.
+	 * @return a <code>PAnnotatedEModelElement</code> associated to the given <code>EModelElement</code> and adds it the
+	 *         model.
 	 * @see #pElement(EPackage)
 	 * @see #pElement(EClass)
 	 * @see #pElement(EStructuralFeature)
@@ -200,57 +192,55 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	protected PAnnotatedEModelElement pElement(final EModelElement eElement) throws AssertionError {
 		PAnnotatedEModelElement pElement = null;
 		switch (eElement.eClass().getClassifierID()) {
-			case EcorePackage.EATTRIBUTE:
-			case EcorePackage.EREFERENCE:
-				pElement = pElement((EStructuralFeature) eElement);
-				break;
-			case EcorePackage.ECLASS:
-				pElement = pElement((EClass) eElement);
-				break;
-			case EcorePackage.EPACKAGE:
-				pElement = pElement((EPackage) eElement);
-				break;
-			case EcorePackage.EDATA_TYPE:
-				pElement = pElement((EDataType) eElement);
-				break;
-			default:
-				throw new AssertionError("Trying to build PAnnotatedEModelElement for a " + eElement.eClass());
+		case EcorePackage.EATTRIBUTE:
+		case EcorePackage.EREFERENCE:
+			pElement = pElement((EStructuralFeature) eElement);
+			break;
+		case EcorePackage.ECLASS:
+			pElement = pElement((EClass) eElement);
+			break;
+		case EcorePackage.EPACKAGE:
+			pElement = pElement((EPackage) eElement);
+			break;
+		case EcorePackage.EDATA_TYPE:
+			pElement = pElement((EDataType) eElement);
+			break;
+		default:
+			throw new AssertionError("Trying to build PAnnotatedEModelElement for a " + eElement.eClass());
 		}
 		return pElement;
 	}
 
 	/**
-	 * Builds a <code>PAnnotatedEPackage</code> associated to the given <code>EPackage</code> (if
-	 * such an <code>PAnnotatedEPackage</code> does not yet exists) and adds it to the target model.
+	 * Builds a <code>PAnnotatedEPackage</code> associated to the given <code>EPackage</code> (if such an
+	 * <code>PAnnotatedEPackage</code> does not yet exists) and adds it to the target model.
 	 */
 	public void add(EPackage ePackage) {
 		pElement(ePackage);
 	}
 
 	/**
-	 * Builds a <code>PAnnotatedEClass</code> associated to the given <code>EClass</code> (if such
-	 * an <code>PAnnotatedEClass</code> does not yet exists) and adds it to the target model.
+	 * Builds a <code>PAnnotatedEClass</code> associated to the given <code>EClass</code> (if such an
+	 * <code>PAnnotatedEClass</code> does not yet exists) and adds it to the target model.
 	 * 
 	 * <p>
-	 * The creation of a new <code>PAnnotatedEClass</code> may involve the creation of a
-	 * <code>PAnnotatedEPackage</code> associated to the containing <code>EPackage</code> of the
-	 * given class.
+	 * The creation of a new <code>PAnnotatedEClass</code> may involve the creation of a <code>PAnnotatedEPackage</code>
+	 * associated to the containing <code>EPackage</code> of the given class.
 	 */
 	public void add(EClass eClass) {
 		pElement(eClass);
 	}
 
 	/**
-	 * Add to the the target model a new <code>PAnnotatedEStructuralFeature</code> refering to the
-	 * given EStructuralFeature.
+	 * Add to the the target model a new <code>PAnnotatedEStructuralFeature</code> refering to the given
+	 * EStructuralFeature.
 	 * 
 	 * <p>
-	 * A PAnnotatedEClass and a PAnnotatedEPackage for the containing EClass and EPackage are added
-	 * if needed.
+	 * A PAnnotatedEClass and a PAnnotatedEPackage for the containing EClass and EPackage are added if needed.
 	 * 
 	 * <p>
-	 * The added element have no annotations. Elements for which a corresponding PAnnotatedElement
-	 * is already present in the target model are ignored.
+	 * The added element have no annotations. Elements for which a corresponding PAnnotatedElement is already present in
+	 * the target model are ignored.
 	 */
 	public void add(EStructuralFeature eFeature) {
 		pElement(eFeature);
@@ -260,13 +250,11 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	 * Add the given annotation to the given PAnnotatedEModelElement.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if the given PAnnotation is not admitted for the given PAnnotatedEModelElement.
-	 *             protected void setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation
-	 *             pAnnotation) { EReference pAnnotationRef = PamodelPackage.eINSTANCE
-	 *             .pAnnotationReference(pElement.eClass(), pAnnotation.eClass()); if
-	 *             (pAnnotationRef == null) throw new
-	 *             IllegalArgumentException("PAnnotation of type '" + pAnnotation.eClass() + "' does
-	 *             not apply to elements of type '" + pElement.eClass() + "'");
+	 *             if the given PAnnotation is not admitted for the given PAnnotatedEModelElement. protected void
+	 *             setPAnnotation(PAnnotatedEModelElement pElement, PAnnotation pAnnotation) { EReference pAnnotationRef
+	 *             = PamodelPackage.eINSTANCE .pAnnotationReference(pElement.eClass(), pAnnotation.eClass()); if
+	 *             (pAnnotationRef == null) throw new IllegalArgumentException("PAnnotation of type '" +
+	 *             pAnnotation.eClass() + "' does not apply to elements of type '" + pElement.eClass() + "'");
 	 *             pElement.eSet(pAnnotationRef, pAnnotation); }
 	 */
 
@@ -274,27 +262,24 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	 * Add the given PAnnotation to the target model.
 	 * 
 	 * <p>
-	 * This operation may involve the addition to the model of a newly created
-	 * PAnnotatedEModelElement for the PAnnotation EModelElement.
+	 * This operation may involve the addition to the model of a newly created PAnnotatedEModelElement for the
+	 * PAnnotation EModelElement.
 	 * 
 	 * @throws NullPointerException
-	 *             if either <code>pAnnotation</code> or <code>pAnnotation.getEModelElement()</code>
-	 *             are null.
+	 *             if either <code>pAnnotation</code> or <code>pAnnotation.getEModelElement()</code> are null.
 	 * @throws IllegalArgumentException
-	 *             if the given <code>PAnnotation</code> references an invalid
-	 *             <code>PAnnotatedElement</code> public void add(PAnnotation pAnnotation) {
-	 *             PAnnotatedEModelElement pElement = pElement(pAnnotation.getEModelElement());
-	 *             setPAnnotation(pElement, pAnnotation); }
+	 *             if the given <code>PAnnotation</code> references an invalid <code>PAnnotatedElement</code> public
+	 *             void add(PAnnotation pAnnotation) { PAnnotatedEModelElement pElement =
+	 *             pElement(pAnnotation.getEModelElement()); setPAnnotation(pElement, pAnnotation); }
 	 */
 
 	/**
-	 * Add to the the target model a new PAnnotatedPackage refering to the given EPackage.
-	 * Recursively adds a PAnnotatedEClass for each EClass in the given EPackage (see
-	 * {@link addEClass}).
+	 * Add to the the target model a new PAnnotatedPackage refering to the given EPackage. Recursively adds a
+	 * PAnnotatedEClass for each EClass in the given EPackage (see {@link addEClass}).
 	 * 
 	 * <p>
-	 * The added elements have no annotations. Elements for which a corresponding PAnnotatedElement
-	 * is already present in the target model are ignored.
+	 * The added elements have no annotations. Elements for which a corresponding PAnnotatedElement is already present
+	 * in the target model are ignored.
 	 */
 	public void addRecurse(EPackage ePackage) {
 		PAnnotatedEPackage paPackage = pElement(ePackage);
@@ -321,9 +306,39 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	}
 
 	/**
-	 * Add to the the target model a new PAnnotatedPackage refering to the given EClass. Recursively
-	 * adds a PAnnotatedEStructuralFeature for each EStructuralFeature in the given EClass (see
-	 * {@link addEStructuralFeature} ).
+	 * Adds only this eClass and its EPackage to the pamodel
+	 * 
+	 * @param eClass
+	 */
+	public void addSpecificEClass(EClass eClass) {
+		final EPackage ePackage = eClass.getEPackage();
+		PAnnotatedEPackage paPackage = null;
+		for (PAnnotatedEPackage aPackage : target.getPaEPackages()) {
+			if (aPackage.getModelEPackage() == ePackage) {
+				paPackage = aPackage;
+				break;
+			}
+		}
+		if (paPackage == null) {
+			paPackage = pElement(ePackage);
+			addRecurse(paPackage, eClass);
+		} else {
+			boolean alreadyDefined = false;
+			for (PAnnotatedEClass paClass : paPackage.getPaEClasses()) {
+				if (paClass.getModelEClass() == eClass) {
+					alreadyDefined = true;
+				}
+			}
+			if (!alreadyDefined) {
+				addRecurse(paPackage, eClass);
+			}
+		}
+	}
+
+	/**
+	 * Add to the the target model a new PAnnotatedPackage refering to the given EClass. Recursively adds a
+	 * PAnnotatedEStructuralFeature for each EStructuralFeature in the given EClass (see {@link addEStructuralFeature}
+	 * ).
 	 * 
 	 * <p>
 	 * A PAnnotatedEPackage for the containng EPackage is added if needed.
@@ -332,9 +347,8 @@ public class BasicPamodelBuilder implements ExtensionPoint {
 	 * The added elements have no annotations.
 	 * 
 	 * <p>
-	 * Elements for which a corresponding PAnnotatedElement is already present in the target model
-	 * are ignored. public void addRecurse(EClass eClass) { addRecurse((PAnnotatedEPackage)
-	 * pElement(eClass), eClass); }
+	 * Elements for which a corresponding PAnnotatedElement is already present in the target model are ignored. public
+	 * void addRecurse(EClass eClass) { addRecurse((PAnnotatedEPackage) pElement(eClass), eClass); }
 	 */
 
 	/**
