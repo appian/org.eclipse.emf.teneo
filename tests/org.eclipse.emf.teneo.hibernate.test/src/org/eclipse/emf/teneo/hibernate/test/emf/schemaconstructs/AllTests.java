@@ -14,6 +14,7 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DateTimeAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.DocumentRootAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DurationAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAsListAction;
@@ -34,14 +35,17 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite(
-				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(DocumentRootAction.class);
+		if (true) {
+			return suite;
+		}
 		suite.addTestSuite(SubstitutionzvonAction.class);
 		suite.addTestSuite(EMapAction.class);
 		suite.addTestSuite(EMapAsListAction.class);
@@ -66,10 +70,8 @@ public class AllTests {
 		suite.addTestSuite(SubstitutionAction.class);
 
 		/*
-		 * // The anytype test is not yet supported by Hibernate //
-		 * suite.addTestSuite(AnyTypeAction.class); // Listunion types are not
-		 * yet supported by hibernate //
-		 * suite.addTestSuite(ListUnionAction.class);
+		 * // The anytype test is not yet supported by Hibernate // suite.addTestSuite(AnyTypeAction.class); //
+		 * Listunion types are not yet supported by hibernate // suite.addTestSuite(ListUnionAction.class);
 		 */
 		// $JUnit-END$
 		return suite;

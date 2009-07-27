@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.documentroot.impl.ComplexTypeImpl" entity-name="ComplexType" abstract="false" lazy="false" table="`complextype`">
+		<meta attribute="eclassName">ComplexType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentroot</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="test" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`test`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.documentroot.impl.DocumentRootImpl" entity-name="DocumentRoot" abstract="false" lazy="false" table="`documentroot`">
+		<meta attribute="eclassName">DocumentRoot</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentroot</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="mixed" table="`documentroot_mixed`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`documentroot_mixed_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`documentroot_mixed_idx`"/>
+			<one-to-many entity-name="DocumentRoot_mixed"/>
+		</list>
+	</class>
+	<class entity-name="DocumentRoot_mixed" lazy="false" table="`documentroot_mixed`">
+		<meta attribute="featureMap">DocumentRoot</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_documentroot_xmlnsprefixmap_e_id`" not-null="false" unique="false"/>
+			</key>
+			<map-key type="java.lang.String"/>
+			<element type="java.lang.String"/>
+		</map>
+		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_documentroot_xsischemalocation_e_id`" not-null="false" unique="false"/>
+			</key>
+			<map-key type="java.lang.String"/>
+			<element type="java.lang.String"/>
+		</map>
+		<property name="otherTest" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_othertest`"/>
+		</property>
+		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_test`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+</hibernate-mapping>
