@@ -289,7 +289,7 @@
 <h3>Supported XML Schema Structures</h3>
 			
 			
-<p>The goal is to implement most XML Schema Structures/Datatypes supported by EMF also for the persistency layer.
+<p>The goal is to implement most XML Schema Structures/Datatypes supported by EMF also for the persistence layer.
 		For a description of the mapping from XML Schema to EMF (ecore) 
 		see <a class="external" href="http://www.eclipse.org/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf">here</a>.
 		In the listing below the numbers refer to the sections in this document.</p>
@@ -316,14 +316,12 @@
 <li>Schema (Chapter 1)
 				<ul>
 					
-<li>1.1 to 1.4: supported (not really relevant for persistency)</li>
+<li>1.1 to 1.4: supported (not really relevant for persistence)</li>
 					
-<li>1.5 and 1.6: DocumentRoot, currently the persistency solution will not
-		persist a DocumentRoot object. The main reason for this is that the DocumentRoot is created to 
-		have a starting 'folder-like' point when loading a resource. In the Teneo persistency solution this
-		is solved differently (see <a href="hibernateresources.html#Standard+load+behavior%3A+Top+level+types">here</a>).</li>
+<li>1.5 and 1.6: DocumentRoot is supported if the option Persistence.MAP_DOCUMENT_ROOT is 
+					set to true.</li>
 					
-<li>1.7: not relevant for persistency (is supported)</li>
+<li>1.7: supported, (not really relevant for persistence)</li>
 				
 </ul>
 </li>
