@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicEntityNameStrategy.java,v 1.6 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: ClassicEntityNameStrategy.java,v 1.7 2009/07/28 03:39:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -31,11 +31,10 @@ import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 
 /**
- * This implementation assumes that EClass names are unique. It will (de)Resolve using the EClass
- * name.
+ * This implementation assumes that EClass names are unique. It will (de)Resolve using the EClass name.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ClassicEntityNameStrategy implements EntityNameStrategy {
 
@@ -62,20 +61,20 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 
 		if (eClass == null) {
 			throw new IllegalArgumentException(
-				"Passed eclass is null."
-						+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
-						+ "and they are not read using one resource set. The reference from one epackage to another must be "
-						+ "resolvable by EMF.");
+					"Passed eclass is null."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
 
 		if (eClass.getName() == null) {
 			throw new IllegalArgumentException(
-				"EClass " +
-						eClass.toString() +
-						" has a null name." +
-						"This can occur if epackages which refer to eachother are placed in different ecore/xsd files " +
-						"and they are not read using one resource set. The reference from one epackage to another must be " +
-						"resolvable by EMF.");
+					"EClass "
+							+ eClass.toString()
+							+ " has a null name."
+							+ "This can occur if epackages which refer to eachother are placed in different ecore/xsd files "
+							+ "and they are not read using one resource set. The reference from one epackage to another must be "
+							+ "resolvable by EMF.");
 		}
 
 		return eClass.getName();
@@ -103,10 +102,10 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 				if (checkEClass.getName().compareTo(eClassName) == 0) {
 					if (eClass != null) {
 						// doubly entry! Actually require different resolver
-						// doubly entry! Actually require different resolver
-						throw new IllegalArgumentException("There is more than one EClass with the same name (" +
-								eClassName + " in EPackage " + eClass.getEPackage().getName() + " and " +
-								aPackage.getModelEPackage().getName() + ". A different EClassResolver should be used.");
+						throw new IllegalArgumentException("There is more than one EClass with the same name ("
+								+ eClassName + " in EPackage " + eClass.getEPackage().getName() + " and "
+								+ aPackage.getModelEPackage().getName()
+								+ ". A different EClassResolver should be used.");
 					}
 				}
 				eClass = checkEClass;
@@ -120,8 +119,8 @@ public class ClassicEntityNameStrategy implements EntityNameStrategy {
 				final Class<?> cls = ClassLoaderResolver.classForName(eClassName);
 				eClass = EModelResolver.instance().getEClass(cls);
 			} catch (StoreClassLoadException e) {
-				log.debug("Failed to retreive ECLass for name: " + eClassName +
-						". This is no problem if this is a featuremap.");
+				log.debug("Failed to retreive ECLass for name: " + eClassName
+						+ ". This is no problem if this is a featuremap.");
 			}
 		}
 
