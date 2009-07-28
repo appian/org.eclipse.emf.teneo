@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DocumentRootAction.java,v 1.1 2009/07/27 22:09:49 mtaal Exp $
+ * $Id: DocumentRootAction.java,v 1.2 2009/07/28 03:40:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting DocumentRoot.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DocumentRootAction extends AbstractTestAction {
 
@@ -54,8 +54,6 @@ public class DocumentRootAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
-
 		{
 			store.beginTransaction();
 			final DocumentRoot dr = DocumentrootFactory.eINSTANCE.createDocumentRoot();
