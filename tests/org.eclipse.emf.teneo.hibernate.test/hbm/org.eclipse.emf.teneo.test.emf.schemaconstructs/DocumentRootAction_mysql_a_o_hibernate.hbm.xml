@@ -17,7 +17,7 @@
 			<column not-null="true" unique="false" name="`test`"/>
 		</property>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.documentroot.impl.DocumentRootImpl" entity-name="DocumentRoot" abstract="false" lazy="false" discriminator-value="DocumentRoot" table="`documentroot`">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.documentroot.impl.DocumentRootImpl" entity-name="documentroot.DocumentRoot" abstract="false" lazy="false" discriminator-value="documentroot.DocumentRoot" table="`documentroot_documentroot`">
 		<meta attribute="eclassName">DocumentRoot</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentroot</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
@@ -28,7 +28,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<list name="mixed" table="`documentroot_mixed`" lazy="true" cascade="all,delete-orphan">
+		<list name="mixed" table="`documentroot_documentroot_mixed`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`documentroot_mixed_e_id`" not-null="false" unique="false"/>
 			</key>
@@ -37,7 +37,7 @@
 		</list>
 	</class>
 	<class entity-name="DocumentRoot_mixed" lazy="false" table="`documentroot_mixed`">
-		<meta attribute="featureMap">DocumentRoot</meta>
+		<meta attribute="featureMap">documentroot.DocumentRoot</meta>
 		<id type="long">
 			<generator class="native"/>
 		</id>
