@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.17 2009/03/15 14:49:46 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.18 2009/07/31 00:38:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -30,15 +30,14 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.event.InitializeCollectionEventListener;
 
 /**
- * Holds the SessionFactory and performs different initialization related
- * actions. Initializes the database and offers xml import and export methods.
- * In addition can be used to retrieve all referers to a certain eobject.
+ * Holds the SessionFactory and performs different initialization related actions. Initializes the database and offers
+ * xml import and export methods. In addition can be used to retrieve all referers to a certain eobject.
  * <p>
- * The behavior can be overridden by overriding the protected methods and
- * implementing/registering your own HbDataStoreFactory in the HibernateHelper.
+ * The behavior can be overridden by overriding the protected methods and implementing/registering your own
+ * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -88,12 +87,10 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	/** Set the event listener, can be overridden */
 	@Override
 	protected void setEventListeners() {
-		final EMFInitializeCollectionEventListener eventListener = getExtensionManager()
-				.getExtension(EMFInitializeCollectionEventListener.class);
-		getConfiguration()
-				.getEventListeners()
-				.setInitializeCollectionEventListeners(
-						new InitializeCollectionEventListener[] { eventListener });
+		final EMFInitializeCollectionEventListener eventListener = getExtensionManager().getExtension(
+				EMFInitializeCollectionEventListener.class);
+		getConfiguration().getEventListeners().setInitializeCollectionEventListeners(
+				new InitializeCollectionEventListener[] { eventListener });
 	}
 
 	/*
@@ -123,8 +120,8 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 		if (getInterceptor() != null) { // probably overridden
 			return;
 		}
-		final Interceptor interceptor = getHbContext().createInterceptor(
-				getHibernateConfiguration(), getEntityNameStrategy());
+		final Interceptor interceptor = getHbContext().createInterceptor(getHibernateConfiguration(),
+				getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}
@@ -139,24 +136,19 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	}
 
 	/**
-	 * Maps an ecore model of one ore more epackages into a hibernate xml String
-	 * which is added to the passed configuration
+	 * Maps an ecore model of one ore more epackages into a hibernate xml String which is added to the passed
+	 * configuration
 	 */
 	protected void mapModel() {
 
-		if (getPersistenceOptions().getMappingFilePath() != null
-				|| getPersistenceOptions().isUseMappingFile()) {
+		if (getPersistenceOptions().getMappingFilePath() != null || getPersistenceOptions().isUseMappingFile()) {
 			final String[] fileList = getMappingFileList();
 			for (String element : fileList) {
-				log.debug("Adding file " + element
-						+ " to Hibernate Configuration");
-				final PersistenceFileProvider pfp = getExtensionManager()
-						.getExtension(PersistenceFileProvider.class);
-				final InputStream is = pfp.getFileContent(this.getClass(),
-						element);
+				log.debug("Adding file " + element + " to Hibernate Configuration");
+				final PersistenceFileProvider pfp = getExtensionManager().getExtension(PersistenceFileProvider.class);
+				final InputStream is = pfp.getFileContent(this.getClass(), element);
 				if (is == null) {
-					throw new HbStoreException("Path to mapping file: "
-							+ element + " does not exist!");
+					throw new HbStoreException("Path to mapping file: " + element + " does not exist!");
 				}
 				getConfiguration().addInputStream(is);
 			}
