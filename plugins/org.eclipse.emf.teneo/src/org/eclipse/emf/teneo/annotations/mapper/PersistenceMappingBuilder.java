@@ -17,12 +17,17 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
@@ -42,7 +47,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -73,9 +78,23 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	 */
 	public PAnnotatedModel buildMapping(List<EPackage> epacks, PersistenceOptions po, ExtensionManager extensionManager) {
 		// read the subepackages
-		final List<EPackage> epackages = new ArrayList<EPackage>();
+		List<EPackage> epackages = new ArrayList<EPackage>();
 		for (EPackage epack : epacks) {
 			resolveSubPackages(epack, epackages);
+		}
+
+		if (po.isAutoAddReferencedEPackages()) {
+			final List<EPackage> allEPackages = new ArrayList<EPackage>();
+			for (EPackage ePackage : epackages) {
+				addAllUsedEPackages(ePackage, allEPackages);
+			}
+			if (epackages.contains(EcorePackage.eINSTANCE)) {
+				allEPackages.add(EcorePackage.eINSTANCE);
+			}
+			if (epackages.contains(XMLTypePackage.eINSTANCE)) {
+				allEPackages.add(XMLTypePackage.eINSTANCE);
+			}
+			epackages = allEPackages;
 		}
 
 		// DCB: Introduce indirection so that extensions to annotation
@@ -89,7 +108,12 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 		}
 
 		if (po.isMapDocumentRoot()) {
-			pamodelBuilder.addSpecificEClass(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
+			// use the ecore package which is present in the package registry
+			final EPackage ecorePackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
+					EcorePackage.eNS_URI);
+			final EClassifier eClassifier = ecorePackage.getEClassifier(EcorePackage.eINSTANCE
+					.getEStringToStringMapEntry().getName());
+			pamodelBuilder.addSpecificEClass((EClass) eClassifier);
 		}
 
 		log.debug("Create base pannotated model");
@@ -164,6 +188,63 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 		for (EPackage subEPackage : epack.getESubpackages()) {
 			resolveSubPackages(subEPackage, epacks);
 		}
+	}
+
+	private void addAllUsedEPackages(EPackage eCurrentEPackage, List<EPackage> ePackages) {
+		if (eCurrentEPackage == null) {
+			return;
+		}
+		if (ePackages.contains(eCurrentEPackage)) {
+			return;
+		}
+		// do not resolve these
+		if (eCurrentEPackage instanceof EcorePackage || eCurrentEPackage instanceof XMLTypePackage) {
+			return;
+		}
+		// prevent recursion
+		ePackages.add(eCurrentEPackage);
+
+		// note super epackage can be null, handled in first if above
+		addAllUsedEPackages(eCurrentEPackage.getESuperPackage(), ePackages);
+		for (EPackage subPackage : eCurrentEPackage.getESubpackages()) {
+			addAllUsedEPackages(subPackage, ePackages);
+		}
+
+		// now capture each type
+		for (EClassifier eClassifier : eCurrentEPackage.getEClassifiers()) {
+			addAllUsedEPackages(eClassifier, ePackages);
+		}
+	}
+
+	private void addAllUsedEPackages(EClassifier eClassifier, List<EPackage> ePackages) {
+		if (eClassifier instanceof EClass) {
+			addAllUsedEPackages((EClass) eClassifier, ePackages);
+		} else {
+			addAllUsedEPackages((EDataType) eClassifier, ePackages);
+		}
+	}
+
+	private void addAllUsedEPackages(EClass eClass, List<EPackage> ePackages) {
+		addAllUsedEPackages(eClass.getEPackage(), ePackages);
+		for (EClass eSuperClass : eClass.getESuperTypes()) {
+			// apparently there is a cycle in one of the XSD/XML packages, this prevents this.
+			if (!ePackages.contains(eSuperClass.getEPackage())) {
+				addAllUsedEPackages(eSuperClass, ePackages);
+			}
+		}
+		for (EStructuralFeature eFeature : eClass.getEStructuralFeatures()) {
+			if (!ePackages.contains(eFeature.getEType().getEPackage())) {
+				addAllUsedEPackages(eFeature.getEType(), ePackages);
+			}
+		}
+	}
+
+	private void addAllUsedEPackages(EDataType eDataType, List<EPackage> ePackages) {
+		if (eDataType == null) {
+			return;
+		}
+		addAllUsedEPackages(eDataType.getEPackage(), ePackages);
+		addAllUsedEPackages(ExtendedMetaData.INSTANCE.getBaseType(eDataType), ePackages);
 	}
 
 	/**

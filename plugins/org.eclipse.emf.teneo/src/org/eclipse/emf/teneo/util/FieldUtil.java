@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: FieldUtil.java,v 1.17 2009/03/30 07:53:04 mtaal Exp $
+ * implementation </copyright> $Id: FieldUtil.java,v 1.18 2009/07/31 00:38:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -18,7 +18,7 @@ import org.eclipse.emf.teneo.TeneoException;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class FieldUtil {
@@ -31,10 +31,11 @@ public class FieldUtil {
 
 		try {
 			if (method == null) {
-				method = getMethodInternal(obj.getClass(), methodName);
+				method = getMethodInternal(obj.getClass(), methodName, (params == null ? 0 : params.length));
 			}
 			if (method != null) {
-				fieldMethodCache.put(obj.getClass().getName() + "." + methodName, method);
+				fieldMethodCache.put(obj.getClass().getName() + "." + methodName + "."
+						+ (params == null ? 0 : params.length), method);
 			} else {
 				throw new TeneoException("Method does not exist " + obj.getClass().getName() + " method; ");
 			}
@@ -48,8 +49,8 @@ public class FieldUtil {
 				}
 			}
 
-			throw new TeneoException("Exception " + obj.getClass().getName() + " method; " + methodName +
-					" with parameters: " + paramStr.toString(), e);
+			throw new TeneoException("Exception " + obj.getClass().getName() + " method; " + methodName
+					+ " with parameters: " + paramStr.toString(), e);
 		}
 	}
 
@@ -58,20 +59,19 @@ public class FieldUtil {
 		try {
 			field.set(obj, value);
 		} catch (IllegalAccessException e) {
-			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; " +
-					field.getName());
+			throw new TeneoException("IllegalAccessException " + obj.getClass().getName() + " field; "
+					+ field.getName());
 		}
 	}
 
 	/**
-	 * Get the value for a field, first the field is accessed directly if not found then the getter
-	 * is called.
+	 * Get the value for a field, first the field is accessed directly if not found then the getter is called.
 	 */
 	public static Object callGetter(Object target, String fieldName) {
 		try {
-			Method method = getMethodInternal(target.getClass(), "get" + fieldName);
+			Method method = getMethodInternal(target.getClass(), "get" + fieldName, 0);
 			if (method == null) {
-				method = getMethodInternal(target.getClass(), "is" + fieldName);
+				method = getMethodInternal(target.getClass(), "is" + fieldName, 0);
 			}
 			if (method == null) {
 				final Field field = getField(target.getClass(), fieldName);
@@ -86,7 +86,7 @@ public class FieldUtil {
 	/** Set the field directly or through the set method */
 	public static void callSetter(Object target, String fieldName, Object value) {
 		try {
-			final Method method = getMethodInternal(target.getClass(), "get" + fieldName);
+			final Method method = getMethodInternal(target.getClass(), "get" + fieldName, 1);
 			if (method != null) {
 				callMethod(target, "set" + fieldName, new Object[] { value });
 				return;
@@ -94,15 +94,15 @@ public class FieldUtil {
 			final Field field = getField(target.getClass(), fieldName);
 			field.set(target, value);
 		} catch (Exception e) {
-			throw new TeneoException("Exception setting " + fieldName + " from " + target.getClass().getName() +
-					" to value " + value + " of type " + (value != null ? value.getClass().getName() : ""), e);
+			throw new TeneoException("Exception setting " + fieldName + " from " + target.getClass().getName()
+					+ " to value " + value + " of type " + (value != null ? value.getClass().getName() : ""), e);
 		}
 	}
 
 	/**
-	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will
-	 * make the field accessible also. Is a bit rough because it does a case insensitive search.
-	 * Note if the field is not found an exception is thrown.
+	 * Returns a field using a certain name, walks up the class hierarchy to find the field, will make the field
+	 * accessible also. Is a bit rough because it does a case insensitive search. Note if the field is not found an
+	 * exception is thrown.
 	 */
 	public static Field getField(Class<?> clazz, String fieldName) {
 		Field field = (Field) fieldMethodCache.get(clazz.getName() + "." + fieldName);
@@ -150,7 +150,7 @@ public class FieldUtil {
 	}
 
 	/** Does the actual search for the method */
-	private static Method getMethodInternal(Class<?> clazz, String methodName) throws Exception {
+	private static Method getMethodInternal(Class<?> clazz, String methodName, int numOfParams) throws Exception {
 		if (clazz == null) {
 			return null;
 		}
@@ -161,13 +161,14 @@ public class FieldUtil {
 		}
 		final Method[] methods = clazz.getDeclaredMethods();
 		for (Method element : methods) {
-			if (element.getName().compareToIgnoreCase(methodName) == 0) {
+			if (element.getName().compareToIgnoreCase(methodName) == 0
+					&& element.getParameterTypes().length == numOfParams) {
 				element.setAccessible(true);
-				fieldMethodCache.put(clazz.getName() + "." + methodName, element);
+				fieldMethodCache.put(clazz.getName() + "." + methodName + "." + numOfParams, element);
 				return element;
 			}
 		}
 
-		return getMethodInternal(clazz.getSuperclass(), methodName);
+		return getMethodInternal(clazz.getSuperclass(), methodName, numOfParams);
 	}
 }

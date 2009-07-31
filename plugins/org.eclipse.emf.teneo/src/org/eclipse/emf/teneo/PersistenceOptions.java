@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.54 2009/07/26 23:42:54 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.55 2009/07/31 00:38:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.54 $
+ * @version $Revision: 1.55 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -358,6 +358,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String MAP_DOCUMENT_ROOT = MAPPING_PREFIX + "map_document_root";
 
+	/**
+	 * If set to true then the system will automatically add referenced epackages
+	 */
+	public static final String AUTO_ADD_REFERENCED_EPACKAGES = MAPPING_PREFIX + "auto_add_referenced_epackages";
+
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -410,6 +415,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(SQL_COLUMN_NAME_PREFIX, "");
 		props.setProperty(SQL_FOREIGN_KEY_NAME_PREFIX, "");
 		props.setProperty(MAP_DOCUMENT_ROOT, "false");
+		props.setProperty(AUTO_ADD_REFERENCED_EPACKAGES, "false");
 		return props;
 	}
 
@@ -417,6 +423,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #AUTO_ADD_REFERENCED_EPACKAGES}
+	 */
+	public boolean isAutoAddReferencedEPackages() {
+		return Boolean.valueOf(properties.getProperty(AUTO_ADD_REFERENCED_EPACKAGES)).booleanValue();
+	}
 
 	/**
 	 * @return value of {@link #MAP_DOCUMENT_ROOT}
