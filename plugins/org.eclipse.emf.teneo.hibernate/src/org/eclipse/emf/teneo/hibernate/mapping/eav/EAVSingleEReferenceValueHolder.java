@@ -1,0 +1,87 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2009 Springsite BV (The Netherlands) and others
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Martin Taal - Initial API and implementation
+ *
+ * </copyright>
+ *
+ * $Id: EAVSingleEReferenceValueHolder.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ */
+
+package org.eclipse.emf.teneo.hibernate.mapping.eav;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.InternalEObject;
+
+/**
+ * Stores a single EReference value when the EReference is containment.
+ * 
+ * @author <a href="mtaal@elver.org">Martin Taal</a>
+ */
+public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
+
+	private EObject referenceValue;
+
+	private EReference getEReference() {
+		return (EReference) getEStructuralFeature();
+	}
+
+	public void setValueInOwner() {
+		final Object curValue = getOwner().eGet(getEStructuralFeature());
+
+		if (curValue == referenceValue) {
+			// note that == works fine if the
+			// curValue and value have been read in the same jvm.
+			return; // do nothing in this case
+		}
+
+		if (getEReference().getEOpposite() != null) {// these are handled a bit differently because
+			if (referenceValue == null) { // remove
+				// Note that the eInverseRemove is called on the target itself
+				// and the value is passed
+				// therefore the eReference featureid is passed and not the
+				// opposite
+				final NotificationChain nots = ((InternalEObject) getOwner())
+						.eInverseRemove((InternalEObject) curValue, getFeatureId(), getEReference().getEType()
+								.getInstanceClass(), null);
+				if (nots != null) {
+					nots.dispatch();
+				}
+			} else {
+				final NotificationChain nots = ((InternalEObject) getOwner()).eInverseAdd(
+						(InternalEObject) referenceValue, getFeatureId(),
+						getEReference().getEType().getInstanceClass(), null);
+				if (nots != null) {
+					nots.dispatch();
+				}
+			}
+		} else {
+			getOwner().eSet(getEReference(), referenceValue);
+		}
+	}
+
+	public void set(Object value) {
+		referenceValue = (EObject) value;
+	}
+
+	public Object get() {
+		return referenceValue;
+	}
+
+	public EObject getReferenceValue() {
+		return referenceValue;
+	}
+
+	public void setReferenceValue(EObject referenceValue) {
+		this.referenceValue = referenceValue;
+	}
+}

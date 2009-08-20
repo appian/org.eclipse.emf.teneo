@@ -32,7 +32,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -68,15 +68,13 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 		for (Adapter adapter : eOwner.eAdapters()) {
 			if (adapter instanceof EAVObjectAdapter) {
 				final EAVObjectAdapter eavAdapter = (EAVObjectAdapter) adapter;
-				List<EStructuralFeatureValueHolder> valueList = eavAdapter.getValueList();
-				setValueList(eOwner, valueList);
-				return valueList;
+				return eavAdapter.getValueList();
 			}
 		}
 
 		final EAVObjectAdapter eavAdapter = new EAVObjectAdapter();
 		eavAdapter.setTarget(eOwner);
-		final List<EStructuralFeatureValueHolder> valueList = createValueList(eOwner);
+		final List<EAVValueHolder> valueList = createValueList(eOwner);
 		eavAdapter.setValueList(valueList);
 		eOwner.eAdapters().add(eavAdapter);
 		return valueList;
@@ -100,18 +98,18 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		final EObject eOwner = (EObject) target;
-		setTarget(eOwner, (List<EStructuralFeatureValueHolder>) value);
 		for (Adapter adapter : eOwner.eAdapters()) {
 			if (adapter instanceof EAVObjectAdapter) {
 				final EAVObjectAdapter eavAdapter = (EAVObjectAdapter) adapter;
-				eavAdapter.setValueList((List<EStructuralFeatureValueHolder>) value);
+				// todo: is the value every different, I don't think so..)
+				eavAdapter.setValueList((List<EAVValueHolder>) value);
 				return;
 			}
 		}
-
+		fillTargetObject((EObject) target, (List<EAVValueHolder>) value);
 		final EAVObjectAdapter eavAdapter = new EAVObjectAdapter();
 		eavAdapter.setTarget(eOwner);
-		eavAdapter.setValueList((List<EStructuralFeatureValueHolder>) value);
+		eavAdapter.setValueList((List<EAVValueHolder>) value);
 		eOwner.eAdapters().add(eavAdapter);
 	}
 
@@ -142,57 +140,32 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 		return InternalEObject.class;
 	}
 
-	private void setTarget(EObject target, List<EStructuralFeatureValueHolder> valueList) {
-		for (EStructuralFeatureValueHolder valueHolder : valueList) {
-			valueHolder.setValue(target);
-		}
-	}
-
-	private List<EStructuralFeatureValueHolder> createValueList(EObject target) {
-		final List<EStructuralFeatureValueHolder> valueList = new ArrayList<EStructuralFeatureValueHolder>();
-		setValueList(target, valueList);
-		return valueList;
-	}
-
-	private void setValueList(EObject target, List<EStructuralFeatureValueHolder> valueList) {
-		int valueIndex = 0;
+	private List<EAVValueHolder> createValueList(EObject target) {
+		final List<EAVValueHolder> valueHolders = new ArrayList<EAVValueHolder>();
 		for (EStructuralFeature eFeature : target.eClass().getEAllStructuralFeatures()) {
-			if (!eFeature.isMany()) {
-				EStructuralFeatureValueHolder valueHolder = getCreateValueHolder(valueList, valueIndex++);
-				valueHolder.setOwner(target);
-				valueHolder.set(eFeature, target.eGet(eFeature), -1);
-			} else {
-				final List<?> values = (List<?>) target.eGet(eFeature);
-				for (int i = 0; i < values.size(); i++) {
-					EStructuralFeatureValueHolder valueHolder = getCreateValueHolder(valueList, valueIndex++);
-					valueHolder.setOwner(target);
-					valueHolder.set(eFeature, values.get(i), i);
-				}
+			if (eFeature.isDerived() || eFeature.isTransient() || eFeature.isVolatile()) {
+				continue;
 			}
+			final EAVValueHolder valueHolder = EAVValueHolder.create(eFeature);
+			valueHolder.setOwner(target);
+			valueHolder.set(target.eGet(eFeature));
+			valueHolders.add(valueHolder);
 		}
-		// now remove any remaining value holders
-		if (valueIndex < valueList.size()) {
-			valueList.removeAll(valueList.subList(valueIndex, valueList.size()));
-		}
+		return valueHolders;
 	}
 
-	private EStructuralFeatureValueHolder getCreateValueHolder(List<EStructuralFeatureValueHolder> valueList,
-			int valueIndex) {
-		EStructuralFeatureValueHolder valueHolder;
-		if (valueList.size() > valueIndex) {
-			valueHolder = valueList.get(valueIndex);
-		} else {
-			valueHolder = new EStructuralFeatureValueHolder();
-			valueList.add(valueHolder);
+	private void fillTargetObject(EObject target, List<EAVValueHolder> valueList) {
+		for (EAVValueHolder valueHolder : valueList) {
+			valueHolder.setOwner(target);
+			valueHolder.setValueInOwner();
 		}
-		return valueHolder;
 	}
 
 	private static class EAVObjectAdapter implements Adapter {
 
 		private Notifier target;
 
-		private List<EStructuralFeatureValueHolder> valueList;
+		private List<EAVValueHolder> valueList;
 
 		@Override
 		public Notifier getTarget() {
@@ -206,8 +179,31 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 
 		@Override
 		public void notifyChanged(Notification notification) {
-			// TODO Auto-generated method stub
+			final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
 
+			switch (notification.getEventType()) {
+			case Notification.SET:
+				if (!eFeature.isMany()) {
+					final EAVValueHolder valueHolder = getValueHolder(eFeature);
+					valueHolder.set(notification.getNewValue());
+				}
+				break;
+			case Notification.UNSET:
+				if (!eFeature.isMany()) {
+					final EAVValueHolder valueHolder = getValueHolder(eFeature);
+					valueHolder.set(notification.getNewValue());
+				}
+				break;
+			}
+		}
+
+		private EAVValueHolder getValueHolder(EStructuralFeature eFeature) {
+			for (EAVValueHolder valueHolder : valueList) {
+				if (valueHolder.getEStructuralFeature() == eFeature) {
+					return valueHolder;
+				}
+			}
+			throw new IllegalStateException("EFeatrre " + eFeature + " not present in valueList");
 		}
 
 		@Override
@@ -215,11 +211,11 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 			target = newTarget;
 		}
 
-		public List<EStructuralFeatureValueHolder> getValueList() {
+		public List<EAVValueHolder> getValueList() {
 			return valueList;
 		}
 
-		public void setValueList(List<EStructuralFeatureValueHolder> valueList) {
+		public void setValueList(List<EAVValueHolder> valueList) {
 			this.valueList = valueList;
 		}
 
