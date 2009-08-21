@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.55 2009/07/31 00:38:16 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.56 2009/08/21 10:16:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -363,6 +363,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String AUTO_ADD_REFERENCED_EPACKAGES = MAPPING_PREFIX + "auto_add_referenced_epackages";
 
+	/**
+	 * If set to true then the system will map all eclasses as an EAV mapping
+	 */
+	public static final String EAV_MAPPING = MAPPING_PREFIX + "eav_mapping";
+
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -415,6 +420,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(SQL_COLUMN_NAME_PREFIX, "");
 		props.setProperty(SQL_FOREIGN_KEY_NAME_PREFIX, "");
 		props.setProperty(MAP_DOCUMENT_ROOT, "false");
+		props.setProperty(EAV_MAPPING, "false");
 		props.setProperty(AUTO_ADD_REFERENCED_EPACKAGES, "false");
 		return props;
 	}
@@ -423,6 +429,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #EAV_MAPPING}
+	 */
+	public boolean isEAVMapping() {
+		return Boolean.valueOf(properties.getProperty(EAV_MAPPING)).booleanValue();
+	}
 
 	/**
 	 * @return value of {@link #AUTO_ADD_REFERENCED_EPACKAGES}

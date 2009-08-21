@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.15 2009/07/26 23:42:54 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.16 2009/08/21 10:16:27 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -66,6 +66,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	 * true if its features can be annotated.
 	 */
 	protected boolean annotate(PAnnotatedEClass aClass) {
+
+		if (getPersistenceOptions().isEAVMapping()) {
+			aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
+		}
 
 		if (aClass == null) {
 			throw new StoreAnnotationsException(
@@ -111,6 +115,13 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		setSuperEntity(aClass);
 		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null
 				|| aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
+
+		// force single table
+		if (isInheritanceRoot && aClass.getEavMapping() != null) {
+			final Inheritance inheritance = PannotationFactory.eINSTANCE.createInheritance();
+			inheritance.setStrategy(InheritanceType.SINGLE_TABLE);
+			aClass.setInheritance(inheritance);
+		}
 
 		// A not mappable type will not get an entity annotation.
 		// Even the features of non-mappable types are mapped because
