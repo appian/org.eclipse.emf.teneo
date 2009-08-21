@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVFeatureMapEntryValueHolder.java,v 1.1 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVFeatureMapEntryValueHolder.java,v 1.2 2009/08/21 15:01:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -60,7 +60,6 @@ public class EAVFeatureMapEntryValueHolder extends EAVSingleEAttributeValueHolde
 		}
 
 		featureMapEntry = ((EStructuralFeatureImpl) getEStructuralFeature()).getFeatureMapEntryPrototype();
-System.err.println(getEStructuralFeature().getName());
 		if (isEReference) {
 			featureMapEntry = FeatureMapUtil.createEntry(getEStructuralFeature(), referenceValue);
 		} else {

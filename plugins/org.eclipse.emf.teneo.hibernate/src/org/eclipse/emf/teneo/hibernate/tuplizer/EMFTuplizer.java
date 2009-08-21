@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.17 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.18 2009/08/21 15:01:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -27,6 +27,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
@@ -60,7 +61,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -157,7 +158,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** Creates an EMF Instantiator */
 	@Override
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
-		if (persistentClass.getEntityName().equals("EAV_EObject")) {
+		if (persistentClass.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			return new EAVInstantiator();
 		}
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);

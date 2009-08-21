@@ -5,7 +5,8 @@
 	<class name="org.eclipse.emf.ecore.impl.EObjectImpl" entity-name="EAV_EObject" abstract="true"
 		lazy="false" discriminator-value="eav_eobject" table="`eav_eobject`">
 		
-		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>
+		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>	
+		<tuplizer entity-mode="dynamic-map" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>
 
 		<id type="long" name="e_id" column="e_id"
 			access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">

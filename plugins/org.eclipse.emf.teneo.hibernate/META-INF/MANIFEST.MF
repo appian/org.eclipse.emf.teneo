@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.emf.teneo;visibility:=reexport,
  org.eclipse.emf.teneo.hibernate.mapper;visibility:=reexport
 Export-Package: org.eclipse.emf.teneo.hibernate;version="1.1.0",
  org.eclipse.emf.teneo.hibernate.mapping;version="1.1.0",
+ org.eclipse.emf.teneo.hibernate.mapping.eav,
  org.eclipse.emf.teneo.hibernate.mapping.econtainer;version="1.1.0",
  org.eclipse.emf.teneo.hibernate.mapping.elist;version="1.1.0",
  org.eclipse.emf.teneo.hibernate.mapping.identifier;version="1.1.0",

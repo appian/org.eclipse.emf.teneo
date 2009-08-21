@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
@@ -91,7 +92,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -498,7 +499,7 @@ public abstract class HbDataStore implements DataStore {
 				eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
 			}
 
-			if (eclass == null && !pc.getEntityName().equals("EAV_EObject")) {
+			if (eclass == null && !pc.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 				continue;
 			}
 
@@ -771,7 +772,7 @@ public abstract class HbDataStore implements DataStore {
 
 		// always add for the eav object
 		// todo: externalize
-		if (pc.getEntityName().equals("EAV_EObject") && !hasEContainerProp(pc)) {
+		if (pc.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME) && !hasEContainerProp(pc)) {
 			addContainerMappingToPC(pc);
 			return;
 		}
