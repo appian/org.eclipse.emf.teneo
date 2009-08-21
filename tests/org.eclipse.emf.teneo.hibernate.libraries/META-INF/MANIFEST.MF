@@ -270,4 +270,6 @@ Bundle-ClassPath: antlr-2.7.6.jar,
  mysql-connector-java-5.1.6-bin.jar,
  slf4j-api-1.5.8.jar,
  slf4j-nop-1.5.8.jar,
- javassist-3.9.0.GA.jar
+ javassist-3.9.0.GA.jar,
+ log4j-1.2.8.jar,
+ slf4j-log4j12-1.5.8.jar
