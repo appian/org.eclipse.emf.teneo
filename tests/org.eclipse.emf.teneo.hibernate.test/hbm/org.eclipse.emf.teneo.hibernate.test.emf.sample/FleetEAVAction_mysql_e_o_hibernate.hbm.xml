@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<subclass entity-name="Vehicle" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Vehicle"/>
+	<subclass entity-name="Temporal" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Temporal"/>
+	<subclass entity-name="Person" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Person"/>
+	<subclass entity-name="Address" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Address"/>
+	<subclass entity-name="VehicleInfo" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="VehicleInfo"/>
+	<subclass entity-name="ManufacturingPlant" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ManufacturingPlant"/>
+	<subclass entity-name="Fleet" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Fleet"/>
+	<subclass entity-name="Garage" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Garage"/>
+	<subclass entity-name="Tire" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Tire"/>
+	<subclass entity-name="Car" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Car"/>
+	<subclass entity-name="Hybrid" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Hybrid"/>
+	<subclass name="fleet.PassengerVehicle" entity-name="PassengerVehicle" abstract="true" lazy="false" extends="EAV_EObject" discriminator-value="PassengerVehicle"/>
+	<subclass entity-name="EngineFactory" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EngineFactory"/>
+	<subclass entity-name="USAddress" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="USAddress"/>
+	<subclass entity-name="Vin" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Vin"/>
+	<subclass entity-name="TransportationDevice" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="TransportationDevice"/>
+	<subclass entity-name="VersionHolder" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="VersionHolder"/>
+</hibernate-mapping>

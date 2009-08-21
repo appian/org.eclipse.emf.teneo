@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -50,6 +50,7 @@ public class DynamicAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		final DynamicFactory factory = DynamicFactory.eINSTANCE;
 		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
 		final EcorePackage epackage = EcorePackage.eINSTANCE;
@@ -118,8 +119,7 @@ public class DynamicAction extends AbstractTestAction {
 			employeeManager.setUnique(false);
 			employeeClass.getEStructuralFeatures().add(employeeManager);
 
-			employeeClass.getESuperTypes().add(
-					DynamicPackage.eINSTANCE.getPerson());
+			employeeClass.getESuperTypes().add(DynamicPackage.eINSTANCE.getPerson());
 
 			departmentClass = efactory.createEClass();
 			departmentClass.setName("Department");
@@ -132,8 +132,7 @@ public class DynamicAction extends AbstractTestAction {
 			departmentManager = efactory.createEReference();
 			departmentManager.setName("manager");
 			departmentManager.setEType(employeeClass);
-			departmentManager
-					.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
+			departmentManager.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
 			departmentManager.setContainment(true);
 			departmentClass.getEStructuralFeatures().add(departmentManager);
 
@@ -159,10 +158,10 @@ public class DynamicAction extends AbstractTestAction {
 			companyPackage.getEClassifiers().add(employeeClass);
 			companyPackage.getEClassifiers().add(departmentClass);
 			companyPackage.getEClassifiers().add(dt);
-			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(),
-					companyPackage);
+			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
 			store.updateSchema();
+			System.err.println(store.getMappingXML());
 		}
 
 		// return from here in case of hsqldb because hsqldb does
@@ -189,8 +188,7 @@ public class DynamicAction extends AbstractTestAction {
 			store.commitTransaction();
 
 			// the dynamiceobjectimpl should not be present in the mapping xml
-			assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(
-					DynamicEObjectImpl.class.getName()) == -1);
+			assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(DynamicEObjectImpl.class.getName()) == -1);
 		}
 
 		// read them all (incl. the person), create a department and add the

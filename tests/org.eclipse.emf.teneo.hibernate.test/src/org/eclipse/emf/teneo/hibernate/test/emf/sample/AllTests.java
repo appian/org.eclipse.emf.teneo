@@ -16,6 +16,7 @@ import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.sample.CarAction;
 import org.eclipse.emf.teneo.test.emf.sample.CatalogResourceAction;
 import org.eclipse.emf.teneo.test.emf.sample.ClaimAction;
+import org.eclipse.emf.teneo.test.emf.sample.EcoreAction;
 import org.eclipse.emf.teneo.test.emf.sample.FleetAction;
 import org.eclipse.emf.teneo.test.emf.sample.ForumAction;
 import org.eclipse.emf.teneo.test.emf.sample.InventoryAction;
@@ -54,13 +55,22 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.98 $
+ * @version $Revision: 1.99 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
 				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(DynamicEAVAction.class);
+		suite.addTestSuite(FleetEAVAction.class);
+		suite.addTestSuite(EcoreEAVAction.class);
+		suite.addTestSuite(LibraryEAVHbResourceAction.class);
+		suite.addTestSuite(ProductEAVTest.class);
+
+		suite.addTestSuite(EcoreAction.class);
+
 		suite.addTestSuite(ProductAction.class);
 		suite.addTestSuite(LibraryTest.class);
 
@@ -82,10 +92,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryResourceVisitTreeAction.class);
 
 		suite.addTestSuite(LibraryInterfaceQueryTest.class);
-
-		// disabled, does not work for EMF 2.5, will solve later
-		// possibly regenerating code
-		// suite.addTestSuite(EcoreAction.class);
 
 		suite.addTestSuite(SchoolLibraryTest.class);
 

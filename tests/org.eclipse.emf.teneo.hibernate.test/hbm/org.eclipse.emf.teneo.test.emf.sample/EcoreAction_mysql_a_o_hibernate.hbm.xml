@@ -191,9 +191,9 @@
 				<column name="`eannotation_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`eannotation_contents_idx`"/>
-			<many-to-any id-type="long">
-				<column not-null="true" unique="false" name="`contents_type`"/>
-				<column not-null="true" unique="false" name="`contents_id`"/>
+			<many-to-any id-type="long" meta-type="string">
+				<column not-null="false" unique="false" name="`contents_type`"/>
+				<column not-null="false" unique="false" name="`contents_id`"/>
 			</many-to-any>
 		</list>
 		<list name="references" table="`eannotation_references`" lazy="true" cascade="merge,persist,save-update,lock,refresh">
@@ -201,9 +201,9 @@
 				<column name="`eannotation_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`eannotation_references_idx`"/>
-			<many-to-any id-type="long">
-				<column not-null="true" unique="false" name="`references_type`"/>
-				<column not-null="true" unique="false" name="`references_id`"/>
+			<many-to-any id-type="long" meta-type="string">
+				<column not-null="false" unique="false" name="`references_type`"/>
+				<column not-null="false" unique="false" name="`references_id`"/>
 			</many-to-any>
 		</list>
 	</subclass>
@@ -493,23 +493,11 @@
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
-		<list name="mixed" table="`any_anytype_mixed`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
-				<column name="`any_anytype_mixed_e_id`" not-null="false" unique="false"/>
-			</key>
-			<list-index column="`any_anytype_mixed_idx`"/>
-			<one-to-many entity-name="AnyType_mixed"/>
-		</list>
-		<list name="anyAttribute" table="`any_anytype_anyattribute`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
-				<column name="`any_anytype_anyattribute_e_id`" not-null="false" unique="false"/>
-			</key>
-			<list-index column="`any_anytype_anyattribute_idx`"/>
-			<one-to-many entity-name="AnyType_anyAttribute"/>
-		</list>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`any_type`"/>
+			<column not-null="false" unique="false" name="`any_id`"/>
+		</any>
 	</class>
 	<class name="org.eclipse.emf.ecore.xml.type.impl.ProcessingInstructionImpl" entity-name="ProcessingInstruction" abstract="false" lazy="false" discriminator-value="ProcessingInstruction" table="`processinginstruction`">
 		<meta attribute="eclassName">ProcessingInstruction</meta>
