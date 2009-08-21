@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.30 2008/12/16 20:40:18 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.31 2009/08/21 10:16:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -208,6 +208,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateSequenceStyleGenerator((SequenceStyleGenerator)value, diagnostics, context);
 			case PannotationPackage.EXTERNAL:
 				return validateExternal((External)value, diagnostics, context);
+			case PannotationPackage.EAV_MAPPING:
+				return validateEAVMapping((EAVMapping)value, diagnostics, context);
 			case PannotationPackage.CASCADE_TYPE:
 				return validateCascadeType((CascadeType)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_TYPE:
@@ -1575,6 +1577,24 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(external, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEAVMapping(EAVMapping eavMapping, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(eavMapping, diagnostics, context);
 		return result;
 	}
 

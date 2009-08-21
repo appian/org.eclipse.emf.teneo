@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceValidator.java,v 1.2 2008/01/18 06:20:57 mtaal Exp $
+ * $Id: PAnnotatedEReferenceValidator.java,v 1.3 2009/08/21 10:16:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -10,8 +10,10 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
+import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
@@ -39,4 +41,8 @@ public interface PAnnotatedEReferenceValidator {
 	boolean validateOneToOne(OneToOne value);
 	boolean validateOrderBy(OrderBy value);
 	boolean validatePrimaryKeyJoinColumns(EList<PrimaryKeyJoinColumn> value);
+
+	boolean validateAssociationOverrides(EList<AssociationOverride> value);
+
+	boolean validateExternal(External value);
 }

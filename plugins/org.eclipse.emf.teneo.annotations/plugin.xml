@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.4 2009/08/21 10:16:53 mtaal Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/teneo/elver/2005/pamodel"
+            class="org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage"
+            genModel="model/pannotation.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation"
+            class="org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage"
+            genModel="model/pannotation.genmodel"/>
+   </extension>
+
+</plugin>

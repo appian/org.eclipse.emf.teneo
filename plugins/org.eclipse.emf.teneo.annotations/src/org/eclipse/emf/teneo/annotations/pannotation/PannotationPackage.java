@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.17 2008/12/16 20:40:18 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.18 2009/08/21 10:16:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -1922,13 +1922,41 @@ public interface PannotationPackage extends EPackage {
 	int EXTERNAL_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EAVMappingImpl <em>EAV Mapping</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.EAVMappingImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEAVMapping()
+	 * @generated
+	 */
+	int EAV_MAPPING = 38;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EAV_MAPPING__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The number of structural features of the '<em>EAV Mapping</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EAV_MAPPING_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 41;
+	int FETCH_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -1937,7 +1965,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 39;
+	int DISCRIMINATOR_TYPE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -1946,7 +1974,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 40;
+	int ENUM_TYPE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -1955,7 +1983,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 43;
+	int INHERITANCE_TYPE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -1964,7 +1992,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 38;
+	int CASCADE_TYPE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -1973,7 +2001,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 44;
+	int TEMPORAL_TYPE = 45;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}' enum.
@@ -1983,7 +2011,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOptimizerType()
 	 * @generated
 	 */
-	int OPTIMIZER_TYPE = 45;
+	int OPTIMIZER_TYPE = 46;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -1992,7 +2020,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 42;
+	int GENERATION_TYPE = 43;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -3323,6 +3351,16 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getExternal_Type();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.EAVMapping <em>EAV Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>EAV Mapping</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.EAVMapping
+	 * @generated
+	 */
+	EClass getEAVMapping();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Association Override</em>'.
@@ -4624,6 +4662,16 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXTERNAL__TYPE = eINSTANCE.getExternal_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EAVMappingImpl <em>EAV Mapping</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.EAVMappingImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEAVMapping()
+		 * @generated
+		 */
+		EClass EAV_MAPPING = eINSTANCE.getEAVMapping();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.

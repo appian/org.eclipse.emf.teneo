@@ -25,6 +25,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference sequenceGenerators : SequenceGenerator<<0..*>>
     Reference tableGenerators : TableGenerator<<0..*>>
     Reference paEDataTypes : PAnnotatedEDataType<<0..*>>
+    Reference sequenceStyleGenerators : SequenceStyleGenerator<<0..*>>
 
   Class PAnnotatedEClass -> PAnnotatedEModelElement
     Reference paEPackage : PAnnotatedEPackage
@@ -43,6 +44,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference table : Table
     Reference tableGenerator : TableGenerator
     Reference associationOverrides : AssociationOverride<<0..*>>
+    Reference eavMapping : EAVMapping
 
   Class PAnnotatedEStructuralFeature -> PAnnotatedETypedElement
     Reference paEClass : PAnnotatedEClass
@@ -69,6 +71,8 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference oneToOne : OneToOne
     Reference orderBy : OrderBy
     Reference primaryKeyJoinColumns : PrimaryKeyJoinColumn<<0..*>>
+    Reference associationOverrides : AssociationOverride<<0..*>>
+    Reference external : External
 
   Class PAnnotatedETypedElement -> PAnnotatedEModelElement
     Reference attributeOverrides : AttributeOverride<<0..*>>
@@ -259,6 +263,18 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
   Class ForeignKey -> PAnnotation
     Attribute name : EString
 
+  Class SequenceStyleGenerator -> PAnnotation
+    Attribute name : EString<<1..1>>
+    Attribute sequenceName : EString
+    Attribute initialValue : EInt
+    Attribute incrementSize : EInt
+    Attribute optimizer : OptimizerType
+
+  Class External -> PAnnotation
+    Attribute type : EString
+
+  Class EAVMapping -> PAnnotation
+
   Enum CascadeType
     Literal ALL = 0
     Literal PERSIST = 1
@@ -286,6 +302,8 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
     Literal SEQUENCE = 1
     Literal IDENTITY = 2
     Literal AUTO = 3
+    Literal SEQUENCESTYLE = 4
+    Literal ASSIGNED = 5
 
   Enum InheritanceType
     Literal SINGLE_TABLE = 0
@@ -296,3 +314,8 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
     Literal DATE = 0
     Literal TIME = 1
     Literal TIMESTAMP = 2
+
+  Enum OptimizerType
+    Literal NONE = 0
+    Literal HILO = 1
+    Literal POOLED = 2

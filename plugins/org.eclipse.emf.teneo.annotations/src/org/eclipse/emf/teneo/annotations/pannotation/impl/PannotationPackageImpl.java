@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.30 2009/06/11 04:59:34 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.31 2009/08/21 10:16:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
+import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
@@ -306,6 +307,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	private EClass externalEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eavMappingEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -386,20 +394,10 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link PannotationPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
@@ -410,7 +408,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		if (isInited) return (PannotationPackage)EPackage.Registry.INSTANCE.getEPackage(PannotationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		PannotationPackageImpl thePannotationPackage = (PannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof PannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new PannotationPackageImpl());
+		PannotationPackageImpl thePannotationPackage = (PannotationPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof PannotationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new PannotationPackageImpl());
 
 		isInited = true;
 
@@ -437,6 +435,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		// Mark meta-data to indicate it can't be changed
 		thePannotationPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(PannotationPackage.eNS_URI, thePannotationPackage);
 		return thePannotationPackage;
 	}
 
@@ -1532,6 +1533,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEAVMapping() {
+		return eavMappingEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1822,6 +1832,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		externalEClass = createEClass(EXTERNAL);
 		createEAttribute(externalEClass, EXTERNAL__TYPE);
 
+		eavMappingEClass = createEClass(EAV_MAPPING);
+
 		// Create enums
 		cascadeTypeEEnum = createEEnum(CASCADE_TYPE);
 		discriminatorTypeEEnum = createEEnum(DISCRIMINATOR_TYPE);
@@ -1897,6 +1909,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		foreignKeyEClass.getESuperTypes().add(this.getPAnnotation());
 		sequenceStyleGeneratorEClass.getESuperTypes().add(this.getPAnnotation());
 		externalEClass.getESuperTypes().add(this.getPAnnotation());
+		eavMappingEClass.getESuperTypes().add(this.getPAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2075,6 +2088,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEClass(externalEClass, External.class, "External", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExternal_Type(), ecorePackage.getEString(), "type", null, 0, 1, External.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(eavMappingEClass, EAVMapping.class, "EAVMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL);
@@ -2154,7 +2169,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																										
+		   });																																																											
 	}
 
 	/**
@@ -2171,7 +2186,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																									
+		   });																																																										
 	}
 
 	/**
@@ -2294,7 +2309,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });			
+		   });				
 	}
 
 	/**
@@ -2529,6 +2544,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EReference"
+		   });		
+		addAnnotation
+		  (eavMappingEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass"
 		   });
 	}
 
@@ -2544,7 +2565,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																																							
+		   });																																																								
 	}
 
 	/**
@@ -2560,7 +2581,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																											
+		   });																																												
 	}
 
 	/**

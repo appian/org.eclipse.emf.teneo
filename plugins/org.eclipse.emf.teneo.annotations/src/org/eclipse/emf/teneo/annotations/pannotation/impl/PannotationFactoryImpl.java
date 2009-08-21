@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactoryImpl.java,v 1.29 2008/12/16 20:40:19 mtaal Exp $
+ * $Id: PannotationFactoryImpl.java,v 1.30 2009/08/21 10:16:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -139,6 +139,7 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.FOREIGN_KEY: return createForeignKey();
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR: return createSequenceStyleGenerator();
 			case PannotationPackage.EXTERNAL: return createExternal();
+			case PannotationPackage.EAV_MAPPING: return createEAVMapping();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -560,6 +561,16 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public External createExternal() {
 		ExternalImpl external = new ExternalImpl();
 		return external;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAVMapping createEAVMapping() {
+		EAVMappingImpl eavMapping = new EAVMappingImpl();
+		return eavMapping;
 	}
 
 	/**

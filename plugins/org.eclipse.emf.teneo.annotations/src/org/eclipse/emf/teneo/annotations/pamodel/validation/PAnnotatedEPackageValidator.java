@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageValidator.java,v 1.2 2008/01/18 06:20:57 mtaal Exp $
+ * $Id: PAnnotatedEPackageValidator.java,v 1.3 2009/08/21 10:16:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
 /**
@@ -34,4 +35,6 @@ public interface PAnnotatedEPackageValidator {
 	boolean validateSequenceGenerators(EList<SequenceGenerator> value);
 	boolean validateTableGenerators(EList<TableGenerator> value);
 	boolean validatePaEDataTypes(EList<PAnnotatedEDataType> value);
+
+	boolean validateSequenceStyleGenerators(EList<SequenceStyleGenerator> value);
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassValidator.java,v 1.2 2008/01/18 06:20:57 mtaal Exp $
+ * $Id: PAnnotatedEClassValidator.java,v 1.3 2009/08/21 10:16:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
+import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
@@ -54,4 +55,6 @@ public interface PAnnotatedEClassValidator {
 	boolean validateTable(Table value);
 	boolean validateTableGenerator(TableGenerator value);
 	boolean validateAssociationOverrides(EList<AssociationOverride> value);
+
+	boolean validateEavMapping(EAVMapping value);
 }

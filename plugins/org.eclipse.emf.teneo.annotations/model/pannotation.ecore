@@ -464,4 +464,9 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EAVMapping" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

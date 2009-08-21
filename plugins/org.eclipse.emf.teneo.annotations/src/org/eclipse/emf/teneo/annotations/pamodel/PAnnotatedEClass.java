@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.15 2008/01/18 06:20:56 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.16 2009/08/21 10:16:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -14,6 +14,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
+import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
@@ -48,6 +49,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTable <em>Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getTableGenerator <em>Table Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides <em>Association Overrides</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping <em>Eav Mapping</em>}</li>
  * </ul>
  * </p>
  *
@@ -415,6 +417,32 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	EList<AssociationOverride> getAssociationOverrides();
+
+	/**
+	 * Returns the value of the '<em><b>Eav Mapping</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Eav Mapping</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Eav Mapping</em>' containment reference.
+	 * @see #setEavMapping(EAVMapping)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_EavMapping()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EAVMapping getEavMapping();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping <em>Eav Mapping</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Eav Mapping</em>' containment reference.
+	 * @see #getEavMapping()
+	 * @generated
+	 */
+	void setEavMapping(EAVMapping value);
 
 	/**
 	 * @return Returns the List of PAnnotatedEAttributes belonging to this PAnnotatedEClass for which an Id PAnnotation
