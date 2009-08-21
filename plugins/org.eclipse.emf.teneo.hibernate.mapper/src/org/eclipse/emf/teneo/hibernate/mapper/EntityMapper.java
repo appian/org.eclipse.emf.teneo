@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.47 2009/08/21 10:16:31 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.48 2009/08/21 15:02:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -19,6 +19,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -191,7 +192,9 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		}
 
 		if (entity.getEavMapping() != null) {
-			target.addAttribute("extends", "EAV_EObject");
+			if (superEntity == null) {
+				target.addAttribute("extends", Constants.EAV_EOBJECT_ENTITY_NAME);
+			}
 			target.addAttribute("discriminator-value", dValue.getValue());
 			// stop here for eav
 			return target;
