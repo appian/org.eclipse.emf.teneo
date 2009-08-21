@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.15 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.16 2009/08/21 15:02:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -40,13 +40,12 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 
 	/** Annotate it */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String logStr =
-				aReference.getModelEReference().getName() + "/" +
-						aReference.getModelEReference().getEContainingClass().getName();
+		final String logStr = aReference.getModelEReference().getName() + "/"
+				+ aReference.getModelEReference().getEContainingClass().getName();
 
 		if (aReference.getOneToMany() != null || aReference.getManyToMany() != null || aReference.getOneToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a ManyToOne but " +
-					"it already has a OneToMany, ManyToMany or OneToOne annotation");
+			throw new StoreMappingException("The feature/eclass " + logStr + " should be a ManyToOne but "
+					+ "it already has a OneToMany, ManyToMany or OneToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
@@ -90,8 +89,8 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 			aReference.setForeignKey(createFK(aReference));
 		}
 
-		if (getPersistenceOptions().isMapEmbeddableAsEmbedded() &&
-				aReference.getAReferenceType().getEmbeddable() != null) {
+		if (getPersistenceOptions().isMapEmbeddableAsEmbedded()
+				&& aReference.getAReferenceType().getEmbeddable() != null) {
 			aReference.setEmbedded(getFactory().createEmbedded());
 		}
 
@@ -114,13 +113,16 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 				if (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient()) {
 					final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eReference.getEOpposite());
 
-					hasJoinTable =
-							(!aOpposite.getModelEReference().isContainment() && getPersistenceOptions()
-								.isJoinTableForNonContainedAssociations()) ||
-									aOpposite.getJoinTable() != null;
+					hasJoinTable = (!aOpposite.getModelEReference().isContainment() && getPersistenceOptions()
+							.isJoinTableForNonContainedAssociations())
+							|| aOpposite.getJoinTable() != null;
 
 					if (!hasJoinTable && aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList()) {
 						isInsertableUpdatable = false;
+					}
+					// if the refered to is stored as an eav then do the update of the columns from here.
+					if (aReference.getAReferenceType().getEavMapping() != null) {
+						isInsertableUpdatable = true;
 					}
 				}
 				// old:
@@ -136,7 +138,7 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 				if (!hasJoinTable) {
 					final List<String> names = getSqlNameStrategy().getManyToOneJoinColumnNames(aReference);
 					aReference.getJoinColumns().addAll(
-						getJoinColumns(names, mto.isOptional(), isInsertableUpdatable, mto));
+							getJoinColumns(names, mto.isOptional(), isInsertableUpdatable, mto));
 				}
 			}
 		} else {

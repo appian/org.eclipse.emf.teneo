@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Constants.java,v 1.9 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: Constants.java,v 1.10 2009/08/21 15:02:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  * AnnotationUtil used when reading a property file is also used by resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class Constants {
@@ -50,8 +50,7 @@ public class Constants {
 	public static final String PROP_EDITOR_ID = "editorid";
 
 	/**
-	 * The NS URI of the epackage handled by this database (can be more than one, then should be a
-	 * comma delimited list)
+	 * The NS URI of the epackage handled by this database (can be more than one, then should be a comma delimited list)
 	 */
 	public static final String PROP_EPACKAGE_NSURI = "nsuri";
 
@@ -81,4 +80,6 @@ public class Constants {
 
 	/** Nofitication Used by elver to notify an elist load */
 	public static final int ELIST_LOAD_NOTIFICATION = NOTIFICATION_START_EVENT_TYPE_COUNT + 1;
+
+	public static final String EAV_EOBJECT_ENTITY_NAME = "EAV_EObject";
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.16 2009/08/21 10:16:27 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.17 2009/08/21 15:02:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -66,11 +66,6 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 	 * true if its features can be annotated.
 	 */
 	protected boolean annotate(PAnnotatedEClass aClass) {
-
-		if (getPersistenceOptions().isEAVMapping()) {
-			aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
-		}
-
 		if (aClass == null) {
 			throw new StoreAnnotationsException(
 					"Mapping Exception, no Annotated Class for EClass, "
@@ -104,7 +99,14 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			}
 			if (!processedAClasses.contains(superAClass)) {
 				annotate(superAClass);
+				if (superAClass.getEavMapping() != null) {
+					aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
+				}
 			}
+		}
+
+		if (getPersistenceOptions().isEAVMapping()) {
+			aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
 		}
 
 		log.debug(" Adding default annotations for EClass: " + aClass.getModelElement().getName());
