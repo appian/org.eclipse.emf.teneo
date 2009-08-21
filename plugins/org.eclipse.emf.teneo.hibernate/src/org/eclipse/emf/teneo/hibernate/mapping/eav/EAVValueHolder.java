@@ -12,14 +12,15 @@
  *
  * </copyright>
  *
- * $Id: EAVValueHolder.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ * $Id: EAVValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
 /**
  * The base class of the value stored in an EAV schema. The value in an EAV schema is both the type (the
@@ -61,7 +62,9 @@ public abstract class EAVValueHolder {
 				}
 			}
 		} else {
-			if (eFeature.isMany()) {
+			if (FeatureMapUtil.isFeatureMap(eFeature)) {
+				valueHolder = new EAVFeatureMapValueHolder();
+			} else if (eFeature.isMany()) {
 				valueHolder = new EAVMultiEAttributeValueHolder();
 			} else {
 				valueHolder = new EAVSingleEAttributeValueHolder();
@@ -71,28 +74,17 @@ public abstract class EAVValueHolder {
 		return valueHolder;
 	}
 
-	private EObject owner;
 	private long id;
 	private int version;
 	private EStructuralFeature eStructuralFeature;
 
 	public abstract void set(Object value);
 
-	public abstract Object get();
+	public abstract Object get(InternalEObject owner);
 
-	public abstract void setValueInOwner();
+	public abstract void setValueInOwner(InternalEObject owner);
 
-	public int getFeatureId() {
-		return getOwner().eClass().getFeatureID(getEStructuralFeature());
-	}
-
-	public EObject getOwner() {
-		return owner;
-	}
-
-	public void setOwner(EObject owner) {
-		this.owner = owner;
-	}
+	public abstract Object getValue();
 
 	public long getId() {
 		return id;
@@ -125,6 +117,7 @@ public abstract class EAVValueHolder {
 	}
 
 	public void setFeature(EStructuralFeature eStructuralFeature) {
-		this.eStructuralFeature = eStructuralFeature;
+		// setEStructuralFeature is overridden by subclasses
+		setEStructuralFeature(eStructuralFeature);
 	}
 }

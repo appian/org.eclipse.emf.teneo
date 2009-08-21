@@ -91,7 +91,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.54 $
+ * @version $Revision: 1.55 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -491,6 +491,17 @@ public abstract class HbDataStore implements DataStore {
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 
+			final EClass eclass;
+			if (pc.getEntityName() != null) {
+				eclass = getEntityNameStrategy().toEClass(pc.getEntityName());
+			} else {
+				eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
+			}
+
+			if (eclass == null && !pc.getEntityName().equals("EAV_EObject")) {
+				continue;
+			}
+
 			java.util.List<ReferenceTo> refs = referers.get(getMappedName(pc));
 			boolean topEntity = true;
 			if (refs != null) {
@@ -758,6 +769,13 @@ public abstract class HbDataStore implements DataStore {
 			addContainerMapping(pc.getSuperclass());
 		}
 
+		// always add for the eav object
+		// todo: externalize
+		if (pc.getEntityName().equals("EAV_EObject") && !hasEContainerProp(pc)) {
+			addContainerMappingToPC(pc);
+			return;
+		}
+
 		if (!isContained(pc)) {
 			return;
 		}
@@ -793,7 +811,10 @@ public abstract class HbDataStore implements DataStore {
 				return;
 			}
 		}
+		addContainerMappingToPC(pc);
+	}
 
+	protected void addContainerMappingToPC(PersistentClass pc) {
 		log.debug("Adding eContainer and econtainerfeatureid properties to " + pc.getClassName());
 		final EContainerFeaturePersistenceStrategy featurePersistenceStrategy = getPersistenceOptions()
 				.getEContainerFeaturePersistenceStrategy();

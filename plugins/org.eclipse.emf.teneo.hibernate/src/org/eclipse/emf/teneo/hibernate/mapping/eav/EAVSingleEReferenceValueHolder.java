@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEReferenceValueHolder.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ * $Id: EAVSingleEReferenceValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -35,9 +35,9 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 		return (EReference) getEStructuralFeature();
 	}
 
-	public void setValueInOwner() {
-		final Object curValue = getOwner().eGet(getEStructuralFeature());
-
+	public void setValueInOwner(InternalEObject owner) {
+		final Object curValue = owner.eGet(getEStructuralFeature());
+		final int featureId = owner.eClass().getFeatureID(getEStructuralFeature());
 		if (curValue == referenceValue) {
 			// note that == works fine if the
 			// curValue and value have been read in the same jvm.
@@ -50,22 +50,20 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 				// and the value is passed
 				// therefore the eReference featureid is passed and not the
 				// opposite
-				final NotificationChain nots = ((InternalEObject) getOwner())
-						.eInverseRemove((InternalEObject) curValue, getFeatureId(), getEReference().getEType()
-								.getInstanceClass(), null);
+				final NotificationChain nots = ((InternalEObject) owner).eInverseRemove((InternalEObject) curValue,
+						featureId, getEReference().getEType().getInstanceClass(), null);
 				if (nots != null) {
 					nots.dispatch();
 				}
 			} else {
-				final NotificationChain nots = ((InternalEObject) getOwner()).eInverseAdd(
-						(InternalEObject) referenceValue, getFeatureId(),
-						getEReference().getEType().getInstanceClass(), null);
+				final NotificationChain nots = ((InternalEObject) owner).eInverseAdd((InternalEObject) referenceValue,
+						featureId, getEReference().getEType().getInstanceClass(), null);
 				if (nots != null) {
 					nots.dispatch();
 				}
 			}
 		} else {
-			getOwner().eSet(getEReference(), referenceValue);
+			owner.eSet(getEReference(), referenceValue);
 		}
 	}
 
@@ -73,7 +71,11 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 		referenceValue = (EObject) value;
 	}
 
-	public Object get() {
+	public Object getValue() {
+		return getReferenceValue();
+	}
+
+	public Object get(InternalEObject owner) {
 		return referenceValue;
 	}
 

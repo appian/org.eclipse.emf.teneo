@@ -14,39 +14,31 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
+import org.eclipse.emf.ecore.util.DelegatingFeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * The list used in instances mapped using the EAV schema.
  */
-public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implements EAVDelegatingList {
+public class EAVDelegatingFeatureMap extends DelegatingFeatureMap implements EAVDelegatingList {
 
 	private static final long serialVersionUID = 1L;
-	private EStructuralFeature eStructuralFeature;
-	private List<E> delegate;
+	private List<FeatureMap.Entry> delegate;
 
-	public EAVDelegatingEcoreEList(InternalEObject owner) {
-		super(owner);
+	public EAVDelegatingFeatureMap(InternalEObject owner, EStructuralFeature eFeature) {
+		super(owner, eFeature);
 	}
 
 	@Override
-	protected List<E> delegateList() {
+	protected List<FeatureMap.Entry> delegateList() {
 		return delegate;
 	}
 
-	public List<E> getDelegate() {
+	public List<FeatureMap.Entry> getDelegate() {
 		return delegate;
 	}
 
-	public void setDelegate(List<E> delegate) {
+	public void setDelegate(List<FeatureMap.Entry> delegate) {
 		this.delegate = delegate;
-	}
-
-	public EStructuralFeature getEStructuralFeature() {
-		return eStructuralFeature;
-	}
-
-	public void setEStructuralFeature(EStructuralFeature eStructuralFeature) {
-		this.eStructuralFeature = eStructuralFeature;
 	}
 }

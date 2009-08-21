@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiValueHolder.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ * $Id: EAVMultiValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -33,16 +33,18 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
 public abstract class EAVMultiValueHolder extends EAVValueHolder {
-	public void setValueInOwner() {
 
-		final InternalEObject target = (InternalEObject) getOwner();
-		if (!EcoreAccess.isStaticFeature(getEStructuralFeature(), (BasicEObjectImpl) target)) {
-			Object currentValue = EcoreAccess.getManyEFeatureValue(getEStructuralFeature(), (BasicEObjectImpl) target);
+	public abstract Object getElement(Object value);
+
+	public void setValueInOwner(InternalEObject owner) {
+
+		if (!EcoreAccess.isStaticFeature(getEStructuralFeature(), (BasicEObjectImpl) owner)) {
+			Object currentValue = EcoreAccess.getManyEFeatureValue(getEStructuralFeature(), (BasicEObjectImpl) owner);
 
 			if (StoreUtil.isEStoreList(currentValue)) {
-				final EStore eStore = target.eStore();
-				if (eStore.size(target, getEStructuralFeature()) != -1) {
-					currentValue = eStore.get((InternalEObject) target, getEStructuralFeature(), EStore.NO_INDEX);
+				final EStore eStore = owner.eStore();
+				if (eStore.size(owner, getEStructuralFeature()) != -1) {
+					currentValue = eStore.get((InternalEObject) owner, getEStructuralFeature(), EStore.NO_INDEX);
 				}
 			}
 
@@ -50,22 +52,22 @@ public abstract class EAVMultiValueHolder extends EAVValueHolder {
 				return;
 			}
 
-			final Object newValue = get();
+			final Object newValue = get(owner);
 			if (newValue instanceof Map<?, ?>) {
-				EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) target);
+				EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) owner);
 			} else {
-				EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) target);
+				EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) owner);
 			}
 		} else {
-			final Field javaField = FieldUtil.getField(target.getClass(), getEStructuralFeature().getName());
+			final Field javaField = FieldUtil.getField(owner.getClass(), getEStructuralFeature().getName());
 
 			try {
-				final Object currentValue = javaField.get(target);
+				final Object currentValue = javaField.get(owner);
 				if (currentValue instanceof EAVDelegatingEcoreEList<?>) {
 					return;
 				}
-				final Object newValue = get();
-				javaField.set(target, newValue);
+				final Object newValue = get(owner);
+				javaField.set(owner, newValue);
 			} catch (Exception e) {
 				throw new IllegalStateException(e);
 			}

@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.18 2009/07/31 00:38:19 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.19 2009/08/21 10:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Properties;
@@ -23,8 +24,11 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceFileProvider;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
+import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
 import org.hibernate.Interceptor;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.event.InitializeCollectionEventListener;
@@ -37,7 +41,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -154,6 +158,26 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 			}
 		} else {
 			setMappingXML(mapEPackages());
+
+			boolean hasEAVMapping = false;
+			for (PAnnotatedEPackage aPackage : getPaModel().getPaEPackages()) {
+				for (PAnnotatedEClass aClass : aPackage.getPaEClasses()) {
+					if (aClass.getEavMapping() != null) {
+						hasEAVMapping = true;
+						break;
+					}
+				}
+			}
+			if (hasEAVMapping) {
+				try {
+					final InputStream is = EAVGenericIDUserType.class.getResourceAsStream("eav.hbm.xml");
+					getConfiguration().addInputStream(is);
+					is.close();
+				} catch (IOException e) {
+					throw new IllegalStateException(e);
+				}
+			}
+
 			getConfiguration().addXML(getMappingXML());
 		}
 	}

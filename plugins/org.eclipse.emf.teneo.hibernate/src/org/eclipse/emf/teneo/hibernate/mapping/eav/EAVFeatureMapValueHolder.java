@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiEAttributeValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVFeatureMapValueHolder.java,v 1.1 2009/08/21 10:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -21,21 +21,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * This class holds a multi (ismany) EAttribute value.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
-public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
+public class EAVFeatureMapValueHolder extends EAVMultiValueHolder {
 
-	private List<EAVSingleEAttributeValueHolder> values;
+	private List<EAVFeatureMapEntryValueHolder> values;
 
 	public void set(Object value) {
 		final List<?> listValues = (List<?>) value;
-		values = new ArrayList<EAVSingleEAttributeValueHolder>();
+		values = new ArrayList<EAVFeatureMapEntryValueHolder>();
 		for (Object o : listValues) {
-			values.add((EAVSingleEAttributeValueHolder) getElement(o));
+			values.add((EAVFeatureMapEntryValueHolder) getElement(o));
 		}
 	}
 
@@ -44,28 +45,27 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 	}
 
 	public Object getElement(Object value) {
-		final EAVSingleEAttributeValueHolder valueHolder = new EAVSingleEAttributeValueHolder();
-		valueHolder.setEStructuralFeature(getEStructuralFeature());
+		final EAVFeatureMapEntryValueHolder valueHolder = new EAVFeatureMapEntryValueHolder();
 		valueHolder.set(value);
 		return valueHolder;
 	}
 
 	public Object get(InternalEObject owner) {
-		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
-		ecoreList.setEStructuralFeature(getEStructuralFeature());
-		final List<Object> objValues = new ArrayList<Object>();
-		for (EAVSingleEAttributeValueHolder valueHolder : values) {
+		final EAVDelegatingFeatureMap featureMap = new EAVDelegatingFeatureMap((InternalEObject) owner,
+				getEStructuralFeature());
+		final List<FeatureMap.Entry> objValues = new ArrayList<FeatureMap.Entry>();
+		for (EAVFeatureMapEntryValueHolder valueHolder : values) {
 			objValues.add(valueHolder.get(owner));
 		}
-		ecoreList.setDelegate(objValues);
-		return ecoreList;
+		featureMap.setDelegate(objValues);
+		return featureMap;
 	}
 
-	public List<EAVSingleEAttributeValueHolder> getValues() {
+	public List<EAVFeatureMapEntryValueHolder> getValues() {
 		return values;
 	}
 
-	public void setValues(List<EAVSingleEAttributeValueHolder> values) {
+	public void setValues(List<EAVFeatureMapEntryValueHolder> values) {
 		this.values = values;
 	}
 }

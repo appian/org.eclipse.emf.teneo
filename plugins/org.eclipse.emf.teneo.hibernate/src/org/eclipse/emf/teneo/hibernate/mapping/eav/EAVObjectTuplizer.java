@@ -11,10 +11,10 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.17 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVObjectTuplizer.java,v 1.1 2009/08/21 10:16:36 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.hibernate.tuplizer;
+package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -32,9 +32,9 @@ import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
-import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVInstantiator;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.internal.TeneoInternalEObject;
+import org.eclipse.emf.teneo.hibernate.tuplizer.EMFInstantiator;
 import org.hibernate.EntityMode;
 import org.hibernate.EntityNameResolver;
 import org.hibernate.HibernateException;
@@ -55,18 +55,16 @@ import org.hibernate.type.AbstractComponentType;
 import org.hibernate.util.ReflectHelper;
 
 /**
- * Overrides the get and setidentifier methods to get the identifier from an internal cache instead of from the EMF
- * object itself. The same behavior for the getVersion methods. Also a specific object instantiator is used to make use
- * of the emf efactories.
+ * The Tuplizer for objects mapped according to the EAV Schema.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.1 $
  */
 
-public class EMFTuplizer extends AbstractEntityTuplizer {
+public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(EMFTuplizer.class);
+	private static Log log = LogFactory.getLog(EAVObjectTuplizer.class);
 
 	/**
 	 * The mapped class, defaults to EObject for entities and to the real impl class for mapped classes
@@ -78,7 +76,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** The entitymetamodel for which this is all done */
 	// private final EntityMetamodel theEntityMetamodel;
 	/** Constructor */
-	public EMFTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
+	public EAVObjectTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
 		// theEntityMetamodel = entityMetamodel;
 		if (mappedEntity.getMappedClass() != null) {
@@ -158,7 +156,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	@Override
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
 		if (persistentClass.getEntityName().equals("EAV_EObject")) {
-			return new EAVInstantiator();
+			return null;
 		}
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
 		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());

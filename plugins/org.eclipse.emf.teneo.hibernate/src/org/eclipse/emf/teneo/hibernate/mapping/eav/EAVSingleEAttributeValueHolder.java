@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.2 2009/08/21 10:16:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -24,6 +24,7 @@ import java.util.Date;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.InternalEObject;
 
 /**
  * This class holds a single EAttribute value.
@@ -47,6 +48,11 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		longValue = 0;
 
 		objectValue = value;
+
+		// stop here as everything has been nullified anyway
+		if (value == null) {
+			return;
+		}
 
 		// do type specific handling
 		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
@@ -77,7 +83,7 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		}
 	}
 
-	public Object get() {
+	public Object get(InternalEObject owner) {
 		if (objectValue == null && stringValue != null) {
 			final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
 			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
@@ -86,8 +92,12 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		return objectValue;
 	}
 
-	public void setValueInOwner() {
-		getOwner().eSet(getEStructuralFeature(), get());
+	public Object getValue() {
+		return get(null);
+	}
+
+	public void setValueInOwner(InternalEObject owner) {
+		owner.eSet(getEStructuralFeature(), get(owner));
 	}
 
 	public String getStringValue() {

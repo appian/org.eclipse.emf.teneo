@@ -32,7 +32,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -147,7 +147,6 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 				continue;
 			}
 			final EAVValueHolder valueHolder = EAVValueHolder.create(eFeature);
-			valueHolder.setOwner(target);
 			valueHolder.set(target.eGet(eFeature));
 			valueHolders.add(valueHolder);
 		}
@@ -156,8 +155,7 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 
 	private void fillTargetObject(EObject target, List<EAVValueHolder> valueList) {
 		for (EAVValueHolder valueHolder : valueList) {
-			valueHolder.setOwner(target);
-			valueHolder.setValueInOwner();
+			valueHolder.setValueInOwner((InternalEObject) target);
 		}
 	}
 
@@ -173,40 +171,6 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 		}
 
 		@Override
-		public boolean isAdapterForType(Object type) {
-			return false;
-		}
-
-		@Override
-		public void notifyChanged(Notification notification) {
-			final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
-
-			switch (notification.getEventType()) {
-			case Notification.SET:
-				if (!eFeature.isMany()) {
-					final EAVValueHolder valueHolder = getValueHolder(eFeature);
-					valueHolder.set(notification.getNewValue());
-				}
-				break;
-			case Notification.UNSET:
-				if (!eFeature.isMany()) {
-					final EAVValueHolder valueHolder = getValueHolder(eFeature);
-					valueHolder.set(notification.getNewValue());
-				}
-				break;
-			}
-		}
-
-		private EAVValueHolder getValueHolder(EStructuralFeature eFeature) {
-			for (EAVValueHolder valueHolder : valueList) {
-				if (valueHolder.getEStructuralFeature() == eFeature) {
-					return valueHolder;
-				}
-			}
-			throw new IllegalStateException("EFeatrre " + eFeature + " not present in valueList");
-		}
-
-		@Override
 		public void setTarget(Notifier newTarget) {
 			target = newTarget;
 		}
@@ -219,5 +183,146 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 			this.valueList = valueList;
 		}
 
+		@Override
+		public boolean isAdapterForType(Object type) {
+			return false;
+		}
+
+		private EAVValueHolder getValueHolder(EStructuralFeature eFeature) {
+			for (EAVValueHolder valueHolder : valueList) {
+				if (valueHolder.getEStructuralFeature() == eFeature) {
+					return valueHolder;
+				}
+			}
+			// can happen when adding
+			return null;
+		}
+
+		@Override
+		public void notifyChanged(Notification notification) {
+			final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
+
+			final EAVValueHolder valueHolder = getValueHolder(eFeature);
+			EAVMultiValueHolder multiValueHolder = null;
+
+			List<Object> list = null;
+			if (valueHolder instanceof EAVMultiValueHolder) {
+				list = (List<Object>) valueHolder.getValue();
+				multiValueHolder = (EAVMultiValueHolder) valueHolder;
+			}
+
+			// this can happen in case of a featuremap
+			if (valueHolder == null) {
+				return;
+			}
+
+			switch (notification.getEventType()) {
+			case Notification.ADD: {
+				if (notification.getPosition() != Notification.NO_INDEX) {
+					list.add(notification.getPosition(), multiValueHolder.getElement(notification.getNewValue()));
+				} else {
+					list.add(multiValueHolder.getElement(notification.getNewValue()));
+				}
+				// if (map != null) {
+				// final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getNewValue();
+				// map.put(entry.getKey(), entry.getValue());
+				// }
+			}
+				break;
+			case Notification.ADD_MANY: {
+				final List<Object> values = new ArrayList<Object>();
+				for (Object o : (List<Object>) notification.getNewValue()) {
+					values.add(multiValueHolder.getElement(o));
+				}
+				if (notification.getPosition() != Notification.NO_INDEX) {
+					list.addAll(notification.getPosition(), values);
+				} else {
+					list.addAll(values);
+				}
+				// if (map != null) {
+				// for (Object o : (List<?>) notification.getNewValue()) {
+				// final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+				// map.put(entry.getKey(), entry.getValue());
+				// }
+				// }
+			}
+				break;
+			case Notification.REMOVE: {
+				int removeIndex = notification.getPosition();
+				if (removeIndex == Notification.NO_INDEX) {
+					final Object oldValue = notification.getOldValue();
+					for (Object o : list) {
+						final EAVValueHolder elemValue = (EAVValueHolder) o;
+						if (elemValue.getValue() != null && oldValue != null && elemValue.getValue().equals(oldValue)) {
+							removeIndex = list.indexOf(o);
+							break;
+						} else if (elemValue.getValue() == oldValue) {
+							removeIndex = list.indexOf(o);
+							break;
+						}
+					}
+				}
+
+				if (removeIndex != Notification.NO_INDEX) {
+					list.remove(removeIndex);
+				}
+				// if (map != null) {
+				// final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getOldValue();
+				// map.remove(entry.getKey());
+				// }
+			}
+				break;
+			case Notification.REMOVE_MANY:
+				final List<?> oldValues = (List<?>) notification.getOldValue();
+				for (Object oldValue : oldValues) {
+					int removeIndex = notification.getPosition();
+					if (removeIndex == Notification.NO_INDEX) {
+						for (Object o : list) {
+							final EAVValueHolder elemValue = (EAVValueHolder) o;
+							if (elemValue.getValue() != null && oldValue != null
+									&& elemValue.getValue().equals(oldValue)) {
+								removeIndex = list.indexOf(o);
+								break;
+							} else if (elemValue.getValue() == oldValue) {
+								removeIndex = list.indexOf(o);
+								break;
+							}
+						}
+					}
+
+					if (removeIndex != Notification.NO_INDEX) {
+						list.remove(removeIndex);
+					}
+				}
+				// if (map != null) {
+				// for (Object o : (List<?>) notification.getOldValue()) {
+				// final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+				// map.remove(entry.getKey());
+				// }
+				// }
+				break;
+			case Notification.MOVE:
+				if (list != null) {
+					final int oldPosition = (Integer) notification.getOldValue();
+					final int newPosition = notification.getPosition();
+					final Object o = list.remove(oldPosition);
+					list.add(newPosition, o);
+				}
+				break;
+			case Notification.SET:
+				if (eFeature.isMany()) {
+					final int position = notification.getPosition();
+					list.set(position, multiValueHolder.getElement(notification.getNewValue()));
+				} else {
+					valueHolder.set(notification.getNewValue());
+				}
+				break;
+			case Notification.UNSET:
+				if (!eFeature.isMany()) {
+					valueHolder.set(notification.getNewValue());
+				}
+				break;
+			}
+		}
 	}
 }

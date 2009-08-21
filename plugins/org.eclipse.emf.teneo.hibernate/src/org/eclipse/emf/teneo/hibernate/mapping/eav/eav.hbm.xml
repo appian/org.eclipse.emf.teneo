@@ -2,8 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<class name="org.eclipse.emf.ecore.impl.EObjectImpl" entity-name="EAV_EObject" abstract="false"
+	<class name="org.eclipse.emf.ecore.impl.EObjectImpl" entity-name="EAV_EObject" abstract="true"
 		lazy="false" discriminator-value="eav_eobject" table="`eav_eobject`">
+		
+		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>
+
 		<id type="long" name="e_id" column="e_id"
 			access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
@@ -34,8 +37,6 @@
 		<version name="version" column="eav_version" />
 		<property name="feature" type="org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType"
 			not-null="true" />
-		<many-to-one name="owner" entity-name="EAV_EObject"
-			cascade="persist, merge, save-update, evict, replicate, lock, refresh" not-null="true" />
 	</class>
 	<subclass name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVSingleEAttributeValueHolder"
 		entity-name="EAVSingleEAttributeValueHolder" abstract="false" lazy="false" extends="EAV_Value"
@@ -62,6 +63,38 @@
 			<one-to-many entity-name="EAVSingleEAttributeValueHolder" />
 		</list>
 	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVFeatureMapValueHolder"
+		entity-name="EAVFeatureMapValueHolder" abstract="false" lazy="false" extends="EAV_Value"
+		discriminator-value="EAVFeatureMapValueHolder">
+		
+		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
+		
+		<list name="values" lazy="false" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`values_holder_id`" not-null="false" unique="false" />
+			</key>
+			<list-index column="`values_holder_idx`" />
+			<one-to-many entity-name="EAVFeatureMapEntryValueHolder" />
+		</list>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVFeatureMapEntryValueHolder"
+		entity-name="EAVFeatureMapEntryValueHolder" abstract="false" lazy="false" extends="EAVSingleEAttributeValueHolder"
+		discriminator-value="EAVFeatureMapEntryValueHolder">		
+		
+		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
+		
+		<any name="referenceValue" cascade="persist, save-update, merge, evict, replicate, refresh"
+			id-type="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType" meta-type="string">
+			<column not-null="false" unique="false" name="`ref_type`" />
+			<column not-null="false" unique="false" name="`ref_id`" />
+		</any>
+		
+		<any name="containedReferenceValue" cascade="persist, save-update, merge, delete, evict, replicate, refresh"
+			id-type="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType" meta-type="string">
+			<column not-null="false" unique="false" name="`con_ref_type`" />
+			<column not-null="false" unique="false" name="`con_ref_id`" />
+		</any>
+	</subclass>
 	<subclass
 		name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVSingleNonContainmentEReferenceValueHolder"
 		entity-name="EAVSingleNonContainmentEReferenceValueHolder" abstract="false" lazy="false" extends="EAV_Value"
@@ -69,7 +102,7 @@
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
 		
-		<any name="referenceValue" cascade="persist, save-update, merge, evict, replicate, lock, refresh"
+		<any name="referenceValue" cascade="persist, save-update, merge, evict, replicate, refresh"
 			id-type="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType" meta-type="string">
 			<column not-null="false" unique="false" name="`ref_type`" />
 			<column not-null="false" unique="false" name="`ref_id`" />
@@ -81,7 +114,7 @@
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
 		
-		<any name="referenceValue" cascade="persist, merge, save-update, evict, delete, replicate, lock, refresh"
+		<any name="referenceValue" cascade="persist, merge, save-update, evict, delete, replicate, refresh"
 			id-type="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType" meta-type="string">
 			<column not-null="false" unique="false" name="`con_ref_type`" />
 			<column not-null="false" unique="false" name="`con_ref_id`" />
@@ -98,11 +131,7 @@
 				<column name="`values_holder_id`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`values_holder_idx`" />
-			<many-to-any id-type="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType"
-				meta-type="string">
-				<column not-null="false" unique="false" name="`ref_type`" />
-				<column not-null="false" unique="false" name="`ref_id`" />
-			</many-to-any>
+			<one-to-many entity-name="EAVSingleContainmentEReferenceValueHolder"/>
 		</list>
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVMultiNonContainmentEReferenceValueHolder"
@@ -116,11 +145,7 @@
 				<column name="`values_holder_id`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`values_holder_idx`" />
-			<many-to-any id-type="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType"
-				meta-type="string">
-				<column not-null="false" unique="false" name="`ref_type`" />
-				<column not-null="false" unique="false" name="`ref_id`" />
-			</many-to-any>
+			<one-to-many entity-name="EAVSingleNonContainmentEReferenceValueHolder"/>
 		</list>
 	</subclass>
 </hibernate-mapping>

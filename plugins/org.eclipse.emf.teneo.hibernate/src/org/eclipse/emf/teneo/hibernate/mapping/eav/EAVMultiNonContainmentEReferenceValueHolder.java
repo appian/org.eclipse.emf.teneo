@@ -12,14 +12,14 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
@@ -29,29 +29,44 @@ import org.eclipse.emf.ecore.InternalEObject;
  */
 public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHolder {
 
-	private List<Object> referenceValues;
+	private List<EAVSingleNonContainmentEReferenceValueHolder> referenceValues;
 
 	@SuppressWarnings("unchecked")
 	public void set(Object value) {
-		referenceValues = (List<Object>) value;
+		final List<?> values = (List<Object>) value;
+		referenceValues = new ArrayList<EAVSingleNonContainmentEReferenceValueHolder>();
+		for (Object o : values) {
+			referenceValues.add((EAVSingleNonContainmentEReferenceValueHolder) getElement(o));
+		}
 	}
 
-	public Object get() {
-		if (referenceValues instanceof EList<?>) {
-			return referenceValues;
+	public Object getElement(Object value) {
+		EAVSingleNonContainmentEReferenceValueHolder valueHolder = new EAVSingleNonContainmentEReferenceValueHolder();
+		valueHolder.setEStructuralFeature(getEStructuralFeature());
+		valueHolder.set(value);
+		return valueHolder;
+	}
+
+	public Object get(InternalEObject owner) {
+		final List<Object> values = new ArrayList<Object>();
+		for (EAVSingleNonContainmentEReferenceValueHolder valueHolder : referenceValues) {
+			values.add(valueHolder.getReferenceValue());
 		}
-		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>(
-				(InternalEObject) getOwner());
+		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
-		ecoreList.setDelegate(referenceValues);
+		ecoreList.setDelegate(values);
 		return ecoreList;
 	}
 
-	public List<Object> getReferenceValues() {
+	public Object getValue() {
+		return getReferenceValues();
+	}
+
+	public List<EAVSingleNonContainmentEReferenceValueHolder> getReferenceValues() {
 		return referenceValues;
 	}
 
-	public void setReferenceValues(List<Object> referenceValues) {
+	public void setReferenceValues(List<EAVSingleNonContainmentEReferenceValueHolder> referenceValues) {
 		this.referenceValues = referenceValues;
 	}
 }
