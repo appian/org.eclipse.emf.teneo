@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FleetAction.java,v 1.2 2009/03/15 14:49:53 mtaal Exp $
+ * $Id: FleetAction.java,v 1.3 2009/08/21 15:02:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,13 +37,12 @@ import fleet.VehicleInfo;
  * Tests EStore
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class FleetAction extends AbstractTestAction {
 
 	public FleetAction() {
-		super(new EPackage[] { FleetPackage.eINSTANCE,
-				TemporalPackage.eINSTANCE });
+		super(new EPackage[] { FleetPackage.eINSTANCE, TemporalPackage.eINSTANCE });
 	}
 
 	@Override

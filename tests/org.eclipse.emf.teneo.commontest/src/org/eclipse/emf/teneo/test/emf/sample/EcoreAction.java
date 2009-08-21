@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.15 2008/06/02 07:15:39 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.16 2009/08/21 15:02:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -34,11 +35,10 @@ import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests persisting of ecore models in a relational store. Only stores them and then reads them
- * again.
+ * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -72,15 +72,22 @@ public class EcoreAction extends AbstractTestAction {
 		try {
 			// read from the resource
 			{
-				// a file handle to the current class
-				// the play.xml is in the model directory
-				resourceOne.load(this.getClass().getResourceAsStream("library.ecore"), Collections.EMPTY_MAP);
+				resourceOne.load(EcoreAction.class.getResourceAsStream("library.ecore"), Collections.EMPTY_MAP);
 				// EPackage epack = (EPackage)resource.getContents().get(0);
 				// resource.unload();
-				store.beginTransaction();
 				final EPackage epack = (EPackage) resourceOne.getContents().get(0);
-				store.store(epack);
+
+				// some logic adds adapters (for example the EAV schema, get rid of them...)
+				for (TreeIterator<EObject> it = epack.eAllContents(); it.hasNext();) {
+					it.next().eAdapters().clear();
+				}
 				final EPackage ecorePackage = EcorePackage.eINSTANCE;
+				for (TreeIterator<EObject> it = ecorePackage.eAllContents(); it.hasNext();) {
+					it.next().eAdapters().clear();
+				}
+
+				store.beginTransaction();
+				store.store(epack);
 				store.store(ecorePackage);
 				store.commitTransaction();
 			}
@@ -92,16 +99,16 @@ public class EcoreAction extends AbstractTestAction {
 				store.beginTransaction();
 				final List<?> result = store.getObjects(EPackage.class);
 				// get the library ecore from the result
-// EPackage libEPack = null;
+				// EPackage libEPack = null;
 				for (int i = 0; i < result.size(); i++) {
 					final EPackage epack = (EPackage) result.get(i);
 					resourceTwo.getContents().add(epack);
 					// very simple test on name, ouch!
-// if (epack.getName().compareToIgnoreCase("library") == 0) {
-// libEPack = epack;
-// }
+					// if (epack.getName().compareToIgnoreCase("library") == 0) {
+					// libEPack = epack;
+					// }
 				}
-// assertNotNull(libEPack);
+				// assertNotNull(libEPack);
 				// just iterate over the contents
 				int cnt = 0;
 				final Iterator<?> it = resourceTwo.getAllContents();
@@ -128,23 +135,23 @@ public class EcoreAction extends AbstractTestAction {
 			// now try the debfile
 			{
 				final Resource fileRes = new XMIResourceImpl();
-				fileRes.load(this.getClass().getResourceAsStream("debFile.ecore"), Collections.EMPTY_MAP);
+				fileRes.load(EcoreAction.class.getResourceAsStream("debFile.ecore"), Collections.EMPTY_MAP);
 				store.beginTransaction();
 				for (Object o : fileRes.getContents()) {
 					store.store(o);
 				}
 				store.commitTransaction();
 			}
-// {
-// store.beginTransaction();
-// final Resource res = new XMIResourceImpl();
-// for (Object o : store.getObjects(EPackage.class)) {
-// res.getContents().add((EObject) o);
-// }
-// final OutputStream os = new FileOutputStream("/home/mtaal/mytmp/test.ecore");
-// res.save(os, Collections.EMPTY_MAP);
-// store.commitTransaction();
-// }
+			// {
+			// store.beginTransaction();
+			// final Resource res = new XMIResourceImpl();
+			// for (Object o : store.getObjects(EPackage.class)) {
+			// res.getContents().add((EObject) o);
+			// }
+			// final OutputStream os = new FileOutputStream("/home/mtaal/mytmp/test.ecore");
+			// res.save(os, Collections.EMPTY_MAP);
+			// store.commitTransaction();
+			// }
 
 		} catch (Exception e) {
 			throw new StoreTestException("Exception when testing persistence of ecore", e);
