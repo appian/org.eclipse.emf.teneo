@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ProductAction.java,v 1.10 2008/06/02 07:15:39 mtaal Exp $
+ * $Id: ProductAction.java,v 1.11 2009/08/21 10:16:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -30,11 +30,11 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Very simple emf test which tests a simple relation between a product and its supplier and some
- * primitive types (double and date).
+ * Very simple emf test which tests a simple relation between a product and its supplier and some primitive types
+ * (double and date).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class ProductAction extends AbstractTestAction {
 	public ProductAction() {
@@ -120,10 +120,9 @@ public class ProductAction extends AbstractTestAction {
 
 		// test update of pk, is not supported by hb
 		/*
-		 * { store.beginTransaction(); ProductTypeImpl result = (ProductTypeImpl)
-		 * store.getObject(ProductType.class); result.setId("newid"); store.store(result);
-		 * store.commitTransaction(); } { store.beginTransaction(); ProductTypeImpl result =
-		 * (ProductTypeImpl) store.getObject(ProductType.class); assertEquals("newid",
+		 * { store.beginTransaction(); ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
+		 * result.setId("newid"); store.store(result); store.commitTransaction(); } { store.beginTransaction();
+		 * ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class); assertEquals("newid",
 		 * result.getId()); store.commitTransaction(); }
 		 */
 	}
