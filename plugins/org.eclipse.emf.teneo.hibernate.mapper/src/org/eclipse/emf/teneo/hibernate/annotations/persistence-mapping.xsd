@@ -57,6 +57,7 @@
 			<xsd:element name="discriminator-column" type="DiscriminatorColumn" minOccurs="0"/>
 			<xsd:element name="discriminator-formula" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="discriminator-value" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="eav-mapping" type="EAVMapping" minOccurs="0"/>
 			<xsd:element name="embeddable" type="Embeddable" minOccurs="0"/>
 			<xsd:element name="entity" type="Entity" minOccurs="0"/>
 			<xsd:element name="force-discriminator" type="ForceDiscriminator" minOccurs="0"/>
@@ -559,6 +560,7 @@
 		<xsd:enumeration value="INTEGER"/>
 	</xsd:restriction>
 </xsd:simpleType>
+<xsd:complexType name="EAVMapping"/>
 <xsd:complexType name="Embeddable"/>
 <xsd:complexType name="Embedded"/>
 <xsd:complexType name="EmbeddedId"/>
