@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.56 2009/08/21 10:16:26 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.57 2009/08/22 00:12:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -364,7 +364,8 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String AUTO_ADD_REFERENCED_EPACKAGES = MAPPING_PREFIX + "auto_add_referenced_epackages";
 
 	/**
-	 * If set to true then the system will map all eclasses as an EAV mapping
+	 * If set to true then the system will map all eclasses as an EAV mapping. See
+	 * http://www.elver.org/hibernate/eav_mapping.html
 	 */
 	public static final String EAV_MAPPING = MAPPING_PREFIX + "eav_mapping";
 

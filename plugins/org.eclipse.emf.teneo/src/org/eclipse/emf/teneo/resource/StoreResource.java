@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.39 2009/04/03 06:15:36 mtaal Exp $
+ * $Id: StoreResource.java,v 1.40 2009/08/22 00:12:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -58,7 +58,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.39 $
+ * @version $Revision: 1.40 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -500,6 +500,27 @@ public abstract class StoreResource extends ResourceImpl {
 
 			return notifications;
 		}
+
+		// reimplement the contains because the super class does something strange with checking
+		// the eresource of the object, this implementation needs to check the actual content
+		public boolean contains(Object object) {
+			if (useEquals() && object != null) {
+				for (int i = 0; i < size; ++i) {
+					if (object.equals(data[i])) {
+						return true;
+					}
+				}
+			} else {
+				for (int i = 0; i < size; ++i) {
+					if (data[i] == object) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
 	}
 
 	/**
