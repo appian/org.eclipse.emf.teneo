@@ -35,13 +35,31 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(SubstitutionEAVAction.class);
+		suite.addTestSuite(EMapAsListEAVAction.class);
+		suite.addTestSuite(GroupEAVAction.class);
+		suite.addTestSuite(DateTimeEAVAction.class);
+		// QNameEAVAction fails because the xml EFactory convertToString does not
+		// convert the name space uri, only the prefix
+		// suite.addTestSuite(QNameEAVAction.class);
+		suite.addTestSuite(AttributesEAVAction.class);
+		suite.addTestSuite(ExtensionEAVAction.class);
+		suite.addTestSuite(DocumentRootEAVAction.class);
+		suite.addTestSuite(ListEAVAction.class);
+		suite.addTestSuite(MixedEAVAction.class);
+		suite.addTestSuite(NestedGroupEAVAction.class);
+		suite.addTestSuite(SimplefeaturemapEAVAction.class);
+		suite.addTestSuite(SimpleTypeEAVAction.class);
+		suite.addTestSuite(SubstitutionzvonEAVAction.class);
+		suite.addTestSuite(EcoreAttrsEAVAction.class);
+
 		suite.addTestSuite(DocumentRootAction.class);
 		suite.addTestSuite(SubstitutionzvonAction.class);
 		suite.addTestSuite(EMapAction.class);

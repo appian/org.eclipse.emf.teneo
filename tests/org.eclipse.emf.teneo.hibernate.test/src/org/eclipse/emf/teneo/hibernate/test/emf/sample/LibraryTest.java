@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.13 2009/03/30 07:53:18 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.14 2009/08/22 00:18:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -91,7 +91,7 @@ public class LibraryTest extends AbstractActionTest {
 		@Override
 		protected void dumpPAModel(TestStore testStore) {
 			final HibernateTestStore hts = (HibernateTestStore) testStore;
-			System.err.println(hts.getEmfDataStore().getPaModel().toXML());
+			// System.err.println(hts.getEmfDataStore().getPaModel().toXML());
 		}
 
 	};

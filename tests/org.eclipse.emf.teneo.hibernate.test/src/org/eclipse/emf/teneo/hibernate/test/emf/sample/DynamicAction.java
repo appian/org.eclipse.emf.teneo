@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -161,7 +161,7 @@ public class DynamicAction extends AbstractTestAction {
 			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
 			store.updateSchema();
-			System.err.println(store.getMappingXML());
+			// System.err.println(store.getMappingXML());
 		}
 
 		// return from here in case of hsqldb because hsqldb does
