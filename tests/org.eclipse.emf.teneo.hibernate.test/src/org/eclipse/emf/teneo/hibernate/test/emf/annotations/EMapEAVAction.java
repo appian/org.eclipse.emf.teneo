@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapEAVAction.java,v 1.1 2009/08/21 15:02:11 mtaal Exp $
+ * $Id: EMapEAVAction.java,v 1.2 2009/08/22 00:17:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests featuremap with a EAV mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EMapEAVAction extends AbstractTestAction {
 
@@ -121,8 +121,8 @@ public class EMapEAVAction extends AbstractTestAction {
 					ws.add(obj);
 				}
 			}
-			assertTrue(bks.size() == 2);
-			assertTrue(ws.size() == 4);
+			assertEquals(2, bks.size());
+			assertEquals(4, ws.size());
 			res.save(Collections.EMPTY_MAP);
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
