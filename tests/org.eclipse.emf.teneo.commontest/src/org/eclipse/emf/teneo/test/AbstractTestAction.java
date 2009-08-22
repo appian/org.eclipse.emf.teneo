@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AbstractTestAction.java,v 1.7 2008/06/02 07:15:40 mtaal Exp $
+ * $Id: AbstractTestAction.java,v 1.8 2009/08/22 00:10:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test;
@@ -30,14 +30,14 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Abstract TestAction used in backend specific test cases.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public abstract class AbstractTestAction extends Assert {
 	// very strange but there was a compile (or runtime) error in one of the ecore packages, had to
 	// set this
 	static {
 		System.setProperty("org.eclipse.emf.ecore.EPackage.Registry.INSTANCE",
-			"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
+				"org.eclipse.emf.ecore.impl.EPackageRegistryImpl");
 	}
 
 	/** The epackage */
@@ -82,8 +82,7 @@ public abstract class AbstractTestAction extends Assert {
 	public abstract void doAction(TestStore store);
 
 	/**
-	 * Can be overridden by subclass returns properties which control the or layer. Such as setting
-	 * of eager loading.
+	 * Can be overridden by subclass returns properties which control the or layer. Such as setting of eager loading.
 	 */
 	public Properties getExtraConfigurationProperties() {
 		return new Properties();
@@ -95,15 +94,13 @@ public abstract class AbstractTestAction extends Assert {
 	}
 
 	/**
-	 * Returns the path of the XML persistence mapping file on the classpath or null if none is
-	 * available.
+	 * Returns the path of the XML persistence mapping file on the classpath or null if none is available.
 	 * <p>
-	 * Returning non-null will cause the TestAction to be run twice: first for a PAnnotatedModel
-	 * populated from EAnnotations and then for a PAnnotatedModel populated from the XML persistence
-	 * mapping.
+	 * Returning non-null will cause the TestAction to be run twice: first for a PAnnotatedModel populated from
+	 * EAnnotations and then for a PAnnotatedModel populated from the XML persistence mapping.
 	 * <p>
-	 * This implementation looks for a mapping file on the classpath named &lt;class
-	 * name&gt;.persistence.xml, returning its path if it exists or null if it does not.
+	 * This implementation looks for a mapping file on the classpath named &lt;class name&gt;.persistence.xml, returning
+	 * its path if it exists or null if it does not.
 	 * 
 	 * @see ConfigurableTestSuite
 	 */
@@ -115,5 +112,9 @@ public abstract class AbstractTestAction extends Assert {
 			return null;
 		}
 		return path;
+	}
+
+	protected boolean isEAVTest() {
+		return this.getClass().getName().contains("EAV");
 	}
 }

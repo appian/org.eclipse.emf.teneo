@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple types are stored/retrieved correctly.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class SimpleTypeAction extends AbstractTestAction {
 	/** Simple Type Values we test against */
@@ -106,11 +106,9 @@ public class SimpleTypeAction extends AbstractTestAction {
 			// hsqldb does not support column length, at least not in in-mem
 			// mode
 			if (!(store.getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter)) {
-				assertEquals(STRING.substring(0, 5), result
-						.getExtraLimitedString());
+				assertEquals(STRING.substring(0, 5), result.getExtraLimitedString());
 			}
-			assertEquals(bigDecimalTwo.floatValue(), result.getLimitedDecimal()
-					.floatValue(), 0.11);
+			assertEquals(bigDecimalTwo.floatValue(), result.getLimitedDecimal().floatValue(), 0.11);
 			store.deleteObject(result);
 			store.commitTransaction();
 		}
@@ -259,7 +257,10 @@ public class SimpleTypeAction extends AbstractTestAction {
 			try {
 				store.store(stype);
 				store.commitTransaction();
-				fail();
+				// EAV does not do size checking on db level
+				if (!isEAVTest()) {
+					fail();
+				}
 			} catch (Exception e) {
 				// okay, the size limit is checked
 			}
@@ -329,8 +330,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		assertEquals(objs.length, list.size());
 
 		for (int i = 0; i < list.size(); i++) {
-			assertEquals(objs[i].booleanValue(), ((Boolean) list.get(i))
-					.booleanValue());
+			assertEquals(objs[i].booleanValue(), ((Boolean) list.get(i)).booleanValue());
 		}
 	}
 
@@ -348,8 +348,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		assertEquals(objs.length, list.size());
 
 		for (int i = 0; i < list.size(); i++) {
-			assertEquals(objs[i].shortValue(), ((Short) list.get(i))
-					.shortValue());
+			assertEquals(objs[i].shortValue(), ((Short) list.get(i)).shortValue());
 		}
 	}
 
@@ -376,8 +375,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		assertEquals(objs.length, list.size());
 
 		for (int i = 0; i < list.size(); i++) {
-			assertEquals(objs[i].floatValue(), ((Float) list.get(i))
-					.floatValue(), 0.01);
+			assertEquals(objs[i].floatValue(), ((Float) list.get(i)).floatValue(), 0.01);
 		}
 	}
 
@@ -386,8 +384,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		assertEquals(objs.length, list.size());
 
 		for (int i = 0; i < list.size(); i++) {
-			assertEquals(objs[i].doubleValue(), ((Double) list.get(i))
-					.doubleValue(), 0.01);
+			assertEquals(objs[i].doubleValue(), ((Double) list.get(i)).doubleValue(), 0.01);
 		}
 	}
 
@@ -424,8 +421,7 @@ public class SimpleTypeAction extends AbstractTestAction {
 		boolean res = true;
 		res &= cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
 		res &= cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
-		res &= cal1.get(Calendar.DAY_OF_MONTH) == cal2
-				.get(Calendar.DAY_OF_MONTH);
+		res &= cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
 		// disabled this because the database stores dates and not timestamps
 		// and this
 		// results in small time differences

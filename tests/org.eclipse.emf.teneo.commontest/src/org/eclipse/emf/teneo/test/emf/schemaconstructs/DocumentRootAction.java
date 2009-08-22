@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DocumentRootAction.java,v 1.2 2009/07/28 03:40:00 mtaal Exp $
+ * $Id: DocumentRootAction.java,v 1.3 2009/08/22 00:10:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting DocumentRoot.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DocumentRootAction extends AbstractTestAction {
 
@@ -109,7 +109,7 @@ public class DocumentRootAction extends AbstractTestAction {
 
 	private Resource readResource(String fileName) {
 		// read the xml's
-		final URL url = this.getClass().getResource(fileName);
+		final URL url = DocumentRootAction.class.getResource(fileName);
 		final Resource resource = new DocumentrootResourceFactoryImpl().createResource(URI.createURI(url.toString()));
 		// xmlResource.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		// xmlResource.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

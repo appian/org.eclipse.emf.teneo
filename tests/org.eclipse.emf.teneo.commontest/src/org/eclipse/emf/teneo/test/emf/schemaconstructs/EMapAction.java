@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.13 2009/03/15 08:09:27 mtaal Exp $
+ * $Id: EMapAction.java,v 1.14 2009/08/22 00:10:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -27,7 +27,6 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Category;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
@@ -43,7 +42,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class EMapAction extends AbstractTestAction {
 
@@ -62,9 +61,7 @@ public class EMapAction extends AbstractTestAction {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
-	 * ()
+	 * @see org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties ()
 	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
@@ -104,25 +101,17 @@ public class EMapAction extends AbstractTestAction {
 			for (Object obj : res.getContents()) {
 				if (obj instanceof Book) {
 					final Book bk = (Book) obj;
-					if (bk.getWriters() instanceof PersistableDelegateList) {
-						// check lazy load
-						// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
-						// now load
-						assertTrue(bk.getWriters().size() == 2);
-
-						// disabled as hibernate and jpox differ here
-						// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
-					} else {
-						fail("Type not supported "
-								+ bk.getWriters().getClass().getName());
-					}
+					// check lazy load
+					// assertTrue(!((PersistableDelegateList)bk.getWriters()).isLoaded());
+					// now load
+					assertTrue(bk.getWriters().size() == 2);
 					bks.add(bk);
 				} else {
 					ws.add(obj);
 				}
 			}
-			assertTrue(bks.size() == 2);
-			assertTrue(ws.size() == 4);
+			assertEquals(2, bks.size());
+			assertEquals(4, ws.size());
 			for (Iterator it = bks.iterator(); it.hasNext();) {
 				final Book bk = (Book) it.next();
 				int cntMatch = 0;
@@ -137,8 +126,7 @@ public class EMapAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			res.unload();
 		} catch (Exception e) {
-			throw new StoreTestException(
-					"Exception when testing with resource", e);
+			throw new StoreTestException("Exception when testing with resource", e);
 		}
 
 		{
@@ -158,8 +146,7 @@ public class EMapAction extends AbstractTestAction {
 			res.save(Collections.EMPTY_MAP);
 			store.commitTransaction();
 		} catch (Exception e) {
-			throw new StoreTestException(
-					"Exception when testing with resource", e);
+			throw new StoreTestException("Exception when testing with resource", e);
 		}
 
 		{
@@ -172,16 +159,13 @@ public class EMapAction extends AbstractTestAction {
 			w1.setName("10name1");
 			bk.getWriters().put(w1.getName(), w1);
 			bk.getCityByWriter().put(w1, "Utrecht");
-
-			final PersistentStoreAdapter adapter = StoreUtil
-					.getPersistentStoreAdapter(bk);
-			final Object ws = adapter.getStoreCollection(EmapPackage.eINSTANCE
-					.getBook_Writers());
-			final Object cbws = adapter
-					.getStoreCollection(EmapPackage.eINSTANCE
-							.getBook_CityByWriter());
-			checkEqual(ws, bk.getWriters());
-			checkEqual(cbws, bk.getCityByWriter());
+			if (!isEAVTest()) {
+				final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter(bk);
+				final Object ws = adapter.getStoreCollection(EmapPackage.eINSTANCE.getBook_Writers());
+				final Object cbws = adapter.getStoreCollection(EmapPackage.eINSTANCE.getBook_CityByWriter());
+				checkEqual(ws, bk.getWriters());
+				checkEqual(cbws, bk.getCityByWriter());
+			}
 		}
 	}
 

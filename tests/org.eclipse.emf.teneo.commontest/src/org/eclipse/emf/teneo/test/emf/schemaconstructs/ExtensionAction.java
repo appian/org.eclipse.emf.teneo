@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtensionAction.java,v 1.6 2008/04/04 11:50:31 mtaal Exp $
+ * $Id: ExtensionAction.java,v 1.7 2009/08/22 00:10:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -36,12 +36,12 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Tests for: - Restriction simple type - Extension from simple to complex type - Abstract type -
- * IDREFS - Inheritance and abstract - Extension of complex type - Reference to abstract type -
- * nillable of string (district) and integer (zip)
+ * Tests for: - Restriction simple type - Extension from simple to complex type - Abstract type - IDREFS - Inheritance
+ * and abstract - Extension of complex type - Reference to abstract type - nillable of string (district) and integer
+ * (zip)
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class ExtensionAction extends AbstractTestAction {
 
@@ -77,14 +77,14 @@ public class ExtensionAction extends AbstractTestAction {
 			emptyaddress.setStreet("empty");
 			emptyaddress.setState(USState.AL_LITERAL);
 			emptyaddress.setZip(new BigInteger("12313"));
-// if (emptyaddress.isSetState())
-// {
-// emptyaddress.unsetState();
-// }
-// if (emptyaddress.isSetZip())
-// {
-// emptyaddress.unsetZip();
-// }
+			// if (emptyaddress.isSetState())
+			// {
+			// emptyaddress.unsetState();
+			// }
+			// if (emptyaddress.isSetZip())
+			// {
+			// emptyaddress.unsetZip();
+			// }
 
 			store.store(usaddress);
 			store.store(emptyaddress);
@@ -150,9 +150,11 @@ public class ExtensionAction extends AbstractTestAction {
 			List list = store.getObjects(Address.class);
 			checkAddressList(list.iterator());
 
-			// take one address and check its crossreferencers, there should be two
-			final Object[] crs = store.getCrossReferencers((EObject) list.get(0), false);
-			assertEquals(2, crs.length);
+			if (!isEAVTest()) {
+				// take one address and check its crossreferencers, there should be two
+				final Object[] crs = store.getCrossReferencers((EObject) list.get(0), false);
+				assertEquals(2, crs.length);
+			}
 
 			store.commitTransaction();
 		}
@@ -178,8 +180,8 @@ public class ExtensionAction extends AbstractTestAction {
 				cntus++;
 
 				if (address.getName().compareTo("empty") == 0) {
-// assertFalse(((USAddress) address).isSetState());
-// assertFalse(((USAddress) address).isSetZip());
+					// assertFalse(((USAddress) address).isSetState());
+					// assertFalse(((USAddress) address).isSetZip());
 				} else {
 					assertTrue(((USAddress) address).isSetState());
 					assertTrue(((USAddress) address).isSetZip());
