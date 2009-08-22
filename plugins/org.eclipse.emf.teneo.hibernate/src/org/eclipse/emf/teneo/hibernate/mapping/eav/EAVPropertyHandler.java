@@ -32,7 +32,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -146,8 +146,11 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 			if (eFeature.isDerived() || eFeature.isTransient() || eFeature.isVolatile()) {
 				continue;
 			}
-			final EAVValueHolder valueHolder = EAVValueHolder.create(eFeature);
+			final EAVValueHolder valueHolder = EAVValueHolder.create(target, eFeature);
 			valueHolder.set(target.eGet(eFeature));
+			if (eFeature.isUnsettable()) {
+				valueHolder.setValueIsSet(target.eIsSet(eFeature));
+			}
 			valueHolders.add(valueHolder);
 		}
 		return valueHolders;

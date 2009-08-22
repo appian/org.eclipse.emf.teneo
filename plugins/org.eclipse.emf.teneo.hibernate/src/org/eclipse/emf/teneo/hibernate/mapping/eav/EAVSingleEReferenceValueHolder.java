@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEReferenceValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVSingleEReferenceValueHolder.java,v 1.3 2009/08/22 00:09:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -68,7 +68,11 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 	}
 
 	public void set(Object value) {
+		setMandatoryValue(null);
 		referenceValue = (EObject) value;
+		if (referenceValue != null) {
+			setMandatoryValue(NOT_NULL_VALUE);
+		}
 	}
 
 	public Object getValue() {

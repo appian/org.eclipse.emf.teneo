@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiEAttributeValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVMultiEAttributeValueHolder.java,v 1.3 2009/08/22 00:09:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -32,10 +32,13 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 	private List<EAVSingleEAttributeValueHolder> values;
 
 	public void set(Object value) {
+		// set to null first, if there is at least one value then it is set to a value
+		setMandatoryValue(null);
 		final List<?> listValues = (List<?>) value;
 		values = new ArrayList<EAVSingleEAttributeValueHolder>();
 		for (Object o : listValues) {
 			values.add((EAVSingleEAttributeValueHolder) getElement(o));
+			setMandatoryValue(NOT_NULL_VALUE);
 		}
 	}
 
@@ -47,6 +50,7 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 		final EAVSingleEAttributeValueHolder valueHolder = new EAVSingleEAttributeValueHolder();
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
 		valueHolder.set(value);
+		valueHolder.setOwner(getOwner());
 		return valueHolder;
 	}
 

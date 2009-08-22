@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.2 2009/08/21 10:16:35 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.3 2009/08/22 00:09:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -46,6 +46,8 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		dateValue = null;
 		numericValue = null;
 		longValue = 0;
+		setValueIsSet(false);
+		setMandatoryValue(null);
 
 		objectValue = value;
 
@@ -53,6 +55,9 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		if (value == null) {
 			return;
 		}
+
+		// value is not null, set the mandatory trigger
+		setMandatoryValue(NOT_NULL_VALUE);
 
 		// do type specific handling
 		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
@@ -97,7 +102,11 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 	}
 
 	public void setValueInOwner(InternalEObject owner) {
-		owner.eSet(getEStructuralFeature(), get(owner));
+		if (getEStructuralFeature().isUnsettable() && !isValueIsSet()) {
+			owner.eUnset(getEStructuralFeature());
+		} else {
+			owner.eSet(getEStructuralFeature(), get(owner));
+		}
 	}
 
 	public String getStringValue() {

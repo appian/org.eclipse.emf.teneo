@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.3 2009/08/21 15:01:58 mtaal Exp $
+ * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.4 2009/08/22 00:09:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -24,6 +24,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -38,10 +39,13 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 
 	@SuppressWarnings("unchecked")
 	public void set(Object value) {
+		// set to null first, if there is at least one value then it is set to a value
+		setMandatoryValue(null);
 		final List<?> values = (List<Object>) value;
 		referenceValues = new ArrayList<EAVSingleContainmentEReferenceValueHolder>();
 		for (Object o : values) {
 			referenceValues.add((EAVSingleContainmentEReferenceValueHolder) getElement(o));
+			setMandatoryValue(NOT_NULL_VALUE);
 		}
 	}
 
@@ -49,6 +53,7 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 		EAVSingleContainmentEReferenceValueHolder valueHolder = new EAVSingleContainmentEReferenceValueHolder();
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
 		valueHolder.set(value);
+		valueHolder.setOwner(getOwner());
 		return valueHolder;
 	}
 
@@ -69,10 +74,13 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 			}
 
 			final int featureID = owner.eClass().getFeatureID(getEStructuralFeature());
-			final EAVEMap<Object, Object> eMap = new EAVEMap<Object, Object>(entryEClass, entryClass, owner, featureID);
+			final EcoreEMap<Object, Object> eMap = new EcoreEMap<Object, Object>(entryEClass, entryClass, owner,
+					featureID);
 			for (BasicEMap.Entry<Object, Object> entry : values) {
-				eMap.addToMap(entry);
+				eMap.basicAdd(entry, null);
 			}
+			// force the map to be computed, this sets the internal entrydata/size member
+			eMap.get(null);
 			ecoreObjectList = eMap;
 		} else {
 			final List<Object> values = new ArrayList<Object>();

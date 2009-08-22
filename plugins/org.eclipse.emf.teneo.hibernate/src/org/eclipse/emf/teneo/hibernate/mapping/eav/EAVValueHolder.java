@@ -12,11 +12,12 @@
  *
  * </copyright>
  *
- * $Id: EAVValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVValueHolder.java,v 1.3 2009/08/22 00:09:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -44,7 +45,9 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
 public abstract class EAVValueHolder {
 
-	public static EAVValueHolder create(EStructuralFeature eFeature) {
+	protected static Integer NOT_NULL_VALUE = new Integer(1);
+
+	public static EAVValueHolder create(EObject owner, EStructuralFeature eFeature) {
 		final EAVValueHolder valueHolder;
 		if (eFeature instanceof EReference) {
 			final EReference eReference = (EReference) eFeature;
@@ -71,12 +74,24 @@ public abstract class EAVValueHolder {
 			}
 		}
 		valueHolder.setEStructuralFeature(eFeature);
+		valueHolder.setOwner(owner);
 		return valueHolder;
 	}
 
 	private long id;
 	private int version;
 	private EStructuralFeature eStructuralFeature;
+	private boolean valueIsSet;
+	private EObject owner;
+
+	// the mandatoryValue is used as follows.
+	// it is defined as mandatory in the hibernate mapping
+	// if !eStructuralFeature.isRequired then it is always set to the NOT_NULL_VALUE
+	// if eStructuralFeature.isRequired then it is set if the value of the EStructuralFeature
+	// is set.
+	// in this way the mandatory value check is executed by hibernate on the basis
+	// of eStructuralFeature.isRequired
+	private Integer mandatoryValue = null;
 
 	public abstract void set(Object value);
 
@@ -119,5 +134,33 @@ public abstract class EAVValueHolder {
 	public void setFeature(EStructuralFeature eStructuralFeature) {
 		// setEStructuralFeature is overridden by subclasses
 		setEStructuralFeature(eStructuralFeature);
+	}
+
+	public boolean isValueIsSet() {
+		return valueIsSet;
+	}
+
+	public void setValueIsSet(boolean valueIsSet) {
+		this.valueIsSet = valueIsSet;
+	}
+
+	public Integer getMandatoryValue() {
+		// if not required then the not-value is set always
+		if (!getEStructuralFeature().isRequired()) {
+			return NOT_NULL_VALUE;
+		}
+		return mandatoryValue;
+	}
+
+	public void setMandatoryValue(Integer mandatoryValue) {
+		this.mandatoryValue = mandatoryValue;
+	}
+
+	public EObject getOwner() {
+		return owner;
+	}
+
+	public void setOwner(EObject owner) {
+		this.owner = owner;
 	}
 }

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.3 2009/08/22 00:09:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -33,10 +33,13 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 
 	@SuppressWarnings("unchecked")
 	public void set(Object value) {
+		// set to null first, if there is at least one value then it is set to a value
+		setMandatoryValue(null);
 		final List<?> values = (List<Object>) value;
 		referenceValues = new ArrayList<EAVSingleNonContainmentEReferenceValueHolder>();
 		for (Object o : values) {
 			referenceValues.add((EAVSingleNonContainmentEReferenceValueHolder) getElement(o));
+			setMandatoryValue(NOT_NULL_VALUE);
 		}
 	}
 
@@ -44,6 +47,7 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 		EAVSingleNonContainmentEReferenceValueHolder valueHolder = new EAVSingleNonContainmentEReferenceValueHolder();
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
 		valueHolder.set(value);
+		valueHolder.setOwner(getOwner());
 		return valueHolder;
 	}
 

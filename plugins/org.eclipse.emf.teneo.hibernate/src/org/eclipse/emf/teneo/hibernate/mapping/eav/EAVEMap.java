@@ -28,6 +28,7 @@ public class EAVEMap<K, V> extends EcoreEMap<K, V> implements EAVDelegatingList 
 	}
 
 	public void addToMap(Entry<K, V> entry) {
+		// basicAdd(entry, null);
 		doPut(entry);
 	}
 }

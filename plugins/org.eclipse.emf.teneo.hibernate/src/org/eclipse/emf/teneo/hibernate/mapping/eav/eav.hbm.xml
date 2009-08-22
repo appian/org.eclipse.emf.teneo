@@ -8,7 +8,7 @@
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>	
 		<tuplizer entity-mode="dynamic-map" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>
 
-		<id type="long" name="e_id" column="e_id"
+		<id type="long" name="id" column="e_id"
 			access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native" />
@@ -38,6 +38,9 @@
 		<version name="version" column="eav_version" />
 		<property name="feature" type="org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType"
 			not-null="true" />
+		<property name="valueIsSet" />
+		<property name="mandatoryValue" not-null="true" />
+		<many-to-one name="owner" entity-name="EAV_EObject" not-null="true"/>
 	</class>
 	<subclass name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVSingleEAttributeValueHolder"
 		entity-name="EAVSingleEAttributeValueHolder" abstract="false" lazy="false" extends="EAV_Value"
