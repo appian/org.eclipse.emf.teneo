@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="list.SixStatesList" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/list</param>
+		<param name="edatatype">SixStatesList</param>
+	</typedef>
+	<typedef name="list.StateList" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/list</param>
+		<param name="edatatype">StateList</param>
+	</typedef>
+	<typedef name="list.StringList" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/list</param>
+		<param name="edatatype">StringList</param>
+	</typedef>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.list.impl.statesByCountryImpl" entity-name="statesByCountry" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="statesByCountry"/>
+</hibernate-mapping>
