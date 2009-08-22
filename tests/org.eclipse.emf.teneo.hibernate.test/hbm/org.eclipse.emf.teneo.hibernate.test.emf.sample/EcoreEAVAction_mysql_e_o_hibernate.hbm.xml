@@ -87,26 +87,26 @@
 		<param name="edatatype">UnsignedByteObject</param>
 	</typedef>
 	<subclass name="org.eclipse.emf.ecore.impl.BasicEObjectImpl" entity-name="ecore_EObject" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ecore_EObject"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EModelElementImpl" entity-name="EModelElement" abstract="true" lazy="false" extends="EAV_EObject" discriminator-value="EModelElement"/>
-	<subclass name="org.eclipse.emf.ecore.impl.ENamedElementImpl" entity-name="ENamedElement" abstract="true" lazy="false" extends="EAV_EObject" discriminator-value="ENamedElement"/>
-	<subclass name="org.eclipse.emf.ecore.impl.ETypedElementImpl" entity-name="ETypedElement" abstract="true" lazy="false" extends="EAV_EObject" discriminator-value="ETypedElement"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EStructuralFeatureImpl" entity-name="EStructuralFeature" abstract="true" lazy="false" extends="EAV_EObject" discriminator-value="EStructuralFeature"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EAttributeImpl" entity-name="EAttribute" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EAttribute"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EAnnotationImpl" entity-name="EAnnotation" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EAnnotation"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EClassifierImpl" entity-name="EClassifier" abstract="true" lazy="false" extends="EAV_EObject" discriminator-value="EClassifier"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EClassImpl" entity-name="EClass" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EClass"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EDataTypeImpl" entity-name="EDataType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EDataType"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EEnumImpl" entity-name="EEnum" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EEnum"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EEnumLiteralImpl" entity-name="EEnumLiteral" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EEnumLiteral"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EFactoryImpl" entity-name="EFactory" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EFactory"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EOperationImpl" entity-name="EOperation" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EOperation"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EPackageImpl" entity-name="EPackage" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EPackage"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EParameterImpl" entity-name="EParameter" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EParameter"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EReferenceImpl" entity-name="EReference" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EReference"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EModelElementImpl" entity-name="EModelElement" abstract="true" lazy="false" extends="ecore_EObject" discriminator-value="EModelElement"/>
+	<subclass name="org.eclipse.emf.ecore.impl.ENamedElementImpl" entity-name="ENamedElement" abstract="true" lazy="false" extends="EModelElement" discriminator-value="ENamedElement"/>
+	<subclass name="org.eclipse.emf.ecore.impl.ETypedElementImpl" entity-name="ETypedElement" abstract="true" lazy="false" extends="ENamedElement" discriminator-value="ETypedElement"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EStructuralFeatureImpl" entity-name="EStructuralFeature" abstract="true" lazy="false" extends="ETypedElement" discriminator-value="EStructuralFeature"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EAttributeImpl" entity-name="EAttribute" abstract="false" lazy="false" extends="EStructuralFeature" discriminator-value="EAttribute"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EAnnotationImpl" entity-name="EAnnotation" abstract="false" lazy="false" extends="EModelElement" discriminator-value="EAnnotation"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EClassifierImpl" entity-name="EClassifier" abstract="true" lazy="false" extends="ENamedElement" discriminator-value="EClassifier"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EClassImpl" entity-name="EClass" abstract="false" lazy="false" extends="EClassifier" discriminator-value="EClass"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EDataTypeImpl" entity-name="EDataType" abstract="false" lazy="false" extends="EClassifier" discriminator-value="EDataType"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EEnumImpl" entity-name="EEnum" abstract="false" lazy="false" extends="EDataType" discriminator-value="EEnum"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EEnumLiteralImpl" entity-name="EEnumLiteral" abstract="false" lazy="false" extends="ENamedElement" discriminator-value="EEnumLiteral"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EFactoryImpl" entity-name="EFactory" abstract="false" lazy="false" extends="EModelElement" discriminator-value="EFactory"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EOperationImpl" entity-name="EOperation" abstract="false" lazy="false" extends="ETypedElement" discriminator-value="EOperation"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EPackageImpl" entity-name="EPackage" abstract="false" lazy="false" extends="ENamedElement" discriminator-value="EPackage"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EParameterImpl" entity-name="EParameter" abstract="false" lazy="false" extends="ETypedElement" discriminator-value="EParameter"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EReferenceImpl" entity-name="EReference" abstract="false" lazy="false" extends="EStructuralFeature" discriminator-value="EReference"/>
 	<subclass name="org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl" entity-name="EStringToStringMapEntry" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EStringToStringMapEntry"/>
-	<subclass name="org.eclipse.emf.ecore.impl.EGenericTypeImpl" entity-name="EGenericType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="EGenericType"/>
-	<subclass name="org.eclipse.emf.ecore.impl.ETypeParameterImpl" entity-name="ETypeParameter" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ETypeParameter"/>
+	<subclass name="org.eclipse.emf.ecore.impl.EGenericTypeImpl" entity-name="EGenericType" abstract="false" lazy="false" extends="ecore_EObject" discriminator-value="EGenericType"/>
+	<subclass name="org.eclipse.emf.ecore.impl.ETypeParameterImpl" entity-name="ETypeParameter" abstract="false" lazy="false" extends="ENamedElement" discriminator-value="ETypeParameter"/>
 	<subclass name="org.eclipse.emf.ecore.xml.type.impl.AnyTypeImpl" entity-name="AnyType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="AnyType"/>
 	<subclass name="org.eclipse.emf.ecore.xml.type.impl.ProcessingInstructionImpl" entity-name="ProcessingInstruction" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ProcessingInstruction"/>
-	<subclass name="org.eclipse.emf.ecore.xml.type.impl.SimpleAnyTypeImpl" entity-name="SimpleAnyType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="SimpleAnyType"/>
+	<subclass name="org.eclipse.emf.ecore.xml.type.impl.SimpleAnyTypeImpl" entity-name="SimpleAnyType" abstract="false" lazy="false" extends="AnyType" discriminator-value="SimpleAnyType"/>
 </hibernate-mapping>
