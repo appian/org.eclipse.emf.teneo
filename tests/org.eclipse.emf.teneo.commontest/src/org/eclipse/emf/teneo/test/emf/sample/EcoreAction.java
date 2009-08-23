@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.16 2009/08/21 15:02:00 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.17 2009/08/23 17:52:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -23,11 +23,13 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
@@ -38,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -85,10 +87,26 @@ public class EcoreAction extends AbstractTestAction {
 				for (TreeIterator<EObject> it = ecorePackage.eAllContents(); it.hasNext();) {
 					it.next().eAdapters().clear();
 				}
+				final EPackage xmlTypePackage = XMLTypePackage.eINSTANCE;
+				for (TreeIterator<EObject> it = xmlTypePackage.eAllContents(); it.hasNext();) {
+					it.next().eAdapters().clear();
+				}
 
 				store.beginTransaction();
 				store.store(epack);
 				store.store(ecorePackage);
+				store.store(xmlTypePackage);
+				store.commitTransaction();
+			}
+
+			// test 285409
+			{
+				store.beginTransaction();
+				List<EAnnotation> eas = store.getObjects(EAnnotation.class);
+				assertTrue(eas.size() > 0);
+				for (EAnnotation eAnnotation : eas) {
+					assertTrue(eAnnotation.getDetails().size() > 0);
+				}
 				store.commitTransaction();
 			}
 
