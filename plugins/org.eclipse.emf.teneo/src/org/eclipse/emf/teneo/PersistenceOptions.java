@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.57 2009/08/22 00:12:08 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.58 2009/08/23 17:50:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.57 $
+ * @version $Revision: 1.58 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -369,6 +369,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String EAV_MAPPING = MAPPING_PREFIX + "eav_mapping";
 
+	/**
+	 * If set then the eav mapping file is read from the location defined by this property.
+	 */
+	public static final String EAV_MAPPING_FILE = MAPPING_PREFIX + "eav_location";
+
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -436,6 +441,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean isEAVMapping() {
 		return Boolean.valueOf(properties.getProperty(EAV_MAPPING)).booleanValue();
+	}
+
+	/**
+	 * @return value of {@link #EAV_MAPPING_FILE}
+	 */
+	public String getEAVMappingFile() {
+		return properties.getProperty(EAV_MAPPING_FILE);
 	}
 
 	/**

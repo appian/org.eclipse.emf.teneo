@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.13 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.14 2009/08/23 17:50:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -37,14 +37,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 
 /**
- * A persistable emap which uses the PersistableEList as its delegate. Note that this implementation
- * is based on the implementation of the superclass. The superclass makes use of a delegate list to
- * store its content. This implementation puts a persistent list in this member.
+ * A persistable emap which uses the PersistableEList as its delegate. Note that this implementation is based on the
+ * implementation of the superclass. The superclass makes use of a delegate list to store its content. This
+ * implementation puts a persistent list in this member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -67,15 +67,14 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	private boolean isLoading = false;
 
 	/**
-	 * The owner of the objet. we must keep a copy since emap does not have one and the delegate
-	 * EList does not expose this field publicly
+	 * The owner of the objet. we must keep a copy since emap does not have one and the delegate EList does not expose
+	 * this field publicly
 	 */
 	private InternalEObject owner;
 
 	/**
-	 * The persisted map handled by the orm layer. This delegate is the map we receive from the
-	 * database provider. It is kept all the time, any changes to the PersistableEMap are replicated
-	 * to the ormMap.
+	 * The persisted map handled by the orm layer. This delegate is the map we receive from the database provider. It is
+	 * kept all the time, any changes to the PersistableEMap are replicated to the ormMap.
 	 * 
 	 * This field will be null unless there is a map waiting to be lazy loaded
 	 */
@@ -107,8 +106,8 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 * @param owner
 	 * @param featureID
 	 * @param ormMapDelegate
-	 *            a java.util.map that is a proxy collection taht will be used when lazy load is
-	 *            invoked. if it is null, then the map is considered as loaded
+	 *            a java.util.map that is a proxy collection taht will be used when lazy load is invoked. if it is null,
+	 *            then the map is considered as loaded
 	 */
 	public PersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> list) {
@@ -134,9 +133,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		// NOTE BEWARE: the delegateEList is a member of the superclass!
 		delegateEList = createDelegateEList(owner, feature, delegateORMList);
 
-		logString =
-				"EMap with entry eclass: " + entryEClass.getName() + " of member " + feature.getName() + " owned by " +
-						owner.getClass().getName() + " with delegate list " + delegateORMList.getClass().getName();
+		logString = "EMap with entry eclass: " + entryEClass.getName() + " of member " + feature.getName()
+				+ " owned by " + owner.getClass().getName() + " with delegate list "
+				+ delegateORMList.getClass().getName();
 
 		log.debug("Created/reset elist " + logString);
 
@@ -147,6 +146,10 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 			// packaged in
 			// an elist
 			setLoaded(delegateORMList.size() > 0);
+		}
+		if (isLoaded) {
+			// force the map to be computed, this sets the internal entrydata/size member
+			get(null);
 		}
 	}
 
@@ -200,6 +203,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		}
 		try {
 			doLoad();
+
+			// force the map to be computed, this sets the internal entrydata/size member
+			get(null);
 
 			// set the size
 			size = this.size();
