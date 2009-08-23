@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.26 2008/08/26 20:19:39 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.27 2009/08/23 17:52:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -27,6 +27,7 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -40,27 +41,28 @@ import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbSessionWrapper;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.Session;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.impl.SessionImpl;
 
 /**
- * Hibernate Resource. The hibernate resource has a Session during its lifetime. A transaction is
- * started before the load and it is stopped just after the save. The session is disconnected and
- * reconnected when loading and saving.
+ * Hibernate Resource. The hibernate resource has a Session during its lifetime. A transaction is started before the
+ * load and it is stopped just after the save. The session is disconnected and reconnected when loading and saving.
  * 
- * When you create a HbDataStore through the appropriate method in the HibernateHelper class. The
- * name you passed there can be used as a parameter in the uri used to create this resource (using
- * the parameter pmfname). The uri is then: hibernate://?dsname=myemf.
+ * When you create a HbDataStore through the appropriate method in the HibernateHelper class. The name you passed there
+ * can be used as a parameter in the uri used to create this resource (using the parameter pmfname). The uri is then:
+ * hibernate://?dsname=myemf.
  * 
- * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be
- * used to init a hibernate resource!
+ * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be used to init a
+ * hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -143,8 +145,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Returns the session of this resource, if no session is set yet then creates it using the
-	 * datastore. As a default the FlushMode is set to Never.
+	 * Returns the session of this resource, if no session is set yet then creates it using the datastore. As a default
+	 * the FlushMode is set to Never.
 	 * 
 	 * Deprecated, use getSessionWrapper (to support ejb3)
 	 */
@@ -180,8 +182,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Unpacks the id string and reads an object from the db, note for each read a transaction is
-	 * opened, unless the session is controlled by the caller.
+	 * Unpacks the id string and reads an object from the db, note for each read a transaction is opened, unless the
+	 * session is controlled by the caller.
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getEObjectByID(java.lang.String)
 	 */
@@ -235,8 +237,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 				getSessionWrapper().beginTransaction();
 			}
 
-			final Object result =
-					getSessionWrapper().get(parts[0], (Serializable) HbUtil.stringToId(eclass, emfDataStore, idStr));
+			final Object result = getSessionWrapper().get(parts[0],
+					(Serializable) HbUtil.stringToId(eclass, emfDataStore, idStr));
 			if (result == null) {
 				if (log.isDebugEnabled()) {
 					log.debug("Object not found in the db, trying the parent");
@@ -265,9 +267,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Creates a unique id string from the eobject. The id string will contain a link to the type
-	 * (eclass) and the string version of the id itself. This method assumes that the id can be
-	 * converted from and to a string!
+	 * Creates a unique id string from the eobject. The id string will contain a link to the type (eclass) and the
+	 * string version of the id itself. This method assumes that the id can be converted from and to a string!
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getURIFragment(org.eclipse.emf.ecore.EObject)
 	 */
@@ -305,8 +306,8 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length
-	 * zero then no refering EObjects where found.
+	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length zero then no
+	 * refering EObjects where found.
 	 */
 	@Override
 	public Object[] getCrossReferencers(EObject referedTo) {
@@ -343,6 +344,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 		log.debug("Saving resource with uri: " + getURI());
 
 		boolean err = true;
+		final List<InternalEObject> clearPersistentAdapters = new ArrayList<InternalEObject>();
 		final SessionWrapper mySessionWrapper = getSessionWrapper();
 		try {
 			if (!hasSessionController) {
@@ -367,6 +369,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 						mySessionWrapper.delete(obj);
 						EMFInterceptor.registerCollectionsForDereferencing((EObject) obj);
 					}
+					clearPersistentAdapters.add(eobj);
 				}
 			}
 
@@ -384,11 +387,25 @@ public class HibernateResource extends StoreResource implements HbResource {
 				if (err) {
 					mySessionWrapper.rollbackTransaction();
 					// see bugzilla 221950
-// mySessionWrapper.close();
+					// mySessionWrapper.close();
 				} else {
 					mySessionWrapper.commitTransaction();
 				}
 			}
+		}
+		for (InternalEObject eobj : clearPersistentAdapters) {
+			// remove the PersistentStoreAdapter
+			PersistentStoreAdapter toRemoveAdapter = null;
+			for (Adapter adapter : eobj.eAdapters()) {
+				if (adapter instanceof PersistentStoreAdapter) {
+					toRemoveAdapter = (PersistentStoreAdapter) adapter;
+				}
+			}
+			if (toRemoveAdapter != null) {
+				eobj.eAdapters().remove(toRemoveAdapter);
+			}
+			IdentifierCacheHandler.getInstance().setVersion(eobj, null);
+			IdentifierCacheHandler.getInstance().setID(eobj, null);
 		}
 	}
 
@@ -429,8 +446,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Rollsback the transaction if any and clears different lists to start with an empty resource
-	 * again.
+	 * Rollsback the transaction if any and clears different lists to start with an empty resource again.
 	 */
 	@Override
 	protected void doUnload() {
@@ -439,22 +455,22 @@ public class HibernateResource extends StoreResource implements HbResource {
 		if (!hasSessionController) {
 			if (!getSessionWrapper().isEJB3EntityManager()) {
 				AssertUtil.assertTrue("Session must be disconnected in unload", !((SessionImpl) getSessionWrapper()
-					.getSession()).isTransactionInProgress());
+						.getSession()).isTransactionInProgress());
 			}
 			log.debug("Doing unload, closing and nullifying session");
 			getSessionWrapper().close();
 			setSessionWrapper(null);
 		} else {
 			log
-				.debug("Doing unload, has session controller, sessioncontroller is therefor responsible for session close");
+					.debug("Doing unload, has session controller, sessioncontroller is therefor responsible for session close");
 		}
 	}
 
 	/**
-	 * This method can be overridden to implement specific load behavior. Note that a transaction
-	 * has already been started. The session is passed as a parameter, this is the same session
-	 * which can be retrieved using the getSession method. The read objects should be returned in
-	 * the list. Note that after this call the retrieved objects are put in the resource content.
+	 * This method can be overridden to implement specific load behavior. Note that a transaction has already been
+	 * started. The session is passed as a parameter, this is the same session which can be retrieved using the
+	 * getSession method. The read objects should be returned in the list. Note that after this call the retrieved
+	 * objects are put in the resource content.
 	 */
 	protected List<EObject> loadFromStore(SessionWrapper sess) {
 		if (definedQueriesPresent()) {
@@ -529,7 +545,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 					// loaded through
 					// a containment relation.
 					assert (eObject.eResource() != this || loadedEObjectSet.contains(eObject) || newEObjects
-						.contains(eObject));
+							.contains(eObject));
 					addToContent(eObject);
 				}
 			}

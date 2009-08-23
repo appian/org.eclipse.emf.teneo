@@ -32,7 +32,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -168,12 +168,10 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 
 		private List<EAVValueHolder> valueList;
 
-		@Override
 		public Notifier getTarget() {
 			return target;
 		}
 
-		@Override
 		public void setTarget(Notifier newTarget) {
 			target = newTarget;
 		}
@@ -186,7 +184,6 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 			this.valueList = valueList;
 		}
 
-		@Override
 		public boolean isAdapterForType(Object type) {
 			return false;
 		}
@@ -201,7 +198,6 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 			return null;
 		}
 
-		@Override
 		public void notifyChanged(Notification notification) {
 			final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
 
