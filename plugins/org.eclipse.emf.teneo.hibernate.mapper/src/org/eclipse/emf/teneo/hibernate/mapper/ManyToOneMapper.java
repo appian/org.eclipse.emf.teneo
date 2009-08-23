@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.34 2009/06/28 02:05:07 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.35 2009/08/23 17:52:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -127,9 +127,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements Extens
 			addLazyProxy(associationElement, mto.getFetch(), paReference);
 
 			if (joinTable == null) {
-				addJoinColumns(paReference, associationElement, jcs, getHbmContext().isDoForceOptional(paReference)
-						|| mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
-
+				addJoinColumns(paReference, associationElement, jcs, nullable);
 				associationElement.addAttribute("not-null", nullable ? "false" : "true");
 			}
 		} else if (isProperty) {
