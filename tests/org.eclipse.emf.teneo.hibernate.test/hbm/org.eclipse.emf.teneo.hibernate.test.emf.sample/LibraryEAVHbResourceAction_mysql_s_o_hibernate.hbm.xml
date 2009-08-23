@@ -6,7 +6,7 @@
 		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
 		<param name="edatatype">BookCategoryObject</param>
 	</typedef>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Book"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Library"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Writer"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl" entity-name="Book" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Book" proxy="org.eclipse.emf.teneo.samples.emf.sample.library.Book"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Library" proxy="org.eclipse.emf.teneo.samples.emf.sample.library.Library"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Writer" proxy="org.eclipse.emf.teneo.samples.emf.sample.library.Writer"/>
 </hibernate-mapping>

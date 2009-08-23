@@ -6,8 +6,8 @@
 		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/eavlibrary</param>
 		<param name="edatatype">BookCategoryObject</param>
 	</typedef>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Book"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.CityImpl" entity-name="City" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="City"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Library"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="Writer"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.BookImpl" entity-name="Book" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Book" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Book"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.CityImpl" entity-name="City" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="City" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Library" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Library"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Writer" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer"/>
 </hibernate-mapping>

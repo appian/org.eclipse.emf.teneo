@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicEAVAction.java,v 1.1 2009/08/21 15:02:11 mtaal Exp $
+ * $Id: DynamicEAVAction.java,v 1.2 2009/08/23 11:01:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * Tests the dynamic example using an eav mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DynamicEAVAction extends DynamicAction {
 
@@ -32,6 +32,7 @@ public class DynamicEAVAction extends DynamicAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
+		props.setProperty(PersistenceOptions.SET_PROXY, "true");
 		return props;
 	}
 }

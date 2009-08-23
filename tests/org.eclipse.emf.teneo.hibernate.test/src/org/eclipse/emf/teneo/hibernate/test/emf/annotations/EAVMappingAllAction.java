@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVMappingAllAction.java,v 1.1 2009/08/21 15:02:11 mtaal Exp $
+ * $Id: EAVMappingAllAction.java,v 1.2 2009/08/23 11:01:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -24,7 +24,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * Tests EAVMapping but then again with everything EAV Mapped.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EAVMappingAllAction extends EAVMappingAction {
 
@@ -32,6 +32,7 @@ public class EAVMappingAllAction extends EAVMappingAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
+		props.setProperty(PersistenceOptions.SET_PROXY, "true");
 		return props;
 	}
 }

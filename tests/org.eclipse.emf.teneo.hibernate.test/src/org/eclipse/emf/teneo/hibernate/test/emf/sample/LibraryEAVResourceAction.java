@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVHbResourceAction.java,v 1.2 2009/08/22 00:18:36 mtaal Exp $
+ * $Id: LibraryEAVResourceAction.java,v 1.1 2009/08/23 11:01:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -34,14 +34,15 @@ import org.hibernate.Session;
  * Tests the library example of emf/xsd using a HbResource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class LibraryEAVHbResourceAction extends LibraryResourceAction {
+public class LibraryEAVResourceAction extends LibraryResourceAction {
 
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
+		props.setProperty(PersistenceOptions.SET_PROXY, "true");
 		return props;
 	}
 
