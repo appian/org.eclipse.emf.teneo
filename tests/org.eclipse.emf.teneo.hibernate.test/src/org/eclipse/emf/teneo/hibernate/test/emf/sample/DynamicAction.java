@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -50,7 +50,6 @@ public class DynamicAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final DynamicFactory factory = DynamicFactory.eINSTANCE;
 		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
 		final EcorePackage epackage = EcorePackage.eINSTANCE;
