@@ -16,7 +16,7 @@
 <link href="../skin/forrest.css" type="text/css" rel="stylesheet">
 <link rel="shortcut icon" href="../">
 <script type="text/javascript" src="../skin/tigris.js"></script><script src="../skin/menu.js" language="javascript" type="text/javascript"></script>
-<title>Known issues (updated 13 September 2006)</title>
+<title>Entity-Attribute-Value (EAV) Mapping</title>
 <meta content="text/css" http-equiv="Content-style-type">
 </head>
 <body class="composite" onload="focus()">
@@ -91,8 +91,8 @@
 </table>
 </td><td class="dialog">
 <div class="menu">
-<div onclick="SwitchMenu('menu_selected_1.1')" id="menu_selected_1.1Title" class="menutitle">Home</div>
-<div id="menu_selected_1.1" class="selectedmenuitemgroup">
+<div onclick="SwitchMenu('menu_1.1')" id="menu_1.1Title" class="menutitle">Home</div>
+<div id="menu_1.1" class="menuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/index.html">Introduction</a>
 </div>
@@ -111,8 +111,8 @@
 <div class="menuitem">
 <a href="../hibernate/installation.html">Download &amp; Install</a>
 </div>
-<div class="menupage">
-<div class="menupagetitle">Known Issues</div>
+<div class="menuitem">
+<a href="../hibernate/knownissues.html">Known Issues</a>
 </div>
 <div class="menuitem">
 <a href="../hibernate/quick_tutorial.html">Quick Start</a>
@@ -169,8 +169,8 @@
 <a href="../hibernate/gmftutorial/tutorial4.html">Running the editor</a>
 </div>
 </div>
-<div onclick="SwitchMenu('menu_1.5')" id="menu_1.5Title" class="menutitle">Details</div>
-<div id="menu_1.5" class="menuitemgroup">
+<div onclick="SwitchMenu('menu_selected_1.5')" id="menu_selected_1.5Title" class="menutitle">Details</div>
+<div id="menu_selected_1.5" class="selectedmenuitemgroup">
 <div class="menuitem">
 <a href="../hibernate/cdo.html">CDO</a>
 </div>
@@ -183,8 +183,8 @@
 <div class="menuitem">
 <a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
 </div>
-<div class="menuitem">
-<a href="../hibernate/eav_mapping.html">Entity-Attribute-Value Mapping</a>
+<div class="menupage">
+<div class="menupagetitle">Entity-Attribute-Value Mapping</div>
 </div>
 <div class="menuitem">
 <a href="../hibernate/hbdatastore.html">HbDataStore</a>
@@ -277,134 +277,146 @@
 <div id="bodycol">
 <div id="apphead">
 <h2>
-<em>Known issues (updated 13 September 2006)</em>
+<em>Entity-Attribute-Value (EAV) Mapping</em>
 </h2>
 </div>
 <div class="app" id="projecthome">
-		
-<p>
-<br>
-</p>
-		
-<p>
-		
-<strong>From 13 September 2006: for open issues please visit the EMF <a class="external" href="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF&component=Teneo">open bugs</a>
-		page.</strong>
-</p>
-		
-<p>
-<br>
-</p>
-		
-<p>This page describes known issues (and possible work arounds) and gives an estimate on when they will be solved.</p>
-		
-<p>Open issue(s):</p>
-		
-<ul>
-		
+<ul class="minitoc">
 <li>
-<strong>Objects are not loaded in the resource, or the resource is empty:</strong> The standard behavior of a Hibernate resource is to only read types which have no container in the model. All other EObjects can 
-		be reached from these top-entities. However, this means that even if an EObject instance does not have a container but <em>can be</em> contained according to the model then
-		it will still not be loaded in the resource. A common model is a an object which contains itself, for example a folder-like
-		model. <strong>Workaround</strong>: to workaround this issue you should load the resource using specific queries, see customizing load behavior <a href="hibernateresources.html">here</a>.</li>
-		
+<a href="#enabling">Enabling EAV Mapping</a>
+</li>
+<li>
+<a href="#querying">Querying</a>
+</li>
+<li>
+<a href="#eavmapping">EAV Mapping</a>
+</li>
+<li>
+<a href="#limitations">Limitations</a>
+</li>
 </ul>
 		
-<p>The following issues have been solved in the 0.7.0 release:</p>
+<p>Teneo supports the <a class="external" href="http://en.wikipedia.org/wiki/Entity-attribute-value_model">Entity-Attribute-Value mapping</a> model. 
+		In this mapping all the data is stored in just two tables (the object and its values). This compared to the standard domain-specific mapping in which the data is stored in tables reflecting the domain model.   		
+		</p>
 		
+<p>The main advantage of an EAV mapping is that the database schema does not change when the model changes. This means that EAV mapped
+		models can be much more dynamic and can be more easily changed at runtime.</p>
+		
+<p>The Teneo EAV mapping supports EMF features such as dynamic-EMF, Featuremap, EMaps and all tested XSD features. Also cascading deletes and delete-orphan for containment relations are supported out-of-the-box.</p>
+		
+<p>An important feature is that the EAV Mapping can be combined with a standard Teneo mapping. This means that part of your model can be stored as an EAV mapped model while other parts 
+		are stored in a database schema that reflects the domain model.</p>
+		
+<p>Teneo/Hibernate take care of transparently mapping references between the EAV and standard mapped 
+		model.
+		Objects stored in the EAV part of the database can refer to objects stored in the standard domain database tables and vice versa. This cross-referencing is supported for both 
+		single references as multi-references (lists) and for containment and non-containment associations. When loading and persisting
+		objects Hibernate takes care of storing the objects in their respective tables and resolving relations.</p>		
+		
+<p>An EAV mapping means that certain features work differently or are disabled compared to the concrete domain-specific mapping, such as a less-readable database model and very complex querying. See the limitations
+		section below for more information.</p>
+		
+<p>Note as the support for EAV is fairly new (august 2009) it is possible that certain features have not been tested thoroughly.</p>
+		
+<a name="N10027"></a><a name="enabling"></a>
+<div class="h3">
+<h3>Enabling EAV Mapping</h3>
+			
+			
+<p>The EAV mapping can be enabled in two ways:</p>
+			
 <ul>
+			
+<li>the teneo.mapping.eav_mapping: if this option is set to true then all types are mapped using the EAV database schema.</li>
+			
+<li>the EAVMapping annotation: by adding the annotation @EAVMapping to an EClass, the EClass and all its child EClasses are mapped using the EAV schema.</li>				
+			
+</ul>
+			
+<p>The option sets the EAV mapping globally, while the annotation allows you to handpick which types are mapped using an EAV mapping.</p>
 		
-<li>Enumerated types are not supported as primarykey/id fields. This will be solved in the next release. 
-		<strong>Is solved with the remark that the EnumeratedType should be Seriliazable.</strong>
-</li>
+</div>
 		
-<li>Enumerated type fields can not be nullable, they must be set as required. This will be solved in the next release.</li>
-		
-<li>Java Annotations to Ecore, mapping file error: When starting the runtime the following error
-	message is displayed (using the Library example):<em>Association references unmapped class: Book</em>.
- The issue is related to the fact that the model is generated from annotated java. Currently Elver uses the annotations in the source code to resolve java types. The java sources generated from the uml/xml schema have fully quallified names in the type attribute of the model tag:
-	<pre class="code">
-     * @model type="org.eclipse.example.library.Writer"
-     * @generated
-     */
-    EList getWriters();
-	</pre>
-
-<p>
-While in the case the java annotations are the input the emf tutorial tells you to do this:</p>
+<a name="N1003D"></a><a name="querying"></a>
+<div class="h3">
+<h3>Querying</h3>
+			
+			
+<p>Queries using just the id or queries which retrieve all objects of a certain type are the same as with standard hibernate:</p>
 
 <pre class="code">
-  /**
-   * @model type="Writer" containment="true"
-   */
-  List getWriters();
+select e from Employee e
+or
+select e from Employee e where e.id=:id
 </pre>
+		
+<p>Also the hibernate session.get(...) methods work fine with EAV stored objects.</p>
+		
+<p>However if you want to use object features/values in queries then this becomes more complex.</p>
+		
+<p>For example the following code snippet shows how to query for a Library (from the famous EMF example) with a certain name:</p>
 
-<p>Elver should automatically resolve the Writer to a org.eclipse.example.library.Writer interface but does not do this. 
-As a workaround you should specify the fully qualified class name in the type annotation.</p>
-	
-</li>
+<pre class="code">
+final Query qry = session.createQuery("select eav.owner from EAVSingleEAttributeValueHolder eav where eav.feature=:feature and eav.stringValue='Science_Fiction'");
+qry.setParameter("feature", LibraryPackage.eINSTANCE.getLibrary_Name());
+</pre>
 		
-</ul>
+</div>
 		
-<p></p>
-
-		
-<p>The following issues have been solved in the 3.2 release:</p>
-		
-<ul>
-		
-<li>After an elist/featuremap is loaded a notification is sent out. 
-		See <a href="hibernate_details.html#EList%2FFeaturemap+load+notification">here</a> for more information.
-		Apparently this notification results in exceptions and double entries in rich client tree viewers.
-		See the posts on the mailing list for this: <a class="external" href="http://comments.gmane.org/gmane.comp.java.emf.persistency/139">post 1</a>, 
-		<a class="external" href="http://comments.gmane.org/gmane.comp.java.emf.persistency/144">post 2</a>. As a workaround you should 'catch' the notification
-		in the notifychanged of the EObjects ItemProvider. This will be solved in the next release
-		or the function will be disabled until it is more stable.
-		<strong>Load notification on EList load has been disabled.</strong>
-</li>
-		
-</ul>
-		
-<p>The following issues have been solved in the 3.1 release:</p>
-		
-<ul>
+<a name="N10058"></a><a name="eavmapping"></a>
+<div class="h3">
+<h3>EAV Mapping</h3>
 			
-<li>On the mailinglist (see <a class="external" href="http://comments.gmane.org/gmane.comp.java.emf.persistency/95">here</a>) 
-				it was reported that when saving a HibernateResource the 
-			error 'session already closed' occurs. This issue is not present (anymore) in the
-			current development version so is solved with the next release on 
-				24 Oct.</li>
 			
-<li>In some cases a session will not be disconnected with ELists
-			in combination with HibernateResource. This results in errors in the
-			resource unload action and open transactions (is solved in 3.1).</li>
+<p>The EAV mapping itself consists of a set of EAV classes, supporting different EMF concepts, and the mapping of these classes to the 
+			EAV database schema. The EAV classes can be found in the org.eclipse.emf.teneo.hibernate.mapping.eav package in the
+			org.eclipse.emf.teneo.hibernate plugin. The hibernate mapping 
+			model of the EAV schema can be found in the eav.hbm.xml file located in the same package/plugin.</p>
 			
-<li>In case of a deeper inheritance structure the econtainer
-			fields/columns are not correctly set in the relational tables. This results in
-			low-level sql errors, incorrect type for getInt().... or something similar
-			 (is solved in 3.1).</li>
-			
-<li>The toString method of an EList loads the elist, in Hibernate
-			this results in concurrent modification errors in logging code. The decision is
-			made that toString is not 'important' enough to load a elist 
-			(is solved in 3.1).</li>
-			
-<li>multiple inheritance of an EObject from two EMF interfaces does
-				not work correctly. An example is the GlobalAddress in the ExtendedPO example.
-				The GlobalAddress inherits from both the Address and the GlobalLocation interfaces.
-				Hibernate does not allow the definition of multiple 'parent' interfaces. 
-				<em>From the 3.1 release the mapping logic has changed so that only implementation
-				classes are present in the mapping file. This effectively solves this issue.</em>
-				 
-</li>
-		
-</ul>
-		
 <p>
-			Previous issues have been solved or a workaround or description is
-			displayed on the <a href="troubleshooting.html">troubleshooting</a> page.
-		</p>
+<em>Note: the EAV classes are only used to store and retrieve information from the database through hibernate. Hibernate methods will return the 
+			actual (generated) domain objects and when calling Hibernate the actual (generated) domain objects can be used.</em>
+</p>
+			
+<p>You can customize the EAV mapping by providing your own hbm mapping file. See the option <a href="options.html">EAV_MAPPING_FILE</a> to the file location.</p>
+		
+</div>
+		
+<a name="N1006D"></a><a name="limitations"></a>
+<div class="h3">
+<h3>Limitations</h3>
+			
+			
+<p>The main limitation of the Entity-Attribute-Value model is that querying for data using HQL queries is much more complex.</p>
+			
+<p>Instead of the meaning-full domain model concepts, the HQL queries should use the mapping model of the EAV schema. The hibernate mapping 
+			model of the EAV schema can be found in the eav.hbm.xml located in the org.eclipse.emf.teneo.hibernate.mapping.eav 
+			package in the org.eclipse.emf.teneo.hibernate plugin. The mapping is more complex then the actual database schema because EMF concepts
+			as FeatureMap and EMap are supported.</p>
+			
+<p>Another limitation is that database foreign key constraints are not enforced for references to and from the EAV mapped objects. All references
+			are done using the hibernate any/many-to-any mappings. However, as all references are stored together in one entity it is easy to check/test if 
+			there are objects being refered to. The following two queries will give all the refering objects which refer to the referedTo object:</p> 
+
+<pre class="code">
+select eav.owner from EAVSingleNonContainmentEReferenceValueHolder eav where eav.referenceValue=:referedTo
+select eav.owner from EAVSingleContainmentEReferenceValueHolder eav where eav.referenceValue=:referedTo
+</pre>
+			
+<p>With these two queries it is easy to implement delete constraint checking in pre-delete interceptors in Hibernate.</p>
+			
+<p>Other limitations:</p>
+			
+<ul>
+			
+<li>An EAV mapping does not support custom primary key/ID types. All id's are generated long values.</li>
+			
+<li>An EAV mapping does not support lazy loading of collections. On the other hand, single instances are lazy loaded (using hibernate proxies, if the <a href="options.html">SET_PROXY</a> option is set to true). </li>
+			
+</ul>
+		
+</div>
 	
 </div>
 </div>

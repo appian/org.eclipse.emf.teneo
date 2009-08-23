@@ -184,6 +184,9 @@
 <a href="../hibernate/hibernate_relations.html">Modeling Associations</a>
 </div>
 <div class="menuitem">
+<a href="../hibernate/eav_mapping.html">Entity-Attribute-Value Mapping</a>
+</div>
+<div class="menuitem">
 <a href="../hibernate/hbdatastore.html">HbDataStore</a>
 </div>
 <div class="menuitem">
@@ -566,8 +569,24 @@
 <strong>PersistenceOptions.DISABLE_ECONTAINER_MAPPING</strong>
 					(default: false): this option (boolean) controls if the container relations are mapped
 					explicitly in the database, see also
-					<a href="hibernate_relations.html#Storing+container+relation">here</a>
-					.
+					<a href="hibernate_relations.html#Storing+container+relation">here</a>.
+				</li>
+				
+				
+<li>
+					
+<strong>PersistenceOptions.EAV_MAPPING</strong>
+					(default: false): this option (boolean) controls if all types are mapped using an EAV schema. See 
+					the description <a href="eav_mapping.html">here</a>.
+				</li>
+
+				
+<li>
+					
+<strong>PersistenceOptions.EAV_MAPPING_FILE</strong>
+					(default: null): this option (string) controls which mapping file is used to create the EAV database schema. If not set then
+					the org.eclipse.emf.teneo.hibernate.mapping.eav.eav.hbm.xml is used. The value is resolved as a class path against the 
+					PersistenceFileProvider class.
 				</li>
 
 				
