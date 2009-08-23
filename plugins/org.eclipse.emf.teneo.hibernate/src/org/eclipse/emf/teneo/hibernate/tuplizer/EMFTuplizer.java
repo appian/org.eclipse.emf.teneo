@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.18 2009/08/21 15:01:58 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.19 2009/08/23 11:00:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -61,7 +61,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -211,7 +211,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
 		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
-		if (eclass == null) {
+		if (eclass == null && !persistentClass.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
 		}
 
@@ -219,7 +219,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		// first
 		final Set<Class<?>> proxyInterfaces = new LinkedHashSet<Class<?>>();
 		final Class<?> pInterface = persistentClass.getProxyInterface();
-		if (pInterface != null) {
+		if (pInterface != null && pInterface.isInterface()) {
 			proxyInterfaces.add(pInterface);
 		}
 		final Class<?> mappedClass = persistentClass.getMappedClass();

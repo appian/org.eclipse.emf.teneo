@@ -3,7 +3,7 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.ecore.impl.EObjectImpl" entity-name="EAV_EObject" abstract="true"
-		lazy="false" discriminator-value="eav_eobject" table="`eav_eobject`">
+		lazy="true" discriminator-value="eav_eobject" table="`eav_eobject`" proxy="org.eclipse.emf.ecore.EObject">
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>	
 		<tuplizer entity-mode="dynamic-map" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>
