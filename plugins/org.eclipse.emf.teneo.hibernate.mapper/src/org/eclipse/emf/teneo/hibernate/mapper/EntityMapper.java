@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.48 2009/08/21 15:02:02 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.49 2009/08/23 11:00:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -195,7 +195,14 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 			if (superEntity == null) {
 				target.addAttribute("extends", Constants.EAV_EOBJECT_ENTITY_NAME);
 			}
+
 			target.addAttribute("discriminator-value", dValue.getValue());
+
+			if (((HbAnnotatedEClass) entity).getHbProxy() != null
+					&& ((HbAnnotatedEClass) entity).getHbProxy().getProxyClass() != null) {
+				final String proxyInterfaceName = ((HbAnnotatedEClass) entity).getHbProxy().getProxyClass();
+				target.addAttribute("proxy", proxyInterfaceName);
+			}
 			// stop here for eav
 			return target;
 		}
