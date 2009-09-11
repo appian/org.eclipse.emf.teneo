@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVValueHolder.java,v 1.3 2009/08/22 00:09:57 mtaal Exp $
+ * $Id: EAVValueHolder.java,v 1.4 2009/09/11 22:52:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -162,5 +162,35 @@ public abstract class EAVValueHolder {
 
 	public void setOwner(EObject owner) {
 		this.owner = owner;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof EAVValueHolder)) {
+			return false;
+		}
+		final EAVValueHolder eavHolder = (EAVValueHolder) obj;
+		if (eavHolder.getEStructuralFeature() != getEStructuralFeature()) {
+			return false;
+		}
+		// handles null
+		if (getValue() == eavHolder.getValue()) {
+			return true;
+		}
+		if (getValue() == null) {
+			return false;
+		}
+		if (eavHolder.getValue() == null) {
+			return false;
+		}
+		return getValue().equals(eavHolder.getValue());
+	}
+
+	@Override
+	public int hashCode() {
+		if (getValue() == null) {
+			return getEStructuralFeature().hashCode();
+		}
+		return getEStructuralFeature().hashCode() ^ getValue().hashCode();
 	}
 }

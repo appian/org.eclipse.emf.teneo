@@ -53,7 +53,9 @@
 		<property name="stringValue" />
 		<property name="dateValue" />
 		<property name="numericValue" />
-		<property name="longValue" />
+		<property name="longValue" />		
+		<one-to-one name="blobValue" property-ref="valueHolder" entity-name="EAV_Blob" cascade="all"/>		
+		<one-to-one name="textValue" property-ref="valueHolder" entity-name="EAV_Text" cascade="all"/>		
 	</subclass>
 	<subclass name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVMultiEAttributeValueHolder"
 		entity-name="EAVMultiEAttributeValueHolder" abstract="false" lazy="false" extends="EAV_Value"
@@ -154,4 +156,29 @@
 			<one-to-many entity-name="EAVSingleNonContainmentEReferenceValueHolder"/>
 		</list>
 	</subclass>
+	<class name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVBlobValue" entity-name="EAV_Blob" abstract="true"
+		lazy="false" table="`eavblob`">
+
+		<id type="long" name="id" column="eavid">
+			<generator class="native" />
+		</id>
+		<version name="version" column="eavversion" />
+		<property name="blobValue" type="binary" column="blobvalue"/>
+		
+		<many-to-one name="valueHolder" entity-name="EAVSingleEAttributeValueHolder" column="valueholder" unique="true" not-null="true"/>
+		
+	</class>
+	<class name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTextValue" entity-name="EAV_Text" abstract="true"
+		lazy="false" table="`eavtext`">
+
+		<id type="long" name="id" column="eavid">
+			<generator class="native" />
+		</id>
+		<version name="version" column="eavversion" />
+		<property name="textValue" type="text" column="textvalue"/>
+		
+		<many-to-one name="valueHolder" entity-name="EAVSingleEAttributeValueHolder" column="valueholder" unique="true" not-null="true"/>
+		
+	</class>
+	
 </hibernate-mapping>

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.4 2009/09/11 15:38:38 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.5 2009/09/11 22:52:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -22,6 +22,7 @@ import java.math.BigInteger;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -40,6 +41,8 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 	private BigDecimal numericValue;
 	private long longValue;
 	private Object objectValue;
+	private EAVBlobValue blobValue;
+	private EAVTextValue textValue;
 
 	public void set(Object value) {
 
@@ -70,10 +73,20 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		} else {
 			type = eDataType.getInstanceClassName();
 			typeNeutralValue = null;
+			blobValue = null;
+			textValue = null;
 		}
 
-		if (value instanceof Enumerator) {
+		if (value instanceof byte[]) {
+			blobValue = new EAVBlobValue();
+			blobValue.setBlobValue((byte[]) value);
+			blobValue.setValueHolder(this);
+		} else if (value instanceof Enumerator) {
 			stringValue = ((Enumerator) value).getName();
+		} else if (value instanceof String && isClob()) {
+			textValue = new EAVTextValue();
+			textValue.setTextValue((String) value);
+			textValue.setValueHolder(this);
 		} else if (value instanceof String) {
 			stringValue = (String) value;
 		} else if (value instanceof Date) {
@@ -95,11 +108,16 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 	}
 
 	public Object get(InternalEObject owner) {
-		if (objectValue == null && typeNeutralValue != null) {
+		if (objectValue == null && blobValue != null) {
+			objectValue = blobValue.getBlobValue();
+		} else if (objectValue == null && textValue != null) {
+			objectValue = textValue.getTextValue();
+		} else if (objectValue == null && typeNeutralValue != null) {
 			final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
 			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
 			objectValue = eFactory.createFromString(eDataType, typeNeutralValue);
 		}
+
 		return objectValue;
 	}
 
@@ -161,5 +179,34 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 
 	public void setTypeNeutralValue(String typeNeutralValue) {
 		this.typeNeutralValue = typeNeutralValue;
+	}
+
+	public EAVBlobValue getBlobValue() {
+		return blobValue;
+	}
+
+	public void setBlobValue(EAVBlobValue blobValue) {
+		this.blobValue = blobValue;
+	}
+
+	public EAVTextValue getTextValue() {
+		return textValue;
+	}
+
+	public void setTextValue(EAVTextValue textValue) {
+		this.textValue = textValue;
+	}
+
+	private boolean isClob() {
+		final EAnnotation eAnnotation = getEStructuralFeature().getEAnnotation("teneo.jpa");
+		if (eAnnotation == null) {
+			return false;
+		}
+		for (String str : eAnnotation.getDetails().values()) {
+			if (str.contains("@Lob")) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
