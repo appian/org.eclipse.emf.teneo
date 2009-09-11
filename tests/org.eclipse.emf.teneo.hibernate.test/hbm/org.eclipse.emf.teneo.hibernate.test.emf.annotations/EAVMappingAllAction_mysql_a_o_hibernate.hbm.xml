@@ -6,7 +6,34 @@
 		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/eavlibrary</param>
 		<param name="edatatype">BookCategoryObject</param>
 	</typedef>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.BookImpl" entity-name="Book" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Book" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Book"/>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.BookImpl" entity-name="Book" abstract="false" lazy="true" discriminator-value="Book" table="`book`" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Book">
+		<meta attribute="eclassName">Book</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/eavlibrary</meta>
+		<id name="title" type="java.lang.String">
+			<column not-null="true" unique="false" name="`title`"/>
+		</id>
+		<discriminator column="`dtype`" type="string"/>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="pages" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
+			<column not-null="true" unique="false" name="`pages`"/>
+		</property>
+		<property name="category" lazy="false" not-null="true" insert="true" update="true" unique="false">
+			<column not-null="true" unique="false" name="`category`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.BookCategory</param>
+				<param name="eclassifier">BookCategory</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/eavlibrary</param>
+			</type>
+		</property>
+		<many-to-one name="author" entity-name="Writer" lazy="proxy" cascade="merge,persist,save-update,lock,refresh" foreign-key="book_author" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`book_author_e_id`"/>
+		</many-to-one>
+		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`test`"/>
+		</property>
+	</class>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.CityImpl" entity-name="City" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="City" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Library" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Library"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Writer" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer"/>
