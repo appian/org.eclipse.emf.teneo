@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.3 2009/08/22 00:09:53 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.4 2009/09/11 15:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -33,6 +33,8 @@ import org.eclipse.emf.ecore.InternalEObject;
  */
 public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 
+	private String type;
+	private String typeNeutralValue;
 	private String stringValue;
 	private Date dateValue;
 	private BigDecimal numericValue;
@@ -63,7 +65,11 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
 		if (value != null) {
 			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
-			stringValue = eFactory.convertToString(eDataType, value);
+			typeNeutralValue = eFactory.convertToString(eDataType, value);
+			type = value.getClass().getName();
+		} else {
+			type = eDataType.getInstanceClassName();
+			typeNeutralValue = null;
 		}
 
 		if (value instanceof Enumerator) {
@@ -89,10 +95,10 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 	}
 
 	public Object get(InternalEObject owner) {
-		if (objectValue == null && stringValue != null) {
+		if (objectValue == null && typeNeutralValue != null) {
 			final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
 			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
-			objectValue = eFactory.createFromString(eDataType, stringValue);
+			objectValue = eFactory.createFromString(eDataType, typeNeutralValue);
 		}
 		return objectValue;
 	}
@@ -139,5 +145,21 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 
 	public void setLongValue(long longValue) {
 		this.longValue = longValue;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getTypeNeutralValue() {
+		return typeNeutralValue;
+	}
+
+	public void setTypeNeutralValue(String typeNeutralValue) {
+		this.typeNeutralValue = typeNeutralValue;
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.19 2009/08/23 11:00:38 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.20 2009/09/11 15:38:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -61,7 +61,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -177,7 +177,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	protected Getter buildPropertyGetter(Property mappedProperty, PersistentClass mappedEntity) {
-		if (mappedProperty.getName().equals("values")) {
+		if (isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
 			return mappedProperty.getGetter(EObjectImpl.class);
 		}
 		return getPropertyAccessor(mappedProperty, mappedEntity).getGetter(null, mappedProperty.getName());
@@ -191,10 +191,21 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	protected Setter buildPropertySetter(Property mappedProperty, PersistentClass mappedEntity) {
-		if (mappedProperty.getName().equals("values")) {
+		if (isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
 			return mappedProperty.getSetter(EObjectImpl.class);
 		}
 		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(null, mappedProperty.getName());
+	}
+
+	private boolean isEAVMapped(PersistentClass mappedEntity) {
+		if (mappedEntity.getEntityName() != null
+				&& mappedEntity.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
+			return true;
+		}
+		if (mappedEntity.getSuperclass() == null) {
+			return false;
+		}
+		return isEAVMapped(mappedEntity.getSuperclass());
 	}
 
 	/*
