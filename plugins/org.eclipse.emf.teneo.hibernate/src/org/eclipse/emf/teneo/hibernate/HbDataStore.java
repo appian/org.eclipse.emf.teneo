@@ -92,7 +92,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -830,11 +830,11 @@ public abstract class HbDataStore implements DataStore {
 		sv.setTypeName(EContainerUserType.class.getName());
 
 		final Column eccColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
-				+ HbConstants.COLUMN_ECONTAINER_CLASS);
+				+ getPersistenceOptions().getEContainerClassColumn());
 		sv.addColumn(checkColumnExists(pc.getTable(), eccColumn));
 
 		final Column ecColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
-				+ HbConstants.COLUMN_ECONTAINER);
+				+ getPersistenceOptions().getEContainerColumn());
 		sv.addColumn(checkColumnExists(pc.getTable(), ecColumn));
 
 		eContainer.setValue(sv);
@@ -868,7 +868,7 @@ public abstract class HbDataStore implements DataStore {
 			svfid.setTypeName(EContainerFeatureIDUserType.class.getName());
 
 			final Column ecfColumn = new Column(getPersistenceOptions().getSQLColumnNamePrefix()
-					+ HbConstants.COLUMN_ECONTAINER_FEATURE_NAME);
+					+ getPersistenceOptions().getEContainerFeatureNameColumn());
 
 			ecfColumn.setLength(getEContainerFeatureNameColumnLength());
 

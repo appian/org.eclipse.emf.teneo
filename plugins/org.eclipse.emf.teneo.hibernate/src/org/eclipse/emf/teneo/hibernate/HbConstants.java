@@ -11,29 +11,42 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbConstants.java,v 1.5 2009/03/15 14:49:46 mtaal Exp $
+ * $Id: HbConstants.java,v 1.6 2009/09/11 15:54:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
+
 /**
- * AnnotationUtil used in the runtime layer as well as the hibernate mapping
- * step.
+ * AnnotationUtil used in the runtime layer as well as the hibernate mapping step.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class HbConstants {
-	/** Column names used to store the econtainer class */
+	/**
+	 * Column names used to store the econtainer class
+	 * 
+	 * @deprecated use {@link PersistenceOptions#ECONTAINER_CLASS_COLUMN}
+	 */
 	public final static String COLUMN_ECONTAINER_CLASS = "econtainer_class";
 
 	/** Property Name of the econtainer property */
 	public final static String PROPERTY_ECONTAINER = "e_container";
 
-	/** Column names used to store the econtainer hibernate id */
+	/**
+	 * Column names used to store the econtainer hibernate id.
+	 * 
+	 * @deprecated use {@link PersistenceOptions#ECONTAINER_COLUMN}
+	 */
 	public final static String COLUMN_ECONTAINER = "e_container";
 
-	/** Column names used to store the econtainer feature name */
+	/**
+	 * Column names used to store the econtainer feature name.
+	 * 
+	 * @deprecated use {@link PersistenceOptions#ECONTAINER_FEATURE_NAME_COLUMN}
+	 */
 	public final static String COLUMN_ECONTAINER_FEATURE_NAME = "e_container_feature_name";
 
 	/** Property Name of the econtainer feature id property */
