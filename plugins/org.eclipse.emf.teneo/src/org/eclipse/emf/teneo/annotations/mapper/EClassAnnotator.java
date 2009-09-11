@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.17 2009/08/21 15:02:14 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.18 2009/09/11 20:45:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -105,7 +105,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			}
 		}
 
-		if (getPersistenceOptions().isEAVMapping()) {
+		if (getPersistenceOptions().isEAVMapping() && aClass.getNoEAVMapping() == null) {
 			aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
 		}
 
