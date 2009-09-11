@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Constants.java,v 1.10 2009/08/21 15:02:14 mtaal Exp $
+ * $Id: Constants.java,v 1.11 2009/09/11 15:38:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  * AnnotationUtil used when reading a property file is also used by resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class Constants {
@@ -82,4 +82,6 @@ public class Constants {
 	public static final int ELIST_LOAD_NOTIFICATION = NOTIFICATION_START_EVENT_TYPE_COUNT + 1;
 
 	public static final String EAV_EOBJECT_ENTITY_NAME = "EAV_EObject";
+
+	public static final String EAV_EOBJECT_VALUES = "values";
 }
