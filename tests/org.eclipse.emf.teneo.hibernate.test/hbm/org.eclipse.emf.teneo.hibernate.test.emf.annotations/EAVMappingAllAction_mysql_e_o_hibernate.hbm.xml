@@ -10,4 +10,5 @@
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.CityImpl" entity-name="City" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="City" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Library" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Library"/>
 	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Writer" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl" entity-name="Pen" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Pen" proxy="org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen"/>
 </hibernate-mapping>
