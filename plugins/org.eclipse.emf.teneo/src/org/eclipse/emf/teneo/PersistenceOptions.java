@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.58 2009/08/23 17:50:43 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.59 2009/09/11 15:54:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -374,6 +374,10 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String EAV_MAPPING_FILE = MAPPING_PREFIX + "eav_location";
 
+	public final static String ECONTAINER_CLASS_COLUMN = "econtainer_class_column";
+	public final static String ECONTAINER_COLUMN = "e_container_column";
+	public final static String ECONTAINER_FEATURE_NAME_COLUMN = "e_container_feature_name_column";
+
 	/** Returns the default properties used in the system */
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
@@ -428,6 +432,10 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(MAP_DOCUMENT_ROOT, "false");
 		props.setProperty(EAV_MAPPING, "false");
 		props.setProperty(AUTO_ADD_REFERENCED_EPACKAGES, "false");
+		props.setProperty(ECONTAINER_CLASS_COLUMN, Constants.COLUMN_ECONTAINER_CLASS);
+		props.setProperty(ECONTAINER_COLUMN, Constants.COLUMN_ECONTAINER);
+		props.setProperty(ECONTAINER_FEATURE_NAME_COLUMN, Constants.COLUMN_ECONTAINER_FEATURE_NAME);
+
 		return props;
 	}
 
@@ -435,6 +443,27 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #ECONTAINER_COLUMN}
+	 */
+	public String getEContainerColumn() {
+		return properties.getProperty(ECONTAINER_COLUMN);
+	}
+
+	/**
+	 * @return value of {@link #ECONTAINER_CLASS_COLUMN}
+	 */
+	public String getEContainerClassColumn() {
+		return properties.getProperty(ECONTAINER_CLASS_COLUMN);
+	}
+
+	/**
+	 * @return value of {@link #ECONTAINER_FEATURE_NAME_COLUMN}
+	 */
+	public String getEContainerFeatureNameColumn() {
+		return properties.getProperty(ECONTAINER_FEATURE_NAME_COLUMN);
+	}
 
 	/**
 	 * @return value of {@link #EAV_MAPPING}
