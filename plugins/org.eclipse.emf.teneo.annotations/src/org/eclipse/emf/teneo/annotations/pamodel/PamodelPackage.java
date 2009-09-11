@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.20 2009/08/21 10:16:52 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.21 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -395,13 +395,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__EAV_MAPPING = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
+	 * The feature id for the '<em><b>No EAV Mapping</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ECLASS__NO_EAV_MAPPING = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.
@@ -1495,6 +1504,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_EavMapping();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping <em>No EAV Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>No EAV Mapping</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping()
+	 * @see #getPAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getPAnnotatedEClass_NoEAVMapping();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature <em>PAnnotated EStructural Feature</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>PAnnotated EStructural Feature</em>'.
@@ -2238,6 +2258,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ECLASS__EAV_MAPPING = eINSTANCE.getPAnnotatedEClass_EavMapping();
+
+		/**
+		 * The meta object literal for the '<em><b>No EAV Mapping</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__NO_EAV_MAPPING = eINSTANCE.getPAnnotatedEClass_NoEAVMapping();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.

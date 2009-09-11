@@ -42,6 +42,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/tableGenerator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/associationOverrides"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/eavMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEClass/noEAVMapping"/>
     </genClasses>
     <genClasses image="false" ecoreClass="pamodel.ecore#//PAnnotatedEStructuralFeature">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/paEClass"/>
@@ -309,5 +310,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//External/type"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//EAVMapping"/>
+    <genClasses ecoreClass="pannotation.ecore#//NoEAVMapping"/>
   </genPackages>
 </genmodel:GenModel>

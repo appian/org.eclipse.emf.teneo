@@ -469,4 +469,9 @@
       <details key="0" value="EClass"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NoEAVMapping" eSuperTypes="#//PAnnotation">
+    <eAnnotations source="teneo/internal/Target">
+      <details key="0" value="EClass"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

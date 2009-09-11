@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.26 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.27 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -39,6 +39,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
@@ -67,6 +68,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getTableGenerator <em>Table Generator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getAssociationOverrides <em>Association Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getEavMapping <em>Eav Mapping</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getNoEAVMapping <em>No EAV Mapping</em>}</li>
  * </ul>
  * </p>
  *
@@ -210,6 +212,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @ordered
 	 */
 	protected EAVMapping eavMapping;
+
+	/**
+	 * The cached value of the '{@link #getNoEAVMapping() <em>No EAV Mapping</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNoEAVMapping()
+	 * @generated
+	 * @ordered
+	 */
+	protected NoEAVMapping noEAVMapping;
 
 	/** The computed super pa entity */
 	private PAnnotatedEClass paSuperEntity = null;
@@ -750,6 +762,49 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NoEAVMapping getNoEAVMapping() {
+		return noEAVMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNoEAVMapping(NoEAVMapping newNoEAVMapping, NotificationChain msgs) {
+		NoEAVMapping oldNoEAVMapping = noEAVMapping;
+		noEAVMapping = newNoEAVMapping;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING, oldNoEAVMapping, newNoEAVMapping);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNoEAVMapping(NoEAVMapping newNoEAVMapping) {
+		if (newNoEAVMapping != noEAVMapping) {
+			NotificationChain msgs = null;
+			if (noEAVMapping != null)
+				msgs = ((InternalEObject)noEAVMapping).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING, null, msgs);
+			if (newNoEAVMapping != null)
+				msgs = ((InternalEObject)newNoEAVMapping).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING, null, msgs);
+			msgs = basicSetNoEAVMapping(newNoEAVMapping, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING, newNoEAVMapping, newNoEAVMapping));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -806,6 +861,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return ((InternalEList<?>)getAssociationOverrides()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__EAV_MAPPING:
 				return basicSetEavMapping(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
+				return basicSetNoEAVMapping(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -865,6 +922,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return getAssociationOverrides();
 			case PamodelPackage.PANNOTATED_ECLASS__EAV_MAPPING:
 				return getEavMapping();
+			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
+				return getNoEAVMapping();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -930,6 +989,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EAV_MAPPING:
 				setEavMapping((EAVMapping)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
+				setNoEAVMapping((NoEAVMapping)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -989,6 +1051,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EAV_MAPPING:
 				setEavMapping((EAVMapping)null);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
+				setNoEAVMapping((NoEAVMapping)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1034,6 +1099,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return associationOverrides != null && !associationOverrides.isEmpty();
 			case PamodelPackage.PANNOTATED_ECLASS__EAV_MAPPING:
 				return eavMapping != null;
+			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
+				return noEAVMapping != null;
 		}
 		return super.eIsSet(featureID);
 	}

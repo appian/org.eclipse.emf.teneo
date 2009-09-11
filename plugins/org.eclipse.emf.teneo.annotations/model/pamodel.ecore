@@ -131,6 +131,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eavMapping" eType="ecore:EClass pannotation.ecore#//EAVMapping"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="noEAVMapping" eType="ecore:EClass pannotation.ecore#//NoEAVMapping"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedETypedElement">

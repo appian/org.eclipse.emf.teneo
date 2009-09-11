@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassValidator.java,v 1.3 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PAnnotatedEClassValidator.java,v 1.4 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
@@ -57,4 +58,6 @@ public interface PAnnotatedEClassValidator {
 	boolean validateAssociationOverrides(EList<AssociationOverride> value);
 
 	boolean validateEavMapping(EAVMapping value);
+
+	boolean validateNoEAVMapping(NoEAVMapping value);
 }

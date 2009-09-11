@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.12 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.13 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -322,6 +322,15 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	EAVMapping createEAVMapping();
+
+	/**
+	 * Returns a new object of class '<em>No EAV Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>No EAV Mapping</em>'.
+	 * @generated
+	 */
+	NoEAVMapping createNoEAVMapping();
 
 	/**
 	 * Returns a new object of class '<em>Association Override</em>'.

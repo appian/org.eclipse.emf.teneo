@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.18 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.19 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -1950,13 +1950,41 @@ public interface PannotationPackage extends EPackage {
 	int EAV_MAPPING_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.NoEAVMappingImpl <em>No EAV Mapping</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.NoEAVMappingImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getNoEAVMapping()
+	 * @generated
+	 */
+	int NO_EAV_MAPPING = 39;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NO_EAV_MAPPING__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The number of structural features of the '<em>No EAV Mapping</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NO_EAV_MAPPING_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 42;
+	int FETCH_TYPE = 43;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -1965,7 +1993,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 40;
+	int DISCRIMINATOR_TYPE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -1974,7 +2002,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 41;
+	int ENUM_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -1983,7 +2011,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 44;
+	int INHERITANCE_TYPE = 45;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -1992,7 +2020,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 39;
+	int CASCADE_TYPE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -2001,7 +2029,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 45;
+	int TEMPORAL_TYPE = 46;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}' enum.
@@ -2011,7 +2039,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOptimizerType()
 	 * @generated
 	 */
-	int OPTIMIZER_TYPE = 46;
+	int OPTIMIZER_TYPE = 47;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -2020,7 +2048,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 43;
+	int GENERATION_TYPE = 44;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -3361,6 +3389,16 @@ public interface PannotationPackage extends EPackage {
 	EClass getEAVMapping();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping <em>No EAV Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>No EAV Mapping</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping
+	 * @generated
+	 */
+	EClass getNoEAVMapping();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Association Override</em>'.
@@ -4672,6 +4710,16 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EAV_MAPPING = eINSTANCE.getEAVMapping();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.NoEAVMappingImpl <em>No EAV Mapping</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.NoEAVMappingImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getNoEAVMapping()
+		 * @generated
+		 */
+		EClass NO_EAV_MAPPING = eINSTANCE.getNoEAVMapping();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.

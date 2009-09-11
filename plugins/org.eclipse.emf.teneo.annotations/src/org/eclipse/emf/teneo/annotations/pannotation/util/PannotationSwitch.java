@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.27 2009/08/21 10:16:52 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.28 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -391,6 +391,13 @@ public class PannotationSwitch<T> {
 				EAVMapping eavMapping = (EAVMapping)theEObject;
 				T result = caseEAVMapping(eavMapping);
 				if (result == null) result = casePAnnotation(eavMapping);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.NO_EAV_MAPPING: {
+				NoEAVMapping noEAVMapping = (NoEAVMapping)theEObject;
+				T result = caseNoEAVMapping(noEAVMapping);
+				if (result == null) result = casePAnnotation(noEAVMapping);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -965,6 +972,21 @@ public class PannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseEAVMapping(EAVMapping object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>No EAV Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>No EAV Mapping</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNoEAVMapping(NoEAVMapping object) {
 		return null;
 	}
 

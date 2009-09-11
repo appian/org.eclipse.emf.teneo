@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.21 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.22 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -448,6 +448,15 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	 */
 	public EReference getPAnnotatedEClass_EavMapping() {
 		return (EReference)pAnnotatedEClassEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPAnnotatedEClass_NoEAVMapping() {
+		return (EReference)pAnnotatedEClassEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -908,6 +917,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__TABLE_GENERATOR);
 		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES);
 		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__EAV_MAPPING);
+		createEReference(pAnnotatedEClassEClass, PANNOTATED_ECLASS__NO_EAV_MAPPING);
 
 		pAnnotatedEStructuralFeatureEClass = createEClass(PANNOTATED_ESTRUCTURAL_FEATURE);
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
@@ -1033,6 +1043,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEReference(getPAnnotatedEClass_TableGenerator(), thePannotationPackage.getTableGenerator(), null, "tableGenerator", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_AssociationOverrides(), thePannotationPackage.getAssociationOverride(), null, "associationOverrides", null, 0, -1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEClass_EavMapping(), thePannotationPackage.getEAVMapping(), null, "eavMapping", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEClass_NoEAVMapping(), thePannotationPackage.getNoEAVMapping(), null, "noEAVMapping", null, 0, 1, PAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pAnnotatedEStructuralFeatureEClass, PAnnotatedEStructuralFeature.class, "PAnnotatedEStructuralFeature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEStructuralFeature_PaEClass(), this.getPAnnotatedEClass(), this.getPAnnotatedEClass_PaEStructuralFeatures(), "paEClass", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

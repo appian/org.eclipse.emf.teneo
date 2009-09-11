@@ -45,6 +45,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference tableGenerator : TableGenerator
     Reference associationOverrides : AssociationOverride<<0..*>>
     Reference eavMapping : EAVMapping
+    Reference noEAVMapping : NoEAVMapping
 
   Class PAnnotatedEStructuralFeature -> PAnnotatedETypedElement
     Reference paEClass : PAnnotatedEClass
@@ -274,6 +275,8 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
     Attribute type : EString
 
   Class EAVMapping -> PAnnotation
+
+  Class NoEAVMapping -> PAnnotation
 
   Enum CascadeType
     Literal ALL = 0

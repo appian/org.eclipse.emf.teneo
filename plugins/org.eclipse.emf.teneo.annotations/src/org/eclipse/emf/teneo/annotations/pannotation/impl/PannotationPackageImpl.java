@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.31 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.32 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -52,6 +52,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OptimizerType;
@@ -312,6 +313,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass eavMappingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass noEAVMappingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1542,6 +1550,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNoEAVMapping() {
+		return noEAVMappingEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1834,6 +1851,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		eavMappingEClass = createEClass(EAV_MAPPING);
 
+		noEAVMappingEClass = createEClass(NO_EAV_MAPPING);
+
 		// Create enums
 		cascadeTypeEEnum = createEEnum(CASCADE_TYPE);
 		discriminatorTypeEEnum = createEEnum(DISCRIMINATOR_TYPE);
@@ -1910,6 +1929,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		sequenceStyleGeneratorEClass.getESuperTypes().add(this.getPAnnotation());
 		externalEClass.getESuperTypes().add(this.getPAnnotation());
 		eavMappingEClass.getESuperTypes().add(this.getPAnnotation());
+		noEAVMappingEClass.getESuperTypes().add(this.getPAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2090,6 +2110,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		initEClass(eavMappingEClass, EAVMapping.class, "EAVMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(noEAVMappingEClass, NoEAVMapping.class, "NoEAVMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL);
@@ -2169,7 +2191,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																											
+		   });																																																												
 	}
 
 	/**
@@ -2186,7 +2208,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																										
+		   });																																																											
 	}
 
 	/**
@@ -2309,7 +2331,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });				
+		   });					
 	}
 
 	/**
@@ -2550,6 +2572,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EClass"
+		   });		
+		addAnnotation
+		  (noEAVMappingEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass"
 		   });
 	}
 
@@ -2565,7 +2593,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																																								
+		   });																																																									
 	}
 
 	/**
@@ -2581,7 +2609,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																												
+		   });																																													
 	}
 
 	/**

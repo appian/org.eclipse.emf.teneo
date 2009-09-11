@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.30 2009/08/21 10:16:52 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.31 2009/09/11 20:45:03 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -259,6 +259,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEAVMapping(EAVMapping object) {
 				return createEAVMappingAdapter();
+			}
+			@Override
+			public Adapter caseNoEAVMapping(NoEAVMapping object) {
+				return createNoEAVMappingAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -809,6 +813,20 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEAVMappingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping <em>No EAV Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping
+	 * @generated
+	 */
+	public Adapter createNoEAVMappingAdapter() {
 		return null;
 	}
 
