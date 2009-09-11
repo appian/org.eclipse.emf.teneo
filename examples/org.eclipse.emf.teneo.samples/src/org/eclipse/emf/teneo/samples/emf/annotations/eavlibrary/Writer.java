@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: Writer.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getBooks <em>Books</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getCity <em>City</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getPens <em>Pens</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,5 +103,21 @@ public interface Writer extends EObject {
 	 * @generated
 	 */
 	void setCity(City value);
+
+	/**
+	 * Returns the value of the '<em><b>Pens</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pens</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pens</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage#getWriter_Pens()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Pen> getPens();
 
 } // Writer

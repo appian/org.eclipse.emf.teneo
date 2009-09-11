@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.2 2009/09/11 15:38:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl;
 
@@ -19,12 +19,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer;
 
 /**
@@ -37,6 +39,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getBooks <em>Books</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getCity <em>City</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getPens <em>Pens</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,6 +85,16 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * @ordered
 	 */
 	protected City city;
+
+	/**
+	 * The cached value of the '{@link #getPens() <em>Pens</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPens()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Pen> pens;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,6 +191,18 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Pen> getPens() {
+		if (pens == null) {
+			pens = new EObjectContainmentEList<Pen>(Pen.class, this, EavlibraryPackage.WRITER__PENS);
+		}
+		return pens;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -198,6 +223,8 @@ public class WriterImpl extends EObjectImpl implements Writer {
 		switch (featureID) {
 			case EavlibraryPackage.WRITER__BOOKS:
 				return ((InternalEList<?>)getBooks()).basicRemove(otherEnd, msgs);
+			case EavlibraryPackage.WRITER__PENS:
+				return ((InternalEList<?>)getPens()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -217,6 +244,8 @@ public class WriterImpl extends EObjectImpl implements Writer {
 			case EavlibraryPackage.WRITER__CITY:
 				if (resolve) return getCity();
 				return basicGetCity();
+			case EavlibraryPackage.WRITER__PENS:
+				return getPens();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -240,6 +269,10 @@ public class WriterImpl extends EObjectImpl implements Writer {
 			case EavlibraryPackage.WRITER__CITY:
 				setCity((City)newValue);
 				return;
+			case EavlibraryPackage.WRITER__PENS:
+				getPens().clear();
+				getPens().addAll((Collection<? extends Pen>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -261,6 +294,9 @@ public class WriterImpl extends EObjectImpl implements Writer {
 			case EavlibraryPackage.WRITER__CITY:
 				setCity((City)null);
 				return;
+			case EavlibraryPackage.WRITER__PENS:
+				getPens().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,6 +315,8 @@ public class WriterImpl extends EObjectImpl implements Writer {
 				return books != null && !books.isEmpty();
 			case EavlibraryPackage.WRITER__CITY:
 				return city != null;
+			case EavlibraryPackage.WRITER__PENS:
+				return pens != null && !pens.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

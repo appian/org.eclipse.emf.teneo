@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryAdapterFactory.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: EavlibraryAdapterFactory.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.util;
 
@@ -88,6 +88,10 @@ public class EavlibraryAdapterFactory extends AdapterFactoryImpl {
 				return createWriterAdapter();
 			}
 			@Override
+			public Adapter casePen(Pen object) {
+				return createPenAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -160,6 +164,20 @@ public class EavlibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWriterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen <em>Pen</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen
+	 * @generated
+	 */
+	public Adapter createPenAdapter() {
 		return null;
 	}
 

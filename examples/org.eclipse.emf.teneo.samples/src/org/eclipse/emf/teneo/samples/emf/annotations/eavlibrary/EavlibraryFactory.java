@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryFactory.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: EavlibraryFactory.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary;
 
@@ -60,6 +60,15 @@ public interface EavlibraryFactory extends EFactory {
 	 * @generated
 	 */
 	Writer createWriter();
+
+	/**
+	 * Returns a new object of class '<em>Pen</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pen</em>'.
+	 * @generated
+	 */
+	Pen createPen();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryPackage.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: EavlibraryPackage.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary;
 
@@ -237,13 +237,50 @@ public interface EavlibraryPackage extends EPackage {
 	int WRITER__CITY = 2;
 
 	/**
+	 * The feature id for the '<em><b>Pens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITER__PENS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER_FEATURE_COUNT = 3;
+	int WRITER_FEATURE_COUNT = 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl <em>Pen</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.EavlibraryPackageImpl#getPen()
+	 * @generated
+	 */
+	int PEN = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PEN__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Pen</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PEN_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.BookCategory <em>Book Category</em>}' enum.
@@ -253,7 +290,7 @@ public interface EavlibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.EavlibraryPackageImpl#getBookCategory()
 	 * @generated
 	 */
-	int BOOK_CATEGORY = 4;
+	int BOOK_CATEGORY = 5;
 
 	/**
 	 * The meta object id for the '<em>Book Category Object</em>' data type.
@@ -263,7 +300,7 @@ public interface EavlibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.EavlibraryPackageImpl#getBookCategoryObject()
 	 * @generated
 	 */
-	int BOOK_CATEGORY_OBJECT = 5;
+	int BOOK_CATEGORY_OBJECT = 6;
 
 
 	/**
@@ -437,6 +474,38 @@ public interface EavlibraryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getWriter_City();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getPens <em>Pens</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Pens</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getPens()
+	 * @see #getWriter()
+	 * @generated
+	 */
+	EReference getWriter_Pens();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen <em>Pen</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pen</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen
+	 * @generated
+	 */
+	EClass getPen();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen#getName()
+	 * @see #getPen()
+	 * @generated
+	 */
+	EAttribute getPen_Name();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.BookCategory <em>Book Category</em>}'.
@@ -617,6 +686,32 @@ public interface EavlibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WRITER__CITY = eINSTANCE.getWriter_City();
+
+		/**
+		 * The meta object literal for the '<em><b>Pens</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WRITER__PENS = eINSTANCE.getWriter_Pens();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl <em>Pen</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.EavlibraryPackageImpl#getPen()
+		 * @generated
+		 */
+		EClass PEN = eINSTANCE.getPen();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PEN__NAME = eINSTANCE.getPen_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.BookCategory <em>Book Category</em>}' enum.

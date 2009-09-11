@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryFactoryImpl.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: EavlibraryFactoryImpl.java,v 1.2 2009/09/11 15:38:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl;
 
@@ -65,6 +65,7 @@ public class EavlibraryFactoryImpl extends EFactoryImpl implements EavlibraryFac
 			case EavlibraryPackage.CITY: return createCity();
 			case EavlibraryPackage.LIBRARY: return createLibrary();
 			case EavlibraryPackage.WRITER: return createWriter();
+			case EavlibraryPackage.PEN: return createPen();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -142,6 +143,16 @@ public class EavlibraryFactoryImpl extends EFactoryImpl implements EavlibraryFac
 	public Writer createWriter() {
 		WriterImpl writer = new WriterImpl();
 		return writer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pen createPen() {
+		PenImpl pen = new PenImpl();
+		return pen;
 	}
 
 	/**

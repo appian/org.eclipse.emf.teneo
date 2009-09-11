@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterValidator.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: WriterValidator.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.validation;
 
@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City;
+import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen;
 
 /**
  * A sample validator interface for {@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer}.
@@ -23,4 +24,6 @@ public interface WriterValidator {
 	boolean validateName(String value);
 	boolean validateBooks(EList<Book> value);
 	boolean validateCity(City value);
+
+	boolean validatePens(EList<Pen> value);
 }

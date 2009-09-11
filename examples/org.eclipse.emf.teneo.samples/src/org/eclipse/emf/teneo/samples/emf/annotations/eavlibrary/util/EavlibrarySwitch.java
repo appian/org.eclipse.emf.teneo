@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibrarySwitch.java,v 1.1 2009/08/21 15:01:55 mtaal Exp $
+ * $Id: EavlibrarySwitch.java,v 1.2 2009/09/11 15:38:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.util;
 
@@ -111,6 +111,12 @@ public class EavlibrarySwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EavlibraryPackage.PEN: {
+				Pen pen = (Pen)theEObject;
+				T result = casePen(pen);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -172,6 +178,21 @@ public class EavlibrarySwitch<T> {
 	 * @generated
 	 */
 	public T caseWriter(Writer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pen</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pen</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePen(Pen object) {
 		return null;
 	}
 

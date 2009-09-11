@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryPackageImpl.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: EavlibraryPackageImpl.java,v 1.2 2009/09/11 15:38:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Library;
+import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer;
 
 /**
@@ -59,6 +60,13 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 	 * @generated
 	 */
 	private EClass writerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass penEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -287,6 +295,33 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getWriter_Pens() {
+		return (EReference)writerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPen() {
+		return penEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPen_Name() {
+		return (EAttribute)penEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getBookCategory() {
 		return bookCategoryEEnum;
 	}
@@ -347,6 +382,10 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		createEAttribute(writerEClass, WRITER__NAME);
 		createEReference(writerEClass, WRITER__BOOKS);
 		createEReference(writerEClass, WRITER__CITY);
+		createEReference(writerEClass, WRITER__PENS);
+
+		penEClass = createEClass(PEN);
+		createEAttribute(penEClass, PEN__NAME);
 
 		// Create enums
 		bookCategoryEEnum = createEEnum(BOOK_CATEGORY);
@@ -407,6 +446,10 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		initEAttribute(getWriter_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriter_Books(), this.getBook(), this.getBook_Author(), "books", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriter_City(), this.getCity(), null, "city", null, 1, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWriter_Pens(), this.getPen(), null, "pens", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(penEClass, Pen.class, "Pen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPen_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, Pen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(bookCategoryEEnum, BookCategory.class, "BookCategory");
