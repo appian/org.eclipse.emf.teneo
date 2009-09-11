@@ -70,6 +70,7 @@
 			<xsd:element name="immutable" type="Immutable" minOccurs="0"/>
 			<xsd:element name="inheritance" type="InheritanceType" minOccurs="0"/>
 			<xsd:element name="mapped-superclass" type="MappedSuperclass" minOccurs="0"/>
+			<xsd:element name="no-e-a-v-mapping" type="NoEAVMapping" minOccurs="0"/>
 			<xsd:element name="primary-key-join-column" type="PrimaryKeyJoinColumn" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">primaryKeyJoinColumns</xsd:appinfo>
@@ -656,6 +657,7 @@
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="MappedSuperclass"/>
+<xsd:complexType name="NoEAVMapping"/>
 <xsd:complexType name="OneToMany">
 	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType" minOccurs="0" maxOccurs="unbounded"/>
