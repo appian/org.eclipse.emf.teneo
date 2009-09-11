@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryPackageImpl.java,v 1.2 2009/09/11 15:38:42 mtaal Exp $
+ * $Id: EavlibraryPackageImpl.java,v 1.3 2009/09/11 20:44:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl;
 
@@ -486,7 +486,7 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   new String[] {
 			 "name", "Book",
 			 "kind", "elementOnly"
-		   });		
+		   });			
 		addAnnotation
 		  (getBook_Title(), 
 		   source, 
@@ -614,7 +614,13 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";					
+		String source = "teneo.jpa";			
+		addAnnotation
+		  (bookEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@NoEAVMapping"
+		   });				
 		addAnnotation
 		  (getBook_Category(), 
 		   source, 
@@ -636,7 +642,7 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 	 * @generated
 	 */
 	protected void createTeneo_1Annotations() {
-		String source = "teneo.hibernate";															
+		String source = "teneo.hibernate";																
 		addAnnotation
 		  (getLibrary_Writers(), 
 		   source, 

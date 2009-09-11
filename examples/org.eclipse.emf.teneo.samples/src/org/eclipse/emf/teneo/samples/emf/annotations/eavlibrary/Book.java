@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.1 2009/08/21 15:01:54 mtaal Exp $
+ * $Id: Book.java,v 1.2 2009/09/11 20:44:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage#getBook()
  * @model extendedMetaData="name='Book' kind='elementOnly'"
+ *        annotation="teneo.jpa appinfo='@NoEAVMapping'"
  * @generated
  */
 public interface Book extends EObject {

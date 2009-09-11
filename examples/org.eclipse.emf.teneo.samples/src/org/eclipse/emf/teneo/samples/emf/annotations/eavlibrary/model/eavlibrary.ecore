@@ -8,6 +8,9 @@
       <details key="name" value="Book"/>
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@NoEAVMapping"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
         iD="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
