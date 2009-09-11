@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -92,7 +93,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.57 $
+ * @version $Revision: 1.58 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -120,6 +121,9 @@ public abstract class HbDataStore implements DataStore {
 
 	/** The array with entities (eclasses) which are not contained */
 	private String[] topEntities;
+
+	/** The list of contained eclasses */
+	private List<EClass> containedEClasses;
 
 	/** The name under which it is registered */
 	private String name;
@@ -185,6 +189,47 @@ public abstract class HbDataStore implements DataStore {
 		return ePackages;
 	}
 
+	private List<EClass> computeContainedEClasses() {
+		final List<EClass> result = new ArrayList<EClass>();
+		for (EPackage ePackage : getEPackages()) {
+			for (EClassifier eClassifier : ePackage.getEClassifiers()) {
+				if (eClassifier instanceof EClass) {
+					final EClass eClass = (EClass) eClassifier;
+					for (EReference eReference : eClass.getEAllReferences()) {
+						if (eReference.isContainment()) {
+							if (eReference.getEReferenceType() != EcorePackage.eINSTANCE.getEObject()) {
+								result.add(eReference.getEReferenceType());
+							}
+						}
+					}
+				}
+			}
+		}
+		for (EPackage ePackage : getEPackages()) {
+			for (EClassifier eClassifier : ePackage.getEClassifiers()) {
+				if (eClassifier instanceof EClass) {
+					final EClass eClass = (EClass) eClassifier;
+					if (!result.contains(eClass) && isSuperContained(eClass, result)) {
+						result.add(eClass);
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	private boolean isSuperContained(EClass eClass, List<EClass> containedEClass) {
+		for (EClass eSuperClass : eClass.getESuperTypes()) {
+			if (containedEClass.contains(eSuperClass)) {
+				return true;
+			}
+			if (isSuperContained(eSuperClass, containedEClass)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * @param epackages
 	 *            the epackages to set
@@ -244,6 +289,8 @@ public abstract class HbDataStore implements DataStore {
 		referers = computeReferers();
 
 		topEntities = computeTopEntities();
+
+		containedEClasses = computeContainedEClasses();
 
 		// now add the econtainer mappings to the contained types, only for
 		// unidirectional container relations
@@ -612,9 +659,8 @@ public abstract class HbDataStore implements DataStore {
 		} else {
 			return;
 		}
-		// is a
-		// valid
-		// eclass
+
+		// is a valid eclass
 		component.addTuplizer(EntityMode.MAP, getHbContext().getEMFComponentTuplizerClass(cfg).getName());
 		component.addTuplizer(EntityMode.POJO, getHbContext().getEMFComponentTuplizerClass(cfg).getName());
 		HbHelper.INSTANCE.registerDataStoreByComponent(this, component);
@@ -622,16 +668,22 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Returns true if the pc is contained */
 	private boolean isContained(PersistentClass pc) {
-		java.util.List<ReferenceTo> refs = referers.get(getMappedName(pc));
-		if (refs == null) {
+		final EClass eclass;
+		if (pc.getEntityName() != null) {
+			eclass = getEntityNameStrategy().toEClass(pc.getEntityName());
+		} else {
+			eclass = EModelResolver.instance().getEClass(pc.getMappedClass());
+		}
+
+		if (eclass == null && !pc.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			return false;
 		}
-		for (ReferenceTo rt : refs) {
-			if (rt.isContainer) {
-				return true;
-			}
+
+		if (pc.getEntityName() != null && pc.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
+			return true;
 		}
-		return false;
+
+		return containedEClasses.contains(eclass);
 	}
 
 	/** Sets initialized */
