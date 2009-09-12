@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterValidator.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
+ * $Id: WriterValidator.java,v 1.3 2009/09/12 04:47:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.validation;
 
@@ -26,4 +26,8 @@ public interface WriterValidator {
 	boolean validateCity(City value);
 
 	boolean validatePens(EList<Pen> value);
+
+	boolean validateImage(byte[] value);
+
+	boolean validateAbstract(String value);
 }

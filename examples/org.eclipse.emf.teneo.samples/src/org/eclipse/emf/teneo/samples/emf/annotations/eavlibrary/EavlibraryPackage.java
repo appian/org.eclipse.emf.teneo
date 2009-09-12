@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryPackage.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
+ * $Id: EavlibraryPackage.java,v 1.3 2009/09/12 04:47:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary;
 
@@ -246,13 +246,31 @@ public interface EavlibraryPackage extends EPackage {
 	int WRITER__PENS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITER__IMAGE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITER__ABSTRACT = 5;
+
+	/**
 	 * The number of structural features of the '<em>Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER_FEATURE_COUNT = 4;
+	int WRITER_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl <em>Pen</em>}' class.
@@ -487,6 +505,28 @@ public interface EavlibraryPackage extends EPackage {
 	EReference getWriter_Pens();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getImage()
+	 * @see #getWriter()
+	 * @generated
+	 */
+	EAttribute getWriter_Image();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getAbstract <em>Abstract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Abstract</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getAbstract()
+	 * @see #getWriter()
+	 * @generated
+	 */
+	EAttribute getWriter_Abstract();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Pen <em>Pen</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -694,6 +734,22 @@ public interface EavlibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WRITER__PENS = eINSTANCE.getWriter_Pens();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WRITER__IMAGE = eINSTANCE.getWriter_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WRITER__ABSTRACT = eINSTANCE.getWriter_Abstract();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.PenImpl <em>Pen</em>}' class.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EavlibraryPackageImpl.java,v 1.3 2009/09/11 20:44:46 mtaal Exp $
+ * $Id: EavlibraryPackageImpl.java,v 1.4 2009/09/12 04:47:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl;
 
@@ -304,6 +304,24 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getWriter_Image() {
+		return (EAttribute)writerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWriter_Abstract() {
+		return (EAttribute)writerEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPen() {
 		return penEClass;
 	}
@@ -383,6 +401,8 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		createEReference(writerEClass, WRITER__BOOKS);
 		createEReference(writerEClass, WRITER__CITY);
 		createEReference(writerEClass, WRITER__PENS);
+		createEAttribute(writerEClass, WRITER__IMAGE);
+		createEAttribute(writerEClass, WRITER__ABSTRACT);
 
 		penEClass = createEClass(PEN);
 		createEAttribute(penEClass, PEN__NAME);
@@ -447,6 +467,8 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		initEReference(getWriter_Books(), this.getBook(), this.getBook_Author(), "books", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriter_City(), this.getCity(), null, "city", null, 1, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriter_Pens(), this.getPen(), null, "pens", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriter_Image(), theXMLTypePackage.getBase64Binary(), "image", null, 0, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriter_Abstract(), theXMLTypePackage.getString(), "abstract", null, 0, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(penEClass, Pen.class, "Pen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPen_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, Pen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -604,7 +626,7 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   new String[] {
 			 "kind", "element",
 			 "name", "city"
-		   });
+		   });	
 	}
 
 	/**
@@ -632,7 +654,13 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   source, 
 		   new String[] {
 			 "appinfo", "@EAVMapping"
-		   });				
+		   });						
+		addAnnotation
+		  (getWriter_Abstract(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Lob"
+		   });
 	}
 
 	/**
@@ -648,7 +676,7 @@ public class EavlibraryPackageImpl extends EPackageImpl implements EavlibraryPac
 		   source, 
 		   new String[] {
 			 "appinfo", "@Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")"
-		   });							
+		   });								
 	}
 
 } //EavlibraryPackageImpl

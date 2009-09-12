@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.2 2009/09/11 15:38:42 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.3 2009/09/12 04:47:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl;
 
@@ -40,6 +40,8 @@ import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getBooks <em>Books</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getCity <em>City</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getPens <em>Pens</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getImage <em>Image</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.impl.WriterImpl#getAbstract <em>Abstract</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,6 +97,46 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * @ordered
 	 */
 	protected EList<Pen> pens;
+
+	/**
+	 * The default value of the '{@link #getImage() <em>Image</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte[] IMAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getImage() <em>Image</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte[] image = IMAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ABSTRACT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected String abstract_ = ABSTRACT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,6 +245,48 @@ public class WriterImpl extends EObjectImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public byte[] getImage() {
+		return image;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImage(byte[] newImage) {
+		byte[] oldImage = image;
+		image = newImage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EavlibraryPackage.WRITER__IMAGE, oldImage, image));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getAbstract() {
+		return abstract_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAbstract(String newAbstract) {
+		String oldAbstract = abstract_;
+		abstract_ = newAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EavlibraryPackage.WRITER__ABSTRACT, oldAbstract, abstract_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -246,6 +330,10 @@ public class WriterImpl extends EObjectImpl implements Writer {
 				return basicGetCity();
 			case EavlibraryPackage.WRITER__PENS:
 				return getPens();
+			case EavlibraryPackage.WRITER__IMAGE:
+				return getImage();
+			case EavlibraryPackage.WRITER__ABSTRACT:
+				return getAbstract();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -273,6 +361,12 @@ public class WriterImpl extends EObjectImpl implements Writer {
 				getPens().clear();
 				getPens().addAll((Collection<? extends Pen>)newValue);
 				return;
+			case EavlibraryPackage.WRITER__IMAGE:
+				setImage((byte[])newValue);
+				return;
+			case EavlibraryPackage.WRITER__ABSTRACT:
+				setAbstract((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -297,6 +391,12 @@ public class WriterImpl extends EObjectImpl implements Writer {
 			case EavlibraryPackage.WRITER__PENS:
 				getPens().clear();
 				return;
+			case EavlibraryPackage.WRITER__IMAGE:
+				setImage(IMAGE_EDEFAULT);
+				return;
+			case EavlibraryPackage.WRITER__ABSTRACT:
+				setAbstract(ABSTRACT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -317,6 +417,10 @@ public class WriterImpl extends EObjectImpl implements Writer {
 				return city != null;
 			case EavlibraryPackage.WRITER__PENS:
 				return pens != null && !pens.isEmpty();
+			case EavlibraryPackage.WRITER__IMAGE:
+				return IMAGE_EDEFAULT == null ? image != null : !IMAGE_EDEFAULT.equals(image);
+			case EavlibraryPackage.WRITER__ABSTRACT:
+				return ABSTRACT_EDEFAULT == null ? abstract_ != null : !ABSTRACT_EDEFAULT.equals(abstract_);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -333,6 +437,10 @@ public class WriterImpl extends EObjectImpl implements Writer {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", image: ");
+		result.append(image);
+		result.append(", abstract: ");
+		result.append(abstract_);
 		result.append(')');
 		return result.toString();
 	}

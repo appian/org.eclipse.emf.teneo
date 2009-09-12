@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.2 2009/09/11 15:38:41 mtaal Exp $
+ * $Id: Writer.java,v 1.3 2009/09/12 04:47:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getBooks <em>Books</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getCity <em>City</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getPens <em>Pens</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getImage <em>Image</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getAbstract <em>Abstract</em>}</li>
  * </ul>
  * </p>
  *
@@ -119,5 +121,58 @@ public interface Writer extends EObject {
 	 * @generated
 	 */
 	EList<Pen> getPens();
+
+	/**
+	 * Returns the value of the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Image</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Image</em>' attribute.
+	 * @see #setImage(byte[])
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage#getWriter_Image()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Base64Binary"
+	 * @generated
+	 */
+	byte[] getImage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getImage <em>Image</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Image</em>' attribute.
+	 * @see #getImage()
+	 * @generated
+	 */
+	void setImage(byte[] value);
+
+	/**
+	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Abstract</em>' attribute.
+	 * @see #setAbstract(String)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryPackage#getWriter_Abstract()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        annotation="teneo.jpa appinfo='@Lob'"
+	 * @generated
+	 */
+	String getAbstract();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Writer#getAbstract <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Abstract</em>' attribute.
+	 * @see #getAbstract()
+	 * @generated
+	 */
+	void setAbstract(String value);
 
 } // Writer

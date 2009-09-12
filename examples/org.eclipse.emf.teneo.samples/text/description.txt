@@ -27,6 +27,8 @@ Package eavlibrary <http://www.eclipse.org/emf/teneo/samples/emf/annotations/eav
     Reference books : Book<<0..*>>
     Reference city : City<<1..1>>
     Reference pens : Pen<<0..*>>
+    Attribute image : Base64Binary
+    Attribute abstract : String
 
   Class Pen
     Attribute name : String
