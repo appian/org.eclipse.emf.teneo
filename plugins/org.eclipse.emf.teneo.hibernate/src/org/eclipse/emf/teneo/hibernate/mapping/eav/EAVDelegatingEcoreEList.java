@@ -31,11 +31,15 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implemen
 		super(owner);
 	}
 
-	private void initialize() {
+	protected void initialize() {
 		if (delegate != null) {
 			return;
 		}
 		doInitialize();
+	}
+
+	public boolean isDelegateInitialized() {
+		return delegate != null;
 	}
 
 	protected void doInitialize() {

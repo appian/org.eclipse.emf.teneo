@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.5 2009/09/12 05:47:12 mtaal Exp $
+ * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.6 2009/09/12 13:49:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -21,10 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
@@ -63,10 +61,6 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 			return ecoreObjectList;
 		}
 		if (StoreUtil.isMap(getEStructuralFeature())) {
-			final List<BasicEMap.Entry<Object, Object>> values = new ArrayList<BasicEMap.Entry<Object, Object>>();
-			for (EAVSingleContainmentEReferenceValueHolder valueHolder : referenceValues) {
-				values.add((BasicEMap.Entry<Object, Object>) valueHolder.getReferenceValue());
-			}
 			final EClass entryEClass = (EClass) getEStructuralFeature().getEType();
 			Class<?> entryClass = entryEClass.getInstanceClass();
 			if (entryClass == null) {
@@ -74,14 +68,8 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 			}
 
 			final int featureID = owner.eClass().getFeatureID(getEStructuralFeature());
-			final EcoreEMap<Object, Object> eMap = new EcoreEMap<Object, Object>(entryEClass, entryClass, owner,
-					featureID);
-			for (BasicEMap.Entry<Object, Object> entry : values) {
-				eMap.basicAdd(entry, null);
-			}
-			// force the map to be computed, this sets the internal entrydata/size member
-			eMap.get(null);
-			ecoreObjectList = eMap;
+			ecoreObjectList = new EAVDelegatingEMap<Object, Object>(entryEClass, entryClass, owner, featureID);
+			((EAVDelegatingEMap) ecoreObjectList).setPersistentList(referenceValues);
 		} else {
 			// final DelegatingLateLoadingList<Object> lateLoadingList = new DelegatingLateLoadingList<Object>();
 			// lateLoadingList.setPersistentList((List<?>) referenceValues);

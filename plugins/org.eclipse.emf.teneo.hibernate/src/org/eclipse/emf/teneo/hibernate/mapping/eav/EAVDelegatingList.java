@@ -10,9 +10,9 @@
  */
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
-
 /**
  * Tags EAV list and featuremap.
  */
 public interface EAVDelegatingList {
+	boolean isDelegateInitialized();
 }

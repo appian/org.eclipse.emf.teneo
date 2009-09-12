@@ -41,6 +41,10 @@ public class EAVDelegatingFeatureMap extends DelegatingFeatureMap implements EAV
 		}
 	}
 
+	public boolean isDelegateInitialized() {
+		return delegate != null;
+	}
+
 	@Override
 	protected List<FeatureMap.Entry> delegateList() {
 		initialize();
@@ -54,5 +58,13 @@ public class EAVDelegatingFeatureMap extends DelegatingFeatureMap implements EAV
 
 	public void setDelegate(List<FeatureMap.Entry> delegate) {
 		this.delegate = delegate;
+	}
+
+	public List<?> getPersistentList() {
+		return persistentList;
+	}
+
+	public void setPersistentList(List<?> persistentList) {
+		this.persistentList = persistentList;
 	}
 }
