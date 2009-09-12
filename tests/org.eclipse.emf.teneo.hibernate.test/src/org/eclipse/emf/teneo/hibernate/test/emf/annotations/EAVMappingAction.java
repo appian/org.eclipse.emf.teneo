@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVMappingAction.java,v 1.3 2009/09/11 20:46:11 mtaal Exp $
+ * $Id: EAVMappingAction.java,v 1.4 2009/09/12 04:47:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -31,9 +31,12 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests EAVMapping annotation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EAVMappingAction extends AbstractTestAction {
+
+	private static String LARGE_STRING;
+	private static byte[] BYTES;
 
 	public EAVMappingAction() {
 		super(EavlibraryPackage.eINSTANCE);
@@ -42,6 +45,7 @@ public class EAVMappingAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		{
 			store.beginTransaction();
 			createStoreTestSet(store, "p1");
@@ -122,6 +126,8 @@ public class EAVMappingAction extends AbstractTestAction {
 		final Writer w1 = factory.createWriter();
 		w1.setName(prefix + "w1");
 		w1.setCity(c);
+		w1.setAbstract(createAbstract());
+		w1.setImage(createByteArray());
 		final Book bk1 = factory.createBook();
 		bk1.setTitle(prefix + "t1");
 		bk1.setAuthor(w1);
@@ -135,6 +141,8 @@ public class EAVMappingAction extends AbstractTestAction {
 		final Writer w2 = factory.createWriter();
 		w2.setName(prefix + "w2");
 		w2.setCity(c);
+		w2.setAbstract(createAbstract());
+		w2.setImage(createByteArray());
 		bk3.setTitle(prefix + "t3");
 		bk3.setAuthor(w2);
 		bk3.setPages(3);
@@ -152,4 +160,28 @@ public class EAVMappingAction extends AbstractTestAction {
 		store.store(l);
 	}
 
+	private String createAbstract() {
+		if (LARGE_STRING != null) {
+			return LARGE_STRING;
+		}
+		final StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < 100; i++) {
+			sb.append("aaaa bbbb cccc dddd eee fff ggg hhh iii jjjj kkkk llll "
+					+ "mmmm nnnn ooo ppp qqq rrr sss ttt uuu vvv www");
+		}
+		LARGE_STRING = sb.toString();
+		return LARGE_STRING;
+	}
+
+	private byte[] createByteArray() {
+		if (BYTES != null) {
+			return BYTES.clone();
+		}
+		final byte[] bytes = new byte[10000];
+		for (int i = 0; i < bytes.length; i++) {
+			bytes[i] = (byte) (i / (10000 / 128));
+		}
+		BYTES = bytes;
+		return BYTES;
+	}
 }
