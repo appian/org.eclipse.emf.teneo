@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (cascading delete) - Delete restrictions
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ $Date: 2009/08/21 10:16:29 $
+ * @version $Revision: 1.9 $ $Date: 2009/09/12 13:49:41 $
  */
 public class FeatureMapAction extends AbstractTestAction {
 	public FeatureMapAction() {
@@ -120,6 +120,12 @@ public class FeatureMapAction extends AbstractTestAction {
 			assertTrue(products.size() == 2);
 			assertTrue(product1.getName().compareTo("_1") == 0);
 			assertTrue(product2.getName().compareTo("_2") == 0);
+
+			checkLazyLoad(product1.getGroup1());
+			checkLazyLoad(product1.getGroup());
+
+			checkLazyLoad(product2.getGroup1());
+			checkLazyLoad(product2.getGroup());
 
 			// check container property
 			assertTrue(((PriceByQuantityType) product1.getGroup1().getValue(1)).eContainer() == product1);
@@ -292,6 +298,10 @@ public class FeatureMapAction extends AbstractTestAction {
 			compareFeatureMaps((List<?>) value, pt.getGroup());
 			compareFeatureMaps((List<?>) value1, pt.getGroup1());
 		}
+
+	}
+
+	protected void checkLazyLoad(FeatureMap fm) {
 
 	}
 
