@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapEAVAction.java,v 1.2 2009/08/22 00:17:25 mtaal Exp $
+ * $Id: EMapEAVAction.java,v 1.3 2009/09/12 13:49:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -23,6 +23,7 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVDelegatingEMap;
 import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.MapkeyFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.mapkey.MapkeyPackage;
@@ -35,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests featuremap with a EAV mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class EMapEAVAction extends AbstractTestAction {
 
@@ -101,8 +102,14 @@ public class EMapEAVAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			final List<?> lst = store.getObjects(Book.class);
-			for (Object name : lst) {
-				checkTestSet((Book) name);
+			for (Object obj : lst) {
+				final Book bk = (Book) obj;
+
+				// lazy loaded
+				assertTrue(bk.getWriters() instanceof EAVDelegatingEMap<?, ?>);
+				assertTrue(!((EAVDelegatingEMap<?, ?>) bk.getWriters()).isDelegateInitialized());
+
+				checkTestSet(bk);
 			}
 			store.commitTransaction();
 		}

@@ -11,13 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVMappingAction.java,v 1.4 2009/09/12 04:47:35 mtaal Exp $
+ * $Id: EAVMappingAction.java,v 1.5 2009/09/12 13:49:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.Book;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.City;
 import org.eclipse.emf.teneo.samples.emf.annotations.eavlibrary.EavlibraryFactory;
@@ -31,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests EAVMapping annotation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class EAVMappingAction extends AbstractTestAction {
 
@@ -98,6 +99,9 @@ public class EAVMappingAction extends AbstractTestAction {
 			final List<?> lst = store.getObjects(Library.class);
 			for (Object libOb : lst) {
 				Library l = (Library) libOb;
+
+				checkLazyLoad(l.getBooks());
+
 				for (Book bk : l.getBooks()) {
 					assertEquals(l.getName() + "t" + bk.getPages(), bk.getTitle());
 				}
@@ -111,6 +115,9 @@ public class EAVMappingAction extends AbstractTestAction {
 			}
 			store.commitTransaction();
 		}
+	}
+
+	protected void checkLazyLoad(EList<Book> books) {
 	}
 
 	/** Create test set */
