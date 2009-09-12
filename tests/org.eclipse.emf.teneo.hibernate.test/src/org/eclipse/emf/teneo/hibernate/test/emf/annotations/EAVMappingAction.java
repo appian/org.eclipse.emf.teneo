@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVMappingAction.java,v 1.5 2009/09/12 13:49:44 mtaal Exp $
+ * $Id: EAVMappingAction.java,v 1.6 2009/09/12 14:58:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests EAVMapping annotation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class EAVMappingAction extends AbstractTestAction {
 
@@ -108,6 +108,10 @@ public class EAVMappingAction extends AbstractTestAction {
 				for (Writer w : l.getWriters()) {
 					assertTrue(w.getName().startsWith((l.getName())));
 					assertTrue(w.getCity().getName().startsWith((l.getName())));
+					assertEquals(LARGE_STRING, w.getAbstract());
+					for (int i = 0; i < BYTES.length; i++) {
+						assertEquals(BYTES[i], w.getImage()[i]);
+					}
 					for (Book bk : w.getBooks()) {
 						assertTrue(l.getBooks().contains(bk));
 					}
