@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -24,17 +25,39 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implemen
 	private static final long serialVersionUID = 1L;
 	private EStructuralFeature eStructuralFeature;
 	private List<E> delegate;
+	private List<?> persistentList;
 
 	public EAVDelegatingEcoreEList(InternalEObject owner) {
 		super(owner);
 	}
 
+	private void initialize() {
+		if (delegate != null) {
+			return;
+		}
+		doInitialize();
+	}
+
+	protected void doInitialize() {
+		delegate = new ArrayList<E>();
+		for (Object eavValueObj : persistentList) {
+			delegate.add(getConvertedValue(eavValueObj));
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	protected E getConvertedValue(Object value) {
+		return (E) ((EAVValueHolder) value).getValue();
+	}
+
 	@Override
 	protected List<E> delegateList() {
+		initialize();
 		return delegate;
 	}
 
 	public List<E> getDelegate() {
+		initialize();
 		return delegate;
 	}
 
@@ -48,5 +71,13 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E> implemen
 
 	public void setEStructuralFeature(EStructuralFeature eStructuralFeature) {
 		this.eStructuralFeature = eStructuralFeature;
+	}
+
+	public List<?> getPersistentList() {
+		return persistentList;
+	}
+
+	public void setPersistentList(List<?> persistentList) {
+		this.persistentList = persistentList;
 	}
 }

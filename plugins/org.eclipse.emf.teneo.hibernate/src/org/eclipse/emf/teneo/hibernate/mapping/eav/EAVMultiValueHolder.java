@@ -12,13 +12,12 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiValueHolder.java,v 1.2 2009/08/21 10:16:36 mtaal Exp $
+ * $Id: EAVMultiValueHolder.java,v 1.3 2009/09/12 05:47:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
 import java.lang.reflect.Field;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.InternalEObject.EStore;
@@ -53,11 +52,7 @@ public abstract class EAVMultiValueHolder extends EAVValueHolder {
 			}
 
 			final Object newValue = get(owner);
-			if (newValue instanceof Map<?, ?>) {
-				EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) owner);
-			} else {
-				EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) owner);
-			}
+			EcoreAccess.setManyEFeatureValue(getEStructuralFeature(), newValue, (BasicEObjectImpl) owner);
 		} else {
 			final Field javaField = FieldUtil.getField(owner.getClass(), getEStructuralFeature().getName());
 

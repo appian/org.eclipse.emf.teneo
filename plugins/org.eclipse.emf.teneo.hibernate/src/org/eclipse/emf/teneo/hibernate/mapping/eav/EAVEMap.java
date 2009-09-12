@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
 
 /**
  * Extends EcoreEMap to make the doPut method visible.
+ * 
+ * @deprecated not used at the moment
  */
 public class EAVEMap<K, V> extends EcoreEMap<K, V> implements EAVDelegatingList {
 

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVFeatureMapValueHolder.java,v 1.2 2009/08/22 00:09:58 mtaal Exp $
+ * $Id: EAVFeatureMapValueHolder.java,v 1.3 2009/09/12 05:47:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * This class holds a multi (ismany) EAttribute value.
@@ -56,10 +55,9 @@ public class EAVFeatureMapValueHolder extends EAVMultiValueHolder {
 	public Object get(InternalEObject owner) {
 		final EAVDelegatingFeatureMap featureMap = new EAVDelegatingFeatureMap((InternalEObject) owner,
 				getEStructuralFeature());
-		final List<FeatureMap.Entry> objValues = new ArrayList<FeatureMap.Entry>();
-		for (EAVFeatureMapEntryValueHolder valueHolder : values) {
-			objValues.add(valueHolder.get(owner));
-		}
+		final DelegatingLateLoadingList.FeatureMapList objValues = new DelegatingLateLoadingList.FeatureMapList();
+		objValues.setOwner(owner);
+		objValues.setPersistentList(values);
 		featureMap.setDelegate(objValues);
 		return featureMap;
 	}

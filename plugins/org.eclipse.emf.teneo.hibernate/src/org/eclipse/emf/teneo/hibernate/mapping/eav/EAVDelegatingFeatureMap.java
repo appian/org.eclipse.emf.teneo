@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -24,17 +25,30 @@ public class EAVDelegatingFeatureMap extends DelegatingFeatureMap implements EAV
 
 	private static final long serialVersionUID = 1L;
 	private List<FeatureMap.Entry> delegate;
+	private List<?> persistentList;
 
 	public EAVDelegatingFeatureMap(InternalEObject owner, EStructuralFeature eFeature) {
 		super(owner, eFeature);
 	}
 
+	private void initialize() {
+		if (delegate != null) {
+			return;
+		}
+		delegate = new ArrayList<FeatureMap.Entry>();
+		for (Object eavValueObj : persistentList) {
+			delegate.add((FeatureMap.Entry) ((EAVValueHolder) eavValueObj).get(owner));
+		}
+	}
+
 	@Override
 	protected List<FeatureMap.Entry> delegateList() {
+		initialize();
 		return delegate;
 	}
 
 	public List<FeatureMap.Entry> getDelegate() {
+		initialize();
 		return delegate;
 	}
 
