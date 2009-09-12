@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.5 2009/09/11 22:52:36 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.6 2009/09/12 04:47:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -23,8 +23,10 @@ import java.util.Date;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
@@ -65,10 +67,13 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		setMandatoryValue(NOT_NULL_VALUE);
 
 		// do type specific handling
+		final boolean isBlob = value instanceof byte[] || (value instanceof String && isClob(getEStructuralFeature()));
 		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
 		if (value != null) {
 			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
-			typeNeutralValue = eFactory.convertToString(eDataType, value);
+			if (!isBlob) {
+				typeNeutralValue = eFactory.convertToString(eDataType, value);
+			}
 			type = value.getClass().getName();
 		} else {
 			type = eDataType.getInstanceClassName();
@@ -83,7 +88,7 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 			blobValue.setValueHolder(this);
 		} else if (value instanceof Enumerator) {
 			stringValue = ((Enumerator) value).getName();
-		} else if (value instanceof String && isClob()) {
+		} else if (value instanceof String && isBlob) {
 			textValue = new EAVTextValue();
 			textValue.setTextValue((String) value);
 			textValue.setValueHolder(this);
@@ -197,8 +202,8 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		this.textValue = textValue;
 	}
 
-	private boolean isClob() {
-		final EAnnotation eAnnotation = getEStructuralFeature().getEAnnotation("teneo.jpa");
+	private boolean isClob(EModelElement modelElement) {
+		final EAnnotation eAnnotation = modelElement.getEAnnotation("teneo.jpa");
 		if (eAnnotation == null) {
 			return false;
 		}
@@ -206,6 +211,9 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 			if (str.contains("@Lob")) {
 				return true;
 			}
+		}
+		if (modelElement instanceof EAttribute) {
+			return isClob(((EAttribute) modelElement).getEAttributeType());
 		}
 		return false;
 	}

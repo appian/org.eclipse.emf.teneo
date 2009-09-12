@@ -163,7 +163,7 @@
 			<generator class="native" />
 		</id>
 		<version name="version" column="eavversion" />
-		<property name="blobValue" type="binary" column="blobvalue"/>
+		<property name="blobValue" type="binary" column="blobvalue" length="10000"/>
 		
 		<many-to-one name="valueHolder" entity-name="EAVSingleEAttributeValueHolder" column="valueholder" unique="true" not-null="true"/>
 		
@@ -175,7 +175,7 @@
 			<generator class="native" />
 		</id>
 		<version name="version" column="eavversion" />
-		<property name="textValue" type="text" column="textvalue"/>
+		<property name="textValue" type="text" column="textvalue" length="10000"/>
 		
 		<many-to-one name="valueHolder" entity-name="EAVSingleEAttributeValueHolder" column="valueholder" unique="true" not-null="true"/>
 		
