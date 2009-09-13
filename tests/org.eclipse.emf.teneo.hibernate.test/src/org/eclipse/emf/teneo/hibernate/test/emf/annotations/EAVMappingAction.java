@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVMappingAction.java,v 1.6 2009/09/12 14:58:55 mtaal Exp $
+ * $Id: EAVMappingAction.java,v 1.7 2009/09/13 15:03:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests EAVMapping annotation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class EAVMappingAction extends AbstractTestAction {
 
@@ -46,7 +46,6 @@ public class EAVMappingAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		{
 			store.beginTransaction();
 			createStoreTestSet(store, "p1");
