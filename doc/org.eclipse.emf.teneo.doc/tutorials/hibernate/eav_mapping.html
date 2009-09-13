@@ -328,7 +328,7 @@
 			
 <ul>
 			
-<li>the teneo.mapping.eav_mapping: if this option is set to true then all types are mapped using the EAV database schema.</li>
+<li>the teneo.mapping.eav_mapping: if this option is set to true then all types are mapped using the EAV database schema. Note that you can override this for specific EClasses using the NoEAVMapping annotation.</li>
 			
 <li>the EAVMapping annotation: by adding the annotation @EAVMapping to an EClass, the EClass and all its child EClasses are mapped using the EAV schema.</li>				
 			
@@ -405,16 +405,10 @@ select eav.owner from EAVSingleContainmentEReferenceValueHolder eav where eav.re
 </pre>
 			
 <p>With these two queries it is easy to implement delete constraint checking in pre-delete interceptors in Hibernate.</p>
+
 			
-<p>Other limitations:</p>
-			
-<ul>
-			
-<li>An EAV mapping does not support custom primary key/ID types. All id's are generated long values.</li>
-			
-<li>An EAV mapping does not support lazy loading of collections. On the other hand, single instances are lazy loaded (using hibernate proxies, if the <a href="options.html">SET_PROXY</a> option is set to true). </li>
-			
-</ul>
+<p>Another limitation is that an EAV mapping does not support custom primary key/ID types. All id's are generated long values.
+			</p>
 		
 </div>
 	
@@ -428,7 +422,7 @@ select eav.owner from EAVSingleContainmentEReferenceValueHolder eav where eav.re
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2008 The Elver Project</a>
+          Copyright &copy; 2009 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>

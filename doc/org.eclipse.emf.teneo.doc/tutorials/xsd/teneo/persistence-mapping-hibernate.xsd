@@ -70,6 +70,7 @@
 			<xsd:element name="immutable" type="Immutable" minOccurs="0"/>
 			<xsd:element name="inheritance" type="InheritanceType" minOccurs="0"/>
 			<xsd:element name="mapped-superclass" type="MappedSuperclass" minOccurs="0"/>
+			<xsd:element name="no-e-a-v-mapping" type="NoEAVMapping" minOccurs="0"/>
 			<xsd:element name="primary-key-join-column" type="PrimaryKeyJoinColumn" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">primaryKeyJoinColumns</xsd:appinfo>
@@ -537,6 +538,7 @@
 </xsd:simpleType>
 <xsd:complexType name="Column">
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="index" type="xsd:string" use="optional"/>
 	<xsd:attribute name="insertable" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="length" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
@@ -545,9 +547,13 @@
 	<xsd:attribute name="scale" type="xsd:int" use="optional"/>
 	<xsd:attribute name="table" type="xsd:string" use="optional"/>
 	<xsd:attribute name="unique" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="unique-key" type="xsd:string" use="optional"/>
 	<xsd:attribute name="updatable" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="DiscriminatorColumn">
+	<xsd:sequence>
+		<xsd:element name="column" type="Column" minOccurs="0"/>
+	</xsd:sequence>
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
 	<xsd:attribute name="discriminator-type" type="DiscriminatorType" use="optional"/>
 	<xsd:attribute name="length" type="xsd:int" use="optional"/>
@@ -656,6 +662,7 @@
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="MappedSuperclass"/>
+<xsd:complexType name="NoEAVMapping"/>
 <xsd:complexType name="OneToMany">
 	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType" minOccurs="0" maxOccurs="unbounded"/>

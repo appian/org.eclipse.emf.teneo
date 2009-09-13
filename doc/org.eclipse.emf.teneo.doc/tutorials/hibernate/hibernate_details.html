@@ -343,6 +343,9 @@
 <li>
 <a href="#Convert+e_container_feature_id+to+e_container_feature_name">Convert e_container_feature_id to e_container_feature_name</a>
 </li>
+<li>
+<a href="#Indexes+on+EStructuralFeatures%2C+Discriminator+and+columns">Indexes on EStructuralFeatures, Discriminator and columns</a>
+</li>
 </ul>
 		
 <a name="N10011"></a><a name="Setting+the+EPackage.Registry+used+by+Teneo"></a>
@@ -773,6 +776,22 @@ for (Iterator&lt;?&gt; it = dataStore.getClassMappings(); it.hasNext();) {
 		
 </div>
 		
+		
+<a name="N101A8"></a><a name="Indexes+on+EStructuralFeatures%2C+Discriminator+and+columns"></a>
+<div class="h3">
+<h3>Indexes on EStructuralFeatures, Discriminator and columns</h3>
+			
+<p>You can define indexes by using the @Index annotation (hibernate specific) on an EStructuralFeature. The value of the index can be a comma separated list of index names. </p>
+			
+<p>In addition the Column annotation has an additional index attribute which can be used for the same purpose.</p>
+			
+<p>The DiscriminatorColumn annotation has a column attribute which can contain a full @Column annotation with an index.</p>
+
+<pre class="code">
+@DiscriminatorColumn(name="DISCRIMINATOR", discriminatorType=STRING, column=@Column(index="discrIndex,ohterindex", length=120))
+</pre>
+		
+</div>		
 	
 </div>
 </div>
@@ -784,7 +803,7 @@ for (Iterator&lt;?&gt; it = dataStore.getClassMappings(); it.hasNext();) {
 <table width="100%" cellpadding="4" cellspacing="0" border="0">
 <tr>
 <td class="footer"><a href="license.html">
-          Copyright &copy; 2008 The Elver Project</a>
+          Copyright &copy; 2009 The Elver Project</a>
       - All rights reserved.
       </td>
 </tr>
