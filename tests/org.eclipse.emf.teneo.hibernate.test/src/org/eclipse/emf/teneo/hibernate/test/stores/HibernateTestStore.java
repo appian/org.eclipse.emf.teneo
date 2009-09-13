@@ -36,7 +36,6 @@ import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbEntityDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
-import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.test.stores.adapters.HibernateTestDBAdapter;
@@ -54,7 +53,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -171,6 +170,7 @@ public class HibernateTestStore extends AbstractTestStore {
 				&& !props.containsKey(PersistenceOptions.SQL_CASE_STRATEGY)) {
 			props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
 		}
+
 		emfDataStore.setProperties(props);
 		emfDataStore.initialize();
 		if (sessionWrapper != null) {

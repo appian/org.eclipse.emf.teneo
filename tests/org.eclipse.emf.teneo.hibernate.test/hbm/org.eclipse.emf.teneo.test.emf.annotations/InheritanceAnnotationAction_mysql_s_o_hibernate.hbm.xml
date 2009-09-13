@@ -73,7 +73,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`discriminator`" type="string"/>
+		<discriminator type="string">
+			<column name="DISCRIMINATOR" index="discrIndex,ohterindex" length="120"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
