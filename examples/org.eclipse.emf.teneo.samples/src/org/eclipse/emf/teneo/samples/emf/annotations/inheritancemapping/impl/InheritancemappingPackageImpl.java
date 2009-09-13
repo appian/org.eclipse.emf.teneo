@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InheritancemappingPackageImpl.java,v 1.9 2008/07/13 13:12:37 mtaal Exp $
+ * $Id: InheritancemappingPackageImpl.java,v 1.10 2009/09/13 14:45:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.inheritancemapping.impl;
 
@@ -170,20 +170,10 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link InheritancemappingPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -195,7 +185,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		if (isInited) return (InheritancemappingPackage)EPackage.Registry.INSTANCE.getEPackage(InheritancemappingPackage.eNS_URI);
 
 		// Obtain or create and register package
-		InheritancemappingPackageImpl theInheritancemappingPackage = (InheritancemappingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof InheritancemappingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new InheritancemappingPackageImpl());
+		InheritancemappingPackageImpl theInheritancemappingPackage = (InheritancemappingPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof InheritancemappingPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new InheritancemappingPackageImpl());
 
 		isInited = true;
 
@@ -211,6 +201,9 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		// Mark meta-data to indicate it can't be changed
 		theInheritancemappingPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(InheritancemappingPackage.eNS_URI, theInheritancemappingPackage);
 		return theInheritancemappingPackage;
 	}
 
@@ -718,7 +711,7 @@ public class InheritancemappingPackageImpl extends EPackageImpl implements Inher
 		  (priceEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\" discriminatorType=STRING)\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
+			 "appinfo", "\n\t\t\t\t@Table(name=\"myprice\")\n\t\t\t\t@Inheritance(strategy=SINGLE_TABLE)\n\t\t\t\t@DiscriminatorColumn(name=\"DISCRIMINATOR\", discriminatorType=STRING, column=@Column(index=\"discrIndex,ohterindex\", length=120))\n\t\t\t\t@DiscriminatorValue(\"myPrice\")\n\t\t\t"
 		   });								
 		addAnnotation
 		  (usAddressEClass, 

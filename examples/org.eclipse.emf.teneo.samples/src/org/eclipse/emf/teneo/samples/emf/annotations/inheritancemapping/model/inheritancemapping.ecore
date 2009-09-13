@@ -99,7 +99,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Price">
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Table(name=&quot;myprice&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;@Inheritance(strategy=SINGLE_TABLE)&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorColumn(name=&quot;DISCRIMINATOR&quot; discriminatorType=STRING)&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorValue(&quot;myPrice&quot;)&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Table(name=&quot;myprice&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;@Inheritance(strategy=SINGLE_TABLE)&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorColumn(name=&quot;DISCRIMINATOR&quot;, discriminatorType=STRING, column=@Column(index=&quot;discrIndex,ohterindex&quot;, length=120))&#xA;&#x9;&#x9;&#x9;&#x9;@DiscriminatorValue(&quot;myPrice&quot;)&#xA;&#x9;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Price"/>
