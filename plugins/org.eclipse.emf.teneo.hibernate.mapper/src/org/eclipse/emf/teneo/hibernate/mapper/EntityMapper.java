@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.49 2009/08/23 11:00:41 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.50 2009/09/13 14:45:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -649,7 +650,20 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 	 */
 	private Element createDiscriminatorElement(DiscriminatorColumn dColumn, boolean force) {
 		Element dcElement = DocumentHelper.createElement("discriminator");
-		if (dColumn.getName() != null) {
+		if (dColumn.getColumn() != null) {
+			final Column col = dColumn.getColumn();
+			final Element colElement = dcElement.addElement("column");
+			colElement.addAttribute("name", col.getName());
+			if (col.getIndex() != null) {
+				colElement.addAttribute("index", col.getIndex());
+			}
+			if (hbDiscriminatorType(dColumn.getDiscriminatorType()).equals("string") && col.getLength() > 0) {
+				colElement.addAttribute("length", Integer.toString(col.getLength()));
+			}
+			if (!col.isNullable()) {
+				colElement.addAttribute("not-null", "true");
+			}
+		} else if (dColumn.getName() != null) {
 			dcElement.addAttribute("column", getHbmContext().trunc(dColumn.getName()));
 		}
 		dcElement.addAttribute("type", hbDiscriminatorType(dColumn.getDiscriminatorType()));

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.49 2009/07/08 13:16:58 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.50 2009/09/13 14:45:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -752,6 +752,9 @@ public abstract class AbstractMapper {
 				} else {
 					name = getHbmContext().getSqlNameStrategy().getColumnName(pef, null);
 				}
+			}
+			if (column.getUniqueKey() != null) {
+				columnElement.addAttribute("unique-key", column.getUniqueKey());
 			}
 			columnElement.addAttribute("name", getHbmContext().trunc(name));
 			if (column.isSetLength()) {

@@ -14,13 +14,13 @@ Package hbannotation <http://www.eclipse.org/emf/teneo/2006/HbAnnotation>
   Class HbAnnotation -> PAnnotation
 
   Class Cascade -> HbAnnotation
-    Attribute value : CascadeType<<0..*>>
+    Attribute value : HbCascadeType<<0..*>>
 
   Class CollectionOfElements -> HbAnnotation
     Attribute targetElement : EString
     Attribute fetch : FetchType
 
-  Class MapKey -> HbAnnotation
+  Class HbMapKey -> HbAnnotation
     Reference columns : Column<<0..*>>
 
   Class Parameter -> HbAnnotation
@@ -66,6 +66,7 @@ Package hbannotation <http://www.eclipse.org/emf/teneo/2006/HbAnnotation>
 
   Class Index -> HbAnnotation
     Attribute name : EString
+    Attribute columnNames : EString<<0..*>>
 
   Class Generated -> HbAnnotation
     Attribute value : GenerationTime
@@ -86,6 +87,58 @@ Package hbannotation <http://www.eclipse.org/emf/teneo/2006/HbAnnotation>
     Attribute name : EString<<1..1>>
     Attribute defaultCondition : EString
     Reference parameters : ParamDef<<0..*>>
+
+  Class DiscriminatorFormula -> HbAnnotation
+    Attribute value : EString
+
+  Class NaturalId -> HbAnnotation
+    Attribute mutable : EBoolean<<1..1>>
+
+  Class MapKeyManyToMany -> HbAnnotation
+    Reference joinColumns : JoinColumn<<0..*>>
+    Attribute targetEntity : EString
+
+  Class ForceDiscriminator -> HbAnnotation
+
+  Class Immutable -> HbAnnotation
+
+  Class Formula -> HbAnnotation
+    Attribute value : EString
+
+  Class NotFound -> HbAnnotation
+    Attribute action : NotFoundAction<<1..1>>
+
+  Class HbEntity -> HbAnnotation
+    Attribute dynamicInsert : EBoolean
+    Attribute dynamicUpdate : EBoolean
+    Attribute selectBeforeUpdate : EBoolean
+    Attribute mutable : EBoolean
+    Attribute persister : EString
+    Attribute optimisticLock : OptimisticLockType
+    Attribute polymorphism : PolymorphismType
+
+  Class BatchSize -> HbAnnotation
+    Attribute size : EInt<<1..1>>
+
+  Class Any -> HbAnnotation
+    Attribute metaDef : EString
+    Reference metaColumn : Column
+    Attribute fetch : FetchType
+    Attribute optional : EBoolean
+
+  Class MetaValue -> HbAnnotation
+    Attribute targetEntity : EString
+    Attribute value : EString
+
+  Class AnyMetaDef -> HbAnnotation
+    Attribute name : EString
+    Attribute metaType : EString
+    Attribute idType : EString<<1..1>>
+    Reference metaValues : MetaValue<<0..*>>
+
+  Class HbTable -> HbAnnotation
+    Attribute appliesTo : EString<<1..1>>
+    Reference indexes : Index<<0..*>>
 
   Enum CacheConcurrencyStrategy
     Literal NONE = 0
@@ -108,21 +161,53 @@ Package hbannotation <http://www.eclipse.org/emf/teneo/2006/HbAnnotation>
     Literal INSERT = 1
     Literal ALWAYS = 2
 
+  Enum NotFoundAction
+    Literal EXCEPTION = 0
+    Literal IGNORE = 1
+
+  Enum OptimisticLockType
+    Literal ALL = 0
+    Literal DIRTY = 1
+    Literal NONE = 2
+    Literal VERSION = 3
+
+  Enum PolymorphismType
+    Literal IMPLICIT = 0
+    Literal EXPLICIT = 1
+
+  Enum HbCascadeType
+    Literal ALL = 0
+    Literal PERSIST = 1
+    Literal MERGE = 2
+    Literal REMOVE = 3
+    Literal REFRESH = 4
+    Literal DELETE = 5
+    Literal SAVE_UPDATE = 6
+    Literal REPLICATE = 7
+    Literal DELETE_ORPHAN = 8
+    Literal LOCK = 9
+    Literal EVICT = 10
+
 Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
 
   Class HbAnnotatedETypeElement -> PAnnotatedEStructuralFeature, HbAnnotatedEModelElement
     Reference hbWhere : Where
     Reference hbCollectionOfElements : CollectionOfElements
-    Reference hbMapKey : MapKey
+    Reference hbMapKey : HbMapKey
     Reference hbColumns : Column<<0..*>>
     Reference hbCascade : Cascade
     Reference hbIdBag : IdBag
     Reference hbIndex : Index
     Reference Filter : Filter<<0..*>>
+    Reference mapKeyManyToMany : MapKeyManyToMany
+    Reference formula : Formula
 
   Class HbAnnotatedEAttribute -> PAnnotatedEAttribute, HbAnnotatedETypeElement
     Reference hbType : Type
     Reference generated : Generated
+    Reference naturalId : NaturalId
+    Reference any : Any
+    Reference anyMetaDef : AnyMetaDef
 
   Class HbAnnotatedEClass -> PAnnotatedEClass
     Reference hbCache : Cache
@@ -132,6 +217,12 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbNamedQuery : NamedQuery<<0..*>>
     Reference FilterDef : FilterDef<<0..*>>
     Reference Filter : Filter<<0..*>>
+    Reference discriminatorFormula : DiscriminatorFormula
+    Reference forceDiscriminator : ForceDiscriminator
+    Reference immutable : Immutable
+    Reference hbEntity : HbEntity
+    Reference batchSize : BatchSize
+    Reference hbTable : HbTable
 
   Class HbAnnotatedEModelElement -> PAnnotatedEModelElement
 
@@ -140,11 +231,19 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbTypeDef : TypeDef<<0..*>>
     Reference hbNamedQuery : NamedQuery<<0..*>>
     Reference FilterDef : FilterDef<<0..*>>
+    Reference anyMetaDef : AnyMetaDef<<0..*>>
 
   Class HbAnnotatedEReference -> PAnnotatedEReference, HbAnnotatedETypeElement
     Reference hbCache : Cache
     Reference hbFetch : Fetch
     Reference hbOnDelete : OnDelete
+    Reference naturalId : NaturalId
+    Reference immutable : Immutable
+    Reference notFound : NotFound
+    Reference hbType : Type
+    Reference batchSize : BatchSize
+    Reference any : Any
+    Reference anyMetaDef : AnyMetaDef
 
   Class HbAnnotatedEDataType -> PAnnotatedEDataType, HbAnnotatedEModelElement
     Reference hbTypeDef : TypeDef
@@ -152,3 +251,4 @@ Package hbmodel <http://www.eclipse.org/emf/teneo/2006/HbModel>
     Reference hbColumns : Column<<0..*>>
     Reference hbIdBag : IdBag
     Reference hbIndex : Index
+    Reference hbType : Type
