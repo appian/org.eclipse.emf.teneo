@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.13 2009/09/12 14:18:27 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.14 2009/09/13 19:25:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -43,7 +43,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 @SuppressWarnings("unchecked")
 public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
@@ -63,10 +63,15 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 
 	private boolean handleUnsetAsNull = false;
 
+	private boolean isObjectClass = false;
+
 	/** Constructor */
 	public EAttributePropertyHandler(EAttribute eAttribute) {
 		this.eAttribute = eAttribute;
 		instanceClass = eAttribute.getEType().getInstanceClass();
+		if (eAttribute.getEType().getInstanceClassName() != null) {
+			isObjectClass = eAttribute.getEType().getInstanceClassName().contains(".");
+		}
 		AssertUtil.assertTrue(eAttribute.getName() + " is a many feature which is not handled by this accessor ",
 				!eAttribute.isMany());
 		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
@@ -159,7 +164,10 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 			if (handleUnsetAsNull) {
 				eobj.eUnset(eAttribute);
 			} else {
-				eobj.eSet(eAttribute, value);
+				// can not set primitive values to null
+				if (isObjectClass) {
+					eobj.eSet(eAttribute, value);
+				}
 			}
 			return;
 		}
