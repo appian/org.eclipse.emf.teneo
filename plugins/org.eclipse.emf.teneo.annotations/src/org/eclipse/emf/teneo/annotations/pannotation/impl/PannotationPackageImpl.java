@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.32 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.33 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -546,6 +546,24 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getColumn_UniqueKey() {
+		return (EAttribute)columnEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getColumn_Index() {
+		return (EAttribute)columnEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -631,6 +649,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getDiscriminatorColumn_Length() {
 		return (EAttribute)discriminatorColumnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDiscriminatorColumn_Column() {
+		return (EReference)discriminatorColumnEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1699,12 +1726,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(columnEClass, COLUMN__LENGTH);
 		createEAttribute(columnEClass, COLUMN__PRECISION);
 		createEAttribute(columnEClass, COLUMN__SCALE);
+		createEAttribute(columnEClass, COLUMN__UNIQUE_KEY);
+		createEAttribute(columnEClass, COLUMN__INDEX);
 
 		discriminatorColumnEClass = createEClass(DISCRIMINATOR_COLUMN);
 		createEAttribute(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__NAME);
 		createEAttribute(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__DISCRIMINATOR_TYPE);
 		createEAttribute(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__COLUMN_DEFINITION);
 		createEAttribute(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__LENGTH);
+		createEReference(discriminatorColumnEClass, DISCRIMINATOR_COLUMN__COLUMN);
 
 		discriminatorValueEClass = createEClass(DISCRIMINATOR_VALUE);
 		createEAttribute(discriminatorValueEClass, DISCRIMINATOR_VALUE__VALUE);
@@ -1958,12 +1988,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getColumn_Length(), ecorePackage.getEInt(), "length", "255", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Precision(), ecorePackage.getEInt(), "precision", "0", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Scale(), ecorePackage.getEInt(), "scale", "0", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_UniqueKey(), ecorePackage.getEString(), "uniqueKey", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_Index(), ecorePackage.getEString(), "index", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discriminatorColumnEClass, DiscriminatorColumn.class, "DiscriminatorColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscriminatorColumn_Name(), ecorePackage.getEString(), "name", "DTYPE", 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscriminatorColumn_DiscriminatorType(), this.getDiscriminatorType(), "discriminatorType", "STRING", 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscriminatorColumn_ColumnDefinition(), ecorePackage.getEString(), "columnDefinition", null, 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscriminatorColumn_Length(), ecorePackage.getEInt(), "length", "31", 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDiscriminatorColumn_Column(), this.getColumn(), null, "column", null, 0, 1, DiscriminatorColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discriminatorValueEClass, DiscriminatorValue.class, "DiscriminatorValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscriminatorValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, DiscriminatorValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

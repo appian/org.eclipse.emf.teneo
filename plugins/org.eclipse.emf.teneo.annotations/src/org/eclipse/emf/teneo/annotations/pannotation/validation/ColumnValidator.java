@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnValidator.java,v 1.1 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: ColumnValidator.java,v 1.2 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.validation;
 
@@ -26,4 +26,8 @@ public interface ColumnValidator {
 	boolean validateLength(int value);
 	boolean validatePrecision(int value);
 	boolean validateScale(int value);
+
+	boolean validateUniqueKey(String value);
+
+	boolean validateIndex(String value);
 }

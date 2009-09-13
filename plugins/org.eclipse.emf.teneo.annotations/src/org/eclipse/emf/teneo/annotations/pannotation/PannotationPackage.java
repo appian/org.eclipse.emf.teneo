@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.19 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.20 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -584,13 +584,31 @@ public interface PannotationPackage extends EPackage {
 	int COLUMN__SCALE = PANNOTATION_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Unique Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN__UNIQUE_KEY = PANNOTATION_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN__INDEX = PANNOTATION_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Column</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 10;
+	int COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -636,13 +654,22 @@ public interface PannotationPackage extends EPackage {
 	int DISCRIMINATOR_COLUMN__LENGTH = PANNOTATION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRIMINATOR_COLUMN__COLUMN = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Discriminator Column</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRIMINATOR_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 4;
+	int DISCRIMINATOR_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2167,6 +2194,28 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getColumn_Scale();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getUniqueKey <em>Unique Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unique Key</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.Column#getUniqueKey()
+	 * @see #getColumn()
+	 * @generated
+	 */
+	EAttribute getColumn_UniqueKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.Column#getIndex()
+	 * @see #getColumn()
+	 * @generated
+	 */
+	EAttribute getColumn_Index();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#isUnique <em>Unique</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Unique</em>'.
@@ -2274,6 +2323,17 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDiscriminatorColumn_Length();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getColumn()
+	 * @see #getDiscriminatorColumn()
+	 * @generated
+	 */
+	EReference getDiscriminatorColumn_Column();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue <em>Discriminator Value</em>}'.
@@ -3708,6 +3768,22 @@ public interface PannotationPackage extends EPackage {
 		EAttribute COLUMN__SCALE = eINSTANCE.getColumn_Scale();
 
 		/**
+		 * The meta object literal for the '<em><b>Unique Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLUMN__UNIQUE_KEY = eINSTANCE.getColumn_UniqueKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLUMN__INDEX = eINSTANCE.getColumn_Index();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl <em>Discriminator Column</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3748,6 +3824,14 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DISCRIMINATOR_COLUMN__LENGTH = eINSTANCE.getDiscriminatorColumn_Length();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DISCRIMINATOR_COLUMN__COLUMN = eINSTANCE.getDiscriminatorColumn_Column();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorValueImpl <em>Discriminator Value</em>}' class.

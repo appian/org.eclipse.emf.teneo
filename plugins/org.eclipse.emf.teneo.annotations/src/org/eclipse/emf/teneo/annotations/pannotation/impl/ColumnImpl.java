@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnImpl.java,v 1.10 2009/06/11 04:59:34 mtaal Exp $
+ * $Id: ColumnImpl.java,v 1.11 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -28,6 +28,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getPrecision <em>Precision</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getScale <em>Scale</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getUniqueKey <em>Unique Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl#getIndex <em>Index</em>}</li>
  * </ul>
  * </p>
  *
@@ -269,6 +271,46 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	protected boolean scaleESet;
 
 	/**
+	 * The default value of the '{@link #getUniqueKey() <em>Unique Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUniqueKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String UNIQUE_KEY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUniqueKey() <em>Unique Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUniqueKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected String uniqueKey = UNIQUE_KEY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIndex()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INDEX_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIndex()
+	 * @generated
+	 * @ordered
+	 */
+	protected String index = INDEX_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -389,6 +431,48 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getUniqueKey() {
+		return uniqueKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUniqueKey(String newUniqueKey) {
+		String oldUniqueKey = uniqueKey;
+		uniqueKey = newUniqueKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__UNIQUE_KEY, oldUniqueKey, uniqueKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getIndex() {
+		return index;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndex(String newIndex) {
+		String oldIndex = index;
+		index = newIndex;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.COLUMN__INDEX, oldIndex, index));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -415,6 +499,10 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 				return getPrecision();
 			case PannotationPackage.COLUMN__SCALE:
 				return getScale();
+			case PannotationPackage.COLUMN__UNIQUE_KEY:
+				return getUniqueKey();
+			case PannotationPackage.COLUMN__INDEX:
+				return getIndex();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -455,6 +543,12 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 				return;
 			case PannotationPackage.COLUMN__SCALE:
 				setScale((Integer)newValue);
+				return;
+			case PannotationPackage.COLUMN__UNIQUE_KEY:
+				setUniqueKey((String)newValue);
+				return;
+			case PannotationPackage.COLUMN__INDEX:
+				setIndex((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -497,6 +591,12 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 			case PannotationPackage.COLUMN__SCALE:
 				unsetScale();
 				return;
+			case PannotationPackage.COLUMN__UNIQUE_KEY:
+				setUniqueKey(UNIQUE_KEY_EDEFAULT);
+				return;
+			case PannotationPackage.COLUMN__INDEX:
+				setIndex(INDEX_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -528,6 +628,10 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 				return isSetPrecision();
 			case PannotationPackage.COLUMN__SCALE:
 				return isSetScale();
+			case PannotationPackage.COLUMN__UNIQUE_KEY:
+				return UNIQUE_KEY_EDEFAULT == null ? uniqueKey != null : !UNIQUE_KEY_EDEFAULT.equals(uniqueKey);
+			case PannotationPackage.COLUMN__INDEX:
+				return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -742,6 +846,10 @@ public class ColumnImpl extends PAnnotationImpl implements Column {
 		if (precisionESet) result.append(precision); else result.append("<unset>");
 		result.append(", scale: ");
 		if (scaleESet) result.append(scale); else result.append("<unset>");
+		result.append(", uniqueKey: ");
+		result.append(uniqueKey);
+		result.append(", index: ");
+		result.append(index);
 		result.append(')');
 		return result.toString();
 	}

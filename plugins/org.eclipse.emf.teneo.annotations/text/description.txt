@@ -124,6 +124,8 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
     Attribute length : EInt
     Attribute precision : EInt
     Attribute scale : EInt
+    Attribute uniqueKey : EString
+    Attribute index : EString
 
   Class DiscriminatorColumn -> PAnnotation
     Attribute name : EString
@@ -131,7 +133,6 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
     Attribute columnDefinition : EString
     Attribute length : EInt
     Reference column : Column
-    Attribute index : EString
 
   Class DiscriminatorValue -> PAnnotation
     Attribute value : EString

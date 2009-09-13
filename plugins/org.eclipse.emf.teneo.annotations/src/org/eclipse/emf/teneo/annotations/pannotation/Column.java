@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Column.java,v 1.7 2008/04/11 23:42:49 mtaal Exp $
+ * $Id: Column.java,v 1.8 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -22,6 +22,8 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getLength <em>Length</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getPrecision <em>Precision</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getScale <em>Scale</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getUniqueKey <em>Unique Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getIndex <em>Index</em>}</li>
  * </ul>
  * </p>
  *
@@ -157,6 +159,58 @@ public interface Column extends PAnnotation {
 	 * @generated
 	 */
 	boolean isSetScale();
+
+	/**
+	 * Returns the value of the '<em><b>Unique Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unique Key</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unique Key</em>' attribute.
+	 * @see #setUniqueKey(String)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_UniqueKey()
+	 * @model
+	 * @generated
+	 */
+	String getUniqueKey();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getUniqueKey <em>Unique Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unique Key</em>' attribute.
+	 * @see #getUniqueKey()
+	 * @generated
+	 */
+	void setUniqueKey(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Index</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Index</em>' attribute.
+	 * @see #setIndex(String)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getColumn_Index()
+	 * @model
+	 * @generated
+	 */
+	String getIndex();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.Column#getIndex <em>Index</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Index</em>' attribute.
+	 * @see #getIndex()
+	 * @generated
+	 */
+	void setIndex(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Unique</b></em>' attribute.

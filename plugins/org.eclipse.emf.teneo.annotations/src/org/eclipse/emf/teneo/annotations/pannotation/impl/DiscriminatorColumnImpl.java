@@ -2,13 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumnImpl.java,v 1.8 2009/06/11 04:59:34 mtaal Exp $
+ * $Id: DiscriminatorColumnImpl.java,v 1.9 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -24,6 +27,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl#getDiscriminatorType <em>Discriminator Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl#getColumnDefinition <em>Column Definition</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +122,16 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 	 * @ordered
 	 */
 	protected boolean lengthESet;
+
+	/**
+	 * The cached value of the '{@link #getColumn() <em>Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected Column column;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -231,6 +245,63 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Column getColumn() {
+		return column;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetColumn(Column newColumn, NotificationChain msgs) {
+		Column oldColumn = column;
+		column = newColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN, oldColumn, newColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColumn(Column newColumn) {
+		if (newColumn != column) {
+			NotificationChain msgs = null;
+			if (column != null)
+				msgs = ((InternalEObject)column).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN, null, msgs);
+			if (newColumn != null)
+				msgs = ((InternalEObject)newColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN, null, msgs);
+			msgs = basicSetColumn(newColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN, newColumn, newColumn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN:
+				return basicSetColumn(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -242,6 +313,8 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 				return getColumnDefinition();
 			case PannotationPackage.DISCRIMINATOR_COLUMN__LENGTH:
 				return getLength();
+			case PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN:
+				return getColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -265,6 +338,9 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 				return;
 			case PannotationPackage.DISCRIMINATOR_COLUMN__LENGTH:
 				setLength((Integer)newValue);
+				return;
+			case PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN:
+				setColumn((Column)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -290,6 +366,9 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 			case PannotationPackage.DISCRIMINATOR_COLUMN__LENGTH:
 				unsetLength();
 				return;
+			case PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN:
+				setColumn((Column)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -310,6 +389,8 @@ public class DiscriminatorColumnImpl extends PAnnotationImpl implements Discrimi
 				return COLUMN_DEFINITION_EDEFAULT == null ? columnDefinition != null : !COLUMN_DEFINITION_EDEFAULT.equals(columnDefinition);
 			case PannotationPackage.DISCRIMINATOR_COLUMN__LENGTH:
 				return isSetLength();
+			case PannotationPackage.DISCRIMINATOR_COLUMN__COLUMN:
+				return column != null;
 		}
 		return super.eIsSet(featureID);
 	}

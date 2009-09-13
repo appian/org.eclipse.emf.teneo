@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumn.java,v 1.5 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: DiscriminatorColumn.java,v 1.6 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -17,6 +17,7 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getDiscriminatorType <em>Discriminator Type</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getColumnDefinition <em>Column Definition</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +131,32 @@ public interface DiscriminatorColumn extends PAnnotation {
 	 * @generated
 	 */
 	boolean isSetLength();
+
+	/**
+	 * Returns the value of the '<em><b>Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Column</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Column</em>' containment reference.
+	 * @see #setColumn(Column)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getDiscriminatorColumn_Column()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Column getColumn();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getColumn <em>Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Column</em>' containment reference.
+	 * @see #getColumn()
+	 * @generated
+	 */
+	void setColumn(Column value);
 
 	/**
 	 * Returns the value of the '<em><b>Column Definition</b></em>' attribute.

@@ -167,12 +167,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/length"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/precision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/uniqueKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/index"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//DiscriminatorColumn">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//DiscriminatorColumn/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//DiscriminatorColumn/discriminatorType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//DiscriminatorColumn/columnDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//DiscriminatorColumn/length"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//DiscriminatorColumn/column"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//DiscriminatorValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//DiscriminatorValue/value"/>

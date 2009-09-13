@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DiscriminatorColumnValidator.java,v 1.1 2007/02/08 23:12:34 mtaal Exp $
+ * $Id: DiscriminatorColumnValidator.java,v 1.2 2009/09/13 14:45:54 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.validation;
 
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 
 /**
@@ -21,4 +22,6 @@ public interface DiscriminatorColumnValidator {
 	boolean validateDiscriminatorType(DiscriminatorType value);
 	boolean validateColumnDefinition(String value);
 	boolean validateLength(int value);
+
+	boolean validateColumn(Column value);
 }
