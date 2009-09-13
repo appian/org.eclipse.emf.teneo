@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.18 2009/09/11 20:45:07 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.19 2009/09/13 14:45:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.StoreAnnotationsException;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -210,6 +211,19 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 				dc.setEModelElement(eclass);
 				dc.setName(getSqlNameStrategy().getDiscriminatorColumnName());
 				aClass.setDiscriminatorColumn(dc);
+			}
+			if (aClass.getDiscriminatorColumn() != null) {
+				if (aClass.getDiscriminatorColumn().getColumn() == null) {
+					final DiscriminatorColumn dc = aClass.getDiscriminatorColumn();
+					final Column col = getFactory().createColumn();
+					dc.setColumn(col);
+					col.setName(dc.getName());
+					col.setIndex(aClass.getTable().getName() + dc.getName());
+					col.setNullable(false);
+				}
+				if (aClass.getDiscriminatorColumn().getColumn().getName() == null) {
+					aClass.getDiscriminatorColumn().getColumn().setName(aClass.getDiscriminatorColumn().getName());
+				}
 			}
 
 			// add a discriminator value
