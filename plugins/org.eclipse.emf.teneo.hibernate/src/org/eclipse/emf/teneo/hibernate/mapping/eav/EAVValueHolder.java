@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVValueHolder.java,v 1.4 2009/09/11 22:52:36 mtaal Exp $
+ * $Id: EAVValueHolder.java,v 1.5 2009/09/14 21:40:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -146,7 +146,7 @@ public abstract class EAVValueHolder {
 
 	public Integer getMandatoryValue() {
 		// if not required then the not-value is set always
-		if (!getEStructuralFeature().isRequired()) {
+		if (!getEStructuralFeature().isRequired() || getEStructuralFeature().isUnsettable()) {
 			return NOT_NULL_VALUE;
 		}
 		return mandatoryValue;
