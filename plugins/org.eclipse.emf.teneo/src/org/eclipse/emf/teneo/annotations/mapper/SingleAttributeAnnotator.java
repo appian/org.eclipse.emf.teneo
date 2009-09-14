@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SingleAttributeAnnotator.java,v 1.11 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: SingleAttributeAnnotator.java,v 1.12 2009/09/14 21:40:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates a single attribute, a primitive type such as a long or int.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -63,23 +63,26 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 
 		if (getPersistenceOptions().isIDFeatureAsPrimaryKey() && eAttribute.isID() && aAttribute.getId() == null) {
 			// bugzilla 249246
-			if (aAttribute.getPaEClass().getPaSuperEntity() != null &&
-					aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
+			if (aAttribute.getPaEClass().getPaSuperEntity() != null
+					&& aAttribute.getPaEClass().getPaSuperEntity().getMappedSuperclass() == null) {
 				log
-					.warn("The eclass " + aAttribute.getPaEClass().getModelEClass().getName() + " has an efeature (" +
-							aAttribute.getModelEAttribute().getName() + ")" +
-							" which has type ID, Teneo will not annotate this efeature with @Id because it is an efeature of a subtype");
+						.warn("The eclass "
+								+ aAttribute.getPaEClass().getModelEClass().getName()
+								+ " has an efeature ("
+								+ aAttribute.getModelEAttribute().getName()
+								+ ")"
+								+ " which has type ID, Teneo will not annotate this efeature with @Id because it is an efeature of a subtype");
 			} else {
 				final Id id = getFactory().createId();
 				id.setEModelElement(eAttribute);
 				aAttribute.setId(id);
 				addColumnConstraints(aAttribute);
 
-				if (getPersistenceOptions().isSetGeneratedValueOnIDFeature() &&
-						aAttribute.getGeneratedValue() == null &&
-						(Number.class.isAssignableFrom(eAttribute.getEAttributeType().getInstanceClass()) ||
-								eAttribute.getEAttributeType().getInstanceClass() == long.class || eAttribute
-							.getEAttributeType().getInstanceClass() == int.class)) {
+				if (getPersistenceOptions().isSetGeneratedValueOnIDFeature()
+						&& aAttribute.getGeneratedValue() == null
+						&& (Number.class.isAssignableFrom(eAttribute.getEAttributeType().getInstanceClass())
+								|| eAttribute.getEAttributeType().getInstanceClass() == long.class || eAttribute
+								.getEAttributeType().getInstanceClass() == int.class)) {
 					final GeneratedValue gv = getFactory().createGeneratedValue();
 					gv.setStrategy(GenerationType.AUTO);
 					aAttribute.setGeneratedValue(gv);
@@ -117,7 +120,7 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 			if (aAttribute.getColumn() != null) {
 				basic.setOptional(aAttribute.getColumn().isNullable());
 			} else {
-				basic.setOptional(!eAttribute.isRequired());
+				basic.setOptional(!eAttribute.isRequired() || eAttribute.isUnsettable());
 			}
 			aAttribute.setBasic(basic);
 		}
@@ -134,8 +137,8 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator#
-	 * setPersistenceOptions(org.eclipse .emf.teneo.PersistenceOptions)
+	 * @seeorg.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator# setPersistenceOptions(org.eclipse
+	 * .emf.teneo.PersistenceOptions)
 	 */
 	@Override
 	public void setPersistenceOptions(PersistenceOptions persistenceOptions) {

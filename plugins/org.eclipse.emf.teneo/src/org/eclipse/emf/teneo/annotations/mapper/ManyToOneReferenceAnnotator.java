@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.16 2009/08/21 15:02:14 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.17 2009/09/14 21:40:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -30,7 +30,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -63,7 +63,7 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 			// mto.setOptional(!eReference.isRequired() ||
 			// eReference.isUnsettable() ||
 			// eReference.getEOpposite() != null);
-			mto.setOptional(!eReference.isRequired() || eReference.getEOpposite() != null);
+			mto.setOptional(!eReference.isRequired() || eReference.getEOpposite() != null || eReference.isUnsettable());
 			mto.setEModelElement(eReference);
 		} else {
 			log.debug("EReference + " + logStr + " does have a manytoone annotation, using it");
