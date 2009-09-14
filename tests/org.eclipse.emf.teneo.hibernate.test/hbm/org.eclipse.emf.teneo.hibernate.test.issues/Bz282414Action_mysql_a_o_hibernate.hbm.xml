@@ -9,7 +9,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="BAR_TABLEdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -29,7 +31,9 @@
 			<column not-null="true" unique="false" name="`dnm_sk`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="FOO_TABLEdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

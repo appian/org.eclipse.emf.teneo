@@ -13,15 +13,17 @@
 		<id name="title" type="java.lang.String">
 			<column not-null="true" unique="false" name="`col_title`" length="50"/>
 		</id>
-		<discriminator column="`col_dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="COL_dtype" index="TAB_bookCOL_dtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="pages" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
-			<column not-null="true" unique="false" name="`col_pages`"/>
+		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`col_pages`"/>
 		</property>
-		<property name="category" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`col_category`"/>
+		<property name="category" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`col_category`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
 				<param name="eclassifier">BookCategory</param>
@@ -43,7 +45,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`col_dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="COL_dtype" index="TAB_libraryCOL_dtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -75,7 +79,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`col_dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="COL_dtype" index="TAB_writerCOL_dtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

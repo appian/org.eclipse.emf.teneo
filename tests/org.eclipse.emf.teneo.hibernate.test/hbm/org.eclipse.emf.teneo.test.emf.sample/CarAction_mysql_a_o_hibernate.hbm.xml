@@ -9,7 +9,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="carframedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -33,7 +35,9 @@
 		<id name="carLinkId" type="java.lang.String">
 			<column not-null="true" unique="false" name="`carlinkid`"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="carlinkdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -48,7 +52,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="carslistdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -73,7 +79,9 @@
 		<id name="name" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="cartiredtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -84,7 +92,9 @@
 		<id name="carID" type="java.lang.String">
 			<column not-null="true" unique="false" name="`carid`"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="cartypedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -103,7 +113,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="carwheeldtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

@@ -8,12 +8,14 @@
 		<id name="name" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="durationtestdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="duration" lazy="false" insert="true" update="true" not-null="true" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration">
-			<column not-null="true" unique="false" name="`duration`"/>
+		<property name="duration" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration">
+			<column not-null="false" unique="false" name="`duration`"/>
 		</property>
 		<list name="durations" table="`durationtest_durations`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">

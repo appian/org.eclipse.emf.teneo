@@ -9,7 +9,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string" force="true"/>
+		<discriminator type="string" force="true">
+			<column name="dtype" index="parentdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

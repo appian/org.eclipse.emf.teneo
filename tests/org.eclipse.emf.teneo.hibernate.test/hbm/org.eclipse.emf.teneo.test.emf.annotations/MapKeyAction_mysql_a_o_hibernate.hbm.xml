@@ -9,7 +9,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`DTYPE`" type="string"/>
+		<discriminator type="string">
+			<column name="DTYPE" index="BOOKDTYPE" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -31,7 +33,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`DTYPE`" type="string"/>
+		<discriminator type="string">
+			<column name="DTYPE" index="WRITERDTYPE" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

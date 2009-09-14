@@ -9,7 +9,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_blockdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -36,7 +38,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_datacenterdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -63,7 +67,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="domaindtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -89,7 +95,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="domainsystemdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -132,7 +140,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_failovertypedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -150,7 +160,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_hostdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -204,7 +216,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_hostblockdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -231,7 +245,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_interfacedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -272,7 +288,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_ipdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -323,7 +341,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_munininfodtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -356,7 +376,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_ipnamedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -382,7 +404,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_parameterdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -403,7 +427,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_roledtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -449,7 +475,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_opssystemdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -489,7 +517,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_vserverdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -538,7 +568,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_dwhclusterdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>
@@ -565,7 +597,9 @@
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ops_dwhinstancedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="revision" type="int">
 			<column not-null="false" unique="false" name="`e_version`"/>
 		</version>

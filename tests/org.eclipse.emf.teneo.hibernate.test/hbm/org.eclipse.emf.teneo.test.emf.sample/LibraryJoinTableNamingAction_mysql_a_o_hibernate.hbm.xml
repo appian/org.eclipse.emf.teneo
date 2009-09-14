@@ -13,15 +13,17 @@
 		<id name="title" type="java.lang.String">
 			<column not-null="true" unique="false" name="`TITLE`"/>
 		</id>
-		<discriminator column="`DTYPE`" type="string"/>
+		<discriminator type="string">
+			<column name="DTYPE" index="BOOKDTYPE" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="pages" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
-			<column not-null="true" unique="false" name="`PAGES`"/>
+		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`PAGES`"/>
 		</property>
-		<property name="category" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`CATEGORY`"/>
+		<property name="category" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`CATEGORY`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
 				<param name="eclassifier">BookCategory</param>
@@ -48,7 +50,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`DTYPE`" type="string"/>
+		<discriminator type="string">
+			<column name="DTYPE" index="LIBRARYDTYPE" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -78,7 +82,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`DTYPE`" type="string"/>
+		<discriminator type="string">
+			<column name="DTYPE" index="WRITERDTYPE" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

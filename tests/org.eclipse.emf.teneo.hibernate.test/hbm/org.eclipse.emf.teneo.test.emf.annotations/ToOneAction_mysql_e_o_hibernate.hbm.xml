@@ -26,8 +26,8 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="length" lazy="false" insert="true" update="true" not-null="true" unique="false" type="int">
-			<column not-null="true" unique="false" name="`length`"/>
+		<property name="length" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`length`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.toone.impl.HeadImpl" entity-name="Head" abstract="false" lazy="false" table="`head`">

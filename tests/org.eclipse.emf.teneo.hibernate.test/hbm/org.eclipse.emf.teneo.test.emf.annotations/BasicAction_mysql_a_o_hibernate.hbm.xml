@@ -9,7 +9,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="basicdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="myVersion" type="long">
 			<column not-null="true" unique="false" name="`myversion`"/>
 		</version>

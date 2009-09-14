@@ -16,11 +16,11 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="price" lazy="false" insert="true" update="true" not-null="true" unique="false" type="double">
-			<column not-null="true" unique="false" name="`price`"/>
+		<property name="price" lazy="false" insert="true" update="true" not-null="false" unique="false" type="double">
+			<column not-null="false" unique="false" name="`price`"/>
 		</property>
-		<property name="quantity" lazy="false" insert="true" update="true" not-null="true" unique="false" type="double">
-			<column not-null="true" unique="false" name="`quantity`"/>
+		<property name="quantity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="double">
+			<column not-null="false" unique="false" name="`quantity`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.ProductTypeImpl" entity-name="ProductType" abstract="false" lazy="false" table="`producttype`">
@@ -39,8 +39,8 @@
 			<list-index column="`producttype_group_idx`"/>
 			<one-to-many entity-name="ProductType_group"/>
 		</list>
-		<property name="productClassification" lazy="false" not-null="true" insert="true" update="true" unique="false">
-			<column not-null="true" unique="false" name="`productclassification`"/>
+		<property name="productClassification" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`productclassification`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.elist.featuremap.ProductClassification</param>
 				<param name="eclassifier">ProductClassification</param>
@@ -103,8 +103,8 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</property>
-		<property name="price" lazy="false" insert="true" update="true" not-null="true" unique="false" type="double">
-			<column not-null="true" unique="false" name="`price`"/>
+		<property name="price" lazy="false" insert="true" update="true" not-null="false" unique="false" type="double">
+			<column not-null="false" unique="false" name="`price`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.elist.featuremap.impl.TranslatedDescriptionTypeImpl" entity-name="TranslatedDescriptionType" abstract="false" lazy="false" table="`translateddescriptiontype`">

@@ -9,7 +9,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="adtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
@@ -47,15 +49,17 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="ctypedtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
 		<property name="cname" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`cname`"/>
 		</property>
-		<property name="cvalue" lazy="false" insert="true" update="true" not-null="true" unique="false" type="double">
-			<column not-null="true" unique="false" name="`cvalue`"/>
+		<property name="cvalue" lazy="false" insert="true" update="true" not-null="false" unique="false" type="double">
+			<column not-null="false" unique="false" name="`cvalue`"/>
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.ElementImpl" entity-name="Element" abstract="false" lazy="false" discriminator-value="Element" table="`element`">
@@ -65,7 +69,9 @@
 			<meta attribute="syntheticId">true</meta>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`dtype`" type="string"/>
+		<discriminator type="string">
+			<column name="dtype" index="elementdtype" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>

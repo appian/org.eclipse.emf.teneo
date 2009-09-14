@@ -12,8 +12,8 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
-		<property name="value" lazy="false" insert="true" update="true" not-null="true" unique="false" type="long">
-			<column not-null="true" unique="false" name="`value`"/>
+		<property name="value" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`value`"/>
 		</property>
 	</class>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexEvenTypeImpl" entity-name="ComplexEvenType" abstract="false" lazy="false" extends="ComplexAAA" table="`complexeventype`">

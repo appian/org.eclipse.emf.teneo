@@ -9,7 +9,9 @@
 			<column not-null="true" unique="false" name="`animal_id`"/>
 			<generator class="native"/>
 		</id>
-		<discriminator column="`animal_type`" type="string"/>
+		<discriminator type="string">
+			<column name="ANIMAL_TYPE" index="ANIMALANIMAL_TYPE" length="255" not-null="true"/>
+		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion">true</meta>
 		</version>
