@@ -12,15 +12,15 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.6 2009/09/12 13:49:39 mtaal Exp $
+ * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.7 2009/09/17 05:59:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -63,8 +63,9 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 		if (StoreUtil.isMap(getEStructuralFeature())) {
 			final EClass entryEClass = (EClass) getEStructuralFeature().getEType();
 			Class<?> entryClass = entryEClass.getInstanceClass();
-			if (entryClass == null) {
-				entryClass = Map.Entry.class;
+			// prevents a failing assertion in the EcoreEMap
+			if (entryClass == null || !BasicEMap.Entry.class.isAssignableFrom(entryClass)) {
+				entryClass = BasicEMap.Entry.class;
 			}
 
 			final int featureID = owner.eClass().getFeatureID(getEStructuralFeature());
