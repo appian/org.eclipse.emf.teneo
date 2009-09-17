@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.14 2009/08/23 17:50:43 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.15 2009/09/17 05:59:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -82,14 +82,14 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 
 	/** Not supported constructor */
 	public PersistableEMap(EClass entryEClass, EList<BasicEMap.Entry<K, V>> delegateEList) {
-		super(entryEClass, Map.Entry.class, delegateEList);
+		super(entryEClass, BasicEMap.Entry.class, delegateEList);
 		throw new UnsupportedOperationException("Explicitly passing delegate list is not supported!");
 	}
 
 	/** Constructor */
 	public PersistableEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, EStructuralFeature feature) {
 		// invoke constructor with no lazyLoadMapDelegate
-		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(feature));
+		super(entryEClass, BasicEMap.Entry.class, owner, owner.eClass().getFeatureID(feature));
 
 		setDelegateEList(owner, feature, new ArrayList<Entry<K, V>>());
 
@@ -111,7 +111,7 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 */
 	public PersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> list) {
-		super(entryEClass, Map.Entry.class, owner, owner.eClass().getFeatureID(feature));
+		super(entryEClass, BasicEMap.Entry.class, owner, owner.eClass().getFeatureID(feature));
 
 		this.owner = owner;
 		this.featureID = owner.eClass().getFeatureID(feature);
