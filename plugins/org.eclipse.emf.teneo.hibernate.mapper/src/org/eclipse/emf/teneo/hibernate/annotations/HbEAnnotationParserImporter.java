@@ -11,14 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEAnnotationParserImporter.java,v 1.2 2008/02/28 07:07:43 mtaal Exp $
+ * $Id: HbEAnnotationParserImporter.java,v 1.3 2009/09/22 05:39:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.annotations;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.annotations.parser.EAnnotationParserImporter;
-import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 
 /**
@@ -73,6 +72,6 @@ public class HbEAnnotationParserImporter extends EAnnotationParserImporter {
 				return ef;
 			}
 		}
-		throw new HbMapperException("No efeature " + name + " for eclass " + eClass.getName());
+		throw new IllegalArgumentException("No efeature " + name + " for eclass " + eClass.getName());
 	}
 }
