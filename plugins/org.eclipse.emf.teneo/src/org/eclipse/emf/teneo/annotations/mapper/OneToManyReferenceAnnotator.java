@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.16 2009/08/21 15:02:14 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.17 2009/09/30 22:05:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -129,19 +129,19 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 		// Disabled for now as the hibernate map-key does not support enumerates
 		// as the type
 		// for the key when mapping as a true map
-		if (false && StoreUtil.isMap(eReference) && getPersistenceOptions().isMapEMapAsTrueMap()) {
-			final EStructuralFeature keyFeature = aReference.getEReferenceType().getEStructuralFeature("key");
-			if (keyFeature instanceof EAttribute) {
-				final EAttribute keyAttribute = (EAttribute) keyFeature;
-				final PAnnotatedEAttribute aKeyAttribute = aReference.getPaModel().getPAnnotated(keyAttribute);
-				if (keyAttribute.getEType() instanceof EEnum && aKeyAttribute.getEnumerated() == null) {
-					final Enumerated enumerated = getFactory().createEnumerated();
-					enumerated.setValue(EnumType.STRING);
-					enumerated.setEModelElement(keyAttribute);
-					aKeyAttribute.setEnumerated(enumerated);
-				}
-			}
-		}
+//		if (false && StoreUtil.isMap(eReference) && getPersistenceOptions().isMapEMapAsTrueMap()) {
+//			final EStructuralFeature keyFeature = aReference.getEReferenceType().getEStructuralFeature("key");
+//			if (keyFeature instanceof EAttribute) {
+//				final EAttribute keyAttribute = (EAttribute) keyFeature;
+//				final PAnnotatedEAttribute aKeyAttribute = aReference.getPaModel().getPAnnotated(keyAttribute);
+//				if (keyAttribute.getEType() instanceof EEnum && aKeyAttribute.getEnumerated() == null) {
+//					final Enumerated enumerated = getFactory().createEnumerated();
+//					enumerated.setValue(EnumType.STRING);
+//					enumerated.setEModelElement(keyAttribute);
+//					aKeyAttribute.setEnumerated(enumerated);
+//				}
+//			}
+//		}
 
 		// NOTE Sometimes EMF generated getters/setters have a
 		// very generic type (EObject), if the type can be derived here then
