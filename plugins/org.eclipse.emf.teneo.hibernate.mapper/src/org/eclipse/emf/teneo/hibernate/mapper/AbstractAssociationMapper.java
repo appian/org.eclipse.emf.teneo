@@ -37,6 +37,8 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
+import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy;
 import org.eclipse.emf.teneo.simpledom.Element;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -324,9 +326,15 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	}
 
 	protected String getIndexColumnName(PAnnotatedEStructuralFeature aFeature) {
-		return getHbmContext().getPersistenceOptions().getSQLColumnNamePrefix()
-				+ (aFeature.getPaEClass().getModelEClass().getName() + "_"
-						+ aFeature.getModelEStructuralFeature().getName() + "_IDX").toUpperCase();
+		final SQLNameStrategy sqlNameStrategy = getHbmContext().getExtensionManager().getExtension(
+				SQLNameStrategy.class);
+		if (sqlNameStrategy instanceof ClassicSQLNameStrategy) {
+			return ((ClassicSQLNameStrategy) sqlNameStrategy).getIndexColumnName(aFeature);
+		} else {
+			return getHbmContext().getPersistenceOptions().getSQLColumnNamePrefix()
+					+ (aFeature.getPaEClass().getModelEClass().getName() + "_"
+							+ aFeature.getModelEStructuralFeature().getName() + "_IDX").toUpperCase();
+		}
 	}
 
 	/**
