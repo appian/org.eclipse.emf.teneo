@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: StoreController.java,v 1.41 2009/09/13 15:05:00 mtaal Exp $
+ * $Id: StoreController.java,v 1.42 2009/10/02 08:31:50 mtaal Exp $
  */
 package org.eclipse.gmf.examples.mindmap.diagram.db;
 

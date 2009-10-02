@@ -568,7 +568,14 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 					TeneoSQLNameStrategy (
 					<strong>default</strong>
 					): is very similar to ClassicSQLNameStrategy but has better handling of
-					table/column names which are too long.
+					table/column names which are too long. Note uses the EClass name and not the 
+					Entity name to create join column names. 
+				</li>
+				
+<li>
+					TeneoNewSQLNameStrategy: is very similar to the TeneoSQLNameStrategy with one 
+					important difference: uses the entity name and not the EClass name to 
+					create the join column names.
 				</li>
 			
 </ul>
@@ -583,7 +590,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 				by a custom strategy.
 			</p>
 			
-<a name="N100B4"></a><a name="ClassicSQLNameStrategy"></a>
+<a name="N100B7"></a><a name="ClassicSQLNameStrategy"></a>
 <div class="h4">
 <h4>ClassicSQLNameStrategy</h4>
 <p>
@@ -654,7 +661,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 </ul>
 </div>
 			
-<a name="N100E5"></a><a name="TeneoSQLNameStrategy+%28default%29"></a>
+<a name="N100E8"></a><a name="TeneoSQLNameStrategy+%28default%29"></a>
 <div class="h4">
 <h4>TeneoSQLNameStrategy (default)</h4>
 <p>
@@ -726,7 +733,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N1011A"></a><a name="ClassLoaderStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
+<a name="N1011D"></a><a name="ClassLoaderStrategy+ExtensionPoint%0A%09%09%09%09%28org.eclipse.emf.teneo.classloader.ClassLoaderStrategy%29"></a>
 <div class="h3">
 <h3>
 				ClassLoaderStrategy ExtensionPoint
@@ -749,7 +756,7 @@ final EntityNameStrategy ens = extensionManager.getExtension(EntityNameStrategy.
 		
 </div>
 		
-<a name="N1012B"></a><a name="Future+Enhancements"></a>
+<a name="N1012E"></a><a name="Future+Enhancements"></a>
 <div class="h3">
 <h3>Future Enhancements</h3>
 			
