@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: TeneoSQLNameStrategy.java,v 1.8 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: TeneoSQLNameStrategy.java,v 1.9 2009/10/02 07:23:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -28,13 +28,12 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 
 /**
- * Differences between this implementation and the ClassicSQLNameStrategy is the way truncation is
- * done if a name is longer than the sql name length constraint. To truncate a name this class will
- * first remove vowels (in the order: u, o, a, e, i) and if that is not enough it will truncate the
- * different parts of a name (separated by _).
+ * Differences between this implementation and the ClassicSQLNameStrategy is the way truncation is done if a name is
+ * longer than the sql name length constraint. To truncate a name this class will first remove vowels (in the order: u,
+ * o, a, e, i) and if that is not enough it will truncate the different parts of a name (separated by _).
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
@@ -72,13 +71,12 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 			// columns
 			aClass = aReference.getPaEClass();
 		}
-		final String typeName = aClass.getModelEClass().getName();
+		final String typeName = getMappingName(aClass);
 		final String featureName = eref.getName();
 
 		final List<String> result = new ArrayList<String>();
-		final List<String> names =
-				StrategyUtil.getIDFeaturesNames(aReference.getAReferenceType(), persistenceOptions
-					.getDefaultIDFeatureName());
+		final List<String> names = StrategyUtil.getIDFeaturesNames(aReference.getAReferenceType(), persistenceOptions
+				.getDefaultIDFeatureName());
 		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;
@@ -102,8 +100,7 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy#trunc (int,
-	 * java.lang.String, boolean)
+	 * @see org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy#trunc (int, java.lang.String, boolean)
 	 */
 	@Override
 	public String trunc(int maxSqlLength, String truncName, boolean truncPrefix) {
@@ -198,8 +195,8 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 	}
 
 	/**
-	 * Return the characters to remove, the character removal is done in order of the returned
-	 * array. This method is provided to be overridden to pass a custom set of removable characters.
+	 * Return the characters to remove, the character removal is done in order of the returned array. This method is
+	 * provided to be overridden to pass a custom set of removable characters.
 	 */
 	protected String[] getRemovableCharacters() {
 		return removables;

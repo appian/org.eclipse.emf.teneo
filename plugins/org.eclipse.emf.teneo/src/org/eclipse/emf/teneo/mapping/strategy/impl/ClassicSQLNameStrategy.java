@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.16 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.17 2009/10/02 07:23:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -38,11 +38,11 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
 import org.eclipse.emf.teneo.util.AssertUtil;
 
 /**
- * Implements the sql naming strategy of older versions of Teneo. This implementation is driven by
- * the options set in the PersistenceOptions.
+ * Implements the sql naming strategy of older versions of Teneo. This implementation is driven by the options set in
+ * the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -60,6 +60,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	protected String optionTableNamePrefix = "";
 	protected String optionColumnNamePrefix = "";
 	protected String optionForeignKeyNamePrefix = "";
+	protected String optionSQLNameColumnPrefix = "";
 
 	private ExtensionManager extensionManager;
 
@@ -70,15 +71,14 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 * (org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass, java.lang.String)
 	 */
 	public String getPrimaryKeyJoinColumnName(PAnnotatedEClass aSuperClass, String idFeature) {
-		return optionColumnNamePrefix +
-				convert(getEntityName(aSuperClass.getPaModel(), aSuperClass.getModelEClass()) + "_" + idFeature, true);
+		return optionColumnNamePrefix
+				+ convert(getEntityName(aSuperClass.getPaModel(), aSuperClass.getModelEClass()) + "_" + idFeature, true);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy#
-	 * getSecondaryTablePrimaryKeyJoinColumnName
+	 * @seeorg.eclipse.emf.teneo.mapping.strategy.SqlNameStrategy# getSecondaryTablePrimaryKeyJoinColumnName
 	 * (org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public String getSecondaryTablePrimaryKeyJoinColumnName(PAnnotatedEStructuralFeature iddef) {
@@ -116,9 +116,9 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 */
 	public String getForeignKeyName(PAnnotatedEStructuralFeature aFeature) {
 		final PAnnotatedEClass aClass = aFeature.getPaEClass();
-		return optionForeignKeyNamePrefix +
-				convert(getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_" +
-						aFeature.getModelEStructuralFeature().getName(), true);
+		return optionForeignKeyNamePrefix
+				+ convert(getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_"
+						+ aFeature.getModelEStructuralFeature().getName(), true);
 	}
 
 	/*
@@ -149,12 +149,12 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 			// the owner of the one-to-many
 			aClass = aReference.getPaEClass();
 		}
-		final String typeName = aClass.getModelEClass().getName();
+		final String typeName = getMappingName(aClass);
 		final String featureName = eref.getName();
 
 		final List<String> result = new ArrayList<String>();
-		final List<String> names =
-				StrategyUtil.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
+		final List<String> names = StrategyUtil
+				.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
 		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;
@@ -183,12 +183,12 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	 */
 	public List<String> getOneToManyEAttributeJoinColumns(PAnnotatedEAttribute aAttribute) {
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
-		final String typeName = aClass.getModelEClass().getName();
+		final String typeName = getMappingName(aClass);
 		final String featureName = aAttribute.getModelEAttribute().getName();
 
 		final List<String> result = new ArrayList<String>();
-		final List<String> names =
-				StrategyUtil.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
+		final List<String> names = StrategyUtil
+				.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
 		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;
@@ -220,16 +220,16 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		// determines
 		// the naming
 		if (aReference.getModelEReference().getEOpposite() != null) {
-			typeName = aReference.getAReferenceType().getModelEClass().getName();
+			typeName = getMappingName(aReference.getAReferenceType());
 			featureName = aReference.getModelEReference().getEOpposite().getName();
 		} else {
-			typeName = aClass.getModelEClass().getName();
+			typeName = getMappingName(aClass);
 			featureName = aReference.getModelEReference().getName();
 		}
 
 		final List<String> result = new ArrayList<String>();
-		final List<String> names =
-				StrategyUtil.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
+		final List<String> names = StrategyUtil
+				.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
 		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;
@@ -258,15 +258,15 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		if (inverse) {
 			aClass = aReference.getAReferenceType();
 			if (aReference.getModelEReference().getEOpposite() != null) {
-				typeName = aReference.getAReferenceType().getModelEClass().getName();
+				typeName = getMappingName(aReference.getAReferenceType());
 				featureName = "_" + aReference.getModelEReference().getEOpposite().getName();
 			} else {
-				typeName = aReference.getAReferenceType().getModelEClass().getName();
+				typeName = getMappingName(aReference.getAReferenceType());
 				featureName = "";
 			}
 		} else {
 			aClass = aReference.getPaEClass();
-			typeName = aClass.getModelEClass().getName();
+			typeName = getMappingName(aClass);
 			featureName = "_" + aReference.getModelEReference().getName();
 		}
 		// for backward compatibility, only use featurename if the reference is
@@ -276,8 +276,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		}
 
 		final List<String> result = new ArrayList<String>();
-		final List<String> names =
-				StrategyUtil.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
+		final List<String> names = StrategyUtil
+				.getIDFeaturesNames(aClass, persistenceOptions.getDefaultIDFeatureName());
 		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;
@@ -303,9 +303,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		// note for array the isMany is false, so disable this check
 		// assert (aAttribute.getModelEAttribute().isMany());
 		final PAnnotatedEClass aClass = aAttribute.getPaEClass();
-		String truncedName =
-				getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_" +
-						aAttribute.getModelEAttribute().getName();
+		String truncedName = getEntityName(aClass.getPaModel(), aClass.getModelEClass()) + "_"
+				+ aAttribute.getModelEAttribute().getName();
 		return optionTableNamePrefix + convert(truncedName, true);
 	}
 
@@ -341,8 +340,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 				jTableName = thisEntityName + "_" + thatEntityName;
 			}
 		} else {
-			AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy +
-					" not supported", isEObject || optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
+			AssertUtil.assertTrue("option optionJoinTableNamingStrategy " + optionJoinTableNamingStrategy
+					+ " not supported", isEObject || optionJoinTableNamingStrategy.compareToIgnoreCase("unique") == 0);
 			if (eOpposite != null && eOpposite.isMany() && compareNames(eReference, eOpposite)) {
 				final String thatEntityName = getEntityName(aReference.getPaModel(), eOpposite.getEContainingClass());
 				jTableName = thatEntityName + "_" + eOpposite.getName();
@@ -411,12 +410,27 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 		optionTableNamePrefix = po.getSQLTableNamePrefix();
 		optionColumnNamePrefix = po.getSQLColumnNamePrefix();
 		optionForeignKeyNamePrefix = po.getSQLForeignKeyNamePrefix();
+		optionSQLNameColumnPrefix = po.getSQLColumnNamePrefix();
 		persistenceOptions = po;
 	}
 
 	// Returns the entityname of the refered to entity
 	private String getEntityName(PAnnotatedModel paModel, EClass eClass) {
 		return StrategyUtil.getEntityName(getEntityNameStrategy(), persistenceOptions, paModel, eClass);
+	}
+
+	// Returns the entityname of the refered to entity
+	protected String getMappingName(PAnnotatedEClass aClass) {
+		return aClass.getModelEClass().getName();
+		// return StrategyUtil.getEntityName(getEntityNameStrategy(), persistenceOptions, aClass.getPaModel(), aClass
+		// .getModelEClass());
+	}
+
+	public String getIndexColumnName(PAnnotatedEStructuralFeature aFeature) {
+		return optionSQLNameColumnPrefix
+				+ (getMappingName(aFeature.getPaEClass()) + "_" + aFeature.getModelEStructuralFeature().getName() + "_IDX")
+						.toUpperCase();
+
 	}
 
 	/*
@@ -440,8 +454,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	}
 
 	/**
-	 * Determines where to place a certain annotation/characteristic, this is done by comparing
-	 * names..
+	 * Determines where to place a certain annotation/characteristic, this is done by comparing names..
 	 */
 	private boolean compareNames(EReference here, EReference there) {
 		final String nameHere = here.getEContainingClass().getName() + here.getName();
@@ -482,9 +495,8 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	}
 
 	/**
-	 * Utility method to truncate a column/table name, the truncPrefix determines if the part before
-	 * the _ (the prefix) or after the _ (the suffix) is truncated. A _ often occurs in a jointable
-	 * name.
+	 * Utility method to truncate a column/table name, the truncPrefix determines if the part before the _ (the prefix)
+	 * or after the _ (the suffix) is truncated. A _ often occurs in a jointable name.
 	 */
 	protected String trunc(int optionMaximumSqlLength, String truncName, boolean truncPrefix) {
 		final String correctedName = truncName.replace('.', '_');
