@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Bz284859" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>bz284859.ecore</foreignModel>
+  <genPackages prefix="Bz284859" basePackage="org.eclipse.emf.teneo.samples.issues"
+      disposableProviderFactory="true" ecorePackage="bz284859.ecore#/">
+    <genClasses ecoreClass="bz284859.ecore#//Bar">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz284859.ecore#//Bar/name"/>
+    </genClasses>
+    <genClasses ecoreClass="bz284859.ecore#//Foo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz284859.ecore#//Foo/name"/>
+    </genClasses>
+    <genClasses ecoreClass="bz284859.ecore#//BarDerived"/>
+  </genPackages>
+</genmodel:GenModel>
