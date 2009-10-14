@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Bz284859Action extends AbstractTestAction {
 
@@ -34,7 +34,8 @@ public class Bz284859Action extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.USE_MAPPING_FILE, "true");
+		props.setProperty(PersistenceOptions.MAPPING_FILE_PATH,
+				"/org/eclipse/emf/teneo/samples/issues/bz284859/hibernate.hbm.xml");
 		return props;
 	}
 
