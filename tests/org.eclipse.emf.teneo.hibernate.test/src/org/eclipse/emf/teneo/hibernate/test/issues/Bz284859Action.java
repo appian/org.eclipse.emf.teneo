@@ -23,7 +23,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class Bz284859Action extends AbstractTestAction {
 
@@ -41,7 +41,6 @@ public class Bz284859Action extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		{
 			store.beginTransaction();
 			final Foo foo = Bz284859Factory.eINSTANCE.createFoo();

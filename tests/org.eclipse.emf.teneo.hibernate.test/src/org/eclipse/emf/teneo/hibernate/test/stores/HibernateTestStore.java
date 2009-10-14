@@ -53,7 +53,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -127,6 +127,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		props.setProperty(Environment.URL, dbadapter.getDbUrl());
 		props.setProperty(Environment.PASS, dbadapter.getDbPwd());
 		props.setProperty(Environment.DIALECT, dbadapter.getDialect());
+		props.setProperty(Environment.BYTECODE_PROVIDER, "cglib");
 		return props;
 	}
 
