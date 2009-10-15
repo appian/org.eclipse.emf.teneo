@@ -9,7 +9,7 @@
  *
  * </copyright>
  *
- * $Id: ExternalType.java,v 1.3 2009/07/22 21:06:16 mtaal Exp $
+ * $Id: ExternalType.java,v 1.4 2009/10/15 20:35:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -42,6 +42,8 @@ public class ExternalType implements UserType, ParameterizedType {
 	private static final int[] SQL_TYPES = { Types.VARCHAR };
 	private EClass eClass;
 
+	private EPackage.Registry registry;
+
 	public int[] sqlTypes() {
 		return SQL_TYPES;
 	}
@@ -55,6 +57,7 @@ public class ExternalType implements UserType, ParameterizedType {
 	}
 
 	public ExternalType() {
+		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
 	}
 
 	public Object deepCopy(Object value) {
@@ -123,7 +126,7 @@ public class ExternalType implements UserType, ParameterizedType {
 			throw new IllegalArgumentException("Could not find custom UserType property "
 					+ HbMapperConstants.EPACKAGE_PARAM);
 		}
-		final EPackage epackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(ePackageNsUri);
+		final EPackage epackage = registry.getEPackage(ePackageNsUri);
 		if (epackage == null) {
 			throw new IllegalArgumentException("Could not find ePackage using nsuri " + ePackageNsUri);
 		}

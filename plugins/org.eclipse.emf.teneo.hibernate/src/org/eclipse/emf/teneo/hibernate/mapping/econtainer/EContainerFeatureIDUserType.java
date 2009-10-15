@@ -13,7 +13,7 @@ package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerFeatureIDUserType.java,v 1.2 2009/07/22 21:06:16 mtaal Exp $
+ * $Id: EContainerFeatureIDUserType.java,v 1.3 2009/10/15 20:35:48 mtaal Exp $
  */
 
 import java.io.Serializable;
@@ -35,7 +35,7 @@ import org.hibernate.usertype.UserType;
  * reference to the EFeature.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $ $Date: 2009/07/22 21:06:16 $
+ * @version $Revision: 1.3 $ $Date: 2009/10/15 20:35:48 $
  */
 
 public class EContainerFeatureIDUserType implements UserType {
@@ -60,9 +60,15 @@ public class EContainerFeatureIDUserType implements UserType {
 		return result.toString();
 	}
 
+	private EPackage.Registry registry;
+
+	public EContainerFeatureIDUserType() {
+		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
+	}
+
 	public Object assemble(Serializable cached, Object owner) throws HibernateException {
 		final EContainerFeatureIDHolder holder = new EContainerFeatureIDHolder();
-		holder.convertFromString((String) cached);
+		holder.convertFromString((String) cached, registry);
 		return holder;
 	}
 
@@ -103,7 +109,7 @@ public class EContainerFeatureIDUserType implements UserType {
 			return null;
 		}
 		final EContainerFeatureIDHolder holder = new EContainerFeatureIDHolder();
-		holder.convertFromString(value);
+		holder.convertFromString(value, registry);
 		return holder;
 	}
 
@@ -146,16 +152,14 @@ public class EContainerFeatureIDUserType implements UserType {
 			eFeature = feature;
 		}
 
-		public void convertFromString(String value) {
+		public void convertFromString(String value, EPackage.Registry theRegistry) {
 			final String[] values = value.split(SEPARATOR);
 			final String nsuri = values[0];
-			final EPackage eContainerPackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
-					nsuri);
+			final EPackage eContainerPackage = theRegistry.getEPackage(nsuri);
 			final String eContainerEClassName = values[1];
 			eClass = (EClass) eContainerPackage.getEClassifier(eContainerEClassName);
 
-			final EPackage eFeaturePackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(
-					values[2]);
+			final EPackage eFeaturePackage = theRegistry.getEPackage(values[2]);
 
 			final String eClassifierName = values[3];
 			final EClassifier eClassifier = eFeaturePackage.getEClassifier(eClassifierName);

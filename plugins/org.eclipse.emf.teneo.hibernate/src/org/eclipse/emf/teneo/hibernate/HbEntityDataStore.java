@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.20 2009/08/23 17:52:02 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.21 2009/10/15 20:35:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -28,6 +28,7 @@ import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceFileProvider;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
@@ -44,7 +45,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
 
@@ -62,36 +63,42 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	public void initialize() {
 		MappingUtil.registerHbExtensions(getExtensionManager());
 
-		log.debug("Initializing EJB3 Hb Entity DataStore");
-		// check a few things
-		if (getEPackages() == null) {
-			throw new HbMapperException("EPackages are not set");
-			// if (getName() == null)
-			// throw new HbStoreException("Name is not set");
+		try {
+			PackageRegistryProvider.getInstance().setThreadPackageRegistry(getPackageRegistry());
+
+			log.debug("Initializing EJB3 Hb Entity DataStore");
+			// check a few things
+			if (getEPackages() == null) {
+				throw new HbMapperException("EPackages are not set");
+				// if (getName() == null)
+				// throw new HbStoreException("Name is not set");
+			}
+
+			// reset interceptor
+			setInterceptor(null);
+
+			log.debug(">>>>> Creating EJB3 Configuration");
+			ejb3Configuration = createConfiguration();
+
+			mapModel();
+
+			setPropertiesInConfiguration();
+
+			initializeDataStore();
+
+			// wait for the session factory until the database is (re)created
+			if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
+				entityManagerFactory.close();
+			}
+			entityManagerFactory = buildEntityManagerFactory();
+
+			// register ourselves
+			HbHelper.INSTANCE.register(this);
+
+			setInitialized(true);
+		} finally {
+			PackageRegistryProvider.getInstance().setThreadPackageRegistry(null);
 		}
-
-		// reset interceptor
-		setInterceptor(null);
-
-		log.debug(">>>>> Creating EJB3 Configuration");
-		ejb3Configuration = createConfiguration();
-
-		mapModel();
-
-		setPropertiesInConfiguration();
-
-		initializeDataStore();
-
-		// wait for the session factory until the database is (re)created
-		if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
-			entityManagerFactory.close();
-		}
-		entityManagerFactory = buildEntityManagerFactory();
-
-		// register ourselves
-		HbHelper.INSTANCE.register(this);
-
-		setInitialized(true);
 	}
 
 	/** Build the mappings in the configuration */

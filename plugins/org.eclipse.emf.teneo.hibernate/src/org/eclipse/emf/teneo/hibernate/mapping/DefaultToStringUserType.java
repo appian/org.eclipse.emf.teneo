@@ -11,7 +11,7 @@
  *   Michael Kanaley, TIBCO Software Inc.
  * </copyright>
  *
- * $Id: DefaultToStringUserType.java,v 1.5 2009/07/22 21:06:16 mtaal Exp $
+ * $Id: DefaultToStringUserType.java,v 1.6 2009/10/15 20:35:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -46,6 +46,12 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	private EFactory eFactory;
 	private EDataType eDataType;
 
+	private EPackage.Registry registry;
+
+	public DefaultToStringUserType() {
+		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
+	}
+
 	/**
 	 * Return the types of the columns that this UserType will serialize into.
 	 * 
@@ -71,12 +77,6 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 */
 	public boolean isMutable() {
 		return false;
-	}
-
-	/**
-	 * Construct a new VARCHAR custom data type.
-	 */
-	public DefaultToStringUserType() {
 	}
 
 	/**
@@ -221,7 +221,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 			throw new IllegalArgumentException("Could not find custom UserType property "
 					+ HbMapperConstants.EPACKAGE_PARAM);
 		}
-		final EPackage epackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(ePackageNsUri);
+		final EPackage epackage = registry.getEPackage(ePackageNsUri);
 		if (epackage == null) {
 			throw new IllegalArgumentException("Could not find ePackage using nsuri " + ePackageNsUri);
 		}

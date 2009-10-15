@@ -13,7 +13,7 @@ package org.eclipse.emf.teneo.hibernate.mapping;
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreModelElementType.java,v 1.3 2009/07/22 21:06:16 mtaal Exp $
+ * $Id: EcoreModelElementType.java,v 1.4 2009/10/15 20:35:48 mtaal Exp $
  */
 
 import java.io.Serializable;
@@ -34,13 +34,19 @@ import org.hibernate.usertype.UserType;
  * Persists references to EClassifiers and EStructuralFeatures as a varchar field.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2009/07/22 21:06:16 $
+ * @version $Revision: 1.4 $ $Date: 2009/10/15 20:35:48 $
  */
 
 public class EcoreModelElementType implements UserType {
 
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
 	private static final String SEPARATOR = "_;_";
+
+	private EPackage.Registry registry;
+
+	public EcoreModelElementType() {
+		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
+	}
 
 	public Object assemble(Serializable cached, Object owner) throws HibernateException {
 		return convertFromString((String) cached);
@@ -88,7 +94,7 @@ public class EcoreModelElementType implements UserType {
 	private Object convertFromString(String value) {
 		final String[] values = value.split(SEPARATOR);
 		final String nsuri = values[0];
-		final EPackage ePackage = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(nsuri);
+		final EPackage ePackage = registry.getEPackage(nsuri);
 		if (values.length == 1) { // EPackage
 			return ePackage;
 		} else if (values.length == 2) { // EClassifier

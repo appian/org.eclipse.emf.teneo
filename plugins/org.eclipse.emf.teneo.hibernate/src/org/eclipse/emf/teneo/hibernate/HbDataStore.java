@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.DataStore;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.PersistenceOptions.EContainerFeaturePersistenceStrategy;
@@ -93,7 +94,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -164,6 +165,19 @@ public abstract class HbDataStore implements DataStore {
 	private EMFEntityNameResolver entityNameResolver;
 
 	private Map<EClass, EStructuralFeature> idFeatureByEClass = null;
+
+	private EPackage.Registry packageRegistry = null;
+
+	public EPackage.Registry getPackageRegistry() {
+		if (packageRegistry == null) {
+			return PackageRegistryProvider.getInstance().getPackageRegistry();
+		}
+		return packageRegistry;
+	}
+
+	public void setPackageRegistry(EPackage.Registry packageRegistry) {
+		this.packageRegistry = packageRegistry;
+	}
 
 	/**
 	 * @return the dsName

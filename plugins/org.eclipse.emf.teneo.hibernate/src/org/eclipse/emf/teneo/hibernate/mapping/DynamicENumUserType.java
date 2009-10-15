@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicENumUserType.java,v 1.8 2009/07/22 21:06:16 mtaal Exp $
+ * $Id: DynamicENumUserType.java,v 1.9 2009/10/15 20:35:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping;
@@ -38,7 +38,7 @@ import org.hibernate.usertype.UserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $ $Date: 2009/07/22 21:06:16 $
+ * @version $Revision: 1.9 $ $Date: 2009/10/15 20:35:48 $
  */
 
 public class DynamicENumUserType implements UserType, ParameterizedType {
@@ -50,6 +50,12 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 
 	/** Hashmap with string to enum mappings */
 	private final HashMap<String, Enumerator> localCache = new HashMap<String, Enumerator>();
+
+	private EPackage.Registry registry;
+
+	public DynamicENumUserType() {
+		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -170,7 +176,7 @@ public class DynamicENumUserType implements UserType, ParameterizedType {
 	public void setParameterValues(Properties parameters) {
 		final String epackUri = parameters.getProperty(HbMapperConstants.EPACKAGE_PARAM);
 		final String eclassifier = parameters.getProperty(HbMapperConstants.ECLASSIFIER_PARAM);
-		final EPackage epack = PackageRegistryProvider.getInstance().getPackageRegistry().getEPackage(epackUri);
+		final EPackage epack = registry.getEPackage(epackUri);
 		enumInstance = (EEnum) epack.getEClassifier(eclassifier);
 	}
 }
