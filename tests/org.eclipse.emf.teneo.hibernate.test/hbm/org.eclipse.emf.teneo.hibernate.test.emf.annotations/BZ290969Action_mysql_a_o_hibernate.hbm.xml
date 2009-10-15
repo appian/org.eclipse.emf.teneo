@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz290969.impl.BarImpl" entity-name="BarEntity" abstract="false" lazy="false" discriminator-value="BarEntity" table="`barentity`">
+		<meta attribute="eclassName">Bar</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz290969</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="barentitydtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="barKeys" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="barentity_barkeys">
+				<column name="`barentity_barkeys_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`barentity_barkeys_idx`"/>
+			<one-to-many entity-name="BarKeyEntity"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz290969.impl.BarKeyImpl" entity-name="BarKeyEntity" abstract="false" lazy="false" discriminator-value="BarKeyEntity" table="`barkeyentity`">
+		<meta attribute="eclassName">BarKey</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz290969</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="barkeyentitydtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz290969.impl.FooImpl" entity-name="FooEntity" abstract="false" lazy="false" discriminator-value="FooEntity" table="`fooentity`">
+		<meta attribute="eclassName">Foo</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz290969</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="fooentitydtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<many-to-one name="barKey" entity-name="BarKeyEntity" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="fooentity_barkey" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`barkeyentity_barkey_e_id`"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>
