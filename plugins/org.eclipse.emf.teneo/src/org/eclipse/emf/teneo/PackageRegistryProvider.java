@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PackageRegistryProvider.java,v 1.1 2009/07/22 21:08:44 mtaal Exp $
+ * $Id: PackageRegistryProvider.java,v 1.2 2009/10/15 20:47:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EPackage;
  * instance with your own implementation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class PackageRegistryProvider {
 
@@ -43,12 +43,23 @@ public class PackageRegistryProvider {
 
 	private EPackage.Registry packageRegistry = EPackage.Registry.INSTANCE;
 
+	// is used to handle the package registry defined in a datastore
+	private ThreadLocal<EPackage.Registry> threadRegistry = new ThreadLocal<EPackage.Registry>();
+
 	public EPackage.Registry getPackageRegistry() {
+		final EPackage.Registry theThreadRegistry = threadRegistry.get();
+		if (theThreadRegistry != null) {
+			return theThreadRegistry;
+		}
 		return packageRegistry;
 	}
 
 	public void setPackageRegistry(EPackage.Registry packageRegistry) {
 		this.packageRegistry = packageRegistry;
+	}
+
+	public void setThreadPackageRegistry(EPackage.Registry thePackageRegistry) {
+		threadRegistry.set(thePackageRegistry);
 	}
 
 }
