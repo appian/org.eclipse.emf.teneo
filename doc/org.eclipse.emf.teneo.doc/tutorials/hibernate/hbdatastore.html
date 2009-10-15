@@ -404,13 +404,21 @@
 </ul>
 			
 <p>
+<strong>When using Spring managed transactions you possibly also have to set the 
+			hibernate.current_session_context_class property. The value should then be set to:
+			org.springframework.orm.hibernate3.SpringSessionContext.</strong> Note this property
+			can not be set through the datastore properties but must be set in a hibernate.properties
+			file or a hibernate.cfg.xml file. Apparently setting this programmatically does not work
+			in Hibernate.</p>
+			
+<p>
 <strong>This Spring configuration is not tested using a separate testcase, let us know if the above description needs to be corrected.</strong>
 </p>
 		
 </div>
 		
 		
-<a name="N1007F"></a><a name="options"></a>
+<a name="N10084"></a><a name="options"></a>
 <div class="h3">
 <h3>Runtime Options</h3>
 			
@@ -422,7 +430,7 @@
 		
 </div>
 		
-<a name="N10093"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
+<a name="N10098"></a><a name="Getting+the+Hibernate+Mapping+XML"></a>
 <div class="h3">
 <h3>Getting the Hibernate Mapping XML</h3>
 			
