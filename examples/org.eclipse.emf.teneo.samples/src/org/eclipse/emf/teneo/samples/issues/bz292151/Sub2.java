@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Sub2.java,v 1.1 2009/10/14 22:19:41 mtaal Exp $
+ * $Id: Sub2.java,v 1.2 2009/10/16 09:32:30 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz292151;
 
@@ -34,12 +34,12 @@ public interface Sub2 extends Base {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>A1</em>' reference.
-	 * @see #setA1(EObject)
+	 * @see #setA1(Sub1)
 	 * @see org.eclipse.emf.teneo.samples.issues.bz292151.Bz292151Package#getSub2_A1()
 	 * @model
 	 * @generated
 	 */
-	EObject getA1();
+	Sub1 getA1();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.issues.bz292151.Sub2#getA1 <em>A1</em>}' reference.
@@ -49,6 +49,6 @@ public interface Sub2 extends Base {
 	 * @see #getA1()
 	 * @generated
 	 */
-	void setA1(EObject value);
+	void setA1(Sub1 value);
 
 } // Sub2

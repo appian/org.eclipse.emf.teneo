@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Sub2Impl.java,v 1.1 2009/10/14 22:19:41 mtaal Exp $
+ * $Id: Sub2Impl.java,v 1.2 2009/10/16 09:32:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz292151.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.teneo.samples.issues.bz292151.Bz292151Package;
+import org.eclipse.emf.teneo.samples.issues.bz292151.Sub1;
 import org.eclipse.emf.teneo.samples.issues.bz292151.Sub2;
 
 /**
@@ -39,7 +40,7 @@ public class Sub2Impl extends BaseImpl implements Sub2 {
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject a1;
+	protected Sub1 a1;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,10 +66,10 @@ public class Sub2Impl extends BaseImpl implements Sub2 {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getA1() {
+	public Sub1 getA1() {
 		if (a1 != null && a1.eIsProxy()) {
 			InternalEObject oldA1 = (InternalEObject)a1;
-			a1 = eResolveProxy(oldA1);
+			a1 = (Sub1)eResolveProxy(oldA1);
 			if (a1 != oldA1) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Bz292151Package.SUB2__A1, oldA1, a1));
@@ -82,7 +83,7 @@ public class Sub2Impl extends BaseImpl implements Sub2 {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject basicGetA1() {
+	public Sub1 basicGetA1() {
 		return a1;
 	}
 
@@ -91,8 +92,8 @@ public class Sub2Impl extends BaseImpl implements Sub2 {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setA1(EObject newA1) {
-		EObject oldA1 = a1;
+	public void setA1(Sub1 newA1) {
+		Sub1 oldA1 = a1;
 		a1 = newA1;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Bz292151Package.SUB2__A1, oldA1, a1));
@@ -122,7 +123,7 @@ public class Sub2Impl extends BaseImpl implements Sub2 {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Bz292151Package.SUB2__A1:
-				setA1((EObject)newValue);
+				setA1((Sub1)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,7 +138,7 @@ public class Sub2Impl extends BaseImpl implements Sub2 {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Bz292151Package.SUB2__A1:
-				setA1((EObject)null);
+				setA1((Sub1)null);
 				return;
 		}
 		super.eUnset(featureID);

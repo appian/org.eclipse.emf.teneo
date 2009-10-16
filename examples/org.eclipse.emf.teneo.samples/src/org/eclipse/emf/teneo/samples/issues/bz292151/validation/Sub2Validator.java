@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Sub2Validator.java,v 1.1 2009/10/14 22:19:41 mtaal Exp $
+ * $Id: Sub2Validator.java,v 1.2 2009/10/16 09:32:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz292151.validation;
 
+import org.eclipse.emf.teneo.samples.issues.bz292151.Sub1;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Sub2Validator {
 	boolean validate();
+
+	boolean validateA1(Sub1 value);
 
 	boolean validateA1(EObject value);
 }

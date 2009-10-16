@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Bz292151PackageImpl.java,v 1.1 2009/10/14 22:19:41 mtaal Exp $
+ * $Id: Bz292151PackageImpl.java,v 1.2 2009/10/16 09:32:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.issues.bz292151.impl;
 
@@ -228,7 +228,7 @@ public class Bz292151PackageImpl extends EPackageImpl implements Bz292151Package
 		initEAttribute(getSub1_A1(), ecorePackage.getEString(), "a1", null, 0, 1, Sub1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sub2EClass, Sub2.class, "Sub2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSub2_A1(), ecorePackage.getEObject(), null, "a1", null, 0, 1, Sub2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSub2_A1(), this.getSub1(), null, "a1", null, 0, 1, Sub2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
