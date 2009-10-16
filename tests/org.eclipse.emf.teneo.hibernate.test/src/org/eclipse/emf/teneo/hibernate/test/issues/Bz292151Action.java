@@ -12,13 +12,16 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.samples.issues.bz292151.Bz292151Factory;
 import org.eclipse.emf.teneo.samples.issues.bz292151.Bz292151Package;
+import org.eclipse.emf.teneo.samples.issues.bz292151.Sub1;
+import org.eclipse.emf.teneo.samples.issues.bz292151.Sub2;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Bz292151Action extends AbstractTestAction {
 
@@ -37,6 +40,19 @@ public class Bz292151Action extends AbstractTestAction {
 	public void doAction(TestStore store) {
 		{
 			store.beginTransaction();
+			final Sub1 sub1 = Bz292151Factory.eINSTANCE.createSub1();
+			sub1.setA1("test");
+			final Sub2 sub2 = Bz292151Factory.eINSTANCE.createSub2();
+			sub2.setA1(sub1);
+			store.store(sub1);
+			store.store(sub2);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Sub1 sub1 = store.getObject(Sub1.class);
+			final Sub2 sub2 = store.getObject(Sub2.class);
+			assertEquals(sub2.getA1(), sub1);
 			store.commitTransaction();
 		}
 	}
