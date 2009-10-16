@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  */
 public class AllTests {
 
@@ -57,7 +57,7 @@ public class AllTests {
 		// to enable this test add a hibernate.properties in the root with the following property:
 		// hibernate.bytecode.provider=cglib
 		// suite.addTestSuite(Bz292151Action.class);
-
+		suite.addTestSuite(Bz292074Action.class);
 		suite.addTestSuite(Bz284859Action.class);
 		suite.addTestSuite(Bz288963Action.class);
 		suite.addTestSuite(BZ285372Action.class);

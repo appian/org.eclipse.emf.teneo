@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.teneo.DataStore;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
@@ -53,12 +54,13 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
 	private static Log log = LogFactory.getLog(HibernateTestStore.class);
 
+	public static final String USE_DATASTORE_REGISTRY = "useDataStoreRegistry";
 	public static final String EPACKAGE_INIT_MODE = "epackageinitmode";
 	public static final String EPACKAGE_INIT_MODE_CLASS = "class";
 	public static final String EPACKAGE_INIT_MODE_ECORE = "ecore";
@@ -158,6 +160,14 @@ public class HibernateTestStore extends AbstractTestStore {
 		} else {
 			emfDataStore.setEPackages(epackages);
 		}
+		// any value is fine
+		if (props.getProperty(USE_DATASTORE_REGISTRY) != null) {
+			PackageRegistryProvider.getInstance().setPackageRegistry(null);
+			emfDataStore.setPackageRegistry(EPackage.Registry.INSTANCE);
+		} else {
+			PackageRegistryProvider.getInstance().setPackageRegistry(EPackage.Registry.INSTANCE);
+		}
+
 		// set both hibernate and persistence props as we do not know the difference right now
 		props.putAll(getHibernateProperties((HibernateTestDBAdapter) getDatabaseAdapter()));
 
