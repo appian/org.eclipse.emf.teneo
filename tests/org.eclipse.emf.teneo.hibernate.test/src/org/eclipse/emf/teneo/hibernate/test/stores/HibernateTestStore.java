@@ -10,6 +10,7 @@ package org.eclipse.emf.teneo.hibernate.test.stores;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -54,7 +55,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -62,6 +63,8 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	public static final String USE_DATASTORE_REGISTRY = "useDataStoreRegistry";
 	public static final String EPACKAGE_INIT_MODE = "epackageinitmode";
+	public static final String EPACKAGE_INIT_MODE_SPECIFIED = "specified";
+	public static final String SPECIFIED_EPACKAGES = "specified_epackages";
 	public static final String EPACKAGE_INIT_MODE_CLASS = "class";
 	public static final String EPACKAGE_INIT_MODE_ECORE = "ecore";
 	public static final String EPACKAGE_INIT_MODE_ECORE_VALUE = "ecorefile";
@@ -146,7 +149,10 @@ public class HibernateTestStore extends AbstractTestStore {
 		emfDataStore.setExtensionManager(extensionManager);
 		emfDataStore.setName(getDatabaseAdapter().getDbName());
 		if (props.getProperty(EPACKAGE_INIT_MODE) != null) {
-			if (props.getProperty(EPACKAGE_INIT_MODE).compareTo(EPACKAGE_INIT_MODE_CLASS) == 0) {
+			if (props.getProperty(EPACKAGE_INIT_MODE).compareTo(EPACKAGE_INIT_MODE_SPECIFIED) == 0) {
+				final List<String> clss = Collections.singletonList(props.getProperty(SPECIFIED_EPACKAGES));
+				emfDataStore.setEPackageClasses(clss);
+			} else if (props.getProperty(EPACKAGE_INIT_MODE).compareTo(EPACKAGE_INIT_MODE_CLASS) == 0) {
 				final List<String> clss = new ArrayList<String>();
 				for (EPackage epackage : epackages) {
 					clss.add(epackage.getClass().getName());
