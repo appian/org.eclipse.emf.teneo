@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrmPackageImpl.java,v 1.3 2009/07/23 11:16:30 mtaal Exp $
+ * $Id: OrmPackageImpl.java,v 1.4 2009/10/27 23:13:29 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -4420,7 +4420,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 		  (this, 
 		   source, 
 		   new String[] {
-			 "qualified", "false"
+			 "qualified", "true"
 		   });			
 		addAnnotation
 		  (accessTypeEEnum, 
