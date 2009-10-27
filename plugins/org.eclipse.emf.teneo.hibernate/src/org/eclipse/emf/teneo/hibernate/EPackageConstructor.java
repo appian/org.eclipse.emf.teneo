@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EPackageConstructor.java,v 1.3 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EPackageConstructor.java,v 1.4 2009/10/27 23:14:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class EPackageConstructor {
 	private static final Log log = LogFactory.getLog(EPackageConstructor.class);
 
 	// The ecore context in which this app runs
-// private EcoreContext ecoreContext;
+	// private EcoreContext ecoreContext;
 
 	// The arraylist of epackages, is build in the getEPackages call
 	private List<EPackage> ePackages = null;
@@ -68,11 +69,10 @@ public class EPackageConstructor {
 	}
 
 	/**
-	 * This method will read the models from the modelFiles and the EcoreModelPackages. The
-	 * EPackages are initialized and registered in the EPackage registry.
+	 * This method will read the models from the modelFiles and the EcoreModelPackages. The EPackages are initialized
+	 * and registered in the EPackage registry.
 	 * 
-	 * @return the EPackages which are read from the modelFiles or are defined in
-	 *         EcoreModelPackages.
+	 * @return the EPackages which are read from the modelFiles or are defined in EcoreModelPackages.
 	 */
 	public List<EPackage> getEPackages() {
 		if (ePackages == null) {
@@ -122,25 +122,31 @@ public class EPackageConstructor {
 		for (String ecoreModelPackageClassName : ecoreModelClasses) {
 			try {
 				final Class<?> cls = this.getClass().getClassLoader().loadClass(ecoreModelPackageClassName);
-				final Method m = cls.getMethod("init");
-
-				// purposely passing null because it must be static
-				final EPackage emp = (EPackage) m.invoke(null);
+				final EPackage emp;
+				// handle the case that this is an EPackage interface
+				if (cls.isInterface()) {
+					final Field f = cls.getField("eINSTANCE");
+					// purposely passing null because it must be static
+					emp = (EPackage) f.get(null);
+				} else {
+					final Method m = cls.getMethod("init");
+					// purposely passing null because it must be static
+					emp = (EPackage) m.invoke(null);
+				}
 
 				// initialise the emp, will also read the epackage
 				result.add(emp);
 			} catch (Exception e) {
 				throw new IllegalStateException(
-					"Excption while trying to retrieve EcoreModelPackage instance from class: " +
-							ecoreModelPackageClassName, e);
+						"Excption while trying to retrieve EcoreModelPackage instance from class: "
+								+ ecoreModelPackageClassName, e);
 			}
 		}
 		return result;
 	}
 
 	/**
-	 * Builds a list of epackages from the modelfiles, pre-normalized for duplicates and not
-	 * registered.
+	 * Builds a list of epackages from the modelfiles, pre-normalized for duplicates and not registered.
 	 */
 	private List<EPackage> buildFromModelFiles() {
 		// separate the files in xsd and ecore files and treat each of them separately
@@ -151,8 +157,8 @@ public class EPackageConstructor {
 				xsdFiles.add(modelFile.trim());
 			} else {
 				if (!modelFile.trim().endsWith(".ecore")) {
-					log.warn("Filename " + modelFile + " passed as modelFile but it does not end on either " +
-							"xsd or ecore, processing it anyway.");
+					log.warn("Filename " + modelFile + " passed as modelFile but it does not end on either "
+							+ "xsd or ecore, processing it anyway.");
 				}
 				ecoreFiles.add(modelFile.trim());
 			}
@@ -161,43 +167,43 @@ public class EPackageConstructor {
 		// now get the ecores and xsd's parse them separately
 		final ArrayList<EPackage> result = new ArrayList<EPackage>();
 		result.addAll(readFromEcore(ecoreFiles));
-// result.addAll(readFromXmlSchema(xsdFiles));
+		// result.addAll(readFromXmlSchema(xsdFiles));
 
 		return result;
 	}
 
-// /**
-// * Builds and registers EPackages from an XML Schema.
-// *
-// * @param file
-// * The XML Schema file.
-// */
-// private List<EPackage> readFromXmlSchema(List<String> xsdFiles) {
-// final ArrayList<EPackage> result = new ArrayList<EPackage>();
-// for (String xsdFile : xsdFiles) {
-// log.debug("Building ECore model from XML Schema \"" + xsdFile + "\".");
-// try {
-// // final String path = ecoreContext.getQualifiedPath(xsdFile);
-// final java.net.URI netURI = this.getClass().getResource(xsdFile).toURI();
-// final URI uri = URI.createURI(netURI.toString());
-//
-// // Note: we use an inline SerializableXSDEcoreBuilder to avoid a dependency on
-// // XSDEcoreBuilder during
-// // classloading.
-// for (Object obj : new XSDEcoreBuilder().generate(uri)) {
-// final EPackage ePackage = (EPackage) obj;
-// result.add(ePackage);
-// }
-// } catch (Exception e) {
-// throw new StateException("Could not build ECore model from XML Schema, from file " + xsdFile, e);
-// }
-// }
-// return result;
-// }
+	// /**
+	// * Builds and registers EPackages from an XML Schema.
+	// *
+	// * @param file
+	// * The XML Schema file.
+	// */
+	// private List<EPackage> readFromXmlSchema(List<String> xsdFiles) {
+	// final ArrayList<EPackage> result = new ArrayList<EPackage>();
+	// for (String xsdFile : xsdFiles) {
+	// log.debug("Building ECore model from XML Schema \"" + xsdFile + "\".");
+	// try {
+	// // final String path = ecoreContext.getQualifiedPath(xsdFile);
+	// final java.net.URI netURI = this.getClass().getResource(xsdFile).toURI();
+	// final URI uri = URI.createURI(netURI.toString());
+	//
+	// // Note: we use an inline SerializableXSDEcoreBuilder to avoid a dependency on
+	// // XSDEcoreBuilder during
+	// // classloading.
+	// for (Object obj : new XSDEcoreBuilder().generate(uri)) {
+	// final EPackage ePackage = (EPackage) obj;
+	// result.add(ePackage);
+	// }
+	// } catch (Exception e) {
+	// throw new StateException("Could not build ECore model from XML Schema, from file " + xsdFile, e);
+	// }
+	// }
+	// return result;
+	// }
 
 	/**
-	 * Reads the epackages present in the passed ecore files. Note this method does not register the
-	 * epackages. It does not check for duplicates either.
+	 * Reads the epackages present in the passed ecore files. Note this method does not register the epackages. It does
+	 * not check for duplicates either.
 	 */
 	private List<EPackage> readFromEcore(List<String> ecoreFiles) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
@@ -205,8 +211,8 @@ public class EPackageConstructor {
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 		for (String ecoreFile : ecoreFiles) {
 			log.debug("Reading ecore file: " + ecoreFile);
-// final String path = ecoreContext.getQualifiedPath(ecoreFile);
-// log.debug("Using qualified path: " + path);
+			// final String path = ecoreContext.getQualifiedPath(ecoreFile);
+			// log.debug("Using qualified path: " + path);
 			try {
 				final java.net.URI netURI = this.getClass().getResource(ecoreFile).toURI();
 				final Resource res = resourceSet.getResource(URI.createURI(netURI.toString()), true);
