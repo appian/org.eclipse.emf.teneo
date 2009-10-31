@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.17 2009/08/23 17:52:04 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.18 2009/10/31 07:10:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -68,7 +68,10 @@ public class EcoreAction extends AbstractTestAction {
 			// ignore this as this fails any way
 			return;
 		}
-
+		if (store.getDatabaseAdapter().getDbName().contains("mysql")) {
+			// too many joins error so ignore...
+			return;
+		}
 		// read ecore as a resource
 		final Resource resourceOne = new XMIResourceImpl();
 		try {
