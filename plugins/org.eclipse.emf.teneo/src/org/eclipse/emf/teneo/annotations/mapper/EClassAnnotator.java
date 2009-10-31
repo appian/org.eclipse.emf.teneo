@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EClassAnnotator.java,v 1.19 2009/09/13 14:45:33 mtaal Exp $
+ * $Id: EClassAnnotator.java,v 1.20 2009/10/31 07:10:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -140,6 +140,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		if (aClass.getEntity() != null && aClass.getEntity().getName() == null) {
 			aClass.getEntity().setName(getEntityNameStrategy().toEntityName(eclass));
 		}
+		// if (aClass.getEavMapping() != null && EModelResolver.instance().getJavaClass(aClass.getModelEClass()) !=
+		// null) {
+		// aClass.getEntity().setName(EModelResolver.instance().getJavaClass(aClass.getModelEClass()).getName());
+		// }
 
 		// get the inheritance from the supertype or use the global inheritance
 		// setting

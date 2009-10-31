@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.59 2009/09/11 15:54:07 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.60 2009/10/31 07:10:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -262,9 +262,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String MAPPING_FILE_PATH = MAPPING_PREFIX + "mapping_file_name";
 
 	/**
-	 * Automatically add
-	 * 
-	 * @Id to ID feature
+	 * Automatically add @Id to ID feature
 	 * 
 	 * @id annotation to ID xsd type
 	 */
@@ -279,7 +277,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String SET_GENERATED_VALUE_ON_ID_FEATURE = NAMING_PREFIX + "set_generated_value_on_id_feature";
 
 	/**
-	 * The name of the id feature if no feature has a
+	 * The name of the id feature if no feature has an id.
 	 * 
 	 * @id annotation
 	 */
