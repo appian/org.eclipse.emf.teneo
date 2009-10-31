@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.20 2009/09/11 15:38:38 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.21 2009/10/31 07:10:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -26,6 +26,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -61,7 +62,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -216,7 +217,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	protected ProxyFactory buildProxyFactory(PersistentClass persistentClass, Getter idGetter, Setter idSetter) {
-		if (persistentClass.getClassName() == null) { // an entity, no proxy
+		if (persistentClass.getProxyInterface() == null) { // an entity, no proxy
 			return null;
 		}
 
@@ -233,7 +234,10 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		if (pInterface != null && pInterface.isInterface()) {
 			proxyInterfaces.add(pInterface);
 		}
-		final Class<?> mappedClass = persistentClass.getMappedClass();
+		Class<?> mappedClass = persistentClass.getMappedClass();
+		if (mappedClass == null) {
+			mappedClass = DynamicEObjectImpl.class;
+		}
 		if (mappedClass.isInterface()) {
 			proxyInterfaces.add(mappedClass);
 		}
@@ -250,7 +254,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 			final Subclass subclass = (Subclass) iter.next();
 			final Class<?> subclassProxy = subclass.getProxyInterface();
 			final Class<?> subclassClass = subclass.getMappedClass();
-			if (subclassProxy != null && !subclassClass.equals(subclassProxy)) {
+			if (subclassProxy != null && subclassClass != null && !subclassClass.equals(subclassProxy)) {
 				proxyInterfaces.add(subclassProxy);
 			}
 		}
