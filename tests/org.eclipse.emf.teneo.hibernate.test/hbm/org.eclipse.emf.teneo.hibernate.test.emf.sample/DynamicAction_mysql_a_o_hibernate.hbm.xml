@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping auto-import="false">
-	<class name="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" discriminator-value="Person" table="`person`">
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl" entity-name="Person" abstract="false" lazy="true" discriminator-value="Person" table="`person`" proxy="org.eclipse.emf.teneo.samples.emf.sample.dynamic.Person">
 		<meta attribute="eclassName">Person</meta>
 		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/dynamic</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">

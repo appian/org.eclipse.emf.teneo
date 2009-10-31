@@ -10,6 +10,7 @@ package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -21,9 +22,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.DynamicFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.DynamicPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.Person;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -45,6 +45,13 @@ public class DynamicAction extends AbstractTestAction {
 	 */
 	public DynamicAction() {
 		super(DynamicPackage.eINSTANCE);
+	}
+
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.put(PersistenceOptions.SET_PROXY, "true");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -102,11 +109,15 @@ public class DynamicAction extends AbstractTestAction {
 		// add a new eclass which inherits from person
 		EClass employeeClass = null;
 		EAttribute employeeManager = null;
+		EReference employeeDepartment = null;
 		EClass departmentClass = null;
+		EClass officeClass = null;
+		EAttribute officeName = null;
 		EReference departmentManager = null;
 		EPackage companyPackage = null;
 		EAttribute departmentName = null;
 		EAttribute departmentType = null;
+		EReference departmentOffice = null;
 		EEnumLiteral el1 = null;
 		{
 			employeeClass = efactory.createEClass();
@@ -135,6 +146,25 @@ public class DynamicAction extends AbstractTestAction {
 			departmentManager.setContainment(true);
 			departmentClass.getEStructuralFeatures().add(departmentManager);
 
+			employeeDepartment = efactory.createEReference();
+			employeeDepartment.setName("department");
+			employeeDepartment.setEType(departmentClass);
+			employeeDepartment.setUnique(false);
+			employeeClass.getEStructuralFeatures().add(employeeDepartment);
+
+			officeClass = efactory.createEClass();
+			officeClass.setName("Office");
+
+			officeName = efactory.createEAttribute();
+			officeName.setName("name");
+			officeName.setEType(epackage.getEString());
+			officeClass.getEStructuralFeatures().add(officeName);
+
+			departmentOffice = efactory.createEReference();
+			departmentOffice.setName("office");
+			departmentOffice.setEType(officeClass);
+			departmentClass.getEStructuralFeatures().add(departmentOffice);
+
 			final EEnum dt = efactory.createEEnum();
 			dt.setName("DepartmentType");
 			el1 = efactory.createEEnumLiteral();
@@ -156,6 +186,7 @@ public class DynamicAction extends AbstractTestAction {
 			companyPackage.setNsURI("http:///www.elver.org/DynamicTest");
 			companyPackage.getEClassifiers().add(employeeClass);
 			companyPackage.getEClassifiers().add(departmentClass);
+			companyPackage.getEClassifiers().add(officeClass);
 			companyPackage.getEClassifiers().add(dt);
 			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
@@ -169,25 +200,41 @@ public class DynamicAction extends AbstractTestAction {
 			return;
 		}
 
+		// System.err.println(store.getMappingXML());
+
 		// Now create three employee
 		{
 			store.beginTransaction();
+
+			EObject office = EcoreUtil.create(officeClass);
+			office.eSet(officeName, "Marketing Office");
+			store.store(office);
+
+			EObject department = EcoreUtil.create(departmentClass);
+			department.eSet(departmentName, "Marketing");
+			department.eSet(departmentType, el1);
+			department.eSet(departmentOffice, office);
+			store.store(department);
 			Person employee = (Person) EcoreUtil.create(employeeClass);
 			employee.setName("employee1");
 			employee.eSet(employeeManager, new Boolean(true));
+			employee.eSet(employeeDepartment, department);
 			store.store(employee);
 			Person employee2 = (Person) EcoreUtil.create(employeeClass);
 			employee2.setName("employee2");
 			employee2.eSet(employeeManager, new Boolean(true));
+			employee2.eSet(employeeDepartment, department);
 			store.store(employee2);
 			Person employee3 = (Person) EcoreUtil.create(employeeClass);
 			employee3.setName("employee3");
 			employee3.eSet(employeeManager, new Boolean(false));
+			employee3.eSet(employeeDepartment, department);
 			store.store(employee3);
 			store.commitTransaction();
 
 			// the dynamiceobjectimpl should not be present in the mapping xml
-			assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(DynamicEObjectImpl.class.getName()) == -1);
+			// assertTrue(((HibernateTestStore) store).getMappingXML().indexOf(DynamicEObjectImpl.class.getName()) ==
+			// -1);
 		}
 
 		// read them all (incl. the person), create a department and add the
@@ -201,9 +248,14 @@ public class DynamicAction extends AbstractTestAction {
 				assertTrue(eobject.eClass() == employeeClass);
 			}
 
+			EObject office = EcoreUtil.create(officeClass);
+			office.eSet(officeName, "Software Development Office");
+			store.store(office);
+
 			EObject department = EcoreUtil.create(departmentClass);
 			department.eSet(departmentName, "Software Development");
 			department.eSet(departmentType, el1);
+			department.eSet(departmentOffice, office);
 			final ArrayList<Person> departmentManagers = new ArrayList<Person>();
 			for (int i = 0; i < employees.size(); i++) {
 				Person employ = (Person) employees.get(i);
@@ -228,6 +280,8 @@ public class DynamicAction extends AbstractTestAction {
 
 				if (eobject.eClass() == employeeClass) {
 					cntEmployee++;
+					final Object dep = eobject.eGet(employeeDepartment);
+					assertTrue(dep instanceof org.hibernate.proxy.HibernateProxy);
 				}
 			}
 			assertEquals(3, cntEmployee);
@@ -237,14 +291,32 @@ public class DynamicAction extends AbstractTestAction {
 		// now delete the department, there should now be only one employee left
 		{
 			store.beginTransaction();
+			// note query on name does not work as this test is also used by the EAV mapping
+			// which does not support querying
 			List<?> list = store.query("select d from Department d");
-			assertEquals(1, list.size());
-			EObject department = (EObject) list.get(0);
+			assertEquals(2, list.size());
+			// get the software development one
+			EObject department = null;
+			for (Object obj : list) {
+				final EObject possibleDepartment = (EObject) obj;
+				if (possibleDepartment.eGet(departmentName).equals("Software Development")) {
+					department = possibleDepartment;
+					break;
+				}
+			}
+			assertNotNull(department);
 			List<?> managers = (List<?>) department.eGet(departmentManager);
 			assertEquals(2, managers.size());
 			assertTrue(((Person) managers.get(0)).eClass() == employeeClass);
 			assertTrue(((Person) managers.get(1)).eClass() == employeeClass);
 			assertTrue(department.eClass() == departmentClass);
+
+			final EObject off = (EObject) department.eGet(departmentOffice);
+			assertTrue(off instanceof org.hibernate.proxy.HibernateProxy);
+			final String offName = (String) off.eGet(officeName);
+			final String depName = (String) department.eGet(departmentName);
+			assertTrue(offName.startsWith(depName));
+
 			store.deleteObject(department);
 			store.commitTransaction();
 		}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVResourceAction.java,v 1.1 2009/08/23 11:01:46 mtaal Exp $
+ * $Id: LibraryEAVResourceAction.java,v 1.2 2009/10/31 07:10:16 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -34,7 +35,7 @@ import org.hibernate.Session;
  * Tests the library example of emf/xsd using a HbResource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryEAVResourceAction extends LibraryResourceAction {
 
@@ -77,8 +78,8 @@ public class LibraryEAVResourceAction extends LibraryResourceAction {
 			final Writer writer = store.getObjects(Writer.class).get(0);
 			final Session session = ((HibernateTestStore) store).getSession();
 			final Query qryNonContainment = session
-					.createQuery("select eav.owner from EAVSingleNonContainmentEReferenceValueHolder eav where eav.referenceValue=:referedTo");
-			qryNonContainment.setParameter("referedTo", writer);
+					.createQuery("select eav.owner from EAVSingleNonContainmentEReferenceValueHolder eav where eav.referenceValue.id=:referedTo");
+			qryNonContainment.setParameter("referedTo", IdentifierCacheHandler.getInstance().getID(writer));
 			assertEquals(2, qryNonContainment.list().size());
 			for (Object o : qryNonContainment.list()) {
 				final Book bk = (Book) o;
