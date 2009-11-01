@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -111,8 +111,14 @@ public class DynamicAction extends AbstractTestAction {
 		EAttribute employeeManager = null;
 		EReference employeeDepartment = null;
 		EClass departmentClass = null;
+
 		EClass officeClass = null;
 		EAttribute officeName = null;
+		EReference officeAddressRef = null;
+
+		EClass officeAddressClass = null;
+		EAttribute addressName = null;
+
 		EReference departmentManager = null;
 		EPackage companyPackage = null;
 		EAttribute departmentName = null;
@@ -152,6 +158,14 @@ public class DynamicAction extends AbstractTestAction {
 			employeeDepartment.setUnique(false);
 			employeeClass.getEStructuralFeatures().add(employeeDepartment);
 
+			officeAddressClass = efactory.createEClass();
+			officeAddressClass.setName("Address");
+
+			addressName = efactory.createEAttribute();
+			addressName.setName("name");
+			addressName.setEType(epackage.getEString());
+			officeAddressClass.getEStructuralFeatures().add(addressName);
+
 			officeClass = efactory.createEClass();
 			officeClass.setName("Office");
 
@@ -159,6 +173,11 @@ public class DynamicAction extends AbstractTestAction {
 			officeName.setName("name");
 			officeName.setEType(epackage.getEString());
 			officeClass.getEStructuralFeatures().add(officeName);
+
+			officeAddressRef = efactory.createEReference();
+			officeAddressRef.setName("address");
+			officeAddressRef.setEType(officeAddressClass);
+			officeClass.getEStructuralFeatures().add(officeAddressRef);
 
 			departmentOffice = efactory.createEReference();
 			departmentOffice.setName("office");
@@ -187,6 +206,7 @@ public class DynamicAction extends AbstractTestAction {
 			companyPackage.getEClassifiers().add(employeeClass);
 			companyPackage.getEClassifiers().add(departmentClass);
 			companyPackage.getEClassifiers().add(officeClass);
+			companyPackage.getEClassifiers().add(officeAddressClass);
 			companyPackage.getEClassifiers().add(dt);
 			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
@@ -248,8 +268,12 @@ public class DynamicAction extends AbstractTestAction {
 				assertTrue(eobject.eClass() == employeeClass);
 			}
 
+			EObject officeAddress = EcoreUtil.create(officeAddressClass);
+			officeAddress.eSet(addressName, "Software Development Address");
+
 			EObject office = EcoreUtil.create(officeClass);
 			office.eSet(officeName, "Software Development Office");
+			office.eSet(officeAddressRef, officeAddress);
 			store.store(office);
 
 			EObject department = EcoreUtil.create(departmentClass);
@@ -316,6 +340,7 @@ public class DynamicAction extends AbstractTestAction {
 			final String offName = (String) off.eGet(officeName);
 			final String depName = (String) department.eGet(departmentName);
 			assertTrue(offName.startsWith(depName));
+			assertTrue(off.eGet(officeAddressRef) != null);
 
 			store.deleteObject(department);
 			store.commitTransaction();
