@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BZ290969Action.java,v 1.1 2009/10/02 07:23:41 mtaal Exp $
+ * $Id: BZ290969Action.java,v 1.2 2009/11/02 10:53:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests bugzilla 290969
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class BZ290969Action extends AbstractTestAction {
 	final HibernateFactory factory = HibernateFactory.eINSTANCE;
@@ -61,9 +61,7 @@ public class BZ290969Action extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 		final Bz290969Factory factory = Bz290969Factory.eINSTANCE;
-		store.disableDrop();
 		{
 			store.beginTransaction();
 			final Bar bar = factory.createBar();
