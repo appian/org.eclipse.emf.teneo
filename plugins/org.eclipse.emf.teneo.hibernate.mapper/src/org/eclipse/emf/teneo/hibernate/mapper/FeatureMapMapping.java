@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: FeatureMapMapping.java,v 1.19 2009/06/30 07:34:52 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.20 2009/11/02 10:24:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -42,6 +42,8 @@ public class FeatureMapMapping extends AbstractMapper {
 	/** The mapping context */
 	private final MappingContext hbmContext;
 
+	private Element compositeElement;
+
 	/**
 	 * @param hbmContext
 	 *            The context in which the mapping takes place
@@ -64,29 +66,42 @@ public class FeatureMapMapping extends AbstractMapper {
 	public void process() {
 		final String entityName = StoreUtil.getEntityName(paAttribute.getModelEAttribute());
 		log.debug("Processing feature map feature: " + entityName);
-		Element mainElement = hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName)
-				.addAttribute("lazy", "false").addAttribute("table", hbmContext.trunc(entityName.toUpperCase(), false));
+		Element mainElement;
+		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
+			mainElement = getCompositeElement();
 
-		mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META)
-				.addText(
-						hbmContext.getEntityNameStrategy().toEntityName(
-								paAttribute.getModelEAttribute().getEContainingClass()));
+			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addText(
+					hbmContext.getEntityNameStrategy().toEntityName(
+							paAttribute.getModelEAttribute().getEContainingClass()));
+		} else {
+			mainElement = hbmContext.getCurrent().addElement("class").addAttribute("entity-name", entityName)
+					.addAttribute("lazy", "false").addAttribute("table",
+							hbmContext.trunc(entityName.toUpperCase(), false));
+
+			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addText(
+					hbmContext.getEntityNameStrategy().toEntityName(
+							paAttribute.getModelEAttribute().getEContainingClass()));
+
+			// TODO: check if id of parent can be used instead
+			mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
+					"native");
+
+			if (hbmContext.alwaysVersion()) {
+				final Element versionElement = mainElement.addElement("version").addAttribute("name",
+						hbmContext.getVersionColumnName()).addAttribute("access",
+						"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
+				final Element meta = new Element("meta");
+				meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+				versionElement.add(0, meta);
+			}
+		}
 
 		final FeatureMapper fp = hbmContext.getFeatureMapper();
 		hbmContext.setCurrent(mainElement);
 		hbmContext.setCurrentElementFeatureMap(true);
-
-		// TODO: check if id of parent can be used instead
-		mainElement.addElement("id").addAttribute("type", "long").addElement("generator").addAttribute("class",
-				"native");
-
-		if (hbmContext.alwaysVersion()) {
-			final Element versionElement = mainElement.addElement("version").addAttribute("name",
-					hbmContext.getVersionColumnName()).addAttribute("access",
-					"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
-			final Element meta = new Element("meta");
-			meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
-			versionElement.add(0, meta);
+		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
+			mainElement.addElement("tuplizer").addAttribute("entity-mode", "pojo").addAttribute("class",
+					getHbmContext().getComponentFeatureMapTuplizer());
 		}
 
 		mainElement.addElement("property").addAttribute("name", HbMapperConstants.PROPERTY_FEATURE).addAttribute(
@@ -163,5 +178,13 @@ public class FeatureMapMapping extends AbstractMapper {
 	/** Returns the eattribute */
 	public EAttribute getEAttribute() {
 		return paAttribute.getModelEAttribute();
+	}
+
+	public Element getCompositeElement() {
+		return compositeElement;
+	}
+
+	public void setCompositeElement(Element compositeElement) {
+		this.compositeElement = compositeElement;
 	}
 }

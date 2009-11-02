@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: MappingContext.java,v 1.34 2009/10/31 07:10:10 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.35 2009/11/02 10:24:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public class MappingContext extends AbstractProcessingContext implements ExtensionPoint, ExtensionInitializable,
 		ExtensionManagerAware {
@@ -223,6 +223,10 @@ public class MappingContext extends AbstractProcessingContext implements Extensi
 	/** Set the current element to which new elements are added */
 	public void setCurrent(Element newCurrent) {
 		this.currentElement = newCurrent;
+	}
+
+	public String getComponentFeatureMapTuplizer() {
+		return "org.eclipse.emf.teneo.hibernate.mapping.elist.FeatureMapEntryComponentTuplizer";
 	}
 
 	/**

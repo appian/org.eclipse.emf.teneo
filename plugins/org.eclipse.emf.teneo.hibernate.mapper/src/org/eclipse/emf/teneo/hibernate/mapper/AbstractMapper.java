@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.50 2009/09/13 14:45:39 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.51 2009/11/02 10:24:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -629,6 +629,7 @@ public abstract class AbstractMapper {
 				if (cascade == HbCascadeType.ALL) {
 					sb.append("all,"); // assuming all appears alone
 					if (addDeleteOrphan) {
+						// note comma at the end is trimmed off below
 						sb.append("delete-orphan,");
 					}
 					break;

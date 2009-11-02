@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyAttributeMapper.java,v 1.25 2009/03/07 21:15:20 mtaal Exp $
+ * </copyright> $Id: ManyAttributeMapper.java,v 1.26 2009/11/02 10:24:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -40,8 +40,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class ManyAttributeMapper extends AbstractAssociationMapper implements
-		ExtensionPoint {
+public class ManyAttributeMapper extends AbstractAssociationMapper implements ExtensionPoint {
 
 	/** The logger */
 	private static final Log log = LogFactory.getLog(ManyAttributeMapper.class);
@@ -51,8 +50,7 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements
 	 */
 	public void processManyAttribute(PAnnotatedEAttribute paAttribute) {
 		if (log.isDebugEnabled()) {
-			log.debug("Generating many valued attribute mapping for "
-					+ paAttribute);
+			log.debug("Generating many valued attribute mapping for " + paAttribute);
 		}
 
 		final HbAnnotatedEAttribute hbAttribute = (HbAnnotatedEAttribute) paAttribute;
@@ -65,8 +63,8 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements
 		final Element keyElement = collElement.addElement("key");
 
 		final JoinTable jt = paAttribute.getJoinTable();
-		final List<JoinColumn> jcs = paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>()
-				: paAttribute.getJoinColumns();
+		final List<JoinColumn> jcs = paAttribute.getJoinColumns() == null ? new ArrayList<JoinColumn>() : paAttribute
+				.getJoinColumns();
 		final OneToMany otm = paAttribute.getOneToMany();
 
 		if (jt != null) {
@@ -78,8 +76,7 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements
 		}
 
 		if (!otm.isIndexed() && isArray) {
-			log
-					.warn("One to many is not indexed but this is an array, force=ing index column!");
+			log.warn("One to many is not indexed but this is an array, force=ing index column!");
 		}
 
 		if ((otm.isIndexed() || isArray) && hbAttribute.getHbIdBag() == null) {
@@ -89,23 +86,29 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements
 		if (!isArray) {
 			addFetchType(collElement, otm.getFetch());
 		}
-		addCascadesForMany(collElement, getCascades(hbAttribute.getHbCascade(),
-				otm.getCascade()));
+		addCascadesForMany(collElement, getCascades(hbAttribute.getHbCascade(), otm.getCascade()));
 
 		if (FeatureMapUtil.isFeatureMap(paAttribute.getModelEAttribute())) {
-			FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(),
-					paAttribute);
-			getHbmContext().addFeatureMapMapper(fmm);
-			collElement.addElement("one-to-many").addAttribute("entity-name",
-					fmm.getEntityName());
+			if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
+				final Element curElement = getHbmContext().getCurrent();
+				FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
+				Element element = collElement.addElement("composite-element").addAttribute("class",
+						"org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry");
+				fmm.setCompositeElement(element);
+				fmm.process();
+				getHbmContext().setCurrent(curElement);
+				// composite-element class="DeliveryAttempt">
+			} else {
+				FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
+				getHbmContext().addFeatureMapMapper(fmm);
+				collElement.addElement("one-to-many").addAttribute("entity-name", fmm.getEntityName());
+			}
 		} else {
-			addElementElement(collElement, paAttribute,
-					getColumns(paAttribute), otm.getTargetEntity());
+			addElementElement(collElement, paAttribute, getColumns(paAttribute), otm.getTargetEntity());
 		}
 
 		addAccessor(collElement);
 
-		mapFilter(collElement, ((HbAnnotatedETypeElement) paAttribute)
-				.getFilter());
+		mapFilter(collElement, ((HbAnnotatedETypeElement) paAttribute).getFilter());
 	}
 }

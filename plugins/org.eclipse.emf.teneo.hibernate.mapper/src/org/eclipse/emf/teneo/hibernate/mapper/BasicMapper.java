@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: BasicMapper.java,v 1.35 2009/06/28 02:05:07 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.36 2009/11/02 10:24:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -83,11 +83,20 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 	}
 
 	public void processFeatureMap(PAnnotatedEAttribute paAttribute) {
-		FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
-		getHbmContext().addFeatureMapMapper(fmm);
-		final String name = getHbmContext().getPropertyName(paAttribute.getModelEAttribute());
-		getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", name).addAttribute("entity-name",
-				fmm.getEntityName()).addAttribute("cascade", "all").addAttribute("not-null", "false");
+		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
+			final String name = getHbmContext().getPropertyName(paAttribute.getModelEAttribute());
+			final FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
+			final Element element = getHbmContext().getCurrent().addElement("component").addAttribute("name", name);
+			fmm.setCompositeElement(element);
+			fmm.process();
+		} else {
+			FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
+			getHbmContext().addFeatureMapMapper(fmm);
+			final String name = getHbmContext().getPropertyName(paAttribute.getModelEAttribute());
+			getHbmContext().getCurrent().addElement("many-to-one").addAttribute("name", name).addAttribute(
+					"entity-name", fmm.getEntityName()).addAttribute("cascade", "all")
+					.addAttribute("not-null", "false");
+		}
 	}
 
 	/** Processes an EReference which should be stored as an URI */
