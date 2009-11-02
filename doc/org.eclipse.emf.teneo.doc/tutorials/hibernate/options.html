@@ -653,6 +653,15 @@
 				
 <li>
 					
+<strong>PersistenceOptions.FEATUREMAP_AS_COMPONENT</strong>
+					(default: false): if set to "true" will map a feature map entry as a Hibernate component
+					without its own id. If set to false then a feature map entry will be mapped as a 
+					separate entity.
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.FETCH_CONTAINMENT_EAGERLY</strong>
 					(default: false): if set to "true" will set the fetch strategy of all containment references to
 					EAGER. This means that containment relations are completely read in memory.
