@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: FeatureMapMapping.java,v 1.21 2009/11/02 18:14:18 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.22 2009/11/02 20:20:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -102,7 +102,7 @@ public class FeatureMapMapping extends AbstractMapper {
 		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
 			mainElement.addElement("tuplizer").addAttribute("entity-mode", "pojo").addAttribute("class",
 					getHbmContext().getComponentFeatureMapTuplizer());
-			mainElement.addElement("tuplizer").addAttribute("entity-mode", "map").addAttribute("class",
+			mainElement.addElement("tuplizer").addAttribute("entity-mode", "dynamic-map").addAttribute("class",
 					getHbmContext().getComponentFeatureMapTuplizer());
 		}
 
