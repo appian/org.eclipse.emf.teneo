@@ -94,7 +94,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -1131,6 +1131,10 @@ public abstract class HbDataStore implements DataStore {
 							if (ef instanceof EAttribute
 									&& ((EAttribute) ef).getEType().getInstanceClass() == Entry.class) {
 								isContainer = true;
+								// composite-elements are not supported.
+								if (!(((Collection) prop.getValue()).getElement() instanceof OneToMany)) {
+									continue;
+								}
 								final OneToMany otm = (OneToMany) ((Collection) prop.getValue()).getElement();
 								toEntity = otm.getReferencedEntityName();
 							} else if (ef instanceof EReference) {

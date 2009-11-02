@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableFeatureMap.java,v 1.14 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: HibernatePersistableFeatureMap.java,v 1.15 2009/11/02 10:24:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
@@ -42,7 +43,7 @@ import org.hibernate.collection.PersistentList;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class HibernatePersistableFeatureMap extends PersistableFeatureMap implements ExtensionPoint {
@@ -100,8 +101,8 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	}
 
 	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
-	 * the scenes, this happens with eagerly loaded lists.
+	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind the scenes, this
+	 * happens with eagerly loaded lists.
 	 */
 	@Override
 	public boolean isLoaded() {
@@ -163,15 +164,15 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 				final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) element;
 				fme.setFeatureMap(this);
 
-				if (fme.getEStructuralFeature() instanceof EReference &&
-						((EReference) fme.getEStructuralFeature()).isContainment()) {
+				if (fme.getEStructuralFeature() instanceof EReference
+						&& ((EReference) fme.getEStructuralFeature()).isContainment()) {
 					final InternalEObject eobj = (InternalEObject) fme.getValue();
 					if (eobj != null) {
 						EContainerRepairControl.setContainer(owner, eobj, fme.getEStructuralFeature());
-						if (res != null && res instanceof StoreResource &&
-								fme.getEStructuralFeature() instanceof EReference) {
+						if (res != null && res instanceof StoreResource
+								&& fme.getEStructuralFeature() instanceof EReference) {
 							((StoreResource) res).addToContentOrAttach((InternalEObject) fme.getValue(),
-								(EReference) fme.getEStructuralFeature());
+									(EReference) fme.getEStructuralFeature());
 						}
 					}
 				}
@@ -203,15 +204,15 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	public void replaceDelegate(List<FeatureMap.Entry> newDelegate) {
 		if (newDelegate instanceof PersistentList) {
 			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the " + " passed list",
-				((PersistentList) newDelegate).isWrapper(delegate));
+					((PersistentList) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else if (newDelegate instanceof PersistentBag) {
 			AssertUtil.assertTrue("This elist " + logString + " contains a different list than the " + " passed list",
-				((PersistentBag) newDelegate).isWrapper(delegate));
+					((PersistentBag) newDelegate).isWrapper(delegate));
 			super.replaceDelegate(newDelegate);
 		} else {
-			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be " +
-					" used as a replacement for elist " + logString);
+			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be "
+					+ " used as a replacement for elist " + logString);
 		}
 	}
 
@@ -219,5 +220,25 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 	@Override
 	public boolean isPersistencyWrapped() {
 		return delegate instanceof PersistentCollection;
+	}
+
+	@Override
+	protected Entry delegateRemove(int index) {
+		final Entry old = super.delegateRemove(index);
+
+		if (old.getEStructuralFeature() instanceof EReference && getDelegate() instanceof PersistentList) {
+			final PersistentList pl = (PersistentList) getDelegate();
+			final EReference eref = (EReference) old.getEStructuralFeature();
+			if (eref.isContainment()) {
+				((Session) pl.getSession()).delete(old.getValue());
+			}
+		}
+		return old;
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
 	}
 }
