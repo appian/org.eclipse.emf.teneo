@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyAttributeMapper.java,v 1.26 2009/11/02 10:24:30 mtaal Exp $
+ * </copyright> $Id: ManyAttributeMapper.java,v 1.27 2009/11/02 18:14:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -93,7 +93,7 @@ public class ManyAttributeMapper extends AbstractAssociationMapper implements Ex
 				final Element curElement = getHbmContext().getCurrent();
 				FeatureMapMapping fmm = new FeatureMapMapping(getHbmContext(), paAttribute);
 				Element element = collElement.addElement("composite-element").addAttribute("class",
-						"org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry");
+						getHbmContext().getFeatureMapEntryClassName());
 				fmm.setCompositeElement(element);
 				fmm.process();
 				getHbmContext().setCurrent(curElement);
