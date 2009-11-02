@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * (cascading delete) - Delete restrictions
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $ $Date: 2009/09/12 13:49:41 $
+ * @version $Revision: 1.10 $ $Date: 2009/11/02 10:24:47 $
  */
 public class FeatureMapAction extends AbstractTestAction {
 	public FeatureMapAction() {
@@ -130,7 +130,7 @@ public class FeatureMapAction extends AbstractTestAction {
 			// check container property
 			assertTrue(((PriceByQuantityType) product1.getGroup1().getValue(1)).eContainer() == product1);
 
-			if (!isEAVTest()) {
+			if (!isEAVTest() && !isComponentTest()) {
 				Object[] eobjs = store.getCrossReferencers((EObject) product1.getGroup1().getValue(1), false);
 				assertEquals(1, eobjs.length);
 				assertTrue(eobjs[0] == product1);
@@ -306,6 +306,10 @@ public class FeatureMapAction extends AbstractTestAction {
 	}
 
 	protected boolean isEAVTest() {
+		return false;
+	}
+
+	protected boolean isComponentTest() {
 		return false;
 	}
 
