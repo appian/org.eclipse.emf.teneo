@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.13 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.14 2009/11/02 10:24:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -35,16 +35,15 @@ import org.eclipse.emf.teneo.type.FeatureMapEntry;
 import org.eclipse.emf.teneo.util.AssertUtil;
 
 /**
- * A persistable elist which can be used by different or mappers. This persistable elist works
- * around the idea that the persisted list (e.g. PersistentList in Hibernate) is the delegate for
- * this elist.
+ * A persistable elist which can be used by different or mappers. This persistable elist works around the idea that the
+ * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
- * Note the delegate**() methods are overridden to force a load before anything else happens with
- * the delegated list. The addUnique. addSet methods are overridden to ensure that the featuremap
- * entries of the right type are passed to the persistent store.
+ * Note the delegate**() methods are overridden to force a load before anything else happens with the delegated list.
+ * The addUnique. addSet methods are overridden to ensure that the featuremap entries of the right type are passed to
+ * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements
@@ -81,8 +80,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 			delegate = new ArrayList<FeatureMap.Entry>();
 			isLoaded = true;
 		} else if (list instanceof EList) {
-			AssertUtil.assertTrue("The passed elist is not a featuremap but a : " + list.getClass().getName() +
-					". Error in featureMap: " + getLogString(), list instanceof FeatureMap);
+			AssertUtil.assertTrue("The passed elist is not a featuremap but a : " + list.getClass().getName()
+					+ ". Error in featureMap: " + getLogString(), list instanceof FeatureMap);
 
 			delegate = replaceEntryAll(list);
 			isLoaded = true;
@@ -91,9 +90,8 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 			isLoaded = list.size() > 0;
 		}
 
-		logString =
-				"FeatureMap of member " + getEStructuralFeature().getName() + " owned by " +
-						owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
+		logString = "FeatureMap of member " + getEStructuralFeature().getName() + " owned by "
+				+ owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
 
 		log.debug("Created persistable featuremap " + logString);
 	}
@@ -151,7 +149,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/** Replace the delegating list */
 	public void replaceDelegate(List<FeatureMap.Entry> newDelegate) {
 		AssertUtil.assertTrue("This featuremap " + logString + " already wraps an or specific featuremap",
-			!isPersistencyWrapped());
+				!isPersistencyWrapped());
 
 		delegate = newDelegate;
 		isLoaded = false;
@@ -279,8 +277,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique
-	 * (java.util.Collection )
+	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique (java.util.Collection )
 	 */
 	@Override
 	public boolean addAllUnique(Collection<? extends FeatureMap.Entry> collection) {
@@ -290,8 +287,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique (int,
-	 * java.util.Collection)
+	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addAllUnique (int, java.util.Collection)
 	 */
 	@Override
 	public boolean addAllUnique(int index, Collection<? extends FeatureMap.Entry> collection) {
@@ -301,8 +297,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique (int,
-	 * java.lang.Object)
+	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique (int, java.lang.Object)
 	 */
 	@Override
 	public void addUnique(int index, FeatureMap.Entry object) {
@@ -312,8 +307,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique
-	 * (java.lang.Object)
+	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#addUnique (java.lang.Object)
 	 */
 	@Override
 	public void addUnique(FeatureMap.Entry object) {
@@ -323,8 +317,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#setUnique (int,
-	 * java.lang.Object)
+	 * @see org.eclipse.emf.common.notify.impl.DelegatingNotifyingListImpl#setUnique (int, java.lang.Object)
 	 */
 	@Override
 	public FeatureMap.Entry setUnique(int index, FeatureMap.Entry object) {
@@ -482,7 +475,11 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	@Override
 	protected FeatureMap.Entry delegateSet(int index, FeatureMap.Entry object) {
 		load();
-		return super.delegateSet(index, object);
+		// do the delegate set in two steps so that cascade delete works
+		// for featuremap as a component
+		final FeatureMap.Entry old = delegateRemove(index);
+		delegateAdd(index, object);
+		return old;
 	}
 
 	/*
@@ -530,11 +527,10 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 	}
 
 	/**
-	 * Is overridden because it can't use delegates for equality because the delegate (a hibernate
-	 * or jpox list) will try to be equal with this persistable elist.
+	 * Is overridden because it can't use delegates for equality because the delegate (a hibernate or jpox list) will
+	 * try to be equal with this persistable elist.
 	 * 
-	 * This method does jvm instance equality because doing a full-fledge equal would result in a
-	 * load of the list.
+	 * This method does jvm instance equality because doing a full-fledge equal would result in a load of the list.
 	 */
 	@Override
 	public boolean equals(Object object) {

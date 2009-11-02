@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.60 2009/10/31 07:10:34 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.61 2009/11/02 10:24:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.60 $
+ * @version $Revision: 1.61 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -372,6 +372,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String EAV_MAPPING_FILE = MAPPING_PREFIX + "eav_location";
 
+	/**
+	 * Map the FeatureMap as a component entity
+	 */
+	public static final String FEATUREMAP_AS_COMPONENT = MAPPING_PREFIX + "featuremap_as_component";
+
 	public final static String ECONTAINER_CLASS_COLUMN = "econtainer_class_column";
 	public final static String ECONTAINER_COLUMN = "e_container_column";
 	public final static String ECONTAINER_FEATURE_NAME_COLUMN = "e_container_feature_name_column";
@@ -433,6 +438,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(ECONTAINER_CLASS_COLUMN, Constants.COLUMN_ECONTAINER_CLASS);
 		props.setProperty(ECONTAINER_COLUMN, Constants.COLUMN_ECONTAINER);
 		props.setProperty(ECONTAINER_FEATURE_NAME_COLUMN, Constants.COLUMN_ECONTAINER_FEATURE_NAME);
+		props.setProperty(FEATUREMAP_AS_COMPONENT, "false");
 
 		return props;
 	}
@@ -441,6 +447,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #FEATUREMAP_AS_COMPONENT}
+	 */
+	public boolean isMapFeatureMapAsComponent() {
+		return Boolean.valueOf(properties.getProperty(FEATUREMAP_AS_COMPONENT)).booleanValue();
+	}
 
 	/**
 	 * @return value of {@link #ECONTAINER_COLUMN}
