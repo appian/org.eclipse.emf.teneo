@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ClaimLineImpl.java,v 1.1 2008/01/18 06:20:17 mtaal Exp $
+ * $Id: ClaimLineImpl.java,v 1.2 2009/11/07 13:50:02 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.claim.impl;
 
@@ -30,21 +30,20 @@ import org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaim <em>Claim</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaimLineCompositeKey <em>Claim Line Composite Key</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaimLineBilledAmount <em>Claim Line Billed Amount</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getServiceCode <em>Service Code</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaimLineStatus <em>Claim Line Status</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaim <em>Claim</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaimLineCompositeKey <em>Claim Line Composite Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaimLineBilledAmount <em>Claim Line Billed Amount</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getServiceCode <em>Service Code</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineImpl#getClaimLineStatus <em>Claim Line Status</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 	/**
-	 * The cached value of the '{@link #getClaimLineCompositeKey() <em>Claim Line Composite Key</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getClaimLineCompositeKey() <em>Claim Line Composite Key</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineCompositeKey()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,8 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 	protected ClaimLineCompositeKey claimLineCompositeKey;
 
 	/**
-	 * The default value of the '{@link #getClaimLineBilledAmount() <em>Claim Line Billed Amount</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getClaimLineBilledAmount() <em>Claim Line Billed Amount</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineBilledAmount()
 	 * @generated
 	 * @ordered
@@ -62,9 +60,8 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 	protected static final BigDecimal CLAIM_LINE_BILLED_AMOUNT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getClaimLineBilledAmount() <em>Claim Line Billed Amount</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getClaimLineBilledAmount() <em>Claim Line Billed Amount</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineBilledAmount()
 	 * @generated
 	 * @ordered
@@ -92,9 +89,8 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 	protected String serviceCode = SERVICE_CODE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getClaimLineStatus() <em>Claim Line Status</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getClaimLineStatus() <em>Claim Line Status</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineStatus()
 	 * @generated
 	 * @ordered
@@ -102,9 +98,8 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 	protected static final String CLAIM_LINE_STATUS_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getClaimLineStatus() <em>Claim Line Status</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getClaimLineStatus() <em>Claim Line Status</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineStatus()
 	 * @generated
 	 * @ordered
@@ -112,9 +107,9 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 	protected String claimLineStatus = CLAIM_LINE_STATUS_EDEFAULT;
 
 	/**
-	 * This is true if the Claim Line Status attribute has been set. <!-- begin-user-doc --> <!--
+	 * This is true if the Claim Line Status attribute has been set.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -122,7 +117,6 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ClaimLineImpl() {
@@ -131,7 +125,6 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -141,14 +134,11 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Claim getClaim() {
-		if (eContainerFeatureID != ClaimPackage.CLAIM_LINE__CLAIM) {
-			return null;
-		}
-		return (Claim) eContainer();
+		if (eContainerFeatureID() != ClaimPackage.CLAIM_LINE__CLAIM) return null;
+		return (Claim)eContainer();
 	}
 
 	/**
@@ -164,36 +154,26 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClaim(Claim newClaim) {
-		if (newClaim != eInternalContainer() ||
-				(eContainerFeatureID != ClaimPackage.CLAIM_LINE__CLAIM && newClaim != null)) {
-			if (EcoreUtil.isAncestor(this, newClaim)) {
+		if (newClaim != eInternalContainer() || (eContainerFeatureID() != ClaimPackage.CLAIM_LINE__CLAIM && newClaim != null)) {
+			if (EcoreUtil.isAncestor(this, newClaim))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null) {
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			}
-			if (newClaim != null) {
-				msgs =
-						((InternalEObject) newClaim).eInverseAdd(this, ClaimPackage.CLAIM__CLAIM_LINE, Claim.class,
-							msgs);
-			}
+			if (newClaim != null)
+				msgs = ((InternalEObject)newClaim).eInverseAdd(this, ClaimPackage.CLAIM__CLAIM_LINE, Claim.class, msgs);
 			msgs = basicSetClaim(newClaim, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM, newClaim, newClaim));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM, newClaim, newClaim));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ClaimLineCompositeKey getClaimLineCompositeKey() {
@@ -202,7 +182,6 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetClaimLineCompositeKey(ClaimLineCompositeKey newClaimLineCompositeKey,
@@ -210,49 +189,32 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 		ClaimLineCompositeKey oldClaimLineCompositeKey = claimLineCompositeKey;
 		claimLineCompositeKey = newClaimLineCompositeKey;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification =
-					new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY,
-						oldClaimLineCompositeKey, newClaimLineCompositeKey);
-			if (msgs == null) {
-				msgs = notification;
-			} else {
-				msgs.add(notification);
-			}
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY, oldClaimLineCompositeKey, newClaimLineCompositeKey);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClaimLineCompositeKey(ClaimLineCompositeKey newClaimLineCompositeKey) {
 		if (newClaimLineCompositeKey != claimLineCompositeKey) {
 			NotificationChain msgs = null;
-			if (claimLineCompositeKey != null) {
-				msgs =
-						((InternalEObject) claimLineCompositeKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE -
-								ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY, null, msgs);
-			}
-			if (newClaimLineCompositeKey != null) {
-				msgs =
-						((InternalEObject) newClaimLineCompositeKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-								ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY, null, msgs);
-			}
+			if (claimLineCompositeKey != null)
+				msgs = ((InternalEObject)claimLineCompositeKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY, null, msgs);
+			if (newClaimLineCompositeKey != null)
+				msgs = ((InternalEObject)newClaimLineCompositeKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY, null, msgs);
 			msgs = basicSetClaimLineCompositeKey(newClaimLineCompositeKey, msgs);
-			if (msgs != null) {
-				msgs.dispatch();
-			}
-		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY,
-				newClaimLineCompositeKey, newClaimLineCompositeKey));
+			if (msgs != null) msgs.dispatch();
 		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY, newClaimLineCompositeKey, newClaimLineCompositeKey));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public BigDecimal getClaimLineBilledAmount() {
@@ -261,21 +223,17 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClaimLineBilledAmount(BigDecimal newClaimLineBilledAmount) {
 		BigDecimal oldClaimLineBilledAmount = claimLineBilledAmount;
 		claimLineBilledAmount = newClaimLineBilledAmount;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_BILLED_AMOUNT,
-				oldClaimLineBilledAmount, claimLineBilledAmount));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_BILLED_AMOUNT, oldClaimLineBilledAmount, claimLineBilledAmount));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getServiceCode() {
@@ -284,21 +242,17 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setServiceCode(String newServiceCode) {
 		String oldServiceCode = serviceCode;
 		serviceCode = newServiceCode;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__SERVICE_CODE,
-				oldServiceCode, serviceCode));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__SERVICE_CODE, oldServiceCode, serviceCode));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getClaimLineStatus() {
@@ -307,7 +261,6 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClaimLineStatus(String newClaimLineStatus) {
@@ -315,15 +268,12 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 		claimLineStatus = newClaimLineStatus;
 		boolean oldClaimLineStatusESet = claimLineStatusESet;
 		claimLineStatusESet = true;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_STATUS,
-				oldClaimLineStatus, claimLineStatus, !oldClaimLineStatusESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_STATUS, oldClaimLineStatus, claimLineStatus, !oldClaimLineStatusESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void unsetClaimLineStatus() {
@@ -331,15 +281,12 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 		boolean oldClaimLineStatusESet = claimLineStatusESet;
 		claimLineStatus = CLAIM_LINE_STATUS_EDEFAULT;
 		claimLineStatusESet = false;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.UNSET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_STATUS,
-				oldClaimLineStatus, CLAIM_LINE_STATUS_EDEFAULT, oldClaimLineStatusESet));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ClaimPackage.CLAIM_LINE__CLAIM_LINE_STATUS, oldClaimLineStatus, CLAIM_LINE_STATUS_EDEFAULT, oldClaimLineStatusESet));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isSetClaimLineStatus() {
@@ -348,24 +295,21 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ClaimPackage.CLAIM_LINE__CLAIM:
-				if (eInternalContainer() != null) {
+				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				}
-				return basicSetClaim((Claim) otherEnd, msgs);
+				return basicSetClaim((Claim)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -381,12 +325,11 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case ClaimPackage.CLAIM_LINE__CLAIM:
 				return eInternalContainer().eInverseRemove(this, ClaimPackage.CLAIM__CLAIM_LINE, Claim.class, msgs);
 		}
@@ -395,7 +338,6 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -417,26 +359,25 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ClaimPackage.CLAIM_LINE__CLAIM:
-				setClaim((Claim) newValue);
+				setClaim((Claim)newValue);
 				return;
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY:
-				setClaimLineCompositeKey((ClaimLineCompositeKey) newValue);
+				setClaimLineCompositeKey((ClaimLineCompositeKey)newValue);
 				return;
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_BILLED_AMOUNT:
-				setClaimLineBilledAmount((BigDecimal) newValue);
+				setClaimLineBilledAmount((BigDecimal)newValue);
 				return;
 			case ClaimPackage.CLAIM_LINE__SERVICE_CODE:
-				setServiceCode((String) newValue);
+				setServiceCode((String)newValue);
 				return;
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_STATUS:
-				setClaimLineStatus((String) newValue);
+				setClaimLineStatus((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -444,17 +385,16 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ClaimPackage.CLAIM_LINE__CLAIM:
-				setClaim((Claim) null);
+				setClaim((Claim)null);
 				return;
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY:
-				setClaimLineCompositeKey((ClaimLineCompositeKey) null);
+				setClaimLineCompositeKey((ClaimLineCompositeKey)null);
 				return;
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_BILLED_AMOUNT:
 				setClaimLineBilledAmount(CLAIM_LINE_BILLED_AMOUNT_EDEFAULT);
@@ -471,7 +411,6 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -482,8 +421,7 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_COMPOSITE_KEY:
 				return claimLineCompositeKey != null;
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_BILLED_AMOUNT:
-				return CLAIM_LINE_BILLED_AMOUNT_EDEFAULT == null ? claimLineBilledAmount != null
-						: !CLAIM_LINE_BILLED_AMOUNT_EDEFAULT.equals(claimLineBilledAmount);
+				return CLAIM_LINE_BILLED_AMOUNT_EDEFAULT == null ? claimLineBilledAmount != null : !CLAIM_LINE_BILLED_AMOUNT_EDEFAULT.equals(claimLineBilledAmount);
 			case ClaimPackage.CLAIM_LINE__SERVICE_CODE:
 				return SERVICE_CODE_EDEFAULT == null ? serviceCode != null : !SERVICE_CODE_EDEFAULT.equals(serviceCode);
 			case ClaimPackage.CLAIM_LINE__CLAIM_LINE_STATUS:
@@ -494,14 +432,11 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
-			return super.toString();
-		}
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (claimLineBilledAmount: ");
@@ -509,11 +444,7 @@ public class ClaimLineImpl extends EObjectImpl implements ClaimLine {
 		result.append(", serviceCode: ");
 		result.append(serviceCode);
 		result.append(", claimLineStatus: ");
-		if (claimLineStatusESet) {
-			result.append(claimLineStatus);
-		} else {
-			result.append("<unset>");
-		}
+		if (claimLineStatusESet) result.append(claimLineStatus); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

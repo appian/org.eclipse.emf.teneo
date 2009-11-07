@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ClaimLineCompositeKeyImpl.java,v 1.1 2008/01/18 06:20:17 mtaal Exp $
+ * $Id: ClaimLineCompositeKeyImpl.java,v 1.2 2009/11/07 13:50:02 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.claim.impl;
 
@@ -23,18 +23,18 @@ import org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineCompositeKeyImpl#getClaim <em>Claim</em>}</li>
- * <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineCompositeKeyImpl#getClaimLineNumber <em>Claim Line Number</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineCompositeKeyImpl#getClaim <em>Claim</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.sample.claim.impl.ClaimLineCompositeKeyImpl#getClaimLineNumber <em>Claim Line Number</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineCompositeKey {
 	/**
-	 * The cached value of the '{@link #getClaim() <em>Claim</em>}' reference. <!-- begin-user-doc
+	 * The cached value of the '{@link #getClaim() <em>Claim</em>}' reference.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getClaim()
 	 * @generated
 	 * @ordered
@@ -42,9 +42,8 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 	protected Claim claim;
 
 	/**
-	 * The default value of the '{@link #getClaimLineNumber() <em>Claim Line Number</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getClaimLineNumber() <em>Claim Line Number</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineNumber()
 	 * @generated
 	 * @ordered
@@ -52,9 +51,8 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 	protected static final String CLAIM_LINE_NUMBER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getClaimLineNumber() <em>Claim Line Number</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getClaimLineNumber() <em>Claim Line Number</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getClaimLineNumber()
 	 * @generated
 	 * @ordered
@@ -63,7 +61,6 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ClaimLineCompositeKeyImpl() {
@@ -72,7 +69,6 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -82,7 +78,6 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Claim getClaim() {
@@ -91,21 +86,17 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClaim(Claim newClaim) {
 		Claim oldClaim = claim;
 		claim = newClaim;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM,
-				oldClaim, claim));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM, oldClaim, claim));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getClaimLineNumber() {
@@ -114,21 +105,17 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClaimLineNumber(String newClaimLineNumber) {
 		String oldClaimLineNumber = claimLineNumber;
 		claimLineNumber = newClaimLineNumber;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM_LINE_NUMBER, oldClaimLineNumber, claimLineNumber));
-		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM_LINE_NUMBER, oldClaimLineNumber, claimLineNumber));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,17 +131,16 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM:
-				setClaim((Claim) newValue);
+				setClaim((Claim)newValue);
 				return;
 			case ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM_LINE_NUMBER:
-				setClaimLineNumber((String) newValue);
+				setClaimLineNumber((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -162,14 +148,13 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM:
-				setClaim((Claim) null);
+				setClaim((Claim)null);
 				return;
 			case ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM_LINE_NUMBER:
 				setClaimLineNumber(CLAIM_LINE_NUMBER_EDEFAULT);
@@ -180,7 +165,6 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -189,22 +173,18 @@ public class ClaimLineCompositeKeyImpl extends EObjectImpl implements ClaimLineC
 			case ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM:
 				return claim != null;
 			case ClaimPackage.CLAIM_LINE_COMPOSITE_KEY__CLAIM_LINE_NUMBER:
-				return CLAIM_LINE_NUMBER_EDEFAULT == null ? claimLineNumber != null : !CLAIM_LINE_NUMBER_EDEFAULT
-					.equals(claimLineNumber);
+				return CLAIM_LINE_NUMBER_EDEFAULT == null ? claimLineNumber != null : !CLAIM_LINE_NUMBER_EDEFAULT.equals(claimLineNumber);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
-			return super.toString();
-		}
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (claimLineNumber: ");

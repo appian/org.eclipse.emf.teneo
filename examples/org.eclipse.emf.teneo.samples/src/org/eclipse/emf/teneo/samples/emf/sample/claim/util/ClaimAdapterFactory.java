@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ClaimAdapterFactory.java,v 1.1 2008/01/18 06:20:18 mtaal Exp $
+ * $Id: ClaimAdapterFactory.java,v 1.2 2009/11/07 13:50:02 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.claim.util;
 
@@ -64,7 +64,7 @@ public class ClaimAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
