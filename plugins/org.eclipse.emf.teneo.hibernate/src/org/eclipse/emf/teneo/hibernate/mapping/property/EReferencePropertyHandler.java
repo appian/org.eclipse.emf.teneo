@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
@@ -36,7 +37,7 @@ import org.hibernate.property.Setter;
  * propertyaccessor interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 @SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -61,7 +62,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 		this.eReference = eReference;
 		final EClass eClass = eReference.getEContainingClass();
 		featureId = eClass.getFeatureID(eReference);
-		isBidirectional = eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient();
+		isBidirectional = (eReference.getEOpposite() != null && !eReference.getEOpposite().isTransient());
 		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
 	}
 
@@ -118,7 +119,9 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 		final Object curValue = get(target);
-		if (isBidirectional) {// these are handled a bit differently because
+
+		if (isBidirectional || (target instanceof DynamicEObjectImpl && eReference.isContainment())) {
+			// these are handled a bit differently because
 			// the opposite should not be set, this is
 			// done by hb
 			if (curValue != value) { // note that == works fine if the
@@ -150,19 +153,20 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 			}
 			final EObject eobj = (EObject) target;
 			eobj.eSet(eReference, value);
-			Resource res = eobj.eResource();
-			if (value != null && res instanceof HibernateResource && ((EObject) value).eResource() == null) {
-				final boolean loading = ((HibernateResource) res).isLoading();
-				try {
-					((HibernateResource) res).setIsLoading(true);
-					((HibernateResource) res).addToContentOrAttach((InternalEObject) value, eReference);
-				} finally {
-					((HibernateResource) res).setIsLoading(loading);
-				}
+		}
+		final EObject eobj = (EObject) target;
+		Resource res = eobj.eResource();
+		if (value != null && res instanceof HibernateResource && ((EObject) value).eResource() == null) {
+			final boolean loading = ((HibernateResource) res).isLoading();
+			try {
+				((HibernateResource) res).setIsLoading(true);
+				((HibernateResource) res).addToContentOrAttach((InternalEObject) value, eReference);
+			} finally {
+				((HibernateResource) res).setIsLoading(loading);
 			}
 		}
 
-		// see vbbhttps://bugs.eclipse.org/bugs/show_bug.cgi?id=245634
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=245634
 		// container relations should be modeled explicitly in the database or
 		// not at all
 		// see the relevant option in PersistenceOptions.

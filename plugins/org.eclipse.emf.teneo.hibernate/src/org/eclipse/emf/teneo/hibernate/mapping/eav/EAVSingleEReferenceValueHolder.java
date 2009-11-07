@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEReferenceValueHolder.java,v 1.3 2009/08/22 00:09:55 mtaal Exp $
+ * $Id: EAVSingleEReferenceValueHolder.java,v 1.4 2009/11/07 13:49:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 
 /**
  * Stores a single EReference value when the EReference is containment.
@@ -44,7 +45,9 @@ public class EAVSingleEReferenceValueHolder extends EAVValueHolder {
 			return; // do nothing in this case
 		}
 
-		if (getEReference().getEOpposite() != null) {// these are handled a bit differently because
+		if (getEReference().getEOpposite() != null
+				|| (owner instanceof DynamicEObjectImpl && getEReference().isContainment())) {
+			// these are handled a bit differently because
 			if (referenceValue == null) { // remove
 				// Note that the eInverseRemove is called on the target itself
 				// and the value is passed
