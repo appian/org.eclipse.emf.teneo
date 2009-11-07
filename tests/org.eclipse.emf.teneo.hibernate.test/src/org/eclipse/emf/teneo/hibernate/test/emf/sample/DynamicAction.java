@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.DynamicFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.DynamicPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.dynamic.Person;
@@ -35,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -156,6 +157,8 @@ public class DynamicAction extends AbstractTestAction {
 			employeeDepartment.setName("department");
 			employeeDepartment.setEType(departmentClass);
 			employeeDepartment.setUnique(false);
+			// will result in extra loads
+			// employeeDepartment.setContainment(true);
 			employeeClass.getEStructuralFeatures().add(employeeDepartment);
 
 			officeAddressClass = efactory.createEClass();
@@ -182,6 +185,7 @@ public class DynamicAction extends AbstractTestAction {
 			departmentOffice = efactory.createEReference();
 			departmentOffice.setName("office");
 			departmentOffice.setEType(officeClass);
+			departmentOffice.setContainment(true);
 			departmentClass.getEStructuralFeatures().add(departmentOffice);
 
 			final EEnum dt = efactory.createEEnum();
@@ -294,7 +298,7 @@ public class DynamicAction extends AbstractTestAction {
 		}
 
 		// do a polymorphic query
-		{
+		if (false) {
 			store.beginTransaction();
 			List<?> employees = store.query("select p from Person p");
 			assertEquals(4, employees.size());
@@ -305,10 +309,23 @@ public class DynamicAction extends AbstractTestAction {
 				if (eobject.eClass() == employeeClass) {
 					cntEmployee++;
 					final Object dep = eobject.eGet(employeeDepartment);
-					assertTrue(dep instanceof org.hibernate.proxy.HibernateProxy);
+					assertTrue(dep == null || dep instanceof org.hibernate.proxy.HibernateProxy);
 				}
 			}
 			assertEquals(3, cntEmployee);
+			store.commitTransaction();
+		}
+
+		if (true) {
+			store.beginTransaction();
+			final HibernateTestStore hbStore = (HibernateTestStore) store;
+			final EObject eobject = companyPackage.getEFactoryInstance().create(employeeClass);
+			hbStore.getSession().load(eobject, getTestId());
+			final Object dep = eobject.eGet(employeeDepartment);
+			assertTrue(dep == null || dep instanceof org.hibernate.proxy.HibernateProxy);
+			if (dep != null) {
+				final Object off = ((EObject) dep).eGet(departmentOffice);
+			}
 			store.commitTransaction();
 		}
 
@@ -355,5 +372,9 @@ public class DynamicAction extends AbstractTestAction {
 			assertTrue(person.eClass() == employeeClass);
 			store.commitTransaction();
 		}
+	}
+
+	protected long getTestId() {
+		return 4;
 	}
 }
