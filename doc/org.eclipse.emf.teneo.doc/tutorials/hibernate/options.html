@@ -653,6 +653,15 @@
 				
 <li>
 					
+<strong>PersistenceOptions.EXTRA_ANNOTATION_SOURCES</strong>
+					(default: empty string): as a default Teneo will only use model annotations with a source equal to teneo.jpa (see <a href="ejb3_format.html#target">here</a>). This 
+					option allows you to specify extra annotation sources which are considered. This makes it possible to work with different <a href="ejb3_format.html#sets">annotation sets</a> in your model and
+					disable or enable them (using this option) when required. 
+				</li>
+
+				
+<li>
+					
 <strong>PersistenceOptions.FEATUREMAP_AS_COMPONENT</strong>
 					(default: false): if set to "true" will map a feature map entry as a Hibernate component
 					without its own id. If set to false then a feature map entry will be mapped as a 

@@ -297,6 +297,9 @@
 <li>
 <a href="#multi">Complex Annotation with multi-level structure</a>
 </li>
+<li>
+<a href="#sets">Multiple sets of annotations in one model</a>
+</li>
 </ul>
 		
 <p>Teneo allows two ways to specify EJB3/JPA-like annotations: 1) using the java annotations syntax 
@@ -323,8 +326,9 @@
 			
 <ul>
 			
-<li>The source must be: <strong>teneo.jpa</strong>
-</li>
+<li>The source must be: <strong>teneo.jpa</strong>. Note, Teneo will always consider all annotations starting with teneo.jpa and teneo.mapping (deprecated). 
+			You can also configure your own annotation source, see the <a href="options.html#General+Options">PersistenceOptions.EXTRA_ANNOTATION_SOURCES</a> and the section on <a href="#sets">annotation sets</a> below.
+			</li>
 			
 <li>The key must be: <strong>appinfo</strong> or <strong>value</strong>
 </li>
@@ -335,7 +339,7 @@
 		
 </div>
 		
-<a name="N1004B"></a><a name="xml"></a>
+<a name="N10054"></a><a name="xml"></a>
 <div class="h3">
 <h3>JPA Annotations in XML</h3>
 			
@@ -357,7 +361,7 @@
 		
 </div>
 		
-<a name="N10069"></a><a name="simplenokeyvalye"></a>
+<a name="N10072"></a><a name="simplenokeyvalye"></a>
 <div class="h3">
 <h3>Simple Annotation Example</h3>
 			
@@ -384,7 +388,7 @@
 		
 </div>
 		
-<a name="N10081"></a><a name="simple"></a>
+<a name="N1008A"></a><a name="simple"></a>
 <div class="h3">
 <h3>Annotation with key-value</h3>
 			
@@ -414,7 +418,7 @@
 		
 </div>
 		
-<a name="N1009C"></a><a name="multi"></a>
+<a name="N100A5"></a><a name="multi"></a>
 <div class="h3">
 <h3>Complex Annotation with multi-level structure</h3>
 			
@@ -439,6 +443,22 @@
 	&lt;/association-override&gt;
 &lt;/eclass&gt;
 			</pre>			
+			
+</div>
+		
+<a name="N100BA"></a><a name="sets"></a>
+<div class="h3">
+<h3>Multiple sets of annotations in one model</h3>
+			
+			
+<p>It can make sense to have multiple sets of annotations in your model and disable or 
+			enable them when needed. For example to have different mappings for different databases.</p>
+			
+<p>Teneo will always map all annotations with a source starting with teneo.jpa and teneo.mapping (deprecated).</p>
+			
+<p>You can configure additional annotation sources to be considered using the <a href="options.html#General+Options">PersistenceOptions.EXTRA_ANNOTATION_SOURCES</a> option.
+			The value of this option is a comma delimited list of sources. Teneo will then also consider all annotations which have a source <strong>equal</strong>
+			to one of the sources defined in the PersistenceOptions.EXTRA_ANNOTATION_SOURCES option.</p>
 			
 </div>
 	

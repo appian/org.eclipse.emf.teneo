@@ -299,7 +299,7 @@
 <a href="#Using+the+runtime+plugin+in+an+EMF+model+plugin">Using the runtime plugin in an EMF model plugin</a>
 </li>
 <li>
-<a href="#Installing+the+runtime+layer+in+a+non-plugin+EMF+project">Installing the runtime layer in a non-plugin EMF project</a>
+<a href="#standalone">Standalone usage: Installing the runtime layer in a non-plugin EMF project</a>
 </li>
 </ul>
 </li>
@@ -394,9 +394,9 @@
 </p>
 </div>
 		
-<a name="N10085"></a><a name="Installing+the+runtime+layer+in+a+non-plugin+EMF+project"></a>
+<a name="N10085"></a><a name="standalone"></a>
 <div class="h4">
-<h4>Installing the runtime layer in a non-plugin EMF project</h4>
+<h4>Standalone usage: Installing the runtime layer in a non-plugin EMF project</h4>
 <p>In case of a non-plugin project all the jar-files present in the following plugins should be in the classpath:</p>
 <ul>
 				
@@ -404,7 +404,9 @@
 				
 <li>org.eclipse.emf.teneo.annotations</li>
 				
-<li>org.eclipse.emf.teneo.hibernate</li>
+<li>org.eclipse.emf.teneo.hibernate: this plugin is probably installed as a folder in Eclipse, you can create a jar file by zipping this folder and changing the extension to .jar. Note this plugin contains a jar file org.eclipse.emf.teneo.hibernate.extra.jar which needs to be placed/copied outside of the plugin into the classpath (see the next bullet).</li>
+				
+<li>org.eclipse.emf.teneo.hibernate.extra.jar: this jar file is present in the org.eclipse.emf.teneo.hibernate plugin, it should be copied from there to your classpath (for example into WEB-INF/lib)</li>
 				
 <li>org.eclipse.emf.teneo.hibernate.mapper</li>
 			
