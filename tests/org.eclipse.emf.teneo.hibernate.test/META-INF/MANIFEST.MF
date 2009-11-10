@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.test;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.1.2.qualifier
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.teneo.commontest,
@@ -10,17 +10,18 @@ Require-Bundle: org.eclipse.emf.teneo.commontest,
  org.junit;bundle-version="[3.8.0,4.0.0)",
  org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo.hibernate.libraries;bundle-version="1.1.0"
-Export-Package: org.eclipse.emf.teneo.hibernate.test,
- org.eclipse.emf.teneo.hibernate.test.emf.annotations,
- org.eclipse.emf.teneo.hibernate.test.emf.detach,
- org.eclipse.emf.teneo.hibernate.test.emf.elist,
- org.eclipse.emf.teneo.hibernate.test.emf.relation,
- org.eclipse.emf.teneo.hibernate.test.emf.sample,
- org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs,
- org.eclipse.emf.teneo.hibernate.test.issues,
- org.eclipse.emf.teneo.hibernate.test.stores,
- org.eclipse.emf.teneo.hibernate.test.stores.adapters
+ org.eclipse.emf.teneo.hibernate.libraries;bundle-version="1.1.0",
+ org.eclipse.xsd
+Export-Package: org.eclipse.emf.teneo.hibernate.test;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.emf.annotations;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.emf.detach;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.emf.elist;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.emf.relation;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.emf.sample;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.issues;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.stores;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.test.stores.adapters;version="1.1.2"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: javax.jdo,
  javax.jdo.spi,
