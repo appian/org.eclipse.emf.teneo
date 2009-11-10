@@ -13,7 +13,7 @@
 		<xsd:sequence>
 			<xsd:element name="claimNumber" type="xsd:string">
 				<xsd:annotation>
-				<xsd:appinfo source="teneo.jpa">
+				<xsd:appinfo source="teneo.extra.test">
 					@Column(name=CLM_NBR)
 				</xsd:appinfo>
 				<xsd:documentation>
@@ -23,7 +23,7 @@
 			</xsd:element>
 			<xsd:element name="claimExtensionNumber" type="xsd:string">
 				<xsd:annotation>
-				<xsd:appinfo source="teneo.jpa">
+				<xsd:appinfo source="teneo.extra.test2">
 					@Column(name=CLM_EXT_NBR)
 				</xsd:appinfo>
 				<xsd:documentation>
@@ -37,7 +37,7 @@
 	
     <xsd:complexType name="Claim">
 	<xsd:annotation>
-      <xsd:appinfo source="teneo.jpa">	
+      <xsd:appinfo source="teneo.extra">	
 	@Table(
 	  name=PCLM_NPRC_CLM
 	  uniqueConstraints = {	@UniqueConstraint(columnNames={"CLM_NBR", "CLM_EXT_NBR"})
@@ -53,7 +53,7 @@
 		
 		<xsd:element name="claimCompositeKey" type="this:ClaimCompositeKey">
 				<xsd:annotation>
-					<xsd:appinfo source="teneo.jpa">@EmbeddedId</xsd:appinfo>
+					<xsd:appinfo source="teneo.extra.test">@EmbeddedId</xsd:appinfo>
 				</xsd:annotation>				
 		</xsd:element>
 		
@@ -66,7 +66,7 @@
 		
 		<xsd:element default="" name="claimGroupVSPId" type="xsd:string">
 			<xsd:annotation>
-				<xsd:appinfo source="teneo.jpa">@Column(name=CLM_GRP_VSP_ID,length="3")</xsd:appinfo>
+				<xsd:appinfo source="teneo.extra.test">@Column(name=CLM_GRP_VSP_ID,length="3")</xsd:appinfo>
 				<xsd:documentation>Claim Group VSP Id</xsd:documentation>
 			</xsd:annotation>
 		</xsd:element>
@@ -74,7 +74,7 @@
 		<!-- Enumeration? -->
 		<xsd:element default="" name="claimStatus" type="xsd:string">
 			<xsd:annotation>
-				<xsd:appinfo source="teneo.jpa">@Column(name=CLM_STATUS,length="2")</xsd:appinfo>
+				<xsd:appinfo source="teneo.extra.test">@Column(name=CLM_STATUS,length="2")</xsd:appinfo>
 				<xsd:documentation></xsd:documentation>
 			</xsd:annotation>
 		</xsd:element>
@@ -83,7 +83,7 @@
 		<xsd:element maxOccurs="unbounded" minOccurs="0" name="claimLine"
 			type="this:ClaimLine" >
 			<xsd:annotation>
-				<xsd:appinfo source="teneo.jpa">
+				<xsd:appinfo source="teneo.extra">
 					@OneToMany(mappedBy="ClaimLine", indexed=false)
 					@JoinColumns({
     					@JoinColumn(name="CLM_NBR"),

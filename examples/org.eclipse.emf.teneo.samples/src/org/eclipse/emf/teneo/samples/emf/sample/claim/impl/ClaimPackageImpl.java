@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ClaimPackageImpl.java,v 1.2 2009/11/07 13:50:02 mtaal Exp $
+ * $Id: ClaimPackageImpl.java,v 1.3 2009/11/10 10:05:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.claim.impl;
 
@@ -393,128 +393,38 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// teneo.jpa
+		// teneo.extra
 		createTeneoAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// teneo.extra.test
+		createTeneo_1Annotations();
+		// teneo.jpa
+		createTeneo_2Annotations();
+		// teneo.extra.test2
+		createTeneo_3Annotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * Initializes the annotations for <b>teneo.extra</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";			
+		String source = "teneo.extra";			
 		addAnnotation
 		  (claimEClass, 
 		   source, 
 		   new String[] {
 			 "appinfo", "\t\n\t@Table(\n\t  name=PCLM_NPRC_CLM\n\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\"})\n\t  \t\t\t\t\t  }\t  \n\t)\n\t"
-		   });			
-		addAnnotation
-		  (getClaim_ClaimCompositeKey(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@EmbeddedId"
-		   });				
-		addAnnotation
-		  (getClaim_BillingName(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Column(name=BILLING_NAME,length=\"50\")"
-		   });				
-		addAnnotation
-		  (getClaim_ClaimGroupVSPId(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Column(name=CLM_GRP_VSP_ID,length=\"3\")"
-		   });			
-		addAnnotation
-		  (getClaim_ClaimStatus(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Column(name=CLM_STATUS,length=\"2\")"
-		   });			
+		   });													
 		addAnnotation
 		  (getClaim_ClaimLine(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@OneToMany(mappedBy=\"ClaimLine\", indexed=false)\n\t\t\t\t\t@JoinColumns({\n    \t\t\t\t\t@JoinColumn(name=\"CLM_NBR\"),\n    \t\t\t\t\t@JoinColumn(name=\"CLM_EXT_NBR\")\n    \t\t\t\t})\t\n\t\t\t\t"
-		   });			
-		addAnnotation
-		  (claimCompositeKeyEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Embeddable"
-		   });				
-		addAnnotation
-		  (getClaimCompositeKey_ClaimNumber(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@Column(name=CLM_NBR)\n\t\t\t\t"
-		   });				
-		addAnnotation
-		  (getClaimCompositeKey_ClaimExtensionNumber(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@Column(name=CLM_EXT_NBR)\n\t\t\t\t"
-		   });				
-		addAnnotation
-		  (claimLineEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "\t\n\t\t@Table(\n\t\t  name=PCLM_NPRC_CLMLN\t\t  \n\t\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\", \"CLMLN_NBR\"})\n\t\t  \t\t\t\t\t  }\t  \n\t\t )\n\t\t"
-		   });				
-		addAnnotation
-		  (getClaimLine_Claim(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t\t@Transient\n\t\t\t\t\t"
-		   });			
-		addAnnotation
-		  (getClaimLine_ClaimLineCompositeKey(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@EmbeddedId"
-		   });				
-		addAnnotation
-		  (getClaimLine_ClaimLineBilledAmount(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@Column(name=CLMLN_BILL_AMT)\n\t\t\t\t"
-		   });				
-		addAnnotation
-		  (getClaimLine_ServiceCode(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@Column(name=SVC_CD)\n\t\t\t\t"
-		   });			
-		addAnnotation
-		  (getClaimLine_ClaimLineStatus(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Column(name=CLMLN_STATUS,length=\"2\")"
-		   });			
-		addAnnotation
-		  (claimLineCompositeKeyEClass, 
-		   source, 
-		   new String[] {
-			 "appinfo", "@Embeddable"
-		   });				
-		addAnnotation
-		  (getClaimLineCompositeKey_Claim(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t\t@ManyToOne\n\t\t\t\t\t\t@JoinColumns({\n\t\t    \t\t\t\t@JoinColumn(name=\"CLM_NBR\", referencedColumnName = \"CLM_NBR\"),\n\t\t    \t\t\t\t@JoinColumn(name=\"CLM_EXT_NBR\", referencedColumnName =\"CLM_EXT_NBR\")\n\t\t    \t\t\t})\n\t\t\t\t\t\t"
-		   });				
-		addAnnotation
-		  (getClaimLineCompositeKey_ClaimLineNumber(), 
-		   source, 
-		   new String[] {
-			 "appinfo", "\n\t\t\t\t\t@Column(name=CLMLN_NBR)\n\t\t\t\t"
-		   });	
+		   });																																	
 	}
 
 	/**
@@ -665,6 +575,132 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 			 "name", "claimLineNumber",
 			 "namespace", "##targetNamespace"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.extra.test</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_1Annotations() {
+		String source = "teneo.extra.test";					
+		addAnnotation
+		  (getClaim_ClaimCompositeKey(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@EmbeddedId"
+		   });							
+		addAnnotation
+		  (getClaim_ClaimGroupVSPId(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=CLM_GRP_VSP_ID,length=\"3\")"
+		   });			
+		addAnnotation
+		  (getClaim_ClaimStatus(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=CLM_STATUS,length=\"2\")"
+		   });								
+		addAnnotation
+		  (getClaimCompositeKey_ClaimNumber(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t@Column(name=CLM_NBR)\n\t\t\t\t"
+		   });																												
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.jpa</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_2Annotations() {
+		String source = "teneo.jpa";								
+		addAnnotation
+		  (getClaim_BillingName(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=BILLING_NAME,length=\"50\")"
+		   });										
+		addAnnotation
+		  (claimCompositeKeyEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Embeddable"
+		   });										
+		addAnnotation
+		  (claimLineEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "\t\n\t\t@Table(\n\t\t  name=PCLM_NPRC_CLMLN\t\t  \n\t\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\", \"CLMLN_NBR\"})\n\t\t  \t\t\t\t\t  }\t  \n\t\t )\n\t\t"
+		   });				
+		addAnnotation
+		  (getClaimLine_Claim(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@Transient\n\t\t\t\t\t"
+		   });			
+		addAnnotation
+		  (getClaimLine_ClaimLineCompositeKey(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@EmbeddedId"
+		   });				
+		addAnnotation
+		  (getClaimLine_ClaimLineBilledAmount(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t@Column(name=CLMLN_BILL_AMT)\n\t\t\t\t"
+		   });				
+		addAnnotation
+		  (getClaimLine_ServiceCode(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t@Column(name=SVC_CD)\n\t\t\t\t"
+		   });			
+		addAnnotation
+		  (getClaimLine_ClaimLineStatus(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Column(name=CLMLN_STATUS,length=\"2\")"
+		   });			
+		addAnnotation
+		  (claimLineCompositeKeyEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Embeddable"
+		   });				
+		addAnnotation
+		  (getClaimLineCompositeKey_Claim(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t\t@ManyToOne\n\t\t\t\t\t\t@JoinColumns({\n\t\t    \t\t\t\t@JoinColumn(name=\"CLM_NBR\", referencedColumnName = \"CLM_NBR\"),\n\t\t    \t\t\t\t@JoinColumn(name=\"CLM_EXT_NBR\", referencedColumnName =\"CLM_EXT_NBR\")\n\t\t    \t\t\t})\n\t\t\t\t\t\t"
+		   });				
+		addAnnotation
+		  (getClaimLineCompositeKey_ClaimLineNumber(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t@Column(name=CLMLN_NBR)\n\t\t\t\t"
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>teneo.extra.test2</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createTeneo_3Annotations() {
+		String source = "teneo.extra.test2";																							
+		addAnnotation
+		  (getClaimCompositeKey_ClaimExtensionNumber(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "\n\t\t\t\t\t@Column(name=CLM_EXT_NBR)\n\t\t\t\t"
+		   });																									
 	}
 
 } //ClaimPackageImpl

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Claim.java,v 1.1 2008/01/18 06:20:18 mtaal Exp $
+ * $Id: Claim.java,v 1.2 2009/11/10 10:05:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.claim;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage#getClaim()
- * @model annotation="teneo.jpa appinfo='\t\n\t@Table(\n\t  name=PCLM_NPRC_CLM\n\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\"})\n\t  \t\t\t\t\t  }\t  \n\t)\n\t'"
+ * @model annotation="teneo.extra appinfo='\t\n\t@Table(\n\t  name=PCLM_NPRC_CLM\n\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\"})\n\t  \t\t\t\t\t  }\t  \n\t)\n\t'"
  *        extendedMetaData="name='Claim' kind='elementOnly'"
  * @generated
  */
@@ -48,7 +48,7 @@ public interface Claim extends EObject {
 	 * @see #setClaimCompositeKey(ClaimCompositeKey)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage#getClaim_ClaimCompositeKey()
 	 * @model containment="true" required="true"
-	 *        annotation="teneo.jpa appinfo='@EmbeddedId'"
+	 *        annotation="teneo.extra.test appinfo='@EmbeddedId'"
 	 *        extendedMetaData="kind='element' name='claimCompositeKey' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -133,7 +133,7 @@ public interface Claim extends EObject {
 	 * @see #setClaimGroupVSPId(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage#getClaim_ClaimGroupVSPId()
 	 * @model default="" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="teneo.jpa appinfo='@Column(name=CLM_GRP_VSP_ID,length=\"3\")'"
+	 *        annotation="teneo.extra.test appinfo='@Column(name=CLM_GRP_VSP_ID,length=\"3\")'"
 	 *        extendedMetaData="kind='element' name='claimGroupVSPId' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -189,7 +189,7 @@ public interface Claim extends EObject {
 	 * @see #setClaimStatus(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage#getClaim_ClaimStatus()
 	 * @model default="" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        annotation="teneo.jpa appinfo='@Column(name=CLM_STATUS,length=\"2\")'"
+	 *        annotation="teneo.extra.test appinfo='@Column(name=CLM_STATUS,length=\"2\")'"
 	 *        extendedMetaData="kind='element' name='claimStatus' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -244,7 +244,7 @@ public interface Claim extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage#getClaim_ClaimLine()
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimLine#getClaim
 	 * @model opposite="claim" containment="true"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@OneToMany(mappedBy=\"ClaimLine\", indexed=false)\n\t\t\t\t\t@JoinColumns({\n    \t\t\t\t\t@JoinColumn(name=\"CLM_NBR\"),\n    \t\t\t\t\t@JoinColumn(name=\"CLM_EXT_NBR\")\n    \t\t\t\t})\t\n\t\t\t\t'"
+	 *        annotation="teneo.extra appinfo='\n\t\t\t\t\t@OneToMany(mappedBy=\"ClaimLine\", indexed=false)\n\t\t\t\t\t@JoinColumns({\n    \t\t\t\t\t@JoinColumn(name=\"CLM_NBR\"),\n    \t\t\t\t\t@JoinColumn(name=\"CLM_EXT_NBR\")\n    \t\t\t\t})\t\n\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='claimLine' namespace='##targetNamespace'"
 	 * @generated
 	 */
