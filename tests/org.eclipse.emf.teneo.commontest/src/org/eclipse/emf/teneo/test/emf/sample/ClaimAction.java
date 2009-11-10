@@ -11,14 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ClaimAction.java,v 1.2 2008/02/28 07:08:15 mtaal Exp $
+ * $Id: ClaimAction.java,v 1.3 2009/11/10 10:05:34 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.samples.emf.sample.claim.Claim;
 import org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimCompositeKey;
 import org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimFactory;
@@ -32,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the capa, detach and update
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ClaimAction extends AbstractTestAction {
 
@@ -43,6 +45,14 @@ public class ClaimAction extends AbstractTestAction {
 	 */
 	public ClaimAction() {
 		super(ClaimPackage.eINSTANCE);
+	}
+
+	@Override
+	public Properties getExtraConfigurationProperties() {
+		final Properties props = new Properties();
+		props.setProperty(PersistenceOptions.EXTRA_ANNOTATION_SOURCES,
+				"teneo.extra, teneo.extra.test, teneo.extra.test2");
+		return props;
 	}
 
 	/** Creates an item, an address and links them to a po. */
