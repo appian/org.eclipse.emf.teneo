@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.51 2009/11/02 10:24:30 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.52 2009/11/10 08:41:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -713,7 +713,9 @@ public abstract class AbstractMapper {
 			columns.add(localAny.getMetaColumn());
 		} else {
 			final Column typeColumn = PannotationFactory.eINSTANCE.createColumn();
-			typeColumn.setName(hbmContext.trunc(paFeature.getModelEStructuralFeature().getName() + "_type"));
+			// bugzilla 294201, trunc is also done later in addColumn
+			// typeColumn.setName(hbmContext.trunc(paFeature.getModelEStructuralFeature().getName() + "_type"));
+			typeColumn.setName(paFeature.getModelEStructuralFeature().getName() + "_type");
 			typeColumn.setNullable(localAny.isOptional());
 			columns.add(typeColumn);
 		}
@@ -722,7 +724,9 @@ public abstract class AbstractMapper {
 			columns.add(paFeature.getColumn());
 		} else {
 			final Column idColumn = PannotationFactory.eINSTANCE.createColumn();
-			idColumn.setName(hbmContext.trunc(paFeature.getModelEStructuralFeature().getName() + "_id"));
+			// bugzilla 294201, trunc is also done later in addColumn
+			// idColumn.setName(hbmContext.trunc(paFeature.getModelEStructuralFeature().getName() + "_id"));
+			idColumn.setName(paFeature.getModelEStructuralFeature().getName() + "_id");
 			idColumn.setNullable(localAny.isOptional());
 			columns.add(idColumn);
 		}
