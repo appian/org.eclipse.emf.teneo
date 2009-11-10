@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.61 2009/11/02 10:24:41 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.62 2009/11/10 10:06:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -377,6 +377,12 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String FEATUREMAP_AS_COMPONENT = MAPPING_PREFIX + "featuremap_as_component";
 
+	/**
+	 * Additional sources which are taken into account parsing model annotations. The value can be a comma delimited
+	 * list of source values.
+	 */
+	public static final String EXTRA_ANNOTATION_SOURCES = MAPPING_PREFIX + "extra_annotation_sources";
+
 	public final static String ECONTAINER_CLASS_COLUMN = "econtainer_class_column";
 	public final static String ECONTAINER_COLUMN = "e_container_column";
 	public final static String ECONTAINER_FEATURE_NAME_COLUMN = "e_container_feature_name_column";
@@ -439,6 +445,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(ECONTAINER_COLUMN, Constants.COLUMN_ECONTAINER);
 		props.setProperty(ECONTAINER_FEATURE_NAME_COLUMN, Constants.COLUMN_ECONTAINER_FEATURE_NAME);
 		props.setProperty(FEATUREMAP_AS_COMPONENT, "false");
+		props.setProperty(EXTRA_ANNOTATION_SOURCES, "");
 
 		return props;
 	}
@@ -447,6 +454,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #EXTRA_ANNOTATION_SOURCES}
+	 */
+	public String getExtraAnnotationSources() {
+		return properties.getProperty(EXTRA_ANNOTATION_SOURCES);
+	}
 
 	/**
 	 * @return value of {@link #FEATUREMAP_AS_COMPONENT}

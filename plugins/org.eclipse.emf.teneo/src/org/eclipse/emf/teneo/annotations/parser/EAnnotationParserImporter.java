@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.6 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.7 2009/11/10 10:06:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.Constants;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
@@ -39,8 +41,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 
 /**
- * Walks over the pamodel and the paepackages and translates eannotations to pannotation types and
- * sets the corresponding values in the pamodel.
+ * Walks over the pamodel and the paepackages and translates eannotations to pannotation types and sets the
+ * corresponding values in the pamodel.
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
@@ -53,6 +55,8 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 
 	/** The prefix to distinguish jpa annotations from hb or jpox annotations */
 	private static final String JPA_PREFIX = "jpa:";
+
+	private String[] extraAnnotationsSources = new String[] {};
 
 	/** Parse an pamodel */
 	public void process(PAnnotatedModel paModel) {
@@ -96,9 +100,9 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 		// now also do the annotations on the edatatype (if any)
 		/*
 		 * if (pee.getAnnotatedElement() instanceof EAttribute) { final EAttribute eattr =
-		 * (EAttribute)pee.getAnnotatedElement(); final EDataType edt = (EDataType)eattr.getEType();
-		 * for (Iterator it = edt.getEAnnotations().iterator(); it.hasNext();) {
-		 * parsedNodes.addAll(process((EAnnotation)it.next(), pee.getAnnotatedElement())); } }
+		 * (EAttribute)pee.getAnnotatedElement(); final EDataType edt = (EDataType)eattr.getEType(); for (Iterator it =
+		 * edt.getEAnnotations().iterator(); it.hasNext();) { parsedNodes.addAll(process((EAnnotation)it.next(),
+		 * pee.getAnnotatedElement())); } }
 		 */
 
 		// now the parsed nodes should be translated into features of the
@@ -127,8 +131,8 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 					}
 				}
 				if (!found) {
-					throw new AnnotationParserException("The eclass: " + pee.eClass().getName() +
-							" does not have an efeature for " + eobj.eClass().getName());
+					throw new AnnotationParserException("The eclass: " + pee.eClass().getName()
+							+ " does not have an efeature for " + eobj.eClass().getName());
 				}
 			}
 		}
@@ -199,12 +203,42 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 		if (source == null) {
 			return false;
 		}
-		// todo externalize
-		return source.startsWith("teneo.jpa") || source.startsWith("teneo.mapping");
+
+		if (extraAnnotationsSources.length > 0) {
+			for (String annotationSource : extraAnnotationsSources) {
+				if (source.equals(annotationSource)) {
+					return true;
+				}
+			}
+		}
+
+		return source.startsWith(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+				|| source.startsWith(Constants.ANNOTATION_SOURCE_TENEO_MAPPING);
 	}
 
 	/** Find the efeature */
 	public EStructuralFeature getEStructuralFeature(EClass eClass, String name) {
 		return ParserUtil.getEStructuralFeature(eClass, name);
+	}
+
+	public void setExtraAnnotationSources(PersistenceOptions po) {
+		if (po.getExtraAnnotationSources() != null && po.getExtraAnnotationSources().trim().length() > 0) {
+			extraAnnotationsSources = po.getExtraAnnotationSources().split(",");
+			for (int i = 0; i < extraAnnotationsSources.length; i++) {
+				extraAnnotationsSources[i] = extraAnnotationsSources[i].trim();
+				if (extraAnnotationsSources[i].startsWith(Constants.ANNOTATION_SOURCE_TENEO_JPA)
+						|| extraAnnotationsSources[i].startsWith(Constants.ANNOTATION_SOURCE_TENEO_MAPPING)) {
+					log
+							.warn("Extra annotation source ("
+									+ extraAnnotationsSources[i]
+									+ ") starts with the default Teneo annotation source: "
+									+ Constants.ANNOTATION_SOURCE_TENEO_JPA
+									+ " or "
+									+ Constants.ANNOTATION_SOURCE_TENEO_MAPPING
+									+ ". Annotations which should sometimes be "
+									+ "ignored or disabled should not start with these values as they are always considered by Teneo");
+				}
+			}
+		}
 	}
 }

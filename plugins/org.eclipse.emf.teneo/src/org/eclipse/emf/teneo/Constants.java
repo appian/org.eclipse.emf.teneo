@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: Constants.java,v 1.12 2009/09/11 15:54:07 mtaal Exp $
+ * $Id: Constants.java,v 1.13 2009/11/10 10:06:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  * AnnotationUtil used when reading a property file is also used by resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class Constants {
@@ -88,4 +88,7 @@ public class Constants {
 	public final static String COLUMN_ECONTAINER_CLASS = "econtainer_class";
 	public final static String COLUMN_ECONTAINER = "e_container";
 	public final static String COLUMN_ECONTAINER_FEATURE_NAME = "e_container_feature_name";
+
+	public final static String ANNOTATION_SOURCE_TENEO_JPA = "teneo.jpa";
+	public final static String ANNOTATION_SOURCE_TENEO_MAPPING = "teneo.mapping";
 }

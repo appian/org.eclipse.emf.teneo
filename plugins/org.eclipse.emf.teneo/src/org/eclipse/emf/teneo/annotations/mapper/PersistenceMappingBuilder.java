@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -136,7 +136,10 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 			log.debug("Ignoring annotations");
 		} else {
 			log.debug("Parse annotations");
-			extensionManager.getExtension(EAnnotationParserImporter.class).process(pam);
+			final EAnnotationParserImporter parserImporter = extensionManager
+					.getExtension(EAnnotationParserImporter.class);
+			parserImporter.setExtraAnnotationSources(po);
+			parserImporter.process(pam);
 		}
 
 		if (po.getPersistenceXmlPath() != null) {
