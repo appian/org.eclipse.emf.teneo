@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedAction.java,v 1.6 2008/04/16 21:07:53 mtaal Exp $
+ * $Id: EmbeddedAction.java,v 1.7 2009/12/04 15:06:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.test.emf.annotations;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
@@ -32,7 +33,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class EmbeddedAction extends AbstractTestAction {
 	/**
@@ -106,6 +107,15 @@ public class EmbeddedAction extends AbstractTestAction {
 			final AnotherEmbeddable anotherEmbeddable = factory.createAnotherEmbeddable();
 			anotherEmbeddable.setName("name");
 			anotherEmbeddable.setAnotherName("anotherName");
+
+			final AOneToMany aOneToMany1 = factory.createAOneToMany();
+			aOneToMany1.setName("1");
+			anotherEmbeddable.getAOneToMany().add(aOneToMany1);
+
+			final AOneToMany aOneToMany2 = factory.createAOneToMany();
+			aOneToMany2.setName("2");
+			anotherEmbeddable.getAOneToMany().add(aOneToMany2);
+
 			embedder.setAnotherEmbedded(anotherEmbeddable);
 
 			final AlsoEmbeddable ae = factory.createAlsoEmbeddable();
@@ -129,6 +139,9 @@ public class EmbeddedAction extends AbstractTestAction {
 			final AnotherEmbeddable ae = embedder.getAnotherEmbedded();
 			assertEquals("anotherName", ae.getAnotherName());
 			assertEquals("name", ae.getName());
+			assertEquals(2, ae.getAOneToMany().size());
+			assertEquals("1", ae.getAOneToMany().get(0).getName());
+			assertEquals("2", ae.getAOneToMany().get(1).getName());
 
 			store.commitTransaction();
 		}
