@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityResolvingNameStrategy.java,v 1.11 2009/07/28 03:39:44 mtaal Exp $
+ * $Id: EntityResolvingNameStrategy.java,v 1.12 2009/12/04 15:06:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -35,9 +35,8 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * This implementation will first use the name of the entity annotation and then the EClass name. For the DocumentRoot
  * the EClass name is always prefixed with the EPackage namespace.
  * 
- * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class EntityResolvingNameStrategy implements EntityNameStrategy {
 
