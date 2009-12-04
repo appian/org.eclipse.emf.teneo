@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.DataStore;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.TeneoException;
@@ -94,7 +95,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.60 $
+ * @version $Revision: 1.61 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -667,7 +668,10 @@ public abstract class HbDataStore implements DataStore {
 	protected void setComponentTuplizer(Component component, Configuration cfg) {
 		// check if the eclass exists
 		// todo: change recognizing a component to using metadata!
-		final EClass eClass = getEntityNameStrategy().toEClass(component.getComponentClassName());
+		EClass eClass = ERuntime.INSTANCE.getEClass(component.getComponentClass());
+		if (eClass == null) {
+			eClass = getEntityNameStrategy().toEClass(component.getComponentClassName());
+		}
 		if (eClass != null) {
 			log.debug("Found " + eClass.getName() + " as a component");
 		} else {

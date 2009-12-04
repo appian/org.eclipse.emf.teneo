@@ -10,10 +10,11 @@ package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Martin Taal
+ *   Martin Taal - Initial api and implementation
+ *   Jan Haesli - solution for equals test on feature holder
  * </copyright>
  *
- * $Id: EContainerFeatureIDUserType.java,v 1.3 2009/10/15 20:35:48 mtaal Exp $
+ * $Id: EContainerFeatureIDUserType.java,v 1.4 2009/12/04 15:07:02 mtaal Exp $
  */
 
 import java.io.Serializable;
@@ -35,7 +36,7 @@ import org.hibernate.usertype.UserType;
  * reference to the EFeature.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ $Date: 2009/10/15 20:35:48 $
+ * @version $Revision: 1.4 $ $Date: 2009/12/04 15:07:02 $
  */
 
 public class EContainerFeatureIDUserType implements UserType {
@@ -187,5 +188,38 @@ public class EContainerFeatureIDUserType implements UserType {
 			eClass = class1;
 		}
 
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((eClass == null) ? 0 : eClass.hashCode());
+			result = prime * result + ((eFeature == null) ? 0 : eFeature.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) {
+				return true;
+			}
+			if (obj == null) {
+				return false;
+			}
+			if (getClass() != obj.getClass()) {
+				return false;
+			}
+			EContainerFeatureIDHolder other = (EContainerFeatureIDHolder) obj;
+			if (eClass == null && other.eClass != null) {
+				return false;
+			} else if (!eClass.equals(other.eClass)) {
+				return false;
+			}
+			if (eFeature == null && other.eFeature != null) {
+				return false;
+			} else if (!eFeature.equals(other.eFeature)) {
+				return false;
+			}
+			return true;
+		}
 	}
 }

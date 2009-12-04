@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.12 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.13 2009/12/04 15:07:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
@@ -35,7 +36,7 @@ import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
@@ -61,18 +62,21 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	@Override
 	protected Instantiator buildInstantiator(Component component) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
-		final EClass eclass = ds.getEntityNameStrategy().toEClass(component.getComponentClassName());
-		if (eclass == null) {
+		EClass eClass = ds.getEntityNameStrategy().toEClass(component.getComponentClassName());
+		if (eClass == null) {
+			eClass = ERuntime.INSTANCE.getEClass(component.getComponentClass());
+		}
+		if (eClass == null) {
 			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
 		}
-		return new EMFInstantiator(eclass, component);
+		return new EMFInstantiator(eClass, component);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate.mapping.Property,
-	 *      org.hibernate.mapping.PersistentClass)
+	 * org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
 	protected Getter buildGetter(Component component, Property mappedProperty) {
@@ -83,7 +87,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate.mapping.Property,
-	 *      org.hibernate.mapping.PersistentClass)
+	 * org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
 	protected Setter buildSetter(Component component, Property mappedProperty) {
@@ -139,7 +143,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.hibernate.tuple.ComponentTuplizer#setParent(java.lang.Object, java.lang.Object,
-	 *      org.hibernate.engine.SessionFactoryImplementor)
+	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
 	@Override
 	public void setParent(Object component, Object parent, SessionFactoryImplementor factory) {

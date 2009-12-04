@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.25 2009/06/11 04:58:54 mtaal Exp $
+ * $Id: HbUtil.java,v 1.26 2009/12/04 15:07:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
+import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapping.HibernatePersistentStoreAdapter;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
@@ -54,7 +55,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class HbUtil {
 
@@ -126,7 +127,11 @@ public class HbUtil {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
 
-		final EClass eClass = ds.getEntityNameStrategy().toEClass(entityName);
+		EClass eClass = ds.getEntityNameStrategy().toEClass(entityName);
+		if (eClass == null) {
+			// for components this is the case
+			eClass = ERuntime.INSTANCE.getEClass(entityName);
+		}
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(eClass, mappedProperty.getName());
 
 		if (efeature == null) {
