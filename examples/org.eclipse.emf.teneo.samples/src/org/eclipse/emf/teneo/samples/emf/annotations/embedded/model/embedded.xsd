@@ -84,8 +84,19 @@
 	   		<xsd:extension base="this:AlsoEmbeddable">
 	    		<xsd:sequence>
 	     			<xsd:element name="anotherName" type="xsd:string"/>
+		      		<xsd:element name="aOneToMany" ecore:reference="this:AOneToMany" type="xsd:IDREF" maxOccurs="unbounded"/>
 				</xsd:sequence>
 	   		</xsd:extension>
 	  	</xsd:complexContent>
  	</xsd:complexType>
+
+  	<xsd:complexType name="AOneToMany">
+	 	<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@Embeddable</xsd:appinfo>
+	    </xsd:annotation>
+    	<xsd:sequence>
+      		<xsd:element name="name" type="xsd:string"/>
+    	</xsd:sequence>
+  	</xsd:complexType>
+
  </xsd:schema>

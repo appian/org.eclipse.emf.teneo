@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackage.java,v 1.4 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: EmbeddedPackage.java,v 1.5 2009/12/04 15:06:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -116,13 +116,50 @@ public interface EmbeddedPackage extends EPackage {
 	int ANOTHER_EMBEDDABLE__ANOTHER_NAME = ALSO_EMBEDDABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>AOne To Many</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_EMBEDDABLE__AONE_TO_MANY = ALSO_EMBEDDABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Another Embeddable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANOTHER_EMBEDDABLE_FEATURE_COUNT = ALSO_EMBEDDABLE_FEATURE_COUNT + 1;
+	int ANOTHER_EMBEDDABLE_FEATURE_COUNT = ALSO_EMBEDDABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AOneToManyImpl <em>AOne To Many</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AOneToManyImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getAOneToMany()
+	 * @generated
+	 */
+	int AONE_TO_MANY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AONE_TO_MANY__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>AOne To Many</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AONE_TO_MANY_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl <em>Embeddable</em>}' class.
@@ -132,7 +169,7 @@ public interface EmbeddedPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getEmbeddable()
 	 * @generated
 	 */
-	int EMBEDDABLE = 2;
+	int EMBEDDABLE = 3;
 
 	/**
 	 * The feature id for the '<em><b>My String</b></em>' attribute.
@@ -169,7 +206,7 @@ public interface EmbeddedPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getEmbedder()
 	 * @generated
 	 */
-	int EMBEDDER = 3;
+	int EMBEDDER = 4;
 
 	/**
 	 * The feature id for the '<em><b>First Embedded</b></em>' containment reference.
@@ -285,6 +322,38 @@ public interface EmbeddedPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAnotherEmbeddable_AnotherName();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAOneToMany <em>AOne To Many</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>AOne To Many</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAOneToMany()
+	 * @see #getAnotherEmbeddable()
+	 * @generated
+	 */
+	EReference getAnotherEmbeddable_AOneToMany();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany <em>AOne To Many</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>AOne To Many</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany
+	 * @generated
+	 */
+	EClass getAOneToMany();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany#getName()
+	 * @see #getAOneToMany()
+	 * @generated
+	 */
+	EAttribute getAOneToMany_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable <em>Embeddable</em>}'.
@@ -462,6 +531,32 @@ public interface EmbeddedPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANOTHER_EMBEDDABLE__ANOTHER_NAME = eINSTANCE.getAnotherEmbeddable_AnotherName();
+
+		/**
+		 * The meta object literal for the '<em><b>AOne To Many</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANOTHER_EMBEDDABLE__AONE_TO_MANY = eINSTANCE.getAnotherEmbeddable_AOneToMany();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AOneToManyImpl <em>AOne To Many</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AOneToManyImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getAOneToMany()
+		 * @generated
+		 */
+		EClass AONE_TO_MANY = eINSTANCE.getAOneToMany();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AONE_TO_MANY__NAME = eINSTANCE.getAOneToMany_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddableImpl <em>Embeddable</em>}' class.

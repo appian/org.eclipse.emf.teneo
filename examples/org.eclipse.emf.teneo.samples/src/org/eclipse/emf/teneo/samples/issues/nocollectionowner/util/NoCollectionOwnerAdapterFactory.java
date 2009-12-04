@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedAdapterFactory.java,v 1.5 2009/12/04 15:06:58 mtaal Exp $
+ * $Id: NoCollectionOwnerAdapterFactory.java,v 1.1 2009/12/04 15:06:53 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.embedded.util;
+package org.eclipse.emf.teneo.samples.issues.nocollectionowner.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,24 +13,24 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.embedded.*;
+import org.eclipse.emf.teneo.samples.issues.nocollectionowner.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage
+ * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.NoCollectionOwnerPackage
  * @generated
  */
-public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
+public class NoCollectionOwnerAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static EmbeddedPackage modelPackage;
+	protected static NoCollectionOwnerPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -38,9 +38,9 @@ public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EmbeddedAdapterFactory() {
+	public NoCollectionOwnerAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = EmbeddedPackage.eINSTANCE;
+			modelPackage = NoCollectionOwnerPackage.eINSTANCE;
 		}
 	}
 
@@ -69,27 +69,31 @@ public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EmbeddedSwitch<Adapter> modelSwitch =
-		new EmbeddedSwitch<Adapter>() {
+	protected NoCollectionOwnerSwitch<Adapter> modelSwitch =
+		new NoCollectionOwnerSwitch<Adapter>() {
 			@Override
-			public Adapter caseAlsoEmbeddable(AlsoEmbeddable object) {
-				return createAlsoEmbeddableAdapter();
+			public Adapter caseProduct(Product object) {
+				return createProductAdapter();
 			}
 			@Override
-			public Adapter caseAnotherEmbeddable(AnotherEmbeddable object) {
-				return createAnotherEmbeddableAdapter();
+			public Adapter caseCustomer(Customer object) {
+				return createCustomerAdapter();
 			}
 			@Override
-			public Adapter caseAOneToMany(AOneToMany object) {
-				return createAOneToManyAdapter();
+			public Adapter caseProductCategory(ProductCategory object) {
+				return createProductCategoryAdapter();
 			}
 			@Override
-			public Adapter caseEmbeddable(Embeddable object) {
-				return createEmbeddableAdapter();
+			public Adapter casePriceCategory(PriceCategory object) {
+				return createPriceCategoryAdapter();
 			}
 			@Override
-			public Adapter caseEmbedder(Embedder object) {
-				return createEmbedderAdapter();
+			public Adapter caseOrder(Order object) {
+				return createOrderAdapter();
+			}
+			@Override
+			public Adapter caseTransaction(Transaction object) {
+				return createTransactionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -112,72 +116,86 @@ public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable <em>Also Embeddable</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.nocollectionowner.Product <em>Product</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable
+	 * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.Product
 	 * @generated
 	 */
-	public Adapter createAlsoEmbeddableAdapter() {
+	public Adapter createProductAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable <em>Another Embeddable</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.nocollectionowner.Customer <em>Customer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable
+	 * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.Customer
 	 * @generated
 	 */
-	public Adapter createAnotherEmbeddableAdapter() {
+	public Adapter createCustomerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany <em>AOne To Many</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.nocollectionowner.ProductCategory <em>Product Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany
+	 * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.ProductCategory
 	 * @generated
 	 */
-	public Adapter createAOneToManyAdapter() {
+	public Adapter createProductCategoryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable <em>Embeddable</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.nocollectionowner.PriceCategory <em>Price Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable
+	 * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.PriceCategory
 	 * @generated
 	 */
-	public Adapter createEmbeddableAdapter() {
+	public Adapter createPriceCategoryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder <em>Embedder</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.nocollectionowner.Order <em>Order</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder
+	 * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.Order
 	 * @generated
 	 */
-	public Adapter createEmbedderAdapter() {
+	public Adapter createOrderAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.issues.nocollectionowner.Transaction <em>Transaction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.Transaction
+	 * @generated
+	 */
+	public Adapter createTransactionAdapter() {
 		return null;
 	}
 
@@ -193,4 +211,4 @@ public class EmbeddedAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //EmbeddedAdapterFactory
+} //NoCollectionOwnerAdapterFactory

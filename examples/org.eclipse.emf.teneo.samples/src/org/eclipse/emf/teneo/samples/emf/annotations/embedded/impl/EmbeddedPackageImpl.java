@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackageImpl.java,v 1.7 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: EmbeddedPackageImpl.java,v 1.8 2009/12/04 15:06:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
@@ -42,6 +43,13 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 * @generated
 	 */
 	private EClass anotherEmbeddableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass aOneToManyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,20 +92,10 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link EmbeddedPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -109,7 +107,7 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		if (isInited) return (EmbeddedPackage)EPackage.Registry.INSTANCE.getEPackage(EmbeddedPackage.eNS_URI);
 
 		// Obtain or create and register package
-		EmbeddedPackageImpl theEmbeddedPackage = (EmbeddedPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof EmbeddedPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new EmbeddedPackageImpl());
+		EmbeddedPackageImpl theEmbeddedPackage = (EmbeddedPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EmbeddedPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new EmbeddedPackageImpl());
 
 		isInited = true;
 
@@ -125,6 +123,9 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		// Mark meta-data to indicate it can't be changed
 		theEmbeddedPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(EmbeddedPackage.eNS_URI, theEmbeddedPackage);
 		return theEmbeddedPackage;
 	}
 
@@ -162,6 +163,33 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 	 */
 	public EAttribute getAnotherEmbeddable_AnotherName() {
 		return (EAttribute)anotherEmbeddableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnotherEmbeddable_AOneToMany() {
+		return (EReference)anotherEmbeddableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAOneToMany() {
+		return aOneToManyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAOneToMany_Name() {
+		return (EAttribute)aOneToManyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -296,6 +324,10 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 
 		anotherEmbeddableEClass = createEClass(ANOTHER_EMBEDDABLE);
 		createEAttribute(anotherEmbeddableEClass, ANOTHER_EMBEDDABLE__ANOTHER_NAME);
+		createEReference(anotherEmbeddableEClass, ANOTHER_EMBEDDABLE__AONE_TO_MANY);
+
+		aOneToManyEClass = createEClass(AONE_TO_MANY);
+		createEAttribute(aOneToManyEClass, AONE_TO_MANY__NAME);
 
 		embeddableEClass = createEClass(EMBEDDABLE);
 		createEAttribute(embeddableEClass, EMBEDDABLE__MY_STRING);
@@ -350,6 +382,10 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 
 		initEClass(anotherEmbeddableEClass, AnotherEmbeddable.class, "AnotherEmbeddable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnotherEmbeddable_AnotherName(), theXMLTypePackage.getString(), "anotherName", null, 1, 1, AnotherEmbeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnotherEmbeddable_AOneToMany(), this.getAOneToMany(), null, "aOneToMany", null, 1, -1, AnotherEmbeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(aOneToManyEClass, AOneToMany.class, "AOneToMany", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAOneToMany_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, AOneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(embeddableEClass, Embeddable.class, "Embeddable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEmbeddable_MyString(), theXMLTypePackage.getString(), "myString", null, 1, 1, Embeddable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -409,6 +445,27 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "anotherName"
+		   });		
+		addAnnotation
+		  (getAnotherEmbeddable_AOneToMany(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "aOneToMany"
+		   });			
+		addAnnotation
+		  (aOneToManyEClass, 
+		   source, 
+		   new String[] {
+			 "name", "AOneToMany",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getAOneToMany_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
 		   });			
 		addAnnotation
 		  (embeddableEClass, 
@@ -505,6 +562,12 @@ public class EmbeddedPackageImpl extends EPackageImpl implements EmbeddedPackage
 		   });				
 		addAnnotation
 		  (anotherEmbeddableEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Embeddable"
+		   });					
+		addAnnotation
+		  (aOneToManyEClass, 
 		   source, 
 		   new String[] {
 			 "appinfo", "@Embeddable"

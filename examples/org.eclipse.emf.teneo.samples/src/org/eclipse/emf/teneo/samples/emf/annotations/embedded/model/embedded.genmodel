@@ -12,6 +12,10 @@
     </genClasses>
     <genClasses ecoreClass="embedded.ecore#//AnotherEmbeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AnotherEmbeddable/anotherName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference embedded.ecore#//AnotherEmbeddable/aOneToMany"/>
+    </genClasses>
+    <genClasses ecoreClass="embedded.ecore#//AOneToMany">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AOneToMany/name"/>
     </genClasses>
     <genClasses ecoreClass="embedded.ecore#//Embeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//Embeddable/myString"/>

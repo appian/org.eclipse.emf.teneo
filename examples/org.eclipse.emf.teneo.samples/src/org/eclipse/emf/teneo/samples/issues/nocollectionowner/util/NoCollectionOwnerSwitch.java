@@ -2,16 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedSwitch.java,v 1.5 2009/12/04 15:06:58 mtaal Exp $
+ * $Id: NoCollectionOwnerSwitch.java,v 1.1 2009/12/04 15:06:53 mtaal Exp $
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.embedded.util;
+package org.eclipse.emf.teneo.samples.issues.nocollectionowner.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.teneo.samples.emf.annotations.embedded.*;
+import org.eclipse.emf.teneo.samples.issues.nocollectionowner.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,17 +23,17 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embedded.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage
+ * @see org.eclipse.emf.teneo.samples.issues.nocollectionowner.NoCollectionOwnerPackage
  * @generated
  */
-public class EmbeddedSwitch<T> {
+public class NoCollectionOwnerSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static EmbeddedPackage modelPackage;
+	protected static NoCollectionOwnerPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -41,9 +41,9 @@ public class EmbeddedSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EmbeddedSwitch() {
+	public NoCollectionOwnerSwitch() {
 		if (modelPackage == null) {
-			modelPackage = EmbeddedPackage.eINSTANCE;
+			modelPackage = NoCollectionOwnerPackage.eINSTANCE;
 		}
 	}
 
@@ -87,34 +87,39 @@ public class EmbeddedSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case EmbeddedPackage.ALSO_EMBEDDABLE: {
-				AlsoEmbeddable alsoEmbeddable = (AlsoEmbeddable)theEObject;
-				T result = caseAlsoEmbeddable(alsoEmbeddable);
+			case NoCollectionOwnerPackage.PRODUCT: {
+				Product product = (Product)theEObject;
+				T result = caseProduct(product);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EmbeddedPackage.ANOTHER_EMBEDDABLE: {
-				AnotherEmbeddable anotherEmbeddable = (AnotherEmbeddable)theEObject;
-				T result = caseAnotherEmbeddable(anotherEmbeddable);
-				if (result == null) result = caseAlsoEmbeddable(anotherEmbeddable);
+			case NoCollectionOwnerPackage.CUSTOMER: {
+				Customer customer = (Customer)theEObject;
+				T result = caseCustomer(customer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EmbeddedPackage.AONE_TO_MANY: {
-				AOneToMany aOneToMany = (AOneToMany)theEObject;
-				T result = caseAOneToMany(aOneToMany);
+			case NoCollectionOwnerPackage.PRODUCT_CATEGORY: {
+				ProductCategory productCategory = (ProductCategory)theEObject;
+				T result = caseProductCategory(productCategory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EmbeddedPackage.EMBEDDABLE: {
-				Embeddable embeddable = (Embeddable)theEObject;
-				T result = caseEmbeddable(embeddable);
+			case NoCollectionOwnerPackage.PRICE_CATEGORY: {
+				PriceCategory priceCategory = (PriceCategory)theEObject;
+				T result = casePriceCategory(priceCategory);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EmbeddedPackage.EMBEDDER: {
-				Embedder embedder = (Embedder)theEObject;
-				T result = caseEmbedder(embedder);
+			case NoCollectionOwnerPackage.ORDER: {
+				Order order = (Order)theEObject;
+				T result = caseOrder(order);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case NoCollectionOwnerPackage.TRANSACTION: {
+				Transaction transaction = (Transaction)theEObject;
+				T result = caseTransaction(transaction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -123,77 +128,92 @@ public class EmbeddedSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Also Embeddable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Product</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Also Embeddable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Product</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAlsoEmbeddable(AlsoEmbeddable object) {
+	public T caseProduct(Product object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Another Embeddable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Customer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Another Embeddable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Customer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAnotherEmbeddable(AnotherEmbeddable object) {
+	public T caseCustomer(Customer object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>AOne To Many</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Product Category</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>AOne To Many</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Product Category</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAOneToMany(AOneToMany object) {
+	public T caseProductCategory(ProductCategory object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Embeddable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Price Category</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Embeddable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Price Category</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEmbeddable(Embeddable object) {
+	public T casePriceCategory(PriceCategory object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Embedder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Order</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Embedder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Order</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEmbedder(Embedder object) {
+	public T caseOrder(Order object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transaction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transaction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransaction(Transaction object) {
 		return null;
 	}
 
@@ -212,4 +232,4 @@ public class EmbeddedSwitch<T> {
 		return null;
 	}
 
-} //EmbeddedSwitch
+} //NoCollectionOwnerSwitch

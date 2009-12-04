@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedFactoryImpl.java,v 1.4 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: EmbeddedFactoryImpl.java,v 1.5 2009/12/04 15:06:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -62,6 +62,7 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 		switch (eClass.getClassifierID()) {
 			case EmbeddedPackage.ALSO_EMBEDDABLE: return createAlsoEmbeddable();
 			case EmbeddedPackage.ANOTHER_EMBEDDABLE: return createAnotherEmbeddable();
+			case EmbeddedPackage.AONE_TO_MANY: return createAOneToMany();
 			case EmbeddedPackage.EMBEDDABLE: return createEmbeddable();
 			case EmbeddedPackage.EMBEDDER: return createEmbedder();
 			default:
@@ -87,6 +88,16 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 	public AnotherEmbeddable createAnotherEmbeddable() {
 		AnotherEmbeddableImpl anotherEmbeddable = new AnotherEmbeddableImpl();
 		return anotherEmbeddable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AOneToMany createAOneToMany() {
+		AOneToManyImpl aOneToMany = new AOneToManyImpl();
+		return aOneToMany;
 	}
 
 	/**

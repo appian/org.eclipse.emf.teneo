@@ -2,17 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddableImpl.java,v 1.3 2007/07/11 18:28:21 mtaal Exp $
+ * $Id: EmbeddableImpl.java,v 1.4 2009/12/04 15:06:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectEList;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
 
@@ -177,7 +181,7 @@ public class EmbeddableImpl extends EObjectImpl implements Embeddable {
 			case EmbeddedPackage.EMBEDDABLE__MY_STRING:
 				return getMyString();
 			case EmbeddedPackage.EMBEDDABLE__MY_INTEGER:
-				return new Integer(getMyInteger());
+				return getMyInteger();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -187,6 +191,7 @@ public class EmbeddableImpl extends EObjectImpl implements Embeddable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -194,7 +199,7 @@ public class EmbeddableImpl extends EObjectImpl implements Embeddable {
 				setMyString((String)newValue);
 				return;
 			case EmbeddedPackage.EMBEDDABLE__MY_INTEGER:
-				setMyInteger(((Integer)newValue).intValue());
+				setMyInteger((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

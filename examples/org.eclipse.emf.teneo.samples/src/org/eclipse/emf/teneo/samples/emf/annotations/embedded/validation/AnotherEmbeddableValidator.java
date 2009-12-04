@@ -2,9 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnotherEmbeddableValidator.java,v 1.1 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: AnotherEmbeddableValidator.java,v 1.2 2009/12/04 15:06:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.validation;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany;
 
 
 /**
@@ -17,4 +20,6 @@ public interface AnotherEmbeddableValidator {
 	boolean validate();
 
 	boolean validateAnotherName(String value);
+
+	boolean validateAOneToMany(EList<AOneToMany> value);
 }

@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnotherEmbeddable.java,v 1.1 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: AnotherEmbeddable.java,v 1.2 2009/12/04 15:06:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
+
+import org.eclipse.emf.common.util.EList;
 
 
 /**
@@ -16,6 +18,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAnotherName <em>Another Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAOneToMany <em>AOne To Many</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,5 +54,22 @@ public interface AnotherEmbeddable extends AlsoEmbeddable {
 	 * @generated
 	 */
 	void setAnotherName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>AOne To Many</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>AOne To Many</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>AOne To Many</em>' reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getAnotherEmbeddable_AOneToMany()
+	 * @model resolveProxies="false" required="true"
+	 *        extendedMetaData="kind='element' name='aOneToMany'"
+	 * @generated
+	 */
+	EList<AOneToMany> getAOneToMany();
 
 } // AnotherEmbeddable
