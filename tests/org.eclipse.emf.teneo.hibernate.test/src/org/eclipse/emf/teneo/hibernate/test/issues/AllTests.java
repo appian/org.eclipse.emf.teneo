@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  */
 public class AllTests {
 
@@ -96,17 +96,17 @@ public class AllTests {
 		suite.addTestSuite(BZ237790Action.class);
 		suite.addTestSuite(BZ237498Action.class);
 
-		suite.addTestSuite(SecondarytableInheritanceAction.class);
-		if (!HibernateTestbed.isRunningOnBuildServer()) {
-			// gives out-of-mem on build server but not locally
-			suite.addTestSuite(LargeMapValueAction.class);
-		}
-
-		suite.addTestSuite(BZ224991Action.class);
-
 		// disabled some more tests as the build server seems to fail after so many tests
 		// these tests pass locally ofcourse
 		if (!HibernateTestbed.isRunningOnBuildServer()) {
+
+			suite.addTestSuite(SecondarytableInheritanceAction.class);
+			if (!HibernateTestbed.isRunningOnBuildServer()) {
+				// gives out-of-mem on build server but not locally
+				suite.addTestSuite(LargeMapValueAction.class);
+			}
+
+			suite.addTestSuite(BZ224991Action.class);
 			suite.addTestSuite(AbstractTopClassAction.class);
 			suite.addTestSuite(GeneralTestAction.class);
 			suite.addTestSuite(TransientOtmAction.class);
