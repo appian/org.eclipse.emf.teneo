@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.21 2009/04/03 06:15:39 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.22 2009/12/13 10:13:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class LibraryAction extends AbstractTestAction {
 
@@ -55,7 +55,6 @@ public class LibraryAction extends AbstractTestAction {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
-		// store.disableDrop();
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 
 		// {
@@ -200,6 +199,9 @@ public class LibraryAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 
+		// test https://bugs.eclipse.org/bugs/show_bug.cgi?id=297627
+		checkIndexName(store);
+
 		dumpPAModel(store);
 		checkTeneoSQLNameStrategy();
 	}
@@ -270,6 +272,9 @@ public class LibraryAction extends AbstractTestAction {
 	}
 
 	protected void checkTeneoSQLNameStrategy() {
+	}
+
+	protected void checkIndexName(TestStore store) {
 	}
 
 	// /** Small adapter test
