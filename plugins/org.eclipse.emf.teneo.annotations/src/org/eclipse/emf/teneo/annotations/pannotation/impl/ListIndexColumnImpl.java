@@ -2,56 +2,56 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExternalImpl.java,v 1.2 2009/12/13 10:14:19 mtaal Exp $
+ * $Id: ListIndexColumnImpl.java,v 1.1 2009/12/13 10:14:19 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.teneo.annotations.pannotation.External;
+import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>External</b></em>'.
+ * An implementation of the model object '<em><b>List Index Column</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ExternalImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ListIndexColumnImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExternalImpl extends PAnnotationImpl implements External {
+public class ListIndexColumnImpl extends PAnnotationImpl implements ListIndexColumn {
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String type = TYPE_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalImpl() {
+	protected ListIndexColumnImpl() {
 		super();
 	}
 
@@ -62,7 +62,7 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PannotationPackage.Literals.EXTERNAL;
+		return PannotationPackage.Literals.LIST_INDEX_COLUMN;
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getType() {
-		return type;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -79,11 +79,11 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(String newType) {
-		String oldType = type;
-		type = newType;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.EXTERNAL__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.LIST_INDEX_COLUMN__NAME, oldName, name));
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PannotationPackage.EXTERNAL__TYPE:
-				return getType();
+			case PannotationPackage.LIST_INDEX_COLUMN__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +108,8 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PannotationPackage.EXTERNAL__TYPE:
-				setType((String)newValue);
+			case PannotationPackage.LIST_INDEX_COLUMN__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +123,8 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.EXTERNAL__TYPE:
-				setType(TYPE_EDEFAULT);
+			case PannotationPackage.LIST_INDEX_COLUMN__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +138,8 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PannotationPackage.EXTERNAL__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case PannotationPackage.LIST_INDEX_COLUMN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,10 +154,10 @@ public class ExternalImpl extends PAnnotationImpl implements External {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (type: ");
-		result.append(type);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ExternalImpl
+} //ListIndexColumnImpl

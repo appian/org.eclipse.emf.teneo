@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.20 2009/09/13 14:45:54 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.21 2009/12/13 10:14:15 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -2005,13 +2005,50 @@ public interface PannotationPackage extends EPackage {
 	int NO_EAV_MAPPING_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ListIndexColumnImpl <em>List Index Column</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ListIndexColumnImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getListIndexColumn()
+	 * @generated
+	 */
+	int LIST_INDEX_COLUMN = 40;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_INDEX_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_INDEX_COLUMN__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>List Index Column</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_INDEX_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.FetchType
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 43;
+	int FETCH_TYPE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -2020,7 +2057,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 41;
+	int DISCRIMINATOR_TYPE = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -2029,7 +2066,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 42;
+	int ENUM_TYPE = 43;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -2038,7 +2075,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 45;
+	int INHERITANCE_TYPE = 46;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -2047,7 +2084,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 40;
+	int CASCADE_TYPE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -2056,7 +2093,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 46;
+	int TEMPORAL_TYPE = 47;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}' enum.
@@ -2066,7 +2103,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOptimizerType()
 	 * @generated
 	 */
-	int OPTIMIZER_TYPE = 47;
+	int OPTIMIZER_TYPE = 48;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -2075,7 +2112,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 44;
+	int GENERATION_TYPE = 45;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -3459,6 +3496,27 @@ public interface PannotationPackage extends EPackage {
 	EClass getNoEAVMapping();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn <em>List Index Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Index Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn
+	 * @generated
+	 */
+	EClass getListIndexColumn();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn#getName()
+	 * @see #getListIndexColumn()
+	 * @generated
+	 */
+	EAttribute getListIndexColumn_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride <em>Association Override</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Association Override</em>'.
@@ -4804,6 +4862,24 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NO_EAV_MAPPING = eINSTANCE.getNoEAVMapping();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ListIndexColumnImpl <em>List Index Column</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ListIndexColumnImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getListIndexColumn()
+		 * @generated
+		 */
+		EClass LIST_INDEX_COLUMN = eINSTANCE.getListIndexColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIST_INDEX_COLUMN__NAME = eINSTANCE.getListIndexColumn_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.

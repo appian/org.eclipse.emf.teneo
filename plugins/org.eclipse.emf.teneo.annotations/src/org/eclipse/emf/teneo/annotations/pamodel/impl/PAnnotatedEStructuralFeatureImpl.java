@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.16 2009/06/11 04:59:35 mtaal Exp $
+ * $Id: PAnnotatedEStructuralFeatureImpl.java,v 1.17 2009/12/13 10:14:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
+import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'.
@@ -29,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getPaEClass <em>Pa EClass</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getModelEStructuralFeature <em>Model EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getForeignKey <em>Foreign Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getListIndexColumn <em>List Index Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +46,16 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * @ordered
 	 */
 	protected ForeignKey foreignKey;
+
+	/**
+	 * The cached value of the '{@link #getListIndexColumn() <em>List Index Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getListIndexColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected ListIndexColumn listIndexColumn;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -159,6 +171,49 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListIndexColumn getListIndexColumn() {
+		return listIndexColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetListIndexColumn(ListIndexColumn newListIndexColumn, NotificationChain msgs) {
+		ListIndexColumn oldListIndexColumn = listIndexColumn;
+		listIndexColumn = newListIndexColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN, oldListIndexColumn, newListIndexColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setListIndexColumn(ListIndexColumn newListIndexColumn) {
+		if (newListIndexColumn != listIndexColumn) {
+			NotificationChain msgs = null;
+			if (listIndexColumn != null)
+				msgs = ((InternalEObject)listIndexColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN, null, msgs);
+			if (newListIndexColumn != null)
+				msgs = ((InternalEObject)newListIndexColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN, null, msgs);
+			msgs = basicSetListIndexColumn(newListIndexColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN, newListIndexColumn, newListIndexColumn));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -184,6 +239,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return basicSetPaEClass(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				return basicSetForeignKey(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
+				return basicSetListIndexColumn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -215,6 +272,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return basicGetModelEStructuralFeature();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				return getForeignKey();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
+				return getListIndexColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -231,6 +290,9 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				setForeignKey((ForeignKey)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
+				setListIndexColumn((ListIndexColumn)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,6 +311,9 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				setForeignKey((ForeignKey)null);
 				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
+				setListIndexColumn((ListIndexColumn)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -266,6 +331,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return basicGetModelEStructuralFeature() != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY:
 				return foreignKey != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
+				return listIndexColumn != null;
 		}
 		return super.eIsSet(featureID);
 	}

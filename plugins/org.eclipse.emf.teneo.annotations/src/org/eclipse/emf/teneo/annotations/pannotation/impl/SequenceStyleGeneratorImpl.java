@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SequenceStyleGeneratorImpl.java,v 1.2 2009/06/11 04:59:34 mtaal Exp $
+ * $Id: SequenceStyleGeneratorImpl.java,v 1.3 2009/12/13 10:14:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.annotations.pannotation.OptimizerType;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;

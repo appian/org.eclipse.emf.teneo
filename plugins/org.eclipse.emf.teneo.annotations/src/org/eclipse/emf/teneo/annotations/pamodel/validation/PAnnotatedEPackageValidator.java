@@ -2,18 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEPackageValidator.java,v 1.3 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PAnnotatedEPackageValidator.java,v 1.4 2009/12/13 10:14:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
-
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;

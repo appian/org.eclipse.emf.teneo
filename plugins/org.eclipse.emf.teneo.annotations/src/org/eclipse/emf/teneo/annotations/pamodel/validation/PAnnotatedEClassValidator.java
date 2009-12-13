@@ -2,17 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassValidator.java,v 1.4 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PAnnotatedEClassValidator.java,v 1.5 2009/12/13 10:14:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
-
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;

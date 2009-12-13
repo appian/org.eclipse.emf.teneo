@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.31 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.32 2009/12/13 10:14:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -263,6 +263,10 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseNoEAVMapping(NoEAVMapping object) {
 				return createNoEAVMappingAdapter();
+			}
+			@Override
+			public Adapter caseListIndexColumn(ListIndexColumn object) {
+				return createListIndexColumnAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -827,6 +831,20 @@ public class PannotationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNoEAVMappingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn <em>List Index Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn
+	 * @generated
+	 */
+	public Adapter createListIndexColumnAdapter() {
 		return null;
 	}
 

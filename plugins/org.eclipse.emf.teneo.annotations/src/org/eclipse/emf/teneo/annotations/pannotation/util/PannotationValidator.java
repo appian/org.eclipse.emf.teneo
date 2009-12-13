@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.32 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.33 2009/12/13 10:14:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -212,6 +212,8 @@ public class PannotationValidator extends EObjectValidator {
 				return validateEAVMapping((EAVMapping)value, diagnostics, context);
 			case PannotationPackage.NO_EAV_MAPPING:
 				return validateNoEAVMapping((NoEAVMapping)value, diagnostics, context);
+			case PannotationPackage.LIST_INDEX_COLUMN:
+				return validateListIndexColumn((ListIndexColumn)value, diagnostics, context);
 			case PannotationPackage.CASCADE_TYPE:
 				return validateCascadeType((CascadeType)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_TYPE:
@@ -1615,6 +1617,24 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(noEAVMapping, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateListIndexColumn(ListIndexColumn listIndexColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(listIndexColumn, diagnostics, context);
 		return result;
 	}
 

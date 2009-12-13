@@ -2,14 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEDataTypeValidator.java,v 1.3 2008/01/18 06:20:56 mtaal Exp $
+ * $Id: PAnnotatedEDataTypeValidator.java,v 1.4 2009/12/13 10:14:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
 import org.eclipse.emf.ecore.EDataType;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
-
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;

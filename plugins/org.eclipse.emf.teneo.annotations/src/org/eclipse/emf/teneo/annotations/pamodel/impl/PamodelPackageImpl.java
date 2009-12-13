@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackageImpl.java,v 1.22 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PamodelPackageImpl.java,v 1.23 2009/12/13 10:14:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -500,6 +500,15 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPAnnotatedEStructuralFeature_ListIndexColumn() {
+		return (EReference)pAnnotatedEStructuralFeatureEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPAnnotatedEAttribute() {
 		return pAnnotatedEAttributeEClass;
 	}
@@ -923,6 +932,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__PA_ECLASS);
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__MODEL_ESTRUCTURAL_FEATURE);
 		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY);
+		createEReference(pAnnotatedEStructuralFeatureEClass, PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN);
 
 		pAnnotatedEAttributeEClass = createEClass(PANNOTATED_EATTRIBUTE);
 		createEReference(pAnnotatedEAttributeEClass, PANNOTATED_EATTRIBUTE__MODEL_EATTRIBUTE);
@@ -1049,6 +1059,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		initEReference(getPAnnotatedEStructuralFeature_PaEClass(), this.getPAnnotatedEClass(), this.getPAnnotatedEClass_PaEStructuralFeatures(), "paEClass", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEStructuralFeature_ModelEStructuralFeature(), ecorePackage.getEStructuralFeature(), null, "modelEStructuralFeature", null, 0, 1, PAnnotatedEStructuralFeature.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPAnnotatedEStructuralFeature_ForeignKey(), thePannotationPackage.getForeignKey(), null, "foreignKey", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPAnnotatedEStructuralFeature_ListIndexColumn(), thePannotationPackage.getListIndexColumn(), null, "listIndexColumn", null, 0, 1, PAnnotatedEStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(pAnnotatedEAttributeEClass, PAnnotatedEAttribute.class, "PAnnotatedEAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotatedEAttribute_ModelEAttribute(), ecorePackage.getEAttribute(), null, "modelEAttribute", null, 0, 1, PAnnotatedEAttribute.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1143,7 +1154,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "EClassCommutes TransientNotAnnotated"
-		   });				
+		   });					
 		addAnnotation
 		  (pAnnotatedEAttributeEClass, 
 		   source, 
@@ -1237,7 +1248,7 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });			
+		   });				
 		addAnnotation
 		  (getPAnnotatedEAttribute_ModelEAttribute(), 
 		   source, 
@@ -1299,7 +1310,14 @@ public class PamodelPackageImpl extends EPackageImpl implements PamodelPackage {
 		   new String[] {
 			 "annotationName", "AssociationOverrides",
 			 "annotationClass", "javax.persistence.AssociationOverrides"
-		   });									
+		   });					
+		addAnnotation
+		  (getPAnnotatedEStructuralFeature_ListIndexColumn(), 
+		   source, 
+		   new String[] {
+			 "annotationName", "JoinColumns",
+			 "annotationClass", "javax.persistence.JoinColumns"
+		   });						
 		addAnnotation
 		  (getPAnnotatedEReference_PrimaryKeyJoinColumns(), 
 		   source, 

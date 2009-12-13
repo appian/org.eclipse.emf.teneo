@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationFactory.java,v 1.13 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PannotationFactory.java,v 1.14 2009/12/13 10:14:17 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -331,6 +331,15 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	NoEAVMapping createNoEAVMapping();
+
+	/**
+	 * Returns a new object of class '<em>List Index Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Index Column</em>'.
+	 * @generated
+	 */
+	ListIndexColumn createListIndexColumn();
 
 	/**
 	 * Returns a new object of class '<em>Association Override</em>'.

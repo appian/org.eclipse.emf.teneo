@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.28 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PannotationSwitch.java,v 1.29 2009/12/13 10:14:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -398,6 +398,13 @@ public class PannotationSwitch<T> {
 				NoEAVMapping noEAVMapping = (NoEAVMapping)theEObject;
 				T result = caseNoEAVMapping(noEAVMapping);
 				if (result == null) result = casePAnnotation(noEAVMapping);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.LIST_INDEX_COLUMN: {
+				ListIndexColumn listIndexColumn = (ListIndexColumn)theEObject;
+				T result = caseListIndexColumn(listIndexColumn);
+				if (result == null) result = casePAnnotation(listIndexColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -987,6 +994,21 @@ public class PannotationSwitch<T> {
 	 * @generated
 	 */
 	public T caseNoEAVMapping(NoEAVMapping object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Index Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Index Column</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListIndexColumn(ListIndexColumn object) {
 		return null;
 	}
 

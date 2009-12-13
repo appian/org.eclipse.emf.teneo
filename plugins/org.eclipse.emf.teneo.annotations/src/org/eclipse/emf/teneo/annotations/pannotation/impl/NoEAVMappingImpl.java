@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NoEAVMappingImpl.java,v 1.1 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: NoEAVMappingImpl.java,v 1.2 2009/12/13 10:14:18 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 

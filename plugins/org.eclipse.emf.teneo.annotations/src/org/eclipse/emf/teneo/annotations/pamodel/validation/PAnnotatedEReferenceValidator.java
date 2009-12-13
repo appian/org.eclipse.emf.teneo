@@ -2,14 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEReferenceValidator.java,v 1.3 2009/08/21 10:16:53 mtaal Exp $
+ * $Id: PAnnotatedEReferenceValidator.java,v 1.4 2009/12/13 10:14:13 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.validation;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;

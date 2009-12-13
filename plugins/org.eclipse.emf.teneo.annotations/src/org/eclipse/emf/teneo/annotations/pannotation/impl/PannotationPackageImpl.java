@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.33 2009/09/13 14:45:54 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.34 2009/12/13 10:14:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -47,6 +47,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
+import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
@@ -320,6 +321,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass noEAVMappingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listIndexColumnEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1586,6 +1594,24 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListIndexColumn() {
+		return listIndexColumnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getListIndexColumn_Name() {
+		return (EAttribute)listIndexColumnEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1883,6 +1909,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		noEAVMappingEClass = createEClass(NO_EAV_MAPPING);
 
+		listIndexColumnEClass = createEClass(LIST_INDEX_COLUMN);
+		createEAttribute(listIndexColumnEClass, LIST_INDEX_COLUMN__NAME);
+
 		// Create enums
 		cascadeTypeEEnum = createEEnum(CASCADE_TYPE);
 		discriminatorTypeEEnum = createEEnum(DISCRIMINATOR_TYPE);
@@ -1960,6 +1989,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		externalEClass.getESuperTypes().add(this.getPAnnotation());
 		eavMappingEClass.getESuperTypes().add(this.getPAnnotation());
 		noEAVMappingEClass.getESuperTypes().add(this.getPAnnotation());
+		listIndexColumnEClass.getESuperTypes().add(this.getPAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2145,6 +2175,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		initEClass(noEAVMappingEClass, NoEAVMapping.class, "NoEAVMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(listIndexColumnEClass, ListIndexColumn.class, "ListIndexColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListIndexColumn_Name(), ecorePackage.getEString(), "name", null, 1, 1, ListIndexColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(cascadeTypeEEnum, CascadeType.class, "CascadeType");
 		addEEnumLiteral(cascadeTypeEEnum, CascadeType.ALL);
@@ -2224,7 +2257,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																												
+		   });																																																													
 	}
 
 	/**
@@ -2241,7 +2274,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																											
+		   });																																																												
 	}
 
 	/**
@@ -2364,7 +2397,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });					
+		   });						
 	}
 
 	/**
@@ -2611,6 +2644,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EClass"
+		   });		
+		addAnnotation
+		  (listIndexColumnEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
 		   });
 	}
 
@@ -2626,7 +2665,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																																									
+		   });																																																										
 	}
 
 	/**
@@ -2642,7 +2681,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																													
+		   });																																														
 	}
 
 	/**

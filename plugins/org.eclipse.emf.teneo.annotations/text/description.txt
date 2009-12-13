@@ -51,6 +51,7 @@ Package pamodel <http://www.eclipse.org/emf/teneo/elver/2005/pamodel>
     Reference paEClass : PAnnotatedEClass
     Reference /modelEStructuralFeature : EStructuralFeature
     Reference foreignKey : ForeignKey
+    Reference listIndexColumn : ListIndexColumn
 
   Class PAnnotatedEAttribute -> PAnnotatedEStructuralFeature
     Reference modelEAttribute : EAttribute
@@ -280,6 +281,9 @@ Package pannotation <http://www.eclipse.org/emf/teneo/elver/2005/PAnnotation>
   Class EAVMapping -> PAnnotation
 
   Class NoEAVMapping -> PAnnotation
+
+  Class ListIndexColumn -> PAnnotation
+    Attribute name : EString<<1..1>>
 
   Enum CascadeType
     Literal ALL = 0
