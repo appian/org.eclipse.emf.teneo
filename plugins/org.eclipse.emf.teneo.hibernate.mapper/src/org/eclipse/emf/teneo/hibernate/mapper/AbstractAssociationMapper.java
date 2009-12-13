@@ -328,6 +328,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected String getIndexColumnName(PAnnotatedEStructuralFeature aFeature) {
 		final SQLNameStrategy sqlNameStrategy = getHbmContext().getExtensionManager().getExtension(
 				SQLNameStrategy.class);
+		if (aFeature.getListIndexColumn() != null) {
+			return aFeature.getListIndexColumn().getName();
+		}
 		if (sqlNameStrategy instanceof ClassicSQLNameStrategy) {
 			return ((ClassicSQLNameStrategy) sqlNameStrategy).getIndexColumnName(aFeature);
 		} else {

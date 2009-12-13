@@ -131,6 +131,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="join-table" type="JoinTable" minOccurs="0"/>
+			<xsd:element name="list-index-column" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="lob" type="Lob" minOccurs="0"/>
 			<xsd:element name="natural-id" type="xsd:boolean" minOccurs="0"/>
 			<xsd:element name="one-to-many" type="OneToMany" minOccurs="0"/>
@@ -194,6 +195,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="join-table" type="JoinTable" minOccurs="0"/>
+			<xsd:element name="list-index-column" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="many-to-many" type="ManyToMany" minOccurs="0"/>
 			<xsd:element name="many-to-one" type="ManyToOne" minOccurs="0"/>
 			<xsd:element name="map-key" type="xsd:string" minOccurs="0"/>
@@ -270,6 +272,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="join-table" type="JoinTable" minOccurs="0"/>
+			<xsd:element name="list-index-column" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="lob" type="Lob" minOccurs="0"/>
 			<xsd:element name="many-to-many" type="ManyToMany" minOccurs="0"/>
 			<xsd:element name="many-to-one" type="ManyToOne" minOccurs="0"/>
