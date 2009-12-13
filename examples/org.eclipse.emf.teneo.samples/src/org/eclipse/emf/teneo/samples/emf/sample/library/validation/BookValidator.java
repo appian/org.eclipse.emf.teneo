@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookValidator.java,v 1.1 2007/07/09 12:55:20 mtaal Exp $
+ * $Id: BookValidator.java,v 1.2 2009/12/13 10:13:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.validation;
 
@@ -22,4 +22,6 @@ public interface BookValidator {
 	boolean validatePages(int value);
 	boolean validateCategory(BookCategory value);
 	boolean validateAuthor(Writer value);
+
+	boolean validateTest(int value);
 }

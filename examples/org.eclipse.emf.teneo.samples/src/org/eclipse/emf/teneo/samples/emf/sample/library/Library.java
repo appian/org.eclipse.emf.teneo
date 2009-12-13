@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.6 2009/04/02 20:46:30 mtaal Exp $
+ * $Id: Library.java,v 1.7 2009/12/13 10:13:31 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library;
 
@@ -67,7 +67,7 @@ public interface Library extends SerializableEObject {
 	 * @return the value of the '<em>Writers</em>' containment reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage#getLibrary_Writers()
 	 * @model containment="true"
-	 *        annotation="teneo.hibernate appinfo='@Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")'"
+	 *        annotation="teneo.hibernate appinfo='@ListIndexColumn(name=\"test_index\") @Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")'"
 	 *        extendedMetaData="kind='element' name='writers'"
 	 * @generated
 	 */

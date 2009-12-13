@@ -31,7 +31,7 @@
       <xsd:element maxOccurs="unbounded" minOccurs="0"
           name="writers" type="lib:Writer">
 	 	<xsd:annotation>
-			<xsd:appinfo source="teneo.hibernate">@Fetch(SUBSELECT) @ForeignKey(name="schrijvers")</xsd:appinfo>
+			<xsd:appinfo source="teneo.hibernate">@ListIndexColumn(name="test_index") @Fetch(SUBSELECT) @ForeignKey(name="schrijvers")</xsd:appinfo>
 	    </xsd:annotation>
 	  </xsd:element>
       <xsd:element maxOccurs="unbounded" minOccurs="0"

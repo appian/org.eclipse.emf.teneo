@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.8 2009/04/02 20:46:30 mtaal Exp $
+ * $Id: LibraryPackageImpl.java,v 1.9 2009/12/13 10:13:28 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.sample.library.impl;
 
@@ -90,20 +90,10 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link LibraryPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -115,7 +105,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		if (isInited) return (LibraryPackage)EPackage.Registry.INSTANCE.getEPackage(LibraryPackage.eNS_URI);
 
 		// Obtain or create and register package
-		LibraryPackageImpl theLibraryPackage = (LibraryPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof LibraryPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new LibraryPackageImpl());
+		LibraryPackageImpl theLibraryPackage = (LibraryPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LibraryPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new LibraryPackageImpl());
 
 		isInited = true;
 
@@ -131,6 +121,9 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		// Mark meta-data to indicate it can't be changed
 		theLibraryPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(LibraryPackage.eNS_URI, theLibraryPackage);
 		return theLibraryPackage;
 	}
 
@@ -532,7 +525,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		  (getLibrary_Writers(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")"
+			 "appinfo", "@ListIndexColumn(name=\"test_index\") @Fetch(SUBSELECT) @ForeignKey(name=\"schrijvers\")"
 		   });					
 	}
 
