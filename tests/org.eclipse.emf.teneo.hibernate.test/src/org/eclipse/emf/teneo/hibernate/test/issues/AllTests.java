@@ -46,18 +46,15 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(Bz293848Action.class);
 		suite.addTestSuite(NoCollectionOwnerAction.class);
-		if (true) {
-			return suite;
-		}
-
 		suite.addTestSuite(Bz294201Action.class);
 
 		// to enable this test add a hibernate.properties in the root with the following property:

@@ -11,11 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.14 2009/08/22 00:18:35 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.15 2009/12/13 10:13:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -26,6 +30,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
 import org.eclipse.emf.teneo.test.AbstractActionTest;
+import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -33,7 +38,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -92,6 +97,28 @@ public class LibraryTest extends AbstractActionTest {
 		protected void dumpPAModel(TestStore testStore) {
 			final HibernateTestStore hts = (HibernateTestStore) testStore;
 			// System.err.println(hts.getEmfDataStore().getPaModel().toXML());
+		}
+
+		// test https://bugs.eclipse.org/bugs/show_bug.cgi?id=297627
+		protected void checkIndexName(TestStore store) {
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				try {
+					conn = store.getConnection();
+					stmt = conn.createStatement();
+					// check version column name
+					ResultSet rs = stmt.executeQuery("select test_index from tab_writer");
+					assertTrue(rs.next());
+				} finally {
+					if (stmt != null)
+						stmt.close();
+					if (conn != null)
+						conn.close();
+				}
+			} catch (SQLException e) {
+				throw new StoreTestException("Sql exception when checking db schema", e);
+			}
 		}
 
 	};

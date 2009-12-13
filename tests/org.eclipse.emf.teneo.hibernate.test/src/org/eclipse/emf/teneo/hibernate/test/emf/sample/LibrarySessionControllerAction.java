@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAction.java,v 1.8 2009/04/03 06:16:36 mtaal Exp $
+ * $Id: LibrarySessionControllerAction.java,v 1.9 2009/12/13 10:13:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibrarySessionControllerAction extends AbstractTestAction {
 	/**
@@ -147,6 +147,22 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				sc.getSessionWrapper().commitTransaction();
 				res1.unload();
 				res2.unload();
+			}
+
+			// test https://bugs.eclipse.org/bugs/show_bug.cgi?id=297687
+			{
+				sc.getSessionWrapper().beginTransaction();
+				HibernateResource res1 = (HibernateResource) getResource(resourceSet, "query1=select l from Library l");
+				final Library library = factory.createLibrary();
+				library.setName("Science_Fiction");
+				res1.getContents().add(library);
+				res1.save(Collections.EMPTY_MAP);
+				sc.getSessionWrapper().commitTransaction();
+
+				sc.getSessionWrapper().beginTransaction();
+				res1.getContents().remove(res1.getContents().get(0));
+				res1.save(Collections.EMPTY_MAP);
+				sc.getSessionWrapper().commitTransaction();
 			}
 
 		} catch (Exception e) {

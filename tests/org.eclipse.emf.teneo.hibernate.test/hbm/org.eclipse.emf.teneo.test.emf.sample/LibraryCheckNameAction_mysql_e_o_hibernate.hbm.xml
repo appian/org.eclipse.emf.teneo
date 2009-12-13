@@ -50,7 +50,7 @@
 			<key update="true" foreign-key="schrijvers">
 				<column name="`lb_wr_d`" not-null="false" unique="false"/>
 			</key>
-			<list-index column="`lb_wr_dx`"/>
+			<list-index column="`tst_indx`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="books" lazy="true" cascade="all,delete-orphan">
