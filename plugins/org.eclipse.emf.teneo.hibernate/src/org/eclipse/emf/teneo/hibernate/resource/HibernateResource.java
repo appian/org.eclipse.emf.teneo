@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateResource.java,v 1.27 2009/08/23 17:52:02 mtaal Exp $
+ * $Id: HibernateResource.java,v 1.28 2009/12/13 10:13:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -27,7 +27,6 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -41,10 +40,8 @@ import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbSessionWrapper;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
-import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
-import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.Session;
 import org.hibernate.engine.SessionImplementor;
@@ -62,7 +59,7 @@ import org.hibernate.impl.SessionImpl;
  * hibernate resource!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 
 public class HibernateResource extends StoreResource implements HbResource {
@@ -344,7 +341,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 		log.debug("Saving resource with uri: " + getURI());
 
 		boolean err = true;
-		final List<InternalEObject> clearPersistentAdapters = new ArrayList<InternalEObject>();
 		final SessionWrapper mySessionWrapper = getSessionWrapper();
 		try {
 			if (!hasSessionController) {
@@ -369,7 +365,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 						mySessionWrapper.delete(obj);
 						EMFInterceptor.registerCollectionsForDereferencing((EObject) obj);
 					}
-					clearPersistentAdapters.add(eobj);
 				}
 			}
 
@@ -392,20 +387,6 @@ public class HibernateResource extends StoreResource implements HbResource {
 					mySessionWrapper.commitTransaction();
 				}
 			}
-		}
-		for (InternalEObject eobj : clearPersistentAdapters) {
-			// remove the PersistentStoreAdapter
-			PersistentStoreAdapter toRemoveAdapter = null;
-			for (Adapter adapter : eobj.eAdapters()) {
-				if (adapter instanceof PersistentStoreAdapter) {
-					toRemoveAdapter = (PersistentStoreAdapter) adapter;
-				}
-			}
-			if (toRemoveAdapter != null) {
-				eobj.eAdapters().remove(toRemoveAdapter);
-			}
-			IdentifierCacheHandler.getInstance().setVersion(eobj, null);
-			IdentifierCacheHandler.getInstance().setID(eobj, null);
 		}
 	}
 

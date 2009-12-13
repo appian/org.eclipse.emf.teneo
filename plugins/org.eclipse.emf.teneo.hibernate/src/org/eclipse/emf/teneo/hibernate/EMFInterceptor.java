@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.13 2009/06/29 22:54:14 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.14 2009/12/13 10:13:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -21,23 +21,27 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.extension.ExtensionInitializable;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.FieldUtil;
 import org.hibernate.EmptyInterceptor;
+import org.hibernate.Transaction;
 import org.hibernate.collection.AbstractPersistentCollection;
 
 /**
  * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, ExtensionManagerAware,
@@ -56,6 +60,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	// save the resource a 'Found two representations of same collection:'
 	// exception occurs
 	private static ThreadLocal<List<AbstractPersistentCollection>> persistentCollections = new ThreadLocal<List<AbstractPersistentCollection>>();
+	private static ThreadLocal<List<EObject>> deletedEObjects = new ThreadLocal<List<EObject>>();
 
 	// note is also used for non-deleted objects in HbResource
 	public static void registerCollectionsForDereferencing(EObject eObject) {
@@ -74,6 +79,10 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 				}
 			}
 		}
+		if (deletedEObjects.get() == null) {
+			deletedEObjects.set(new ArrayList<EObject>());
+		}
+		deletedEObjects.get().add(eObject);
 	}
 
 	// is used to unset a session in a collection. Note that it would be better to use the
@@ -129,6 +138,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	@Override
 	@SuppressWarnings("unchecked")
 	public void postFlush(Iterator entities) {
+		// TODO: consider to move this to after commit
 		final List<AbstractPersistentCollection> list = persistentCollections.get();
 		if (list == null) {
 			return;
@@ -144,6 +154,34 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 		} finally {
 			persistentCollections.set(null);
 		}
+	}
+
+	@Override
+	public void afterTransactionCompletion(Transaction tx) {
+		if (tx.wasCommitted()) {
+			if (deletedEObjects.get() != null) {
+				try {
+					for (EObject eObject : deletedEObjects.get()) {
+						// remove the PersistentStoreAdapter
+						PersistentStoreAdapter toRemoveAdapter = null;
+						for (Adapter adapter : eObject.eAdapters()) {
+							if (adapter instanceof PersistentStoreAdapter) {
+								toRemoveAdapter = (PersistentStoreAdapter) adapter;
+							}
+						}
+						if (toRemoveAdapter != null) {
+							eObject.eAdapters().remove(toRemoveAdapter);
+						}
+						IdentifierCacheHandler.getInstance().setVersion(eObject, null);
+						IdentifierCacheHandler.getInstance().setID(eObject, null);
+
+					}
+				} finally {
+					deletedEObjects.set(null);
+				}
+			}
+		}
+		super.afterTransactionCompletion(tx);
 	}
 
 	/**
