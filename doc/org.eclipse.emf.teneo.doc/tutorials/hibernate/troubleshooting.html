@@ -286,6 +286,9 @@
 <a href="#derbyandidbag">Derby and Hibernate IDBag</a>
 </li>
 <li>
+<a href="#mssqlproblem">DB Schema constraint error using MS Sql</a>
+</li>
+<li>
 <a href="#javassist_duplicate">Duplicate method exception with javaassist</a>
 </li>
 <li>
@@ -390,7 +393,19 @@
 </div>
 
 		
-<a name="N10027"></a><a name="javassist_duplicate"></a>
+<a name="N10027"></a><a name="mssqlproblem"></a>
+<div class="h3">
+<h3>DB Schema constraint error using MS Sql</h3>
+		
+		
+<p>Teneo generates the names of foreign key constraints. MS Sql reports errors if the FK constraint name are the same as 
+		table names. See this <a class="external" href="http://www.eclipse.org/forums/index.php?t=msg&th=159169&start=0&S=406aa87cd4846e7aa7d8bfa06066aa3c">post</a> on the EMF newsgroup. The solution is to set the option:
+		PersistenceOptions.SET_FOREIGN_KEY_NAME to "false".</p>
+		
+</div>
+
+		
+<a name="N10035"></a><a name="javassist_duplicate"></a>
 <div class="h3">
 <h3>Duplicate method exception with javaassist</h3>
 			
@@ -406,7 +421,7 @@
 </div>
 
 		
-<a name="N1003F"></a><a name="document-v13.dtd"></a>
+<a name="N1004D"></a><a name="document-v13.dtd"></a>
 <div class="h3">
 <h3>File Not Found Exception for a file called: document-v13.dtd</h3>
 			
@@ -425,7 +440,7 @@
 </div>
 
 		
-<a name="N10052"></a><a name="toomanytablesinjoin"></a>
+<a name="N10060"></a><a name="toomanytablesinjoin"></a>
 <div class="h3">
 <h3>Issue: too many tables in join sql statement</h3>
 		
@@ -436,7 +451,7 @@
 		
 </div>
 		
-<a name="N1005C"></a><a name="classquery"></a>
+<a name="N1006A"></a><a name="classquery"></a>
 <div class="h3">
 <h3>Unknown Entity</h3>
 			
@@ -450,7 +465,7 @@
 		
 </div>
 		
-<a name="N10066"></a><a name="rowcount"></a>
+<a name="N10074"></a><a name="rowcount"></a>
 <div class="h3">
 <h3>org.hibernate.StaleStateException: Batch update returned unexpected row count from update [0]; actual row count: 0; expected: 1</h3>
 			
@@ -462,7 +477,7 @@
 		
 </div>
 		
-<a name="N10073"></a><a name="runtime"></a>
+<a name="N10081"></a><a name="runtime"></a>
 <div class="h3">
 <h3>Troubleshooting the Mapping and Runtime layer/Hibernate</h3>
 			
@@ -483,7 +498,7 @@
 		
 </div>
 		
-<a name="N10090"></a><a name="ormapper"></a>
+<a name="N1009E"></a><a name="ormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the automatic in-memory mapping</h3>
 			
@@ -493,7 +508,7 @@
 		
 </div>
 		
-<a name="N1009A"></a><a name="manualormapper"></a>
+<a name="N100A8"></a><a name="manualormapper"></a>
 <div class="h3">
 <h3>Troubleshooting the OR Mapper Menu Option</h3>
 			
@@ -511,7 +526,7 @@
 		
 </div>
 		
-<a name="N100B0"></a><a name="resourceplanning"></a>
+<a name="N100BE"></a><a name="resourceplanning"></a>
 <div class="h3">
 <h3>Troubleshooting the Resource Utilities</h3>
 			
@@ -527,7 +542,7 @@
 		
 </div>
 		
-<a name="N100C0"></a><a name="More+debug+information+from+Eclipse"></a>
+<a name="N100CE"></a><a name="More+debug+information+from+Eclipse"></a>
 <div class="h3">
 <h3>More debug information from Eclipse</h3>
 			
@@ -543,7 +558,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N100D0"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
+<a name="N100DE"></a><a name="Cut+and+Paste+does+not+work+in+the+Editor"></a>
 <div class="h3">
 <h3>Cut and Paste does not work in the Editor</h3>
 		
@@ -552,7 +567,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 		
-<a name="N100DC"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
+<a name="N100EA"></a><a name="Client-server+scenario%3A+when+saving+on+the+server+always+new+objects+are+created+or+I+get+a+duplicate+key+exception"></a>
 <div class="h3">
 <h3>Client-server scenario: when saving on the server always new objects are created or I get a duplicate key exception</h3>
 		
@@ -562,7 +577,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 		
 </div>
 			
-<a name="N100E9"></a><a name="Column+name+e_version+not+supported+by+database"></a>
+<a name="N100F7"></a><a name="Column+name+e_version+not+supported+by+database"></a>
 <div class="h3">
 <h3>Column name e_version not supported by database</h3>
 			
@@ -572,7 +587,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N100F6"></a><a name="Column+names+too+long"></a>
+<a name="N10104"></a><a name="Column+names+too+long"></a>
 <div class="h3">
 <h3>Column names too long</h3>
 			
@@ -582,7 +597,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10103"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
+<a name="N10111"></a><a name="org.hibernate.DuplicateMappingException%3A+Duplicate+class%2Fentitymapping"></a>
 <div class="h3">
 <h3>org.hibernate.DuplicateMappingException: Duplicate class/entitymapping</h3>
 			
@@ -593,7 +608,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10110"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
+<a name="N1011E"></a><a name="Created+new+model+through+new+model+wizard%3A+diagnostic+error"></a>
 <div class="h3">
 <h3>Created new model through new model wizard: diagnostic error</h3>
 			
@@ -611,7 +626,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1011C"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
+<a name="N1012A"></a><a name="java.lang.NoClassDefFoundError+when+starting%2Finitializing+runtime+layer"></a>
 <div class="h3">
 <h3>java.lang.NoClassDefFoundError when starting/initializing runtime layer</h3>
 				
@@ -630,7 +645,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1012F"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
+<a name="N1013D"></a><a name="No+class+def+found%3A+org.hibernate.proxy.ProxyFactory"></a>
 <div class="h3">
 <h3>No class def found: org.hibernate.proxy.ProxyFactory</h3>
 			
@@ -642,7 +657,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10138"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
+<a name="N10146"></a><a name="Could+not+determine+type+for%3A+org.eclipse.emf.common.util.AbstractEnumerator%2C+for+columns%3A+%5Borg.hibernate.mapping.Column%28enu%29%5D"></a>
 <div class="h3">
 <h3>Could not determine type for: org.eclipse.emf.common.util.AbstractEnumerator, for columns: [org.hibernate.mapping.Column(enu)]</h3>
 			
@@ -664,7 +679,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10147"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
+<a name="N10155"></a><a name="The+resource+is+empty+in+the+generated+editor"></a>
 <div class="h3">
 <h3>The resource is empty in the generated editor</h3>
 				
@@ -673,7 +688,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10155"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
+<a name="N10163"></a><a name="Update+manager+does+not+find+the+upgrade+of+the+EMF+Hibernate+plugin"></a>
 <div class="h3">
 <h3>Update manager does not find the upgrade of the EMF Hibernate plugin</h3>
 			
@@ -681,7 +696,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1015E"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
+<a name="N1016C"></a><a name="Editor+does+not+start%2C++the+error+log+gives+a+sql+error+%27Missing+column....%27"></a>
 <div class="h3">
 <h3>Editor does not start,  the error log gives a sql error 'Missing column....'</h3>
 			
@@ -692,7 +707,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N1016B"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
+<a name="N10179"></a><a name="Editor+does+not+start%2C+ClassNotFoundException+on+the+Editor+Plugin"></a>
 <div class="h3">
 <h3>Editor does not start, ClassNotFoundException on the Editor Plugin</h3>
 			
@@ -703,7 +718,7 @@ org.eclipse.osgi.framework.debug.Debug.DEBUG_GENERAL = true;
 			
 </div>
 			
-<a name="N10174"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
+<a name="N10182"></a><a name="Editor+does+not+start%2C+AssertionFailedException"></a>
 <div class="h3">
 <h3>Editor does not start, AssertionFailedException</h3>
 			
@@ -723,7 +738,7 @@ at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart
 			
 </div>
 			
-<a name="N10183"></a><a name="Properties+are+not+editable+with+EMF+generated+property+editor"></a>
+<a name="N10191"></a><a name="Properties+are+not+editable+with+EMF+generated+property+editor"></a>
 <div class="h3">
 <h3>Properties are not editable with EMF generated property editor</h3>
 			
@@ -776,7 +791,7 @@ commandStack, new HashMap&lt;Resource, Boolean&gt;());
 			
 </div>
 			
-<a name="N101A1"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
+<a name="N101AF"></a><a name="Validation+exception+on+enumerate+properties+when+saving+the+editor+content"></a>
 <div class="h3">
 <h3>Validation exception on enumerate properties when saving the editor content</h3>
 				
@@ -793,7 +808,7 @@ commandStack, new HashMap&lt;Resource, Boolean&gt;());
 			
 </div>
 			
-<a name="N101B5"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
+<a name="N101C3"></a><a name="Stacktraces+when+starting+Eclipse+with+already+open+EMF+editor"></a>
 <div class="h3">
 <h3>Stacktraces when starting Eclipse with already open EMF editor</h3>
 				
@@ -808,7 +823,7 @@ commandStack, new HashMap&lt;Resource, Boolean&gt;());
 			
 </div>
 			
-<a name="N101C4"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
+<a name="N101D2"></a><a name="Teneo+does+not+see+my+changes+in+the+ecore+model"></a>
 <div class="h3">
 <h3>Teneo does not see my changes in the ecore model</h3>
 				
@@ -819,7 +834,7 @@ commandStack, new HashMap&lt;Resource, Boolean&gt;());
 			
 </div>
 			
-<a name="N101CD"></a><a name="JoinTable+name+clash"></a>
+<a name="N101DB"></a><a name="JoinTable+name+clash"></a>
 <div class="h3">
 <h3>JoinTable name clash</h3>
 			

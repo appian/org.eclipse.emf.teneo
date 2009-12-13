@@ -302,6 +302,9 @@
 <a href="#Embedded+components">Embedded components</a>
 </li>
 <li>
+<a href="#Setting+the+index+column+name">Setting the index column name</a>
+</li>
+<li>
 <a href="#Storing+container+relation">Storing container relation</a>
 </li>
 <li>
@@ -449,7 +452,19 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div>		
 		
-<a name="N10087"></a><a name="Storing+container+relation"></a>
+<a name="N10087"></a><a name="Setting+the+index+column+name"></a>
+<div class="h3">
+<h3>Setting the index column name</h3>
+		
+		
+<p>When mapping a list there will be both a foreign key column (to point from the element in the list to the owner 
+		of the list), but also an index column to hold the index in the list. Teneo uses a default naming strategy which 
+		ensures unique index column names. When you want to control the index column name in more detail you can set the 
+		@ListIndexColumn(name="my_index_column_name") annotation.</p>
+		
+</div>
+		
+<a name="N10091"></a><a name="Storing+container+relation"></a>
 <div class="h3">
 <h3>Storing container relation</h3>
 			
@@ -511,7 +526,7 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div>
 		
-<a name="N100C0"></a><a name="external"></a>
+<a name="N100CA"></a><a name="external"></a>
 <div class="h3">
 <h3>Storing external references (to non-persisted objects), customizing persisting references</h3>
 			
@@ -542,7 +557,7 @@ you should add AttributeOverride(s) annotations (see the EJB3 spec). <em>Only em
 		
 </div> 
 		
-<a name="N100E2"></a><a name="ecorereferences"></a>
+<a name="N100EC"></a><a name="ecorereferences"></a>
 <div class="h3">
 <h3>Storing references to Ecore Model Elements</h3>
 			
