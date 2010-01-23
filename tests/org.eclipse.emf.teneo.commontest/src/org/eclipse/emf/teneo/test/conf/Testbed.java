@@ -12,7 +12,7 @@
  *   Davide Marchignoli
  * </copyright>
  *
- * $Id: Testbed.java,v 1.7 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: Testbed.java,v 1.8 2010/01/23 08:29:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.conf;
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.samples.SamplesSource;
 import org.eclipse.emf.teneo.test.AbstractTest;
 import org.eclipse.emf.teneo.test.StoreTestException;
-import org.eclipse.emf.teneo.test.Utils;
 import org.eclipse.emf.teneo.test.stores.TestDBAdapters;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -38,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * 
  * @author Davide Marchignoli
  * @author Martin Taal
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public abstract class Testbed {
 	/** The logger */
@@ -72,8 +71,8 @@ public abstract class Testbed {
 	private TestConfiguration currentCfg;
 
 	/**
-	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the non-abstract
-	 * subclass
+	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the
+	 * non-abstract subclass
 	 */
 	protected Testbed() {
 		dbAdapters = new TestDBAdapters();
@@ -88,8 +87,8 @@ public abstract class Testbed {
 	}
 
 	/**
-	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the non-abstract
-	 * subclass
+	 * Constructor, the constructor assumes that the test and db properties are located in the same location as the
+	 * non-abstract subclass
 	 */
 	protected Testbed(String configPropertiesFile) {
 		dbAdapters = new TestDBAdapters();
@@ -114,32 +113,6 @@ public abstract class Testbed {
 		// first try in that direction, the testname is a classname
 		final String className = testCase.getName();
 		return className.substring(className.lastIndexOf('.') + 1) + "_" + cfg.getName();
-	}
-
-	/** Compile the source code */
-	protected void doCompile(String[] sourceLocations) {
-		// delete old binary files
-		// deleteFiles(new File(Utils.getOutputDirectory(this.getClass().getName())));
-
-		// FIXME
-		final ArrayList args = new ArrayList();
-		args.add("-d");
-		args.add(Utils.getOutputDirectory());
-		args.add("-classpath");
-		args.add(System.getProperty("java.class.path"));
-		args.add("-source");
-		args.add("1.4");
-		args.add("-target");
-		args.add("1.4");
-
-		File[] sourceDirs = new File[sourceLocations.length];
-		for (int i = 0; i < sourceLocations.length; i++)
-			sourceDirs[i] = new File(sourceLocations[i]);
-		collectSourceFiles(args, sourceDirs);
-
-		// compile
-		log.debug("Re-Compiling......");
-		com.sun.tools.javac.Main.compile((String[]) args.toArray(new String[args.size()]));
 	}
 
 	/** Returns the sourcelocations for the given epackages */
@@ -167,17 +140,11 @@ public abstract class Testbed {
 			collectSourceFiles(sourceFiles, dirs[i]);
 	}
 
-	/** Deletes the current binary files
-	private void deleteFiles(File directory) {
-		File[] files = directory.listFiles();
-		for (int i = 0; i < files.length; i++) {
-			if (files[i].isDirectory()) {
-				deleteFiles(files[i]);
-			}
-			if (files[i].getName().endsWith(".class") || files[i].getName().endsWith(".jdo")) files[i].delete();
-		}
-	}
-	*/
+	/**
+	 * Deletes the current binary files private void deleteFiles(File directory) { File[] files = directory.listFiles();
+	 * for (int i = 0; i < files.length; i++) { if (files[i].isDirectory()) { deleteFiles(files[i]); } if
+	 * (files[i].getName().endsWith(".class") || files[i].getName().endsWith(".jdo")) files[i].delete(); } }
+	 */
 
 	/** Get the current configuration, for which the current test is run */
 	public TestConfiguration getActiveConfiguration() {
