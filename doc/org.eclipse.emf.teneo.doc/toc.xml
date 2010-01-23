@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 
-<toc label="EMFT Teneo Developer Guide">
-	<topic label="Teneo Reference">
-		<topic label="EMF Hibernate" href="tutorials/hibernate/index.html" />
-		<topic label="EMF JPOX" href="tutorials/jpox/index.html" />
-	</topic>
-	<topic label="Tutorials">
-		<topic label="EMF Hibernate">
-			<topic label="Library Tutorial" href="tutorials/hibernate/tutorialone/tutorial1_intro.html" />
-			<topic label="Library Editor Tutorial" href="tutorials/hibernate/tutorialtwo/tutorial2_intro.html" />
-			<topic label="Dynamic EMF Tutorial" href="tutorials/hibernate/dynamic.html" />
-		</topic>
-		<topic label="EMF JPOX">
-			<topic label="Library Tutorial" href="tutorials/jpox/tutorial1/tutorial1_intro.html" />
-			<topic label="Library Editor Tutorial" href="tutorials/jpox/tutorial2/tutorial2_intro.html" />
-		</topic>
-	</topic>
-	<topic label="Online Docs">
-		<topic label="Hibernate" href="http://www.elver.org/hibernate" />
-		<topic label="JPOX" href="http://www.elver.org/jpox" />
-	</topic>
+<toc label="EMF Teneo Developer Guide">
+	<topic label="Online Docs"  href="http://wiki.eclipse.org/Teneo"/>
 </toc>

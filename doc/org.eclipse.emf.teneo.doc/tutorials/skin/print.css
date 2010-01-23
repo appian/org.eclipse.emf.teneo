@@ -1,9 +1,0 @@
-/* $Id: print.css,v 1.72 2009/12/13 10:16:00 mtaal Exp $ */
-
-#banner, #footer, #leftcol, #breadcrumbs, .docs #toc, .docs .courtesylinks	{
-	display: none;
-	}
-body.docs div.docs	{
-	margin: 0 !important;
-	border: none !important
-	}
