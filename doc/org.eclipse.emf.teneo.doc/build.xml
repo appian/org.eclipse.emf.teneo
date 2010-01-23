@@ -68,12 +68,6 @@
 		</exec>
 		
 		<antcall target="build.index"/>
-		
-		<!-- Zip up all of the documentation artifacts - references(including javadoc), images, tutorials, etc. -->
-		<zip destfile="doc.zip" compress="true">
-			<!-- Add new folders for documentation zip here. -->
-			<zipfileset dir="tutorials" prefix="tutorials"/>
-		</zip>
 	</target>
 
 	<target name="build.index" depends="init" description="Builds search index for the plug-in" if="eclipse.running">
