@@ -16,7 +16,7 @@ Export-Package: org.eclipse.emf.teneo.hibernate;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.mapping.econtainer;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.mapping.elist;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.mapping.identifier;version="1.1.2",
- org.eclipse.emf.teneo.hibernate.mapping.internal;version="1.1.2",
+ org.eclipse.emf.teneo.hibernate.mapping.internal,
  org.eclipse.emf.teneo.hibernate.mapping.property;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.resource;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.tuplizer;version="1.1.2"
@@ -50,5 +50,4 @@ Import-Package: javax.persistence,
  org.hibernate.type;version="3.3.2",
  org.hibernate.usertype;version="3.3.2",
  org.hibernate.util;version="3.3.2"
-Bundle-ClassPath: .,
- org.eclipse.emf.teneo.hibernate.extra.jar
+Bundle-ClassPath: .
