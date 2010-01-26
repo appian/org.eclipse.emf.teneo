@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ClassicSQLNameStrategy.java,v 1.17 2009/10/02 07:23:23 mtaal Exp $
+ * $Id: ClassicSQLNameStrategy.java,v 1.18 2010/01/26 20:09:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the PersistenceOptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManagerAware {
 
@@ -415,7 +415,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	}
 
 	// Returns the entityname of the refered to entity
-	private String getEntityName(PAnnotatedModel paModel, EClass eClass) {
+	protected String getEntityName(PAnnotatedModel paModel, EClass eClass) {
 		return StrategyUtil.getEntityName(getEntityNameStrategy(), persistenceOptions, paModel, eClass);
 	}
 
@@ -456,7 +456,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy, ExtensionManager
 	/**
 	 * Determines where to place a certain annotation/characteristic, this is done by comparing names..
 	 */
-	private boolean compareNames(EReference here, EReference there) {
+	protected boolean compareNames(EReference here, EReference there) {
 		final String nameHere = here.getEContainingClass().getName() + here.getName();
 		final String nameThere = there.getEContainingClass().getName() + there.getName();
 		assert (nameHere.compareTo(nameThere) != 0);

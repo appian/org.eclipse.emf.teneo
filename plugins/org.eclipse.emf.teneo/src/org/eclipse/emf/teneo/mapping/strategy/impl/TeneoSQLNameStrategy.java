@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: TeneoSQLNameStrategy.java,v 1.9 2009/10/02 07:23:23 mtaal Exp $
+ * $Id: TeneoSQLNameStrategy.java,v 1.10 2010/01/26 20:09:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
@@ -33,7 +33,7 @@ import org.eclipse.emf.teneo.mapping.strategy.StrategyUtil;
  * o, a, e, i) and if that is not enough it will truncate the different parts of a name (separated by _).
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
@@ -149,7 +149,7 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 		return doLengthTruncation(maxSqlLength, correctedNameFirstChar + correctedNameTail);
 	}
 
-	private String doLengthTruncation(int maxSqlLength, String correctedName) {
+	protected String doLengthTruncation(int maxSqlLength, String correctedName) {
 		// failed do length truncation with the remainder
 		final int underscore = correctedName.lastIndexOf('_');
 		if (underscore == -1) {
