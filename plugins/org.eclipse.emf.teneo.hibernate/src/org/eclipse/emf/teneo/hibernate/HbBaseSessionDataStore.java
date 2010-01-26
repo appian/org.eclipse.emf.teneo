@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.4 2008/03/30 10:01:11 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.5 2010/01/26 07:53:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,7 +38,7 @@ import org.hibernate.stat.Statistics;
  * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 @SuppressWarnings("unchecked")
 public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
@@ -47,6 +47,21 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 
 	/** The persistency manager factory */
 	private SessionFactory sessionFactory;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.teneo.hibernate.HbDataStore#close()
+	 */
+	@Override
+	public void close() {
+		if (isInitialized()) {
+			closeSessionFactory();
+			// this will call the close method again but because the datastore
+			// is not initialized anymore it won't get here
+			HbHelper.INSTANCE.deRegisterDataStore(getName());
+		}
+	}
 
 	/**
 	 * @return the sessionFactory
@@ -64,6 +79,8 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		if (sessionFactory != null && !sessionFactory.isClosed()) {
 			sessionFactory.close();
 			sessionFactory = null;
+			// do set initialized false after closing it
+			setInitialized(false);
 		}
 	}
 

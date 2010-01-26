@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.16 2009/06/27 07:32:15 mtaal Exp $
+ * $Id: HbHelper.java,v 1.17 2010/01/26 07:53:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class HbHelper {
 	/** The logger */
@@ -122,7 +122,6 @@ public class HbHelper {
 		}
 		final HbDataStore emfds = emfDataStores.get(name);
 		if (emfds == null) {
-			log.warn("No session factory registered under the name: " + name);
 			return;
 		}
 
@@ -139,7 +138,9 @@ public class HbHelper {
 
 		log.debug("Removing and closing emf data store: " + name);
 		emfDataStores.remove(name);
-		emfds.close();
+		if (emfds.isInitialized()) {
+			emfds.close();
+		}
 	}
 
 	/**

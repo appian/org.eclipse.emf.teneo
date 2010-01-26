@@ -95,7 +95,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -328,10 +328,9 @@ public abstract class HbDataStore implements DataStore {
 	/** Build the mappings in the configuration */
 	protected abstract void buildMappings();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.teneo.jpox.emf.IEMFDataStore#close()
+	/**
+	 * Closes the data store and its underlying session or entity manager factory. Calls
+	 * {@link HbHelper#deRegisterDataStore(String)} to deregister the data store so that it can not be used anymore.
 	 */
 	public abstract void close();
 

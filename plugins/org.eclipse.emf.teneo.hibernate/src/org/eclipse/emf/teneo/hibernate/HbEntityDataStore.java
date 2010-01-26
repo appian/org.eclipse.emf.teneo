@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.21 2009/10/15 20:35:48 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.22 2010/01/26 07:53:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -45,7 +45,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
 
@@ -206,12 +206,19 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.teneo.jpox.emf.IEMFDataStore#close()
+	 * @see org.eclipse.emf.teneo.hibernate.HbDataStore#close()
 	 */
 	@Override
 	public void close() {
-		if (getEntityManagerFactory().isOpen()) {
-			getEntityManagerFactory().close();
+		if (isInitialized()) {
+			if (getEntityManagerFactory().isOpen()) {
+				getEntityManagerFactory().close();
+			}
+			entityManagerFactory = null;
+			setInitialized(false);
+			// this will call the close method again but because the datastore
+			// is not initialized anymore it won't get here
+			HbHelper.INSTANCE.deRegisterDataStore(getName());
 		}
 	}
 

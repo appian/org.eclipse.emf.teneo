@@ -52,7 +52,8 @@
 		<property name="type" />
 		<property name="stringValue" />
 		<property name="dateValue" />
-		<property name="numericValue" />
+		<property name="doubleValue" />
+		<property name="numericValue" precision="38" scale="10"/>		
 		<property name="longValue" />		
 		<one-to-one name="blobValue" property-ref="valueHolder" entity-name="EAV_Blob" cascade="all"/>		
 		<one-to-one name="textValue" property-ref="valueHolder" entity-name="EAV_Text" cascade="all"/>		

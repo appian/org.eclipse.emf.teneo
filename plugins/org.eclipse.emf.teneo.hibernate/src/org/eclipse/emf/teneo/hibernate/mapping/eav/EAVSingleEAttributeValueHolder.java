@@ -12,13 +12,14 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.6 2009/09/12 04:47:22 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.7 2010/01/26 07:53:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.Enumerator;
@@ -36,11 +37,14 @@ import org.eclipse.emf.ecore.InternalEObject;
  */
 public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 
+	private static final int MAX_PRECISION = 38;
+
 	private String type;
 	private String typeNeutralValue;
 	private String stringValue;
 	private Date dateValue;
 	private BigDecimal numericValue;
+	private double doubleValue;
 	private long longValue;
 	private Object objectValue;
 	private EAVBlobValue blobValue;
@@ -98,11 +102,17 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 			dateValue = (Date) value;
 		} else if (value instanceof Number) {
 			if (value instanceof BigDecimal) {
-				numericValue = (BigDecimal) value;
+				final BigDecimal bdValue = (BigDecimal) value;
+				if (bdValue.precision() > MAX_PRECISION) {
+					final MathContext mathContext = new MathContext(MAX_PRECISION);
+					numericValue = bdValue.round(mathContext);
+				} else {
+					numericValue = bdValue;
+				}
 			} else if (value instanceof BigInteger) {
 				longValue = ((BigInteger) value).longValue();
 			} else if (value instanceof Double || value instanceof Float) {
-				numericValue = new BigDecimal(((Number) value).doubleValue());
+				doubleValue = ((Number) value).doubleValue();
 			} else if (value instanceof Integer || value instanceof Long || value instanceof Short
 					|| value instanceof Byte) {
 				longValue = ((Number) value).longValue();
@@ -216,5 +226,13 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 			return isClob(((EAttribute) modelElement).getEAttributeType());
 		}
 		return false;
+	}
+
+	public double getDoubleValue() {
+		return doubleValue;
+	}
+
+	public void setDoubleValue(double doubleValue) {
+		this.doubleValue = doubleValue;
 	}
 }
