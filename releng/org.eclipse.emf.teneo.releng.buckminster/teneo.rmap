@@ -24,7 +24,7 @@
 	
 	<searchPath name="teneo.features">
     	<provider componentTypes="eclipse.feature" readerType="cvs" source="true" mutable="false">
-	      	<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.teneo/features_buckminster/{0}-feature">
+	      	<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.teneo/features/{0}-feature">
 		        <bc:propertyRef key="buckminster.component"/>
 	    	</uri>
    		</provider>
