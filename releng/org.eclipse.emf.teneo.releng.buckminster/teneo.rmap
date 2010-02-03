@@ -31,7 +31,7 @@
   	</searchPath>
 	
 	<searchPath name="teneo.releng">
-    	<provider componentTypes="eclipse.feature" readerType="cvs" source="true" mutable="false">
+    	<provider componentTypes="buckminster" readerType="cvs" source="true" mutable="false">
 	      	<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.teneo/releng/{0}">
 		        <bc:propertyRef key="buckminster.component"/>
 	    	</uri>
