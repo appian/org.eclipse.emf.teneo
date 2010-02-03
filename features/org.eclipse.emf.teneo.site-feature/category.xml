@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.emf.hibernate" version="0.0.0">
+      <category name="org.eclipse.emf.hibernate"/>
+   </feature>
+   <feature id="org.eclipse.emf.hibernate.source" version="0.0.0">
+      <category name="org.eclipse.emf.hibernate.source"/>
+   </feature>
+   <category-def name="org.eclipse.emf.hibernate" label="EMF Hibernaate"/>
+   <category-def name="org.eclipse.emf.hibernate.source" label="EMF Hibernate Source Features"/>
+</site>
