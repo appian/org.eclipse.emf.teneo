@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.emf.teneo.hibernate" version="0.0.0">
+      <category name="org.eclipse.emf.teneo.hibernate"/>
+   </feature>
+   <feature id="org.eclipse.emf.teneo.hibernate.source" version="0.0.0">
+      <category name="org.eclipse.emf.teneo.hibernate"/>
+   </feature>
+   <category-def name="org.eclipse.emf.hibernate" label="EMF Teneo Hibernate"/>
+</site>
