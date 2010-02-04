@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Copyright (c) 2010 Cloudsmith Inc, Martin Taal (Doorn, The Netherlands) and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+  Cloudsmith Inc - build.xml for Buckminster project
+   Martin Taal - changes for Teneo
+
+Some important parts have been copied from Buckminster's own
+build setup:
+http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
+-->
+<project default="run" name="Texo Builds">
+	<!-- load properties and set timestamp for the build -->
+	<property environment="env"/>
+
+	<!-- see below the temporary property file passed to buckminster -->
+	<property file="buckminster.properties" />
+
+	<tstamp>
+		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
+	</tstamp>
+	
+	<condition property="workspacePath" value="${env.WORKSPACE}" else="${basedir}/../../builds">
+		<isset property="env.WORKSPACE" />
+	</condition>
+	
+	<condition property="buildType" value="${env.BUILDTYPE}" else="N">
+		<isset property="env.BUILDTYPE" />
+	</condition>
+	
+	<!--
+	<property name="baseDir" location="${env.WORKSPACE}"/>
+	-->
+	<property name="phase" value="build"/>
+	
+	<property name="buildRoot" location="${workspacePath}/${buildType}${buildTimestamp}/${phase}"/>
+	
+	<property name="toolsPath" location="${buildRoot}/tools"/>
+	<property name="targetPlatformPath" location="${buildRoot}/tp"/>
+	<property name="workspacePath" location="${buildRoot}/workspace"/>
+
+	<property name="buckminster.output.root" location="${buildRoot}/output" />
+	<property name="buckminster.output.temp" location="${buildRoot}/temp" />
+	
+	<target name="init" depends="printInfo">
+		
+		<delete dir="${buildRoot}" failonerror="false"/>
+		
+		<mkdir dir="${buildRoot}"/>
+		<mkdir dir="${targetPlatformPath}"/>
+		<mkdir dir="${toolsPath}"/>
+		<mkdir dir="${workspacePath}"/>
+
+		<untar src="buckminster3.6.zip" compression="gzip" dest="${toolsPath}" />
+	</target>
+
+	<target name="printInfo">
+	  <echo message="Environment and Build Parameters"/>	
+	  <echo message="BASEDIR: ${basedir}"/>
+	  <echo message="BUILD_NUMBER: ${env.BUILD_NUMBER}"/>
+	  <echo message="BUILD_ID: ${env.BUILD_ID}"/>
+	  <echo message="JOB_NAME: ${env.JOB_NAME}"/>
+	  <echo message="BUILD_TAG: ${env.BUILD_TAG}"/>
+	  <echo message="EXECUTOR_NUMBER: ${env.EXECUTOR_NUMBER}"/>
+	  <echo message="JAVA_HOME: ${env.JAVA_HOME}"/>
+	  <echo message="WORKSPACE: ${env.WORKSPACE}"/>
+	  <echo message="HUDSON_URL ${env.HUDSON_URL}"/>
+	  <echo message="BUILD_URL ${env.BUILD_URL}"/>
+	  <echo message="JOB_URL ${env.JOB_URL}"/>
+	  <echo message="BUILD_TAG ${env.BUILD_TAG}"/>
+	  <echo message="VERSION ${env.VERSION}"/>
+	  <echo message="BUILDTYPE ${env.BUILDTYPE}"/>
+	</target>
+
+	<target name="run" depends="init,init.build.properties">
+		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
+		<buckminster command="setpref">
+			<cmdargs>
+				<arg value="targetPlatformPath=${targetPlatformPath}" />
+			</cmdargs>
+		</buckminster>
+
+		<echo message="Importing projects into workspace ${workspacePath} and binaries into target platform ${targetPlatformPath}" />		
+		<buckminster command="import">
+			<cmdargs>
+				<arg value="${basedir}/teneo.mspec" />
+			</cmdargs>
+		</buckminster>
+		
+		<echo message="Building" />
+		<buckminster command="build"/>
+		
+		<echo message="Creating site" />
+		<buckminster command="perform">
+			<cmdargs>
+				<arg value="org.eclipse.emf.teneo.site#site.p2" />
+			</cmdargs>
+		</buckminster>
+
+		<echo message="Cleaning up" />
+		<antcall target="cleanUp" inheritall="true"/>
+	</target>
+	
+	<!-- This macro executes the default application of an eclipse installation that resides
+	     in the folder ${buildtools}/@app
+	  -->
+	<macrodef name="eclipse.launch">
+		<attribute name="app" />
+		<element name="args" optional="true" />
+		<sequential>
+			<!-- We assume that the eclipse installation is beneath ${buildtools} -->
+			<property name="@{app}.deploy.dir" value="${toolsPath}/@{app}" />
+
+			<!-- Find the Eclipse launcher and adding its location to the @{app}.launcher property -->
+			<pathconvert property="@{app}.launcher">
+				<first count="1">
+					<sort>
+						<fileset dir="${@{app}.deploy.dir}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
+						<reverse xmlns="antlib:org.apache.tools.ant.types.resources.comparators">
+							<date />
+						</reverse>
+					</sort>
+				</first>
+			</pathconvert>
+
+			<!-- Launch the eclipse application -->
+			<java fork="true" jar="${@{app}.launcher}" dir="${@{app}.deploy.dir}" failonerror="true">
+				<!-- Uncomment to debug <jvmarg value="-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y"/> -->
+				<args />
+			</java>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="buckminster">
+		<attribute name="command" />
+		<attribute name="workspace" default="${workspacePath}" />
+		<element name="globargs" optional="true" />
+		<element name="cmdargs" optional="true" />
+		<sequential>
+			<eclipse.launch app="buckminster3.6">
+				<args>
+					<jvmarg value="-Dbugfix.288796=true"/>
+					<arg value="-data" />
+					<arg value="@{workspacePath}" />
+					<arg value="--loglevel" />
+					<arg value="INFO" />
+					<globargs />
+					<arg value="@{command}" />
+					<arg value="-P" />
+					<arg value="${properties.tmp}" />
+					<cmdargs />
+				</args>
+			</eclipse.launch>
+		</sequential>
+	</macrodef>
+
+	<target name="init.build.properties">
+		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
+		  -->
+		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
+		<echoproperties destfile="${properties.tmp}">
+			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
+			<propertyset negate="true">
+				<propertyref name="basedir" />
+				<propertyref name="eclipse.home" />
+				<propertyref name="properties.tmp" />
+				<propertyref name="line.separator" />
+				<propertyref name="path.separator" />
+				<propertyref prefix="ant." />
+				<propertyref prefix="file." />
+				<propertyref prefix="java." />
+				<propertyref prefix="sun." />
+				<propertyref prefix="user." />
+			</propertyset>
+		</echoproperties>
+	</target>
+
+	<target name="cleanUp">
+		<delete dir="${toolsPath}" failonerror="true" quiet="true" />
+		<delete dir="${targetPlatformPath}" failonerror="true" quiet="true" />
+		<delete dir="${workspacePath}" failonerror="true" quiet="true" />
+		<delete dir="${buckminster.output.temp}" failonerror="true" quiet="true" />
+	</target>
+</project>
