@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationAdapterFactory.java,v 1.32 2009/12/13 10:14:08 mtaal Exp $
+ * $Id: PannotationAdapterFactory.java,v 1.33 2010/02/04 08:20:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -10,29 +10,33 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.annotations.pannotation.*;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
+import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.External;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
+import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
@@ -41,6 +45,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;

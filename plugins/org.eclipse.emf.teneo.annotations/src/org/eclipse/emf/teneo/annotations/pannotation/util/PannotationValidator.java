@@ -2,20 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.33 2009/12/13 10:14:09 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.34 2010/02/04 08:20:12 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.eclipse.emf.teneo.annotations.pannotation.*;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -24,13 +20,16 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
+import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
@@ -39,19 +38,23 @@ import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
+import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
+import org.eclipse.emf.teneo.annotations.pannotation.OptimizerType;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
@@ -264,20 +267,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "CompatibleEModelElementType", getObjectLabel(pAnnotation, context) },
-						 new Object[] { pAnnotation },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -292,20 +281,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AnnotationIsSupported", getObjectLabel(pAnnotation, context) },
-						 new Object[] { pAnnotation },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -375,20 +350,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(basic, context) },
-						 new Object[] { basic },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -423,20 +384,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "ScalePrecisionForNumeric", getObjectLabel(column, context) },
-						 new Object[] { column },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -451,20 +398,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "LengthForString", getObjectLabel(column, context) },
-						 new Object[] { column },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -516,20 +449,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoAbstract", getObjectLabel(discriminatorValue, context) },
-						 new Object[] { discriminatorValue },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -563,20 +482,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoInterface", getObjectLabel(embeddable, context) },
-						 new Object[] { embeddable },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -610,20 +515,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "EmbedByValue", getObjectLabel(embedded, context) },
-						 new Object[] { embedded },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -657,20 +548,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "EmbedByValue", getObjectLabel(embeddedId, context) },
-						 new Object[] { embeddedId },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -705,20 +582,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoInterface", getObjectLabel(entity, context) },
-						 new Object[] { entity },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -733,20 +596,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoReservedName", getObjectLabel(entity, context) },
-						 new Object[] { entity },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -780,20 +629,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(enumerated, context) },
-						 new Object[] { enumerated },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -845,20 +680,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(id, context) },
-						 new Object[] { id },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -964,20 +785,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedType", getObjectLabel(lob, context) },
-						 new Object[] { lob },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1011,20 +818,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsManyValued", getObjectLabel(manyToMany, context) },
-						 new Object[] { manyToMany },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1058,20 +851,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsNotManyValued", getObjectLabel(manyToOne, context) },
-						 new Object[] { manyToOne },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1123,20 +902,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "NoInterface", getObjectLabel(mappedSuperclass, context) },
-						 new Object[] { mappedSuperclass },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1170,20 +935,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsManyValued", getObjectLabel(oneToMany, context) },
-						 new Object[] { oneToMany },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1217,20 +968,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsNotManyValued", getObjectLabel(oneToOne, context) },
-						 new Object[] { oneToOne },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1265,20 +1002,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "WellFormedOrder", getObjectLabel(orderBy, context) },
-						 new Object[] { orderBy },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1293,20 +1016,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "IsManyValued", getObjectLabel(orderBy, context) },
-						 new Object[] { orderBy },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1430,20 +1139,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(temporal, context) },
-						 new Object[] { temporal },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
@@ -1513,20 +1208,6 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "AllowedElementType", getObjectLabel(version, context) },
-						 new Object[] { version },
-						 context));
-			}
-			return false;
-		}
 		return true;
 	}
 
