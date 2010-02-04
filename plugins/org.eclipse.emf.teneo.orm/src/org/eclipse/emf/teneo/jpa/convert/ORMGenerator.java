@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ORMGenerator.java,v 1.4 2009/10/27 23:13:29 mtaal Exp $
+ * $Id: ORMGenerator.java,v 1.5 2010/02/04 10:53:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpa.convert;
@@ -77,7 +77,7 @@ import org.eclipse.emf.teneo.jpa.orm.Version;
  * Converts a PAnnotatedModel to an ORM model.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class ORMGenerator {
@@ -538,6 +538,7 @@ public class ORMGenerator {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void copyFeatures(final EObject from, EObject to) {
 		for (EStructuralFeature eToFeature : to.eClass().getEAllStructuralFeatures()) {
 			EObject localFrom = from;
