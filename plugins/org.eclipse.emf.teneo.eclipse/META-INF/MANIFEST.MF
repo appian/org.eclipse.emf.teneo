@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.launching,
  org.eclipse.debug.core,
  org.eclipse.emf.teneo
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.teneo.eclipse;version="1.1.2",
  org.eclipse.emf.teneo.eclipse.genxml;version="1.1.2",
  org.eclipse.emf.teneo.eclipse.resourcehandler;version="1.1.2"
