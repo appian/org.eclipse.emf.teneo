@@ -264,7 +264,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 			@SuppressWarnings("unchecked")
 			public boolean remove(Object object) {
 
-				if (!(object instanceof Map.Entry)) {
+				if (!(object instanceof Map.Entry<?, ?>)) {
 					return false;
 				}
 				return IndirectEMap.this.remove(((Map.Entry<K, V>) object).getKey());
@@ -295,7 +295,7 @@ public class IndirectEMap<K, V> extends BasicEMap<K, V> implements IndirectECont
 				return result;
 			}
 
-			@SuppressWarnings("unchecked")
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public boolean removeAll(Collection<?> collection) {
 
 				boolean result = false;

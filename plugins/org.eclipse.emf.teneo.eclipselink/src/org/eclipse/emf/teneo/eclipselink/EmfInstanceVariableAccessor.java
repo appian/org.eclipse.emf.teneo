@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.persistence.exceptions.DescriptorException;
 import org.eclipse.persistence.internal.descriptors.InstanceVariableAttributeAccessor;
 import org.eclipse.persistence.internal.helper.Helper;
-import org.eclipse.persistence.internal.jpa.metadata.accessors.objects.MetadataMethod;
 import org.eclipse.persistence.internal.security.PrivilegedAccessHelper;
 import org.eclipse.persistence.internal.security.PrivilegedGetMethodReturnType;
 import org.eclipse.persistence.internal.security.PrivilegedGetValueFromField;
@@ -93,9 +92,9 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
 		String restOfName = attrName.substring(1);
 		Class<?> attributeType = getAttributeField().getType();
 		if (attributeType.equals(boolean.class) || attributeType.equals(Boolean.class)) {
-			getterPrefix = MetadataMethod.IS_PROPERTY_METHOD_PREFIX;
+			getterPrefix = "is"; //$NON-NLS-1$
 		} else {
-			getterPrefix = MetadataMethod.GET_PROPERTY_METHOD_PREFIX;
+			getterPrefix = "get"; //$NON-NLS-1$
 		}
 		getterMethodName = getterPrefix.concat(leadingChar).concat(restOfName);
 		return getterMethodName;
@@ -104,7 +103,7 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
 	/**
 	 * Return the return type of the method accessor.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Class getAttributeClass() {
 		if (getGetMethod() == null) {
@@ -210,8 +209,8 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
 	/**
 	 * Set get and set method after creating these methods by using get and set method names
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("rawtypes")
 	public void initializeAttributes(Class theJavaClass) throws DescriptorException {
 		if (getAttributeName() == null) {
 			throw DescriptorException.attributeNameNotSpecified();
@@ -300,7 +299,7 @@ public class EmfInstanceVariableAccessor extends AttributeAccessor {
 			} else {
 				PrivilegedAccessHelper.setValueInField(attributeField, anObject, value);
 			}
-			if (value instanceof EObjectEList) {
+			if (value instanceof EObjectEList<?>) {
 				// need to also set owner "backpointer" in delegateEList
 				EmfHelper.getInstance().setEObjectEListOwner((EObjectEList<?>) value, (InternalEObject) anObject);
 			}

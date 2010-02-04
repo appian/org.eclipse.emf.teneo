@@ -78,11 +78,11 @@ public class EListContainerPolicy extends ListContainerPolicy {
 
 	@SuppressWarnings("unchecked")
 	protected <E, K, V> boolean doAddInto(Object key, Object element, Object container) {
-		if (container instanceof IndirectEContainer) {
+		if (container instanceof IndirectEContainer<?>) {
 			IndirectEContainer<E> indirectEContainer = (IndirectEContainer<E>) container;
 			return indirectEContainer.eAdd((E) element);
 		} else {
-			if (container instanceof BasicEList) {
+			if (container instanceof BasicEList<?>) {
 				return EmfHelper.getInstance().addToEList((EList<E>) container, (E) element);
 			} else {
 				return EmfHelper.getInstance().addToEMap((EMap<K, V>) container, (Map.Entry<K, V>) element);
@@ -99,12 +99,12 @@ public class EListContainerPolicy extends ListContainerPolicy {
 	public <K, V> Object doCloneFor(Object container) {
 		EcoreEMap<K, V> containerClone = null;
 		EmfHelper helper = EmfHelper.getInstance();
-		if (container instanceof EcoreEMap) {
+		if (container instanceof EcoreEMap<?, ?>) {
 			EcoreEMap<K, V> contentsMap = (EcoreEMap<K, V>) container;
 			BasicEList<Map.Entry<K, V>> delegateEList = helper.getEMapDelegateEList(contentsMap);
 			Class<?> entryClass = helper.getEcoreEMapEntryClass(contentsMap);
 			EClass entryEClass = helper.getEcoreEMapEntryEClass(contentsMap);
-			if (delegateEList instanceof EObjectEList) {
+			if (delegateEList instanceof EObjectEList<?>) {
 				EObjectEList<Map.Entry<K, V>> eobjectEList = (EObjectEList<Map.Entry<K, V>>) delegateEList;
 				InternalEObject owner = helper.getEObjectEListOwner(eobjectEList);
 				int featureID = helper.getEObjectEListFeatureId(eobjectEList);

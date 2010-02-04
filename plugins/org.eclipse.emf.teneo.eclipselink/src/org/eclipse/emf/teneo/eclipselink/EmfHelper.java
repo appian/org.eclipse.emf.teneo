@@ -56,7 +56,7 @@ public class EmfHelper {
 
 	@SuppressWarnings("unchecked")
 	public <E, K, V> void setECollectionContents(Collection<E> listContents, EList<E> targetList) {
-		if (listContents instanceof EMap) {
+		if (listContents instanceof EMap<?, ?>) {
 			EmfHelper.getInstance().setEMapContents((EMap<K, V>) listContents, (EMap<K, V>) targetList);
 		} else {
 			EmfHelper.getInstance().setEListContents(listContents, targetList);
@@ -164,7 +164,7 @@ public class EmfHelper {
 	@SuppressWarnings("unchecked")
 	public <K, V> void setEMapContents(EMap<K, V> mapContents, EMap<K, V> targetMap) {
 		try {
-			if (targetMap instanceof BasicEMap) {
+			if (targetMap instanceof BasicEMap<?, ?>) {
 				BasicEMap<K, V> basicEMap = (BasicEMap<K, V>) targetMap;
 				// set the entry list
 				Method basicEMapEnsureEntryDataExistsMethod = PrivilegedAccessHelper.getDeclaredMethod(BasicEMap.class,
@@ -190,10 +190,10 @@ public class EmfHelper {
 	// methods and field
 	@SuppressWarnings("unchecked")
 	public <K, V> boolean addToEMap(EMap<K, V> eMap, Map.Entry<K, V> entry) {
-		if (eMap instanceof EclipseLinkEMap) {
+		if (eMap instanceof EclipseLinkEMap<?, ?>) {
 			return EmfHelper.getInstance().addToEList(eMap, entry);
 		} else {
-			if (eMap instanceof BasicEMap) {
+			if (eMap instanceof BasicEMap<?, ?>) {
 				try {
 					BasicEMap<K, V> basicEMap = (BasicEMap<K, V>) eMap;
 					// add the entry
@@ -229,7 +229,7 @@ public class EmfHelper {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Class<? extends Map.Entry> getEcoreEMapEntryClass(EcoreEMap<?, ?> map) {
 		try {
 			return (Class<? extends Map.Entry>) ecoreEMapEntryClassField.get(map);

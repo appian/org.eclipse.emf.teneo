@@ -126,7 +126,7 @@ public class EmfCollectionAdjuster extends DescriptorEventAdapter {
 			EMap<K, V> newMap = EListFactory.eINSTANCE.createEMap(source, collectionMapping.getAttributeName());
 			EmfHelper.getInstance().setEMapContents(contentsMap, newMap);
 			// must set on source after addAll because of notification
-			if (contentsMap instanceof IndirectEMap) {
+			if (contentsMap instanceof IndirectEMap<?, ?>) {
 				IndirectEMap<K, V> indirectEMap = (IndirectEMap<K, V>) contentsMap;
 				indirectEMap.setDelegate(newMap);
 			} else {
