@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryComponentTuplizer.java,v 1.2 2009/11/02 10:40:09 mtaal Exp $
+ * $Id: FeatureMapEntryComponentTuplizer.java,v 1.3 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -41,7 +41,7 @@ import org.hibernate.tuple.component.AbstractComponentTuplizer;
  * Tuplizer for feature map entries. These types are mapped using the dynamic capabilities of Hibernate.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class FeatureMapEntryComponentTuplizer extends AbstractComponentTuplizer {
@@ -100,6 +100,7 @@ public class FeatureMapEntryComponentTuplizer extends AbstractComponentTuplizer 
 		return hds.getHbContext().createFeatureMapEntryAccessor(efeature);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Class getMappedClass() {
 		return HibernateFeatureMapEntry.class;
 	}

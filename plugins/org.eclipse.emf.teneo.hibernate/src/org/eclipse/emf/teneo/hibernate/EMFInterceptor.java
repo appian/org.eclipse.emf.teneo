@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInterceptor.java,v 1.14 2009/12/13 10:13:40 mtaal Exp $
+ * $Id: EMFInterceptor.java,v 1.15 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -41,7 +41,7 @@ import org.hibernate.collection.AbstractPersistentCollection;
  * Intercepts the getEntityName call to return the EClass name as the entity name.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, ExtensionManagerAware,
@@ -136,7 +136,7 @@ public class EMFInterceptor extends EmptyInterceptor implements ExtensionPoint, 
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void postFlush(Iterator entities) {
 		// TODO: consider to move this to after commit
 		final List<AbstractPersistentCollection> list = persistentCollections.get();

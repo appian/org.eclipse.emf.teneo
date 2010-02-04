@@ -15,16 +15,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
  * Implements two maps for caching identifier and version information. Internally uses
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class IdentifierCacheHandler {
@@ -100,16 +97,16 @@ public class IdentifierCacheHandler {
 
 		// also set the id in the resource
 		// disabled for now
-		if (false && obj instanceof EObject) {
-			final EObject eobj = (EObject) obj;
-			final Resource res = eobj.eResource();
-			if (res != null && res instanceof XMLResource) {
-				if (log.isDebugEnabled()) {
-					log.debug("Setting id " + id.toString() + " in resource " + res.getClass().getName());
-				}
-				((XMLResource) res).setID(eobj, id.toString());
-			}
-		}
+//		if (false && obj instanceof EObject) {
+//			final EObject eobj = (EObject) obj;
+//			final Resource res = eobj.eResource();
+//			if (res != null && res instanceof XMLResource) {
+//				if (log.isDebugEnabled()) {
+//					log.debug("Setting id " + id.toString() + " in resource " + res.getClass().getName());
+//				}
+//				((XMLResource) res).setID(eobj, id.toString());
+//			}
+//		}
 
 		idModCount++;
 		if (idModCount > getPurgeTreshold()) {

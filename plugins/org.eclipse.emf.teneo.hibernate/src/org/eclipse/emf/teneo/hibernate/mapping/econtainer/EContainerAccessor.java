@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerAccessor.java,v 1.5 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: EContainerAccessor.java,v 1.6 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -28,9 +28,8 @@ import org.hibernate.property.Setter;
  * Creates the getter and setter for eContainer members.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
-@SuppressWarnings("unchecked")
 public class EContainerAccessor implements PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
 
 	private ExtensionManager extensionManager;
@@ -40,6 +39,7 @@ public class EContainerAccessor implements PropertyAccessor, ExtensionPoint, Ext
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		final EContainerPropertyHandler handler = extensionManager.getExtension(EContainerPropertyHandler.class);
 		handler.initialize(propertyName);
@@ -51,6 +51,7 @@ public class EContainerAccessor implements PropertyAccessor, ExtensionPoint, Ext
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		final EContainerPropertyHandler handler = extensionManager.getExtension(EContainerPropertyHandler.class);
 		handler.initialize(propertyName);

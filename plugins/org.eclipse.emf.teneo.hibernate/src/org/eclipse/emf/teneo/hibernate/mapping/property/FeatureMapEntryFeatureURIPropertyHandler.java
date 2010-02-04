@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapEntryFeatureURIPropertyHandler.java,v 1.6 2009/06/28 02:04:54 mtaal Exp $
+ * $Id: FeatureMapEntryFeatureURIPropertyHandler.java,v 1.7 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -35,9 +35,8 @@ import org.hibernate.property.Setter;
  * Handles the string representation of the feature of the feature map entry in the database.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
-@SuppressWarnings("unchecked")
 public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 	/**
 	 * Generated Version ID
@@ -49,6 +48,7 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter,
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -58,6 +58,7 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter,
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -77,6 +78,7 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter,
 	/**
 	 * Reads the version from the versioncache
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}
@@ -100,6 +102,7 @@ public class FeatureMapEntryFeatureURIPropertyHandler implements Getter, Setter,
 	}
 
 	/** Returns Integer.class */
+	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return String.class;
 	}

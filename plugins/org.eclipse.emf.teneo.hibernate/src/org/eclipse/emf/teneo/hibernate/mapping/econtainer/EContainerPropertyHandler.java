@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerPropertyHandler.java,v 1.8 2009/04/03 06:15:42 mtaal Exp $
+ * $Id: EContainerPropertyHandler.java,v 1.9 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -40,7 +40,7 @@ import org.hibernate.property.Setter;
  * Implements the accessor for eContainer member
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint {
@@ -76,7 +76,7 @@ public class EContainerPropertyHandler implements Getter, Setter, ExtensionPoint
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
 	 * org.hibernate.engine.SessionImplementor)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return ((EObject) owner).eContainer();
 	}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.9 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.hibernate.collection.PersistentCollection;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implements ExtensionPoint {
@@ -62,7 +62,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 
 	/** Do the actual load can be overridden */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected void doLoad() {
 		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;
@@ -147,6 +147,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 	 * size without lading it if it is lazy loaded
 	 */
 	@Override
+	@SuppressWarnings("rawtypes")
 	public int size() {
 		if (size != 0) {
 			return size;

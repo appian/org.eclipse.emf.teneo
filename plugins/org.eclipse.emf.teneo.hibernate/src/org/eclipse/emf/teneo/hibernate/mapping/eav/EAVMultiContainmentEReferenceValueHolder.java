@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.7 2009/09/17 05:59:09 mtaal Exp $
+ * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.8 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -55,7 +55,6 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 		return valueHolder;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object get(InternalEObject owner) {
 		if (ecoreObjectList != null) {
 			return ecoreObjectList;
@@ -70,7 +69,7 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 
 			final int featureID = owner.eClass().getFeatureID(getEStructuralFeature());
 			ecoreObjectList = new EAVDelegatingEMap<Object, Object>(entryEClass, entryClass, owner, featureID);
-			((EAVDelegatingEMap) ecoreObjectList).setPersistentList(referenceValues);
+			((EAVDelegatingEMap<?,?>) ecoreObjectList).setPersistentList(referenceValues);
 		} else {
 			// final DelegatingLateLoadingList<Object> lateLoadingList = new DelegatingLateLoadingList<Object>();
 			// lateLoadingList.setPersistentList((List<?>) referenceValues);

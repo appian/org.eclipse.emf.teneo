@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyEObjectType.java,v 1.5 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: AnyEObjectType.java,v 1.6 2010/02/04 10:53:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -273,7 +273,7 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object replace(Object original, Object target, SessionImplementor session, Object owner, Map copyCache)
 			throws HibernateException {
 		if (original == null) {
@@ -388,7 +388,7 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters)
 			throws MappingException {
 		throw new UnsupportedOperationException();

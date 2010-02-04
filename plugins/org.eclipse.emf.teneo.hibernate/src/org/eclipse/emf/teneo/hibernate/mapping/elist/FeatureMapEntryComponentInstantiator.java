@@ -23,16 +23,13 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates feature map entries which are mapped as components.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class FeatureMapEntryComponentInstantiator implements Instantiator {
 	private static final long serialVersionUID = -1219767393020090471L;
 
-	private final Component component;
-
 	public FeatureMapEntryComponentInstantiator(Component component) {
-		this.component = component;
 	}
 
 	public Object instantiate() {

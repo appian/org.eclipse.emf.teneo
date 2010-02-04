@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: MapHibernatePersistableEMap.java,v 1.8 2008/06/29 14:24:25 mtaal Exp $
+ * $Id: MapHibernatePersistableEMap.java,v 1.9 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentMap;
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> implements ExtensionPoint {
@@ -163,7 +163,7 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	 * Do the actual load and wrapping. can be overridden
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"rawtypes","unchecked"})
 	protected void doLoad() {
 		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;

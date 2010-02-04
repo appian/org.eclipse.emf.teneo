@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NewEContainerFeatureIDPropertyHandler.java,v 1.2 2009/04/03 06:15:42 mtaal Exp $
+ * $Id: NewEContainerFeatureIDPropertyHandler.java,v 1.3 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -47,7 +47,7 @@ import org.hibernate.property.Setter;
  * Handles the eContainerFeatureId field of an EObjectImpl.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, Getter, Setter, ExtensionPoint {
@@ -65,10 +65,12 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, 
 		ecField = FieldUtil.getField(EObjectImpl.class, "eContainerFeatureID");
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -84,7 +86,7 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, 
 		return holder;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}

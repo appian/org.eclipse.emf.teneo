@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateFeatureMapEntry.java,v 1.10 2009/06/28 02:04:54 mtaal Exp $
+ * $Id: HibernateFeatureMapEntry.java,v 1.11 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * member.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Serializable {
@@ -272,15 +272,6 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 		return null; // TODO: maybe throw error?
 	}
 
-	private FeatureValue getFeatureValue(EStructuralFeature eFeature) {
-		for (FeatureValue fv : featureValues) {
-			if (fv.matchesFeature(eFeature)) {
-				return fv;
-			}
-		}
-		return null;
-	}
-
 	/** get the real feature value */
 	private FeatureValue getFeatureValue() {
 		final EStructuralFeature feature = getEStructuralFeature();
@@ -478,16 +469,6 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 		}
 
 		/** Handles inverse action, differs on the basis of the feature type */
-		public NotificationChain inverseAdd(InternalEObject owner, int featureID, NotificationChain notifications) {
-			return inverseAdd(owner, value, featureID, notifications);
-		}
-
-		/** Handles inverse action, differs on the basis of the feature type */
-		public NotificationChain inverseRemove(InternalEObject owner, int featureID, NotificationChain notifications) {
-			return inverseRemove(owner, value, featureID, notifications);
-		}
-
-		/** Handles inverse action, differs on the basis of the feature type */
 		public NotificationChain inverseAdd(InternalEObject owner, Object otherEnd, int featureID,
 				NotificationChain notifications) {
 			return notifications;
@@ -510,10 +491,6 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 						+ eStructuralFeature.getEType().getName() + "' does not permit a value of type '" + valueClass
 						+ "'");
 			}
-		}
-
-		public void setValue(Object value) {
-			this.value = value;
 		}
 	}
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EContainerUserType.java,v 1.11 2009/04/02 20:46:34 mtaal Exp $
+ * $Id: EContainerUserType.java,v 1.12 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
@@ -54,7 +54,7 @@ import org.hibernate.usertype.CompositeUserType;
  * Implements the EMF UserType for an Enum
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $ $Date: 2009/04/02 20:46:34 $
+ * @version $Revision: 1.12 $ $Date: 2010/02/04 10:53:07 $
  */
 
 public class EContainerUserType extends AbstractType implements CompositeUserType, AssociationType {
@@ -146,7 +146,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	 * @see org.hibernate.type.Type#replace(java.lang.Object, java.lang.Object,
 	 * org.hibernate.engine.SessionImplementor, java.lang.Object, java.util.Map)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object replace(Object original, Object target, SessionImplementor session, Object owner, Map copyCache)
 			throws HibernateException {
 		return replace(original, target, session, owner);
@@ -222,7 +222,7 @@ public class EContainerUserType extends AbstractType implements CompositeUserTyp
 	}
 
 	/** Not supported */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters)
 			throws MappingException {
 		throw new UnsupportedOperationException("not supported for econtainer");

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.5 2010/01/26 07:53:38 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.6 2010/02/04 10:53:08 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -38,9 +38,8 @@ import org.hibernate.stat.Statistics;
  * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
-@SuppressWarnings("unchecked")
 public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
 
 	private static final long serialVersionUID = 1L;
@@ -92,10 +91,12 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		this.sessionFactory = sessionFactory;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void evict(Class persistentClass, Serializable id) throws HibernateException {
 		getSessionFactory().evict(persistentClass, id);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void evict(Class persistentClass) throws HibernateException {
 		getSessionFactory().evict(persistentClass);
 	}
@@ -124,14 +125,17 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		getSessionFactory().evictQueries(cacheRegion);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Map getAllClassMetadata() throws HibernateException {
 		return getSessionFactory().getAllClassMetadata();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Map getAllCollectionMetadata() throws HibernateException {
 		return getSessionFactory().getAllCollectionMetadata();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public ClassMetadata getClassMetadata(Class persistentClass) throws HibernateException {
 		return getSessionFactory().getClassMetadata(persistentClass);
 	}
@@ -148,6 +152,7 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactory().getCurrentSession();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Set getDefinedFilterNames() {
 		return getSessionFactory().getDefinedFilterNames();
 	}

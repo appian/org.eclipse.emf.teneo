@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: WildCardReferencePropertyHandler.java,v 1.1 2009/06/28 02:04:54 mtaal Exp $
+ * $Id: WildCardReferencePropertyHandler.java,v 1.2 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -39,9 +39,8 @@ import org.hibernate.property.Setter;
  * methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
-@SuppressWarnings("unchecked")
 public class WildCardReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 
 	/**
@@ -54,6 +53,7 @@ public class WildCardReferencePropertyHandler implements Getter, Setter, Propert
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -63,6 +63,7 @@ public class WildCardReferencePropertyHandler implements Getter, Setter, Propert
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -94,6 +95,7 @@ public class WildCardReferencePropertyHandler implements Getter, Setter, Propert
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
 	 * org.hibernate.engine.SessionImplementor)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		final Object value = get(owner);
 		return value;
@@ -139,6 +141,7 @@ public class WildCardReferencePropertyHandler implements Getter, Setter, Propert
 	 * 
 	 * @see org.hibernate.property.Getter#getReturnType()
 	 */
+	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return EObject.class;
 	}

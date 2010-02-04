@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DummyPropertyHandler.java,v 1.4 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: DummyPropertyHandler.java,v 1.5 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -31,9 +31,8 @@ import org.hibernate.property.Setter;
  * DummyAccessor, does nothing.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
-@SuppressWarnings("unchecked")
 public class DummyPropertyHandler implements Getter, Setter, PropertyAccessor {
 	/**
 	 * Generated Serial Version ID
@@ -46,6 +45,7 @@ public class DummyPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
 	 *      java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName)
 			throws PropertyNotFoundException {
 		return this;
@@ -57,6 +57,7 @@ public class DummyPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
 	 *      java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName)
 			throws PropertyNotFoundException {
 		return this;
@@ -77,6 +78,7 @@ public class DummyPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
 	 *      java.util.Map, org.hibernate.engine.SessionImplementor)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object arg0, Map arg1, SessionImplementor arg2)
 			throws HibernateException {
 		return get(arg0);
@@ -105,6 +107,7 @@ public class DummyPropertyHandler implements Getter, Setter, PropertyAccessor {
 	 * 
 	 * @see org.hibernate.property.Getter#getReturnType()
 	 */
+	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return null;
 	}

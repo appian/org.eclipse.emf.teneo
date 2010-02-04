@@ -37,9 +37,8 @@ import org.hibernate.property.Setter;
  * propertyaccessor interfaces. When the getGetter and getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
-@SuppressWarnings("unchecked")
 public class EReferencePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 
 	/**
@@ -75,6 +74,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -84,6 +84,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -107,6 +108,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
 	 * org.hibernate.engine.SessionImplementor)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}
@@ -200,6 +202,7 @@ public class EReferencePropertyHandler implements Getter, Setter, PropertyAccess
 	 * 
 	 * @see org.hibernate.property.Getter#getReturnType()
 	 */
+	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return InternalEObject.class;
 	}

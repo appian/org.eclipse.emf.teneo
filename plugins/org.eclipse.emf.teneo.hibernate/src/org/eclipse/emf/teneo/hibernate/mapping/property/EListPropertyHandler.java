@@ -57,7 +57,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -104,6 +104,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -113,6 +114,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -142,10 +144,10 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			}
 		}
 
-		if (obj instanceof PersistableDelegateList) {
-			return ((PersistableDelegateList) obj).getDelegate();
+		if (obj instanceof PersistableDelegateList<?>) {
+			return ((PersistableDelegateList<?>) obj).getDelegate();
 		}
-		if (obj instanceof EcoreEMap && newEMapMapping) {
+		if (obj instanceof EcoreEMap<?,?> && newEMapMapping) {
 			return ((EcoreEMap<?, ?>) obj).map();
 		}
 
@@ -153,8 +155,8 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			// this one is replaced here
 			// because the entries
 			// need to be changed to hibernate entries
-			final PersistableDelegateList pelist = (PersistableDelegateList) createPersistableList(
-					(InternalEObject) owner, eFeature, (List) obj);
+			final PersistableDelegateList<?> pelist = (PersistableDelegateList<?>) createPersistableList(
+					(InternalEObject) owner, eFeature, (List<?>) obj);
 			final EObject eobj = (EObject) owner;
 			if (!EcoreAccess.isStaticFeature(eFeature, (BasicEObjectImpl) eobj)) {
 				if (log.isDebugEnabled()) {
@@ -200,6 +202,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
 	 * org.hibernate.engine.SessionImplementor)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) owner);
 		final Object value = adapter.getStoreCollection(eFeature);
@@ -261,6 +264,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 * 
 	 * @see org.hibernate.property.Getter#getReturnType()
 	 */
+	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return EList.class;
 	}
@@ -271,6 +275,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
 	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
+	@SuppressWarnings("rawtypes")
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 
 		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) target);
@@ -293,15 +298,15 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 			}
 
 			// if currentvalue is not null then use the passed value
-			if (currentValue != null && currentValue instanceof PersistableEList) {
-				((PersistableEList) currentValue).replaceDelegate((List) value);
+			if (currentValue != null && currentValue instanceof PersistableEList<?>) {
+				((PersistableEList<?>) currentValue).replaceDelegate((List) value);
 			} else {
-				if (value instanceof Map) {
+				if (value instanceof Map<?,?>) {
 					EcoreAccess.setManyEFeatureValue(eFeature, createPersistableMap((InternalEObject) target, eFeature,
-							(Map) value), (BasicEObjectImpl) target);
+							(Map<?,?>) value), (BasicEObjectImpl) target);
 				} else {
 					EcoreAccess.setManyEFeatureValue(eFeature, createPersistableList((InternalEObject) target,
-							eFeature, (List) value), (BasicEObjectImpl) target);
+							eFeature, (List<?>) value), (BasicEObjectImpl) target);
 				}
 			}
 			if (log.isDebugEnabled()) {
@@ -349,20 +354,20 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				// the follow 3 if statements handle the refresh action, the
 				// underlying orm
 				// collection is replaced
-				if (currentValue != null && currentValue instanceof PersistableEList
-						&& value != ((PersistableEList) currentValue).getDelegate()) {
-					((PersistableEList) currentValue).replaceDelegate((List) value);
-				} else if (currentValue != null && currentValue instanceof PersistableEMap
-						&& value != ((PersistableEMap) currentValue).getDelegate()) {
-					((PersistableEMap) currentValue).replaceDelegate(value);
-				} else if (currentValue != null && currentValue instanceof MapPersistableEMap
-						&& value != ((MapPersistableEMap) currentValue).getORMMapDelegate()) {
-					((PersistableEMap) currentValue).replaceDelegate(value);
+				if (currentValue != null && currentValue instanceof PersistableEList<?>
+						&& value != ((PersistableEList<?>) currentValue).getDelegate()) {
+					((PersistableEList<?>) currentValue).replaceDelegate((List) value);
+				} else if (currentValue != null && currentValue instanceof PersistableEMap<?,?>
+						&& value != ((PersistableEMap<?,?>) currentValue).getDelegate()) {
+					((PersistableEMap<?,?>) currentValue).replaceDelegate(value);
+				} else if (currentValue != null && currentValue instanceof MapPersistableEMap<?,?>
+						&& value != ((MapPersistableEMap<?,?>) currentValue).getORMMapDelegate()) {
+					((PersistableEMap<?,?>) currentValue).replaceDelegate(value);
 				} else { // then wrap the hibernate collection
-					if (value instanceof Map) {
-						javaField.set(target, createPersistableMap((InternalEObject) target, eFeature, (Map) value));
+					if (value instanceof Map<?,?>) {
+						javaField.set(target, createPersistableMap((InternalEObject) target, eFeature, (Map<?,?>) value));
 					} else {
-						javaField.set(target, createPersistableList((InternalEObject) target, eFeature, (List) value));
+						javaField.set(target, createPersistableList((InternalEObject) target, eFeature, (List<?>) value));
 					}
 				}
 				if (log.isDebugEnabled()) {
@@ -381,7 +386,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	/**
 	 * Create a EMap. Create method can be overridden
 	 */
-	protected EList createPersistableMap(InternalEObject target, EStructuralFeature estruct, Map map) {
+	protected EList<?> createPersistableMap(InternalEObject target, EStructuralFeature estruct, Map<?,?> map) {
 		final EReference eref = (EReference) estruct;
 		if (log.isDebugEnabled()) {
 			log.debug("Detected EMAP for " + estruct.getName());
@@ -393,7 +398,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	}
 
 	/** Creates a persistablemap or list */
-	protected EList createPersistableList(InternalEObject target, EStructuralFeature estruct, List list) {
+	protected EList<?> createPersistableList(InternalEObject target, EStructuralFeature estruct, List<?> list) {
 		if (estruct instanceof EReference) {
 			final EReference eref = (EReference) estruct;
 			// the test for emap checks: the entry class must have a

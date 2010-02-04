@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: VersionPropertyHandler.java,v 1.6 2008/06/28 22:41:47 mtaal Exp $
+ * $Id: VersionPropertyHandler.java,v 1.7 2010/02/04 10:53:07 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -33,9 +33,8 @@ import org.hibernate.property.Setter;
  * Reads the version from the internal version cache.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
-@SuppressWarnings("unchecked")
 public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
 	/**
 	 * Generated Serial Version ID
@@ -47,6 +46,7 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -56,6 +56,7 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	 * 
 	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
 	 */
+	@SuppressWarnings("rawtypes")
 	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
 		return this;
 	}
@@ -70,6 +71,7 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	/**
 	 * Reads the version from the versioncache
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
 		return IdentifierCacheHandler.getInstance().getVersion(owner);
 	}
@@ -93,6 +95,7 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	}
 
 	/** Returns Integer.class */
+	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return Integer.class;
 	}
