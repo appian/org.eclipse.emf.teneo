@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.27 2009/07/22 21:08:44 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.28 2010/02/04 11:03:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -54,7 +54,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 
 public class StoreUtil {
@@ -141,7 +141,7 @@ public class StoreUtil {
 		if (o instanceof EStoreEList<?>) {
 			return true;
 		}
-		if (o instanceof EStoreEObjectImpl.BasicEStoreEList) {
+		if (o instanceof EStoreEObjectImpl.BasicEStoreEList<?>) {
 			return true;
 		}
 		return false;

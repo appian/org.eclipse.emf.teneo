@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.8 2009/07/22 21:08:43 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.9 2010/02/04 11:03:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -178,7 +178,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 		pAnnotations.push(pAnnotation);
 
 		if (annotationEStructuralFeature.isMany()) {
-			((List) pAnnotatedEModelElement.eGet(annotationEStructuralFeature)).add(pAnnotation);
+			((List<PAnnotation>) pAnnotatedEModelElement.eGet(annotationEStructuralFeature)).add(pAnnotation);
 		} else {
 			pAnnotatedEModelElement.eSet(annotationEStructuralFeature, pAnnotation);
 		}
@@ -190,7 +190,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			final Object valueObject = eDataType.getEPackage().getEFactoryInstance().createFromString(eDataType,
 					attributes.getValue(i));
 			if (eAttribute.isMany()) {
-				((List) pAnnotation.eGet(eAttribute)).add(valueObject);
+				((List<Object>) pAnnotation.eGet(eAttribute)).add(valueObject);
 			} else {
 				pAnnotation.eSet(eAttribute, valueObject);
 			}
@@ -390,7 +390,7 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements Exte
 			final EDataType eDataType = pAnnotationEAttribute.getEAttributeType();
 			final Object valueObject = eDataType.getEPackage().getEFactoryInstance().createFromString(eDataType, value);
 			if (pAnnotationEAttribute.isMany()) {
-				((List) getPAnnotation().eGet(pAnnotationEAttribute)).add(valueObject);
+				((List<Object>) getPAnnotation().eGet(pAnnotationEAttribute)).add(valueObject);
 			} else {
 				getPAnnotation().eSet(pAnnotationEAttribute, valueObject);
 			}

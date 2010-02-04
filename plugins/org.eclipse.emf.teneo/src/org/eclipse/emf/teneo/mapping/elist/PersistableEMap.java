@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.15 2009/09/17 05:59:07 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.16 2010/02/04 11:03:00 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -139,9 +139,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 
 		log.debug("Created/reset elist " + logString);
 
-		if (delegateORMList instanceof EList) {
+		if (delegateORMList instanceof EList<?>) {
 			setLoaded(true);
-		} else if (delegateORMList instanceof ArrayList) { // already loaded
+		} else if (delegateORMList instanceof ArrayList<?>) { // already loaded
 			// lists are
 			// packaged in
 			// an elist

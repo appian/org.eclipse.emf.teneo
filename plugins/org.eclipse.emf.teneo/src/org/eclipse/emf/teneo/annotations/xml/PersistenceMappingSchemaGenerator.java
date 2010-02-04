@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: PersistenceMappingSchemaGenerator.java,v 1.6 2009/06/28 02:05:10 mtaal Exp $
+ * $Id: PersistenceMappingSchemaGenerator.java,v 1.7 2010/02/04 11:03:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Parses the pamodel and pannotation model to generate a xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class PersistenceMappingSchemaGenerator {
@@ -507,11 +507,6 @@ public class PersistenceMappingSchemaGenerator {
 	 */
 	protected static boolean isUnsupported(EModelElement eModelElement) {
 		return (eModelElement.getEAnnotation(UNSUPPORTED_SOURCE) != null);
-	}
-
-	/** Add minOccurs and maxOccurs */
-	private void addZeroUnbounded(Element elem) {
-		addMinMaxOccurs(elem, "0", "unbounded");
 	}
 
 	/** Add minOccurs and maxOccurs */

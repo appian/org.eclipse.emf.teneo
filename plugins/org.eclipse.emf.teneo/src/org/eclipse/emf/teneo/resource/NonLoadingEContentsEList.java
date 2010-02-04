@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NonLoadingEContentsEList.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: NonLoadingEContentsEList.java,v 1.8 2010/02/04 11:03:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Is a contents elist which will only iterate over loaded efeatures.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
@@ -58,17 +58,17 @@ public class NonLoadingEContentsEList<E> extends EContentsEList<E> {
 					list = (List<?>) eStore.get((InternalEObject) eObject, eref, EStore.NO_INDEX);
 				}
 
-				if ((list instanceof PersistableEList) && ((PersistableEList<?>) list).isLoaded()) {
+				if ((list instanceof PersistableEList<?>) && ((PersistableEList<?>) list).isLoaded()) {
 					result.add(eref);
-				} else if ((list instanceof PersistableEMap) && ((PersistableEMap<?, ?>) list).isLoaded()) {
+				} else if ((list instanceof PersistableEMap<?,?>) && ((PersistableEMap<?, ?>) list).isLoaded()) {
 					result.add(eref);
 				} else if ((list instanceof PersistableFeatureMap) && ((PersistableFeatureMap) list).isLoaded()) {
 					result.add(eref);
 				} else if (eref.getLowerBound() > 0 && forValidation) {
 					result.add(eref);
 				}
-				if (!(list instanceof PersistableEList) && !(list instanceof PersistableFeatureMap) &&
-						!(list instanceof PersistableEMap)) {
+				if (!(list instanceof PersistableEList<?>) && !(list instanceof PersistableFeatureMap) &&
+						!(list instanceof PersistableEMap<?,?>)) {
 					result.add(eref);
 				}
 

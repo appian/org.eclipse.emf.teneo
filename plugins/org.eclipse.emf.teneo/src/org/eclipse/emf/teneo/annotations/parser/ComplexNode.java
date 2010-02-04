@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ComplexNode.java,v 1.3 2008/09/01 12:45:19 mtaal Exp $
+ * $Id: ComplexNode.java,v 1.4 2010/02/04 11:02:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -53,7 +53,7 @@ class ComplexNode extends NamedParserNode {
 
 	/** Translate into an eclass */
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	Object convert(EClassResolver ecr) {
 		log.debug("Converting " + getName() + " to EObject ");
 

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FeatureMapEntry.java,v 1.9 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: FeatureMapEntry.java,v 1.10 2010/02/04 11:03:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * correct delegate is created.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Serializable {
@@ -365,19 +365,19 @@ public abstract class FeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 				NotificationChain notifications) {
 			return notifications;
 		}
-
-		/**
-		 * validate the type of the value with the type expected by the efeature
-		 */
-		public void validate(Object value) {
-			if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
-				String valueClass =
-						value instanceof EObject ? ((EObject) value).eClass().getName() : value.getClass().getName();
-				throw new ClassCastException("The feature '" + eStructuralFeature.getName() + "'s type '" +
-						eStructuralFeature.getEType().getName() + "' does not permit a value of type '" + valueClass +
-						"'");
-			}
-		}
+//
+//		/**
+//		 * validate the type of the value with the type expected by the efeature
+//		 */
+//		public void validate(Object value) {
+//			if (value != null && !eStructuralFeature.getEType().isInstance(value)) {
+//				String valueClass =
+//						value instanceof EObject ? ((EObject) value).eClass().getName() : value.getClass().getName();
+//				throw new ClassCastException("The feature '" + eStructuralFeature.getName() + "'s type '" +
+//						eStructuralFeature.getEType().getName() + "' does not permit a value of type '" + valueClass +
+//						"'");
+//			}
+//		}
 	}
 
 	/** Containment Inverse Action */

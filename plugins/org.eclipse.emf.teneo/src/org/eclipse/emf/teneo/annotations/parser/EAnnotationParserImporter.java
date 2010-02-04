@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAnnotationParserImporter.java,v 1.7 2009/11/10 10:06:04 mtaal Exp $
+ * $Id: EAnnotationParserImporter.java,v 1.8 2010/02/04 11:02:59 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.parser;
@@ -122,7 +122,7 @@ public class EAnnotationParserImporter implements EClassResolver, ExtensionPoint
 					if (eref.getEReferenceType().isInstance(eobj)) {
 						log.debug("Found EReference " + eref.getName() + " for " + eobj.eClass().getName());
 						if (eref.isMany()) {
-							((List) pee.eGet(eref)).add(eobj);
+							((List<EObject>) pee.eGet(eref)).add(eobj);
 						} else {
 							pee.eSet(eref, eobj);
 						}

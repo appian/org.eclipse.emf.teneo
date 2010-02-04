@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableFeatureMap.java,v 1.14 2009/11/02 10:24:41 mtaal Exp $
+ * $Id: PersistableFeatureMap.java,v 1.15 2010/02/04 11:03:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
  * the persistent store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public abstract class PersistableFeatureMap extends DelegatingFeatureMap implements
@@ -79,7 +79,7 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 		if (list == null) {
 			delegate = new ArrayList<FeatureMap.Entry>();
 			isLoaded = true;
-		} else if (list instanceof EList) {
+		} else if (list instanceof EList<?>) {
 			AssertUtil.assertTrue("The passed elist is not a featuremap but a : " + list.getClass().getName()
 					+ ". Error in featureMap: " + getLogString(), list instanceof FeatureMap);
 

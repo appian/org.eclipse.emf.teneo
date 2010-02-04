@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EContainerRepairControl.java,v 1.11 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: EContainerRepairControl.java,v 1.12 2010/02/04 11:03:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -51,7 +51,7 @@ import org.eclipse.emf.teneo.mapping.elist.PersistableFeatureMap;
  * eContainers need to be set in child objects.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class EContainerRepairControl {
@@ -78,7 +78,7 @@ public class EContainerRepairControl {
 					if (list == null) {
 						continue;
 					}
-					if ((list instanceof PersistableEList) && !((PersistableEList<?>) list).isLoaded()) {
+					if ((list instanceof PersistableEList<?>) && !((PersistableEList<?>) list).isLoaded()) {
 						continue;
 					}
 					if ((list instanceof PersistableFeatureMap) && !((PersistableFeatureMap) list).isLoaded()) {
@@ -283,7 +283,7 @@ public class EContainerRepairControl {
 			}
 
 			// no list should be caught in the first line
-			assert (!(containedObject instanceof PersistableDelegateList));
+			assert (!(containedObject instanceof PersistableDelegateList<?>));
 
 			/*
 			 * if (containedObject instanceof JPOXEList) { if

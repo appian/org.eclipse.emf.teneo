@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * returned.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class PersistenceMappingBuilder implements ExtensionPoint {
 
@@ -273,7 +273,7 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 										+ et.getName() + " to " + pea.getModelEAttribute().getName());
 
 								final Object obj = ped.eGet(esf);
-								if (obj instanceof Collection) {
+								if (obj instanceof Collection<?>) {
 									pea.eSet(asf, EcoreUtil.copyAll((Collection<?>) obj));
 								} else if (obj instanceof EObject) {
 									pea.eSet(asf, EcoreUtil.copy((EObject) obj));

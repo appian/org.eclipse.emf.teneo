@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.24 2009/06/11 04:59:38 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.25 2010/02/04 11:03:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 
 public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
@@ -77,10 +77,10 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 		if (list == null) {
 			delegate = new ArrayList<E>();
 			isLoaded = true;
-		} else if (list instanceof EList) {
+		} else if (list instanceof EList<?>) {
 			delegate = new ArrayList<E>(list);
 			isLoaded = true;
-		} else if (list instanceof ArrayList) { // already loaded lists are
+		} else if (list instanceof ArrayList<?>) { // already loaded lists are
 			// packaged in an elist
 			delegate = list;
 			isLoaded = list.size() > 0;

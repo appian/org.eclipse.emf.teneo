@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ERuntime.java,v 1.19 2009/03/30 07:53:05 mtaal Exp $
+ * $Id: ERuntime.java,v 1.20 2010/02/04 11:03:02 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -31,10 +31,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
-import org.eclipse.emf.ecore.xml.type.impl.XMLTypePackageImpl;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
@@ -47,7 +45,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * concrete class, references for cross reference computation, contained computations.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class ERuntime extends EModelResolver {
@@ -305,16 +303,15 @@ public class ERuntime extends EModelResolver {
 
 	/** Convenience method to easily determine which packages should be ignored */
 	private static boolean ignorePackage(EPackage epack) {
-		if (true) {
 			return false;
-		}
-		if (epack instanceof XMLTypePackageImpl) {
-			return true; // ignore this
-		}
-		if (epack instanceof EcorePackageImpl) {
-			return true; // ignore this
-		}
-		return false;
+//		}
+//		if (epack instanceof XMLTypePackageImpl) {
+//			return true; // ignore this
+//		}
+//		if (epack instanceof EcorePackageImpl) {
+//			return true; // ignore this
+//		}
+//		return false;
 	}
 
 	/** Returns the instanceclass for a passed interface */
