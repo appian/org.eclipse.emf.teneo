@@ -17,8 +17,8 @@ import java.util.Set;
 import javax.persistence.spi.PersistenceUnitInfo;
 
 import org.eclipse.emf.teneo.eclipselink.common.ui.wizards.pages.BasicModelAndDatabaseAccessParametersPage;
-import org.eclipse.persistence.internal.jpa.deployment.Archive;
 import org.eclipse.persistence.internal.jpa.deployment.PersistenceUnitProcessor;
+import org.eclipse.persistence.jpa.Archive;
 
 public class EclipseLinkModelAndDatabaseAccessParametersPage extends BasicModelAndDatabaseAccessParametersPage {
 
