@@ -2,24 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackageImpl.java,v 1.16 2009/06/28 02:05:07 mtaal Exp $
+ * $Id: HbmodelPackageImpl.java,v 1.17 2010/02/04 11:03:44 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
-
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.impl.HbannotationPackageImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;

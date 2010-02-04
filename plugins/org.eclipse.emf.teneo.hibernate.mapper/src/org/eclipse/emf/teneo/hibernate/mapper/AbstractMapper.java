@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.52 2009/11/10 08:41:37 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.53 2010/02/04 11:03:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -40,7 +40,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
-import org.eclipse.emf.teneo.hibernate.hbannotation.OnDeleteAction;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
@@ -791,15 +790,15 @@ public abstract class AbstractMapper {
 
 	/** Add the ondelete mapping to the key */
 	protected void handleOndelete(Element keyElement, OnDelete onDelete) {
-		if (true || onDelete == null) {
-			return;
-		}
-
-		if (onDelete.getAction().equals(OnDeleteAction.CASCADE)) {
-			keyElement.addAttribute("on-delete", "cascade");
-		} else {
-			keyElement.addAttribute("on-delete", "noaction");
-		}
+//		if (true || onDelete == null) {
+//			return;
+//		}
+//
+//		if (onDelete.getAction().equals(OnDeleteAction.CASCADE)) {
+//			keyElement.addAttribute("on-delete", "cascade");
+//		} else {
+//			keyElement.addAttribute("on-delete", "noaction");
+//		}
 	}
 
 	/** Returns true if the target is the general EObject type */

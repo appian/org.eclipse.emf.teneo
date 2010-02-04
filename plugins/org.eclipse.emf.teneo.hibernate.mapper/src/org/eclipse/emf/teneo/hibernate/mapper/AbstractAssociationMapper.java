@@ -111,8 +111,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final String assocName = getHbmContext().getPropertyName(aReference.getModelEReference());
 		log.debug("addManyToOne " + assocName + "/" + referedTo);
 
-		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) aReference;
-
 		final String tagName;
 		if (((HbAnnotatedEReference) aReference).getHbType() != null) {
 			tagName = "property";
@@ -537,9 +535,9 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		if (idBag != null) {
 			final String generator = (idBag.getGenerator() == null ? "increment" : idBag.getGenerator());
 			final String type = (idBag.getType() == null ? "long" : idBag.getType());
-			if (false && idBag.getTable() != null) {
-				collectionElement.addAttribute("table", idBag.getTable());
-			}
+//			if (false && idBag.getTable() != null) {
+//				collectionElement.addAttribute("table", idBag.getTable());
+//			}
 			final Element collectionIdElement = collectionElement.addElement("collection-id");
 			collectionIdElement.addAttribute("column", hbmContext.getIdbagIDColumnName());
 			collectionIdElement.addAttribute("type", type);

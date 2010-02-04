@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKeyManyToManyImpl.java,v 1.1 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: MapKeyManyToManyImpl.java,v 1.2 2010/02/04 11:03:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -10,19 +10,13 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 

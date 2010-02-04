@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbannotationPackageImpl.java,v 1.16 2009/06/28 02:05:07 mtaal Exp $
+ * $Id: HbannotationPackageImpl.java,v 1.17 2010/02/04 11:03:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -28,8 +28,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Filter;
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.ForceDiscriminator;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Formula;
-import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDefs;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Filters;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Generated;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenerationTime;
 import org.eclipse.emf.teneo.hibernate.hbannotation.GenericGenerator;
@@ -43,7 +41,6 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.IdBag;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
-import org.eclipse.emf.teneo.hibernate.hbannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MapKeyManyToMany;
 import org.eclipse.emf.teneo.hibernate.hbannotation.MetaValue;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;

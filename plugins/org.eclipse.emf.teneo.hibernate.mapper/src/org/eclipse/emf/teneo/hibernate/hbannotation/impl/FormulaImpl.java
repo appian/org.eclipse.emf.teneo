@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FormulaImpl.java,v 1.1 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: FormulaImpl.java,v 1.2 2010/02/04 11:03:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.Formula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 

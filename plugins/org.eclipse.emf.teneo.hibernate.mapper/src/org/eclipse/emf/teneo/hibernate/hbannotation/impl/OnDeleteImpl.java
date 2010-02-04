@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OnDeleteImpl.java,v 1.5 2008/01/18 06:21:36 mtaal Exp $
+ * $Id: OnDeleteImpl.java,v 1.6 2010/02/04 11:03:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -106,7 +106,6 @@ public class OnDeleteImpl extends HbAnnotationImpl implements OnDelete {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

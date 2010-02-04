@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: GenerateHBM.java,v 1.16 2009/03/07 21:15:20 mtaal Exp $
+ * </copyright> $Id: GenerateHBM.java,v 1.17 2010/02/04 11:03:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -27,14 +27,13 @@ import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
-import org.eclipse.emf.teneo.hibernate.cdo.CDOHelper;
 
 /**
  * Class is responsible for generating the hbm file. Is run through a launcher
  * therefore the main methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class GenerateHBM {
@@ -106,9 +105,6 @@ public class GenerateHBM {
 			final ExtensionManager extensionManager = ExtensionManagerFactory
 					.getInstance().create();
 			MappingUtil.registerHbExtensions(extensionManager);
-			if (options.get(CDOHelper.GENERATE_FOR_CDO) != null) {
-				CDOHelper.getInstance().registerCDOExtensions(extensionManager);
-			}
 
 			final PersistenceOptions po = extensionManager.getExtension(
 					PersistenceOptions.class, new Object[] { options });

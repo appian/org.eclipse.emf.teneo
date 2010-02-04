@@ -2,22 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: FilterDefImpl.java,v 1.1 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: FilterDefImpl.java,v 1.2 2010/02/04 11:03:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.FilterDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.ParamDef;

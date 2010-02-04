@@ -2,21 +2,17 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnyImpl.java,v 1.1 2009/06/27 09:19:10 mtaal Exp $
+ * $Id: AnyImpl.java,v 1.2 2010/02/04 11:03:39 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 

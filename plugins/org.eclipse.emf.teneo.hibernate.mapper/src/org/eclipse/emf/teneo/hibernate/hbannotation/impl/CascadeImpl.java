@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CascadeImpl.java,v 1.8 2008/09/01 12:45:16 mtaal Exp $
+ * $Id: CascadeImpl.java,v 1.9 2010/02/04 11:03:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
@@ -11,7 +11,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;

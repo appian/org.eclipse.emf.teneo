@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NotFoundImpl.java,v 1.1 2008/08/04 05:14:59 mtaal Exp $
+ * $Id: NotFoundImpl.java,v 1.2 2010/02/04 11:03:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NotFound;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NotFoundAction;

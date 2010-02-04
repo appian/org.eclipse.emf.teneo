@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParamDefImpl.java,v 1.1 2008/04/23 15:44:25 mtaal Exp $
+ * $Id: ParamDefImpl.java,v 1.2 2010/02/04 11:03:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.ParamDef;
 

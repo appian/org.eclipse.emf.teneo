@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbAnnotatedEClassImpl.java,v 1.16 2009/03/15 15:08:01 mtaal Exp $
+ * $Id: HbAnnotatedEClassImpl.java,v 1.17 2010/02/04 11:03:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;

@@ -2,14 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbmodelPackage.java,v 1.17 2009/06/28 02:05:07 mtaal Exp $
+ * $Id: HbmodelPackage.java,v 1.18 2010/02/04 11:03:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbmodel;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 
 /**

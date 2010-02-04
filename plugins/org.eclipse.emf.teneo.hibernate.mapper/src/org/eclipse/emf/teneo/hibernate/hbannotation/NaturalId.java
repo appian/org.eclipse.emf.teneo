@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NaturalId.java,v 1.1 2008/06/29 14:23:05 mtaal Exp $
+ * $Id: NaturalId.java,v 1.2 2010/02/04 11:03:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->

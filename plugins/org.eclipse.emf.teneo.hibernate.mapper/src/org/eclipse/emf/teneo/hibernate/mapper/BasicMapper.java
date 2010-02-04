@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: BasicMapper.java,v 1.36 2009/11/02 10:24:30 mtaal Exp $
+ * </copyright> $Id: BasicMapper.java,v 1.37 2010/02/04 11:03:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -182,7 +182,7 @@ public class BasicMapper extends AbstractMapper implements ExtensionPoint {
 		propElement.addAttribute("lazy", FetchType.LAZY.equals(basic.getFetch()) ? "true" : "false");
 		addColumnsAndFormula(propElement, paAttribute, getColumns(paAttribute), isNullable(basic, paAttribute), true);
 		final boolean isNullable = isNullable(basic, paAttribute);
-		final boolean isNullable2 = isNullable(basic, paAttribute);
+//		final boolean isNullable2 = isNullable(basic, paAttribute);
 		propElement.addAttribute("not-null", isNullable ? "false" : "true");
 		setType(paAttribute, propElement);
 

@@ -2,25 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NaturalIdImpl.java,v 1.2 2009/06/11 04:59:21 mtaal Exp $
+ * $Id: NaturalIdImpl.java,v 1.3 2010/02/04 11:03:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NaturalId;
-import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,7 +105,6 @@ public class NaturalIdImpl extends HbAnnotationImpl implements NaturalId {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

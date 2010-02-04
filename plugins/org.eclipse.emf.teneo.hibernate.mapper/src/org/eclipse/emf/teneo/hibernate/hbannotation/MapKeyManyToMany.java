@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MapKeyManyToMany.java,v 1.1 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: MapKeyManyToMany.java,v 1.2 2010/02/04 11:03:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 
 /**

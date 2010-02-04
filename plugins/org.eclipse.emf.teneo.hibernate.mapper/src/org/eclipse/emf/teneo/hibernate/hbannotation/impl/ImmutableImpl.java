@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ImmutableImpl.java,v 1.1 2008/07/12 13:10:33 mtaal Exp $
+ * $Id: ImmutableImpl.java,v 1.2 2010/02/04 11:03:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 

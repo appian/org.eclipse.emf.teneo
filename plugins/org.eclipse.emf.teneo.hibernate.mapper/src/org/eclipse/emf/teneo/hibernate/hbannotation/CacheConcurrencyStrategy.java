@@ -2,13 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CacheConcurrencyStrategy.java,v 1.6 2007/07/04 19:31:48 mtaal Exp $
+ * $Id: CacheConcurrencyStrategy.java,v 1.7 2010/02/04 11:03:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.eclipse.emf.common.util.Enumerator;
 
 /**

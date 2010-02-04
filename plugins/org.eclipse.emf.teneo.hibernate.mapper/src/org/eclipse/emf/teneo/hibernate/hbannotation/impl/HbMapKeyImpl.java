@@ -2,24 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbMapKeyImpl.java,v 1.1 2008/07/06 16:25:28 mtaal Exp $
+ * $Id: HbMapKeyImpl.java,v 1.2 2010/02/04 11:03:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 

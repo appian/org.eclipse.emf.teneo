@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HbEntityImpl.java,v 1.2 2009/06/11 04:59:21 mtaal Exp $
+ * $Id: HbEntityImpl.java,v 1.3 2010/02/04 11:03:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.hbannotation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationPackage;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType;
