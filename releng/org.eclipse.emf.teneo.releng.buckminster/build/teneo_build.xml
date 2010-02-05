@@ -45,7 +45,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Importing projects into workspace ${workspacePath} and binaries into target platform ${targetPlatformPath}" />		
+		<echo message="Importing projects into workspace ${workspacePath}"/>
+		<echo message="Importing binaries into target platform ${targetPlatformPath}" />		
 		<buckminster command="import">
 			<cmdargs>
 				<arg value="${basedir}/teneo.mspec" />
