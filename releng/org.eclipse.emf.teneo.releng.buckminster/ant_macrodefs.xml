@@ -14,7 +14,7 @@ Some important parts have been copied from Buckminster's own
 build setup:
 http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
 -->
-<project>
+<project name="macro">
 	<!-- This macro executes the default application of an eclipse installation that resides
 	     in the folder ${buildtools}/@app
 	  -->

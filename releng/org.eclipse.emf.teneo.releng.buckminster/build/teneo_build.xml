@@ -35,7 +35,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="targetPlatformPath" location="${buildRoot}/tp"/>
 	<property name="workspacePath" location="${buildRoot}/workspace"/>
 
-	<import file="../ant_macrodefs.xml" as="macro"/>
+	<import file="../ant_macrodefs.xml"/>
 	
 	<target name="run" depends="init,init.build.properties">
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
