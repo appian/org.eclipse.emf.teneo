@@ -37,7 +37,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<import file="../ant_common.xml" />
 	
-	<target name="run" depends="init">
+	<target name="run" depends="init,init.build.properties">
 		<echo message="Using workspace ${workspacePath}" />
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
 		<buckminster command="setpref" workspace="${workspacePath}">
