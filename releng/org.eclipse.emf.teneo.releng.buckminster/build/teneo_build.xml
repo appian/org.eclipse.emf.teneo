@@ -39,7 +39,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	
 	<target name="run" depends="init,init.build.properties">
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
-		<buckminster command="setpref">
+		<buckminster command="setpref" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="targetPlatformPath=${targetPlatformPath}" />
 			</cmdargs>
@@ -73,15 +73,22 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<!-- Copy site and create sdk zips --> 	
 	<target name="copy.files">
-		<echo message="Copying p2.site to ${buildSitePath}"/>
-		<copy todir="${buildSitePath}">
-			<dirset dir="${buckminster.output.root}">
-		 		<include name="*site*/site.p2/**"/>
-		 	</dirset>
-			<fileset dir="${buckminster.output.root}">
-		 		<include name="*site*/site.p2/*"/>
-		 	</fileset>
-		</copy>
+	    <echo message="Copying p2.site to ${buildSitePath}"/>
+	    <copy todir="${buildSitePath}" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/*"/>
+	            </fileset>
+	    </copy>
+	    <copy todir="${buildSitePath}/plugins" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/plugins/*"/>
+	            </fileset>
+	    </copy>
+	    <copy todir="${buildSitePath}/features" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/features/*"/>
+	            </fileset>
+	    </copy>
 	</target>
 	
 	<target name="init.build.properties">
