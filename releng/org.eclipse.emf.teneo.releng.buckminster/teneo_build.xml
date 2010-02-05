@@ -25,7 +25,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
 	</tstamp>
 	
-	<condition property="workspacePath" value="${env.WORKSPACE}" else="${basedir}/../../builds">
+	<condition property="buildsPath" value="${env.WORKSPACE}" else="${basedir}/../../builds">
 		<isset property="env.WORKSPACE" />
 	</condition>
 	
@@ -33,21 +33,31 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<isset property="env.BUILDTYPE" />
 	</condition>
 	
-	<!--
-	<property name="baseDir" location="${env.WORKSPACE}"/>
-	-->
 	<property name="phase" value="build"/>
 	
-	<property name="buildRoot" location="${workspacePath}/${buildType}${buildTimestamp}/${phase}"/>
+	<property name="buildRoot" location="${buildsPath}/${buildType}${buildTimestamp}/build"/>
 	
-	<property name="toolsPath" location="${buildRoot}/tools"/>
+	<property name="toolsPath" location="${buildRoot}/../tools"/>
 	<property name="targetPlatformPath" location="${buildRoot}/tp"/>
 	<property name="workspacePath" location="${buildRoot}/workspace"/>
 
 	<property name="buckminster.output.root" location="${buildRoot}/output" />
 	<property name="buckminster.output.temp" location="${buildRoot}/temp" />
+
+	<property name="testRoot" location="${buildsPath}/${buildType}${buildTimestamp}/test"/>
+	<property name="testTargetPlatformPath" location="${testRoot}/tp"/>
+	<property name="testWorkspacePath" location="${buildRoot}/workspace"/>
+
+	<target name="run" depends="init,init.build.properties">
+		<echo message="Building" />
+		<antcall target="build"/>
+		<echo message="Testing" />
+		<antcall target="test"/>
+		<echo message="Cleaning up" />
+		<antcall target="cleanUp" inheritall="true"/>
+	</target>
 	
-	<target name="init" depends="printInfo">
+	<target name="init">
 		
 		<delete dir="${buildRoot}" failonerror="false"/>
 		
@@ -55,29 +65,28 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${targetPlatformPath}"/>
 		<mkdir dir="${toolsPath}"/>
 		<mkdir dir="${workspacePath}"/>
+		
+		<mkdir dir="${testRoot}"/>
+		<mkdir dir="${testTargetPlatformPath}"/>
+		<mkdir dir="${testWorkspacePath}"/>
 
-		<untar src="buckminster3.6.zip" compression="gzip" dest="${toolsPath}" />
+		<unzip src="buckminster3.6.zip" dest="${toolsPath}" />
 	</target>
 
-	<target name="printInfo">
-	  <echo message="Environment and Build Parameters"/>	
-	  <echo message="BASEDIR: ${basedir}"/>
-	  <echo message="BUILD_NUMBER: ${env.BUILD_NUMBER}"/>
-	  <echo message="BUILD_ID: ${env.BUILD_ID}"/>
-	  <echo message="JOB_NAME: ${env.JOB_NAME}"/>
-	  <echo message="BUILD_TAG: ${env.BUILD_TAG}"/>
-	  <echo message="EXECUTOR_NUMBER: ${env.EXECUTOR_NUMBER}"/>
-	  <echo message="JAVA_HOME: ${env.JAVA_HOME}"/>
-	  <echo message="WORKSPACE: ${env.WORKSPACE}"/>
-	  <echo message="HUDSON_URL ${env.HUDSON_URL}"/>
-	  <echo message="BUILD_URL ${env.BUILD_URL}"/>
-	  <echo message="JOB_URL ${env.JOB_URL}"/>
-	  <echo message="BUILD_TAG ${env.BUILD_TAG}"/>
-	  <echo message="VERSION ${env.VERSION}"/>
-	  <echo message="BUILDTYPE ${env.BUILDTYPE}"/>
+
+	<target name="test" depends="setup.test">
 	</target>
 
-	<target name="run" depends="init,init.build.properties">
+	<!-- Copy targetPlatform and result from build to test target Platform --> 	
+	<target name="setup.test">
+		<copy todir="${testTargetPlatformPath}">
+			<fileset dir="${targetPlatformPath}"
+		</copy>
+org.eclipse.emf.teneo.site_1.1.0-eclipse.feature/site.p2
+
+	</target>
+
+	<target name="build">
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
 		<buckminster command="setpref">
 			<cmdargs>
@@ -102,8 +111,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Cleaning up" />
-		<antcall target="cleanUp" inheritall="true"/>
 	</target>
 	
 	<!-- This macro executes the default application of an eclipse installation that resides
