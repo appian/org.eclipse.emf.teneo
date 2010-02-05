@@ -29,48 +29,25 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<isset property="env.WORKSPACE" />
 	</condition>
 	
-	<condition property="buildType" value="${env.BUILDTYPE}" else="N">
+	<!-- Is used in buck.minster also -->
+	<condition property="build.type" value="${env.BUILDTYPE}" else="N">
 		<isset property="env.BUILDTYPE" />
 	</condition>
 	
-	<property name="phase" value="build"/>
-	
-	<property name="buildRoot" location="${buildsPath}/${buildType}${buildTimestamp}/build"/>
-	
-	<property name="toolsPath" location="${buildRoot}/../tools"/>
-	<property name="targetPlatformPath" location="${buildRoot}/tp"/>
-	<property name="workspacePath" location="${buildRoot}/workspace"/>
+	<property name="testRoot" location="${buildsPath}/${build.type}${buildTimestamp}/test"/>
 
-	<property name="buckminster.output.root" location="${buildRoot}/output" />
-	<property name="buckminster.output.temp" location="${buildRoot}/temp" />
-
-	<property name="testRoot" location="${buildsPath}/${buildType}${buildTimestamp}/test"/>
 	<property name="testTargetPlatformPath" location="${testRoot}/tp"/>
 	<property name="testWorkspacePath" location="${buildRoot}/workspace"/>
+	<property name="testResults" location="${buildsPath}/${build.type}${buildTimestamp}/testResults"/>
 
-	<target name="run" depends="init,init.build.properties">
-		<echo message="Building" />
-		<antcall target="build"/>
-		<echo message="Testing" />
-		<antcall target="test"/>
-		<echo message="Cleaning up" />
-		<antcall target="cleanUp" inheritall="true"/>
+	<target name="run" depends="init">
 	</target>
 	
-	<target name="init">
-		
-		<delete dir="${buildRoot}" failonerror="false"/>
-		
-		<mkdir dir="${buildRoot}"/>
-		<mkdir dir="${targetPlatformPath}"/>
-		<mkdir dir="${toolsPath}"/>
-		<mkdir dir="${workspacePath}"/>
-		
+	<target name="init">		
 		<mkdir dir="${testRoot}"/>
 		<mkdir dir="${testTargetPlatformPath}"/>
 		<mkdir dir="${testWorkspacePath}"/>
-
-		<unzip src="buckminster3.6.zip" dest="${toolsPath}" />
+		<mkdir dir="${testResults}"/>
 	</target>
 
 
@@ -80,9 +57,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<!-- Copy targetPlatform and result from build to test target Platform --> 	
 	<target name="setup.test">
 		<copy todir="${testTargetPlatformPath}">
-			<fileset dir="${targetPlatformPath}"
+			<fileset dir="${targetPlatformPath}"/>
 		</copy>
-org.eclipse.emf.teneo.site_1.1.0-eclipse.feature/site.p2
 
 	</target>
 

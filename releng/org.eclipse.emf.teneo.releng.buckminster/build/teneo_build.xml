@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Copyright (c) 2010 Cloudsmith Inc, Martin Taal (Doorn, The Netherlands) and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+  Cloudsmith Inc - build.xml for Buckminster project
+   Martin Taal - changes for Teneo
+
+Some important parts have been copied from Buckminster's own
+build setup:
+http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
+-->
+<project default="run" name="Teneo Builds">
+	<!-- load properties and set timestamp for the build -->
+	<property environment="env"/>
+
+	<!-- see below the temporary property file passed to buckminster -->
+	<property file="../buckminster.properties" />
+	
+	<!--
+		Inherited properties:
+		buildRoot: the root of this build
+		toolsPath: path containing buckminster
+		buildSitePath: the path to which the p2 site should be copied
+		buildZipsPath: the path to the directory with zip files
+		
+		buckminster.output.root
+		buckminster.output.temp
+	-->
+
+	<property name="targetPlatformPath" location="${buildRoot}/tp"/>
+	<property name="workspacePath" location="${buildRoot}/workspace"/>
+
+	<import file="../ant_macrodefs.xml" as="macro"/>
+	
+	<target name="run" depends="init,init.build.properties">
+		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
+		<macro.buckminster command="setpref">
+			<cmdargs>
+				<arg value="targetPlatformPath=${targetPlatformPath}" />
+			</cmdargs>
+		</macro.buckminster>
+
+		<echo message="Importing projects into workspace ${workspacePath} and binaries into target platform ${targetPlatformPath}" />		
+		<macro.buckminster command="import">
+			<cmdargs>
+				<arg value="${basedir}/build/teneo.mspec" />
+			</cmdargs>
+		</macro.buckminster>
+		
+		<echo message="Building" />
+		<macro.buckminster command="build"/>
+		
+		<echo message="Creating site" />
+		<macro.buckminster command="perform">
+			<cmdargs>
+				<arg value="org.eclipse.emf.teneo.site#site.p2" />
+			</cmdargs>
+		</macro.buckminster>
+
+		<antcall target="copy.files" inheritRefs="true" inheritAll="true"/>		
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${targetPlatformPath}"/>
+		<mkdir dir="${workspacePath}"/>
+	</target>
+
+	<!-- Copy site and create sdk zips --> 	
+	<target name="copy.files">
+		<echo message="Copying p2.site to ${buildSitePath}"/>
+		<copy todir="${buildSitePath}">
+			<dirset dir="${buckminster.output.root}">
+		 		<include name="*site*/site.p2/**"/>
+		 	</dirset>
+			<fileset dir="${buckminster.output.root}">
+		 		<include name="*site*/site.p2/*"/>
+		 	</fileset>
+		</copy>
+	</target>
+	
+	<target name="init.build.properties">
+		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
+		  -->
+		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
+		<echoproperties destfile="${properties.tmp}">
+			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
+			<propertyset negate="true">
+				<propertyref name="basedir" />
+				<propertyref name="eclipse.home" />
+				<propertyref name="properties.tmp" />
+				<propertyref name="line.separator" />
+				<propertyref name="path.separator" />
+				<propertyref prefix="ant." />
+				<propertyref prefix="file." />
+				<propertyref prefix="java." />
+				<propertyref prefix="sun." />
+				<propertyref prefix="user." />
+			</propertyset>
+		</echoproperties>
+	</target>
+
+	<target name="cleanUp">
+		<if>
+		 <equals arg1="${debug.mode}" arg2="false" />
+		 <then>
+		<delete dir="${targetPlatformPath}" failonerror="true" quiet="true" />
+		<delete dir="${workspacePath}" failonerror="true" quiet="true" />
+		 	</then>
+		 	</if>
+	</target>
+</project>
