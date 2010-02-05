@@ -19,7 +19,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property environment="env"/>
 
 	<!-- see below the temporary property file passed to buckminster -->
-	<property file="../buckminster.properties" />
+	<property file="${basedir}/../buckminster.properties" />
 	
 	<!--
 		Inherited properties:
@@ -39,28 +39,28 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	
 	<target name="run" depends="init,init.build.properties">
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
-		<macro.buckminster command="setpref">
+		<buckminster command="setpref">
 			<cmdargs>
 				<arg value="targetPlatformPath=${targetPlatformPath}" />
 			</cmdargs>
-		</macro.buckminster>
+		</buckminster>
 
 		<echo message="Importing projects into workspace ${workspacePath} and binaries into target platform ${targetPlatformPath}" />		
-		<macro.buckminster command="import">
+		<buckminster command="import">
 			<cmdargs>
-				<arg value="${basedir}/build/teneo.mspec" />
+				<arg value="${basedir}/teneo.mspec" />
 			</cmdargs>
-		</macro.buckminster>
+		</buckminster>
 		
 		<echo message="Building" />
-		<macro.buckminster command="build"/>
+		<buckminster command="build"/>
 		
 		<echo message="Creating site" />
-		<macro.buckminster command="perform">
+		<buckminster command="perform">
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.site#site.p2" />
 			</cmdargs>
-		</macro.buckminster>
+		</buckminster>
 
 		<antcall target="copy.files" inheritRefs="true" inheritAll="true"/>		
 	</target>
