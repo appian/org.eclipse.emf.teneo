@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cs:cspec xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0" name="org.eclipse.emf.teneo.releng.buckminster" componentType="buckminster" version="1.0.0">
     <cs:dependencies>
-        <cs:dependency name="org.eclipse.emf.teneo.test" componentType="eclipse.feature"/>
         <cs:dependency name="org.eclipse.emf.teneo.site" componentType="eclipse.feature"/>
 		<cs:dependency name="org.eclipse.equinox.executable" componentType="eclipse.feature"/>
 		<cs:dependency name="org.eclipse.platform" componentType="eclipse.feature"/>
