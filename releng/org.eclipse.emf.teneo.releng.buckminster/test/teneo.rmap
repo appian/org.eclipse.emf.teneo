@@ -17,7 +17,7 @@
   	<searchPath name="teneo.platform">
     	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="eclipse.import" source="false" mutable="false">
       		<uri format="file:{0}">
-				<bc:propertyRef key="teneo.platform" />
+				<bc:propertyRef key="buildSitePath" />
       		</uri>
     	</provider>
 	</searchPath>
@@ -72,6 +72,7 @@
     	</provider>
   	</searchPath>
 
+	<locator searchPathRef="teneo.platform" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.releng" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.features" pattern="^org\.eclipse\.emf\.teneo([\.\-].+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?"/>

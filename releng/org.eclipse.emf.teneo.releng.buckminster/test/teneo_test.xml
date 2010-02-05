@@ -14,159 +14,72 @@ Some important parts have been copied from Buckminster's own
 build setup:
 http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
 -->
-<project default="run" name="Texo Builds">
-	<!-- load properties and set timestamp for the build -->
-	<property environment="env"/>
+<project default="run" name="Teneo Tests">
 
-	<!-- see below the temporary property file passed to buckminster -->
-	<property file="buckminster.properties" />
+	<!--
+		Inherited properties:
+		buildRoot: the root of this build
+		toolsPath: path containing buckminster
+		buildSitePath: the path to which the p2 site should be copied
+		buildZipsPath: the path to the directory with zip files
+		
+		buckminster.output.root
+		buckminster.output.temp
+	-->
 
-	<tstamp>
-		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
-	</tstamp>
-	
-	<condition property="buildsPath" value="${env.WORKSPACE}" else="${basedir}/../../builds">
-		<isset property="env.WORKSPACE" />
-	</condition>
-	
-	<!-- Is used in buck.minster also -->
-	<condition property="build.type" value="${env.BUILDTYPE}" else="N">
-		<isset property="env.BUILDTYPE" />
-	</condition>
-	
-	<property name="testRoot" location="${buildsPath}/${build.type}${buildTimestamp}/test"/>
+	<property name="testRoot" location="${buildsPath}/${build.type}${buildTimestamp}/test" />
 
-	<property name="testTargetPlatformPath" location="${testRoot}/tp"/>
-	<property name="testWorkspacePath" location="${buildRoot}/workspace"/>
-	<property name="testResults" location="${buildsPath}/${build.type}${buildTimestamp}/testResults"/>
+	<property name="targetPlatformPath" location="${testRoot}/tp"/>
+	<property name="workspacePath" location="${testRoot}/workspace"/>
 
-	<target name="run" depends="init">
-	</target>
-	
-	<target name="init">		
-		<mkdir dir="${testRoot}"/>
-		<mkdir dir="${testTargetPlatformPath}"/>
-		<mkdir dir="${testWorkspacePath}"/>
-		<mkdir dir="${testResults}"/>
-	</target>
+	<import file="../ant_common.xml" />
 
+	<target name="run" depends="init.build.properties">
 
-	<target name="test" depends="setup.test">
-	</target>
+		<mkdir dir="${targetPlatformPath}" />
+		<mkdir dir="${workspacePath}" />
 
-	<!-- Copy targetPlatform and result from build to test target Platform --> 	
-	<target name="setup.test">
-		<copy todir="${testTargetPlatformPath}">
-			<fileset dir="${targetPlatformPath}"/>
-		</copy>
-
-	</target>
-
-	<target name="build">
-		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
-		<buckminster command="setpref">
+		<echo message="Using workspace ${workspacePath}" />
+		<echo message="Setting targetPlatformPath to ${testTargetPlatformPath}" />
+		<buckminster command="setpref" workspace="${workspacePath}">
 			<cmdargs>
-				<arg value="targetPlatformPath=${targetPlatformPath}" />
+				<arg value="targetPlatformPath=${testTargetPlatformPath}" />
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Importing projects into workspace ${workspacePath} and binaries into target platform ${targetPlatformPath}" />		
-		<buckminster command="import">
+		<echo message="Importing projects into workspace ${workspacePath}" />
+		<echo message="Importing binaries into target platform ${targetPlatformPath}" />
+		<buckminster command="import" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="${basedir}/teneo.mspec" />
 			</cmdargs>
 		</buckminster>
-		
-		<echo message="Building" />
-		<buckminster command="build"/>
-		
-		<echo message="Creating site" />
-		<buckminster command="perform">
+
+		<echo message="Building"/>
+		<buckminster command="build" workspace="${workspacePath}"/>
+
+		<echo message="Running tests" />
+		<buckminster command="junit" workspace="${workspacePath}">
 			<cmdargs>
-				<arg value="org.eclipse.emf.teneo.site#site.p2" />
+				<arg value="-l" />
+				<arg value="org.eclipse.emf.teneo.hibernate.test/AllTests.launch" />
+				<arg value="-o" />
+				<arg value="${testResultsPath}" />
+				<arg value="--stdout" />
+				<arg value="${testResultsPath}/stdout" />
+				<arg value="--stderr" />
+				<arg value="${testResultsPath}/stderr" />
 			</cmdargs>
 		</buckminster>
-
-	</target>
-	
-	<!-- This macro executes the default application of an eclipse installation that resides
-	     in the folder ${buildtools}/@app
-	  -->
-	<macrodef name="eclipse.launch">
-		<attribute name="app" />
-		<element name="args" optional="true" />
-		<sequential>
-			<!-- We assume that the eclipse installation is beneath ${buildtools} -->
-			<property name="@{app}.deploy.dir" value="${toolsPath}/@{app}" />
-
-			<!-- Find the Eclipse launcher and adding its location to the @{app}.launcher property -->
-			<pathconvert property="@{app}.launcher">
-				<first count="1">
-					<sort>
-						<fileset dir="${@{app}.deploy.dir}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
-						<reverse xmlns="antlib:org.apache.tools.ant.types.resources.comparators">
-							<date />
-						</reverse>
-					</sort>
-				</first>
-			</pathconvert>
-
-			<!-- Launch the eclipse application -->
-			<java fork="true" jar="${@{app}.launcher}" dir="${@{app}.deploy.dir}" failonerror="true">
-				<!-- Uncomment to debug <jvmarg value="-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y"/> -->
-				<args />
-			</java>
-		</sequential>
-	</macrodef>
-
-	<macrodef name="buckminster">
-		<attribute name="command" />
-		<attribute name="workspace" default="${workspacePath}" />
-		<element name="globargs" optional="true" />
-		<element name="cmdargs" optional="true" />
-		<sequential>
-			<eclipse.launch app="buckminster3.6">
-				<args>
-					<jvmarg value="-Dbugfix.288796=true"/>
-					<arg value="-data" />
-					<arg value="@{workspacePath}" />
-					<arg value="--loglevel" />
-					<arg value="INFO" />
-					<globargs />
-					<arg value="@{command}" />
-					<arg value="-P" />
-					<arg value="${properties.tmp}" />
-					<cmdargs />
-				</args>
-			</eclipse.launch>
-		</sequential>
-	</macrodef>
-
-	<target name="init.build.properties">
-		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
-		  -->
-		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
-		<echoproperties destfile="${properties.tmp}">
-			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
-			<propertyset negate="true">
-				<propertyref name="basedir" />
-				<propertyref name="eclipse.home" />
-				<propertyref name="properties.tmp" />
-				<propertyref name="line.separator" />
-				<propertyref name="path.separator" />
-				<propertyref prefix="ant." />
-				<propertyref prefix="file." />
-				<propertyref prefix="java." />
-				<propertyref prefix="sun." />
-				<propertyref prefix="user." />
-			</propertyset>
-		</echoproperties>
 	</target>
 
 	<target name="cleanUp">
-		<delete dir="${toolsPath}" failonerror="true" quiet="true" />
-		<delete dir="${targetPlatformPath}" failonerror="true" quiet="true" />
-		<delete dir="${workspacePath}" failonerror="true" quiet="true" />
-		<delete dir="${buckminster.output.temp}" failonerror="true" quiet="true" />
+		<if>
+			<equals arg1="${debug.mode}" arg2="false" />
+			<then>
+				<delete dir="${testTargetPlatformPath}" failonerror="true" quiet="true" />
+				<delete dir="${workspacePath}" failonerror="true" quiet="true" />
+			</then>
+		</if>
 	</target>
 </project>

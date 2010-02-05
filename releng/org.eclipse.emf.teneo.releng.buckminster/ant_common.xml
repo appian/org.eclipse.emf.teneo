@@ -47,7 +47,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<macrodef name="buckminster">
 		<attribute name="command" />
-		<attribute name="workspace" default="${workspacePath}" />
+		<attribute name="workspace" />
 		<element name="globargs" optional="true" />
 		<element name="cmdargs" optional="true" />
 		<sequential>
@@ -67,4 +67,25 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</eclipse.launch>
 		</sequential>
 	</macrodef>
+
+	<target name="init.build.properties">
+		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
+		  -->
+		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
+		<echoproperties destfile="${properties.tmp}">
+			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
+			<propertyset negate="true">
+				<propertyref name="basedir" />
+				<propertyref name="eclipse.home" />
+				<propertyref name="properties.tmp" />
+				<propertyref name="line.separator" />
+				<propertyref name="path.separator" />
+				<propertyref prefix="ant." />
+				<propertyref prefix="file." />
+				<propertyref prefix="java." />
+				<propertyref prefix="sun." />
+				<propertyref prefix="user." />
+			</propertyset>
+		</echoproperties>
+	</target>
 </project>

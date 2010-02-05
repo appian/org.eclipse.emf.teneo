@@ -50,12 +50,10 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<target name="run" depends="init">
 		<echo message="Building" />
 	    <ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true"/>
-	    <!-- 
 		<echo message="Testing" />
 	    <ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true"/>
 		<echo message="Cleaning up" />
 		<antcall target="cleanUp" inheritall="true"/>
-		 -->
 	</target>
 
 	<target name="init">
