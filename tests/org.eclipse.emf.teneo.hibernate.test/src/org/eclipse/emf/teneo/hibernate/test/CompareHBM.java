@@ -10,13 +10,12 @@ package org.eclipse.emf.teneo.hibernate.test;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 
 /**
  * Compare Hbm files
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class CompareHBM {
 
@@ -89,38 +88,38 @@ public class CompareHBM {
 		return null;
 	}
 
-	private static void copyFiles(File from, File to) throws Exception {
-		for (File f : from.listFiles()) {
-			if (f.getPath().indexOf("CVS") != -1) {
-				continue;
-			}
-			if (f.isDirectory()) {
-				final File toDir = new File(to, f.getName());
-				if (!toDir.exists()) {
-					toDir.mkdir();
-				}
-				copyFiles(f, toDir);
-			} else {
-				File t = getTargetFile(f.getName(), to);
-				if (t != null) {
-					t.delete();
-				}
-				t = new File(to, f.getName());
-				copy(f, t);
-			}
-		}
-	}
+//	private static void copyFiles(File from, File to) throws Exception {
+//		for (File f : from.listFiles()) {
+//			if (f.getPath().indexOf("CVS") != -1) {
+//				continue;
+//			}
+//			if (f.isDirectory()) {
+//				final File toDir = new File(to, f.getName());
+//				if (!toDir.exists()) {
+//					toDir.mkdir();
+//				}
+//				copyFiles(f, toDir);
+//			} else {
+//				File t = getTargetFile(f.getName(), to);
+//				if (t != null) {
+//					t.delete();
+//				}
+//				t = new File(to, f.getName());
+//				copy(f, t);
+//			}
+//		}
+//	}
 
-	private static void copy(File f, File t) throws Exception {
-		BufferedReader from = new BufferedReader(new FileReader(f));
-		FileWriter to = new FileWriter(t);
-		String fromLine;
-		boolean begin = true;
-		while ((fromLine = from.readLine()) != null) {
-			if (!begin) {
-				to.write("\n");
-			}
-			to.write(fromLine);
-		}
-	}
+//	private static void copy(File f, File t) throws Exception {
+//		BufferedReader from = new BufferedReader(new FileReader(f));
+//		FileWriter to = new FileWriter(t);
+//		String fromLine;
+//		boolean begin = true;
+//		while ((fromLine = from.readLine()) != null) {
+//			if (!begin) {
+//				to.write("\n");
+//			}
+//			to.write(fromLine);
+//		}
+//	}
 }

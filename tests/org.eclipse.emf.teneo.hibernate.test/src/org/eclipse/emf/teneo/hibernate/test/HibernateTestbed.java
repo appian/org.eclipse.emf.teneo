@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.21 2010/02/06 16:41:51 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.22 2010/02/06 20:48:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -21,8 +21,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
@@ -40,12 +38,12 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public class HibernateTestbed extends Testbed {
 
 	/** The logger */
-	private static Log log = LogFactory.getLog(HibernateTestbed.class);
+//	private static Log log = LogFactory.getLog(HibernateTestbed.class);
 
 	/** The property file to use */
 	private static final String propFileName;
@@ -58,11 +56,12 @@ public class HibernateTestbed extends Testbed {
 	/** Test the rundir */
 	static {
 		try {
-			if (true || RUN_BASE_DIR.indexOf("hudson") != -1) { // UGLY, replace with
+			if (RUN_BASE_DIR.indexOf("hudson") != -1) { // UGLY, replace with
 				// smarter solution!
 				propFileName = "/hudson_test.properties";
 			} else {
-				propFileName = "/local_test.properties";
+				propFileName = "/hudson_test.properties";
+//				propFileName = "/local_test.properties";
 				deleteHsqldbFile(new File("/tmp/hsqldb"));
 			}
 			Testbed.setTestBed(new HibernateTestbed());

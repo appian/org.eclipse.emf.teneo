@@ -29,20 +29,19 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class ReadEcore {
 
 	/**
 	 * @param args
 	 */
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
 			final ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 					.put("*", new EcoreResourceFactoryImpl());
-			final ArrayList epackages = new ArrayList();
+			final ArrayList<Object> epackages = new ArrayList<Object>();
 			// if (false) {
 			// final String[] ecores = new String[] {
 			// "/home/mtaal/mytmp/ops.ecore" };
@@ -143,7 +142,7 @@ public class ReadEcore {
 	}
 
 	/** Initialise database and hibernate with the mapping */
-	private static HbDataStore initDataStore(EPackage[] epacks) {
+	public static HbDataStore initDataStore(EPackage[] epacks) {
 		HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore("test");
 		final Properties props = new Properties();
 		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
@@ -181,7 +180,7 @@ public class ReadEcore {
 			s.getTransaction().commit();
 
 			s = hbds.getSessionFactory().openSession();
-			final List l = s.createQuery("select e from ecore.EPackage e")
+			final List<?> l = s.createQuery("select e from ecore.EPackage e")
 					.list();
 			final EPackage[] newEpacks = new EPackage[l.size()];
 			int i = 0;
