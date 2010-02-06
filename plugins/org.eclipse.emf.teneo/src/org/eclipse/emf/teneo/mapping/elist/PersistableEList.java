@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEList.java,v 1.25 2010/02/04 11:03:00 mtaal Exp $
+ * $Id: PersistableEList.java,v 1.26 2010/02/06 20:51:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persisted list (e.g. PersistentList in Hibernate) is the delegate for this elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 
 public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implements PersistableDelegateList<E> {
@@ -531,6 +531,7 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	}
 
 	/** If not loaded then basicIterator will always return a false for hasNext */
+	@SuppressWarnings("deprecation")
 	@Override
 	public Iterator<E> basicIterator() {
 		if (!isLoaded()) {
@@ -550,6 +551,7 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	 * If not loaded then basicIterator will always return a false for hasNext/hasPrevious
 	 */
 	@Override
+	@SuppressWarnings("deprecation")
 	public ListIterator<E> basicListIterator() {
 		if (!isLoaded()) {
 			return new NonResolvingEListIterator<E>() {
@@ -574,6 +576,7 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	 * If not loaded then basicIterator will always return a false for hasNext/hasPrevious
 	 */
 	@Override
+	@SuppressWarnings("deprecation")
 	public ListIterator<E> basicListIterator(int index) {
 		if (!isLoaded()) {
 			// note no size check on index as this would load this thing
