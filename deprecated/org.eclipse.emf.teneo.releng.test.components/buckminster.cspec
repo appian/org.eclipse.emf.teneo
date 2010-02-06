@@ -8,5 +8,7 @@
         <cs:dependency name="javax.persistence" componentType="eclipse.feature"/>
         <cs:dependency name="org.dom4j" componentType="eclipse.feature"/>
         <cs:dependency name="org.apache.commons.logging" componentType="eclipse.feature"/>
+        <cs:dependency name="com.mysql.jdbc" componentType="eclipse.feature"/>
+        <cs:dependency name="org.hsqldb" componentType="eclipse.feature"/>
     </cs:dependencies>
 </cs:cspec>
