@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableInheritanceAction.java,v 1.1 2008/06/10 05:25:47 mtaal Exp $
+ * $Id: SecondarytableInheritanceAction.java,v 1.2 2010/02/06 18:25:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;

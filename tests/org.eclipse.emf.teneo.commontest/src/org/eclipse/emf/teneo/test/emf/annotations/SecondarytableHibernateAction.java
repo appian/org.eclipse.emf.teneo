@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SecondarytableHibernateAction.java,v 1.9 2008/06/10 05:25:47 mtaal Exp $
+ * $Id: SecondarytableHibernateAction.java,v 1.10 2010/02/06 18:25:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
