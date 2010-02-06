@@ -2,14 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TBookValidator.java,v 1.1 2007/07/09 14:02:31 mtaal Exp $
+ * $Id: TBookValidator.java,v 1.2 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.validation;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter;
-import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TBook;
 import org.eclipse.emf.ecore.EObject;
 
 /**

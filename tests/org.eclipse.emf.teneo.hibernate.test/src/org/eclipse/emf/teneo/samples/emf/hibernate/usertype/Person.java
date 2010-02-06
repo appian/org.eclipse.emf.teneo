@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.8 2009/06/11 04:59:10 mtaal Exp $
+ * $Id: Person.java,v 1.9 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -102,7 +101,7 @@ public interface Person extends EObject {
 	 * @model dataType="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.PhoneNumber" upper="100"
 	 * @generated
 	 */
-	EList getPhoneNumbers();
+	EList<Object> getPhoneNumbers();
 
 	/**
 	 * Returns the value of the '<em><b>Emergency Contact</b></em>' attribute.
@@ -148,7 +147,7 @@ public interface Person extends EObject {
 	 *        annotation="teneo.jpa appinfo='@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)'"
 	 * @generated
 	 */
-	EList getAddresses();
+	EList<Object> getAddresses();
 
 	/**
 	 * Returns the value of the '<em><b>Birth Place</b></em>' attribute.

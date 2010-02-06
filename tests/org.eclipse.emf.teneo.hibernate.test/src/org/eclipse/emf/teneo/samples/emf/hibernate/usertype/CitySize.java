@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CitySize.java,v 1.2 2009/06/11 04:59:10 mtaal Exp $
+ * $Id: CitySize.java,v 1.3 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -116,6 +116,7 @@ public final class CitySize extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**

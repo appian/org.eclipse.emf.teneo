@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAction.java,v 1.9 2009/12/13 10:13:19 mtaal Exp $
+ * $Id: LibrarySessionControllerAction.java,v 1.10 2010/02/06 20:50:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class LibrarySessionControllerAction extends AbstractTestAction {
 	/**
@@ -59,7 +59,6 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
-	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		final ResourceSet resourceSet = new ResourceSetImpl();
@@ -129,8 +128,8 @@ public class LibrarySessionControllerAction extends AbstractTestAction {
 				sc.getSessionWrapper().commitTransaction();
 
 				int cnt = 0;
-				final ArrayList tempList = new ArrayList(res1.getContents());
-				for (Iterator it = tempList.iterator(); it.hasNext();) {
+				final ArrayList<?> tempList = new ArrayList<Object>(res1.getContents());
+				for (Iterator<?> it = tempList.iterator(); it.hasNext();) {
 					final Object obj = it.next();
 					final Book book = (Book) obj;
 					assertTrue(book.eResource() == res1);

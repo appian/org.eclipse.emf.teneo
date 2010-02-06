@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonValidator.java,v 1.1 2007/03/04 21:18:27 mtaal Exp $
+ * $Id: PersonValidator.java,v 1.2 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.validation;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
 
@@ -22,7 +21,7 @@ public interface PersonValidator {
 
 	boolean validateName(Name value);
 	boolean validateNumbers(int[] value);
-	boolean validatePhoneNumbers(EList value);
+	boolean validatePhoneNumbers(EList<?> value);
 	boolean validateEmergencyContact(UsaPhoneNumber value);
-	boolean validateAddresses(EList value);
+	boolean validateAddresses(EList<?> value);
 }

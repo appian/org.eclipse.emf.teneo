@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.13 2010/02/06 18:25:49 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.14 2010/02/06 20:50:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -37,9 +37,8 @@ import org.hibernate.Query;
 /**
  * Test
  * 
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
-@SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {
 
 	private static final Name NAME = new Name("Pietje", "Puk");
@@ -120,7 +119,7 @@ public class UserTypeAction extends AbstractTestAction {
 
 	private void testPerson(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("select p from Person p");
+		List<?> results = store.query("select p from Person p");
 		assertEquals(1, results.size());
 		Person person = (Person) results.get(0);
 		assertEquals(NAME, person.getName());
@@ -176,7 +175,7 @@ public class UserTypeAction extends AbstractTestAction {
 
 	private void removePerson(TestStore store) {
 		store.beginTransaction();
-		List results = store.query("select p from Person p");
+		List<?> results = store.query("select p from Person p");
 		assertEquals(1, results.size());
 		Person person = (Person) results.get(0);
 		store.deleteObject(person);

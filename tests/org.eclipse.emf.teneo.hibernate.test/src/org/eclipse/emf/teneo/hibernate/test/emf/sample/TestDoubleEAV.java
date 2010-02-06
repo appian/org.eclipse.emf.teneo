@@ -12,7 +12,7 @@
  *   Martin Taal - Adapted for Teneo test suite
  * </copyright>
  *
- * $Id: TestDoubleEAV.java,v 1.2 2010/02/06 18:25:49 mtaal Exp $
+ * $Id: TestDoubleEAV.java,v 1.3 2010/02/06 20:50:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -118,10 +118,11 @@ public class TestDoubleEAV extends AbstractTestAction {
 		assertTrue(null == HbHelper.INSTANCE.getDataStore(dsName));
 	}
 
+	@SuppressWarnings("unchecked")
 	private void setValue(EObject eObject, String eFeatureName, Object value) {
 		final EStructuralFeature eFeature = eObject.eClass().getEStructuralFeature(eFeatureName);
 		if (eFeature.isMany()) {
-			((List) eObject.eGet(eFeature)).add(value);
+			((List<Object>) eObject.eGet(eFeature)).add(value);
 		} else {
 			eObject.eSet(eFeature, value);
 		}

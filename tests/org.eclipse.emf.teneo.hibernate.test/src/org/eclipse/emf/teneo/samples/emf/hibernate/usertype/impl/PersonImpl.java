@@ -2,28 +2,22 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.10 2009/06/11 04:59:10 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.11 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
@@ -50,6 +44,7 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  *
  * @generated
  */
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class PersonImpl extends EObjectImpl implements Person {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -236,9 +231,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPhoneNumbers() {
+	public EList<Object> getPhoneNumbers() {
 		if (phoneNumbers == null) {
-			phoneNumbers = new EDataTypeUniqueEList(UsaPhoneNumber.class, this, UsertypePackage.PERSON__PHONE_NUMBERS);
+			phoneNumbers = new EDataTypeUniqueEList<Object>(UsaPhoneNumber.class, this, UsertypePackage.PERSON__PHONE_NUMBERS);
 		}
 		return phoneNumbers;
 	}

@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeResourceImpl.java,v 1.3 2006/09/07 08:20:45 mtaal Exp $
+ * $Id: UsertypeResourceImpl.java,v 1.4 2010/02/06 20:50:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**

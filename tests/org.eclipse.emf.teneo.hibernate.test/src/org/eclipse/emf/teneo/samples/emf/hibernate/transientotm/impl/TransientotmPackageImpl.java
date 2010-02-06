@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransientotmPackageImpl.java,v 1.1 2007/07/09 14:02:31 mtaal Exp $
+ * $Id: TransientotmPackageImpl.java,v 1.2 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.impl;
 
@@ -10,11 +10,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TBook;
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter;
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmFactory;

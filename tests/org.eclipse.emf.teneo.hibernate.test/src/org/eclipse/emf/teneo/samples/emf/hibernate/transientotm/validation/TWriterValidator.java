@@ -2,12 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TWriterValidator.java,v 1.1 2007/07/09 14:02:31 mtaal Exp $
+ * $Id: TWriterValidator.java,v 1.2 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.validation;
 
-import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TBook;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TBook;
 
 /**
  * A sample validator interface for {@link org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter}.

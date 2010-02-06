@@ -21,7 +21,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class BZ258266Action extends AbstractTestAction {
 
@@ -36,6 +36,7 @@ public class BZ258266Action extends AbstractTestAction {
 		return props;
 	}
 
+	@SuppressWarnings("serial")
 	@Override
 	public void doAction(TestStore store) {
 		final HbDataStore hbds = (HbDataStore) store.getDataStore();

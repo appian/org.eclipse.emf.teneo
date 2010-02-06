@@ -9,14 +9,13 @@
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.samples.issues.nocollectionowner.NoCollectionOwnerFactory;
 import org.eclipse.emf.teneo.samples.issues.nocollectionowner.NoCollectionOwnerPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class NoCollectionOwnerAction extends AbstractTestAction {
 
@@ -34,6 +33,6 @@ public class NoCollectionOwnerAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
-		final NoCollectionOwnerFactory factory = NoCollectionOwnerFactory.eINSTANCE;
+//		final NoCollectionOwnerFactory factory = NoCollectionOwnerFactory.eINSTANCE;
 	}
 }

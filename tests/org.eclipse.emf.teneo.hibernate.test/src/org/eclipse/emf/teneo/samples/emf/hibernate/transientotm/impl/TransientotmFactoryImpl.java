@@ -2,19 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TransientotmFactoryImpl.java,v 1.1 2007/07/09 14:02:31 mtaal Exp $
+ * $Id: TransientotmFactoryImpl.java,v 1.2 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.*;
+import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TBook;
+import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter;
+import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmFactory;
+import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmPackage;
 
 /**
  * <!-- begin-user-doc -->

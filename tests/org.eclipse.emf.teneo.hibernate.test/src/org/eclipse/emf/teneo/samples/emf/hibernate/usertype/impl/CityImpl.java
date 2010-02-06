@@ -2,17 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CityImpl.java,v 1.2 2009/06/11 04:59:10 mtaal Exp $
+ * $Id: CityImpl.java,v 1.3 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;

@@ -2,19 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TWriterImpl.java,v 1.1 2007/07/09 14:02:31 mtaal Exp $
+ * $Id: TWriterImpl.java,v 1.2 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TBook;
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TWriter;
 import org.eclipse.emf.teneo.samples.emf.hibernate.transientotm.TransientotmPackage;

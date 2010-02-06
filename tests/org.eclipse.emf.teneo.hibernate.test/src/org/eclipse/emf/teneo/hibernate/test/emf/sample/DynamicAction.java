@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -298,23 +298,23 @@ public class DynamicAction extends AbstractTestAction {
 		}
 
 		// do a polymorphic query
-		if (false) {
-			store.beginTransaction();
-			List<?> employees = store.query("select p from Person p");
-			assertEquals(4, employees.size());
-			int cntEmployee = 0;
-			for (Object name : employees) {
-				EObject eobject = (EObject) name;
-
-				if (eobject.eClass() == employeeClass) {
-					cntEmployee++;
-					final Object dep = eobject.eGet(employeeDepartment);
-					assertTrue(dep == null || dep instanceof org.hibernate.proxy.HibernateProxy);
-				}
-			}
-			assertEquals(3, cntEmployee);
-			store.commitTransaction();
-		}
+//		if (false) {
+//			store.beginTransaction();
+//			List<?> employees = store.query("select p from Person p");
+//			assertEquals(4, employees.size());
+//			int cntEmployee = 0;
+//			for (Object name : employees) {
+//				EObject eobject = (EObject) name;
+//
+//				if (eobject.eClass() == employeeClass) {
+//					cntEmployee++;
+//					final Object dep = eobject.eGet(employeeDepartment);
+//					assertTrue(dep == null || dep instanceof org.hibernate.proxy.HibernateProxy);
+//				}
+//			}
+//			assertEquals(3, cntEmployee);
+//			store.commitTransaction();
+//		}
 
 		if (true) {
 			store.beginTransaction();
@@ -324,7 +324,7 @@ public class DynamicAction extends AbstractTestAction {
 			final Object dep = eobject.eGet(employeeDepartment);
 			assertTrue(dep == null || dep instanceof org.hibernate.proxy.HibernateProxy);
 			if (dep != null) {
-				final Object off = ((EObject) dep).eGet(departmentOffice);
+				((EObject) dep).eGet(departmentOffice);
 			}
 			store.commitTransaction();
 		}

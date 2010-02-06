@@ -2,6 +2,7 @@ package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Name implements Serializable {
 	private String first;
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryInterfaceQueryTest.java,v 1.3 2009/08/22 00:18:35 mtaal Exp $
+ * $Id: LibraryInterfaceQueryTest.java,v 1.4 2010/02/06 20:50:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -41,7 +41,7 @@ import org.hibernate.Session;
  * Test interface entity naming strategy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryInterfaceQueryTest extends AbstractTestAction {
 	public LibraryInterfaceQueryTest() {
@@ -63,7 +63,6 @@ public class LibraryInterfaceQueryTest extends AbstractTestAction {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library

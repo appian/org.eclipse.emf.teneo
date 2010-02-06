@@ -2,19 +2,16 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.2 2008/03/30 20:54:58 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.3 2010/02/06 20:50:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;

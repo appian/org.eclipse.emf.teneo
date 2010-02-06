@@ -63,7 +63,7 @@ public class NameType implements UserType {
 		return original;
 	}
 
-	public Class returnedClass() {
+	public Class<?> returnedClass() {
 		return Name.class;
 	}
 

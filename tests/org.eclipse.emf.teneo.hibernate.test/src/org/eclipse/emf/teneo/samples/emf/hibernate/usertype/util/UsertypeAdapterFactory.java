@@ -2,18 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeAdapterFactory.java,v 1.6 2009/06/11 04:59:10 mtaal Exp $
+ * $Id: UsertypeAdapterFactory.java,v 1.7 2010/02/06 20:50:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.*;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 
 /**
  * <!-- begin-user-doc -->

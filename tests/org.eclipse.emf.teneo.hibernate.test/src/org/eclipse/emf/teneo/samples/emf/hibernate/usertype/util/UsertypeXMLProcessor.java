@@ -2,16 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeXMLProcessor.java,v 1.3 2006/09/07 08:20:45 mtaal Exp $
+ * $Id: UsertypeXMLProcessor.java,v 1.4 2010/02/06 20:50:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
-
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
 
 /**
@@ -38,6 +36,7 @@ public class UsertypeXMLProcessor extends XMLProcessor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected Map getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();

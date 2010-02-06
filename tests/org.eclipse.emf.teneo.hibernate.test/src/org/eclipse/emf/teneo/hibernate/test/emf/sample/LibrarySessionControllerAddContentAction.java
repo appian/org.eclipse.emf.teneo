@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySessionControllerAddContentAction.java,v 1.9 2009/04/03 06:16:37 mtaal Exp $
+ * $Id: LibrarySessionControllerAddContentAction.java,v 1.10 2010/02/06 20:50:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -43,7 +43,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd using a session controller and multiple resources.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class LibrarySessionControllerAddContentAction extends AbstractTestAction {
 	/**
@@ -57,7 +57,6 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
-	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		final ResourceSet resourceSet = new ResourceSetImpl();
@@ -66,7 +65,7 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 		sc.setHbDataStore(((HibernateTestStore) store).getEmfDataStore());
 		SessionController.registerSessionController("testsc", sc);
 
-		final HashMap options = new HashMap();
+		final HashMap<Object, Object> options = new HashMap<Object, Object>();
 		options.put(StoreResource.LOAD_STRATEGY_PARAM, StoreResource.ADD_TO_CONTENTS);
 
 		// create a book, writer and library
@@ -136,8 +135,8 @@ public class LibrarySessionControllerAddContentAction extends AbstractTestAction
 				sc.getSessionWrapper().commitTransaction();
 
 				int cnt = 0;
-				final ArrayList tempList = new ArrayList(res1.getContents());
-				for (Iterator it = tempList.iterator(); it.hasNext();) {
+				final ArrayList<Object> tempList = new ArrayList<Object>(res1.getContents());
+				for (Iterator<Object> it = tempList.iterator(); it.hasNext();) {
 					final Object obj = it.next();
 					final Book book = (Book) obj;
 					assertTrue(book.eResource() == res1);

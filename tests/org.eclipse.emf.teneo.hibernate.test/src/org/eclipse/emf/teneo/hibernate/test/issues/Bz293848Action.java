@@ -28,7 +28,7 @@ import org.hibernate.Session;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Bz293848Action extends AbstractTestAction {
 
@@ -121,7 +121,7 @@ public class Bz293848Action extends AbstractTestAction {
 			// locationty0_.econtainer_class as econtainer6_2_0_, locationty0_.e_container as e7_2_0_,
 			// locationty0_.e_container_feature_name as e8_2_0_ from "LOCATIONTYPE" locationty0_ where
 			// locationty0_.e_id=?
-			final String address = (String) location.eGet(location.eClass().getEStructuralFeature("address"));
+			location.eGet(location.eClass().getEStructuralFeature("address"));
 
 			// the following statement executes this sql:
 			// select employees0_."COMTYPE_EMPLOYEES_E_ID" as COMTYPE7_1_, employees0_.e_id as e1_1_,
@@ -130,15 +130,16 @@ public class Bz293848Action extends AbstractTestAction {
 			// employees0_."FIRSTNAME" as FIRSTNAME6_3_0_, employees0_.econtainer_class as econtainer9_3_0_,
 			// employees0_.e_container as e10_3_0_, employees0_.e_container_feature_name as e11_3_0_ from "PERSONTYPE"
 			// employees0_ where employees0_."COMTYPE_EMPLOYEES_E_ID"=?
-			final EObject employee = (EObject) ((List) company
+			final EObject employee = (EObject) ((List<?>) company
 					.eGet(company.eClass().getEStructuralFeature("employees"))).get(0);
-			final String lastName = (String) employee.eGet(employee.eClass().getEStructuralFeature("lastName"));
+			employee.eGet(employee.eClass().getEStructuralFeature("lastName"));
 
 			store.commitTransaction();
 		}
 
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void setValue(EObject eObject, String eFeatureName, Object value) {
 		final EStructuralFeature eFeature = eObject.eClass().getEStructuralFeature(eFeatureName);
 		if (eFeature.isMany()) {
