@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedidResourceImpl.java,v 1.2 2006/09/29 12:30:05 mtaal Exp $
+ * $Id: EmbeddedidResourceImpl.java,v 1.3 2010/02/06 18:17:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embeddedid.util;
 

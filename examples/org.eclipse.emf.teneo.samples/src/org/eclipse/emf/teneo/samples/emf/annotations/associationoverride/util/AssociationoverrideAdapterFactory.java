@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationoverrideAdapterFactory.java,v 1.3 2007/02/08 23:09:23 mtaal Exp $
+ * $Id: AssociationoverrideAdapterFactory.java,v 1.4 2010/02/06 18:17:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.util;
 

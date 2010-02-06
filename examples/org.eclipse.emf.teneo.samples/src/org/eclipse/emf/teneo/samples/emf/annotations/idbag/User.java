@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.4 2007/02/08 23:09:21 mtaal Exp $
+ * $Id: User.java,v 1.5 2010/02/06 18:17:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag;
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.3 2006/11/07 10:22:29 mtaal Exp $
+ * $Id: Person.java,v 1.4 2010/02/06 18:17:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride;
 

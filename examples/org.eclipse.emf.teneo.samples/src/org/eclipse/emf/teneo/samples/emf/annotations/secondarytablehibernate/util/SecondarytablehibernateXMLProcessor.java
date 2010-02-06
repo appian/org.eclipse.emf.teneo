@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SecondarytablehibernateXMLProcessor.java,v 1.4 2008/11/15 21:37:31 mtaal Exp $
+ * $Id: SecondarytablehibernateXMLProcessor.java,v 1.5 2010/02/06 18:17:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.secondarytablehibernate.util;
 

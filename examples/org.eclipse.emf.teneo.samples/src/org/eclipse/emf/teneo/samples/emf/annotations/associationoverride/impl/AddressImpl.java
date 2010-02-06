@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.3 2007/02/08 23:09:24 mtaal Exp $
+ * $Id: AddressImpl.java,v 1.4 2010/02/06 18:17:47 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.associationoverride.impl;
 

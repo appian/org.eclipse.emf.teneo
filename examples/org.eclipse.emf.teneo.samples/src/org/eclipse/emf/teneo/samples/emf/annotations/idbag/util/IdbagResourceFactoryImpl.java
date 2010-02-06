@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagResourceFactoryImpl.java,v 1.2 2007/02/08 23:09:22 mtaal Exp $
+ * $Id: IdbagResourceFactoryImpl.java,v 1.3 2010/02/06 18:17:46 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.util;
 
