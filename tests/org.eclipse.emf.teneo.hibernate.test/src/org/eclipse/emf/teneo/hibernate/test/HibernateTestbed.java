@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.20 2009/06/29 09:30:48 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.21 2010/02/06 16:41:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -58,9 +58,9 @@ public class HibernateTestbed extends Testbed {
 	/** Test the rundir */
 	static {
 		try {
-			if (RUN_BASE_DIR.indexOf("www-data") != -1) { // UGLY, replace with
+			if (true || RUN_BASE_DIR.indexOf("hudson") != -1) { // UGLY, replace with
 				// smarter solution!
-				propFileName = "/emft_test.properties";
+				propFileName = "/hudson_test.properties";
 			} else {
 				propFileName = "/local_test.properties";
 				deleteHsqldbFile(new File("/tmp/hsqldb"));
