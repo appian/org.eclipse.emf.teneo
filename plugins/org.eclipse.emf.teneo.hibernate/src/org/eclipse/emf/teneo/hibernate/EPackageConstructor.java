@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EPackageConstructor.java,v 1.4 2009/10/27 23:14:07 mtaal Exp $
+ * $Id: EPackageConstructor.java,v 1.5 2010/02/06 18:25:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
