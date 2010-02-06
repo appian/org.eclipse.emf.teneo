@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.12 2009/06/11 04:59:10 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.13 2010/02/06 18:25:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -37,7 +37,7 @@ import org.hibernate.Query;
 /**
  * Test
  * 
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 @SuppressWarnings("unchecked")
 public class UserTypeAction extends AbstractTestAction {

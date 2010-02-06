@@ -12,7 +12,7 @@
  *   Martin Taal - Adapted for Teneo test suite
  * </copyright>
  *
- * $Id: TestDoubleEAV.java,v 1.1 2010/01/26 07:54:14 mtaal Exp $
+ * $Id: TestDoubleEAV.java,v 1.2 2010/02/06 18:25:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;

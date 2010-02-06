@@ -9,7 +9,7 @@
  *
  * </copyright>
  *
- * $Id: DetachFromSessionAction.java,v 1.6 2008/05/27 07:42:33 mtaal Exp $
+ * $Id: DetachFromSessionAction.java,v 1.7 2010/02/06 18:25:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests detach and attachment to session
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class DetachFromSessionAction extends AbstractTestAction {
 
