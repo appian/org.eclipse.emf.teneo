@@ -29,37 +29,37 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<property name="testRoot" location="${buildsPath}/${build.type}${buildTimestamp}/test" />
 
-	<property name="targetPlatformPath" location="${testRoot}/tp"/>
-	<property name="workspacePath" location="${testRoot}/workspace"/>
+	<property name="testTargetPlatformPath" location="${testRoot}/tp"/>
+	<property name="testWorkspacePath" location="${testRoot}/workspace"/>
 
 	<import file="../ant_common.xml" />
 
 	<target name="run" depends="init.build.properties">
 
-		<mkdir dir="${targetPlatformPath}" />
-		<mkdir dir="${workspacePath}" />
+		<mkdir dir="${testTargetPlatformPath}" />
+		<mkdir dir="${testWorkspacePath}" />
 
-		<echo message="Using workspace ${workspacePath}" />
-		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
-		<buckminster command="setpref" workspace="${workspacePath}">
+		<echo message="Using workspace ${testWorkspacePath}" />
+		<echo message="Setting testTargetPlatformPath to ${testTargetPlatformPath}" />
+		<buckminster command="setpref" workspace="${testWorkspacePath}">
 			<cmdargs>
-				<arg value="targetPlatformPath=${targetPlatformPath}" />
+				<arg value="testTargetPlatformPath=${testTargetPlatformPath}" />
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Importing projects into workspace ${workspacePath}" />
-		<echo message="Importing binaries into target platform ${targetPlatformPath}" />
-		<buckminster command="import" workspace="${workspacePath}">
+		<echo message="Importing projects into workspace ${testWorkspacePath}" />
+		<echo message="Importing binaries into target platform ${testTargetPlatformPath}" />
+		<buckminster command="import" workspace="${testWorkspacePath}">
 			<cmdargs>
 				<arg value="${basedir}/teneo.mspec" />
 			</cmdargs>
 		</buckminster>
 
 		<echo message="Building"/>
-		<buckminster command="build" workspace="${workspacePath}"/>
+		<buckminster command="build" workspace="${testWorkspacePath}"/>
 
 		<echo message="Running tests" />
-		<buckminster command="junit" workspace="${workspacePath}">
+		<buckminster command="junit" workspace="${testWorkspacePath}">
 			<cmdargs>
 				<arg value="-l" />
 				<arg value="org.eclipse.emf.teneo.hibernate.test/AllTests.launch" />
@@ -77,8 +77,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<if>
 			<equals arg1="${debug.mode}" arg2="false" />
 			<then>
-				<delete dir="${targetPlatformPath}" failonerror="true" quiet="true" />
-				<delete dir="${workspacePath}" failonerror="true" quiet="true" />
+				<delete dir="${testTargetPlatformPath}" failonerror="true" quiet="true" />
+				<delete dir="${testWorkspacePath}" failonerror="true" quiet="true" />
 			</then>
 		</if>
 	</target>
