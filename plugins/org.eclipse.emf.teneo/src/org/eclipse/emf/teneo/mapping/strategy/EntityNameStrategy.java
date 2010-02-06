@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EntityNameStrategy.java,v 1.6 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: EntityNameStrategy.java,v 1.7 2010/02/06 18:25:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * the hql, etc.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public interface EntityNameStrategy extends ExtensionPoint,
 		ExtensionManagerAware {

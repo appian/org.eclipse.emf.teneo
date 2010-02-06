@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.9 2009/03/30 06:41:00 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.10 2010/02/06 18:25:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public interface SQLNameStrategy extends ExtensionPoint {
 
