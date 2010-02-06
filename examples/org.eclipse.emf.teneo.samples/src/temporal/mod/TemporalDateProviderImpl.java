@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+@SuppressWarnings("deprecation")
 public class TemporalDateProviderImpl implements TemporalDateProvider {
 
 	private Date now = null;
