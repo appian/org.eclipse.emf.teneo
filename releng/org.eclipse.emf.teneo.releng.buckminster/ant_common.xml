@@ -55,7 +55,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<args>
 					<jvmarg value="-Dbugfix.288796=true"/>
 					<arg value="-data" />
-					<arg value="@{workspacePath}" />
+					<arg value="@{workspace}" />
 					<arg value="--loglevel" />
 					<arg value="INFO" />
 					<globargs />
