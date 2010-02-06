@@ -25,6 +25,7 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: com.mysql.jdbc;version="5.1.11",
  javax.persistence,
  org.apache.commons.logging,
+ org.dom4j;version="1.6.1",
  org.hibernate;version="3.3.2",
  org.hibernate.cfg;version="3.3.2",
  org.hibernate.dialect;version="3.3.2",
