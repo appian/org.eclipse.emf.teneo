@@ -11,13 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAsListAction.java,v 1.3 2009/03/15 08:09:27 mtaal Exp $
+ * $Id: EMapAsListAction.java,v 1.4 2010/02/06 20:50:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
@@ -26,7 +25,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EMapAsListAction extends EMapAction {
 

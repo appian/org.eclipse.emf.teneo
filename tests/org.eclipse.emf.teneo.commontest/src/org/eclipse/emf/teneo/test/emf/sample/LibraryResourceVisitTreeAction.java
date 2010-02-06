@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceVisitTreeAction.java,v 1.2 2009/04/03 06:15:39 mtaal Exp $
+ * $Id: LibraryResourceVisitTreeAction.java,v 1.3 2010/02/06 20:50:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests how children are added to a resource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryResourceVisitTreeAction extends AbstractTestAction {
 	public LibraryResourceVisitTreeAction() {
@@ -89,7 +89,7 @@ public class LibraryResourceVisitTreeAction extends AbstractTestAction {
 				res.load(null);
 
 				Library lib = (Library) res.getContents().get(0);
-
+				assertTrue(lib != null);
 				res.unload();
 			}
 		} catch (Exception e) {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.8 2008/02/28 07:08:15 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.9 2010/02/06 20:50:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * errors).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -160,11 +160,6 @@ public class LibrarySerializationAction extends AbstractTestAction {
 		/** Constructor */
 		public ElverObjectInputStream(InputStream in) throws IOException {
 			super(in);
-		}
-
-		/** Constructor */
-		public ElverObjectInputStream() throws IOException {
-			super();
 		}
 
 		/*

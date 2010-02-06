@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SunBooksAction.java,v 1.6 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: SunBooksAction.java,v 1.7 2010/02/06 20:50:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -37,8 +37,9 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the sun books example, is mainly used to test EList methods (move, set, contains, move, etc)
  *  
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ 
+ * @version $Revision: 1.7 $ 
 */
+@SuppressWarnings({ "unchecked", "deprecation" })
 public class SunBooksAction extends AbstractTestAction {
 	public SunBooksAction() {
 		super(SunBooksPackage.eINSTANCE);
@@ -46,7 +47,6 @@ public class SunBooksAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
-	@SuppressWarnings("unchecked")
 	public void doAction(TestStore store) {
 		final SunBooksFactory factory = SunBooksFactory.eINSTANCE;
 
