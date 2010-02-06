@@ -22,12 +22,15 @@
     	</provider>
 	</searchPath>
 	
-	<searchPath name="teneo.plugins">
+	<searchPath name="teneo.test.plugins">
 		<provider componentTypes="osgi.bundle" readerType="cvs" source="true">
 			<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.teneo/tests/{0}">
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
+	</searchPath>
+	
+	<searchPath name="teneo.example.plugins">
 		<provider componentTypes="osgi.bundle" readerType="cvs" source="true">
 			<uri format=":pserver:anonymous@dev.eclipse.org:/cvsroot/modeling,org.eclipse.emf/org.eclipse.emf.teneo/examples/{0}">
 				<bc:propertyRef key="buckminster.component" />
@@ -75,7 +78,8 @@
 	<locator searchPathRef="teneo.platform" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.releng" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.features" pattern="^org\.eclipse\.emf\.teneo([\.\-].+)?" failOnError="false"/>
-	<locator searchPathRef="teneo.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?"/>
+	<locator searchPathRef="teneo.test.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
+	<locator searchPathRef="teneo.example.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?"/>
   	<locator searchPathRef="target.platform"/>
 	
 </rmap>
