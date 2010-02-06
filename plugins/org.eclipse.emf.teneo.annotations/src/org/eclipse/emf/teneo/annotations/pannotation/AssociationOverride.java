@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AssociationOverride.java,v 1.7 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: AssociationOverride.java,v 1.8 2010/02/06 18:25:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 

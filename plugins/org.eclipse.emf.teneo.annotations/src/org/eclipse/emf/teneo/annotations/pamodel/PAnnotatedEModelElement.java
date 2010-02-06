@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEModelElement.java,v 1.8 2008/01/18 06:20:56 mtaal Exp $
+ * $Id: PAnnotatedEModelElement.java,v 1.9 2010/02/06 18:25:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 

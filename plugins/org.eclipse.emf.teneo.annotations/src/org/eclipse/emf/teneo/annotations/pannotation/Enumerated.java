@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Enumerated.java,v 1.5 2007/07/04 19:28:01 mtaal Exp $
+ * $Id: Enumerated.java,v 1.6 2010/02/06 18:25:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
