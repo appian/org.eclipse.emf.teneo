@@ -57,10 +57,13 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Building" />
 		<buckminster command="build" workspace="${workspacePath}"/>
 		
-		<echo message="Creating site" />
+		<echo message="Creating p2 sites" />
 		<buckminster command="perform" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.site#site.p2" />
+				<arg value="org.eclipse.emf.teneo.hibernate#site.p2" />
+				<arg value="org.eclipse.emf.teneo.hibernate.sdk#site.p2" />
+				<arg value="org.eclipse.emf.teneo.eclipselink#site.p2" />
 			</cmdargs>
 		</buckminster>
 
