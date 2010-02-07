@@ -64,23 +64,13 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="-l" />
 				<arg value="org.eclipse.emf.teneo.hibernate.test/AllTests.launch" />
 				<arg value="-o" />
-				<arg value="${testResultsPath}" />
+				<arg value="${testResultsPath}/test-results.xml" />
 				<arg value="--stdout" />
-				<arg value="${testResultsPath}/stdout" />
+				<arg value="${testResultsPath}/stdout.txt" />
 				<arg value="--stderr" />
-				<arg value="${testResultsPath}/stderr" />
+				<arg value="${testResultsPath}/stderr.txt" />
 			</cmdargs>
 		</buckminster>
-	</target>
-
-	<target name="cleanUp">
-		<if>
-			<equals arg1="${debug.mode}" arg2="false" />
-			<then>
-				<delete dir="${targetPlatformPath}" failonerror="true" quiet="true" />
-				<delete dir="${workspacePath}" failonerror="true" quiet="true" />
-			</then>
-		</if>
 	</target>
 
 	<target name="init.build.properties">

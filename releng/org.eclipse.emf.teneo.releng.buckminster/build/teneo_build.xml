@@ -112,14 +112,4 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</propertyset>
 		</echoproperties>
 	</target>
-
-	<target name="cleanUp">
-		<if>
-		 <equals arg1="${debug.mode}" arg2="false" />
-		 <then>
-		<delete dir="${targetPlatformPath}" failonerror="true" quiet="true" />
-		<delete dir="${workspacePath}" failonerror="true" quiet="true" />
-		 	</then>
-		 	</if>
-	</target>
 </project>
