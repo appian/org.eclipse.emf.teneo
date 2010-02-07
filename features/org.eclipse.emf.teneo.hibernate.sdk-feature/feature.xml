@@ -26,13 +26,6 @@ http://www.eclipse.org/legal/epl-v10.html
    </url>
 
    <plugin
-         id="org.eclipse.emf.teneo.hibernate.mapper.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.teneo.hibernate"
          download-size="0"
          install-size="0"
@@ -69,6 +62,13 @@ http://www.eclipse.org/legal/epl-v10.html
 
    <plugin
          id="org.eclipse.emf.teneo.eclipse"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.teneo.hibernate.mapper.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
