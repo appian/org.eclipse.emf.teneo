@@ -6,10 +6,10 @@ Bundle-Version: 1.1.2.qualifier
 Bundle-Vendor: %Plugin.providerName
 Bundle-Localization: plugin
 Eclipse-BuddyPolicy: dependent
-Require-Bundle: org.eclipse.emf.teneo;visibility:=reexport,
- org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.teneo.annotations;visibility:=reexport,
- org.eclipse.emf.teneo.hibernate.mapper;visibility:=reexport
+Require-Bundle: org.eclipse.emf.teneo;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="[2.5.0,3.0.0)",
+ org.eclipse.emf.teneo.annotations;bundle-version="[1.1.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.teneo.hibernate.mapper;bundle-version="[1.1.0,2.0.0)";visibility:=reexport
 Export-Package: org.eclipse.emf.teneo.hibernate;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.mapping;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.mapping.eav;version="1.1.2",
