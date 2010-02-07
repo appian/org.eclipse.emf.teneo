@@ -63,6 +63,30 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="org.eclipse.emf.teneo.site#site.p2" />
 			</cmdargs>
 		</buckminster>
+		
+		<echo message="Copying p2 site to result" />
+		<antcall target="copy.result.files" inheritRefs="true" inheritAll="true"/>		
+		
+	</target>
+	
+	<!-- Copy site and create sdk zips --> 	
+	<target name="copy.result.files">
+	    <echo message="Copying p2.site to ${buildSitePath}"/>
+	    <copy todir="${buildSitePath}" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/*"/>
+	            </fileset>
+	    </copy>
+	    <copy todir="${buildSitePath}/plugins" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/plugins/*"/>
+	            </fileset>
+	    </copy>
+	    <copy todir="${buildSitePath}/features" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/features/*"/>
+	            </fileset>
+	    </copy>
 	</target>
 	
 	<target name="init">
