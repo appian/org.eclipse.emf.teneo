@@ -61,8 +61,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<buckminster command="perform" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.site#site.p2" />
-				<arg value="org.eclipse.emf.teneo.hibernate#site.p2" />
-				<arg value="org.eclipse.emf.teneo.eclipselink#site.p2" />
+				<!-- arg value="org.eclipse.emf.teneo.hibernate#site.p2" />
+				<arg value="org.eclipse.emf.teneo.eclipselink#site.p2" /-->
 			</cmdargs>
 		</buckminster>
 
