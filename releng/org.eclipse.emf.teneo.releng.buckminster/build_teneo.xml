@@ -51,10 +51,35 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<target name="run" depends="init">
    	    <echo message="Building" />
 	    <ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true"/>
-	    <echo message="Testing" />
+
+		<echo message="Testing" />
 	    <ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true"/>
-	    <echo message="Cleaning up" />
+
+		<echo message="Copying result files" />
+		<antcall target="copy.result" inheritRefs="true" inheritAll="true"/>		
+
+		<echo message="Cleaning up" />
 	    <antcall target="cleanUp" inheritAll="true"/>
+	</target>
+
+	<!-- Copy site and create sdk zips --> 	
+	<target name="copy.result">
+	    <echo message="Copying p2.site to ${buildSitePath}"/>
+	    <copy todir="${buildSitePath}" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/*"/>
+	            </fileset>
+	    </copy>
+	    <copy todir="${buildSitePath}/plugins" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/plugins/*"/>
+	            </fileset>
+	    </copy>
+	    <copy todir="${buildSitePath}/features" flatten="true">
+	            <fileset dir="${buckminster.output.root}">
+	                    <include name="*site*/site.p2/features/*"/>
+	            </fileset>
+	    </copy>
 	</target>
 
 	<target name="init">
