@@ -10,7 +10,7 @@ Require-Bundle: org.junit,
  org.eclipse.emf.teneo,
  org.eclipse.emf.teneo.annotations,
  org.eclipse.emf.teneo.samples;visibility:=reexport
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Eclipse-BuddyPolicy: dependent
 Bundle-ClassPath: .
 Export-Package: 
