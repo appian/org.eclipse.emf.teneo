@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 import org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl;
+import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceFactoryImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkResourceImpl;
 import org.eclipse.emf.teneo.eclipselink.resource.EclipseLinkURIUtil;
 
@@ -53,6 +54,10 @@ public class EclipseLinkResourceTest extends AbstractEclipseLinkTest {
 		// save library model instance in database
 		ResourceSet resourceSet1 = new ResourceSetImpl();
 		resourceSet1.getLoadOptions().putAll(getTestPersistenceUnitProperties(this.getClass().getClassLoader()));
+
+		resourceSet1.getResourceFactoryRegistry().getProtocolToFactoryMap().put("eclipselink",
+				new EclipseLinkResourceFactoryImpl());
+
 		resource1 = resourceSet1.createResource(uri);
 
 		assertTrue(resource1 instanceof EclipseLinkResourceImpl);
@@ -69,7 +74,11 @@ public class EclipseLinkResourceTest extends AbstractEclipseLinkTest {
 
 		// load second library model instance from database
 		ResourceSet resourceSet2 = new ResourceSetImpl();
+
+		resourceSet2.getResourceFactoryRegistry().getProtocolToFactoryMap().put("eclipselink",
+				new EclipseLinkResourceFactoryImpl());
 		resourceSet2.getLoadOptions().putAll(getTestPersistenceUnitProperties(this.getClass().getClassLoader()));
+
 		resource2 = resourceSet2.getResource(uri, true);
 
 		assertTrue(resource2 instanceof EclipseLinkResourceImpl);
