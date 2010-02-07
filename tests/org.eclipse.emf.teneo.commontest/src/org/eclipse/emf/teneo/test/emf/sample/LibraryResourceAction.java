@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryResourceAction.java,v 1.18 2009/04/03 06:15:39 mtaal Exp $
+ * $Id: LibraryResourceAction.java,v 1.19 2010/02/07 21:44:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * other aspects of resources are handled in the Catalog example.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class LibraryResourceAction extends AbstractTestAction {
 	public LibraryResourceAction() {
@@ -135,8 +135,10 @@ public class LibraryResourceAction extends AbstractTestAction {
 				// and put george in our library
 				lib.getWriters().add(george);
 
-				assertEquals(2, tolkien.getBooks().size());
-				assertEquals(3, lib.getBooks().size());
+				if (!isEAVTest()) {
+					assertEquals(2, tolkien.getBooks().size());
+					assertEquals(3, lib.getBooks().size());
+				}
 
 				// and save it all
 				res.save(null);
