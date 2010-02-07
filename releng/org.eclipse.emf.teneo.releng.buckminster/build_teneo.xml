@@ -23,7 +23,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
 	</tstamp>
 
-	<condition property="buildsPath" value="${env.WORKSPACE}" else="${basedir}/../builds">
+	<condition property="hudsonWorkSpacePath" value="${env.WORKSPACE}" else="${basedir}/../builds">
 		<isset property="env.WORKSPACE" />
 	</condition>
 
@@ -35,6 +35,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<condition property="build.type" value="${env.BUILDTYPE}" else="N">
 		<isset property="env.BUILDTYPE" />
 	</condition>
+	
+	<property name="buildsPath" location="${hudsonWorkSpacePath}/build"/>
 	
 	<property name="rootPath" location="${buildsPath}/${build.type}${buildTimestamp}"/>
 		
@@ -60,6 +62,9 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</target>
 
 	<target name="init">
+		<echo message="Removing old build"/>
+		<delete dir="${buildsPath}" failonerror="true" quiet="true" />
+		
 		<echo message="Creating main directories"/>
 		<echo message="rootPath: ${rootPath}"/>
 		<echo message="buildRoot: ${buildRoot}"/>
