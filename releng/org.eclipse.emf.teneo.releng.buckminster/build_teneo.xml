@@ -23,7 +23,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
 	</tstamp>
 
-	<condition property="hudsonWorkSpacePath" value="${env.WORKSPACE}" else="${basedir}/../builds">
+	<condition property="hudsonWorkSpacePath" value="${env.WORKSPACE}" else="${basedir}/../">
 		<isset property="env.WORKSPACE" />
 	</condition>
 
