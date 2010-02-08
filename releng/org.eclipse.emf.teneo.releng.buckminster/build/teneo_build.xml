@@ -60,7 +60,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Creating p2 site" />
 		<buckminster command="perform" workspace="${workspacePath}">
 			<cmdargs>
-				<arg value="org.eclipse.emf.teneo.site.feature#site.p2" />
+				<arg value="org.eclipse.emf.teneo.site:eclipse.feature#site.p2" />
 			</cmdargs>
 		</buckminster>
 		
@@ -73,8 +73,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="-Dsite.include.top=true"/>
 			</globargs>
 			<cmdargs>
-				<arg value="org.eclipse.emf.teneo.hibernate.feature#site.p2" />
-				<arg value="org.eclipse.emf.teneo.eclipselink.feature#site.p2" />
+				<arg value="org.eclipse.emf.teneo.hibernate:eclipse.feature#site.p2" />
+				<arg value="org.eclipse.emf.teneo.eclipselink:eclipse.feature#site.p2" />
 			</cmdargs>
 		</buckminster>
 		
