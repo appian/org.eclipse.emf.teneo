@@ -57,22 +57,31 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Building" />
 		<buckminster command="build" workspace="${workspacePath}"/>
 		
-		<echo message="Creating p2 sites" />
+		<echo message="Creating p2 site" />
 		<buckminster command="perform" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.site.feature#site.p2" />
+			</cmdargs>
+		</buckminster>
+		
+		<echo message="Copying p2 site to result" />
+		<antcall target="copy.p2.site" inheritRefs="true" inheritAll="true"/>		
+		
+		<echo message="Creating p2 sites for feature zip files" />
+		<buckminster command="perform" workspace="${workspacePath}">
+			<globargs>
+				<arg value="-Dsite.include.top=true"/>
+			</globargs>
+			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.hibernate.feature#site.p2" />
 				<arg value="org.eclipse.emf.teneo.eclipselink.feature#site.p2" />
 			</cmdargs>
 		</buckminster>
 		
-		<echo message="Copying p2 site to result" />
-		<antcall target="copy.result.files" inheritRefs="true" inheritAll="true"/>		
-		
 	</target>
 	
 	<!-- Copy site and create sdk zips --> 	
-	<target name="copy.result.files">
+	<target name="copy.p2.site">
 	    <echo message="Copying p2.site to ${buildSitePath}"/>
 	    <copy todir="${buildSitePath}" flatten="true">
 	            <fileset dir="${buckminster.output.root}">
