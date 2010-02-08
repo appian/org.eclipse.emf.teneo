@@ -58,8 +58,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 					<arg value="@{workspace}" />
 					<arg value="--loglevel" />
 					<arg value="INFO" />
-					<globargs />
 					<arg value="@{command}" />
+					<globargs />
 					<arg value="-P" />
 					<arg value="${properties.tmp}" />
 					<cmdargs />
