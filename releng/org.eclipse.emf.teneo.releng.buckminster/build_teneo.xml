@@ -56,9 +56,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<echo message="Testing" />
 	    <ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true"/>
-
-		<echo message="Cleaning up" />
-	    <antcall target="cleanUp" inheritAll="true"/>
 	</target>
 
 	<target name="init">
@@ -82,24 +79,5 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<echo message="Unzipping buckminster to ${toolsPath}"/>
 		<unzip src="buckminster3.6.zip" dest="${toolsPath}" />
-	</target>
-
-	<target name="cleanUp" depends="doConditionalCleanup">
-	</target>
-
-	<target name="determine.do.cleanup">
-    		<condition property="do.cleanup">
-			<not>
-				<equals arg1="${debug.mode}" arg2="true"/>
-			</not>
-    		</condition>
-	</target>
-
-	<target name="doConditionalCleanup" depends="determine.do.cleanup" if="do.cleanup">
-		<delete dir="${toolsPath}" failonerror="true" quiet="true" />
-		<delete dir="${buildRoot}" failonerror="true" quiet="true" />
-		<delete dir="${testRoot}" failonerror="true" quiet="true" />
-		<delete dir="${buckminster.output.temp}" failonerror="true" quiet="true" />
-		<delete dir="${buckminster.output.root}" failonerror="true" quiet="true" />
 	</target>
 </project>
