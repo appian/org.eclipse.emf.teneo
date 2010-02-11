@@ -11,10 +11,61 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.8 2009/02/25 11:19:55 mtaal Exp $
+ * $Id: AllTests.java,v 1.9 2010/02/11 10:52:09 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
+
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.AnyAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.BZ290969Action;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.EAVCascadeDeleteAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.EAVMappingAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.EAVMappingAllAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.EMapEAVAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.HbIdAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.HbSequenceIdAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.HibernateAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.IdTypeTestOneAction;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.JoinColumnsTest;
+import org.eclipse.emf.teneo.hibernate.test.emf.annotations.UserTypeAction;
+import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
+import org.eclipse.emf.teneo.test.emf.annotations.AssociationOverrideAction;
+import org.eclipse.emf.teneo.test.emf.annotations.AttributeOverridesAction;
+import org.eclipse.emf.teneo.test.emf.annotations.BasicAction;
+import org.eclipse.emf.teneo.test.emf.annotations.BookAction;
+import org.eclipse.emf.teneo.test.emf.annotations.CascadeNotallAction;
+import org.eclipse.emf.teneo.test.emf.annotations.CompositeIdAction;
+import org.eclipse.emf.teneo.test.emf.annotations.DuplicatesAction;
+import org.eclipse.emf.teneo.test.emf.annotations.EDataTypeAction;
+import org.eclipse.emf.teneo.test.emf.annotations.EmbeddedAction;
+import org.eclipse.emf.teneo.test.emf.annotations.EmbeddedIdAction;
+import org.eclipse.emf.teneo.test.emf.annotations.EntityAction;
+import org.eclipse.emf.teneo.test.emf.annotations.ExternalAction;
+import org.eclipse.emf.teneo.test.emf.annotations.ExtraLazyAction;
+import org.eclipse.emf.teneo.test.emf.annotations.ForcedIdBagAction;
+import org.eclipse.emf.teneo.test.emf.annotations.HbMapKeysAction;
+import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
+import org.eclipse.emf.teneo.test.emf.annotations.IdBagAction;
+import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationAction;
+import org.eclipse.emf.teneo.test.emf.annotations.InheritanceAnnotationTablePerClassAction;
+import org.eclipse.emf.teneo.test.emf.annotations.IntegerDiscriminatorAction;
+import org.eclipse.emf.teneo.test.emf.annotations.LazyLibraryAction;
+import org.eclipse.emf.teneo.test.emf.annotations.LobAction;
+import org.eclipse.emf.teneo.test.emf.annotations.ManyToManyAction;
+import org.eclipse.emf.teneo.test.emf.annotations.MapKeyAction;
+import org.eclipse.emf.teneo.test.emf.annotations.MappedSuperClassAction;
+import org.eclipse.emf.teneo.test.emf.annotations.NaturalIdAction;
+import org.eclipse.emf.teneo.test.emf.annotations.OnetoonePKAction;
+import org.eclipse.emf.teneo.test.emf.annotations.OverrideSecondaryAction;
+import org.eclipse.emf.teneo.test.emf.annotations.PKeyJoinAction;
+import org.eclipse.emf.teneo.test.emf.annotations.SecondarytableHibernateAction;
+import org.eclipse.emf.teneo.test.emf.annotations.SetAction;
+import org.eclipse.emf.teneo.test.emf.annotations.SetNMAction;
+import org.eclipse.emf.teneo.test.emf.annotations.SetResourceAction;
+import org.eclipse.emf.teneo.test.emf.annotations.ToOneAction;
+import org.eclipse.emf.teneo.test.emf.annotations.TransientAction;
+import org.eclipse.emf.teneo.test.emf.annotations.UniqueConstraintsAction;
+import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -23,29 +74,106 @@ import junit.framework.TestSuite;
  * Runs all hibernate tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite("All tests for hibernate");
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests
-				.suite());
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.detach.AllTests
-				.suite());
-		suite
-				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.annotations.AllTests
-						.suite());
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.elist.AllTests
-				.suite());
-		suite
-				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.relation.AllTests
-						.suite());
-		suite
-				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs.AllTests
-						.suite());
-		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests
-				.suite());
+		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
+				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(EmbeddedAction.class);
+		suite.addTestSuite(BZ290969Action.class);
+		suite.addTestSuite(HibernateAction.class);
+		suite.addTestSuite(EAVMappingAllAction.class);
+		suite.addTestSuite(EAVMappingAction.class);
+		suite.addTestSuite(InheritanceAnnotationAction.class);
+		suite.addTestSuite(EAVCascadeDeleteAction.class);
+		suite.addTestSuite(EMapEAVAction.class);
+		suite.addTestSuite(IdTypeTestOneAction.class);
+		suite.addTestSuite(AnyAction.class);
+		suite.addTestSuite(UserTypeAction.class);
+		suite.addTestSuite(JoinColumnsTest.class);
+		suite.addTestSuite(LobAction.class);
+		suite.addTestSuite(VariousAction.class);
+		suite.addTestSuite(MapKeyAction.class);
+		suite.addTestSuite(UniqueConstraintsAction.class);
+		suite.addTestSuite(SetAction.class);
+		suite.addTestSuite(HbIdAction.class);
+		suite.addTestSuite(ExternalAction.class);
+		suite.addTestSuite(SecondarytableHibernateAction.class);
+
+		suite.addTestSuite(HbSequenceIdAction.class);
+
+		suite.addTestSuite(OverrideSecondaryAction.class);
+		suite.addTestSuite(PKeyJoinAction.class);
+
+		suite.addTestSuite(HbMapKeysAction.class);
+		suite.addTestSuite(OnetoonePKAction.class);
+		suite.addTestSuite(NaturalIdAction.class);
+
+		suite.addTestSuite(LazyLibraryAction.class);
+
+		suite.addTestSuite(ToOneAction.class);
+
+		suite.addTestSuite(IntegerDiscriminatorAction.class);
+
+		suite.addTestSuite(MappedSuperClassAction.class);
+
+		suite.addTestSuite(CascadeNotallAction.class);
+		suite.addTestSuite(IdAction.class);
+
+		suite.addTestSuite(InheritanceAnnotationTablePerClassAction.class);
+
+		suite.addTestSuite(ForcedIdBagAction.class);
+
+		suite.addTestSuite(ManyToManyAction.class);
+
+		suite.addTestSuite(EntityAction.class);
+
+		suite.addTestSuite(ExtraLazyAction.class);
+
+		suite.addTestSuite(TransientAction.class);
+
+		suite.addTestSuite(AssociationOverrideAction.class);
+
+		suite.addTestSuite(IdBagAction.class);
+
+		suite.addTestSuite(AttributeOverridesAction.class);
+
+		suite.addTestSuite(SetNMAction.class);
+
+		suite.addTestSuite(DuplicatesAction.class);
+
+		suite.addTestSuite(BookAction.class);
+
+		suite.addTestSuite(EDataTypeAction.class);
+
+		suite.addTestSuite(BasicAction.class);
+
+		suite.addTestSuite(CompositeIdAction.class);
+
+		suite.addTestSuite(SetResourceAction.class);
+		suite.addTestSuite(EmbeddedIdAction.class);
+
 		return suite;
+//		TestSuite suite = new TestSuite("All tests for hibernate");
+//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests
+//				.suite());
+//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.detach.AllTests
+//				.suite());
+//		suite
+//				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.annotations.AllTests
+//						.suite());
+//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.elist.AllTests
+//				.suite());
+//		suite
+//				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.relation.AllTests
+//						.suite());
+//		suite
+//				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs.AllTests
+//						.suite());
+//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests
+//				.suite());
+//		return suite;
 	}
 }
