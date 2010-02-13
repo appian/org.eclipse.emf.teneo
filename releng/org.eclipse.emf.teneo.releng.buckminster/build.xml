@@ -87,7 +87,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Removing old build" />
 		<delete dir="${testRoot}" quiet="true" />
 		<delete dir="${buildRoot}" quiet="true" />
-		<delete dir="${buildsPath}" quiet="true" />
 		<delete dir="${rootPath}/result}" quiet="true" />
 		<delete dir="${buckminster.output.root}" quiet="true" />
 		<delete dir="${buckminster.output.temp}" quiet="true" />
