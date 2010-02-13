@@ -57,7 +57,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 					<arg value="-data" />
 					<arg value="@{workspace}" />
 					<arg value="--loglevel" />
-					<arg value="${env.BUCKMINSTER_LOGLEVEL}" />
+					<arg value="${buckminster.loglevel}" />
 					<arg value="--displaystacktrace" />
 					<arg value="@{command}" />
 					<globargs />

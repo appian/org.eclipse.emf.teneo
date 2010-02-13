@@ -27,16 +27,20 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<isset property="env.WORKSPACE" />
 	</condition>
 
-	<condition property="teneo.update.site.type" value="${env.TENEO.UPDATE.SITE.TYPE}">
-		<isset property="env.TENEO.UPDATE.SITE.TYPE" />
+	<condition property="teneo.update.site.type" value="${env.TENEO_UPDATE_SITE_TYPE}" else="interim">
+		<isset property="env.TENEO_UPDATE_SITE_TYPE" />
 	</condition>
 
-	<condition property="site.pack200" value="${env.SITE_PACK200}">
+	<condition property="site.pack200" value="${env.SITE_PACK200}" else="false">
 		<isset property="env.SITE_PACK200" />
 	</condition>
+	
+	<condition property="site.signing" value="${env.SITE_SIGNING}" else="false">
+		<isset property="env.SITE_SIGNING" />
+	</condition>
 
-	<condition property="site.signing" value="${env.SITE_SIGNING}">
-		<isset property="SITE_SIGNING" />
+	<condition property="buckminster.loglevel" value="${env.BUCKMINSTER_LOGLEVEL}" else="info">
+		<isset property="env.BUCKMINSTER_LOGLEVEL" />
 	</condition>
 
 	<!-- Is used in buck.minster also -->
