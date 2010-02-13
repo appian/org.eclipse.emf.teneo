@@ -17,9 +17,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 <project default="run" name="Teneo Builds">
 	<!-- load properties and set timestamp for the build -->
 	<property environment="env"/>
-
-	<!-- see below the temporary property file passed to buckminster -->
-	<property file="${basedir}/../buckminster.properties" />
 	
 	<!--
 		Inherited properties:
@@ -37,7 +34,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<import file="../ant_common.xml" />
 	
-	<target name="run" depends="init">
+	<target name="run" depends="init,init.build.properties">
 		<echo message="Using workspace ${workspacePath}" />
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
 		<buckminster command="setpref" workspace="${workspacePath}">
@@ -104,5 +101,25 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${targetPlatformPath}"/>
 		<mkdir dir="${workspacePath}"/>
 	</target>
-
+	
+	<target name="init.build.properties">
+		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
+		  -->
+		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
+		<echoproperties destfile="${properties.tmp}">
+			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
+			<propertyset negate="true">
+				<propertyref name="basedir" />
+				<propertyref name="eclipse.home" />
+				<propertyref name="properties.tmp" />
+				<propertyref name="line.separator" />
+				<propertyref name="path.separator" />
+				<propertyref prefix="ant." />
+				<propertyref prefix="file." />
+				<propertyref prefix="java." />
+				<propertyref prefix="sun." />
+				<propertyref prefix="user." />
+			</propertyset>
+		</echoproperties>
+	</target>
 </project>

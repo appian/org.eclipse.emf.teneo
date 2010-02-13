@@ -18,10 +18,11 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<!-- load properties and set timestamp for the build -->
 	<property environment="env" />
 
-
 	<tstamp>
 		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
 	</tstamp>
+
+	<property file="buckminster.properties" />
 
 	<condition property="hudsonWorkSpacePath" value="${env.WORKSPACE}" else="${basedir}/../">
 		<isset property="env.WORKSPACE" />
@@ -82,7 +83,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		</buckminster>
 	</target>
 
-	<target name="init" depends="init.build.properties">
+	<target name="init">
 		<echo message="Removing old build" />
 		<delete dir="${testRoot}" quiet="true" />
 		<delete dir="${buildRoot}" quiet="true" />
@@ -143,25 +144,5 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</args>
 		</eclipse.launch>
 	</target>
-	
-	<target name="init.build.properties">
-		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
-		  -->
-		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
-		<echoproperties destfile="${properties.tmp}">
-			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
-			<propertyset negate="true">
-				<propertyref name="basedir" />
-				<propertyref name="eclipse.home" />
-				<propertyref name="properties.tmp" />
-				<propertyref name="line.separator" />
-				<propertyref name="path.separator" />
-				<propertyref prefix="ant." />
-				<propertyref prefix="file." />
-				<propertyref prefix="java." />
-				<propertyref prefix="sun." />
-				<propertyref prefix="user." />
-			</propertyset>
-		</echoproperties>
-	</target>
+
 </project>
