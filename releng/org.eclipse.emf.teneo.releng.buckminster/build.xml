@@ -16,9 +16,9 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 -->
 <project default="build.and.test" name="Texo Builds">
 	<!-- load properties and set timestamp for the build -->
-	<property environment="env"/>
+	<property environment="env" />
 
-	
+
 	<tstamp>
 		<format property="buildTimestamp" pattern="yyyyMMddHHmm" />
 	</tstamp>
@@ -34,7 +34,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<condition property="site.pack200" value="${env.SITE_PACK200}" else="false">
 		<isset property="env.SITE_PACK200" />
 	</condition>
-	
+
 	<condition property="site.signing" value="${env.SITE_SIGNING}" else="false">
 		<isset property="env.SITE_SIGNING" />
 	</condition>
@@ -47,34 +47,34 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<condition property="build.type" value="${env.BUILDTYPE}" else="N">
 		<isset property="env.BUILDTYPE" />
 	</condition>
-	
-	<property name="buildsPath" location="${hudsonWorkSpacePath}/build"/>
-	
+
+	<property name="buildsPath" location="${hudsonWorkSpacePath}/build" />
+
 	<!--property name="rootPath" location="${buildsPath}/${build.type}${buildTimestamp}"/-->
-	<property name="rootPath" location="${buildsPath}"/>
-		
-	<property name="buildRoot" location="${rootPath}/build"/>
-	<property name="testRoot" location="${rootPath}/test"/>	
-	<property name="toolsPath" location="${rootPath}/tools"/>		
-	<property name="buildSitePath" location="${rootPath}/result/p2site"/>
-	<property name="buildZipsPath" location="${rootPath}/result/zips"/>
-	<property name="testResultsPath" location="${rootPath}/result/test"/>
+	<property name="rootPath" location="${buildsPath}" />
+
+	<property name="buildRoot" location="${rootPath}/build" />
+	<property name="testRoot" location="${rootPath}/test" />
+	<property name="toolsPath" location="${rootPath}/tools" />
+	<property name="buildSitePath" location="${rootPath}/result/p2site" />
+	<property name="buildZipsPath" location="${rootPath}/result/zips" />
+	<property name="testResultsPath" location="${rootPath}/result/test" />
 
 	<property name="buckminster.output.root" location="${rootPath}/output" />
 	<property name="buckminster.output.temp" location="${rootPath}/temp" />
 
 	<import file="ant_common.xml" />
 
-	<target name="build.and.test" depends="init">
-   	    <echo message="Building" />
-	    <ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true"/>
+	<target name="build.and.test" depends="init,install.buckminster">
+		<echo message="Building" />
+		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 
 		<echo message="Testing" />
-	    <ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true"/>
+		<ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" />
 	</target>
 
 	<target name="build.test.and.promote" depends="build.and.test">
-   	    <echo message="Promoting" />
+		<echo message="Promoting" />
 		<buckminster command="import" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.site:eclipse.feature#promote" />
@@ -83,35 +83,37 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</target>
 
 	<target name="init">
-		<echo message="Removing old build"/>
-		<delete dir="${buildsPath}" failonerror="true" quiet="true" />
-		
-		<echo message="Creating main directories"/>
-		<echo message="rootPath: ${rootPath}"/>
-		<echo message="buildRoot: ${buildRoot}"/>
-		<echo message="testRoot: ${testRoot}"/>
-		<echo message="buildSitePath: ${buildSitePath}"/>
-		<echo message="buildZipsPath: ${buildZipsPath}"/>
-		<echo message="testResultsPath: ${testResultsPath}"/>
-		<mkdir dir="${rootPath}"/>
-		<mkdir dir="${buildRoot}"/>
-		<mkdir dir="${testRoot}"/>
-		<mkdir dir="${toolsPath}"/>
-		<mkdir dir="${buildSitePath}"/>
-		<mkdir dir="${buildZipsPath}"/>
-		<mkdir dir="${testResultsPath}"/>
+		<echo message="Removing old build" />
+		<delete dir="${testRoot}" quiet="true" />
+		<delete dir="${buildRoot}" quiet="true" />
+		<delete dir="${buildsPath}" quiet="true" />
+		<delete dir="${rootPath}/result}" quiet="true" />
+		<delete dir="${buckminster.output.root}" quiet="true" />
+		<delete dir="${buckminster.output.temp}" quiet="true" />
 
-		<echo message="Unzipping buckminster to ${toolsPath}"/>
-		<unzip src="buckminster3.6M5.zip" dest="${toolsPath}" />
+		<echo message="Creating main directories" />
+		<echo message="rootPath: ${rootPath}" />
+		<echo message="buildRoot: ${buildRoot}" />
+		<echo message="testRoot: ${testRoot}" />
+		<echo message="buildSitePath: ${buildSitePath}" />
+		<echo message="buildZipsPath: ${buildZipsPath}" />
+		<echo message="testResultsPath: ${testResultsPath}" />
+		<mkdir dir="${rootPath}" />
+		<mkdir dir="${buildRoot}" />
+		<mkdir dir="${testRoot}" />
+		<mkdir dir="${toolsPath}" />
+		<mkdir dir="${buildSitePath}" />
+		<mkdir dir="${buildZipsPath}" />
+		<mkdir dir="${testResultsPath}" />
+
+		<available file="${tools}/director/director" property="director.exists" />
+		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
+
 	</target>
 
 	<target name="get.director" unless="director.exists">
 		<echo message="Fetching headless director application" />
-		<tempfile destdir="${java.io.tmpdir}"
-		          prefix="director-"
-		          suffix=".zip"
-		          property="director.zip"
-		          deleteonexit="true" />
+		<tempfile destdir="${java.io.tmpdir}" prefix="director-" suffix=".zip" property="director.zip" deleteonexit="true" />
 		<get src="${director.url}" dest="${director.zip}" />
 		<mkdir dir="${tools}" />
 		<unzip src="${director.zip}" dest="${toolsPath}" />
