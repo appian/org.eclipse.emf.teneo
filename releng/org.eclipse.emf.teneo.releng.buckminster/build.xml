@@ -104,4 +104,42 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Unzipping buckminster to ${toolsPath}"/>
 		<unzip src="buckminster3.6M5.zip" dest="${toolsPath}" />
 	</target>
+
+	<target name="get.director" unless="director.exists">
+		<echo message="Fetching headless director application" />
+		<tempfile destdir="${java.io.tmpdir}"
+		          prefix="director-"
+		          suffix=".zip"
+		          property="director.zip"
+		          deleteonexit="true" />
+		<get src="${director.url}" dest="${director.zip}" />
+		<mkdir dir="${tools}" />
+		<unzip src="${director.zip}" dest="${toolsPath}" />
+		<delete file="${director.zip}" />
+	</target>
+
+	<target name="install.buckminster" unless="buckminster.exists" depends="get.director">
+		<echo message="Configuring headless buckminster with needed features" />
+		<eclipse.launch app="director">
+			<args>
+				<jvmarg value="-Declipse.p2.mirrors=false" />
+				<jvmarg value="-Dorg.eclipse.update.jarprocessor.pack200=${org.eclipse.update.jarprocessor.pack200}" />
+				<arg value="-r" />
+				<arg value="${buckminster.p2.site}" />
+				<arg value="-d" />
+				<arg value="${toolsPath}/buckminster" />
+				<arg value="-p" />
+				<arg value="Buckminster" />
+				<arg value="-i" />
+				<arg value="org.eclipse.buckminster.cmdline.product" />
+				<arg value="-i" />
+				<arg value="org.eclipse.buckminster.core.headless.feature.feature.group" />
+				<arg value="-i" />
+				<arg value="org.eclipse.buckminster.pde.headless.feature.feature.group" />
+				<arg value="-i" />
+				<arg value="org.eclipse.buckminster.cvs.headless.feature.feature.group" />
+			</args>
+		</eclipse.launch>
+	</target>
+
 </project>
