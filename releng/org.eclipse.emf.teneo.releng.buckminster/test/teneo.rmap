@@ -73,20 +73,16 @@
     	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=N)">
       		<uri format="http://www.elver.org/eclipse/update"/>
     	</provider>
-  	</searchPath>
-	
-	<searchPath name="orbit">
 		<provider readerType="p2" componentTypes="osgi.bundle" mutable="false" source="false">
-			<uri format="http://download.eclipse.org/tools/orbit/downloads/drops/R20090825191606/"/>
+			<uri format="http://download.eclipse.org/tools/orbit/downloads/drops/R20100114021427/updateSite"/>
 		</provider>
-	</searchPath>
+  	</searchPath>
 
 	<locator searchPathRef="teneo.platform" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.releng" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.features" pattern="^org\.eclipse\.emf\.teneo([\.\-].+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.test.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
 	<locator searchPathRef="teneo.example.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?"/>
-  	<locator searchPathRef="orbit" failOnError="false"/>
   	<locator searchPathRef="target.platform"/>
 	
 </rmap>
