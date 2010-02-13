@@ -53,11 +53,12 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<sequential>
 			<eclipse.launch app="buckminster3.6M5">
 				<args>
-					<jvmarg value="-Dbugfix.288796=true"/>
+					<jvmarg value="-Dbugfix.288796=true" />
 					<arg value="-data" />
 					<arg value="@{workspace}" />
 					<arg value="--loglevel" />
-					<arg value="INFO" />
+					<arg value="${env.BUCKMINSTER_LOGLEVEL}" />
+					<arg value="--displaystacktrace" />
 					<arg value="@{command}" />
 					<globargs />
 					<arg value="-P" />

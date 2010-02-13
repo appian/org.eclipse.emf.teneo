@@ -27,7 +27,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		buckminster.output.temp
 	-->
 
-	<property name="testRoot" location="${buildsPath}/${build.type}${buildTimestamp}/test" />
+	<property name="testRoot" location="${rootPath}/test" />
 
 	<property name="targetPlatformPath" location="${testRoot}/tp"/>
 	<property name="workspacePath" location="${testRoot}/workspace"/>
