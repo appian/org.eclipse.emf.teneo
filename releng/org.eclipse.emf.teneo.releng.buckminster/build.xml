@@ -83,6 +83,11 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		</buckminster>
 	</target>
 
+	<target name="clean.all">
+		<echo message="Removing previous build" />
+		<delete dir="${buildsPath}" quiet="true" />
+	</target>
+
 	<target name="init">
 		<echo message="Removing old build" />
 		<delete dir="${testRoot}" quiet="true" />
