@@ -29,6 +29,10 @@
          version="0.0.0"/>
 
    <includes
+         id="org.eclipse.emf.teneo.hibernate"
+         version="0.0.0"/>
+
+   <includes
          id="org.eclipse.emf.teneo.hibernate.sdk"
          version="0.0.0"/>
 
