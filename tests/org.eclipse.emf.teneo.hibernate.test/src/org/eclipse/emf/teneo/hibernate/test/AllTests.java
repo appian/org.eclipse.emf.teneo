@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.9 2010/02/11 10:52:09 mtaal Exp $
+ * $Id: AllTests.java,v 1.10 2010/02/15 05:20:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -74,106 +74,29 @@ import junit.framework.TestSuite;
  * Runs all hibernate tests.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
-				HibernateTestbed.instance().getConfigurations());
-		suite.addTestSuite(EmbeddedAction.class);
-		suite.addTestSuite(BZ290969Action.class);
-		suite.addTestSuite(HibernateAction.class);
-		suite.addTestSuite(EAVMappingAllAction.class);
-		suite.addTestSuite(EAVMappingAction.class);
-		suite.addTestSuite(InheritanceAnnotationAction.class);
-		suite.addTestSuite(EAVCascadeDeleteAction.class);
-		suite.addTestSuite(EMapEAVAction.class);
-		suite.addTestSuite(IdTypeTestOneAction.class);
-		suite.addTestSuite(AnyAction.class);
-		suite.addTestSuite(UserTypeAction.class);
-		suite.addTestSuite(JoinColumnsTest.class);
-		suite.addTestSuite(LobAction.class);
-		suite.addTestSuite(VariousAction.class);
-		suite.addTestSuite(MapKeyAction.class);
-		suite.addTestSuite(UniqueConstraintsAction.class);
-		suite.addTestSuite(SetAction.class);
-		suite.addTestSuite(HbIdAction.class);
-		suite.addTestSuite(ExternalAction.class);
-		suite.addTestSuite(SecondarytableHibernateAction.class);
-
-		suite.addTestSuite(HbSequenceIdAction.class);
-
-		suite.addTestSuite(OverrideSecondaryAction.class);
-		suite.addTestSuite(PKeyJoinAction.class);
-
-		suite.addTestSuite(HbMapKeysAction.class);
-		suite.addTestSuite(OnetoonePKAction.class);
-		suite.addTestSuite(NaturalIdAction.class);
-
-		suite.addTestSuite(LazyLibraryAction.class);
-
-		suite.addTestSuite(ToOneAction.class);
-
-		suite.addTestSuite(IntegerDiscriminatorAction.class);
-
-		suite.addTestSuite(MappedSuperClassAction.class);
-
-		suite.addTestSuite(CascadeNotallAction.class);
-		suite.addTestSuite(IdAction.class);
-
-		suite.addTestSuite(InheritanceAnnotationTablePerClassAction.class);
-
-		suite.addTestSuite(ForcedIdBagAction.class);
-
-		suite.addTestSuite(ManyToManyAction.class);
-
-		suite.addTestSuite(EntityAction.class);
-
-		suite.addTestSuite(ExtraLazyAction.class);
-
-		suite.addTestSuite(TransientAction.class);
-
-		suite.addTestSuite(AssociationOverrideAction.class);
-
-		suite.addTestSuite(IdBagAction.class);
-
-		suite.addTestSuite(AttributeOverridesAction.class);
-
-		suite.addTestSuite(SetNMAction.class);
-
-		suite.addTestSuite(DuplicatesAction.class);
-
-		suite.addTestSuite(BookAction.class);
-
-		suite.addTestSuite(EDataTypeAction.class);
-
-		suite.addTestSuite(BasicAction.class);
-
-		suite.addTestSuite(CompositeIdAction.class);
-
-		suite.addTestSuite(SetResourceAction.class);
-		suite.addTestSuite(EmbeddedIdAction.class);
-
+		TestSuite suite = new TestSuite("All tests for hibernate");
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests
+				.suite());
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.detach.AllTests
+				.suite());
+		suite
+				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.annotations.AllTests
+						.suite());
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.elist.AllTests
+				.suite());
+		suite
+				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.relation.AllTests
+						.suite());
+		suite
+				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs.AllTests
+						.suite());
+		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests
+				.suite());
 		return suite;
-//		TestSuite suite = new TestSuite("All tests for hibernate");
-//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.sample.AllTests
-//				.suite());
-//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.detach.AllTests
-//				.suite());
-//		suite
-//				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.annotations.AllTests
-//						.suite());
-//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.emf.elist.AllTests
-//				.suite());
-//		suite
-//				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.relation.AllTests
-//						.suite());
-//		suite
-//				.addTest(org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs.AllTests
-//						.suite());
-//		suite.addTest(org.eclipse.emf.teneo.hibernate.test.issues.AllTests
-//				.suite());
-//		return suite;
 	}
 }
