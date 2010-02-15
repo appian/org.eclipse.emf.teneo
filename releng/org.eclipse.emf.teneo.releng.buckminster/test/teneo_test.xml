@@ -64,27 +64,43 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="-l" />
 				<arg value="org.eclipse.emf.teneo.hibernate.test/AllTests.launch" />
 				<arg value="-o" />
-				<arg value="${testResultsPath}/test-results-hibernate.xml" />
+				<arg value="${testResultsPath}/output/test-results-hibernate.xml" />
 				<arg value="--stdout" />
-				<arg value="${testResultsPath}/stdout.txt" />
+				<arg value="${testResultsPath}/output/stdout.txt" />
 				<arg value="--stderr" />
-				<arg value="${testResultsPath}/stderr.txt" />
+				<arg value="${testResultsPath}/output/stderr.txt" />
 			</cmdargs>
 		</buckminster>
 		
+		<echo message="Processing test results EclipseLInk"/>
+		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-hibernate.xml">
+		  <fileset dir="${testResultsPath}/output">
+		    <include name="test-results-hibernate.xml"/>
+		  </fileset>
+		  <report todir="${testResultsPath}/html"/>
+		</junitreport>
+
 		<echo message="Running tests EclipseLink" />
 		<buckminster command="junit" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="-l" />
 				<arg value="org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests/AllTests.launch" />
 				<arg value="-o" />
-				<arg value="${testResultsPath}/test-results-eclipselink.xml" />
+				<arg value="${testResultsPath}/output/test-results-eclipselink.xml" />
 				<arg value="--stdout" />
-				<arg value="${testResultsPath}/stdout.txt" />
+				<arg value="${testResultsPath}/output/stdout.txt" />
 				<arg value="--stderr" />
-				<arg value="${testResultsPath}/stderr.txt" />
+				<arg value="${testResultsPath}/output/stderr.txt" />
 			</cmdargs>
 		</buckminster>
+		
+		<echo message="Processing test results EclipseLInk"/>
+		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-eclipselink.xml">
+		  <fileset dir="${testResultsPath}/output">
+		    <include name="test-results-eclipselink.xml"/>
+		  </fileset>
+		  <report todir="${testResultsPath}/html"/>
+		</junitreport>
 	</target>
 	
 	<target name="init.build.properties">
