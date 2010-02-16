@@ -29,8 +29,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<property name="testRoot" location="${rootPath}/test" />
 
-	<property name="targetPlatformPath" location="${testRoot}/tp"/>
-	<property name="workspacePath" location="${testRoot}/workspace"/>
+	<property name="targetPlatformPath" location="${testRoot}/tp" />
+	<property name="workspacePath" location="${testRoot}/workspace" />
 
 	<import file="../ant_common.xml" />
 
@@ -55,8 +55,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Building"/>
-		<buckminster command="build" workspace="${workspacePath}"/>
+		<echo message="Building" />
+		<buckminster command="build" workspace="${workspacePath}" />
 
 		<echo message="Running tests Hibernate" />
 		<buckminster command="junit" workspace="${workspacePath}">
@@ -71,14 +71,24 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${testResultsPath}/output/stderr.txt" />
 			</cmdargs>
 		</buckminster>
-		
-		<echo message="Processing test results EclipseLInk"/>
-		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-hibernate.xml">
-		  <fileset dir="${testResultsPath}/output">
-		    <include name="test-results-hibernate.xml"/>
-		  </fileset>
-		  <report todir="${testResultsPath}/html"/>
+
+		<echo message="Processing test results Hibernate" />
+
+		<!-- convert the xml to a format which can be read by junit report -->
+		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-JUNIT-results-hibernate.xml" style="convert-test-results.xsl">
+			<param name="timeStamp" expression="${buildTimeStamp}" />
+			<param name="testName" expression="Hibernate Tests" />
+			<param name="testPackage" expression="org.eclipse.emf.teneo.hibernate.tests" />
+		</xslt>
+
+		<!--
+		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-JUNITREPORT-results-hibernate.xml">
+			<fileset dir="${testResultsPath}/xml">
+				<include name="TESTS-JUNIT-hibernate.xml" />
+			</fileset>
+			<report todir="${testResultsPath}/html" />
 		</junitreport>
+		-->
 
 		<echo message="Running tests EclipseLink" />
 		<buckminster command="junit" workspace="${workspacePath}">
@@ -93,16 +103,26 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${testResultsPath}/output/stderr.txt" />
 			</cmdargs>
 		</buckminster>
-		
-		<echo message="Processing test results EclipseLInk"/>
-		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-eclipselink.xml">
-		  <fileset dir="${testResultsPath}/output">
-		    <include name="test-results-eclipselink.xml"/>
-		  </fileset>
-		  <report todir="${testResultsPath}/html"/>
+
+		<echo message="Processing test results EclipseLink" />
+
+		<!-- convert the xml to a format which can be read by junit report -->
+		<xslt in="${testResultsPath}/output/test-results-eclipselink.xml" out="${testResultsPath}/xml/TESTS-JUNIT-eclipselink.xml" style="convert-test-results.xsl">
+			<param name="timeStamp" expression="${buildTimeStamp}" />
+			<param name="testName" expression="EclipseLink Tests" />
+			<param name="testPackage" expression="org.eclipse.emf.teneo.eclipselink.tests" />
+		</xslt>
+
+		<!-- generate junit report
+		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-JUNITREPORT-eclipselink.xml">
+			<fileset dir="${testResultsPath}/xml">
+				<include name="TESTS-JUNIT-eclipselink.xml" />
+			</fileset>
+			<report todir="${testResultsPath}/html" />
 		</junitreport>
+		-->
 	</target>
-	
+
 	<target name="init.build.properties">
 		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
 		  -->

@@ -74,7 +74,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" />
 	</target>
 
-	<target name="build.test.and.promote" depends="build.and.test">
+	<target name="promote">
 		<echo message="Promoting" />
 		<buckminster command="import" workspace="${workspacePath}">
 			<cmdargs>
