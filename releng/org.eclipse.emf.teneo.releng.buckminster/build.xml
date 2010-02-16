@@ -78,7 +78,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Promoting" />
 		<buckminster command="perform" workspace="${buildRoot}/workspace">
 			<cmdargs>
-				<arg value="org.eclipse.emf.teneo.site:eclipse.feature#promote" />
+				<arg value="org.eclipse.emf.teneo.releng.buckminster#promote" />
 			</cmdargs>
 		</buckminster>
 	</target>
