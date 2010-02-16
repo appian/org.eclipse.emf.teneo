@@ -76,7 +76,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<target name="promote" depends="init.build.properties">
 		<echo message="Promoting" />
-		<buckminster command="import" workspace="${workspacePath}">
+		<buckminster command="import" workspace="${buildRoot}/workspace">
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.site:eclipse.feature#promote" />
 			</cmdargs>
