@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVResourceAction.java,v 1.3 2010/02/16 09:53:41 mtaal Exp $
+ * $Id: LibraryEAVResourceAction.java,v 1.4 2010/02/16 12:09:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -35,7 +35,7 @@ import org.hibernate.Session;
  * Tests the library example of emf/xsd using a HbResource.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryEAVResourceAction extends LibraryResourceAction {
 
@@ -50,9 +50,6 @@ public class LibraryEAVResourceAction extends LibraryResourceAction {
 	// EAVSingleEAttributeValueHolder
 	public void doAction(TestStore store) {
 		super.doAction(store);
-
-		Object ot = null;
-		System.err.println(ot.toString());
 		
 		{
 			store.beginTransaction();
