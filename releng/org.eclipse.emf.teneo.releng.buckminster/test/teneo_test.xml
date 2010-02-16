@@ -75,7 +75,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Processing test results Hibernate" />
 
 		<!-- convert the xml to a format which can be read by junit report -->
-		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-results-hibernate.xml" style="convert-test-results.xsl">
+		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-hibernate.xml" style="convert-test-results.xsl">
 			<param name="timeStamp" expression="${buildTimeStamp}" />
 			<param name="testName" expression="Hibernate Tests" />
 			<param name="testPackage" expression="org.eclipse.emf.teneo.hibernate.tests" />
