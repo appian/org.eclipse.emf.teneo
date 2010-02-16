@@ -59,7 +59,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<buckminster command="build" workspace="${workspacePath}" />
 
 		<echo message="Running tests Hibernate" />
-		<buckminster command="junit" workspace="${workspacePath}">
+		<buckminster command="emma" workspace="${workspacePath}">
 			<cmdargs>
 				<arg value="-l" />
 				<arg value="org.eclipse.emf.teneo.hibernate.test/AllTests.launch" />
@@ -69,22 +69,19 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${testResultsPath}/output/stdout.txt" />
 				<arg value="--stderr" />
 				<arg value="${testResultsPath}/output/stderr.txt" />
+				<arg value="--xml" />
+				<arg value="${testResultsPath}/output/hibernate-coverageReport.xml" />
 			</cmdargs>
 		</buckminster>
 
 		<echo message="Processing test results Hibernate" />
 
 		<!-- convert the xml to a format which can be read by junit report -->
-		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-hibernate.xml" style="convert-test-results.xsl"/>
-
-		<!--
-		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-JUNITREPORT-results-hibernate.xml">
-			<fileset dir="${testResultsPath}/xml">
-				<include name="TESTS-JUNIT-hibernate.xml" />
-			</fileset>
-			<report todir="${testResultsPath}/html" />
-		</junitreport>
-		-->
+		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-hibernate.xml" style="convert-test-results.xsl">
+			<param name="timeStamp" expression="${buildTimeStamp}" />
+			<param name="testName" expression="Hibernate Tests" />
+			<param name="testPackage" expression="org.eclipse.emf.teneo.hibernate.tests" />
+		</xslt>
 
 		<echo message="Running tests EclipseLink" />
 		<buckminster command="junit" workspace="${workspacePath}">
@@ -103,16 +100,11 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="Processing test results EclipseLink" />
 
 		<!-- convert the xml to a format which can be read by junit report -->
-		<xslt in="${testResultsPath}/output/test-results-eclipselink.xml" out="${testResultsPath}/xml/TESTS-eclipselink.xml" style="convert-test-results.xsl"/>
-
-		<!-- generate junit report
-		<junitreport todir="${testResultsPath}/xml" tofile="TESTS-JUNITREPORT-eclipselink.xml">
-			<fileset dir="${testResultsPath}/xml">
-				<include name="TESTS-JUNIT-eclipselink.xml" />
-			</fileset>
-			<report todir="${testResultsPath}/html" />
-		</junitreport>
-		-->
+		<xslt in="${testResultsPath}/output/test-results-eclipselink.xml" out="${testResultsPath}/xml/TESTS-eclipselink.xml" style="convert-test-results.xsl">
+			<param name="timeStamp" expression="${buildTimeStamp}" />
+			<param name="testName" expression="EclipseLink Tests" />
+			<param name="testPackage" expression="org.eclipse.emf.teneo.eclipselink.tests" />
+		</xslt>
 	</target>
 
 	<target name="init.build.properties">
