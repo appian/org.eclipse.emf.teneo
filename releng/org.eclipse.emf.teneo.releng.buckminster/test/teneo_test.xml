@@ -59,7 +59,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<buckminster command="installJRE" workspace="${workspacePath}">
 		    <cmdargs>
 		       <arg value="--location" />
-		       <arg value="${env.JAVA_HOME}" />
+		       <arg value="${env.JAVA_HOME}/jre" />
 		    </cmdargs>
 		</buckminster> 
 
