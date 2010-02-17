@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.7 2010/01/26 07:53:38 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.8 2010/02/17 21:41:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -73,18 +73,11 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		// do type specific handling
 		final boolean isBlob = value instanceof byte[] || (value instanceof String && isClob(getEStructuralFeature()));
 		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
-		if (value != null) {
-			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
-			if (!isBlob) {
-				typeNeutralValue = eFactory.convertToString(eDataType, value);
-			}
-			type = value.getClass().getName();
-		} else {
-			type = eDataType.getInstanceClassName();
-			typeNeutralValue = null;
-			blobValue = null;
-			textValue = null;
+		final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
+		if (!isBlob) {
+			typeNeutralValue = eFactory.convertToString(eDataType, value);
 		}
+		type = value.getClass().getName();
 
 		if (value instanceof byte[]) {
 			blobValue = new EAVBlobValue();
