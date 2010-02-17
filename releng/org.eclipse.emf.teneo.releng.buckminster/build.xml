@@ -110,6 +110,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${buildSitePath}" />
 		<mkdir dir="${buildZipsPath}" />
 		<mkdir dir="${testResultsPath}" />
+		<mkdir dir="${testResultsPath}/output" />
+		<mkdir dir="${testResultsPath}/xml" />
 
 		<available file="${tools}/director/director" property="director.exists" />
 		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
