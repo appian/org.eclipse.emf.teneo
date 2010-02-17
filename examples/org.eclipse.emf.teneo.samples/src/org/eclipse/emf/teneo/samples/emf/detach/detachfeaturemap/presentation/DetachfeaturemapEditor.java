@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachfeaturemapEditor.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: DetachfeaturemapEditor.java,v 1.2 2010/02/17 21:41:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachfeaturemap.presentation;
 
@@ -726,6 +726,7 @@ public class DetachfeaturemapEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("deprecation")
 	public void createModel() {
 		// I assume that the input is a file object.
 		//
@@ -1213,6 +1214,7 @@ public class DetachfeaturemapEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("deprecation")
 	public void doSaveAs() {
 		SaveAsDialog saveAsDialog= new SaveAsDialog(getSite().getShell());
 		saveAsDialog.open();

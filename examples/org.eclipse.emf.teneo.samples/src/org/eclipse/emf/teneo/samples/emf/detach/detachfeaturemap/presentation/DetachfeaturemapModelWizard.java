@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DetachfeaturemapModelWizard.java,v 1.1 2006/07/11 16:57:11 mtaal Exp $
+ * $Id: DetachfeaturemapModelWizard.java,v 1.2 2010/02/17 21:41:55 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.detach.detachfeaturemap.presentation;
 
@@ -214,6 +214,7 @@ public class DetachfeaturemapModelWizard extends Wizard implements INewWizard {
 			//
 			WorkspaceModifyOperation operation =
 				new WorkspaceModifyOperation() {
+					@SuppressWarnings("deprecation")
 					protected void execute(IProgressMonitor progressMonitor) {
 						try {
 							// Create a resource set
