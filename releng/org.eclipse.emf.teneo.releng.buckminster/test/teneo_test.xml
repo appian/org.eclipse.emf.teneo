@@ -38,6 +38,14 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<mkdir dir="${targetPlatformPath}" />
 		<mkdir dir="${workspacePath}" />
+		
+		<echo message="Setting jre to ${env.JAVA_HOME}"/>
+		<buckminster command="installJRE" workspace="${workspacePath}">
+		    <cmdargs>
+		       <arg value="--location" />
+		       <arg value="${env.JAVA_HOME}" />
+		    </cmdargs>
+		</buckminster> 
 
 		<echo message="Using workspace ${workspacePath}" />
 		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
@@ -54,14 +62,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${basedir}/teneo.mspec" />
 			</cmdargs>
 		</buckminster>
-		
-		<echo message="Setting jre to ${env.JAVA_HOME}"/>
-		<buckminster command="installJRE" workspace="${workspacePath}">
-		    <cmdargs>
-		       <arg value="--location" />
-		       <arg value="${env.JAVA_HOME}/jre" />
-		    </cmdargs>
-		</buckminster> 
 
 		<echo message="Building" />
 		<buckminster command="build" workspace="${workspacePath}" />
