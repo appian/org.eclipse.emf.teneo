@@ -82,9 +82,9 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="To ${promoteTargetPath}" />
 
 		<delete dir="${promoteTargetPath}" quiet="true" />
-		<mkdir dir="${promoteTargetPath}" quiet="true"/>
-		<mkdir dir="${promoteTargetPath}/plugins" quiet="true"/>
-		<mkdir dir="${promoteTargetPath}/features" quiet="true"/>
+		<mkdir dir="${promoteTargetPath}"/>
+		<mkdir dir="${promoteTargetPath}/plugins"/>
+		<mkdir dir="${promoteTargetPath}/features"/>
 		
 		<copy todir="${promoteTargetPath}">
 			<fileset dir="${buildSitePath}">
