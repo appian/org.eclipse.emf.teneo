@@ -61,6 +61,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="buildZipsPath" location="${rootPath}/result/zips" />
 	<property name="testResultsPath" location="${rootPath}/result/test" />
 
+	<property name="promoteTargetPath" location="${teneo.download.area}/updates/${teneo.update.site.type}" />
+
 	<property name="buckminster.output.root" location="${rootPath}/output" />
 	<property name="buckminster.output.temp" location="${rootPath}/temp" />
 
@@ -75,12 +77,19 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</target>
 
 	<target name="promote" depends="init.build.properties">
-		<echo message="Promoting" />
-		<buckminster command="perform" workspace="${buildRoot}/workspace">
-			<cmdargs>
-				<arg value="org.eclipse.emf.teneo.releng.buckminster#promote" />
-			</cmdargs>
-		</buckminster>
+		<echo message="Promoting ${buildSitePath}" />
+		<echo message="From ${buildSitePath}" />
+		<echo message="To ${promoteTargetPath}" />
+
+		<delete dir="${promoteTargetPath}" quiet="true" />
+		<mkdir dir="${promoteTargetPath}" />
+		<copy todir="${promoteTargetPath}">
+			<fileset dir="${buildSitePath}">
+				<include name="**/*" />
+				<include name="**" />
+			</fileset>
+		</copy>
+
 	</target>
 
 	<target name="clean.all">
@@ -152,7 +161,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</args>
 		</eclipse.launch>
 	</target>
-	
+
 	<target name="init.build.properties">
 		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
 		  -->
