@@ -11,42 +11,4 @@
         <cs:dependency name="org.dom4j" componentType="eclipse.feature"/>
         <cs:dependency name="org.apache.commons.logging" componentType="eclipse.feature"/>
     </cs:dependencies>
-        <cs:actions>
-        <cs:public name="clear.site" actor="ant" always="true">
-            <cs:actorProperties>
-                <cs:property key="buildFile" value="buckminster.ant"/>
-                <cs:property key="targets" value="clear.directory"/>
-            </cs:actorProperties>
-            <cs:properties>
-                <cs:property key="directory" value="${teneo.download.area}/updates/${teneo.update.site.type}/"/>
-            </cs:properties>
-        </cs:public>
-        <cs:public name="promote.site" actor="ant">
-            <cs:actorProperties>
-                <cs:property key="buildFileId" value="buckminster.pdetasks"/>
-                <cs:property key="targets" value="copy.group"/>
-            </cs:actorProperties>
-            <cs:prerequisites alias="action.requirements">
-                <cs:attribute name="site.p2" component="org.eclipse.emf.teneo.site"/>
-                <cs:attribute name="clear.site" contributor="false"/>
-            </cs:prerequisites>
-            <cs:products alias="action.output" base="${teneo.download.area}/updates/${teneo.update.site.type}/"/>
-        </cs:public>
-        <cs:public name="promote.site.to.archive" actor="ant">
-            <cs:actorProperties>
-                <cs:property key="buildFileId" value="buckminster.pdetasks"/>
-                <cs:property key="targets" value="copy.group"/>
-            </cs:actorProperties>
-            <cs:prerequisites alias="action.requirements">
-                <cs:attribute name="site.p2.zip" component="org.eclipse.emf.teneo.site"/>
-            </cs:prerequisites>
-            <cs:products alias="action.output" base="${teneo.download.area}/archives/${teneo.update.site.type}/"/>
-        </cs:public>
-    </cs:actions>
-    <cs:groups>
-        <cs:public name="promote">
-            <cs:attribute name="promote.site"/>
-            <cs:attribute name="promote.site.to.archive"/>
-        </cs:public>
-    </cs:groups>    
 </cs:cspec>
