@@ -79,17 +79,18 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${testResultsPath}/output/stderr.txt" />
 				<arg value="--xml" />
 				<arg value="${testResultsPath}/output/hibernate-coverageReport.xml" />
+				<arg value="--flatXML"/>
 			</cmdargs>
 		</buckminster>
 
 		<echo message="Processing test results Hibernate" />
 
-		<!-- convert the xml to a format which can be read by junit report -->
+		<!-- convert the xml to a format which can be read by junit report>
 		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-hibernate.xml" style="convert-test-results.xsl">
 			<param name="timeStamp" expression="${buildTimeStamp}" />
 			<param name="testName" expression="Hibernate Tests" />
 			<param name="testPackage" expression="org.eclipse.emf.teneo.hibernate.tests" />
-		</xslt>
+		</xslt-->
 
 		<echo message="Running tests EclipseLink" />
 		<buckminster command="junit" workspace="${workspacePath}">
@@ -102,17 +103,18 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 				<arg value="${testResultsPath}/output/stdout.txt" />
 				<arg value="--stderr" />
 				<arg value="${testResultsPath}/output/stderr.txt" />
+				<arg value="--flatXML"/>
 			</cmdargs>
 		</buckminster>
 
 		<echo message="Processing test results EclipseLink" />
 
-		<!-- convert the xml to a format which can be read by junit report -->
+		<!-- convert the xml to a format which can be read by junit report>
 		<xslt in="${testResultsPath}/output/test-results-eclipselink.xml" out="${testResultsPath}/xml/TESTS-eclipselink.xml" style="convert-test-results.xsl">
 			<param name="timeStamp" expression="${buildTimeStamp}" />
 			<param name="testName" expression="EclipseLink Tests" />
 			<param name="testPackage" expression="org.eclipse.emf.teneo.eclipselink.tests" />
-		</xslt>
+		</xslt-->
 	</target>
 
 	<target name="init.build.properties">
