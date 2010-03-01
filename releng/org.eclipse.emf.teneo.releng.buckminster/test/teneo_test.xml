@@ -83,9 +83,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Processing test results Hibernate" />
-
 		<!-- convert the xml to a format which can be read by junit report>
+		NOTE: not used anymore, the flatXML argument now takes care of this
 		<xslt in="${testResultsPath}/output/test-results-hibernate.xml" out="${testResultsPath}/xml/TESTS-hibernate.xml" style="convert-test-results.xsl">
 			<param name="timeStamp" expression="${buildTimeStamp}" />
 			<param name="testName" expression="Hibernate Tests" />
@@ -107,9 +106,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</cmdargs>
 		</buckminster>
 
-		<echo message="Processing test results EclipseLink" />
-
 		<!-- convert the xml to a format which can be read by junit report>
+		NOTE: not used anymore, the flatXML argument now takes care of this
 		<xslt in="${testResultsPath}/output/test-results-eclipselink.xml" out="${testResultsPath}/xml/TESTS-eclipselink.xml" style="convert-test-results.xsl">
 			<param name="timeStamp" expression="${buildTimeStamp}" />
 			<param name="testName" expression="EclipseLink Tests" />
