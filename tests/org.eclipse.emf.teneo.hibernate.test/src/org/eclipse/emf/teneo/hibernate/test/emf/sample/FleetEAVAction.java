@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FleetEAVAction.java,v 1.2 2010/01/26 07:54:14 mtaal Exp $
+ * $Id: FleetEAVAction.java,v 1.3 2010/03/02 23:28:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the fleet example using an eav mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class FleetEAVAction extends FleetAction {
 
@@ -35,12 +35,15 @@ public class FleetEAVAction extends FleetAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
+		props.setProperty(PersistenceOptions.SQL_TABLE_NAME_PREFIX, "PREFIX_");
 		return props;
 	}
 
 	// test hbhelper deregister
 	public void doAction(TestStore store) {
+		store.disableDrop();
 		super.doAction(store);
+		store.disableDrop();
 		HbHelper.INSTANCE.deRegisterDataStore(store.getDataStore().getName());
 
 		// it should be removed from the HBHelper

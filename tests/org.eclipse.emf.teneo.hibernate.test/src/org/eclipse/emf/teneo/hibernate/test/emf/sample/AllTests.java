@@ -55,21 +55,21 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.110 $
+ * @version $Revision: 1.111 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
 				HibernateTestbed.instance().getConfigurations());
-		suite.addTestSuite(TestDoubleEAV.class);
 		suite.addTestSuite(FleetEAVAction.class);
+		suite.addTestSuite(LibraryEAVResourceAction.class);
+		suite.addTestSuite(TestDoubleEAV.class);
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(ClaimAction.class);
 		suite.addTestSuite(DynamicEAVAction.class);
 		suite.addTestSuite(DynamicAction.class);
-		suite.addTestSuite(LibraryEAVResourceAction.class);
 
 		suite.addTestSuite(Bz292973.class);
 		if (!HibernateTestbed.isRunningOnBuildServer()) {
