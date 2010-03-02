@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.23 2010/02/04 10:53:08 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.24 2010/03/02 23:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -45,7 +45,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
@@ -179,13 +179,13 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 								PersistenceFileProvider.class);
 						final InputStream is = pfp.getFileContent(this.getClass(), getPersistenceOptions()
 								.getEAVMappingFile());
-						getConfiguration().addInputStream(is);
+						getConfiguration().addInputStream(processEAV(is));
 						is.close();
 					} else {
 						final PersistenceFileProvider pfp = getExtensionManager().getExtension(
 								PersistenceFileProvider.class);
 						final InputStream is = pfp.getFileContent(EAVGenericIDUserType.class, "eav.hbm.xml");
-						getConfiguration().addInputStream(is);
+						getConfiguration().addInputStream(processEAV(is));
 						is.close();
 					}
 				} catch (IOException e) {
@@ -199,6 +199,10 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		}
 	}
 
+	protected InputStream processEAV(InputStream is) {
+		return new StringBufferInputStream(processEAVMapping(is));
+	}
+	
 	/** Build the session factory */
 	protected EntityManagerFactory buildEntityManagerFactory() {
 		return getConfiguration().createEntityManagerFactory();

@@ -3,7 +3,7 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.ecore.impl.EObjectImpl" entity-name="EAV_EObject" abstract="true"
-		lazy="true" discriminator-value="eav_eobject" table="`eaveobject`" proxy="org.eclipse.emf.ecore.EObject">
+		lazy="true" discriminator-value="eav_eobject" table="`{tableprefix}eaveobject`" proxy="org.eclipse.emf.ecore.EObject">
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>	
 		<tuplizer entity-mode="dynamic-map" class="org.eclipse.emf.teneo.hibernate.tuplizer.EMFTuplizer"/>
@@ -27,7 +27,7 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVValueHolder" entity-name="EAV_Value"
-		abstract="true" lazy="false" table="`eavvalue`">
+		abstract="true" lazy="false" table="`{tableprefix}eavvalue`">
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
 
@@ -135,7 +135,7 @@
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
 		
-		<list name="referenceValues" lazy="false" cascade="all,delete-orphan" table="`conrefvals`">
+		<list name="referenceValues" lazy="false" cascade="all,delete-orphan" table="`{tableprefix}conrefvals`">
 			<key update="true">
 				<column name="`valuesholderid`" not-null="false" unique="false" />
 			</key>
@@ -149,7 +149,7 @@
 		
 		<tuplizer entity-mode="pojo" class="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTuplizer"/>
 		
-		<list name="referenceValues" lazy="false" cascade="all,delete-orphan" table="`refvals`">
+		<list name="referenceValues" lazy="false" cascade="all,delete-orphan" table="`{tableprefix}refvals`">
 			<key update="true">
 				<column name="`valuesholderid`" not-null="false" unique="false" />
 			</key>
@@ -158,7 +158,7 @@
 		</list>
 	</subclass>
 	<class name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVBlobValue" entity-name="EAV_Blob" abstract="true"
-		lazy="false" table="`eavblob`">
+		lazy="false" table="`{tableprefix}eavblob`">
 
 		<id type="long" name="id" column="eavid">
 			<generator class="native" />
@@ -170,7 +170,7 @@
 		
 	</class>
 	<class name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVTextValue" entity-name="EAV_Text" abstract="true"
-		lazy="false" table="`eavtext`">
+		lazy="false" table="`{tableprefix}eavtext`">
 
 		<id type="long" name="id" column="eavid">
 			<generator class="native" />

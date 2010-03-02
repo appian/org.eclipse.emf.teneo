@@ -11,12 +11,15 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.6 2010/02/04 10:53:08 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.7 2010/03/02 23:28:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.util.Map;
 import java.util.Set;
@@ -35,12 +38,14 @@ import org.hibernate.metadata.CollectionMetadata;
 import org.hibernate.stat.Statistics;
 
 /**
- * Holds the sessionfactory related methods, makes the HbSessionDataStore better readable.
+ * Holds the sessionfactory related methods, makes the HbSessionDataStore better
+ * readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
-public abstract class HbBaseSessionDataStore extends HbDataStore implements SessionFactory {
+public abstract class HbBaseSessionDataStore extends HbDataStore implements
+		SessionFactory {
 
 	private static final long serialVersionUID = 1L;
 
@@ -92,7 +97,8 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void evict(Class persistentClass, Serializable id) throws HibernateException {
+	public void evict(Class persistentClass, Serializable id)
+			throws HibernateException {
 		getSessionFactory().evict(persistentClass, id);
 	}
 
@@ -101,7 +107,8 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		getSessionFactory().evict(persistentClass);
 	}
 
-	public void evictCollection(String roleName, Serializable id) throws HibernateException {
+	public void evictCollection(String roleName, Serializable id)
+			throws HibernateException {
 		getSessionFactory().evictCollection(roleName, id);
 	}
 
@@ -109,7 +116,8 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		getSessionFactory().evictCollection(roleName);
 	}
 
-	public void evictEntity(String entityName, Serializable id) throws HibernateException {
+	public void evictEntity(String entityName, Serializable id)
+			throws HibernateException {
 		getSessionFactory().evictEntity(entityName, id);
 	}
 
@@ -136,15 +144,18 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 	}
 
 	@SuppressWarnings("rawtypes")
-	public ClassMetadata getClassMetadata(Class persistentClass) throws HibernateException {
+	public ClassMetadata getClassMetadata(Class persistentClass)
+			throws HibernateException {
 		return getSessionFactory().getClassMetadata(persistentClass);
 	}
 
-	public ClassMetadata getClassMetadata(String entityName) throws HibernateException {
+	public ClassMetadata getClassMetadata(String entityName)
+			throws HibernateException {
 		return getSessionFactory().getClassMetadata(entityName);
 	}
 
-	public CollectionMetadata getCollectionMetadata(String roleName) throws HibernateException {
+	public CollectionMetadata getCollectionMetadata(String roleName)
+			throws HibernateException {
 		return getSessionFactory().getCollectionMetadata(roleName);
 	}
 
@@ -157,7 +168,8 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactory().getDefinedFilterNames();
 	}
 
-	public FilterDefinition getFilterDefinition(String filterName) throws HibernateException {
+	public FilterDefinition getFilterDefinition(String filterName)
+			throws HibernateException {
 		return getSessionFactory().getFilterDefinition(filterName);
 	}
 
@@ -185,7 +197,8 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements Sess
 		return getSessionFactory().openSession(connection);
 	}
 
-	public Session openSession(Interceptor interceptor) throws HibernateException {
+	public Session openSession(Interceptor interceptor)
+			throws HibernateException {
 		return getSessionFactory().openSession(interceptor);
 	}
 

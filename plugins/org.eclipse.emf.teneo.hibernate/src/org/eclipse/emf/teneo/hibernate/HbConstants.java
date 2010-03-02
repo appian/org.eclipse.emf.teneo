@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbConstants.java,v 1.6 2009/09/11 15:54:03 mtaal Exp $
+ * $Id: HbConstants.java,v 1.7 2010/03/02 23:28:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -22,7 +22,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * AnnotationUtil used in the runtime layer as well as the hibernate mapping step.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class HbConstants {
 	/**
@@ -69,4 +69,6 @@ public class HbConstants {
 
 	/** The ex/import format from and to xmi */
 	public final static int EXCHANGE_FORMAT_XMI = 1;
+	
+	public final static String EAV_TABLE_PREFIX_PARAMETER_REGEX = "\\{tableprefix\\}";
 }

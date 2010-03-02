@@ -10,6 +10,7 @@ package org.eclipse.emf.teneo.hibernate;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -95,7 +96,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -1438,5 +1439,23 @@ public abstract class HbDataStore implements DataStore {
 			ePackageConstructor = new EPackageConstructor();
 		}
 		ePackageConstructor.setModelFiles(ePackageFiles);
+	}
+
+	protected String processEAVMapping(InputStream inputStream) {
+		try {
+			final InputStreamReader reader = new InputStreamReader(inputStream,
+					"UTF-8");
+			final char[] chars = new char[500];
+			int readNum = 0;
+			final StringBuilder sb = new StringBuilder();
+			while ((readNum = reader.read(chars, 0, 500)) > 0 ) {
+				sb.append(chars, 0, readNum);
+			}
+			String eav = sb.toString();			
+			eav = eav.replaceAll(HbConstants.EAV_TABLE_PREFIX_PARAMETER_REGEX, getPersistenceOptions().getSQLTableNamePrefix());
+			return eav;
+		} catch (Exception e) {
+			throw new IllegalArgumentException(e);
+		}
 	}
 }

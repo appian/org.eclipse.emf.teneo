@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.22 2010/01/26 07:53:38 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.23 2010/03/02 23:28:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -42,7 +42,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -182,13 +182,13 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 								PersistenceFileProvider.class);
 						final InputStream is = pfp.getFileContent(this.getClass(), getPersistenceOptions()
 								.getEAVMappingFile());
-						getConfiguration().addInputStream(is);
+						getConfiguration().addXML(processEAVMapping(is));
 						is.close();
 					} else {
 						final PersistenceFileProvider pfp = getExtensionManager().getExtension(
 								PersistenceFileProvider.class);
 						final InputStream is = pfp.getFileContent(EAVGenericIDUserType.class, "eav.hbm.xml");
-						getConfiguration().addInputStream(is);
+						getConfiguration().addXML(processEAVMapping(is));
 						is.close();
 					}
 				} catch (IOException e) {
