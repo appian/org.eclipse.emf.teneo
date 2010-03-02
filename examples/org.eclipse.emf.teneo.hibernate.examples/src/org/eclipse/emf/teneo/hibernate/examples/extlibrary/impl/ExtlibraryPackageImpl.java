@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtlibraryPackageImpl.java,v 1.1 2010/02/03 00:40:47 mtaal Exp $
+ * $Id: ExtlibraryPackageImpl.java,v 1.2 2010/03/02 06:08:37 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl;
 
@@ -764,13 +764,13 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 		initEReference(getLibrary_Employees(), this.getEmployee(), null, "employees", null, 0, -1, Library.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getLibrary_Borrowers(), this.getBorrower(), null, "borrowers", null, 0, -1, Library.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getLibrary_Stock(), this.getItem(), null, "stock", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getLibrary_Books(), this.getBook(), null, "books", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+		initEReference(getLibrary_Books(), this.getBook(), null, "books", null, 0, -1, Library.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
 		initEReference(getLibrary_Branches(), this.getLibrary(), this.getLibrary_ParentBranch(), "branches", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLibrary_ParentBranch(), this.getLibrary(), this.getLibrary_Branches(), "parentBranch", null, 0, 1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_People(), ecorePackage.getEFeatureMapEntry(), "people", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writerEClass, Writer.class, "Writer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWriter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Writer.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriter_Books(), this.getBook(), this.getBook_Author(), "books", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -842,6 +842,12 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 		   source, 
 		   new String[] {
 			 "value", "@Enumerated(ORDINAL)"
+		   });		
+		addAnnotation
+		  (getLibrary_Name(), 
+		   source, 
+		   new String[] {
+			 "value", "@Id"
 		   });			
 		addAnnotation
 		  (getLibrary_Writers(), 
@@ -858,7 +864,7 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";				
 		addAnnotation
 		  (getLibrary_Writers(), 
 		   source, 
@@ -892,7 +898,7 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 	 * @generated
 	 */
 	protected void createJoinColumnAnnotations() {
-		String source = "http://annotation.elver.org/JoinColumn";								
+		String source = "http://annotation.elver.org/JoinColumn";									
 		addAnnotation
 		  (getBookOnTape_BookAuthor(), 
 		   source, 

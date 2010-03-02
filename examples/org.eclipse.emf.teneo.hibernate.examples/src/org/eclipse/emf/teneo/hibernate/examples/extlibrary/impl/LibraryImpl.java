@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryImpl.java,v 1.1 2010/02/03 00:40:46 mtaal Exp $
+ * $Id: LibraryImpl.java,v 1.2 2010/03/02 06:08:36 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl;
 
@@ -109,7 +109,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	protected EList<Item> stock;
 
 	/**
-	 * The cached value of the '{@link #getBooks() <em>Books</em>}' containment reference list.
+	 * The cached value of the '{@link #getBooks() <em>Books</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBooks()
@@ -245,7 +245,7 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 */
 	public EList<Book> getBooks() {
 		if (books == null) {
-			books = new EObjectContainmentEList<Book>(Book.class, this, ExtlibraryPackage.LIBRARY__BOOKS);
+			books = new EObjectResolvingEList<Book>(Book.class, this, ExtlibraryPackage.LIBRARY__BOOKS);
 		}
 		return books;
 	}
@@ -350,8 +350,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return ((InternalEList<?>)getBorrowers()).basicRemove(otherEnd, msgs);
 			case ExtlibraryPackage.LIBRARY__STOCK:
 				return ((InternalEList<?>)getStock()).basicRemove(otherEnd, msgs);
-			case ExtlibraryPackage.LIBRARY__BOOKS:
-				return ((InternalEList<?>)getBooks()).basicRemove(otherEnd, msgs);
 			case ExtlibraryPackage.LIBRARY__BRANCHES:
 				return ((InternalEList<?>)getBranches()).basicRemove(otherEnd, msgs);
 			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:

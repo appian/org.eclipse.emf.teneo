@@ -17,7 +17,11 @@
         eType="#//Writer" eOpposite="#//Writer/books"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//Addressable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writers" upperBound="-1"
         eType="#//Writer" volatile="true" transient="true" derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -42,7 +46,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="stock" ordered="false"
         upperBound="-1" eType="#//Item" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" ordered="false"
-        upperBound="-1" eType="#//Book" derived="true" containment="true"/>
+        upperBound="-1" eType="#//Book" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
         eType="#//Library" containment="true" eOpposite="#//Library/parentBranch"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentBranch" eType="#//Library"
@@ -55,7 +59,8 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Writer" eSuperTypes="#//Person">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        volatile="true" transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" upperBound="-1"
         eType="#//Book" eOpposite="#//Book/author"/>
   </eClassifiers>

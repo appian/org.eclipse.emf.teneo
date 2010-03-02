@@ -2,13 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.1 2010/02/03 00:40:46 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.2 2010/03/02 06:08:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -48,16 +46,6 @@ public class WriterImpl extends PersonImpl implements Writer {
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getBooks() <em>Books</em>}' reference list.
@@ -94,7 +82,9 @@ public class WriterImpl extends PersonImpl implements Writer {
 	 * @generated
 	 */
 	public String getName() {
-		return name;
+		// TODO: implement this method to return the 'Name' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -103,10 +93,9 @@ public class WriterImpl extends PersonImpl implements Writer {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExtlibraryPackage.WRITER__NAME, oldName, name));
+		// TODO: implement this method to set the 'Name' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -213,27 +202,11 @@ public class WriterImpl extends PersonImpl implements Writer {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ExtlibraryPackage.WRITER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 			case ExtlibraryPackage.WRITER__BOOKS:
 				return books != null && !books.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //WriterImpl

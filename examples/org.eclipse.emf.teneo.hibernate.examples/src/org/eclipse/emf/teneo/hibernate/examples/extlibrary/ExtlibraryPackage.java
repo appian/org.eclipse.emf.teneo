@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtlibraryPackage.java,v 1.1 2010/02/03 00:40:48 mtaal Exp $
+ * $Id: ExtlibraryPackage.java,v 1.2 2010/03/02 06:08:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 
@@ -309,7 +309,7 @@ public interface ExtlibraryPackage extends EPackage {
 	int LIBRARY__STOCK = ADDRESSABLE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Books</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Books</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1033,10 +1033,10 @@ public interface ExtlibraryPackage extends EPackage {
 	EReference getLibrary_Stock();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBooks <em>Books</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBooks <em>Books</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Books</em>'.
+	 * @return the meta object for the reference list '<em>Books</em>'.
 	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBooks()
 	 * @see #getLibrary()
 	 * @generated
@@ -1519,7 +1519,7 @@ public interface ExtlibraryPackage extends EPackage {
 		EReference LIBRARY__STOCK = eINSTANCE.getLibrary_Stock();
 
 		/**
-		 * The meta object literal for the '<em><b>Books</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Books</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

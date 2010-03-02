@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.1 2010/02/03 00:40:48 mtaal Exp $
+ * $Id: Library.java,v 1.2 2010/03/02 06:08:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 
@@ -46,7 +46,7 @@ public interface Library extends Addressable {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.ExtlibraryPackage#getLibrary_Name()
-	 * @model
+	 * @model annotation="teneo.jpa value='@Id'"
 	 * @generated
 	 */
 	String getName();
@@ -130,7 +130,7 @@ public interface Library extends Addressable {
 	EList<Item> getStock();
 
 	/**
-	 * Returns the value of the '<em><b>Books</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Books</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Book}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -138,9 +138,9 @@ public interface Library extends Addressable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Books</em>' containment reference list.
+	 * @return the value of the '<em>Books</em>' reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.ExtlibraryPackage#getLibrary_Books()
-	 * @model containment="true" derived="true" ordered="false"
+	 * @model transient="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Book> getBooks();

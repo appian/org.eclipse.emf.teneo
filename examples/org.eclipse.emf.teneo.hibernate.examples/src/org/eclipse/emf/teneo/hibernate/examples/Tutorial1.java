@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2010 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial1.java,v 1.1 2010/02/03 00:40:48 mtaal Exp $
+ * $Id: Tutorial1.java,v 1.2 2010/03/02 06:08:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -45,7 +45,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Tutorial1 {
 
@@ -104,8 +104,6 @@ public class Tutorial1 {
 			// Create a writer...
 			Writer writer = ExtlibraryFactory.eINSTANCE.createWriter();
 			writer.setName("JRR Tolkien");
-			writer.setFirstName("John");
-			writer.setLastName("Tolkien");
 
 			// ...and one of his books.
 			Book book = ExtlibraryFactory.eINSTANCE.createBook();
@@ -218,8 +216,6 @@ public class Tutorial1 {
 			// create a writer
 			Writer writerNew = ExtlibraryFactory.eINSTANCE.createWriter();
 			writerNew.setName("I. Asimov");
-			writerNew.setFirstName("Isaac");
-			writerNew.setLastName("Asimov");
 
 			// and one of his books
 			Book bookNew = ExtlibraryFactory.eINSTANCE.createBook();

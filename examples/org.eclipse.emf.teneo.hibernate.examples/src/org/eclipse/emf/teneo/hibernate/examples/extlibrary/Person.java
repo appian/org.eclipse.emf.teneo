@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.1 2010/02/03 00:40:48 mtaal Exp $
+ * $Id: Person.java,v 1.2 2010/03/02 06:08:40 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 

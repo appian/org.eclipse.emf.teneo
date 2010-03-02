@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtlibraryResourceImpl.java,v 1.1 2010/02/03 00:40:49 mtaal Exp $
+ * $Id: ExtlibraryResourceImpl.java,v 1.2 2010/03/02 06:08:35 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.util;
 
