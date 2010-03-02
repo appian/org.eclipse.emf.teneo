@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ORMGenerator.java,v 1.6 2010/03/02 20:45:39 mtaal Exp $
+ * $Id: ORMGenerator.java,v 1.7 2010/03/02 21:50:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpa.convert;
@@ -77,7 +77,7 @@ import org.eclipse.emf.teneo.jpa.orm.Version;
  * Converts a PAnnotatedModel to an ORM model.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class ORMGenerator {
@@ -285,6 +285,9 @@ public class ORMGenerator {
 		}
 
 		for (PAnnotatedEStructuralFeature pFeature : pClass.getPaEStructuralFeatures()) {
+			if (pFeature.getModelEStructuralFeature().isDerived() || pFeature.getModelEStructuralFeature().isVolatile()) {
+				continue;
+			}
 			mapEFeature(pFeature, attributes);
 		}
 
