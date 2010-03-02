@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.13 2009/06/28 02:05:10 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.14 2010/03/02 21:43:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -22,9 +22,12 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
@@ -37,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -96,9 +99,22 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 			// also transient
 			if (!isTransient && eStructuralFeature instanceof EReference) {
 				final PAnnotatedEReference aReference = (PAnnotatedEReference) aStructuralFeature;
-				if (aReference.getAReferenceType() != null) {
+				if (aReference.getTransient() != null) {
+					final Transient trans = getFactory().createTransient();
+					trans.setEModelElement(eStructuralFeature);
+					aStructuralFeature.setTransient(trans);
+				} else if (hasTransientAnnotation(aReference.getEReferenceType())) {
+					final Transient trans = getFactory().createTransient();
+					trans.setEModelElement(eStructuralFeature);
+					aStructuralFeature.setTransient(trans);
+				} else if (aReference.getAReferenceType() != null) {
 					isTransient = aReference.getAReferenceType().getTransient() != null;
 				}
+			}
+			
+			// don't do anything with the explicitly transient
+			if (aStructuralFeature.getTransient() != null) {
+				return;
 			}
 
 			if (aStructuralFeature.getTransient() == null
@@ -239,4 +255,19 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 		return manyToOneReferenceAnnotator;
 	}
 
+	// checks for the presence of the @Transient annotation
+	// without requiring the refered class to be processed
+	private boolean hasTransientAnnotation(EClass eClass) {
+		final EAnnotation eAnnotation = eClass.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA);
+		if (eAnnotation == null) {
+			return false;
+		}
+		for (String value : eAnnotation.getDetails().values()) {
+			if (value.contains("@Transient")) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

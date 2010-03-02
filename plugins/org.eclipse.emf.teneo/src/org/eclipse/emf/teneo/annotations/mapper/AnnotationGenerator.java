@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: AnnotationGenerator.java,v 1.7 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: AnnotationGenerator.java,v 1.8 2010/03/02 21:43:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -45,7 +46,7 @@ import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
  * the emf type information. It sets the default annotations according to the ejb3 spec.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAware {
 
@@ -110,8 +111,8 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 						final EClass eClass = (EClass) eClassifier;
 						for (EStructuralFeature eFeature : eClass.getEAllStructuralFeatures()) {
 							if (eFeature.getName().compareTo("eSuperTypes") == 0) {
-								if (eFeature.getEAnnotation("teneo.jpa") == null) {
-									EcoreUtil.setAnnotation(eFeature, "teneo.jpa", "value", "@ManyToMany");
+								if (eFeature.getEAnnotation(Constants.ANNOTATION_SOURCE_TENEO_JPA) == null) {
+									EcoreUtil.setAnnotation(eFeature, Constants.ANNOTATION_SOURCE_TENEO_JPA, "value", "@ManyToMany");
 									break;
 								}
 							}
