@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.6 2010/03/02 20:36:09 mtaal Exp $
+ * $Id: LibraryPackage.java,v 1.7 2010/03/02 21:50:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -189,13 +189,22 @@ public interface LibraryPackage extends EPackage {
 	int BOOK__COVER = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Derived Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK__DERIVED_ATTRIBUTE = IDENTIFIABLE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Book</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 7;
+	int BOOK_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl <em>Library</em>}' class.
@@ -893,6 +902,17 @@ public interface LibraryPackage extends EPackage {
 	EReference getBook_Cover();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Book#getDerivedAttribute <em>Derived Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Derived Attribute</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Book#getDerivedAttribute()
+	 * @see #getBook()
+	 * @generated
+	 */
+	EAttribute getBook_DerivedAttribute();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Library <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,6 +1409,14 @@ public interface LibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BOOK__COVER = eINSTANCE.getBook_Cover();
+
+		/**
+		 * The meta object literal for the '<em><b>Derived Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK__DERIVED_ATTRIBUTE = eINSTANCE.getBook_DerivedAttribute();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl <em>Library</em>}' class.

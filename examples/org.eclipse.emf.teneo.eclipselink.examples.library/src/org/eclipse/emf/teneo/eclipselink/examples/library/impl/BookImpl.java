@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
+ * $Id: BookImpl.java,v 1.4 2010/03/02 21:50:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl#getStyles <em>Styles</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl#getTranslator <em>Translator</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl#getCover <em>Cover</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl#getDerivedAttribute <em>Derived Attribute</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,6 +148,16 @@ public class BookImpl extends IdentifiableImpl implements Book {
 	 * @ordered
 	 */
 	protected Cover cover;
+
+	/**
+	 * The default value of the '{@link #getDerivedAttribute() <em>Derived Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDerivedAttribute()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DERIVED_ATTRIBUTE_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -388,6 +399,28 @@ public class BookImpl extends IdentifiableImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDerivedAttribute() {
+		// TODO: implement this method to return the 'Derived Attribute' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDerivedAttribute(String newDerivedAttribute) {
+		// TODO: implement this method to set the 'Derived Attribute' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -442,6 +475,8 @@ public class BookImpl extends IdentifiableImpl implements Book {
 				return basicGetTranslator();
 			case LibraryPackage.BOOK__COVER:
 				return getCover();
+			case LibraryPackage.BOOK__DERIVED_ATTRIBUTE:
+				return getDerivedAttribute();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -474,6 +509,9 @@ public class BookImpl extends IdentifiableImpl implements Book {
 				return;
 			case LibraryPackage.BOOK__COVER:
 				setCover((Cover)newValue);
+				return;
+			case LibraryPackage.BOOK__DERIVED_ATTRIBUTE:
+				setDerivedAttribute((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -508,6 +546,9 @@ public class BookImpl extends IdentifiableImpl implements Book {
 			case LibraryPackage.BOOK__COVER:
 				setCover((Cover)null);
 				return;
+			case LibraryPackage.BOOK__DERIVED_ATTRIBUTE:
+				setDerivedAttribute(DERIVED_ATTRIBUTE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -534,6 +575,8 @@ public class BookImpl extends IdentifiableImpl implements Book {
 				return translator != null;
 			case LibraryPackage.BOOK__COVER:
 				return cover != null;
+			case LibraryPackage.BOOK__DERIVED_ATTRIBUTE:
+				return DERIVED_ATTRIBUTE_EDEFAULT == null ? getDerivedAttribute() != null : !DERIVED_ATTRIBUTE_EDEFAULT.equals(getDerivedAttribute());
 		}
 		return super.eIsSet(featureID);
 	}
