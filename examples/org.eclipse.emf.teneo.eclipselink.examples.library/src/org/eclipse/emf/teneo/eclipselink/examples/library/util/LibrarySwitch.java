@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibrarySwitch.java,v 1.2 2009/01/21 21:34:21 seberle Exp $
+ * $Id: LibrarySwitch.java,v 1.3 2010/03/02 20:36:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.util;
 
@@ -168,6 +168,12 @@ public class LibrarySwitch<T> {
 			case LibraryPackage.IDENTIFIABLE: {
 				Identifiable identifiable = (Identifiable)theEObject;
 				T result = caseIdentifiable(identifiable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LibraryPackage.ABSTRACT_TEST: {
+				AbstractTest abstractTest = (AbstractTest)theEObject;
+				T result = caseAbstractTest(abstractTest);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -352,6 +358,21 @@ public class LibrarySwitch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiable(Identifiable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Test</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Test</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractTest(AbstractTest object) {
 		return null;
 	}
 

@@ -78,5 +78,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/version"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="library.ecore#//AbstractTest"/>
   </genPackages>
 </genmodel:GenModel>

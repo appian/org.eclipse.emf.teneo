@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryAdapterFactory.java,v 1.2 2009/01/21 21:34:21 seberle Exp $
+ * $Id: LibraryAdapterFactory.java,v 1.3 2010/03/02 20:36:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.util;
 
@@ -120,6 +120,10 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIdentifiable(Identifiable object) {
 				return createIdentifiableAdapter();
+			}
+			@Override
+			public Adapter caseAbstractTest(AbstractTest object) {
+				return createAbstractTestAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -306,6 +310,20 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIdentifiableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest <em>Abstract Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest
+	 * @generated
+	 */
+	public Adapter createAbstractTestAdapter() {
 		return null;
 	}
 

@@ -113,4 +113,5 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractTest" abstract="true"/>
 </ecore:EPackage>

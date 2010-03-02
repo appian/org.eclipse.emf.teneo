@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.5 2009/06/14 21:00:29 seberle Exp $
+ * $Id: LibraryPackage.java,v 1.6 2010/03/02 20:36:09 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -766,6 +766,25 @@ public interface LibraryPackage extends EPackage {
 	int COVER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.AbstractTestImpl <em>Abstract Test</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.AbstractTestImpl
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getAbstractTest()
+	 * @generated
+	 */
+	int ABSTRACT_TEST = 12;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Test</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TEST_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -773,7 +792,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getBookCategory()
 	 * @generated
 	 */
-	int BOOK_CATEGORY = 12;
+	int BOOK_CATEGORY = 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType <em>TWriter Type</em>}' enum.
@@ -783,7 +802,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getTWriterType()
 	 * @generated
 	 */
-	int TWRITER_TYPE = 13;
+	int TWRITER_TYPE = 14;
 
 
 	/**
@@ -1254,6 +1273,16 @@ public interface LibraryPackage extends EPackage {
 	EAttribute getIdentifiable_Version();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest <em>Abstract Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Test</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest
+	 * @generated
+	 */
+	EClass getAbstractTest();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1662,6 +1691,16 @@ public interface LibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IDENTIFIABLE__VERSION = eINSTANCE.getIdentifiable_Version();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.AbstractTestImpl <em>Abstract Test</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.AbstractTestImpl
+		 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getAbstractTest()
+		 * @generated
+		 */
+		EClass ABSTRACT_TEST = eINSTANCE.getAbstractTest();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}' enum.
