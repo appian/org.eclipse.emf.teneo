@@ -18,6 +18,7 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("ListTest for org.eclipse.emf.teneo.eclipselink.examples.library");
 		// $JUnit-BEGIN$
+		suite.addTestSuite(GenerateORMTest.class);
 		suite.addTestSuite(EObjectTest.class);
 		suite.addTestSuite(TypeWriterTypeTest.class);
 		suite.addTestSuite(LibWriterEContainerTest.class);
