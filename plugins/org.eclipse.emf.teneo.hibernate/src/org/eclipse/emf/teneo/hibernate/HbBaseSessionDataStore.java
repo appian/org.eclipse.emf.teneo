@@ -11,15 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.7 2010/03/02 23:28:21 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.8 2010/03/03 11:31:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Serializable;
-import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.util.Map;
 import java.util.Set;
@@ -42,7 +39,7 @@ import org.hibernate.stat.Statistics;
  * readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public abstract class HbBaseSessionDataStore extends HbDataStore implements
 		SessionFactory {
