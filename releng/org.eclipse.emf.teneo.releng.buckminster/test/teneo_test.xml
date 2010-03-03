@@ -64,7 +64,11 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		</buckminster>
 
 		<echo message="Building" />
-		<buckminster command="build" workspace="${workspacePath}" />
+		<buckminster command="build" workspace="${workspacePath}">
+			<cmdargs>
+				<arg value="--thorough" />
+			</cmdargs>		
+		</buckminster>
 
 		<echo message="Running tests Hibernate" />
 		<buckminster command="emma" workspace="${workspacePath}">
