@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial.java,v 1.2 2010/03/03 13:26:20 mtaal Exp $
+ * $Id: Tutorial.java,v 1.3 2010/03/03 15:21:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -46,7 +46,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class Tutorial {
 
@@ -84,7 +84,7 @@ public class Tutorial {
 				"org.hsqldb.jdbcDriver");
 		hibernateProperties.setProperty(Environment.USER, "sa");
 		hibernateProperties.setProperty(Environment.URL,
-				"jdbc:hsqldb:file:/tmp/hsqldb");
+				"jdbc:hsqldb:mem:library");
 		hibernateProperties.setProperty(Environment.PASS, "");
 		hibernateProperties.setProperty(Environment.DIALECT,
 				org.hibernate.dialect.HSQLDialect.class.getName());
@@ -96,6 +96,15 @@ public class Tutorial {
 		hibernateProperties.setProperty(
 				PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
 				"REFRESH,PERSIST,MERGE");
+
+		// use the joined inheritance mapping
+		hibernateProperties.setProperty(PersistenceOptions.INHERITANCE_MAPPING,
+				"JOINED");
+
+		// use an annotations file as an example
+		// this lets the library use a special table
+		hibernateProperties.setProperty(PersistenceOptions.PERSISTENCE_XML,
+				"org/eclipse/emf/teneo/hibernate/examples/annotations.xml");
 
 		// Create the DataStore.
 		final String dataStoreName = "LibraryDataStore";
@@ -212,7 +221,7 @@ public class Tutorial {
 
 			// Show some results
 			System.out
-					.println("There are " + books.size() + " in the Library."); 
+					.println("There are " + books.size() + " in the Library.");
 			System.out.println(books.get(0).getClass().getName());
 			Book book = (Book) books.get(0);
 			System.out.println(book.getTitle());

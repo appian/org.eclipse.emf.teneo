@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: QuickStart.java,v 1.5 2010/03/03 13:26:20 mtaal Exp $
+ * $Id: QuickStart.java,v 1.6 2010/03/03 15:21:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -37,7 +37,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial for the <a href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class QuickStart {
 
@@ -67,7 +67,7 @@ public class QuickStart {
 
 		props.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
 		props.setProperty(Environment.USER, "sa");
-		props.setProperty(Environment.URL, "jdbc:hsqldb:file:/tmp/hsqldb");
+		props.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
 		props.setProperty(Environment.PASS, "");
 		props.setProperty(Environment.DIALECT, org.hibernate.dialect.HSQLDialect.class.getName());
 
