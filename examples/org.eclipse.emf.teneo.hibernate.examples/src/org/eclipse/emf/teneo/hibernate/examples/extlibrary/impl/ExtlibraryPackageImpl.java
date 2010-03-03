@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtlibraryPackageImpl.java,v 1.2 2010/03/02 06:08:37 mtaal Exp $
+ * $Id: ExtlibraryPackageImpl.java,v 1.3 2010/03/03 10:48:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl;
 
@@ -770,7 +770,7 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 		initEAttribute(getLibrary_People(), ecorePackage.getEFeatureMapEntry(), "people", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writerEClass, Writer.class, "Writer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWriter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Writer.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Writer.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriter_Books(), this.getBook(), this.getBook_Author(), "books", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -842,12 +842,6 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 		   source, 
 		   new String[] {
 			 "value", "@Enumerated(ORDINAL)"
-		   });		
-		addAnnotation
-		  (getLibrary_Name(), 
-		   source, 
-		   new String[] {
-			 "value", "@Id"
 		   });			
 		addAnnotation
 		  (getLibrary_Writers(), 
@@ -864,7 +858,7 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";				
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
 		addAnnotation
 		  (getLibrary_Writers(), 
 		   source, 
@@ -898,7 +892,7 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 	 * @generated
 	 */
 	protected void createJoinColumnAnnotations() {
-		String source = "http://annotation.elver.org/JoinColumn";									
+		String source = "http://annotation.elver.org/JoinColumn";								
 		addAnnotation
 		  (getBookOnTape_BookAuthor(), 
 		   source, 

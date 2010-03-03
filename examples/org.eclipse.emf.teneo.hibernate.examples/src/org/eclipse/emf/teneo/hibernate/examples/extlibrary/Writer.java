@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.2 2010/03/02 06:08:39 mtaal Exp $
+ * $Id: Writer.java,v 1.3 2010/03/03 10:48:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 
@@ -37,7 +37,7 @@ public interface Writer extends Person {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.ExtlibraryPackage#getWriter_Name()
-	 * @model transient="true" volatile="true"
+	 * @model transient="true"
 	 * @generated
 	 */
 	String getName();
