@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: QuickStart.java,v 1.3 2010/03/03 10:48:41 mtaal Exp $
+ * $Id: QuickStart.java,v 1.4 2010/03/03 11:38:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -37,7 +37,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial for the <a href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class QuickStart {
 
@@ -53,13 +53,7 @@ public class QuickStart {
 	 * and expects the database name and returns an instance of the HbDataStore.
 	 */
 	public static HbDataStore doQuickStart(String dbName) {
-		// the name of the session factory
-		String hbName = "Library";
 
-		// create the HbDataStore using the name
-		final HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
-
-		// 
 		// The hibernate properties can be set by having a hibernate.properties file in the root of
 		// the classpath.
 		// Another approach is setting the properties in the HbDataStore.
@@ -81,7 +75,13 @@ public class QuickStart {
 		// see this page http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
 		// for all the available options
 		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, "REFRESH,PERSIST,MERGE");
-		
+
+		// the name of the session factory
+		String hbName = "Library";
+		// create the HbDataStore using the name
+		final HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
+
+		// set the properties
 		hbds.setProperties(props);
 
 		// sets its epackages stored in this datastore
