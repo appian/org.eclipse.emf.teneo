@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: Dynamic.java,v 1.3 2010/03/03 12:29:32 mtaal Exp $
+ * $Id: Dynamic.java,v 1.4 2010/03/03 13:26:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -51,7 +51,7 @@ import org.hibernate.Transaction;
  * Dynamic Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class Dynamic {
 
@@ -60,9 +60,6 @@ public class Dynamic {
 
 		// first do the quick start with the correct dbname
 		HbDataStore hbds = QuickStart.doQuickStart("DynamicLibrary");
-
-		// print the hibernate.hbm.xml for demo purposes
-		System.err.println(hbds.getMappingXML());
 
 		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
 		final EcorePackage epackage = EcorePackage.eINSTANCE;

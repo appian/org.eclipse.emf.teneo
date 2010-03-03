@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: QuickStart.java,v 1.4 2010/03/03 11:38:42 mtaal Exp $
+ * $Id: QuickStart.java,v 1.5 2010/03/03 13:26:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -37,7 +37,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial for the <a href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class QuickStart {
 
@@ -119,9 +119,7 @@ public class QuickStart {
 		book.setCategory(BookCategory.SCIENCE_FICTION);
 		session.save(book);
 		
-		// add the writer/book to the library. The writer and book are automatically
-		// made persistent because they are added to the library which is already
-		// made persistent
+		// add the writer/book to the library. 
 		lib.getWriters().add(writer);
 		lib.getBooks().add(book);
 

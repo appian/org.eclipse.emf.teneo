@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial.java,v 1.1 2010/03/03 12:29:32 mtaal Exp $
+ * $Id: Tutorial.java,v 1.2 2010/03/03 13:26:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -46,7 +46,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Tutorial {
 
@@ -71,26 +71,36 @@ public class Tutorial {
 		// hibernateProperties.load(in);
 		//
 		// 2) or populated manually:
-//		hibernateProperties.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
-//		hibernateProperties.setProperty(Environment.USER, "root");
-//		hibernateProperties.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/library");
-//		hibernateProperties.setProperty(Environment.PASS, "root");
-//		hibernateProperties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLInnoDBDialect");
+		// hibernateProperties.setProperty(Environment.DRIVER,
+		// "com.mysql.jdbc.Driver");
+		// hibernateProperties.setProperty(Environment.USER, "root");
+		// hibernateProperties.setProperty(Environment.URL,
+		// "jdbc:mysql://127.0.0.1:3306/library");
+		// hibernateProperties.setProperty(Environment.PASS, "root");
+		// hibernateProperties.setProperty(Environment.DIALECT,
+		// "org.hibernate.dialect.MySQLInnoDBDialect");
 
-		hibernateProperties.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
+		hibernateProperties.setProperty(Environment.DRIVER,
+				"org.hsqldb.jdbcDriver");
 		hibernateProperties.setProperty(Environment.USER, "sa");
-		hibernateProperties.setProperty(Environment.URL, "jdbc:hsqldb:file:/tmp/hsqldb");
+		hibernateProperties.setProperty(Environment.URL,
+				"jdbc:hsqldb:file:/tmp/hsqldb");
 		hibernateProperties.setProperty(Environment.PASS, "");
-		hibernateProperties.setProperty(Environment.DIALECT, org.hibernate.dialect.HSQLDialect.class.getName());
+		hibernateProperties.setProperty(Environment.DIALECT,
+				org.hibernate.dialect.HSQLDialect.class.getName());
 
 		// set a specific option
-		// see this page http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
+		// see this page
+		// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
 		// for all the available options
-		hibernateProperties.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, "REFRESH,PERSIST,MERGE");
+		hibernateProperties.setProperty(
+				PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
+				"REFRESH,PERSIST,MERGE");
 
 		// Create the DataStore.
 		final String dataStoreName = "LibraryDataStore";
-		final HbDataStore dataStore = HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
+		final HbDataStore dataStore = HbHelper.INSTANCE
+				.createRegisterDataStore(dataStoreName);
 		dataStore.setProperties(hibernateProperties);
 
 		// Configure the EPackages used by this DataStore.
@@ -98,10 +108,13 @@ public class Tutorial {
 
 		// Initialize the DataStore. This sets up the Hibernate mapping and, in
 		// turn, creates the corresponding tables in the database.
-		dataStore.initialize();
+		try {
+			dataStore.initialize();
+		} finally {
+			// print the hibernate mapping
+			System.err.println(dataStore.getMappingXML());
+		}
 
-		System.err.println(dataStore.getMappingXML());
-		
 		final SessionFactory sessionFactory = dataStore.getSessionFactory();
 		{
 			// Open a new Session and start transaction.
@@ -127,9 +140,7 @@ public class Tutorial {
 			book.setTitle("The Hobbit");
 			book.setCategory(BookCategory.SCIENCE_FICTION);
 
-			// Add the Writer and Book to the Library. They are made
-			// persistent automatically because the Library is already
-			// persistent.
+			// Add the Writer and Book to the Library.
 			library.getWriters().add(writer);
 			library.getBooks().add(book);
 			session.save(book);
@@ -194,28 +205,31 @@ public class Tutorial {
 			}
 
 			// Retrieve George Orwell's book.
-			query = session.createQuery("SELECT book FROM Book book, Writer writ WHERE "
-					+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
+			query = session
+					.createQuery("SELECT book FROM Book book, Writer writ WHERE "
+							+ " book.title='1984' AND book.author=writ AND writ.name='G. Orwell'");
 			books = query.list();
 
 			// Show some results
-			System.out.println("There are " + books.size() + " in the Library."); // should be 1
+			System.out
+					.println("There are " + books.size() + " in the Library."); 
 			System.out.println(books.get(0).getClass().getName());
 			Book book = (Book) books.get(0);
-			System.out.println(book.getTitle()); // should be 1984
-			System.out.println(book.getAuthor().getName()); // should be G. Orwell
+			System.out.println(book.getTitle());
+			System.out.println(book.getAuthor().getName());
 
 			// Count the number of books in the library
-			query = session.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
-					+ " WHERE lib.name='My Library'");
+			query = session
+					.createQuery("SELECT count(allbooks) FROM Library lib LEFT JOIN lib.books AS allbooks "
+							+ " WHERE lib.name='My Library'");
 			int count = ((Number) query.uniqueResult()).intValue();
-			// there should be 2 books
 			System.out.println("There are " + count + " books in the library");
 			session.getTransaction().commit();
 		}
 
 		try {
-			String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM + "=" + dataStoreName;
+			String uriStr = "hibernate://?" + HibernateResource.DS_NAME_PARAM
+					+ "=" + dataStoreName;
 			final URI uri = URI.createURI(uriStr);
 			ResourceSet resourceSet = new ResourceSetImpl();
 			final Resource res = resourceSet.createResource(uri);
