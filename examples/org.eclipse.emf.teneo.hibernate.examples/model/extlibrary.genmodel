@@ -25,8 +25,6 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference extlibrary.ecore#//Library/borrowers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extlibrary.ecore#//Library/stock"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference extlibrary.ecore#//Library/books"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extlibrary.ecore#//Library/branches"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference extlibrary.ecore#//Library/parentBranch"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute extlibrary.ecore#//Library/people"/>
     </genClasses>
     <genClasses ecoreClass="extlibrary.ecore#//Writer">

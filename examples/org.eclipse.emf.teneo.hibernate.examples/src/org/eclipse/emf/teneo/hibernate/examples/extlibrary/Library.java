@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.4 2010/03/03 12:29:32 mtaal Exp $
+ * $Id: Library.java,v 1.5 2010/03/03 14:34:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 
@@ -24,8 +24,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBorrowers <em>Borrowers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getStock <em>Stock</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBooks <em>Books</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBranches <em>Branches</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getParentBranch <em>Parent Branch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getPeople <em>People</em>}</li>
  * </ul>
  * </p>
@@ -144,52 +142,6 @@ public interface Library extends Addressable {
 	 * @generated
 	 */
 	EList<Book> getBooks();
-
-	/**
-	 * Returns the value of the '<em><b>Branches</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getParentBranch <em>Parent Branch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Branches</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Branches</em>' containment reference list.
-	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.ExtlibraryPackage#getLibrary_Branches()
-	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getParentBranch
-	 * @model opposite="parentBranch" containment="true"
-	 * @generated
-	 */
-	EList<Library> getBranches();
-
-	/**
-	 * Returns the value of the '<em><b>Parent Branch</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBranches <em>Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent Branch</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent Branch</em>' container reference.
-	 * @see #setParentBranch(Library)
-	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.ExtlibraryPackage#getLibrary_ParentBranch()
-	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBranches
-	 * @model opposite="branches" transient="false"
-	 * @generated
-	 */
-	Library getParentBranch();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getParentBranch <em>Parent Branch</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent Branch</em>' container reference.
-	 * @see #getParentBranch()
-	 * @generated
-	 */
-	void setParentBranch(Library value);
 
 	/**
 	 * Returns the value of the '<em><b>People</b></em>' attribute list.

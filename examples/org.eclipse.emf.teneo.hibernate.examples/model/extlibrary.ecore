@@ -43,10 +43,6 @@
         upperBound="-1" eType="#//Item" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="books" ordered="false"
         upperBound="-1" eType="#//Book"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
-        eType="#//Library" containment="true" eOpposite="#//Library/parentBranch"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parentBranch" eType="#//Library"
-        eOpposite="#//Library/branches"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="people" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

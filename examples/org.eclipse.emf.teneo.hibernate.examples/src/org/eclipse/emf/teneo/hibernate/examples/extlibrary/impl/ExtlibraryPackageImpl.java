@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtlibraryPackageImpl.java,v 1.4 2010/03/03 12:29:32 mtaal Exp $
+ * $Id: ExtlibraryPackageImpl.java,v 1.5 2010/03/03 14:34:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl;
 
@@ -318,26 +318,8 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLibrary_Branches() {
-		return (EReference)libraryEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLibrary_ParentBranch() {
-		return (EReference)libraryEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getLibrary_People() {
-		return (EAttribute)libraryEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -660,8 +642,6 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 		createEReference(libraryEClass, LIBRARY__BORROWERS);
 		createEReference(libraryEClass, LIBRARY__STOCK);
 		createEReference(libraryEClass, LIBRARY__BOOKS);
-		createEReference(libraryEClass, LIBRARY__BRANCHES);
-		createEReference(libraryEClass, LIBRARY__PARENT_BRANCH);
 		createEAttribute(libraryEClass, LIBRARY__PEOPLE);
 
 		writerEClass = createEClass(WRITER);
@@ -765,8 +745,6 @@ public class ExtlibraryPackageImpl extends EPackageImpl implements ExtlibraryPac
 		initEReference(getLibrary_Borrowers(), this.getBorrower(), null, "borrowers", null, 0, -1, Library.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getLibrary_Stock(), this.getItem(), null, "stock", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getLibrary_Books(), this.getBook(), null, "books", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getLibrary_Branches(), this.getLibrary(), this.getLibrary_ParentBranch(), "branches", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLibrary_ParentBranch(), this.getLibrary(), this.getLibrary_Branches(), "parentBranch", null, 0, 1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_People(), ecorePackage.getEFeatureMapEntry(), "people", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writerEClass, Writer.class, "Writer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

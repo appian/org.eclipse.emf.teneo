@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryImpl.java,v 1.2 2010/03/02 06:08:36 mtaal Exp $
+ * $Id: LibraryImpl.java,v 1.3 2010/03/03 14:34:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl;
 
@@ -49,8 +49,6 @@ import org.eclipse.emf.teneo.hibernate.examples.extlibrary.Writer;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.LibraryImpl#getBorrowers <em>Borrowers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.LibraryImpl#getStock <em>Stock</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.LibraryImpl#getBooks <em>Books</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.LibraryImpl#getBranches <em>Branches</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.LibraryImpl#getParentBranch <em>Parent Branch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.LibraryImpl#getPeople <em>People</em>}</li>
  * </ul>
  * </p>
@@ -117,16 +115,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * @ordered
 	 */
 	protected EList<Book> books;
-
-	/**
-	 * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBranches()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Library> branches;
 
 	/**
 	 * The cached value of the '{@link #getPeople() <em>People</em>}' attribute list.
@@ -255,83 +243,11 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Library> getBranches() {
-		if (branches == null) {
-			branches = new EObjectContainmentWithInverseEList<Library>(Library.class, this, ExtlibraryPackage.LIBRARY__BRANCHES, ExtlibraryPackage.LIBRARY__PARENT_BRANCH);
-		}
-		return branches;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Library getParentBranch() {
-		if (eContainerFeatureID() != ExtlibraryPackage.LIBRARY__PARENT_BRANCH) return null;
-		return (Library)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetParentBranch(Library newParentBranch, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParentBranch, ExtlibraryPackage.LIBRARY__PARENT_BRANCH, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParentBranch(Library newParentBranch) {
-		if (newParentBranch != eInternalContainer() || (eContainerFeatureID() != ExtlibraryPackage.LIBRARY__PARENT_BRANCH && newParentBranch != null)) {
-			if (EcoreUtil.isAncestor(this, newParentBranch))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newParentBranch != null)
-				msgs = ((InternalEObject)newParentBranch).eInverseAdd(this, ExtlibraryPackage.LIBRARY__BRANCHES, Library.class, msgs);
-			msgs = basicSetParentBranch(newParentBranch, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExtlibraryPackage.LIBRARY__PARENT_BRANCH, newParentBranch, newParentBranch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public FeatureMap getPeople() {
 		if (people == null) {
 			people = new BasicFeatureMap(this, ExtlibraryPackage.LIBRARY__PEOPLE);
 		}
 		return people;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ExtlibraryPackage.LIBRARY__BRANCHES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBranches()).basicAdd(otherEnd, msgs);
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetParentBranch((Library)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -350,28 +266,10 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return ((InternalEList<?>)getBorrowers()).basicRemove(otherEnd, msgs);
 			case ExtlibraryPackage.LIBRARY__STOCK:
 				return ((InternalEList<?>)getStock()).basicRemove(otherEnd, msgs);
-			case ExtlibraryPackage.LIBRARY__BRANCHES:
-				return ((InternalEList<?>)getBranches()).basicRemove(otherEnd, msgs);
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				return basicSetParentBranch(null, msgs);
 			case ExtlibraryPackage.LIBRARY__PEOPLE:
 				return ((InternalEList<?>)getPeople()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				return eInternalContainer().eInverseRemove(this, ExtlibraryPackage.LIBRARY__BRANCHES, Library.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -396,10 +294,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return getStock();
 			case ExtlibraryPackage.LIBRARY__BOOKS:
 				return getBooks();
-			case ExtlibraryPackage.LIBRARY__BRANCHES:
-				return getBranches();
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				return getParentBranch();
 			case ExtlibraryPackage.LIBRARY__PEOPLE:
 				if (coreType) return getPeople();
 				return ((FeatureMap.Internal)getPeople()).getWrapper();
@@ -442,13 +336,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				getBooks().clear();
 				getBooks().addAll((Collection<? extends Book>)newValue);
 				return;
-			case ExtlibraryPackage.LIBRARY__BRANCHES:
-				getBranches().clear();
-				getBranches().addAll((Collection<? extends Library>)newValue);
-				return;
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				setParentBranch((Library)newValue);
-				return;
 			case ExtlibraryPackage.LIBRARY__PEOPLE:
 				((FeatureMap.Internal)getPeople()).set(newValue);
 				return;
@@ -485,12 +372,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 			case ExtlibraryPackage.LIBRARY__BOOKS:
 				getBooks().clear();
 				return;
-			case ExtlibraryPackage.LIBRARY__BRANCHES:
-				getBranches().clear();
-				return;
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				setParentBranch((Library)null);
-				return;
 			case ExtlibraryPackage.LIBRARY__PEOPLE:
 				getPeople().clear();
 				return;
@@ -520,10 +401,6 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return stock != null && !stock.isEmpty();
 			case ExtlibraryPackage.LIBRARY__BOOKS:
 				return books != null && !books.isEmpty();
-			case ExtlibraryPackage.LIBRARY__BRANCHES:
-				return branches != null && !branches.isEmpty();
-			case ExtlibraryPackage.LIBRARY__PARENT_BRANCH:
-				return getParentBranch() != null;
 			case ExtlibraryPackage.LIBRARY__PEOPLE:
 				return people != null && !people.isEmpty();
 		}

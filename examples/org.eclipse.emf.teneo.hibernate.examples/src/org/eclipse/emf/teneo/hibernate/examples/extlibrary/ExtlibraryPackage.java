@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtlibraryPackage.java,v 1.2 2010/03/02 06:08:38 mtaal Exp $
+ * $Id: ExtlibraryPackage.java,v 1.3 2010/03/03 14:34:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 
@@ -318,31 +318,13 @@ public interface ExtlibraryPackage extends EPackage {
 	int LIBRARY__BOOKS = ADDRESSABLE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIBRARY__BRANCHES = ADDRESSABLE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Parent Branch</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIBRARY__PARENT_BRANCH = ADDRESSABLE_FEATURE_COUNT + 7;
-
-	/**
 	 * The feature id for the '<em><b>People</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__PEOPLE = ADDRESSABLE_FEATURE_COUNT + 8;
+	int LIBRARY__PEOPLE = ADDRESSABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Library</em>' class.
@@ -351,7 +333,7 @@ public interface ExtlibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = ADDRESSABLE_FEATURE_COUNT + 9;
+	int LIBRARY_FEATURE_COUNT = ADDRESSABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.impl.PersonImpl <em>Person</em>}' class.
@@ -1044,28 +1026,6 @@ public interface ExtlibraryPackage extends EPackage {
 	EReference getLibrary_Books();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBranches <em>Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Branches</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getBranches()
-	 * @see #getLibrary()
-	 * @generated
-	 */
-	EReference getLibrary_Branches();
-
-	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getParentBranch <em>Parent Branch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent Branch</em>'.
-	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getParentBranch()
-	 * @see #getLibrary()
-	 * @generated
-	 */
-	EReference getLibrary_ParentBranch();
-
-	/**
 	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.hibernate.examples.extlibrary.Library#getPeople <em>People</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1525,22 +1485,6 @@ public interface ExtlibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LIBRARY__BOOKS = eINSTANCE.getLibrary_Books();
-
-		/**
-		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LIBRARY__BRANCHES = eINSTANCE.getLibrary_Branches();
-
-		/**
-		 * The meta object literal for the '<em><b>Parent Branch</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LIBRARY__PARENT_BRANCH = eINSTANCE.getLibrary_ParentBranch();
 
 		/**
 		 * The meta object literal for the '<em><b>People</b></em>' attribute list feature.
