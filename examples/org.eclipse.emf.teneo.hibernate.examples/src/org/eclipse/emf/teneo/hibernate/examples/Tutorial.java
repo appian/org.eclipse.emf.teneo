@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial1.java,v 1.2 2010/03/02 06:08:41 mtaal Exp $
+ * $Id: Tutorial.java,v 1.1 2010/03/03 12:29:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
 import org.eclipse.emf.teneo.hibernate.examples.extlibrary.Book;
@@ -45,16 +46,12 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class Tutorial1 {
+public class Tutorial {
 
 	/** The main method */
 	public static void main(String[] args) {
-
-		// Create the DataStore.
-		final String dataStoreName = "LibraryDataStore";
-		final HbDataStore dataStore = HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
 
 		// To configure Hibernate, supply properties describing the JDBC driver,
 		// URL, username/password and SQL dialect.
@@ -62,6 +59,10 @@ public class Tutorial1 {
 		// "hibernate.properties" at the classpath root.
 		//
 		// Alternatively, you can set the properties programmatically:
+		// 
+		// For more information see <a
+		// href="http://www.hibernate.org/hib_docs/v3/reference/en/html/session-configuration.html#configuration-programmatic">
+		// section 3.1 of the Hibernate manual</a>.
 		//
 		Properties hibernateProperties = new Properties();
 		//
@@ -70,17 +71,27 @@ public class Tutorial1 {
 		// hibernateProperties.load(in);
 		//
 		// 2) or populated manually:
-		hibernateProperties.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
-		hibernateProperties.setProperty(Environment.USER, "root");
-		hibernateProperties.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/library");
-		hibernateProperties.setProperty(Environment.PASS, "root");
-		hibernateProperties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLInnoDBDialect");
-		//
+//		hibernateProperties.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+//		hibernateProperties.setProperty(Environment.USER, "root");
+//		hibernateProperties.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/library");
+//		hibernateProperties.setProperty(Environment.PASS, "root");
+//		hibernateProperties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLInnoDBDialect");
+
+		hibernateProperties.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
+		hibernateProperties.setProperty(Environment.USER, "sa");
+		hibernateProperties.setProperty(Environment.URL, "jdbc:hsqldb:file:/tmp/hsqldb");
+		hibernateProperties.setProperty(Environment.PASS, "");
+		hibernateProperties.setProperty(Environment.DIALECT, org.hibernate.dialect.HSQLDialect.class.getName());
+
+		// set a specific option
+		// see this page http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
+		// for all the available options
+		hibernateProperties.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, "REFRESH,PERSIST,MERGE");
+
+		// Create the DataStore.
+		final String dataStoreName = "LibraryDataStore";
+		final HbDataStore dataStore = HbHelper.INSTANCE.createRegisterDataStore(dataStoreName);
 		dataStore.setProperties(hibernateProperties);
-		// 
-		// For more information see <a
-		// href="http://www.hibernate.org/hib_docs/v3/reference/en/html/session-configuration.html#configuration-programmatic">
-		// section 3.1 of the Hibernate manual</a>.
 
 		// Configure the EPackages used by this DataStore.
 		dataStore.setEPackages(new EPackage[] { ExtlibraryPackage.eINSTANCE });
@@ -89,6 +100,8 @@ public class Tutorial1 {
 		// turn, creates the corresponding tables in the database.
 		dataStore.initialize();
 
+		System.err.println(dataStore.getMappingXML());
+		
 		final SessionFactory sessionFactory = dataStore.getSessionFactory();
 		{
 			// Open a new Session and start transaction.
@@ -104,6 +117,8 @@ public class Tutorial1 {
 			// Create a writer...
 			Writer writer = ExtlibraryFactory.eINSTANCE.createWriter();
 			writer.setName("JRR Tolkien");
+			writer.setFirstName("John");
+			writer.setLastName("Tolkien");
 
 			// ...and one of his books.
 			Book book = ExtlibraryFactory.eINSTANCE.createBook();
@@ -117,6 +132,7 @@ public class Tutorial1 {
 			// persistent.
 			library.getWriters().add(writer);
 			library.getBooks().add(book);
+			session.save(book);
 
 			// Commit the changes to the database.
 			session.getTransaction().commit();
@@ -131,7 +147,7 @@ public class Tutorial1 {
 			// Retrieve the Library and its child objects.
 			// Note that you must use the EClass name in the HQL query.
 			Query query = session.createQuery("FROM Library");
-			List libraries = query.list();
+			List<?> libraries = query.list();
 			Library library = (Library) libraries.get(0);
 
 			// Obtain the Writer and Book
@@ -147,6 +163,8 @@ public class Tutorial1 {
 			// Add a new Writer and Book
 			Writer georgeOrwell = ExtlibraryFactory.eINSTANCE.createWriter();
 			georgeOrwell.setName("G. Orwell");
+			georgeOrwell.setFirstName("George");
+			georgeOrwell.setLastName("Orwell");
 
 			// Create a new Book and set the Writer and Library.
 			Book georgesBook = ExtlibraryFactory.eINSTANCE.createBook();
@@ -169,8 +187,8 @@ public class Tutorial1 {
 
 			// Retrieve all Books and display their titles.
 			Query query = session.createQuery("FROM Book");
-			List books = query.list();
-			for (Iterator it = books.iterator(); it.hasNext();) {
+			List<?> books = query.list();
+			for (Iterator<?> it = books.iterator(); it.hasNext();) {
 				Book book = (Book) it.next();
 				System.out.println(book.getTitle());
 			}
@@ -203,7 +221,7 @@ public class Tutorial1 {
 			final Resource res = resourceSet.createResource(uri);
 
 			res.load(Collections.EMPTY_MAP);
-			Iterator it = res.getContents().iterator();
+			Iterator<?> it = res.getContents().iterator();
 			Library libTest;
 			while (it.hasNext()) {
 				libTest = (Library) it.next();
@@ -216,6 +234,8 @@ public class Tutorial1 {
 			// create a writer
 			Writer writerNew = ExtlibraryFactory.eINSTANCE.createWriter();
 			writerNew.setName("I. Asimov");
+			writerNew.setFirstName("Isaac");
+			writerNew.setLastName("Asimov");
 
 			// and one of his books
 			Book bookNew = ExtlibraryFactory.eINSTANCE.createBook();

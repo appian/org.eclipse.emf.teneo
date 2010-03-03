@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: Dynamic.java,v 1.2 2010/03/02 06:08:41 mtaal Exp $
+ * $Id: Dynamic.java,v 1.3 2010/03/03 12:29:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -51,7 +51,7 @@ import org.hibernate.Transaction;
  * Dynamic Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class Dynamic {
 
@@ -153,9 +153,9 @@ public class Dynamic {
 		// Now query for the books, at least one of them should be a SchoolBook
 		tx.begin();
 		Query qry = session.createQuery("from Book");
-		List list = qry.list();
+		List<?> list = qry.list();
 		Book schoolBook = null;
-		for (Iterator it = list.iterator(); it.hasNext();) {
+		for (Iterator<?> it = list.iterator(); it.hasNext();) {
 			Book book = (Book) it.next();
 			if (book.eClass() == schoolBookEClass) {
 				if (schoolBook != null) {

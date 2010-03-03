@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Library.java,v 1.3 2010/03/03 10:48:41 mtaal Exp $
+ * $Id: Library.java,v 1.4 2010/03/03 12:29:32 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.examples.extlibrary;
 
@@ -140,7 +140,7 @@ public interface Library extends Addressable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Books</em>' reference list.
 	 * @see org.eclipse.emf.teneo.hibernate.examples.extlibrary.ExtlibraryPackage#getLibrary_Books()
-	 * @model transient="true" derived="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Book> getBooks();
