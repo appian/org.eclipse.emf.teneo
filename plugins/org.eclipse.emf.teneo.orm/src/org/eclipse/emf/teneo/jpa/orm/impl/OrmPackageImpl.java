@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrmPackageImpl.java,v 1.4 2009/10/27 23:13:29 mtaal Exp $
+ * $Id: OrmPackageImpl.java,v 1.5 2010/03/07 05:36:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.jpa.orm.impl;
 
@@ -4415,12 +4415,12 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";			
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
-			 "qualified", "true"
+			 "qualified", "false"
 		   });			
 		addAnnotation
 		  (accessTypeEEnum, 
@@ -6799,7 +6799,7 @@ public class OrmPackageImpl extends EPackageImpl implements OrmPackage {
 	 * @generated
 	 */
 	protected void createTeneoAnnotations() {
-		String source = "teneo.escape";																																																	
+		String source = "teneo.escape";																																																
 		addAnnotation
 		  (getColumn_Name(), 
 		   source, 
