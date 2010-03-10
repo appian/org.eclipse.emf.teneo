@@ -49,6 +49,14 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<isset property="env.BUILDTYPE" />
 	</condition>
 
+	<condition property="teneo.version" value="${env.VERSION}" else="1.2.0">
+		<isset property="env.VERSION" />
+	</condition>
+
+	<condition property="clean.tools" value="true">
+		<equals arg1="${env.CLEAN_TOOLS}" arg2="true" />
+	</condition>
+
 	<property name="buildsPath" location="${hudsonWorkSpacePath}/build" />
 
 	<!--property name="rootPath" location="${buildsPath}/${build.type}${buildTimestamp}"/-->
@@ -61,14 +69,15 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="buildZipsPath" location="${rootPath}/result/zips" />
 	<property name="testResultsPath" location="${rootPath}/result/test" />
 
-	<property name="promoteTargetPath" location="${teneo.download.area}/updates/${teneo.update.site.type}" />
+	<property name="promoteUpdateSite" location="${teneo.download.area}/updates/${teneo.update.site.type}" />
+	<property name="promoteDropsLocation" location="${teneo.download.area}/download/drops" />
 
 	<property name="buckminster.output.root" location="${rootPath}/output" />
 	<property name="buckminster.output.temp" location="${rootPath}/temp" />
 
 	<import file="ant_common.xml" />
 
-	<target name="build.and.test" depends="init,install.buckminster">
+	<target name="build.and.test" depends="init, init.checks, install.buckminster">
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 
@@ -79,25 +88,42 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<target name="promote" depends="init.build.properties">
 		<echo message="Promoting ${buildSitePath}" />
 		<echo message="From ${buildSitePath}" />
-		<echo message="To ${promoteTargetPath}" />
+		<echo message="To ${promoteUpdateSite}" />
 
-		<delete dir="${promoteTargetPath}" quiet="true" />
-		<mkdir dir="${promoteTargetPath}"/>
-		<mkdir dir="${promoteTargetPath}/plugins"/>
-		<mkdir dir="${promoteTargetPath}/features"/>
+		<delete dir="${promoteUpdateSite}" />
+		<mkdir dir="${promoteUpdateSite}"/>
+		<mkdir dir="${promoteUpdateSite}/plugins"/>
+		<mkdir dir="${promoteUpdateSite}/features"/>
 		
-		<copy todir="${promoteTargetPath}">
+		<copy todir="${promoteUpdateSite}">
 			<fileset dir="${buildSitePath}">
 				<include name="**/*" />
 				<include name="**" />
 			</fileset>
 		</copy>
 
+		<mkdir dir="${promoteDropsLocation}"/>
+		<mkdir dir="${promoteDropsLocation}/${teneo.version}"/>
+		<mkdir dir="${promoteDropsLocation}/${teneo.version}/${build.type}${buildTimestamp}"/>		
+		<copy todir="${promoteZipsLocation}">
+			<fileset dir="${buildZipsPath}">
+				<include name="*.zip" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="clean.all">
 		<echo message="Removing previous build" />
 		<delete dir="${buildsPath}" quiet="true" />
+	</target>
+
+	<target name="init.clean.tools" if="clean.tools">
+		<delete dir="${toolsPath}" failonerror="true" quiet="true" />
+	</target>
+
+	<target name="init.checks" depends="init.clean.tools">
+		<available file="${tools}/director/director" property="director.exists" />
+		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
 	</target>
 
 	<target name="init">
