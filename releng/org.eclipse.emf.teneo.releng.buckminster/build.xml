@@ -70,7 +70,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="testResultsPath" location="${rootPath}/result/test" />
 
 	<property name="promoteUpdateSite" location="${teneo.download.area}/updates/${teneo.update.site.type}" />
-	<property name="promoteDropsLocation" location="${teneo.download.area}/download/drops" />
+	<property name="promoteDropsLocation" location="${teneo.download.area}/downloads/drops" />
 
 	<property name="buckminster.output.root" location="${rootPath}/output" />
 	<property name="buckminster.output.temp" location="${rootPath}/temp" />
@@ -105,7 +105,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${promoteDropsLocation}"/>
 		<mkdir dir="${promoteDropsLocation}/${teneo.version}"/>
 		<mkdir dir="${promoteDropsLocation}/${teneo.version}/${build.type}${buildTimestamp}"/>		
-		<copy todir="${promoteZipsLocation}">
+		<copy todir="${promoteDropsLocation}/${teneo.version}/${build.type}${buildTimestamp}">
 			<fileset dir="${buildZipsPath}">
 				<include name="*.zip" />
 			</fileset>
