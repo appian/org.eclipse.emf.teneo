@@ -122,8 +122,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</target>
 
 	<target name="init.checks" depends="init.clean.tools">
-		<available file="${tools}/director/director" property="director.exists" />
-		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
+		<available file="${toolsPath}/director/director" property="director.exists" />
+		<available file="${toolsPath}/buckminster/buckminster" property="buckminster.exists" />
 	</target>
 
 	<target name="init">
