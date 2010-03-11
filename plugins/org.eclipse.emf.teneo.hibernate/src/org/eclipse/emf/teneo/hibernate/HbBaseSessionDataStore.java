@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.9 2010/03/11 02:11:36 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.10 2010/03/11 02:58:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.stat.Statistics;
  * readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public abstract class HbBaseSessionDataStore extends HbDataStore implements
 		SessionFactory {
@@ -58,12 +58,10 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	public void close() {
 		if (isInitialized()) {
 			closeSessionFactory();
-			if (getName() != null) {
-				// this will call the close method again but because the
-				// datastore
-				// is not initialized anymore it won't get here
-				HbHelper.INSTANCE.deRegisterDataStore(getName());
-			}
+			// this will call the close method again but because the
+			// datastore
+			// is not initialized anymore it won't get here
+			HbHelper.INSTANCE.deRegisterDataStore(this);
 		}
 	}
 

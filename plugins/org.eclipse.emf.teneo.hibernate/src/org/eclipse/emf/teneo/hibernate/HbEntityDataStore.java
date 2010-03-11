@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.25 2010/03/11 02:11:35 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.26 2010/03/11 02:58:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -45,10 +45,11 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 @SuppressWarnings("deprecation")
-public class HbEntityDataStore extends HbDataStore implements EntityManagerFactory {
+public class HbEntityDataStore extends HbDataStore implements
+		EntityManagerFactory {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbEntityDataStore.class);
@@ -65,7 +66,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		MappingUtil.registerHbExtensions(getExtensionManager());
 
 		try {
-			PackageRegistryProvider.getInstance().setThreadPackageRegistry(getPackageRegistry());
+			PackageRegistryProvider.getInstance().setThreadPackageRegistry(
+					getPackageRegistry());
 
 			log.debug("Initializing EJB3 Hb Entity DataStore");
 			// check a few things
@@ -98,7 +100,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 
 			setInitialized(true);
 		} finally {
-			PackageRegistryProvider.getInstance().setThreadPackageRegistry(null);
+			PackageRegistryProvider.getInstance()
+					.setThreadPackageRegistry(null);
 		}
 	}
 
@@ -111,10 +114,12 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	/** Set the event listener, can be overridden, in this impl. it does nothing */
 	@Override
 	protected void setEventListeners() {
-		final EMFInitializeCollectionEventListener eventListener = getExtensionManager().getExtension(
-				EMFInitializeCollectionEventListener.class);
-		getConfiguration().getEventListeners().setInitializeCollectionEventListeners(
-				new InitializeCollectionEventListener[] { eventListener });
+		final EMFInitializeCollectionEventListener eventListener = getExtensionManager()
+				.getExtension(EMFInitializeCollectionEventListener.class);
+		getConfiguration()
+				.getEventListeners()
+				.setInitializeCollectionEventListeners(
+						new InitializeCollectionEventListener[] { eventListener });
 	}
 
 	/** Sets the interceptor */
@@ -123,8 +128,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 		if (getInterceptor() != null) {
 			return;
 		}
-		final Interceptor interceptor = getHbContext().createInterceptor(getHibernateConfiguration(),
-				getEntityNameStrategy());
+		final Interceptor interceptor = getHbContext().createInterceptor(
+				getHibernateConfiguration(), getEntityNameStrategy());
 		getConfiguration().setInterceptor(interceptor);
 		setInterceptor(interceptor);
 	}
@@ -144,19 +149,24 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	}
 
 	/**
-	 * Maps an ecore model of one ore more epackages into a hibernate xml String which is added to the passed
-	 * configuration
+	 * Maps an ecore model of one ore more epackages into a hibernate xml String
+	 * which is added to the passed configuration
 	 */
 	protected void mapModel() {
-		if (getPersistenceOptions().isUseMappingFile() || getPersistenceOptions().getMappingFilePath() != null) {
+		if (getPersistenceOptions().isUseMappingFile()
+				|| getPersistenceOptions().getMappingFilePath() != null) {
 			log.debug("Searching hbm files in class paths of epackages");
 			final String[] fileList = getMappingFileList();
 			for (String element : fileList) {
-				log.debug("Adding file " + element + " to Hibernate Configuration");
-				final PersistenceFileProvider pfp = getExtensionManager().getExtension(PersistenceFileProvider.class);
-				final InputStream is = pfp.getFileContent(this.getClass(), element);
+				log.debug("Adding file " + element
+						+ " to Hibernate Configuration");
+				final PersistenceFileProvider pfp = getExtensionManager()
+						.getExtension(PersistenceFileProvider.class);
+				final InputStream is = pfp.getFileContent(this.getClass(),
+						element);
 				if (is == null) {
-					throw new HbStoreException("Path to mapping file: " + element + " does not exist!");
+					throw new HbStoreException("Path to mapping file: "
+							+ element + " does not exist!");
 				}
 				getConfiguration().addInputStream(is);
 			}
@@ -175,16 +185,18 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			if (hasEAVMapping) {
 				try {
 					if (getPersistenceOptions().getEAVMappingFile() != null) {
-						final PersistenceFileProvider pfp = getExtensionManager().getExtension(
-								PersistenceFileProvider.class);
-						final InputStream is = pfp.getFileContent(this.getClass(), getPersistenceOptions()
+						final PersistenceFileProvider pfp = getExtensionManager()
+								.getExtension(PersistenceFileProvider.class);
+						final InputStream is = pfp.getFileContent(this
+								.getClass(), getPersistenceOptions()
 								.getEAVMappingFile());
 						getConfiguration().addInputStream(processEAV(is));
 						is.close();
 					} else {
-						final PersistenceFileProvider pfp = getExtensionManager().getExtension(
-								PersistenceFileProvider.class);
-						final InputStream is = pfp.getFileContent(EAVGenericIDUserType.class, "eav.hbm.xml");
+						final PersistenceFileProvider pfp = getExtensionManager()
+								.getExtension(PersistenceFileProvider.class);
+						final InputStream is = pfp.getFileContent(
+								EAVGenericIDUserType.class, "eav.hbm.xml");
 						getConfiguration().addInputStream(processEAV(is));
 						is.close();
 					}
@@ -194,7 +206,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			}
 
 			// TODO replace this
-			final StringBufferInputStream is = new StringBufferInputStream(getMappingXML());
+			final StringBufferInputStream is = new StringBufferInputStream(
+					getMappingXML());
 			getConfiguration().addInputStream(is);
 		}
 	}
@@ -202,7 +215,7 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	protected InputStream processEAV(InputStream is) {
 		return new StringBufferInputStream(processEAVMapping(is));
 	}
-	
+
 	/** Build the session factory */
 	protected EntityManagerFactory buildEntityManagerFactory() {
 		return getConfiguration().createEntityManagerFactory();
@@ -221,12 +234,10 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 			}
 			entityManagerFactory = null;
 			setInitialized(false);
-			if (getName() != null) {
-				// this will call the close method again but because the
-				// datastore
-				// is not initialized anymore it won't get here
-				HbHelper.INSTANCE.deRegisterDataStore(getName());
-			}
+			// this will call the close method again but because the
+			// datastore
+			// is not initialized anymore it won't get here
+			HbHelper.INSTANCE.deRegisterDataStore(this);
 		}
 	}
 
@@ -269,7 +280,8 @@ public class HbEntityDataStore extends HbDataStore implements EntityManagerFacto
 	/** Is added for interface compliance with HbDataStore, should not be used */
 	@Override
 	public SessionFactory getSessionFactory() {
-		throw new UnsupportedOperationException("This method should not be called, use getEntityManagerFactory");
+		throw new UnsupportedOperationException(
+				"This method should not be called, use getEntityManagerFactory");
 	}
 
 	public EntityManager createEntityManager() {

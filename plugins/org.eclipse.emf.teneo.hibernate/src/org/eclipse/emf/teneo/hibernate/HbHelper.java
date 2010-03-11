@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbHelper.java,v 1.17 2010/01/26 07:53:38 mtaal Exp $
+ * $Id: HbHelper.java,v 1.18 2010/03/11 02:58:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.mapping.PersistentClass;
  * Is the main entry point for 'outside' users to create, register and retrieve EMF Data stores.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class HbHelper {
 	/** The logger */
@@ -124,7 +124,11 @@ public class HbHelper {
 		if (emfds == null) {
 			return;
 		}
+		deRegisterDataStore(emfds);
+	}
 
+	/** Deregisters a datastore from the registry */
+	public synchronized void deRegisterDataStore(HbDataStore emfds) {
 		// changed for bugzilla 281036
 		final List<Object> toRemove = new ArrayList<Object>();
 		for (Object key : dataStoreByPersistentClass.keySet()) {
@@ -135,9 +139,9 @@ public class HbHelper {
 		for (Object key : toRemove) {
 			dataStoreByPersistentClass.remove(key);
 		}
-
-		log.debug("Removing and closing emf data store: " + name);
-		emfDataStores.remove(name);
+		if (emfds.getName() != null) {
+			emfDataStores.remove(emfds.getName());
+		}
 		if (emfds.isInitialized()) {
 			emfds.close();
 		}
