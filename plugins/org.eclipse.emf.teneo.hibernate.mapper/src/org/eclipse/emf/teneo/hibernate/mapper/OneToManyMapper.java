@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: OneToManyMapper.java,v 1.42 2009/07/08 13:16:58 mtaal Exp $
+ * </copyright> $Id: OneToManyMapper.java,v 1.43 2010/03/15 16:08:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -313,8 +313,8 @@ public class OneToManyMapper extends AbstractAssociationMapper implements Extens
 	 */
 	protected Element addOneToMany(PAnnotatedEReference paReference, PAnnotatedEClass referedToAClass,
 			Element collElement, String featureName, String targetEntity) {
-		if (isEObject(targetEntity)) { // anytype
-			final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference)paReference;		
+		if (isEObject(targetEntity) || hbReference.getAny() != null || hbReference.getAnyMetaDef() != null) { // anytype
 			final String assocName = getHbmContext().getPropertyName(hbReference.getModelEStructuralFeature());
 			return collElement.add(createAny(assocName, hbReference, hbReference.getAny(), hbReference.getAnyMetaDef(),
 					true));
