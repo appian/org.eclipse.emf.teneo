@@ -73,7 +73,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="promoteDropsLocation" location="${teneo.download.area}/downloads/drops" />
 
 	<property name="buckminster.output.root" location="${rootPath}/output" />
-	<property name="buckminster.output.temp" location="${rootPath}/temp" />
+	<property name="buckminster.temp.root" location="${rootPath}/temp" />
 
 	<import file="ant_common.xml" />
 
@@ -132,7 +132,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<delete dir="${buildRoot}" quiet="true" />
 		<delete dir="${rootPath}/result" quiet="true" />
 		<delete dir="${buckminster.output.root}" quiet="true" />
-		<delete dir="${buckminster.output.temp}" quiet="true" />
+		<delete dir="${buckminster.temp.root}" quiet="true" />
 
 		<echo message="Creating main directories" />
 		<echo message="rootPath: ${rootPath}" />
