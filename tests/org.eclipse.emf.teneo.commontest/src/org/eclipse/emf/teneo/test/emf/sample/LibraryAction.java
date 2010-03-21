@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.22 2009/12/13 10:13:44 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.23 2010/03/21 12:42:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 public class LibraryAction extends AbstractTestAction {
 
@@ -120,7 +120,12 @@ public class LibraryAction extends AbstractTestAction {
 		{
 			store.beginTransaction();
 			Library lib = (Library) store.query(Library.class, "name", "Science Fiction Library", 1).get(0);
+			
+			testLazySize(lib.getWriters());
+			testLazySize(lib.getBooks());
+			
 			assertTrue((lib.getWriters().get(0)).getName().compareTo("JRR Tolkien") == 0);
+			testLazySize(lib.getWriters().get(0).getBooks());
 
 			// final Object[] eobjs =
 			// store.getCrossReferencers((EObject)lib.getWriters().get(0),
@@ -206,6 +211,10 @@ public class LibraryAction extends AbstractTestAction {
 		checkTeneoSQLNameStrategy();
 	}
 
+	protected void testLazySize(List<?> list) {
+		
+	}
+	
 	/** Reads objects in multiple sessions and checks that they are unequal */
 	@SuppressWarnings("unchecked")
 	protected void checkUseCache(TestStore store) {
