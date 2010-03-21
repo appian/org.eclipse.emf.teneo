@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.25 2010/03/21 12:42:42 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.26 2010/03/21 14:16:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -54,7 +54,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -110,6 +110,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	/** Do the actual load can be overridden */
 	@Override
 	protected synchronized void doLoad() {
+		// TODO, read the following link and reconsider transaction usage
+		// http://community.jboss.org/wiki/Non-transactionaldataaccessandtheauto-commitmode
+		
 		AssertUtil.assertTrue("EList " + logString, !isLoaded());
 
 		log.debug("Started loading elist " + logString);

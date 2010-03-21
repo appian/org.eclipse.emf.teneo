@@ -11,33 +11,45 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.9 2008/02/28 07:08:24 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.10 2010/03/21 14:16:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.ListIterator;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.SessionWrapper;
+import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
+import org.eclipse.emf.teneo.resource.StoreResource;
+import org.eclipse.emf.teneo.util.AssertUtil;
+import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentIdentifierBag;
 import org.hibernate.collection.PersistentList;
 
 /**
- * Implements the hibernate persistable elist with extra lazy behavior, most operations should not
- * load the complete list. This is targeted at very large lists. Note that this list can not work in
- * a detached mode.
+ * Implements the hibernate persistable elist with extra lazy behavior, most
+ * operations should not load the complete list. This is targeted at very large
+ * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
-public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> implements ExtensionPoint {
+public class HbExtraLazyPersistableEList<E> extends
+		HibernatePersistableEList<E> implements ExtensionPoint {
 
 	/** The logger */
 	// private static Log log =
@@ -47,26 +59,167 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> implemen
 	 */
 	private static final long serialVersionUID = 5479222310361594394L;
 
+	private boolean previousDeliverSetting = false;
+
 	/** Constructor */
-	public HbExtraLazyPersistableEList(InternalEObject owner, EStructuralFeature feature, List<E> list) {
+	public HbExtraLazyPersistableEList(InternalEObject owner,
+			EStructuralFeature feature, List<E> list) {
 		super(owner, feature, list);
 	}
 
-	/**
-	 * Override isLoaded to check if the delegate lists was not already loaded by hibernate behind
-	 * the scenes, this happens with eagerly loaded lists.
+	// done in superclass:
+	// - delegateSize and delegateIsEmpty: super implementation is already extra
+	// lazy
+	// - delegateBasicList: will result in a full load
+	// - delegateContains and delegateContainsAll: will result in a full load
+	// - delegateEquals and delegatehashCode: will result in a full load
+	// - delegateIndexOf and delegateLastIndexOf: will result in a full load
+	// - delegateToArray: will result in a full load
+	// - delegateIterator and delegateListIterator: will result in a full load
+	// - delegateToString: will result in a full load
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateAdd(int,
+	 * java.lang.Object)
 	 */
 	@Override
-	public boolean isLoaded() {
-		return true; // always assume loaded
+	protected void delegateAdd(int index, E object) {
+		delegateList().add(index, object);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.emf.common.util.DelegatingEList#delegateAdd(java.lang.Object)
+	 */
+	@Override
+	protected void delegateAdd(E object) {
+		delegateList().add(object);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateClear()
+	 */
+	@Override
+	protected void delegateClear() {
+		delegateList().clear();
+	}
+
+	/** Returns the underlying elist */
+	@Override
+	protected List<E> delegateList() {
+		return getDelegate();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateGet(int)
+	 */
+	@Override
+	protected E delegateGet(int index) {
+		boolean callAfterLoadInstance = false;
+		if (!isLoaded()) {
+			beforeLoadInstance();
+			callAfterLoadInstance = true;
+		}
+		final E object = delegateList().get(index);
+		if (callAfterLoadInstance && object instanceof EObject) {
+			final EObject eObject = (EObject) object;
+				afterLoadInstance(eObject);
+		}
+		return object;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateRemove(int)
+	 */
+	@Override
+	protected E delegateRemove(int index) {
+		return delegateList().remove(index);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateSet(int,
+	 * java.lang.Object)
+	 */
+	@Override
+	protected E delegateSet(int index, E object) {
+		return delegateList().set(index, object);
 	}
 
 	/**
-	 * Do the actual load can be overridden, the doload does nothing as this is the responsibility
-	 * of the caller
+	 * Implements the actions which need to be done before getting/loading an
+	 * instance.
 	 */
-	@Override
-	protected synchronized void doLoad() {
+	protected synchronized void beforeLoadInstance() {
+		final Resource res = owner.eResource();
+		if (res != null && res instanceof HbResource) {
+			final SessionWrapper sessionWrapper = ((HbResource) res)
+					.getSessionWrapper();
+			if (res.isLoaded()) // resource is loaded reopen transaction
+			{
+				// if the delegate is already loaded then no transaction is
+				// required
+				final boolean isDelegateLoaded = delegate instanceof AbstractPersistentCollection
+						&& ((AbstractPersistentCollection) delegate)
+								.wasInitialized();
+				if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
+					sessionWrapper.setFlushModeManual();
+				}
+				((StoreResource) res).setIsLoading(true);
+			}
+		}
+		previousDeliverSetting = owner.eDeliver();
+		try {
+			// only set to false if it was true
+			if (previousDeliverSetting) {
+				owner.eSetDeliver(false);
+			}
+		} catch (UnsupportedOperationException e) {
+			// in this case the eSetDeliver was not overridden from the
+			// baseclass
+			// ignore
+		}
+	}
+
+	protected void afterLoadInstance(EObject eObject) {
+
+		// disabled for now as containers are persisted by hibernate
+		// anyway
+		if (isContainment() && eObject.eContainer() == null) {
+			EContainerRepairControl.setContainer(owner,
+					(InternalEObject) eObject, getEStructuralFeature());
+		}
+		final Resource res = owner.eResource();
+		if (res != null && res instanceof HbResource) {
+			// attach the new contained objects so that they are adapted
+			// when required
+			((StoreResource) res).addToContentOrAttach(
+					(InternalEObject) eObject,
+					(EReference) getEStructuralFeature());
+			((StoreResource) res).setIsLoading(false);
+		}
+
+		try {
+			// only set to false if it was true
+			if (previousDeliverSetting) {
+				owner.eSetDeliver(true);
+			}
+		} catch (UnsupportedOperationException e) {
+			// in this case the eSetDeliver was not overridden from the
+			// baseclass
+			// ignore
+		}
 	}
 
 	/** If the delegate has been initialized */
@@ -103,8 +256,9 @@ public class HbExtraLazyPersistableEList<E> extends PersistableEList<E> implemen
 		{
 
 		} else {
-			throw new HbMapperException("Type " + newDelegate.getClass().getName() + " can not be " +
-					" used as a replacement for elist " + logString);
+			throw new HbMapperException("Type "
+					+ newDelegate.getClass().getName() + " can not be "
+					+ " used as a replacement for elist " + logString);
 		}
 	}
 
