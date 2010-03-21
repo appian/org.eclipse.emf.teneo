@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.26 2010/03/21 14:16:13 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.27 2010/03/21 18:45:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -54,7 +54,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -112,7 +112,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	protected synchronized void doLoad() {
 		// TODO, read the following link and reconsider transaction usage
 		// http://community.jboss.org/wiki/Non-transactionaldataaccessandtheauto-commitmode
-		
+
 		AssertUtil.assertTrue("EList " + logString, !isLoaded());
 
 		log.debug("Started loading elist " + logString);
@@ -535,9 +535,14 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 	@Override
 	protected int delegateSize() {
-		if (getDelegate() instanceof AbstractPersistentCollection && !isInitialized()) {
-			final Session session = (Session)((AbstractPersistentCollection) delegate).getSession();
-			return ((Number) session.createFilter( getDelegate(), "select count(*)" ).uniqueResult()).intValue();			
+		if (getDelegate() instanceof AbstractPersistentCollection
+				&& !isInitialized()) {
+			final Session session = (Session) ((AbstractPersistentCollection) delegate)
+					.getSession();
+			if (session != null) {
+				return ((Number) session.createFilter(getDelegate(),
+						"select count(*)").uniqueResult()).intValue();
+			}
 		}
 		return delegateList().size();
 	}
