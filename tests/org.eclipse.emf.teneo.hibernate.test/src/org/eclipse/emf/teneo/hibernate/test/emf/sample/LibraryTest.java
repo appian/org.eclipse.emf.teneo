@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.16 2010/02/06 20:50:47 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.17 2010/03/21 12:42:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -20,8 +20,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
@@ -33,12 +35,13 @@ import org.eclipse.emf.teneo.test.AbstractActionTest;
 import org.eclipse.emf.teneo.test.StoreTestException;
 import org.eclipse.emf.teneo.test.emf.sample.LibraryAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.hibernate.collection.PersistentCollection;
 
 /**
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -119,6 +122,17 @@ public class LibraryTest extends AbstractActionTest {
 			} catch (SQLException e) {
 				throw new StoreTestException("Sql exception when checking db schema", e);
 			}
+		}
+
+		protected void testLazySize(List<?> list) {
+			final PersistableEList<?> persistableEList = (PersistableEList<?>)list;
+			final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
+			assertFalse(persistentCollection.wasInitialized());
+			assertFalse(persistableEList.isLoaded());
+			int size = list.size();
+			assertTrue(size > 0);
+			assertFalse(persistentCollection.wasInitialized());
+			assertFalse(persistableEList.isLoaded());
 		}
 
 	};
