@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.62 2009/11/10 10:06:04 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.63 2010/03/21 14:16:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -212,6 +212,15 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/** Force all containment relations to be eagerly loaded or not */
 	public static final String FETCH_CONTAINMENT_EAGERLY = MAPPING_PREFIX + "fetch_containment_eagerly";
+
+	/** 
+	 * Force all associations to be extra lazy loaded
+	 * See here http://sites.google.com/a/pintailconsultingllc.com/java/hibernate-extra-lazy-collection-fetching
+	 * for some information.
+	 * 
+	 * Default is false.
+	 */
+	public static final String FETCH_ASSOCIATION_EXTRA_LAZY = MAPPING_PREFIX + "fetch_one_to_many_extra_lazy";
 
 	/**
 	 * nu.nl/algemeen/2048745/brandweer-vindt-lichaam-in-stadskanaal.html Set cascade all (incl. orphan delete) on
@@ -400,6 +409,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(OPTIMISTIC, "true");
 		props.setProperty(UPDATE_SCHEMA, "false");
 		props.setProperty(FETCH_CONTAINMENT_EAGERLY, "false");
+		props.setProperty(FETCH_ASSOCIATION_EXTRA_LAZY, "false");
 		props.setProperty(SET_ENTITY_AUTOMATICALLY, "true");
 		props.setProperty(VERSION_COLUMN_NAME, "e_version");
 		props.setProperty(SQL_CASE_STRATEGY, "lowercase");
@@ -785,6 +795,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	/** Returns the value of the fetch containment eagerly, default is false */
 	public boolean isFetchContainmentEagerly() {
 		return Boolean.valueOf(properties.getProperty(FETCH_CONTAINMENT_EAGERLY)).booleanValue();
+	}
+
+	/** Returns the value of the fetch extra lazy option, default is false */
+	public boolean isFetchAssociationExtraLazy() {
+		return Boolean.valueOf(properties.getProperty(FETCH_ASSOCIATION_EXTRA_LAZY)).booleanValue();
 	}
 
 	/** Is set entity automatically, default is true */
