@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.5 2010/02/04 11:03:02 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.6 2010/03/22 23:30:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -47,6 +47,8 @@ public class PersistentStoreAdapter implements Adapter {
 	private boolean targetCreatedByORM;
 
 	private Map<EStructuralFeature, Object> storeCollections = new HashMap<EStructuralFeature, Object>();
+
+	private Map<EStructuralFeature, Integer> collectionSizesByEStructuralFeature = new HashMap<EStructuralFeature, Integer>();
 
 	public void addStoreCollection(EStructuralFeature eFeature, Object storeCollection) {
 		// note that when refresh is called on a persisted object
@@ -58,6 +60,14 @@ public class PersistentStoreAdapter implements Adapter {
 		return storeCollections.get(eFeature);
 	}
 
+	public void setCollectionSize(EStructuralFeature eFeature, int size) {
+		collectionSizesByEStructuralFeature.put(eFeature, size);
+	}
+
+	public Integer getCollectionSize(EStructuralFeature eFeature) {
+		return collectionSizesByEStructuralFeature.get(eFeature);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -84,7 +94,10 @@ public class PersistentStoreAdapter implements Adapter {
 	@SuppressWarnings("unchecked")
 	public void notifyChanged(Notification notification) {
 		final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
-
+		
+		// reset the size with every call
+		collectionSizesByEStructuralFeature.remove(eFeature);
+		
 		final Object collectionObject = storeCollections.get(eFeature);
 		if (collectionObject == null) {
 			return;
