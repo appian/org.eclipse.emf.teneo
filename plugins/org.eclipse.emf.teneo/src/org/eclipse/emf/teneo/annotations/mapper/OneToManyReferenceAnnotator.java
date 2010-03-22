@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.18 2010/02/04 11:03:02 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.19 2010/03/22 21:20:52 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,7 +38,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 
 public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -67,6 +67,8 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 
 			if (eReference.isContainment() && getPersistenceOptions().isFetchContainmentEagerly()) {
 				otm.setFetch(FetchType.EAGER);
+			} else if (getPersistenceOptions().isFetchAssociationExtraLazy()) {
+				otm.setFetch(FetchType.EXTRA);
 			}
 		} else {
 			log.debug("EReference + " + logStr + " has onetomany, check if defaults should be set");
