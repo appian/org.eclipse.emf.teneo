@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.27 2010/03/21 18:45:22 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.28 2010/03/22 13:45:46 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -45,16 +45,19 @@ import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentIdentifierBag;
 import org.hibernate.collection.PersistentList;
+import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.engine.SessionImplementor;
+import org.hibernate.hql.ast.util.SessionFactoryHelper;
 import org.hibernate.loader.CollectionAliases;
 import org.hibernate.persister.collection.CollectionPersister;
+import org.hibernate.persister.collection.QueryableCollection;
 import org.hibernate.type.Type;
 
 /**
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -540,8 +543,15 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 			final Session session = (Session) ((AbstractPersistentCollection) delegate)
 					.getSession();
 			if (session != null) {
-				return ((Number) session.createFilter(getDelegate(),
-						"select count(*)").uniqueResult()).intValue();
+				final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
+				final QueryableCollection persister = new SessionFactoryHelper(
+						(SessionFactoryImplementor) session.getSessionFactory())
+						.getCollectionPersister(persistentCollection.getRole());
+				final Type collectionElementType = persister.getElementType();
+				if (collectionElementType.isEntityType()) {
+					return ((Number) session.createFilter(getDelegate(),
+							"select count(*)").uniqueResult()).intValue();
+				}
 			}
 		}
 		return delegateList().size();
