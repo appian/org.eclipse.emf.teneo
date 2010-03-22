@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.28 2010/03/22 13:45:46 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.29 2010/03/22 18:01:05 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -57,7 +57,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -542,7 +542,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 				&& !isInitialized()) {
 			final Session session = (Session) ((AbstractPersistentCollection) delegate)
 					.getSession();
-			if (session != null) {
+			if (session != null && session.isOpen() ) {
 				final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
 				final QueryableCollection persister = new SessionFactoryHelper(
 						(SessionFactoryImplementor) session.getSessionFactory())
