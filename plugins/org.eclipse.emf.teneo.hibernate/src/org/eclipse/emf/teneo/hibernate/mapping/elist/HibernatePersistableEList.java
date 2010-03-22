@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.30 2010/03/22 21:20:36 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.31 2010/03/22 23:30:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -33,10 +33,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -57,7 +59,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -538,8 +540,18 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 	@Override
 	protected int delegateSize() {
+		
 		if (getDelegate() instanceof AbstractPersistentCollection
 				&& !isInitialized()) {
+			PersistentStoreAdapter adapter = null;
+			if (getOwner() instanceof EObject) {
+				adapter = HbUtil.getPersistentStoreAdapter(((EObject)getOwner()));
+				final Integer size = adapter.getCollectionSize(getEStructuralFeature());
+				if (size != null) {
+					return size;
+				}
+			}
+
 			final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
 			final SessionImplementor session = ((AbstractPersistentCollection) persistentCollection)
 					.getSession();
@@ -549,9 +561,12 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 						.getCollectionPersister(persistentCollection.getRole());
 				final Type collectionElementType = persister.getElementType();
 				if (collectionElementType.isEntityType()) {
-					return ((Number) ((Session) session).createFilter(
+					final int size = ((Number) ((Session) session).createFilter(
 							getDelegate(), "select count(*)").uniqueResult())
 							.intValue();
+					if (adapter != null) {
+						adapter.setCollectionSize(getEStructuralFeature(), size);
+					}
 				}
 			}
 		}
