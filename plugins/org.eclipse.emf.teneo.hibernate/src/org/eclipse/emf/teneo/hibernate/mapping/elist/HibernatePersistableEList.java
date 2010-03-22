@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.29 2010/03/22 18:01:05 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.30 2010/03/22 21:20:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -57,7 +57,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -540,21 +540,30 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 	protected int delegateSize() {
 		if (getDelegate() instanceof AbstractPersistentCollection
 				&& !isInitialized()) {
-			final Session session = (Session) ((AbstractPersistentCollection) delegate)
+			final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
+			final SessionImplementor session = ((AbstractPersistentCollection) persistentCollection)
 					.getSession();
-			if (session != null && session.isOpen() ) {
-				final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
+			if (isConnectedToSession(session)) {
 				final QueryableCollection persister = new SessionFactoryHelper(
-						(SessionFactoryImplementor) session.getSessionFactory())
+						session.getFactory())
 						.getCollectionPersister(persistentCollection.getRole());
 				final Type collectionElementType = persister.getElementType();
 				if (collectionElementType.isEntityType()) {
-					return ((Number) session.createFilter(getDelegate(),
-							"select count(*)").uniqueResult()).intValue();
+					return ((Number) ((Session) session).createFilter(
+							getDelegate(), "select count(*)").uniqueResult())
+							.intValue();
 				}
 			}
 		}
 		return delegateList().size();
+	}
+
+	private final boolean isConnectedToSession(SessionImplementor session) {
+		final PersistentCollection persistentCollection = (PersistentCollection) getDelegate();
+		return session != null
+				&& session.isOpen()
+				&& session.getPersistenceContext().containsCollection(
+						persistentCollection);
 	}
 
 	@Override
