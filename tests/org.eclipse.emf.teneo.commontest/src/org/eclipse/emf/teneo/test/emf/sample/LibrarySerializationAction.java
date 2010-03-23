@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibrarySerializationAction.java,v 1.9 2010/02/06 20:50:51 mtaal Exp $
+ * $Id: LibrarySerializationAction.java,v 1.10 2010/03/23 16:35:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -45,7 +45,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * errors).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class LibrarySerializationAction extends AbstractTestAction {
 	/**
@@ -80,8 +80,11 @@ public class LibrarySerializationAction extends AbstractTestAction {
 			store.beginTransaction();
 			LibraryImpl lib = (LibraryImpl) store.getObject(Library.class);
 			assertEquals(2, lib.getBooks().size());
+			// load the list
+			assertTrue(lib.getBooks().get(0) != null);
 			assertEquals(1, lib.getWriters().size());
 			assertEquals(2, (lib.getWriters().get(0)).getBooks().size());
+			assertTrue(null != (lib.getWriters().get(0)).getBooks().get(0));
 			serialize(lib, "two");
 			store.commitTransaction();
 		}
