@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.10 2010/03/21 14:16:12 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.11 2010/03/23 16:21:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -45,7 +45,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -110,6 +110,26 @@ public class HbExtraLazyPersistableEList<E> extends
 		delegateList().clear();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang .Object)
+	 */
+	@Override
+	protected boolean delegateContains(Object object) {
+		return delegateList().contains(object);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java. util.Collection)
+	 */
+	@Override
+	protected boolean delegateContainsAll(Collection<?> collection) {
+		return delegateList().containsAll(collection);
+	}
+	
 	/** Returns the underlying elist */
 	@Override
 	protected List<E> delegateList() {

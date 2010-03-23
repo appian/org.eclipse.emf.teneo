@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.32 2010/03/23 01:42:23 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.33 2010/03/23 16:21:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -59,7 +59,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -560,7 +560,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 						session.getFactory())
 						.getCollectionPersister(persistentCollection.getRole());
 				final Type collectionElementType = persister.getElementType();
-				if (collectionElementType.isEntityType()) {
+				// it seems that hibernate gets confused when there is a filter defined on
+				// the session, see the EmployeeAction test which fails in this case
+				if (collectionElementType.isEntityType() && session.getEnabledFilters().isEmpty()) {
 					final int size = ((Number) ((Session) session).createFilter(
 							getDelegate(), "select count(*)").uniqueResult())
 							.intValue();
