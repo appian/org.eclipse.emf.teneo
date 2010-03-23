@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.31 2010/03/22 23:30:55 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.32 2010/03/23 01:42:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -59,7 +59,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -567,6 +567,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 					if (adapter != null) {
 						adapter.setCollectionSize(getEStructuralFeature(), size);
 					}
+					return size;
 				}
 			}
 		}
