@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.33 2010/03/23 16:21:45 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.34 2010/03/24 17:32:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -59,7 +59,7 @@ import org.hibernate.type.Type;
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements
@@ -402,7 +402,7 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 		if (isPersistencyWrapped()) {
 			return ((PersistentCollection) delegate).getOwner();
 		}
-		return null;
+		return getEObject();
 	}
 
 	public Collection<?> getQueuedOrphans(String entityName) {
@@ -540,42 +540,19 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 	@Override
 	protected int delegateSize() {
-		
-		if (getDelegate() instanceof AbstractPersistentCollection
-				&& !isInitialized()) {
-			PersistentStoreAdapter adapter = null;
-			if (getOwner() instanceof EObject) {
-				adapter = HbUtil.getPersistentStoreAdapter(((EObject)getOwner()));
-				final Integer size = adapter.getCollectionSize(getEStructuralFeature());
-				if (size != null) {
-					return size;
-				}
-			}
-
-			final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
-			final SessionImplementor session = ((AbstractPersistentCollection) persistentCollection)
-					.getSession();
-			if (isConnectedToSession(session)) {
-				final QueryableCollection persister = new SessionFactoryHelper(
-						session.getFactory())
-						.getCollectionPersister(persistentCollection.getRole());
-				final Type collectionElementType = persister.getElementType();
-				// it seems that hibernate gets confused when there is a filter defined on
-				// the session, see the EmployeeAction test which fails in this case
-				if (collectionElementType.isEntityType() && session.getEnabledFilters().isEmpty()) {
-					final int size = ((Number) ((Session) session).createFilter(
-							getDelegate(), "select count(*)").uniqueResult())
-							.intValue();
-					if (adapter != null) {
-						adapter.setCollectionSize(getEStructuralFeature(), size);
-					}
-					return size;
-				}
-			}
-		}
 		return delegateList().size();
 	}
 
+	protected final boolean isConnectedToSession() {
+		if (!(getDelegate() instanceof AbstractPersistentCollection)) {
+			return false;
+		}
+		final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) getDelegate();
+		final SessionImplementor session = ((AbstractPersistentCollection) persistentCollection)
+				.getSession();
+		return isConnectedToSession(session);
+	}
+	
 	private final boolean isConnectedToSession(SessionImplementor session) {
 		final PersistentCollection persistentCollection = (PersistentCollection) getDelegate();
 		return session != null

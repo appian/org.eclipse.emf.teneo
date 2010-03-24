@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.11 2010/03/23 16:21:45 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.12 2010/03/24 17:32:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -28,11 +28,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
+import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
+import org.eclipse.emf.teneo.util.StoreUtil;
+import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
@@ -45,7 +49,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -86,7 +90,24 @@ public class HbExtraLazyPersistableEList<E> extends
 	 */
 	@Override
 	protected void delegateAdd(int index, E object) {
+		if (index == size()) {
+			delegateAdd(object);
+			return;
+		}
+
+		// force a load
+		delegateList().iterator();
+
 		delegateList().add(index, object);
+
+		int newIndex = index;
+		for (Object element : delegateList().subList(index, size())) {
+			// for the new one set the owner
+			if (newIndex == index) {
+				HbUtil.setSyntheticListOwner(getEStructuralFeature(), element, getOwner());
+			}
+			HbUtil.setSyntheticListIndex(getEStructuralFeature(), element, newIndex++);
+		}
 	}
 
 	/*
@@ -97,7 +118,11 @@ public class HbExtraLazyPersistableEList<E> extends
 	 */
 	@Override
 	protected void delegateAdd(E object) {
+		int newIndex = delegateList().size();
 		delegateList().add(object);
+		HbUtil.setSyntheticListIndex(getEStructuralFeature(), object, newIndex);
+		HbUtil.setSyntheticListOwner(getEStructuralFeature(), object,
+				getOwner());
 	}
 
 	/*
@@ -107,13 +132,18 @@ public class HbExtraLazyPersistableEList<E> extends
 	 */
 	@Override
 	protected void delegateClear() {
+		for (Object element : delegateList()) {
+			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), element);
+		}
 		delegateList().clear();
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang .Object)
+	 * @see
+	 * org.eclipse.emf.common.util.DelegatingEList#delegateContains(java.lang
+	 * .Object)
 	 */
 	@Override
 	protected boolean delegateContains(Object object) {
@@ -123,13 +153,15 @@ public class HbExtraLazyPersistableEList<E> extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java. util.Collection)
+	 * @see
+	 * org.eclipse.emf.common.util.DelegatingEList#delegateContainsAll(java.
+	 * util.Collection)
 	 */
 	@Override
 	protected boolean delegateContainsAll(Collection<?> collection) {
 		return delegateList().containsAll(collection);
 	}
-	
+
 	/** Returns the underlying elist */
 	@Override
 	protected List<E> delegateList() {
@@ -151,7 +183,7 @@ public class HbExtraLazyPersistableEList<E> extends
 		final E object = delegateList().get(index);
 		if (callAfterLoadInstance && object instanceof EObject) {
 			final EObject eObject = (EObject) object;
-				afterLoadInstance(eObject);
+			afterLoadInstance(eObject);
 		}
 		return object;
 	}
@@ -163,7 +195,32 @@ public class HbExtraLazyPersistableEList<E> extends
 	 */
 	@Override
 	protected E delegateRemove(int index) {
-		return delegateList().remove(index);
+		if (index == (size() - 1) && !isInitialized() && isConnectedToSession()) {
+			// removing the last one
+			final E result = delegateList().remove(index);
+			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
+			if (getEStructuralFeature() instanceof EReference && ((EReference)getEStructuralFeature()).isContainment()) {
+				// remove the removed object
+				// if the list is not initialized then cascade deletes won't work
+				final Session session = (Session)((PersistentList)getDelegate()).getSession();
+				session.delete(result);
+			}
+			return result;
+		}
+
+		// force a full load
+		delegateList().iterator();
+
+		final E result = delegateList().remove(index);
+		HbUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
+
+		int newIndex = index;
+		for (Object element : delegateList().subList(index, size())) {
+			HbUtil.setSyntheticListIndex(getEStructuralFeature(), element,
+					newIndex++);
+		}
+
+		return result;
 	}
 
 	/*
@@ -174,7 +231,18 @@ public class HbExtraLazyPersistableEList<E> extends
 	 */
 	@Override
 	protected E delegateSet(int index, E object) {
-		return delegateList().set(index, object);
+		final E oldObject = delegateList().set(index, object);
+
+		// clear old object
+		if (oldObject != null) {
+			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
+		}
+
+		// set new object
+		HbUtil.setSyntheticListIndex(getEStructuralFeature(), object, index);
+		HbUtil.setSyntheticListOwner(getEStructuralFeature(), object,
+				getOwner());
+		return oldObject;
 	}
 
 	/**

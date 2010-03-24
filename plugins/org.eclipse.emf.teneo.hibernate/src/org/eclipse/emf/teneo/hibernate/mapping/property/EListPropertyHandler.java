@@ -57,7 +57,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -234,7 +234,18 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 		// is again wrapped by teneo resulting in notifications being send
 		// out by both the teneo wrapper as the wrapped elist
 		if (obj instanceof EList<?>) {
-			return processList(obj);
+			final List<Object> objects =  processList(obj);
+			if (extraLazy) {
+				int index = 0;
+				for (Object object : objects) {
+					if (object instanceof EObject) {
+						final PersistentStoreAdapter elementAdapter = HbUtil.getPersistentStoreAdapter((EObject)object);
+						elementAdapter.setSyntheticProperty(StoreUtil.getExtraLazyInverseIndexPropertyName(eFeature), index);
+						elementAdapter.setSyntheticProperty(StoreUtil.getExtraLazyInversePropertyName(eFeature), owner);
+					}
+					index++;
+				}
+			}
 		}
 
 		// todo maybe throw error in all other cases?

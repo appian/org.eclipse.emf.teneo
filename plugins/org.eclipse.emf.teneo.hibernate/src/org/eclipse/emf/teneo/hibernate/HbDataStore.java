@@ -65,6 +65,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.econtainer.EContainerUserType;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernateFeatureMapEntry;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResourceFactory;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateXMLResourceFactory;
@@ -73,6 +74,7 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.EntityMode;
 import org.hibernate.EntityNameResolver;
+import org.hibernate.FetchMode;
 import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -83,7 +85,9 @@ import org.hibernate.engine.CascadeStyle;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Column;
 import org.hibernate.mapping.Component;
+import org.hibernate.mapping.IndexedCollection;
 import org.hibernate.mapping.ManyToOne;
+import org.hibernate.mapping.MetaAttribute;
 import org.hibernate.mapping.OneToMany;
 import org.hibernate.mapping.OneToOne;
 import org.hibernate.mapping.PersistentClass;
@@ -96,7 +100,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.63 $
+ * @version $Revision: 1.64 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -311,7 +315,9 @@ public abstract class HbDataStore implements DataStore {
 		// now add the econtainer mappings to the contained types, only for
 		// unidirectional container relations
 		addContainerMappings();
-
+		// and add inverse relations for extra lazy
+		addExtraLazyInverseProperties();
+		
 		setTuplizer();
 
 		// set the event listeners
@@ -589,6 +595,120 @@ public abstract class HbDataStore implements DataStore {
 		return result.toArray(new String[result.size()]);
 	}
 
+	/** 
+	 * Extra lazy mapping for lists needs a real property for the list
+	 * index and a real inverse for the other side as well.
+	 * 
+	 * This method iterates over all associations and adds an 
+	 * inverse for the list and set mappings.
+	 */
+	protected void addExtraLazyInverseProperties() {
+		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
+			final PersistentClass pc = (PersistentClass) pcs.next();
+			
+			// copy to prevent concurrent modification
+			final Iterator<?> propIt = pc.getPropertyIterator();
+			final List<Property> props = new ArrayList<Property>();
+			while (propIt.hasNext()) {
+				final Property prop = (Property) propIt.next();
+				props.add(prop);
+			}
+			
+			for (Property prop : props) {
+				EClass eClass = null;
+				if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) == null) {
+					if (pc.getEntityName() != null) {
+						eClass = getEntityNameStrategy().toEClass(pc.getEntityName());
+					} else {
+						eClass = EModelResolver.instance().getEClass(pc.getMappedClass());
+					}
+				}
+
+				final EStructuralFeature ef = eClass == null ? null : StoreUtil.getEStructuralFeature(eClass, prop
+						.getName());
+				if (ef != null && ef instanceof EReference && prop.getValue() instanceof Collection) {
+					final Collection collection = (Collection)prop.getValue();
+					final EReference eReference = (EReference)ef;
+					
+					// only work for extra lazy
+					if (!collection.isExtraLazy()) {
+						continue;
+					}
+										
+					collection.setInverse(true);
+					
+					// add an opposite index
+					if (collection.isIndexed() && collection.getElement() instanceof OneToMany && !collection.isMap()) {
+
+						IndexedCollection indexedCollection = (IndexedCollection)collection;
+						final Column column = (Column)indexedCollection.getIndex().getColumnIterator().next();
+						
+						final Property indexProperty = new Property();
+						indexProperty.setName(StoreUtil.getExtraLazyInverseIndexPropertyName(ef));
+						final Map<Object, Object> metas = new HashMap<Object, Object>();
+						final MetaAttribute metaAttribute = new MetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR);
+						metaAttribute.addValue("true");
+						metas.put(HbConstants.SYNTHETIC_PROPERTY_INDICATOR, metaAttribute);
+						indexProperty.setMetaAttributes(metas);
+						indexProperty.setNodeName(indexProperty.getName());
+						indexProperty.setPropertyAccessorName(SyntheticPropertyHandler.class.getName());
+						
+						final Value elementValue = collection.getElement();
+						final OneToMany oneToMany = (OneToMany)elementValue;
+
+						final PersistentClass elementPC = oneToMany.getAssociatedClass();
+						final SimpleValue sv = new SimpleValue(elementPC.getTable());
+						sv.setTypeName("integer");
+						final Column svColumn = new Column(column.getName());
+						sv.addColumn(svColumn);
+						elementPC.getTable().addColumn(svColumn);
+						svColumn.setValue(sv);
+						indexProperty.setValue(sv);
+						elementPC.addProperty(indexProperty);
+					}
+					
+					// and add an eopposite
+					if (eReference.getEOpposite() == null) {
+
+						final Value elementValue = collection.getElement();
+						final OneToMany oneToMany = (OneToMany)elementValue;
+						final PersistentClass elementPC = oneToMany.getAssociatedClass();
+
+						final Property inverseRefProperty = new Property();
+						inverseRefProperty.setName(StoreUtil.getExtraLazyInversePropertyName(ef));
+						final Map<Object, Object> metas = new HashMap<Object, Object>();
+						final MetaAttribute metaAttribute = new MetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR);
+						metaAttribute.addValue("true");
+						metas.put(HbConstants.SYNTHETIC_PROPERTY_INDICATOR, metaAttribute);
+						inverseRefProperty.setMetaAttributes(metas);
+						inverseRefProperty.setNodeName(inverseRefProperty.getName());
+						inverseRefProperty.setPropertyAccessorName(SyntheticPropertyHandler.class.getName());
+						inverseRefProperty.setLazy(false);
+						
+						final ManyToOne mto = new ManyToOne(elementPC.getTable());
+						mto.setReferencedEntityName(pc.getEntityName());
+						mto.setLazy(false);
+						mto.setFetchMode(FetchMode.SELECT);
+						
+						inverseRefProperty.setValue(mto);
+						final Iterator<?> it = collection.getKey().getColumnIterator();
+						while (it.hasNext()) {
+							final Column originalColumn = (Column)it.next();
+							final Column newColumn = new Column(originalColumn.getName());
+							mto.addColumn(newColumn);
+							newColumn.setValue(mto);
+							elementPC.getTable().addColumn(newColumn);
+						}
+						mto.createForeignKey();
+						elementPC.addProperty(inverseRefProperty);						
+					}
+					
+				}
+			}
+		}
+			
+	}
+	
 	/** Adds a econtainer mapping to the class mapping */
 	protected void addContainerMappings() {
 		if (getPersistenceOptions().isDisableEContainerMapping()) {
