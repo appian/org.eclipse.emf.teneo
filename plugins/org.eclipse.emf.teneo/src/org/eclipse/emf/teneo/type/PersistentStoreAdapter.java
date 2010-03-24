@@ -12,11 +12,12 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.6 2010/03/22 23:30:57 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.7 2010/03/24 17:33:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,20 +25,22 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
- * Keeps a list of PersistentLists by efeature. Is used when a new object is persisted and the OR-layer wants to replace
- * the list implementation.
+ * Keeps a list of PersistentLists by efeature. Is used when a new object is
+ * persisted and the OR-layer wants to replace the list implementation.
  * 
- * This adapter keeps the PersistentList and ensures that any updates in the original list are also done in the
- * persistent store.
+ * This adapter keeps the PersistentList and ensures that any updates in the
+ * original list are also done in the persistent store.
  * 
- * This adapter only operates in case the target object is not read from the persistent store but is persisted there for
- * the first time.
+ * This adapter only operates in case the target object is not read from the
+ * persistent store but is persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -50,7 +53,10 @@ public class PersistentStoreAdapter implements Adapter {
 
 	private Map<EStructuralFeature, Integer> collectionSizesByEStructuralFeature = new HashMap<EStructuralFeature, Integer>();
 
-	public void addStoreCollection(EStructuralFeature eFeature, Object storeCollection) {
+	private Map<String, Object> syntheticProperties = new HashMap<String, Object>();
+
+	public void addStoreCollection(EStructuralFeature eFeature,
+			Object storeCollection) {
 		// note that when refresh is called on a persisted object
 		// then this call replaces the current collection
 		storeCollections.put(eFeature, storeCollection);
@@ -67,7 +73,7 @@ public class PersistentStoreAdapter implements Adapter {
 	public Integer getCollectionSize(EStructuralFeature eFeature) {
 		return collectionSizesByEStructuralFeature.get(eFeature);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -80,7 +86,8 @@ public class PersistentStoreAdapter implements Adapter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
+	 * @see
+	 * org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
 	public boolean isAdapterForType(Object type) {
 		return false;
@@ -89,47 +96,54 @@ public class PersistentStoreAdapter implements Adapter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common .notify.Notification)
+	 * @see
+	 * org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common
+	 * .notify.Notification)
 	 */
 	@SuppressWarnings("unchecked")
 	public void notifyChanged(Notification notification) {
-		final EStructuralFeature eFeature = (EStructuralFeature) notification.getFeature();
-		
+		final EStructuralFeature eFeature = (EStructuralFeature) notification
+				.getFeature();
 		// reset the size with every call
 		collectionSizesByEStructuralFeature.remove(eFeature);
-		
+
 		final Object collectionObject = storeCollections.get(eFeature);
 		if (collectionObject == null) {
 			return;
 		}
 
 		@SuppressWarnings("rawtypes")
-		final List<Object> list = (collectionObject instanceof List ? (List<Object>) collectionObject : null);
+		final List<Object> list = (collectionObject instanceof List ? (List<Object>) collectionObject
+				: null);
 		final Map<Object, Object> map = (collectionObject instanceof Map<?, ?> ? (Map<Object, Object>) collectionObject
 				: null);
 
 		switch (notification.getEventType()) {
 		case Notification.ADD:
 			if (list != null) {
+				final Object replacedValue = replaceValue(notification
+						.getNewValue(), eFeature);
+				int newIndex = list.size();
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.add(notification.getPosition(), replaceValue(notification.getNewValue(), eFeature));
+					list.add(notification.getPosition(), replacedValue);
+					newIndex = notification.getPosition();
 				} else {
-					list.add(replaceValue(notification.getNewValue(), eFeature));
+					list.add(replacedValue);
 				}
 			}
 			if (map != null) {
-				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getNewValue();
+				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification
+						.getNewValue();
 				map.put(entry.getKey(), entry.getValue());
 			}
 			break;
 		case Notification.ADD_MANY:
 			if (list != null) {
+				List<Object> replacedValues = new ArrayList<Object>();
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.addAll(notification.getPosition(), replaceValues((List<Object>) notification.getNewValue(),
-							eFeature));
-
+					list.addAll(notification.getPosition(), replacedValues);
 				} else {
-					list.addAll(replaceValues((List<Object>) notification.getNewValue(), eFeature));
+					list.addAll(replacedValues);
 				}
 			}
 			if (map != null) {
@@ -144,17 +158,20 @@ public class PersistentStoreAdapter implements Adapter {
 				if (notification.getPosition() != Notification.NO_INDEX) {
 					list.remove(notification.getPosition());
 				} else {
-					list.remove(replaceValue(notification.getOldValue(), eFeature));
+					list.remove(replaceValue(notification.getOldValue(),
+							eFeature));
 				}
 			}
 			if (map != null) {
-				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification.getOldValue();
+				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification
+						.getOldValue();
 				map.remove(entry.getKey());
 			}
 			break;
 		case Notification.REMOVE_MANY:
 			if (list != null) {
-				list.removeAll(replaceValues((List<Object>) notification.getOldValue(), eFeature));
+				list.removeAll(replaceValues((List<Object>) notification
+						.getOldValue(), eFeature));
 			}
 			if (map != null) {
 				for (Object o : (List<?>) notification.getOldValue()) {
@@ -169,7 +186,8 @@ public class PersistentStoreAdapter implements Adapter {
 				final int newPosition = notification.getPosition();
 				final Object o = list.remove(oldPosition);
 				if (o != notification.getNewValue()) {
-					throw new IllegalStateException("Persistent list and EList are out of sync");
+					throw new IllegalStateException(
+							"Persistent list and EList are out of sync");
 				}
 				list.add(newPosition, o);
 			}
@@ -177,7 +195,8 @@ public class PersistentStoreAdapter implements Adapter {
 		case Notification.SET:
 			if (list != null) {
 				final int position = notification.getPosition();
-				list.set(position, replaceValue(notification.getNewValue(), eFeature));
+				list.set(position, replaceValue(notification.getNewValue(),
+						eFeature));
 			}
 			break;
 		}
@@ -186,7 +205,9 @@ public class PersistentStoreAdapter implements Adapter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common .notify.Notifier)
+	 * @see
+	 * org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common
+	 * .notify.Notifier)
 	 */
 	public void setTarget(Notifier newTarget) {
 		target = newTarget;
@@ -218,7 +239,16 @@ public class PersistentStoreAdapter implements Adapter {
 		return value;
 	}
 
-	protected List<Object> replaceValues(List<Object> values, EStructuralFeature eFeature) {
+	protected List<Object> replaceValues(List<Object> values,
+			EStructuralFeature eFeature) {
 		return values;
+	}
+
+	public Object getSyntheticProperty(String property) {
+		return syntheticProperties.get(property);
+	}
+
+	public void setSyntheticProperty(String property, Object value) {
+		syntheticProperties.put(property, value);
 	}
 }

@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.28 2010/02/04 11:03:01 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.29 2010/03/24 17:33:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -54,7 +54,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 
 public class StoreUtil {
@@ -75,6 +75,17 @@ public class StoreUtil {
 
 	/** The Annotation source name */
 	public static final String ANNOTATION_SOURCE = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+
+	public static String getExtraLazyInversePropertyName(
+			EStructuralFeature eFeature) {
+		return eFeature.getEContainingClass().getName()
+				+ eFeature.getName();
+	}
+
+	public static String getExtraLazyInverseIndexPropertyName(
+			EStructuralFeature eFeature) {
+		return getExtraLazyInversePropertyName(eFeature) + "idx";
+	}
 
 	/** Returns true if the passed EAttribute is a qname */
 	public static boolean isQName(EAttribute eAttribute) {
