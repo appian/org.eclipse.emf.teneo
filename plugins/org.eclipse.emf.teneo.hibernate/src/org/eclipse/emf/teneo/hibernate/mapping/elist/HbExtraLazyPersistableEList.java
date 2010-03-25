@@ -11,14 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.12 2010/03/24 17:32:41 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.13 2010/03/25 00:12:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -31,11 +30,7 @@ import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
-import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
-import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
-import org.eclipse.emf.teneo.util.AssertUtil;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
@@ -49,7 +44,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -104,9 +99,11 @@ public class HbExtraLazyPersistableEList<E> extends
 		for (Object element : delegateList().subList(index, size())) {
 			// for the new one set the owner
 			if (newIndex == index) {
-				HbUtil.setSyntheticListOwner(getEStructuralFeature(), element, getOwner());
+				HbUtil.setSyntheticListOwner(getEStructuralFeature(), element,
+						getOwner());
 			}
-			HbUtil.setSyntheticListIndex(getEStructuralFeature(), element, newIndex++);
+			HbUtil.setSyntheticListIndex(getEStructuralFeature(), element,
+					newIndex++);
 		}
 	}
 
@@ -199,10 +196,13 @@ public class HbExtraLazyPersistableEList<E> extends
 			// removing the last one
 			final E result = delegateList().remove(index);
 			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
-			if (getEStructuralFeature() instanceof EReference && ((EReference)getEStructuralFeature()).isContainment()) {
+			if (getEStructuralFeature() instanceof EReference
+					&& ((EReference) getEStructuralFeature()).isContainment()) {
 				// remove the removed object
-				// if the list is not initialized then cascade deletes won't work
-				final Session session = (Session)((PersistentList)getDelegate()).getSession();
+				// if the list is not initialized then cascade deletes won't
+				// work
+				final Session session = (Session) ((PersistentList) getDelegate())
+						.getSession();
 				session.delete(result);
 			}
 			return result;
