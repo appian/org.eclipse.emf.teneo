@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEList.java,v 1.34 2010/03/24 17:32:42 mtaal Exp $
+ * $Id: HibernatePersistableEList.java,v 1.35 2010/03/25 01:05:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -33,33 +33,27 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
-import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.resource.StoreResource;
-import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentIdentifierBag;
 import org.hibernate.collection.PersistentList;
-import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.engine.SessionImplementor;
-import org.hibernate.hql.ast.util.SessionFactoryHelper;
 import org.hibernate.loader.CollectionAliases;
 import org.hibernate.persister.collection.CollectionPersister;
-import org.hibernate.persister.collection.QueryableCollection;
 import org.hibernate.type.Type;
 
 /**
  * Implements the hibernate persistable elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 
 public class HibernatePersistableEList<E> extends PersistableEList<E> implements

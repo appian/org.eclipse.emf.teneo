@@ -57,7 +57,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -290,7 +290,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 
 		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) target);
-		if (!adapter.isTargetCreatedByORM()) {
+		if (!adapter.isTargetCreatedByORM() && !(value instanceof EList<?>)) {
 			adapter.addStoreCollection(eFeature, value);
 			return;
 		}
