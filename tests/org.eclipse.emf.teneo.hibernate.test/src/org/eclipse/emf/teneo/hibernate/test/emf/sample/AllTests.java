@@ -55,18 +55,24 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.111 $
+ * @version $Revision: 1.112 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(TestLazyUtilsAction.class);
+		suite.addTestSuite(LibraryExtraLazyAction.class);
+		suite.addTestSuite(LibraryExtraLazyMoreAction.class);
+		suite.addTestSuite(LibrarySerializationAction.class);		
+		suite.addTestSuite(EmployeeAction.class);
+		suite.addTestSuite(LibraryTest.class);
+		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(FleetEAVAction.class);
 		suite.addTestSuite(LibraryEAVResourceAction.class);
 		suite.addTestSuite(TestDoubleEAV.class);
 		suite.addTestSuite(LibrarySessionControllerAction.class);
-		suite.addTestSuite(LibraryTest.class);
 		suite.addTestSuite(ClaimAction.class);
 		suite.addTestSuite(DynamicEAVAction.class);
 		suite.addTestSuite(DynamicAction.class);
@@ -87,7 +93,6 @@ public class AllTests {
 		suite.addTestSuite(LibrarySessionControllerAddContentAction.class);
 
 		// suite.addTestSuite(LibraryLargeAction.class);
-		suite.addTestSuite(LibraryResourceAction.class);
 		suite.addTestSuite(LibraryNotifyingTestAction.class);
 		suite.addTestSuite(LibraryContainerFeatureIDFeatureIDAction.class);
 		suite.addTestSuite(LibraryContainerFeatureIDBothAction.class);
@@ -101,8 +106,6 @@ public class AllTests {
 		suite.addTestSuite(LibraryInterfaceQueryTest.class);
 
 		suite.addTestSuite(SchoolLibraryTest.class);
-
-		suite.addTestSuite(EmployeeAction.class);
 
 		suite.addTestSuite(ResourceUnloadAction.class);
 
@@ -146,8 +149,6 @@ public class AllTests {
 
 		// suite.addTestSuite(YahooAction.class);
 		suite.addTestSuite(MindMapAction.class);
-
-		suite.addTestSuite(LibrarySerializationAction.class);
 
 		// suite.addTestSuite(GMFNotationAction.class);
 		// this test works with ms sql server but not with mysql

@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestLazyUtilsAction.java,v 1.1 2010/03/24 17:33:56 mtaal Exp $
+ * $Id: TestLazyUtilsAction.java,v 1.2 2010/03/25 00:10:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -36,10 +37,12 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the LazyUtils class.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class TestLazyUtilsAction extends AbstractTestAction {
 
+	private static int BOOK_COUNT = 100;
+	
 	public TestLazyUtilsAction() {
 		super(LibraryPackage.eINSTANCE);
 	}
@@ -47,6 +50,7 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
+		System.err.println(store.getMappingXML());
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library
 		{
@@ -90,6 +94,38 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 			testLazySize(lib.getWriters().get(0).getBooks());
 			store.commitTransaction();
 		}
+		
+		{
+			store.beginTransaction();
+			final Library library = store.getObject(Library.class);
+			final Writer writer = store.getObject(Writer.class);
+			library.getBooks().clear();
+			writer.getBooks().clear();
+			// create and store a BOOK_COUNT books
+			for (int i = 0; i < BOOK_COUNT; i++) {
+				final Book book = factory.createBook();
+				book.setAuthor(writer);
+				book.setPages(i);
+				book.setTitle("bk" + i);
+				book.setCategory(BookCategory.SCIENCE_FICTION_LITERAL);
+				library.getBooks().add(book);
+			}
+			store.commitTransaction();
+		}
+		store.checkNumber(Book.class, BOOK_COUNT);
+		{
+			store.beginTransaction();
+			final Library library = store.getObject(Library.class);
+			final Iterator<Book> books = LazyCollectionUtils.getPagedLoadingIterator(library.getBooks(), 10);
+			int bkCount = 0;
+			while (books.hasNext()) {
+				final Book bk = books.next();
+				assertEquals("bk" + bkCount, bk.getTitle());
+				bkCount++;
+			}
+			checkIsStillLazy(library.getBooks());
+			assertEquals(BOOK_COUNT, bkCount);
+		}		
 	}
 
 	protected void testLazySize(List<?> list) {

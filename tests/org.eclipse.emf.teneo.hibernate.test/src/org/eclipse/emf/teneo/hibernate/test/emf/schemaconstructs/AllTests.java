@@ -23,6 +23,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.ExtensionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.GroupAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ListAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.MixedAction;
+import org.eclipse.emf.teneo.test.emf.schemaconstructs.ModelGroupAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.NestedGroupAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.QNameAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.RestrictionAction;
@@ -35,13 +36,16 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(ModelGroupAction.class);
+		suite.addTestSuite(MixedAction.class);
+		
 		suite.addTestSuite(SubstitutionEAVAction.class);
 		suite.addTestSuite(EMapAsListEAVAction.class);
 		suite.addTestSuite(GroupEAVAction.class);
@@ -74,7 +78,6 @@ public class AllTests {
 
 		suite.addTestSuite(EcoreAttrsAction.class);
 
-		suite.addTestSuite(MixedAction.class);
 		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(ListAction.class);
 		suite.addTestSuite(SimplefeaturemapAction.class);
