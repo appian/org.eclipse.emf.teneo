@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: OneToManyReferenceAnnotator.java,v 1.19 2010/03/22 21:20:52 mtaal Exp $
+ * $Id: OneToManyReferenceAnnotator.java,v 1.20 2010/03/25 00:12:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -38,40 +38,52 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
-public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
+public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator
+		implements ExtensionPoint {
 
 	// The logger
-	protected static final Log log = LogFactory.getLog(OneToManyReferenceAnnotator.class);
+	protected static final Log log = LogFactory
+			.getLog(OneToManyReferenceAnnotator.class);
 
 	/** Annotate it */
 	public void annotate(PAnnotatedEReference aReference) {
-		final String logStr = aReference.getModelEReference().getName() + "/"
-				+ aReference.getModelEReference().getEContainingClass().getName();
+		final String logStr = aReference.getModelEReference().getName()
+				+ "/"
+				+ aReference.getModelEReference().getEContainingClass()
+						.getName();
 
-		if (aReference.getManyToMany() != null || aReference.getOneToOne() != null || aReference.getManyToOne() != null) {
-			throw new StoreMappingException("The feature/eclass " + logStr + " should be a OneToMany but "
-					+ "it already has a ManyToMany, OneToOne or ManyToOne annotation");
+		if (aReference.getManyToMany() != null
+				|| aReference.getOneToOne() != null
+				|| aReference.getManyToOne() != null) {
+			throw new StoreMappingException(
+					"The feature/eclass "
+							+ logStr
+							+ " should be a OneToMany but "
+							+ "it already has a ManyToMany, OneToOne or ManyToOne annotation");
 		}
 
 		final EReference eReference = (EReference) aReference.getModelElement();
 		OneToMany otm = aReference.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
-			log.debug("EReference + " + logStr + " does not have a onetomany annotation, adding one");
+			log.debug("EReference + " + logStr
+					+ " does not have a onetomany annotation, adding one");
 			otm = getFactory().createOneToMany();
 			aReference.setOneToMany(otm);
 			otm.setEModelElement(eReference);
 
-			if (eReference.isContainment() && getPersistenceOptions().isFetchContainmentEagerly()) {
+			if (eReference.isContainment()
+					&& getPersistenceOptions().isFetchContainmentEagerly()) {
 				otm.setFetch(FetchType.EAGER);
 			} else if (getPersistenceOptions().isFetchAssociationExtraLazy()) {
 				otm.setFetch(FetchType.EXTRA);
 			}
 		} else {
-			log.debug("EReference + " + logStr + " has onetomany, check if defaults should be set");
+			log.debug("EReference + " + logStr
+					+ " has onetomany, check if defaults should be set");
 		}
 
 		// don't set mappedBy explicitly anymore
@@ -86,7 +98,8 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			aReference.setEmbedded(getFactory().createEmbedded());
 		}
 
-		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
+		if (getPersistenceOptions().isSetForeignKeyNames()
+				&& aReference.getForeignKey() == null) {
 			// See bugzilla 211798: handle a specific case when this is a
 			// bidirectional
 			// one-to-many/many-to-one. In that case the foreign key name has to
@@ -95,9 +108,11 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			// annotated reference from the other side to ensure that the same
 			// foreign key name
 			// is used.
-			if (eReference.getEOpposite() != null && !eReference.getEOpposite().isMany()
+			if (eReference.getEOpposite() != null
+					&& !eReference.getEOpposite().isMany()
 					&& !eReference.getEOpposite().isTransient()) {
-				final PAnnotatedEReference aOpposite = aReference.getPaModel().getPAnnotated(eReference.getEOpposite());
+				final PAnnotatedEReference aOpposite = aReference.getPaModel()
+						.getPAnnotated(eReference.getEOpposite());
 				if (aOpposite != null && aOpposite.getTransient() == null) {
 					// don't do anything as otherwise hibernate will create two
 					// fk's with the same name
@@ -117,7 +132,9 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			}
 		}
 
-		if (eReference.isContainment() || getPersistenceOptions().isSetDefaultCascadeOnNonContainment()) {
+		if (eReference.isContainment()
+				|| getPersistenceOptions()
+						.isSetDefaultCascadeOnNonContainment()) {
 			setCascade(otm.getCascade(), eReference.isContainment());
 		}
 
@@ -127,19 +144,23 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 		// Disabled for now as the hibernate map-key does not support enumerates
 		// as the type
 		// for the key when mapping as a true map
-//		if (false && StoreUtil.isMap(eReference) && getPersistenceOptions().isMapEMapAsTrueMap()) {
-//			final EStructuralFeature keyFeature = aReference.getEReferenceType().getEStructuralFeature("key");
-//			if (keyFeature instanceof EAttribute) {
-//				final EAttribute keyAttribute = (EAttribute) keyFeature;
-//				final PAnnotatedEAttribute aKeyAttribute = aReference.getPaModel().getPAnnotated(keyAttribute);
-//				if (keyAttribute.getEType() instanceof EEnum && aKeyAttribute.getEnumerated() == null) {
-//					final Enumerated enumerated = getFactory().createEnumerated();
-//					enumerated.setValue(EnumType.STRING);
-//					enumerated.setEModelElement(keyAttribute);
-//					aKeyAttribute.setEnumerated(enumerated);
-//				}
-//			}
-//		}
+		// if (false && StoreUtil.isMap(eReference) &&
+		// getPersistenceOptions().isMapEMapAsTrueMap()) {
+		// final EStructuralFeature keyFeature =
+		// aReference.getEReferenceType().getEStructuralFeature("key");
+		// if (keyFeature instanceof EAttribute) {
+		// final EAttribute keyAttribute = (EAttribute) keyFeature;
+		// final PAnnotatedEAttribute aKeyAttribute =
+		// aReference.getPaModel().getPAnnotated(keyAttribute);
+		// if (keyAttribute.getEType() instanceof EEnum &&
+		// aKeyAttribute.getEnumerated() == null) {
+		// final Enumerated enumerated = getFactory().createEnumerated();
+		// enumerated.setValue(EnumType.STRING);
+		// enumerated.setEModelElement(keyAttribute);
+		// aKeyAttribute.setEnumerated(enumerated);
+		// }
+		// }
+		// }
 
 		// NOTE Sometimes EMF generated getters/setters have a
 		// very generic type (EObject), if the type can be derived here then
@@ -151,35 +172,47 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 
 		// set unique and indexed
 		if (!otmWasSet) {
-			log.debug("Setting indexed and unique from ereference because otm was not set manually!");
+			log
+					.debug("Setting indexed and unique from ereference because otm was not set manually!");
 			// note force a join table in case of idbag!
 			otm.setIndexed(!getPersistenceOptions().alwaysMapListAsBag()
-					&& !getPersistenceOptions().alwaysMapListAsIdBag() && eReference.isOrdered()
+					&& !getPersistenceOptions().alwaysMapListAsIdBag()
+					&& eReference.isOrdered()
 					&& aReference.getOrderBy() == null);
 			// in case of containment it is always unique
 			// in case optionidbag then ignore the unique attribute on the
 			// ereference
-			otm.setUnique(eReference.isContainment()
-					|| (!getPersistenceOptions().alwaysMapListAsIdBag() && eReference.isUnique()));
+			otm
+					.setUnique(eReference.isContainment()
+							|| (!getPersistenceOptions().alwaysMapListAsIdBag() && eReference
+									.isUnique()));
 
 			if (aReference.getModelEReference().getEOpposite() != null) {
-				log.debug("Setting unique because is bidirectional (has eopposite) otm");
+				log
+						.debug("Setting unique because is bidirectional (has eopposite) otm");
 				otm.setUnique(true);
 			}
-		} else if (!otm.isUnique() && !eReference.isUnique() && aReference.getModelEReference().getEOpposite() != null) {
-			log.warn("The EReference " + logStr
-					+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
+		} else if (!otm.isUnique() && !eReference.isUnique()
+				&& aReference.getModelEReference().getEOpposite() != null) {
+			log
+					.warn("The EReference "
+							+ logStr
+							+ " is not unique (allows duplicates) but it is bi-directional, this is not logical");
 		}
 
 		// only use a jointable if the relation is non unique
-		final boolean isEObject = EntityNameStrategy.EOBJECT_ECLASS_NAME.compareTo(otm.getTargetEntity()) == 0;
+		final boolean isEObject = EntityNameStrategy.EOBJECT_ECLASS_NAME
+				.compareTo(otm.getTargetEntity()) == 0;
 		// in case of eobject always a join table is required
-		boolean mapJoinTable = aReference.getJoinTable() != null || isEObject
-				|| (getPersistenceOptions().isJoinTableForNonContainedAssociations() && !eReference.isContainment())
-				|| !otm.isUnique();
+		boolean mapJoinTable = aReference.getJoinTable() != null
+				|| isEObject
+				|| (getPersistenceOptions()
+						.isJoinTableForNonContainedAssociations() && !eReference
+						.isContainment()) || !otm.isUnique();
 
 		// also always map join table if the one refered to is an EAV
-		mapJoinTable |= (aReference.getAReferenceType() != null && aReference.getAReferenceType().getEavMapping() != null);
+		mapJoinTable |= (aReference.getAReferenceType() != null && aReference
+				.getAReferenceType().getEavMapping() != null);
 
 		if (mapJoinTable) {
 			JoinTable joinTable = aReference.getJoinTable();
@@ -191,35 +224,46 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 
 			// see remark in manytomany about naming of jointables
 			if (joinTable.getName() == null) {
-				joinTable.setName(getSqlNameStrategy().getJoinTableName(aReference));
+				joinTable.setName(getSqlNameStrategy().getJoinTableName(
+						aReference));
 			}
 
 			// note joincolumns in jointable can be generated automatically by
 			// hib/jpox. need to explicitly do this in case of
 			// composite id
 			if (joinTable.getJoinColumns().size() == 0) {
-				final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, false);
-				joinTable.getJoinColumns().addAll(getJoinColumns(names, false, true, otm));
+				final List<String> names = getSqlNameStrategy()
+						.getJoinTableJoinColumns(aReference, false);
+				joinTable.getJoinColumns().addAll(
+						getJoinColumns(names, false, true, otm));
 			}
-			if (joinTable.getInverseJoinColumns().size() == 0 && aReference.getAReferenceType() != null) {
-				final List<String> names = getSqlNameStrategy().getJoinTableJoinColumns(aReference, true);
+			if (joinTable.getInverseJoinColumns().size() == 0
+					&& aReference.getAReferenceType() != null) {
+				final List<String> names = getSqlNameStrategy()
+						.getJoinTableJoinColumns(aReference, true);
 				// todo: should the inverse join columns not be
-				joinTable.getInverseJoinColumns().addAll(getJoinColumns(names, false, true, otm));
+				joinTable.getInverseJoinColumns().addAll(
+						getJoinColumns(names, false, true, otm));
 			}
-		} else if (aReference.getJoinColumns() == null || aReference.getJoinColumns().isEmpty()) { // add
+		} else if (aReference.getJoinColumns() == null
+				|| aReference.getJoinColumns().isEmpty()) { // add
 			boolean borrowJoinColumnsOtherSide = false;
 
 			final EReference eOther = getOpposite(aReference);
 			if (eOther != null) {
-				final PAnnotatedEReference aOther = aReference.getPaModel().getPAnnotated(eOther);
+				final PAnnotatedEReference aOther = aReference.getPaModel()
+						.getPAnnotated(eOther);
 
 				// map the other side, before checking if there are joincolumns
-				getEFeatureAnnotator().getManyToOneReferenceAnnotator().annotate(aOther);
+				getEFeatureAnnotator().getManyToOneReferenceAnnotator()
+						.annotate(aOther);
 
-				if (aOther.getJoinColumns() != null && !aOther.getJoinColumns().isEmpty()) {
+				if (aOther.getJoinColumns() != null
+						&& !aOther.getJoinColumns().isEmpty()) {
 					borrowJoinColumnsOtherSide = true;
 					for (JoinColumn jc : aOther.getJoinColumns()) {
-						aReference.getJoinColumns().add((JoinColumn) EcoreUtil.copy(jc));
+						aReference.getJoinColumns().add(
+								(JoinColumn) EcoreUtil.copy(jc));
 					}
 					// repair updatable/insertable
 					for (JoinColumn jc : aReference.getJoinColumns()) {
@@ -229,8 +273,11 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 				}
 			}
 			if (!borrowJoinColumnsOtherSide) {
-				final List<String> names = getSqlNameStrategy().getOneToManyEReferenceJoinColumns(aReference);
-				aReference.getJoinColumns().addAll(getJoinColumns(names, aReference.getEmbedded() == null, true, otm));
+				final List<String> names = getSqlNameStrategy()
+						.getOneToManyEReferenceJoinColumns(aReference);
+				aReference.getJoinColumns().addAll(
+						getJoinColumns(names, aReference.getEmbedded() == null,
+								true, otm));
 			}
 
 			// In case of a bidirectional relation without a join table
@@ -244,12 +291,18 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 			// indexed collections
 			boolean thisEAVMapped = aReference.getPaEClass().getEavMapping() != null;
 			if (otm.isList() && eOther != null && !thisEAVMapped) {
-				final PAnnotatedEReference aOpposite = getAnnotatedModel().getPAnnotated(eOther);
+				final PAnnotatedEReference aOpposite = getAnnotatedModel()
+						.getPAnnotated(eOther);
 				if (aReference.getTransient() == null) {
 					if (aOpposite.getJoinColumns().size() > 0) {
 						for (JoinColumn jc : aOpposite.getJoinColumns()) {
-							jc.setInsertable(false);
-							jc.setUpdatable(false);
+							if (otm.getFetch().equals(FetchType.EXTRA)) {
+								jc.setInsertable(true);
+								jc.setUpdatable(true);
+							} else {
+								jc.setInsertable(false);
+								jc.setUpdatable(false);
+							}
 						}
 					}
 				}
@@ -265,18 +318,21 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator implement
 
 		// now handle a special case, the aReference is a map
 		// and there is a mapped by and a one to many
-		if (aReference.getOneToMany() == null || aReference.getOneToMany().getMappedBy() == null) {
+		if (aReference.getOneToMany() == null
+				|| aReference.getOneToMany().getMappedBy() == null) {
 			return null;
 		}
 
 		final EClass eclass = eReference.getEReferenceType();
-		if (getPersistenceOptions().isMapEMapAsTrueMap() && StoreUtil.isMapEntry(eclass)) {
+		if (getPersistenceOptions().isMapEMapAsTrueMap()
+				&& StoreUtil.isMapEntry(eclass)) {
 			EStructuralFeature feature = eclass.getEStructuralFeature("value");
 			if (feature instanceof EReference) {
 				final String mappedBy = aReference.getOneToMany().getMappedBy();
 				final EReference valueERef = (EReference) feature;
 				final EClass valueEClass = valueERef.getEReferenceType();
-				final EStructuralFeature ef = valueEClass.getEStructuralFeature(mappedBy);
+				final EStructuralFeature ef = valueEClass
+						.getEStructuralFeature(mappedBy);
 				if (ef == null || ef instanceof EAttribute) {
 					return null;
 				}

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ManyToOneReferenceAnnotator.java,v 1.17 2009/09/14 21:40:14 mtaal Exp $
+ * $Id: ManyToOneReferenceAnnotator.java,v 1.18 2010/03/25 00:12:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -22,6 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
@@ -30,7 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implements ExtensionPoint {
@@ -117,7 +118,7 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 							.isJoinTableForNonContainedAssociations())
 							|| aOpposite.getJoinTable() != null;
 
-					if (!hasJoinTable && aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList()) {
+					if (!hasJoinTable && aOpposite.getOneToMany() != null && aOpposite.getOneToMany().isList() && !aOpposite.getOneToMany().getFetch().equals(FetchType.EXTRA)) {
 						isInsertableUpdatable = false;
 					}
 					// if the refered to is stored as an eav then do the update of the columns from here.

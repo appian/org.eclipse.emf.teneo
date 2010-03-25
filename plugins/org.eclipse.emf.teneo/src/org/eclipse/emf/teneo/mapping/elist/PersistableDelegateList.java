@@ -12,16 +12,18 @@
  *
  * </copyright>
  *
- * $Id: PersistableDelegateList.java,v 1.8 2009/03/30 07:53:04 mtaal Exp $
+ * $Id: PersistableDelegateList.java,v 1.9 2010/03/25 00:12:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.elist;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * A tag which signals that a list is either a persistable map, featuremap or elist.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public interface PersistableDelegateList<E> {
@@ -33,4 +35,6 @@ public interface PersistableDelegateList<E> {
 
 	/** If the delegate has been initialized */
 	public boolean isInitialized();
+	
+	public EStructuralFeature getEStructuralFeature();
 }
