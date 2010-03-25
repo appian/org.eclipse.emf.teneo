@@ -53,6 +53,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<sequential>
 			<eclipse.launch app="buckminster">
 				<args>
+					<jvmarg value="-Xmx756m" />
 					<jvmarg value="-Dbugfix.288796=true" />
 					<arg value="-data" />
 					<arg value="@{workspace}" />
