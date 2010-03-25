@@ -11,16 +11,14 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestLazyUtilsAction.java,v 1.2 2010/03/25 00:10:57 mtaal Exp $
+ * $Id: TestLazyUtilsAction.java,v 1.3 2010/03/25 01:05:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
@@ -37,7 +35,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the LazyUtils class.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class TestLazyUtilsAction extends AbstractTestAction {
 

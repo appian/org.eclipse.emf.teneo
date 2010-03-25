@@ -11,19 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryExtraLazyMoreAction.java,v 1.1 2010/03/24 17:33:56 mtaal Exp $
+ * $Id: LibraryExtraLazyMoreAction.java,v 1.2 2010/03/25 01:05:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
-import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryFactory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
@@ -36,7 +34,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the extra lazy behavior of collections. Tests move, delete, etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 
@@ -89,8 +87,8 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
 			testLazySize(lib.getWriters().get(0).getBooks());
-			final Writer w1 = lib.getWriters().get(0);
-			Book book = store.getObjects(Book.class).get(0);
+			lib.getWriters().get(0);
+			store.getObjects(Book.class).get(0);
 			assertNotNull(lib.getWriters().get(0).getBooks().get(0));
 			store.commitTransaction();
 		}
