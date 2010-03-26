@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.persistence.ManyToMany;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
@@ -100,7 +102,7 @@ import org.hibernate.mapping.Value;
  * Common base class for the standard hb datastore and the entity manager oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -603,6 +605,11 @@ public abstract class HbDataStore implements DataStore {
 	 * inverse for the list and set mappings.
 	 */
 	protected void addExtraLazyInverseProperties() {
+		final Map<String, PersistentClass> persistentClasses = new HashMap<String, PersistentClass>();
+		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
+			final PersistentClass pc = (PersistentClass) pcs.next();
+			persistentClasses.put(pc.getEntityName(), pc);
+		}
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 			
@@ -634,12 +641,19 @@ public abstract class HbDataStore implements DataStore {
 					if (!collection.isExtraLazy()) {
 						continue;
 					}
+					
+					// don't support it on manytomany
+					if (collection.getElement() instanceof ManyToMany) {
+						continue;
+					}
 										
 					collection.setInverse(true);
 					
 					// add an opposite index
-					if (collection.isIndexed() && collection.getElement() instanceof OneToMany && !collection.isMap()) {
+					if (collection.isIndexed() && !collection.isMap()) {
 
+						final Table collectionTable = collection.getCollectionTable();
+						
 						IndexedCollection indexedCollection = (IndexedCollection)collection;
 						final Column column = (Column)indexedCollection.getIndex().getColumnIterator().next();
 						
@@ -654,15 +668,19 @@ public abstract class HbDataStore implements DataStore {
 						indexProperty.setPropertyAccessorName(SyntheticPropertyHandler.class.getName());
 						
 						final Value elementValue = collection.getElement();
-						final OneToMany oneToMany = (OneToMany)elementValue;
+						final PersistentClass elementPC;
+						if (elementValue instanceof OneToMany) {
+							final OneToMany oneToMany = (OneToMany)elementValue;
+							elementPC = oneToMany.getAssociatedClass();							
+						} else {
+							final ManyToOne mto = (ManyToOne)elementValue;
+							elementPC = persistentClasses.get(mto.getReferencedEntityName());
+						}	
 
-						final PersistentClass elementPC = oneToMany.getAssociatedClass();
-						final SimpleValue sv = new SimpleValue(elementPC.getTable());
+						final SimpleValue sv = new SimpleValue(collectionTable);
 						sv.setTypeName("integer");
 						final Column svColumn = new Column(column.getName());
-						sv.addColumn(svColumn);
-						elementPC.getTable().addColumn(svColumn);
-						svColumn.setValue(sv);
+						sv.addColumn(checkColumnExists(collectionTable, svColumn));						
 						indexProperty.setValue(sv);
 						elementPC.addProperty(indexProperty);
 					}
@@ -670,9 +688,17 @@ public abstract class HbDataStore implements DataStore {
 					// and add an eopposite
 					if (eReference.getEOpposite() == null) {
 
+						final Table collectionTable = collection.getCollectionTable();
+
 						final Value elementValue = collection.getElement();
-						final OneToMany oneToMany = (OneToMany)elementValue;
-						final PersistentClass elementPC = oneToMany.getAssociatedClass();
+						final PersistentClass elementPC;
+						if (elementValue instanceof OneToMany) {
+							final OneToMany oneToMany = (OneToMany)elementValue;
+							elementPC = oneToMany.getAssociatedClass();							
+						} else {
+							final ManyToOne mto = (ManyToOne)elementValue;
+							elementPC = persistentClasses.get(mto.getReferencedEntityName());
+						}	
 
 						final Property inverseRefProperty = new Property();
 						inverseRefProperty.setName(StoreUtil.getExtraLazyInversePropertyName(ef));
@@ -685,7 +711,7 @@ public abstract class HbDataStore implements DataStore {
 						inverseRefProperty.setPropertyAccessorName(SyntheticPropertyHandler.class.getName());
 						inverseRefProperty.setLazy(false);
 						
-						final ManyToOne mto = new ManyToOne(elementPC.getTable());
+						final ManyToOne mto = new ManyToOne(collectionTable);
 						mto.setReferencedEntityName(pc.getEntityName());
 						mto.setLazy(false);
 						mto.setFetchMode(FetchMode.SELECT);
@@ -695,9 +721,7 @@ public abstract class HbDataStore implements DataStore {
 						while (it.hasNext()) {
 							final Column originalColumn = (Column)it.next();
 							final Column newColumn = new Column(originalColumn.getName());
-							mto.addColumn(newColumn);
-							newColumn.setValue(mto);
-							elementPC.getTable().addColumn(newColumn);
+							mto.addColumn(checkColumnExists(collectionTable, newColumn));
 						}
 						mto.createForeignKey();
 						elementPC.addProperty(inverseRefProperty);						
