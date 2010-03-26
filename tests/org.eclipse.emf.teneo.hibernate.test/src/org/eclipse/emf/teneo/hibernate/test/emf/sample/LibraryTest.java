@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.17 2010/03/21 12:42:40 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.18 2010/03/26 16:31:06 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -25,6 +25,7 @@ import java.util.Properties;
 
 import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
@@ -41,7 +42,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -129,7 +130,7 @@ public class LibraryTest extends AbstractActionTest {
 			final PersistentCollection persistentCollection = (PersistentCollection)persistableEList.getDelegate();
 			assertFalse(persistentCollection.wasInitialized());
 			assertFalse(persistableEList.isLoaded());
-			int size = list.size();
+			int size = LazyCollectionUtils.size(list);
 			assertTrue(size > 0);
 			assertFalse(persistentCollection.wasInitialized());
 			assertFalse(persistableEList.isLoaded());

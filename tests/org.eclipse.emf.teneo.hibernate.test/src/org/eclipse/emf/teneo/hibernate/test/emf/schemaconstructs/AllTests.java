@@ -36,13 +36,15 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				HibernateTestbed.instance().getConfigurations());
+
+		suite.addTestSuite(EcoreAttrsAction.class);
 		suite.addTestSuite(ModelGroupAction.class);
 		suite.addTestSuite(MixedAction.class);
 		
@@ -75,8 +77,6 @@ public class AllTests {
 		suite.addTestSuite(DurationAction.class);
 
 		suite.addTestSuite(QNameAction.class);
-
-		suite.addTestSuite(EcoreAttrsAction.class);
 
 		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(ListAction.class);
