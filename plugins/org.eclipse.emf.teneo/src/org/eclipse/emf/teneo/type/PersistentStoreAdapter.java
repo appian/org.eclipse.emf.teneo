@@ -12,12 +12,11 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.8 2010/03/25 01:06:13 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.9 2010/03/26 16:30:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +24,7 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Keeps a list of PersistentLists by efeature. Is used when a new object is
@@ -40,7 +37,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persistent store but is persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -135,11 +132,12 @@ public class PersistentStoreAdapter implements Adapter {
 			break;
 		case Notification.ADD_MANY:
 			if (list != null) {
-				List<Object> replacedValues = new ArrayList<Object>();
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.addAll(notification.getPosition(), replacedValues);
+					list.addAll(notification.getPosition(), replaceValues((List<Object>) notification.getNewValue(),
+							eFeature));
+
 				} else {
-					list.addAll(replacedValues);
+					list.addAll(replaceValues((List<Object>) notification.getNewValue(), eFeature));
 				}
 			}
 			if (map != null) {
