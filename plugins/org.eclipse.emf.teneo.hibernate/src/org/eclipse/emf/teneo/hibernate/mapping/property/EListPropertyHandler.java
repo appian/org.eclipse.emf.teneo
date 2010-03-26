@@ -45,6 +45,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
+import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.property.Getter;
@@ -57,7 +58,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -246,6 +247,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 					index++;
 				}
 			}
+			return objects;
 		}
 
 		// todo maybe throw error in all other cases?
@@ -290,7 +292,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 
 		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) target);
-		if (!adapter.isTargetCreatedByORM() && !(value instanceof EList<?>)) {
+		if (!adapter.isTargetCreatedByORM()) {
 			adapter.addStoreCollection(eFeature, value);
 			return;
 		}
@@ -300,7 +302,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				log.debug("Dynamic elist, set using the esettings");
 			}
 			Object currentValue = EcoreAccess.getManyEFeatureValue(eFeature, (BasicEObjectImpl) target);
-
+			
 			if (StoreUtil.isEStoreList(currentValue)) {
 				final EStore eStore = ((InternalEObject) target).eStore();
 				if (eStore.size((InternalEObject) target, eFeature) != -1) {
