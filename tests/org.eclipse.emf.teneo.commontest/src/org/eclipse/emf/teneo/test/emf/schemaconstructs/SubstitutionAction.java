@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SubstitutionAction.java,v 1.6 2010/03/25 00:32:44 mtaal Exp $
+ * $Id: SubstitutionAction.java,v 1.7 2010/03/27 21:14:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for the substitution construction.  
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $ 
+ * @version $Revision: 1.7 $ 
 */
 public class SubstitutionAction extends AbstractTestAction 
 {
@@ -50,8 +50,6 @@ public class SubstitutionAction extends AbstractTestAction
 	/** Creates simple types and tests against */
 	public void doAction(TestStore store)
 	{
-		store.disableDrop();
-		
 		// test a simple type
         final SubstitutionFactory factory = SubstitutionFactory.eINSTANCE;
         final SubstitutionPackage pack = SubstitutionPackage.eINSTANCE;

@@ -20,7 +20,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests extra lazy fetch strategy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ExtraLazyAction extends AbstractTestAction {
 
@@ -64,7 +64,7 @@ public class ExtraLazyAction extends AbstractTestAction {
 			}
 			assertFalse(pList.isInitialized());
 			b.getAuthors().remove(2);
-			assertTrue(pList.isInitialized());
+			assertFalse(pList.isInitialized());
 			int i = 0;
 			for (Writer writer : b.getAuthors()) {
 				assertEquals(writer.getName(), "name" + i);
@@ -80,7 +80,7 @@ public class ExtraLazyAction extends AbstractTestAction {
 			Writer w = factory.createWriter();
 			w.setName("name3");
 			b.getAuthors().add(w);
-			assertTrue(pList.isInitialized());
+			assertFalse(pList.isInitialized());
 			store.store(b);
 			store.commitTransaction();
 		}

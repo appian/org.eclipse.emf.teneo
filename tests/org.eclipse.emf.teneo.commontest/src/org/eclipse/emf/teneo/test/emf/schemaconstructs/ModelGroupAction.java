@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ModelGroupAction.java,v 1.1 2010/03/25 00:11:46 mtaal Exp $
+ * $Id: ModelGroupAction.java,v 1.2 2010/03/27 21:14:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests for the modelgroup construction.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ModelGroupAction extends AbstractTestAction {
 	
@@ -62,6 +62,5 @@ public class ModelGroupAction extends AbstractTestAction {
 	/** Creates simple types and tests against */
 	@Override
 	public void doAction(TestStore store) {
-		store.disableDrop();
 	}
 }
