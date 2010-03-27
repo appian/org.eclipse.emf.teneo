@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.36 2010/03/26 16:31:03 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.37 2010/03/27 21:13:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -90,10 +90,12 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 		if (joinTable != null) {
 			final boolean addInverse = aOpposite != null
 					&& aOpposite.getOneToMany() != null
-					&& aOpposite.getOneToMany().getMappedBy() == null;
+					&& aOpposite.getOneToMany().getMappedBy() == null
+					&& !aOpposite.getOneToMany().getFetch().equals(
+							FetchType.EXTRA);
 
 			currentElement = getHbmContext().getCurrent().addElement("join")
-					.addAttribute("table", joinTable.getName()).addAttribute(
+					.addAttribute("table", getHbmContext().trunc(joinTable.getName())).addAttribute(
 							"inverse", Boolean.toString(addInverse))
 					.addAttribute("optional",
 							Boolean.toString(mto.isOptional()));
