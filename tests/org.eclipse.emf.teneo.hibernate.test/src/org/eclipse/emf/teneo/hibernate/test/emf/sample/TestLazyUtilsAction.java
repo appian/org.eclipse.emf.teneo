@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: TestLazyUtilsAction.java,v 1.3 2010/03/25 01:05:23 mtaal Exp $
+ * $Id: TestLazyUtilsAction.java,v 1.4 2010/03/27 21:14:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -35,7 +35,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the LazyUtils class.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class TestLazyUtilsAction extends AbstractTestAction {
 
@@ -48,7 +48,6 @@ public class TestLazyUtilsAction extends AbstractTestAction {
 	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
-		System.err.println(store.getMappingXML());
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
 		// create a book, writer and library
 		{

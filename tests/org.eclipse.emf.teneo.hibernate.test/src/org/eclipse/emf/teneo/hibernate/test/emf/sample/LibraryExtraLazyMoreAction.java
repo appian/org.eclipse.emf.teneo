@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryExtraLazyMoreAction.java,v 1.2 2010/03/25 01:05:23 mtaal Exp $
+ * $Id: LibraryExtraLazyMoreAction.java,v 1.3 2010/03/27 21:14:43 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -34,7 +34,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the extra lazy behavior of collections. Tests move, delete, etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 
@@ -49,7 +49,6 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 		return props;
 	}
 
-	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
 		final LibraryFactory factory = LibraryFactory.eINSTANCE;
@@ -123,10 +122,10 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			checkIsStillLazy(l1.getBooks());
 			Book oldBk1 = l1.getBooks().remove(3);
 			checkIsStillLazy(l1.getBooks());
-			Book oldBk2 = l1.getBooks().remove(1);
-			checkIsNotLazy(l1.getBooks());
 			l1.getWriters().get(0).getBooks().remove(oldBk1);
 			checkIsNotLazy(l1.getWriters().get(0).getBooks());
+			Book oldBk2 = l1.getBooks().remove(1);
+			checkIsNotLazy(l1.getBooks());
 			l1.getWriters().get(0).getBooks().remove(oldBk2);
 			store.commitTransaction();
 		}
