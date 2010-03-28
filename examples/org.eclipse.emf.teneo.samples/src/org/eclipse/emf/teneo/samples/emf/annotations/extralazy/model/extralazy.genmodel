@@ -10,6 +10,7 @@
     <genClasses ecoreClass="extralazy.ecore#//Book">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extralazy.ecore#//Book/title"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference extralazy.ecore#//Book/authors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extralazy.ecore#//Book/subTitles"/>
     </genClasses>
     <genClasses ecoreClass="extralazy.ecore#//Writer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extralazy.ecore#//Writer/name"/>

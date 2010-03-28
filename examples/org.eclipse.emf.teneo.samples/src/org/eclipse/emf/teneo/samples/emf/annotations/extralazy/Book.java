@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Book.java,v 1.1 2007/07/09 12:55:20 mtaal Exp $
+ * $Id: Book.java,v 1.2 2010/03/28 09:22:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.extralazy;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book#getAuthors <em>Authors</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book#getSubTitles <em>Sub Titles</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,5 +73,23 @@ public interface Book extends EObject {
 	 * @generated
 	 */
 	EList<Writer> getAuthors();
+
+	/**
+	 * Returns the value of the '<em><b>Sub Titles</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sub Titles</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sub Titles</em>' attribute list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.extralazy.ExtralazyPackage#getBook_SubTitles()
+	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(fetch=EXTRA)'"
+	 *        extendedMetaData="kind='element' name='subTitles'"
+	 * @generated
+	 */
+	EList<String> getSubTitles();
 
 } // Book

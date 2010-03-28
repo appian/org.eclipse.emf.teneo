@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtralazyPackage.java,v 1.1 2007/07/09 12:55:20 mtaal Exp $
+ * $Id: ExtralazyPackage.java,v 1.2 2010/03/28 09:22:23 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.extralazy;
 
@@ -88,13 +88,22 @@ public interface ExtralazyPackage extends EPackage {
 	int BOOK__AUTHORS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Sub Titles</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOK__SUB_TITLES = 2;
+
+	/**
 	 * The number of structural features of the '<em>Book</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOK_FEATURE_COUNT = 2;
+	int BOOK_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.impl.WriterImpl <em>Writer</em>}' class.
@@ -156,6 +165,17 @@ public interface ExtralazyPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBook_Authors();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book#getSubTitles <em>Sub Titles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Sub Titles</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book#getSubTitles()
+	 * @see #getBook()
+	 * @generated
+	 */
+	EAttribute getBook_SubTitles();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Writer <em>Writer</em>}'.
@@ -225,6 +245,14 @@ public interface ExtralazyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BOOK__AUTHORS = eINSTANCE.getBook_Authors();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Titles</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOK__SUB_TITLES = eINSTANCE.getBook_SubTitles();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.impl.WriterImpl <em>Writer</em>}' class.

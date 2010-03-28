@@ -12,6 +12,11 @@
 					<xsd:appinfo source="teneo.jpa">@OneToMany(fetch=EXTRA)</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="subTitles" type="xsd:string" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@OneToMany(fetch=EXTRA)</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="Writer">

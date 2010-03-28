@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExtralazyAdapterFactory.java,v 1.1 2007/07/09 12:55:19 mtaal Exp $
+ * $Id: ExtralazyAdapterFactory.java,v 1.2 2010/03/28 09:22:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.extralazy.util;
 
@@ -64,7 +64,7 @@ public class ExtralazyAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BookImpl.java,v 1.1 2007/07/09 12:55:20 mtaal Exp $
+ * $Id: BookImpl.java,v 1.2 2010/03/28 09:22:22 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.extralazy.impl;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book;
@@ -32,6 +33,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Writer;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.impl.BookImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.impl.BookImpl#getAuthors <em>Authors</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.extralazy.impl.BookImpl#getSubTitles <em>Sub Titles</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +69,16 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * @ordered
 	 */
 	protected EList<Writer> authors;
+
+	/**
+	 * The cached value of the '{@link #getSubTitles() <em>Sub Titles</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubTitles()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> subTitles;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,6 +137,18 @@ public class BookImpl extends EObjectImpl implements Book {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getSubTitles() {
+		if (subTitles == null) {
+			subTitles = new EDataTypeEList<String>(String.class, this, ExtralazyPackage.BOOK__SUB_TITLES);
+		}
+		return subTitles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -132,6 +156,8 @@ public class BookImpl extends EObjectImpl implements Book {
 				return getTitle();
 			case ExtralazyPackage.BOOK__AUTHORS:
 				return getAuthors();
+			case ExtralazyPackage.BOOK__SUB_TITLES:
+				return getSubTitles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -152,6 +178,10 @@ public class BookImpl extends EObjectImpl implements Book {
 				getAuthors().clear();
 				getAuthors().addAll((Collection<? extends Writer>)newValue);
 				return;
+			case ExtralazyPackage.BOOK__SUB_TITLES:
+				getSubTitles().clear();
+				getSubTitles().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -170,6 +200,9 @@ public class BookImpl extends EObjectImpl implements Book {
 			case ExtralazyPackage.BOOK__AUTHORS:
 				getAuthors().clear();
 				return;
+			case ExtralazyPackage.BOOK__SUB_TITLES:
+				getSubTitles().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -186,6 +219,8 @@ public class BookImpl extends EObjectImpl implements Book {
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case ExtralazyPackage.BOOK__AUTHORS:
 				return authors != null && !authors.isEmpty();
+			case ExtralazyPackage.BOOK__SUB_TITLES:
+				return subTitles != null && !subTitles.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -202,6 +237,8 @@ public class BookImpl extends EObjectImpl implements Book {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (title: ");
 		result.append(title);
+		result.append(", subTitles: ");
+		result.append(subTitles);
 		result.append(')');
 		return result.toString();
 	}
