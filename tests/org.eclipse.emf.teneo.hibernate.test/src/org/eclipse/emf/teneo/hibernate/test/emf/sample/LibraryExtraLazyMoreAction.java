@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryExtraLazyMoreAction.java,v 1.3 2010/03/27 21:14:43 mtaal Exp $
+ * $Id: LibraryExtraLazyMoreAction.java,v 1.4 2010/03/28 07:55:36 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -34,7 +34,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the extra lazy behavior of collections. Tests move, delete, etc.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 
@@ -164,6 +164,63 @@ public class LibraryExtraLazyMoreAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 		store.checkNumber(Book.class, 0);
+		
+		{
+			store.beginTransaction();
+			final Library lib = store.getObject(Library.class);
+			store.deleteObject(lib);
+			store.commitTransaction();
+		}
+		store.checkNumber(Writer.class, 0);
+		store.checkNumber(Library.class, 0);
+
+		// now test the behavior in case of updating the list before committing
+		{
+
+			final Writer w1 = factory.createWriter();
+			w1.setName("w1");
+			final Writer w2 = factory.createWriter();
+			w2.setName("w2");
+			final Book bk1 = factory.createBook();
+			bk1.setAuthor(w1);
+			bk1.setTitle("bk1");
+			final Book bk2 = factory.createBook();
+			bk2.setAuthor(w1);
+			bk2.setTitle("bk2");
+			final Book bk3 = factory.createBook();
+			bk3.setAuthor(w1);
+			bk3.setTitle("bk3");
+
+			final Library library = factory.createLibrary();
+			library.setName("l1");
+			store.beginTransaction();
+			store.store(library);			
+
+			library.getBooks().add(bk1);
+			library.getBooks().add(bk2);
+			library.getBooks().add(bk3);
+			library.getWriters().add(w1);
+			
+			library.getBooks().move(0, bk3);
+			library.getBooks().remove(1);
+
+			final Book bk4 = factory.createBook();
+			bk4.setAuthor(w1);
+			bk4.setTitle("bk4");
+			library.getBooks().set(0,bk4);
+			w1.getBooks().remove(bk1);
+			w1.getBooks().remove(bk3);
+			
+			store.commitTransaction();
+		}
+		store.checkNumber(Book.class, 2);
+		{
+			store.beginTransaction();
+			final Library lib = store.getObject(Library.class);
+			assertEquals(2, lib.getBooks().size());
+			assertEquals("bk4", lib.getBooks().get(0).getTitle());
+			assertEquals("bk2", lib.getBooks().get(1).getTitle());
+		}
 	}
 
 	protected void testLazySize(List<?> list) {
