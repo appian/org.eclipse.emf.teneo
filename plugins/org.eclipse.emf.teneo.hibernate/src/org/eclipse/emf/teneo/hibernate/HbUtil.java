@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.27 2010/03/24 17:32:40 mtaal Exp $
+ * $Id: HbUtil.java,v 1.28 2010/03/28 07:55:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -56,41 +56,12 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public class HbUtil {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbUtil.class);
-
-	public static void resetSyntheticListInfo(EStructuralFeature eFeature,
-			Object target) {
-		if (target == null) {
-			return;
-		}
-		PersistentStoreAdapter persistentStoreAdapter = HbUtil
-				.getPersistentStoreAdapter((EObject) target);
-		persistentStoreAdapter.setSyntheticProperty(StoreUtil
-				.getExtraLazyInverseIndexPropertyName(eFeature), null);
-		persistentStoreAdapter.setSyntheticProperty(StoreUtil
-				.getExtraLazyInversePropertyName(eFeature), null);
-	}
-
-	public static void setSyntheticListIndex(EStructuralFeature eFeature,
-			Object target, Integer value) {
-		PersistentStoreAdapter persistentStoreAdapter = HbUtil
-				.getPersistentStoreAdapter((EObject) target);
-		persistentStoreAdapter.setSyntheticProperty(StoreUtil
-				.getExtraLazyInverseIndexPropertyName(eFeature), value);
-	}
-
-	public static void setSyntheticListOwner(EStructuralFeature eFeature,
-			Object target, Object owner) {
-		PersistentStoreAdapter persistentStoreAdapter = HbUtil
-				.getPersistentStoreAdapter((EObject) target);
-		persistentStoreAdapter.setSyntheticProperty(StoreUtil
-				.getExtraLazyInversePropertyName(eFeature), owner);
-	}
 
 	/** Encode the id of an eobject */
 	public static String idToString(EObject eobj, HbDataStore hd) {
@@ -289,23 +260,6 @@ public class HbUtil {
 			return null;
 		}
 		return totrim.trim();
-	}
-
-	/**
-	 * Checks if an object has a HibernatePersistentStoreAdapter and if it
-	 * doesn't creates one and returns it.
-	 */
-	public static PersistentStoreAdapter getPersistentStoreAdapter(
-			EObject eObject) {
-		for (Adapter adapter : eObject.eAdapters()) {
-			if (PersistentStoreAdapter.class.isAssignableFrom(adapter
-					.getClass())) {
-				return (PersistentStoreAdapter) adapter;
-			}
-		}
-		final PersistentStoreAdapter adapter = new HibernatePersistentStoreAdapter();
-		eObject.eAdapters().add(adapter);
-		return adapter;
 	}
 
 }

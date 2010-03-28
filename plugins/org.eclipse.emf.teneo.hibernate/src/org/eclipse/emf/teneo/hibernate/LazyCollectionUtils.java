@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyCollectionUtils.java,v 1.3 2010/03/26 16:31:01 mtaal Exp $
+ * $Id: LazyCollectionUtils.java,v 1.4 2010/03/28 07:55:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
@@ -37,7 +38,7 @@ import org.hibernate.type.Type;
  * A utility class providing methods related to lazy loading of collections.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LazyCollectionUtils {
 
@@ -105,7 +106,7 @@ public class LazyCollectionUtils {
 				.getEStructuralFeature();
 		PersistentStoreAdapter adapter = null;
 		if (owner instanceof EObject) {
-			adapter = HbUtil.getPersistentStoreAdapter(((EObject) owner));
+			adapter = StoreUtil.getPersistentStoreAdapter(((EObject) owner));
 			final Integer size = adapter.getCollectionSize(eFeature);
 			if (size != null) {
 				return size;

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.13 2010/03/25 00:12:44 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.14 2010/03/28 07:55:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -27,10 +27,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
-import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.resource.StoreResource;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentBag;
@@ -44,7 +44,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -99,10 +99,10 @@ public class HbExtraLazyPersistableEList<E> extends
 		for (Object element : delegateList().subList(index, size())) {
 			// for the new one set the owner
 			if (newIndex == index) {
-				HbUtil.setSyntheticListOwner(getEStructuralFeature(), element,
+				StoreUtil.setSyntheticListOwner(getEStructuralFeature(), element,
 						getOwner());
 			}
-			HbUtil.setSyntheticListIndex(getEStructuralFeature(), element,
+			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element,
 					newIndex++);
 		}
 	}
@@ -117,8 +117,8 @@ public class HbExtraLazyPersistableEList<E> extends
 	protected void delegateAdd(E object) {
 		int newIndex = delegateList().size();
 		delegateList().add(object);
-		HbUtil.setSyntheticListIndex(getEStructuralFeature(), object, newIndex);
-		HbUtil.setSyntheticListOwner(getEStructuralFeature(), object,
+		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object, newIndex);
+		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
 				getOwner());
 	}
 
@@ -130,7 +130,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	@Override
 	protected void delegateClear() {
 		for (Object element : delegateList()) {
-			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), element);
+			StoreUtil.resetSyntheticListInfo(getEStructuralFeature(), element);
 		}
 		delegateList().clear();
 	}
@@ -195,7 +195,7 @@ public class HbExtraLazyPersistableEList<E> extends
 		if (index == (size() - 1) && !isInitialized() && isConnectedToSession()) {
 			// removing the last one
 			final E result = delegateList().remove(index);
-			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
+			StoreUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
 			if (getEStructuralFeature() instanceof EReference
 					&& ((EReference) getEStructuralFeature()).isContainment()) {
 				// remove the removed object
@@ -212,11 +212,11 @@ public class HbExtraLazyPersistableEList<E> extends
 		delegateList().iterator();
 
 		final E result = delegateList().remove(index);
-		HbUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
+		StoreUtil.resetSyntheticListInfo(getEStructuralFeature(), result);
 
 		int newIndex = index;
 		for (Object element : delegateList().subList(index, size())) {
-			HbUtil.setSyntheticListIndex(getEStructuralFeature(), element,
+			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element,
 					newIndex++);
 		}
 
@@ -235,12 +235,12 @@ public class HbExtraLazyPersistableEList<E> extends
 
 		// clear old object
 		if (oldObject != null) {
-			HbUtil.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
+			StoreUtil.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
 		}
 
 		// set new object
-		HbUtil.setSyntheticListIndex(getEStructuralFeature(), object, index);
-		HbUtil.setSyntheticListOwner(getEStructuralFeature(), object,
+		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object, index);
+		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
 				getOwner());
 		return oldObject;
 	}

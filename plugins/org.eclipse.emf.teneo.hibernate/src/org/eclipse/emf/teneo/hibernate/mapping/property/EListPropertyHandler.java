@@ -58,7 +58,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -127,7 +127,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 */
 	public Object get(Object owner) throws HibernateException {
 
-		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) owner);
+		final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter((EObject) owner);
 		final Object value = adapter.getStoreCollection(eFeature);
 		if (value != null) {
 			return value;
@@ -205,7 +205,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
-		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) owner);
+		final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter((EObject) owner);
 		final Object value = adapter.getStoreCollection(eFeature);
 		if (value != null) {
 			return value;
@@ -240,7 +240,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				int index = 0;
 				for (Object object : objects) {
 					if (object instanceof EObject) {
-						final PersistentStoreAdapter elementAdapter = HbUtil.getPersistentStoreAdapter((EObject)object);
+						final PersistentStoreAdapter elementAdapter = StoreUtil.getPersistentStoreAdapter((EObject)object);
 						elementAdapter.setSyntheticProperty(StoreUtil.getExtraLazyInverseIndexPropertyName(eFeature), index);
 						elementAdapter.setSyntheticProperty(StoreUtil.getExtraLazyInversePropertyName(eFeature), owner);
 					}
@@ -291,7 +291,7 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 	@SuppressWarnings("rawtypes")
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 
-		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject) target);
+		final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter((EObject) target);
 		if (!adapter.isTargetCreatedByORM()) {
 			adapter.addStoreCollection(eFeature, value);
 			return;

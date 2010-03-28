@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SyntheticPropertyHandler.java,v 1.1 2010/03/24 17:32:41 mtaal Exp $
+ * $Id: SyntheticPropertyHandler.java,v 1.2 2010/03/28 07:55:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -24,6 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.PropertyNotFoundException;
 import org.hibernate.engine.SessionFactoryImplementor;
@@ -41,7 +42,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SyntheticPropertyHandler implements Getter, Setter, PropertyAccessor {
 	
@@ -86,7 +87,7 @@ public class SyntheticPropertyHandler implements Getter, Setter, PropertyAccesso
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
-		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject)owner);
+		final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter((EObject)owner);
 		return adapter.getSyntheticProperty(propertyName);
 	}
 
@@ -136,7 +137,7 @@ public class SyntheticPropertyHandler implements Getter, Setter, PropertyAccesso
 	 * org.hibernate.engine.SessionFactoryImplementor)
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
-		final PersistentStoreAdapter adapter = HbUtil.getPersistentStoreAdapter((EObject)target);
+		final PersistentStoreAdapter adapter = StoreUtil.getPersistentStoreAdapter((EObject)target);
 		adapter.setSyntheticProperty(propertyName, value);
 	}
 }

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInstantiator.java,v 1.8 2009/03/15 08:09:22 mtaal Exp $
+ * $Id: EMFInstantiator.java,v 1.9 2010/03/28 07:55:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
+import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.tuple.Instantiator;
@@ -34,7 +35,7 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates eobjects using the efactory.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class EMFInstantiator implements Instantiator {
@@ -78,7 +79,7 @@ public class EMFInstantiator implements Instantiator {
 	public Object instantiate() {
 		final EObject eobject = EcoreUtil.create(eclass);
 
-		final PersistentStoreAdapter adapter = HbUtil
+		final PersistentStoreAdapter adapter = StoreUtil
 				.getPersistentStoreAdapter(eobject);
 		adapter.setTargetCreatedByORM(true);
 
@@ -96,7 +97,7 @@ public class EMFInstantiator implements Instantiator {
 	public Object instantiate(Serializable id) {
 		final EObject eobject = EcoreUtil.create(eclass);
 
-		final PersistentStoreAdapter adapter = HbUtil
+		final PersistentStoreAdapter adapter = StoreUtil
 				.getPersistentStoreAdapter(eobject);
 		adapter.setTargetCreatedByORM(true);
 
