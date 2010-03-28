@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.14 2010/03/28 07:55:33 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.15 2010/03/28 09:56:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -44,7 +44,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -99,8 +99,8 @@ public class HbExtraLazyPersistableEList<E> extends
 		for (Object element : delegateList().subList(index, size())) {
 			// for the new one set the owner
 			if (newIndex == index) {
-				StoreUtil.setSyntheticListOwner(getEStructuralFeature(), element,
-						getOwner());
+				StoreUtil.setSyntheticListOwner(getEStructuralFeature(),
+						element, getOwner());
 			}
 			StoreUtil.setSyntheticListIndex(getEStructuralFeature(), element,
 					newIndex++);
@@ -117,7 +117,8 @@ public class HbExtraLazyPersistableEList<E> extends
 	protected void delegateAdd(E object) {
 		int newIndex = delegateList().size();
 		delegateList().add(object);
-		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object, newIndex);
+		StoreUtil.setSyntheticListIndex(getEStructuralFeature(), object,
+				newIndex);
 		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
 				getOwner());
 	}
@@ -235,7 +236,8 @@ public class HbExtraLazyPersistableEList<E> extends
 
 		// clear old object
 		if (oldObject != null) {
-			StoreUtil.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
+			StoreUtil
+					.resetSyntheticListInfo(getEStructuralFeature(), oldObject);
 		}
 
 		// set new object
@@ -243,6 +245,17 @@ public class HbExtraLazyPersistableEList<E> extends
 		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
 				getOwner());
 		return oldObject;
+	}
+
+	// override set to prevent indexOf call, note isUnique is now not
+	// enforced for set, but this is a small price to pay for improved performance.
+	public E set(int index, E object) {
+		int size = size();
+		if (index >= size) {
+			throw new BasicIndexOutOfBoundsException(index, size);
+		}
+
+		return setUnique(index, object);
 	}
 
 	/**
