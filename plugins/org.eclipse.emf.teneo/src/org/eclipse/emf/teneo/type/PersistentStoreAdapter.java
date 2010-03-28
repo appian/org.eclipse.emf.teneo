@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.9 2010/03/26 16:30:57 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.10 2010/03/28 07:55:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.util.StoreUtil;
 
 /**
  * Keeps a list of PersistentLists by efeature. Is used when a new object is
@@ -37,7 +38,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * persistent store but is persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -115,13 +116,19 @@ public class PersistentStoreAdapter implements Adapter {
 		final Map<Object, Object> map = (collectionObject instanceof Map<?, ?> ? (Map<Object, Object>) collectionObject
 				: null);
 
+		int changedPosition = -1;
 		switch (notification.getEventType()) {
 		case Notification.ADD:
 			if (list != null) {
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.add(notification.getPosition(), replaceValue(notification.getNewValue(), eFeature));
+					changedPosition = notification.getPosition();
+					list.add(notification.getPosition(), replaceValue(
+							notification.getNewValue(), eFeature));
 				} else {
-					list.add(replaceValue(notification.getNewValue(), eFeature));
+					changedPosition = list.size();
+					list
+							.add(replaceValue(notification.getNewValue(),
+									eFeature));
 				}
 			}
 			if (map != null) {
@@ -133,11 +140,15 @@ public class PersistentStoreAdapter implements Adapter {
 		case Notification.ADD_MANY:
 			if (list != null) {
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.addAll(notification.getPosition(), replaceValues((List<Object>) notification.getNewValue(),
-							eFeature));
+					changedPosition = notification.getPosition();
+					list.addAll(notification.getPosition(),
+							replaceValues((List<Object>) notification
+									.getNewValue(), eFeature));
 
 				} else {
-					list.addAll(replaceValues((List<Object>) notification.getNewValue(), eFeature));
+					changedPosition = list.size();
+					list.addAll(replaceValues((List<Object>) notification
+							.getNewValue(), eFeature));
 				}
 			}
 			if (map != null) {
@@ -149,12 +160,14 @@ public class PersistentStoreAdapter implements Adapter {
 			break;
 		case Notification.REMOVE:
 			if (list != null) {
+				final Object removed;
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					list.remove(notification.getPosition());
+					removed = list.remove(notification.getPosition());
 				} else {
-					list.remove(replaceValue(notification.getOldValue(),
-							eFeature));
+					removed = replaceValue(notification.getOldValue(), eFeature);
+					list.remove(removed);
 				}
+				StoreUtil.resetSyntheticListInfo(eFeature, removed);
 			}
 			if (map != null) {
 				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification
@@ -164,8 +177,12 @@ public class PersistentStoreAdapter implements Adapter {
 			break;
 		case Notification.REMOVE_MANY:
 			if (list != null) {
-				list.removeAll(replaceValues((List<Object>) notification
-						.getOldValue(), eFeature));
+				final List<?> removed = replaceValues(
+						(List<Object>) notification.getOldValue(), eFeature);
+				list.removeAll(removed);
+				for (Object removedObject : removed) {
+					StoreUtil.resetSyntheticListInfo(eFeature, removedObject);
+				}
 			}
 			if (map != null) {
 				for (Object o : (List<?>) notification.getOldValue()) {
@@ -184,15 +201,31 @@ public class PersistentStoreAdapter implements Adapter {
 							"Persistent list and EList are out of sync");
 				}
 				list.add(newPosition, o);
+				if (newPosition < oldPosition) {
+					changedPosition = newPosition;
+				} else {
+					changedPosition = oldPosition;
+				}
 			}
 			break;
 		case Notification.SET:
 			if (list != null) {
 				final int position = notification.getPosition();
-				list.set(position, replaceValue(notification.getNewValue(),
-						eFeature));
+				Object removed = list.set(position, replaceValue(notification
+						.getNewValue(), eFeature));
+				changedPosition = position;
+				StoreUtil.resetSyntheticListInfo(eFeature, removed);
 			}
 			break;
+		}
+
+		if (changedPosition > -1) {
+			int newIndex = changedPosition;
+			for (Object element : list.subList(changedPosition, list.size())) {
+				StoreUtil.setSyntheticListOwner(eFeature, element, notification
+						.getNotifier());
+				StoreUtil.setSyntheticListIndex(eFeature, element, newIndex++);
+			}
 		}
 	}
 
