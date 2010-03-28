@@ -25,7 +25,6 @@ import org.eclipse.emf.teneo.test.emf.annotations.EmbeddedAction;
 import org.eclipse.emf.teneo.test.emf.annotations.EmbeddedIdAction;
 import org.eclipse.emf.teneo.test.emf.annotations.EntityAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ExternalAction;
-import org.eclipse.emf.teneo.test.emf.annotations.ExtraLazyAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ForcedIdBagAction;
 import org.eclipse.emf.teneo.test.emf.annotations.HbMapKeysAction;
 import org.eclipse.emf.teneo.test.emf.annotations.IdAction;
@@ -55,7 +54,7 @@ import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.97 $
+ * @version $Revision: 1.98 $
  */
 public class AllTests {
 
@@ -64,7 +63,6 @@ public class AllTests {
 				HibernateTestbed.instance().getConfigurations());
 
 		suite.addTestSuite(ExtraLazyAction.class);
-
 		suite.addTestSuite(AnyAction.class);
 		suite.addTestSuite(InheritanceAnnotationAction.class);
 		suite.addTestSuite(EmbeddedAction.class);
