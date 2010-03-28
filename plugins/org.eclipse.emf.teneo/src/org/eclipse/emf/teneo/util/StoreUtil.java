@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal - Initial API and
- * implementation </copyright> $Id: StoreUtil.java,v 1.30 2010/03/28 07:55:29 mtaal Exp $
+ * implementation </copyright> $Id: StoreUtil.java,v 1.31 2010/03/28 09:20:26 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.util;
@@ -54,7 +54,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
  * Contains different util methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 
 public class StoreUtil {
@@ -78,7 +78,7 @@ public class StoreUtil {
 
 	public static void resetSyntheticListInfo(EStructuralFeature eFeature,
 			Object target) {
-		if (target == null) {
+		if (target == null || eFeature instanceof EAttribute) {
 			return;
 		}
 		PersistentStoreAdapter persistentStoreAdapter = StoreUtil
@@ -91,6 +91,9 @@ public class StoreUtil {
 
 	public static void setSyntheticListIndex(EStructuralFeature eFeature,
 			Object target, Integer value) {
+		if (eFeature instanceof EAttribute) {
+			return;
+		}
 		PersistentStoreAdapter persistentStoreAdapter = StoreUtil
 				.getPersistentStoreAdapter((EObject) target);
 		persistentStoreAdapter.setSyntheticProperty(StoreUtil
@@ -99,6 +102,9 @@ public class StoreUtil {
 
 	public static void setSyntheticListOwner(EStructuralFeature eFeature,
 			Object target, Object owner) {
+		if (eFeature instanceof EAttribute) {
+			return;
+		}
 		PersistentStoreAdapter persistentStoreAdapter = StoreUtil
 				.getPersistentStoreAdapter((EObject) target);
 		persistentStoreAdapter.setSyntheticProperty(StoreUtil
