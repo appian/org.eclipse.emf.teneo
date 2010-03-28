@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.10 2010/03/28 07:55:29 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.11 2010/03/28 07:58:39 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -24,6 +24,7 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -38,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persistent store but is persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -116,6 +117,7 @@ public class PersistentStoreAdapter implements Adapter {
 		final Map<Object, Object> map = (collectionObject instanceof Map<?, ?> ? (Map<Object, Object>) collectionObject
 				: null);
 
+		final boolean isEReference = eFeature instanceof EReference;
 		int changedPosition = -1;
 		switch (notification.getEventType()) {
 		case Notification.ADD:
@@ -167,7 +169,9 @@ public class PersistentStoreAdapter implements Adapter {
 					removed = replaceValue(notification.getOldValue(), eFeature);
 					list.remove(removed);
 				}
-				StoreUtil.resetSyntheticListInfo(eFeature, removed);
+				if (isEReference) {
+					StoreUtil.resetSyntheticListInfo(eFeature, removed);
+				}
 			}
 			if (map != null) {
 				final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) notification
@@ -180,8 +184,11 @@ public class PersistentStoreAdapter implements Adapter {
 				final List<?> removed = replaceValues(
 						(List<Object>) notification.getOldValue(), eFeature);
 				list.removeAll(removed);
-				for (Object removedObject : removed) {
-					StoreUtil.resetSyntheticListInfo(eFeature, removedObject);
+				if (isEReference) {
+					for (Object removedObject : removed) {
+						StoreUtil.resetSyntheticListInfo(eFeature,
+								removedObject);
+					}
 				}
 			}
 			if (map != null) {
@@ -214,12 +221,14 @@ public class PersistentStoreAdapter implements Adapter {
 				Object removed = list.set(position, replaceValue(notification
 						.getNewValue(), eFeature));
 				changedPosition = position;
-				StoreUtil.resetSyntheticListInfo(eFeature, removed);
+				if (isEReference) {
+					StoreUtil.resetSyntheticListInfo(eFeature, removed);
+				}
 			}
 			break;
 		}
 
-		if (changedPosition > -1) {
+		if (changedPosition > -1 && isEReference) {
 			int newIndex = changedPosition;
 			for (Object element : list.subList(changedPosition, list.size())) {
 				StoreUtil.setSyntheticListOwner(eFeature, element, notification
