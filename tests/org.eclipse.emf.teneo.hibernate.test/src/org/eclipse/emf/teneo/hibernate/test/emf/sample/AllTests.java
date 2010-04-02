@@ -55,13 +55,26 @@ import org.eclipse.emf.teneo.test.issues.ResourceUnloadAction;
  * All sample tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.115 $
+ * @version $Revision: 1.116 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.sample",
 				HibernateTestbed.instance().getConfigurations());
+		if (!HibernateTestbed.isRunningOnBuildServer()) {
+			// fails on the server, not locally
+			suite.addTestSuite(EcoreAction.class);
+		}
+		
+		suite.addTestSuite(LibraryEAVExtraLazyAction.class);
+		suite.addTestSuite(LibraryEAVAction.class);
+		suite.addTestSuite(LibraryEAVResourceAction.class);
+		suite.addTestSuite(ProductEAVTest.class);
+		suite.addTestSuite(FleetEAVAction.class);
+		suite.addTestSuite(TestDoubleEAV.class);
+		suite.addTestSuite(DynamicEAVAction.class);
+		suite.addTestSuite(EcoreEAVAction.class);
 		suite.addTestSuite(LibraryExtraLazyMoreAction.class);
 		suite.addTestSuite(LibraryExtraLazyJoinMoreAction.class);
 		suite.addTestSuite(LibraryTest.class);
@@ -70,23 +83,11 @@ public class AllTests {
 		suite.addTestSuite(LibrarySerializationAction.class);		
 		suite.addTestSuite(EmployeeAction.class);
 		suite.addTestSuite(LibraryResourceAction.class);
-		suite.addTestSuite(FleetEAVAction.class);
-		suite.addTestSuite(LibraryEAVResourceAction.class);
-		suite.addTestSuite(TestDoubleEAV.class);
 		suite.addTestSuite(LibrarySessionControllerAction.class);
 		suite.addTestSuite(ClaimAction.class);
-		suite.addTestSuite(DynamicEAVAction.class);
 		suite.addTestSuite(DynamicAction.class);
 
 		suite.addTestSuite(Bz292973.class);
-		if (!HibernateTestbed.isRunningOnBuildServer()) {
-			// fails on the server, not locally
-			suite.addTestSuite(EcoreAction.class);
-		}
-
-		suite.addTestSuite(EcoreEAVAction.class);
-		suite.addTestSuite(ProductEAVTest.class);
-
 		suite.addTestSuite(ProductAction.class);
 
 		suite.addTestSuite(LibraryColLengthAction.class);

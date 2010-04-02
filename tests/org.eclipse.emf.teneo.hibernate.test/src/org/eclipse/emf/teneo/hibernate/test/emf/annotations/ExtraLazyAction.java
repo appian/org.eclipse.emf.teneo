@@ -21,7 +21,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests extra lazy fetch strategy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ExtraLazyAction extends AbstractTestAction {
 
@@ -85,10 +85,13 @@ public class ExtraLazyAction extends AbstractTestAction {
 			b.getSubTitles().get(50);
 			assertFalse(subTitleList.isInitialized());
 			b.getSubTitles().add("subtitle100");
-//			assertFalse(subTitleList.isInitialized());
-			assertTrue(subTitleList.isInitialized());
+			if (isEAVMapped()) {
+				assertFalse(subTitleList.isInitialized());				
+			} else {
+				assertTrue(subTitleList.isInitialized());				
+			}
 			b.getSubTitles().add(0, "subtitle-1");
-//			assertTrue(subTitleList.isInitialized());
+			assertTrue(subTitleList.isInitialized());				
 			
 			store.commitTransaction();
 		}
@@ -105,5 +108,9 @@ public class ExtraLazyAction extends AbstractTestAction {
 			store.store(b);
 			store.commitTransaction();
 		}
+	}
+	
+	protected boolean isEAVMapped() {
+		return false;
 	}
 }
