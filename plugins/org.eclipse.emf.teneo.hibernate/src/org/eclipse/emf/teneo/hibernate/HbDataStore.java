@@ -104,7 +104,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.66 $
+ * @version $Revision: 1.67 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -638,6 +638,18 @@ public abstract class HbDataStore implements DataStore {
 		return result.toArray(new String[result.size()]);
 	}
 
+	protected boolean isClassOrSuperClassEAVMapped(PersistentClass pc) {
+		if (pc == null) {
+			return false;
+		}
+		// don't do the EAV mapped ones
+		if (pc.getEntityName().equals(
+				Constants.EAV_EOBJECT_ENTITY_NAME)) {
+			return true;
+		}
+		return isClassOrSuperClassEAVMapped(pc.getSuperclass());
+	}
+	
 	/**
 	 * Extra lazy mapping for lists needs a real property for the list index and
 	 * a real inverse for the other side as well.
@@ -649,6 +661,9 @@ public abstract class HbDataStore implements DataStore {
 		final Map<String, PersistentClass> persistentClasses = new HashMap<String, PersistentClass>();
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
 			final PersistentClass pc = (PersistentClass) pcs.next();
+			if (isClassOrSuperClassEAVMapped(pc)) {
+				continue;
+			}
 			persistentClasses.put(pc.getEntityName(), pc);
 		}
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
@@ -691,6 +706,21 @@ public abstract class HbDataStore implements DataStore {
 						continue;
 					}
 
+					final Value elementValue = collection.getElement();
+					final PersistentClass elementPC;
+					if (elementValue instanceof OneToMany) {
+						final OneToMany oneToMany = (OneToMany) elementValue;
+						elementPC = oneToMany.getAssociatedClass();
+					} else {
+						final ManyToOne mto = (ManyToOne) elementValue;
+						elementPC = persistentClasses.get(mto
+								.getReferencedEntityName());
+					}
+					
+					if (isClassOrSuperClassEAVMapped(elementPC)) {
+						continue;
+					}
+					
 					collection.setInverse(true);
 
 					// and add an eopposite
@@ -698,18 +728,11 @@ public abstract class HbDataStore implements DataStore {
 
 						final Table collectionTable = collection
 								.getCollectionTable();
-
-						final Value elementValue = collection.getElement();
-						final PersistentClass elementPC;
-						if (elementValue instanceof OneToMany) {
-							final OneToMany oneToMany = (OneToMany) elementValue;
-							elementPC = oneToMany.getAssociatedClass();
-						} else {
-							final ManyToOne mto = (ManyToOne) elementValue;
-							elementPC = persistentClasses.get(mto
-									.getReferencedEntityName());
+						
+						if (isClassOrSuperClassEAVMapped(elementPC)) {
+							continue;
 						}
-
+ 
 						final Property inverseRefProperty = new Property();
 						inverseRefProperty.setName(StoreUtil
 								.getExtraLazyInversePropertyName(ef));
@@ -778,6 +801,7 @@ public abstract class HbDataStore implements DataStore {
 						Table collectionTable = collection.getCollectionTable();
 
 						IndexedCollection indexedCollection = (IndexedCollection) collection;
+
 						final Column column = (Column) indexedCollection
 								.getIndex().getColumnIterator().next();
 
@@ -795,17 +819,6 @@ public abstract class HbDataStore implements DataStore {
 						indexProperty
 								.setPropertyAccessorName(SyntheticPropertyHandler.class
 										.getName());
-
-						final Value elementValue = collection.getElement();
-						final PersistentClass elementPC;
-						if (elementValue instanceof OneToMany) {
-							final OneToMany oneToMany = (OneToMany) elementValue;
-							elementPC = oneToMany.getAssociatedClass();
-						} else {
-							final ManyToOne mto = (ManyToOne) elementValue;
-							elementPC = persistentClasses.get(mto
-									.getReferencedEntityName());
-						}
 						// always make this nullable, nullability is controlled
 						// by the main property
 						indexProperty.setOptional(true);
@@ -1803,6 +1816,11 @@ public abstract class HbDataStore implements DataStore {
 			String eav = sb.toString();
 			eav = eav.replaceAll(HbConstants.EAV_TABLE_PREFIX_PARAMETER_REGEX,
 					getPersistenceOptions().getSQLTableNamePrefix());
+			
+			final boolean extraLazy = getPersistenceOptions().isFetchAssociationExtraLazy();
+			eav = eav.replaceAll(HbConstants.EAV_COLLECTIONLAZY_REGEX,
+					(extraLazy ? "extra" : "false"));
+			
 			return eav;
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);

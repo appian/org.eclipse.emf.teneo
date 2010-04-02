@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.21 2009/10/31 07:10:40 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.22 2010/04/02 15:24:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -35,6 +35,7 @@ import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVInstantiator;
+import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.internal.TeneoInternalEObject;
 import org.hibernate.EntityMode;
@@ -62,7 +63,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -179,7 +180,12 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	@Override
 	protected Getter buildPropertyGetter(Property mappedProperty, PersistentClass mappedEntity) {
 		if (isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
-			return mappedProperty.getGetter(EObjectImpl.class);
+			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(mappedEntity);
+			final Getter getter =  mappedProperty.getGetter(EObjectImpl.class);
+			if (getter instanceof EAVPropertyHandler) {
+				((EAVPropertyHandler)getter).setHbDataStore(ds);
+			}
+			return getter;
 		}
 		return getPropertyAccessor(mappedProperty, mappedEntity).getGetter(null, mappedProperty.getName());
 	}
@@ -193,7 +199,12 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	@Override
 	protected Setter buildPropertySetter(Property mappedProperty, PersistentClass mappedEntity) {
 		if (isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
-			return mappedProperty.getSetter(EObjectImpl.class);
+			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(mappedEntity);
+			final Setter setter = mappedProperty.getSetter(EObjectImpl.class);
+			if (setter instanceof EAVPropertyHandler) {
+				((EAVPropertyHandler)setter).setHbDataStore(ds);
+			}
+			return setter;
 		}
 		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(null, mappedProperty.getName());
 	}

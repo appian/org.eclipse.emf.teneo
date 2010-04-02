@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.15 2010/03/28 09:56:38 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.16 2010/04/02 15:24:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -44,7 +44,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -66,6 +66,15 @@ public class HbExtraLazyPersistableEList<E> extends
 		super(owner, feature, list);
 	}
 
+	@Override
+	/**
+	 * Always returns false because this prevents full loading of the list.
+	 * Prevents checks on uniqueness. This is a small price to pay for better performance.  
+	 */
+	public boolean isUnique() {
+		return false;
+	}
+	
 	// done in superclass:
 	// - delegateSize and delegateIsEmpty: super implementation is already extra
 	// lazy
@@ -245,17 +254,6 @@ public class HbExtraLazyPersistableEList<E> extends
 		StoreUtil.setSyntheticListOwner(getEStructuralFeature(), object,
 				getOwner());
 		return oldObject;
-	}
-
-	// override set to prevent indexOf call, note isUnique is now not
-	// enforced for set, but this is a small price to pay for improved performance.
-	public E set(int index, E object) {
-		int size = size();
-		if (index >= size) {
-			throw new BasicIndexOutOfBoundsException(index, size);
-		}
-
-		return setUnique(index, object);
 	}
 
 	/**

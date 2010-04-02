@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVFeatureMapValueHolder.java,v 1.4 2009/09/12 13:49:39 mtaal Exp $
+ * $Id: EAVFeatureMapValueHolder.java,v 1.5 2010/04/02 15:24:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -47,8 +47,9 @@ public class EAVFeatureMapValueHolder extends EAVMultiValueHolder {
 
 	public Object getElement(Object value) {
 		final EAVFeatureMapEntryValueHolder valueHolder = new EAVFeatureMapEntryValueHolder();
-		valueHolder.set(value);
 		valueHolder.setOwner(getOwner());
+		valueHolder.setHbDataStore(getHbDataStore());
+		valueHolder.set(value);
 		return valueHolder;
 	}
 

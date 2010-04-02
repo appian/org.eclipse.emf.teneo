@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVValueHolder.java,v 1.5 2009/09/14 21:40:13 mtaal Exp $
+ * $Id: EAVValueHolder.java,v 1.6 2010/04/02 15:24:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -22,18 +22,23 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 
 /**
- * The base class of the value stored in an EAV schema. The value in an EAV schema is both the type (the
- * EStructuralFeature) and its value. The following different types of values can be identified:
+ * The base class of the value stored in an EAV schema. The value in an EAV
+ * schema is both the type (the EStructuralFeature) and its value. The following
+ * different types of values can be identified:
  * <ul>
  * <li>EAttribute: a single primitive value</li>
- * <li>EReference: a single reference to another object, containment or non-containment</li>
+ * <li>EReference: a single reference to another object, containment or
+ * non-containment</li>
  * <li>MultiEAttribute: a multi-occurrence EAttribute</li>
  * <li>MultiEReference: a multi-occurrence EReference</li>
  * </ul>
- * In addition there is the FeatureMap and Map support which needs to be handled. In EMF both are lists with
- * EAttributes.
+ * In addition there is the FeatureMap and Map support which needs to be
+ * handled. In EMF both are lists with EAttributes.
  * 
  * The above structure is reflected in the EAVValueHolder class hierarchy.
  * 
@@ -47,15 +52,24 @@ public abstract class EAVValueHolder {
 
 	protected static Integer NOT_NULL_VALUE = new Integer(1);
 
-	public static EAVValueHolder create(EObject owner, EStructuralFeature eFeature) {
+	public static EAVValueHolder create(EObject owner,
+			EStructuralFeature eFeature, HbDataStore hbDataStore) {
 		final EAVValueHolder valueHolder;
 		if (eFeature instanceof EReference) {
 			final EReference eReference = (EReference) eFeature;
 			if (eReference.isMany()) {
 				if (eReference.isContainment()) {
-					valueHolder = new EAVMultiContainmentEReferenceValueHolder();
+					if (isFeatureExtraLazy(hbDataStore, eFeature)) {
+						valueHolder = new EAVExtraMultiContainmentEReferenceValueHolder();
+					} else {
+						valueHolder = new EAVMultiContainmentEReferenceValueHolder();
+					}
 				} else {
-					valueHolder = new EAVMultiNonContainmentEReferenceValueHolder();
+					if (isFeatureExtraLazy(hbDataStore, eFeature)) {
+						valueHolder = new EAVExtraMultiNonContainmentEReferenceValueHolder();
+					} else {
+						valueHolder = new EAVMultiNonContainmentEReferenceValueHolder();
+					}
 				}
 			} else {
 				if (eReference.isContainment()) {
@@ -68,28 +82,63 @@ public abstract class EAVValueHolder {
 			if (FeatureMapUtil.isFeatureMap(eFeature)) {
 				valueHolder = new EAVFeatureMapValueHolder();
 			} else if (eFeature.isMany()) {
-				valueHolder = new EAVMultiEAttributeValueHolder();
+				if (isFeatureExtraLazy(hbDataStore, eFeature)) {
+					valueHolder = new EAVExtraMultiEAttributeValueHolder();
+				} else {
+					valueHolder = new EAVMultiEAttributeValueHolder();
+				}
 			} else {
 				valueHolder = new EAVSingleEAttributeValueHolder();
 			}
 		}
 		valueHolder.setEStructuralFeature(eFeature);
 		valueHolder.setOwner(owner);
+		valueHolder.setHbDataStore(hbDataStore);
 		return valueHolder;
 	}
 
+	protected static boolean isFeatureExtraLazy(HbDataStore hbDataStore,
+			EStructuralFeature eFeature) {
+		if (hbDataStore.getPersistenceOptions().isFetchAssociationExtraLazy()) {
+			return true;
+		}
+		try {
+			final PAnnotatedEStructuralFeature paFeature = hbDataStore
+					.getPaModel().getPAnnotated(eFeature);
+			if (paFeature.getOneToMany() != null
+					&& paFeature.getOneToMany().getFetch().equals(
+							FetchType.EXTRA)) {
+				return Boolean.TRUE;
+			}
+			return false;
+		} catch (IllegalArgumentException e) {
+			// be robust about model elements not annotated
+			return false;
+		}
+
+	}
+
+	private HbDataStore hbDataStore;
 	private long id;
 	private int version;
 	private EStructuralFeature eStructuralFeature;
 	private boolean valueIsSet;
 	private EObject owner;
 
+	private EAVMultiValueHolder valueOwner;
+
+	// is used when a value is held in a list
+	private int listIndex;
+
 	// the mandatoryValue is used as follows.
 	// it is defined as mandatory in the hibernate mapping
-	// if !eStructuralFeature.isRequired then it is always set to the NOT_NULL_VALUE
-	// if eStructuralFeature.isRequired then it is set if the value of the EStructuralFeature
+	// if !eStructuralFeature.isRequired then it is always set to the
+	// NOT_NULL_VALUE
+	// if eStructuralFeature.isRequired then it is set if the value of the
+	// EStructuralFeature
 	// is set.
-	// in this way the mandatory value check is executed by hibernate on the basis
+	// in this way the mandatory value check is executed by hibernate on the
+	// basis
 	// of eStructuralFeature.isRequired
 	private Integer mandatoryValue = null;
 
@@ -146,7 +195,8 @@ public abstract class EAVValueHolder {
 
 	public Integer getMandatoryValue() {
 		// if not required then the not-value is set always
-		if (!getEStructuralFeature().isRequired() || getEStructuralFeature().isUnsettable()) {
+		if (!getEStructuralFeature().isRequired()
+				|| getEStructuralFeature().isUnsettable()) {
 			return NOT_NULL_VALUE;
 		}
 		return mandatoryValue;
@@ -193,4 +243,37 @@ public abstract class EAVValueHolder {
 		}
 		return getEStructuralFeature().hashCode() ^ getValue().hashCode();
 	}
+
+	public int getListIndex() {
+		return listIndex;
+	}
+
+	public void setListIndex(int listIndex) {
+		this.listIndex = listIndex;
+	}
+
+	public int getVirtualListIndex() {
+		return listIndex;
+	}
+
+	public void setVirtualListIndex(int listIndex) {
+		this.listIndex = listIndex;
+	}
+
+	public EAVMultiValueHolder getValueOwner() {
+		return valueOwner;
+	}
+
+	public void setValueOwner(EAVMultiValueHolder valueOwner) {
+		this.valueOwner = valueOwner;
+	}
+
+	public HbDataStore getHbDataStore() {
+		return hbDataStore;
+	}
+
+	public void setHbDataStore(HbDataStore hbDataStore) {
+		this.hbDataStore = hbDataStore;
+	}
+
 }

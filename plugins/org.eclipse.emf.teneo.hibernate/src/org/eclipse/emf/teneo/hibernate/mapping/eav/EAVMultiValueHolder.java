@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiValueHolder.java,v 1.3 2009/09/12 05:47:13 mtaal Exp $
+ * $Id: EAVMultiValueHolder.java,v 1.4 2010/04/02 15:24:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
 public abstract class EAVMultiValueHolder extends EAVValueHolder {
-
+	
 	public abstract Object getElement(Object value);
 
 	public void setValueInOwner(InternalEObject owner) {

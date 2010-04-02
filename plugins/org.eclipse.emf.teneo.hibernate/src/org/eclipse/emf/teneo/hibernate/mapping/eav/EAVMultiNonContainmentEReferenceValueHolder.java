@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.4 2009/09/12 05:47:12 mtaal Exp $
+ * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.5 2010/04/02 15:24:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHolder {
 
 	private List<EAVSingleNonContainmentEReferenceValueHolder> referenceValues;
+	private EAVDelegatingList ecoreObjectList = null;
 
 	@SuppressWarnings("unchecked")
 	public void set(Object value) {
@@ -37,8 +38,11 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 		setMandatoryValue(null);
 		final List<?> values = (List<Object>) value;
 		referenceValues = new ArrayList<EAVSingleNonContainmentEReferenceValueHolder>();
+		int index = 0;
 		for (Object o : values) {
-			referenceValues.add((EAVSingleNonContainmentEReferenceValueHolder) getElement(o));
+			final EAVSingleNonContainmentEReferenceValueHolder eavValue = (EAVSingleNonContainmentEReferenceValueHolder) getElement(o);
+			eavValue.setListIndex(index++);
+			referenceValues.add(eavValue);
 			setMandatoryValue(NOT_NULL_VALUE);
 		}
 	}
@@ -48,20 +52,26 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
 		valueHolder.set(value);
 		valueHolder.setOwner(getOwner());
+		valueHolder.setValueOwner(this);
+		valueHolder.setHbDataStore(getHbDataStore());
 		return valueHolder;
 	}
 
 	public Object get(InternalEObject owner) {
+		if (ecoreObjectList != null) {
+			return ecoreObjectList;
+		}
 		// final DelegatingLateLoadingList<Object> lateLoadingList = new DelegatingLateLoadingList<Object>();
 		// lateLoadingList.setPersistentList(referenceValues);
 		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
 		ecoreList.setPersistentList(referenceValues);
+		ecoreObjectList = ecoreList;
 		return ecoreList;
 	}
 
 	public Object getValue() {
-		return getReferenceValues();
+		return referenceValues;
 	}
 
 	public List<EAVSingleNonContainmentEReferenceValueHolder> getReferenceValues() {
@@ -70,5 +80,6 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 
 	public void setReferenceValues(List<EAVSingleNonContainmentEReferenceValueHolder> referenceValues) {
 		this.referenceValues = referenceValues;
+			((EAVDelegatingList)get((InternalEObject)getOwner())).setPersistentList(referenceValues);
 	}
 }

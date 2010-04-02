@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbConstants.java,v 1.8 2010/03/24 17:32:39 mtaal Exp $
+ * $Id: HbConstants.java,v 1.9 2010/04/02 15:24:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -22,7 +22,7 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * AnnotationUtil used in the runtime layer as well as the hibernate mapping step.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class HbConstants {
 	/**
@@ -71,6 +71,8 @@ public class HbConstants {
 	public final static int EXCHANGE_FORMAT_XMI = 1;
 	
 	public final static String EAV_TABLE_PREFIX_PARAMETER_REGEX = "\\{tableprefix\\}";
+	
+	public final static String EAV_COLLECTIONLAZY_REGEX = "\\{collectionLazySetting\\}";
 	
 	public final static String SYNTHETIC_PROPERTY_INDICATOR = "synthetic-property";
 }

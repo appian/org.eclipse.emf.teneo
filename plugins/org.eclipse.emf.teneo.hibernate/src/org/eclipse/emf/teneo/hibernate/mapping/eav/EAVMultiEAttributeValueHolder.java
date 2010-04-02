@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiEAttributeValueHolder.java,v 1.3 2009/08/22 00:09:59 mtaal Exp $
+ * $Id: EAVMultiEAttributeValueHolder.java,v 1.4 2010/04/02 15:24:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -30,38 +30,44 @@ import org.eclipse.emf.ecore.InternalEObject;
 public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 
 	private List<EAVSingleEAttributeValueHolder> values;
+	private EAVDelegatingList ecoreObjectList = null;
 
 	public void set(Object value) {
 		// set to null first, if there is at least one value then it is set to a value
 		setMandatoryValue(null);
 		final List<?> listValues = (List<?>) value;
 		values = new ArrayList<EAVSingleEAttributeValueHolder>();
+		int index = 0;
 		for (Object o : listValues) {
-			values.add((EAVSingleEAttributeValueHolder) getElement(o));
+			final EAVSingleEAttributeValueHolder eavValue = (EAVSingleEAttributeValueHolder) getElement(o);
+			eavValue.setListIndex(index++);
+			values.add(eavValue);
 			setMandatoryValue(NOT_NULL_VALUE);
 		}
 	}
 
 	public Object getValue() {
-		return getValues();
+		return values;
 	}
 
 	public Object getElement(Object value) {
 		final EAVSingleEAttributeValueHolder valueHolder = new EAVSingleEAttributeValueHolder();
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
-		valueHolder.set(value);
+		valueHolder.setHbDataStore(getHbDataStore());
 		valueHolder.setOwner(getOwner());
+		valueHolder.setValueOwner(this);
+		valueHolder.set(value);
 		return valueHolder;
 	}
 
 	public Object get(InternalEObject owner) {
+		if (ecoreObjectList != null) {
+			return ecoreObjectList;
+		}
 		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
-		final List<Object> objValues = new ArrayList<Object>();
-		for (EAVSingleEAttributeValueHolder valueHolder : values) {
-			objValues.add(valueHolder.get(owner));
-		}
-		ecoreList.setDelegate(objValues);
+		ecoreList.setPersistentList(values);
+		ecoreObjectList = ecoreList;
 		return ecoreList;
 	}
 
@@ -71,5 +77,6 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 
 	public void setValues(List<EAVSingleEAttributeValueHolder> values) {
 		this.values = values;
+		((EAVDelegatingList)get((InternalEObject)getOwner())).setPersistentList(values);
 	}
 }

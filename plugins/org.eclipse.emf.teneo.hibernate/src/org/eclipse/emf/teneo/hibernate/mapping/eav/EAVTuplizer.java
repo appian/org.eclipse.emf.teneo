@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVTuplizer.java,v 1.1 2009/08/20 15:59:38 mtaal Exp $
+ * $Id: EAVTuplizer.java,v 1.2 2010/04/02 15:24:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -22,6 +22,7 @@ import java.util.Iterator;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.mapping.PersistentClass;
+import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.tuple.entity.PojoEntityTuplizer;
 
@@ -58,5 +59,10 @@ public class EAVTuplizer extends PojoEntityTuplizer {
 			throw new HibernateException("Unable to resolve entity name from Class [" + concreteEntityClass.getName()
 					+ "]" + " expected instance/subclass of [" + getEntityName() + "]");
 		}
+	}
+
+	@Override
+	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
+		return new EAVValueInstantiator( persistentClass, null );
 	}
 }

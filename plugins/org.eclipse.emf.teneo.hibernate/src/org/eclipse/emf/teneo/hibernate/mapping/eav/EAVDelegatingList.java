@@ -10,9 +10,13 @@
  */
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import java.util.List;
+
 /**
  * Tags EAV list and featuremap.
  */
 public interface EAVDelegatingList {
 	boolean isDelegateInitialized();
+	
+	void setPersistentList(List<?> persistentList);
 }

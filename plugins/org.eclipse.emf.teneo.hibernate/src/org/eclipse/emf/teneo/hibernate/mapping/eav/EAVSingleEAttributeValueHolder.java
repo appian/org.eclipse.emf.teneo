@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.8 2010/02/17 21:41:49 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.9 2010/04/02 15:24:10 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -23,12 +23,16 @@ import java.math.MathContext;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
-import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 
 /**
  * This class holds a single EAttribute value.
@@ -71,8 +75,10 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		setMandatoryValue(NOT_NULL_VALUE);
 
 		// do type specific handling
-		final boolean isBlob = value instanceof byte[] || (value instanceof String && isClob(getEStructuralFeature()));
-		final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
+		final boolean isBlob = value instanceof byte[]
+				|| (value instanceof String && isClob(getEStructuralFeature()));
+		final EDataType eDataType = (EDataType) getEStructuralFeature()
+				.getEType();
 		final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
 		if (!isBlob) {
 			typeNeutralValue = eFactory.convertToString(eDataType, value);
@@ -97,7 +103,8 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 			if (value instanceof BigDecimal) {
 				final BigDecimal bdValue = (BigDecimal) value;
 				if (bdValue.precision() > MAX_PRECISION) {
-					final MathContext mathContext = new MathContext(MAX_PRECISION);
+					final MathContext mathContext = new MathContext(
+							MAX_PRECISION);
 					numericValue = bdValue.round(mathContext);
 				} else {
 					numericValue = bdValue;
@@ -106,11 +113,12 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 				longValue = ((BigInteger) value).longValue();
 			} else if (value instanceof Double || value instanceof Float) {
 				doubleValue = ((Number) value).doubleValue();
-			} else if (value instanceof Integer || value instanceof Long || value instanceof Short
-					|| value instanceof Byte) {
+			} else if (value instanceof Integer || value instanceof Long
+					|| value instanceof Short || value instanceof Byte) {
 				longValue = ((Number) value).longValue();
 			} else {
-				throw new UnsupportedOperationException("Primitive type " + value.getClass() + " not supported here.");
+				throw new UnsupportedOperationException("Primitive type "
+						+ value.getClass() + " not supported here.");
 			}
 		}
 	}
@@ -121,9 +129,12 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		} else if (objectValue == null && textValue != null) {
 			objectValue = textValue.getTextValue();
 		} else if (objectValue == null && typeNeutralValue != null) {
-			final EDataType eDataType = (EDataType) getEStructuralFeature().getEType();
-			final EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
-			objectValue = eFactory.createFromString(eDataType, typeNeutralValue);
+			final EDataType eDataType = (EDataType) getEStructuralFeature()
+					.getEType();
+			final EFactory eFactory = eDataType.getEPackage()
+					.getEFactoryInstance();
+			objectValue = eFactory
+					.createFromString(eDataType, typeNeutralValue);
 		}
 
 		return objectValue;
@@ -205,18 +216,39 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 		this.textValue = textValue;
 	}
 
-	private boolean isClob(EModelElement modelElement) {
-		final EAnnotation eAnnotation = modelElement.getEAnnotation("teneo.jpa");
-		if (eAnnotation == null) {
-			return false;
-		}
-		for (String str : eAnnotation.getDetails().values()) {
-			if (str.contains("@Lob")) {
+	private boolean isClob(EStructuralFeature eFeature) {
+		final EAttribute eAttribute = (EAttribute) eFeature;
+		try {
+			final PAnnotatedEAttribute paEAttribute = getHbDataStore()
+					.getPaModel().getPAnnotated(eAttribute);
+			if (paEAttribute == null) {
+				return false;
+			}
+			if (paEAttribute.getLob() != null) {
 				return true;
 			}
+			final PAnnotatedEDataType paDataType = getHbDataStore()
+					.getPaModel().getPAnnotated(eAttribute.getEAttributeType());
+			if (paDataType == null) {
+				return false;
+			}
+			return paDataType.getLob() != null;
+		} catch (IllegalArgumentException e) {
+			// no problem, happens in some cases with featuremaps
+			return false;
 		}
-		if (modelElement instanceof EAttribute) {
-			return isClob(((EAttribute) modelElement).getEAttributeType());
+	}
+
+	protected static boolean isFeatureExtraLazy(HbDataStore hbDataStore,
+			EStructuralFeature eFeature) {
+		if (hbDataStore.getPersistenceOptions().isFetchAssociationExtraLazy()) {
+			return true;
+		}
+		final PAnnotatedEStructuralFeature paFeature = hbDataStore.getPaModel()
+				.getPAnnotated(eFeature);
+		if (paFeature.getOneToMany() != null
+				&& paFeature.getOneToMany().getFetch().equals(FetchType.EXTRA)) {
+			return Boolean.TRUE;
 		}
 		return false;
 	}

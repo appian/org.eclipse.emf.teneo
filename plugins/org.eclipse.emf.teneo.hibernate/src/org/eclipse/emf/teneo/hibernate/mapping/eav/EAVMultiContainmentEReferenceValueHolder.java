@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.8 2010/02/04 10:53:08 mtaal Exp $
+ * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.9 2010/04/02 15:24:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -30,19 +30,24 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
  */
-public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolder {
+public class EAVMultiContainmentEReferenceValueHolder extends
+		EAVMultiValueHolder {
 
 	private List<EAVSingleContainmentEReferenceValueHolder> referenceValues;
-	private Object ecoreObjectList = null;
+	private EAVDelegatingList ecoreObjectList = null;
 
 	@SuppressWarnings("unchecked")
 	public void set(Object value) {
-		// set to null first, if there is at least one value then it is set to a value
+		// set to null first, if there is at least one value then it is set to a
+		// value
 		setMandatoryValue(null);
 		final List<?> values = (List<Object>) value;
 		referenceValues = new ArrayList<EAVSingleContainmentEReferenceValueHolder>();
+		int index = 0;
 		for (Object o : values) {
-			referenceValues.add((EAVSingleContainmentEReferenceValueHolder) getElement(o));
+			final EAVSingleContainmentEReferenceValueHolder eavValue = (EAVSingleContainmentEReferenceValueHolder) getElement(o);
+			eavValue.setVirtualListIndex(index++);
+			referenceValues.add(eavValue);
 			setMandatoryValue(NOT_NULL_VALUE);
 		}
 	}
@@ -52,6 +57,8 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
 		valueHolder.set(value);
 		valueHolder.setOwner(getOwner());
+		valueHolder.setValueOwner(this);
+		valueHolder.setHbDataStore(getHbDataStore());
 		return valueHolder;
 	}
 
@@ -59,38 +66,56 @@ public class EAVMultiContainmentEReferenceValueHolder extends EAVMultiValueHolde
 		if (ecoreObjectList != null) {
 			return ecoreObjectList;
 		}
+		setEcoreObjectList();
+		return ecoreObjectList;
+	}
+
+	private void setEcoreObjectList() {
 		if (StoreUtil.isMap(getEStructuralFeature())) {
-			final EClass entryEClass = (EClass) getEStructuralFeature().getEType();
+			final EClass entryEClass = (EClass) getEStructuralFeature()
+					.getEType();
 			Class<?> entryClass = entryEClass.getInstanceClass();
 			// prevents a failing assertion in the EcoreEMap
-			if (entryClass == null || !BasicEMap.Entry.class.isAssignableFrom(entryClass)) {
+			if (entryClass == null
+					|| !BasicEMap.Entry.class.isAssignableFrom(entryClass)) {
 				entryClass = BasicEMap.Entry.class;
 			}
 
-			final int featureID = owner.eClass().getFeatureID(getEStructuralFeature());
-			ecoreObjectList = new EAVDelegatingEMap<Object, Object>(entryEClass, entryClass, owner, featureID);
-			((EAVDelegatingEMap<?,?>) ecoreObjectList).setPersistentList(referenceValues);
+			final int featureID = getOwner().eClass().getFeatureID(
+					getEStructuralFeature());
+			ecoreObjectList = new EAVDelegatingEMap<Object, Object>(
+					entryEClass, entryClass, (InternalEObject) getOwner(),
+					featureID);
+			((EAVDelegatingEMap<?, ?>) ecoreObjectList)
+					.setPersistentList(referenceValues);
 		} else {
-			// final DelegatingLateLoadingList<Object> lateLoadingList = new DelegatingLateLoadingList<Object>();
+			// final DelegatingLateLoadingList<Object> lateLoadingList = new
+			// DelegatingLateLoadingList<Object>();
 			// lateLoadingList.setPersistentList((List<?>) referenceValues);
 			final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>(
-					(InternalEObject) owner);
+					(InternalEObject) getOwner());
 			ecoreList.setEStructuralFeature(getEStructuralFeature());
 			ecoreList.setPersistentList(referenceValues);
 			ecoreObjectList = ecoreList;
 		}
-		return ecoreObjectList;
+
 	}
 
 	public Object getValue() {
-		return getReferenceValues();
+		return referenceValues;
 	}
 
 	public List<EAVSingleContainmentEReferenceValueHolder> getReferenceValues() {
 		return referenceValues;
 	}
 
-	public void setReferenceValues(List<EAVSingleContainmentEReferenceValueHolder> referenceValues) {
+	public void setReferenceValues(
+			List<EAVSingleContainmentEReferenceValueHolder> referenceValues) {
 		this.referenceValues = referenceValues;
+		if (ecoreObjectList == null) {
+			setEcoreObjectList();
+		} else {
+			ecoreObjectList.setPersistentList(referenceValues);
+		}
 	}
 }
