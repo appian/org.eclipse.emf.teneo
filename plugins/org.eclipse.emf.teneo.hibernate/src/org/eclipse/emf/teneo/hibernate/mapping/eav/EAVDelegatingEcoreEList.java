@@ -104,7 +104,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	public boolean isLoaded() {
 		return delegate != null;
 	}
-	
+
 	@Override
 	/**
 	 * Will always return false, means that the unique check is not performed
@@ -244,15 +244,18 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	public Iterator<E> delegateIterator() {
 		return iterator();
 	}
-	
+
 	@Override
 	public Iterator<E> iterator() {
-		boolean extraLazyLoaded = getValueHolderOwner() instanceof EAVExtraMultiContainmentEReferenceValueHolder;
-		extraLazyLoaded |=  getValueHolderOwner() instanceof EAVExtraMultiNonContainmentEReferenceValueHolder;
-		extraLazyLoaded |=  getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
-		if (extraLazyLoaded && delegate == null && isHibernateListPresent() && isConnectedToSession()) {
-			// return a paging iterator
-			return LazyCollectionUtils.getPagedLoadingIterator(this, 100);			
+		if (delegate == null && isHibernateListPresent()
+				&& isConnectedToSession()) {
+			boolean extraLazyLoaded = getValueHolderOwner() instanceof EAVExtraMultiContainmentEReferenceValueHolder;
+			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiNonContainmentEReferenceValueHolder;
+			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
+			if (extraLazyLoaded) {
+				// return a paging iterator
+				return LazyCollectionUtils.getPagedLoadingIterator(this, 100);
+			}
 		}
 		return super.iterator();
 	}
@@ -331,7 +334,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 			return super.delegateSet(index, object);
 		}
 		if (oldValueHolder != null) {
-			return (E) oldValueHolder.getValue();			
+			return (E) oldValueHolder.getValue();
 		}
 		return null;
 	}
