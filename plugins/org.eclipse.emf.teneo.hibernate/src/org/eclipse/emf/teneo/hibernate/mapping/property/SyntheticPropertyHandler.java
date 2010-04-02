@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SyntheticPropertyHandler.java,v 1.3 2010/04/02 15:37:12 mtaal Exp $
+ * $Id: SyntheticPropertyHandler.java,v 1.4 2010/04/02 22:39:42 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -19,10 +19,7 @@ package org.eclipse.emf.teneo.hibernate.mapping.property;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
@@ -42,7 +39,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class SyntheticPropertyHandler implements Getter, Setter, PropertyAccessor {
 	
