@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreAction.java,v 1.18 2009/10/31 07:10:47 mtaal Exp $
+ * $Id: EcoreAction.java,v 1.19 2010/04/02 15:25:47 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests persisting of ecore models in a relational store. Only stores them and then reads them again.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class EcoreAction extends AbstractTestAction {
 
@@ -94,7 +94,7 @@ public class EcoreAction extends AbstractTestAction {
 				for (TreeIterator<EObject> it = xmlTypePackage.eAllContents(); it.hasNext();) {
 					it.next().eAdapters().clear();
 				}
-
+				
 				store.beginTransaction();
 				store.store(epack);
 				store.store(ecorePackage);
