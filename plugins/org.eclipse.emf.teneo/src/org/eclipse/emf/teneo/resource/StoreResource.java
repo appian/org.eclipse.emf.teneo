@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: StoreResource.java,v 1.42 2010/02/04 11:02:59 mtaal Exp $
+ * $Id: StoreResource.java,v 1.43 2010/04/02 15:24:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.resource;
@@ -58,7 +58,7 @@ import org.eclipse.emf.teneo.util.FieldUtil;
  * settrackingmodification will not load unloaded elists.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  */
 
 public abstract class StoreResource extends ResourceImpl {
@@ -404,6 +404,8 @@ public abstract class StoreResource extends ResourceImpl {
 			validateContents();
 			saveResource(options);
 			err = false;
+		} catch (Throwable t) {
+			throw new IllegalStateException(t);
 		} finally {
 			// now clear the changed eobjects and move the new objects
 			// to the loaded eobjects
@@ -417,6 +419,7 @@ public abstract class StoreResource extends ResourceImpl {
 				newEObjectSet.clear();
 				setModified(false);
 			}
+			
 		}
 	}
 
