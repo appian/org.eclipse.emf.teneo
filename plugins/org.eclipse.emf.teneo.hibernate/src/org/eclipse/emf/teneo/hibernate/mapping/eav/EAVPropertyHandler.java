@@ -33,7 +33,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
@@ -234,15 +234,12 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 			// note for list features we can only get here for new objects which have not been 
 			// read from the db but which have been persisted. Objects read from the database
 			// will always have a EAVDelegatingEcoreEList.
-			int repairFromIndex = -1;
 			
 			switch (notification.getEventType()) {
 			case Notification.ADD: {
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					repairFromIndex = notification.getPosition(); 
 					list.add(notification.getPosition(), multiValueHolder.getElement(notification.getNewValue()));
 				} else {
-					repairFromIndex = list.size();
 					list.add(multiValueHolder.getElement(notification.getNewValue()));
 				}
 				// if (map != null) {
@@ -257,10 +254,8 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 					values.add(multiValueHolder.getElement(o));
 				}
 				if (notification.getPosition() != Notification.NO_INDEX) {
-					repairFromIndex = notification.getPosition();
 					list.addAll(notification.getPosition(), values);
 				} else {
-					repairFromIndex = list.size();
 					list.addAll(values);
 				}
 				// if (map != null) {
@@ -288,7 +283,6 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 				}
 
 				if (removeIndex != Notification.NO_INDEX) {
-					repairFromIndex = removeIndex;
 					list.remove(removeIndex);
 				}
 				// if (map != null) {
@@ -318,7 +312,6 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 						}
 
 						if (removeIndex != Notification.NO_INDEX) {
-							repairFromIndex = 0;
 							list.remove(removeIndex);
 						}
 					}
@@ -336,14 +329,12 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor, Ext
 					final int newPosition = notification.getPosition();
 					final Object o = list.remove(oldPosition);
 					list.add(newPosition, o);
-					repairFromIndex = (newPosition < oldPosition ? newPosition : oldPosition);
 				}
 				break;
 			case Notification.SET:
 				if (eFeature.isMany()) {
 					final int position = notification.getPosition();
 					final EAVValueHolder elementValueHolder = (EAVValueHolder)list.set(position, multiValueHolder.getElement(notification.getNewValue()));
-					repairFromIndex = position;
 					if (elementValueHolder != null) {
 						elementValueHolder.setListIndex(0);
 						elementValueHolder.setValueOwner(null);
