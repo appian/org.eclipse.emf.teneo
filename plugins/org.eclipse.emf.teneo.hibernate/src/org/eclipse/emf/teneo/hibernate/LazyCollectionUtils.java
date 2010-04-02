@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyCollectionUtils.java,v 1.4 2010/03/28 07:55:32 mtaal Exp $
+ * $Id: LazyCollectionUtils.java,v 1.5 2010/04/02 22:10:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -23,6 +23,8 @@ import java.util.NoSuchElementException;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVDelegatingEcoreEList;
+import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVValueHolder;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -38,7 +40,7 @@ import org.hibernate.type.Type;
  * A utility class providing methods related to lazy loading of collections.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class LazyCollectionUtils {
 
@@ -75,6 +77,7 @@ public class LazyCollectionUtils {
 		final QueryableCollection persister = new SessionFactoryHelper(session
 				.getFactory()).getCollectionPersister(persistentCollection
 				.getRole());
+		pagingIterator.setEavCollection(coll instanceof EAVDelegatingEcoreEList<?>);
 		pagingIterator.setIndexColumnNames(persister.getIndexColumnNames());
 		return pagingIterator;
 	}
@@ -119,6 +122,7 @@ public class LazyCollectionUtils {
 		// it seems that hibernate gets confused when there is a filter defined
 		// on
 		// the session, see the EmployeeAction test which fails in this case
+
 		if (collectionElementType.isEntityType()
 				&& session.getEnabledFilters().isEmpty()) {
 			final int size = ((Number) ((Session) session).createFilter(
@@ -185,6 +189,7 @@ public class LazyCollectionUtils {
 		private Object collection;
 		private String[] indexColumnNames;
 		private String orderBy = "";
+		private boolean eavCollection;
 
 		public boolean hasNext() {
 			if (content == null) {
@@ -212,7 +217,7 @@ public class LazyCollectionUtils {
 
 		public E next() {
 			if (currentIteratorIndex < content.size()) {
-				return content.get(currentIteratorIndex++);
+				return convert(content.get(currentIteratorIndex++));
 			}
 
 			// load the next page
@@ -220,7 +225,15 @@ public class LazyCollectionUtils {
 			if (content.isEmpty()) {
 				throw new NoSuchElementException();
 			}
-			return content.get(currentIteratorIndex++);
+			return convert(content.get(currentIteratorIndex++));
+		}
+
+		@SuppressWarnings("unchecked")
+		private E convert(E value) {
+			if (value instanceof EAVValueHolder) {
+				return (E) ((EAVValueHolder) value).getValue();
+			}
+			return value;
 		}
 
 		private void setPageInformation() {
@@ -232,7 +245,13 @@ public class LazyCollectionUtils {
 
 		@SuppressWarnings("unchecked")
 		private List<E> loadNextPage() {
-			final Query query = session.createFilter(collection, orderBy);
+			final Query query;
+			if (isEavCollection()) {
+				query = session.createFilter(collection,
+						" order by this.listIndex ");
+			} else {
+				query = session.createFilter(collection, orderBy);
+			}
 			query.setMaxResults(pageSize);
 			query.setFirstResult(nextPageStart);
 			return (List<E>) query.list();
@@ -281,7 +300,8 @@ public class LazyCollectionUtils {
 					} else {
 						sb.append(", ");
 					}
-					sb.append(indexColumnName.replaceAll("`", "").replaceAll("\"", ""));
+					sb.append(indexColumnName.replaceAll("`", "").replaceAll(
+							"\"", ""));
 				}
 			}
 			orderBy = sb.toString();
@@ -293,6 +313,14 @@ public class LazyCollectionUtils {
 
 		public void setOrderBy(String orderBy) {
 			this.orderBy = orderBy;
+		}
+
+		public boolean isEavCollection() {
+			return eavCollection;
+		}
+
+		public void setEavCollection(boolean eavCollection) {
+			this.eavCollection = eavCollection;
 		}
 
 	}

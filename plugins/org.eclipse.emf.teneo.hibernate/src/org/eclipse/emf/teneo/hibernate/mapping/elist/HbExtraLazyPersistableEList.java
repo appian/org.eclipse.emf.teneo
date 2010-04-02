@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.16 2010/04/02 15:24:12 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.17 2010/04/02 22:10:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.EContainerRepairControl;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.resource.StoreResource;
@@ -44,7 +46,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -145,6 +147,17 @@ public class HbExtraLazyPersistableEList<E> extends
 		delegateList().clear();
 	}
 
+	@Override
+	public Iterator<E> delegateIterator() {
+		return iterator();
+	}
+	
+	@Override
+	public Iterator<E> iterator() {
+		// return a paging iterator
+		return LazyCollectionUtils.getPagedLoadingIterator(this, 100);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 

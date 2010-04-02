@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVTuplizer.java,v 1.2 2010/04/02 15:24:12 mtaal Exp $
+ * $Id: EAVTuplizer.java,v 1.3 2010/04/02 22:10:11 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -20,7 +20,9 @@ package org.eclipse.emf.teneo.hibernate.mapping.eav;
 import java.util.Iterator;
 
 import org.hibernate.HibernateException;
+import org.hibernate.collection.PersistentList;
 import org.hibernate.engine.SessionFactoryImplementor;
+import org.hibernate.intercept.LazyPropertyInitializer;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.EntityMetamodel;
@@ -58,6 +60,23 @@ public class EAVTuplizer extends PojoEntityTuplizer {
 			}
 			throw new HibernateException("Unable to resolve entity name from Class [" + concreteEntityClass.getName()
 					+ "]" + " expected instance/subclass of [" + getEntityName() + "]");
+		}
+	}
+
+	// overridden to make sure that the owner is set earlier
+	public void setPropertyValues(Object entity, Object[] values) throws HibernateException {
+		boolean setAll = !getEntityMetamodel().hasLazyProperties();
+
+		for ( int j = 0; j < getEntityMetamodel().getPropertySpan(); j++ ) {
+			if ( setAll || values[j] != LazyPropertyInitializer.UNFETCHED_PROPERTY ) {
+				if (values[j] instanceof PersistentList) {
+					final PersistentList persistentList = (PersistentList)values[j];
+					if (persistentList.getOwner() == null) {
+						persistentList.setOwner(entity);
+					}
+				}
+				setters[j].set( entity, values[j], getFactory() );
+			}
 		}
 	}
 

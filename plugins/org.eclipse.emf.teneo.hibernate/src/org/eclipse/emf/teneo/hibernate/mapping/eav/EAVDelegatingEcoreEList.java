@@ -19,6 +19,7 @@ import java.util.ListIterator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
+import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentCollection;
@@ -117,7 +118,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		return (persistentList instanceof AbstractPersistentCollection);
 	}
 
-	private EAVMultiValueHolder getOwner() {
+	private EAVMultiValueHolder getValueHolderOwner() {
 		if (!isHibernateListPresent()) {
 			throw new IllegalStateException();
 		}
@@ -148,7 +149,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	@Override
 	protected void delegateAdd(E object) {
-		final EAVValueHolder valueHolder = (EAVValueHolder) getOwner()
+		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner()
 				.getElement(object);
 		valueHolder.setListIndex(getHibernatePersistentList().size());
 		persistentList.add(valueHolder);
@@ -169,7 +170,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		// insert in the middle, load the whole list
 		delegateList();
 
-		final EAVValueHolder valueHolder = (EAVValueHolder) getOwner()
+		final EAVValueHolder valueHolder = (EAVValueHolder) getValueHolderOwner()
 				.getElement(object);
 
 		persistentList.add(index, valueHolder);
@@ -240,9 +241,20 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	}
 
 	@Override
-	protected Iterator<E> delegateIterator() {
-		// will read the persistentlist always anyway
-		return super.delegateIterator();
+	public Iterator<E> delegateIterator() {
+		return iterator();
+	}
+	
+	@Override
+	public Iterator<E> iterator() {
+		boolean extraLazyLoaded = getValueHolderOwner() instanceof EAVExtraMultiContainmentEReferenceValueHolder;
+		extraLazyLoaded |=  getValueHolderOwner() instanceof EAVExtraMultiNonContainmentEReferenceValueHolder;
+		extraLazyLoaded |=  getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
+		if (extraLazyLoaded && delegate == null && isHibernateListPresent() && isConnectedToSession()) {
+			// return a paging iterator
+			return LazyCollectionUtils.getPagedLoadingIterator(this, 100);			
+		}
+		return super.iterator();
 	}
 
 	@Override
@@ -304,7 +316,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@SuppressWarnings("unchecked")
 	@Override
 	protected E delegateSet(int index, E object) {
-		final EAVValueHolder newValueHolder = (EAVValueHolder) getOwner()
+		final EAVValueHolder newValueHolder = (EAVValueHolder) getValueHolderOwner()
 				.getElement(object);
 		newValueHolder.setListIndex(index);
 		final EAVValueHolder oldValueHolder = persistentList.set(index,
