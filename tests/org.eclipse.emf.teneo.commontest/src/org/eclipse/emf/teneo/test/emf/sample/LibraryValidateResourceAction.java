@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryValidateResourceAction.java,v 1.10 2010/04/02 15:25:47 mtaal Exp $
+ * $Id: LibraryValidateResourceAction.java,v 1.11 2010/04/02 22:42:54 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -22,7 +22,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.teneo.StoreValidationException;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
@@ -38,7 +37,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests if simple validation works for the resource implementation.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class LibraryValidateResourceAction extends AbstractTestAction {
 	/**
