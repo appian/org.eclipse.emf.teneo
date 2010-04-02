@@ -8,6 +8,8 @@
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.samples.emf.annotations.extralazy.Book;
@@ -21,7 +23,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests extra lazy fetch strategy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ExtraLazyAction extends AbstractTestAction {
 
@@ -108,6 +110,39 @@ public class ExtraLazyAction extends AbstractTestAction {
 			store.store(b);
 			store.commitTransaction();
 		}
+		
+		{
+			store.beginTransaction();
+			Book b = store.getObject(Book.class);
+			final Iterator<?> iterator = LazyCollectionUtils.getPagedLoadingIterator(b.getAuthors(), 2);
+			final PersistableDelegateList<?> pList = (PersistableDelegateList<?>) b.getAuthors();
+			final int size = b.getAuthors().size();
+			int cnt = 0;
+			while (iterator.hasNext()) {
+				final Writer w = (Writer)iterator.next();
+				assertTrue(w != null);
+				cnt++;
+			}
+			assertEquals(size, cnt);
+			assertFalse(pList.isInitialized());			
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			Book b = store.getObject(Book.class);
+			final Iterator<?> iterator = b.getAuthors().iterator();
+			final PersistableDelegateList<?> pList = (PersistableDelegateList<?>) b.getAuthors();
+			final int size = b.getAuthors().size();
+			int cnt = 0;
+			while (iterator.hasNext()) {
+				final Writer w = (Writer)iterator.next();
+				assertTrue(w != null);
+				cnt++;
+			}
+			assertEquals(size, cnt);
+			assertFalse(pList.isInitialized());			
+			store.commitTransaction();
+		}		
 	}
 	
 	protected boolean isEAVMapped() {
