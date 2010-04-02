@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.18 2010/03/26 16:31:06 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.19 2010/04/02 22:43:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -23,7 +23,6 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 
-import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
@@ -42,7 +41,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class LibraryTest extends AbstractActionTest {
 

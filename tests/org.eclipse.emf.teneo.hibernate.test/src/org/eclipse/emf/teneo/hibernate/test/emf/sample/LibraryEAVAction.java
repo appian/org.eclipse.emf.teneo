@@ -11,19 +11,17 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVAction.java,v 1.1 2010/04/02 15:25:13 mtaal Exp $
+ * $Id: LibraryEAVAction.java,v 1.2 2010/04/02 22:43:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
-import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
@@ -38,7 +36,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd using eav.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LibraryEAVAction extends AbstractTestAction {
 
