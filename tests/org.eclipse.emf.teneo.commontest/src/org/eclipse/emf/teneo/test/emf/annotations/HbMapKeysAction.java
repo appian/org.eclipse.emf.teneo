@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbMapKeysAction.java,v 1.1 2008/07/06 16:23:25 mtaal Exp $
+ * $Id: HbMapKeysAction.java,v 1.2 2010/04/03 12:55:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -32,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests HbMapKey and MapKeyManyToMany annotations
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class HbMapKeysAction extends AbstractTestAction {
 	public HbMapKeysAction() {
@@ -87,7 +87,6 @@ public class HbMapKeysAction extends AbstractTestAction {
 		return bk;
 	}
 
-	/** Creates an item, an address and links them to a po. */
 	@Override
 	public void doAction(TestStore store) {
 		{
