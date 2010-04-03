@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemList.java,v 1.6 2009/03/03 15:48:47 mtaal Exp $
+ * $Id: ItemList.java,v 1.7 2010/04/03 09:21:10 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -88,7 +88,7 @@ public interface ItemList extends EObject {
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_Item()
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getItemList
 	 * @model opposite="itemList" required="true"
-	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false) @OrderBy(\"name desc\")'"
+	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false, fetch=EXTRA) @OrderBy(\"name desc\")'"
 	 *        extendedMetaData="kind='element' name='item'"
 	 * @generated
 	 */

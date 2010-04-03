@@ -10,6 +10,17 @@
 					<xsd:appinfo source="teneo.hibernate">@IdBag</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="addresses" type="this:Address" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.hibernate">@IdBag</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>	
+	
+	<xsd:complexType name="Address">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"/>
 		</xsd:sequence>
 	</xsd:complexType>	
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagFactoryImpl.java,v 1.3 2010/02/06 18:17:47 mtaal Exp $
+ * $Id: IdbagFactoryImpl.java,v 1.4 2010/04/03 09:21:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl;
 
@@ -60,10 +60,21 @@ public class IdbagFactoryImpl extends EFactoryImpl implements IdbagFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case IdbagPackage.ADDRESS: return createAddress();
 			case IdbagPackage.USER: return createUser();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Address createAddress() {
+		AddressImpl address = new AddressImpl();
+		return address;
 	}
 
 	/**

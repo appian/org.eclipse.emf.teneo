@@ -61,7 +61,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="item" lowerBound="1" upperBound="-1"
         eType="#//Item" eOpposite="#//Item/itemList">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OneToMany(indexed=false) @OrderBy(&quot;name desc&quot;)"/>
+        <details key="appinfo" value="@OneToMany(indexed=false, fetch=EXTRA) @OrderBy(&quot;name desc&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

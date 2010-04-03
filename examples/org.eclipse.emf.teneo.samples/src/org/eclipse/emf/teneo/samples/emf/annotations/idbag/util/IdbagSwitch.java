@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagSwitch.java,v 1.3 2010/02/06 18:17:46 mtaal Exp $
+ * $Id: IdbagSwitch.java,v 1.4 2010/04/03 09:21:07 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.util;
 
@@ -87,6 +87,12 @@ public class IdbagSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case IdbagPackage.ADDRESS: {
+				Address address = (Address)theEObject;
+				T result = caseAddress(address);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case IdbagPackage.USER: {
 				User user = (User)theEObject;
 				T result = caseUser(user);
@@ -98,13 +104,28 @@ public class IdbagSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>User</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Address</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>User</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Address</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddress(Address object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>User</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>User</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -113,13 +134,13 @@ public class IdbagSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */

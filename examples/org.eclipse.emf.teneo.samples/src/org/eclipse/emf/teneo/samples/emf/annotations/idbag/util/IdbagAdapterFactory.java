@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagAdapterFactory.java,v 1.3 2010/02/06 18:17:46 mtaal Exp $
+ * $Id: IdbagAdapterFactory.java,v 1.4 2010/04/03 09:21:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.util;
 
@@ -64,13 +64,17 @@ public class IdbagAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected IdbagSwitch<Adapter> modelSwitch =
 		new IdbagSwitch<Adapter>() {
+			@Override
+			public Adapter caseAddress(Address object) {
+				return createAddressAdapter();
+			}
 			@Override
 			public Adapter caseUser(User object) {
 				return createUserAdapter();
@@ -94,6 +98,20 @@ public class IdbagAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.Address <em>Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.idbag.Address
+	 * @generated
+	 */
+	public Adapter createAddressAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.User <em>User</em>}'.

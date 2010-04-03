@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: User.java,v 1.5 2010/02/06 18:17:46 mtaal Exp $
+ * $Id: User.java,v 1.6 2010/04/03 09:21:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.User#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.User#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.User#getAddresses <em>Addresses</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,7 +39,7 @@ public interface User extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.idbag.IdbagPackage#getUser_Name()
-	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
 	 */
@@ -65,11 +66,29 @@ public interface User extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Roles</em>' attribute list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.idbag.IdbagPackage#getUser_Roles()
-	 * @model type="java.lang.String" unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        annotation="teneo.hibernate appinfo='@IdBag'"
 	 *        extendedMetaData="kind='element' name='role'"
 	 * @generated
 	 */
 	EList<String> getRoles();
+
+	/**
+	 * Returns the value of the '<em><b>Addresses</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.Address}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Addresses</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Addresses</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.idbag.IdbagPackage#getUser_Addresses()
+	 * @model containment="true"
+	 *        annotation="teneo.hibernate appinfo='@IdBag'"
+	 *        extendedMetaData="kind='element' name='addresses'"
+	 * @generated
+	 */
+	EList<Address> getAddresses();
 
 } // User

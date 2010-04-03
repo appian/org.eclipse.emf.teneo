@@ -7,9 +7,13 @@
   <foreignModel>IdBag.xsd</foreignModel>
   <genPackages prefix="Idbag" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
       resource="XML" disposableProviderFactory="true" ecorePackage="idbag.ecore#/">
+    <genClasses ecoreClass="idbag.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute idbag.ecore#//Address/name"/>
+    </genClasses>
     <genClasses ecoreClass="idbag.ecore#//User">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute idbag.ecore#//User/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute idbag.ecore#//User/roles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference idbag.ecore#//User/addresses"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UserImpl.java,v 1.3 2010/02/06 18:17:47 mtaal Exp $
+ * $Id: UserImpl.java,v 1.4 2010/04/03 09:21:08 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl;
 
@@ -10,15 +10,20 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.teneo.samples.emf.annotations.idbag.Address;
 import org.eclipse.emf.teneo.samples.emf.annotations.idbag.IdbagPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.idbag.User;
 
@@ -31,6 +36,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.idbag.User;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl.UserImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl.UserImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl.UserImpl#getAddresses <em>Addresses</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +71,17 @@ public class UserImpl extends EObjectImpl implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> roles = null;
+	protected EList<String> roles;
+
+	/**
+	 * The cached value of the '{@link #getAddresses() <em>Addresses</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAddresses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Address> addresses;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +140,32 @@ public class UserImpl extends EObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Address> getAddresses() {
+		if (addresses == null) {
+			addresses = new EObjectContainmentEList<Address>(Address.class, this, IdbagPackage.USER__ADDRESSES);
+		}
+		return addresses;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IdbagPackage.USER__ADDRESSES:
+				return ((InternalEList<?>)getAddresses()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -131,6 +173,8 @@ public class UserImpl extends EObjectImpl implements User {
 				return getName();
 			case IdbagPackage.USER__ROLES:
 				return getRoles();
+			case IdbagPackage.USER__ADDRESSES:
+				return getAddresses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -151,6 +195,10 @@ public class UserImpl extends EObjectImpl implements User {
 				getRoles().clear();
 				getRoles().addAll((Collection<? extends String>)newValue);
 				return;
+			case IdbagPackage.USER__ADDRESSES:
+				getAddresses().clear();
+				getAddresses().addAll((Collection<? extends Address>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -169,6 +217,9 @@ public class UserImpl extends EObjectImpl implements User {
 			case IdbagPackage.USER__ROLES:
 				getRoles().clear();
 				return;
+			case IdbagPackage.USER__ADDRESSES:
+				getAddresses().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -185,6 +236,8 @@ public class UserImpl extends EObjectImpl implements User {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case IdbagPackage.USER__ROLES:
 				return roles != null && !roles.isEmpty();
+			case IdbagPackage.USER__ADDRESSES:
+				return addresses != null && !addresses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

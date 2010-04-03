@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IdbagFactory.java,v 1.2 2010/02/06 18:17:46 mtaal Exp $
+ * $Id: IdbagFactory.java,v 1.3 2010/04/03 09:21:06 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.idbag;
 
@@ -24,6 +24,15 @@ public interface IdbagFactory extends EFactory {
 	 * @generated
 	 */
 	IdbagFactory eINSTANCE = org.eclipse.emf.teneo.samples.emf.annotations.idbag.impl.IdbagFactoryImpl.init();
+
+	/**
+	 * Returns a new object of class '<em>Address</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Address</em>'.
+	 * @generated
+	 */
+	Address createAddress();
 
 	/**
 	 * Returns a new object of class '<em>User</em>'.
