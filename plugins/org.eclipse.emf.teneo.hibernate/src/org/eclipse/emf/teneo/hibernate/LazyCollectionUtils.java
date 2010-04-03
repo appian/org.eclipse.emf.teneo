@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyCollectionUtils.java,v 1.5 2010/04/02 22:10:11 mtaal Exp $
+ * $Id: LazyCollectionUtils.java,v 1.6 2010/04/03 09:21:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -40,7 +40,7 @@ import org.hibernate.type.Type;
  * A utility class providing methods related to lazy loading of collections.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class LazyCollectionUtils {
 
@@ -49,6 +49,10 @@ public class LazyCollectionUtils {
 	 * in pages (controlled by the pageSize parameter). Note if the collection
 	 * is not lazy loadable then a normal iterator is returned. This is checked
 	 * using the {@link #isLazyLoadableCollection(Collection)} method.
+	 * 
+	 * Note: this method can only handle collections of EObjects so not collections
+	 * of primitive typed objects. Paged iteration of these collections is not 
+	 * supported by Hibernate.
 	 * 
 	 * @param coll
 	 *            the collection to iterate lazily over
@@ -311,6 +315,12 @@ public class LazyCollectionUtils {
 			return orderBy;
 		}
 
+		/**
+		 * Note the parameter must include the term: order by. Refer to properties of
+		 * the collection content using the this keyword.
+		 * 
+		 * @param orderBy the order by clause including the order by keyword, for example: order by this.name
+		 */
 		public void setOrderBy(String orderBy) {
 			this.orderBy = orderBy;
 		}

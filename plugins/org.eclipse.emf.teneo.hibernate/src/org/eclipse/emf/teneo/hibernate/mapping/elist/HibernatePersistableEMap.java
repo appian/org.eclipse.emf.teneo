@@ -11,12 +11,11 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.10 2010/03/24 17:32:42 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.11 2010/04/03 09:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -43,7 +42,7 @@ import org.hibernate.collection.PersistentCollection;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implements ExtensionPoint {
@@ -68,7 +67,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 		boolean controlsTransaction = false;
 		boolean err = true;
 		Resource res = null;
-		final List<?> delegate = ((HibernatePersistableEList) delegateEList).getDelegate();
+		final List<?> delegate = ((HibernatePersistableEList<?>) delegateEList).getDelegate();
 		try {
 			res = getEObject().eResource();
 			if (res != null && res instanceof HbResource) {
@@ -156,14 +155,12 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 		// if we are not loaded yet, we return the size of the buffered lazy
 		// load delegate
 
-		if (delegateEList instanceof PersistableEList &&
+		if (delegateEList instanceof PersistableEList<?> &&
 				((PersistableEList<?>) delegateEList).getDelegate() instanceof AbstractPersistentCollection) {
 			try {
 				// here is a neat trick. we use reflection to get the
 				// session of the persistanMap.
-				Field field = AbstractPersistentCollection.class.getDeclaredField("session");
-				field.setAccessible(true);
-				Session s = (Session) field.get(((PersistableEList<?>) delegateEList).getDelegate());
+				final Session s = (Session)((AbstractPersistentCollection)((PersistableEList<?>) delegateEList).getDelegate()).getSession();
 
 				// now that we have the session, we can query the size of
 				// the list without loading it
