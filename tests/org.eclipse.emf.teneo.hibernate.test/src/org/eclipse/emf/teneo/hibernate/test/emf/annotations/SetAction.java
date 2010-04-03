@@ -9,7 +9,6 @@
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -33,7 +32,7 @@ import org.hibernate.collection.PersistentCollection;
  * Test 1n relation (contained and non-contained) using sets.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SetAction extends AbstractTestAction {
 	/** The number of testitems created */

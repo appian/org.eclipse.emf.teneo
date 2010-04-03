@@ -11,28 +11,46 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAsListEAVAction.java,v 1.2 2010/04/03 12:55:19 mtaal Exp $
+ * $Id: EMapAsListAction.java,v 1.1 2010/04/03 12:55:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
 
 /**
- * Tests eav mapping
+ * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class EMapAsListEAVAction extends EMapAsListAction {
+public class EMapAsListAction extends EMapAction {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
+	 * ()
+	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
-		props.setProperty(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
+		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
 		return props;
 	}
+
+	@Override
+	protected void checkEqual(Object o, List<?> l2) {
+		final List<?> l1 = (List<?>) o;
+		assertTrue(l1 != l2);
+		assertTrue(l1.size() == l2.size());
+		for (Object c : l1) {
+			assertEquals(l1.indexOf(c), l2.indexOf(c));
+		}
+	}
+
 }

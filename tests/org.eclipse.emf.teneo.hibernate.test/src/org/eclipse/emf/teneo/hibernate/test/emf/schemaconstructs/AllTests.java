@@ -16,8 +16,6 @@ import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DateTimeAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DocumentRootAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.DurationAction;
-import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAction;
-import org.eclipse.emf.teneo.test.emf.schemaconstructs.EMapAsListAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.EcoreAttrsAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.ExtensionAction;
 import org.eclipse.emf.teneo.test.emf.schemaconstructs.GroupAction;
@@ -36,20 +34,30 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
+		TestSuite suite = new MultiCfgTestSuite(
+				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				HibernateTestbed.instance().getConfigurations());
-		
+
+//		suite.addTestSuite(EMapAsListExtraLazyAction.class);
+//		if (true) {
+//			return suite;
+//		}
+		suite.addTestSuite(EMapAction.class);
+
+		suite.addTestSuite(EMapAsListAction.class);
+
+		suite.addTestSuite(EMapAsListEAVAction.class);
 		suite.addTestSuite(SimpleTypeEAVAction.class);
 		suite.addTestSuite(SubstitutionEAVAction.class);
-		suite.addTestSuite(EMapAsListEAVAction.class);
 		suite.addTestSuite(GroupEAVAction.class);
 		suite.addTestSuite(DateTimeEAVAction.class);
-		// QNameEAVAction fails because the xml EFactory convertToString does not
+		// QNameEAVAction fails because the xml EFactory convertToString does
+		// not
 		// convert the name space uri, only the prefix
 		// suite.addTestSuite(QNameEAVAction.class);
 		suite.addTestSuite(AttributesEAVAction.class);
@@ -68,8 +76,6 @@ public class AllTests {
 
 		suite.addTestSuite(DocumentRootAction.class);
 		suite.addTestSuite(SubstitutionzvonAction.class);
-		suite.addTestSuite(EMapAction.class);
-		suite.addTestSuite(EMapAsListAction.class);
 
 		suite.addTestSuite(SimpleTypeAction.class);
 		suite.addTestSuite(DateTimeAction.class);
@@ -88,8 +94,10 @@ public class AllTests {
 		suite.addTestSuite(SubstitutionAction.class);
 
 		/*
-		 * // The anytype test is not yet supported by Hibernate // suite.addTestSuite(AnyTypeAction.class); //
-		 * Listunion types are not yet supported by hibernate // suite.addTestSuite(ListUnionAction.class);
+		 * // The anytype test is not yet supported by Hibernate //
+		 * suite.addTestSuite(AnyTypeAction.class); // Listunion types are not
+		 * yet supported by hibernate //
+		 * suite.addTestSuite(ListUnionAction.class);
 		 */
 		// $JUnit-END$
 		return suite;
