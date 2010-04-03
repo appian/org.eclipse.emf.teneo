@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernatePersistableEMap.java,v 1.11 2010/04/03 09:21:13 mtaal Exp $
+ * $Id: HibernatePersistableEMap.java,v 1.12 2010/04/03 12:55:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -42,7 +42,7 @@ import org.hibernate.collection.PersistentCollection;
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implements ExtensionPoint {
@@ -148,18 +148,12 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V> implem
 	@Override
 	@SuppressWarnings("rawtypes")
 	public int size() {
-		if (size != 0) {
-			return size;
-		}
-
 		// if we are not loaded yet, we return the size of the buffered lazy
 		// load delegate
 
-		if (delegateEList instanceof PersistableEList<?> &&
+		if (!isLoaded() && delegateEList instanceof PersistableEList<?> &&
 				((PersistableEList<?>) delegateEList).getDelegate() instanceof AbstractPersistentCollection) {
 			try {
-				// here is a neat trick. we use reflection to get the
-				// session of the persistanMap.
 				final Session s = (Session)((AbstractPersistentCollection)((PersistableEList<?>) delegateEList).getDelegate()).getSession();
 
 				// now that we have the session, we can query the size of

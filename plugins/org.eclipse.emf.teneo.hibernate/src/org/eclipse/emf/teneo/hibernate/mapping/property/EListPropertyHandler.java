@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.extension.ExtensionManagerAware;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEList;
+import org.eclipse.emf.teneo.hibernate.mapping.elist.HbExtraLazyPersistableEMap;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEList;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.HibernatePersistableEMap;
 import org.eclipse.emf.teneo.hibernate.mapping.elist.MapHibernatePersistableEMap;
@@ -56,7 +57,7 @@ import org.hibernate.property.Setter;
  * getSetter methods are called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 @SuppressWarnings("unchecked")
 public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint, ExtensionManagerAware {
@@ -420,9 +421,13 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor, E
 				if (log.isDebugEnabled()) {
 					log.debug("Detected EMAP for " + estruct.getName());
 				}
-
-				return getExtensionManager().getExtension(HibernatePersistableEMap.class,
-						new Object[] { target, eref, list });
+				if (extraLazy) {
+					return getExtensionManager().getExtension(HbExtraLazyPersistableEMap.class,
+							new Object[] { target, eref, list });
+				} else {
+					return getExtensionManager().getExtension(HibernatePersistableEMap.class,
+							new Object[] { target, eref, list });
+				}
 			}
 		}
 		if (extraLazy) {

@@ -104,7 +104,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.67 $
+ * @version $Revision: 1.68 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -711,10 +711,12 @@ public abstract class HbDataStore implements DataStore {
 					if (elementValue instanceof OneToMany) {
 						final OneToMany oneToMany = (OneToMany) elementValue;
 						elementPC = oneToMany.getAssociatedClass();
-					} else {
+					} else if (elementValue instanceof ManyToOne) {
 						final ManyToOne mto = (ManyToOne) elementValue;
 						elementPC = persistentClasses.get(mto
 								.getReferencedEntityName());
+					} else {
+						continue;
 					}
 					
 					if (isClassOrSuperClassEAVMapped(elementPC)) {
