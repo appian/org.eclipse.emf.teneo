@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PersistableEMap.java,v 1.16 2010/02/04 11:03:00 mtaal Exp $
+ * $Id: PersistableEMap.java,v 1.17 2010/04/03 12:55:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.mapping.elist;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.EcoreEMap;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @author <a href="mailto:jdboudreault@gmail.com">Jean-Denis Boudreault</a>
  * 
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		PersistableDelegateList<BasicEMap.Entry<K, V>> {
@@ -72,14 +72,6 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 */
 	private InternalEObject owner;
 
-	/**
-	 * The persisted map handled by the orm layer. This delegate is the map we receive from the database provider. It is
-	 * kept all the time, any changes to the PersistableEMap are replicated to the ormMap.
-	 * 
-	 * This field will be null unless there is a map waiting to be lazy loaded
-	 */
-	protected Map<K, V> ormMapDelegate = null;
-
 	/** Not supported constructor */
 	public PersistableEMap(EClass entryEClass, EList<BasicEMap.Entry<K, V>> delegateEList) {
 		super(entryEClass, BasicEMap.Entry.class, delegateEList);
@@ -105,9 +97,6 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 	 * @param entryClass
 	 * @param owner
 	 * @param featureID
-	 * @param ormMapDelegate
-	 *            a java.util.map that is a proxy collection taht will be used when lazy load is invoked. if it is null,
-	 *            then the map is considered as loaded
 	 */
 	public PersistableEMap(EClass entryEClass, InternalEObject owner, EStructuralFeature feature,
 			List<BasicEMap.Entry<K, V>> list) {
@@ -550,7 +539,6 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 
 	@Override
 	protected V putEntry(org.eclipse.emf.common.util.BasicEMap.Entry<K, V> entry, V value) {
-		load();
 		return super.putEntry(entry, value);
 	}
 
