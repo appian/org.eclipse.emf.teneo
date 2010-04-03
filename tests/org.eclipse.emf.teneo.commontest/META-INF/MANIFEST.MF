@@ -19,7 +19,6 @@ Export-Package:
  org.eclipse.emf.teneo.test.conf,
  org.eclipse.emf.teneo.test.emf.annotations,
  org.eclipse.emf.teneo.test.emf.detach,
- org.eclipse.emf.teneo.test.emf.elist,
  org.eclipse.emf.teneo.test.emf.relation,
  org.eclipse.emf.teneo.test.emf.sample,
  org.eclipse.emf.teneo.test.emf.schemaconstructs,
