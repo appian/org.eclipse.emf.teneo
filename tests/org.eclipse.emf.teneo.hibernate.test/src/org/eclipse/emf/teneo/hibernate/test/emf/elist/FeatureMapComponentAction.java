@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: FeatureMapComponentAction.java,v 1.1 2009/11/02 10:24:38 mtaal Exp $
+ * $Id: FeatureMapComponentAction.java,v 1.2 2010/04/03 09:21:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.elist;
@@ -19,13 +19,12 @@ package org.eclipse.emf.teneo.hibernate.test.emf.elist;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.test.emf.elist.FeatureMapAction;
 
 /**
  * Tests featuremap with a FeatureMap component mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class FeatureMapComponentAction extends FeatureMapAction {
 

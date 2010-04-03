@@ -42,7 +42,6 @@ import org.eclipse.emf.teneo.test.emf.annotations.OnetoonePKAction;
 import org.eclipse.emf.teneo.test.emf.annotations.OverrideSecondaryAction;
 import org.eclipse.emf.teneo.test.emf.annotations.PKeyJoinAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SecondarytableHibernateAction;
-import org.eclipse.emf.teneo.test.emf.annotations.SetAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetNMAction;
 import org.eclipse.emf.teneo.test.emf.annotations.SetResourceAction;
 import org.eclipse.emf.teneo.test.emf.annotations.ToOneAction;
@@ -54,13 +53,15 @@ import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.100 $
+ * @version $Revision: 1.101 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(ExtraLazySetAction.class);
+		suite.addTestSuite(SetAction.class);
 		suite.addTestSuite(EAVExtraLazyAction.class);
 		suite.addTestSuite(ExtraLazyAction.class);
 		suite.addTestSuite(EAVMappingAllAction.class);

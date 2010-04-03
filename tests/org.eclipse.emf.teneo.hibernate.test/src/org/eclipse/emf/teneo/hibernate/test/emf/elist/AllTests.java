@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AllTests.java,v 1.7 2010/04/02 15:25:13 mtaal Exp $
+ * $Id: AllTests.java,v 1.8 2010/04/03 09:21:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.elist;
@@ -21,13 +21,12 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.teneo.hibernate.test.HibernateTestbed;
 import org.eclipse.emf.teneo.test.conf.MultiCfgTestSuite;
-import org.eclipse.emf.teneo.test.emf.elist.FeatureMapAction;
 
 /**
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class AllTests {
 
