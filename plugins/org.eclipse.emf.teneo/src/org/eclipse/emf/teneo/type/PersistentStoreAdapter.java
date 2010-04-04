@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: PersistentStoreAdapter.java,v 1.13 2010/04/04 15:56:57 mtaal Exp $
+ * $Id: PersistentStoreAdapter.java,v 1.14 2010/04/04 17:21:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.type;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * persistent store but is persisted there for the first time.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class PersistentStoreAdapter implements Adapter {
@@ -180,6 +180,7 @@ public class PersistentStoreAdapter implements Adapter {
 								removedObject);
 					}
 				}
+				changedPosition = 0;
 			}
 			if (map != null) {
 				for (Object o : (List<?>) notification.getOldValue()) {
