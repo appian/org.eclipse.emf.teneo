@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyCollectionUtils.java,v 1.7 2010/04/04 12:10:51 mtaal Exp $
+ * $Id: LazyCollectionUtils.java,v 1.8 2010/04/04 15:50:49 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -43,7 +43,7 @@ import org.hibernate.type.Type;
  * A utility class providing methods related to lazy loading of collections.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class LazyCollectionUtils {
 	
@@ -112,38 +112,10 @@ public class LazyCollectionUtils {
 		final AbstractPersistentCollection persistentCollection = (AbstractPersistentCollection) persistableList
 				.getDelegate();
 		final SessionImplementor session = persistentCollection.getSession();
-		final Object owner = persistentCollection.getOwner();
-		final EStructuralFeature eFeature = persistableList
-				.getEStructuralFeature();
-		PersistentStoreAdapter adapter = null;
-		if (owner instanceof EObject) {
-			adapter = StoreUtil.getPersistentStoreAdapter(((EObject) owner));
-			final Integer size = adapter.getCollectionSize(eFeature);
-			if (size != null) {
-				return size;
-			}
-		}
 		final QueryableCollection persister = new SessionFactoryHelper(session
 				.getFactory()).getCollectionPersister(persistentCollection
 				.getRole());
-		final Type collectionElementType = persister.getElementType();
-		// it seems that hibernate gets confused when there is a filter defined
-		// on
-		// the session, see the EmployeeAction test which fails in this case
-
-		if (collectionElementType.isEntityType()
-				&& session.getEnabledFilters().isEmpty()) {
-			final int size = ((Number) ((Session) session).createFilter(
-					persistentCollection, "select count(*)").uniqueResult())
-					.intValue();
-			if (adapter != null) {
-				adapter.setCollectionSize(eFeature, size);
-			}
-			return size;
-		}
-
-		// no other way
-		return coll.size();
+		return persister.getSize(persistentCollection.getKey(), session);
 	}
 
 	/**
