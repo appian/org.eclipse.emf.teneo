@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEMap.java,v 1.1 2010/04/03 12:55:15 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEMap.java,v 1.2 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -21,7 +21,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicEMap;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.BasicEMap.Entry;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
@@ -30,8 +35,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentList;
+import org.hibernate.engine.CollectionEntry;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.hql.ast.util.SessionFactoryHelper;
+import org.hibernate.persister.collection.AbstractCollectionPersister;
 import org.hibernate.persister.collection.QueryableCollection;
 import org.hibernate.type.EntityType;
 
@@ -39,7 +46,7 @@ import org.hibernate.type.EntityType;
  * Extends the default hibernate persistable emap with extra lazy behavior.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 
 public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K, V> {
@@ -53,7 +60,7 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 	
 	@Override
 	public Iterator<java.util.Map.Entry<K, V>> iterator() {
-		return LazyCollectionUtils.getPagedLoadingIterator(this, 50);
+		return LazyCollectionUtils.getPagedLoadingIterator(this, LazyCollectionUtils.DEFAULT_PAGE_SIZE);
 	}
 	
 	@Override
@@ -85,10 +92,8 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 			
 			// create a query 
 			final AbstractPersistentCollection collection = (AbstractPersistentCollection)getDelegate();
-
-			final QueryableCollection persister = new SessionFactoryHelper(((SessionImplementor)session)
-					.getFactory()).getCollectionPersister(collection
-					.getRole());
+			final CollectionEntry collectionEntry = ((SessionImplementor)session).getPersistenceContext().getCollectionEntry(collection);
+			final AbstractCollectionPersister persister = (AbstractCollectionPersister)collectionEntry.getLoadedPersister();
 			final String entityName = ((EntityType)persister.getCollectionMetadata().getElementType()).getAssociatedEntityName();
 			final Query qry = session.createQuery("select e from " + entityName + " as e where e.key=:key and e." + StoreUtil.getExtraLazyInversePropertyName(getEStructuralFeature()) + "=:owner");
 			qry.setParameter("key", key);
@@ -116,15 +121,50 @@ public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K
 			} else {			
 				// we get here, create a new one and add it to the persistablelist...
 				org.eclipse.emf.common.util.BasicEMap.Entry<K, V> newEntry = newEntry(hashOf(key), key, value);
-				size = ((PersistentList)((PersistableEList<?>) delegateEList).getDelegate()).size();
-			    ((List<org.eclipse.emf.common.util.BasicEMap.Entry<K, V>>)getDelegate()).add(newEntry);
-				size = ((PersistentList)((PersistableEList<?>) delegateEList).getDelegate()).size();
+				delegateEList.add(newEntry);
 			    return null;
 			}
 		}
 		return super.put(key, value);
 	}
 
+
+	/** Needs to be implemented by concrete subclass */
+	@Override
+	protected EList<BasicEMap.Entry<K, V>> createDelegateEList(InternalEObject owner, EStructuralFeature feature,
+			List<BasicEMap.Entry<K, V>> delegateORMList) {
+		return new HbExtraLazyPersistableEList<Entry<K, V>>(owner, feature, delegateORMList) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void didAdd(int index, Entry<K, V> newObject) {
+				doPut(newObject);
+			}
+
+			@Override
+			protected void didSet(int index, Entry<K, V> newObject, Entry<K, V> oldObject) {
+				didRemove(index, oldObject);
+				didAdd(index, newObject);
+			}
+
+			@Override
+			protected void didRemove(int index, Entry<K, V> oldObject) {
+				HbExtraLazyPersistableEMap.this.doRemove(oldObject);
+			}
+
+			@Override
+			protected void didClear(int size, Object[] oldObjects) {
+				doClear();
+			}
+
+			@Override
+			protected void didMove(int index, Entry<K, V> movedObject, int oldIndex) {
+				HbExtraLazyPersistableEMap.this.doMove(movedObject);
+			}
+		};
+	}
+
+	
 	@Override
 	public boolean remove(Object object) {
 		// TODO Auto-generated method stub

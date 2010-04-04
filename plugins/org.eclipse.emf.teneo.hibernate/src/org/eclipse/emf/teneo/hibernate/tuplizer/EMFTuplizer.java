@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.22 2010/04/02 15:24:12 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.23 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -63,7 +63,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -179,7 +179,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	protected Getter buildPropertyGetter(Property mappedProperty, PersistentClass mappedEntity) {
-		if (isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
+		if (HbUtil.isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
 			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(mappedEntity);
 			final Getter getter =  mappedProperty.getGetter(EObjectImpl.class);
 			if (getter instanceof EAVPropertyHandler) {
@@ -198,7 +198,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	protected Setter buildPropertySetter(Property mappedProperty, PersistentClass mappedEntity) {
-		if (isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
+		if (HbUtil.isEAVMapped(mappedEntity) && mappedProperty.getName().equals(Constants.EAV_EOBJECT_VALUES)) {
 			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(mappedEntity);
 			final Setter setter = mappedProperty.getSetter(EObjectImpl.class);
 			if (setter instanceof EAVPropertyHandler) {
@@ -207,17 +207,6 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 			return setter;
 		}
 		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(null, mappedProperty.getName());
-	}
-
-	private boolean isEAVMapped(PersistentClass mappedEntity) {
-		if (mappedEntity.getEntityName() != null
-				&& mappedEntity.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
-			return true;
-		}
-		if (mappedEntity.getSuperclass() == null) {
-			return false;
-		}
-		return isEAVMapped(mappedEntity.getSuperclass());
 	}
 
 	/*

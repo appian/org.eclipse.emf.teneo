@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.5 2010/04/02 15:24:11 mtaal Exp $
+ * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.6 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -50,10 +50,10 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 	public Object getElement(Object value) {
 		EAVSingleNonContainmentEReferenceValueHolder valueHolder = new EAVSingleNonContainmentEReferenceValueHolder();
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
-		valueHolder.set(value);
 		valueHolder.setOwner(getOwner());
 		valueHolder.setValueOwner(this);
 		valueHolder.setHbDataStore(getHbDataStore());
+		valueHolder.set(value);
 		return valueHolder;
 	}
 

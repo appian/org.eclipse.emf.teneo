@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyCollectionUtils.java,v 1.6 2010/04/03 09:21:12 mtaal Exp $
+ * $Id: LazyCollectionUtils.java,v 1.7 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVDelegatingEcoreEList;
+import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVDelegatingList;
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVValueHolder;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
@@ -31,8 +31,11 @@ import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
+import org.hibernate.engine.CollectionEntry;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.hql.ast.util.SessionFactoryHelper;
+import org.hibernate.persister.collection.AbstractCollectionPersister;
+import org.hibernate.persister.collection.CollectionPersister;
 import org.hibernate.persister.collection.QueryableCollection;
 import org.hibernate.type.Type;
 
@@ -40,9 +43,11 @@ import org.hibernate.type.Type;
  * A utility class providing methods related to lazy loading of collections.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class LazyCollectionUtils {
+	
+	public final static int DEFAULT_PAGE_SIZE = 100;
 
 	/**
 	 * Returns an iterator which loads the underlying data from the collection
@@ -78,10 +83,9 @@ public class LazyCollectionUtils {
 		pagingIterator.setPageSize(pageSize);
 		pagingIterator.setSession((Session) session);
 
-		final QueryableCollection persister = new SessionFactoryHelper(session
-				.getFactory()).getCollectionPersister(persistentCollection
-				.getRole());
-		pagingIterator.setEavCollection(coll instanceof EAVDelegatingEcoreEList<?>);
+		final CollectionEntry entry = session.getPersistenceContext().getCollectionEntry(persistentCollection);
+		final AbstractCollectionPersister persister = (AbstractCollectionPersister)entry.getLoadedPersister();
+		pagingIterator.setEavCollection(coll instanceof EAVDelegatingList);
 		pagingIterator.setIndexColumnNames(persister.getIndexColumnNames());
 		return pagingIterator;
 	}

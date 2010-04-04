@@ -44,7 +44,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	}
 
 	protected void initialize() {
-		if (delegate != null) {
+		if (isDelegateInitialized()) {
 			return;
 		}
 		doInitialize();
@@ -98,11 +98,11 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	}
 
 	public boolean isInitialized() {
-		return delegate != null;
+		return isDelegateInitialized();
 	}
 
 	public boolean isLoaded() {
-		return delegate != null;
+		return isDelegateInitialized();
 	}
 
 	@Override
@@ -154,14 +154,14 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		valueHolder.setListIndex(getHibernatePersistentList().size());
 		persistentList.add(valueHolder);
 
-		if (delegate != null) {
+		if (isDelegateInitialized()) {
 			super.delegateAdd(object);
 		}
 	}
 
 	@Override
 	protected void delegateAdd(int index, E object) {
-		if (index == size() && delegate == null) {
+		if (index == size() && !isDelegateInitialized()) {
 			delegateAdd(object);
 			// stop here as the delegate is not yet set
 			return;
@@ -176,7 +176,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		persistentList.add(index, valueHolder);
 
 		int newIndex = index;
-		for (EAVValueHolder element : persistentList.subList(index, size())) {
+		// note, can not use the size() call, must do persistentList.size()
+		for (EAVValueHolder element : persistentList.subList(index, persistentList.size())) {
 			element.setListIndex(newIndex++);
 		}
 
@@ -247,14 +248,14 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	@Override
 	public Iterator<E> iterator() {
-		if (delegate == null && isHibernateListPresent()
+		if (!isDelegateInitialized() && isHibernateListPresent()
 				&& isConnectedToSession()) {
 			boolean extraLazyLoaded = getValueHolderOwner() instanceof EAVExtraMultiContainmentEReferenceValueHolder;
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiNonContainmentEReferenceValueHolder;
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
 			if (extraLazyLoaded) {
 				// return a paging iterator
-				return LazyCollectionUtils.getPagedLoadingIterator(this, 100);
+				return LazyCollectionUtils.getPagedLoadingIterator(this, LazyCollectionUtils.DEFAULT_PAGE_SIZE);
 			}
 		}
 		return super.iterator();
@@ -295,7 +296,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@Override
 	@SuppressWarnings("unchecked")
 	protected E delegateRemove(int index) {
-		final boolean reallyLazy = index == (size() - 1) && delegate == null;
+		final boolean reallyLazy = index == (size() - 1) && !isDelegateInitialized();
 		if (!reallyLazy) {
 			// force a load before removing
 			delegateList();
@@ -310,7 +311,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		}
 
 		int newIndex = index;
-		for (EAVValueHolder element : persistentList.subList(index, size())) {
+		// must use persistentList.size() as the delegate size has not yet been updated!
+		for (EAVValueHolder element : persistentList.subList(index, persistentList.size())) {
 			element.setListIndex(newIndex++);
 		}
 		return super.delegateRemove(index);
@@ -330,7 +332,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 			oldValueHolder.setOwner(null);
 			oldValueHolder.setValueOwner(null);
 		}
-		if (delegate != null) {
+		if (isDelegateInitialized()) {
 			return super.delegateSet(index, object);
 		}
 		if (oldValueHolder != null) {
@@ -339,22 +341,12 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		return null;
 	}
 
-	// override set to prevent indexOf call, note isUnique is now not
-	// enforced for set, but this is a small price to pay for improved
-	// performance.
-	@Override
-	public E set(int index, E object) {
-		int size = size();
-		if (index >= size) {
-			throw new BasicIndexOutOfBoundsException(index, size);
-		}
-
-		return setUnique(index, object);
-	}
-
 	@Override
 	protected int delegateSize() {
-		return persistentList.size();
+		if (!isDelegateInitialized()) { 
+			return persistentList.size();
+		}
+		return delegate.size();
 	}
 
 	@Override

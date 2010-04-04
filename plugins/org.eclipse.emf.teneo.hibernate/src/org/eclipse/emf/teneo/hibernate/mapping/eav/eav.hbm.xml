@@ -158,6 +158,17 @@
 			<column not-null="false" unique="false" name="`reftype`" />
 			<column not-null="false" unique="false" name="`refid`" />
 		</any>
+
+		<!--
+			this many-to-one is added to support efficient querying in case an object is an eav object 
+			foreign key to none prevents a foreign key, hibernate does not do cascade delete in the correct order sometimes
+			the foreign key to none is save as the value is the same as for the referencevalue 
+			NOTE: this many-to-one must be declared after the referencevalue tag above to hint to Hibernate 
+			what the correct proxy is to use. If the order is turned around hibernate will add all proxy interfaces (of all classes to the 
+			hibernate proxy 
+		-->
+		<many-to-one name="eavObjectReference" entity-name="EAV_EObject" cascade="persist, save-update, merge, evict, replicate, refresh" foreign-key="none"/>
+		
 	</subclass>
 	<subclass
 		name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVSingleContainmentEReferenceValueHolder"
@@ -174,6 +185,17 @@
 			<column not-null="false" unique="false" name="`conreftype`" />
 			<column not-null="false" unique="false" name="`conrefid`" />
 		</any>
+
+		<!--
+			this many-to-one is added to support efficient querying in case an object is an eav object 
+			foreign key to none prevents a foreign key, hibernate does not do cascade delete in the correct order sometimes
+			the foreign key to none is save as the value is the same as for the referencevalue
+			NOTE: this many-to-one must be declared after the referencevalue tag above to hint to Hibernate 
+			what the correct proxy is to use. If the order is turned around hibernate will add all proxy interfaces (of all classes to the 
+			hibernate proxy 
+		-->
+		<many-to-one name="eavObjectReference" entity-name="EAV_EObject" cascade="all" foreign-key="none"/>
+		
 	</subclass>
 	<subclass
 		name="org.eclipse.emf.teneo.hibernate.mapping.eav.EAVMultiContainmentEReferenceValueHolder"

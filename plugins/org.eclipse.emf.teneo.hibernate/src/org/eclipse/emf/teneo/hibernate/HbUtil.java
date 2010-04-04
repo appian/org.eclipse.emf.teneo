@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.29 2010/04/02 15:37:12 mtaal Exp $
+ * $Id: HbUtil.java,v 1.30 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -53,12 +53,23 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 public class HbUtil {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbUtil.class);
+
+	public static boolean isEAVMapped(PersistentClass mappedEntity) {
+		if (mappedEntity.getEntityName() != null
+				&& mappedEntity.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
+			return true;
+		}
+		if (mappedEntity.getSuperclass() == null) {
+			return false;
+		}
+		return isEAVMapped(mappedEntity.getSuperclass());
+	}
 
 	/** Encode the id of an eobject */
 	public static String idToString(EObject eobj, HbDataStore hd) {

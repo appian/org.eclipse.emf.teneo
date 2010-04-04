@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.9 2010/04/02 15:24:11 mtaal Exp $
+ * $Id: EAVMultiContainmentEReferenceValueHolder.java,v 1.10 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -55,10 +55,10 @@ public class EAVMultiContainmentEReferenceValueHolder extends
 	public Object getElement(Object value) {
 		EAVSingleContainmentEReferenceValueHolder valueHolder = new EAVSingleContainmentEReferenceValueHolder();
 		valueHolder.setEStructuralFeature(getEStructuralFeature());
-		valueHolder.set(value);
+		valueHolder.setHbDataStore(getHbDataStore());
 		valueHolder.setOwner(getOwner());
 		valueHolder.setValueOwner(this);
-		valueHolder.setHbDataStore(getHbDataStore());
+		valueHolder.set(value);
 		return valueHolder;
 	}
 
@@ -83,11 +83,12 @@ public class EAVMultiContainmentEReferenceValueHolder extends
 
 			final int featureID = getOwner().eClass().getFeatureID(
 					getEStructuralFeature());
-			ecoreObjectList = new EAVDelegatingEMap<Object, Object>(
+			final EAVDelegatingEMap<Object, Object> eMap = new EAVDelegatingEMap<Object, Object>(
 					entryEClass, entryClass, (InternalEObject) getOwner(),
 					featureID);
-			((EAVDelegatingEMap<?, ?>) ecoreObjectList)
-					.setPersistentList(referenceValues);
+			ecoreObjectList = eMap;
+			eMap.setEStructuralFeature(getEStructuralFeature());
+			eMap.setPersistentList(referenceValues);
 		} else {
 			// final DelegatingLateLoadingList<Object> lateLoadingList = new
 			// DelegatingLateLoadingList<Object>();

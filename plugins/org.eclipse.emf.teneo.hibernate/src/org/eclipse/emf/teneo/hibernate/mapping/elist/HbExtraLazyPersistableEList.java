@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEList.java,v 1.17 2010/04/02 22:10:11 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEList.java,v 1.18 2010/04/04 12:10:51 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -46,7 +46,7 @@ import org.hibernate.collection.PersistentList;
  * lists. Note that this list can not work in a detached mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 
 public class HbExtraLazyPersistableEList<E> extends
@@ -155,7 +155,7 @@ public class HbExtraLazyPersistableEList<E> extends
 	@Override
 	public Iterator<E> iterator() {
 		// return a paging iterator
-		return LazyCollectionUtils.getPagedLoadingIterator(this, 100);
+		return LazyCollectionUtils.getPagedLoadingIterator(this, LazyCollectionUtils.DEFAULT_PAGE_SIZE);
 	}
 	
 	/*
