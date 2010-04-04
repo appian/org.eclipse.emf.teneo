@@ -32,7 +32,7 @@ import org.hibernate.collection.PersistentCollection;
  * Test 1n relation (contained and non-contained) using sets.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SetAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -191,7 +191,25 @@ public class SetAction extends AbstractTestAction {
 			store.store(itemList);
 			store.commitTransaction();
 		}
+		cleanListItem(store);
 	}
+	
+
+	// delete, this prevents an error in hsqldb when SetAction and ExtraLazySetAction
+	// are both run
+	protected void cleanListItem(TestStore store) {
+		store.beginTransaction();
+		final ItemList itemList = store.getObject(ItemList.class);
+		for (Object o : itemList.getItem()) {
+			store.deleteObject(o);
+		}
+		for (Object o : itemList.getJoinedItem()) {
+			store.deleteObject(o);
+		}
+		store.deleteObject(itemList);
+		store.commitTransaction();		
+	}
+
 
 	protected void testLazyCollectionUtils(List<?> list) {
 		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;

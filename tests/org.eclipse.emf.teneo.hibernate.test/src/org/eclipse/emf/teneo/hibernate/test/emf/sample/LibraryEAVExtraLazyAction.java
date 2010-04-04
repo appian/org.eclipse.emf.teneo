@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVExtraLazyAction.java,v 1.2 2010/04/02 22:43:23 mtaal Exp $
+ * $Id: LibraryEAVExtraLazyAction.java,v 1.3 2010/04/04 12:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -36,7 +36,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd using eav and extra lazy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 
@@ -50,6 +50,7 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
 		props.setProperty(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY,
 				"true");
+		props.setProperty(PersistenceOptions.SET_PROXY, "true");
 		return props;
 	}
 
@@ -96,11 +97,12 @@ public class LibraryEAVExtraLazyAction extends AbstractTestAction {
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
 
-			final Writer w = lib.getWriters().get(0); 
+			final Writer w = lib.getWriters().get(0);
+			final Object o = lib.getWriters();
 			assertTrue(w.getName().compareTo(
 					"JRR Tolkien") == 0);
-			testLazy(lib.getWriters());
 			testLazySize(w.getBooks());
+			testLazy(lib.getWriters());
 			testLazy(w.getBooks());
 
 			// final Object[] eobjs =

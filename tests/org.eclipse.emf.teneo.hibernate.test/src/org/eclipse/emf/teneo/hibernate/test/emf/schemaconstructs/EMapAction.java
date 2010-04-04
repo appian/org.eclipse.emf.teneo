@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAction.java,v 1.1 2010/04/03 12:55:19 mtaal Exp $
+ * $Id: EMapAction.java,v 1.2 2010/04/04 12:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -45,7 +45,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests support for emaps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EMapAction extends AbstractTestAction {
 
@@ -150,7 +150,8 @@ public class EMapAction extends AbstractTestAction {
 			store.beginTransaction();
 			List<Book> lst = store.getObjects(Book.class);
 			for (Iterator<Book> it = lst.iterator(); it.hasNext();) {
-				store.deleteObject(it.next());
+				final Book bk = it.next();
+				store.deleteObject(bk);
 			}
 			store.commitTransaction();
 		}
@@ -267,7 +268,7 @@ public class EMapAction extends AbstractTestAction {
 
 		final LazyCollectionUtils.PagingIterator<?> iterator = (LazyCollectionUtils.PagingIterator<?>)LazyCollectionUtils
 				.getPagedLoadingIterator(list, 5);
-		iterator.setOrderBy("order by this.name desc");
+		iterator.setOrderBy(getOrderBy());
 		int index = 0;
 		while (iterator.hasNext()) {
 			index++;
@@ -277,6 +278,10 @@ public class EMapAction extends AbstractTestAction {
 		assertEquals(size, index);
 		assertFalse(persistentCollection.wasInitialized());
 		assertFalse(persistableEList.isLoaded());
+	}
+	
+	protected String getOrderBy() {
+		return "order by this.name desc"; 
 	}
 	
 }

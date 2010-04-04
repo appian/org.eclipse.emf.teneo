@@ -11,49 +11,29 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAsListAction.java,v 1.2 2010/04/04 12:12:22 mtaal Exp $
+ * $Id: EMapAsListExtraLazyEAVAction.java,v 1.1 2010/04/04 12:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
 
-import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
 
 /**
- * Tests support for emaps.
+ * Tests eav mapping with extra lazy emap
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class EMapAsListAction extends EMapAction {
+public class EMapAsListExtraLazyEAVAction extends EMapAsListExtraLazyAction {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.emf.teneo.test.AbstractTestAction#getExtraConfigurationProperties
-	 * ()
-	 */
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.put(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
+		props.setProperty(PersistenceOptions.EAV_MAPPING, "true");
+		props.setProperty(PersistenceOptions.EMAP_AS_TRUE_MAP, "false");
+		props.put(PersistenceOptions.FETCH_ASSOCIATION_EXTRA_LAZY, "true");
 		return props;
-	}
-
-	@Override
-	protected void checkEqual(Object o, List<?> l2) {
-		final List<?> l1 = (List<?>) o;
-		assertTrue(l1 != l2);
-		assertTrue(l1.size() == l2.size());
-		for (Object c : l1) {
-			assertEquals(l1.indexOf(c), l2.indexOf(c));
-		}
-	}
-
-	protected String getOrderBy() {
-		return "";
 	}
 }

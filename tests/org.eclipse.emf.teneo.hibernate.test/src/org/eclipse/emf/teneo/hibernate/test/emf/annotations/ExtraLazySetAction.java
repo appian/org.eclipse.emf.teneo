@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtraLazySetAction.java,v 1.1 2010/04/03 09:21:00 mtaal Exp $
+ * $Id: ExtraLazySetAction.java,v 1.2 2010/04/04 12:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -31,7 +31,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the Set collection in extra lazy mode.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ExtraLazySetAction extends SetAction {
 
@@ -55,8 +55,29 @@ public class ExtraLazySetAction extends SetAction {
 			testLazyList(itemList.getJoinedItem());
 			store.commitTransaction();
 		}
+
+		doCleanListItem(store);
+	}
+	
+	protected void cleanListItem(TestStore store) {
+		
 	}
 
+	// delete, this prevents an error in hsqldb when SetAction and ExtraLazySetAction
+	// are both run
+	protected void doCleanListItem(TestStore store) {
+		store.beginTransaction();
+		final ItemList itemList = store.getObject(ItemList.class);
+		for (Object o : itemList.getItem()) {
+			store.deleteObject(o);
+		}
+		for (Object o : itemList.getJoinedItem()) {
+			store.deleteObject(o);
+		}
+		store.deleteObject(itemList);
+		store.commitTransaction();		
+	}
+	
 	protected void testLazyList(List<?> list) {
 		final PersistableEList<?> persistableEList = (PersistableEList<?>) list;
 		final PersistentCollection persistentCollection = (PersistentCollection) persistableEList

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAsListExtraLazyAction.java,v 1.1 2010/04/03 12:55:19 mtaal Exp $
+ * $Id: EMapAsListExtraLazyAction.java,v 1.2 2010/04/04 12:12:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -33,7 +33,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests support for emaps with extra lazy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class EMapAsListExtraLazyAction extends EMapAsListAction {
 
@@ -54,7 +54,6 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 	
 	@Override
 	public void doAction(TestStore store) {
-		System.err.println(store.getMappingXML());
 		super.doAction(store);
 		
 
