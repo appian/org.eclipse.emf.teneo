@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMapAsListExtraLazyAction.java,v 1.2 2010/04/04 12:12:22 mtaal Exp $
+ * $Id: EMapAsListExtraLazyAction.java,v 1.3 2010/04/05 06:00:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs;
@@ -33,7 +33,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests support for emaps with extra lazy.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class EMapAsListExtraLazyAction extends EMapAsListAction {
 
@@ -56,7 +56,6 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 	public void doAction(TestStore store) {
 		super.doAction(store);
 		
-
 		// test lazy behavior of the collection itself
 		{
 			store.beginTransaction();
@@ -94,6 +93,48 @@ public class EMapAsListExtraLazyAction extends EMapAsListAction {
 				assertEquals(initialSize + 1, bk.getWriters().size());
 				testLazy(bk.getWriters());
 			}
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			for (Book bk : store.getObjects(Book.class)) {
+				store.deleteObject(bk);
+			}
+			store.commitTransaction();			
+		}
+		
+		{
+			store.beginTransaction();
+			final EmapFactory factory = EmapFactory.eINSTANCE;
+			final Book bk = factory.createBook();
+			bk.setTitle("title");
+
+			final Writer w1 = factory.createWriter();
+			w1.setName("name1");
+			bk.getWriters().put(w1.getName(), w1);
+
+			store.store(bk);
+
+			final Writer w2 = factory.createWriter();
+			w2.setName("name2");
+			bk.getWriters().put(w2.getName(), w2);
+			bk.getKeyWords().put("1", "1_value");
+			bk.getKeyWords().put("2", "2_value");
+			bk.getCityByWriter().put(w1, w2.getName());
+			bk.getCityByWriter().put(w2, w1.getName());
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Book bk = store.getObject(Book.class);
+			assertNotNull(bk.getWriters().get("name1"));
+			assertNotNull(bk.getWriters().get("name2"));
+			assertEquals(2, bk.getWriters().size());
+			assertNotNull(bk.getKeyWords().get("1"));
+			assertNotNull(bk.getKeyWords().get("2"));
+			assertEquals(2, bk.getKeyWords().size());
+			assertNotNull(bk.getCityByWriter().get(bk.getWriters().get(0).getValue()));
+			assertNotNull(bk.getCityByWriter().get(bk.getWriters().get(1).getValue()));
 			store.commitTransaction();
 		}
 	}
