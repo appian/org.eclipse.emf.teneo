@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.6 2010/04/04 12:10:51 mtaal Exp $
+ * $Id: EAVMultiNonContainmentEReferenceValueHolder.java,v 1.7 2010/04/05 05:33:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -64,6 +64,7 @@ public class EAVMultiNonContainmentEReferenceValueHolder extends EAVMultiValueHo
 		// final DelegatingLateLoadingList<Object> lateLoadingList = new DelegatingLateLoadingList<Object>();
 		// lateLoadingList.setPersistentList(referenceValues);
 		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
+		ecoreList.setValueHolderOwner(this);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
 		ecoreList.setPersistentList(referenceValues);
 		ecoreObjectList = ecoreList;

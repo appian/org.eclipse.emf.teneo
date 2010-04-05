@@ -34,7 +34,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
@@ -87,7 +87,7 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 		eavAdapter.setTarget(eOwner);
 		final List<EAVValueHolder> valueList = createValueList(eOwner);
 		// note this will replace the values in the eobject
-		// I mean the lists
+		// i.e. list instances
 		fillTargetObject((EObject) eOwner, valueList);
 		eavAdapter.setValueList(valueList);
 		eOwner.eAdapters().add(eavAdapter);
@@ -375,10 +375,10 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 						StoreUtil.setSyntheticListIndex(eFeature, o, index++);
 						StoreUtil.setSyntheticListOwner(eFeature, o, notification.getNotifier());
 					}
-					if (o instanceof EAVSingleEReferenceValueHolder) {
-						final EAVSingleEReferenceValueHolder refValueHolder = (EAVSingleEReferenceValueHolder)o;
-						StoreUtil.setSyntheticListIndex(eFeature, refValueHolder.getReferenceValue(), index++);
-						StoreUtil.setSyntheticListOwner(eFeature, refValueHolder.getReferenceValue(), notification.getNotifier());
+					if (o instanceof EAVValueHolder) {
+						final EAVValueHolder eavValueHolder = (EAVValueHolder)o;
+						eavValueHolder.setListIndex(index++);
+						eavValueHolder.setValueOwner((EAVMultiValueHolder)valueHolder);
 					}
 				}
 			}

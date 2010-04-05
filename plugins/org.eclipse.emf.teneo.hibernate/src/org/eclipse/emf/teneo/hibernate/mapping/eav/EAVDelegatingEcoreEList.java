@@ -38,6 +38,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	private EStructuralFeature eStructuralFeature;
 	private List<E> delegate;
 	private List<EAVValueHolder> persistentList;
+	private EAVMultiValueHolder valueHolderOwner;
 
 	public EAVDelegatingEcoreEList(InternalEObject owner) {
 		super(owner);
@@ -56,7 +57,11 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	protected void doInitialize() {
 		delegate = new ArrayList<E>();
+		int index = 0;
 		for (Object eavValueObj : persistentList) {
+			final EAVValueHolder eavValueHolder = (EAVValueHolder) eavValueObj;
+			eavValueHolder.setListIndex(index++);
+			eavValueHolder.setValueOwner(getValueHolderOwner());
 			delegate.add(getConvertedValue(eavValueObj));
 		}
 	}
@@ -95,6 +100,13 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@SuppressWarnings("unchecked")
 	public void setPersistentList(List<?> persistentList) {
 		this.persistentList = (List<EAVValueHolder>) persistentList;
+		if (isHibernateListPresent()
+				&& getHibernatePersistentList().wasInitialized()) {
+			doInitialize();
+		} else if (persistentList instanceof ArrayList<?>) {
+			// newly persisted
+			doInitialize();
+		}
 	}
 
 	public boolean isInitialized() {
@@ -116,13 +128,6 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	private boolean isHibernateListPresent() {
 		return (persistentList instanceof AbstractPersistentCollection);
-	}
-
-	private EAVMultiValueHolder getValueHolderOwner() {
-		if (!isHibernateListPresent()) {
-			throw new IllegalStateException();
-		}
-		return (EAVMultiValueHolder) getHibernatePersistentList().getOwner();
 	}
 
 	private PersistentList getHibernatePersistentList() {
@@ -177,7 +182,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 		int newIndex = index;
 		// note, can not use the size() call, must do persistentList.size()
-		for (EAVValueHolder element : persistentList.subList(index, persistentList.size())) {
+		for (EAVValueHolder element : persistentList.subList(index,
+				persistentList.size())) {
 			element.setListIndex(newIndex++);
 		}
 
@@ -255,7 +261,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 			extraLazyLoaded |= getValueHolderOwner() instanceof EAVExtraMultiEAttributeValueHolder;
 			if (extraLazyLoaded) {
 				// return a paging iterator
-				return LazyCollectionUtils.getPagedLoadingIterator(this, LazyCollectionUtils.DEFAULT_PAGE_SIZE);
+				return LazyCollectionUtils.getPagedLoadingIterator(this,
+						LazyCollectionUtils.DEFAULT_PAGE_SIZE);
 			}
 		}
 		return super.iterator();
@@ -296,7 +303,8 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	@Override
 	@SuppressWarnings("unchecked")
 	protected E delegateRemove(int index) {
-		final boolean reallyLazy = index == (size() - 1) && !isDelegateInitialized();
+		final boolean reallyLazy = index == (size() - 1)
+				&& !isDelegateInitialized();
 		if (!reallyLazy) {
 			// force a load before removing
 			delegateList();
@@ -311,8 +319,10 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 		}
 
 		int newIndex = index;
-		// must use persistentList.size() as the delegate size has not yet been updated!
-		for (EAVValueHolder element : persistentList.subList(index, persistentList.size())) {
+		// must use persistentList.size() as the delegate size has not yet been
+		// updated!
+		for (EAVValueHolder element : persistentList.subList(index,
+				persistentList.size())) {
 			element.setListIndex(newIndex++);
 		}
 		return super.delegateRemove(index);
@@ -343,7 +353,7 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 
 	@Override
 	protected int delegateSize() {
-		if (!isDelegateInitialized()) { 
+		if (!isDelegateInitialized()) {
 			return persistentList.size();
 		}
 		return delegate.size();
@@ -365,6 +375,14 @@ public class EAVDelegatingEcoreEList<E> extends DelegatingEcoreEList<E>
 	protected String delegateToString() {
 		// will load list anyway
 		return super.delegateToString();
+	}
+
+	public void setValueHolderOwner(EAVMultiValueHolder valueHolderOwner) {
+		this.valueHolderOwner = valueHolderOwner;
+	}
+
+	private EAVMultiValueHolder getValueHolderOwner() {
+		return valueHolderOwner;
 	}
 
 }

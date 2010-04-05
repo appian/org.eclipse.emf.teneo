@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVMultiEAttributeValueHolder.java,v 1.4 2010/04/02 15:24:12 mtaal Exp $
+ * $Id: EAVMultiEAttributeValueHolder.java,v 1.5 2010/04/05 05:33:32 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -65,6 +65,7 @@ public class EAVMultiEAttributeValueHolder extends EAVMultiValueHolder {
 			return ecoreObjectList;
 		}
 		final EAVDelegatingEcoreEList<Object> ecoreList = new EAVDelegatingEcoreEList<Object>((InternalEObject) owner);
+		ecoreList.setValueHolderOwner(this);
 		ecoreList.setEStructuralFeature(getEStructuralFeature());
 		ecoreList.setPersistentList(values);
 		ecoreObjectList = ecoreList;

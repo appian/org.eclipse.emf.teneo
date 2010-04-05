@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -31,18 +32,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
-import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentList;
-import org.hibernate.engine.CollectionEntry;
 import org.hibernate.engine.SessionImplementor;
-import org.hibernate.persister.collection.AbstractCollectionPersister;
-import org.hibernate.type.EntityType;
 
 /**
  * The emap which initializes itself from the persistent collection when first
@@ -62,6 +58,7 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 	private InternalEObject owner;
 	private int featureID;
 	private EStructuralFeature eStructuralFeature;
+	private EAVMultiValueHolder valueHolderOwner;
 
 	public EAVDelegatingEMap(EClass entryEClass, Class<?> entryClass,
 			InternalEObject owner, int featureID) {
@@ -83,8 +80,11 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		delegatingEMap = new EcoreEMap<K, V>(entryEClass, entryClass, owner,
 				featureID);
 
+		int index = 0;
 		for (Object obj : persistentList) {
 			EAVSingleContainmentEReferenceValueHolder valueHolder = (EAVSingleContainmentEReferenceValueHolder) obj;
+			valueHolder.setListIndex(index++);
+			valueHolder.setValueOwner(getValueHolderOwner());
 			delegatingEMap.basicAdd((BasicEMap.Entry<K, V>) valueHolder
 					.getReferenceValue(), null);
 		}
@@ -304,7 +304,10 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 				if (!(result instanceof EObject)) {
 					continue;
 				}
-				if (result instanceof Map.Entry<?, ?> && ((EObject)result).eContainer() == getEObject()) {
+				
+				final EObject eContainer = ((EObject)result).eContainer();
+				final EObject owner = getEObject();
+				if (result instanceof Map.Entry<?, ?> && eContainer == owner) {
 					final Map.Entry<K, V> entry = (Map.Entry<K, V>)result;
 					return entry.getValue();
 				}				
@@ -509,6 +512,12 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 	@SuppressWarnings("unchecked")
 	public void setPersistentList(List<?> persistentList) {
 		this.persistentList = (List<EAVValueHolder>) persistentList;
+		if (isHibernateListPresent() && getHibernatePersistentList().wasInitialized()) {
+			initialize();
+		} if (persistentList instanceof ArrayList<?>) {
+			// newly persisted
+			initialize();
+		}
 	}
 
 	public Object getDelegate() {
@@ -532,10 +541,7 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 	}
 
 	private EAVMultiValueHolder getValueHolderOwner() {
-		if (!isHibernateListPresent()) {
-			throw new IllegalStateException();
-		}
-		return (EAVMultiValueHolder) getHibernatePersistentList().getOwner();
+		return valueHolderOwner;
 	}
 
 	private PersistentList getHibernatePersistentList() {
@@ -579,5 +585,9 @@ public class EAVDelegatingEMap<K, V> implements EMap<K, V>, EAVDelegatingList,
 		entry.setKey(key);
 		entry.setValue(value);
 		return entry;
+	}
+
+	public void setValueHolderOwner(EAVMultiValueHolder valueHolderOwner) {
+		this.valueHolderOwner = valueHolderOwner;
 	}
 }
