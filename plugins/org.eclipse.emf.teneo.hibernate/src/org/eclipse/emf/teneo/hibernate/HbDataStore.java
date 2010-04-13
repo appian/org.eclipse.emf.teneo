@@ -20,8 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.persistence.ManyToMany;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
@@ -104,7 +102,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.68 $
+ * @version $Revision: 1.69 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -698,11 +696,6 @@ public abstract class HbDataStore implements DataStore {
 
 					// only work for extra lazy
 					if (!collection.isExtraLazy()) {
-						continue;
-					}
-
-					// don't support it on manytomany
-					if (collection.getElement() instanceof ManyToMany) {
 						continue;
 					}
 
