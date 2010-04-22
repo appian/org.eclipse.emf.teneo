@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: ORMGenerator.java,v 1.7 2010/03/02 21:50:28 mtaal Exp $
+ * $Id: ORMGenerator.java,v 1.8 2010/04/22 17:58:01 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.jpa.convert;
@@ -55,6 +55,8 @@ import org.eclipse.emf.teneo.jpa.orm.Attributes;
 import org.eclipse.emf.teneo.jpa.orm.Basic;
 import org.eclipse.emf.teneo.jpa.orm.Column;
 import org.eclipse.emf.teneo.jpa.orm.DocumentRoot;
+import org.eclipse.emf.teneo.jpa.orm.Embeddable;
+import org.eclipse.emf.teneo.jpa.orm.EmbeddableAttributes;
 import org.eclipse.emf.teneo.jpa.orm.Embedded;
 import org.eclipse.emf.teneo.jpa.orm.EmbeddedId;
 import org.eclipse.emf.teneo.jpa.orm.Entity;
@@ -77,7 +79,7 @@ import org.eclipse.emf.teneo.jpa.orm.Version;
  * Converts a PAnnotatedModel to an ORM model.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class ORMGenerator {
@@ -185,7 +187,13 @@ public class ORMGenerator {
 		res.getContents().add(dr);
 		try {
 			res.save(sw, options);
-			return sw.toString();
+			final String result = sw.toString();
+			// ugly but effective
+			if (!result.contains("xmlns=")) {
+				return result.replace("<entity-mappings ", "<entity-mappings xmlns=\"http://java.sun.com/xml/ns/persistence/orm\" ");
+			} else {
+				return result;
+			}
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
@@ -210,7 +218,7 @@ public class ORMGenerator {
 			copyFeatures(pPackage, entityMappings);
 
 			for (PAnnotatedEClass pClass : pPackage.getPaEClasses()) {
-				if (pClass.getEntity() == null) {
+				if (pClass.getEntity() == null && pClass.getEmbeddable() == null) {
 					continue;
 				}
 				if (ERuntime.INSTANCE.getJavaClass(pClass.getModelEClass()) == null) {
@@ -267,13 +275,31 @@ public class ORMGenerator {
 			entityTypes.getMappedSuperclass().add(mappedSuperclass);
 			mainType = mappedSuperclass;
 			mappedSuperclass.setClass(ERuntime.INSTANCE.getJavaClass(pClass.getModelEClass()).getName());
+		} else if (pClass.getEmbeddable() != null) {
+			final Embeddable embeddable = factory.createEmbeddable();
+			embeddable.setClass(ERuntime.INSTANCE.getJavaInterfaceClass(pClass.getModelEClass()).getName());
+			mainType = embeddable;
+			entityTypes.getEmbeddable().add(embeddable);
+			copyFeatures(pClass, mainType);
+
+			final EmbeddableAttributes embeddableAttributes = factory.createEmbeddableAttributes();
+			embeddable.setAttributes(embeddableAttributes);
+
+			for (PAnnotatedEStructuralFeature pFeature : pClass.getPaEStructuralFeatures()) {
+				if (pFeature.getModelEStructuralFeature().isDerived() || pFeature.getModelEStructuralFeature().isVolatile()) {
+					continue;
+				}
+				mapEmbeddedFeatures(pFeature, embeddableAttributes);
+			}
+			
+			// stop here
+			return;
 		} else {
 			final Entity entity = factory.createEntity();
 			entityTypes.getEntity().add(entity);
 			mainType = entity;
 			entity.setName(pClass.getEntity().getName());
 			entity.setClass(ERuntime.INSTANCE.getJavaClass(pClass.getModelEClass()).getName());
-
 		}
 		copyFeatures(pClass, mainType);
 
@@ -329,7 +355,36 @@ public class ORMGenerator {
 				oto.setCascade(ct);
 			}
 		}
+	}
+	
+	private void mapEmbeddedFeatures(PAnnotatedEStructuralFeature pFeature, EmbeddableAttributes attributes) {
+		if (isMapEntry(pFeature.getPaEClass().getModelEClass()) && pFeature.getModelElement().getName().equals("key")) {
+			return;
+		}
 
+		if (pFeature instanceof PAnnotatedEAttribute) {
+			final PAnnotatedEAttribute pAttribute = (PAnnotatedEAttribute) pFeature;
+			if (pAttribute.getTransient() != null) {
+				final Transient t = factory.createTransient();
+				t.setName(pAttribute.getModelEAttribute().getName());
+				attributes.getTransient().add(t);
+			} else if (pAttribute.getBasic() != null) {
+				final Basic b = factory.createBasic();
+				b.setName(pAttribute.getModelEAttribute().getName());
+				copyFeatures(pAttribute, b);
+				copyFeatures(pAttribute.getBasic(), b);
+				attributes.getBasic().add(b);
+			}
+		} else {
+			final PAnnotatedEReference pReference = (PAnnotatedEReference) pFeature;
+			if (pReference.getModelEReference().isContainer()) {
+				// do nothing ignore
+			} else if (pReference.getTransient() != null) {
+				final Transient t = factory.createTransient();
+				t.setName(pReference.getModelEReference().getName());
+				attributes.getTransient().add(t);
+			}
+		}
 	}
 
 	/**
