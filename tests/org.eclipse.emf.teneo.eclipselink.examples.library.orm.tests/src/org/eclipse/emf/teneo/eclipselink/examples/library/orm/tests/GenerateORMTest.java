@@ -14,6 +14,7 @@ import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
+import org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.SuppressinterfacesPackage;
 import org.eclipse.emf.teneo.jpa.convert.ORMGenerator;
 
 /**
@@ -21,8 +22,13 @@ import org.eclipse.emf.teneo.jpa.convert.ORMGenerator;
  */
 public class GenerateORMTest extends TestCase {
 
-	public void testGenerateORM() {
+	public void testGenerateORMLibrary() {
 		final ORMGenerator ormGenerator = new ORMGenerator();
 		System.err.println(ormGenerator.generateORM(new EPackage[] { LibraryPackage.eINSTANCE }));
+	}
+
+	public void testGenerateORMSuppressedInterfaces() {
+		final ORMGenerator ormGenerator = new ORMGenerator();
+		System.err.println(ormGenerator.generateORM(new EPackage[] { SuppressinterfacesPackage.eINSTANCE }));
 	}
 }
