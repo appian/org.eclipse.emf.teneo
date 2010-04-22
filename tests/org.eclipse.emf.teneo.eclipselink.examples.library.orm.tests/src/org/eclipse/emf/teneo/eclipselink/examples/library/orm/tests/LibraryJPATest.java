@@ -102,6 +102,7 @@ public abstract class LibraryJPATest extends JPATest {
 
 	protected Writer createAnonymousWriter(EntityManager em) {
 		Writer writer = factory.createWriter();
+
 		em.persist(writer);
 		writer.setName(getAnonymousString());
 		return writer;
