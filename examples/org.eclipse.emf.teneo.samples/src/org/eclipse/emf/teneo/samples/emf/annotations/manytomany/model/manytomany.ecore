@@ -11,7 +11,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="rght" lowerBound="1" upperBound="-1"
         eType="#//Rght" resolveProxies="false" eOpposite="#//Rght/cntr">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=&quot;Rght&quot; indexed=&quot;false&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@JoinTable(name=&quot;RightCenter&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+        <details key="appinfo" value="@ManyToMany(fetch=EAGER cascade={MERGE,PERSIST} targetEntity=&quot;Rght&quot; indexed=&quot;false&quot;)&#xA;@JoinTable(name=&quot;RightCenter&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
