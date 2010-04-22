@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibrarySwitch.java,v 1.4 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: LibrarySwitch.java,v 1.5 2010/04/22 17:57:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.util;
 
@@ -11,8 +11,18 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.eclipselink.examples.library.*;
+import org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
+import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Publisher;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Style;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
+import org.eclipse.emf.teneo.eclipselink.examples.library.TypeWriter;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 /**
  * <!-- begin-user-doc -->
@@ -174,13 +184,6 @@ public class LibrarySwitch<T> {
 			case LibraryPackage.ABSTRACT_TEST: {
 				AbstractTest abstractTest = (AbstractTest)theEObject;
 				T result = caseAbstractTest(abstractTest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LibraryPackage.BIRTH_PLACE: {
-				BirthPlace birthPlace = (BirthPlace)theEObject;
-				T result = caseBirthPlace(birthPlace);
-				if (result == null) result = caseIdentifiable(birthPlace);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -380,21 +383,6 @@ public class LibrarySwitch<T> {
 	 * @generated
 	 */
 	public T caseAbstractTest(AbstractTest object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Birth Place</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Birth Place</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBirthPlace(BirthPlace object) {
 		return null;
 	}
 

@@ -2,16 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypeWriterImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
+ * $Id: TypeWriterImpl.java,v 1.4 2010/04/22 17:57:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 import org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType;
 import org.eclipse.emf.teneo.eclipselink.examples.library.TypeWriter;

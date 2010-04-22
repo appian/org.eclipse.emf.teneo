@@ -44,7 +44,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Writer/address"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Writer/publishers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Writer/typewriters"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Writer/birthPlace"/>
     </genClasses>
     <genClasses ecoreClass="library.ecore#//StringToBookMapEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//StringToBookMapEntry/key"/>
@@ -81,8 +80,5 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/version"/>
     </genClasses>
     <genClasses image="false" ecoreClass="library.ecore#//AbstractTest"/>
-    <genClasses ecoreClass="library.ecore#//BirthPlace">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//BirthPlace/name"/>
-    </genClasses>
   </genPackages>
 </genmodel:GenModel>

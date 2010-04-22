@@ -2,22 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: StringToBookMapEntryImpl.java,v 1.3 2009/06/14 21:00:29 seberle Exp $
+ * $Id: StringToBookMapEntryImpl.java,v 1.4 2010/04/22 17:57:41 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 

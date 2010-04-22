@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactoryImpl.java,v 1.4 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: LibraryFactoryImpl.java,v 1.5 2010/04/22 17:57:42 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -12,12 +12,21 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.emf.teneo.eclipselink.examples.library.*;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
+import org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
+import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryFactory;
+import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Publisher;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Style;
+import org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
+import org.eclipse.emf.teneo.eclipselink.examples.library.TypeWriter;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,7 +83,6 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 			case LibraryPackage.TRANSLATOR: return createTranslator();
 			case LibraryPackage.TYPE_WRITER: return createTypeWriter();
 			case LibraryPackage.COVER: return createCover();
-			case LibraryPackage.BIRTH_PLACE: return createBirthPlace();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -222,16 +230,6 @@ public class LibraryFactoryImpl extends EFactoryImpl implements LibraryFactory {
 	public Cover createCover() {
 		CoverImpl cover = new CoverImpl();
 		return cover;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BirthPlace createBirthPlace() {
-		BirthPlaceImpl birthPlace = new BirthPlaceImpl();
-		return birthPlace;
 	}
 
 	/**

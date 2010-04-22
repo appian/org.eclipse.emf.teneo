@@ -4,7 +4,30 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="suppressinterfaces"
     nsURI="http:///org/eclipse/emf/teneo/eclipselink/examples/test_suppressinterfaces.ecore"
     nsPrefix="suppressinterfaces">
-  <eClassifiers xsi:type="ecore:EClass" name="test">
+  <eClassifiers xsi:type="ecore:EClass" name="Test" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="testEmbedded" eType="#//TestEmbedded">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Embedded"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestEmbedded">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@Embeddable"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameEmbedded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id&#xA;@GeneratedValue"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Version"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

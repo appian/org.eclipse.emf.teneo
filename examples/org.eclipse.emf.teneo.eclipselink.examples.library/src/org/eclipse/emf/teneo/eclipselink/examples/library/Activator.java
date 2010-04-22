@@ -2,12 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Activator.java,v 1.5 2010/03/02 20:36:09 mtaal Exp $
+ * $Id: Activator.java,v 1.6 2010/04/22 17:57:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

@@ -2,14 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AbstractTestImpl.java,v 1.1 2010/03/02 20:36:09 mtaal Exp $
+ * $Id: AbstractTestImpl.java,v 1.2 2010/04/22 17:57:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 

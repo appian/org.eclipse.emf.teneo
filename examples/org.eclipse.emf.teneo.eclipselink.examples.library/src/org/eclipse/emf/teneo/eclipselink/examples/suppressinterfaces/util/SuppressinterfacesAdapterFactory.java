@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SuppressinterfacesAdapterFactory.java,v 1.1 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: SuppressinterfacesAdapterFactory.java,v 1.2 2010/04/22 17:57:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.util;
 
@@ -72,8 +72,16 @@ public class SuppressinterfacesAdapterFactory extends AdapterFactoryImpl {
 	protected SuppressinterfacesSwitch<Adapter> modelSwitch =
 		new SuppressinterfacesSwitch<Adapter>() {
 			@Override
-			public Adapter casetest(test object) {
-				return createtestAdapter();
+			public Adapter caseTest(Test object) {
+				return createTestAdapter();
+			}
+			@Override
+			public Adapter caseTestEmbedded(TestEmbedded object) {
+				return createTestEmbeddedAdapter();
+			}
+			@Override
+			public Adapter caseIdentifiable(Identifiable object) {
+				return createIdentifiableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -96,16 +104,44 @@ public class SuppressinterfacesAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.test <em>test</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.Test <em>Test</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.test
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.Test
 	 * @generated
 	 */
-	public Adapter createtestAdapter() {
+	public Adapter createTestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.TestEmbedded <em>Test Embedded</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.TestEmbedded
+	 * @generated
+	 */
+	public Adapter createTestEmbeddedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.Identifiable <em>Identifiable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.Identifiable
+	 * @generated
+	 */
+	public Adapter createIdentifiableAdapter() {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryAdapterFactory.java,v 1.4 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: LibraryAdapterFactory.java,v 1.5 2010/04/22 17:57:53 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.util;
 
@@ -10,12 +10,20 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.eclipselink.examples.library.*;
+import org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Identifiable;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Library;
+import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Publisher;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Style;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Translator;
+import org.eclipse.emf.teneo.eclipselink.examples.library.TypeWriter;
+import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
 
 /**
  * <!-- begin-user-doc -->
@@ -124,10 +132,6 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAbstractTest(AbstractTest object) {
 				return createAbstractTestAdapter();
-			}
-			@Override
-			public Adapter caseBirthPlace(BirthPlace object) {
-				return createBirthPlaceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -328,20 +332,6 @@ public class LibraryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractTestAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace <em>Birth Place</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace
-	 * @generated
-	 */
-	public Adapter createBirthPlaceAdapter() {
 		return null;
 	}
 

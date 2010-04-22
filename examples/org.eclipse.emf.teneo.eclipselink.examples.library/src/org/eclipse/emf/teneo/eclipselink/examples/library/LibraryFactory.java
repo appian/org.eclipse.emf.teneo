@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryFactory.java,v 1.3 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: LibraryFactory.java,v 1.4 2010/04/22 17:57:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -105,15 +105,6 @@ public interface LibraryFactory extends EFactory {
 	 * @generated
 	 */
 	Cover createCover();
-
-	/**
-	 * Returns a new object of class '<em>Birth Place</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Birth Place</em>'.
-	 * @generated
-	 */
-	BirthPlace createBirthPlace();
 
 	/**
 	 * Returns the package supported by this factory.

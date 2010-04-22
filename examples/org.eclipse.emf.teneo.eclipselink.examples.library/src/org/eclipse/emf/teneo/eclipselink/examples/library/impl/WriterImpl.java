@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriterImpl.java,v 1.4 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: WriterImpl.java,v 1.5 2010/04/22 17:57:38 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -10,20 +10,14 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
-import org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Publisher;
@@ -42,7 +36,6 @@ import org.eclipse.emf.teneo.eclipselink.examples.library.Writer;
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl#getPublishers <em>Publishers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl#getTypewriters <em>Typewriters</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl#getBirthPlace <em>Birth Place</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,16 +101,6 @@ public class WriterImpl extends IdentifiableImpl implements Writer {
 	 * @ordered
 	 */
 	protected EList<TypeWriter> typewriters;
-
-	/**
-	 * The cached value of the '{@link #getBirthPlace() <em>Birth Place</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBirthPlace()
-	 * @generated
-	 * @ordered
-	 */
-	protected BirthPlace birthPlace;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,44 +226,6 @@ public class WriterImpl extends IdentifiableImpl implements Writer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BirthPlace getBirthPlace() {
-		if (birthPlace != null && birthPlace.eIsProxy()) {
-			InternalEObject oldBirthPlace = (InternalEObject)birthPlace;
-			birthPlace = (BirthPlace)eResolveProxy(oldBirthPlace);
-			if (birthPlace != oldBirthPlace) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibraryPackage.WRITER__BIRTH_PLACE, oldBirthPlace, birthPlace));
-			}
-		}
-		return birthPlace;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BirthPlace basicGetBirthPlace() {
-		return birthPlace;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBirthPlace(BirthPlace newBirthPlace) {
-		BirthPlace oldBirthPlace = birthPlace;
-		birthPlace = newBirthPlace;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LibraryPackage.WRITER__BIRTH_PLACE, oldBirthPlace, birthPlace));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -329,9 +274,6 @@ public class WriterImpl extends IdentifiableImpl implements Writer {
 				return getPublishers();
 			case LibraryPackage.WRITER__TYPEWRITERS:
 				return getTypewriters();
-			case LibraryPackage.WRITER__BIRTH_PLACE:
-				if (resolve) return getBirthPlace();
-				return basicGetBirthPlace();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -363,9 +305,6 @@ public class WriterImpl extends IdentifiableImpl implements Writer {
 				getTypewriters().clear();
 				getTypewriters().addAll((Collection<? extends TypeWriter>)newValue);
 				return;
-			case LibraryPackage.WRITER__BIRTH_PLACE:
-				setBirthPlace((BirthPlace)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -393,9 +332,6 @@ public class WriterImpl extends IdentifiableImpl implements Writer {
 			case LibraryPackage.WRITER__TYPEWRITERS:
 				getTypewriters().clear();
 				return;
-			case LibraryPackage.WRITER__BIRTH_PLACE:
-				setBirthPlace((BirthPlace)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -418,8 +354,6 @@ public class WriterImpl extends IdentifiableImpl implements Writer {
 				return publishers != null && !publishers.isEmpty();
 			case LibraryPackage.WRITER__TYPEWRITERS:
 				return typewriters != null && !typewriters.isEmpty();
-			case LibraryPackage.WRITER__BIRTH_PLACE:
-				return birthPlace != null;
 		}
 		return super.eIsSet(featureID);
 	}

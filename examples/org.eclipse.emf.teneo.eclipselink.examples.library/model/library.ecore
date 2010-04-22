@@ -37,11 +37,6 @@
         eType="#//Publisher" eOpposite="#//Publisher/writers"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="typewriters" upperBound="-1"
         eType="#//TypeWriter"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="birthPlace" eType="#//BirthPlace">
-      <eAnnotations source="teneo.jpa">
-        <details key="value" value=" @Embedded"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BookCategory">
     <eLiterals name="Mystery"/>
@@ -121,10 +116,4 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTest" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BirthPlace" eSuperTypes="#//Identifiable">
-    <eAnnotations source="teneo.jpa">
-      <details key="value" value=" @Embeddable"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
 </ecore:EPackage>

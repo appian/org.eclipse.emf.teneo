@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SuppressinterfacesSwitch.java,v 1.1 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: SuppressinterfacesSwitch.java,v 1.2 2010/04/22 17:57:52 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces.util;
 
@@ -88,8 +88,21 @@ public class SuppressinterfacesSwitch<T> {
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SuppressinterfacesPackage.TEST: {
-				test test = (test)theEObject;
-				T result = casetest(test);
+				Test test = (Test)theEObject;
+				T result = caseTest(test);
+				if (result == null) result = caseIdentifiable(test);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SuppressinterfacesPackage.TEST_EMBEDDED: {
+				TestEmbedded testEmbedded = (TestEmbedded)theEObject;
+				T result = caseTestEmbedded(testEmbedded);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SuppressinterfacesPackage.IDENTIFIABLE: {
+				Identifiable identifiable = (Identifiable)theEObject;
+				T result = caseIdentifiable(identifiable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -98,17 +111,47 @@ public class SuppressinterfacesSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>test</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Test</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>test</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Test</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casetest(test object) {
+	public T caseTest(Test object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Test Embedded</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Test Embedded</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTestEmbedded(TestEmbedded object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifiable(Identifiable object) {
 		return null;
 	}
 

@@ -2,16 +2,14 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SuppressinterfacesFactory.java,v 1.1 2010/04/22 15:33:16 mtaal Exp $
+ * $Id: SuppressinterfacesFactory.java,v 1.2 2010/04/22 17:57:48 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.suppressinterfaces;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -68,7 +66,9 @@ public class SuppressinterfacesFactory extends EFactoryImpl {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case SuppressinterfacesPackage.TEST: return createtest();
+			case SuppressinterfacesPackage.TEST: return createTest();
+			case SuppressinterfacesPackage.TEST_EMBEDDED: return createTestEmbedded();
+			case SuppressinterfacesPackage.IDENTIFIABLE: return createIdentifiable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -79,9 +79,29 @@ public class SuppressinterfacesFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public test createtest() {
-		test test = new test();
+	public Test createTest() {
+		Test test = new Test();
 		return test;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestEmbedded createTestEmbedded() {
+		TestEmbedded testEmbedded = new TestEmbedded();
+		return testEmbedded;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identifiable createIdentifiable() {
+		Identifiable identifiable = new Identifiable();
+		return identifiable;
 	}
 
 	/**
