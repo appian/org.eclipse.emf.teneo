@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackageImpl.java,v 1.7 2010/03/02 21:50:32 mtaal Exp $
+ * $Id: LibraryPackageImpl.java,v 1.8 2010/04/22 15:33:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.teneo.eclipselink.examples.library.AbstractTest;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Address;
+import org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Book;
 import org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory;
 import org.eclipse.emf.teneo.eclipselink.examples.library.Cover;
@@ -113,6 +114,13 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 * @generated
 	 */
 	private EClass abstractTestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass birthPlaceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -338,6 +346,15 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWriter_BirthPlace() {
+		return (EReference)writerEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -547,6 +564,24 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBirthPlace() {
+		return birthPlaceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBirthPlace_Name() {
+		return (EAttribute)birthPlaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -608,6 +643,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		createEReference(writerEClass, WRITER__ADDRESS);
 		createEReference(writerEClass, WRITER__PUBLISHERS);
 		createEReference(writerEClass, WRITER__TYPEWRITERS);
+		createEReference(writerEClass, WRITER__BIRTH_PLACE);
 
 		stringToBookMapEntryEClass = createEClass(STRING_TO_BOOK_MAP_ENTRY);
 		createEAttribute(stringToBookMapEntryEClass, STRING_TO_BOOK_MAP_ENTRY__KEY);
@@ -644,6 +680,9 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		createEAttribute(identifiableEClass, IDENTIFIABLE__VERSION);
 
 		abstractTestEClass = createEClass(ABSTRACT_TEST);
+
+		birthPlaceEClass = createEClass(BIRTH_PLACE);
+		createEAttribute(birthPlaceEClass, BIRTH_PLACE__NAME);
 
 		// Create enums
 		bookCategoryEEnum = createEEnum(BOOK_CATEGORY);
@@ -687,6 +726,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		translatorEClass.getESuperTypes().add(this.getIdentifiable());
 		typeWriterEClass.getESuperTypes().add(this.getIdentifiable());
 		coverEClass.getESuperTypes().add(this.getIdentifiable());
+		birthPlaceEClass.getESuperTypes().add(this.getIdentifiable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(bookEClass, Book.class, "Book", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -710,6 +750,7 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		initEReference(getWriter_Address(), this.getAddress(), null, "address", null, 0, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getWriter_Publishers(), this.getPublisher(), this.getPublisher_Writers(), "publishers", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getWriter_Typewriters(), this.getTypeWriter(), null, "typewriters", null, 0, -1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getWriter_BirthPlace(), this.getBirthPlace(), null, "birthPlace", null, 0, 1, Writer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(stringToBookMapEntryEClass, Map.Entry.class, "StringToBookMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getStringToBookMapEntry_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -747,6 +788,9 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 
 		initEClass(abstractTestEClass, AbstractTest.class, "AbstractTest", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
+		initEClass(birthPlaceEClass, BirthPlace.class, "BirthPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getBirthPlace_Name(), ecorePackage.getEString(), "name", null, 0, 1, BirthPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
 		// Initialize enums and add enum literals
 		initEEnum(bookCategoryEEnum, BookCategory.class, "BookCategory"); //$NON-NLS-1$
 		addEEnumLiteral(bookCategoryEEnum, BookCategory.MYSTERY);
@@ -774,6 +818,12 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 */
 	protected void createTeneoAnnotations() {
 		String source = "teneo.jpa"; //$NON-NLS-1$		
+		addAnnotation
+		  (getWriter_BirthPlace(), 
+		   source, 
+		   new String[] {
+			 "value", " @Embedded" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
 		addAnnotation
 		  (stringToBookMapEntryEClass, 
 		   source, 
@@ -815,6 +865,12 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 		   source, 
 		   new String[] {
 			 "value", "@Version" //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
+		addAnnotation
+		  (birthPlaceEClass, 
+		   source, 
+		   new String[] {
+			 "value", " @Embeddable" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -825,14 +881,14 @@ public class LibraryPackageImpl extends EPackageImpl implements LibraryPackage {
 	 * @generated
 	 */
 	protected void createContainerMappingAnnotations() {
-		String source = "http://www.oracle.com/toplink/emf/2006/ContainerMapping"; //$NON-NLS-1$			
+		String source = "http://www.oracle.com/toplink/emf/2006/ContainerMapping"; //$NON-NLS-1$				
 		addAnnotation
 		  (addressEClass, 
 		   source, 
 		   new String[] {
 			 "eContainingClassName", "Writer", //$NON-NLS-1$ //$NON-NLS-2$
 			 "eContainingClassPackageName", "library" //$NON-NLS-1$ //$NON-NLS-2$
-		   });						
+		   });							
 	}
 
 } // LibraryPackageImpl

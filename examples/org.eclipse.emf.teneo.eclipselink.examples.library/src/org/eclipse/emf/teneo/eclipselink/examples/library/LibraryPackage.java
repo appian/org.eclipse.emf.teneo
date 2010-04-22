@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibraryPackage.java,v 1.7 2010/03/02 21:50:32 mtaal Exp $
+ * $Id: LibraryPackage.java,v 1.8 2010/04/22 15:33:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -344,13 +344,22 @@ public interface LibraryPackage extends EPackage {
 	int WRITER__TYPEWRITERS = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Birth Place</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITER__BIRTH_PLACE = IDENTIFIABLE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WRITER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+	int WRITER_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl <em>String To Book Map Entry</em>}' class.
@@ -794,6 +803,52 @@ public interface LibraryPackage extends EPackage {
 	int ABSTRACT_TEST_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BirthPlaceImpl <em>Birth Place</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.BirthPlaceImpl
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getBirthPlace()
+	 * @generated
+	 */
+	int BIRTH_PLACE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIRTH_PLACE__ID = IDENTIFIABLE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIRTH_PLACE__VERSION = IDENTIFIABLE__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIRTH_PLACE__NAME = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Birth Place</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIRTH_PLACE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -801,7 +856,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getBookCategory()
 	 * @generated
 	 */
-	int BOOK_CATEGORY = 13;
+	int BOOK_CATEGORY = 14;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.TWriterType <em>TWriter Type</em>}' enum.
@@ -811,7 +866,7 @@ public interface LibraryPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getTWriterType()
 	 * @generated
 	 */
-	int TWRITER_TYPE = 14;
+	int TWRITER_TYPE = 15;
 
 
 	/**
@@ -1019,6 +1074,17 @@ public interface LibraryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getWriter_Typewriters();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getBirthPlace <em>Birth Place</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Birth Place</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getBirthPlace()
+	 * @see #getWriter()
+	 * @generated
+	 */
+	EReference getWriter_BirthPlace();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To Book Map Entry</em>}'.
@@ -1303,6 +1369,27 @@ public interface LibraryPackage extends EPackage {
 	EClass getAbstractTest();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace <em>Birth Place</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Birth Place</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace
+	 * @generated
+	 */
+	EClass getBirthPlace();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.BirthPlace#getName()
+	 * @see #getBirthPlace()
+	 * @generated
+	 */
+	EAttribute getBirthPlace_Name();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1501,6 +1588,14 @@ public interface LibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WRITER__TYPEWRITERS = eINSTANCE.getWriter_Typewriters();
+
+		/**
+		 * The meta object literal for the '<em><b>Birth Place</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WRITER__BIRTH_PLACE = eINSTANCE.getWriter_BirthPlace();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl <em>String To Book Map Entry</em>}' class.
@@ -1729,6 +1824,24 @@ public interface LibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ABSTRACT_TEST = eINSTANCE.getAbstractTest();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.impl.BirthPlaceImpl <em>Birth Place</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.BirthPlaceImpl
+		 * @see org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryPackageImpl#getBirthPlace()
+		 * @generated
+		 */
+		EClass BIRTH_PLACE = eINSTANCE.getBirthPlace();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BIRTH_PLACE__NAME = eINSTANCE.getBirthPlace_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.BookCategory <em>Book Category</em>}' enum.

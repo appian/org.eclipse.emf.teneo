@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LibrarySwitch.java,v 1.3 2010/03/02 20:36:09 mtaal Exp $
+ * $Id: LibrarySwitch.java,v 1.4 2010/04/22 15:33:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library.util;
 
@@ -174,6 +174,13 @@ public class LibrarySwitch<T> {
 			case LibraryPackage.ABSTRACT_TEST: {
 				AbstractTest abstractTest = (AbstractTest)theEObject;
 				T result = caseAbstractTest(abstractTest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LibraryPackage.BIRTH_PLACE: {
+				BirthPlace birthPlace = (BirthPlace)theEObject;
+				T result = caseBirthPlace(birthPlace);
+				if (result == null) result = caseIdentifiable(birthPlace);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -373,6 +380,21 @@ public class LibrarySwitch<T> {
 	 * @generated
 	 */
 	public T caseAbstractTest(AbstractTest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Birth Place</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Birth Place</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBirthPlace(BirthPlace object) {
 		return null;
 	}
 

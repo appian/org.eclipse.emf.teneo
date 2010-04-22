@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Writer.java,v 1.2 2009/01/21 21:34:20 seberle Exp $
+ * $Id: Writer.java,v 1.3 2010/04/22 15:33:16 mtaal Exp $
  */
 package org.eclipse.emf.teneo.eclipselink.examples.library;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getPublishers <em>Publishers</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getTypewriters <em>Typewriters</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getBirthPlace <em>Birth Place</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,5 +133,31 @@ public interface Writer extends Identifiable {
 	 * @generated
 	 */
 	EList<TypeWriter> getTypewriters();
+
+	/**
+	 * Returns the value of the '<em><b>Birth Place</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Birth Place</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Birth Place</em>' reference.
+	 * @see #setBirthPlace(BirthPlace)
+	 * @see org.eclipse.emf.teneo.eclipselink.examples.library.LibraryPackage#getWriter_BirthPlace()
+	 * @model annotation="teneo.jpa value=' @Embedded'"
+	 * @generated
+	 */
+	BirthPlace getBirthPlace();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.eclipselink.examples.library.Writer#getBirthPlace <em>Birth Place</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Birth Place</em>' reference.
+	 * @see #getBirthPlace()
+	 * @generated
+	 */
+	void setBirthPlace(BirthPlace value);
 
 } // Writer
