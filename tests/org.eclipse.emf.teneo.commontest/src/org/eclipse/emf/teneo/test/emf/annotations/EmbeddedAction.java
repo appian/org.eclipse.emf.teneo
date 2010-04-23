@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedAction.java,v 1.7 2009/12/04 15:06:42 mtaal Exp $
+ * $Id: EmbeddedAction.java,v 1.8 2010/04/23 08:52:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -26,6 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embedder;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.NestedEmbeddable;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -33,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 public class EmbeddedAction extends AbstractTestAction {
 	/**
@@ -116,6 +117,10 @@ public class EmbeddedAction extends AbstractTestAction {
 			aOneToMany2.setName("2");
 			anotherEmbeddable.getAOneToMany().add(aOneToMany2);
 
+			final NestedEmbeddable nestedEmbeddable = factory.createNestedEmbeddable();
+			nestedEmbeddable.setNestedName("nestName");
+			anotherEmbeddable.setNestedEmbedded(nestedEmbeddable);
+			
 			embedder.setAnotherEmbedded(anotherEmbeddable);
 
 			final AlsoEmbeddable ae = factory.createAlsoEmbeddable();
@@ -142,7 +147,9 @@ public class EmbeddedAction extends AbstractTestAction {
 			assertEquals(2, ae.getAOneToMany().size());
 			assertEquals("1", ae.getAOneToMany().get(0).getName());
 			assertEquals("2", ae.getAOneToMany().get(1).getName());
-
+			assertNotNull(ae.getNestedEmbedded());
+			assertEquals("nestName", ae.getNestedEmbedded().getNestedName());			
+			
 			store.commitTransaction();
 		}
 	}
