@@ -53,13 +53,14 @@ import org.eclipse.emf.teneo.test.emf.annotations.VariousAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.102 $
+ * @version $Revision: 1.103 $
  */
 public class AllTests {
 
 	public static Test suite() {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(EmbeddedAction.class);
 		suite.addTestSuite(SetAction.class);
 		suite.addTestSuite(EAVExtraLazyAction.class);
 		suite.addTestSuite(ExtraLazySetAction.class);
@@ -70,7 +71,6 @@ public class AllTests {
 		suite.addTestSuite(EMapEAVAction.class);
 		suite.addTestSuite(AnyAction.class);
 		suite.addTestSuite(InheritanceAnnotationAction.class);
-		suite.addTestSuite(EmbeddedAction.class);
 		suite.addTestSuite(BZ290969Action.class);
 		suite.addTestSuite(HibernateAction.class);
 		suite.addTestSuite(IdTypeTestOneAction.class);
