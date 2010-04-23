@@ -2,22 +2,26 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnotherEmbeddableImpl.java,v 1.2 2009/12/04 15:06:57 mtaal Exp $
+ * $Id: AnotherEmbeddableImpl.java,v 1.3 2010/04/23 08:52:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.NestedEmbeddable;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +32,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl#getAnotherName <em>Another Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl#getAOneToMany <em>AOne To Many</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AnotherEmbeddableImpl#getNestedEmbedded <em>Nested Embedded</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +68,16 @@ public class AnotherEmbeddableImpl extends AlsoEmbeddableImpl implements Another
 	 * @ordered
 	 */
 	protected EList<AOneToMany> aOneToMany;
+
+	/**
+	 * The cached value of the '{@link #getNestedEmbedded() <em>Nested Embedded</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestedEmbedded()
+	 * @generated
+	 * @ordered
+	 */
+	protected NestedEmbeddable nestedEmbedded;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,6 +136,63 @@ public class AnotherEmbeddableImpl extends AlsoEmbeddableImpl implements Another
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NestedEmbeddable getNestedEmbedded() {
+		return nestedEmbedded;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNestedEmbedded(NestedEmbeddable newNestedEmbedded, NotificationChain msgs) {
+		NestedEmbeddable oldNestedEmbedded = nestedEmbedded;
+		nestedEmbedded = newNestedEmbedded;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED, oldNestedEmbedded, newNestedEmbedded);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNestedEmbedded(NestedEmbeddable newNestedEmbedded) {
+		if (newNestedEmbedded != nestedEmbedded) {
+			NotificationChain msgs = null;
+			if (nestedEmbedded != null)
+				msgs = ((InternalEObject)nestedEmbedded).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED, null, msgs);
+			if (newNestedEmbedded != null)
+				msgs = ((InternalEObject)newNestedEmbedded).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED, null, msgs);
+			msgs = basicSetNestedEmbedded(newNestedEmbedded, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED, newNestedEmbedded, newNestedEmbedded));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED:
+				return basicSetNestedEmbedded(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -128,6 +200,8 @@ public class AnotherEmbeddableImpl extends AlsoEmbeddableImpl implements Another
 				return getAnotherName();
 			case EmbeddedPackage.ANOTHER_EMBEDDABLE__AONE_TO_MANY:
 				return getAOneToMany();
+			case EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED:
+				return getNestedEmbedded();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +222,9 @@ public class AnotherEmbeddableImpl extends AlsoEmbeddableImpl implements Another
 				getAOneToMany().clear();
 				getAOneToMany().addAll((Collection<? extends AOneToMany>)newValue);
 				return;
+			case EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED:
+				setNestedEmbedded((NestedEmbeddable)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -166,6 +243,9 @@ public class AnotherEmbeddableImpl extends AlsoEmbeddableImpl implements Another
 			case EmbeddedPackage.ANOTHER_EMBEDDABLE__AONE_TO_MANY:
 				getAOneToMany().clear();
 				return;
+			case EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED:
+				setNestedEmbedded((NestedEmbeddable)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,6 +262,8 @@ public class AnotherEmbeddableImpl extends AlsoEmbeddableImpl implements Another
 				return ANOTHER_NAME_EDEFAULT == null ? anotherName != null : !ANOTHER_NAME_EDEFAULT.equals(anotherName);
 			case EmbeddedPackage.ANOTHER_EMBEDDABLE__AONE_TO_MANY:
 				return aOneToMany != null && !aOneToMany.isEmpty();
+			case EmbeddedPackage.ANOTHER_EMBEDDABLE__NESTED_EMBEDDED:
+				return nestedEmbedded != null;
 		}
 		return super.eIsSet(featureID);
 	}

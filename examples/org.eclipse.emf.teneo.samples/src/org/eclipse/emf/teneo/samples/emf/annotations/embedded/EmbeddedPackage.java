@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedPackage.java,v 1.5 2009/12/04 15:06:57 mtaal Exp $
+ * $Id: EmbeddedPackage.java,v 1.6 2010/04/23 08:52:51 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -125,13 +125,22 @@ public interface EmbeddedPackage extends EPackage {
 	int ANOTHER_EMBEDDABLE__AONE_TO_MANY = ALSO_EMBEDDABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Nested Embedded</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANOTHER_EMBEDDABLE__NESTED_EMBEDDED = ALSO_EMBEDDABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Another Embeddable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANOTHER_EMBEDDABLE_FEATURE_COUNT = ALSO_EMBEDDABLE_FEATURE_COUNT + 2;
+	int ANOTHER_EMBEDDABLE_FEATURE_COUNT = ALSO_EMBEDDABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AOneToManyImpl <em>AOne To Many</em>}' class.
@@ -282,6 +291,35 @@ public interface EmbeddedPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.NestedEmbeddableImpl <em>Nested Embeddable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.NestedEmbeddableImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getNestedEmbeddable()
+	 * @generated
+	 */
+	int NESTED_EMBEDDABLE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Nested Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_EMBEDDABLE__NESTED_NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Nested Embeddable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_EMBEDDABLE_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AlsoEmbeddable <em>Also Embeddable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -333,6 +371,17 @@ public interface EmbeddedPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAnotherEmbeddable_AOneToMany();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getNestedEmbedded <em>Nested Embedded</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Nested Embedded</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getNestedEmbedded()
+	 * @see #getAnotherEmbeddable()
+	 * @generated
+	 */
+	EReference getAnotherEmbeddable_NestedEmbedded();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany <em>AOne To Many</em>}'.
@@ -475,6 +524,27 @@ public interface EmbeddedPackage extends EPackage {
 	EReference getEmbedder_AnotherEmbedded();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.NestedEmbeddable <em>Nested Embeddable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Nested Embeddable</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.NestedEmbeddable
+	 * @generated
+	 */
+	EClass getNestedEmbeddable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.NestedEmbeddable#getNestedName <em>Nested Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Nested Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.NestedEmbeddable#getNestedName()
+	 * @see #getNestedEmbeddable()
+	 * @generated
+	 */
+	EAttribute getNestedEmbeddable_NestedName();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -539,6 +609,14 @@ public interface EmbeddedPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ANOTHER_EMBEDDABLE__AONE_TO_MANY = eINSTANCE.getAnotherEmbeddable_AOneToMany();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Embedded</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANOTHER_EMBEDDABLE__NESTED_EMBEDDED = eINSTANCE.getAnotherEmbeddable_NestedEmbedded();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.AOneToManyImpl <em>AOne To Many</em>}' class.
@@ -649,6 +727,24 @@ public interface EmbeddedPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EMBEDDER__ANOTHER_EMBEDDED = eINSTANCE.getEmbedder_AnotherEmbedded();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.NestedEmbeddableImpl <em>Nested Embeddable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.NestedEmbeddableImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl.EmbeddedPackageImpl#getNestedEmbeddable()
+		 * @generated
+		 */
+		EClass NESTED_EMBEDDABLE = eINSTANCE.getNestedEmbeddable();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NESTED_EMBEDDABLE__NESTED_NAME = eINSTANCE.getNestedEmbeddable_NestedName();
 
 	}
 

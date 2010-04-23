@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedSwitch.java,v 1.5 2009/12/04 15:06:58 mtaal Exp $
+ * $Id: EmbeddedSwitch.java,v 1.6 2010/04/23 08:52:51 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.util;
 
@@ -118,6 +118,12 @@ public class EmbeddedSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EmbeddedPackage.NESTED_EMBEDDABLE: {
+				NestedEmbeddable nestedEmbeddable = (NestedEmbeddable)theEObject;
+				T result = caseNestedEmbeddable(nestedEmbeddable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -194,6 +200,21 @@ public class EmbeddedSwitch<T> {
 	 * @generated
 	 */
 	public T caseEmbedder(Embedder object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Nested Embeddable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Nested Embeddable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNestedEmbeddable(NestedEmbeddable object) {
 		return null;
 	}
 

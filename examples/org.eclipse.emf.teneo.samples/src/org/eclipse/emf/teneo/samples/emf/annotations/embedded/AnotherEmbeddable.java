@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AnotherEmbeddable.java,v 1.2 2009/12/04 15:06:57 mtaal Exp $
+ * $Id: AnotherEmbeddable.java,v 1.3 2010/04/23 08:52:51 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAnotherName <em>Another Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getAOneToMany <em>AOne To Many</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getNestedEmbedded <em>Nested Embedded</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,5 +72,33 @@ public interface AnotherEmbeddable extends AlsoEmbeddable {
 	 * @generated
 	 */
 	EList<AOneToMany> getAOneToMany();
+
+	/**
+	 * Returns the value of the '<em><b>Nested Embedded</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Nested Embedded</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Nested Embedded</em>' containment reference.
+	 * @see #setNestedEmbedded(NestedEmbeddable)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getAnotherEmbeddable_NestedEmbedded()
+	 * @model containment="true" required="true"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t\t\t@Embedded\n\t\t\t\t\t\t\t'"
+	 *        extendedMetaData="kind='element' name='nestedEmbedded'"
+	 * @generated
+	 */
+	NestedEmbeddable getNestedEmbedded();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable#getNestedEmbedded <em>Nested Embedded</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Nested Embedded</em>' containment reference.
+	 * @see #getNestedEmbedded()
+	 * @generated
+	 */
+	void setNestedEmbedded(NestedEmbeddable value);
 
 } // AnotherEmbeddable

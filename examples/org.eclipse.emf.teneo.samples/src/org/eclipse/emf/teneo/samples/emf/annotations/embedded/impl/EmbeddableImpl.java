@@ -2,19 +2,22 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddableImpl.java,v 1.4 2009/12/04 15:06:57 mtaal Exp $
+ * $Id: EmbeddableImpl.java,v 1.5 2010/04/23 08:52:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AnotherEmbeddable;
 import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.AOneToMany;
 import org.eclipse.emf.teneo.samples.emf.annotations.embedded.Embeddable;

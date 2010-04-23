@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedFactory.java,v 1.4 2009/12/04 15:06:57 mtaal Exp $
+ * $Id: EmbeddedFactory.java,v 1.5 2010/04/23 08:52:51 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -69,6 +69,15 @@ public interface EmbeddedFactory extends EFactory {
 	 * @generated
 	 */
 	Embedder createEmbedder();
+
+	/**
+	 * Returns a new object of class '<em>Nested Embeddable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Nested Embeddable</em>'.
+	 * @generated
+	 */
+	NestedEmbeddable createNestedEmbeddable();
 
 	/**
 	 * Returns the package supported by this factory.

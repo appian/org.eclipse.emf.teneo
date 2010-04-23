@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Embedder.java,v 1.6 2008/04/16 21:08:13 mtaal Exp $
+ * $Id: Embedder.java,v 1.7 2010/04/23 08:52:51 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded;
 
@@ -201,7 +201,7 @@ public interface Embedder extends EObject {
 	 * @see #setAnotherEmbedded(AnotherEmbeddable)
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.embedded.EmbeddedPackage#getEmbedder_AnotherEmbedded()
 	 * @model containment="true" required="true"
-	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t'"
+	 *        annotation="teneo.jpa appinfo='\n\t\t\t\t\t@Embedded\n\t\t\t\t\t@AttributeOverride(name=\"nestedEmbedded.nestedName\" column=@Column(name=\"ne_nestedname\"))\n\t\t\t\t\t'"
 	 *        extendedMetaData="kind='element' name='anotherEmbedded'"
 	 * @generated
 	 */

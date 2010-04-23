@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EmbeddedFactoryImpl.java,v 1.5 2009/12/04 15:06:57 mtaal Exp $
+ * $Id: EmbeddedFactoryImpl.java,v 1.6 2010/04/23 08:52:50 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.embedded.impl;
 
@@ -65,6 +65,7 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 			case EmbeddedPackage.AONE_TO_MANY: return createAOneToMany();
 			case EmbeddedPackage.EMBEDDABLE: return createEmbeddable();
 			case EmbeddedPackage.EMBEDDER: return createEmbedder();
+			case EmbeddedPackage.NESTED_EMBEDDABLE: return createNestedEmbeddable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +119,16 @@ public class EmbeddedFactoryImpl extends EFactoryImpl implements EmbeddedFactory
 	public Embedder createEmbedder() {
 		EmbedderImpl embedder = new EmbedderImpl();
 		return embedder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NestedEmbeddable createNestedEmbeddable() {
+		NestedEmbeddableImpl nestedEmbeddable = new NestedEmbeddableImpl();
+		return nestedEmbeddable;
 	}
 
 	/**

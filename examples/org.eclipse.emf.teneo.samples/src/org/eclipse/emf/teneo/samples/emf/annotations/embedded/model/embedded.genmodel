@@ -13,6 +13,7 @@
     <genClasses ecoreClass="embedded.ecore#//AnotherEmbeddable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AnotherEmbeddable/anotherName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference embedded.ecore#//AnotherEmbeddable/aOneToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//AnotherEmbeddable/nestedEmbedded"/>
     </genClasses>
     <genClasses ecoreClass="embedded.ecore#//AOneToMany">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//AOneToMany/name"/>
@@ -29,6 +30,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/fifthEmbedded"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/alsoEmbeddable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference embedded.ecore#//Embedder/anotherEmbedded"/>
+    </genClasses>
+    <genClasses ecoreClass="embedded.ecore#//NestedEmbeddable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute embedded.ecore#//NestedEmbeddable/nestedName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

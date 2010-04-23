@@ -40,6 +40,16 @@
         <details key="name" value="aOneToMany"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedEmbedded" lowerBound="1"
+        eType="#//NestedEmbeddable" containment="true" resolveProxies="false">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="nestedEmbedded"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AOneToMany">
     <eAnnotations source="teneo.jpa">
@@ -144,11 +154,27 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="anotherEmbedded" lowerBound="1"
         eType="#//AnotherEmbeddable" containment="true" resolveProxies="false">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@AttributeOverride(name=&quot;nestedEmbedded.nestedName&quot; column=@Column(name=&quot;ne_nestedname&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="anotherEmbedded"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NestedEmbeddable">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Embeddable"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="NestedEmbeddable"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nestedName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="nestedName"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
