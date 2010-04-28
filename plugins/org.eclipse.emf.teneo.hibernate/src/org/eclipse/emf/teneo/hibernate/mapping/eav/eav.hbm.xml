@@ -46,8 +46,7 @@
 		<property name="valueIsSet" />
 		<property name="mandatoryValue" not-null="true" />
 		<property name="listIndex" column="`listindex`" />
-		<many-to-one name="owner" entity-name="EAV_EObject"
-			not-null="true" column="`owner`" />
+		<many-to-one name="owner" entity-name="EAV_EObject" column="`owner`" />
 		<many-to-one name="valueOwner" entity-name="EAV_Value"
 			not-null="false" column="`valueowner`" />
 	</class>
