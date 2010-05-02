@@ -14,7 +14,7 @@ package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
  *   Jan Haesli - solution for equals test on feature holder
  * </copyright>
  *
- * $Id: EContainerFeatureIDUserType.java,v 1.4 2009/12/04 15:07:02 mtaal Exp $
+ * $Id: EContainerFeatureIDUserType.java,v 1.5 2010/05/02 14:24:11 mtaal Exp $
  */
 
 import java.io.Serializable;
@@ -36,7 +36,7 @@ import org.hibernate.usertype.UserType;
  * reference to the EFeature.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2009/12/04 15:07:02 $
+ * @version $Revision: 1.5 $ $Date: 2010/05/02 14:24:11 $
  */
 
 public class EContainerFeatureIDUserType implements UserType {
@@ -78,6 +78,9 @@ public class EContainerFeatureIDUserType implements UserType {
 	}
 
 	public Serializable disassemble(Object value) throws HibernateException {
+		if (value == null) {
+			return null;
+		}
 		return ((EContainerFeatureIDHolder) value).convertToString();
 	}
 
