@@ -80,7 +80,7 @@
 
 		<list name="values" lazy="true" cascade="all,delete-orphan"
 			inverse="true">
-			<key update="true" on-delete="cascade">
+			<key update="true">
 				<column name="`valueowner`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`listindex`" />
@@ -97,7 +97,7 @@
 
 		<list name="values" lazy="extra" cascade="all,delete-orphan"
 			inverse="true">
-			<key update="true" on-delete="cascade">
+			<key update="true">
 				<column name="`valueowner`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`listindex`" />
@@ -206,7 +206,7 @@
 
 		<list name="referenceValues" lazy="true"
 			cascade="all,delete-orphan" inverse="true">
-			<key update="true" on-delete="cascade">
+			<key update="true">
 				<column name="`valueowner`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`listindex`" />
@@ -223,7 +223,7 @@
 
 		<list name="referenceValues" lazy="extra"
 			cascade="all,delete-orphan" inverse="true">
-			<key update="true" on-delete="cascade">
+			<key update="true">
 				<column name="`valueowner`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`listindex`" />
@@ -240,7 +240,7 @@
 
 		<list name="referenceValues" lazy="true"
 			cascade="all,delete-orphan" inverse="true">
-			<key update="true" on-delete="cascade">
+			<key update="true">
 				<column name="`valueowner`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`listindex`" />
@@ -257,7 +257,7 @@
 
 		<list name="referenceValues" lazy="extra"
 			cascade="all,delete-orphan" inverse="true">
-			<key update="true" on-delete="cascade">
+			<key update="true">
 				<column name="`valueowner`" not-null="false" unique="false" />
 			</key>
 			<list-index column="`listindex`" />
