@@ -77,7 +77,7 @@
       		<uri format="http://www.elver.org/eclipse/update"/>
     	</provider>
 		<provider readerType="p2" componentTypes="osgi.bundle" mutable="false" source="false">
-			<uri format="http://download.eclipse.org/tools/orbit/downloads/drops/R20100114021427/updateSite"/>
+			<uri format="http://download.eclipse.org/tools/orbit/downloads/drops/S20100508202910/repository"/>
 		</provider>
   	</searchPath>
 
