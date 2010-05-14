@@ -16,7 +16,7 @@ Export-Package: org.eclipse.emf.teneo.eclipselink,
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)",
  org.eclipse.emf.teneo.eclipselink.elistfactory;bundle-version="[1.0.0,2.0.0)",
  org.eclipse.persistence.jpa;bundle-version="[2.0.0,3.0.0)",
- javax.persistence;bundle-version="[2.0.0,2.1.0)"
+ javax.persistence;bundle-version="[2.0.0,2.2.0)"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.eclipse.core.runtime;version="3.4.0",
- org.eclipse.osgi.util;version="1.1.0"
+Import-Package: org.eclipse.core.runtime;version="[3.4.0, 4.0.0)",
+ org.eclipse.osgi.util;version="[1.1.0, 3.0.0)"
