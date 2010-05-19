@@ -14,9 +14,9 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.BasicEMap.Entry;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.common.util.BasicEMap.Entry;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectEList;
@@ -71,7 +71,6 @@ public class EListContainerPolicy extends ListContainerPolicy {
 	 *            java.lang.Object
 	 * @return boolean indicating whether the container changed
 	 */
-	@Override
 	public boolean addInto(Object key, Object element, Object container) {
 		return doAddInto(key, element, container);
 	}
