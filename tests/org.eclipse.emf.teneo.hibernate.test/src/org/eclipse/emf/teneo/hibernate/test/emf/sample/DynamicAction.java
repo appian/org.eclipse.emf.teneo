@@ -9,9 +9,11 @@
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
@@ -36,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -57,7 +60,7 @@ public class DynamicAction extends AbstractTestAction {
 
 	/** Creates an item, an address and links them to a po. */
 	@Override
-	public void doAction(TestStore store) {
+	public void doAction(TestStore store){
 		final DynamicFactory factory = DynamicFactory.eINSTANCE;
 		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
 		final EcorePackage epackage = EcorePackage.eINSTANCE;
@@ -175,6 +178,10 @@ public class DynamicAction extends AbstractTestAction {
 			officeName = efactory.createEAttribute();
 			officeName.setName("name");
 			officeName.setEType(epackage.getEString());
+			final EAnnotation idAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+			idAnnotation.setSource("teneo.jpa");
+			idAnnotation.getDetails().put("value", "@Id");
+			officeName.getEAnnotations().add(idAnnotation);
 			officeClass.getEStructuralFeatures().add(officeName);
 
 			officeAddressRef = efactory.createEReference();
@@ -215,7 +222,7 @@ public class DynamicAction extends AbstractTestAction {
 			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(), companyPackage);
 			store.addEPackage(companyPackage);
 			store.updateSchema();
-			// System.err.println(store.getMappingXML());
+//			System.err.println(store.getMappingXML());
 		}
 
 		// return from here in case of hsqldb because hsqldb does
@@ -371,6 +378,17 @@ public class DynamicAction extends AbstractTestAction {
 			Person person = (Person) list.get(0);
 			assertTrue(person.eClass() == employeeClass);
 			store.commitTransaction();
+		}
+		
+		try {
+			final Resource res = store.getResource();
+
+			EObject office = EcoreUtil.create(officeClass);
+			office.eSet(officeName, "Marketing Office 2");
+			res.getContents().add(office);
+			res.save(Collections.emptyMap());
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
 		}
 	}
 
