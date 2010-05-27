@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.30 2010/04/04 12:10:51 mtaal Exp $
+ * $Id: HbUtil.java,v 1.31 2010/05/27 12:42:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -33,6 +33,7 @@ import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
@@ -53,7 +54,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 public class HbUtil {
 
@@ -83,8 +84,7 @@ public class HbUtil {
 			id = ((HibernateProxy) eobj).getHibernateLazyInitializer()
 					.getIdentifier();
 		} else {
-			id = pc.getIdentifierProperty().getGetter(eobj.getClass())
-					.get(eobj);
+			id = IdentifierUtil.getID(eobj, hd);
 		}
 		if (id == null) {
 			id = IdentifierCacheHandler.getInstance().getID(eobj);

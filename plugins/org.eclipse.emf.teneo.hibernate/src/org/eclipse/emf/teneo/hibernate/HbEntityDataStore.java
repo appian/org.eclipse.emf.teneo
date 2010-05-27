@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.26 2010/03/11 02:58:28 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.27 2010/05/27 12:42:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,13 +39,14 @@ import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.ejb.Ejb3Configuration;
+import org.hibernate.ejb.EntityManagerFactoryImpl;
 import org.hibernate.event.InitializeCollectionEventListener;
 
 /**
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -280,8 +281,8 @@ public class HbEntityDataStore extends HbDataStore implements
 	/** Is added for interface compliance with HbDataStore, should not be used */
 	@Override
 	public SessionFactory getSessionFactory() {
-		throw new UnsupportedOperationException(
-				"This method should not be called, use getEntityManagerFactory");
+		final EntityManagerFactoryImpl entityManagerFactoryImpl = (EntityManagerFactoryImpl)getEntityManagerFactory();
+		return entityManagerFactoryImpl.getSessionFactory();
 	}
 
 	public EntityManager createEntityManager() {

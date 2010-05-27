@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: IdentifierUtil.java,v 1.7 2008/06/28 22:41:47 mtaal Exp $
+ * $Id: IdentifierUtil.java,v 1.8 2010/05/27 12:42:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.identifier;
@@ -21,12 +21,18 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Hashtable;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.hibernate.EntityMode;
+import org.hibernate.SessionFactory;
 import org.hibernate.engine.ForeignKeys;
 import org.hibernate.engine.SessionImplementor;
+import org.hibernate.impl.SessionFactoryImpl;
 import org.hibernate.impl.SessionImpl;
+import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.type.NullableType;
 import org.hibernate.type.Type;
 
@@ -36,7 +42,7 @@ import org.hibernate.type.Type;
  * the EMF identifier.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
 
 public class IdentifierUtil {
@@ -113,6 +119,15 @@ public class IdentifierUtil {
 		} catch (IllegalAccessException e) {
 			throw new HbMapperException("Can not instantiate: " + className + " using value " + strValue);
 		}
+	}
+
+
+	/** Returns the id of the passed object */
+	public static Serializable getID(EObject eobj, HbDataStore hd) {
+		final String entityName = hd
+		.getEntityNameStrategy().toEntityName(eobj.eClass());
+		final EntityPersister entityPersister = ((SessionFactoryImpl)hd.getSessionFactory()).getEntityPersister(entityName);
+		return entityPersister.getIdentifier(eobj, EntityMode.MAP);
 	}
 
 	/** Returns the id of the passed object */
