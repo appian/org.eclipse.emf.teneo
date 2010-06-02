@@ -21,7 +21,7 @@ import org.apache.commons.logging.LogFactory;
  * weakreferences and periodic purge actions to clean the maps.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 
 public class IdentifierCacheHandler {
@@ -29,7 +29,7 @@ public class IdentifierCacheHandler {
 	private static Log log = LogFactory.getLog(IdentifierCacheHandler.class);
 
 	/** At this count the maps will be purged for stale entries */
-	public static final int PURGE_TRESHOLD = 10000;
+	public static final int PURGE_TRESHOLD = 100;
 
 	private static IdentifierCacheHandler instance = new IdentifierCacheHandler();
 
