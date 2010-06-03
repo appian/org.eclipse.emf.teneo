@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.51 2009/10/31 07:10:10 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.52 2010/06/03 14:06:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -35,6 +35,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.eclipse.emf.teneo.hibernate.hbannotation.DiscriminatorFormula;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbEntity;
+import org.eclipse.emf.teneo.hibernate.hbannotation.OptimisticLockType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.simpledom.DocumentHelper;
 import org.eclipse.emf.teneo.simpledom.Element;
@@ -714,6 +715,12 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		if (!getHbmContext().alwaysVersion()) {
 			return null;
 		}
+		
+		// if none optimistic lock then return
+		if (aClass.getHbEntity() != null && aClass.getHbEntity().getOptimisticLock() != null && aClass.getHbEntity().getOptimisticLock().equals(OptimisticLockType.NONE)) {
+			return null;
+		}
+		
 		final boolean skipVersionOnImmutable = !getHbmContext().getPersistenceOptions()
 				.isDiscriminatorVersionOnImmutableEClass();
 		if (aClass.getImmutable() != null && skipVersionOnImmutable) {
