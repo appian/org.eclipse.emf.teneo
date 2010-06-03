@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.11 2010/02/06 20:50:47 mtaal Exp $
+ * $Id: PersonImpl.java,v 1.12 2010/06/03 14:06:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -231,9 +231,9 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Object> getPhoneNumbers() {
+	public EList getPhoneNumbers() {
 		if (phoneNumbers == null) {
-			phoneNumbers = new EDataTypeUniqueEList<Object>(UsaPhoneNumber.class, this, UsertypePackage.PERSON__PHONE_NUMBERS);
+			phoneNumbers = new EDataTypeUniqueEList(UsaPhoneNumber.class, this, UsertypePackage.PERSON__PHONE_NUMBERS);
 		}
 		return phoneNumbers;
 	}

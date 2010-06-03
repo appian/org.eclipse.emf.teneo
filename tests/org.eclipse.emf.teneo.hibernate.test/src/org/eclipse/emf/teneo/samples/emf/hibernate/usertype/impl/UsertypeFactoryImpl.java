@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeFactoryImpl.java,v 1.8 2010/02/06 20:50:47 mtaal Exp $
+ * $Id: UsertypeFactoryImpl.java,v 1.9 2010/06/03 14:06:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.*;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize;

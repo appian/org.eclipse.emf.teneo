@@ -20,7 +20,7 @@
       <details key="kind" value="elementOnly"/>
     </eAnnotations>
     <eAnnotations source="teneo.hibernate">
-      <details key="appinfo" value="@NamedQuery(name=&quot;getPersonByBirthPlace&quot; query=&quot;select p from Person p where p.birthPlace=?&quot;)&#xA;@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=&quot;org.hibernate.persister.entity.SingleTableEntityPersister&quot;, optimisticLock=VERSION, polymorphism=EXPLICIT)"/>
+      <details key="appinfo" value="@NamedQuery(name=&quot;getPersonByBirthPlace&quot; query=&quot;select p from Person p where p.birthPlace=?&quot;)&#xA;@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=&quot;org.hibernate.persister.entity.SingleTableEntityPersister&quot;, optimisticLock=NONE, polymorphism=EXPLICIT)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
         eType="#//Name">

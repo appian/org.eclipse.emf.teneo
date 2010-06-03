@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypeSwitch.java,v 1.7 2010/02/06 20:50:46 mtaal Exp $
+ * $Id: UsertypeSwitch.java,v 1.8 2010/06/03 14:06:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.util;
 
@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.*;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
@@ -72,7 +73,7 @@ public class UsertypeSwitch {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List<?> eSuperTypes = theEClass.getESuperTypes();
+			List eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :

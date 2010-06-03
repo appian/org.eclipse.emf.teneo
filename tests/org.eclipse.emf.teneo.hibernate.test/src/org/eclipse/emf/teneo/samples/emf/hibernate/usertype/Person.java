@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.9 2010/02/06 20:50:47 mtaal Exp $
+ * $Id: Person.java,v 1.10 2010/06/03 14:06:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson()
  * @model extendedMetaData="name='Person' kind='elementOnly'"
- *        annotation="teneo.hibernate appinfo='@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=VERSION, polymorphism=EXPLICIT)'"
+ *        annotation="teneo.hibernate appinfo='@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=NONE, polymorphism=EXPLICIT)'"
  * @generated
  */
 public interface Person extends EObject {
@@ -101,7 +101,7 @@ public interface Person extends EObject {
 	 * @model dataType="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.PhoneNumber" upper="100"
 	 * @generated
 	 */
-	EList<Object> getPhoneNumbers();
+	EList getPhoneNumbers();
 
 	/**
 	 * Returns the value of the '<em><b>Emergency Contact</b></em>' attribute.
@@ -147,7 +147,7 @@ public interface Person extends EObject {
 	 *        annotation="teneo.jpa appinfo='@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)'"
 	 * @generated
 	 */
-	EList<Object> getAddresses();
+	EList getAddresses();
 
 	/**
 	 * Returns the value of the '<em><b>Birth Place</b></em>' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UsertypePackageImpl.java,v 1.12 2010/02/06 20:50:47 mtaal Exp $
+ * $Id: UsertypePackageImpl.java,v 1.13 2010/06/03 14:06:56 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl;
 
@@ -112,20 +112,10 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link UsertypePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -137,7 +127,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		if (isInited) return (UsertypePackage)EPackage.Registry.INSTANCE.getEPackage(UsertypePackage.eNS_URI);
 
 		// Obtain or create and register package
-		UsertypePackageImpl theUsertypePackage = (UsertypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof UsertypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new UsertypePackageImpl());
+		UsertypePackageImpl theUsertypePackage = (UsertypePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof UsertypePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new UsertypePackageImpl());
 
 		isInited = true;
 
@@ -150,6 +140,9 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		// Mark meta-data to indicate it can't be changed
 		theUsertypePackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(UsertypePackage.eNS_URI, theUsertypePackage);
 		return theUsertypePackage;
 	}
 
@@ -464,7 +457,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		  (personEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=VERSION, polymorphism=EXPLICIT)"
+			 "appinfo", "@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=NONE, polymorphism=EXPLICIT)"
 		   });											
 	}
 

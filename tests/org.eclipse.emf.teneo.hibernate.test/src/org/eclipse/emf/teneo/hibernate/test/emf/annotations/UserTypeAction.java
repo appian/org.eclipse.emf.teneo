@@ -8,7 +8,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * </copyright>
  *
- * $Id: UserTypeAction.java,v 1.14 2010/02/06 20:50:47 mtaal Exp $
+ * $Id: UserTypeAction.java,v 1.15 2010/06/03 14:06:56 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.annotations;
@@ -37,7 +37,7 @@ import org.hibernate.Query;
 /**
  * Test
  * 
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class UserTypeAction extends AbstractTestAction {
 
@@ -58,6 +58,7 @@ public class UserTypeAction extends AbstractTestAction {
 
 	@Override
 	public void doAction(TestStore store) {
+		System.err.println(store.getMappingXML());
 		storePerson(store);
 		testPerson(store);
 		testDatabase(store);
