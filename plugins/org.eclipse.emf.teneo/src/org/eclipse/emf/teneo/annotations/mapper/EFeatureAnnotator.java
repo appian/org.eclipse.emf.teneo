@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EFeatureAnnotator.java,v 1.14 2010/03/02 21:43:57 mtaal Exp $
+ * $Id: EFeatureAnnotator.java,v 1.15 2010/07/15 07:46:30 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -40,7 +40,7 @@ import org.eclipse.emf.teneo.util.StoreUtil;
  * etc.).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 
 public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoint {
@@ -239,7 +239,6 @@ public class EFeatureAnnotator extends AbstractAnnotator implements ExtensionPoi
 				assert (errorOccured || par.getTransient() != null || par.getOneToMany() != null
 						|| par.getManyToMany() != null || par.getManyToOne() != null || par.getOneToOne() != null);
 			}
-
 		}
 	}
 
