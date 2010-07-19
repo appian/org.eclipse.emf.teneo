@@ -81,6 +81,11 @@
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">secondaryTables</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="sequence-generator" type="SequenceGenerator" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">sequenceGenerators</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="table" type="Table" minOccurs="0"/>
 			<xsd:element name="table-generator" type="TableGenerator" minOccurs="0"/>
 			<xsd:element name="transient" type="Transient" minOccurs="0"/>
