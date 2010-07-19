@@ -2,16 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelValidator.java,v 1.29 2010/02/04 08:18:43 mtaal Exp $
+ * $Id: PamodelValidator.java,v 1.30 2010/07/19 11:48:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.util;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.teneo.annotations.pamodel.*;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -123,9 +125,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEModelElement(
 			PAnnotatedEModelElement pAnnotatedEModelElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEModelElement, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEModelElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEModelElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEModelElement, diagnostics, context);
@@ -144,6 +148,24 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEModelElement_PAnnotationElementCommutes(
 			PAnnotatedEModelElement pAnnotatedEModelElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "PAnnotationElementCommutes", getObjectLabel(pAnnotatedEModelElement, context) },
+						 new Object[] { pAnnotatedEModelElement },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -153,9 +175,11 @@ public class PamodelValidator extends EObjectValidator {
 	 */
 	public boolean validatePAnnotatedModel(PAnnotatedModel pAnnotatedModel,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedModel, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedModel, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedModel, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedModel, diagnostics, context);
@@ -179,6 +203,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AtMostOnePackage", getObjectLabel(pAnnotatedModel, context) },
+						 new Object[] { pAnnotatedModel },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -197,6 +235,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "DistinctGenerators", getObjectLabel(pAnnotatedModel, context) },
+						 new Object[] { pAnnotatedModel },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -207,9 +259,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEPackage(
 			PAnnotatedEPackage pAnnotatedEPackage, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEPackage, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEPackage, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEPackage, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEPackage, diagnostics, context);
@@ -233,6 +287,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AtMostOneEClass", getObjectLabel(pAnnotatedEPackage, context) },
+						 new Object[] { pAnnotatedEPackage },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -242,9 +310,11 @@ public class PamodelValidator extends EObjectValidator {
 	 */
 	public boolean validatePAnnotatedEClass(PAnnotatedEClass pAnnotatedEClass,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEClass, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEClass, diagnostics, context);
@@ -275,6 +345,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "SameEFeatures", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -293,6 +377,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EPackageCommutes", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -308,6 +406,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperPrimaryKey", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -325,6 +437,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EntityOrEmbeddableOrMappedSuper", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -343,6 +469,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "OverriddenAreDefined", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -358,6 +498,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperInheritance", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -374,6 +528,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperDiscriminator", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -391,6 +559,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "SingleTableForSingleStrategy", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -406,6 +588,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ProperPKJoin", getObjectLabel(pAnnotatedEClass, context) },
+						 new Object[] { pAnnotatedEClass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -416,9 +612,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEStructuralFeature(
 			PAnnotatedEStructuralFeature pAnnotatedEStructuralFeature,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEStructuralFeature, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEStructuralFeature, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEStructuralFeature, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEStructuralFeature, diagnostics, context);
@@ -445,6 +643,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedEStructuralFeature, context) },
+						 new Object[] { pAnnotatedEStructuralFeature },
+						 context));
+			}
+			return false;
+		}
 		return validatePAnnotatedETypedElement_EClassCommutes(pAnnotatedEStructuralFeature, diagnostics, context);
 	}
 
@@ -462,6 +674,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedEStructuralFeature, context) },
+						 new Object[] { pAnnotatedEStructuralFeature },
+						 context));
+			}
+			return false;
+		}
 		return validatePAnnotatedETypedElement_TransientNotAnnotated(pAnnotatedEStructuralFeature, diagnostics, context);
 	}
 
@@ -472,9 +698,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEAttribute(
 			PAnnotatedEAttribute pAnnotatedEAttribute,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEAttribute, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEAttribute, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEAttribute, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEAttribute, diagnostics, context);
@@ -502,6 +730,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -517,6 +759,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -533,6 +789,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -549,6 +819,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEAttribute, context) },
+						 new Object[] { pAnnotatedEAttribute },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -559,9 +843,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEDataType(
 			PAnnotatedEDataType pAnnotatedEDataType,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEDataType, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEDataType, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEDataType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEDataType, diagnostics, context);
@@ -587,6 +873,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NotAnnotatedAsBasic", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -602,6 +902,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "GeneratedOnId", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -618,6 +932,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "DefinedGenerator", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -634,6 +962,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IdOnEntityOrMappedSuper", getObjectLabel(pAnnotatedEDataType, context) },
+						 new Object[] { pAnnotatedEDataType },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -657,9 +999,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedEReference(
 			PAnnotatedEReference pAnnotatedEReference,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedEReference, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedEReference, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedEReference, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedEReference, diagnostics, context);
@@ -686,6 +1030,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NotAnnotatedAsEmbed", getObjectLabel(pAnnotatedEReference, context) },
+						 new Object[] { pAnnotatedEReference },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -702,6 +1060,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AssociationAgreeWithReference", getObjectLabel(pAnnotatedEReference, context) },
+						 new Object[] { pAnnotatedEReference },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -718,6 +1090,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AssociationWellFormed", getObjectLabel(pAnnotatedEReference, context) },
+						 new Object[] { pAnnotatedEReference },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -728,9 +1114,11 @@ public class PamodelValidator extends EObjectValidator {
 	public boolean validatePAnnotatedETypedElement(
 			PAnnotatedETypedElement pAnnotatedETypedElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotatedETypedElement, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotatedETypedElement, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotatedETypedElement, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotatedETypedElement, diagnostics, context);
@@ -754,6 +1142,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EClassCommutes", getObjectLabel(pAnnotatedETypedElement, context) },
+						 new Object[] { pAnnotatedETypedElement },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -770,6 +1172,20 @@ public class PamodelValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "TransientNotAnnotated", getObjectLabel(pAnnotatedETypedElement, context) },
+						 new Object[] { pAnnotatedETypedElement },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 

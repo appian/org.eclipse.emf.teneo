@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClassImpl.java,v 1.27 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PAnnotatedEClassImpl.java,v 1.28 2010/07/19 11:48:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
 import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
@@ -69,6 +70,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getAssociationOverrides <em>Association Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getEavMapping <em>Eav Mapping</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getNoEAVMapping <em>No EAV Mapping</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
  * </ul>
  * </p>
  *
@@ -222,6 +224,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @ordered
 	 */
 	protected NoEAVMapping noEAVMapping;
+
+	/**
+	 * The cached value of the '{@link #getSequenceGenerators() <em>Sequence Generators</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequenceGenerators()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SequenceGenerator> sequenceGenerators;
 
 	/** The computed super pa entity */
 	private PAnnotatedEClass paSuperEntity = null;
@@ -805,6 +817,18 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<SequenceGenerator> getSequenceGenerators() {
+		if (sequenceGenerators == null) {
+			sequenceGenerators = new EObjectContainmentEList<SequenceGenerator>(SequenceGenerator.class, this, PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS);
+		}
+		return sequenceGenerators;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -863,6 +887,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return basicSetEavMapping(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
 				return basicSetNoEAVMapping(null, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
+				return ((InternalEList<?>)getSequenceGenerators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -924,6 +950,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return getEavMapping();
 			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
 				return getNoEAVMapping();
+			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
+				return getSequenceGenerators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -992,6 +1020,10 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
 				setNoEAVMapping((NoEAVMapping)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
+				getSequenceGenerators().clear();
+				getSequenceGenerators().addAll((Collection<? extends SequenceGenerator>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1054,6 +1086,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
 				setNoEAVMapping((NoEAVMapping)null);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
+				getSequenceGenerators().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1101,6 +1136,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return eavMapping != null;
 			case PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING:
 				return noEAVMapping != null;
+			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
+				return sequenceGenerators != null && !sequenceGenerators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

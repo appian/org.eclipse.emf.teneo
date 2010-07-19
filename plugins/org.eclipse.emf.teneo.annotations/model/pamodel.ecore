@@ -133,6 +133,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="noEAVMapping" eType="ecore:EClass pannotation.ecore#//NoEAVMapping"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerators" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//SequenceGenerator" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedETypedElement">

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedEClass.java,v 1.17 2009/09/11 20:45:03 mtaal Exp $
+ * $Id: PAnnotatedEClass.java,v 1.18 2010/07/19 11:48:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
 import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
+import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.Table;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
 
@@ -52,6 +53,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getAssociationOverrides <em>Association Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getEavMapping <em>Eav Mapping</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping <em>No EAV Mapping</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerators <em>Sequence Generators</em>}</li>
  * </ul>
  * </p>
  *
@@ -471,6 +473,22 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	void setNoEAVMapping(NoEAVMapping value);
+
+	/**
+	 * Returns the value of the '<em><b>Sequence Generators</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sequence Generators</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sequence Generators</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_SequenceGenerators()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<SequenceGenerator> getSequenceGenerators();
 
 	/**
 	 * @return Returns the List of PAnnotatedEAttributes belonging to this PAnnotatedEClass for which an Id PAnnotation

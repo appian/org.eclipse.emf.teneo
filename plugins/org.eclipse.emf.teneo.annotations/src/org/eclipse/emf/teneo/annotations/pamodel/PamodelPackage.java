@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PamodelPackage.java,v 1.22 2009/12/13 10:14:24 mtaal Exp $
+ * $Id: PamodelPackage.java,v 1.23 2010/07/19 11:48:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel;
 
@@ -404,13 +404,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__NO_EAV_MAPPING = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Sequence Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ECLASS__SEQUENCE_GENERATORS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.
@@ -1542,6 +1551,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_NoEAVMapping();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerators <em>Sequence Generators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sequence Generators</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerators()
+	 * @see #getPAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getPAnnotatedEClass_SequenceGenerators();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature <em>PAnnotated EStructural Feature</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>PAnnotated EStructural Feature</em>'.
@@ -2304,6 +2324,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ECLASS__NO_EAV_MAPPING = eINSTANCE.getPAnnotatedEClass_NoEAVMapping();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence Generators</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__SEQUENCE_GENERATORS = eINSTANCE.getPAnnotatedEClass_SequenceGenerators();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.

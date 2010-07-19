@@ -2,16 +2,18 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationValidator.java,v 1.34 2010/02/04 08:20:12 mtaal Exp $
+ * $Id: PannotationValidator.java,v 1.35 2010/07/19 11:48:57 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -244,9 +246,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePAnnotation(PAnnotation pAnnotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pAnnotation, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(pAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(pAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(pAnnotation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(pAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(pAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(pAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(pAnnotation, diagnostics, context);
@@ -267,6 +271,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "CompatibleEModelElementType", getObjectLabel(pAnnotation, context) },
+						 new Object[] { pAnnotation },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -281,6 +299,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AnnotationIsSupported", getObjectLabel(pAnnotation, context) },
+						 new Object[] { pAnnotation },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -290,9 +322,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAttributeOverride(AttributeOverride attributeOverride, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(attributeOverride, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(attributeOverride, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(attributeOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(attributeOverride, diagnostics, context);
@@ -308,9 +342,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAssociationOverride(AssociationOverride associationOverride, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(associationOverride, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(associationOverride, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(associationOverride, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(associationOverride, diagnostics, context);
@@ -326,9 +362,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBasic(Basic basic, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(basic, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(basic, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(basic, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(basic, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(basic, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(basic, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(basic, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(basic, diagnostics, context);
@@ -350,6 +388,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedElementType", getObjectLabel(basic, context) },
+						 new Object[] { basic },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -359,9 +411,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateColumn(Column column, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(column, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(column, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(column, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(column, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(column, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(column, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(column, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(column, diagnostics, context);
@@ -384,6 +438,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ScalePrecisionForNumeric", getObjectLabel(column, context) },
+						 new Object[] { column },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -398,6 +466,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "LengthForString", getObjectLabel(column, context) },
+						 new Object[] { column },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -407,9 +489,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscriminatorColumn(DiscriminatorColumn discriminatorColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(discriminatorColumn, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(discriminatorColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discriminatorColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discriminatorColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discriminatorColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discriminatorColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(discriminatorColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discriminatorColumn, diagnostics, context);
@@ -425,9 +509,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscriminatorValue(DiscriminatorValue discriminatorValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(discriminatorValue, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(discriminatorValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discriminatorValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discriminatorValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discriminatorValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discriminatorValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(discriminatorValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discriminatorValue, diagnostics, context);
@@ -449,6 +535,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NoAbstract", getObjectLabel(discriminatorValue, context) },
+						 new Object[] { discriminatorValue },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -458,9 +558,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEmbeddable(Embeddable embeddable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(embeddable, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(embeddable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(embeddable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(embeddable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(embeddable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(embeddable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(embeddable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(embeddable, diagnostics, context);
@@ -482,6 +584,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NoInterface", getObjectLabel(embeddable, context) },
+						 new Object[] { embeddable },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -491,9 +607,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEmbedded(Embedded embedded, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(embedded, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(embedded, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(embedded, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(embedded, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(embedded, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(embedded, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(embedded, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(embedded, diagnostics, context);
@@ -515,6 +633,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EmbedByValue", getObjectLabel(embedded, context) },
+						 new Object[] { embedded },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -524,9 +656,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEmbeddedId(EmbeddedId embeddedId, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(embeddedId, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(embeddedId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(embeddedId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(embeddedId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(embeddedId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(embeddedId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(embeddedId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(embeddedId, diagnostics, context);
@@ -548,6 +682,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "EmbedByValue", getObjectLabel(embeddedId, context) },
+						 new Object[] { embeddedId },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -557,9 +705,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEntity(Entity entity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(entity, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(entity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(entity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(entity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(entity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(entity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(entity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(entity, diagnostics, context);
@@ -582,6 +732,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NoInterface", getObjectLabel(entity, context) },
+						 new Object[] { entity },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -596,6 +760,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NoReservedName", getObjectLabel(entity, context) },
+						 new Object[] { entity },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -605,9 +783,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEnumerated(Enumerated enumerated, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(enumerated, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(enumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(enumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(enumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(enumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(enumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(enumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(enumerated, diagnostics, context);
@@ -629,6 +809,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedElementType", getObjectLabel(enumerated, context) },
+						 new Object[] { enumerated },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -638,9 +832,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGeneratedValue(GeneratedValue generatedValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(generatedValue, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(generatedValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(generatedValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(generatedValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(generatedValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(generatedValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(generatedValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(generatedValue, diagnostics, context);
@@ -656,9 +852,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateId(Id id, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(id, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(id, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(id, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(id, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(id, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(id, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(id, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(id, diagnostics, context);
@@ -680,6 +878,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedElementType", getObjectLabel(id, context) },
+						 new Object[] { id },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -689,9 +901,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateIdClass(IdClass idClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(idClass, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(idClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(idClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(idClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(idClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(idClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(idClass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(idClass, diagnostics, context);
@@ -707,9 +921,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInheritance(Inheritance inheritance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(inheritance, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(inheritance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(inheritance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(inheritance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(inheritance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(inheritance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(inheritance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(inheritance, diagnostics, context);
@@ -725,9 +941,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateJoinColumn(JoinColumn joinColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(joinColumn, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(joinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(joinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(joinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(joinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(joinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(joinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(joinColumn, diagnostics, context);
@@ -743,9 +961,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateJoinTable(JoinTable joinTable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(joinTable, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(joinTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(joinTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(joinTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(joinTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(joinTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(joinTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(joinTable, diagnostics, context);
@@ -761,9 +981,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateLob(Lob lob, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(lob, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(lob, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(lob, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(lob, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(lob, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(lob, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(lob, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(lob, diagnostics, context);
@@ -785,6 +1007,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedType", getObjectLabel(lob, context) },
+						 new Object[] { lob },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -794,9 +1030,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateManyToMany(ManyToMany manyToMany, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(manyToMany, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(manyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(manyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(manyToMany, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(manyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(manyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(manyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(manyToMany, diagnostics, context);
@@ -818,6 +1056,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IsManyValued", getObjectLabel(manyToMany, context) },
+						 new Object[] { manyToMany },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -827,9 +1079,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateManyToOne(ManyToOne manyToOne, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(manyToOne, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(manyToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(manyToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(manyToOne, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(manyToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(manyToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(manyToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(manyToOne, diagnostics, context);
@@ -851,6 +1105,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IsNotManyValued", getObjectLabel(manyToOne, context) },
+						 new Object[] { manyToOne },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -860,9 +1128,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMapKey(MapKey mapKey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKey, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(mapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKey, diagnostics, context);
@@ -878,9 +1148,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMappedSuperclass(MappedSuperclass mappedSuperclass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mappedSuperclass, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(mappedSuperclass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mappedSuperclass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mappedSuperclass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mappedSuperclass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mappedSuperclass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(mappedSuperclass, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mappedSuperclass, diagnostics, context);
@@ -902,6 +1174,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "NoInterface", getObjectLabel(mappedSuperclass, context) },
+						 new Object[] { mappedSuperclass },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -911,9 +1197,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateOneToMany(OneToMany oneToMany, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(oneToMany, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(oneToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(oneToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(oneToMany, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(oneToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(oneToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(oneToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(oneToMany, diagnostics, context);
@@ -935,6 +1223,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IsManyValued", getObjectLabel(oneToMany, context) },
+						 new Object[] { oneToMany },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -944,9 +1246,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateOneToOne(OneToOne oneToOne, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(oneToOne, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(oneToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(oneToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(oneToOne, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(oneToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(oneToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(oneToOne, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(oneToOne, diagnostics, context);
@@ -968,6 +1272,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IsNotManyValued", getObjectLabel(oneToOne, context) },
+						 new Object[] { oneToOne },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -977,9 +1295,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateOrderBy(OrderBy orderBy, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(orderBy, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(orderBy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(orderBy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(orderBy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(orderBy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(orderBy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(orderBy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(orderBy, diagnostics, context);
@@ -1002,6 +1322,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "WellFormedOrder", getObjectLabel(orderBy, context) },
+						 new Object[] { orderBy },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -1016,6 +1350,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "IsManyValued", getObjectLabel(orderBy, context) },
+						 new Object[] { orderBy },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -1025,9 +1373,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePrimaryKeyJoinColumn(PrimaryKeyJoinColumn primaryKeyJoinColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(primaryKeyJoinColumn, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(primaryKeyJoinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(primaryKeyJoinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(primaryKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(primaryKeyJoinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(primaryKeyJoinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(primaryKeyJoinColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(primaryKeyJoinColumn, diagnostics, context);
@@ -1043,9 +1393,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSecondaryTable(SecondaryTable secondaryTable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(secondaryTable, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(secondaryTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(secondaryTable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(secondaryTable, diagnostics, context);
@@ -1061,9 +1413,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSequenceGenerator(SequenceGenerator sequenceGenerator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sequenceGenerator, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(sequenceGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(sequenceGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(sequenceGenerator, diagnostics, context);
@@ -1079,9 +1433,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTable(Table table, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(table, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(table, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(table, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(table, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(table, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(table, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(table, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(table, diagnostics, context);
@@ -1097,9 +1453,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTableGenerator(TableGenerator tableGenerator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(tableGenerator, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(tableGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(tableGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(tableGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(tableGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(tableGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(tableGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(tableGenerator, diagnostics, context);
@@ -1115,9 +1473,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTemporal(Temporal temporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(temporal, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(temporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(temporal, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(temporal, diagnostics, context);
@@ -1139,6 +1499,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedElementType", getObjectLabel(temporal, context) },
+						 new Object[] { temporal },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -1148,9 +1522,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTransient(Transient transient_, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(transient_, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(transient_, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(transient_, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(transient_, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(transient_, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(transient_, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(transient_, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(transient_, diagnostics, context);
@@ -1166,9 +1542,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateUniqueConstraint(UniqueConstraint uniqueConstraint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(uniqueConstraint, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(uniqueConstraint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(uniqueConstraint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(uniqueConstraint, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(uniqueConstraint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(uniqueConstraint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(uniqueConstraint, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(uniqueConstraint, diagnostics, context);
@@ -1184,9 +1562,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateVersion(Version version, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(version, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(version, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(version, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(version, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(version, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(version, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(version, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(version, diagnostics, context);
@@ -1208,6 +1588,20 @@ public class PannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedElementType", getObjectLabel(version, context) },
+						 new Object[] { version },
+						 context));
+			}
+			return false;
+		}
 		return true;
 	}
 
@@ -1217,9 +1611,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateForeignKey(ForeignKey foreignKey, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(foreignKey, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(foreignKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(foreignKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(foreignKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(foreignKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(foreignKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(foreignKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(foreignKey, diagnostics, context);
@@ -1235,9 +1631,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSequenceStyleGenerator(SequenceStyleGenerator sequenceStyleGenerator, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sequenceStyleGenerator, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(sequenceStyleGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(sequenceStyleGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(sequenceStyleGenerator, diagnostics, context);
@@ -1253,9 +1651,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateExternal(External external, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(external, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(external, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(external, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(external, diagnostics, context);
@@ -1271,9 +1671,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateEAVMapping(EAVMapping eavMapping, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(eavMapping, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(eavMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(eavMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(eavMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(eavMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(eavMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(eavMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(eavMapping, diagnostics, context);
@@ -1289,9 +1691,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNoEAVMapping(NoEAVMapping noEAVMapping, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(noEAVMapping, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(noEAVMapping, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(noEAVMapping, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(noEAVMapping, diagnostics, context);
@@ -1307,9 +1711,11 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateListIndexColumn(ListIndexColumn listIndexColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(listIndexColumn, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(listIndexColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(listIndexColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(listIndexColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(listIndexColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(listIndexColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(listIndexColumn, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(listIndexColumn, diagnostics, context);

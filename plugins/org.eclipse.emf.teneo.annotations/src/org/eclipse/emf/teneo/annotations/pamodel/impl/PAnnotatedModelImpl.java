@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotatedModelImpl.java,v 1.28 2009/06/11 04:59:35 mtaal Exp $
+ * $Id: PAnnotatedModelImpl.java,v 1.29 2010/07/19 11:48:58 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pamodel.impl;
 
@@ -485,6 +485,22 @@ public class PAnnotatedModelImpl extends EObjectImpl implements PAnnotatedModel 
 			for (SequenceGenerator sg : pae.getSequenceGenerators()) {
 				if (sg.getName() != null && sg.getName().compareTo(name) == 0) {
 					return sg;
+				}
+			}
+			for (PAnnotatedEClass aClass : pae.getPaEClasses()) {
+				for (SequenceGenerator sg : aClass.getSequenceGenerators()) {
+					if (sg.getName() != null && sg.getName().compareTo(name) == 0) {
+						return sg;
+					}
+				}
+				
+				for (PAnnotatedEStructuralFeature aFeature : aClass
+						.getPaEStructuralFeatures()) {
+					if (aFeature.getSequenceGenerator().getName() != null
+							&& aFeature.getSequenceGenerator().getName()
+									.compareTo(name) == 0) {
+						return aFeature.getSequenceGenerator();
+					}
 				}
 			}
 		}
