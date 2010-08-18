@@ -38,6 +38,7 @@ import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbEntityDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.eclipse.emf.teneo.hibernate.HbSessionDataStore;
 import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
@@ -56,7 +57,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -217,6 +218,12 @@ public class HibernateTestStore extends AbstractTestStore {
 
 	/** Update the database schema */
 	public void updateSchema() {
+		// clear the configuration
+		if (emfDataStore instanceof HbSessionDataStore) {
+			((HbSessionDataStore)emfDataStore).setConfiguration(null);
+		} else {
+			((HbEntityDataStore)emfDataStore).setConfiguration(null);
+		}
 		emfDataStore.setEPackages(epackages);
 		emfDataStore.initialize();
 		refresh();
