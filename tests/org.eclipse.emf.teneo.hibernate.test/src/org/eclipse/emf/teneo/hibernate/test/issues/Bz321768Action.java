@@ -6,7 +6,7 @@
  * DynamicAction.java,v 1.4 2007/03/20 23:33:38 mtaal Exp $
  */
 
-package org.eclipse.emf.teneo.hibernate.test.emf.sample;
+package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import java.util.List;
 import java.util.Properties;
@@ -28,14 +28,14 @@ import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Testcase for Bugzilla 321765
+ * Testcase for bugzilla 321768
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  */
-public class DynamicEmbeddedIdAction extends AbstractTestAction {
+public class Bz321768Action extends AbstractTestAction {
 
-	private static EPackage embeddedIdEPackage;
+	private static EPackage embeddedEPackage;
 
 	private static EClass nameEClass = null;
 	private static EAttribute firstName = null;
@@ -73,25 +73,25 @@ public class DynamicEmbeddedIdAction extends AbstractTestAction {
 			nameRef.setContainment(true);
 			EAnnotation teneoAnnotation2 = efactory.createEAnnotation();
 			teneoAnnotation2.setSource("teneo.jpa");
-			teneoAnnotation2.getDetails().put("value", "@EmbeddedId");
+			teneoAnnotation2.getDetails().put("value", "@Embedded");
 			nameRef.getEAnnotations().add(teneoAnnotation2);
 			personEClass.getEStructuralFeatures().add(nameRef);
 
-			embeddedIdEPackage = efactory.createEPackage();
-			embeddedIdEPackage.setName("elv");
-			embeddedIdEPackage.setNsPrefix("elv");
-			embeddedIdEPackage.setNsURI("http:///www.elver.org/"
-					+ DynamicEmbeddedIdAction.class.getName());
-			embeddedIdEPackage.getEClassifiers().add(nameEClass);
-			embeddedIdEPackage.getEClassifiers().add(personEClass);
-			EPackage.Registry.INSTANCE.put(embeddedIdEPackage.getNsURI(),
-					embeddedIdEPackage);
+			embeddedEPackage = efactory.createEPackage();
+			embeddedEPackage.setName("elv");
+			embeddedEPackage.setNsPrefix("elv");
+			embeddedEPackage.setNsURI("http:///www.elver.org/"
+					+ Bz321768Action.class.getName());
+			embeddedEPackage.getEClassifiers().add(nameEClass);
+			embeddedEPackage.getEClassifiers().add(personEClass);
+			EPackage.Registry.INSTANCE.put(embeddedEPackage.getNsURI(),
+					embeddedEPackage);
 		}
 
 	}
 
-	public DynamicEmbeddedIdAction() {
-		super(embeddedIdEPackage);
+	public Bz321768Action() {
+		super(embeddedEPackage);
 	}
 
 	/** Creates an item, an address and links them to a po. */
@@ -118,20 +118,8 @@ public class DynamicEmbeddedIdAction extends AbstractTestAction {
 				assertTrue(eobject.eClass() == personEClass);
 				EObject name = (EObject) eobject.eGet(nameRef);
 				assertTrue(name != null);
-				assertEquals("martin", name.eGet(firstName));
+				assertEquals("Martin", name.eGet(firstName));
 			}
-			store.commitTransaction();
-		}
-
-		{
-			store.beginTransaction();
-			SerializableDynamicEObjectImpl name = new SerializableDynamicEObjectImpl(
-					nameEClass);
-			name.eSet(firstName, "Martin");
-			name.eSet(lastName, "Taal");
-			final SerializableDynamicEObjectImpl person = (SerializableDynamicEObjectImpl) store
-					.getObject("Person", name);
-			assertTrue(person != null);
 			store.commitTransaction();
 		}
 	}
