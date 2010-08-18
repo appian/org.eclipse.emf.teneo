@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.27 2010/05/27 12:42:15 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.28 2010/08/18 12:25:20 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -46,7 +46,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -80,9 +80,6 @@ public class HbEntityDataStore extends HbDataStore implements
 
 			// reset interceptor
 			setInterceptor(null);
-
-			log.debug(">>>>> Creating EJB3 Configuration");
-			ejb3Configuration = createConfiguration();
 
 			mapModel();
 
@@ -261,7 +258,14 @@ public class HbEntityDataStore extends HbDataStore implements
 	 * @return the ejbConfiguration
 	 */
 	public Ejb3Configuration getConfiguration() {
+		if (ejb3Configuration == null) {
+			createConfiguration();
+		}
 		return ejb3Configuration;
+	}
+
+	public void setConfiguration(Ejb3Configuration configuration) {
+		ejb3Configuration = configuration;
 	}
 
 	/**
@@ -269,7 +273,7 @@ public class HbEntityDataStore extends HbDataStore implements
 	 */
 	@Override
 	public Configuration getHibernateConfiguration() {
-		return ejb3Configuration.getHibernateConfiguration();
+		return getConfiguration().getHibernateConfiguration();
 	}
 
 	/** Return the Classmappings as an iterator */
@@ -281,7 +285,7 @@ public class HbEntityDataStore extends HbDataStore implements
 	/** Is added for interface compliance with HbDataStore, should not be used */
 	@Override
 	public SessionFactory getSessionFactory() {
-		final EntityManagerFactoryImpl entityManagerFactoryImpl = (EntityManagerFactoryImpl)getEntityManagerFactory();
+		final EntityManagerFactoryImpl entityManagerFactoryImpl = (EntityManagerFactoryImpl) getEntityManagerFactory();
 		return entityManagerFactoryImpl.getSessionFactory();
 	}
 
