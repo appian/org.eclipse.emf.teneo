@@ -8,6 +8,7 @@
 
 package org.eclipse.emf.teneo.test.stores;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.util.Collection;
 import java.util.Date;
@@ -24,7 +25,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
  * test cases can be reused.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public interface TestStore {
 
@@ -94,6 +95,8 @@ public interface TestStore {
 
 	/** Query for an object */
 	public List<?> query(Object query);
+	
+	public Object getObject(String entityName, Serializable id);
 
 	/** Queries for an object and checks the number */
 	public List<?> query(Object query, int checkCount);
