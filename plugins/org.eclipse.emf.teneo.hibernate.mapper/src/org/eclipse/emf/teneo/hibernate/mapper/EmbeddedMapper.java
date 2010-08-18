@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EmbeddedMapper.java,v 1.19 2008/12/07 13:50:09 mtaal Exp $
+ * $Id: EmbeddedMapper.java,v 1.20 2010/08/18 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -93,6 +93,18 @@ public class EmbeddedMapper extends AbstractMapper implements ExtensionPoint {
 		// then the class tag can point to a real impl. class@
 		componentElement.addAttribute("class", getHbmContext()
 				.getInstanceClassName(target)); // implClass
+		
+		final Element meta1 = new Element("meta");
+		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(paReference.getEReferenceType().getName());
+		meta1.addAttribute("inherit", "false");
+		
+		final Element meta2 = new Element("meta");
+		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
+				paReference.getEReferenceType().getEPackage().getNsURI());
+		meta1.addAttribute("inherit", "false");
+		componentElement.addElement(meta1);
+		componentElement.addElement(meta2);
+
 		// .
 		// getName
 		// (

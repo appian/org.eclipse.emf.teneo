@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.32 2010/08/18 12:00:55 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.33 2010/08/18 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -102,6 +102,7 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 
 		final Element meta = new Element("meta");
 		meta.addAttribute("attribute", HbMapperConstants.ID_META).addText("true");
+		meta.addAttribute("inherit", "false");
 		idElement.add(0, meta);
 
 		if (mc.getSyntheticIdPropertyHandlerName() != null) {
@@ -139,9 +140,11 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		
 		final Element meta1 = new Element("meta");
 		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(eReference.getEReferenceType().getName());
+		meta1.addAttribute("inherit", "false");
 		final Element meta2 = new Element("meta");
 		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
 				eReference.getEReferenceType().getEPackage().getNsURI());
+		meta2.addAttribute("inherit", "false");
 		compositeIdElement.addElement(meta1);
 		compositeIdElement.addElement(meta2);
 		

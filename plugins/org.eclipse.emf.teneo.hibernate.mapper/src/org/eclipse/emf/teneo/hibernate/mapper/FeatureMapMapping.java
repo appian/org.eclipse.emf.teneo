@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: FeatureMapMapping.java,v 1.22 2009/11/02 20:20:48 mtaal Exp $
+ * </copyright> $Id: FeatureMapMapping.java,v 1.23 2010/08/18 12:21:14 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -70,7 +70,7 @@ public class FeatureMapMapping extends AbstractMapper {
 		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {
 			mainElement = getCompositeElement();
 
-			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addText(
+			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addAttribute("inherit", "false").addText(
 					hbmContext.getEntityNameStrategy().toEntityName(
 							paAttribute.getModelEAttribute().getEContainingClass()));
 		} else {
@@ -78,7 +78,7 @@ public class FeatureMapMapping extends AbstractMapper {
 					.addAttribute("lazy", "false").addAttribute("table",
 							hbmContext.trunc(entityName.toUpperCase(), false));
 
-			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addText(
+			mainElement.addElement("meta").addAttribute("attribute", HbMapperConstants.FEATUREMAP_META).addAttribute("inherit", "false").addText(
 					hbmContext.getEntityNameStrategy().toEntityName(
 							paAttribute.getModelEAttribute().getEContainingClass()));
 
@@ -92,6 +92,7 @@ public class FeatureMapMapping extends AbstractMapper {
 						"org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler");
 				final Element meta = new Element("meta");
 				meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+				meta.addAttribute("inherit", "false");
 				versionElement.add(0, meta);
 			}
 		}

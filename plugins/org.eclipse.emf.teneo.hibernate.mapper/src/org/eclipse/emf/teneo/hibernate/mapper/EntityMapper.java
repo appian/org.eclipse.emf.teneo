@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.52 2010/06/03 14:06:58 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.53 2010/08/18 12:21:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -448,9 +448,11 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		// and add the metas at the front
 		final Element meta1 = new Element("meta");
 		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(entity.getModelEClass().getName());
+		meta1.addAttribute("inherit", "false");
 		final Element meta2 = new Element("meta");
 		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
 				entity.getModelEClass().getEPackage().getNsURI());
+		meta2.addAttribute("inherit", "false");
 
 		entityElement.add(0, meta1);
 		entityElement.add(1, meta2);
@@ -734,6 +736,7 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 				getHbmContext().getVersionColumnName()).addAttribute("column", getHbmContext().getVersionColumnName());
 		final Element meta = new Element("meta");
 		meta.addAttribute("attribute", HbMapperConstants.VERSION_META).addText("true");
+		meta.addAttribute("inherit", "false");
 		versionElement.add(0, meta);
 
 		versionElement.addAttribute("access", getHbmContext().getSyntheticVersionPropertyHandlerName());
