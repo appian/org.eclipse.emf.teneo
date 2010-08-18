@@ -1,0 +1,216 @@
+DB2M
+----
+
+
+
+Create ad-hoc packages which can be used by i.e. Teneo to read/write from a DB. 
+
+So instead of defining the package and creating the DB, it's the other way around. 
+Take a DB, reverse engineer with Hibernate tools, parse the Hibernate mappings and transform
+this to a JPA annotated ecore model. Register the adhoc meta model package with Teneo and connect
+to your DB!
+
+To make this work, we guide you through several steps being. 
+
+- Reverse engineer a DB with Hibernate Tools. 
+- Create an Hibernate 3.0 Ecore model (We have done this for you!)
+- Transform Hibernate Mapping files to an ad-hoc ecore model. 
+
+
+
+Reverse Engineering with Hibernate
+==================================
+
+1) Get the Hibernate tools: 
+
+Intro: 
+http://www.hibernate.org/subprojects/tools.html
+
+Documentation
+http://docs.jboss.org/tools/2.1.0.Beta1/hibernatetools/html/
+
+2) Setting up the Hibernate tools. 
+Important! Install the latest DTP Features, from the eclipse repository. The DTP plugins
+installed by Hibernate do not work well with Galileo (This is my personal experience which
+might not apply to any other Galileo setup). 
+
+
+In this step, we will setup the freshly downloaded Hibernate Tools to work with our DB. 
+
+Hibernate requires a JDBC connection. In this article we have setup an MYSQL DB, and use the corresponding
+JDBC driver.
+
+You can get a driver from here: http://www.mysql.com/products/connector/
+
+There are basically two options to tell Hibernate how to connect. 
+
+1) Set up a driver definition. 
+
+Data Management -> Connectivity -> Driver Definition 
+Follow the instructions, set the Driver Class, The URL typically jdbc:mysql://localhost:3306 
+for a local DB. 
+
+2) Create an Hibernate Configuration file. In this file the JDBC settings are defined. 
+Create a config and console.  cfg.xml, the console is a run configuration.  
+
+Config settings: 
+- I had problems specifying the DB class, driver, dialect. It's better to create 
+a console and specify an eclipse driver. (So it looks like the .cfg.xml is not needed!). 
+
+3) Set up an Hibernate Console. 
+
+- Choose between "Core", "Annotations" and "JPA". Note that the two latter requires running Eclipse IDE with a JDK 5 runtime, 
+otherwise you will get classloading and/or version errors.
+- See documentation for more options. 
+
+
+4) reverse engineer
+- Switch to the Hibernate perspective. 
+- "Open Code generation dialog" 
+- Note a strategy can be defined, see this: 
+http://docs.jboss.org/tools/2.1.0.Beta1/hibernatetools/html/reverseengineering.html#custom-reveng-strategy
+
+- Specify exporters, note DDL export fails if no code is generated first??
+	- Do code first. (With or without JPA). Note! With JPA, you have a dependency on javax.persistence.*
+	include the JPA plugins. 
+- reveng mappings/filters can be set on types, tables, columns. 
+
+Hibernate 3.0 ecore model
+=========================
+
+1) Use custom tool, to convert from DTD to XSD. What it does it to generate some intermediate .xsd 
+with recognizable attributes. Then use XSLT to transform to the final .xsd form. 
+See dtd2xs project. 
+
+	- Some issues with this. The tool produce "ref" attrib for element references, we need a containment, so simply set the type attributed to the referred complextype. 
+	- PCDATA Elements in DTD fail, manually adapted, fields are 'comment', 'subselect', 'formula', 'create' and 'drop'.  
+	- REMOVE: We pluralize the element names with a complex type reference by adding an "s". 
+	- 
+2) Generate a .genmodel and .ecore for the hibernate model. 
+Some genmodel tweaks:
+- TODO
+
+
+3) To test the hibernate reveng instances, use the generated the test package, which has a regular java
+application. Note that the default serializer needs to be tweaked to. 
+
+1. Not resolve the Hibernate DTD declaration. 
+2. Dot not use the Namespace etc.. 
+3. Use the Extended Meta Data annotation, which contain the original naming in the schema. 
+
+This is done by: 
+
+1. 
+HashMap parserFeatures = new HashMap(2);
+parserFeatures.put("http://apache.org/xml/features/nonvalidating/load-external-dtd", Boolean.FALSE);
+parserFeatures.put("http://xml.org/sax/features/validation", Boolean.FALSE);
+result.getDefaultLoadOptions().put(XMLResource.OPTION_PARSER_FEATURES, parserFeatures);
+
+- ECore changes my mappings to Capitalized and removes the hyphen, which is fine. 
+I only needed to tell my serializer to save and load with the Extended Meta Data option, 
+as the original names will be used then. 
+
+Transformation
+==============
+
+In order to transform our reverse engineered DB to Hibernate, we 
+use QVTO to transform our new hbm30 metamodel to an adhoc ecore model. 
+
+It's best now to export our hbm30 plugins to our development plaform. 
+This is: 
+	- org.eclipse.emf.teneo.db2m
+	- org.eclipse.emf.teneo.db2m.edit
+	- org.eclipse.emf.teneo.db2m.editor
+
+Go to File -> Export -> Plugin-In Development -> Deployable plug-ins and fragments. 
+Put these three plug-ins in your eclipse installation under dropins/teneo/plugins/*.jar
+
+Restart the platform. 
+
+This will allow our metamodel to be registered, and also the defined resource factory 
+declarations. See an explanation of the declarative part of our plugin. 
+
+<!-- Here we register our package --> 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://hibernate.sourceforge.net/hbm30"
+            class="org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package"
+            genModel="model/hbm30.genmodel"/>
+   </extension>
+
+<!-- extension named .hbm30 will associate to our resource factory --> 
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="hbm30"
+            class="org.eclipse.emf.teneo.db2m.hbm30.util.Hbm30ResourceFactoryImpl"/>
+   </extension>
+
+<!-- extension named .xml will associate to our resource factory -->
+   
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="xml"
+            class="org.eclipse.emf.teneo.db2m.hbm30.util.Hbm30ResourceFactoryImpl"/>
+   </extension>
+   
+<!-- resource which match content identifier hbm30source will associate to our resource factory --> 
+   
+   <extension point="org.eclipse.emf.ecore.content_parser" >
+    	<parser 
+    		contentTypeIdentifier="hbm30source" 
+    		class="org.eclipse.emf.teneo.db2m.hbm30.util.Hbm30ResourceFactoryImpl"/> 
+  </extension>
+	
+<!-- declaration of our hbm30source, it looks for files ending on *.hbm.xml with a hbm30 namespace and 
+a root tag named: hibernate-mapping--> 
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+        base-type="org.eclipse.core.runtime.xml"
+        file-extensions="xml"
+        file-names="*.hbm"
+        id="hbm30source"
+        name="HBM30ContentType"
+        priority="normal">
+        <describer class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+            <parameter name="element" value="{http://hibernate.sourceforge.net/hbm30}hibernate-mapping"/>
+         </describer>
+        </content-type>
+	</extension>
+	
+You can easily see if our metamodel is now known by the platform by opening the 
+'metamodel explorer' view which you can find under Window->Show View-> Operational QVT. 
+
+The metamodel 'hbm30' should be listed under platform. If not, our 
+
+Our transformation, is put in a separate QVT Plugin. As we have exported our hbm30 plugin, 
+the transformation can easily find our model. 
+There are several ways to run a transformation. 
+
+Option 1: Create a run-configuration with an Operational QVT Interpreter. 
+Option 2: Run an ant script (build.xml) 
+Option 3: Use the provide code to interpret the QVTO. 
+
+
+We test with a run-configuration
+
+1. Create a new QVTO run-configuration under Operational QVT Interpreter. 
+2. Set the 
+
+Option 2: 
+
+
+
+JPA
+---
+JPA, Java Persitent API is an annotation markup to persist Java classes in a DB. 
+Eclipse supports JPA, project etc...
+
+
+
+
+
+
+
+ 
