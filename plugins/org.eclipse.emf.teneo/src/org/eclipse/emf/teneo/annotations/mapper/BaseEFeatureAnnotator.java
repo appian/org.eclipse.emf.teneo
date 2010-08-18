@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: BaseEFeatureAnnotator.java,v 1.16 2009/06/13 21:29:18 mtaal Exp $
+ * $Id: BaseEFeatureAnnotator.java,v 1.17 2010/08/18 12:56:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.mapper;
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
  * Placeholder for several utility methods which are relevant for annotating ereferences and eattributes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 
 public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
@@ -86,9 +86,11 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	 */
 	protected void addColumnConstraints(PAnnotatedEAttribute aAttribute) {
 
-		if (aAttribute.getId() != null) {
-			aAttribute.getModelEAttribute().setLowerBound(1);
-		}
+		// disabled because of bugzilla:
+		// 317479
+//		if (aAttribute.getId() != null) {
+//			aAttribute.getModelEAttribute().setLowerBound(1);
+//		}
 
 		final EAttribute eAttribute = aAttribute.getModelEAttribute();
 
