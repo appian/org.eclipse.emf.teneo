@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
  * Implements Map so that Hibernate can use the MapAccessor to get to the values.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */ 
 public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implements Serializable, Map<String, Object> {
 	
@@ -79,8 +79,9 @@ public class SerializableDynamicEObjectImpl extends DynamicEObjectImpl implement
 	}
 
 	public Object put(String key, Object value) {
+		final Object currentValue = eGet(eClass().getEStructuralFeature(key));
 		eSet(eClass().getEStructuralFeature(key), value);
-		return value;
+		return currentValue;
 	}
 
 	public Object remove(Object key) {
