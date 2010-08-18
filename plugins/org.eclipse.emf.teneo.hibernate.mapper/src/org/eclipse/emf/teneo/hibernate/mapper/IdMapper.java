@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Davide Marchignoli
- * </copyright> $Id: IdMapper.java,v 1.31 2009/06/11 04:59:21 mtaal Exp $
+ * </copyright> $Id: IdMapper.java,v 1.32 2010/08/18 12:00:55 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
@@ -126,9 +127,26 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		final Element compositeIdElement = DocumentHelper.createElement("composite-id");
 		getHbmContext().getCurrent().add(0, compositeIdElement);
 		compositeIdElement.addAttribute("name", eReference.getName());
-		final String className = getHbmContext().getInstanceClassName(aClass.getModelEClass());
+		String className = getHbmContext().getInstanceClassName(aClass.getModelEClass());
+		if (className.equals(DynamicEObjectImpl.class.getName())) {
+			// note, can't use the class instance to get the class name because the 
+			// runtime hibernate plugin might not be available
+			className = "org.eclipse.emf.teneo.hibernate.mapping.SerializableDynamicEObjectImpl";
+		}
+		
 		compositeIdElement.addAttribute("class", className);
 		getHbmContext().setCurrent(compositeIdElement);
+		
+		final Element meta1 = new Element("meta");
+		meta1.addAttribute("attribute", HbMapperConstants.ECLASS_NAME_META).addText(eReference.getEReferenceType().getName());
+		final Element meta2 = new Element("meta");
+		meta2.addAttribute("attribute", HbMapperConstants.EPACKAGE_META).addText(
+				eReference.getEReferenceType().getEPackage().getNsURI());
+		compositeIdElement.addElement(meta1);
+		compositeIdElement.addElement(meta2);
+		
+		compositeIdElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler");
+		
 		for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
 			if (aFeature instanceof PAnnotatedEAttribute) {
 				PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
@@ -137,6 +155,8 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 				addColumnsAndFormula(keyPropertyElement, aAttribute, getColumns(aAttribute), getHbmContext()
 						.isCurrentElementFeatureMap(), false);
 				setType(aAttribute, keyPropertyElement);
+				
+//				keyPropertyElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler");
 			} else if (aFeature instanceof PAnnotatedEReference
 					&& !((PAnnotatedEReference) aFeature).getModelEReference().isMany()) {
 				addKeyManyToOne(compositeIdElement, (PAnnotatedEReference) aFeature);
