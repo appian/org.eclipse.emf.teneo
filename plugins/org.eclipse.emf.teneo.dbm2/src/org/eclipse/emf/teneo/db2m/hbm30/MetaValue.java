@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MetaValue.java,v 1.1 2010/08/18 09:21:40 cbouhier Exp $
+ * $Id: MetaValue.java,v 1.2 2010/08/18 09:25:25 cbouhier Exp $
  */
 package org.eclipse.emf.teneo.db2m.hbm30;
 

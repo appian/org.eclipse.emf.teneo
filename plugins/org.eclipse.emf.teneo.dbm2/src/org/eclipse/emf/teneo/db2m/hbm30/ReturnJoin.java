@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LoadCollection.java,v 1.2 2010/08/18 09:25:25 cbouhier Exp $
+ * $Id: ReturnJoin.java,v 1.1 2010/08/18 09:25:25 cbouhier Exp $
  */
 package org.eclipse.emf.teneo.db2m.hbm30;
 
@@ -14,25 +14,25 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Load Collection</b></em>'.
+ * A representation of the model object '<em><b>Return Join</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getGroup <em>Group</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getReturnProperty <em>Return Property</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getAlias <em>Alias</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getLockMode <em>Lock Mode</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getRole <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getGroup <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getReturnProperty <em>Return Property</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getAlias <em>Alias</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getLockMode <em>Lock Mode</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getLoadCollection()
- * @model extendedMetaData="name='load-collection' kind='elementOnly'"
+ * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getReturnJoin()
+ * @model extendedMetaData="name='return-join' kind='elementOnly'"
  * @generated
  */
-public interface LoadCollection extends EObject {
+public interface ReturnJoin extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Group</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
@@ -43,7 +43,7 @@ public interface LoadCollection extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Group</em>' attribute list.
-	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getLoadCollection_Group()
+	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getReturnJoin_Group()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='group' name='group:0'"
 	 * @generated
@@ -60,7 +60,7 @@ public interface LoadCollection extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Return Property</em>' containment reference list.
-	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getLoadCollection_ReturnProperty()
+	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getReturnJoin_ReturnProperty()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='return-property' group='#group:0'"
 	 * @generated
@@ -77,7 +77,7 @@ public interface LoadCollection extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Alias</em>' attribute.
 	 * @see #setAlias(String)
-	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getLoadCollection_Alias()
+	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getReturnJoin_Alias()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='alias'"
 	 * @generated
@@ -85,7 +85,7 @@ public interface LoadCollection extends EObject {
 	String getAlias();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getAlias <em>Alias</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getAlias <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Alias</em>' attribute.
@@ -109,7 +109,7 @@ public interface LoadCollection extends EObject {
 	 * @see #isSetLockMode()
 	 * @see #unsetLockMode()
 	 * @see #setLockMode(Lockmode)
-	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getLoadCollection_LockMode()
+	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getReturnJoin_LockMode()
 	 * @model default="read" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='lock-mode'"
 	 * @generated
@@ -117,7 +117,7 @@ public interface LoadCollection extends EObject {
 	Lockmode getLockMode();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getLockMode <em>Lock Mode</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getLockMode <em>Lock Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lock Mode</em>' attribute.
@@ -130,7 +130,7 @@ public interface LoadCollection extends EObject {
 	void setLockMode(Lockmode value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getLockMode <em>Lock Mode</em>}' attribute.
+	 * Unsets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getLockMode <em>Lock Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSetLockMode()
@@ -141,7 +141,7 @@ public interface LoadCollection extends EObject {
 	void unsetLockMode();
 
 	/**
-	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getLockMode <em>Lock Mode</em>}' attribute is set.
+	 * Returns whether the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getLockMode <em>Lock Mode</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Lock Mode</em>' attribute is set.
@@ -153,30 +153,30 @@ public interface LoadCollection extends EObject {
 	boolean isSetLockMode();
 
 	/**
-	 * Returns the value of the '<em><b>Role</b></em>' attribute.
+	 * Returns the value of the '<em><b>Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Role</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Property</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Role</em>' attribute.
-	 * @see #setRole(String)
-	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getLoadCollection_Role()
+	 * @return the value of the '<em>Property</em>' attribute.
+	 * @see #setProperty(String)
+	 * @see org.eclipse.emf.teneo.db2m.hbm30.Hbm30Package#getReturnJoin_Property()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        extendedMetaData="kind='attribute' name='role'"
+	 *        extendedMetaData="kind='attribute' name='property'"
 	 * @generated
 	 */
-	String getRole();
+	String getProperty();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.LoadCollection#getRole <em>Role</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.db2m.hbm30.ReturnJoin#getProperty <em>Property</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Role</em>' attribute.
-	 * @see #getRole()
+	 * @param value the new value of the '<em>Property</em>' attribute.
+	 * @see #getProperty()
 	 * @generated
 	 */
-	void setRole(String value);
+	void setProperty(String value);
 
-} // LoadCollection
+} // ReturnJoin
