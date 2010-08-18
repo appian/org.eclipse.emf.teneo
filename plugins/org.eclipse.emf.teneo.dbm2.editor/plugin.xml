@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2010/08/18 09:33:39 cbouhier Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.emf.teneo.db2m.hbm30.presentation.Hbm30ModelWizardID"
+            name="%_UI_Hbm30ModelWizard_label"
+            class="org.eclipse.emf.teneo.db2m.hbm30.presentation.Hbm30ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Hbm30ModelFile.gif">
+         <description>%_UI_Hbm30ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.emf.teneo.db2m.hbm30.presentation.Hbm30EditorID"
+            name="%_UI_Hbm30Editor_label"
+            icon="icons/full/obj16/Hbm30ModelFile.gif"
+            extensions="hbm30, xml"
+            class="org.eclipse.emf.teneo.db2m.hbm30.presentation.Hbm30Editor"
+            contributorClass="org.eclipse.emf.teneo.db2m.hbm30.presentation.Hbm30ActionBarContributor">
+         <contentTypeBinding
+               contentTypeId="hbm30source">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   	
+   
+</plugin>
