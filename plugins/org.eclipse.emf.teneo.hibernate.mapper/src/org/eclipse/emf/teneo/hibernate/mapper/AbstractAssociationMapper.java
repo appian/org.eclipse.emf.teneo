@@ -578,7 +578,25 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected String getColumnNameForOrderBy(PAnnotatedEClass aClass, String orderBy) {
 		// handle the case of multiple features separated by commas
 		final StringBuilder sb = new StringBuilder();
-		final String[] orderBys = orderBy.split(",");
+		String[] orderBys = null;
+		if (orderBy != null) {
+			orderBys = orderBy.split(",");
+		} else {
+			// empty orderBy, get an efeature with the id annotation and use that
+			for (PAnnotatedEStructuralFeature aFeature : getAllFeatures(aClass)) {
+				if (aFeature instanceof PAnnotatedEAttribute) {
+					final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute)aFeature;
+					if (aAttribute.getId() != null) {
+						orderBys = new String[1];
+						orderBys[0] = aAttribute.getModelEAttribute().getName();
+						break;
+					}
+				}
+			}
+			if (orderBys == null) {
+				throw new MappingException("Orderby column can not be determined for association with elements of aClass " + aClass);
+			}
+		}
 		for (String ob : orderBys) {
 			// handle direction asc/desc
 			ob = ob.trim();
@@ -595,7 +613,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				}
 			}
 			boolean found = false;
-			for (PAnnotatedEStructuralFeature aFeature : getAllFeatures(aClass)) {
+			for (PAnnotatedEStructuralFeature aFeature : getAllFeatures(aClass)) {				
 				if (aFeature.getModelElement().getName().compareTo(ob) == 0) {
 					if (aFeature instanceof PAnnotatedEReference) {
 						throw new MappingException("Feature " + ob + " is an ereference, onle eattribute is supported");
