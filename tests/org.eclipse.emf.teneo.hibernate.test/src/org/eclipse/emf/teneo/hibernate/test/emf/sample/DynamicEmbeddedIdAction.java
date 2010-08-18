@@ -31,7 +31,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for Bugzilla 321765
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DynamicEmbeddedIdAction extends AbstractTestAction {
 
@@ -118,7 +118,7 @@ public class DynamicEmbeddedIdAction extends AbstractTestAction {
 				assertTrue(eobject.eClass() == personEClass);
 				EObject name = (EObject) eobject.eGet(nameRef);
 				assertTrue(name != null);
-				assertEquals("martin", name.eGet(firstName));
+				assertEquals("Martin", name.eGet(firstName));
 			}
 			store.commitTransaction();
 		}
