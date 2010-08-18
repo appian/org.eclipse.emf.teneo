@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LazyCollectionUtils.java,v 1.8 2010/04/04 15:50:49 mtaal Exp $
+ * $Id: LazyCollectionUtils.java,v 1.9 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -21,13 +21,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVDelegatingList;
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVValueHolder;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
-import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
-import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
@@ -35,15 +31,13 @@ import org.hibernate.engine.CollectionEntry;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.hql.ast.util.SessionFactoryHelper;
 import org.hibernate.persister.collection.AbstractCollectionPersister;
-import org.hibernate.persister.collection.CollectionPersister;
 import org.hibernate.persister.collection.QueryableCollection;
-import org.hibernate.type.Type;
 
 /**
  * A utility class providing methods related to lazy loading of collections.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class LazyCollectionUtils {
 	

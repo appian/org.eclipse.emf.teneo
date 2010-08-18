@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.31 2010/05/27 12:42:15 mtaal Exp $
+ * $Id: HbUtil.java,v 1.32 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
+import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.eclipse.emf.teneo.hibernate.mapping.econtainer.NewEContainerFeatureIDPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
@@ -39,6 +40,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.cfg.Environment;
 import org.hibernate.mapping.Collection;
+import org.hibernate.mapping.Component;
 import org.hibernate.mapping.MetaAttribute;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
@@ -54,16 +56,39 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 public class HbUtil {
 
 	/** The logger */
 	private static Log log = LogFactory.getLog(HbUtil.class);
 
+	public static EClass getEClassFromMeta(Component component) {
+		final MetaAttribute ePackageMetaAttribute = component
+				.getMetaAttribute(HbMapperConstants.EPACKAGE_PARAM);
+		if (ePackageMetaAttribute == null) {
+			return null;
+		}
+		final EPackage epackage = PackageRegistryProvider.getInstance()
+				.getPackageRegistry()
+				.getEPackage(ePackageMetaAttribute.getValue());
+		if (epackage == null) {
+			throw new IllegalArgumentException(
+					"Could not find ePackage using nsuri "
+							+ ePackageMetaAttribute.getValue());
+		}
+		final MetaAttribute eClassMetaAttribute = component
+				.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META);
+		if (eClassMetaAttribute == null) {
+			return null;
+		}
+		return (EClass) epackage.getEClassifier(eClassMetaAttribute.getValue());
+	}
+
 	public static boolean isEAVMapped(PersistentClass mappedEntity) {
 		if (mappedEntity.getEntityName() != null
-				&& mappedEntity.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
+				&& mappedEntity.getEntityName().equals(
+						Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			return true;
 		}
 		if (mappedEntity.getSuperclass() == null) {
@@ -121,7 +146,7 @@ public class HbUtil {
 
 	/** Returns the correct accessor on the basis of the type of property */
 	public static PropertyAccessor getPropertyAccessor(Property mappedProperty,
-			HbDataStore ds, String entityName) {
+			HbDataStore ds, String entityName, EClass mappedEClass) {
 		if (mappedProperty
 				.getMetaAttribute(HbConstants.SYNTHETIC_PROPERTY_INDICATOR) != null) { // synthetic
 			return new SyntheticPropertyHandler(mappedProperty.getName());
@@ -151,10 +176,15 @@ public class HbUtil {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
 
-		EClass eClass = ds.getEntityNameStrategy().toEClass(entityName);
-		if (eClass == null) {
-			// for components this is the case
-			eClass = ERuntime.INSTANCE.getEClass(entityName);
+		EClass eClass = null;
+		if (mappedEClass != null) {
+			eClass = mappedEClass;
+		} else {
+			eClass = ds.getEntityNameStrategy().toEClass(entityName);
+			if (eClass == null) {
+				// for components this is the case
+				eClass = ERuntime.INSTANCE.getEClass(entityName);
+			}
 		}
 		final EStructuralFeature efeature = StoreUtil.getEStructuralFeature(
 				eClass, mappedProperty.getName());
@@ -240,16 +270,16 @@ public class HbUtil {
 
 		final Properties hbProps = new Properties();
 		hbProps.putAll(props);
-		hbProps.put(Environment.USER, doTrim(props
-				.getProperty(Constants.PROP_DB_USER)));
-		hbProps.put(Environment.PASS, doTrim(props
-				.getProperty(Constants.PROP_DB_PWD)));
-		hbProps.put(Environment.DRIVER, doTrim(props
-				.getProperty(Constants.PROP_DB_DRIVER)));
-		hbProps.put(Environment.URL, doTrim(props
-				.getProperty(Constants.PROP_DB_URL)));
-		hbProps.put(Environment.DIALECT, doTrim(props
-				.getProperty(Constants.PROP_DB_DIALECT)));
+		hbProps.put(Environment.USER,
+				doTrim(props.getProperty(Constants.PROP_DB_USER)));
+		hbProps.put(Environment.PASS,
+				doTrim(props.getProperty(Constants.PROP_DB_PWD)));
+		hbProps.put(Environment.DRIVER,
+				doTrim(props.getProperty(Constants.PROP_DB_DRIVER)));
+		hbProps.put(Environment.URL,
+				doTrim(props.getProperty(Constants.PROP_DB_URL)));
+		hbProps.put(Environment.DIALECT,
+				doTrim(props.getProperty(Constants.PROP_DB_DIALECT)));
 
 		EPackage[] epacks = StoreUtil.getEPackages(doTrim(props
 				.getProperty(Constants.PROP_EPACKAGE_NSURI)));

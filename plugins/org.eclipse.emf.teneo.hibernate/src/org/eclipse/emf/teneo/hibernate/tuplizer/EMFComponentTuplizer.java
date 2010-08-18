@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFComponentTuplizer.java,v 1.13 2009/12/04 15:07:02 mtaal Exp $
+ * $Id: EMFComponentTuplizer.java,v 1.14 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -36,7 +36,7 @@ import org.hibernate.tuple.component.AbstractComponentTuplizer;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 
 public class EMFComponentTuplizer extends AbstractComponentTuplizer {
@@ -46,11 +46,30 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	 */
 	private static final long serialVersionUID = 6316160569897347041L;
 
+	private EClass eClass;
+	
 	/** The logger */
 	// private static Log log = LogFactory.getLog(EMFComponentTuplizer.class);
 	/** Constructor */
 	public EMFComponentTuplizer(Component component) {
 		super(component);
+	}
+	
+	private EClass getEClass(Component component) {
+		if (eClass == null) {
+			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
+			eClass = ds.getEntityNameStrategy().toEClass(component.getComponentClassName());
+			if (eClass == null) {
+				eClass = ERuntime.INSTANCE.getEClass(component.getComponentClass());
+			}
+			if (eClass == null) {
+				eClass = HbUtil.getEClassFromMeta(component);
+			}
+		}
+		if (eClass == null) {
+			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
+		}
+		return eClass;
 	}
 
 	/** Creates an EMF Instantiator */
@@ -61,15 +80,7 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	/** Creates an EMF Instantiator */
 	@Override
 	protected Instantiator buildInstantiator(Component component) {
-		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(component);
-		EClass eClass = ds.getEntityNameStrategy().toEClass(component.getComponentClassName());
-		if (eClass == null) {
-			eClass = ERuntime.INSTANCE.getEClass(component.getComponentClass());
-		}
-		if (eClass == null) {
-			throw new HbMapperException("No eclass found for entityname: " + component.getComponentClassName());
-		}
-		return new EMFInstantiator(eClass, component);
+		return new EMFInstantiator(getEClass(component), component);
 	}
 
 	/*
@@ -95,9 +106,9 @@ public class EMFComponentTuplizer extends AbstractComponentTuplizer {
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */
-	public static PropertyAccessor getPropertyAccessor(Property mappedProperty, Component comp) {
+	public PropertyAccessor getPropertyAccessor(Property mappedProperty, Component comp) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(comp);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, comp.getComponentClassName());
+		return HbUtil.getPropertyAccessor(mappedProperty, ds, comp.getComponentClassName(), getEClass(comp));
 	}
 
 	/*

@@ -102,7 +102,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.69 $
+ * @version $Revision: 1.70 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -336,8 +336,7 @@ public abstract class HbDataStore implements DataStore {
 		setEventListeners();
 
 		if (getPersistenceOptions().isUpdateSchema()) {
-			log
-					.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
+			log.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
 		}
 
 		log.debug("Registering datastore with persistent classes");
@@ -441,8 +440,7 @@ public abstract class HbDataStore implements DataStore {
 		if (properties.getProperty("hibernate.cache.provider_class") == null) {
 			log.warn("No hibernate cache provider set, using "
 					+ HashtableCacheProvider.class.getName());
-			log
-					.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
+			log.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
 			properties.setProperty("hibernate.cache.provider_class",
 					HashtableCacheProvider.class.getName());
 		}
@@ -561,8 +559,8 @@ public abstract class HbDataStore implements DataStore {
 				continue;
 			}
 
-			final java.util.List<?> list = sessionWrapper.executeQuery(refersTo
-					.getQueryStr(), "to", referedTo);
+			final java.util.List<?> list = sessionWrapper.executeQuery(
+					refersTo.getQueryStr(), "to", referedTo);
 			for (Object obj : list) {
 				if (obj instanceof HibernateFeatureMapEntry) {
 					// search then again with the
@@ -641,13 +639,12 @@ public abstract class HbDataStore implements DataStore {
 			return false;
 		}
 		// don't do the EAV mapped ones
-		if (pc.getEntityName().equals(
-				Constants.EAV_EOBJECT_ENTITY_NAME)) {
+		if (pc.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			return true;
 		}
 		return isClassOrSuperClassEAVMapped(pc.getSuperclass());
 	}
-	
+
 	/**
 	 * Extra lazy mapping for lists needs a real property for the list index and
 	 * a real inverse for the other side as well.
@@ -711,11 +708,11 @@ public abstract class HbDataStore implements DataStore {
 					} else {
 						continue;
 					}
-					
+
 					if (isClassOrSuperClassEAVMapped(elementPC)) {
 						continue;
 					}
-					
+
 					collection.setInverse(true);
 
 					// and add an eopposite
@@ -723,11 +720,11 @@ public abstract class HbDataStore implements DataStore {
 
 						final Table collectionTable = collection
 								.getCollectionTable();
-						
+
 						if (isClassOrSuperClassEAVMapped(elementPC)) {
 							continue;
 						}
- 
+
 						final Property inverseRefProperty = new Property();
 						inverseRefProperty.setName(StoreUtil
 								.getExtraLazyInversePropertyName(ef));
@@ -879,7 +876,8 @@ public abstract class HbDataStore implements DataStore {
 			final PersistentClass pc = (PersistentClass) pcs.next();
 			if (pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null) { // featuremap
 				// entry
-				pc.addTuplizer(EntityMode.MAP,
+				pc.addTuplizer(
+						EntityMode.MAP,
 						getHbContext().getFeatureMapEntryTuplizer(
 								getHibernateConfiguration()).getName());
 			} else if (pc.getMetaAttribute(HbMapperConstants.ECLASS_NAME_META) != null) {
@@ -921,8 +919,9 @@ public abstract class HbDataStore implements DataStore {
 							getHibernateConfiguration());
 				} else if (value instanceof Collection
 						&& ((Collection) value).getElement() instanceof Component) {
-					setComponentTuplizer((Component) ((Collection) value)
-							.getElement(), getHibernateConfiguration());
+					setComponentTuplizer(
+							(Component) ((Collection) value).getElement(),
+							getHibernateConfiguration());
 				}
 			}
 		}
@@ -948,7 +947,10 @@ public abstract class HbDataStore implements DataStore {
 		if (eClass != null) {
 			log.debug("Found " + eClass.getName() + " as a component");
 		} else {
-			return;
+			eClass = HbUtil.getEClassFromMeta(component);
+			if (eClass == null) {
+				return;
+			}
 		}
 
 		// is a valid eclass
@@ -1064,16 +1066,16 @@ public abstract class HbDataStore implements DataStore {
 					if (aFeature instanceof PAnnotatedEAttribute) {
 						final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
 						if (aAttribute.getId() != null) {
-							result.put(aClass.getModelEClass(), aAttribute
-									.getModelEStructuralFeature());
+							result.put(aClass.getModelEClass(),
+									aAttribute.getModelEStructuralFeature());
 							break;
 						}
 					}
 					if (aFeature instanceof HbAnnotatedEReference) {
 						final HbAnnotatedEReference aReference = (HbAnnotatedEReference) aFeature;
 						if (aReference.getEmbeddedId() != null) {
-							result.put(aClass.getModelEClass(), aReference
-									.getModelEStructuralFeature());
+							result.put(aClass.getModelEClass(),
+									aReference.getModelEStructuralFeature());
 							break;
 						}
 					}
@@ -1164,8 +1166,7 @@ public abstract class HbDataStore implements DataStore {
 
 		for (EReference eref : eclass.getEAllReferences()) {
 			if (eref.isContainer()) {
-				log
-						.debug("There are container ereferences present, assuming that no separate econtainer columns are required.");
+				log.debug("There are container ereferences present, assuming that no separate econtainer columns are required.");
 				return;
 			}
 		}
@@ -1229,9 +1230,8 @@ public abstract class HbDataStore implements DataStore {
 			ecFID.setName(HbConstants.PROPERTY_ECONTAINER_FEATURE_NAME);
 			ecFID.setMetaAttributes(new HashMap<Object, Object>());
 			ecFID.setNodeName(ecFID.getName());
-			ecFID
-					.setPropertyAccessorName(NewEContainerFeatureIDPropertyHandler.class
-							.getName());
+			ecFID.setPropertyAccessorName(NewEContainerFeatureIDPropertyHandler.class
+					.getName());
 			final SimpleValue svfid = new SimpleValue(pc.getTable());
 			svfid.setTypeName(EContainerFeatureIDUserType.class.getName());
 
@@ -1305,8 +1305,8 @@ public abstract class HbDataStore implements DataStore {
 			importResource = new XMIResourceImpl();
 		}
 
-		final HibernateResource hibResource = new HibernateResource(URI
-				.createFileURI("." + name));
+		final HibernateResource hibResource = new HibernateResource(
+				URI.createFileURI("." + name));
 
 		try {
 			importResource.load(is, Collections.EMPTY_MAP);
@@ -1325,8 +1325,8 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	public void exportDataStore(OutputStream os, int exportFormat,
 			String encoding) {
-		final HibernateResource hibResource = new HibernateResource(URI
-				.createFileURI("teneo." + name));
+		final HibernateResource hibResource = new HibernateResource(
+				URI.createFileURI("teneo." + name));
 		hibResource.load(Collections.EMPTY_MAP);
 
 		try {
@@ -1568,8 +1568,8 @@ public abstract class HbDataStore implements DataStore {
 		}
 		for (EClass class1 : eclass.getESuperTypes()) {
 			String eclassUri = ens.toEntityName(class1);
-			addUnique(thisList, setRefersToOfSupers(eclassUri, refersTo,
-					classDone));
+			addUnique(thisList,
+					setRefersToOfSupers(eclassUri, refersTo, classDone));
 		}
 		classDone.add(eclass);
 		return thisList;
@@ -1811,11 +1811,12 @@ public abstract class HbDataStore implements DataStore {
 			String eav = sb.toString();
 			eav = eav.replaceAll(HbConstants.EAV_TABLE_PREFIX_PARAMETER_REGEX,
 					getPersistenceOptions().getSQLTableNamePrefix());
-			
-			final boolean extraLazy = getPersistenceOptions().isFetchAssociationExtraLazy();
+
+			final boolean extraLazy = getPersistenceOptions()
+					.isFetchAssociationExtraLazy();
 			eav = eav.replaceAll(HbConstants.EAV_COLLECTIONLAZY_REGEX,
 					(extraLazy ? "extra" : "false"));
-			
+
 			return eav;
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);

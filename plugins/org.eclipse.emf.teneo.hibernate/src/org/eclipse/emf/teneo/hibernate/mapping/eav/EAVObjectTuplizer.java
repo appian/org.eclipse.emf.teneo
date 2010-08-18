@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVObjectTuplizer.java,v 1.2 2009/08/21 15:01:58 mtaal Exp $
+ * $Id: EAVObjectTuplizer.java,v 1.3 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -59,7 +59,7 @@ import org.hibernate.util.ReflectHelper;
  * The Tuplizer for objects mapped according to the EAV Schema.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class EAVObjectTuplizer extends AbstractEntityTuplizer {
@@ -303,6 +303,6 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	/** Returns the correct accessor on the basis of the type of property */
 	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, PersistentClass pc) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc.getEntityName());
+		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc.getEntityName(), null);
 	}
 }

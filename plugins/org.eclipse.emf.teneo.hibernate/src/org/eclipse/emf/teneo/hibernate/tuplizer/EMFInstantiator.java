@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFInstantiator.java,v 1.10 2010/04/02 15:37:12 mtaal Exp $
+ * $Id: EMFInstantiator.java,v 1.11 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -22,8 +22,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
+import org.eclipse.emf.teneo.hibernate.mapping.SerializableDynamicEObjectImpl;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.mapping.Component;
@@ -34,7 +36,7 @@ import org.hibernate.tuple.Instantiator;
  * Instantiates eobjects using the efactory.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 
 public class EMFInstantiator implements Instantiator {
@@ -55,6 +57,8 @@ public class EMFInstantiator implements Instantiator {
 
 	/** The mapped class */
 	private final Class<?> mappedClass;
+	
+	private boolean isDynamicEObject = false;
 
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, PersistentClass pc) {
@@ -76,7 +80,16 @@ public class EMFInstantiator implements Instantiator {
 
 	/** Instantiates using EcoreUtil.create() */
 	public Object instantiate() {
-		final EObject eobject = EcoreUtil.create(eclass);
+		EObject eobject;
+		if (isDynamicEObject) {
+			eobject = new SerializableDynamicEObjectImpl(eclass);
+		} else {
+			eobject = EcoreUtil.create(eclass);
+			if (eobject instanceof DynamicEObjectImpl) {
+				eobject = new SerializableDynamicEObjectImpl(eclass);
+				isDynamicEObject = true;
+			}
+		}
 
 		final PersistentStoreAdapter adapter = StoreUtil
 				.getPersistentStoreAdapter(eobject);
@@ -94,20 +107,7 @@ public class EMFInstantiator implements Instantiator {
 
 	/** Instantiates using EcoreUtil.create() */
 	public Object instantiate(Serializable id) {
-		final EObject eobject = EcoreUtil.create(eclass);
-
-		final PersistentStoreAdapter adapter = StoreUtil
-				.getPersistentStoreAdapter(eobject);
-		adapter.setTargetCreatedByORM(true);
-
-		if (eobject == null) {
-			throw new HbMapperException(
-					"The mapped "
-							+ mappedClass.getName()
-							+ " class can not be instantiated."
-							+ " Possibly the class it is not an eclass or it is abstract.");
-		}
-		return eobject;
+		return instantiate();
 	}
 
 	/** Checks using the mapped class or the proxy interface */

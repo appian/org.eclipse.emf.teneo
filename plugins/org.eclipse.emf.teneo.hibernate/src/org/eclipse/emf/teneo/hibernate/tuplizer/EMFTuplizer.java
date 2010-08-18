@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.23 2010/04/04 12:10:51 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.24 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -63,7 +63,7 @@ import org.hibernate.util.ReflectHelper;
  * of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -320,6 +320,6 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	/** Returns the correct accessor on the basis of the type of property */
 	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, PersistentClass pc) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc.getEntityName());
+		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc.getEntityName(), null);
 	}
 }

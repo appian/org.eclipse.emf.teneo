@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbExtraLazyPersistableEMap.java,v 1.2 2010/04/04 12:10:51 mtaal Exp $
+ * $Id: HbExtraLazyPersistableEMap.java,v 1.3 2010/08/18 11:50:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.elist;
@@ -23,8 +23,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.BasicEMap.Entry;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -37,16 +35,14 @@ import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentList;
 import org.hibernate.engine.CollectionEntry;
 import org.hibernate.engine.SessionImplementor;
-import org.hibernate.hql.ast.util.SessionFactoryHelper;
 import org.hibernate.persister.collection.AbstractCollectionPersister;
-import org.hibernate.persister.collection.QueryableCollection;
 import org.hibernate.type.EntityType;
 
 /**
  * Extends the default hibernate persistable emap with extra lazy behavior.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 
 public class HbExtraLazyPersistableEMap<K, V> extends HibernatePersistableEMap<K, V> {
