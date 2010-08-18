@@ -1,0 +1,25 @@
+<project name="project" default="default" xmlns:qvto="http://www.eclipse.org/qvt/1.0.0/Operational">
+    <target name="default">
+        <qvto:transformation
+            uri="platform:/resource/org.eclipse.emf.teneo.db2m.transform/transforms/toEcore.qvto"
+            >
+            <in
+                uri="platform:/resource/org.eclipse.emf.teneo.db2m.example/src/org/eclipse/emf/teneo/db2m/example/Channels.hbm.xml"
+            />
+            <out
+                uri="platform:/resource/org.eclipse.emf.teneo.db2m.transform/transforms/adhoc.ecore">
+<!--            	
+                <feature
+                    name="eAnnotations"
+                    clearcontents="true"
+                />
+-->                
+            </out>
+        
+            <trace
+                uri="platform:/resource/org.eclipse.emf.teneo.db2m.transform/transforms/adhoc.ecore.qvtotrace"
+            />
+        </qvto:transformation>
+
+    </target>
+</project>

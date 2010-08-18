@@ -1,0 +1,52 @@
+modeltype HBM30 uses "http://hibernate.sourceforge.net/hbm30";
+modeltype TENEO uses "http://www.eclipse.org/emft/teneo";
+modeltype ECORE uses "http://www.eclipse.org/emf/2002/Ecore";
+modeltype XMLTYPES uses "http://www.eclipse.org/emf/2003/XMLType";
+
+transformation NewTransformation(in hbm : HBM30, out ecore : ECORE);
+
+main() {
+	hbm.rootObjects()[HibernateMapping]->map toEPackage();
+}
+
+mapping HBM30::HibernateMapping::toEPackage() : ECORE::EPackage {
+	log('Creating a package with name adhoc');
+	 
+	nsURI := 'http://www.netxforge.com/adhoc';
+	name := 'adhocPackage';
+	nsPrefix := 'adhoc';
+	eClassifiers += self._class->map toEClass();
+	
+}
+
+mapping HBM30::Class::toEClass() : ECORE::EClass{
+	name := self.name;
+	eStructuralFeatures += self._property.map toEAttribute();
+}
+
+mapping HBM30::Property::toEAttribute() : ECORE::EAttribute {
+	name := self.name;
+	unique := self.unique;
+	
+	log( 'Type mapping, to equivalent XMLTYPES type', self.type1);
+	
+	if self.type1 = 'string' then {
+		eType := XMLTYPES::String.oclAsType(EClassifier);
+	} endif;
+	
+	if self.type1 = 'timestamp' then {
+		eType := XMLTYPES::DateTime.oclAsType(EClassifier);
+	} endif;
+	
+}
+
+
+
+// How to deal with extended types? 
+// Note EStructuralFeature is  abstract, so requires the init statement.  
+query HBM30::Id::toEAnnotation() : ECORE::EAnnotation {
+	// Implement ID annotation mapping. 
+	return null;
+}
+
+
