@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+-->
+<!-- Generated Jun 2, 2010 1:27:26 PM by Hibernate Tools 3.3.0.GA -->
+<hbm30:hibernate-mapping xmlns:hbm30="http://hibernate.sourceforge.net/hbm30">
+    <class name="org.eclipse.emf.teneo.db2m.example.Noderesources" table="noderesources" catalog="agent_development">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="shortName" type="string">
+            <column name="ShortName" length="100" />
+        </property>
+        <property name="calcName" type="string">
+            <column name="CalcName" length="100" />
+        </property>
+        <property name="calculateData" type="java.lang.Boolean">
+            <column name="CalculateData" />
+        </property>
+        <property name="longName" type="string">
+            <column name="LongName" length="200" />
+        </property>
+        <property name="resourceType" type="string">
+            <column name="ResourceType" length="10" />
+        </property>
+        <property name="unit" type="string">
+            <column name="Unit" length="2" />
+        </property>
+        <property name="required" type="java.lang.Boolean">
+            <column name="Required" />
+        </property>
+        <property name="summaryDisplay" type="java.lang.Boolean">
+            <column name="SummaryDisplay" />
+        </property>
+        <property name="detailDisplay" type="java.lang.Boolean">
+            <column name="DetailDisplay" />
+        </property>
+        <property name="nodeId" type="int">
+            <column name="node_id" not-null="true" />
+        </property>
+        <property name="statusId" type="int">
+            <column name="status_id" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" not-null="true" />
+        </property>
+    </class>
+</hbm30:hibernate-mapping>

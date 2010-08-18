@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+-->
+<!-- Generated Jun 2, 2010 1:27:26 PM by Hibernate Tools 3.3.0.GA -->
+<hbm30:hibernate-mapping xmlns:hbm30="http://hibernate.sourceforge.net/hbm30">
+    <class name="org.eclipse.emf.teneo.db2m.example.System" table="system" catalog="agent_development">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="60" />
+        </property>
+    </class>
+</hbm30:hibernate-mapping>

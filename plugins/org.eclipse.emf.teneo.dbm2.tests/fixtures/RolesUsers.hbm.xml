@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+-->
+<!-- Generated Jun 2, 2010 1:27:26 PM by Hibernate Tools 3.3.0.GA -->
+<hbm30:hibernate-mapping xmlns:hbm30="http://hibernate.sourceforge.net/hbm30">
+    <class name="org.eclipse.emf.teneo.db2m.example.RolesUsers" table="roles_users" catalog="agent_development">
+        <composite-id name="id" class="org.eclipse.emf.teneo.db2m.example.RolesUsersId">
+            <key-property name="roleId" type="java.lang.Integer">
+                <column name="role_id" />
+            </key-property>
+            <key-property name="userId" type="java.lang.Integer">
+                <column name="user_id" />
+            </key-property>
+        </composite-id>
+    </class>
+</hbm30:hibernate-mapping>

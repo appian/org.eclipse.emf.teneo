@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+-->
+<!-- Generated Jun 2, 2010 1:27:26 PM by Hibernate Tools 3.3.0.GA -->
+<hbm30:hibernate-mapping xmlns:hbm30="http://hibernate.sourceforge.net/hbm30" >
+    <class name="org.eclipse.emf.teneo.db2m.example.Channels" table="channels" catalog="agent_development">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" unique="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="linkUrl" type="string">
+            <column name="link_url" length="65535" />
+        </property>
+        <property name="feedUrl" type="string">
+            <column name="feed_url" length="65535" />
+        </property>
+        <property name="imageUrl" type="string">
+            <column name="image_url" length="65535" />
+        </property>
+        <property name="itunesKeywords" type="string">
+            <column name="itunes_keywords" length="65535" />
+        </property>
+        <property name="suspended" type="java.lang.Integer">
+            <column name="suspended" />
+        </property>
+        <property name="language" type="string">
+            <column name="language" length="3" />
+        </property>
+        <property name="copyright" type="string">
+            <column name="copyright" />
+        </property>
+        <property name="managingeditor" type="string">
+            <column name="managingeditor" />
+        </property>
+        <property name="webmaster" type="string">
+            <column name="webmaster" />
+        </property>
+        <property name="pubdate" type="timestamp">
+            <column name="pubdate" length="19" />
+        </property>
+        <property name="lastbuilddate" type="timestamp">
+            <column name="lastbuilddate" length="19" />
+        </property>
+        <property name="ttl" type="java.lang.Integer">
+            <column name="ttl" />
+        </property>
+        <property name="rating" type="string">
+            <column name="rating" />
+        </property>
+        <property name="skiphours" type="string">
+            <column name="skiphours" />
+        </property>
+        <property name="skipdays" type="string">
+            <column name="skipdays" />
+        </property>
+        <property name="itunesAuthor" type="string">
+            <column name="itunes_author" />
+        </property>
+        <property name="itunesBlock" type="string">
+            <column name="itunes_block" length="3" />
+        </property>
+        <property name="itunesImage" type="string">
+            <column name="itunes_image" length="65535" />
+        </property>
+        <property name="itunesOwner" type="string">
+            <column name="itunes_owner" />
+        </property>
+        <property name="itunesSummary" type="string">
+            <column name="itunes_summary" length="65535" />
+        </property>
+        <property name="itunesSubtitle" type="string">
+            <column name="itunes_subtitle" />
+        </property>
+        <property name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+        </property>
+        <property name="itunesExplicit" type="string">
+            <column name="itunes_explicit" length="5" />
+        </property>
+        <property name="adult" type="java.lang.Integer">
+            <column name="adult" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" />
+        </property>
+        <property name="organisationId" type="java.lang.Integer">
+            <column name="organisation_id" />
+        </property>
+    </class>
+</hbm30:hibernate-mapping>

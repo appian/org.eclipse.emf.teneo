@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+-->
+<!-- Generated Jun 2, 2010 1:27:26 PM by Hibernate Tools 3.3.0.GA -->
+<hbm30:hibernate-mapping xmlns:hbm30="http://hibernate.sourceforge.net/hbm30">
+    <class name="org.eclipse.emf.teneo.db2m.example.Products" table="products" catalog="agent_development">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="priceId" type="java.lang.Integer">
+            <column name="price_id" />
+        </property>
+        <property name="nodetypeId" type="java.lang.Integer">
+            <column name="nodetype_id" />
+        </property>
+        <property name="manufacturer" type="string">
+            <column name="Manufacturer" length="20" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="FullName" length="200" />
+        </property>
+        <property name="generic" type="string">
+            <column name="Generic" length="1" />
+        </property>
+        <property name="productId" type="string">
+            <column name="ProductID" length="200" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="2000" />
+        </property>
+        <property name="type" type="string">
+            <column name="Type" length="20" />
+        </property>
+        <property name="effectiveDateStart" type="timestamp">
+            <column name="EffectiveDateStart" length="19" />
+        </property>
+        <property name="effectiveDateEnd" type="timestamp">
+            <column name="EffectiveDateEnd" length="19" />
+        </property>
+        <property name="deleted" type="string">
+            <column name="Deleted" length="1" />
+        </property>
+        <property name="exported" type="string">
+            <column name="Exported" length="1" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" not-null="true" />
+        </property>
+    </class>
+</hbm30:hibernate-mapping>

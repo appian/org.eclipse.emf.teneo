@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+<!DOCTYPE hibernate-mapping PUBLIC 
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+-->
+<!-- Generated Jun 2, 2010 1:27:26 PM by Hibernate Tools 3.3.0.GA -->
+<hbm30:hibernate-mapping xmlns:hbm30="http://hibernate.sourceforge.net/hbm30">
+    <class name="org.eclipse.emf.teneo.db2m.example.Revisions" table="revisions" catalog="agent_development">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" not-null="true" />
+        </property>
+        <property name="revisedAt" type="timestamp">
+            <column name="revised_at" length="19" not-null="true" />
+        </property>
+        <property name="pageId" type="int">
+            <column name="page_id" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="65535" not-null="true" />
+        </property>
+        <property name="author" type="string">
+            <column name="author" length="60" />
+        </property>
+        <property name="ip" type="string">
+            <column name="ip" length="60" />
+        </property>
+    </class>
+</hbm30:hibernate-mapping>
