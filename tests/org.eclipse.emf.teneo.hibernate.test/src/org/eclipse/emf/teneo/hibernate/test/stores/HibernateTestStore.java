@@ -8,6 +8,7 @@
 
 package org.eclipse.emf.teneo.hibernate.test.stores;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,7 +56,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * The hibernate test store encapsulates the datastore actions to a hibernate store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -356,6 +357,10 @@ public class HibernateTestStore extends AbstractTestStore {
 						+ " object(s) of this class in the datastore, 1 was expected, class: " + clazz.getName(), l
 						.size() == 1);
 		return (T) l.get(0);
+	}
+
+	public Object getObject(String entityName, Serializable id) {
+		return sessionWrapper.get(entityName, id);
 	}
 
 	/** Returns a list of object of a certain class */
