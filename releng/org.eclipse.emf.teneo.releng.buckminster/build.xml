@@ -57,6 +57,10 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<equals arg1="${env.CLEAN_TOOLS}" arg2="true" />
 	</condition>
 
+	<condition property="no.proxy" value="${env.no_proxy}, dev.eclipse.org" else="dev.eclipse.org">
+		<isset property="env.no_proxy" />
+	</condition>
+
 	<property name="buildsPath" location="${hudsonWorkSpacePath}/build" />
 
 	<!--property name="rootPath" location="${buildsPath}/${build.type}${buildTimestamp}"/-->
