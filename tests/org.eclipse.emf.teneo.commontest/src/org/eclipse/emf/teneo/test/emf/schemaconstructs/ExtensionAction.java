@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExtensionAction.java,v 1.8 2010/10/29 10:52:15 mtaal Exp $
+ * $Id: ExtensionAction.java,v 1.9 2010/10/29 13:25:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -41,7 +41,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * (zip)
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class ExtensionAction extends AbstractTestAction {
 
@@ -174,7 +174,7 @@ public class ExtensionAction extends AbstractTestAction {
 				if (address.getName().compareTo("Primeminister") == 0) {
 					UKAddress ukaddress = (UKAddress) address;
 					assertTrue(ukaddress.getExportCode().intValue() == 1);
-					assertTrue(ukaddress.isSetExportCode());
+					assertTrue(!ukaddress.isSetExportCode());
 				}
 			} else if (address instanceof USAddress) {
 				cntus++;
