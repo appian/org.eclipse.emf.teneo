@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: SimpleRentalAction.java,v 1.2 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: SimpleRentalAction.java,v 1.3 2010/10/29 09:35:22 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -19,6 +19,7 @@ package org.eclipse.emf.teneo.test.emf.sample;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.emf.teneo.rental.Manufacturer;
 import org.eclipse.emf.teneo.rental.RentalCar;
 import org.eclipse.emf.teneo.rental.RentalCarSize;
 import org.eclipse.emf.teneo.rental.RentalContract;
@@ -31,7 +32,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests creating holes in a list index in the db
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SimpleRentalAction extends AbstractTestAction {
 	/**
@@ -67,6 +68,12 @@ public class SimpleRentalAction extends AbstractTestAction {
 			rcontract.setRentToBusinessPartner("business partner");
 			store.beginTransaction();
 			store.store(rcontract);
+			
+			Manufacturer man = rf.createManufacturer();
+			man.setCode("code");
+			man.setTrusted(false);
+			store.store(man);
+			
 			store.commitTransaction();
 		}
 
