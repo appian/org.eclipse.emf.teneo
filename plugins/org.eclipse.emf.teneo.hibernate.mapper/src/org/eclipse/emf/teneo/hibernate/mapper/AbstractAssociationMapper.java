@@ -675,7 +675,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			final String orderByValue = ((PAnnotatedEReference) paFeature)
 					.getOrderBy().getValue();
 			final String name;
-			if (orderByValue.contains("(")) {
+			if (orderByValue != null && orderByValue.contains("(")) {
 				// a sql function, just copy it completely
 				name = orderByValue;
 			} else {
