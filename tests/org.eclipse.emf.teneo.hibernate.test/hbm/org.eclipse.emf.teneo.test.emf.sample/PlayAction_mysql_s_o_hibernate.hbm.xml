@@ -3,14 +3,14 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.ActTypeImpl" entity-name="ActType" abstract="false" lazy="false" table="`acttype`">
-		<meta attribute="eclassName">ActType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">ActType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="scene" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="acttype_scene">
@@ -27,14 +27,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.FmTypeImpl" entity-name="FmType" abstract="false" lazy="false" table="`fmtype`">
-		<meta attribute="eclassName">FmType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">FmType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="p" table="`fmtype_p`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -45,14 +45,14 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaeTypeImpl" entity-name="PersonaeType" abstract="false" lazy="false" table="`personaetype`">
-		<meta attribute="eclassName">PersonaeType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">PersonaeType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`personaetype_group`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -63,12 +63,12 @@
 		</list>
 	</class>
 	<class entity-name="PersonaeType_group" lazy="false" table="`personaetype_group`">
-		<meta attribute="featureMap">PersonaeType</meta>
+		<meta attribute="featureMap" inherit="false">PersonaeType</meta>
 		<id type="long">
 			<generator class="native"/>
 		</id>
 		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -82,14 +82,14 @@
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaGroupTypeImpl" entity-name="PersonaGroupType" abstract="false" lazy="false" table="`personagrouptype`">
-		<meta attribute="eclassName">PersonaGroupType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">PersonaGroupType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="persona" table="`personagrouptype_persona`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -103,14 +103,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayTypeImpl" entity-name="PlayType" abstract="false" lazy="false" table="`playtype`">
-		<meta attribute="eclassName">PlayType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">PlayType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`title`"/>
@@ -136,14 +136,14 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.SceneTypeImpl" entity-name="SceneType" abstract="false" lazy="false" table="`scenetype`">
-		<meta attribute="eclassName">SceneType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">SceneType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`scenetype_group`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -160,12 +160,12 @@
 		</property>
 	</class>
 	<class entity-name="SceneType_group" lazy="false" table="`scenetype_group`">
-		<meta attribute="featureMap">SceneType</meta>
+		<meta attribute="featureMap" inherit="false">SceneType</meta>
 		<id type="long">
 			<generator class="native"/>
 		</id>
 		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<property name="stageDirections" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
@@ -176,14 +176,14 @@
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.SpeechTypeImpl" entity-name="SpeechType" abstract="false" lazy="false" table="`speechtype`">
-		<meta attribute="eclassName">SpeechType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<meta attribute="eclassName" inherit="false">SpeechType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="group" table="`speechtype_group`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -194,12 +194,12 @@
 		</list>
 	</class>
 	<class entity-name="SpeechType_group" lazy="false" table="`speechtype_group`">
-		<meta attribute="featureMap">SpeechType</meta>
+		<meta attribute="featureMap" inherit="false">SpeechType</meta>
 		<id type="long">
 			<generator class="native"/>
 		</id>
 		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<property name="speaker" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">

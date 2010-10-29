@@ -7,8 +7,8 @@
 		<param name="edatatype">ItemTypeObject</param>
 	</typedef>
 	<class name="org.eclipse.emf.teneo.samples.issues.enumtest.impl.ItemImpl" entity-name="Item" abstract="false" lazy="false" table="`item`">
-		<meta attribute="eclassName">Item</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/enumtest</meta>
+		<meta attribute="eclassName" inherit="false">Item</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/enumtest</meta>
 		<id name="itemType">
 			<column not-null="true" unique="false" name="`itemtype`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
@@ -16,7 +16,7 @@
 			</type>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="nullableItemType" lazy="false" not-null="false" insert="true" update="true" unique="false">
 			<column not-null="false" unique="false" name="`nullableitemtype`"/>

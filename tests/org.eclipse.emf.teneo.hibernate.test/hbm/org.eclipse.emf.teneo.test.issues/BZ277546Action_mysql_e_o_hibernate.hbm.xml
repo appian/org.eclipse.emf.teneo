@@ -3,8 +3,8 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz277546.impl.AnotherVersionImpl" entity-name="AnotherVersion" abstract="false" lazy="false" table="`anotherversion`">
-		<meta attribute="eclassName">AnotherVersion</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
+		<meta attribute="eclassName" inherit="false">AnotherVersion</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -14,8 +14,8 @@
 		</version>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz277546.impl.DateVersionImpl" entity-name="DateVersion" abstract="false" lazy="false" table="`dateversion`">
-		<meta attribute="eclassName">DateVersion</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
+		<meta attribute="eclassName" inherit="false">DateVersion</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -25,8 +25,8 @@
 		</version>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz277546.impl.SimpleVersionImpl" entity-name="SimpleVersion" abstract="false" lazy="false" table="`simpleversion`">
-		<meta attribute="eclassName">SimpleVersion</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
+		<meta attribute="eclassName" inherit="false">SimpleVersion</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>

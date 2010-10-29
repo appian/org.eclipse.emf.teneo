@@ -3,16 +3,18 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz282414.impl.BarImpl" entity-name="Bar" abstract="false" lazy="false" table="`bar_table`">
-		<meta attribute="eclassName">Bar</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
+		<meta attribute="eclassName" inherit="false">Bar</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<component name="barKey" class="org.eclipse.emf.teneo.samples.issues.bz282414.impl.BarKeyImpl">
+			<meta attribute="eclassName" inherit="false">BarKey</meta>
+			<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
 			<property name="classId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 				<column not-null="false" unique="false" name="`clas_id`"/>
 			</property>
@@ -22,14 +24,14 @@
 		</component>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz282414.impl.FooImpl" entity-name="Foo" abstract="false" lazy="false" table="`foo_table`">
-		<meta attribute="eclassName">Foo</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
+		<meta attribute="eclassName" inherit="false">Foo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
 		<id name="dnmSK" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`dnm_sk`"/>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<bag name="bagOfBars" lazy="true" cascade="all,delete-orphan">
 			<key update="true" property-ref="clientId" foreign-key="foo_bagofbars">

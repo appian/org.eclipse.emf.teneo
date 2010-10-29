@@ -3,8 +3,8 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz280355.impl.LeiterImpl" entity-name="Leiter" abstract="false" lazy="false" table="`leiter`">
-		<meta attribute="eclassName">Leiter</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz280355</meta>
+		<meta attribute="eclassName" inherit="false">Leiter</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz280355</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -17,8 +17,8 @@
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz280355.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" table="`person`">
-		<meta attribute="eclassName">Person</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz280355</meta>
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz280355</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>

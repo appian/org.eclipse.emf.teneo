@@ -3,18 +3,18 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz224991.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" table="`parent`">
-		<meta attribute="eclassName">Parent</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
+		<meta attribute="eclassName" inherit="false">Parent</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 	</class>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.bz224991.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" extends="Parent" table="`child`">
-		<meta attribute="eclassName">Child</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
+		<meta attribute="eclassName" inherit="false">Child</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
 		<key>
 			<column name="`mypk`"/>
 		</key>

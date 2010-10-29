@@ -7,14 +7,14 @@
 		<param name="edatatype">BooktypeObject</param>
 	</typedef>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" table="`book`">
-		<meta attribute="eclassName">Book</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<meta attribute="eclassName" inherit="false">Book</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="citation" entity-name="Book" lazy="false" cascade="all" foreign-key="book_citation" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`book_citation_e_id`"/>
@@ -42,14 +42,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.ParagraphImpl" entity-name="Paragraph" abstract="false" lazy="false" table="`paragraph`">
-		<meta attribute="eclassName">Paragraph</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<meta attribute="eclassName" inherit="false">Paragraph</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="number" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`number`"/>
@@ -59,15 +59,15 @@
 		</property>
 	</class>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.FootnoteImpl" entity-name="Footnote" abstract="false" lazy="false" extends="Paragraph" table="`footnote`">
-		<meta attribute="eclassName">Footnote</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<meta attribute="eclassName" inherit="false">Footnote</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
 		<key>
 			<column name="`paragraph_e_id`"/>
 		</key>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.IndentedparaImpl" entity-name="Indentedpara" abstract="false" lazy="false" extends="Paragraph" table="`indentedpara`">
-		<meta attribute="eclassName">Indentedpara</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<meta attribute="eclassName" inherit="false">Indentedpara</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
 		<key>
 			<column name="`paragraph_e_id`"/>
 		</key>

@@ -7,13 +7,13 @@
 		<param name="edatatype">BookCategoryObject</param>
 	</typedef>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" table="`book`">
-		<meta attribute="eclassName">Book</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
+		<meta attribute="eclassName" inherit="false">Book</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<id name="title" type="java.lang.String">
 			<column not-null="true" unique="false" name="`title`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`pages`"/>
@@ -34,24 +34,26 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.LibraryImpl" entity-name="Library" abstract="false" lazy="false" table="`library`">
-		<meta attribute="eclassName">Library</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
+		<meta attribute="eclassName" inherit="false">Library</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</property>
-		<list name="writers" fetch="subselect" lazy="false" cascade="all,delete-orphan">
-			<key update="true" foreign-key="schrijvers">
-				<column name="`library_writers_e_id`" not-null="false" unique="false"/>
+		<list name="writers" fetch="subselect" table="`abc`" lazy="false" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`library_e_id`" not-null="true" unique="false"/>
 			</key>
 			<list-index column="`test_index`"/>
-			<one-to-many entity-name="Writer"/>
+			<many-to-many entity-name="Writer" unique="true" foreign-key="schrijvers">
+				<column name="`writer_e_id`" not-null="true" unique="false"/>
+			</many-to-many>
 		</list>
 		<list name="books" lazy="false" cascade="all,delete-orphan">
 			<key update="true" foreign-key="library_books">
@@ -62,14 +64,14 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.library.impl.WriterImpl" entity-name="Writer" abstract="false" lazy="false" table="`writer`">
-		<meta attribute="eclassName">Writer</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
+		<meta attribute="eclassName" inherit="false">Writer</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>

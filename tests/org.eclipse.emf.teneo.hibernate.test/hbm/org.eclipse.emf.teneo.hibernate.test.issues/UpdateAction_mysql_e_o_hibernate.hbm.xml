@@ -3,8 +3,8 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.update.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" table="`child`">
-		<meta attribute="eclassName">Child</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/update</meta>
+		<meta attribute="eclassName" inherit="false">Child</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/update</meta>
 		<id name="name" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</id>
@@ -13,8 +13,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.update.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" table="`parent`">
-		<meta attribute="eclassName">Parent</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/update</meta>
+		<meta attribute="eclassName" inherit="false">Parent</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/update</meta>
 		<id name="name" type="java.lang.String">
 			<column not-null="true" unique="false" name="`name`"/>
 		</id>

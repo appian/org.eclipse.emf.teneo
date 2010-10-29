@@ -3,28 +3,28 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz253799.impl.OneImpl" entity-name="One" abstract="false" lazy="false" table="`one`">
-		<meta attribute="eclassName">One</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz253799</meta>
+		<meta attribute="eclassName" inherit="false">One</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz253799</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="ref" entity-name="Two" cascade="merge,persist,save-update,lock,refresh" not-null="true" lazy="false" foreign-key="one_ref" insert="true" update="true" unique="true">
 			<column not-null="true" unique="false" name="`ref1`"/>
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz253799.impl.TwoImpl" entity-name="Two" abstract="false" lazy="false" table="`two`">
-		<meta attribute="eclassName">Two</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz253799</meta>
+		<meta attribute="eclassName" inherit="false">Two</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz253799</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="ref" entity-name="One" cascade="merge,persist,save-update,lock,refresh" not-null="true" lazy="false" foreign-key="two_ref" insert="true" update="true" unique="true">
 			<column not-null="true" unique="false" name="`ref1`"/>

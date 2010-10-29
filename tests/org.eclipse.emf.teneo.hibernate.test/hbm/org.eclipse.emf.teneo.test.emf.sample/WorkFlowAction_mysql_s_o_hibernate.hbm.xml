@@ -3,13 +3,13 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowElementImpl" entity-name="WorkflowElement" abstract="true" lazy="false" table="`workflowelement`">
-		<meta attribute="eclassName">WorkflowElement</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">WorkflowElement</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<id name="id" type="java.lang.String">
 			<column not-null="true" unique="false" name="`id`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`name`"/>
@@ -31,8 +31,8 @@
 		</property>
 	</class>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowImpl" entity-name="Workflow" abstract="false" lazy="false" extends="WorkflowElement" table="`workflow`">
-		<meta attribute="eclassName">Workflow</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">Workflow</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflowelement_id`"/>
 		</key>
@@ -59,8 +59,8 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowNodeImpl" entity-name="WorkflowNode" abstract="true" lazy="false" extends="WorkflowElement" table="`workflownode`">
-		<meta attribute="eclassName">WorkflowNode</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">WorkflowNode</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflowelement_id`"/>
 		</key>
@@ -89,8 +89,8 @@
 		</property>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" entity-name="Edge" abstract="false" lazy="false" extends="WorkflowElement" table="`edge`">
-		<meta attribute="eclassName">Edge</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">Edge</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflowelement_id`"/>
 		</key>
@@ -105,15 +105,15 @@
 		</many-to-one>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.PortImpl" entity-name="Port" abstract="true" lazy="false" extends="WorkflowElement" table="`port`">
-		<meta attribute="eclassName">Port</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">Port</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflowelement_id`"/>
 		</key>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.InputPortImpl" entity-name="InputPort" abstract="false" lazy="false" extends="Port" table="`inputport`">
-		<meta attribute="eclassName">InputPort</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">InputPort</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`port_id`"/>
 		</key>
@@ -129,8 +129,8 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.OutputPortImpl" entity-name="OutputPort" abstract="false" lazy="false" extends="Port" table="`outputport`">
-		<meta attribute="eclassName">OutputPort</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">OutputPort</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`port_id`"/>
 		</key>
@@ -146,15 +146,15 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.FaultImpl" entity-name="Fault" abstract="false" lazy="false" extends="OutputPort" table="`fault`">
-		<meta attribute="eclassName">Fault</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">Fault</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`outputport_id`"/>
 		</key>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.CompoundTaskImpl" entity-name="CompoundTask" abstract="false" lazy="false" extends="WorkflowNode" table="`compoundtask`">
-		<meta attribute="eclassName">CompoundTask</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">CompoundTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflownode_id`"/>
 		</key>
@@ -163,8 +163,8 @@
 		</many-to-one>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.TransformationTaskImpl" entity-name="TransformationTask" abstract="false" lazy="false" extends="WorkflowNode" table="`transformationtask`">
-		<meta attribute="eclassName">TransformationTask</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">TransformationTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflownode_id`"/>
 		</key>
@@ -173,15 +173,15 @@
 		</property>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.ConditionalTaskImpl" entity-name="ConditionalTask" abstract="false" lazy="false" extends="WorkflowNode" table="`conditionaltask`">
-		<meta attribute="eclassName">ConditionalTask</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">ConditionalTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflownode_id`"/>
 		</key>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.LoopTaskImpl" entity-name="LoopTask" abstract="false" lazy="false" extends="CompoundTask" table="`looptask`">
-		<meta attribute="eclassName">LoopTask</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">LoopTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`compoundtask_id`"/>
 		</key>
@@ -190,8 +190,8 @@
 		</property>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.ConditionalOutputPortImpl" entity-name="ConditionalOutputPort" abstract="false" lazy="false" extends="OutputPort" table="`conditionaloutputport`">
-		<meta attribute="eclassName">ConditionalOutputPort</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">ConditionalOutputPort</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`outputport_id`"/>
 		</key>
@@ -200,8 +200,8 @@
 		</property>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.CommentImpl" entity-name="Comment" abstract="false" lazy="false" extends="WorkflowElement" table="`comment`">
-		<meta attribute="eclassName">Comment</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">Comment</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflowelement_id`"/>
 		</key>
@@ -210,8 +210,8 @@
 		</many-to-one>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.TaskImpl" entity-name="Task" abstract="false" lazy="false" extends="WorkflowNode" table="`task`">
-		<meta attribute="eclassName">Task</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<meta attribute="eclassName" inherit="false">Task</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
 		<key>
 			<column name="`workflownode_id`"/>
 		</key>

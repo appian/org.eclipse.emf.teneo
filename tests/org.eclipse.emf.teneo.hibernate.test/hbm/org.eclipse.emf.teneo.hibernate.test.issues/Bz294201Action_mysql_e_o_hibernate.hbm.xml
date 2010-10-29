@@ -3,14 +3,14 @@
 
 <hibernate-mapping auto-import="false">
 	<class entity-name="documentrootexp.DocumentRoot" abstract="false" lazy="false" table="`documentrootexp_documentroot`">
-		<meta attribute="eclassName">DocumentRoot</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentrootexp</meta>
+		<meta attribute="eclassName" inherit="false">DocumentRoot</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentrootexp</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="mixed" table="`documentrootexp_documentroot_mixed`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
@@ -21,12 +21,12 @@
 		</list>
 	</class>
 	<class entity-name="DocumentRoot_mixed" lazy="false" table="`documentroot_mixed`">
-		<meta attribute="featureMap">documentrootexp.DocumentRoot</meta>
+		<meta attribute="featureMap" inherit="false">documentrootexp.DocumentRoot</meta>
 		<id type="long">
 			<generator class="native"/>
 		</id>
 		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="fme_feature" type="java.lang.String"/>
 		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
@@ -52,14 +52,14 @@
 		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 	<class entity-name="PersonType" abstract="false" lazy="false" table="`persontype`">
-		<meta attribute="eclassName">PersonType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentrootexp</meta>
+		<meta attribute="eclassName" inherit="false">PersonType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/documentrootexp</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="lastName" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`lastname`"/>

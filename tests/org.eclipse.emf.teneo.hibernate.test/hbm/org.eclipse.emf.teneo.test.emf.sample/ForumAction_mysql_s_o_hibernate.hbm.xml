@@ -7,14 +7,14 @@
 		<param name="edatatype">TopicCategoryObject</param>
 	</typedef>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.ForumImpl" entity-name="Forum" abstract="false" lazy="false" table="`forum`">
-		<meta attribute="eclassName">Forum</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
+		<meta attribute="eclassName" inherit="false">Forum</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`title`"/>
@@ -35,14 +35,14 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.MemberImpl" entity-name="Member" abstract="false" lazy="false" table="`member`">
-		<meta attribute="eclassName">Member</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
+		<meta attribute="eclassName" inherit="false">Member</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="nickname" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`nickname`"/>
@@ -63,14 +63,14 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.PostImpl" entity-name="Post" abstract="false" lazy="false" table="`post`">
-		<meta attribute="eclassName">Post</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
+		<meta attribute="eclassName" inherit="false">Post</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="comment" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`comment`"/>
@@ -83,14 +83,14 @@
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.forum.impl.TopicImpl" entity-name="Topic" abstract="false" lazy="false" table="`topic`">
-		<meta attribute="eclassName">Topic</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
+		<meta attribute="eclassName" inherit="false">Topic</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/forum</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`title`"/>

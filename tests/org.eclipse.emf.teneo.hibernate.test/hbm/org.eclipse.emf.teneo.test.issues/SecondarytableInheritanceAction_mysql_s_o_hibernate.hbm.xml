@@ -3,8 +3,8 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.secondary.impl.GenericImpl" entity-name="Generic" abstract="false" lazy="false" discriminator-value="Generic" table="`GENERIC`">
-		<meta attribute="eclassName">Generic</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/secondary</meta>
+		<meta attribute="eclassName" inherit="false">Generic</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/secondary</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`ID`"/>
 		</id>
@@ -12,12 +12,12 @@
 			<column name="DTYPE" index="GENERICDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 	</class>
 	<subclass name="org.eclipse.emf.teneo.samples.issues.secondary.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" extends="Generic" discriminator-value="Person">
-		<meta attribute="eclassName">Person</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/secondary</meta>
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/secondary</meta>
 		<join table="`PERSON_ADDRESS`">
 			<key>
 				<column name="`ID`"/>

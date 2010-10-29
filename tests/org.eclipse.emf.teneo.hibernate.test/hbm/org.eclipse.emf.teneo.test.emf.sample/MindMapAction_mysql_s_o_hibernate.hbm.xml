@@ -11,14 +11,14 @@
 		<param name="edatatype">RelationshipTypeObject</param>
 	</typedef>
 	<class name="org.example.mindmap.impl.MapImpl" entity-name="Map" abstract="false" lazy="false" table="`map`">
-		<meta attribute="eclassName">Map</meta>
-		<meta attribute="epackage">http://www.example.org/mindmap</meta>
+		<meta attribute="eclassName" inherit="false">Map</meta>
+		<meta attribute="epackage" inherit="false">http://www.example.org/mindmap</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="rootTopics" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="map_roottopics">
@@ -46,14 +46,14 @@
 		</property>
 	</class>
 	<class name="org.example.mindmap.impl.RelationshipImpl" entity-name="Relationship" abstract="false" lazy="false" table="`relationship`">
-		<meta attribute="eclassName">Relationship</meta>
-		<meta attribute="epackage">http://www.example.org/mindmap</meta>
+		<meta attribute="eclassName" inherit="false">Relationship</meta>
+		<meta attribute="epackage" inherit="false">http://www.example.org/mindmap</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="label" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`label`"/>
@@ -74,14 +74,14 @@
 		</property>
 	</class>
 	<class name="org.example.mindmap.impl.ResourceImpl" entity-name="Resource" abstract="false" lazy="false" table="`resource`">
-		<meta attribute="eclassName">Resource</meta>
-		<meta attribute="epackage">http://www.example.org/mindmap</meta>
+		<meta attribute="eclassName" inherit="false">Resource</meta>
+		<meta attribute="epackage" inherit="false">http://www.example.org/mindmap</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="comments" lazy="true" cascade="merge,persist,save-update,lock,refresh">
 			<key update="true">
@@ -107,14 +107,14 @@
 		</list>
 	</class>
 	<class name="org.example.mindmap.impl.ThreadImpl" entity-name="Thread" abstract="false" lazy="false" table="`thread`">
-		<meta attribute="eclassName">Thread</meta>
-		<meta attribute="epackage">http://www.example.org/mindmap</meta>
+		<meta attribute="eclassName" inherit="false">Thread</meta>
+		<meta attribute="epackage" inherit="false">http://www.example.org/mindmap</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="items" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="thread_items">
@@ -134,14 +134,14 @@
 		</property>
 	</class>
 	<class name="org.example.mindmap.impl.ThreadItemImpl" entity-name="ThreadItem" abstract="false" lazy="false" table="`threaditem`">
-		<meta attribute="eclassName">ThreadItem</meta>
-		<meta attribute="epackage">http://www.example.org/mindmap</meta>
+		<meta attribute="eclassName" inherit="false">ThreadItem</meta>
+		<meta attribute="epackage" inherit="false">http://www.example.org/mindmap</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="author" entity-name="Resource" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="threaditem_author" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`resource_author_e_id`"/>
@@ -154,14 +154,14 @@
 		</property>
 	</class>
 	<class name="org.example.mindmap.impl.TopicImpl" entity-name="Topic" abstract="false" lazy="false" table="`topic`">
-		<meta attribute="eclassName">Topic</meta>
-		<meta attribute="epackage">http://www.example.org/mindmap</meta>
+		<meta attribute="eclassName" inherit="false">Topic</meta>
+		<meta attribute="epackage" inherit="false">http://www.example.org/mindmap</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="comments" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="topic_comments">

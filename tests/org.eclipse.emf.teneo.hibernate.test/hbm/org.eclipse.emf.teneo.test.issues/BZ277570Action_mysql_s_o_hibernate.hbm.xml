@@ -3,8 +3,8 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.adept.impl.BazImpl" entity-name="Baz" abstract="true" lazy="false" table="`baz`">
-		<meta attribute="eclassName">Baz</meta>
-		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<meta attribute="eclassName" inherit="false">Baz</meta>
+		<meta attribute="epackage" inherit="false">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 		</id>
@@ -13,8 +13,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.adept.impl.FooImpl" entity-name="Foo" abstract="false" lazy="false" table="`foo`">
-		<meta attribute="eclassName">Foo</meta>
-		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<meta attribute="eclassName" inherit="false">Foo</meta>
+		<meta attribute="epackage" inherit="false">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 		</id>
@@ -34,8 +34,8 @@
 		</list>
 	</class>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.adept.impl.BarImpl" entity-name="Bar" abstract="false" lazy="false" extends="Baz" table="`bar`">
-		<meta attribute="eclassName">Bar</meta>
-		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<meta attribute="eclassName" inherit="false">Bar</meta>
+		<meta attribute="epackage" inherit="false">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
 		<key>
 			<column name="`baz_id`"/>
 		</key>
@@ -44,8 +44,8 @@
 		</many-to-one>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.adept.impl.BiffImpl" entity-name="Biff" abstract="false" lazy="false" extends="Baz" table="`biff`">
-		<meta attribute="eclassName">Biff</meta>
-		<meta attribute="epackage">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
+		<meta attribute="eclassName" inherit="false">Biff</meta>
+		<meta attribute="epackage" inherit="false">org.eclipse.emf.teneo.samples.issues.bz277570</meta>
 		<key>
 			<column name="`baz_id`"/>
 		</key>

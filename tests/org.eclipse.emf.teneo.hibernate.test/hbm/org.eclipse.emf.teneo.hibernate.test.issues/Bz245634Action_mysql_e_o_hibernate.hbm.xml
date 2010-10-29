@@ -3,13 +3,13 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.CityImpl" entity-name="City" abstract="false" lazy="true" table="`city`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.City">
-		<meta attribute="eclassName">City</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<meta attribute="eclassName" inherit="false">City</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="mayor" entity-name="Mayor" cascade="merge,persist,save-update,lock,refresh" not-null="false" lazy="proxy" insert="true" update="true"/>
 		<one-to-one name="policeChief" entity-name="PoliceChief" cascade="merge,persist,save-update,lock,refresh" lazy="proxy" property-ref="city"/>
@@ -18,38 +18,38 @@
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.MayorImpl" entity-name="Mayor" abstract="false" lazy="true" table="`mayor`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.Mayor">
-		<meta attribute="eclassName">Mayor</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<meta attribute="eclassName" inherit="false">Mayor</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<one-to-one name="city" entity-name="City" cascade="merge,persist,save-update,lock,refresh" lazy="proxy" property-ref="mayor"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.PoliceChiefImpl" entity-name="PoliceChief" abstract="false" lazy="true" table="`policechief`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.PoliceChief">
-		<meta attribute="eclassName">PoliceChief</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<meta attribute="eclassName" inherit="false">PoliceChief</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="city" entity-name="City" cascade="merge,persist,save-update,lock,refresh" not-null="false" lazy="proxy" insert="true" update="true"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz245634.impl.CountryImpl" entity-name="Country" abstract="false" lazy="true" table="`country`" proxy="org.eclipse.emf.teneo.samples.issues.bz245634.Country">
-		<meta attribute="eclassName">Country</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
+		<meta attribute="eclassName" inherit="false">Country</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz245634</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 	</class>
 </hibernate-mapping>

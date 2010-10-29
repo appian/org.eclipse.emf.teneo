@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class DynamicAction extends AbstractTestAction {
 	/**
@@ -112,6 +112,7 @@ public class DynamicAction extends AbstractTestAction {
 
 		// add a new eclass which inherits from person
 		EClass employeeClass = null;
+		EClass specialEmployeeClass = null;
 		EAttribute employeeManager = null;
 		EReference employeeDepartment = null;
 		EClass departmentClass = null;
@@ -128,6 +129,7 @@ public class DynamicAction extends AbstractTestAction {
 		EAttribute departmentName = null;
 		EAttribute departmentType = null;
 		EReference departmentOffice = null;
+		EReference employeeOffices = null;
 		EEnumLiteral el1 = null;
 		{
 			employeeClass = efactory.createEClass();
@@ -141,6 +143,10 @@ public class DynamicAction extends AbstractTestAction {
 
 			employeeClass.getESuperTypes().add(DynamicPackage.eINSTANCE.getPerson());
 
+			specialEmployeeClass = efactory.createEClass();
+			specialEmployeeClass.setName("SpecialEmployee");
+			specialEmployeeClass.getESuperTypes().add(employeeClass);
+			
 			departmentClass = efactory.createEClass();
 			departmentClass.setName("Department");
 
@@ -195,6 +201,13 @@ public class DynamicAction extends AbstractTestAction {
 			departmentOffice.setContainment(true);
 			departmentClass.getEStructuralFeatures().add(departmentOffice);
 
+			employeeOffices = efactory.createEReference();
+			employeeOffices.setName("offices");
+			employeeOffices.setEType(officeClass);
+			employeeOffices.setContainment(false);
+			employeeOffices.setUpperBound(-1);
+			specialEmployeeClass.getEStructuralFeatures().add(employeeOffices);
+
 			final EEnum dt = efactory.createEEnum();
 			dt.setName("DepartmentType");
 			el1 = efactory.createEEnumLiteral();
@@ -240,17 +253,36 @@ public class DynamicAction extends AbstractTestAction {
 			EObject office = EcoreUtil.create(officeClass);
 			office.eSet(officeName, "Marketing Office");
 			store.store(office);
+			
+			List<EObject> offices = new ArrayList<EObject>();
+			{
+				EObject office1 = EcoreUtil.create(officeClass);
+				office1.eSet(officeName, "Office1");
+				store.store(office1);
+
+				EObject office2 = EcoreUtil.create(officeClass);
+				office2.eSet(officeName, "Office2");
+				store.store(office2);
+				offices.add(office1);
+				offices.add(office2);
+			}
 
 			EObject department = EcoreUtil.create(departmentClass);
 			department.eSet(departmentName, "Marketing");
 			department.eSet(departmentType, el1);
 			department.eSet(departmentOffice, office);
 			store.store(department);
+			
 			Person employee = (Person) EcoreUtil.create(employeeClass);
 			employee.setName("employee1");
 			employee.eSet(employeeManager, new Boolean(true));
 			employee.eSet(employeeDepartment, department);
 			store.store(employee);
+
+			Person specialEmployee = (Person) EcoreUtil.create(specialEmployeeClass);
+			specialEmployee.eSet(employeeOffices, offices);
+			store.store(specialEmployee);
+			
 			Person employee2 = (Person) EcoreUtil.create(employeeClass);
 			employee2.setName("employee2");
 			employee2.eSet(employeeManager, new Boolean(true));

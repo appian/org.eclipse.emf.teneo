@@ -3,8 +3,8 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.BlockImpl" entity-name="Block" abstract="false" lazy="false" table="`ops_block`">
-		<meta attribute="eclassName">Block</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">Block</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -29,8 +29,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DataCenterImpl" entity-name="DataCenter" abstract="false" lazy="false" table="`ops_datacenter`">
-		<meta attribute="eclassName">DataCenter</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">DataCenter</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -55,8 +55,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DomainImpl" entity-name="Domain" abstract="false" lazy="false" table="`domain`">
-		<meta attribute="eclassName">Domain</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">Domain</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -80,8 +80,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DomainSystemImpl" entity-name="DomainSystem" abstract="false" lazy="false" table="`domainsystem`">
-		<meta attribute="eclassName">DomainSystem</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">DomainSystem</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -122,8 +122,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.FailoverTypeImpl" entity-name="FailoverType" abstract="false" lazy="false" table="`ops_failovertype`">
-		<meta attribute="eclassName">FailoverType</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">FailoverType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -139,8 +139,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.HostImpl" entity-name="Host" abstract="false" lazy="false" table="`ops_host`">
-		<meta attribute="eclassName">Host</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">Host</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -192,8 +192,8 @@
 		</bag>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.HostBlockImpl" entity-name="HostBlock" abstract="false" lazy="false" table="`ops_hostblock`">
-		<meta attribute="eclassName">HostBlock</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">HostBlock</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -218,8 +218,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.InterfaceImpl" entity-name="Interface" abstract="false" lazy="false" table="`ops_interface`">
-		<meta attribute="eclassName">Interface</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">Interface</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -258,8 +258,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.IPImpl" entity-name="IP" abstract="false" lazy="false" table="`ops_ip`">
-		<meta attribute="eclassName">IP</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">IP</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -308,8 +308,8 @@
 		</bag>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.MuninInfoImpl" entity-name="MuninInfo" abstract="false" lazy="false" table="`ops_munininfo`">
-		<meta attribute="eclassName">MuninInfo</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">MuninInfo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -340,8 +340,8 @@
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.IPNameImpl" entity-name="IPName" abstract="false" lazy="false" table="`ops_ipname`">
-		<meta attribute="eclassName">IPName</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">IPName</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -365,8 +365,8 @@
 		</bag>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.ParameterImpl" entity-name="Parameter" abstract="false" lazy="false" table="`ops_parameter`">
-		<meta attribute="eclassName">Parameter</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">Parameter</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -385,8 +385,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.RoleImpl" entity-name="Role" abstract="false" lazy="false" table="`ops_role`">
-		<meta attribute="eclassName">Role</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">Role</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -430,8 +430,8 @@
 		</bag>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.OpsSystemImpl" entity-name="OpsSystem" abstract="false" lazy="false" table="`ops_opssystem`">
-		<meta attribute="eclassName">OpsSystem</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">OpsSystem</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -469,8 +469,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.VServerImpl" entity-name="VServer" abstract="false" lazy="false" table="`ops_vserver`">
-		<meta attribute="eclassName">VServer</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">VServer</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -517,8 +517,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DWHClusterImpl" entity-name="DWHCluster" abstract="false" lazy="false" table="`ops_dwhcluster`">
-		<meta attribute="eclassName">DWHCluster</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">DWHCluster</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>
@@ -543,8 +543,8 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DWHInstanceImpl" entity-name="DWHInstance" abstract="false" lazy="false" table="`ops_dwhinstance`">
-		<meta attribute="eclassName">DWHInstance</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<meta attribute="eclassName" inherit="false">DWHInstance</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
 		<id name="id" type="long" unsaved-value="0">
 			<column not-null="true" unique="false" name="`id`"/>
 			<generator class="native"/>

@@ -3,14 +3,14 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.CapacityEntryImpl" entity-name="CapacityEntry" abstract="false" lazy="false" table="`capacityentry`">
-		<meta attribute="eclassName">CapacityEntry</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">CapacityEntry</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="capacityEntryId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`capacityentryid`"/>
@@ -20,14 +20,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.MachineImpl" entity-name="Machine" abstract="false" lazy="false" table="`machine`">
-		<meta attribute="eclassName">Machine</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">Machine</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="workWeek" entity-name="WorkWeek" lazy="false" cascade="all" foreign-key="machine_workweek" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`workweek_workweek_e_id`"/>
@@ -46,14 +46,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.MachineListImpl" entity-name="MachineList" abstract="false" lazy="false" table="`machinelist`">
-		<meta attribute="eclassName">MachineList</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">MachineList</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="machines" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="machinelist_machines">
@@ -64,14 +64,14 @@
 		</list>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.ProductionImpl" entity-name="Production" abstract="false" lazy="false" table="`production`">
-		<meta attribute="eclassName">Production</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">Production</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="article" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`article`"/>
@@ -93,14 +93,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.TaskImpl" entity-name="Task" abstract="false" lazy="false" table="`task`">
-		<meta attribute="eclassName">Task</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">Task</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="capacityEntry" entity-name="CapacityEntry" lazy="false" cascade="all" foreign-key="task_capacityentry" insert="true" update="true" not-null="true" unique="true">
 			<column not-null="true" unique="false" name="`capacityentry_capacityentry_e_id`"/>
@@ -122,14 +122,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.WorkDayImpl" entity-name="WorkDay" abstract="false" lazy="false" table="`workday`">
-		<meta attribute="eclassName">WorkDay</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">WorkDay</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="dayOfWeek" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
 			<column not-null="false" unique="false" name="`dayofweek`"/>
@@ -142,14 +142,14 @@
 		</property>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.sample.capa.impl.WorkWeekImpl" entity-name="WorkWeek" abstract="false" lazy="false" table="`workweek`">
-		<meta attribute="eclassName">WorkWeek</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
+		<meta attribute="eclassName" inherit="false">WorkWeek</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/capa</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<list name="days" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="workweek_days">

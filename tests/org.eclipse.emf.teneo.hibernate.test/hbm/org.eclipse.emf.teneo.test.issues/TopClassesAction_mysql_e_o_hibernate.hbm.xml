@@ -3,22 +3,22 @@
 
 <hibernate-mapping auto-import="false">
 	<class name="org.eclipse.emf.teneo.samples.issues.topclasses.impl.AbstractSuperImpl" entity-name="AbstractSuper" abstract="false" lazy="false" table="`abstractsuper`">
-		<meta attribute="eclassName">AbstractSuper</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
+		<meta attribute="eclassName" inherit="false">AbstractSuper</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId">true</meta>
+			<meta attribute="syntheticId" inherit="false">true</meta>
 			<generator class="native"/>
 		</id>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion">true</meta>
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`name`"/>
 		</property>
 	</class>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.topclasses.impl.MImpl" entity-name="M" abstract="false" lazy="false" extends="AbstractSuper" table="`m`">
-		<meta attribute="eclassName">M</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
+		<meta attribute="eclassName" inherit="false">M</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
 		<key>
 			<column name="`abstractsuper_e_id`"/>
 		</key>
@@ -33,8 +33,8 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.topclasses.impl.MListImpl" entity-name="MList" abstract="false" lazy="false" extends="AbstractSuper" table="`mlist`">
-		<meta attribute="eclassName">MList</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
+		<meta attribute="eclassName" inherit="false">MList</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
 		<key>
 			<column name="`abstractsuper_e_id`"/>
 		</key>
@@ -47,8 +47,8 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.topclasses.impl.PImpl" entity-name="P" abstract="false" lazy="false" extends="AbstractSuper" table="`p`">
-		<meta attribute="eclassName">P</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
+		<meta attribute="eclassName" inherit="false">P</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
 		<key>
 			<column name="`abstractsuper_e_id`"/>
 		</key>
@@ -63,8 +63,8 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.topclasses.impl.PListImpl" entity-name="PList" abstract="false" lazy="false" extends="AbstractSuper" table="`plist`">
-		<meta attribute="eclassName">PList</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
+		<meta attribute="eclassName" inherit="false">PList</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
 		<key>
 			<column name="`abstractsuper_e_id`"/>
 		</key>
@@ -77,8 +77,8 @@
 		</list>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.topclasses.impl.RImpl" entity-name="R" abstract="false" lazy="false" extends="AbstractSuper" table="`r`">
-		<meta attribute="eclassName">R</meta>
-		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
+		<meta attribute="eclassName" inherit="false">R</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/issues/topclasses</meta>
 		<key>
 			<column name="`abstractsuper_e_id`"/>
 		</key>
