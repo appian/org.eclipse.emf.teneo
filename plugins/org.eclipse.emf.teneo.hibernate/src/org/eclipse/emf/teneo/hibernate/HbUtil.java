@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.32 2010/08/18 11:50:38 mtaal Exp $
+ * $Id: HbUtil.java,v 1.33 2010/10/29 09:35:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
@@ -38,7 +39,9 @@ import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
+import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
+import org.hibernate.engine.SessionImplementor;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.MetaAttribute;
@@ -56,7 +59,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  */
 public class HbUtil {
 
@@ -83,6 +86,23 @@ public class HbUtil {
 			return null;
 		}
 		return (EClass) epackage.getEClassifier(eClassMetaAttribute.getValue());
+	}
+	
+	/**
+	 * A merge method which can handle both normal as well as EAV mapped objects
+	 * 
+	 * @param session the hibernate session
+	 * @param eObject
+	 * @return
+	 */
+	public static EObject merge(Session session, EObject eObject) {
+		if (eObject instanceof DynamicEObjectImpl) {
+			final SessionImplementor sessionImplementor = (SessionImplementor)session;
+//			sessionImplementor.get
+			return null;
+		} else {
+			return (EObject)session.merge(eObject);
+		}
 	}
 
 	public static boolean isEAVMapped(PersistentClass mappedEntity) {

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.15 2010/02/04 10:53:07 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.16 2010/10/29 09:35:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -43,7 +43,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class EAttributePropertyHandler implements Getter, Setter, PropertyAccessor {
 	/**
@@ -162,8 +162,8 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 	 */
 	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
 
+		EObject eobj = (EObject) target;
 		if (value == null) {
-			EObject eobj = (EObject) target;
 			if (handleUnsetAsNull) {
 				eobj.eUnset(eAttribute);
 			} else {
@@ -176,13 +176,15 @@ public class EAttributePropertyHandler implements Getter, Setter, PropertyAccess
 		}
 
 		final Object curValue = get(target);
-		if (curValue != null && curValue.equals(value)) {
-			return; // do not set if not changed
+		// only compare with current values if the value has been set
+		if (eobj.eIsSet(eAttribute)) {
+			if (curValue != null && curValue.equals(value)) {
+				return; // do not set if not changed
+			}
+			if (curValue == value) {
+				return; // do not set if not changed
+			}
 		}
-		if (curValue == value) {
-			return; // do not set if not changed
-		}
-		EObject eobj = (EObject) target;
 
 		final Object setValue;
 		if (value != null && instanceClass != null && value.getClass() != instanceClass) {

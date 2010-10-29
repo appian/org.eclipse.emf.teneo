@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVValueHolder.java,v 1.6 2010/04/02 15:24:12 mtaal Exp $
+ * $Id: EAVValueHolder.java,v 1.7 2010/10/29 09:35:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -194,6 +194,10 @@ public abstract class EAVValueHolder {
 	}
 
 	public Integer getMandatoryValue() {
+		// in case of merging the estructuralfeature is not yet set
+		if (getEStructuralFeature() == null) {
+			return NOT_NULL_VALUE;
+		}
 		// if not required then the not-value is set always
 		if (!getEStructuralFeature().isRequired()
 				|| getEStructuralFeature().isUnsettable()) {
