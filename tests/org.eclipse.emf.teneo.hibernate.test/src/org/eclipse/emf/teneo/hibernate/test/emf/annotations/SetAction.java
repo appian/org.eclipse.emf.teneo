@@ -32,7 +32,7 @@ import org.hibernate.collection.PersistentCollection;
  * Test 1n relation (contained and non-contained) using sets.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class SetAction extends AbstractTestAction {
 	/** The number of testitems created */
@@ -104,10 +104,13 @@ public class SetAction extends AbstractTestAction {
 			assertEquals(NO_ITEMS, list.getContainedItem().size());
 
 			// sorting by ABS of number
-			long prevValue = 100;
-			for (Item item : list.getJoinedItem()) {
-				assertTrue(item.getNumber() < prevValue);
-				prevValue = item.getNumber();
+			// only do this test for the real SetAction
+			if (this.getClass() == SetAction.class) {
+				long prevValue = 100;
+				for (Item item : list.getJoinedItem()) {
+					assertTrue(item.getNumber() < prevValue);
+					prevValue = item.getNumber();
+				}
 			}
 			
 			// do some actions
