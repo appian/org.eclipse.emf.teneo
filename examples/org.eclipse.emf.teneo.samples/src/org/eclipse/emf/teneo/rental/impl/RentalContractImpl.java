@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalContractImpl.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
+ * $Id: RentalContractImpl.java,v 1.5 2010/10/29 09:35:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental.impl;
 
@@ -382,7 +382,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 			case RentalPackage.RENTAL_CONTRACT__END_DATE:
 				return getEndDate();
 			case RentalPackage.RENTAL_CONTRACT__COST:
-				return new Float(getCost());
+				return getCost();
 			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
 				return getRentalUnits();
 			case RentalPackage.RENTAL_CONTRACT__CURRENCY:
@@ -411,7 +411,7 @@ public class RentalContractImpl extends EObjectImpl implements RentalContract {
 				setEndDate((Date)newValue);
 				return;
 			case RentalPackage.RENTAL_CONTRACT__COST:
-				setCost(((Float)newValue).floatValue());
+				setCost((Float)newValue);
 				return;
 			case RentalPackage.RENTAL_CONTRACT__RENTAL_UNITS:
 				getRentalUnits().clear();

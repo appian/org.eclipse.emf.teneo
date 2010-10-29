@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackageImpl.java,v 1.7 2010/04/03 09:21:09 mtaal Exp $
+ * $Id: SetPackageImpl.java,v 1.8 2010/10/29 09:35:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -163,6 +163,15 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getItem_Number() {
+		return (EAttribute)itemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItemList() {
 		return itemListEClass;
 	}
@@ -237,6 +246,7 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		itemEClass = createEClass(ITEM);
 		createEAttribute(itemEClass, ITEM__NAME);
 		createEReference(itemEClass, ITEM__ITEM_LIST);
+		createEAttribute(itemEClass, ITEM__NUMBER);
 
 		itemListEClass = createEClass(ITEM_LIST);
 		createEAttribute(itemListEClass, ITEM_LIST__NAME);
@@ -284,6 +294,7 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getItem_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_ItemList(), this.getItemList(), this.getItemList_Item(), "itemList", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getItem_Number(), ecorePackage.getELong(), "number", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemListEClass, ItemList.class, "ItemList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getItemList_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, ItemList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -405,7 +416,7 @@ public class SetPackageImpl extends EPackageImpl implements SetPackage {
 		  (getItemList_JoinedItem(), 
 		   source, 
 		   new String[] {
-			 "appinfo", "@OrderBy(\"name desc\")"
+			 "appinfo", "@OrderBy(\"ABS(number)\")"
 		   });	
 	}
 

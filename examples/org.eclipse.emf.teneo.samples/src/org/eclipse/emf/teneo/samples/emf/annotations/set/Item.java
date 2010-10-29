@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Item.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
+ * $Id: Item.java,v 1.4 2010/10/29 09:35:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getItemList <em>Item List</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getNumber <em>Number</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,5 +82,31 @@ public interface Item extends EObject {
 	 * @generated
 	 */
 	void setItemList(ItemList value);
+
+	/**
+	 * Returns the value of the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Number</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Number</em>' attribute.
+	 * @see #setNumber(long)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItem_Number()
+	 * @model
+	 * @generated
+	 */
+	long getNumber();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getNumber <em>Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Number</em>' attribute.
+	 * @see #getNumber()
+	 * @generated
+	 */
+	void setNumber(long value);
 
 } // Item

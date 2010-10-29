@@ -42,6 +42,7 @@
     </genClasses>
     <genClasses ecoreClass="rental.ecore#//Manufacturer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//Manufacturer/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rental.ecore#//Manufacturer/trusted"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

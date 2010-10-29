@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemList.java,v 1.7 2010/04/03 09:21:10 mtaal Exp $
+ * $Id: ItemList.java,v 1.8 2010/10/29 09:35:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -106,7 +106,7 @@ public interface ItemList extends EObject {
 	 * @return the value of the '<em>Joined Item</em>' reference list.
 	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage#getItemList_JoinedItem()
 	 * @model required="true" ordered="false"
-	 *        annotation="teneo.jpa appinfo='@OrderBy(\"name desc\")'"
+	 *        annotation="teneo.jpa appinfo='@OrderBy(\"ABS(number)\")'"
 	 *        extendedMetaData="kind='element' name='joinedItem'"
 	 * @generated
 	 */

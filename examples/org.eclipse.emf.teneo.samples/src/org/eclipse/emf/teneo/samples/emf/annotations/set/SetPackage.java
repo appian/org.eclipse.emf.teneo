@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SetPackage.java,v 1.4 2009/03/03 15:48:47 mtaal Exp $
+ * $Id: SetPackage.java,v 1.5 2010/10/29 09:35:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set;
 
@@ -116,13 +116,22 @@ public interface SetPackage extends EPackage {
 	int ITEM__ITEM_LIST = 1;
 
 	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__NUMBER = 2;
+
+	/**
 	 * The number of structural features of the '<em>Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_FEATURE_COUNT = 2;
+	int ITEM_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemListImpl <em>Item List</em>}' class.
@@ -232,6 +241,17 @@ public interface SetPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getItem_ItemList();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getNumber <em>Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.set.Item#getNumber()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EAttribute getItem_Number();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.set.ItemList <em>Item List</em>}'.
@@ -352,6 +372,14 @@ public interface SetPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ITEM__ITEM_LIST = eINSTANCE.getItem_ItemList();
+
+		/**
+		 * The meta object literal for the '<em><b>Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__NUMBER = eINSTANCE.getItem_Number();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemListImpl <em>Item List</em>}' class.

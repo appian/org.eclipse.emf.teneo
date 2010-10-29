@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RentalPackage.java,v 1.4 2008/08/11 21:54:33 mtaal Exp $
+ * $Id: RentalPackage.java,v 1.5 2010/10/29 09:35:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.rental;
 
@@ -293,13 +293,22 @@ public interface RentalPackage extends EPackage {
 	int MANUFACTURER__CODE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Trusted</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURER__TRUSTED = 1;
+
+	/**
 	 * The number of structural features of the '<em>Manufacturer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURER_FEATURE_COUNT = 1;
+	int MANUFACTURER_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}' enum.
@@ -545,6 +554,17 @@ public interface RentalPackage extends EPackage {
 	EAttribute getManufacturer_Code();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.rental.Manufacturer#getTrusted <em>Trusted</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trusted</em>'.
+	 * @see org.eclipse.emf.teneo.rental.Manufacturer#getTrusted()
+	 * @see #getManufacturer()
+	 * @generated
+	 */
+	EAttribute getManufacturer_Trusted();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -777,6 +797,14 @@ public interface RentalPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MANUFACTURER__CODE = eINSTANCE.getManufacturer_Code();
+
+		/**
+		 * The meta object literal for the '<em><b>Trusted</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANUFACTURER__TRUSTED = eINSTANCE.getManufacturer_Trusted();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.rental.RentalBicycleType <em>Bicycle Type</em>}' enum.

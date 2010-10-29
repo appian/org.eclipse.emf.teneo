@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.3 2009/03/03 15:48:47 mtaal Exp $
+ * $Id: ItemImpl.java,v 1.4 2010/10/29 09:35:34 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.set.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl#getItemList <em>Item List</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.set.impl.ItemImpl#getNumber <em>Number</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +64,26 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @ordered
 	 */
 	protected ItemList itemList;
+
+	/**
+	 * The default value of the '{@link #getNumber() <em>Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long NUMBER_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected long number = NUMBER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +173,27 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public long getNumber() {
+		return number;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumber(long newNumber) {
+		long oldNumber = number;
+		number = newNumber;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SetPackage.ITEM__NUMBER, oldNumber, number));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -189,6 +231,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 				return getName();
 			case SetPackage.ITEM__ITEM_LIST:
 				return getItemList();
+			case SetPackage.ITEM__NUMBER:
+				return getNumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,6 +250,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 				return;
 			case SetPackage.ITEM__ITEM_LIST:
 				setItemList((ItemList)newValue);
+				return;
+			case SetPackage.ITEM__NUMBER:
+				setNumber((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -225,6 +272,9 @@ public class ItemImpl extends EObjectImpl implements Item {
 			case SetPackage.ITEM__ITEM_LIST:
 				setItemList((ItemList)null);
 				return;
+			case SetPackage.ITEM__NUMBER:
+				setNumber(NUMBER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -241,6 +291,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case SetPackage.ITEM__ITEM_LIST:
 				return itemList != null;
+			case SetPackage.ITEM__NUMBER:
+				return number != NUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -257,6 +309,8 @@ public class ItemImpl extends EObjectImpl implements Item {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", number: ");
+		result.append(number);
 		result.append(')');
 		return result.toString();
 	}

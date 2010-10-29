@@ -35,6 +35,7 @@
         <details key="name" value="itemList"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ItemList">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -71,7 +72,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="joinedItem" ordered="false"
         lowerBound="1" upperBound="-1" eType="#//Item">
       <eAnnotations source="teneo.jpa">
-        <details key="appinfo" value="@OrderBy(&quot;name desc&quot;)"/>
+        <details key="appinfo" value="@OrderBy(&quot;ABS(number)&quot;)"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>

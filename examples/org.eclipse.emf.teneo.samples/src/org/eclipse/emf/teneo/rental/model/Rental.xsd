@@ -63,6 +63,7 @@
 	<complexType name="RentalBusiness">
 		<sequence>
 			<element name="name" type="string"/>
+			<element name="trusted" type="boolean"/>
 			<element maxOccurs="unbounded" minOccurs="0" maxOccurs="unbounded" name="rentalUnits" type="this:RentalUnit"/>
 			<element maxOccurs="unbounded" minOccurs="0" maxOccurs="unbounded" name="rentalContracts" type="this:RentalContract"/>
 		</sequence>

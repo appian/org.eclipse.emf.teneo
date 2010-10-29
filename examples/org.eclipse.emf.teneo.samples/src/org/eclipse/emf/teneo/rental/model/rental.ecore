@@ -142,5 +142,6 @@
         <details key="name" value="name"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trusted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
 </ecore:EPackage>
