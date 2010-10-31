@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVAction.java,v 1.3 2010/10/31 21:50:21 mtaal Exp $
+ * $Id: LibraryEAVAction.java,v 1.4 2010/10/31 22:09:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -38,7 +38,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd using eav.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class LibraryEAVAction extends AbstractTestAction {
 
@@ -117,7 +117,7 @@ public class LibraryEAVAction extends AbstractTestAction {
 			assertTrue(wBook.getTitle().compareTo(lBook.getTitle()) == 0);
 			assertTrue(wBook.getPages() == lBook.getPages());
 			assertTrue(wBook.getCategory() instanceof BookCategory);
-			assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL);
+			assertTrue(wBook.getCategory().equals(BookCategory.SCIENCE_FICTION_LITERAL));
 			store.commitTransaction();
 		}
 		testMerge(store);
