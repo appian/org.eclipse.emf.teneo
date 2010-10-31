@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: EAVSingleEAttributeValueHolder.java,v 1.9 2010/04/02 15:24:10 mtaal Exp $
+ * $Id: EAVSingleEAttributeValueHolder.java,v 1.10 2010/10/31 21:12:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -55,6 +55,8 @@ public class EAVSingleEAttributeValueHolder extends EAVValueHolder {
 	private EAVTextValue textValue;
 
 	public void set(Object value) {
+
+		System.err.println(getEStructuralFeature().getName());
 
 		// nullify old data
 		stringValue = null;

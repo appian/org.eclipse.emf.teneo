@@ -11,11 +11,16 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.33 2010/10/29 09:35:28 mtaal Exp $
+ * $Id: HbUtil.java,v 1.34 2010/10/31 21:12:29 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.logging.Log;
@@ -26,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.ERuntime;
@@ -47,6 +51,7 @@ import org.hibernate.mapping.Component;
 import org.hibernate.mapping.MetaAttribute;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
+import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.property.EmbeddedPropertyAccessor;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.proxy.HibernateProxy;
@@ -59,7 +64,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 public class HbUtil {
 
@@ -87,21 +92,55 @@ public class HbUtil {
 		}
 		return (EClass) epackage.getEClassifier(eClassMetaAttribute.getValue());
 	}
-	
+
 	/**
-	 * A merge method which can handle both normal as well as EAV mapped objects
+	 * A merge method which does not use Session.merge but uses the EMF api to travers object 
+	 * references and execute merge through the object tree. The merge will traverse all 
+	 * EReferences. The maximum level it will traverse is passed in as the maxMergeLevel 
+	 * parameters. 
 	 * 
-	 * @param session the hibernate session
-	 * @param eObject
-	 * @return
+	 * @param session
+	 *            the hibernate session
+	 * @param eObject the eObject to merge
+	 * @return the object read from the database with Merge support.
 	 */
-	public static EObject merge(Session session, EObject eObject) {
-		if (eObject instanceof DynamicEObjectImpl) {
-			final SessionImplementor sessionImplementor = (SessionImplementor)session;
-//			sessionImplementor.get
-			return null;
+	public static EObject merge(Session session, EObject eObject, int maxMergeLevel) {
+		SessionImplementor sessionImplementor = (SessionImplementor) session;
+		return merge(sessionImplementor, eObject, new HashMap<EObject, EObject>(), maxMergeLevel, 0);
+	}
+
+	private static EObject merge(SessionImplementor sessionImplementor, EObject eObject, Map<EObject, EObject> copyCache, int maxMergeLevel, int currentMergeLevel) {
+		if (copyCache.containsKey(eObject)) {
+			return copyCache.get(eObject);
+		}
+		final String entityName = sessionImplementor.guessEntityName(eObject);
+		final EntityPersister persister = sessionImplementor.getEntityPersister( entityName, eObject );
+		final Serializable id = persister.getIdentifier( eObject, sessionImplementor.getEntityMode() );
+		if (id != null) {
+			final EObject source = (EObject)((Session)sessionImplementor).get(entityName, id);
+			copyCache.put(eObject, source);
+			if (maxMergeLevel == currentMergeLevel) {
+				return source;
+			}
+			// now copy the features
+			for (EStructuralFeature eFeature : source.eClass().getEAllStructuralFeatures()) {
+				if (eFeature instanceof EAttribute) {
+					source.eSet(eFeature, eObject.eGet(eFeature));
+				} else if (eFeature.isMany()) {
+					 final List<EObject> newValues = new ArrayList<EObject>();
+					 @SuppressWarnings("unchecked")
+					final List<EObject> currentValues = (List<EObject>)eObject.eGet(eFeature);
+					 for (EObject currentValue : currentValues) {
+						 newValues.add(merge(sessionImplementor, currentValue, copyCache, maxMergeLevel, currentMergeLevel + 1));
+					 }
+					 source.eSet(eFeature, newValues);
+				} else {
+					source.eSet(eFeature, merge(sessionImplementor, (EObject)eObject.eGet(eFeature), copyCache, maxMergeLevel, currentMergeLevel + 1));
+				}
+			}
+			return source;
 		} else {
-			return (EObject)session.merge(eObject);
+			return eObject;
 		}
 	}
 
