@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryEAVAction.java,v 1.2 2010/04/02 22:43:23 mtaal Exp $
+ * $Id: LibraryEAVAction.java,v 1.3 2010/10/31 21:50:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -20,7 +20,9 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
+import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory;
@@ -36,7 +38,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd using eav.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class LibraryEAVAction extends AbstractTestAction {
 
@@ -89,7 +91,7 @@ public class LibraryEAVAction extends AbstractTestAction {
 		// walk through the structure starting from the library
 		{
 			store.beginTransaction();
-			Library lib = store.getObject(Library.class);
+			Library lib = store.getObjects(Library.class).get(0);
 
 			testLazySize(lib.getWriters());
 			testLazySize(lib.getBooks());
@@ -118,6 +120,38 @@ public class LibraryEAVAction extends AbstractTestAction {
 			assertTrue(wBook.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL);
 			store.commitTransaction();
 		}
+		testMerge(store);
+	}
+	
+	protected void testMerge(TestStore store) {
+
+		{
+			store.beginTransaction();
+			Library lib = store.getObjects(Library.class).get(0);
+			Book bk = lib.getBooks().get(0);
+			lib.setName("test123");
+			bk.setPages(5000);
+			for (Writer w : lib.getWriters()) {
+				w.getBooks().size();
+			}
+			store.commitTransaction();
+
+			// now do merge
+			store.beginTransaction();
+			final Library lib2 = (Library)HbUtil.merge(((HibernateTestStore)store).getSession(), lib, 3);
+			assertTrue(lib2 != lib);
+			assertTrue(lib2.getName().equals(lib.getName()));
+			assertTrue(lib2.getBooks().get(0) != bk);
+			assertTrue(lib2.getBooks().get(0).getTitle().equals(bk.getTitle()));
+			assertTrue(lib2.getBooks().get(0).getPages() == bk.getPages());
+			store.commitTransaction();
+			
+			store.beginTransaction();
+			Library lib3 = store.getObjects(Library.class).get(0);
+			assertTrue(lib3.getName().equals(lib.getName()));
+			store.commitTransaction();
+		}
+
 	}
 
 	protected void testLazySize(List<?> list) {

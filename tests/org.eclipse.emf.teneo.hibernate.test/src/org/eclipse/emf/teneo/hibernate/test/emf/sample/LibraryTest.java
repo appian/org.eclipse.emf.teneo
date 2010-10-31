@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryTest.java,v 1.19 2010/04/02 22:43:23 mtaal Exp $
+ * $Id: LibraryTest.java,v 1.20 2010/10/31 21:50:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -24,10 +24,13 @@ import java.util.List;
 import java.util.Properties;
 
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
+import org.eclipse.emf.teneo.hibernate.HbUtil;
 import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.mapping.strategy.impl.TeneoSQLNameStrategy;
+import org.eclipse.emf.teneo.samples.emf.sample.library.Book;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Library;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.Writer;
@@ -41,7 +44,7 @@ import org.hibernate.collection.PersistentCollection;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class LibraryTest extends AbstractActionTest {
 
@@ -133,6 +136,41 @@ public class LibraryTest extends AbstractActionTest {
 			assertTrue(size > 0);
 			assertFalse(persistentCollection.wasInitialized());
 			assertFalse(persistableEList.isLoaded());
+		}
+		
+		protected void testMerge(TestStore store) {
+
+			{
+				store.beginTransaction();
+				Library lib = (Library) store.query(Library.class, "name",
+						"Science Fiction Library", 1).get(0);
+				Book bk = lib.getBooks().get(0);
+				lib.setName("test123");
+				bk.setPages(5000);
+
+				// load the writers
+				for (Writer w : lib.getWriters()) {
+					w.getBooks().size();
+				}
+				store.commitTransaction();
+
+				// now do merge
+				store.beginTransaction();
+				final Library lib2 = (Library)HbUtil.merge(((HibernateTestStore)store).getSession(), lib, 2);
+				assertTrue(lib2 != lib);
+				assertTrue(lib2.getName().equals(lib.getName()));
+				assertTrue(lib2.getBooks().get(0) != bk);
+				assertTrue(lib2.getBooks().get(0).getTitle().equals(bk.getTitle()));
+				assertTrue(lib2.getBooks().get(0).getPages() == bk.getPages());
+				store.commitTransaction();
+				
+				store.beginTransaction();
+				Library lib3 = (Library) store.query(Library.class, "name",
+						"test123", 1).get(0);
+				assertNotNull(lib3);
+				store.commitTransaction();
+			}
+
 		}
 
 	};
