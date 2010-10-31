@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  */
 public class AllTests {
 
@@ -44,10 +44,6 @@ public class AllTests {
 				HibernateTestbed.instance().getConfigurations());
 
 		suite.addTestSuite(ExtensionEAVAction.class);
-		
-		if (true) {
-			return suite;
-		}
 		suite.addTestSuite(ExtensionAction.class);		
 		suite.addTestSuite(EMapAsListExtraLazyEAVAction.class);
 		suite.addTestSuite(EMapAsListEAVAction.class);
