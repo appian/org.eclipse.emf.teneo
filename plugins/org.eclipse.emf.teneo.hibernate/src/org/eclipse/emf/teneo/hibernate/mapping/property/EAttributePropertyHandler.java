@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.17 2010/10/29 13:22:15 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.18 2010/11/04 05:22:21 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -22,6 +22,7 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.util.AssertUtil;
@@ -45,7 +46,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  */
 public class EAttributePropertyHandler implements Getter, Setter,
 		PropertyAccessor {
@@ -64,6 +65,8 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	protected final Class<?> instanceClass;
 
 	private boolean handleUnsetAsNull = false;
+
+	private boolean convertUnsetToNull = false;
 
 	private boolean isObjectClass = false;
 
@@ -115,9 +118,9 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	 * @see org.hibernate.property.Getter#get(java.lang.Object)
 	 */
 	public Object get(Object owner) throws HibernateException {
-		if (handleUnsetAsNull) {
+		if (handleUnsetAsNull || convertUnsetToNull) {
 			EObject eobj = (EObject) owner;
-			if (!eobj.eIsSet(eAttribute)) {
+			if (!eobj.eIsSet(eAttribute) && eAttribute.isUnsettable()) {
 				return null;
 			}
 		}
@@ -175,23 +178,24 @@ public class EAttributePropertyHandler implements Getter, Setter,
 
 		EObject eobj = (EObject) target;
 		if (value == null) {
-			if (handleUnsetAsNull) {
+			if (handleUnsetAsNull && eAttribute.isUnsettable()) {
 				eobj.eUnset(eAttribute);
-			} else {
-				// can not set primitive values to null
-				if (isObjectClass) {
-					eobj.eSet(eAttribute, value);
-				}
+			} else if (isObjectClass || eAttribute instanceof EEnum) {
+				eobj.eSet(eAttribute, value);
 			}
 			return;
 		}
 
 		final Object curValue = get(target);
+
+		// do not set if not changed
+		// note: this does not handle unsettable correctly
+		// need to make this an option
 		if (curValue != null && curValue.equals(value)) {
-			return; // do not set if not changed
+			return;
 		}
 		if (curValue == value) {
-			return; // do not set if not changed
+			return;
 		}
 
 		final Object setValue;
@@ -356,6 +360,7 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	 */
 	public void setPersistenceOptions(PersistenceOptions po) {
 		handleUnsetAsNull = po.getHandleUnsetAsNull();
+		convertUnsetToNull = po.getConvertUnsetToNull();
 	}
 
 }
