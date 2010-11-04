@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.64 2010/09/16 18:44:36 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.65 2010/11/04 06:15:44 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -361,6 +361,11 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String HANDLE_UNSET_AS_NULL = RUNTIME_PREFIX + "handle_unset_as_null";
 
 	/**
+	 * When an unset feature is persisted, the database will get a null value, default is false.
+	 */
+	public static final String CONVERT_UNSET_TO_NULL = RUNTIME_PREFIX + "convert_unset_to_null";
+	
+	/**
 	 * If set to true then the document root is also mapped.
 	 */
 	public static final String MAP_DOCUMENT_ROOT = MAPPING_PREFIX + "map_document_root";
@@ -400,6 +405,7 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static Properties getDefaultProperties() {
 		final Properties props = new Properties();
 		props.setProperty(HANDLE_UNSET_AS_NULL, "false");
+		props.setProperty(CONVERT_UNSET_TO_NULL, "false");
 		props.setProperty(JOIN_TABLE_FOR_NON_CONTAINED_ASSOCIATIONS, "true");
 		props.setProperty(USE_MAPPING_FILE, "false");
 		// props.setProperty(MAPPING_FILE_PATH, null); // null is the default
@@ -533,6 +539,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean getHandleUnsetAsNull() {
 		return Boolean.valueOf(properties.getProperty(HANDLE_UNSET_AS_NULL)).booleanValue();
+	}
+
+	/**
+	 * @return value of the {@link #CONVERT_UNSET_TO_NULL} option
+	 */
+	public boolean getConvertUnsetToNull() {
+		return Boolean.valueOf(properties.getProperty(CONVERT_UNSET_TO_NULL)).booleanValue();
 	}
 
 	/**
