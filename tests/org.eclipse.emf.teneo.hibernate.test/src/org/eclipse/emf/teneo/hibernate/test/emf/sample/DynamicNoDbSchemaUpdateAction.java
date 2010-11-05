@@ -36,19 +36,153 @@ import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Testcase
+ * Dynamic case without changing the schema in the middle, works also for
+ * hsqldb.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.1 $
  */
-public class DynamicAction extends AbstractTestAction {
+public class DynamicNoDbSchemaUpdateAction extends AbstractTestAction {
+
+	// add a new eclass which inherits from person
+	private static EClass employeeClass = null;
+	private static EClass specialEmployeeClass = null;
+	private static EAttribute employeeManager = null;
+	private static EReference employeeDepartment = null;
+	private static EClass departmentClass = null;
+
+	private static EClass officeClass = null;
+	private static EAttribute officeName = null;
+	private static EReference officeAddressRef = null;
+
+	private static EClass officeAddressClass = null;
+	private static EAttribute addressName = null;
+
+	private static EReference departmentManager = null;
+	private static EPackage companyPackage = null;
+	private static EAttribute departmentName = null;
+	private static EAttribute departmentType = null;
+	private static EReference departmentOffice = null;
+	private static EReference employeeOffices = null;
+	private static EEnumLiteral el1 = null;
+
+	static {
+		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
+		final EcorePackage epackage = EcorePackage.eINSTANCE;
+		employeeClass = efactory.createEClass();
+		employeeClass.setName("Employee");
+
+		employeeManager = efactory.createEAttribute();
+		employeeManager.setName("manager");
+		employeeManager.setEType(epackage.getEBoolean());
+		employeeManager.setUnique(false);
+		employeeClass.getEStructuralFeatures().add(employeeManager);
+
+		employeeClass.getESuperTypes()
+				.add(DynamicPackage.eINSTANCE.getPerson());
+
+		specialEmployeeClass = efactory.createEClass();
+		specialEmployeeClass.setName("SpecialEmployee");
+		specialEmployeeClass.getESuperTypes().add(employeeClass);
+
+		departmentClass = efactory.createEClass();
+		departmentClass.setName("Department");
+
+		departmentName = efactory.createEAttribute();
+		departmentName.setName("name");
+		departmentName.setEType(epackage.getEString());
+		departmentClass.getEStructuralFeatures().add(departmentName);
+
+		departmentManager = efactory.createEReference();
+		departmentManager.setName("manager");
+		departmentManager.setEType(employeeClass);
+		departmentManager.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
+		departmentManager.setContainment(true);
+		departmentClass.getEStructuralFeatures().add(departmentManager);
+
+		employeeDepartment = efactory.createEReference();
+		employeeDepartment.setName("department");
+		employeeDepartment.setEType(departmentClass);
+		employeeDepartment.setUnique(false);
+		// will result in extra loads
+		// employeeDepartment.setContainment(true);
+		employeeClass.getEStructuralFeatures().add(employeeDepartment);
+
+		officeAddressClass = efactory.createEClass();
+		officeAddressClass.setName("Address");
+
+		addressName = efactory.createEAttribute();
+		addressName.setName("name");
+		addressName.setEType(epackage.getEString());
+		officeAddressClass.getEStructuralFeatures().add(addressName);
+
+		officeClass = efactory.createEClass();
+		officeClass.setName("Office");
+
+		officeName = efactory.createEAttribute();
+		officeName.setName("name");
+		officeName.setEType(epackage.getEString());
+		final EAnnotation idAnnotation = EcoreFactory.eINSTANCE
+				.createEAnnotation();
+		idAnnotation.setSource("teneo.jpa");
+		idAnnotation.getDetails().put("value", "@Id");
+		officeName.getEAnnotations().add(idAnnotation);
+		officeClass.getEStructuralFeatures().add(officeName);
+
+		officeAddressRef = efactory.createEReference();
+		officeAddressRef.setName("address");
+		officeAddressRef.setEType(officeAddressClass);
+		officeClass.getEStructuralFeatures().add(officeAddressRef);
+
+		departmentOffice = efactory.createEReference();
+		departmentOffice.setName("office");
+		departmentOffice.setEType(officeClass);
+		departmentOffice.setContainment(true);
+		departmentClass.getEStructuralFeatures().add(departmentOffice);
+
+		employeeOffices = efactory.createEReference();
+		employeeOffices.setName("offices");
+		employeeOffices.setEType(officeClass);
+		employeeOffices.setContainment(false);
+		employeeOffices.setUpperBound(-1);
+		specialEmployeeClass.getEStructuralFeatures().add(employeeOffices);
+
+		final EEnum dt = efactory.createEEnum();
+		dt.setName("DepartmentType");
+		el1 = efactory.createEEnumLiteral();
+		el1.setName("division");
+		el1.setValue(0);
+		dt.getELiterals().add(el1);
+		final EEnumLiteral el2 = efactory.createEEnumLiteral();
+		el2.setName("office");
+		el2.setValue(1);
+		dt.getELiterals().add(el2);
+		departmentType = efactory.createEAttribute();
+		departmentType.setName("departmentType");
+		departmentType.setEType(dt);
+		departmentClass.getEStructuralFeatures().add(departmentType);
+
+		companyPackage = efactory.createEPackage();
+		companyPackage.setName("elv");
+		companyPackage.setNsPrefix("elv");
+		companyPackage.setNsURI("http:///www.elver.org/DynamicTest");
+		companyPackage.getEClassifiers().add(employeeClass);
+		companyPackage.getEClassifiers().add(specialEmployeeClass);
+		companyPackage.getEClassifiers().add(departmentClass);
+		companyPackage.getEClassifiers().add(officeClass);
+		companyPackage.getEClassifiers().add(officeAddressClass);
+		companyPackage.getEClassifiers().add(dt);
+		EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(),
+				companyPackage);
+	}
+
 	/**
 	 * Constructor.
 	 * 
 	 * @param arg0
 	 */
-	public DynamicAction() {
-		super(DynamicPackage.eINSTANCE);
+	public DynamicNoDbSchemaUpdateAction() {
+		super(new EPackage[] { DynamicPackage.eINSTANCE, companyPackage });
 	}
 
 	@Override
@@ -62,8 +196,6 @@ public class DynamicAction extends AbstractTestAction {
 	@Override
 	public void doAction(TestStore store) {
 		final DynamicFactory factory = DynamicFactory.eINSTANCE;
-		final EcoreFactory efactory = EcoreFactory.eINSTANCE;
-		final EcorePackage epackage = EcorePackage.eINSTANCE;
 
 		// just create one person and save hime
 
@@ -109,139 +241,6 @@ public class DynamicAction extends AbstractTestAction {
 		// }
 		// store.commitTransaction();
 		// }
-
-		// add a new eclass which inherits from person
-		EClass employeeClass = null;
-		EClass specialEmployeeClass = null;
-		EAttribute employeeManager = null;
-		EReference employeeDepartment = null;
-		EClass departmentClass = null;
-
-		EClass officeClass = null;
-		EAttribute officeName = null;
-		EReference officeAddressRef = null;
-
-		EClass officeAddressClass = null;
-		EAttribute addressName = null;
-
-		EReference departmentManager = null;
-		EPackage companyPackage = null;
-		EAttribute departmentName = null;
-		EAttribute departmentType = null;
-		EReference departmentOffice = null;
-		EReference employeeOffices = null;
-		EEnumLiteral el1 = null;
-		{
-			employeeClass = efactory.createEClass();
-			employeeClass.setName("Employee");
-
-			employeeManager = efactory.createEAttribute();
-			employeeManager.setName("manager");
-			employeeManager.setEType(epackage.getEBoolean());
-			employeeManager.setUnique(false);
-			employeeClass.getEStructuralFeatures().add(employeeManager);
-
-			employeeClass.getESuperTypes().add(
-					DynamicPackage.eINSTANCE.getPerson());
-
-			specialEmployeeClass = efactory.createEClass();
-			specialEmployeeClass.setName("SpecialEmployee");
-			specialEmployeeClass.getESuperTypes().add(employeeClass);
-
-			departmentClass = efactory.createEClass();
-			departmentClass.setName("Department");
-
-			departmentName = efactory.createEAttribute();
-			departmentName.setName("name");
-			departmentName.setEType(epackage.getEString());
-			departmentClass.getEStructuralFeatures().add(departmentName);
-
-			departmentManager = efactory.createEReference();
-			departmentManager.setName("manager");
-			departmentManager.setEType(employeeClass);
-			departmentManager
-					.setUpperBound(ETypedElement.UNBOUNDED_MULTIPLICITY);
-			departmentManager.setContainment(true);
-			departmentClass.getEStructuralFeatures().add(departmentManager);
-
-			employeeDepartment = efactory.createEReference();
-			employeeDepartment.setName("department");
-			employeeDepartment.setEType(departmentClass);
-			employeeDepartment.setUnique(false);
-			// will result in extra loads
-			// employeeDepartment.setContainment(true);
-			employeeClass.getEStructuralFeatures().add(employeeDepartment);
-
-			officeAddressClass = efactory.createEClass();
-			officeAddressClass.setName("Address");
-
-			addressName = efactory.createEAttribute();
-			addressName.setName("name");
-			addressName.setEType(epackage.getEString());
-			officeAddressClass.getEStructuralFeatures().add(addressName);
-
-			officeClass = efactory.createEClass();
-			officeClass.setName("Office");
-
-			officeName = efactory.createEAttribute();
-			officeName.setName("name");
-			officeName.setEType(epackage.getEString());
-			final EAnnotation idAnnotation = EcoreFactory.eINSTANCE
-					.createEAnnotation();
-			idAnnotation.setSource("teneo.jpa");
-			idAnnotation.getDetails().put("value", "@Id");
-			officeName.getEAnnotations().add(idAnnotation);
-			officeClass.getEStructuralFeatures().add(officeName);
-
-			officeAddressRef = efactory.createEReference();
-			officeAddressRef.setName("address");
-			officeAddressRef.setEType(officeAddressClass);
-			officeClass.getEStructuralFeatures().add(officeAddressRef);
-
-			departmentOffice = efactory.createEReference();
-			departmentOffice.setName("office");
-			departmentOffice.setEType(officeClass);
-			departmentOffice.setContainment(true);
-			departmentClass.getEStructuralFeatures().add(departmentOffice);
-
-			employeeOffices = efactory.createEReference();
-			employeeOffices.setName("offices");
-			employeeOffices.setEType(officeClass);
-			employeeOffices.setContainment(false);
-			employeeOffices.setUpperBound(-1);
-			specialEmployeeClass.getEStructuralFeatures().add(employeeOffices);
-
-			final EEnum dt = efactory.createEEnum();
-			dt.setName("DepartmentType");
-			el1 = efactory.createEEnumLiteral();
-			el1.setName("division");
-			el1.setValue(0);
-			dt.getELiterals().add(el1);
-			final EEnumLiteral el2 = efactory.createEEnumLiteral();
-			el2.setName("office");
-			el2.setValue(1);
-			dt.getELiterals().add(el2);
-			departmentType = efactory.createEAttribute();
-			departmentType.setName("departmentType");
-			departmentType.setEType(dt);
-			departmentClass.getEStructuralFeatures().add(departmentType);
-
-			companyPackage = efactory.createEPackage();
-			companyPackage.setName("elv");
-			companyPackage.setNsPrefix("elv");
-			companyPackage.setNsURI("http:///www.elver.org/DynamicTest");
-			companyPackage.getEClassifiers().add(employeeClass);
-			companyPackage.getEClassifiers().add(specialEmployeeClass);
-			companyPackage.getEClassifiers().add(departmentClass);
-			companyPackage.getEClassifiers().add(officeClass);
-			companyPackage.getEClassifiers().add(officeAddressClass);
-			companyPackage.getEClassifiers().add(dt);
-			EPackage.Registry.INSTANCE.put(companyPackage.getNsURI(),
-					companyPackage);
-			store.addEPackage(companyPackage);
-			store.updateSchema();
-			// System.err.println(store.getMappingXML());
-		}
 
 		// return from here in case of hsqldb because hsqldb does
 		// not support db reconfiguration

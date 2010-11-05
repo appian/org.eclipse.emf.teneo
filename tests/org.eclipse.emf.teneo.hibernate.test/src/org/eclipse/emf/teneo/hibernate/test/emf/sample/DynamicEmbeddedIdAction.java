@@ -9,7 +9,6 @@
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
 
 import java.util.List;
-import java.util.Properties;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -20,18 +19,15 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.mapping.SerializableDynamicEObjectImpl;
-import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
-import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase for Bugzilla 321765
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class DynamicEmbeddedIdAction extends AbstractTestAction {
 

@@ -8,37 +8,20 @@
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
-import java.util.List;
-import java.util.Properties;
-
-import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.hibernate.mapping.SerializableDynamicEObjectImpl;
-import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.issues.bz321770.Bz321770Factory;
 import org.eclipse.emf.teneo.samples.issues.bz321770.Bz321770Package;
 import org.eclipse.emf.teneo.samples.issues.bz321770.Child;
 import org.eclipse.emf.teneo.samples.issues.bz321770.Parent;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
-import org.eclipse.emf.teneo.test.stores.HsqldbTestDatabaseAdapter;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
  * Testcase for bugzilla 321770
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class Bz321770Action extends AbstractTestAction {
-
 
 	public Bz321770Action() {
 		super(Bz321770Package.eINSTANCE);
@@ -61,7 +44,7 @@ public class Bz321770Action extends AbstractTestAction {
 			store.store(parent);
 			store.commitTransaction();
 		}
-		
+
 		{
 			store.beginTransaction();
 			Parent parent = store.getObject(Parent.class);

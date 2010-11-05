@@ -10,24 +10,11 @@ package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import java.util.Properties;
 
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
-import org.eclipse.emf.teneo.hibernate.HbSessionDataStore;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package;
-import org.eclipse.emf.teneo.samples.issues.bz329275.Bz329275Factory;
-import org.eclipse.emf.teneo.samples.issues.bz329275.Bz329275Package;
-import org.eclipse.emf.teneo.samples.issues.bz329275.Item;
-import org.eclipse.emf.teneo.samples.issues.bz329275.TestEnum;
-import org.eclipse.emf.teneo.test.AbstractTestAction;
-import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.cfg.Configuration;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class BZ329275_HandleUnsetAsNullAction extends BZ329275Action {
 

@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DynamicEAVAction.java,v 1.4 2010/11/05 09:23:38 mtaal Exp $
+ * $Id: DynamicEAVNoDBSchemaAction.java,v 1.1 2010/11/05 09:23:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test.emf.sample;
@@ -24,9 +24,9 @@ import org.eclipse.emf.teneo.PersistenceOptions;
  * Tests the dynamic example using an eav mapping.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.1 $
  */
-public class DynamicEAVAction extends DynamicNoDbSchemaUpdateAction {
+public class DynamicEAVNoDBSchemaAction extends DynamicAction {
 
 	@Override
 	public Properties getExtraConfigurationProperties() {
