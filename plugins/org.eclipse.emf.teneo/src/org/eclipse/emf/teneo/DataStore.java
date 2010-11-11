@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: DataStore.java,v 1.3 2008/03/10 21:31:20 mtaal Exp $
+ * $Id: DataStore.java,v 1.4 2010/11/11 10:28:03 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.extension.ExtensionManager;
  * Generic datastore interface used by hibernate and jpox.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public interface DataStore {
@@ -35,9 +35,11 @@ public interface DataStore {
 	EPackage[] getEPackages();
 
 	/**
+	 * Note: renamed from getProperties in a previous release.
+	 * 
 	 * @return the properties, the combination of jpox and hibernate properties
 	 */
-	Properties getProperties();
+	Properties getDataStoreProperties();
 
 	/** Return the extension manager */
 	ExtensionManager getExtensionManager();
