@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  * 
- * $Id: Tutorial.java,v 1.3 2010/03/03 15:21:56 mtaal Exp $
+ * $Id: Tutorial.java,v 1.4 2010/11/11 10:28:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -46,7 +46,7 @@ import org.hibernate.cfg.Environment;
  * Quick Start Tutorial
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class Tutorial {
 
@@ -59,7 +59,7 @@ public class Tutorial {
 		// "hibernate.properties" at the classpath root.
 		//
 		// Alternatively, you can set the properties programmatically:
-		// 
+		//
 		// For more information see <a
 		// href="http://www.hibernate.org/hib_docs/v3/reference/en/html/session-configuration.html#configuration-programmatic">
 		// section 3.1 of the Hibernate manual</a>.
@@ -110,7 +110,7 @@ public class Tutorial {
 		final String dataStoreName = "LibraryDataStore";
 		final HbDataStore dataStore = HbHelper.INSTANCE
 				.createRegisterDataStore(dataStoreName);
-		dataStore.setProperties(hibernateProperties);
+		dataStore.setDataStoreProperties(hibernateProperties);
 
 		// Configure the EPackages used by this DataStore.
 		dataStore.setEPackages(new EPackage[] { ExtlibraryPackage.eINSTANCE });

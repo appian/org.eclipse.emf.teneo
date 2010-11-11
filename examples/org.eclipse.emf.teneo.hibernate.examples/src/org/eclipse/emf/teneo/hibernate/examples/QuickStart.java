@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright> 
  *
- * $Id: QuickStart.java,v 1.6 2010/03/03 15:21:56 mtaal Exp $
+ * $Id: QuickStart.java,v 1.7 2010/11/11 10:28:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.examples;
@@ -34,65 +34,75 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Environment;
 
 /**
- * Quick Start Tutorial for the <a href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
+ * Quick Start Tutorial for the <a
+ * href="http://wiki.eclipse.org/Teneo">Teneo</a> project.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 public class QuickStart {
 
 	/** The main method */
 	public static void main(String[] args) {
-		// the name of the database, this database should exist but does not need to contain tables
+		// the name of the database, this database should exist but does not
+		// need to contain tables
 		String dbName = "library";
 		doQuickStart(dbName); // ignore return
 	}
 
 	/**
-	 * The method performing the real action. This method is used by other tutorials therefore has it been made public
-	 * and expects the database name and returns an instance of the HbDataStore.
+	 * The method performing the real action. This method is used by other
+	 * tutorials therefore has it been made public and expects the database name
+	 * and returns an instance of the HbDataStore.
 	 */
 	public static HbDataStore doQuickStart(String dbName) {
 
-		// The hibernate properties can be set by having a hibernate.properties file in the root of
+		// The hibernate properties can be set by having a hibernate.properties
+		// file in the root of
 		// the classpath.
 		// Another approach is setting the properties in the HbDataStore.
 		// For more information see section 3.1 of the Hibernate manual
 		final Properties props = new Properties();
-//		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
-//		props.setProperty(Environment.USER, "root");
-//		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/" + dbName);
-//		props.setProperty(Environment.PASS, "root");
-//		props.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+		// props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+		// props.setProperty(Environment.USER, "root");
+		// props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/" +
+		// dbName);
+		// props.setProperty(Environment.PASS, "root");
+		// props.setProperty(Environment.DIALECT,
+		// org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
 
 		props.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
 		props.setProperty(Environment.USER, "sa");
 		props.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
 		props.setProperty(Environment.PASS, "");
-		props.setProperty(Environment.DIALECT, org.hibernate.dialect.HSQLDialect.class.getName());
+		props.setProperty(Environment.DIALECT,
+				org.hibernate.dialect.HSQLDialect.class.getName());
 
 		// set a specific option
-		// see this page http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
+		// see this page
+		// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
 		// for all the available options
-		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, "REFRESH,PERSIST,MERGE");
+		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
+				"REFRESH,PERSIST,MERGE");
 
 		// the name of the session factory
 		String hbName = "Library";
 		// create the HbDataStore using the name
-		final HbDataStore hbds = HbHelper.INSTANCE.createRegisterDataStore(hbName);
+		final HbDataStore hbds = HbHelper.INSTANCE
+				.createRegisterDataStore(hbName);
 
 		// set the properties
-		hbds.setProperties(props);
+		hbds.setDataStoreProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(new EPackage[] { ExtlibraryPackage.eINSTANCE });
 
 		// initialize, also creates the database tables
 		try {
-		hbds.initialize();
+			hbds.initialize();
 		} finally {
 			// print the generated mapping
-			System.err.println(hbds.getMappingXML());			
+			System.err.println(hbds.getMappingXML());
 		}
 
 		SessionFactory sessionFactory = hbds.getSessionFactory();
@@ -118,8 +128,8 @@ public class QuickStart {
 		book.setTitle("The Hobbit");
 		book.setCategory(BookCategory.SCIENCE_FICTION);
 		session.save(book);
-		
-		// add the writer/book to the library. 
+
+		// add the writer/book to the library.
 		lib.getWriters().add(writer);
 		lib.getBooks().add(book);
 
