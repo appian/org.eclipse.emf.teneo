@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.29 2010/08/18 12:31:44 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.30 2010/11/11 10:28:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -23,8 +23,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.persistence.Cache;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnitUtil;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.metamodel.Metamodel;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -46,7 +50,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -139,7 +143,7 @@ public class HbEntityDataStore extends HbDataStore implements
 
 	/** Sets the properties in the Hibernate Configuration. */
 	protected void setPropertiesInConfiguration() {
-		Properties properties = getProperties();
+		Properties properties = getDataStoreProperties();
 		if (properties != null) {
 			setDefaultProperties(properties);
 			getConfiguration().addProperties(properties);
@@ -301,4 +305,25 @@ public class HbEntityDataStore extends HbDataStore implements
 	public boolean isOpen() {
 		return getEntityManagerFactory().isOpen();
 	}
+
+	public Cache getCache() {
+		return getEntityManagerFactory().getCache();
+	}
+
+	public CriteriaBuilder getCriteriaBuilder() {
+		return getEntityManagerFactory().getCriteriaBuilder();
+	}
+
+	public Metamodel getMetamodel() {
+		return getEntityManagerFactory().getMetamodel();
+	}
+
+	public PersistenceUnitUtil getPersistenceUnitUtil() {
+		return getEntityManagerFactory().getPersistenceUnitUtil();
+	}
+
+	public Map<String, Object> getProperties() {
+		return getEntityManagerFactory().getProperties();
+	}
+
 }

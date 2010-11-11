@@ -8,6 +8,7 @@
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ import org.hibernate.property.Setter;
  * The property handler which takes care of setting/getting the
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 @SuppressWarnings("unchecked")
 public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
@@ -136,6 +137,15 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 	 * @see org.hibernate.property.Getter#getMethod()
 	 */
 	public Method getMethod() {
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getMember()
+	 */
+	public Member getMember() {
 		return null;
 	}
 
@@ -370,15 +380,17 @@ public class EAVPropertyHandler implements Getter, Setter, PropertyAccessor,
 			if (repairFromIndex != -1) {
 				int index = repairFromIndex;
 				for (Object o : list.subList(repairFromIndex, list.size())) {
-					
+
 					if (o instanceof EObject) {
 						StoreUtil.setSyntheticListIndex(eFeature, o, index++);
-						StoreUtil.setSyntheticListOwner(eFeature, o, notification.getNotifier());
+						StoreUtil.setSyntheticListOwner(eFeature, o,
+								notification.getNotifier());
 					}
 					if (o instanceof EAVValueHolder) {
-						final EAVValueHolder eavValueHolder = (EAVValueHolder)o;
+						final EAVValueHolder eavValueHolder = (EAVValueHolder) o;
 						eavValueHolder.setListIndex(index++);
-						eavValueHolder.setValueOwner((EAVMultiValueHolder)valueHolder);
+						eavValueHolder
+								.setValueOwner((EAVMultiValueHolder) valueHolder);
 					}
 				}
 			}

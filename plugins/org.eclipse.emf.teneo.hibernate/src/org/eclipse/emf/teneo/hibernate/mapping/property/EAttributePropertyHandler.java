@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.18 2010/11/04 05:22:21 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.19 2010/11/11 10:28:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
 
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -46,7 +47,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  */
 public class EAttributePropertyHandler implements Getter, Setter,
 		PropertyAccessor {
@@ -86,6 +87,15 @@ public class EAttributePropertyHandler implements Getter, Setter,
 
 	public EAttribute getEAttribute() {
 		return eAttribute;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getMember()
+	 */
+	public Member getMember() {
+		return null;
 	}
 
 	/*

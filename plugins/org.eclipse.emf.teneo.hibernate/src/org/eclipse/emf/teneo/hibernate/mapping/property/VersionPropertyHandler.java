@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: VersionPropertyHandler.java,v 1.7 2010/02/04 10:53:07 mtaal Exp $
+ * $Id: VersionPropertyHandler.java,v 1.8 2010/11/11 10:28:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
 
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -33,9 +34,10 @@ import org.hibernate.property.Setter;
  * Reads the version from the internal version cache.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  */
-public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+public class VersionPropertyHandler implements Getter, Setter,
+		PropertyAccessor, ExtensionPoint {
 	/**
 	 * Generated Serial Version ID
 	 */
@@ -44,20 +46,24 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
+	 * java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
+	 * java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -72,8 +78,18 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	 * Reads the version from the versioncache
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap,
+			SessionImplementor session) throws HibernateException {
 		return IdentifierCacheHandler.getInstance().getVersion(owner);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getMember()
+	 */
+	public Member getMember() {
+		return null;
 	}
 
 	/*
@@ -101,7 +117,8 @@ public class VersionPropertyHandler implements Getter, Setter, PropertyAccessor,
 	}
 
 	/** Sets the version in the internal version cache */
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		IdentifierCacheHandler.getInstance().setVersion(target, value);
 	}
 }

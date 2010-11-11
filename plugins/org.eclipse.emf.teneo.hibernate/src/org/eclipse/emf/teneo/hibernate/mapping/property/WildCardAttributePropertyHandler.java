@@ -11,11 +11,12 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: WildCardAttributePropertyHandler.java,v 1.2 2010/02/04 10:53:07 mtaal Exp $
+ * $Id: WildCardAttributePropertyHandler.java,v 1.3 2010/11/11 10:28:19 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
 
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -35,16 +36,18 @@ import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
 
 /**
- * Implements the getter/setter for a wild card EAttribute property. This type of property is used in a feature map
- * created for wild cards.
+ * Implements the getter/setter for a wild card EAttribute property. This type
+ * of property is used in a feature map created for wild cards.
  * 
- * This class implements both the getter, setter and propertyaccessor interfaces. When the getGetter and getSetter
- * methods are called it returns itself.
+ * This class implements both the getter, setter and propertyaccessor
+ * interfaces. When the getGetter and getSetter methods are called it returns
+ * itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
-public class WildCardAttributePropertyHandler implements Getter, Setter, PropertyAccessor, ExtensionPoint {
+public class WildCardAttributePropertyHandler implements Getter, Setter,
+		PropertyAccessor, ExtensionPoint {
 
 	/**
 	 * Generated Version ID
@@ -54,20 +57,24 @@ public class WildCardAttributePropertyHandler implements Getter, Setter, Propert
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getGetter(java.lang.Class,
+	 * java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class, java.lang.String)
+	 * @see org.hibernate.property.PropertyAccessor#getSetter(java.lang.Class,
+	 * java.lang.String)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -97,18 +104,20 @@ public class WildCardAttributePropertyHandler implements Getter, Setter, Propert
 		}
 		final EAttribute eAttribute = (EAttribute) eFeature;
 		final EDataType eDataType = eAttribute.getEAttributeType();
-		final String valueString = eDataType.getEPackage().getEFactoryInstance().convertToString(eDataType, value);
+		final String valueString = eDataType.getEPackage()
+				.getEFactoryInstance().convertToString(eDataType, value);
 		return valueString;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object, java.util.Map,
-	 * org.hibernate.engine.SessionImplementor)
+	 * @see org.hibernate.property.Getter#getForInsert(java.lang.Object,
+	 * java.util.Map, org.hibernate.engine.SessionImplementor)
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap,
+			SessionImplementor session) throws HibernateException {
 		final Object value = get(owner);
 		return value;
 	}
@@ -116,10 +125,20 @@ public class WildCardAttributePropertyHandler implements Getter, Setter, Propert
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.property.Setter#set(java.lang.Object, java.lang.Object,
-	 * org.hibernate.engine.SessionFactoryImplementor)
+	 * @see org.hibernate.property.Getter#getMember()
 	 */
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public Member getMember() {
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Setter#set(java.lang.Object,
+	 * java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
+	 */
+	public void set(Object target, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		if (!(target instanceof HibernateFeatureMapEntry)) {
 			// happens during initial save
 			return;

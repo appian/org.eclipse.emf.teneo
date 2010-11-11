@@ -42,8 +42,8 @@ import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.ERuntime;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.PersistenceOptions.EContainerFeaturePersistenceStrategy;
+import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
@@ -102,7 +102,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.70 $
+ * @version $Revision: 1.71 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -406,7 +406,7 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * @deprecated use getProperties
+	 * @deprecated use getDatastoreProperties
 	 */
 	@Deprecated
 	public Properties getHibernateProperties() {
@@ -414,7 +414,7 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * @deprecated use getProperties
+	 * @deprecated use getDatastoreProperties
 	 */
 	@Deprecated
 	public Properties getPersistenceProperties() {
@@ -422,15 +422,23 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	/**
-	 * @deprecated use getProperties
+	 * @deprecated use setDatastoreProperties
 	 */
 	@Deprecated
 	public void setHibernateProperties(Properties hibernateProperties) {
 		this.properties = hibernateProperties;
 	}
 
-	/** Sets both the persistence as well as the hibernate properties */
+	/**
+	 * Sets both the persistence as well as the hibernate properties
+	 * 
+	 * @deprecated use {@link #setDataStoreProperties(Properties)}
+	 */
 	public void setProperties(Properties props) {
+		setDataStoreProperties(props);
+	}
+
+	public void setDataStoreProperties(Properties props) {
 		this.persistenceOptions = getExtensionManager().getExtension(
 				PersistenceOptions.class, new Object[] { props });
 		this.properties = props;
@@ -455,8 +463,11 @@ public abstract class HbDataStore implements DataStore {
 		logProperties(properties);
 	}
 
-	/** Returns the combined hibernate and persistence properties */
-	public Properties getProperties() {
+	/**
+	 * Note: was previously called getProperties! Returns the combined hibernate
+	 * and persistence properties
+	 */
+	public Properties getDataStoreProperties() {
 		final Properties props = new Properties();
 		props.putAll(properties);
 		props.putAll(getPersistenceOptions().getProperties());

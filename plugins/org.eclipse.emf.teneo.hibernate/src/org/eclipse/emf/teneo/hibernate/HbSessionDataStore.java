@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.27 2010/10/31 21:12:29 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.28 2010/11/11 10:28:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -30,7 +30,9 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.hibernate.mapper.MappingUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListener;
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
+import org.hibernate.Cache;
 import org.hibernate.Interceptor;
+import org.hibernate.TypeHelper;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.event.InitializeCollectionEventListener;
 
@@ -43,7 +45,7 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * implementing/registering your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 
 public class HbSessionDataStore extends HbBaseSessionDataStore {
@@ -145,7 +147,7 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 
 	/** Sets the properties in the Hibernate Configuration. */
 	protected void setPropertiesInConfiguration() {
-		Properties properties = getProperties();
+		Properties properties = getDataStoreProperties();
 		if (properties != null) {
 			setDefaultProperties(properties);
 			getConfiguration().addProperties(properties);
@@ -244,5 +246,17 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	@Override
 	public Configuration getHibernateConfiguration() {
 		return getConfiguration();
+	}
+
+	public boolean containsFetchProfileDefinition(String arg0) {
+		return getSessionFactory().containsFetchProfileDefinition(arg0);
+	}
+
+	public Cache getCache() {
+		return getSessionFactory().getCache();
+	}
+
+	public TypeHelper getTypeHelper() {
+		return getSessionFactory().getTypeHelper();
 	}
 }

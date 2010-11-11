@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: NewEContainerFeatureIDPropertyHandler.java,v 1.3 2010/02/04 10:53:07 mtaal Exp $
+ * $Id: NewEContainerFeatureIDPropertyHandler.java,v 1.4 2010/11/11 10:28:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.econtainer;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -47,16 +48,18 @@ import org.hibernate.property.Setter;
  * Handles the eContainerFeatureId field of an EObjectImpl.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
-public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, Getter, Setter, ExtensionPoint {
+public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor,
+		Getter, Setter, ExtensionPoint {
 	/**
 	 * Generated Serial Version UID
 	 */
 	private static final long serialVersionUID = -414024662032391298L;
 
-	private static Log log = LogFactory.getLog(NewEContainerFeatureIDPropertyHandler.class);
+	private static Log log = LogFactory
+			.getLog(NewEContainerFeatureIDPropertyHandler.class);
 
 	private Field ecField;
 
@@ -66,12 +69,23 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, 
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Getter getGetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Getter getGetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.hibernate.property.Getter#getMember()
+	 */
+	public Member getMember() {
+		return null;
+	}
+
 	@SuppressWarnings("rawtypes")
-	public Setter getSetter(Class theClass, String propertyName) throws PropertyNotFoundException {
+	public Setter getSetter(Class theClass, String propertyName)
+			throws PropertyNotFoundException {
 		return this;
 	}
 
@@ -87,11 +101,13 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, 
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Object getForInsert(Object owner, Map mergeMap, SessionImplementor session) throws HibernateException {
+	public Object getForInsert(Object owner, Map mergeMap,
+			SessionImplementor session) throws HibernateException {
 		return get(owner);
 	}
 
-	public void set(Object target, Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public void set(Object target, Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		AssertUtil.assertInstanceOfNotNull(target, InternalEObject.class);
 		AssertUtil.assertInstanceOf(value, EContainerFeatureIDHolder.class);
 
@@ -99,23 +115,33 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, 
 			EContainerFeatureIDHolder holder = (EContainerFeatureIDHolder) value;
 			if (target instanceof MinimalEObjectImpl) {
 				// TODO: externalize this
-				FieldUtil.callMethod(target, "eBasicSetContainerFeatureID", new Object[] { getContainerFeatureId(holder
-						.getEClass(), (EObject) target, holder.getEFeature()) });
+				FieldUtil.callMethod(
+						target,
+						"eBasicSetContainerFeatureID",
+						new Object[] { getContainerFeatureId(
+								holder.getEClass(), (EObject) target,
+								holder.getEFeature()) });
 			} else {
 				try {
-					ecField.set(target, getContainerFeatureId(holder.getEClass(), (EObject) target, holder
-							.getEFeature()));
+					ecField.set(
+							target,
+							getContainerFeatureId(holder.getEClass(),
+									(EObject) target, holder.getEFeature()));
 				} catch (Exception e) {
-					throw new HbMapperException("Exception when setting econtainer for: " + target.getClass().getName()
-							+ " to value: " + value, e);
+					throw new HbMapperException(
+							"Exception when setting econtainer for: "
+									+ target.getClass().getName()
+									+ " to value: " + value, e);
 				}
 			}
 		}
 	}
 
-	public int getContainerFeatureId(EClass containingEClass, EObject contained, EStructuralFeature eFeature) {
+	public int getContainerFeatureId(EClass containingEClass,
+			EObject contained, EStructuralFeature eFeature) {
 		if (eFeature instanceof EAttribute) {
-			return InternalEObject.EOPPOSITE_FEATURE_BASE - containingEClass.getFeatureID(eFeature);
+			return InternalEObject.EOPPOSITE_FEATURE_BASE
+					- containingEClass.getFeatureID(eFeature);
 
 		}
 		final EReference eReference = (EReference) eFeature;
@@ -123,7 +149,8 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor, 
 			final EReference containerEReference = eReference.getEOpposite();
 			return contained.eClass().getFeatureID(containerEReference);
 		} else {
-			return InternalEObject.EOPPOSITE_FEATURE_BASE - containingEClass.getFeatureID(eReference);
+			return InternalEObject.EOPPOSITE_FEATURE_BASE
+					- containingEClass.getFeatureID(eReference);
 		}
 	}
 

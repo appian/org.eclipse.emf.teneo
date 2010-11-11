@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbBaseSessionDataStore.java,v 1.10 2010/03/11 02:58:28 mtaal Exp $
+ * $Id: HbBaseSessionDataStore.java,v 1.11 2010/11/11 10:28:18 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -39,7 +39,7 @@ import org.hibernate.stat.Statistics;
  * readable.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public abstract class HbBaseSessionDataStore extends HbDataStore implements
 		SessionFactory {
@@ -94,54 +94,60 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 		this.sessionFactory = sessionFactory;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "deprecation" })
 	public void evict(Class persistentClass, Serializable id)
 			throws HibernateException {
 		getSessionFactory().evict(persistentClass, id);
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "deprecation" })
 	public void evict(Class persistentClass) throws HibernateException {
 		getSessionFactory().evict(persistentClass);
 	}
 
+	@SuppressWarnings({ "deprecation" })
 	public void evictCollection(String roleName, Serializable id)
 			throws HibernateException {
 		getSessionFactory().evictCollection(roleName, id);
 	}
 
+	@SuppressWarnings({ "deprecation" })
 	public void evictCollection(String roleName) throws HibernateException {
 		getSessionFactory().evictCollection(roleName);
 	}
 
+	@SuppressWarnings({ "deprecation" })
 	public void evictEntity(String entityName, Serializable id)
 			throws HibernateException {
 		getSessionFactory().evictEntity(entityName, id);
 	}
 
+	@SuppressWarnings({ "deprecation" })
 	public void evictEntity(String entityName) throws HibernateException {
 		getSessionFactory().evictEntity(entityName);
 	}
 
+	@SuppressWarnings({ "deprecation" })
 	public void evictQueries() throws HibernateException {
 		getSessionFactory().evictQueries();
 	}
 
+	@SuppressWarnings({ "deprecation" })
 	public void evictQueries(String cacheRegion) throws HibernateException {
 		getSessionFactory().evictQueries(cacheRegion);
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Map getAllClassMetadata() throws HibernateException {
 		return getSessionFactory().getAllClassMetadata();
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes" })
 	public Map getAllCollectionMetadata() throws HibernateException {
 		return getSessionFactory().getAllCollectionMetadata();
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes" })
 	public ClassMetadata getClassMetadata(Class persistentClass)
 			throws HibernateException {
 		return getSessionFactory().getClassMetadata(persistentClass);
