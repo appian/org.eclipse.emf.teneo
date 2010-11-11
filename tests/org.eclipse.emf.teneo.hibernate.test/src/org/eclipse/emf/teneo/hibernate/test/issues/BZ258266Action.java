@@ -21,7 +21,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class BZ258266Action extends AbstractTestAction {
 
@@ -52,7 +52,7 @@ public class BZ258266Action extends AbstractTestAction {
 		};
 
 		localDs.setEPackages(new EPackage[] { bz242995Package.eINSTANCE });
-		localDs.setProperties(hbds.getProperties());
+		localDs.setDataStoreProperties(hbds.getDataStoreProperties());
 		localDs.initialize();
 	}
 }

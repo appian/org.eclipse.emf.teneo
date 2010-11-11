@@ -29,7 +29,7 @@ import org.hibernate.cfg.Environment;
  * Reads an ecore file and creates an annotated mapping
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class ReadEcore {
 
@@ -130,7 +130,7 @@ public class ReadEcore {
 
 		// System.err.println(HbHelper.INSTANCE.generateMapping(epacks, props));
 
-		hbds.setProperties(props);
+		hbds.setDataStoreProperties(props);
 		hbds.setEPackages(epacks);
 		// initialize, also creates the database tables
 		try {
@@ -162,7 +162,7 @@ public class ReadEcore {
 		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 		// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-		hbds.setProperties(props);
+		hbds.setDataStoreProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(new EPackage[] { EcorePackage.eINSTANCE,
@@ -219,7 +219,7 @@ public class ReadEcore {
 		// props.setProperty(PersistenceOptions.PERSISTENCE_XML,
 		// "org/eclipse/emf/teneo/hibernate/test/test.persistence.xml");
 		props.setProperty(PersistenceOptions.MAXIMUM_SQL_NAME_LENGTH, "25");
-		hbds.setProperties(props);
+		hbds.setDataStoreProperties(props);
 
 		// sets its epackages stored in this datastore
 		hbds.setEPackages(epacks);
