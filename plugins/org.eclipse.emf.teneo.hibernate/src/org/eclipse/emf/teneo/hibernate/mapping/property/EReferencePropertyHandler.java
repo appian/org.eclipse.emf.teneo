@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.hibernate.resource.HibernateResource;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
@@ -40,7 +41,7 @@ import org.hibernate.property.Setter;
  * called it returns itself.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public class EReferencePropertyHandler implements Getter, Setter,
 		PropertyAccessor, ExtensionPoint {
@@ -60,6 +61,8 @@ public class EReferencePropertyHandler implements Getter, Setter,
 	protected boolean isBidirectional;
 
 	private int featureId = -1;
+
+	private boolean isId = false;
 
 	public void initialize(EReference eReference) {
 		this.eReference = eReference;
@@ -141,6 +144,10 @@ public class EReferencePropertyHandler implements Getter, Setter,
 	public void set(Object target, Object value,
 			SessionFactoryImplementor factory) throws HibernateException {
 		final Object curValue = get(target);
+
+		if (isId()) {
+			IdentifierCacheHandler.getInstance().setID(target, value);
+		}
 
 		if (isBidirectional
 				|| (target instanceof DynamicEObjectImpl && eReference
@@ -233,5 +240,13 @@ public class EReferencePropertyHandler implements Getter, Setter,
 	@SuppressWarnings("rawtypes")
 	public Class getReturnType() {
 		return InternalEObject.class;
+	}
+
+	public boolean isId() {
+		return isId;
+	}
+
+	public void setId(boolean isId) {
+		this.isId = isId;
 	}
 }

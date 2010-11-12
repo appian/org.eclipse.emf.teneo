@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.31 2010/11/12 13:35:37 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.32 2010/11/12 14:08:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -66,7 +66,7 @@ import org.hibernate.type.Type;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -263,7 +263,10 @@ public class HbEntityDataStore extends HbDataStore implements
 		}
 	}
 
-	/** Get the session factory */
+	/**
+	 * Note: returns an instance of the {@link WrappedEntityManagerFactory}
+	 * class.
+	 */
 	public EntityManagerFactory getEntityManagerFactory() {
 		if (!isInitialized()) {
 			initialize();
@@ -319,10 +322,16 @@ public class HbEntityDataStore extends HbDataStore implements
 		return entityManagerFactoryImpl.getSessionFactory();
 	}
 
+	/**
+	 * Note: returns the {@link WrappedEntityManager} class.
+	 */
 	public EntityManager createEntityManager() {
 		return getEntityManagerFactory().createEntityManager();
 	}
 
+	/**
+	 * Note: returns the {@link WrappedEntityManager} class.
+	 */
 	@SuppressWarnings("rawtypes")
 	public EntityManager createEntityManager(Map arg0) {
 		return getEntityManagerFactory().createEntityManager(arg0);
@@ -352,6 +361,19 @@ public class HbEntityDataStore extends HbDataStore implements
 		return getEntityManagerFactory().getProperties();
 	}
 
+	/**
+	 * The HbEntityDataStore uses a wrapped entity manager factory and wrapped
+	 * entity manager to work around an issue that the Hibernate entity manager/
+	 * query implementation does not resolve query parameters of the EntityType
+	 * correctly. It determines a wrong type. See the statement about this in
+	 * the javadoc of the Hibernate {@link EntityType#getReturnedClass()}
+	 * method.
+	 * 
+	 * To get to the original Hibernate entity manager use the
+	 * {@link WrappedEntityManagerFactory#getDelegate()} method.
+	 * 
+	 * @author mtaal
+	 */
 	public class WrappedEntityManagerFactory implements EntityManagerFactory {
 		private EntityManagerFactory delegate;
 
@@ -376,7 +398,8 @@ public class HbEntityDataStore extends HbDataStore implements
 			return new WrappedEntityManager(em);
 		}
 
-		public EntityManager createEntityManager(Map map) {
+		public EntityManager createEntityManager(
+				@SuppressWarnings("rawtypes") Map map) {
 			EntityManager em = delegate.createEntityManager(map);
 			return new WrappedEntityManager(em);
 		}
@@ -406,6 +429,16 @@ public class HbEntityDataStore extends HbDataStore implements
 		}
 	}
 
+	/**
+	 * See {@link WrappedEntityManagerFactory} for a description why this class
+	 * is needed.
+	 * 
+	 * To get to the original Hibernate entity manager use the
+	 * {@link WrappedEntityManager#getDelegateEntityManager()} method.
+	 * 
+	 * @author mtaal
+	 * 
+	 */
 	public class WrappedEntityManager implements EntityManager {
 		private EntityManager delegateEntityManager;
 
@@ -425,6 +458,7 @@ public class HbEntityDataStore extends HbDataStore implements
 			return delegateEntityManager.contains(arg0);
 		}
 
+		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createNamedQuery(String arg0, Class<T> arg1) {
 			return (TypedQuery<T>) HbEntityDataStore.this
 					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
@@ -437,7 +471,8 @@ public class HbEntityDataStore extends HbDataStore implements
 							.createNamedQuery(arg0));
 		}
 
-		public Query createNativeQuery(String arg0, Class arg1) {
+		public Query createNativeQuery(String arg0,
+				@SuppressWarnings("rawtypes") Class arg1) {
 			return (Query) HbEntityDataStore.this
 					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
 							.createNativeQuery(arg0, arg1));
@@ -455,12 +490,14 @@ public class HbEntityDataStore extends HbDataStore implements
 							.createNativeQuery(arg0));
 		}
 
+		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createQuery(CriteriaQuery<T> arg0) {
 			return (TypedQuery<T>) HbEntityDataStore.this
 					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
 							.createQuery(arg0));
 		}
 
+		@SuppressWarnings("unchecked")
 		public <T> TypedQuery<T> createQuery(String arg0, Class<T> arg1) {
 			return (TypedQuery<T>) HbEntityDataStore.this
 					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
@@ -601,6 +638,7 @@ public class HbEntityDataStore extends HbDataStore implements
 		}
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected QueryImpl<?> repairParameterJavaType(QueryImpl<?> query) {
 		try {
 			final Set<Parameter<?>> repairedParameters = new HashSet<Parameter<?>>();
@@ -657,6 +695,7 @@ public class HbEntityDataStore extends HbDataStore implements
 		return field;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private static class ParameterImpl implements Parameter {
 		private String name;
 		private Integer position;
@@ -678,10 +717,6 @@ public class HbEntityDataStore extends HbDataStore implements
 
 		public Integer getPosition() {
 			return position;
-		}
-
-		public Class<?> getJavaClass() {
-			return javaClass;
 		}
 	}
 

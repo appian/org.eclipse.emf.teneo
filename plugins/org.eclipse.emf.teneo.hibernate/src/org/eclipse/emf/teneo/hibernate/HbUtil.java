@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.35 2010/11/12 09:33:33 mtaal Exp $
+ * $Id: HbUtil.java,v 1.36 2010/11/12 14:08:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -41,6 +41,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler;
+import org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler;
 import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
@@ -64,7 +65,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  */
 public class HbUtil {
 
@@ -254,7 +255,7 @@ public class HbUtil {
 				HbConstants.PROPERTY_ECONTAINER_FEATURE_ID) == 0) {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
-
+		System.err.println(mappedProperty.getName());
 		EClass eClass = null;
 		if (mappedEClass != null) {
 			eClass = mappedEClass;
@@ -291,7 +292,15 @@ public class HbUtil {
 						extraLazy,
 						ds.getPersistenceOptions().isMapEMapAsTrueMap());
 			} else {
-				return ds.getHbContext().createEReferenceAccessor(eref);
+				PropertyAccessor erefPropertyHandler = ds.getHbContext()
+						.createEReferenceAccessor(eref);
+				if (erefPropertyHandler instanceof EReferencePropertyHandler) {
+					((EReferencePropertyHandler) erefPropertyHandler)
+							.setId(mappedProperty == mappedProperty
+									.getPersistentClass()
+									.getIdentifierProperty());
+				}
+				return erefPropertyHandler;
 			}
 		} else {
 			final EAttribute eattr = (EAttribute) efeature;
@@ -310,6 +319,10 @@ public class HbUtil {
 					final EAttributePropertyHandler eAttributePropertyHandler = (EAttributePropertyHandler) pa;
 					eAttributePropertyHandler.setPersistenceOptions(ds
 							.getPersistenceOptions());
+					eAttributePropertyHandler
+							.setId(mappedProperty == mappedProperty
+									.getPersistentClass()
+									.getIdentifierProperty());
 				}
 				return pa;
 			}

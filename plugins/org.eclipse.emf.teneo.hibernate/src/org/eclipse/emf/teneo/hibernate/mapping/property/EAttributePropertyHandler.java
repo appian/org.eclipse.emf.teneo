@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAttributePropertyHandler.java,v 1.19 2010/11/11 10:28:18 mtaal Exp $
+ * $Id: EAttributePropertyHandler.java,v 1.20 2010/11/12 14:08:17 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.property;
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierCacheHandler;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.HibernateException;
@@ -47,7 +48,7 @@ import org.hibernate.property.Setter;
  * This accessor also handles arrays of primitive types.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  */
 public class EAttributePropertyHandler implements Getter, Setter,
 		PropertyAccessor {
@@ -70,6 +71,8 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	private boolean convertUnsetToNull = false;
 
 	private boolean isObjectClass = false;
+
+	private boolean isId = false;
 
 	/** Constructor */
 	public EAttributePropertyHandler(EAttribute eAttribute) {
@@ -194,6 +197,10 @@ public class EAttributePropertyHandler implements Getter, Setter,
 				eobj.eSet(eAttribute, value);
 			}
 			return;
+		}
+
+		if (isId()) {
+			IdentifierCacheHandler.getInstance().setID(target, value);
 		}
 
 		final Object curValue = get(target);
@@ -371,6 +378,14 @@ public class EAttributePropertyHandler implements Getter, Setter,
 	public void setPersistenceOptions(PersistenceOptions po) {
 		handleUnsetAsNull = po.getHandleUnsetAsNull();
 		convertUnsetToNull = po.getConvertUnsetToNull();
+	}
+
+	public boolean isId() {
+		return isId;
+	}
+
+	public void setId(boolean isId) {
+		this.isId = isId;
 	}
 
 }
