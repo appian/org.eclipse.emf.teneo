@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.37 2010/11/12 14:16:53 mtaal Exp $
+ * $Id: HbUtil.java,v 1.38 2010/11/12 14:39:12 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -65,7 +65,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  */
 public class HbUtil {
 
@@ -295,10 +295,12 @@ public class HbUtil {
 				PropertyAccessor erefPropertyHandler = ds.getHbContext()
 						.createEReferenceAccessor(eref);
 				if (erefPropertyHandler instanceof EReferencePropertyHandler) {
-					((EReferencePropertyHandler) erefPropertyHandler)
-							.setId(mappedProperty == mappedProperty
-									.getPersistentClass()
-									.getIdentifierProperty());
+					if (mappedProperty.getPersistentClass() != null) {
+						((EReferencePropertyHandler) erefPropertyHandler)
+								.setId(mappedProperty == mappedProperty
+										.getPersistentClass()
+										.getIdentifierProperty());
+					}
 				}
 				return erefPropertyHandler;
 			}
@@ -319,10 +321,12 @@ public class HbUtil {
 					final EAttributePropertyHandler eAttributePropertyHandler = (EAttributePropertyHandler) pa;
 					eAttributePropertyHandler.setPersistenceOptions(ds
 							.getPersistenceOptions());
-					eAttributePropertyHandler
-							.setId(mappedProperty == mappedProperty
-									.getPersistentClass()
-									.getIdentifierProperty());
+					if (mappedProperty.getPersistentClass() != null) {
+						eAttributePropertyHandler
+								.setId(mappedProperty == mappedProperty
+										.getPersistentClass()
+										.getIdentifierProperty());
+					}
 				}
 				return pa;
 			}
