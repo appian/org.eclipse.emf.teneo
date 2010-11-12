@@ -58,7 +58,7 @@ import org.hibernate.ejb.EntityManagerImpl;
  * store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.39 $
+ * @version $Revision: 1.40 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -204,6 +204,11 @@ public class HibernateTestStore extends AbstractTestStore {
 		if (getDatabaseAdapter() instanceof HsqldbTestDatabaseAdapter
 				&& !props.containsKey(PersistenceOptions.SQL_CASE_STRATEGY)) {
 			props.setProperty(PersistenceOptions.SQL_CASE_STRATEGY, "uppercase");
+		}
+
+		if (isEntityManagerStore()) {
+			props.setProperty("hibernate.ejb.metamodel.generation", "disabled");
+			props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "true");
 		}
 
 		emfDataStore.setDataStoreProperties(props);
@@ -533,6 +538,9 @@ public class HibernateTestStore extends AbstractTestStore {
 	private String getEntityName(Class<?> clazz) {
 		final EModelResolver emodelResolver = EModelResolver.instance();
 		final EClass eclass = emodelResolver.getEClass(clazz);
+		if (isEntityManagerStore()) {
+			return EModelResolver.instance().getJavaClass(eclass).getName();
+		}
 		return getDataStore().getExtensionManager()
 				.getExtension(EntityNameStrategy.class).toEntityName(eclass);
 	}
@@ -560,6 +568,10 @@ public class HibernateTestStore extends AbstractTestStore {
 	@Override
 	public boolean isHibernateTestStore() {
 		return true;
+	}
+
+	public boolean isEntityManagerStore() {
+		return ejb3;
 	}
 
 	/** Set the xmlgregoriancalendar date */
