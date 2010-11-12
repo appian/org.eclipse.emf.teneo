@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbUtil.java,v 1.36 2010/11/12 14:08:17 mtaal Exp $
+ * $Id: HbUtil.java,v 1.37 2010/11/12 14:16:53 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -65,7 +65,7 @@ import org.hibernate.type.Type;
  * Contains some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public class HbUtil {
 
@@ -255,7 +255,7 @@ public class HbUtil {
 				HbConstants.PROPERTY_ECONTAINER_FEATURE_ID) == 0) {
 			return ds.getHbContext().createEContainerFeatureIDAccessor();
 		}
-		System.err.println(mappedProperty.getName());
+
 		EClass eClass = null;
 		if (mappedEClass != null) {
 			eClass = mappedEClass;
