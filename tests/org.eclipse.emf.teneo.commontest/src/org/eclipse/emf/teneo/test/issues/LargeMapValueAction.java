@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LargeMapValueAction.java,v 1.1 2008/04/11 03:21:48 mtaal Exp $
+ * $Id: LargeMapValueAction.java,v 1.2 2010/11/12 14:17:00 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.issues;
@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase for emap with large value field.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LargeMapValueAction extends AbstractTestAction {
 
@@ -52,8 +52,8 @@ public class LargeMapValueAction extends AbstractTestAction {
 	public void doAction(TestStore store) {
 		TestElement te = LargemapvalueFactory.eINSTANCE.createTestElement();
 		te.setTestProp(largeString1);
-		te.getTestMap().put("key1", largeString1);
-		te.getTestMap().put("key2", largeString2);
+		te.getTestMap().put("key1", largeString1.intern());
+		te.getTestMap().put("key2", largeString2.intern());
 		store.beginTransaction();
 		store.store(te);
 		store.commitTransaction();
