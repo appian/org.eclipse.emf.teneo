@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbSessionDataStore.java,v 1.28 2010/11/11 10:28:18 mtaal Exp $
+ * $Id: HbSessionDataStore.java,v 1.29 2010/11/12 09:33:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -45,9 +45,10 @@ import org.hibernate.event.InitializeCollectionEventListener;
  * implementing/registering your own HbDataStoreFactory in the HibernateHelper.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  */
 
+@SuppressWarnings("unchecked")
 public class HbSessionDataStore extends HbBaseSessionDataStore {
 
 	private static final long serialVersionUID = 1L;

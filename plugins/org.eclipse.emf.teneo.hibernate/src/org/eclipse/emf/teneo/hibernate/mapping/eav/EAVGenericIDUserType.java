@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
 
-import org.hibernate.Hibernate;
+import org.hibernate.type.StandardBasicTypes;
 import org.hibernate.usertype.UserType;
 
 /**
@@ -64,8 +64,10 @@ public class EAVGenericIDUserType implements UserType {
 		return x.equals(y);
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws SQLException {
-		final String value = (String) Hibernate.STRING.nullSafeGet(rs, names[0]);
+	public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
+			throws SQLException {
+		final String value = (String) StandardBasicTypes.STRING.nullSafeGet(rs,
+				names[0]);
 		if (rs.wasNull()) {
 			return null;
 		}
@@ -79,11 +81,13 @@ public class EAVGenericIDUserType implements UserType {
 		return id;
 	}
 
-	public void nullSafeSet(PreparedStatement statement, Object value, int index) throws SQLException {
+	public void nullSafeSet(PreparedStatement statement, Object value, int index)
+			throws SQLException {
 		if (value == null) {
 			statement.setNull(index, Types.VARCHAR);
 		} else {
-			statement.setString(index, value.toString() + SEPARATOR + value.getClass().getName());
+			statement.setString(index, value.toString() + SEPARATOR
+					+ value.getClass().getName());
 		}
 	}
 
@@ -108,12 +112,15 @@ public class EAVGenericIDUserType implements UserType {
 		try {
 			Constructor<?> constructor = constructors.get(idType);
 			if (constructor == null) {
-				Class<?> idClass = this.getClass().getClassLoader().loadClass(idType);
-				constructor = idClass.getConstructor(new Class[] { String.class });
+				Class<?> idClass = this.getClass().getClassLoader()
+						.loadClass(idType);
+				constructor = idClass
+						.getConstructor(new Class[] { String.class });
 				constructors.put(idType, constructor);
 			}
 
-			return (Serializable) constructor.newInstance(new Object[] { idStr });
+			return (Serializable) constructor
+					.newInstance(new Object[] { idStr });
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
 		}

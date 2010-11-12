@@ -12,7 +12,7 @@
  *   Alexandros Karypidis (bugzilla 207799)
  * </copyright>
  *
- * $Id: XSDDateTime.java,v 1.3 2007/12/28 14:36:42 mtaal Exp $
+ * $Id: XSDDateTime.java,v 1.4 2010/11/12 09:33:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -33,11 +33,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.type.MutableType;
 
 /**
- * Implements the hibernate UserType for EMF's XMLGregorianCalendar ("datetime" type in XSD).
+ * Implements the hibernate UserType for EMF's XMLGregorianCalendar ("datetime"
+ * type in XSD).
  * 
  * @author <a href="mailto:bvetter@alterpoint.com">Brian Vetter</a>
  * @version $Revision
  */
+@SuppressWarnings("deprecation")
 public class XSDDateTime extends MutableType {
 
 	static final long serialVersionUID = 1;
@@ -70,7 +72,9 @@ public class XSDDateTime extends MutableType {
 	 */
 	@Override
 	public Object deepCopyNotNull(Object value) {
-		return dataTypeFactory.newXMLGregorianCalendar(((XMLGregorianCalendar) value).toGregorianCalendar());
+		return dataTypeFactory
+				.newXMLGregorianCalendar(((XMLGregorianCalendar) value)
+						.toGregorianCalendar());
 	}
 
 	/*
@@ -92,7 +96,8 @@ public class XSDDateTime extends MutableType {
 	}
 
 	/*
-	 * @see org.hibernate.type.NullableType#isEqual(java.lang.Object, java.lang.Object)
+	 * @see org.hibernate.type.NullableType#isEqual(java.lang.Object,
+	 * java.lang.Object)
 	 */
 	@Override
 	public boolean isEqual(Object x, Object y) throws HibernateException {
@@ -109,17 +114,20 @@ public class XSDDateTime extends MutableType {
 	}
 
 	/*
-	 * @see org.hibernate.type.AbstractType#getHashCode(java.lang.Object, org.hibernate.EntityMode)
+	 * @see org.hibernate.type.AbstractType#getHashCode(java.lang.Object,
+	 * org.hibernate.EntityMode)
 	 */
 	@Override
-	public int getHashCode(Object x, EntityMode entityMode) throws HibernateException {
+	public int getHashCode(Object x, EntityMode entityMode)
+			throws HibernateException {
 		return x.hashCode();
 	}
 
 	/*
 	 * Transform the date in the resultSet into a XMLGregorianCalendar instance.
 	 * 
-	 * @see org.hibernate.type.NullableType#get(java.sql.ResultSet, java.lang.String)
+	 * @see org.hibernate.type.NullableType#get(java.sql.ResultSet,
+	 * java.lang.String)
 	 */
 	@Override
 	public Object get(ResultSet resultSet, String name) throws SQLException {
@@ -132,13 +140,17 @@ public class XSDDateTime extends MutableType {
 	}
 
 	/*
-	 * Transform the XMLGregorianCalendar into a timestamp type to store in the database
+	 * Transform the XMLGregorianCalendar into a timestamp type to store in the
+	 * database
 	 * 
-	 * @see org.hibernate.type.NullableType#set(java.sql.PreparedStatement, java.lang.Object, int)
+	 * @see org.hibernate.type.NullableType#set(java.sql.PreparedStatement,
+	 * java.lang.Object, int)
 	 */
 	@Override
-	public void set(PreparedStatement statement, Object value, int index) throws SQLException {
-		Timestamp d = new Timestamp(((XMLGregorianCalendar) value).toGregorianCalendar().getTime().getTime());
+	public void set(PreparedStatement statement, Object value, int index)
+			throws SQLException {
+		Timestamp d = new Timestamp(((XMLGregorianCalendar) value)
+				.toGregorianCalendar().getTime().getTime());
 		statement.setTimestamp(index, d);
 	}
 

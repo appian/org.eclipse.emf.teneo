@@ -81,6 +81,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
+import org.hibernate.cfg.Mappings;
 import org.hibernate.engine.CascadeStyle;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Column;
@@ -102,7 +103,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.71 $
+ * @version $Revision: 1.72 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -753,7 +754,8 @@ public abstract class HbDataStore implements DataStore {
 										.getName());
 						inverseRefProperty.setLazy(false);
 
-						final ManyToOne mto = new ManyToOne(collectionTable);
+						final ManyToOne mto = new ManyToOne(getMappings(),
+								collectionTable);
 						mto.setReferencedEntityName(pc.getEntityName());
 						mto.setLazy(false);
 						mto.setFetchMode(FetchMode.SELECT);
@@ -781,7 +783,7 @@ public abstract class HbDataStore implements DataStore {
 							join.addProperty(inverseRefProperty);
 
 							final ManyToOne keyValue = new ManyToOne(
-									collectionTable);
+									getMappings(), collectionTable);
 							join.setKey(keyValue);
 							@SuppressWarnings("unchecked")
 							final Iterator<Column> keyColumns = collection
@@ -842,7 +844,7 @@ public abstract class HbDataStore implements DataStore {
 							}
 						}
 
-						final SimpleValue sv = new SimpleValue(
+						final SimpleValue sv = new SimpleValue(getMappings(),
 								indexedCollection.getIndex().getTable());
 						sv.setTypeName("integer");
 						// final Column svColumn = new Column(column.getName());
@@ -1196,7 +1198,7 @@ public abstract class HbDataStore implements DataStore {
 		eContainer.setNodeName(eContainer.getName());
 		eContainer.setPropertyAccessorName(EContainerAccessor.class.getName());
 
-		final SimpleValue sv = new SimpleValue(pc.getTable());
+		final SimpleValue sv = new SimpleValue(getMappings(), pc.getTable());
 		sv.setTypeName(EContainerUserType.class.getName());
 
 		final Column eccColumn = new Column(getPersistenceOptions()
@@ -1222,7 +1224,8 @@ public abstract class HbDataStore implements DataStore {
 			ecFID.setNodeName(ecFID.getName());
 			ecFID.setPropertyAccessorName(EContainerFeatureIDAccessor.class
 					.getName());
-			final SimpleValue svfid = new SimpleValue(pc.getTable());
+			final SimpleValue svfid = new SimpleValue(getMappings(),
+					pc.getTable());
 			svfid.setTypeName("integer");
 
 			final Column ecfColumn = new Column(getPersistenceOptions()
@@ -1243,7 +1246,8 @@ public abstract class HbDataStore implements DataStore {
 			ecFID.setNodeName(ecFID.getName());
 			ecFID.setPropertyAccessorName(NewEContainerFeatureIDPropertyHandler.class
 					.getName());
-			final SimpleValue svfid = new SimpleValue(pc.getTable());
+			final SimpleValue svfid = new SimpleValue(getMappings(),
+					pc.getTable());
 			svfid.setTypeName(EContainerFeatureIDUserType.class.getName());
 
 			final Column ecfColumn = new Column(getPersistenceOptions()
@@ -1832,5 +1836,9 @@ public abstract class HbDataStore implements DataStore {
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
+	}
+
+	protected Mappings getMappings() {
+		return getHibernateConfiguration().createMappings();
 	}
 }

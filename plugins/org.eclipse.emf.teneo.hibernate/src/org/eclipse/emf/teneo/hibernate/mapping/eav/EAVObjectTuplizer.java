@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EAVObjectTuplizer.java,v 1.3 2010/08/18 11:50:38 mtaal Exp $
+ * $Id: EAVObjectTuplizer.java,v 1.4 2010/11/12 09:33:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapping.eav;
@@ -52,14 +52,14 @@ import org.hibernate.proxy.ProxyFactory;
 import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.AbstractEntityTuplizer;
 import org.hibernate.tuple.entity.EntityMetamodel;
-import org.hibernate.type.AbstractComponentType;
+import org.hibernate.type.CompositeType;
 import org.hibernate.util.ReflectHelper;
 
 /**
  * The Tuplizer for objects mapped according to the EAV Schema.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 
 public class EAVObjectTuplizer extends AbstractEntityTuplizer {
@@ -68,7 +68,8 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	private static Log log = LogFactory.getLog(EAVObjectTuplizer.class);
 
 	/**
-	 * The mapped class, defaults to EObject for entities and to the real impl class for mapped classes
+	 * The mapped class, defaults to EObject for entities and to the real impl
+	 * class for mapped classes
 	 */
 	private Class<?> mappedClass;
 
@@ -77,7 +78,8 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	/** The entitymetamodel for which this is all done */
 	// private final EntityMetamodel theEntityMetamodel;
 	/** Constructor */
-	public EAVObjectTuplizer(EntityMetamodel entityMetamodel, PersistentClass mappedEntity) {
+	public EAVObjectTuplizer(EntityMetamodel entityMetamodel,
+			PersistentClass mappedEntity) {
 		super(entityMetamodel, mappedEntity);
 		// theEntityMetamodel = entityMetamodel;
 		if (mappedEntity.getMappedClass() != null) {
@@ -93,7 +95,8 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	 */
 	@Override
 	public Serializable getIdentifier(Object object) throws HibernateException {
-		Serializable id = (Serializable) IdentifierCacheHandler.getInstance().getID(object);
+		Serializable id = (Serializable) IdentifierCacheHandler.getInstance()
+				.getID(object);
 		if (id != null) {
 			return id;
 		}
@@ -103,19 +106,24 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.entity.EntityTuplizer#determineConcreteSubclassEntityName(java.lang.Object,
-	 * org.hibernate.engine.SessionFactoryImplementor)
+	 * @see
+	 * org.hibernate.tuple.entity.EntityTuplizer#determineConcreteSubclassEntityName
+	 * (java.lang.Object, org.hibernate.engine.SessionFactoryImplementor)
 	 */
-	public String determineConcreteSubclassEntityName(Object entityInstance, SessionFactoryImplementor factory) {
+	public String determineConcreteSubclassEntityName(Object entityInstance,
+			SessionFactoryImplementor factory) {
 		final Class<?> concreteEntityClass = entityInstance.getClass();
 		if (concreteEntityClass == getMappedClass()) {
 			return getEntityName();
 		} else {
-			String entityName = getEntityMetamodel().findEntityNameByEntityClass(concreteEntityClass);
+			String entityName = getEntityMetamodel()
+					.findEntityNameByEntityClass(concreteEntityClass);
 			if (entityName == null) {
-				throw new HibernateException("Unable to resolve entity name from Class ["
-						+ concreteEntityClass.getName() + "]" + " expected instance/subclass of [" + getEntityName()
-						+ "]");
+				throw new HibernateException(
+						"Unable to resolve entity name from Class ["
+								+ concreteEntityClass.getName() + "]"
+								+ " expected instance/subclass of ["
+								+ getEntityName() + "]");
 			}
 			return entityName;
 		}
@@ -148,7 +156,8 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	 * Sets the identifier in the cache.
 	 */
 	@Override
-	public void setIdentifier(Object object, Serializable id) throws HibernateException {
+	public void setIdentifier(Object object, Serializable id)
+			throws HibernateException {
 		IdentifierCacheHandler.getInstance().setID(object, id);
 		super.setIdentifier(object, id);
 	}
@@ -156,13 +165,16 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	/** Creates an EMF Instantiator */
 	@Override
 	protected Instantiator buildInstantiator(PersistentClass persistentClass) {
-		if (persistentClass.getEntityName().equals(Constants.EAV_EOBJECT_ENTITY_NAME)) {
+		if (persistentClass.getEntityName().equals(
+				Constants.EAV_EOBJECT_ENTITY_NAME)) {
 			return null;
 		}
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
+		final EClass eclass = ds.getEntityNameStrategy().toEClass(
+				persistentClass.getEntityName());
 		if (eclass == null) {
-			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
+			throw new HbMapperException("No eclass found for entityname: "
+					+ persistentClass.getEntityName());
 		}
 		return new EMFInstantiator(eclass, persistentClass);
 	}
@@ -170,47 +182,57 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate.mapping.Property ,
-	 * org.hibernate.mapping.PersistentClass)
+	 * @see
+	 * org.hibernate.tuple.AbstractEntityTuplizer#buildPropertyGetter(org.hibernate
+	 * .mapping.Property , org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
-	protected Getter buildPropertyGetter(Property mappedProperty, PersistentClass mappedEntity) {
+	protected Getter buildPropertyGetter(Property mappedProperty,
+			PersistentClass mappedEntity) {
 		if (mappedProperty.getName().equals("values")) {
 			return mappedProperty.getGetter(EObjectImpl.class);
 		}
-		return getPropertyAccessor(mappedProperty, mappedEntity).getGetter(null, mappedProperty.getName());
+		return getPropertyAccessor(mappedProperty, mappedEntity).getGetter(
+				null, mappedProperty.getName());
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate.mapping.Property ,
-	 * org.hibernate.mapping.PersistentClass)
+	 * @see
+	 * org.hibernate.tuple.AbstractEntityTuplizer#buildPropertySetter(org.hibernate
+	 * .mapping.Property , org.hibernate.mapping.PersistentClass)
 	 */
 	@Override
-	protected Setter buildPropertySetter(Property mappedProperty, PersistentClass mappedEntity) {
+	protected Setter buildPropertySetter(Property mappedProperty,
+			PersistentClass mappedEntity) {
 		if (mappedProperty.getName().equals("values")) {
 			return mappedProperty.getSetter(EObjectImpl.class);
 		}
-		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(null, mappedProperty.getName());
+		return getPropertyAccessor(mappedProperty, mappedEntity).getSetter(
+				null, mappedProperty.getName());
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.hibernate.tuple.AbstractEntityTuplizer#buildProxyFactory(org.hibernate.mapping. PersistentClass,
-	 * org.hibernate.property.Getter, org.hibernate.property.Setter)
+	 * @seeorg.hibernate.tuple.AbstractEntityTuplizer#buildProxyFactory(org.
+	 * hibernate.mapping. PersistentClass, org.hibernate.property.Getter,
+	 * org.hibernate.property.Setter)
 	 */
 	@Override
-	protected ProxyFactory buildProxyFactory(PersistentClass persistentClass, Getter idGetter, Setter idSetter) {
+	protected ProxyFactory buildProxyFactory(PersistentClass persistentClass,
+			Getter idGetter, Setter idSetter) {
 		if (persistentClass.getClassName() == null) { // an entity, no proxy
 			return null;
 		}
 
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
-		final EClass eclass = ds.getEntityNameStrategy().toEClass(persistentClass.getEntityName());
+		final EClass eclass = ds.getEntityNameStrategy().toEClass(
+				persistentClass.getEntityName());
 		if (eclass == null) {
-			throw new HbMapperException("No eclass found for entityname: " + persistentClass.getEntityName());
+			throw new HbMapperException("No eclass found for entityname: "
+					+ persistentClass.getEntityName());
 		}
 
 		// get all the interfaces from the main class, add the real interface
@@ -243,20 +265,29 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 		}
 
 		// get the idgettters/setters
-		final Method theIdGetterMethod = idGetter == null ? null : idGetter.getMethod();
-		final Method theIdSetterMethod = idSetter == null ? null : idSetter.getMethod();
+		final Method theIdGetterMethod = idGetter == null ? null : idGetter
+				.getMethod();
+		final Method theIdSetterMethod = idSetter == null ? null : idSetter
+				.getMethod();
 
-		final Method proxyGetIdentifierMethod = theIdGetterMethod == null || pInterface == null ? null : ReflectHelper
-				.getMethod(pInterface, theIdGetterMethod);
-		final Method proxySetIdentifierMethod = theIdSetterMethod == null || pInterface == null ? null : ReflectHelper
-				.getMethod(pInterface, theIdSetterMethod);
+		final Method proxyGetIdentifierMethod = theIdGetterMethod == null
+				|| pInterface == null ? null : ReflectHelper.getMethod(
+				pInterface, theIdGetterMethod);
+		final Method proxySetIdentifierMethod = theIdSetterMethod == null
+				|| pInterface == null ? null : ReflectHelper.getMethod(
+				pInterface, theIdSetterMethod);
 
-		ProxyFactory pf = Environment.getBytecodeProvider().getProxyFactoryFactory().buildProxyFactory();
+		ProxyFactory pf = Environment.getBytecodeProvider()
+				.getProxyFactoryFactory().buildProxyFactory();
 		try {
-			pf.postInstantiate(getEntityName(), mappedClass, proxyInterfaces, proxyGetIdentifierMethod,
+			pf.postInstantiate(
+					getEntityName(),
+					mappedClass,
+					proxyInterfaces,
+					proxyGetIdentifierMethod,
 					proxySetIdentifierMethod,
-					persistentClass.hasEmbeddedIdentifier() ? (AbstractComponentType) persistentClass.getIdentifier()
-							.getType() : null);
+					persistentClass.hasEmbeddedIdentifier() ? (CompositeType) persistentClass
+							.getIdentifier().getType() : null);
 		} catch (HbStoreException e) {
 			log.warn("could not create proxy factory for:" + getEntityName(), e);
 			pf = null;
@@ -301,8 +332,10 @@ public class EAVObjectTuplizer extends AbstractEntityTuplizer {
 	}
 
 	/** Returns the correct accessor on the basis of the type of property */
-	protected PropertyAccessor getPropertyAccessor(Property mappedProperty, PersistentClass pc) {
+	protected PropertyAccessor getPropertyAccessor(Property mappedProperty,
+			PersistentClass pc) {
 		final HbDataStore ds = HbHelper.INSTANCE.getDataStore(pc);
-		return HbUtil.getPropertyAccessor(mappedProperty, ds, pc.getEntityName(), null);
+		return HbUtil.getPropertyAccessor(mappedProperty, ds,
+				pc.getEntityName(), null);
 	}
 }

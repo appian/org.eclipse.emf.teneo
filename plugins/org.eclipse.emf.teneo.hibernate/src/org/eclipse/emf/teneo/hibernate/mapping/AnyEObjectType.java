@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: AnyEObjectType.java,v 1.6 2010/02/04 10:53:08 mtaal Exp $
+ * $Id: AnyEObjectType.java,v 1.7 2010/11/12 09:33:33 mtaal Exp $
  */
 package org.eclipse.emf.teneo.hibernate.mapping;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.hibernate.EntityMode;
 import org.hibernate.FetchMode;
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.CascadeStyle;
@@ -40,28 +39,32 @@ import org.hibernate.engine.Mapping;
 import org.hibernate.engine.SessionFactoryImplementor;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.persister.entity.Joinable;
-import org.hibernate.type.AbstractComponentType;
 import org.hibernate.type.AbstractType;
 import org.hibernate.type.AssociationType;
+import org.hibernate.type.CompositeType;
 import org.hibernate.type.ForeignKeyDirection;
+import org.hibernate.type.StandardBasicTypes;
 import org.hibernate.type.Type;
 
 /**
- * Supports persisting the reference to any persistable EObect, it stores the entity name, and the
- * id in a string field
+ * Supports persisting the reference to any persistable EObect, it stores the
+ * entity name, and the id in a string field
  * 
  * @author <a href="mailto:mkanaley@tibco.com">Mike Kanaley</a>
  */
-public class AnyEObjectType extends AbstractType implements AbstractComponentType, AssociationType {
+public class AnyEObjectType extends AbstractType implements CompositeType,
+		AssociationType {
 
 	/**
 	 * Generated Serial ID
 	 */
 	private static final long serialVersionUID = 3857353606004705457L;
 
-	private static final String[] PROPERTY_NAMES = new String[] { "class", "idtype", "idstr" };
+	private static final String[] PROPERTY_NAMES = new String[] { "class",
+			"idtype", "idstr" };
 
-	private static final int[] SQL_TYPES = { Types.VARCHAR, Types.VARCHAR, Types.VARCHAR };
+	private static final int[] SQL_TYPES = { Types.VARCHAR, Types.VARCHAR,
+			Types.VARCHAR };
 
 	/** Constructor by id */
 	private final HashMap<String, Constructor<?>> constructors = new HashMap<String, Constructor<?>>();
@@ -76,8 +79,8 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	/** Just returns the value */
-	public Object deepCopy(Object value, EntityMode entityMode, SessionFactoryImplementor factory)
-			throws HibernateException {
+	public Object deepCopy(Object value, EntityMode entityMode,
+			SessionFactoryImplementor factory) throws HibernateException {
 		return value;
 	}
 
@@ -88,7 +91,8 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 
 	/** Checks using equals */
 	@Override
-	public boolean isSame(Object x, Object y, EntityMode entityMode) throws HibernateException {
+	public boolean isSame(Object x, Object y, EntityMode entityMode)
+			throws HibernateException {
 		if (x != null) {
 			return x.equals(y);
 		}
@@ -117,13 +121,15 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	/** Returns unsupportedexception */
-	public Object nullSafeGet(ResultSet rs, String name, SessionImplementor session, Object owner)
+	public Object nullSafeGet(ResultSet rs, String name,
+			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		throw new UnsupportedOperationException("Type is a multicolumn type");
 	}
 
 	/** Returns the object from the resultset */
-	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner)
+	public Object nullSafeGet(ResultSet rs, String[] names,
+			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		final String entityName = rs.getString(names[0]);
 		if (rs.wasNull()) {
@@ -138,7 +144,8 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 			return null;
 		}
 
-		return session.internalLoad(entityName, getId(idStr, idType), true, false);
+		return session.internalLoad(entityName, getId(idStr, idType), true,
+				false);
 	}
 
 	/** Creates an id object of the correct type */
@@ -146,18 +153,23 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		try {
 			Constructor<?> constructor = constructors.get(idType);
 			if (constructor == null) {
-				final Class<?> idClass = this.getClass().getClassLoader().loadClass(idType);
-				constructor = idClass.getConstructor(new Class[] { String.class });
+				final Class<?> idClass = this.getClass().getClassLoader()
+						.loadClass(idType);
+				constructor = idClass
+						.getConstructor(new Class[] { String.class });
 				constructors.put(idType, constructor);
 			}
-			return (Serializable) constructor.newInstance(new Object[] { idStr });
+			return (Serializable) constructor
+					.newInstance(new Object[] { idStr });
 		} catch (Exception e) {
-			throw new HbStoreException("Could not create id type for " + idType + " and id " + idStr, e);
+			throw new HbStoreException("Could not create id type for " + idType
+					+ " and id " + idStr, e);
 		}
 	}
 
 	@Override
-	public Object hydrate(ResultSet rs, String[] names, SessionImplementor session, Object owner)
+	public Object hydrate(ResultSet rs, String[] names,
+			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		final String entityName = rs.getString(names[0]);
 		if (rs.wasNull()) {
@@ -176,31 +188,35 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	@Override
-	public Object resolve(Object value, SessionImplementor session, Object owner) throws HibernateException {
+	public Object resolve(Object value, SessionImplementor session, Object owner)
+			throws HibernateException {
 		EObjectCacheEntry entry = (EObjectCacheEntry) value;
 		return session.internalLoad(entry.entityName, entry.id, true, false);
 	}
 
 	/*
-	 * public Object semiResolve(Object value, SessionImplementor session, Object owner) throws
-	 * HibernateException { throw new UnsupportedOperationException("Any mappings may not form part
-	 * of a property-ref"); }
+	 * public Object semiResolve(Object value, SessionImplementor session,
+	 * Object owner) throws HibernateException { throw new
+	 * UnsupportedOperationException("Any mappings may not form part of a
+	 * property-ref"); }
 	 */
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session)
-			throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			SessionImplementor session) throws HibernateException, SQLException {
 		nullSafeSet(st, value, index, null, session);
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index, boolean[] settable,
-			SessionImplementor session) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index,
+			boolean[] settable, SessionImplementor session)
+			throws HibernateException, SQLException {
 
 		String entityName = null;
 		String idStr = null;
 		String idType = null;
 		if (value != null) {
 			entityName = session.bestGuessEntityName(value);
-			Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, value, session);
+			Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(
+					entityName, value, session);
 			idType = id.getClass().getName();
 			idStr = id.toString();
 			st.setString(index, entityName);
@@ -222,15 +238,19 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return SQL_TYPES;
 	}
 
-	public void setToXMLNode(Node xml, Object value, SessionFactoryImplementor factory) {
-		throw new UnsupportedOperationException("Any types cannot be stringified");
+	public void setToXMLNode(Node xml, Object value,
+			SessionFactoryImplementor factory) {
+		throw new UnsupportedOperationException(
+				"Any types cannot be stringified");
 	}
 
-	public String toLoggableString(Object value, SessionFactoryImplementor factory) throws HibernateException {
+	public String toLoggableString(Object value,
+			SessionFactoryImplementor factory) throws HibernateException {
 		return value == null ? "null" : value.getClass().getName();
 	}
 
-	public Object fromXMLNode(Node xml, Mapping factory) throws HibernateException {
+	public Object fromXMLNode(Node xml, Mapping factory)
+			throws HibernateException {
 		throw new UnsupportedOperationException(); // TODO: is this right??
 	}
 
@@ -253,18 +273,22 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	@Override
-	public Object assemble(Serializable cached, SessionImplementor session, Object owner) throws HibernateException {
+	public Object assemble(Serializable cached, SessionImplementor session,
+			Object owner) throws HibernateException {
 		final EObjectCacheEntry entry = (EObjectCacheEntry) cached;
-		return entry == null ? null : session.internalLoad(entry.entityName, entry.id, true, false);
+		return entry == null ? null : session.internalLoad(entry.entityName,
+				entry.id, true, false);
 	}
 
 	@Override
-	public Serializable disassemble(Object value, SessionImplementor session, Object owner) throws HibernateException {
+	public Serializable disassemble(Object value, SessionImplementor session,
+			Object owner) throws HibernateException {
 		if (value == null) {
 			return null;
 		}
 		final String entityName = session.bestGuessEntityName(value);
-		final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, value, session);
+		final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(
+				entityName, value, session);
 		return new EObjectCacheEntry(entityName, id);
 	}
 
@@ -274,13 +298,16 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Object replace(Object original, Object target, SessionImplementor session, Object owner, Map copyCache)
+	public Object replace(Object original, Object target,
+			SessionImplementor session, Object owner, Map copyCache)
 			throws HibernateException {
 		if (original == null) {
 			return null;
 		} else {
 			final String entityName = session.bestGuessEntityName(original);
-			final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, original, session);
+			final Serializable id = ForeignKeys
+					.getEntityIdentifierIfNotUnsaved(entityName, original,
+							session);
 			return session.internalLoad(entityName, id, true, false);
 		}
 	}
@@ -297,38 +324,45 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return PROPERTY_NAMES;
 	}
 
-	public Object getPropertyValue(Object component, int i, SessionImplementor session) throws HibernateException {
+	public Object getPropertyValue(Object component, int i,
+			SessionImplementor session) throws HibernateException {
 		if (component != null) {
 			final String entityName = session.bestGuessEntityName(component);
-			Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, component, session);
+			Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(
+					entityName, component, session);
 			switch (i) {
-				case 0:
-					return session.bestGuessEntityName(component);
-				case 1:
-					return id.getClass().getName();
-				case 2:
-					return id.toString();
-				default:
-					throw new HbStoreException("Index " + i + "not supported");
+			case 0:
+				return session.bestGuessEntityName(component);
+			case 1:
+				return id.getClass().getName();
+			case 2:
+				return id.toString();
+			default:
+				throw new HbStoreException("Index " + i + "not supported");
 			}
 		}
 		return null;
 	}
 
-	public Object[] getPropertyValues(Object component, SessionImplementor session) throws HibernateException {
+	public Object[] getPropertyValues(Object component,
+			SessionImplementor session) throws HibernateException {
 		if (component != null) {
 			final String entityName = session.bestGuessEntityName(component);
-			Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, component, session);
-			return new Object[] { session.bestGuessEntityName(component), id.getClass().getName(), id.toString() };
+			Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(
+					entityName, component, session);
+			return new Object[] { session.bestGuessEntityName(component),
+					id.getClass().getName(), id.toString() };
 		}
 		return null;
 	}
 
 	public Type[] getSubtypes() {
-		return new Type[] { Hibernate.STRING, Hibernate.STRING, Hibernate.STRING };
+		return new Type[] { StandardBasicTypes.STRING,
+				StandardBasicTypes.STRING, StandardBasicTypes.STRING };
 	}
 
-	public void setPropertyValues(Object component, Object[] values, EntityMode entityMode) throws HibernateException {
+	public void setPropertyValues(Object component, Object[] values,
+			EntityMode entityMode) throws HibernateException {
 		throw new UnsupportedOperationException();
 	}
 
@@ -355,12 +389,13 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	public Joinable getAssociatedJoinable(SessionFactoryImplementor factory) {
-		throw new UnsupportedOperationException("any types do not have a unique referenced persister");
+		throw new UnsupportedOperationException(
+				"any types do not have a unique referenced persister");
 	}
 
 	@Override
-	public boolean isModified(Object old, Object current, boolean[] checkable, SessionImplementor session)
-			throws HibernateException {
+	public boolean isModified(Object old, Object current, boolean[] checkable,
+			SessionImplementor session) throws HibernateException {
 		if (current == null) {
 			return old != null;
 		}
@@ -370,7 +405,8 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 
 		final EObjectCacheEntry entry = (EObjectCacheEntry) old;
 		final String entityName = session.bestGuessEntityName(current);
-		final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(entityName, current, session);
+		final Serializable id = ForeignKeys.getEntityIdentifierIfNotUnsaved(
+				entityName, current, session);
 		if (checkable[0] && entry.entityName.compareTo(entityName) != 0) {
 			return true;
 		}
@@ -380,8 +416,10 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return false;
 	}
 
-	public String getAssociatedEntityName(SessionFactoryImplementor factory) throws MappingException {
-		throw new UnsupportedOperationException("any types do not have a unique referenced persister");
+	public String getAssociatedEntityName(SessionFactoryImplementor factory)
+			throws MappingException {
+		throw new UnsupportedOperationException(
+				"any types do not have a unique referenced persister");
 	}
 
 	public boolean[] getPropertyNullability() {
@@ -389,7 +427,8 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 	}
 
 	@SuppressWarnings("rawtypes")
-	public String getOnCondition(String alias, SessionFactoryImplementor factory, Map enabledFilters)
+	public String getOnCondition(String alias,
+			SessionFactoryImplementor factory, Map enabledFilters)
 			throws MappingException {
 		throw new UnsupportedOperationException();
 	}
@@ -422,8 +461,8 @@ public class AnyEObjectType extends AbstractType implements AbstractComponentTyp
 		return result;
 	}
 
-	public boolean isDirty(Object old, Object current, boolean[] checkable, SessionImplementor session)
-			throws HibernateException {
+	public boolean isDirty(Object old, Object current, boolean[] checkable,
+			SessionImplementor session) throws HibernateException {
 		return isDirty(old, current, session);
 	}
 
