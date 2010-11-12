@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HibernateTestbed.java,v 1.25 2010/11/12 10:42:02 mtaal Exp $
+ * $Id: HibernateTestbed.java,v 1.26 2010/11/12 14:16:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.test;
@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Is the testbed which models the base in which a testrun is run.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class HibernateTestbed extends Testbed {
 
@@ -145,7 +145,7 @@ public class HibernateTestbed extends Testbed {
 	private void writeMappingToFile(String mappingXML, AbstractTest testCase,
 			ExtensionManager extensionManager) throws IOException {
 
-		// System.err.println(mappingXML);
+		System.err.println(mappingXML);
 
 		if (!getActiveConfiguration().getName().startsWith("mysql")) {
 			return;

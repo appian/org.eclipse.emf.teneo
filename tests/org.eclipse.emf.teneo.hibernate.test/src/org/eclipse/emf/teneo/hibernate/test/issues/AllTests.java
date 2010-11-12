@@ -47,20 +47,25 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.68 $
+ * @version $Revision: 1.69 $
  */
 public class AllTests {
 
 	public static Test suite() {
-		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.issues",
+		TestSuite suite = new MultiCfgTestSuite(
+				"Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(LargeMapValueAction.class);
+		suite.addTestSuite(Bz284859Action.class);
+
 		suite.addTestSuite(BZ329275Action.class);
 		suite.addTestSuite(BZ329275_HandleUnsetAsNullAction.class);
 		suite.addTestSuite(BZ329275_ConvertUnsetToNulllAction.class);
-		
-		// note this testcase (Bz321773Action) does not run on mysql cause mysql does not support sequences 
+
+		// note this testcase (Bz321773Action) does not run on mysql cause mysql
+		// does not support sequences
 		suite.addTestSuite(Bz321773Action.class);
-		
+
 		suite.addTestSuite(Bz321770Action.class);
 		suite.addTestSuite(Bz321768Action.class);
 		suite.addTestSuite(BZ302933Action.class);
@@ -68,11 +73,11 @@ public class AllTests {
 		suite.addTestSuite(NoCollectionOwnerAction.class);
 		suite.addTestSuite(Bz294201Action.class);
 
-		// to enable this test add a hibernate.properties in the root with the following property:
+		// to enable this test add a hibernate.properties in the root with the
+		// following property:
 		// hibernate.bytecode.provider=cglib
 		// suite.addTestSuite(Bz292151Action.class);
 		suite.addTestSuite(Bz292074Action.class);
-		suite.addTestSuite(Bz284859Action.class);
 		suite.addTestSuite(Bz288963Action.class);
 		suite.addTestSuite(BZ285372Action.class);
 		suite.addTestSuite(Bz282414Action.class);
@@ -107,7 +112,8 @@ public class AllTests {
 		suite.addTestSuite(BZ237790Action.class);
 		suite.addTestSuite(BZ237498Action.class);
 
-		// disabled some more tests as the build server seems to fail after so many tests
+		// disabled some more tests as the build server seems to fail after so
+		// many tests
 		// these tests pass locally ofcourse
 		if (!HibernateTestbed.isRunningOnBuildServer()) {
 

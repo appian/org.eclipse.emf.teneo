@@ -51,14 +51,13 @@ import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
-import org.hibernate.ejb.EntityManagerImpl;
 
 /**
  * The hibernate test store encapsulates the datastore actions to a hibernate
  * store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -267,7 +266,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		if (obj instanceof Session) {
 			return (Session) obj;
 		} else {
-			return ((EntityManagerImpl) obj).getSession();
+			return (Session) ((EntityManager) obj).getDelegate();
 		}
 	}
 
@@ -538,9 +537,6 @@ public class HibernateTestStore extends AbstractTestStore {
 	private String getEntityName(Class<?> clazz) {
 		final EModelResolver emodelResolver = EModelResolver.instance();
 		final EClass eclass = emodelResolver.getEClass(clazz);
-		if (isEntityManagerStore()) {
-			return EModelResolver.instance().getJavaClass(eclass).getName();
-		}
 		return getDataStore().getExtensionManager()
 				.getExtension(EntityNameStrategy.class).toEntityName(eclass);
 	}
