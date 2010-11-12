@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ProductAction.java,v 1.11 2009/08/21 10:16:29 mtaal Exp $
+ * $Id: ProductAction.java,v 1.12 2010/11/12 09:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -30,11 +30,11 @@ import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
 /**
- * Very simple emf test which tests a simple relation between a product and its supplier and some primitive types
- * (double and date).
+ * Very simple emf test which tests a simple relation between a product and its
+ * supplier and some primitive types (double and date).
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class ProductAction extends AbstractTestAction {
 	public ProductAction() {
@@ -44,11 +44,16 @@ public class ProductAction extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT, "true");
+		props.setProperty(
+				PersistenceOptions.SET_DEFAULT_CASCADE_ON_NON_CONTAINMENT,
+				"true");
 		return props;
 	}
 
-	/** Creates a supplier, a product, relates then, saves and retrieves them again. */
+	/**
+	 * Creates a supplier, a product, relates then, saves and retrieves them
+	 * again.
+	 */
 	@Override
 	public void doAction(TestStore store) {
 		{
@@ -86,7 +91,8 @@ public class ProductAction extends AbstractTestAction {
 
 		{
 			store.beginTransaction();
-			ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
+			ProductTypeImpl result = (ProductTypeImpl) store
+					.getObject(ProductType.class);
 			assertTrue(result != null);
 			assert (result != null);
 			assertTrue(result.getCode().compareTo("product1") == 0);
@@ -96,8 +102,10 @@ public class ProductAction extends AbstractTestAction {
 
 			ClassificationType c1 = (ClassificationType) result.getAnyOne();
 			assertEquals("c1", c1.getName());
-			assertEquals("c2", ((ClassificationType) result.getAnyList().get(0)).getName());
-			assertEquals("c3", ((ClassificationType) result.getAnyList().get(1)).getName());
+			assertEquals("c2",
+					((ClassificationType) result.getAnyList().get(0)).getName());
+			assertEquals("c3",
+					((ClassificationType) result.getAnyList().get(1)).getName());
 			assertEquals(result.getSupplier(), result.getAnyList().get(2));
 			result.setAnyOne(result.getSupplier());
 			result.getAnyList().remove(1);
@@ -105,14 +113,10 @@ public class ProductAction extends AbstractTestAction {
 			store.commitTransaction();
 		}
 
-		if (store.isJPOXTestStore()) {
-			// apparently hibernate does not support orphan-delete for many-to-any
-			store.checkNumber(ClassificationType.class, 1);
-		}
-
 		{
 			store.beginTransaction();
-			ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
+			ProductTypeImpl result = (ProductTypeImpl) store
+					.getObject(ProductType.class);
 			assertEquals(1, result.getAnyList().size());
 			result.setAnyOne(null);
 			store.commitTransaction();
@@ -120,9 +124,12 @@ public class ProductAction extends AbstractTestAction {
 
 		// test update of pk, is not supported by hb
 		/*
-		 * { store.beginTransaction(); ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class);
-		 * result.setId("newid"); store.store(result); store.commitTransaction(); } { store.beginTransaction();
-		 * ProductTypeImpl result = (ProductTypeImpl) store.getObject(ProductType.class); assertEquals("newid",
+		 * { store.beginTransaction(); ProductTypeImpl result =
+		 * (ProductTypeImpl) store.getObject(ProductType.class);
+		 * result.setId("newid"); store.store(result);
+		 * store.commitTransaction(); } { store.beginTransaction();
+		 * ProductTypeImpl result = (ProductTypeImpl)
+		 * store.getObject(ProductType.class); assertEquals("newid",
 		 * result.getId()); store.commitTransaction(); }
 		 */
 	}

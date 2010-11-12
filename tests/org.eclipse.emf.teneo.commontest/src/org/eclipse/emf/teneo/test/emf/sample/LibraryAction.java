@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.24 2010/10/31 21:50:18 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.25 2010/11/12 09:33:38 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  */
 public class LibraryAction extends AbstractTestAction {
 
@@ -42,12 +42,18 @@ public class LibraryAction extends AbstractTestAction {
 		super(LibraryPackage.eINSTANCE);
 	}
 
+	// public void setExtensions(ExtensionManager extensionManager) {
+	// extensionManager.registerExtension(EntityNameStrategy.class.getName(),
+	// ClassNameEntityNameStrategy.class.getName());
+	// }
+
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.DEFAULT_CACHE_STRATEGY,
 				"READ_WRITE");
 		props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "false");
+		props.setProperty(PersistenceOptions.DEFAULT_VARCHAR_LENGTH, "50");
 		props.setProperty(PersistenceOptions.DEFAULT_VARCHAR_LENGTH, "50");
 		return props;
 	}
@@ -185,14 +191,16 @@ public class LibraryAction extends AbstractTestAction {
 					"The container of the writer should be equal to the earlier retrieved Library",
 					lib == writ.eContainer());
 
-			final Object[] eobjs = store.getCrossReferencers(writ, false);
-			assertEquals(3, eobjs.length);
-			for (final Object obj : eobjs) {
-				if (obj instanceof Library) {
-					assertTrue(obj == lib);
-				} else {
-					assertTrue(((Book) obj).getAuthor() == writ);
-					assertTrue(lib.getBooks().contains(obj));
+			if (!store.isEntityManagerStore()) {
+				final Object[] eobjs = store.getCrossReferencers(writ, false);
+				assertEquals(3, eobjs.length);
+				for (final Object obj : eobjs) {
+					if (obj instanceof Library) {
+						assertTrue(obj == lib);
+					} else {
+						assertTrue(((Book) obj).getAuthor() == writ);
+						assertTrue(lib.getBooks().contains(obj));
+					}
 				}
 			}
 
@@ -217,8 +225,9 @@ public class LibraryAction extends AbstractTestAction {
 		checkTeneoSQLNameStrategy();
 		testMerge(store);
 	}
+
 	protected void testMerge(TestStore store) {
-		
+
 	}
 
 	protected void testLazySize(List<?> list) {
