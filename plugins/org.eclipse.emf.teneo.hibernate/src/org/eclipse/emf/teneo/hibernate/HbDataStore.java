@@ -103,7 +103,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.72 $
+ * @version $Revision: 1.73 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -1418,6 +1418,7 @@ public abstract class HbDataStore implements DataStore {
 					String toEntity = "";
 					boolean isContainer = false;
 					boolean isMany = false;
+
 					if (prop.getValue() instanceof ManyToOne) {
 						final ManyToOne mto = (ManyToOne) prop.getValue();
 						toEntity = mto.getReferencedEntityName();

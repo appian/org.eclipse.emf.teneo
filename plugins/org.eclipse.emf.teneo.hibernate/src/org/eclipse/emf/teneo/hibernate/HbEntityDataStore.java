@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.30 2010/11/11 10:28:18 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.31 2010/11/12 13:35:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -19,15 +19,26 @@ package org.eclipse.emf.teneo.hibernate;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
+import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.persistence.Cache;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
+import javax.persistence.LockModeType;
+import javax.persistence.Parameter;
 import javax.persistence.PersistenceUnitUtil;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.metamodel.Metamodel;
 
 import org.apache.commons.logging.Log;
@@ -44,13 +55,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.ejb.Ejb3Configuration;
 import org.hibernate.ejb.EntityManagerFactoryImpl;
+import org.hibernate.ejb.QueryImpl;
+import org.hibernate.engine.query.NamedParameterDescriptor;
 import org.hibernate.event.InitializeCollectionEventListener;
+import org.hibernate.impl.AbstractQueryImpl;
+import org.hibernate.type.EntityType;
+import org.hibernate.type.Type;
 
 /**
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -64,6 +80,8 @@ public class HbEntityDataStore extends HbDataStore implements
 
 	/** The used Hibernate configuration */
 	private Ejb3Configuration ejb3Configuration;
+
+	private Field queryParametersField;
 
 	/** Initializes this Data Store */
 	@Override
@@ -220,7 +238,9 @@ public class HbEntityDataStore extends HbDataStore implements
 
 	/** Build the session factory */
 	protected EntityManagerFactory buildEntityManagerFactory() {
-		return getConfiguration().createEntityManagerFactory();
+		final EntityManagerFactory emf = getConfiguration()
+				.buildEntityManagerFactory();
+		return new WrappedEntityManagerFactory(emf);
 	}
 
 	/*
@@ -289,7 +309,13 @@ public class HbEntityDataStore extends HbDataStore implements
 	/** Is added for interface compliance with HbDataStore, should not be used */
 	@Override
 	public SessionFactory getSessionFactory() {
-		final EntityManagerFactoryImpl entityManagerFactoryImpl = (EntityManagerFactoryImpl) getEntityManagerFactory();
+		final EntityManagerFactoryImpl entityManagerFactoryImpl;
+		if (getEntityManagerFactory() instanceof WrappedEntityManagerFactory) {
+			entityManagerFactoryImpl = (EntityManagerFactoryImpl) ((WrappedEntityManagerFactory) getEntityManagerFactory())
+					.getDelegate();
+		} else {
+			entityManagerFactoryImpl = (EntityManagerFactoryImpl) getEntityManagerFactory();
+		}
 		return entityManagerFactoryImpl.getSessionFactory();
 	}
 
@@ -324,6 +350,339 @@ public class HbEntityDataStore extends HbDataStore implements
 
 	public Map<String, Object> getProperties() {
 		return getEntityManagerFactory().getProperties();
+	}
+
+	public class WrappedEntityManagerFactory implements EntityManagerFactory {
+		private EntityManagerFactory delegate;
+
+		public WrappedEntityManagerFactory(EntityManagerFactory emf) {
+			delegate = emf;
+		}
+
+		public EntityManagerFactory getDelegate() {
+			return delegate;
+		}
+
+		public void setDelegate(EntityManagerFactory delegate) {
+			this.delegate = delegate;
+		}
+
+		public void close() {
+			delegate.close();
+		}
+
+		public EntityManager createEntityManager() {
+			EntityManager em = delegate.createEntityManager();
+			return new WrappedEntityManager(em);
+		}
+
+		public EntityManager createEntityManager(Map map) {
+			EntityManager em = delegate.createEntityManager(map);
+			return new WrappedEntityManager(em);
+		}
+
+		public Cache getCache() {
+			return delegate.getCache();
+		}
+
+		public CriteriaBuilder getCriteriaBuilder() {
+			return delegate.getCriteriaBuilder();
+		}
+
+		public Metamodel getMetamodel() {
+			return delegate.getMetamodel();
+		}
+
+		public PersistenceUnitUtil getPersistenceUnitUtil() {
+			return delegate.getPersistenceUnitUtil();
+		}
+
+		public Map<String, Object> getProperties() {
+			return delegate.getProperties();
+		}
+
+		public boolean isOpen() {
+			return delegate.isOpen();
+		}
+	}
+
+	public class WrappedEntityManager implements EntityManager {
+		private EntityManager delegateEntityManager;
+
+		public WrappedEntityManager(EntityManager em) {
+			delegateEntityManager = em;
+		}
+
+		public void clear() {
+			delegateEntityManager.clear();
+		}
+
+		public void close() {
+			delegateEntityManager.close();
+		}
+
+		public boolean contains(Object arg0) {
+			return delegateEntityManager.contains(arg0);
+		}
+
+		public <T> TypedQuery<T> createNamedQuery(String arg0, Class<T> arg1) {
+			return (TypedQuery<T>) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createNamedQuery(arg0, arg1));
+		}
+
+		public Query createNamedQuery(String arg0) {
+			return (Query) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createNamedQuery(arg0));
+		}
+
+		public Query createNativeQuery(String arg0, Class arg1) {
+			return (Query) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createNativeQuery(arg0, arg1));
+		}
+
+		public Query createNativeQuery(String arg0, String arg1) {
+			return (Query) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createNativeQuery(arg0, arg1));
+		}
+
+		public Query createNativeQuery(String arg0) {
+			return (Query) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createNativeQuery(arg0));
+		}
+
+		public <T> TypedQuery<T> createQuery(CriteriaQuery<T> arg0) {
+			return (TypedQuery<T>) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createQuery(arg0));
+		}
+
+		public <T> TypedQuery<T> createQuery(String arg0, Class<T> arg1) {
+			return (TypedQuery<T>) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createQuery(arg0, arg1));
+		}
+
+		public Query createQuery(String arg0) {
+			return (Query) HbEntityDataStore.this
+					.repairParameterJavaType((QueryImpl<?>) delegateEntityManager
+							.createQuery(arg0));
+		}
+
+		public void detach(Object arg0) {
+			delegateEntityManager.detach(arg0);
+		}
+
+		public <T> T find(Class<T> arg0, Object arg1, LockModeType arg2,
+				Map<String, Object> arg3) {
+			return delegateEntityManager.find(arg0, arg1, arg2, arg3);
+		}
+
+		public <T> T find(Class<T> arg0, Object arg1, LockModeType arg2) {
+			return delegateEntityManager.find(arg0, arg1, arg2);
+		}
+
+		public <T> T find(Class<T> arg0, Object arg1, Map<String, Object> arg2) {
+			return delegateEntityManager.find(arg0, arg1, arg2);
+		}
+
+		public <T> T find(Class<T> arg0, Object arg1) {
+			return delegateEntityManager.find(arg0, arg1);
+		}
+
+		public void flush() {
+			delegateEntityManager.flush();
+		}
+
+		public CriteriaBuilder getCriteriaBuilder() {
+			return delegateEntityManager.getCriteriaBuilder();
+		}
+
+		public Object getDelegate() {
+			return delegateEntityManager.getDelegate();
+		}
+
+		public EntityManagerFactory getEntityManagerFactory() {
+			return delegateEntityManager.getEntityManagerFactory();
+		}
+
+		public FlushModeType getFlushMode() {
+			return delegateEntityManager.getFlushMode();
+		}
+
+		public LockModeType getLockMode(Object arg0) {
+			return delegateEntityManager.getLockMode(arg0);
+		}
+
+		public Metamodel getMetamodel() {
+			return delegateEntityManager.getMetamodel();
+		}
+
+		public Map<String, Object> getProperties() {
+			return delegateEntityManager.getProperties();
+		}
+
+		public <T> T getReference(Class<T> arg0, Object arg1) {
+			return delegateEntityManager.getReference(arg0, arg1);
+		}
+
+		public EntityTransaction getTransaction() {
+			return delegateEntityManager.getTransaction();
+		}
+
+		public boolean isOpen() {
+			return delegateEntityManager.isOpen();
+		}
+
+		public void joinTransaction() {
+			delegateEntityManager.joinTransaction();
+		}
+
+		public void lock(Object arg0, LockModeType arg1,
+				Map<String, Object> arg2) {
+			delegateEntityManager.lock(arg0, arg1, arg2);
+		}
+
+		public void lock(Object arg0, LockModeType arg1) {
+			delegateEntityManager.lock(arg0, arg1);
+		}
+
+		public <T> T merge(T arg0) {
+			return delegateEntityManager.merge(arg0);
+		}
+
+		public void persist(Object arg0) {
+			delegateEntityManager.persist(arg0);
+		}
+
+		public void refresh(Object arg0, LockModeType arg1,
+				Map<String, Object> arg2) {
+			delegateEntityManager.refresh(arg0, arg1, arg2);
+		}
+
+		public void refresh(Object arg0, LockModeType arg1) {
+			delegateEntityManager.refresh(arg0, arg1);
+		}
+
+		public void refresh(Object arg0, Map<String, Object> arg1) {
+			delegateEntityManager.refresh(arg0, arg1);
+		}
+
+		public void refresh(Object arg0) {
+			delegateEntityManager.refresh(arg0);
+		}
+
+		public void remove(Object arg0) {
+			delegateEntityManager.remove(arg0);
+		}
+
+		public void setFlushMode(FlushModeType arg0) {
+			delegateEntityManager.setFlushMode(arg0);
+		}
+
+		public void setProperty(String arg0, Object arg1) {
+			delegateEntityManager.setProperty(arg0, arg1);
+		}
+
+		public <T> T unwrap(Class<T> arg0) {
+			return delegateEntityManager.unwrap(arg0);
+		}
+
+		public EntityManager getDelegateEntityManager() {
+			return delegateEntityManager;
+		}
+
+		public void setDelegateEntityManager(EntityManager delegateEntityManager) {
+			this.delegateEntityManager = delegateEntityManager;
+		}
+	}
+
+	protected QueryImpl<?> repairParameterJavaType(QueryImpl<?> query) {
+		try {
+			final Set<Parameter<?>> repairedParameters = new HashSet<Parameter<?>>();
+			final Object parametersObject = getQueryParametersField()
+					.get(query);
+			final AbstractQueryImpl queryImpl = AbstractQueryImpl.class
+					.cast(query.getHibernateQuery());
+			for (Parameter<?> parameter : (Collection<Parameter>) parametersObject) {
+				if (Map.class == parameter.getParameterType()) {
+					final Type type;
+					if (parameter.getName() != null) {
+						// repair these ones
+						final NamedParameterDescriptor descriptor = queryImpl
+								.getParameterMetadata()
+								.getNamedParameterDescriptor(
+										parameter.getName());
+						type = descriptor.getExpectedType();
+					} else {
+						type = queryImpl.getParameterMetadata()
+								.getOrdinalParameterExpectedType(
+										parameter.getPosition());
+					}
+					if (type instanceof EntityType) {
+						final Parameter<?> param = new ParameterImpl(
+								parameter.getName(), parameter.getPosition(),
+								Object.class);
+						repairedParameters.add(param);
+						// final EntityType entityType = (EntityType) type;
+						// final String entityName = entityType
+						// .getAssociatedEntityName();
+						// final EClass eClass = HbEntityDataStore.this
+						// .getEntityNameStrategy().toEClass(entityName);
+
+					} else {
+						repairedParameters.add(parameter);
+					}
+				} else {
+					repairedParameters.add(parameter);
+				}
+			}
+			getQueryParametersField().set(query, repairedParameters);
+			return query;
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		}
+	}
+
+	protected Field getQueryParametersField() throws Exception {
+		if (queryParametersField != null) {
+			return queryParametersField;
+		}
+		Field field = QueryImpl.class.getDeclaredField("parameters");
+		field.setAccessible(true);
+		return field;
+	}
+
+	private static class ParameterImpl implements Parameter {
+		private String name;
+		private Integer position;
+		private Class<?> javaClass;
+
+		ParameterImpl(String name, Integer position, Class<?> clz) {
+			this.name = name;
+			this.position = position;
+			this.javaClass = clz;
+		}
+
+		public Class<?> getParameterType() {
+			return javaClass;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public Integer getPosition() {
+			return position;
+		}
+
+		public Class<?> getJavaClass() {
+			return javaClass;
+		}
 	}
 
 }

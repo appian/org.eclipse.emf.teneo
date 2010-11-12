@@ -12,7 +12,7 @@
  *   Benjamin Cabe
  * </copyright>
  *
- * $Id: HbEntityManagerWrapper.java,v 1.15 2009/05/23 13:57:55 mtaal Exp $
+ * $Id: HbEntityManagerWrapper.java,v 1.16 2010/11/12 13:35:37 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -28,7 +28,6 @@ import javax.persistence.Query;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.hibernate.Session;
-import org.hibernate.ejb.EntityManagerImpl;
 import org.hibernate.engine.ForeignKeys;
 import org.hibernate.engine.SessionImplementor;
 import org.hibernate.mapping.JoinedSubclass;
@@ -40,7 +39,7 @@ import org.hibernate.mapping.UnionSubclass;
  * Wraps a hibernate entity manager.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class HbEntityManagerWrapper implements SessionWrapper {
 
@@ -61,27 +60,32 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	}
 
 	/** Set the session in the constructor */
-	public HbEntityManagerWrapper(HbEntityDataStore hbEntityDataStore, EntityManager entityManager) {
+	public HbEntityManagerWrapper(HbEntityDataStore hbEntityDataStore,
+			EntityManager entityManager) {
 		this.hbEntityDataStore = hbEntityDataStore;
 		this.entityManager = entityManager;
 	}
 
 	/**
-	 * Return the session or entityManager, return is an object to support both session as well as entitymanager.
+	 * Return the session or entityManager, return is an object to support both
+	 * session as well as entitymanager.
 	 */
 	public Object getClassicSession() {
 		if (entityManager == null) {
-			entityManager = hbEntityDataStore.getEntityManagerFactory().createEntityManager();
+			entityManager = hbEntityDataStore.getEntityManagerFactory()
+					.createEntityManager();
 		}
 		return entityManager;
 	}
 
 	/**
-	 * Return the session or entityManager, return is an object to support both session as well as entitymanager.
+	 * Return the session or entityManager, return is an object to support both
+	 * session as well as entitymanager.
 	 */
 	public Object getSession() {
 		if (entityManager == null) {
-			entityManager = hbEntityDataStore.getEntityManagerFactory().createEntityManager();
+			entityManager = hbEntityDataStore.getEntityManagerFactory()
+					.createEntityManager();
 		}
 		return entityManager;
 	}
@@ -101,7 +105,8 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Commit a transaction */
 	public void commitTransaction() {
 		if (entityTransaction == null) {
-			throw new IllegalStateException("EntityTransaction is null, call begin before commit!");
+			throw new IllegalStateException(
+					"EntityTransaction is null, call begin before commit!");
 		}
 		entityTransaction.commit();
 		entityTransaction = null;
@@ -110,7 +115,8 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Rollback transaction */
 	public void rollbackTransaction() {
 		if (entityTransaction == null) {
-			throw new IllegalStateException("EntityTransaction is null, call begin before commit!");
+			throw new IllegalStateException(
+					"EntityTransaction is null, call begin before commit!");
 		}
 		entityTransaction.rollback();
 		entityTransaction = null;
@@ -118,7 +124,7 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 
 	/** Return an object using the entityname and a serializable id */
 	public Object get(String entityName, Serializable id) {
-		return ((EntityManagerImpl) getEntityManager()).getSession().get(entityName, id);
+		return ((Session) getEntityManager().getDelegate()).get(entityName, id);
 	}
 
 	/** Query */
@@ -136,7 +142,8 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	}
 
 	/** Query */
-	public List<?> executeQuery(String qry, String entityParameter, Object entity) {
+	public List<?> executeQuery(String qry, String entityParameter,
+			Object entity) {
 		final Query query = getEntityManager().createQuery(qry);
 		query.setParameter(entityParameter, entity);
 		return query.getResultList();
@@ -186,13 +193,18 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 
 	/** Save or update the pass object */
 	public void saveOrUpdate(Object obj) {
-		final Session session = ((EntityManagerImpl) getEntityManager()).getSession();
-		final String entityName = hbEntityDataStore.getInterceptor().getEntityName(obj);
-		if (((SessionImplementor) session).getPersistenceContext().isEntryFor(obj)) {
+		final Session session = (Session) getEntityManager().getDelegate();
+		final String entityName = hbEntityDataStore.getInterceptor()
+				.getEntityName(obj);
+		if (((SessionImplementor) session).getPersistenceContext().isEntryFor(
+				obj)) {
 			getEntityManager().persist(obj);
-		} else if (ForeignKeys.isNotTransient(entityName, obj, false, (SessionImplementor) session)
-				|| !ForeignKeys.isTransient(entityName, obj, false, (SessionImplementor) session)) {
-			// this is a trick because ejb3 does not support saveOrUpdate (why did they not add
+		} else if (ForeignKeys.isNotTransient(entityName, obj, false,
+				(SessionImplementor) session)
+				|| !ForeignKeys.isTransient(entityName, obj, false,
+						(SessionImplementor) session)) {
+			// this is a trick because ejb3 does not support saveOrUpdate (why
+			// did they not add
 			// this behavior!)
 			session.saveOrUpdate(obj);
 		} else {
@@ -223,8 +235,10 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 	/** Check if a certain class is mapped using a certain inheritance strategy */
 	public boolean isInheritanceStrategy(Class<?> cls, InheritanceType strategy) {
 		final String name = cls.getName();
-		final String realName = name.substring(name.lastIndexOf('.') + 1, name.length() - 4);
-		final PersistentClass cmd = hbEntityDataStore.getConfiguration().getClassMapping(realName);
+		final String realName = name.substring(name.lastIndexOf('.') + 1,
+				name.length() - 4);
+		final PersistentClass cmd = hbEntityDataStore.getConfiguration()
+				.getClassMapping(realName);
 		if (strategy.equals(InheritanceType.SINGLE_TABLE)) {
 			return cmd instanceof SingleTableSubclass;
 		}
@@ -234,7 +248,8 @@ public class HbEntityManagerWrapper implements SessionWrapper {
 		if (strategy.equals(InheritanceType.TABLE_PER_CLASS)) {
 			return cmd instanceof UnionSubclass;
 		}
-		throw new HbStoreException("Strategy: " + strategy.toString() + " not supported ");
+		throw new HbStoreException("Strategy: " + strategy.toString()
+				+ " not supported ");
 	}
 
 	/** Clear the session */
