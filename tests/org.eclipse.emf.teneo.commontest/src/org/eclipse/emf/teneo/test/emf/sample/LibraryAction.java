@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: LibraryAction.java,v 1.25 2010/11/12 09:33:38 mtaal Exp $
+ * $Id: LibraryAction.java,v 1.26 2010/11/12 13:35:58 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.sample;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Tests the library example of emf/xsd.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 public class LibraryAction extends AbstractTestAction {
 
@@ -191,16 +191,14 @@ public class LibraryAction extends AbstractTestAction {
 					"The container of the writer should be equal to the earlier retrieved Library",
 					lib == writ.eContainer());
 
-			if (!store.isEntityManagerStore()) {
-				final Object[] eobjs = store.getCrossReferencers(writ, false);
-				assertEquals(3, eobjs.length);
-				for (final Object obj : eobjs) {
-					if (obj instanceof Library) {
-						assertTrue(obj == lib);
-					} else {
-						assertTrue(((Book) obj).getAuthor() == writ);
-						assertTrue(lib.getBooks().contains(obj));
-					}
+			final Object[] eobjs = store.getCrossReferencers(writ, false);
+			assertEquals(3, eobjs.length);
+			for (final Object obj : eobjs) {
+				if (obj instanceof Library) {
+					assertTrue(obj == lib);
+				} else {
+					assertTrue(((Book) obj).getAuthor() == writ);
+					assertTrue(lib.getBooks().contains(obj));
 				}
 			}
 
