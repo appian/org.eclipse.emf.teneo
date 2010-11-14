@@ -40,7 +40,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.teneo.cdo.sdk"
+         id="org.eclipse.emf.teneo.cdo"
          version="0.0.0"/>
 
    <includes
