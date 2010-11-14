@@ -27,7 +27,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </url>
 
    <includes
-         id="org.eclipse.emf.teneo.hibernate"
+         id="org.eclipse.emf.teneo.cdo"
          version="0.0.0"/>
 
    <includes
