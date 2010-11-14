@@ -27,7 +27,7 @@ http://www.eclipse.org/legal/epl-v10.html
    </url>
 
    <plugin
-         id="com.appian.emf.teneo"
+         id="org.eclipse.emf.teneo"
          download-size="0"
          install-size="0"
          version="0.0.0"
