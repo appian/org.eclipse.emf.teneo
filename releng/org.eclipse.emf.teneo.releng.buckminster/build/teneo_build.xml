@@ -88,6 +88,12 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</cmdargs>
 		</buckminster>
 		
+		<!-- Note copied from CDO build -->
+		<echo message="Creating human readable index.html" />
+		<unzip src="${buildSitePath}/content.jar" dest="${buildSitePath}" />
+		<xslt style="xsl/content2html.xsl" in="${buildSitePath}/content.xml" out="${buildSitePath}/index.html" />
+		<xslt style="xsl/content2xml.xsl" in="${buildSitePath}/content.xml" out="${buildSitePath}/index.xml" />
+		<delete file="${buildSitePath}/content.xml" />
 	</target>
 	
 	<!-- Copy site and create sdk zips --> 	
