@@ -24,8 +24,8 @@
 					<a
 						href="http://help.eclipse.org/galileo/index.jsp?topic=/org.eclipse.platform.doc.user/tasks/tasks-124.htm">
 						Eclipse Platform Help</a>.
-					<br/> Some plugins require third party drivers from
-					<a href="http://net4j.sourceforge.net/update/">Net4j and CDO Plus</a>. </em>
+					<br/> Some plugins require third party drivers from the following update site:
+					<a href="http://www.elver.org/eclipse/update/">Teneo/Texo dependencies</a>. </em>
 
 			</p>
 			<table border="0">
