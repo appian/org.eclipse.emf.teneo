@@ -19,7 +19,7 @@
 		<body>
 			<h1>
 				EMF Teneo
-			</h1>
+= 			</h1>
 			<p>
 				<em>
 					For information on the EMF Teneo project visit the
@@ -49,6 +49,7 @@
 				</tr>
 				<xsl:apply-templates
 					select="//provided[@namespace='org.eclipse.update.feature']">
+					<xsl:with-param name="type">features</xsl:with-param>
 					<xsl:sort select="@name" />
 				</xsl:apply-templates>
 				<tr>
@@ -58,6 +59,7 @@
 					</td>
 				</tr>
 				<xsl:apply-templates select="//provided[@namespace='osgi.bundle']">
+					<xsl:with-param name="type">plugins</xsl:with-param>
 					<xsl:sort select="@name" />
 				</xsl:apply-templates>
 			</table>
@@ -67,7 +69,10 @@
 	<xsl:template match="provided">
 		<tr>
 			<td>
-				<xsl:value-of select="@name" />
+				<xsl:element name="a">
+					<xsl:attribute name="href"><xsl:value-of select="$type"/>/<xsl:value-of select="@name"/>_<xsl:value-of select="@version"/>.jar</xsl:attribute>
+					<xsl:value-of select="@name"/>
+				</xsl:element>
 			</td>
 			<td>
 				<xsl:value-of select="@version" />
