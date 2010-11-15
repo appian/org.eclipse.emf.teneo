@@ -13,13 +13,13 @@
 	<xsl:template match="repository">
 		<head>
 			<title>
-				EMF Teneo
+				EMF Teneo Update Site
 			</title>
 		</head>
 		<body>
 			<h1>
-				EMF Teneo
-= 			</h1>
+				EMF Teneo Update Site
+ 			</h1>
 			<p>
 				<em>
 					For information on the EMF Teneo project visit the
