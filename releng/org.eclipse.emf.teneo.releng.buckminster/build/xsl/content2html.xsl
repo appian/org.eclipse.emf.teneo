@@ -67,6 +67,7 @@
 	</xsl:template>
 
 	<xsl:template match="provided">
+		<xsl:param name="type" />
 		<tr>
 			<td>
 				<xsl:element name="a">
