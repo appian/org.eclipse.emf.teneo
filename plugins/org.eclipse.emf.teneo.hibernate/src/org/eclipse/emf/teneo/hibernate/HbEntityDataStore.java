@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.33 2010/11/23 10:35:16 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.34 2010/11/23 10:40:45 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -66,7 +66,7 @@ import org.hibernate.type.Type;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -165,6 +165,10 @@ public class HbEntityDataStore extends HbDataStore implements
 		if (properties != null) {
 			setDefaultProperties(properties);
 			// set this as this gives errors in the hibernate entity manager
+			// see this bugzilla:
+			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330855
+			// Using HbEntityDataStore causes org.hibernate.MappingException:
+			// Unknown entity:...
 			if (!properties.containsKey("hibernate.ejb.metamodel.generation")) {
 				properties.setProperty("hibernate.ejb.metamodel.generation",
 						"disabled");
