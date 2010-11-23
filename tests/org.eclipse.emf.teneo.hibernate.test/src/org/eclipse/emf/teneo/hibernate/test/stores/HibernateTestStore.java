@@ -57,7 +57,7 @@ import org.hibernate.cfg.Environment;
  * store.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  */
 public class HibernateTestStore extends AbstractTestStore {
 	/** The logger */
@@ -206,7 +206,6 @@ public class HibernateTestStore extends AbstractTestStore {
 		}
 
 		if (isEntityManagerStore()) {
-			props.setProperty("hibernate.ejb.metamodel.generation", "disabled");
 			props.setProperty(PersistenceOptions.ALSO_MAP_AS_CLASS, "true");
 		}
 
