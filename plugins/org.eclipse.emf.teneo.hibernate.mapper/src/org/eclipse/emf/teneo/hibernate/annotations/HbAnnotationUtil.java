@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbAnnotationUtil.java,v 1.4 2008/05/27 07:42:29 mtaal Exp $
+ * $Id: HbAnnotationUtil.java,v 1.5 2010/11/24 07:11:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -28,7 +28,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
  * Some utility methods.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 
 public class HbAnnotationUtil {
@@ -37,10 +37,14 @@ public class HbAnnotationUtil {
 	protected static final Log log = LogFactory.getLog(HbAnnotationUtil.class);
 
 	/** Adds an index */
-	public static void setIndex(PAnnotatedEReference aReference, AbstractAnnotator annotator) {
-		final String indexName =
-				annotator.getEntityName(aReference.getModelEReference().getEContainingClass()) + "_" +
-						aReference.getModelEReference().getName();
+	public static void setIndex(PAnnotatedEReference aReference,
+			AbstractAnnotator annotator) {
+		final String indexName = annotator.getPersistenceOptions()
+				.getSQLIndexNamePrefix()
+				+ annotator.getEntityName(aReference.getModelEReference()
+						.getEContainingClass())
+				+ "_"
+				+ aReference.getModelEReference().getName();
 		final HbAnnotatedEReference haReference = (HbAnnotatedEReference) aReference;
 		if (haReference.getHbIndex() == null) {
 			final Index index = HbannotationFactory.eINSTANCE.createIndex();
@@ -54,5 +58,4 @@ public class HbAnnotationUtil {
 			index.setName(index.getName() + indexName);
 		}
 	}
-
 }
