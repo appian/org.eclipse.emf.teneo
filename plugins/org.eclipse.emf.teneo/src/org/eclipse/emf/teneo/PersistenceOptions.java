@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.66 2010/11/24 07:11:52 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.67 2011/01/20 17:12:40 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.66 $
+ * @version $Revision: 1.67 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -753,6 +753,14 @@ public class PersistenceOptions implements ExtensionPoint {
 	public boolean isSetCascadePolicyForNonContainment() {
 		return !properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT)
 				.equals("");
+	}
+
+	public String getCascadePolicyForContainment() {
+		return properties.getProperty(CASCADE_POLICY_ON_CONTAINMENT);
+	}
+
+	public String getCascadePolicyForNonContainment() {
+		return properties.getProperty(CASCADE_POLICY_ON_NON_CONTAINMENT);
 	}
 
 	/**
