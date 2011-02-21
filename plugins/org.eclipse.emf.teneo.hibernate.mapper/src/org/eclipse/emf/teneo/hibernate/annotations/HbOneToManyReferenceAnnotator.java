@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbOneToManyReferenceAnnotator.java,v 1.5 2011/01/20 17:12:33 mtaal Exp $
+ * $Id: HbOneToManyReferenceAnnotator.java,v 1.6 2011/02/21 04:45:23 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -37,7 +37,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
  * Annotates an ereference.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 
 public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
@@ -101,16 +101,35 @@ public class HbOneToManyReferenceAnnotator extends OneToManyReferenceAnnotator {
 		}
 
 		if (doHbCascade && hbReference.getHbCascade() == null) {
-			String option;
+			String option = "";
 			if (aReference.getModelEReference().isContainment()) {
-				option = getPersistenceOptions()
-						.getCascadePolicyForContainment();
+				if (getPersistenceOptions().isSetCascadeAllOnContainment()) {
+					option = HbCascadeType.ALL.getName();
+				} else {
+					option = getPersistenceOptions()
+							.getCascadePolicyForContainment();
+				}
+				// translate a previous default to LOCK, SAVE_UPDAT
+				if (getPersistenceOptions().isSetCascadePersistOnContainment()) {
+					option += HbCascadeType.LOCK.getName() + ", "
+							+ HbCascadeType.SAVE_UPDATE.getName();
+				}
 			} else if (getPersistenceOptions()
 					.isSetCascadePolicyForNonContainment()) {
 				option = getPersistenceOptions()
 						.getCascadePolicyForNonContainment();
+				// translate a previous default to LOCK, SAVE_UPDAT
+				if (getPersistenceOptions()
+						.isSetCascadePersistOnNonContainment()) {
+					option += HbCascadeType.LOCK.getName() + ", "
+							+ HbCascadeType.SAVE_UPDATE.getName();
+				}
 			} else {
-				option = "PERSIST, MERGE, REFRESH";
+				option = HbCascadeType.PERSIST.getName() + ", "
+						+ HbCascadeType.MERGE.getName() + ", "
+						+ HbCascadeType.REFRESH.getName() + ", "
+						+ HbCascadeType.LOCK.getName() + ", "
+						+ HbCascadeType.SAVE_UPDATE.getName();
 			}
 
 			final Cascade hbCascade = HbannotationFactory.eINSTANCE
