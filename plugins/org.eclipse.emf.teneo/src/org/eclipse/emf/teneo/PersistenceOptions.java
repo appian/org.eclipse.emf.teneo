@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.67 2011/01/20 17:12:40 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.68 2011/02/21 06:40:04 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.67 $
+ * @version $Revision: 1.68 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -154,6 +154,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public static final String SQL_INDEX_KEY_NAME_PREFIX = NAMING_PREFIX
 			+ "sql_index_name_prefix";
+
+	/**
+	 * Controls if manually set sql names (table name, column names) should also
+	 * be truncated or cased. Default is true for backward compatability.
+	 */
+	public static final String AUTO_ADAPT_MANUAL_SET_SQL_NAMES = NAMING_PREFIX
+			+ "auto_adapt_manual_set_sql_names";
 
 	// END: ++++++++++++++++++++++ SQL Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
@@ -552,6 +559,7 @@ public class PersistenceOptions implements ExtensionPoint {
 				Constants.COLUMN_ECONTAINER_FEATURE_NAME);
 		props.setProperty(FEATUREMAP_AS_COMPONENT, "false");
 		props.setProperty(EXTRA_ANNOTATION_SOURCES, "");
+		props.setProperty(AUTO_ADAPT_MANUAL_SET_SQL_NAMES, "true");
 
 		return props;
 	}
@@ -573,6 +581,15 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean isMapFeatureMapAsComponent() {
 		return Boolean.valueOf(properties.getProperty(FEATUREMAP_AS_COMPONENT))
+				.booleanValue();
+	}
+
+	/**
+	 * @return value of {@link AUTO_ADAPT_MANUAL_SET_SQL_NAMES}
+	 */
+	public boolean isAutoAdaptManualSQLNames() {
+		return Boolean.valueOf(
+				properties.getProperty(AUTO_ADAPT_MANUAL_SET_SQL_NAMES))
 				.booleanValue();
 	}
 
