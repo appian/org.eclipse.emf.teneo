@@ -107,9 +107,6 @@ public class RunGenerateJob extends WorkspaceJob implements
 		workingCopy.setAttribute(ATTR_PROGRAM_ARGUMENTS, getProgramArguments());
 		workingCopy.doSave();
 		workingCopy.launch(ILaunchManager.RUN_MODE, null);
-		if (true) {
-			throw new CoreException(null);
-		}
 		return Status.OK_STATUS;
 	}
 
@@ -141,8 +138,8 @@ public class RunGenerateJob extends WorkspaceJob implements
 				final IJavaProject ijp = jProjects.get(i);
 				for (int j = 0; j < ijp.getPackageFragmentRoots().length; j++) {
 					IPackageFragmentRoot ipf = ijp.getPackageFragmentRoots()[j];
-					if (ipf.getClass().getName().endsWith(
-							"JarPackageFragmentRoot")) {
+					if (ipf.getClass().getName()
+							.endsWith("JarPackageFragmentRoot")) {
 						continue;
 					}
 					if (!ipf.exists()) {
