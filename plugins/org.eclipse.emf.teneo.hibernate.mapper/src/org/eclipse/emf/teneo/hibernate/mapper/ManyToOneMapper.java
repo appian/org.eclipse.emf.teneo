@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToOneMapper.java,v 1.37 2010/03/27 21:13:39 mtaal Exp $
+ * </copyright> $Id: ManyToOneMapper.java,v 1.38 2011/02/21 06:39:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -91,12 +91,17 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 			final boolean addInverse = aOpposite != null
 					&& aOpposite.getOneToMany() != null
 					&& aOpposite.getOneToMany().getMappedBy() == null
-					&& !aOpposite.getOneToMany().getFetch().equals(
-							FetchType.EXTRA);
+					&& !aOpposite.getOneToMany().getFetch()
+							.equals(FetchType.EXTRA);
 
-			currentElement = getHbmContext().getCurrent().addElement("join")
-					.addAttribute("table", getHbmContext().trunc(joinTable.getName())).addAttribute(
-							"inverse", Boolean.toString(addInverse))
+			currentElement = getHbmContext()
+					.getCurrent()
+					.addElement("join")
+					.addAttribute(
+							"table",
+							getHbmContext().trunc(joinTable,
+									joinTable.getName()))
+					.addAttribute("inverse", Boolean.toString(addInverse))
 					.addAttribute("optional",
 							Boolean.toString(mto.isOptional()));
 
@@ -122,15 +127,15 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 		}
 
 		if (!isProperty && joinTable != null) {
-			addJoinColumns(paReference, associationElement, joinTable
-					.getJoinColumns(), mto.isOptional()
-					|| getHbmContext().isDoForceOptional(paReference)
-					|| getHbmContext().isCurrentElementFeatureMap());
+			addJoinColumns(paReference, associationElement,
+					joinTable.getJoinColumns(), mto.isOptional()
+							|| getHbmContext().isDoForceOptional(paReference)
+							|| getHbmContext().isCurrentElementFeatureMap());
 		}
 
 		if (!isProperty) {
-			addCascadesForSingle(associationElement, getCascades(hbReference
-					.getHbCascade(), mto.getCascade()));
+			addCascadesForSingle(associationElement,
+					getCascades(hbReference.getHbCascade(), mto.getCascade()));
 		}
 
 		if (hbReference.getHbFetch() != null) {

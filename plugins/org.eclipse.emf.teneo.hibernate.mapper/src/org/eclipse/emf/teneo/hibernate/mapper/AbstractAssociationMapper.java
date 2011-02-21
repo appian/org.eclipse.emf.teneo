@@ -216,8 +216,11 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 							joinColumn.isUnique() ? "true" : "false");
 			if (joinColumn.getName() != null) {
 
-				columnElement.addAttribute("name",
-						getHbmContext().trunc(joinColumn.getName()));
+				columnElement
+						.addAttribute(
+								"name",
+								getHbmContext().trunc(joinColumn,
+										joinColumn.getName()));
 				final String uc = getHbmContext().getUniqueConstraintKey(
 						joinColumn.getName());
 				if (uc != null) {
@@ -386,7 +389,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 				+ aFeature.getModelEStructuralFeature().getName());
 
 		collElement.addElement("list-index").addAttribute("column",
-				getHbmContext().trunc(name));
+				getHbmContext().trunc(aFeature.getListIndexColumn(), name));
 	}
 
 	protected String getIndexColumnName(PAnnotatedEStructuralFeature aFeature) {
@@ -485,8 +488,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref
 					.getPaModel().getPAnnotated(keyFeature);
 			final Element mapKeyElement = collElement.addElement("map-key")
-					.addAttribute("column",
-							getHbmContext().trunc(mapKey.getName()));
+					.addAttribute(
+							"column",
+							getHbmContext().trunc(hbRef.getMapKey(),
+									mapKey.getName()));
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKeyManyToMany() != null) {
 			final MapKeyManyToMany mkm = hbRef.getMapKeyManyToMany();
@@ -857,8 +862,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 			final Element ce = keyElement
 					.addElement("column")
-					.addAttribute("name",
-							getHbmContext().trunc(joinColumn.getName()))
+					.addAttribute(
+							"name",
+							getHbmContext().trunc(joinColumn,
+									joinColumn.getName()))
 					.addAttribute("not-null",
 							joinColumn.isNullable() ? "false" : "true")
 					.addAttribute("unique",
@@ -938,7 +945,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		}
 		if (joinTable.getName() != null) {
 			collElement.addAttribute("table",
-					getHbmContext().trunc(joinTable.getName()));
+					getHbmContext().trunc(joinTable, joinTable.getName()));
 		}
 		if (joinTable.getUniqueConstraints().size() > 0) {
 			log.error("Unsupported unique constraints in " + joinTable);

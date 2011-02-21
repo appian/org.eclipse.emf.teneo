@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: ManyToManyMapper.java,v 1.32 2009/03/07 21:15:20 mtaal Exp $
+ * </copyright> $Id: ManyToManyMapper.java,v 1.33 2011/02/21 06:39:57 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -56,8 +56,8 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		}
 
 		if (((HbAnnotatedEReference) paReference).getHbCache() != null) {
-			addCacheElement(collElement, ((HbAnnotatedEReference) paReference)
-					.getHbCache());
+			addCacheElement(collElement,
+					((HbAnnotatedEReference) paReference).getHbCache());
 		}
 
 		final Element keyElement = collElement.addElement("key");
@@ -79,8 +79,9 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		}
 
 		addFetchType(collElement, mtm.getFetch());
-		addCascades(collElement, getCascades(hbReference.getHbCascade(), mtm
-				.getCascade()), false);
+		addCascades(collElement,
+				getCascades(hbReference.getHbCascade(), mtm.getCascade()),
+				false);
 
 		final PAnnotatedEClass referedToAClass = hbReference
 				.getAReferenceType();
@@ -94,14 +95,17 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		final Element mtmElement;
 		if (referedToAClass.isOnlyMapAsEntity()
 				|| !getHbmContext().forceUseOfInstance(referedToAClass)) {
-			mtmElement = collElement.addElement("many-to-many").addAttribute(
-					"entity-name", targetName).addAttribute("unique", "false");
+			mtmElement = collElement.addElement("many-to-many")
+					.addAttribute("entity-name", targetName)
+					.addAttribute("unique", "false");
 		} else {
-			mtmElement = collElement.addElement("many-to-many").addAttribute(
-					"class",
-					getHbmContext().getInstanceClassName(
-							hbReference.getEReferenceType())).addAttribute(
-					"unique", "false");
+			mtmElement = collElement
+					.addElement("many-to-many")
+					.addAttribute(
+							"class",
+							getHbmContext().getInstanceClassName(
+									hbReference.getEReferenceType()))
+					.addAttribute("unique", "false");
 		}
 
 		if (hbReference.getNotFound() != null) {
@@ -119,8 +123,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 			// both sides of the relation twice.
 			collElement.addAttribute("inverse", "true");
 		} else if (mtm.getMappedBy() != null && mtm.isIndexed()) {
-			log
-					.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
+			log.warn("Indexed is true but indexed is not supported for inverse=true and many-to-many, not setting inverse=true");
 		}
 
 		// check for a special case that mapped by is set on both sides
@@ -132,10 +135,9 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 			if (aOpposite.getManyToMany() != null
 					&& aOpposite.getManyToMany().getMappedBy() != null
 					&& mtm.getMappedBy() != null) {
-				log
-						.error("Mappedby is set on both sides of the many-to-many relation, this does not work, see the efeature: "
-								+ hbReference.getModelElement().toString()
-								+ ". Ignoring the mappedby in this efeature");
+				log.error("Mappedby is set on both sides of the many-to-many relation, this does not work, see the efeature: "
+						+ hbReference.getModelElement().toString()
+						+ ". Ignoring the mappedby in this efeature");
 				mtm.setMappedBy(null);
 			}
 		}
@@ -143,8 +145,12 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 		addJoinTable(hbReference, collElement, keyElement, jt);
 		if (jt.getInverseJoinColumns() != null) {
 			for (JoinColumn joinColumn : jt.getInverseJoinColumns()) {
-				mtmElement.addElement("column").addAttribute("name",
-						getHbmContext().trunc(joinColumn.getName()))
+				mtmElement
+						.addElement("column")
+						.addAttribute(
+								"name",
+								getHbmContext().trunc(joinColumn,
+										joinColumn.getName()))
 						.addAttribute("not-null",
 								joinColumn.isNullable() ? "false" : "true")
 						.addAttribute("unique",
@@ -154,7 +160,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 
 		addAccessor(collElement);
 
-		mapFilter(collElement, ((HbAnnotatedETypeElement) paReference)
-				.getFilter());
+		mapFilter(collElement,
+				((HbAnnotatedETypeElement) paReference).getFilter());
 	}
 }
