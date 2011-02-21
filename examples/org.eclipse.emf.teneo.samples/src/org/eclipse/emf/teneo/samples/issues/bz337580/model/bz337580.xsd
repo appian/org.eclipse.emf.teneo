@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/bz337580"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/teneo/samples/issues/bz337580">
+
+	<!-- Tests: https://bugs.eclipse.org/bugs/show_bug.cgi?id=336501 PersistenceOptions.DEFAULT_TEMPORAL_VALUE, 
+		"DATE" overrides @Temporal annotation -->
+
+	<xsd:complexType name="Test">
+		<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@Table(name="AVERYLONGNAMEFORTEST")
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="nameWhichShouldBeTrunctated" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
