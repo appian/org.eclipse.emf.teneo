@@ -1,5 +1,5 @@
 /**
- * <copyright> Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others All rights
+ * <copyright> Copyright (c) 2005 - 2011 Springsite BV (The Netherlands) and others All rights
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal </copyright> $Id:
@@ -47,7 +47,7 @@ import org.eclipse.emf.teneo.test.issues.TopClassesAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.71 $
+ * @version $Revision: 1.72 $
  */
 public class AllTests {
 
@@ -55,6 +55,7 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(Bz336501Action.class);
 		suite.addTestSuite(Bz331953Action.class);
 		suite.addTestSuite(LargeMapValueAction.class);
 		suite.addTestSuite(Bz284859Action.class);
