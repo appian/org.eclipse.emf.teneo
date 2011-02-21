@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: EMFTuplizer.java,v 1.25 2010/11/12 14:08:17 mtaal Exp $
+ * $Id: EMFTuplizer.java,v 1.26 2011/02/21 05:06:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.tuplizer;
@@ -54,7 +54,7 @@ import org.hibernate.proxy.ProxyFactory;
 import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.AbstractEntityTuplizer;
 import org.hibernate.tuple.entity.EntityMetamodel;
-import org.hibernate.type.AbstractComponentType;
+import org.hibernate.type.CompositeType;
 import org.hibernate.util.ReflectHelper;
 
 /**
@@ -64,7 +64,7 @@ import org.hibernate.util.ReflectHelper;
  * use of the emf efactories.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  */
 
 public class EMFTuplizer extends AbstractEntityTuplizer {
@@ -312,7 +312,7 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 					proxyInterfaces,
 					proxyGetIdentifierMethod,
 					proxySetIdentifierMethod,
-					persistentClass.hasEmbeddedIdentifier() ? (AbstractComponentType) persistentClass
+					persistentClass.hasEmbeddedIdentifier() ? (CompositeType) persistentClass
 							.getIdentifier().getType() : null);
 		} catch (HbStoreException e) {
 			log.warn("could not create proxy factory for:" + getEntityName(), e);

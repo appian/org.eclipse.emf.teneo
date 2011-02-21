@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbResourceImpl.java,v 1.11 2008/06/28 22:41:49 mtaal Exp $
+ * $Id: HbResourceImpl.java,v 1.12 2011/02/21 05:06:13 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.resource;
@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Map.Entry;
+import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.hibernate.SessionWrapper;
 import org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierUtil;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.FlushMode;
-import org.hibernate.LockMode;
+import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -52,24 +52,25 @@ import org.hibernate.engine.SessionImplementor;
 import org.hibernate.util.IdentityMap;
 
 /**
- * HbResource. This hibernate resource creates a new session for each load and save action. When
- * elists are lazily loaded then a new Session is created and the current content is added to the
- * session.
+ * HbResource. This hibernate resource creates a new session for each load and
+ * save action. When elists are lazily loaded then a new Session is created and
+ * the current content is added to the session.
  * 
- * When you create a HbDataStore through the appropriate method in the HbHelper class. The name you
- * passed there can be used as a parameter in the uri used to create this resource (using the
- * parameter pmfname). The uri is then: hibernate://?dsname=myemf.
+ * When you create a HbDataStore through the appropriate method in the HbHelper
+ * class. The name you passed there can be used as a parameter in the uri used
+ * to create this resource (using the parameter pmfname). The uri is then:
+ * hibernate://?dsname=myemf.
  * 
- * Another simple trick which is used to fool emf a bit is that the extension of the uri can also be
- * used to init a hibernate resource!
+ * Another simple trick which is used to fool emf a bit is that the extension of
+ * the uri can also be used to init a hibernate resource!
  * 
- * WARNING: This is an untested and experimental class, it is not intended to be used in production
- * situations.
+ * WARNING: This is an untested and experimental class, it is not intended to be
+ * used in production situations.
  * 
  * This class does not support the SessionController.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 
 public class HbResourceImpl extends StoreResource implements HbResource {
@@ -108,7 +109,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 					emfDataStore = HbUtil.getCreateDataStore(props);
 					setDefinedQueries(getQueries(props));
 				} catch (IOException e) {
-					throw new HbMapperException("Exception when reading properties from: " + uri.toString(), e);
+					throw new HbMapperException(
+							"Exception when reading properties from: "
+									+ uri.toString(), e);
 				}
 			} else {
 				log.debug("Trying fileextension: " + uri.fileExtension());
@@ -122,8 +125,10 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		}
 
 		if (emfdsName == null) {
-			throw new HbMapperException("The Resource can not be initialized using the querystring: " + uri.query() +
-					". Are all the required parameters present?");
+			throw new HbMapperException(
+					"The Resource can not be initialized using the querystring: "
+							+ uri.query()
+							+ ". Are all the required parameters present?");
 		}
 		log.debug("Looking for emf data store using  " + emfdsName);
 
@@ -138,9 +143,10 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Creates the session of this resource. As a default the FlushMode is set to Never. The loaded
-	 * objects of this resource are merged into the session. It is the responsibility of the caller
-	 * to close the session or call the returnSession method here.
+	 * Creates the session of this resource. As a default the FlushMode is set
+	 * to Never. The loaded objects of this resource are merged into the
+	 * session. It is the responsibility of the caller to close the session or
+	 * call the returnSession method here.
 	 */
 	public Session getSession() {
 		if (log.isDebugEnabled()) {
@@ -155,10 +161,11 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 
 			// merge the loaded objects into the session
 			if (log.isDebugEnabled()) {
-				log.debug("Merging " + loadedEObjects.size() + " eobjects into new session ");
+				log.debug("Merging " + loadedEObjects.size()
+						+ " eobjects into new session ");
 			}
 			for (Object obj : loadedEObjects) {
-				session.lock(obj, LockMode.NONE);
+				session.buildLockRequest(LockOptions.NONE).lock(obj);
 			}
 			session.getTransaction().commit();
 		}
@@ -171,7 +178,10 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		return new HbSessionWrapper(getEMFDataStore(), getSession());
 	}
 
-	/** Returns the sessionwrapper to the resource so that it can do clean up (or not) */
+	/**
+	 * Returns the sessionwrapper to the resource so that it can do clean up (or
+	 * not)
+	 */
 	public void returnSessionWrapper(SessionWrapper sessionWrapper) {
 		returnSession(sessionWrapper.getHibernateSession());
 	}
@@ -179,19 +189,20 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	/** Returns the session, closes it */
 	public void returnSession(Session theSession) {
 		// solves a bug with older versions of Hibernate, see the EMFInterceptor
-		Map.Entry<?, ?>[] collectionEntryArray =
-				IdentityMap.concurrentEntries(((SessionImplementor) theSession).getPersistenceContext()
-					.getCollectionEntries());
+		Map.Entry<?, ?>[] collectionEntryArray = IdentityMap
+				.concurrentEntries(((SessionImplementor) theSession)
+						.getPersistenceContext().getCollectionEntries());
 		for (Entry<?, ?> element : collectionEntryArray) {
-			((PersistentCollection) element.getKey()).unsetSession((SessionImplementor) theSession);
+			((PersistentCollection) element.getKey())
+					.unsetSession((SessionImplementor) theSession);
 		}
 
 		theSession.close();
 	}
 
 	/**
-	 * Returns an array of EObjects which refer to a certain EObject, note if the array is of length
-	 * zero then no refering EObjects where found.
+	 * Returns an array of EObjects which refer to a certain EObject, note if
+	 * the array is of length zero then no refering EObjects where found.
 	 */
 	@Override
 	public Object[] getCrossReferencers(EObject referedTo) {
@@ -200,13 +211,16 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		final Session mySession = getSession();
 		try {
 			tx = mySession.beginTransaction();
-			final Object[] result = emfDataStore.getCrossReferencers(mySession, referedTo);
+			final Object[] result = emfDataStore.getCrossReferencers(mySession,
+					referedTo);
 			err = false;
 
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new HbMapperException("Exception when doing cross reference search " + emfDataStore.getName(), e);
+			throw new HbMapperException(
+					"Exception when doing cross reference search "
+							+ emfDataStore.getName(), e);
 		} finally {
 			if (err) {
 				if (tx != null) {
@@ -220,7 +234,8 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Saves the changed objects or removes the detached objects from this resource.
+	 * Saves the changed objects or removes the detached objects from this
+	 * resource.
 	 */
 	@Override
 	protected void saveResource(Map<?, ?> options) {
@@ -235,7 +250,8 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			final List<EObject> list = super.getContents();
 			for (int i = 0; i < list.size(); i++) {
 				final Object obj = list.get(i);
-				// if (IdentifierCacheHandler.getInstance().getID(obj) == null) // new object
+				// if (IdentifierCacheHandler.getInstance().getID(obj) == null)
+				// // new object
 				// {
 				mySession.saveOrUpdate(obj);
 				// }
@@ -248,7 +264,8 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 				// object
 				{
 					mySession.delete(obj);
-					EMFInterceptor.registerCollectionsForDereferencing((EObject) obj);
+					EMFInterceptor
+							.registerCollectionsForDereferencing((EObject) obj);
 				}
 			}
 
@@ -257,7 +274,8 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			err = false;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new HbMapperException("Exception when saving resource " + emfDataStore.getName(), e);
+			throw new HbMapperException("Exception when saving resource "
+					+ emfDataStore.getName(), e);
 		} finally {
 			if (err) {
 				if (tx != null) {
@@ -292,7 +310,8 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			return storeList;
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
-			throw new HbMapperException("Exception when saving resource " + emfDataStore.getName(), e);
+			throw new HbMapperException("Exception when saving resource "
+					+ emfDataStore.getName(), e);
 		} finally {
 			if (err) {
 				if (tx != null) {
@@ -306,9 +325,10 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * Rollsback the transaction if any and clears different lists to start with an empty resource
-	 * again. Note that the super.dounload is not called because that clears the list resulting in
-	 * all kinds of undesirable inverseremoves.
+	 * Rollsback the transaction if any and clears different lists to start with
+	 * an empty resource again. Note that the super.dounload is not called
+	 * because that clears the list resulting in all kinds of undesirable
+	 * inverseremoves.
 	 */
 	@Override
 	protected void doUnload() {
@@ -316,10 +336,12 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	}
 
 	/**
-	 * This method can be overridden to implement specific load behavior. Note that a transaction
-	 * has already been started. The session is passed as a parameter, this is the same session
-	 * which can be retrieved using the getSession method. The read objects should be returned in
-	 * the list. Note that after this call the retrieved objects are put in the resource content.
+	 * This method can be overridden to implement specific load behavior. Note
+	 * that a transaction has already been started. The session is passed as a
+	 * parameter, this is the same session which can be retrieved using the
+	 * getSession method. The read objects should be returned in the list. Note
+	 * that after this call the retrieved objects are put in the resource
+	 * content.
 	 */
 	protected List<EObject> loadFromStore(Session sess) {
 		if (definedQueriesPresent()) {
