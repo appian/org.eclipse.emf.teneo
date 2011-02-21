@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackage.java,v 1.21 2009/12/13 10:14:15 mtaal Exp $
+ * $Id: PannotationPackage.java,v 1.22 2011/02/21 06:40:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -75,13 +75,22 @@ public interface PannotationPackage extends EPackage {
 	int PANNOTATION__EMODEL_ELEMENT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATION__GENERATED = 1;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotation</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATION_FEATURE_COUNT = 1;
+	int PANNOTATION_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AttributeOverrideImpl <em>Attribute Override</em>}' class.
@@ -100,6 +109,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTRIBUTE_OVERRIDE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_OVERRIDE__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -434,6 +452,15 @@ public interface PannotationPackage extends EPackage {
 	int ASSOCIATION_OVERRIDE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_OVERRIDE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -469,6 +496,15 @@ public interface PannotationPackage extends EPackage {
 	int BASIC__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Fetch</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -501,6 +537,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -620,6 +665,15 @@ public interface PannotationPackage extends EPackage {
 	int DISCRIMINATOR_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRIMINATOR_COLUMN__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -681,6 +735,15 @@ public interface PannotationPackage extends EPackage {
 	int DISCRIMINATOR_VALUE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRIMINATOR_VALUE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -707,6 +770,15 @@ public interface PannotationPackage extends EPackage {
 	int EMBEDDABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMBEDDABLE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Embeddable</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -723,6 +795,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMBEDDED__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMBEDDED__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The number of structural features of the '<em>Embedded</em>' class.
@@ -743,6 +824,15 @@ public interface PannotationPackage extends EPackage {
 	int EMBEDDED_ID__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMBEDDED_ID__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Embedded Id</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -759,6 +849,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -796,6 +895,15 @@ public interface PannotationPackage extends EPackage {
 	int ENUMERATED__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATED__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -820,6 +928,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERATED_VALUE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATED_VALUE__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Strategy</b></em>' attribute.
@@ -856,6 +973,15 @@ public interface PannotationPackage extends EPackage {
 	int ID__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ID__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the the '<em>Id</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -872,6 +998,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ID_CLASS__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ID_CLASS__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -900,6 +1035,15 @@ public interface PannotationPackage extends EPackage {
 	int INHERITANCE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INHERITANCE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Strategy</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -924,6 +1068,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_COLUMN__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1010,6 +1163,15 @@ public interface PannotationPackage extends EPackage {
 	int JOIN_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TABLE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1079,6 +1241,15 @@ public interface PannotationPackage extends EPackage {
 	int LOB__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOB__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the the '<em>Lob</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -1095,6 +1266,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MANY_TO_MANY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANY_TO_MANY__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1158,6 +1338,15 @@ public interface PannotationPackage extends EPackage {
 	int MANY_TO_ONE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANY_TO_ONE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -1210,6 +1399,15 @@ public interface PannotationPackage extends EPackage {
 	int MAP_KEY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1236,6 +1434,15 @@ public interface PannotationPackage extends EPackage {
 	int MAPPED_SUPERCLASS__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPED_SUPERCLASS__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Mapped Superclass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1252,6 +1459,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ONE_TO_MANY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONE_TO_MANY__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1324,6 +1540,15 @@ public interface PannotationPackage extends EPackage {
 	int ONE_TO_ONE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONE_TO_ONE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Target Entity</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -1384,6 +1609,15 @@ public interface PannotationPackage extends EPackage {
 	int ORDER_BY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_BY__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1408,6 +1642,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRIMARY_KEY_JOIN_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMARY_KEY_JOIN_COLUMN__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1452,6 +1695,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SECONDARY_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECONDARY_TABLE__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1514,6 +1766,15 @@ public interface PannotationPackage extends EPackage {
 	int SEQUENCE_GENERATOR__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_GENERATOR__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1567,6 +1828,15 @@ public interface PannotationPackage extends EPackage {
 	int TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1616,6 +1886,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int TABLE_GENERATOR__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_GENERATOR__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1722,6 +2001,15 @@ public interface PannotationPackage extends EPackage {
 	int TEMPORAL__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1748,6 +2036,15 @@ public interface PannotationPackage extends EPackage {
 	int TRANSIENT__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSIENT__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Transient</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1764,6 +2061,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNIQUE_CONSTRAINT__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIQUE_CONSTRAINT__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Column Names</b></em>' attribute list.
@@ -1793,6 +2099,15 @@ public interface PannotationPackage extends EPackage {
 	int VERSION__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Version</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1819,6 +2134,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int FOREIGN_KEY__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREIGN_KEY__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1856,6 +2180,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_STYLE_GENERATOR__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1931,6 +2264,15 @@ public interface PannotationPackage extends EPackage {
 	int EXTERNAL__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1968,6 +2310,15 @@ public interface PannotationPackage extends EPackage {
 	int EAV_MAPPING__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EAV_MAPPING__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>EAV Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1996,6 +2347,15 @@ public interface PannotationPackage extends EPackage {
 	int NO_EAV_MAPPING__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NO_EAV_MAPPING__GENERATED = PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>No EAV Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2022,6 +2382,15 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_INDEX_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_INDEX_COLUMN__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2132,6 +2501,17 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotation_EModelElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated <em>Generated</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Generated</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated()
+	 * @see #getPAnnotation()
+	 * @generated
+	 */
+	EAttribute getPAnnotation_Generated();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride <em>Attribute Override</em>}'.
@@ -3656,6 +4036,14 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATION__EMODEL_ELEMENT = eINSTANCE.getPAnnotation_EModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Generated</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PANNOTATION__GENERATED = eINSTANCE.getPAnnotation_Generated();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AttributeOverrideImpl <em>Attribute Override</em>}' class.

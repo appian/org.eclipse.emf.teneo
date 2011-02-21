@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotationImpl.java,v 1.3 2008/07/13 13:12:49 mtaal Exp $
+ * $Id: PAnnotationImpl.java,v 1.4 2011/02/21 06:40:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TemporalType;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#getEModelElement <em>EModel Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PAnnotationImpl#isGenerated <em>Generated</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +64,25 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 	 * @ordered
 	 */
 	protected EModelElement eModelElement;
+
+	/**
+	 * The default value of the '{@link #isGenerated() <em>Generated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isGenerated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean GENERATED_EDEFAULT = true;
+	/**
+	 * The cached value of the '{@link #isGenerated() <em>Generated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isGenerated()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean generated = GENERATED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -117,6 +137,27 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isGenerated() {
+		return generated;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGenerated(boolean newGenerated) {
+		boolean oldGenerated = generated;
+		generated = newGenerated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.PANNOTATION__GENERATED, oldGenerated, generated));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -126,6 +167,8 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
 				if (resolve) return getEModelElement();
 				return basicGetEModelElement();
+			case PannotationPackage.PANNOTATION__GENERATED:
+				return isGenerated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -139,6 +182,9 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 		switch (featureID) {
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)newValue);
+				return;
+			case PannotationPackage.PANNOTATION__GENERATED:
+				setGenerated((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,6 +200,9 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
 				setEModelElement((EModelElement)null);
 				return;
+			case PannotationPackage.PANNOTATION__GENERATED:
+				setGenerated(GENERATED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -167,8 +216,26 @@ public abstract class PAnnotationImpl extends EObjectImpl implements PAnnotation
 		switch (featureID) {
 			case PannotationPackage.PANNOTATION__EMODEL_ELEMENT:
 				return eModelElement != null;
+			case PannotationPackage.PANNOTATION__GENERATED:
+				return generated != GENERATED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (generated: ");
+		result.append(generated);
+		result.append(')');
+		return result.toString();
 	}
 
 	/** Return the class name of the annotation */

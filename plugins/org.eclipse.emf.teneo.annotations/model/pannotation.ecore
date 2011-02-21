@@ -21,6 +21,8 @@
         <details key="ignore" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeOverride" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

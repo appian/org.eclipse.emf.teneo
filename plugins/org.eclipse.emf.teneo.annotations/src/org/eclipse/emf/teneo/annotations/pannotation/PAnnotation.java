@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PAnnotation.java,v 1.6 2007/11/14 16:37:55 mtaal Exp $
+ * $Id: PAnnotation.java,v 1.7 2011/02/21 06:40:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#getEModelElement <em>EModel Element</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated <em>Generated</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,6 +55,33 @@ public interface PAnnotation extends EObject {
 	 * @generated
 	 */
 	void setEModelElement(EModelElement value);
+
+	/**
+	 * Returns the value of the '<em><b>Generated</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generated</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generated</em>' attribute.
+	 * @see #setGenerated(boolean)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getPAnnotation_Generated()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isGenerated();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation#isGenerated <em>Generated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Generated</em>' attribute.
+	 * @see #isGenerated()
+	 * @generated
+	 */
+	void setGenerated(boolean value);
 
 	/** Return the java annotation, any importStatements are added to the passed list */
 	String getJavaAnnotation(List<String> importStatements);

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationPackageImpl.java,v 1.34 2009/12/13 10:14:21 mtaal Exp $
+ * $Id: PannotationPackageImpl.java,v 1.35 2011/02/21 06:40:11 mtaal Exp $
  */
 package org.eclipse.emf.teneo.annotations.pannotation.impl;
 
@@ -471,6 +471,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EReference getPAnnotation_EModelElement() {
 		return (EReference)pAnnotationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPAnnotation_Generated() {
+		return (EAttribute)pAnnotationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1728,6 +1737,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		// Create classes and their features
 		pAnnotationEClass = createEClass(PANNOTATION);
 		createEReference(pAnnotationEClass, PANNOTATION__EMODEL_ELEMENT);
+		createEAttribute(pAnnotationEClass, PANNOTATION__GENERATED);
 
 		attributeOverrideEClass = createEClass(ATTRIBUTE_OVERRIDE);
 		createEAttribute(attributeOverrideEClass, ATTRIBUTE_OVERRIDE__NAME);
@@ -1994,6 +2004,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		// Initialize classes and features; add operations and parameters
 		initEClass(pAnnotationEClass, PAnnotation.class, "PAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPAnnotation_EModelElement(), ecorePackage.getEModelElement(), null, "eModelElement", null, 1, 1, PAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPAnnotation_Generated(), ecorePackage.getEBoolean(), "generated", "true", 0, 1, PAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeOverrideEClass, AttributeOverride.class, "AttributeOverride", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttributeOverride_Name(), ecorePackage.getEString(), "name", null, 1, 1, AttributeOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

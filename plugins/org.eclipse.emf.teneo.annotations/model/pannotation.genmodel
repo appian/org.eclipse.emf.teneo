@@ -145,6 +145,7 @@
     </genEnums>
     <genClasses image="false" ecoreClass="pannotation.ecore#//PAnnotation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pannotation.ecore#//PAnnotation/eModelElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//PAnnotation/generated"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//AttributeOverride">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//AttributeOverride/name"/>
