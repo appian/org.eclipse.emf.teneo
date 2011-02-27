@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExternalPackage.java,v 1.1 2008/12/16 20:40:24 mtaal Exp $
+ * $Id: ExternalPackage.java,v 1.2 2011/02/27 20:10:43 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.external;
 
@@ -97,13 +97,22 @@ public interface ExternalPackage extends EPackage {
 	int EXTERNAL_TEST__EOBJECTS = 2;
 
 	/**
+	 * The feature id for the '<em><b>EClass</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TEST__ECLASS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Test</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_TEST_FEATURE_COUNT = 3;
+	int EXTERNAL_TEST_FEATURE_COUNT = 4;
 
 
 	/**
@@ -148,6 +157,17 @@ public interface ExternalPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExternalTest_EObjects();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getEClass <em>EClass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>EClass</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getEClass()
+	 * @see #getExternalTest()
+	 * @generated
+	 */
+	EReference getExternalTest_EClass();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -204,6 +224,14 @@ public interface ExternalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXTERNAL_TEST__EOBJECTS = eINSTANCE.getExternalTest_EObjects();
+
+		/**
+		 * The meta object literal for the '<em><b>EClass</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTERNAL_TEST__ECLASS = eINSTANCE.getExternalTest_EClass();
 
 	}
 
