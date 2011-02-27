@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: ExternalAction.java,v 1.1 2008/12/16 20:40:36 mtaal Exp $
+ * $Id: ExternalAction.java,v 1.2 2011/02/27 20:10:33 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.annotations;
@@ -42,7 +42,7 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * Testcase
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ExternalAction extends AbstractTestAction {
 	public ExternalAction() {
@@ -64,8 +64,8 @@ public class ExternalAction extends AbstractTestAction {
 		try {
 			// a file handle to the current class
 			// the play.xml is in the model directory
-			final URI uri = URI.createURI(this.getClass().getResource(
-					"small_play.xml").toString());
+			final URI uri = URI.createURI(this.getClass()
+					.getResource("small_play.xml").toString());
 			final Resource resource = new XMLResourceImpl(uri);
 			resource.load(Collections.EMPTY_MAP);
 			PlayType play = (PlayType) resource.getContents().get(0);
@@ -86,10 +86,12 @@ public class ExternalAction extends AbstractTestAction {
 			et1.getEObjects().add(o3);
 			et1.getEObjects().add(o1);
 			et1.getEObjects().add(o2);
+			et1.setEClass(ExternalPackage.eINSTANCE.getExternalTest());
 			store.store(et1);
 			final ExternalTest et2 = factory.createExternalTest();
 			et2.setName("et2");
 			et2.setEObject(o2);
+			et2.setEClass(ExternalPackage.eINSTANCE.getExternalTest());
 			store.store(et2);
 			store.commitTransaction();
 
@@ -99,8 +101,8 @@ public class ExternalAction extends AbstractTestAction {
 		try {
 			final Resource res = store.getResource();
 			final ResourceSet rs = new ResourceSetImpl();
-			rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-					"xml", new XMLResourceFactoryImpl());
+			rs.getResourceFactoryRegistry().getExtensionToFactoryMap()
+					.put("xml", new XMLResourceFactoryImpl());
 			rs.getResources().add(res);
 			res.load(Collections.EMPTY_MAP);
 
@@ -125,6 +127,8 @@ public class ExternalAction extends AbstractTestAction {
 				} else {
 					assertTrue(et.getEObject() instanceof PersonaeType);
 				}
+				assertEquals(et.getEClass(),
+						ExternalPackage.eINSTANCE.getExternalTest());
 			}
 		} catch (Exception e) {
 			throw new TeneoException(e.getMessage(), e);
