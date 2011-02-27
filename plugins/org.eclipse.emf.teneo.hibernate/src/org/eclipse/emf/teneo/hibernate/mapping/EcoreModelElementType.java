@@ -13,7 +13,7 @@ package org.eclipse.emf.teneo.hibernate.mapping;
  *   Martin Taal
  * </copyright>
  *
- * $Id: EcoreModelElementType.java,v 1.4 2009/10/15 20:35:48 mtaal Exp $
+ * $Id: EcoreModelElementType.java,v 1.5 2011/02/27 20:10:36 mtaal Exp $
  */
 
 import java.io.Serializable;
@@ -21,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -28,16 +29,18 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.hibernate.HibernateException;
+import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
 /**
- * Persists references to EClassifiers and EStructuralFeatures as a varchar field.
+ * Persists references to EClassifiers and EStructuralFeatures as a varchar
+ * field.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.4 $ $Date: 2009/10/15 20:35:48 $
+ * @version $Revision: 1.5 $ $Date: 2011/02/27 20:10:36 $
  */
 
-public class EcoreModelElementType implements UserType {
+public class EcoreModelElementType implements UserType, ParameterizedType {
 
 	private static final int[] SQL_TYPES = new int[] { Types.VARCHAR };
 	private static final String SEPARATOR = "_;_";
@@ -48,7 +51,8 @@ public class EcoreModelElementType implements UserType {
 		registry = PackageRegistryProvider.getInstance().getPackageRegistry();
 	}
 
-	public Object assemble(Serializable cached, Object owner) throws HibernateException {
+	public Object assemble(Serializable cached, Object owner)
+			throws HibernateException {
 		return convertFromString((String) cached);
 	}
 
@@ -83,7 +87,8 @@ public class EcoreModelElementType implements UserType {
 		return false;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
+	public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
+			throws HibernateException, SQLException {
 		final String value = rs.getString(names[0]);
 		if (rs.wasNull()) {
 			return null;
@@ -99,18 +104,21 @@ public class EcoreModelElementType implements UserType {
 			return ePackage;
 		} else if (values.length == 2) { // EClassifier
 			final String eClassifierName = values[1];
-			final EClassifier eClassifier = ePackage.getEClassifier(eClassifierName);
+			final EClassifier eClassifier = ePackage
+					.getEClassifier(eClassifierName);
 			return eClassifier;
 		} else {
 			final String eClassifierName = values[1];
-			final EClassifier eClassifier = ePackage.getEClassifier(eClassifierName);
+			final EClassifier eClassifier = ePackage
+					.getEClassifier(eClassifierName);
 			final EClass eClass = (EClass) eClassifier;
 			final String eFeatureName = values[2];
 			return eClass.getEStructuralFeature(eFeatureName);
 		}
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index)
+			throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);
 		} else {
@@ -131,14 +139,16 @@ public class EcoreModelElementType implements UserType {
 
 		} else {
 			final EStructuralFeature feature = (EStructuralFeature) value;
-			final String uri = feature.getEContainingClass().getEPackage().getNsURI();
+			final String uri = feature.getEContainingClass().getEPackage()
+					.getNsURI();
 			final String eClassName = feature.getEContainingClass().getName();
 			final String eFeatureName = feature.getName();
 			return uri + SEPARATOR + eClassName + SEPARATOR + eFeatureName;
 		}
 	}
 
-	public Object replace(Object original, Object target, Object owner) throws HibernateException {
+	public Object replace(Object original, Object target, Object owner)
+			throws HibernateException {
 		return original;
 	}
 
@@ -148,5 +158,9 @@ public class EcoreModelElementType implements UserType {
 
 	public int[] sqlTypes() {
 		return SQL_TYPES;
+	}
+
+	public void setParameterValues(Properties parameters) {
+		// TODO Auto-generated method stub
 	}
 }
