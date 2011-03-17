@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal Brian
- * Vetter </copyright> $Id: AbstractMapper.java,v 1.54 2011/02/21 06:39:57 mtaal Exp $
+ * Vetter </copyright> $Id: AbstractMapper.java,v 1.55 2011/03/17 09:21:35 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -311,6 +311,10 @@ public abstract class AbstractMapper {
 				|| (paAttribute.getTemporal() != null && paAttribute
 						.getTemporal().getValue().getValue() == TemporalType.TIMESTAMP_VALUE)) {
 			return getEDateTimeClass(paAttribute);
+		} else if (EcoreDataTypes.INSTANCE.isETime(eDataType)
+				|| (paAttribute.getTemporal() != null && paAttribute
+						.getTemporal().getValue().getValue() == TemporalType.TIME_VALUE)) {
+			return getETimeClass(paAttribute);
 		} else if (EcoreDataTypes.INSTANCE.isEDuration(eDataType)) {
 			return hbmContext.getDurationType();
 		} else if (EcoreDataTypes.INSTANCE.isEDate(eDataType, getHbmContext()
@@ -440,6 +444,44 @@ public abstract class AbstractMapper {
 		// user
 		// really wants a different mapping he/she should use maybe a usertype??
 		return Date.class.getName();
+	}
+
+	/*
+	 * @return The name of the java class needed to map the time type
+	 */
+	public String getETimeClass(PAnnotatedEAttribute paAttribute) {
+		final EDataType eDataType = paAttribute.getModelEAttribute()
+				.getEAttributeType();
+
+		if (XMLTypePackage.eINSTANCE.getTime().equals(eDataType)) {
+			return getHbmContext().getXSDTimeUserType();
+		}
+
+		if (paAttribute.getTemporal() != null) {
+			final TemporalType tt = paAttribute.getTemporal().getValue();
+			return hbType(tt);
+		}
+
+		// bugzilla 277546
+		if (eDataType.getInstanceClass() != null
+				&& Timestamp.class.isAssignableFrom(eDataType
+						.getInstanceClass())) {
+			return eDataType.getInstanceClass().getName();
+		}
+
+		if (EcoreDataTypes.INSTANCE.isETime(eDataType)) {
+			// EMF returns an XSD Date type as an Object instance. go figure.
+			// note that I would prefer to use the class instance to get the
+			// name
+			// but for other reasons I do not want to have references to the
+			// org.eclipse.emf.teneo.hibernate plugin.
+			return getHbmContext().getXSDTimeUserType();
+		}
+
+		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the
+		// user
+		// really wants a different mapping he/she should use maybe a usertype??
+		return Timestamp.class.getName();
 	}
 
 	/*
