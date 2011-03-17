@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: DateTimeAction.java,v 1.3 2008/02/28 07:08:16 mtaal Exp $
+ * $Id: DateTimeAction.java,v 1.4 2011/03/17 09:21:24 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.test.emf.schemaconstructs;
@@ -29,14 +29,15 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 
 /**
- * Tests for xsd datetime  
+ * Tests for xsd datetime
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.3 $ 
-*/
+ * @version $Revision: 1.4 $
+ */
 public class DateTimeAction extends AbstractTestAction {
 	/**
 	 * Constructor for ClassHierarchyParsing.
+	 * 
 	 * @param arg0
 	 */
 	public DateTimeAction() {
@@ -53,39 +54,55 @@ public class DateTimeAction extends AbstractTestAction {
 	public void doAction(TestStore store) {
 		final DatetimeFactory factory = DatetimeFactory.eINSTANCE;
 		final Calendar calendar = Calendar.getInstance();
-		XMLGregorianCalendar xcd = EcoreDataTypes.INSTANCE.getXMLGregorianCalendar(calendar.getTime());
-		XMLGregorianCalendar xcdt = EcoreDataTypes.INSTANCE.getXMLGregorianCalendarDateTime(calendar.getTime());
+		XMLGregorianCalendar xcd = EcoreDataTypes.INSTANCE
+				.getXMLGregorianCalendar(calendar.getTime());
+		XMLGregorianCalendar xcdt = EcoreDataTypes.INSTANCE
+				.getXMLGregorianCalendarDateTime(calendar.getTime());
+		XMLGregorianCalendar xct = EcoreDataTypes.INSTANCE
+				.getXMLGregorianCalendarDateTime(calendar.getTime());
 		{
 			store.beginTransaction();
 			TestDate td = factory.createTestDate();
 
 			td.setDate(xcd);
 			td.setDatetime(xcdt);
+			td.setTime(xct);
 			store.store(td);
 			store.commitTransaction();
 		}
 		{
 			store.beginTransaction();
 			TestDate td = store.getObject(TestDate.class);
-// XMLGregorianCalendar xc = (XMLGregorianCalendar) td.getDatetime();
-			checkDate(calendar, ((XMLGregorianCalendar) td.getDatetime()).toGregorianCalendar().getTime(), true);
-			checkDate(calendar, ((XMLGregorianCalendar) td.getDate()).toGregorianCalendar().getTime(), false);
+			// XMLGregorianCalendar xc = (XMLGregorianCalendar)
+			// td.getDatetime();
+			checkDate(calendar, ((XMLGregorianCalendar) td.getDatetime())
+					.toGregorianCalendar().getTime(), true, true);
+			checkDate(calendar, ((XMLGregorianCalendar) td.getDate())
+					.toGregorianCalendar().getTime(), true, false);
+			checkDate(calendar, ((XMLGregorianCalendar) td.getTime())
+					.toGregorianCalendar().getTime(), false, true);
 			store.commitTransaction();
 		}
 	}
 
 	// Checks the date
-	private void checkDate(Calendar original, Date retrieved, boolean checkSeconds) {
+	private void checkDate(Calendar original, Date retrieved,
+			boolean checkDate, boolean checkSeconds) {
 		final Calendar loaded = Calendar.getInstance();
 		loaded.setTime(retrieved);
 
-		assertEquals(original.get(Calendar.DATE), loaded.get(Calendar.DATE));
-		assertEquals(original.get(Calendar.MONTH), loaded.get(Calendar.MONTH));
-		assertEquals(original.get(Calendar.YEAR), loaded.get(Calendar.YEAR));
+		if (checkDate) {
+			assertEquals(original.get(Calendar.DATE), loaded.get(Calendar.DATE));
+			assertEquals(original.get(Calendar.MONTH),
+					loaded.get(Calendar.MONTH));
+			assertEquals(original.get(Calendar.YEAR), loaded.get(Calendar.YEAR));
+		}
 		if (checkSeconds) {
 			assertEquals(original.get(Calendar.HOUR), loaded.get(Calendar.HOUR));
-			assertEquals(original.get(Calendar.MINUTE), loaded.get(Calendar.MINUTE));
-			assertEquals(original.get(Calendar.SECOND), loaded.get(Calendar.SECOND));
+			assertEquals(original.get(Calendar.MINUTE),
+					loaded.get(Calendar.MINUTE));
+			assertEquals(original.get(Calendar.SECOND),
+					loaded.get(Calendar.SECOND));
 		}
 	}
 }
