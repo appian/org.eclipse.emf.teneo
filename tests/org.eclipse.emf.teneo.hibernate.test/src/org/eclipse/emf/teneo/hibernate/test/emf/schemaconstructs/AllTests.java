@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.test.emf.schemaconstructs.SubstitutionzvonAction;
  * All tests
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 public class AllTests {
 
@@ -42,6 +42,8 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.schemaconstructs",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(DateTimeAction.class);
+		suite.addTestSuite(DateTimeEAVAction.class);
 		suite.addTestSuite(AttributesTest.class);
 		suite.addTestSuite(ExtensionEAVAction.class);
 		suite.addTestSuite(ExtensionAction.class);
@@ -53,7 +55,6 @@ public class AllTests {
 		suite.addTestSuite(SimpleTypeEAVAction.class);
 		suite.addTestSuite(SubstitutionEAVAction.class);
 		suite.addTestSuite(GroupEAVAction.class);
-		suite.addTestSuite(DateTimeEAVAction.class);
 		// QNameEAVAction fails because the xml EFactory convertToString does
 		// not
 		// convert the name space uri, only the prefix
@@ -75,7 +76,6 @@ public class AllTests {
 		suite.addTestSuite(SubstitutionzvonAction.class);
 
 		suite.addTestSuite(SimpleTypeAction.class);
-		suite.addTestSuite(DateTimeAction.class);
 
 		suite.addTestSuite(DurationAction.class);
 
