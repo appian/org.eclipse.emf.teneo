@@ -2,10 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestDateImpl.java,v 1.1 2007/03/04 21:18:11 mtaal Exp $
+ * $Id: TestDateImpl.java,v 1.2 2011/03/17 09:21:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.TestDate;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl.TestDateImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl.TestDateImpl#getDatetime <em>Datetime</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl.TestDateImpl#getTime <em>Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,7 +41,7 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object DATE_EDEFAULT = null;
+	protected static final XMLGregorianCalendar DATE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
@@ -49,7 +51,7 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * @generated
 	 * @ordered
 	 */
-	protected Object date = DATE_EDEFAULT;
+	protected XMLGregorianCalendar date = DATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDatetime() <em>Datetime</em>}' attribute.
@@ -59,7 +61,7 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object DATETIME_EDEFAULT = null;
+	protected static final XMLGregorianCalendar DATETIME_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getDatetime() <em>Datetime</em>}' attribute.
@@ -69,7 +71,27 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * @generated
 	 * @ordered
 	 */
-	protected Object datetime = DATETIME_EDEFAULT;
+	protected XMLGregorianCalendar datetime = DATETIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final XMLGregorianCalendar TIME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected XMLGregorianCalendar time = TIME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,7 +117,7 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getDate() {
+	public XMLGregorianCalendar getDate() {
 		return date;
 	}
 
@@ -104,8 +126,8 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDate(Object newDate) {
-		Object oldDate = date;
+	public void setDate(XMLGregorianCalendar newDate) {
+		XMLGregorianCalendar oldDate = date;
 		date = newDate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DatetimePackage.TEST_DATE__DATE, oldDate, date));
@@ -116,7 +138,7 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getDatetime() {
+	public XMLGregorianCalendar getDatetime() {
 		return datetime;
 	}
 
@@ -125,11 +147,32 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDatetime(Object newDatetime) {
-		Object oldDatetime = datetime;
+	public void setDatetime(XMLGregorianCalendar newDatetime) {
+		XMLGregorianCalendar oldDatetime = datetime;
 		datetime = newDatetime;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DatetimePackage.TEST_DATE__DATETIME, oldDatetime, datetime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XMLGregorianCalendar getTime() {
+		return time;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTime(XMLGregorianCalendar newTime) {
+		XMLGregorianCalendar oldTime = time;
+		time = newTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatetimePackage.TEST_DATE__TIME, oldTime, time));
 	}
 
 	/**
@@ -144,6 +187,8 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 				return getDate();
 			case DatetimePackage.TEST_DATE__DATETIME:
 				return getDatetime();
+			case DatetimePackage.TEST_DATE__TIME:
+				return getTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,10 +202,13 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DatetimePackage.TEST_DATE__DATE:
-				setDate(newValue);
+				setDate((XMLGregorianCalendar)newValue);
 				return;
 			case DatetimePackage.TEST_DATE__DATETIME:
-				setDatetime(newValue);
+				setDatetime((XMLGregorianCalendar)newValue);
+				return;
+			case DatetimePackage.TEST_DATE__TIME:
+				setTime((XMLGregorianCalendar)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +228,9 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 			case DatetimePackage.TEST_DATE__DATETIME:
 				setDatetime(DATETIME_EDEFAULT);
 				return;
+			case DatetimePackage.TEST_DATE__TIME:
+				setTime(TIME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +247,8 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 			case DatetimePackage.TEST_DATE__DATETIME:
 				return DATETIME_EDEFAULT == null ? datetime != null : !DATETIME_EDEFAULT.equals(datetime);
+			case DatetimePackage.TEST_DATE__TIME:
+				return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,6 +267,8 @@ public class TestDateImpl extends EObjectImpl implements TestDate {
 		result.append(date);
 		result.append(", datetime: ");
 		result.append(datetime);
+		result.append(", time: ");
+		result.append(time);
 		result.append(')');
 		return result.toString();
 	}

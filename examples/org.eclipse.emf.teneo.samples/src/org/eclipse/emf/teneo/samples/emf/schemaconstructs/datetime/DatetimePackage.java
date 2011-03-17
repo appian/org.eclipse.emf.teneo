@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DatetimePackage.java,v 1.1 2007/03/04 21:18:11 mtaal Exp $
+ * $Id: DatetimePackage.java,v 1.2 2011/03/17 09:21:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime;
 
@@ -143,13 +143,22 @@ public interface DatetimePackage extends EPackage {
 	int TEST_DATE__DATETIME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_DATE__TIME = 2;
+
+	/**
 	 * The number of structural features of the '<em>Test Date</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_DATE_FEATURE_COUNT = 2;
+	int TEST_DATE_FEATURE_COUNT = 3;
 
 
 	/**
@@ -237,6 +246,17 @@ public interface DatetimePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTestDate_Datetime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.TestDate#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.TestDate#getTime()
+	 * @see #getTestDate()
+	 * @generated
+	 */
+	EAttribute getTestDate_Time();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -327,6 +347,14 @@ public interface DatetimePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TEST_DATE__DATETIME = eINSTANCE.getTestDate_Datetime();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_DATE__TIME = eINSTANCE.getTestDate_Time();
 
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DatetimePackageImpl.java,v 1.1 2007/03/04 21:18:11 mtaal Exp $
+ * $Id: DatetimePackageImpl.java,v 1.2 2011/03/17 09:21:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl;
 
@@ -68,20 +68,10 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link DatetimePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -93,7 +83,7 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 		if (isInited) return (DatetimePackage)EPackage.Registry.INSTANCE.getEPackage(DatetimePackage.eNS_URI);
 
 		// Obtain or create and register package
-		DatetimePackageImpl theDatetimePackage = (DatetimePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof DatetimePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new DatetimePackageImpl());
+		DatetimePackageImpl theDatetimePackage = (DatetimePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DatetimePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new DatetimePackageImpl());
 
 		isInited = true;
 
@@ -109,6 +99,9 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 		// Mark meta-data to indicate it can't be changed
 		theDatetimePackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(DatetimePackage.eNS_URI, theDatetimePackage);
 		return theDatetimePackage;
 	}
 
@@ -189,6 +182,15 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTestDate_Time() {
+		return (EAttribute)testDateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DatetimeFactory getDatetimeFactory() {
 		return (DatetimeFactory)getEFactoryInstance();
 	}
@@ -221,6 +223,7 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 		testDateEClass = createEClass(TEST_DATE);
 		createEAttribute(testDateEClass, TEST_DATE__DATE);
 		createEAttribute(testDateEClass, TEST_DATE__DATETIME);
+		createEAttribute(testDateEClass, TEST_DATE__TIME);
 	}
 
 	/**
@@ -263,8 +266,9 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 		initEReference(getDocumentRoot_Root(), this.getTestDate(), null, "root", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(testDateEClass, TestDate.class, "TestDate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestDate_Date(), theXMLTypePackage.getDate(), "date", null, 1, 1, TestDate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestDate_Datetime(), theXMLTypePackage.getDateTime(), "datetime", null, 1, 1, TestDate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestDate_Date(), theXMLTypePackage.getDate(), "date", null, 1, 1, TestDate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestDate_Datetime(), theXMLTypePackage.getDateTime(), "datetime", null, 1, 1, TestDate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestDate_Time(), theXMLTypePackage.getTime(), "time", null, 1, 1, TestDate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -339,6 +343,14 @@ public class DatetimePackageImpl extends EPackageImpl implements DatetimePackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "datetime",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (getTestDate_Time(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "time",
 			 "namespace", "##targetNamespace"
 		   });
 	}

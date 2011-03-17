@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DatetimeAdapterFactory.java,v 1.1 2007/03/04 21:18:11 mtaal Exp $
+ * $Id: DatetimeAdapterFactory.java,v 1.2 2011/03/17 09:21:20 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.util;
 
@@ -64,7 +64,7 @@ public class DatetimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -16,6 +16,7 @@
     <genClasses ecoreClass="datetime.ecore#//TestDate">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datetime.ecore#//TestDate/date"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datetime.ecore#//TestDate/datetime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datetime.ecore#//TestDate/time"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

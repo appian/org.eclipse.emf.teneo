@@ -8,6 +8,7 @@
 		<sequence>
 			<element name="date" type="date"></element>
 			<element name="datetime" type="dateTime"></element>
+			<element name="time" type="time"></element>
 		</sequence>
 	</complexType>
 

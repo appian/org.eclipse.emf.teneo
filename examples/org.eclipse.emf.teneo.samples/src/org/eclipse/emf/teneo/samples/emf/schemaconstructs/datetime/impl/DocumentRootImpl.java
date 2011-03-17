@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DocumentRootImpl.java,v 1.1 2007/03/04 21:18:11 mtaal Exp $
+ * $Id: DocumentRootImpl.java,v 1.2 2011/03/17 09:21:21 mtaal Exp $
  */
 package org.eclipse.emf.teneo.samples.emf.schemaconstructs.datetime.impl;
 
@@ -52,7 +52,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected FeatureMap mixed = null;
+	protected FeatureMap mixed;
 
 	/**
 	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map.
@@ -62,7 +62,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> xMLNSPrefixMap = null;
+	protected EMap<String, String> xMLNSPrefixMap;
 
 	/**
 	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
@@ -72,7 +72,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> xSISchemaLocation = null;
+	protected EMap<String, String> xSISchemaLocation;
 
 	/**
 	 * <!-- begin-user-doc -->
