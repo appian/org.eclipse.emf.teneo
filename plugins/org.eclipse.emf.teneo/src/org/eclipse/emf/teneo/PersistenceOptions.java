@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.68 2011/02/21 06:40:04 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.69 2011/03/17 09:21:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.68 $
+ * @version $Revision: 1.69 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -191,6 +191,8 @@ public class PersistenceOptions implements ExtensionPoint {
 			+ "UserDateType";
 	public static final String USER_XSDDATETIME_TYPE = MAPPING_PREFIX
 			+ "UserDateTimeType";
+	public static final String USER_XSDTIME_TYPE = MAPPING_PREFIX
+			+ "UserTimeType";
 
 	/**
 	 * This option can be used to control the actual xsd date class used, as a
@@ -539,6 +541,8 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(USER_XSDDATE_TYPE,
 				"org.eclipse.emf.teneo.hibernate.mapping.XSDDate");
 		props.setProperty(USER_XSDDATETIME_TYPE,
+				"org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime");
+		props.setProperty(USER_XSDTIME_TYPE,
 				"org.eclipse.emf.teneo.hibernate.mapping.XSDDateTime");
 		props.setProperty(XSDDATE_CLASS,
 				"javax.xml.datatype.XMLGregorianCalendar");
@@ -1180,6 +1184,10 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	public String getUserXSDDateType() {
 		return properties.getProperty(USER_XSDDATE_TYPE);
+	}
+
+	public String getUserXSDTime() {
+		return properties.getProperty(USER_XSDTIME_TYPE);
 	}
 
 	public String getUserXSDDateTime() {
