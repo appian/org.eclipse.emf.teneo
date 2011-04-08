@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence-mapping xmlns="http://www.eclipse.org/emft/teneo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/emf/annotations/uniqueconstraints">
+
+		<eclass name="Item">
+			<table>
+				<unique-constraint>MYSTR,MYINT,MYPROJECT</unique-constraint>
+			</table>
+			<property name="name">
+				<column name="MYSTR" />
+			</property>
+			<property name="project">
+				<join-column name="MYPROJECT" />
+			</property>
+			<property name="age">
+				<column name="MYINT" />
+			</property>
+			
+		</eclass>
+		
+	</epackage>
+
+</persistence-mapping>
