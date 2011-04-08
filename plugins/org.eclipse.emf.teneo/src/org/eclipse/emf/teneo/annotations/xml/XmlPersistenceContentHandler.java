@@ -11,12 +11,13 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: XmlPersistenceContentHandler.java,v 1.10 2011/02/21 06:40:04 mtaal Exp $
+ * $Id: XmlPersistenceContentHandler.java,v 1.11 2011/04/08 17:47:25 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.annotations.xml;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import java.util.regex.Pattern;
@@ -423,7 +424,16 @@ public class XmlPersistenceContentHandler extends DefaultHandler implements
 			final Object valueObject = eAttributeType.getEPackage()
 					.getEFactoryInstance()
 					.createFromString(eAttributeType, value);
-			pAnnotation.eSet(eAttribute, valueObject);
+			if (eAttribute.isMany() && valueObject instanceof String) {
+				final String[] vals = ((String) valueObject).split(",");
+				final List<String> valsList = new ArrayList<String>();
+				for (String val : vals) {
+					valsList.add(val);
+				}
+				pAnnotation.eSet(eAttribute, valsList);
+			} else {
+				pAnnotation.eSet(eAttribute, valueObject);
+			}
 			break;
 		}
 		case ANNOTATION_ATTRIBUTE: {
