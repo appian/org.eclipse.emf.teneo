@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: MappingContext.java,v 1.38 2011/03/17 09:21:35 mtaal Exp $
+ * </copyright> $Id: MappingContext.java,v 1.39 2011/04/26 18:41:15 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.simpledom.Element;
  * Maps a basic attribute with many=true, e.g. list of simpletypes.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  */
 public class MappingContext extends AbstractProcessingContext implements
 		ExtensionPoint, ExtensionInitializable, ExtensionManagerAware {
@@ -461,6 +461,10 @@ public class MappingContext extends AbstractProcessingContext implements
 	protected String trunc(PAnnotation pAnnotation, String truncName,
 			boolean truncPrefix) {
 		if (pAnnotation != null && !doTrunc(pAnnotation)) {
+			if (!truncName.startsWith(escapeCharacter)
+					&& !truncName.endsWith(escapeCharacter)) {
+				return escapeCharacter + truncName + escapeCharacter;
+			}
 			return truncName;
 		}
 
