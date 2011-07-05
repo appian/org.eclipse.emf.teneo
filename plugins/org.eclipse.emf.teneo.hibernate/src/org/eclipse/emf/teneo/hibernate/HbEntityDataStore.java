@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEntityDataStore.java,v 1.36 2011/04/19 06:47:32 mtaal Exp $
+ * $Id: HbEntityDataStore.java,v 1.37 2011/07/05 05:09:41 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate;
@@ -66,7 +66,7 @@ import org.hibernate.type.Type;
  * Adds Hibernate Entitymanager behavior to the hbDataStore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  */
 @SuppressWarnings("deprecation")
 public class HbEntityDataStore extends HbDataStore implements
@@ -86,7 +86,7 @@ public class HbEntityDataStore extends HbDataStore implements
 	/** Initializes this Data Store */
 	@Override
 	public void initialize() {
-		if (ejb3Configuration != null) {
+		if (ejb3Configuration != null && isResetConfigurationOnInitialization()) {
 			ejb3Configuration = null;
 		}
 

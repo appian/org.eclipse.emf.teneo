@@ -103,7 +103,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.73 $
+ * @version $Revision: 1.74 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -183,6 +183,8 @@ public abstract class HbDataStore implements DataStore {
 	private Map<EClass, EStructuralFeature> idFeatureByEClass = null;
 
 	private EPackage.Registry packageRegistry = null;
+
+	private boolean resetConfigurationOnInitialization = true;
 
 	public EPackage.Registry getPackageRegistry() {
 		if (packageRegistry == null) {
@@ -1841,5 +1843,14 @@ public abstract class HbDataStore implements DataStore {
 
 	protected Mappings getMappings() {
 		return getHibernateConfiguration().createMappings();
+	}
+
+	public boolean isResetConfigurationOnInitialization() {
+		return resetConfigurationOnInitialization;
+	}
+
+	public void setResetConfigurationOnInitialization(
+			boolean resetConfigurationOnInitialization) {
+		this.resetConfigurationOnInitialization = resetConfigurationOnInitialization;
 	}
 }
