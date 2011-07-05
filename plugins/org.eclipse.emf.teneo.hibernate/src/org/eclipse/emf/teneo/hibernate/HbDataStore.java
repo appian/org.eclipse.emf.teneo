@@ -103,7 +103,7 @@ import org.hibernate.mapping.Value;
  * oriented datastore.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.74 $
+ * @version $Revision: 1.75 $
  */
 public abstract class HbDataStore implements DataStore {
 
@@ -1845,10 +1845,20 @@ public abstract class HbDataStore implements DataStore {
 		return getHibernateConfiguration().createMappings();
 	}
 
+	/**
+	 * If set to true (the default) then when initialize is called the
+	 * configuration object is set to null and then recreated.
+	 * 
+	 * @return if the configuration object is reset when initializing
+	 */
 	public boolean isResetConfigurationOnInitialization() {
 		return resetConfigurationOnInitialization;
 	}
 
+	/**
+	 * @see #isResetConfigurationOnInitialization()
+	 * @param resetConfigurationOnInitialization
+	 */
 	public void setResetConfigurationOnInitialization(
 			boolean resetConfigurationOnInitialization) {
 		this.resetConfigurationOnInitialization = resetConfigurationOnInitialization;
