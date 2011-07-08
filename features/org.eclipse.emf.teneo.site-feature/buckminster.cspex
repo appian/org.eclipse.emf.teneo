@@ -10,5 +10,6 @@
         <dependency name="javax.persistence" componentType="eclipse.feature"/>
         <dependency name="org.dom4j" componentType="eclipse.feature"/>
         <dependency name="org.apache.commons.logging" componentType="eclipse.feature"/>
+        <dependency name="org.apache.log4j" componentType="eclipse.feature"/>
     </dependencies>
 </cspecExtension>
