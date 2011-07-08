@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.emf.teneo.commontest,
  org.junit,
  org.eclipse.emf.teneo.hibernate,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.xsd
+ org.eclipse.xsd,
+ org.apache.log4j;bundle-version="1.2.12"
 Export-Package: org.eclipse.emf.teneo.hibernate.test;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.test.emf.annotations;version="1.1.2",
  org.eclipse.emf.teneo.hibernate.test.emf.detach;version="1.1.2",
