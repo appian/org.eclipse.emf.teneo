@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.69 2011/03/17 09:21:31 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.70 2011/08/31 17:48:28 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.69 $
+ * @version $Revision: 1.70 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -405,6 +405,12 @@ public class PersistenceOptions implements ExtensionPoint {
 	public static final String SET_PROXY = MAPPING_PREFIX + "set_proxy";
 
 	/**
+	 * This option forces lazy=true without the proxy attribute in the hibernate
+	 * mapping.
+	 */
+	public static final String FORCE_LAZY = MAPPING_PREFIX + "force_lazy";
+
+	/**
 	 * Disable EContainer mapping.
 	 */
 	public static final String DISABLE_ECONTAINER_MAPPING = MAPPING_PREFIX
@@ -528,6 +534,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(ALWAYS_MAP_LIST_AS_BAG, "false");
 		props.setProperty(ALSO_MAP_AS_CLASS, "true");
 		props.setProperty(SET_PROXY, "false");
+		props.setProperty(FORCE_LAZY, "false");
 		props.setProperty(MAP_ALL_LISTS_AS_IDBAG, "false");
 		props.setProperty(IDBAG_ID_COLUMN_NAME, "ID");
 		props.setProperty(ADD_INDEX_FOR_FOREIGN_KEY, "false");
@@ -849,6 +856,15 @@ public class PersistenceOptions implements ExtensionPoint {
 	 */
 	public boolean isSetProxy() {
 		return Boolean.valueOf(properties.getProperty(SET_PROXY))
+				.booleanValue();
+	}
+
+	/**
+	 * Returns true if the lazy attribute should be forced to true in the hbm
+	 * mapping.
+	 */
+	public boolean isForceLazy() {
+		return Boolean.valueOf(properties.getProperty(FORCE_LAZY))
 				.booleanValue();
 	}
 
