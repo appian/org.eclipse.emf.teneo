@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEClassAnnotator.java,v 1.8 2009/10/31 07:10:10 mtaal Exp $
+ * $Id: HbEClassAnnotator.java,v 1.9 2011/08/31 17:48:31 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 
 public class HbEClassAnnotator extends EClassAnnotator {
@@ -44,12 +44,14 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	// The logger
 	protected static final Log log = LogFactory.getLog(HbEClassAnnotator.class);
 
-	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE.getName();
+	private String defaultCacheStrategy = CacheConcurrencyStrategy.NONE
+			.getName();
 	private boolean optionSetProxy = false;
 
 	/**
-	 * Returns the annotated version of an EClass, Returns false if no efeatures of this eclass should be annotated,
-	 * true if its features can be annotated.
+	 * Returns the annotated version of an EClass, Returns false if no efeatures
+	 * of this eclass should be annotated, true if its features can be
+	 * annotated.
 	 */
 	@Override
 	protected boolean annotate(PAnnotatedEClass aClass) {
@@ -65,13 +67,13 @@ public class HbEClassAnnotator extends EClassAnnotator {
 			if (concreteClass == null) {
 				concreteClass = DynamicEObjectImpl.class;
 			}
-			if (concreteClass != null) {
+			if (concreteClass != null || getPersistenceOptions().isForceLazy()) {
 				final Proxy proxy = HbannotationFactory.eINSTANCE.createProxy();
 				proxy.setLazy(true);
 				// interface class is set below.
 				((HbAnnotatedEClass) aClass).setHbProxy(proxy);
-				log.debug("Set proxy to true (" + proxy.getProxyClass() + ") for eclass "
-						+ aClass.getModelEClass().getName());
+				log.debug("Set proxy to true (" + proxy.getProxyClass()
+						+ ") for eclass " + aClass.getModelEClass().getName());
 			}
 		}
 
@@ -80,12 +82,15 @@ public class HbEClassAnnotator extends EClassAnnotator {
 			aClass.setOnlyMapAsEntity(false);
 
 			// set interfacename if not set
-			final Proxy proxy = hbClass.getHbProxy();
-			final Class<?> interfaceClass = EModelResolver.instance().getJavaInterfaceClass(eclass);
-			if (interfaceClass != null) {
-				proxy.setProxyClass(interfaceClass.getName());
-			} else { // set the class itself
-				proxy.setProxyClass(concreteClass.getName());
+			if (!getPersistenceOptions().isForceLazy()) {
+				final Proxy proxy = hbClass.getHbProxy();
+				final Class<?> interfaceClass = EModelResolver.instance()
+						.getJavaInterfaceClass(eclass);
+				if (interfaceClass != null) {
+					proxy.setProxyClass(interfaceClass.getName());
+				} else { // set the class itself
+					proxy.setProxyClass(concreteClass.getName());
+				}
 			}
 		}
 
@@ -94,20 +99,28 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		boolean hasCache = ((HbAnnotatedEClass) aClass).getHbCache() != null;
 
 		if (aClass.getPaSuperEntity() != null && hasCache) {
-			log.warn("EClass: " + aClass.getModelEClass().getName()
+			log.warn("EClass: "
+					+ aClass.getModelEClass().getName()
 					+ " has a cache strategy defined while it has a superclass, this strategy is ignored.");
 			return res;
 		}
 
-		if (!hasCache && defaultCacheStrategy.compareToIgnoreCase(CacheConcurrencyStrategy.NONE.getName()) != 0) {
-			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy.getByName(defaultCacheStrategy);
+		if (!hasCache
+				&& defaultCacheStrategy
+						.compareToIgnoreCase(CacheConcurrencyStrategy.NONE
+								.getName()) != 0) {
+			final CacheConcurrencyStrategy ccs = CacheConcurrencyStrategy
+					.getByName(defaultCacheStrategy);
 			if (ccs == null) {
-				throw new StoreMappingException("The default cache strategy: " + defaultCacheStrategy
-						+ " is not one of the allowed values (uppercase) "
-						+ "as defined in the JPA Hibernate Annotation Extensions.");
+				throw new StoreMappingException(
+						"The default cache strategy: "
+								+ defaultCacheStrategy
+								+ " is not one of the allowed values (uppercase) "
+								+ "as defined in the JPA Hibernate Annotation Extensions.");
 			}
 
-			log.debug("Setting cache strategy " + defaultCacheStrategy + " on " + aClass.getModelEClass().getName());
+			log.debug("Setting cache strategy " + defaultCacheStrategy + " on "
+					+ aClass.getModelEClass().getName());
 			final Cache cache = HbannotationFactory.eINSTANCE.createCache();
 			cache.setUsage(ccs);
 			((HbAnnotatedEClass) aClass).setHbCache(cache);
@@ -120,7 +133,8 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		final HbAnnotatedEClass hbClass = (HbAnnotatedEClass) aClass;
 
 		return hbClass.getDiscriminatorFormula() == null
-				&& (hbClass.getImmutable() == null || getPersistenceOptions().isDiscriminatorVersionOnImmutableEClass());
+				&& (hbClass.getImmutable() == null || getPersistenceOptions()
+						.isDiscriminatorVersionOnImmutableEClass());
 	}
 
 	/*
@@ -142,7 +156,8 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		assert (aClass.getPaSuperEntity() == null);
 
 		// let the superclass do it
-		if (aClass.getEntity() != null && aClass.getEntity().getExtends() != null) {
+		if (aClass.getEntity() != null
+				&& aClass.getEntity().getExtends() != null) {
 			super.setSuperEntity(aClass);
 			return;
 		}
@@ -161,7 +176,8 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	}
 
 	/** Compute the annotated superclass, ignore interfaces if parameterized */
-	private PAnnotatedEClass getPaSuperEntity(PAnnotatedEClass aClass, boolean allowInterfaces) {
+	private PAnnotatedEClass getPaSuperEntity(PAnnotatedEClass aClass,
+			boolean allowInterfaces) {
 		final PAnnotatedModel model = aClass.getPaModel();
 		for (EClass superEClass : aClass.getModelEClass().getESuperTypes()) {
 			final PAnnotatedEClass x = model.getPAnnotated(superEClass);
@@ -174,7 +190,8 @@ public class HbEClassAnnotator extends EClassAnnotator {
 	}
 
 	/**
-	 * Map Interface EClasses, default false, overridden by hibernate to return true
+	 * Map Interface EClasses, default false, overridden by hibernate to return
+	 * true
 	 */
 	@Override
 	protected boolean mapInterfaceEClass() {
