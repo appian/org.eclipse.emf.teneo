@@ -11,7 +11,7 @@
  *   Martin Taal
  * </copyright>
  *
- * $Id: HbEClassAnnotator.java,v 1.9 2011/08/31 17:48:31 mtaal Exp $
+ * $Id: HbEClassAnnotator.java,v 1.10 2011/09/01 07:52:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.annotations;
@@ -36,7 +36,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
  * Sets the annotation on an eclass.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 
 public class HbEClassAnnotator extends EClassAnnotator {
@@ -62,7 +62,8 @@ public class HbEClassAnnotator extends EClassAnnotator {
 		Class<?> concreteClass = EModelResolver.instance().getJavaClass(eclass);
 
 		// automatically add the proxy annotation
-		if (optionSetProxy && hbClass.getHbProxy() == null) {
+		if ((optionSetProxy || getPersistenceOptions().isForceLazy())
+				&& hbClass.getHbProxy() == null) {
 			// in this case use the DynamicEObjectImpl
 			if (concreteClass == null) {
 				concreteClass = DynamicEObjectImpl.class;
