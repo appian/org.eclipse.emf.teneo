@@ -3,7 +3,7 @@
  * reserved. This program and the accompanying materials are made available under the terms of the
  * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html Contributors: Martin Taal
- * </copyright> $Id: EntityMapper.java,v 1.54 2011/02/21 06:39:57 mtaal Exp $
+ * </copyright> $Id: EntityMapper.java,v 1.55 2011/10/29 06:13:50 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.hibernate.mapper;
@@ -769,7 +769,8 @@ public class EntityMapper extends AbstractMapper implements ExtensionPoint {
 		if (dColumn.getColumn() != null) {
 			final Column col = dColumn.getColumn();
 			final Element colElement = dcElement.addElement("column");
-			colElement.addAttribute("name", col.getName());
+			colElement.addAttribute("name",
+					getHbmContext().trunc(dColumn, col.getName()));
 			if (col.getIndex() != null) {
 				colElement.addAttribute("index", col.getIndex());
 			}
