@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: SQLNameStrategy.java,v 1.10 2010/02/06 18:25:46 mtaal Exp $
+ * $Id: SQLNameStrategy.java,v 1.11 2011/10/29 06:12:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo.mapping.strategy;
@@ -34,7 +34,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * persistenceoptions.
  * 
  * @author <a href="mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public interface SQLNameStrategy extends ExtensionPoint {
 
@@ -108,6 +108,9 @@ public interface SQLNameStrategy extends ExtensionPoint {
 	/** Return the name of the join table */
 	public abstract String getJoinTableName(PAnnotatedEReference aReference);
 
+	/**
+	 * @see PersistenceOptions#DISCRIMINATOR_COLUMN_NAME
+	 */
 	public abstract String getDiscriminatorColumnName();
 
 	/**

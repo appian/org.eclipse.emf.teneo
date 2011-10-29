@@ -13,7 +13,7 @@
  *   Jason Henriksen - XSDDate and XSDDateTime constants
  * </copyright>
  *
- * $Id: PersistenceOptions.java,v 1.70 2011/08/31 17:48:28 mtaal Exp $
+ * $Id: PersistenceOptions.java,v 1.71 2011/10/29 06:12:48 mtaal Exp $
  */
 
 package org.eclipse.emf.teneo;
@@ -39,7 +39,7 @@ import org.eclipse.emf.teneo.extension.ExtensionPoint;
  * As a convenience, this class offers type-safe property accessor wrappers.
  * 
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
- * @version $Revision: 1.70 $
+ * @version $Revision: 1.71 $
  */
 public class PersistenceOptions implements ExtensionPoint {
 
@@ -56,6 +56,13 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	// START: ++++++++++++++++++++++ SQL Naming related Options
 	// ++++++++++++++++++++++++++++++++++++
+
+	/**
+	 * DiscriminatorColumn name, default is DTYPE.
+	 */
+	public static final String DISCRIMINATOR_COLUMN_NAME = NAMING_PREFIX
+			+ "discriminator_column_name";
+
 	/**
 	 * Join table naming strategy, two values: ejb3 and unique
 	 * 
@@ -523,6 +530,7 @@ public class PersistenceOptions implements ExtensionPoint {
 		props.setProperty(IGNORE_EANNOTATIONS, "false");
 		props.setProperty(ALWAYS_VERSION, "true");
 		props.setProperty(DEFAULT_CACHE_STRATEGY, "NONE");
+		props.setProperty(DISCRIMINATOR_COLUMN_NAME, "DTYPE");
 		props.setProperty(JOIN_TABLE_NAMING_STRATEGY, "unique");
 		// props.setProperty(JOIN_TABLE_NAMING_STRATEGY_OLD, "unique");
 		props.setProperty(JOIN_COLUMN_NAMING_STRATEGY, "unique");
@@ -579,6 +587,13 @@ public class PersistenceOptions implements ExtensionPoint {
 	 * The wrapped Properties instance.
 	 */
 	private final Properties properties;
+
+	/**
+	 * @return value of {@link #DISCRIMINATOR_COLUMN_NAME}
+	 */
+	public String getDiscriminatorColumnName() {
+		return properties.getProperty(DISCRIMINATOR_COLUMN_NAME);
+	}
 
 	/**
 	 * @return value of {@link #EXTRA_ANNOTATION_SOURCES}
