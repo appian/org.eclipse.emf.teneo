@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd">
+
+<jdo>
+	<package name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl">
+		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.ElementImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="element" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.Element"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Element"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="nameMap" persistence-modifier="persistent">
+				<collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<join/>
+				<element>
+					<embedded>
+						<field name="featurePath"/>
+						<field name="localAnyValue" embedded="true">
+							<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeObject"/>
+							<extension vendor-name="teneo" key="estructuralfeatures" value=""/>
+						</field>
+						<field name="localReferenceValue" embedded="true">
+							<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/>
+							<extension vendor-name="teneo" key="estructuralfeatures" value=""/>
+							<foreign-key delete-action="restrict" update-action="cascade"/>
+						</field>
+						<field name="localContainmentReferenceValue" dependent="true">
+							<foreign-key delete-action="cascade" update-action="cascade"/>
+							<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.NameListImpl"/>
+							<extension vendor-name="teneo" key="estructuralfeatures" value="names"/>
+						</field>
+					</embedded>
+				</element>
+				<order column="ELEMENT_NAMEMAP_IDX"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.FeatureImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="feature" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.Feature"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Feature"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="aMap" persistence-modifier="persistent">
+				<collection element-type="org.eclipse.emf.teneo.jpox.elist.GenericFeatureMapEntry">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<join/>
+				<element>
+					<embedded>
+						<field name="featurePath"/>
+						<field name="localAnyValue" embedded="true">
+							<extension vendor-name="jpox" key="implementation-classes" value="java.lang.Double"/>
+							<extension vendor-name="teneo" key="estructuralfeatures" value="value"/>
+						</field>
+						<field name="localReferenceValue" embedded="true">
+							<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/>
+							<extension vendor-name="teneo" key="estructuralfeatures" value=""/>
+							<foreign-key delete-action="restrict" update-action="cascade"/>
+						</field>
+						<field name="localContainmentReferenceValue" dependent="true" embedded="true">
+							<foreign-key delete-action="cascade" update-action="cascade"/>
+							<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.jpox.mapping.AnyTypeEObject"/>
+							<extension vendor-name="teneo" key="estructuralfeatures" value=""/>
+						</field>
+					</embedded>
+				</element>
+				<order column="FEATURE_AMAP_IDX"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.MixedImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="mixed" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.Mixed"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Mixed"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="mixed" persistence-modifier="persistent" table="mixed_mixed">
+				<collection element-type="org.eclipse.emf.teneo.jpox.elist.AnyFeatureMapEntry"/>
+				<join/>
+				<element>
+					<embedded>
+						<field name="featurePath">
+							<column name="FEATUREPATH"/>
+						</field>
+						<field name="anyValue">
+							<column name="ANYVALUE"/>
+						</field>
+					</embedded>
+				</element>
+				<order column="MIXED_MIXED_IDX"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.impl.NameListImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="namelist" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.ecoreattrs.NameList"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="NameList"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="firstName" persistence-modifier="persistent" null-value="exception"/>
+			<field name="middleName" persistence-modifier="persistent" null-value="exception"/>
+			<field name="lastName" persistence-modifier="persistent" null-value="exception"/>
+		</class>
+	</package>
+</jdo>

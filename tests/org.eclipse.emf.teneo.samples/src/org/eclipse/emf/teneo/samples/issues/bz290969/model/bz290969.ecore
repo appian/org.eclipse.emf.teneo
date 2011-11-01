@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bz290969"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/issues/bz290969" nsPrefix="bz290969">
+  <eClassifiers xsi:type="ecore:EClass" name="Bar">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Entity(name=&quot;BarEntity&quot;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="barKeys" lowerBound="1"
+        upperBound="-1" eType="#//BarKey" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BarKey">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Entity(name=&quot;BarKeyEntity&quot;)"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Foo">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Entity(name=&quot;FooEntity&quot;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="barKey" eType="#//BarKey"
+        resolveProxies="false"/>
+  </eClassifiers>
+</ecore:EPackage>

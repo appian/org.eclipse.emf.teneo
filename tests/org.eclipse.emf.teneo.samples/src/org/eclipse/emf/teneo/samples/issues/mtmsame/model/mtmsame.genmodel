@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Mtmsame" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>mtmsame.ecore</foreignModel>
+  <genPackages prefix="Mtmsame" basePackage="org.eclipse.emf.teneo.samples.issues"
+      resource="XML" disposableProviderFactory="true" ecorePackage="mtmsame.ecore#/">
+    <genClasses ecoreClass="mtmsame.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mtmsame.ecore#//Item/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mtmsame.ecore#//Item/mySide"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mtmsame.ecore#//Item/yourSide"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

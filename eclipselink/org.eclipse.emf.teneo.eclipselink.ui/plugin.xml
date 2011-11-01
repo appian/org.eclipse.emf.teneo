@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="org.eclipse.emf.teneo.eclipselink.ui.importWizards.category.eclipseLink"
+            name="%importWizards.category.eclipseLink.name"
+            parentCategory="org.eclipse.emf.teneo.eclipselink.common.ui.importWizards.category.teneo">
+      </category>
+      <wizard
+            category="org.eclipse.emf.teneo.eclipselink.common.ui.importWizards.category.teneo"
+            class="org.eclipse.emf.teneo.eclipselink.ui.wizards.EclipseLinkModelFromDatabaseImportWizard"
+            icon="$nl$/icons/full/etool16/importmdldb_wiz.gif"
+            id="org.eclipse.emf.teneo.eclipselink.ui.importWizards.modelFromDatabase"
+            name="%importWizards.modelFromDatabase.name">
+      </wizard>
+   </extension>
+
+   <extension
+         point = "org.eclipse.ui.preferencePages">
+      <page id="org.eclipse.emf.teneo.eclipselink.ui.preferencePages.teneo"
+	        class="org.eclipse.emf.teneo.eclipselink.common.ui.preferencepages.BasicDatabasePreferencePage"
+            name="%preferencePages.teneo.name">
+      </page>
+   </extension>
+
+</plugin>

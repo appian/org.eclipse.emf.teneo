@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.MainImpl" entity-name="Main" abstract="false" lazy="false" table="`main`">
+		<meta attribute="eclassName">Main</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<list name="onecr" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="main_onecr">
+				<column name="`main_onecr_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_onecr_idx`"/>
+			<one-to-many entity-name="OneCR"/>
+		</list>
+		<list name="onecn" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="main_onecn">
+				<column name="`main_onecn_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_onecn_idx`"/>
+			<one-to-many entity-name="OneCN"/>
+		</list>
+		<list name="onenr" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="main_onenr">
+				<column name="`main_onenr_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_onenr_idx`"/>
+			<one-to-many entity-name="OneNR"/>
+		</list>
+		<list name="onenn" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="main_onenn">
+				<column name="`main_onenn_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_onenn_idx`"/>
+			<one-to-many entity-name="OneNN"/>
+		</list>
+		<list name="twocr" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="main_twocr">
+				<column name="`twocr_main_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_twocr_idx`"/>
+			<one-to-many entity-name="TwoCR"/>
+		</list>
+		<list name="twocn" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="main_twocn">
+				<column name="`twocn_main_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_twocn_idx`"/>
+			<one-to-many entity-name="TwoCN"/>
+		</list>
+		<list name="twonr" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true">
+				<column name="`twonr_main_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_twonr_idx`"/>
+			<one-to-many entity-name="TwoNR"/>
+		</list>
+		<list name="twonn" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true">
+				<column name="`twonn_main_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`main_twonn_idx`"/>
+			<one-to-many entity-name="TwoNN"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneCNImpl" entity-name="OneCN" abstract="false" lazy="false" table="`onecn`">
+		<meta attribute="eclassName">OneCN</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneCRImpl" entity-name="OneCR" abstract="false" lazy="false" table="`onecr`">
+		<meta attribute="eclassName">OneCR</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneNNImpl" entity-name="OneNN" abstract="false" lazy="false" table="`onenn`">
+		<meta attribute="eclassName">OneNN</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.OneNRImpl" entity-name="OneNR" abstract="false" lazy="false" table="`onenr`">
+		<meta attribute="eclassName">OneNR</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoCNImpl" entity-name="TwoCN" abstract="false" lazy="false" table="`twocn`">
+		<meta attribute="eclassName">TwoCN</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<many-to-one name="main" entity-name="Main" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="twocn_main" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`twocn_main_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoCRImpl" entity-name="TwoCR" abstract="false" lazy="false" table="`twocr`">
+		<meta attribute="eclassName">TwoCR</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<many-to-one name="main" entity-name="Main" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="twocr_main" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`twocr_main_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoNNImpl" entity-name="TwoNN" abstract="false" lazy="false" table="`twonn`">
+		<meta attribute="eclassName">TwoNN</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<many-to-one name="main" entity-name="Main" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="twonn_main" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`twonn_main_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1ton.impl.TwoNRImpl" entity-name="TwoNR" abstract="false" lazy="false" table="`twonr`">
+		<meta attribute="eclassName">TwoNR</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/relation/relation1ton</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<many-to-one name="main" entity-name="Main" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="twonr_main" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`twonr_main_e_id`"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

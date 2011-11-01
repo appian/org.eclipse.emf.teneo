@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/restriction"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/restriction">
+   
+   	<!-- from: http://www.xml.com/pub/a/2003/10/29/derivation.html -->
+   
+   	<!-- Tests:
+   	- complexType restriction
+   	- nillable string (signature)
+   	- unsettable email 
+   	-->
+   
+   	<!-- base type -->
+	<xs:complexType name="XML-Deviant">
+  		<xs:sequence>
+   			<xs:element name="numPosts" type="xs:integer" minOccurs="0" maxOccurs="1" /> 
+   			<xs:element name="signature" type="xs:string" nillable="true" />
+   			<xs:element name="email" type="xs:string"  minOccurs="0" maxOccurs="1" />
+  		</xs:sequence>
+  		<xs:attribute name="firstSubscribed" type="xs:date" use="optional" />
+  		<xs:attribute name="mailReader" type="xs:string"/>
+ 	</xs:complexType>
+
+ 	<!-- derived type --> 
+  	<xs:complexType name="Member">
+   		<xs:complexContent>
+   			<xs:restriction base="XML-Deviant">
+   				<xs:sequence>
+    				<xs:element name="numPosts" type="xs:integer" minOccurs="1" /> 
+    				<xs:element name="signature" type="xs:string" nillable="true" />
+    				<xs:element name="email" type="xs:string"  minOccurs="1" />
+   				</xs:sequence>
+   				<xs:attribute name="firstSubscribed" type="xs:date" use="required" />
+   				<xs:attribute name="mailReader" type="xs:string" fixed="Microsoft Outlook" />
+   			</xs:restriction>
+   		</xs:complexContent>
+  	</xs:complexType>
+ </xs:schema>

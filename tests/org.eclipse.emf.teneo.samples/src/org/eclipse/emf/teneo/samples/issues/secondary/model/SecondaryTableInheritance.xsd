@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/secondary"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/teneo/samples/issues/secondary">
+	<xsd:complexType name="Generic">
+		<xsd:annotation>
+			<!-- Declare two secondary tables. -->
+			<xsd:appinfo source="teneo.jpa">
+			@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Person">
+		<xsd:annotation>
+			<!-- Declare two secondary tables. -->
+			<xsd:appinfo source="teneo.jpa">@SecondaryTables({
+				@SecondaryTable(name="person_address"),
+				@SecondaryTable(name="person_photo")})</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="this:Generic">
+				<xsd:sequence>
+					<xsd:element name="address" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="teneo.jpa">@Lob
+					@Column(table="person_address")</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="photo" type="xsd:base64Binary" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="teneo.jpa">@Lob
+					@Column(table="person_photo" length="1000000")</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

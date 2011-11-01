@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.largemapvalue.impl.TestElementImpl" entity-name="TestElement" abstract="false" lazy="false" discriminator-value="TestElement" table="`testelement`">
+		<meta attribute="eclassName">TestElement</meta>
+		<meta attribute="epackage">http://www.pubcurator.org/tester/testmodel</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="testelementdtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<map name="testMap" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`testelement_testmap_e_id`" not-null="false" unique="false"/>
+			</key>
+			<map-key type="java.lang.String"/>
+			<element type="text" not-null="false" unique="false">
+				<column not-null="false" unique="false" name="`value`" length="1000000"/>
+			</element>
+		</map>
+		<property name="testProp" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`testprop`" length="1000000"/>
+		</property>
+	</class>
+</hibernate-mapping>

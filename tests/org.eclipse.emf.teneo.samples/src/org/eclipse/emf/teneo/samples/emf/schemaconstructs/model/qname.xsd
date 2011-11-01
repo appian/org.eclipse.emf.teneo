@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" version="x.x.x.x" xml:lang="en"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/qname"
+	xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/qname"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="atest" type="this:mytest" />
+	<xs:complexType name="mytest">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" />
+			<xs:element name="name" type="xs:QName" />
+			<xs:element name="names" type="xs:QName" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

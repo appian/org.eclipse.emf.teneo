@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="embedded.xsd#/"
+    outputs="embedded.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://86/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=7"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="bundleentry://86/cache/www.w3.org/2001/XMLSchema.xsd#//int;XSDSimpleTypeDefinition=42"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  <nested inputs="embedded.xsd#//Embeddable;XSDComplexTypeDefinition=1" outputs="embedded.ecore#//Embeddable">
+    <nested inputs="embedded.xsd#//Embeddable;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="embedded.ecore#//Embeddable/myString"/>
+    <nested inputs="embedded.xsd#//Embeddable;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="embedded.ecore#//Embeddable/myInteger"/>
+  </nested>
+  <nested inputs="embedded.xsd#//Embedder;XSDComplexTypeDefinition" outputs="embedded.ecore#//Embedder">
+    <nested inputs="embedded.xsd#//Embedder;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="embedded.ecore#//Embedder/firstEmbedded"/>
+    <nested inputs="embedded.xsd#//Embedder;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="embedded.ecore#//Embedder/secondEmbedded"/>
+    <nested inputs="embedded.xsd#//Embedder;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="embedded.ecore#//Embedder/thirdEmbedded"/>
+    <nested inputs="embedded.xsd#//Embedder;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="embedded.ecore#//Embedder/fourthEmbedded"/>
+  </nested>
+</xsd2ecore:XSD2EcoreMappingRoot>

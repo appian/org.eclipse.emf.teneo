@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="inheritancemapping" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0">
+  <foreignModel>inheritancemapping.ecore</foreignModel>
+  <genPackages prefix="Inheritancemapping" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="inheritancemapping.ecore#/">
+    <genEnums ecoreEnum="inheritancemapping.ecore#//USState">
+      <genEnumLiterals ecoreEnumLiteral="inheritancemapping.ecore#//USState/AK"/>
+      <genEnumLiterals ecoreEnumLiteral="inheritancemapping.ecore#//USState/AL"/>
+      <genEnumLiterals ecoreEnumLiteral="inheritancemapping.ecore#//USState/AR"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="inheritancemapping.ecore#//USStateObject"/>
+    <genClasses image="false" ecoreClass="inheritancemapping.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Address/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Address/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Address/city"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ContentList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//ContentList/name"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inheritancemapping.ecore#//ContentList/address"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference inheritancemapping.ecore#//ContentList/price"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//DistrictUKAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//DistrictUKAddress/district"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//InternationalPrice">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//InternationalPrice/currency"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//Price">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Price/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Price/value"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//UKAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//UKAddress/postcode"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//USAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//USAddress/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//USAddress/zip"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//Customer/name"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//SpecificCustomer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//SpecificCustomer/specificName"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//UKAddressList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inheritancemapping.ecore#//UKAddressList/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference inheritancemapping.ecore#//UKAddressList/address"/>
+    </genClasses>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ParentOne"/>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ParentTwo"/>
+    <genClasses ecoreClass="inheritancemapping.ecore#//ChildOne"/>
+  </genPackages>
+</genmodel:GenModel>

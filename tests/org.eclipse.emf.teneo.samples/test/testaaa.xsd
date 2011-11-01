@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:testbbb="http://www.eclipse.org/emf/teneo/samples/issues/bz288963" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/bz288963">
+  <xsd:simpleType name="Booktype">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="science"/>
+      <xsd:enumeration value="novel"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="book">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="citation" type="testbbb:book"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="paralist" type="testbbb:Paragraph"/>
+    </xsd:sequence>
+    <xsd:attribute default="" name="id" type="xsd:string"/>
+    <xsd:attribute name="Type" type="testbbb:Booktype"/>
+    <xsd:attribute name="selfdef" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="book" type="testbbb:book"/>
+  <xsd:complexType name="Paragraph">
+    <xsd:attribute default="1" name="number" type="xsd:int"/>
+    <xsd:attribute name="title" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="Paragraph" type="testbbb:Paragraph"/>
+  <xsd:complexType name="indentedpara">
+    <xsd:complexContent>
+      <xsd:extension base="testbbb:Paragraph">
+        <xsd:attribute default="1" name="IndentSpace" type="xsd:long"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="indentedpara" type="testbbb:indentedpara"/>
+  <xsd:complexType name="Footnote">
+    <xsd:complexContent>
+      <xsd:extension base="testbbb:Paragraph"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Footnote" type="testbbb:Footnote"/>
+</xsd:schema>

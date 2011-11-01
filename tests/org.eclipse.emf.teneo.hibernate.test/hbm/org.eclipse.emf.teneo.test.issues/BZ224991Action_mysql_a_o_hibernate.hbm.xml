@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz224991.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" discriminator-value="Parent" table="`parent`">
+		<meta attribute="eclassName">Parent</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`id`"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="parentdtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+	</class>
+	<subclass name="org.eclipse.emf.teneo.samples.issues.bz224991.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" extends="Parent" discriminator-value="Child">
+		<meta attribute="eclassName">Child</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz224991</meta>
+	</subclass>
+</hibernate-mapping>

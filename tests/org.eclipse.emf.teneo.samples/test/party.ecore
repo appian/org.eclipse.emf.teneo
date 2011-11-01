@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="party"
+    nsURI="http:///party.ecore" nsPrefix="party">
+  <eClassifiers xsi:type="ecore:EClass" name="Party" abstract="true">
+    <eOperations name="getDireccion" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setDireccion" ordered="false" lowerBound="1">
+      <eParameters name="direccion" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setLocalidad" ordered="false" lowerBound="1">
+      <eParameters name="localidad" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getLocalidad" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setCodPostal" ordered="false" lowerBound="1">
+      <eParameters name="codPostal" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCodPostal" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setProvincia" ordered="false" lowerBound="1">
+      <eParameters name="provincia" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getProvincia" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="getTelefono1" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setTelefono1" ordered="false" lowerBound="1">
+      <eParameters name="telefono1" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setExtension" ordered="false" lowerBound="1">
+      <eParameters name="extension" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getExtension" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="getTelefono2" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setTelefono2" ordered="false" lowerBound="1">
+      <eParameters name="telefono2" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setCorreoE" ordered="false" lowerBound="1">
+      <eParameters name="correoE" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCorreoE" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="getFax" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setFax" ordered="false" lowerBound="1">
+      <eParameters name="fax" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setWeb" ordered="false" lowerBound="1">
+      <eParameters name="web" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getWeb" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="direccion" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="localidad" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="codPostal" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="provincia" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="telefono1" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extension" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="telefono2" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correoE" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fax" ordered="false" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="web" ordered="false" eType="#//javalang/String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Empresa" eSuperTypes="#//Party">
+    <eOperations name="setCif" ordered="false" lowerBound="1">
+      <eParameters name="cif" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCif" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setDenominacion" ordered="false" lowerBound="1">
+      <eParameters name="denominacion" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getDenominacion" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setNombreComercial" ordered="false" lowerBound="1">
+      <eParameters name="nombreComercial" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getNombreComercial" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setCnae" ordered="false" lowerBound="1">
+      <eParameters name="cnae" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCnae" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="containsAllContactoEmpresa" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="contactoEmpresa" ordered="false" lowerBound="1" eType="#//javautil/Collection"/>
+    </eOperations>
+    <eOperations name="addContactoEmpresa" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="contactoEmpresa" ordered="false" lowerBound="1" eType="#//ContactoEmpresa"/>
+    </eOperations>
+    <eOperations name="removeContactoEmpresa" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="contactoEmpresa" ordered="false" lowerBound="1" eType="#//ContactoEmpresa"/>
+    </eOperations>
+    <eOperations name="clearContactoEmpresa" ordered="false" lowerBound="1"/>
+    <eOperations name="contactoEmpresaSize" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="contactoEmpresaIterator" ordered="false" lowerBound="1" eType="#//javautil/Iterator"/>
+    <eOperations name="getContactoEmpresa" ordered="false" lowerBound="1" eType="#//javautil/Collection"/>
+    <eOperations name="contactoEmpresaToArray" ordered="false" lowerBound="1" eType="#//ContactoEmpresa"/>
+    <eOperations name="setContactoEmpresa" ordered="false" lowerBound="1">
+      <eParameters name="contactoEmpresa" ordered="false" lowerBound="1" eType="#//javautil/Collection"/>
+    </eOperations>
+    <eOperations name="containsContactoEmpresa" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="contactoEmpresa" ordered="false" lowerBound="1" eType="#//ContactoEmpresa"/>
+    </eOperations>
+    <eOperations name="contactoEmpresaToArray" ordered="false" lowerBound="1" eType="#//ContactoEmpresa">
+      <eParameters name="contactoEmpresa" ordered="false" lowerBound="1" eType="#//ContactoEmpresa"/>
+    </eOperations>
+    <eOperations name="isContactoEmpresaEmpty" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cif" ordered="false" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="denominacion" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nombreComercial" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cnae" ordered="false" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contactoEmpresa" ordered="false"
+        upperBound="-1" eType="#//ContactoEmpresa" containment="true" eOpposite="#//ContactoEmpresa/empresa"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContactoEmpresa" eSuperTypes="#//Persona">
+    <eOperations name="getCargo" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setCargo" ordered="false" lowerBound="1">
+      <eParameters name="cargo" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setDptoEmpresa" ordered="false" lowerBound="1">
+      <eParameters name="dptoEmpresa" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getDptoEmpresa" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setEmpresa" ordered="false" lowerBound="1">
+      <eParameters name="empresa" ordered="false" lowerBound="1" eType="#//Empresa"/>
+    </eOperations>
+    <eOperations name="getEmpresa" ordered="false" lowerBound="1" eType="#//Empresa"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cargo" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dptoEmpresa" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="empresa" ordered="false"
+        lowerBound="1" eType="#//Empresa" eOpposite="#//Empresa/contactoEmpresa"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Persona" abstract="true" eSuperTypes="#//Party">
+    <eOperations name="getNif" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setNif" ordered="false" lowerBound="1">
+      <eParameters name="nif" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setNombre" ordered="false" lowerBound="1">
+      <eParameters name="nombre" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getNombre" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setApellido1" ordered="false" lowerBound="1">
+      <eParameters name="apellido1" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getApellido1" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="getApellido2" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setApellido2" ordered="false" lowerBound="1">
+      <eParameters name="apellido2" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setFechaNac" ordered="false" lowerBound="1">
+      <eParameters name="fechaNac" ordered="false" lowerBound="1" eType="#//javautil/Date"/>
+    </eOperations>
+    <eOperations name="getFechaNac" ordered="false" lowerBound="1" eType="#//javautil/Date"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nif" ordered="false" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nombre" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="apellido1" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="apellido2" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fechaNac" ordered="false"
+        eType="#//javautil/Date"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pdi" eSuperTypes="#//Persona">
+    <eOperations name="setCatAcademica" ordered="false" lowerBound="1">
+      <eParameters name="catAcademica" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCatAcademica" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="getAreaConocimiento" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setAreaConocimiento" ordered="false" lowerBound="1">
+      <eParameters name="areaConocimiento" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getDpto" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setDpto" ordered="false" lowerBound="1">
+      <eParameters name="dpto" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="setCentro" ordered="false" lowerBound="1">
+      <eParameters name="centro" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCentro" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="setCodCtaCliente" ordered="false" lowerBound="1">
+      <eParameters name="codCtaCliente" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getCodCtaCliente" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eOperations name="getRemuneracion" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eOperations name="setRemuneracion" ordered="false" lowerBound="1">
+      <eParameters name="remuneracion" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    </eOperations>
+    <eOperations name="setHorasSemanales" ordered="false" lowerBound="1">
+      <eParameters name="horasSemanales" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    </eOperations>
+    <eOperations name="getHorasSemanales" ordered="false" lowerBound="1" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catAcademica" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="areaConocimiento" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dpto" ordered="false" eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="centro" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="codCtaCliente" ordered="false"
+        eType="#//javalang/String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remuneracion" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="horasSemanales" ordered="false"
+        eType="#//javalang/String"/>
+  </eClassifiers>
+  <eSubpackages name="javalang" nsURI="http:///party/javalang.ecore" nsPrefix="party.javalang">
+    <eClassifiers xsi:type="ecore:EClass" name="Object"/>
+    <eClassifiers xsi:type="ecore:EClass" name="String"/>
+  </eSubpackages>
+  <eSubpackages name="javautil" nsURI="http:///party/javautil.ecore" nsPrefix="party.javautil">
+    <eClassifiers xsi:type="ecore:EClass" name="Collection" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Iterator" abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Date"/>
+  </eSubpackages>
+</ecore:EPackage>

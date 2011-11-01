@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Bz336501" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>bz336501.xsd</foreignModel>
+  <genPackages prefix="Bz336501" basePackage="org.eclipse.emf.teneo.samples.issues"
+      resource="XML" disposableProviderFactory="true" ecorePackage="bz336501.ecore#/">
+    <genDataTypes ecoreDataType="bz336501.ecore#//JavaDateTime"/>
+    <genClasses ecoreClass="bz336501.ecore#//Test">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz336501.ecore#//Test/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz336501.ecore#//Test/dateOrTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz336501.ecore#//Test/dateOrTimes"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

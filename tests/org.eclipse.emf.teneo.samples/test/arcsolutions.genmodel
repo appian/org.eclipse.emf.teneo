@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Arcsolutions" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0">
+  <foreignModel>arcsolutions.ecore</foreignModel>
+  <genPackages prefix="Datacore" disposableProviderFactory="true" ecorePackage="arcsolutions.ecore#/">
+    <genClasses ecoreClass="arcsolutions.ecore#//CSMXML">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMXML/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMXML/types"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMXML/createCSMInstance">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMXML/createCSMInstance/csmClass"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMXML/createCSMClass">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMXML/createCSMClass/factory"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMXML/createCSMClass/eClass"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMElement/referencedElements"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMElement/csmXML"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMMetaElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMMetaElement/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMMetaElement/userProperties"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMMetaElement/putUserProperty">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMMetaElement/putUserProperty/key"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMMetaElement/putUserProperty/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMMetaElement/getUserProperty">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMMetaElement/getUserProperty/key"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMClass">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMClass/csmCharacteristicDefinitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMClass/instances"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMClass/validCSMTypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMClass/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMClass/datasourceDefinition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMClass/keyCharachteristicDefinition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMClass/classRepresentations"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/addCharacteristicsDefinition">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/addCharacteristicsDefinition/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/createCSMInstance"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/removeCharacteristicsDefinition">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/removeCharacteristicsDefinition/characteristicDefinition"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/createCSMInstance.1">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/createCSMInstance.1/owner"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/deleteCharacteristicDefinition">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/deleteCharacteristicDefinition/characteristicDefinition"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/deleteCSMInstance">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/deleteCSMInstance/csmInstance"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/removeCSMInstance">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/removeCSMInstance/csmIntsance"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/getCSMCharacteristicDefinition">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/getCSMCharacteristicDefinition/id"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/getCSMCharacteristicDefinition.1">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMClass/getCSMCharacteristicDefinition.1/index"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMClass/deleteAllCSMInstances"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMCharacteristicDefinition">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicDefinition/csmClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicDefinition/csmCharacteristicType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMCharacteristicDefinition/userDefined"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMCharacteristicDefinition/Name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicDefinition/valueContainer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMCharacteristicDefinition/aliasName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMCharacteristicDefinition/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicDefinition/dataSource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMCharacteristicDefinition/freeParameter"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicDefinition/createCSMCharacteristicValueContainer">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicDefinition/createCSMCharacteristicValueContainer/csmInstance"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicDefinition/deleteCSMCharactersitcValueContainer">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicDefinition/deleteCSMCharactersitcValueContainer/valueContainer"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicDefinition/deleteAllCSMCahracteristicValueContainer"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicDefinition/getCSMCahracteristicValueContainer">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicDefinition/getCSMCahracteristicValueContainer/csmInstance"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicDefinition/containsOnlyUniqueValues"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicDefinition/isKey"/>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//CSMInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMInstance/csmValueContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMInstance/csmReprasentation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMInstance/containingCSMClass"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMInstance/getCSMCharacteristicValueContainer">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMInstance/getCSMCharacteristicValueContainer/characteristicDefinition"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMInstance/createCSMCharacteristicValueContainer">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMInstance/createCSMCharacteristicValueContainer/characteristcDefinition"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMInstance/deleteCSMCharactersitcValueContainer">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMInstance/deleteCSMCharactersitcValueContainer/valueContainer"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMInstance/deleteAllCSMCharacteristicValueContainer"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMInstance/isValid"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMInstance/allNotUserDefinedContainerSet"/>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//CSMCharacteristicValueContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMCharacteristicValueContainer/valid"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicValueContainer/csmInstance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicValueContainer/concreteValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicValueContainer/valueSet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMCharacteristicValueContainer/dataType"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicValueContainer/isConcreteValueSet"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicValueContainer/setCSMConcreteValue">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/setCSMConcreteValue/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicValueContainer/addCSMValueToValueSet">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/addCSMValueToValueSet/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicValueContainer/addIntervalToValueSet">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/addIntervalToValueSet/min"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/addIntervalToValueSet/max"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/addIntervalToValueSet/includeMax"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/addIntervalToValueSet/includeMin"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMCharacteristicValueContainer/addIntervalToValueSet/increment"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMCharacteristicValueContainer/clearValueSet"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMValueSet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMValueSet/dataType"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMValueSet/getStringReprasentation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMType">
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMType/createCSMValue">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/createCSMValue/valueStringReprasentation"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMType/isValid">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/isValid/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMType/createCSMInterval">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/createCSMInterval/min"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/createCSMInterval/max"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/createCSMInterval/includeMin"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/createCSMInterval/includeMax"/>
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMType/createCSMInterval/increment"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMObject"/>
+    <genClasses ecoreClass="arcsolutions.ecore#//CSMRepresentationRoot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMRepresentationRoot/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMRepresentationRoot/modelName"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentationRoot/csmInstance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentationRoot/representationTree"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentationRoot/valueDescriptors"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMValue">
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMValue/setValueFromString">
+        <genParameters ecoreParameter="arcsolutions.ecore#//CSMValue/setValueFromString/value"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//Interval">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//Interval/min"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//Interval/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//Interval/includeMin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//Interval/includeMax"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//Interval/kind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//Interval/increment"/>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//UserProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//UserProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//UserProperty/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arcsolutions.ecore#//CSMRepresentation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentation/parent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentation/children"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMRepresentation/valid"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentation/representationRoot"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentation/ownerCSMClass"/>
+      <genOperations ecoreOperation="arcsolutions.ecore#//CSMRepresentation/scrap"/>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//DataSourceDefinitions">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//DataSourceDefinitions/ownerClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//DataSourceDefinitions/report"/>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//ColumnDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//ColumnDefinition/columnName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//ColumnDefinition/datasetName"/>
+    </genClasses>
+    <genClasses ecoreClass="arcsolutions.ecore#//CSMRepresentationRootDescriptor">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arcsolutions.ecore#//CSMRepresentationRootDescriptor/representationRoot"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMRepresentationRootDescriptor/characteristicID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//CSMRepresentationRootDescriptor/characteriticValue"/>
+    </genClasses>
+    <nestedGenPackages prefix="Types" disposableProviderFactory="true" ecorePackage="arcsolutions.ecore#//types">
+      <genClasses ecoreClass="arcsolutions.ecore#//types/StringType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/DoubleType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/StringValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/StringValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/DoubleValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/DoubleValue/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="arcsolutions.ecore#//types/CSMNumberType"/>
+      <genClasses image="false" ecoreClass="arcsolutions.ecore#//types/CSMNumberValue"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/BooleanValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/BooleanValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/BooleanType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/IntegerValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/IntegerValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/IntegerType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/ByteValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/ByteValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/ByteType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/FloatValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/FloatValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/FloatType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/LongValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/LongValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/LongType"/>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/ShortValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//types/ShortValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//types/ShortType"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Represantations" disposableProviderFactory="true" ecorePackage="arcsolutions.ecore#//represantations">
+      <genClasses ecoreClass="arcsolutions.ecore#//represantations/CSMFileRepresentation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//represantations/CSMFileRepresentation/location"/>
+      </genClasses>
+      <genClasses ecoreClass="arcsolutions.ecore#//represantations/CSMUrlRepresentation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arcsolutions.ecore#//represantations/CSMUrlRepresentation/url"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

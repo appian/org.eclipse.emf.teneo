@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Play" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0">
+  <foreignModel>play.xsd</foreignModel>
+  <genPackages prefix="Play" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      resource="XML" disposableProviderFactory="true" ecorePackage="play.ecore#/">
+    <genDataTypes ecoreDataType="play.ecore#//PindexType"/>
+    <genClasses ecoreClass="play.ecore#//ActType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference play.ecore#//ActType/scene"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//ActType/pindex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//ActType/title"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//DocumentRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/act"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/fm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/groupDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/line"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/p"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/persona"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/personae"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/personaGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/play"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/playSubTitle"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/scene"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/sceneDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/speaker"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//DocumentRoot/speech"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/stageDirections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//DocumentRoot/title"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//FmType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//FmType/p"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//PersonaeType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute play.ecore#//PersonaeType/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PersonaeType/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PersonaeType/persona"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//PersonaeType/personaGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//PersonaGroupType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PersonaGroupType/persona"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PersonaGroupType/groupDescription"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//PlayType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PlayType/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference play.ecore#//PlayType/fm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference play.ecore#//PlayType/personae"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PlayType/sceneDescription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//PlayType/playSubTitle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference play.ecore#//PlayType/act"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//SceneType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute play.ecore#//SceneType/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//SceneType/stageDirections"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference play.ecore#//SceneType/speech"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//SceneType/pindex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//SceneType/title"/>
+    </genClasses>
+    <genClasses ecoreClass="play.ecore#//SpeechType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute play.ecore#//SpeechType/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//SpeechType/speaker"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//SpeechType/line"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute play.ecore#//SpeechType/stageDirections"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

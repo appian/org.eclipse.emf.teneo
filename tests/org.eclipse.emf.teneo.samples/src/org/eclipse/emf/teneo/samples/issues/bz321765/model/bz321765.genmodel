@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Bz321765" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>bz321765.xsd</foreignModel>
+  <genPackages prefix="Bz321765" basePackage="org.eclipse.emf.teneo.samples.issues"
+      resource="XML" disposableProviderFactory="true" ecorePackage="bz321765.ecore#/">
+    <genClasses ecoreClass="bz321765.ecore#//Employee">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bz321765.ecore#//Employee/employeePK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz321765.ecore#//Employee/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz321765.ecore#//Employee/salary"/>
+    </genClasses>
+    <genClasses ecoreClass="bz321765.ecore#//EmployeePK">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz321765.ecore#//EmployeePK/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz321765.ecore#//EmployeePK/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bz321765.ecore#//EmployeePK/lastName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

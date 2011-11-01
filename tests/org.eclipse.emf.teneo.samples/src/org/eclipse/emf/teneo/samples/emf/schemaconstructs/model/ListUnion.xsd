@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/listunion"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/listunion">
+
+	<!-- Tests:
+	- List
+	- Union
+	-->	
+
+	<xsd:simpleType name="State">
+		<xsd:restriction base="xsd:string">
+    		<xsd:maxLength value="12"/>
+	  	</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="StateList">
+  		<xsd:list itemType="this:State"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="StringList">
+  		<xsd:list itemType="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="SixStatesList">
+  		<xsd:restriction base="this:StateList">
+    		<xsd:length value="6"/>
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="zipCode">
+		<xsd:restriction base='xsd:string'>
+			<xsd:maxLength value='6'/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="CountryStates" ecore:name="statesByCountry">
+		<xsd:sequence>
+			<xsd:element name="Country" type="xsd:string"/>
+			<xsd:element name="AllStates" type="this:StateList"/>
+			<xsd:element name="SixImportantStates" type="this:SixStatesList"/>
+			<xsd:element name="zipUnion">
+				<xsd:simpleType>
+					<xsd:union memberTypes="this:zipCode this:State"/>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="zipUnions" maxOccurs="unbounded">
+				<xsd:simpleType>
+					<xsd:union memberTypes="this:zipCode this:State"/>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="simpleUnion" type="this:simpleUnionType"/>
+			<xsd:element name="simpleUnions" type="this:simpleUnionType" maxOccurs="unbounded"/>
+			<xsd:element name="simpleStringUnion" type="this:simpleStringUnionType"/>
+			<xsd:element name="simpleStringUnions" type="this:simpleStringUnionType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<!-- copied from zvon.org http://www.zvon.org -->
+    <xsd:simpleType name="simpleUnionType">
+      <xsd:union>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:integer"/>
+        </xsd:simpleType>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="N/A"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:union>
+    </xsd:simpleType>
+	
+	<!-- copied from zvon.org http://www.zvon.org -->
+    <xsd:simpleType name="simpleStringUnionType">
+      <xsd:union>
+        <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+        </xsd:restriction>
+        </xsd:simpleType>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="5"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:union>
+    </xsd:simpleType>
+	
+ </xsd:schema>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="My" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0">
+  <foreignModel>simpletypes.xsd</foreignModel>
+  <genPackages prefix="Simpletypes" basePackage="org.eclipse.emf.teneo.samples.emf.schemaconstructs"
+      resource="XML" disposableProviderFactory="true" ecorePackage="simpletypes.ecore#/">
+    <genEnums ecoreEnum="simpletypes.ecore#//SimpleEnum">
+      <genEnumLiterals ecoreEnumLiteral="simpletypes.ecore#//SimpleEnum/Enum1"/>
+      <genEnumLiterals ecoreEnumLiteral="simpletypes.ecore#//SimpleEnum/Enum2"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Bool"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Byte"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//ByteArray"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Date"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Double"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//DoubleArray"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//ExtraLimitedString"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Float"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Int"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//IntArray"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//LimitedDecimal"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//LimitedString"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//Long"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//SimpleEnumObject"/>
+    <genDataTypes ecoreDataType="simpletypes.ecore#//StringArray"/>
+    <genClasses ecoreClass="simpletypes.ecore#//SimpleList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/boo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/byt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/doubl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/floa"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/inte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/long"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/shor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/enu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/dat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/limitedstring"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/stri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/intArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/doubleArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/stringArray"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleList/byteArray"/>
+    </genClasses>
+    <genClasses ecoreClass="simpletypes.ecore#//SimpleType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/boo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/byt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/doubl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/float"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/inte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/lon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/shor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/enu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/dat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/limitedstring"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/limitedDecimal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleType/extraLimitedString"/>
+    </genClasses>
+    <genClasses ecoreClass="simpletypes.ecore#//SimpleTypeObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/boo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/byt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/doubl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/float"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/inte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/lon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/shor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/enu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpletypes.ecore#//SimpleTypeObject/dat"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

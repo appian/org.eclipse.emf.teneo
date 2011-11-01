@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/annotations/duplicates"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/annotations/duplicates"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Test forced join table in case of containment -->
+    
+  <xsd:complexType name="ChildItem">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="Item">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="childItem" type="this:ChildItem" maxOccurs="unbounded">
+        <xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@OneToMany(unique=true)</xsd:appinfo>
+	    </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:schema>

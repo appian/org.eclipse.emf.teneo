@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.abstractreference.impl.AddressImpl" entity-name="Address" abstract="true" lazy="false" table="`address`">
+		<meta attribute="eclassName" inherit="false">Address</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/abstractreference</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<list name="country" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="address_country">
+				<column name="`address_country_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`address_country_idx`"/>
+			<one-to-many entity-name="City"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.abstractreference.impl.CityImpl" entity-name="City" abstract="true" lazy="false" table="`city`">
+		<meta attribute="eclassName" inherit="false">City</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/abstractreference</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<list name="address" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+			<key update="true" foreign-key="city_address">
+				<column name="`city_address_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`city_address_idx`"/>
+			<one-to-many entity-name="Address"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.abstractreference.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" table="`person`">
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/abstractreference</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<list name="address" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="person_address">
+				<column name="`person_address_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`person_address_idx`"/>
+			<one-to-many entity-name="Address"/>
+		</list>
+	</class>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.abstractreference.impl.USAddressImpl" entity-name="USAddress" abstract="false" lazy="false" extends="Address" table="`usaddress`">
+		<meta attribute="eclassName" inherit="false">USAddress</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/abstractreference</meta>
+		<key>
+			<column name="`address_e_id`"/>
+		</key>
+		<property name="state" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`state`"/>
+		</property>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.abstractreference.impl.USCityImpl" entity-name="USCity" abstract="false" lazy="false" extends="City" table="`uscity`">
+		<meta attribute="eclassName" inherit="false">USCity</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/abstractreference</meta>
+		<key>
+			<column name="`city_e_id`"/>
+		</key>
+		<property name="state" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`state`"/>
+		</property>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.abstractreference.impl.USOfficeAddressImpl" entity-name="USOfficeAddress" abstract="false" lazy="false" extends="USAddress" table="`usofficeaddress`">
+		<meta attribute="eclassName" inherit="false">USOfficeAddress</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/abstractreference</meta>
+		<key>
+			<column name="`usaddress_e_id`"/>
+		</key>
+		<property name="location" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`location`"/>
+		</property>
+	</joined-subclass>
+</hibernate-mapping>

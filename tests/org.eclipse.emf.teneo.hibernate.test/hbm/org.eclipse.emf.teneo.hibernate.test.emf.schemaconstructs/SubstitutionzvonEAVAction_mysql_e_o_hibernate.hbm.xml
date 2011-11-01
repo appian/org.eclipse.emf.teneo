@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexAAAImpl" entity-name="ComplexAAA" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ComplexAAA"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexEvenTypeImpl" entity-name="ComplexEvenType" abstract="false" lazy="false" extends="ComplexAAA" discriminator-value="ComplexEvenType"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.ComplexOddTypeImpl" entity-name="ComplexOddType" abstract="false" lazy="false" extends="ComplexAAA" discriminator-value="ComplexOddType"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitutionzvon.impl.RootTypeImpl" entity-name="RootType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="RootType"/>
+</hibernate-mapping>

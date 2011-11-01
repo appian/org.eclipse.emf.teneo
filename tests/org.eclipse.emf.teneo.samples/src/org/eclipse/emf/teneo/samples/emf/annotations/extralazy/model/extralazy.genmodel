@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Extralazy" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>extralazy.xsd</foreignModel>
+  <genPackages prefix="Extralazy" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="extralazy.ecore#/">
+    <genClasses ecoreClass="extralazy.ecore#//Book">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extralazy.ecore#//Book/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference extralazy.ecore#//Book/authors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extralazy.ecore#//Book/subTitles"/>
+    </genClasses>
+    <genClasses ecoreClass="extralazy.ecore#//Writer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extralazy.ecore#//Writer/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

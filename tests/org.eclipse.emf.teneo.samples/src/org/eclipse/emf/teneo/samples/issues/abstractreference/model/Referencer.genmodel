@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Referencer" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>Referencer.xsd</foreignModel>
+  <genPackages prefix="Abstractreference" basePackage="org.eclipse.emf.teneo.samples.issues" resource="XML"
+      disposableProviderFactory="true" ecorePackage="abstractreference.ecore#/">
+    <genClasses image="false" ecoreClass="abstractreference.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute abstractreference.ecore#//Address/name"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference abstractreference.ecore#//Address/country"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="abstractreference.ecore#//City">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute abstractreference.ecore#//City/name"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference abstractreference.ecore#//City/address"/>
+    </genClasses>
+    <genClasses ecoreClass="abstractreference.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute abstractreference.ecore#//Person/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference abstractreference.ecore#//Person/address"/>
+    </genClasses>
+    <genClasses ecoreClass="abstractreference.ecore#//USAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute abstractreference.ecore#//USAddress/state"/>
+    </genClasses>
+    <genClasses ecoreClass="abstractreference.ecore#//USCity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute abstractreference.ecore#//USCity/state"/>
+    </genClasses>
+    <genClasses ecoreClass="abstractreference.ecore#//USOfficeAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute abstractreference.ecore#//USOfficeAddress/location"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

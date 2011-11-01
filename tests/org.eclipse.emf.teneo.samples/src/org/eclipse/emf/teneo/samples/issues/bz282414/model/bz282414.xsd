@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/teneo/samples/issues/bz282414"
+	targetNamespace="http://www.eclipse.org/emf/teneo/samples/issues/bz282414">
+
+	<xsd:complexType name="Foo">
+		<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@Entity @Table( name="FOO_TABLE"
+				)</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BagOfBars" type="this:Bar" minOccurs="0"
+				maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source='teneo.jpa'>
+						@OneToMany(fetch=FetchType.LAZY, indexed=false)
+						@JoinColumn(name="GRP_ID", referencedColumnName="CLI_ID")
+</xsd:appinfo>
+					<xsd:documentation></xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="dnmSK" type="xsd:long" default='0'>
+			<xsd:annotation>
+				<xsd:appinfo source="teneo.jpa">
+					@Id @Column(name="DNM_SK", nullable="false",insertable = true,
+					updatable = false)
+					@GeneratedValue
+				</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute default="" name="clientId" type="xsd:string">
+			<xsd:annotation>
+				<xsd:appinfo source="teneo.jpa">@Column(name="CLI_ID",
+					length="8")</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name='Bar'>
+		<xsd:annotation>
+			<xsd:appinfo source='teneo.jpa'>@Entity
+				@Table(name="BAR_TABLE")</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name='barKey' type='this:BarKey'>
+				<xsd:annotation>
+					<xsd:appinfo source='teneo.jpa'>
+						@Embedded @AttributeOverrides({@AttributeOverride(name="groupId",
+						column=@Column(name="GRP_ID")),@AttributeOverride(name="classId",
+						column=@Column(name="CLAS_ID"))})
+</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name='BarKey'>
+		<xsd:annotation>
+			<xsd:appinfo source='teneo.jpa'>@Embeddable</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+		</xsd:sequence>
+		<xsd:attribute name='groupId' type='xsd:string'>
+			<xsd:annotation>
+				<xsd:appinfo source='teneo.jpa'>@Column(name="GRP_ID",
+					nullable=false)</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name='classId' type='xsd:string'>
+			<xsd:annotation>
+				<xsd:appinfo source='teneo.jpa'>@Column(name="CLAS_ID",
+					nullable=false)</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+</schema>

@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Plugin.name
+Bundle-SymbolicName: org.eclipse.emf.teneo.hibernate.eclipse; singleton:=true
+Bundle-Version: 1.1.2.qualifier
+Bundle-Vendor: %Plugin.providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.ui.ide;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.emf.common;bundle-version="[2.5.0,3.0.0)",
+ org.eclipse.core.resources;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.jdt.core;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.jdt.launching;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.debug.core;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.emf.teneo;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.emf.teneo.annotations;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.emf.teneo.hibernate;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.emf.teneo.eclipse;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.emf.teneo.hibernate.mapper;bundle-version="[1.0.0,2.0.0)"
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

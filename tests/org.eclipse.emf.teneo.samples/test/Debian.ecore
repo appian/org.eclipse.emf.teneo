@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <ecore:EPackage name="PrimitiveTypes" nsURI="atl.primitive.type" nsPrefix="ptyp">
+    <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="boolean"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="int"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
+  </ecore:EPackage>
+  <ecore:EPackage name="Debian" nsURI="my.model.of.debian.package" nsPrefix="debian">
+    <eClassifiers xsi:type="ecore:EClass" name="Deb">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" ordered="false"
+          lowerBound="1" eType="#/1/Databin" containment="true" eOpposite="#/1/Databin/debpm"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="control" ordered="false"
+          lowerBound="1" eType="#/1/Archcontrol" containment="true" eOpposite="#/1/Archcontrol/debc"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" ordered="false"
+          lowerBound="1" eType="#/1/Archdata" containment="true" eOpposite="#/1/Archdata/debd"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Databin">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="debpm" ordered="false"
+          lowerBound="1" eType="#/1/Deb" eOpposite="#/1/Deb/metadata"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="blocs" ordered="false"
+          upperBound="-1" eType="#/1/Bloc" containment="true" eOpposite="#/1/Bloc/meta"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Bloc">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="meta" ordered="false"
+          lowerBound="1" eType="#/1/Databin" eOpposite="#/1/Databin/blocs"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="field" ordered="false"
+          upperBound="-1" eType="#/1/Field" containment="true" eOpposite="#/1/Field/blocs"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Field" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="blocs" ordered="false"
+          lowerBound="1" eType="#/1/Bloc" eOpposite="#/1/Bloc/field"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="#/1/Field"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageName" eSuperTypes="#/1/Field"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Dependancy" eSuperTypes="#/1/Field"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageDescriptions" eSuperTypes="#/1/Field"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ScriptDescriptions" eSuperTypes="#/1/Field"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Archcontrol">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="debc" ordered="false"
+          lowerBound="1" eType="#/1/Deb" eOpposite="#/1/Deb/control"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scripts" ordered="false"
+          upperBound="-1" eType="#/1/Script" containment="true" eOpposite="#/1/Script/archscript"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Script">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="archscript" ordered="false"
+          lowerBound="1" eType="#/1/Archcontrol" eOpposite="#/1/Archcontrol/scripts"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="script_name" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Archdata">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="debd" ordered="false"
+          lowerBound="1" eType="#/1/Deb" eOpposite="#/1/Deb/data"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="fil" ordered="false"
+          upperBound="-1" eType="#/1/File" containment="true" eOpposite="#/1/File/data"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="File">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" ordered="false"
+          lowerBound="1" eType="#/1/Archdata" eOpposite="#/1/Archdata/fil"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filename" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" ordered="false"
+          unique="false" lowerBound="1" eType="#/0/String"/>
+    </eClassifiers>
+  </ecore:EPackage>
+</xmi:XMI>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="ForcedIdBag" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0">
+  <foreignModel>ForcedIdBag.xsd</foreignModel>
+  <genPackages prefix="Forcedidbag" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
+      resource="XML" disposableProviderFactory="true" ecorePackage="forcedidbag.ecore#/">
+    <genClasses ecoreClass="forcedidbag.ecore#//Role">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute forcedidbag.ecore#//Role/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference forcedidbag.ecore#//Role/users"/>
+    </genClasses>
+    <genClasses ecoreClass="forcedidbag.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute forcedidbag.ecore#//User/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference forcedidbag.ecore#//User/roles"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

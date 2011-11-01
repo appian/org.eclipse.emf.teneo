@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd">
+
+<jdo>
+	<package name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl">
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="account" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.Account"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Account"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountGroupImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="accountgroup" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.AccountGroup"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="AccountGroup"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="account" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="accountgroup_account_e_id" allows-null="true"/>
+				</element>
+				<order column="ACCOUNTGROUP_ACCOUNT_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="accountgroup_account"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountingImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="accounting" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.Accounting"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Accounting"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="nameESet" persistence-modifier="persistent"/>
+			<field name="accountGroup" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountGroupImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="accounting_accountgroup_e_id" allows-null="true"/>
+				</element>
+				<order column="ACCOUNTING_ACCOUNTGROUP_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="accounting_accountgroup"/>
+			</field>
+			<field name="vat" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.VatImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="accounting_vat_e_id" allows-null="true"/>
+				</element>
+				<order column="ACCOUNTING_VAT_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="accounting_vat"/>
+			</field>
+			<field name="vatAccount" persistence-modifier="persistent" delete-action="restrict" null-value="none">
+				<foreign-key name="accounting_vataccount"/>
+				<column name="balanceaccount_vataccount_e_id" allows-null="true"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.BalanceAccountImpl"/>
+			</field>
+			<field name="report" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
+				<foreign-key name="accounting_report"/>
+				<column name="report_report_e_id" allows-null="true"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportImpl"/>
+			</field>
+			<field name="journalGroup" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalGroupImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="accounting_journalgroup_e_id" allows-null="true"/>
+				</element>
+				<order column="ACCOUNTING_JOURNALGROUP_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="accounting_journalgroup"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.BalanceAccountImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.BalanceAccount"/>
+			<inheritance strategy="superclass-table">
+				<discriminator value="BalanceAccount"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="report" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl" dependent-element="false">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<join/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalGroupImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="journalgroup" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.JournalGroup"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="JournalGroup"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="journalGroups" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalGroupImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="journalgroup_journalgroups_e_id" allows-null="true"/>
+				</element>
+				<order column="JOURNALGROUP_JOURNALGROUPS_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="journalgroup_journalgroups"/>
+			</field>
+			<field name="journalStatements" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalStatementImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="journalgroup_journalstatements_e_id" allows-null="true"/>
+				</element>
+				<order column="JOURNALGROUP_JOURNALSTATEMENTS_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="journalgroup_journalstatements"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.JournalStatementImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="journalstatement" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.JournalStatement"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="JournalStatement"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="description" persistence-modifier="persistent" null-value="exception"/>
+			<field name="date" persistence-modifier="persistent" null-value="exception" embedded="true"/>
+			<field name="amount" persistence-modifier="persistent" null-value="exception"/>
+			<field name="amountESet" persistence-modifier="persistent"/>
+			<field name="debitAccount" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
+				<foreign-key name="journalstatement_debitaccount"/>
+				<column name="account_debitaccount_e_id" allows-null="false"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountImpl"/>
+			</field>
+			<field name="creditAccount" persistence-modifier="persistent" delete-action="restrict" null-value="exception">
+				<foreign-key name="journalstatement_creditaccount"/>
+				<column name="account_creditaccount_e_id" allows-null="false"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.AccountImpl"/>
+			</field>
+			<field name="vat" persistence-modifier="persistent" delete-action="restrict" null-value="none">
+				<foreign-key name="journalstatement_vat"/>
+				<column name="vat_vat_e_id" allows-null="true"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.VatImpl"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.PLAccountImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.PLAccount"/>
+			<inheritance strategy="superclass-table">
+				<discriminator value="PLAccount"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="report" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.Report"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Report"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="debitReportGroup" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
+				<foreign-key name="report_debitreportgroup"/>
+				<column name="reportgroup_debitreportgroup_e_id" allows-null="false"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl"/>
+			</field>
+			<field name="creditReportGroup" persistence-modifier="persistent" dependent="true" delete-action="restrict" null-value="none">
+				<foreign-key name="report_creditreportgroup"/>
+				<column name="reportgroup_creditreportgroup_e_id" allows-null="false"/>
+				<extension vendor-name="jpox" key="implementation-classes" value="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl"/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="reportgroup" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.ReportGroup"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="ReportGroup"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="reportGroup" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.ReportGroupImpl" dependent-element="true">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<element>
+					<column name="reportgroup_reportgroup_e_id" allows-null="true"/>
+				</element>
+				<order column="REPORTGROUP_REPORTGROUP_IDX"/>
+				<foreign-key delete-action="cascade" update-action="cascade" name="reportgroup_reportgroup"/>
+			</field>
+			<field name="account" persistence-modifier="persistent" delete-action="restrict">
+				<collection element-type="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.BalanceAccountImpl" dependent-element="false">
+					<extension vendor-name="jpox" key="cache-lazy-loading" value="true"/>
+				</collection>
+				<join/>
+			</field>
+		</class>
+		<class name="org.eclipse.emf.teneo.samples.emf.sample.accounting.impl.VatImpl" requires-extent="true" persistence-modifier="persistence-capable" detachable="true" table="vat" identity-type="datastore">
+			<implements name="org.eclipse.emf.teneo.samples.emf.sample.accounting.Vat"/>
+			<implements name="org.eclipse.emf.ecore.EObject"/>
+			<implements name="org.eclipse.emf.common.notify.Notifier"/>
+			<inheritance strategy="new-table">
+				<discriminator column="dtype" strategy="value-map" value="Vat"/>
+			</inheritance>
+			<version strategy="version-number" column="e_version"/>
+			<field name="name" persistence-modifier="persistent" null-value="exception"/>
+			<field name="rate" persistence-modifier="persistent" null-value="exception"/>
+			<field name="rateESet" persistence-modifier="persistent"/>
+		</class>
+	</package>
+</jdo>

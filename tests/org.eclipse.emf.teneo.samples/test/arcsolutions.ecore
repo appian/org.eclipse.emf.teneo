@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="datacore"
+    nsURI="http://www.arcsolutions.de/remarc/" nsPrefix="remarc">
+  <eClassifiers xsi:type="ecore:EClass" name="CSMXML">
+    <eOperations name="createCSMInstance" eType="#//CSMInstance">
+      <eParameters name="csmClass" lowerBound="1" eType="#//CSMClass"/>
+    </eOperations>
+    <eOperations name="createCSMClass" eType="#//CSMClass">
+      <eParameters name="factory" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EFactory"/>
+      <eParameters name="eClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//CSMElement" containment="true" eOpposite="#//CSMElement/csmXML"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//CSMType" defaultValueLiteral="" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedElements" upperBound="-1"
+        eType="#//CSMElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmXML" eType="#//CSMXML"
+        eOpposite="#//CSMXML/elements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMMetaElement" abstract="true" eSuperTypes="#//CSMElement">
+    <eOperations name="putUserProperty">
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getUserProperty" eType="#//UserProperty">
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userProperties" upperBound="-1"
+        eType="#//UserProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMClass" abstract="true" eSuperTypes="#//CSMMetaElement">
+    <eOperations name="addCharacteristicsDefinition" eType="#//CSMCharacteristicDefinition">
+      <eParameters name="type" eType="#//CSMType"/>
+    </eOperations>
+    <eOperations name="createCSMInstance" eType="#//CSMInstance"/>
+    <eOperations name="removeCharacteristicsDefinition">
+      <eParameters name="characteristicDefinition" eType="#//CSMCharacteristicDefinition"/>
+    </eOperations>
+    <eOperations name="createCSMInstance" eType="#//CSMInstance">
+      <eParameters name="owner" eType="#//CSMXML"/>
+    </eOperations>
+    <eOperations name="deleteCharacteristicDefinition">
+      <eParameters name="characteristicDefinition" eType="#//CSMCharacteristicDefinition"/>
+    </eOperations>
+    <eOperations name="deleteCSMInstance">
+      <eParameters name="csmInstance" eType="#//CSMInstance"/>
+    </eOperations>
+    <eOperations name="removeCSMInstance">
+      <eParameters name="csmIntsance" eType="#//CSMInstance"/>
+    </eOperations>
+    <eOperations name="getCSMCharacteristicDefinition" eType="#//CSMCharacteristicDefinition">
+      <eParameters name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getCSMCharacteristicDefinition" eType="#//CSMCharacteristicDefinition">
+      <eParameters name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="deleteAllCSMInstances"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmCharacteristicDefinitions"
+        upperBound="-1" eType="#//CSMCharacteristicDefinition" containment="true"
+        eOpposite="#//CSMCharacteristicDefinition/csmClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instances" upperBound="-1"
+        eType="#//CSMInstance" eOpposite="#//CSMInstance/containingCSMClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validCSMTypes" upperBound="-1"
+        eType="#//CSMType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Type(type=&quot;text&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datasourceDefinition" eType="#//DataSourceDefinitions"
+        defaultValueLiteral="" containment="true" eOpposite="#//DataSourceDefinitions/ownerClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyCharachteristicDefinition"
+        eType="#//CSMCharacteristicDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classRepresentations" upperBound="-1"
+        eType="#//CSMRepresentation" containment="true" eOpposite="#//CSMRepresentation/ownerCSMClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMCharacteristicDefinition" abstract="true"
+      eSuperTypes="#//CSMMetaElement">
+    <eOperations name="createCSMCharacteristicValueContainer" eType="#//CSMCharacteristicValueContainer">
+      <eParameters name="csmInstance" eType="#//CSMInstance"/>
+    </eOperations>
+    <eOperations name="deleteCSMCharactersitcValueContainer">
+      <eParameters name="valueContainer" eType="#//CSMCharacteristicValueContainer"/>
+    </eOperations>
+    <eOperations name="deleteAllCSMCahracteristicValueContainer"/>
+    <eOperations name="getCSMCahracteristicValueContainer" eType="#//CSMCharacteristicValueContainer">
+      <eParameters name="csmInstance" eType="#//CSMInstance"/>
+    </eOperations>
+    <eOperations name="containsOnlyUniqueValues" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmClass" eType="#//CSMClass"
+        eOpposite="#//CSMClass/csmCharacteristicDefinitions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmCharacteristicType"
+        eType="#//CSMType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userDefined" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueContainer" upperBound="-1"
+        eType="#//CSMCharacteristicValueContainer" eOpposite="#//CSMCharacteristicValueContainer/dataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aliasName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSource" eType="#//ColumnDefinition"
+        defaultValueLiteral="" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="freeParameter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMInstance" eSuperTypes="#//CSMObject">
+    <eOperations name="getCSMCharacteristicValueContainer" eType="#//CSMCharacteristicValueContainer">
+      <eParameters name="characteristicDefinition" eType="#//CSMCharacteristicDefinition"/>
+    </eOperations>
+    <eOperations name="createCSMCharacteristicValueContainer" eType="#//CSMCharacteristicValueContainer">
+      <eParameters name="characteristcDefinition" eType="#//CSMCharacteristicDefinition"/>
+    </eOperations>
+    <eOperations name="deleteCSMCharactersitcValueContainer">
+      <eParameters name="valueContainer" eType="#//CSMCharacteristicValueContainer"/>
+    </eOperations>
+    <eOperations name="deleteAllCSMCharacteristicValueContainer"/>
+    <eOperations name="isValid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="allNotUserDefinedContainerSet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmValueContainer" upperBound="-1"
+        eType="#//CSMCharacteristicValueContainer" containment="true" eOpposite="#//CSMCharacteristicValueContainer/csmInstance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmReprasentation" upperBound="-1"
+        eType="#//CSMRepresentationRoot" containment="true" eOpposite="#//CSMRepresentationRoot/csmInstance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containingCSMClass" eType="#//CSMClass"
+        eOpposite="#//CSMClass/instances"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMCharacteristicValueContainer" eSuperTypes="#//CSMObject">
+    <eOperations name="isConcreteValueSet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="setCSMConcreteValue" eType="#//CSMValue">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="addCSMValueToValueSet">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="addIntervalToValueSet">
+      <eParameters name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="includeMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="includeMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="increment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="clearValueSet"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmInstance" eType="#//CSMInstance"
+        eOpposite="#//CSMInstance/csmValueContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concreteValue" eType="#//CSMValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueSet" upperBound="-1"
+        eType="#//CSMValueSet" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" eType="#//CSMCharacteristicDefinition"
+        eOpposite="#//CSMCharacteristicDefinition/valueContainer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMValueSet" abstract="true">
+    <eOperations name="getStringReprasentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" eType="#//CSMType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMType" abstract="true">
+    <eOperations name="createCSMValue" eType="#//CSMValue">
+      <eParameters name="valueStringReprasentation" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="isValid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="createCSMInterval" eType="#//Interval">
+      <eParameters name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="includeMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="includeMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="increment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMObject" abstract="true" eSuperTypes="#//CSMElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMRepresentationRoot">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="csmInstance" eType="#//CSMInstance"
+        eOpposite="#//CSMInstance/csmReprasentation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representationTree" eType="#//CSMRepresentation"
+        defaultValueLiteral="" containment="true" eOpposite="#//CSMRepresentation/representationRoot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueDescriptors" upperBound="-1"
+        eType="#//CSMRepresentationRootDescriptor" containment="true" eOpposite="#//CSMRepresentationRootDescriptor/representationRoot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMValue" abstract="true" eSuperTypes="#//CSMValueSet">
+    <eOperations name="setValueFromString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interval" eSuperTypes="#//CSMValueSet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min" eType="#//CSMValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max" eType="#//CSMValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" eType="#//CSMValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="increment" eType="#//CSMValue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMRepresentation" abstract="true">
+    <eOperations name="scrap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//CSMRepresentation"
+        eOpposite="#//CSMRepresentation/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//CSMRepresentation" containment="true" eOpposite="#//CSMRepresentation/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representationRoot" eType="#//CSMRepresentationRoot"
+        eOpposite="#//CSMRepresentationRoot/representationTree"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownerCSMClass" eType="#//CSMClass"
+        eOpposite="#//CSMClass/classRepresentations"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSourceDefinitions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownerClass" eType="#//CSMClass"
+        eOpposite="#//CSMClass/datasourceDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="report" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ColumnDefinition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasetName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CSMRepresentationRootDescriptor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representationRoot" eType="#//CSMRepresentationRoot"
+        eOpposite="#//CSMRepresentationRoot/valueDescriptors"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="characteristicID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="characteriticValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eSubpackages name="types" nsURI="http://www.arcsolutions.de/remarc/types" nsPrefix="types">
+    <eClassifiers xsi:type="ecore:EClass" name="StringType" eSuperTypes="#//CSMType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DoubleType" eSuperTypes="#//types/CSMNumberType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//CSMValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DoubleValue" eSuperTypes="#//types/CSMNumberValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CSMNumberType" abstract="true" eSuperTypes="#//CSMType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CSMNumberValue" abstract="true" eSuperTypes="#//CSMValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//CSMValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BooleanType" eSuperTypes="#//CSMType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//types/CSMNumberValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerType" eSuperTypes="#//types/CSMNumberType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ByteValue" eSuperTypes="#//types/CSMNumberValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ByteType" eSuperTypes="#//types/CSMNumberType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="FloatValue" eSuperTypes="#//types/CSMNumberValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FloatType" eSuperTypes="#//types/CSMNumberType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="LongValue" eSuperTypes="#//types/CSMNumberValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LongType" eSuperTypes="#//types/CSMNumberType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ShortValue" eSuperTypes="#//types/CSMNumberValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ShortType" eSuperTypes="#//types/CSMNumberType"/>
+  </eSubpackages>
+  <eSubpackages name="represantations" nsURI="http://www.arcsolutions.de/remarc/represantations"
+      nsPrefix="represantations">
+    <eClassifiers xsi:type="ecore:EClass" name="CSMFileRepresentation" eSuperTypes="#//CSMRepresentation">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CSMUrlRepresentation" eSuperTypes="#//CSMRepresentation">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

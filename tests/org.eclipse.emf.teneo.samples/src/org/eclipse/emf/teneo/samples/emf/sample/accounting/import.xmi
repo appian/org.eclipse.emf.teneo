@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accounting:Accounting xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:accounting="http://www.eclipse.org/emf/teneo/samples/emf/sample/accounting" name="Spring in Oslo" vatAccount="//@accountGroup.0/@account.2">
+  <accountGroup name="Balance Accounts">
+    <account xsi:type="accounting:BalanceAccount" name="Netto lonen" report="//@report/@creditReportGroup/@reportGroup.2"/>
+    <account xsi:type="accounting:BalanceAccount" name="Loonheffing" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.0 //@report/@creditReportGroup/@reportGroup.2"/>
+    <account xsi:type="accounting:BalanceAccount" name="Omzetbelasting" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.0 //@report/@creditReportGroup/@reportGroup.2"/>
+    <account xsi:type="accounting:BalanceAccount" name="Vennootschapsbelasting" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.0 //@report/@creditReportGroup/@reportGroup.2"/>
+    <account xsi:type="accounting:BalanceAccount" name="Inventaris" report="//@report/@debitReportGroup/@reportGroup.0"/>
+    <account xsi:type="accounting:BalanceAccount" name="Deelnemingen" report="//@report/@debitReportGroup/@reportGroup.0"/>
+    <account xsi:type="accounting:BalanceAccount" name="Debiteuren" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.0"/>
+    <account xsi:type="accounting:BalanceAccount" name="Rekening courant aandeelhouders" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.0"/>
+    <account xsi:type="accounting:BalanceAccount" name="Rabobank" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.1"/>
+    <account xsi:type="accounting:BalanceAccount" name="Rabobank telerekening" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.1"/>
+    <account xsi:type="accounting:BalanceAccount" name="Triodos Bank" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.1"/>
+    <account xsi:type="accounting:BalanceAccount" name="Verlofspaarrekening" report="//@report/@debitReportGroup/@reportGroup.1/@reportGroup.1"/>
+    <account xsi:type="accounting:BalanceAccount" name="Aandelenkapitaal" report="//@report/@creditReportGroup/@reportGroup.0"/>
+    <account xsi:type="accounting:BalanceAccount" name="Algemene Reserve" report="//@report/@creditReportGroup/@reportGroup.0"/>
+    <account xsi:type="accounting:BalanceAccount" name="Pensioenreserve Eigen Beheer" report="//@report/@creditReportGroup/@reportGroup.1"/>
+    <account xsi:type="accounting:BalanceAccount" name="Overlopende passiva" report="//@report/@creditReportGroup/@reportGroup.2"/>
+    <account xsi:type="accounting:BalanceAccount" name="Rekening Courant Springsite BV" report="//@report/@creditReportGroup/@reportGroup.2"/>
+    <account xsi:type="accounting:BalanceAccount" name="Opening Balans" report="//@report/@debitReportGroup/@reportGroup.2 //@report/@creditReportGroup/@reportGroup.3"/>
+    <account xsi:type="accounting:BalanceAccount" name="Kruisposten" report="//@report/@debitReportGroup/@reportGroup.2 //@report/@creditReportGroup/@reportGroup.3"/>
+    <account xsi:type="accounting:BalanceAccount" name="Verplichting verlofsparen" report="//@report/@creditReportGroup/@reportGroup.1"/>
+    <account xsi:type="accounting:BalanceAccount" name="Salaris Kruispost" report="//@report/@debitReportGroup/@reportGroup.2 //@report/@creditReportGroup/@reportGroup.3"/>
+  </accountGroup>
+  <accountGroup name="Profit &amp; Loss Accounts">
+    <account xsi:type="accounting:PLAccount" name="Bruto lonen"/>
+    <account xsi:type="accounting:PLAccount" name="Bruto lonen tantieme"/>
+    <account xsi:type="accounting:PLAccount" name="Vermindering loonheffing"/>
+    <account xsi:type="accounting:PLAccount" name="Vergoedingen"/>
+    <account xsi:type="accounting:PLAccount" name="Accountantskosten"/>
+    <account xsi:type="accounting:PLAccount" name="Abonnementen en Contributies"/>
+    <account xsi:type="accounting:PLAccount" name="Kantoorbenodigdheden"/>
+    <account xsi:type="accounting:PLAccount" name="Computer/Software kosten"/>
+    <account xsi:type="accounting:PLAccount" name="Telefoonkosten"/>
+    <account xsi:type="accounting:PLAccount" name="Vakliteratuur"/>
+    <account xsi:type="accounting:PLAccount" name="Giften"/>
+    <account xsi:type="accounting:PLAccount" name="Kleine Inventaris"/>
+    <account xsi:type="accounting:PLAccount" name="Reis- en verblijfkosten"/>
+    <account xsi:type="accounting:PLAccount" name="Betalingsverschillen"/>
+    <account xsi:type="accounting:PLAccount" name="Rente rekening courant Springsite"/>
+    <account xsi:type="accounting:PLAccount" name="Rente- en bankkosten"/>
+    <account xsi:type="accounting:PLAccount" name="Rente belastingen"/>
+    <account xsi:type="accounting:PLAccount" name="Afschrijving Inventaris"/>
+    <account xsi:type="accounting:PLAccount" name="Pensioenkosten"/>
+    <account xsi:type="accounting:PLAccount" name="Personeelsverzekering"/>
+    <account xsi:type="accounting:PLAccount" name="Omzet"/>
+    <account xsi:type="accounting:PLAccount" name="KDV Vergoeding"/>
+  </accountGroup>
+  <vat name="19%" rate="0.19"/>
+  <vat name="6%" rate="0.06"/>
+  <report name="Balans Spring in Oslo 2004">
+    <debitReportGroup name="Activa">
+      <reportGroup name="Vaste Activa" account="//@accountGroup.0/@account.4 //@accountGroup.0/@account.5"/>
+      <reportGroup name="Vlottende Activa">
+        <reportGroup name="Vorderingen" account="//@accountGroup.0/@account.6 //@accountGroup.0/@account.7 //@accountGroup.0/@account.3 //@accountGroup.0/@account.1 //@accountGroup.0/@account.2"/>
+        <reportGroup name="Liquide Middelen" account="//@accountGroup.0/@account.8 //@accountGroup.0/@account.9 //@accountGroup.0/@account.10 //@accountGroup.0/@account.11"/>
+      </reportGroup>
+      <reportGroup name="Kruisposten" account="//@accountGroup.0/@account.20 //@accountGroup.0/@account.18 //@accountGroup.0/@account.17"/>
+    </debitReportGroup>
+    <creditReportGroup name="Passiva">
+      <reportGroup name="Eigen Vermogen" account="//@accountGroup.0/@account.12 //@accountGroup.0/@account.13"/>
+      <reportGroup name="Voorzieningen" account="//@accountGroup.0/@account.14 //@accountGroup.0/@account.19"/>
+      <reportGroup name="Kortlopend Vreemd Vermogen" account="//@accountGroup.0/@account.0 //@accountGroup.0/@account.1 //@accountGroup.0/@account.3 //@accountGroup.0/@account.2 //@accountGroup.0/@account.15 //@accountGroup.0/@account.16"/>
+      <reportGroup name="Kruisposten" account="//@accountGroup.0/@account.17 //@accountGroup.0/@account.18 //@accountGroup.0/@account.20"/>
+    </creditReportGroup>
+  </report>
+  <journalGroup name="Opening Balans 2004">
+    <journalGroups name="Activa">
+      <journalStatements description="Opening Balans Inventaris" date="2003-12-31T00:00:00.0" amount="106.0" debitAccount="//@accountGroup.0/@account.4" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Deelnemingen" date="2003-12-31T00:00:00.0" amount="27352.0" debitAccount="//@accountGroup.0/@account.5" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Debiteuren" date="2003-12-31T00:00:00.0" amount="35700.0" debitAccount="//@accountGroup.0/@account.6" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans RC Aandeelhouders" date="2003-12-31T00:00:00.0" amount="7548.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans VPB" date="2003-12-31T00:00:00.0" amount="9767.0" debitAccount="//@accountGroup.0/@account.3" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Loonheffing" date="2003-12-31T00:00:00.0" amount="952.0" debitAccount="//@accountGroup.0/@account.1" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Rabobank" date="2003-12-31T00:00:00.0" amount="401.8" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Rabobank Telerekening" date="2003-12-31T00:00:00.0" amount="3514.44" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Triodos Bank" date="2003-12-31T00:00:00.0" amount="1940.01" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Verlofsparen" date="2003-12-31T00:00:00.0" amount="13135.1" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.17"/>
+      <journalStatements description="Opening Balans Kruisposten" date="2003-12-31T00:00:00.0" amount="1000.0" debitAccount="//@accountGroup.0/@account.18" creditAccount="//@accountGroup.0/@account.17"/>
+    </journalGroups>
+    <journalGroups name="Passiva">
+      <journalStatements description="Opening Balans Aandelenkapitaal" date="2003-12-31T00:00:00.0" amount="18151.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.12"/>
+      <journalStatements description="Opening Balans Algemene Reserve" date="2003-12-31T00:00:00.0" amount="34528.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.13"/>
+      <journalStatements description="Opening Balans Pensioenreserve Eigen Beheer" date="2003-12-31T00:00:00.0" amount="27885.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.14"/>
+      <journalStatements description="Opening Balans RC Springsite BV" date="2003-12-31T00:00:00.0" amount="76.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.16"/>
+      <journalStatements description="Opening Balans Omzetbelasting" date="2003-12-31T00:00:00.0" amount="5216.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.2"/>
+      <journalStatements description="Opening Balans Nettolonen" date="2003-12-31T00:00:00.0" amount="1527.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.0"/>
+      <journalStatements description="Opening Balans Verplichting Verlofsparen" date="2003-12-31T00:00:00.0" amount="13133.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.19"/>
+      <journalStatements description="Opening Balans Overlopende passiva" date="2003-12-31T00:00:00.0" amount="900.0" debitAccount="//@accountGroup.0/@account.17" creditAccount="//@accountGroup.0/@account.15"/>
+    </journalGroups>
+  </journalGroup>
+  <journalGroup name="Spring in Oslo 2004">
+    <journalGroups name="Rabobank Telerekening 2004">
+      <journalGroups name="Rabobank Telerekening December 2004">
+        <journalStatements description="Terug van sparen" date="2004-12-30T00:00:00.0" amount="100.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Sparen" date="2004-12-31T00:00:00.0" amount="70.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Terug van sparen" date="2004-12-28T00:00:00.0" amount="950.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-12-26T00:00:00.0" amount="610.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-12-23T00:00:00.0" amount="1350.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-12-23T00:00:00.0" amount="3614.35" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Mozilla" date="2004-12-16T00:00:00.0" amount="22.72" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-12-16T00:00:00.0" amount="24.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-12-16T00:00:00.0" amount="250.0" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-12-05T00:00:00.0" amount="250.0" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-12-08T00:00:00.0" amount="250.0" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Internet" date="2004-12-16T00:00:00.0" amount="14.99" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Salaris" date="2004-12-10T00:00:00.0" amount="250.0" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-12-14T00:00:00.0" amount="1725.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="KPN" date="2004-12-27T00:00:00.0" amount="141.09" debitAccount="//@accountGroup.1/@account.8" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening November 2004">
+        <journalStatements description="Terug van sparen" date="2004-11-29T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-11-28T00:00:00.0" amount="1230.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-11-26T00:00:00.0" amount="2208.04" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Aankoop HP Printer" date="2004-11-29T00:00:00.0" amount="197.93" debitAccount="//@accountGroup.1/@account.11" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Terug van sparen" date="2004-11-12T00:00:00.0" amount="50.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-11-10T00:00:00.0" amount="25.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-11-10T00:00:00.0" amount="60.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-11-04T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Internet" date="2004-11-16T00:00:00.0" amount="14.99" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Sponsoring Mozilla" date="2004-11-10T00:00:00.0" amount="23.92" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Lidmaatschap VLO" date="2004-11-04T00:00:00.0" amount="25.0" debitAccount="//@accountGroup.1/@account.5" creditAccount="//@accountGroup.0/@account.9"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Oktober 2004">
+        <journalStatements description="Sparen" date="2004-10-25T01:00:00.0" amount="10250.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Terug van sparen" date="2004-10-25T01:00:00.0" amount="50.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-10-26T01:00:00.0" amount="45.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-10-28T01:00:00.0" amount="1250.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-10-26T01:00:00.0" amount="2208.04" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="KPN" date="2004-10-27T01:00:00.0" amount="162.49" debitAccount="//@accountGroup.1/@account.8" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Augustus - September 2004">
+        <journalStatements description="Salaris" date="2004-09-26T01:00:00.0" amount="2208.04" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-09-28T01:00:00.0" amount="1250.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Postzegels" date="2004-09-16T00:00:00.0" amount="39.0" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-08-26T01:00:00.0" amount="2208.04" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="KPN" date="2004-08-27T01:00:00.0" amount="177.26" debitAccount="//@accountGroup.1/@account.8" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Terug van sparen" date="2004-08-28T01:00:00.0" amount="1250.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-08-22T01:00:00.0" amount="75.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Juni - Juli 2004">
+        <journalStatements description="Sparen" date="2004-07-23T01:00:00.0" amount="40.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Sparen" date="2004-07-21T01:00:00.0" amount="10200.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Terug AOV" date="2004-07-23T01:00:00.0" amount="55.91" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.1/@account.19"/>
+        <journalStatements description="Salaris" date="2004-07-26T01:00:00.0" amount="2208.04" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-07-28T01:00:00.0" amount="1230.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-07-14T01:00:00.0" amount="50.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-07-02T01:00:00.0" amount="60.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="AOV" date="2004-07-02T01:00:00.0" amount="162.84" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Canon inktjet patroon" date="2004-06-21T01:00:00.0" amount="37.5" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Salaris" date="2004-06-23T01:00:00.0" amount="2215.45" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="KPN" date="2004-06-29T01:00:00.0" amount="156.73" debitAccount="//@accountGroup.1/@account.8" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Terug van sparen" date="2004-06-30T01:00:00.0" amount="190.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-06-28T01:00:00.0" amount="1060.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="AOV" date="2004-06-03T01:00:00.0" amount="106.92" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Internet" date="2004-06-13T01:00:00.0" amount="10.01" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Mei 2004">
+        <journalStatements description="Terug van sparen" date="2004-05-25T01:00:00.0" amount="1400.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-05-28T01:00:00.0" amount="650.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-05-26T01:00:00.0" amount="2215.45" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Internet" date="2004-05-12T01:00:00.0" amount="10.01" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Suse Linux Software" date="2004-05-14T01:00:00.0" amount="29.95" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Terug van sparen" date="2004-05-16T01:00:00.0" amount="750.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="AOV" date="2004-05-03T01:00:00.0" amount="106.92" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Sparen" date="2004-05-03T01:00:00.0" amount="75.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Maart - April 2004">
+        <journalStatements description="KPN" date="2004-04-29T01:00:00.0" amount="190.0" debitAccount="//@accountGroup.1/@account.8" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Sparen" date="2004-04-30T01:00:00.0" amount="1400.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Sparen" date="2004-04-26T01:00:00.0" amount="9900.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Terug van sparen" date="2004-04-22T01:00:00.0" amount="1050.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-04-26T01:00:00.0" amount="2159.05" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Taxikosten na bespreking Amsterdam" date="2004-04-16T01:00:00.0" amount="17.0" debitAccount="//@accountGroup.1/@account.12" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-04-17T00:00:00.0" amount="1027.5" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug van sparen" date="2004-04-17T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-04-18T01:00:00.0" amount="4627.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Internet" date="2004-04-08T01:00:00.0" amount="9.98" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="NS Kortingskaart" date="2004-04-10T00:00:00.0" amount="49.0" debitAccount="//@accountGroup.1/@account.12" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="RC Aandeelhouders" date="2004-04-12T00:00:00.0" amount="5500.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="AOV" date="2004-04-01T01:00:00.0" amount="106.92" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-03-26T00:00:00.0" amount="2099.67" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-03-29T01:00:00.0" amount="1375.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-03-24T00:00:00.0" amount="25.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Sparen" date="2004-03-24T00:00:00.0" amount="10000.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="RC Aandeelhouders" date="2004-03-20T23:00:00.0" amount="10000.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-03-16T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Sparen" date="2004-03-03T00:00:00.0" amount="24.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Terug AOV" date="2004-03-03T00:00:00.0" amount="26.32" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.1/@account.19"/>
+        <journalStatements description="AOV" date="2004-03-01T00:00:00.0" amount="104.54" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.9"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Februari 2004">
+        <journalStatements description="Terug van sparen" date="2004-02-27T00:00:00.0" amount="1550.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-02-26T00:00:00.0" amount="2099.67" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="KPN" date="2004-02-27T00:00:00.0" amount="193.46" debitAccount="//@accountGroup.1/@account.8" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Terug van sparen" date="2004-02-20T00:00:00.0" amount="15.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Sparen" date="2004-02-16T00:00:00.0" amount="15350.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Teveel ontvangen reiskostenvergoeding" date="2004-02-11T00:00:00.0" amount="457.5" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.1/@account.13"/>
+        <journalStatements description="Teveel ontvangen kdv vergoeding" date="2004-02-01T00:00:00.0" amount="123.25" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.0"/>
+        <journalStatements description="Teveel ontvangen nettoloon" date="2004-02-04T00:00:00.0" amount="44.5" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.0"/>
+        <journalStatements description="KDV" date="2004-02-01T00:00:00.0" amount="10.4" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Internet" date="2004-02-07T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Sparen" date="2004-02-01T00:00:00.0" amount="2000.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank Telerekening Januari 2004">
+        <journalStatements description="Terug van sparen" date="2004-01-29T00:00:00.0" amount="1400.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-01-20T00:00:00.0" amount="615.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-01-27T00:00:00.0" amount="5400.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Salaris" date="2004-01-26T00:00:00.0" amount="2000.0" debitAccount="//@accountGroup.0/@account.0" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Aangetekend versturen" date="2004-01-18T00:00:00.0" amount="5.75" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-01-16T00:00:00.0" amount="532.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Sparen" date="2004-01-16T00:00:00.0" amount="20000.0" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Taxi" date="2004-01-14T00:00:00.0" amount="74.34" debitAccount="//@accountGroup.1/@account.12" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="Internet" date="2004-01-01T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.9" vat="//@vat.0"/>
+        <journalStatements description="AOV" date="2004-01-01T01:00:00.0" amount="140.43" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Terug van sparen" date="2004-01-14T00:00:00.0" amount="450.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.9"/>
+        <journalStatements description="Rente over 2003" date="2004-01-01T01:00:00.0" amount="191.53" debitAccount="//@accountGroup.0/@account.9" creditAccount="//@accountGroup.1/@account.15"/>
+      </journalGroups>
+    </journalGroups>
+    <journalGroups name="Rabobank 2004">
+      <journalGroups name="Rabobank 2004 - 58">
+        <journalStatements description="KDV" date="2004-11-30T00:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-11-30T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-11-29T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift" date="2004-11-29T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-12-01T00:00:00.0" amount="172.62" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Accountantskosten" date="2004-12-15T00:00:00.0" amount="1731.37" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="SDU" date="2004-12-20T00:00:00.0" amount="23.59" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Verlofsparen" date="2004-12-23T00:00:00.0" amount="1350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-12-24T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift KWF" date="2004-12-28T00:00:00.0" amount="200.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Amnesty" date="2004-12-28T00:00:00.0" amount="200.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Zonnebloem" date="2004-12-28T00:00:00.0" amount="200.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="KDV" date="2004-12-30T00:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-12-30T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-12-30T00:00:00.0" amount="172.62" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Samenwerkende Hulp" date="2004-12-31T00:00:00.0" amount="100.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 57">
+        <journalStatements description="Factuur Q3 Springsite BV" date="2004-10-26T00:00:00.0" amount="12500.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.1/@account.20"/>
+        <journalStatements description="BTW van Factuur Q3 Springsite BV" date="2004-10-26T00:00:00.0" amount="2375.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.2"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-10-25T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Loonheffing Q3" date="2004-10-27T00:00:00.0" amount="2348.0" debitAccount="//@accountGroup.0/@account.1" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Omzetbelasting Q3" date="2004-10-27T00:00:00.0" amount="2315.0" debitAccount="//@accountGroup.0/@account.2" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Beslan" date="2004-10-27T01:00:00.0" amount="50.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="KDV" date="2004-11-01T00:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-11-01T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-10-29T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-11-02T00:00:00.0" amount="162.84" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-11-02T00:00:00.0" amount="9.78" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Rekening Courant Springsite BV" date="2004-11-12T00:00:00.0" amount="80.0" debitAccount="//@accountGroup.0/@account.16" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Rente Rekening Courant Springsite BV" date="2004-11-12T00:00:00.0" amount="4.0" debitAccount="//@accountGroup.1/@account.14" creditAccount="//@accountGroup.0/@account.16"/>
+        <journalStatements description="Gift School" date="2004-11-16T00:00:00.0" amount="50.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Accountantskosten" date="2004-11-17T00:00:00.0" amount="30.32" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 56">
+        <journalStatements description="KDV" date="2004-09-30T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-09-30T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-09-29T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift" date="2004-09-28T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-10-01T01:00:00.0" amount="162.84" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Debetrente" date="2004-10-01T00:00:00.0" amount="2.47" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Bank Kosten" date="2004-10-01T00:00:00.0" amount="3.86" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Bank Kosten" date="2004-10-01T00:00:00.0" amount="7.5" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Internet" date="2004-10-12T00:00:00.0" amount="14.99" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="AOV" date="2004-10-19T01:00:00.0" amount="5.54" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 53 - 54 - 55">
+        <journalStatements description="KDV" date="2004-08-31T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-08-31T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-08-29T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-08-31T01:00:00.0" amount="162.84" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Internet" date="2004-09-14T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-08-04T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="AOV" date="2004-08-02T01:00:00.0" amount="162.84" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Internet" date="2004-08-17T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-08-25T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Accountantskosten" date="2004-08-24T01:00:00.0" amount="70.16" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="KDV" date="2004-07-30T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-07-30T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-07-29T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 52">
+        <journalStatements description="KDV" date="2004-06-30T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-06-30T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-06-29T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-06-29T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Pensioendesk" date="2004-07-01T01:00:00.0" amount="178.5" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Internet" date="2004-07-15T00:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Debetrente" date="2004-07-01T00:00:00.0" amount="2.15" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Bank Kosten" date="2004-07-01T00:00:00.0" amount="6.59" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Bank Kosten" date="2004-07-01T00:00:00.0" amount="5.17" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Bank Kosten" date="2004-07-01T00:00:00.0" amount="7.5" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Factuur Q2 Springsite BV" date="2004-07-22T00:00:00.0" amount="12500.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.1/@account.20"/>
+        <journalStatements description="BTW van Factuur Q2 Springsite BV" date="2004-07-22T00:00:00.0" amount="2375.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.2"/>
+        <journalStatements description="Loonheffing Q2" date="2004-07-22T00:00:00.0" amount="2326.0" debitAccount="//@accountGroup.0/@account.1" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Omzetbelasting Q2" date="2004-07-22T00:00:00.0" amount="2325.0" debitAccount="//@accountGroup.0/@account.2" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Ronald McDonald Huis" date="2004-07-22T01:00:00.0" amount="60.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 51">
+        <journalStatements description="Accountantskosten" date="2004-05-25T01:00:00.0" amount="238.96" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="KDV" date="2004-06-01T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-05-29T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-05-27T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Verlofsparen" date="2004-05-26T01:00:00.0" amount="1400.0" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 50">
+        <journalStatements description="Factuur Q1 Springsite BV" date="2004-04-27T00:00:00.0" amount="12500.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.1/@account.20"/>
+        <journalStatements description="BTW van Factuur Q1 Springsite BV" date="2004-04-27T00:00:00.0" amount="2375.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.2"/>
+        <journalStatements description="Loonheffing Q1" date="2004-04-27T00:00:00.0" amount="1941.0" debitAccount="//@accountGroup.0/@account.1" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Omzetbelasting Q1" date="2004-04-27T00:00:00.0" amount="2250.0" debitAccount="//@accountGroup.0/@account.2" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-04-27T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="KDV" date="2004-05-04T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Amnesty" date="2004-05-18T01:00:00.0" amount="100.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Prive lijfrente M. Taal" date="2004-05-04T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 49">
+        <journalStatements description="SDU" date="2004-03-26T00:00:00.0" amount="23.59" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Naar Triodos" date="2004-03-31T01:00:00.0" amount="1000.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Leger des Heils" date="2004-03-29T01:00:00.0" amount="10.0" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Van Triodos" date="2004-03-24T00:00:00.0" amount="10000.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.10"/>
+        <journalStatements description="KDV" date="2004-04-02T01:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Debetrente" date="2004-04-01T00:00:00.0" amount="3.74" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Bank Kosten" date="2004-04-01T00:00:00.0" amount="5.22" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Bank Kosten" date="2004-04-01T00:00:00.0" amount="7.5" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Naar Triodos" date="2004-04-20T01:00:00.0" amount="4627.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Prive lijfrente M. Taal" date="2004-04-20T01:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 48">
+        <journalStatements description="Accountantskosten" date="2004-02-20T00:00:00.0" amount="62.48" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Teruggaaf LB wbso" date="2004-02-24T00:00:00.0" amount="2745.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.1"/>
+        <journalStatements description="KvK" date="2004-03-01T00:00:00.0" amount="162.32" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Naar Triodos" date="2004-03-02T00:00:00.0" amount="1000.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="KDV" date="2004-03-02T00:00:00.0" amount="356.4" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Internet" date="2004-03-16T23:00:00.0" amount="9.98" debitAccount="//@accountGroup.1/@account.7" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Prive lijfrente M. Taal" date="2004-03-18T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-02-26T00:00:00.0" amount="2725.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 47">
+        <journalStatements description="Omzetbelasting 2003" date="2004-01-29T00:00:00.0" amount="5400.0" debitAccount="//@accountGroup.0/@account.2" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Teruggaaf VPB 2002" date="2004-01-28T00:00:00.0" amount="3068.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.3"/>
+        <journalStatements description="KDV" date="2004-02-03T00:00:00.0" amount="346.0" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-02-02T00:00:00.0" amount="1000.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-02-03T00:00:00.0" amount="1100.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Gift Amnesty" date="2004-02-03T00:00:00.0" amount="28.5" debitAccount="//@accountGroup.1/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Teruggaaf VPB 2001" date="2004-02-03T00:00:00.0" amount="1569.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.3"/>
+        <journalStatements description="Teruggaaf VPB 2000" date="2004-02-03T00:00:00.0" amount="2007.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.3"/>
+        <journalStatements description="AOV" date="2004-02-06T00:00:00.0" amount="140.43" debitAccount="//@accountGroup.1/@account.19" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Naar Triodos" date="2004-02-06T00:00:00.0" amount="3400.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Factuur Q4 2003 Springsite BV" date="2004-02-16T23:00:00.0" amount="15700.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.6"/>
+        <journalStatements description="Postpakket GJ Visser" date="2004-02-18T23:00:00.0" amount="5.5" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Prive lijfrente M. Taal" date="2004-02-18T00:00:00.0" amount="350.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+      <journalGroups name="Rabobank 2004 - 46">
+        <journalStatements description="KDV" date="2004-01-05T00:00:00.0" amount="346.0" debitAccount="//@accountGroup.1/@account.21" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Kantoorbenodigdheden" date="2004-01-05T00:00:00.0" amount="3.8" debitAccount="//@accountGroup.1/@account.6" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Internet" date="2004-01-04T23:00:00.0" amount="40.95" debitAccount="//@accountGroup.1/@account.5" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Debetrente" date="2004-01-01T23:00:00.0" amount="2.08" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Bank Kosten" date="2004-01-01T23:00:00.0" amount="7.25" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Bank Kosten" date="2004-01-01T23:00:00.0" amount="7.5" debitAccount="//@accountGroup.1/@account.15" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Teruggaaf Omzetbelasting" date="2004-01-09T23:00:00.0" amount="184.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.2"/>
+        <journalStatements description="Factuur Q4 2003" date="2004-01-16T00:00:00.0" amount="20000.0" debitAccount="//@accountGroup.0/@account.8" creditAccount="//@accountGroup.0/@account.6"/>
+        <journalStatements description="Betaling LB 2002" date="2004-01-19T00:00:00.0" amount="532.0" debitAccount="//@accountGroup.0/@account.1" creditAccount="//@accountGroup.0/@account.8"/>
+        <journalStatements description="Accountantskosten" date="2004-01-21T00:00:00.0" amount="613.69" debitAccount="//@accountGroup.1/@account.4" creditAccount="//@accountGroup.0/@account.8" vat="//@vat.0"/>
+        <journalStatements description="Prive lijfrente M. Taal" date="2004-01-20T00:00:00.0" amount="600.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.8"/>
+      </journalGroups>
+    </journalGroups>
+    <journalGroups name="Additionele Posten">
+      <journalStatements description="Omzet Q4 2004" date="2004-12-31T00:00:00.0" amount="25000.0" debitAccount="//@accountGroup.0/@account.6" creditAccount="//@accountGroup.1/@account.20"/>
+      <journalStatements description="BTW over Omzet Q4 2004" date="2004-12-31T00:00:00.0" amount="4750.0" debitAccount="//@accountGroup.0/@account.6" creditAccount="//@accountGroup.0/@account.2"/>
+      <journalStatements description="Rente verlofspaarrekening" date="2004-01-01T01:00:00.0" amount="297.62" debitAccount="//@accountGroup.0/@account.11" creditAccount="//@accountGroup.0/@account.19"/>
+      <journalStatements description="Boeking verschil verlofsparen" date="2004-01-01T01:00:00.0" amount="2.1" debitAccount="//@accountGroup.1/@account.13" creditAccount="//@accountGroup.0/@account.19"/>
+      <journalStatements description="Reservering te betalen tantieme" date="2004-12-31T00:00:00.0" amount="10000.0" debitAccount="//@accountGroup.1/@account.1" creditAccount="//@accountGroup.0/@account.15"/>
+      <journalStatements description="Dotatie pensioenreserve" date="2004-12-31T00:00:00.0" amount="8999.0" debitAccount="//@accountGroup.1/@account.18" creditAccount="//@accountGroup.0/@account.14"/>
+    </journalGroups>
+    <journalGroups name="Salarisjournaalposten 2004">
+      <journalStatements description="Bruto lonen" date="2004-12-31T00:00:00.0" amount="44250.0" debitAccount="//@accountGroup.1/@account.0" creditAccount="//@accountGroup.0/@account.20"/>
+      <journalStatements description="Bruto lonen Tantieme" date="2004-12-31T00:00:00.0" amount="10000.0" debitAccount="//@accountGroup.1/@account.1" creditAccount="//@accountGroup.0/@account.20"/>
+      <journalStatements description="Vergoedingen" date="2004-12-31T00:00:00.0" amount="1430.4" debitAccount="//@accountGroup.1/@account.3" creditAccount="//@accountGroup.0/@account.20"/>
+      <journalStatements description="Vermindering loonheffing" date="2004-12-31T00:00:00.0" amount="2071.58" debitAccount="//@accountGroup.0/@account.20" creditAccount="//@accountGroup.1/@account.2"/>
+      <journalStatements description="Nettolonen" date="2004-12-31T00:00:00.0" amount="31399.34" debitAccount="//@accountGroup.0/@account.20" creditAccount="//@accountGroup.0/@account.0"/>
+      <journalStatements description="Te betalen loonheffing" date="2004-12-31T00:00:00.0" amount="14609.48" debitAccount="//@accountGroup.0/@account.20" creditAccount="//@accountGroup.0/@account.1"/>
+      <journalStatements description="Verlofsparen" date="2004-12-31T00:00:00.0" amount="5200.0" debitAccount="//@accountGroup.0/@account.20" creditAccount="//@accountGroup.0/@account.19"/>
+      <journalStatements description="Pensioenpremie" date="2004-12-31T00:00:00.0" amount="2400.0" debitAccount="//@accountGroup.0/@account.20" creditAccount="//@accountGroup.0/@account.14"/>
+    </journalGroups>
+    <journalGroups name="Triodos Bank 2004">
+      <journalGroups name="H2 2004">
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-12-07T00:00:00.0" amount="29.5" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-12-16T00:00:00.0" amount="129.5" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Naar RC Aandeelhouders" date="2004-11-17T00:00:00.0" amount="500.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.10"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-11-17T00:00:00.0" amount="174.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-11-18T00:00:00.0" amount="224.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-10-04T01:00:00.0" amount="250.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Naar RC Aandeelhouders" date="2004-09-02T01:00:00.0" amount="3000.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.10"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-09-10T01:00:00.0" amount="165.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-09-24T01:00:00.0" amount="85.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-08-04T01:00:00.0" amount="79.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-07-22T01:00:00.0" amount="470.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+      </journalGroups>
+      <journalGroups name="H1 2004">
+        <journalStatements description="Naar RC Aandeelhouders" date="2004-06-23T01:00:00.0" amount="1750.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.10"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-06-24T01:00:00.0" amount="330.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Naar RC Aandeelhouders" date="2004-05-25T01:00:00.0" amount="3500.0" debitAccount="//@accountGroup.0/@account.7" creditAccount="//@accountGroup.0/@account.10"/>
+        <journalStatements description="Terug RC Aandeelhouders" date="2004-06-01T01:00:00.0" amount="325.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.7"/>
+        <journalStatements description="Rente inkomsten 2003" date="2004-01-01T01:00:00.0" amount="208.55" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.1/@account.15"/>
+        <journalStatements description="Terug Kruispost" date="2004-01-02T00:00:00.0" amount="1000.0" debitAccount="//@accountGroup.0/@account.10" creditAccount="//@accountGroup.0/@account.18"/>
+      </journalGroups>
+    </journalGroups>
+  </journalGroup>
+</accounting:Accounting>

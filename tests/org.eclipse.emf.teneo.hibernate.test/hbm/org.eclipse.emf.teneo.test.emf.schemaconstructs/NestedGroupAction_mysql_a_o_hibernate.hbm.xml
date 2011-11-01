@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.AImpl" entity-name="A" abstract="false" lazy="false" discriminator-value="A" table="`a`">
+		<meta attribute="eclassName">A</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/nestedgroup</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="adtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</property>
+		<list name="group" table="`a_group`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`a_group_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`a_group_idx`"/>
+			<one-to-many entity-name="A_group"/>
+		</list>
+	</class>
+	<class entity-name="A_group" lazy="false" table="`a_group`">
+		<meta attribute="featureMap">A</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="b" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`group_b`"/>
+		</property>
+		<many-to-one name="c" entity-name="CType" lazy="false" cascade="all" foreign-key="a_c" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`group_ctype_c_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.CTypeImpl" entity-name="CType" abstract="false" lazy="false" discriminator-value="CType" table="`ctype`">
+		<meta attribute="eclassName">CType</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/nestedgroup</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="ctypedtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="cname" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`cname`"/>
+		</property>
+		<property name="cvalue" lazy="false" insert="true" update="true" not-null="false" unique="false" type="double">
+			<column not-null="false" unique="false" name="`cvalue`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.nestedgroup.impl.ElementImpl" entity-name="Element" abstract="false" lazy="false" discriminator-value="Element" table="`element`">
+		<meta attribute="eclassName">Element</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/nestedgroup</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="elementdtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<list name="mixed" table="`element_mixed`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`element_mixed_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`element_mixed_idx`"/>
+			<one-to-many entity-name="Element_mixed"/>
+		</list>
+	</class>
+	<class entity-name="Element_mixed" lazy="false" table="`element_mixed`">
+		<meta attribute="featureMap">Element</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`mixed_name`"/>
+		</property>
+		<list name="true" table="`mixed_element_true`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`mixed_element_true_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`mixed_element_true_idx`"/>
+			<one-to-many entity-name="Element_true"/>
+		</list>
+		<many-to-one name="c" entity-name="CType" lazy="false" cascade="all" foreign-key="element_c" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_ctype_c_e_id`"/>
+		</many-to-one>
+		<many-to-one name="recursive" entity-name="Element" lazy="false" cascade="all" foreign-key="element_recursive" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`mixed_element_recursive_e_id`"/>
+		</many-to-one>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="Element_true" lazy="false" table="`element_true`">
+		<meta attribute="featureMap">Element</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="c" entity-name="CType" lazy="false" cascade="all" foreign-key="element_c" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`true_ctype_c_e_id`"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

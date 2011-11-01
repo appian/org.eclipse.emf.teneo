@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    editDirectory="/Scratch.edit/src" editorDirectory="/Scratch.editor/src" modelPluginID="Scratch"
+    runtimeJar="true" modelName="ExtendedPO2" editPluginClass="com.example.epo2.provider.Epo2EditPlugin"
+    editorPluginClass="com.example.epo2.presentation.Epo2EditorPlugin" testsDirectory="/Scratch.tests/src"
+    testSuiteClass="com.example.epo2.tests.Epo2AllTests" complianceLevel="5.0">
+  <foreignModel>ExtendedPO2.mdl</foreignModel>
+  <genPackages prefix="EPO2" basePackage="org.eclipse.emf.teneo.samples.emf.sample"
+      disposableProviderFactory="true" ecorePackage="ExtendedPO2.ecore#/">
+    <genEnums ecoreEnum="ExtendedPO2.ecore#//OrderStatus">
+      <genEnumLiterals ecoreEnumLiteral="ExtendedPO2.ecore#//OrderStatus/Pending"/>
+      <genEnumLiterals ecoreEnumLiteral="ExtendedPO2.ecore#//OrderStatus/BackOrder"/>
+      <genEnumLiterals ecoreEnumLiteral="ExtendedPO2.ecore#//OrderStatus/Complete"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="ExtendedPO2.ecore#//SKU"/>
+    <genDataTypes ecoreDataType="ExtendedPO2.ecore#//Date"/>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//Item">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//Item/order"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Item/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Item/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Item/USPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Item/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Item/shipDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Item/partNum"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//USAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//USAddress/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//USAddress/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//USAddress/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//USAddress/zip"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//PurchaseOrder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//PurchaseOrder/items"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//PurchaseOrder/billTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//PurchaseOrder/shipTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//PurchaseOrder/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//PurchaseOrder/orderDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//PurchaseOrder/status"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//PurchaseOrder/totalAmount"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//PurchaseOrder/customer"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//PurchaseOrder/previousOrder"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Address/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Address/country"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//Supplier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Supplier/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//Supplier/customers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//Supplier/orders"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//Supplier/pendingOrders"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//Supplier/shippedOrders"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//Customer/customerID"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ExtendedPO2.ecore#//Customer/orders"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//GlobalAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//GlobalAddress/location"/>
+    </genClasses>
+    <genClasses ecoreClass="ExtendedPO2.ecore#//GlobalLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ExtendedPO2.ecore#//GlobalLocation/countryCode"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bz282414"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/issues/bz282414" nsPrefix="bz282414">
+  <eClassifiers xsi:type="ecore:EClass" name="Bar">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Entity&#xA;&#x9;&#x9;&#x9;&#x9;@Table(name=&quot;BAR_TABLE&quot;)"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Bar"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="barKey" lowerBound="1"
+        eType="#//BarKey" containment="true" resolveProxies="false">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@Embedded @AttributeOverrides({@AttributeOverride(name=&quot;groupId&quot;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;column=@Column(name=&quot;GRP_ID&quot;)),@AttributeOverride(name=&quot;classId&quot;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;column=@Column(name=&quot;CLAS_ID&quot;))})&#xA;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="barKey"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BarKey">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Embeddable"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="BarKey"/>
+      <details key="kind" value="empty"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;CLAS_ID&quot;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;nullable=false)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="classId"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;GRP_ID&quot;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;nullable=false)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="groupId"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Foo">
+    <eAnnotations source="teneo.jpa">
+      <details key="appinfo" value="@Entity @Table( name=&quot;FOO_TABLE&quot;&#xA;&#x9;&#x9;&#x9;&#x9;)"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="Foo"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bagOfBars" upperBound="-1"
+        eType="#//Bar" containment="true" resolveProxies="false">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@OneToMany(fetch=FetchType.LAZY, indexed=false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;@JoinColumn(name=&quot;GRP_ID&quot;, referencedColumnName=&quot;CLI_ID&quot;)&#xA;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="BagOfBars"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientId" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        defaultValueLiteral="" unsettable="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="@Column(name=&quot;CLI_ID&quot;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;length=&quot;8&quot;)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="clientId"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dnmSK" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long"
+        defaultValueLiteral="0" unsettable="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@Id @Column(name=&quot;DNM_SK&quot;, nullable=&quot;false&quot;,insertable = true,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;updatable = false)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;@GeneratedValue&#xA;&#x9;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="dnmSK"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

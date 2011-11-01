@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz284859.impl.BarImpl" entity-name="Bar" abstract="false" lazy="false" table="`bar`">
+		<meta attribute="eclassName" inherit="false">Bar</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz284859</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz284859.impl.FooImpl" entity-name="Foo" abstract="false" lazy="false" table="`foo`">
+		<meta attribute="eclassName" inherit="false">Foo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz284859</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.bz284859.impl.BarDerivedImpl" entity-name="BarDerived" abstract="false" lazy="false" extends="Bar" table="`barderived`">
+		<meta attribute="eclassName" inherit="false">BarDerived</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz284859</meta>
+		<key>
+			<column name="`bar_name`"/>
+		</key>
+	</joined-subclass>
+</hibernate-mapping>

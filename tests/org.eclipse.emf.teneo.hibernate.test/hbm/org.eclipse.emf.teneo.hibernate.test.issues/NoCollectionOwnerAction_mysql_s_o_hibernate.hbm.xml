@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.ProductImpl" entity-name="Product" abstract="false" lazy="false" table="`product`">
+		<meta attribute="eclassName" inherit="false">Product</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/nocollectionowner</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<property name="number" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.Integer">
+			<column not-null="false" unique="false" name="`number`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`description`"/>
+		</property>
+		<many-to-one name="productCategory" entity-name="ProductCategory" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="product_productcategory" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`product_productcategory_e_id`"/>
+		</many-to-one>
+		<many-to-one name="priceCategory" entity-name="PriceCategory" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="product_pricecategory" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`pricecategory_pricecategory_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.CustomerImpl" entity-name="Customer" abstract="false" lazy="false" table="`customer`">
+		<meta attribute="eclassName" inherit="false">Customer</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/nocollectionowner</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="surname" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`surname`"/>
+		</property>
+		<property name="familyName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`familyname`"/>
+		</property>
+		<property name="telephoneNr" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`telephonenr`"/>
+		</property>
+		<property name="address" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`address`"/>
+		</property>
+		<property name="hotel" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`hotel`"/>
+		</property>
+		<list name="comments" table="`customer_comments`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`customer_comments_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`customer_comments_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.ProductCategoryImpl" entity-name="ProductCategory" abstract="false" lazy="false" table="`productcategory`">
+		<meta attribute="eclassName" inherit="false">ProductCategory</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/nocollectionowner</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`name`"/>
+		</property>
+		<list name="products" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`product_productcategory_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`productcategory_products_idx`"/>
+			<one-to-many entity-name="Product"/>
+		</list>
+		<list name="subCategorys" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`productcategory_parent_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`productcategory_subcategorys_idx`"/>
+			<one-to-many entity-name="ProductCategory"/>
+		</list>
+		<many-to-one name="parent" entity-name="ProductCategory" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="productcategory_parent" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`productcategory_parent_e_id`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.PriceCategoryImpl" entity-name="PriceCategory" abstract="false" lazy="false" table="`pricecategory`">
+		<meta attribute="eclassName" inherit="false">PriceCategory</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/nocollectionowner</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`name`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="prices" table="`pricecategory_prices`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`pricecategory_prices_name`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`pricecategory_prices_idx`"/>
+			<element type="double"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.OrderImpl" entity-name="Order" abstract="false" lazy="false" table="`order`">
+		<meta attribute="eclassName" inherit="false">Order</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/nocollectionowner</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="number" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`number`"/>
+		</property>
+		<list name="transactions" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`transaction_order_e_id`" not-null="false" unique="false"/>
+			</key>
+			<list-index column="`order_transactions_idx`"/>
+			<one-to-many entity-name="Transaction"/>
+		</list>
+		<many-to-one name="customer" entity-name="Customer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="order_customer" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`customer_customer_e_id`"/>
+		</many-to-one>
+		<list name="comments" table="`order_comments`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`order_comments_e_id`" not-null="true" unique="false"/>
+			</key>
+			<list-index column="`order_comments_idx`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.TransactionImpl" entity-name="Transaction" abstract="false" lazy="false" table="`transaction`">
+		<meta attribute="eclassName" inherit="false">Transaction</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/nocollectionowner</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="number" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`number`"/>
+		</property>
+		<many-to-one name="order" entity-name="Order" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="transaction_order" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`transaction_order_e_id`"/>
+		</many-to-one>
+		<many-to-one name="product" entity-name="Product" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="transaction_product" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`product_product_e_id`"/>
+		</many-to-one>
+		<property name="startDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`startdate`"/>
+		</property>
+		<property name="endDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`enddate`"/>
+		</property>
+		<property name="price" lazy="false" insert="true" update="true" not-null="false" unique="false" type="double">
+			<column not-null="false" unique="false" name="`price`"/>
+		</property>
+		<property name="paidDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`paiddate`"/>
+		</property>
+	</class>
+</hibernate-mapping>

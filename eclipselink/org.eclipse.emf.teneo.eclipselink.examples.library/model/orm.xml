@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <persistence-unit-metadata>
+    <xml-mapping-metadata-complete/>
+    <persistence-unit-defaults>
+      <access>FIELD</access>
+    </persistence-unit-defaults>
+  </persistence-unit-metadata>
+  <mapped-superclass class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.IdentifiableImpl">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+      <basic name="eContainerFeatureID">
+        <column name="ECONT_FEAT_ID"/>
+      </basic>
+      <version name="version"/>
+    </attributes>
+  </mapped-superclass>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl" name="Book">
+    <table name="BOOK"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="title" optional="true"/>
+      <basic fetch="EAGER" name="pages" optional="true"/>
+      <basic fetch="EAGER" name="category" optional="true">
+        <enumerated>STRING</enumerated>
+      </basic>
+      <many-to-one fetch="EAGER" name="author" optional="true" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl">
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </many-to-one>
+      <many-to-one fetch="EAGER" name="translator" optional="true" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.TranslatorImpl">
+        <join-column insertable="true" name="TRANSLATOR_TRANSLATOR_ID" nullable="true" unique="false" updatable="true"/>
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </many-to-one>
+      <one-to-many fetch="LAZY" mapped-by="eContainer" name="styles" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookStylesMapEntryImpl">
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-many>
+      <one-to-one fetch="EAGER" name="cover" optional="true" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.CoverImpl">
+        <join-column insertable="true" name="COVER_COVER_ID" nullable="true" unique="false" updatable="true"/>
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-one>
+      <one-to-one mapped-by="value" name="eContainer" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl">
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-one>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl" name="Library">
+    <table name="LIBRARY"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="name" optional="true"/>
+      <one-to-many fetch="LAZY" mapped-by="eContainer" name="writers" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl">
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-many>
+      <one-to-many fetch="LAZY" mapped-by="eContainer" name="books" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl">
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-many>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl" name="Writer">
+    <table name="WRITER"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="name" optional="true"/>
+      <many-to-one name="eContainer" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl">
+        <join-column name="LIBRARY_WRITERS_ID"/>
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </many-to-one>
+      <one-to-many fetch="LAZY" name="books" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl">
+        <join-table name="WRITER_BOOKS">
+          <join-column insertable="true" name="WRITER_ID" nullable="false" unique="false" updatable="true"/>
+          <inverse-join-column insertable="true" name="BOOK_ID" nullable="false" unique="false" updatable="true"/>
+        </join-table>
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </one-to-many>
+      <one-to-many fetch="LAZY" name="typewriters" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.TypeWriterImpl">
+        <join-table name="WRITER_TYPEWRITERS">
+          <join-column insertable="true" name="WRITER_ID" nullable="false" unique="false" updatable="true"/>
+          <inverse-join-column insertable="true" name="TYPEWRITER_ID" nullable="false" unique="false" updatable="true"/>
+        </join-table>
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </one-to-many>
+      <one-to-one fetch="EAGER" name="address" optional="true" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.AddressImpl">
+        <join-column insertable="true" name="ADDRESS_ADDRESS_ID" nullable="true" unique="false" updatable="true"/>
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-one>
+      <many-to-many fetch="LAZY" name="publishers" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.PublisherImpl">
+        <join-table name="WRITER_PUBLISHERS">
+          <join-column insertable="true" name="WRITER_ID" nullable="false" unique="false" updatable="true"/>
+          <inverse-join-column insertable="true" name="PUBLISHER_ID" nullable="false" unique="false" updatable="true"/>
+        </join-table>
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </many-to-many>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.StringToBookMapEntryImpl" name="StringToBookMapEntry">
+    <table name="EMFLIB_LIBRARY_BOOK_MAP"/>
+    <inheritance strategy="JOINED"/>
+    <attribute-override name="id">
+      <column insertable="false" name="LIBRARY_BOOKS_ID" updatable="false"/>
+    </attribute-override>
+    <attributes>
+      <id name="key">
+        <column name="e_key"/>
+      </id>
+      <many-to-one name="eContainer" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.LibraryImpl">
+        <join-column name="LIBRARY_BOOKS_ID"/>
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </many-to-one>
+      <one-to-one fetch="EAGER" name="value" optional="true" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl">
+        <join-column insertable="true" name="BOOK_VALUE_ID" nullable="true" unique="false" updatable="true"/>
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-one>
+      <transient name="hash"/>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.AddressImpl" name="Address">
+    <table name="ADDRESS"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="town" optional="true"/>
+      <one-to-one mapped-by="address" name="eContainer" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl">
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-one>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.PublisherImpl" name="Publisher">
+    <table name="PUBLISHER"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="name" optional="true"/>
+      <many-to-many fetch="LAZY" mapped-by="publishers" name="writers" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.WriterImpl">
+        <join-table name="EMFLIB_PUBLISHER_WRITERS">
+          <join-column insertable="true" name="PUBLISHER_ID" nullable="false" unique="false" updatable="true"/>
+          <inverse-join-column insertable="true" name="WRITER_ID" nullable="false" unique="false" updatable="true"/>
+        </join-table>
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </many-to-many>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.StyleImpl" name="Style">
+    <table name="STYLE"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="name" optional="true"/>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookStylesMapEntryImpl" name="BookStylesMapEntry">
+    <table name="EMFLIB_BOOK_STYLE_MAP"/>
+    <inheritance strategy="JOINED"/>
+    <attribute-override name="id">
+      <column insertable="false" name="BOOK_STYLES_ID" updatable="false"/>
+    </attribute-override>
+    <attributes>
+      <id name="key">
+        <column name="e_key"/>
+      </id>
+      <many-to-one fetch="EAGER" name="value" optional="true" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.StyleImpl">
+        <join-column insertable="true" name="STYLE_VALUE_ID" nullable="true" unique="false" updatable="true"/>
+        <cascade>
+          <cascade-persist/>
+          <cascade-merge/>
+          <cascade-refresh/>
+        </cascade>
+      </many-to-one>
+      <many-to-one name="eContainer" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl">
+        <join-column name="BOOK_STYLES_ID"/>
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </many-to-one>
+      <transient name="hash"/>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.TranslatorImpl" name="Translator">
+    <table name="TRANSLATOR"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="name" optional="true"/>
+      <basic fetch="EAGER" name="location" optional="true"/>
+      <transient name="address"/>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.TypeWriterImpl" name="TypeWriter">
+    <table name="TYPEWRITER"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="maker" optional="true"/>
+      <basic fetch="EAGER" name="type" optional="true">
+        <enumerated>STRING</enumerated>
+      </basic>
+    </attributes>
+  </entity>
+  <entity class="org.eclipse.emf.teneo.eclipselink.examples.library.impl.CoverImpl" name="Cover">
+    <table name="COVER"/>
+    <inheritance strategy="JOINED"/>
+    <attributes>
+      <basic fetch="EAGER" name="colored" optional="true"/>
+      <one-to-one mapped-by="cover" name="eContainer" target-entity="org.eclipse.emf.teneo.eclipselink.examples.library.impl.BookImpl">
+        <cascade>
+          <cascade-all/>
+        </cascade>
+      </one-to-one>
+    </attributes>
+  </entity>
+</entity-mappings>

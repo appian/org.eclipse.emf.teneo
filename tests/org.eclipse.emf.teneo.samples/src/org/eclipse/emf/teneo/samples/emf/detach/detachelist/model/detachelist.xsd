@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/detach/detachelist"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/detach/detachelist"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:complexType name="Contacts">
+		<xsd:sequence>
+			<xsd:element name="persons" type="xsd:IDREF" ecore:reference="this:Person"
+				maxOccurs="unbounded" minOccurs="0"/>
+			<xsd:element name="containedPersons" type="this:Person"
+				maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Person">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"></xsd:element>
+			<xsd:element name="children" type="this:Person"
+				maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

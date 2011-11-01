@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.eclipselink.examples.library/src"
+    creationSubmenus="true" editDirectory="/org.eclipse.emf.teneo.eclipselink.examples.library.edit/src"
+    editorDirectory="/org.eclipse.emf.teneo.eclipselink.examples.library.editor/src"
+    modelPluginID="org.eclipse.emf.teneo.eclipselink.examples.library" modelName="Library"
+    modelPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.Activator"
+    editPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.edit.Activator"
+    editorPluginClass="org.eclipse.emf.teneo.eclipselink.examples.library.editor.Activator"
+    nonNLSMarkers="true" testsDirectory="" testSuiteClass="" booleanFlagsField=""
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>library.ecore</foreignModel>
+  <genPackages prefix="Library" basePackage="org.eclipse.emf.teneo.eclipselink.examples"
+      disposableProviderFactory="true" providerPackageSuffix="edit" presentationPackageSuffix="editor"
+      ecorePackage="library.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="library.ecore#//BookCategory">
+      <genEnumLiterals ecoreEnumLiteral="library.ecore#//BookCategory/Mystery"/>
+      <genEnumLiterals ecoreEnumLiteral="library.ecore#//BookCategory/ScienceFiction"/>
+      <genEnumLiterals ecoreEnumLiteral="library.ecore#//BookCategory/Biography"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="library.ecore#//TWriterType">
+      <genEnumLiterals ecoreEnumLiteral="library.ecore#//TWriterType/Typewriter"/>
+      <genEnumLiterals ecoreEnumLiteral="library.ecore#//TWriterType/Computer"/>
+    </genEnums>
+    <genClasses ecoreClass="library.ecore#//Book">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Book/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Book/pages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Book/category"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Book/author"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Book/styles"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Book/translator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Book/cover"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Book/derivedAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Library">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Library/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Library/writers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Library/books"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Writer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Writer/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Writer/books"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Writer/address"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Writer/publishers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Writer/typewriters"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//StringToBookMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//StringToBookMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//StringToBookMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Address/town"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Publisher">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Publisher/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//Publisher/writers"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Style">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Style/name"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//BookStylesMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//BookStylesMapEntry/key"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference library.ecore#//BookStylesMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Translator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Translator/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Translator/location"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference library.ecore#//Translator/address"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//TypeWriter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//TypeWriter/maker"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//TypeWriter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Cover">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Cover/colored"/>
+    </genClasses>
+    <genClasses ecoreClass="library.ecore#//Identifiable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute library.ecore#//Identifiable/version"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="library.ecore#//AbstractTest"/>
+  </genPackages>
+</genmodel:GenModel>

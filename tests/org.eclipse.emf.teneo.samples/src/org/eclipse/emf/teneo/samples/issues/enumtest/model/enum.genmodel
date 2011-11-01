@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Enum" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>enum.xsd</foreignModel>
+  <genPackages prefix="Enumtest" basePackage="org.eclipse.emf.teneo.samples.issues"
+      resource="XML" disposableProviderFactory="true" ecorePackage="enumtest.ecore#/">
+    <genEnums ecoreEnum="enumtest.ecore#//ItemType">
+      <genEnumLiterals ecoreEnumLiteral="enumtest.ecore#//ItemType/Product"/>
+      <genEnumLiterals ecoreEnumLiteral="enumtest.ecore#//ItemType/ProductFamily"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="enumtest.ecore#//ItemTypeObject"/>
+    <genClasses ecoreClass="enumtest.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute enumtest.ecore#//Item/itemType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute enumtest.ecore#//Item/nullableItemType"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

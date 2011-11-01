@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="bz245634"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/issues/bz245634" nsPrefix="bz245634">
+  <eClassifiers xsi:type="ecore:EClass" name="City">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mayor" eType="#//Mayor"
+        eOpposite="#//Mayor/city"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policeChief" eType="#//PoliceChief"
+        eOpposite="#//PoliceChief/city"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="country" eType="#//Country"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mayor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="city" eType="#//City" eOpposite="#//City/mayor">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@OneToOne(fetch=LAZY, mappedBy=&quot;mayor&quot;)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PoliceChief">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="city" eType="#//City" eOpposite="#//City/policeChief"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Country"/>
+</ecore:EPackage>

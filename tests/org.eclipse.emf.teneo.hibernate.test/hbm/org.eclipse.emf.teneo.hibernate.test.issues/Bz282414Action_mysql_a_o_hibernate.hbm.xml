@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz282414.impl.BarImpl" entity-name="Bar" abstract="false" lazy="false" discriminator-value="Bar" table="`bar_table`">
+		<meta attribute="eclassName">Bar</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="BAR_TABLEdtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<component name="barKey" class="org.eclipse.emf.teneo.samples.issues.bz282414.impl.BarKeyImpl">
+			<property name="classId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+				<column not-null="false" unique="false" name="`clas_id`"/>
+			</property>
+			<property name="groupId" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+				<column not-null="false" unique="false" name="`grp_id`"/>
+			</property>
+		</component>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz282414.impl.FooImpl" entity-name="Foo" abstract="false" lazy="false" discriminator-value="Foo" table="`foo_table`">
+		<meta attribute="eclassName">Foo</meta>
+		<meta attribute="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz282414</meta>
+		<id name="dnmSK" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`dnm_sk`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="dtype" index="FOO_TABLEdtype" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion">true</meta>
+		</version>
+		<bag name="bagOfBars" lazy="true" cascade="all,delete-orphan">
+			<key update="true" property-ref="clientId" foreign-key="foo_bagofbars">
+				<column name="`grp_id`" not-null="false" unique="false"/>
+			</key>
+			<one-to-many entity-name="Bar"/>
+		</bag>
+		<property name="clientId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`cli_id`" length="8"/>
+		</property>
+	</class>
+</hibernate-mapping>

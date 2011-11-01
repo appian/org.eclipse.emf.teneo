@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Bagduplicate" importerID="org.eclipse.xsd.ecore.importer">
+  <foreignModel>bagduplicate.xsd</foreignModel>
+  <genPackages prefix="Bagduplicate" basePackage="org.eclipse.emf.teneo.samples.issues"
+      resource="XML" disposableProviderFactory="true" ecorePackage="bagduplicate.ecore#/">
+    <genClasses ecoreClass="bagduplicate.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bagduplicate.ecore#//Person/name"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference bagduplicate.ecore#//Person/father"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference bagduplicate.ecore#//Person/mother"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference bagduplicate.ecore#//Person/children"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
