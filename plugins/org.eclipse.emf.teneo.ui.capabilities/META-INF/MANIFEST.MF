@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %Plugin.name
-Bundle-SymbolicName: org.eclipse.emf.teneo.ui.capabilities;singleton:=true
-Bundle-Localization: plugin
-Bundle-Version: 1.1.2.qualifier
-Bundle-Vendor: %Plugin.providerName

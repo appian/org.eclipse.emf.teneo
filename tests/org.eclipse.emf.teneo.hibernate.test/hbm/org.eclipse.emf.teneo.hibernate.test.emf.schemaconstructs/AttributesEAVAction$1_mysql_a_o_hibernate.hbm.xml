@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<hibernate-mapping auto-import="false">
-	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.AImpl" entity-name="A" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="A"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.attributes.impl.RImpl" entity-name="R" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="R"/>
-</hibernate-mapping>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<hibernate-mapping auto-import="false">
-	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.product.impl.ProductTypeImpl" entity-name="ProductType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ProductType"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.product.impl.SupplierTypeImpl" entity-name="SupplierType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="SupplierType"/>
-	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.product.impl.ClassificationTypeImpl" entity-name="ClassificationType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ClassificationType"/>
-</hibernate-mapping>
