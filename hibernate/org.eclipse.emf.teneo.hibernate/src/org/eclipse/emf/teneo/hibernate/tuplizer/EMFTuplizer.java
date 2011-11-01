@@ -117,6 +117,13 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 	 */
 	public String determineConcreteSubclassEntityName(Object entityInstance,
 			SessionFactoryImplementor factory) {
+		
+		if (entityInstance instanceof EObject) {
+			EObject instance = (EObject) entityInstance;
+			final HbDataStore ds = HbHelper.INSTANCE.getDataStore(persistentClass);
+			return ds.getEntityNameStrategy().toEntityName(instance.eClass());
+		}
+		
 		final Class<?> concreteEntityClass = entityInstance.getClass();
 		if (concreteEntityClass == getMappedClass()) {
 			return getEntityName();
