@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ResrcFileImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -160,7 +160,7 @@ public class ResrcFileImpl extends LearningObjectImpl implements ResrcFile {
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accesscontrol = null;
+	protected AccessControl accesscontrol;
 
 	/**
 	 * The cached value of the '{@link #getResrcFiletype() <em>Resrc Filetype</em>}' reference.
@@ -170,7 +170,7 @@ public class ResrcFileImpl extends LearningObjectImpl implements ResrcFile {
 	 * @generated
 	 * @ordered
 	 */
-	protected ResrcFiletype resrcFiletype = null;
+	protected ResrcFiletype resrcFiletype;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
@@ -180,7 +180,7 @@ public class ResrcFileImpl extends LearningObjectImpl implements ResrcFile {
 	 * @generated
 	 * @ordered
 	 */
-	protected Source source = null;
+	protected Source source;
 
 	/**
 	 * The cached value of the '{@link #getHypertextContent() <em>Hypertext Content</em>}' reference list.
@@ -190,7 +190,7 @@ public class ResrcFileImpl extends LearningObjectImpl implements ResrcFile {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList hypertextContent = null;
+	protected EList hypertextContent;
 
 	/**
 	 * The cached value of the '{@link #getResrcMeta() <em>Resrc Meta</em>}' containment reference.
@@ -200,7 +200,7 @@ public class ResrcFileImpl extends LearningObjectImpl implements ResrcFile {
 	 * @generated
 	 * @ordered
 	 */
-	protected ResrcMeta resrcMeta = null;
+	protected ResrcMeta resrcMeta;
 
 	/**
 	 * <!-- begin-user-doc -->

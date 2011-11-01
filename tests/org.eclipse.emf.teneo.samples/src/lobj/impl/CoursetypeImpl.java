@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoursetypeImpl.java,v 1.3 2007/03/28 13:56:57 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -43,7 +43,7 @@ public class CoursetypeImpl extends EObjectImpl implements Coursetype {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language language = null;
+	protected Language language;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.

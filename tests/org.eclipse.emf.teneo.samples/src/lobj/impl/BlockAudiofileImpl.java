@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BlockAudiofileImpl.java,v 1.1 2007/03/28 13:57:00 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -123,7 +123,7 @@ public class BlockAudiofileImpl extends LearningObjectImpl implements BlockAudio
 	 * @generated
 	 * @ordered
 	 */
-	protected ResrcFiletype resrcFiletype = null;
+	protected ResrcFiletype resrcFiletype;
 
 	/**
 	 * <!-- begin-user-doc -->

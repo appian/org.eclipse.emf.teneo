@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ThemeImpl.java,v 1.3 2007/03/28 13:57:10 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -44,7 +44,7 @@ public class ThemeImpl extends LearningObjectImpl implements Theme {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList simpleDidacMeta = null;
+	protected EList simpleDidacMeta;
 
 	/**
 	 * <!-- begin-user-doc -->

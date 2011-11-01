@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DidacMetaImpl.java,v 1.3 2007/03/28 13:56:59 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -61,7 +61,7 @@ public class DidacMetaImpl extends SimpleDidacMetaImpl implements DidacMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Precognition precognition = null;
+	protected Precognition precognition;
 
 	/**
 	 * <!-- begin-user-doc -->

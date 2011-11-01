@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AuthorizationTypesImpl.java,v 1.3 2007/03/28 13:56:56 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 

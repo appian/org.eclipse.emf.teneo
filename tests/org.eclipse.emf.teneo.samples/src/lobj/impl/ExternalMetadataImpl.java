@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExternalMetadataImpl.java,v 1.3 2007/03/28 13:57:01 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 

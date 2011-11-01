@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ThemeNodeImpl.java,v 1.3 2007/03/28 13:57:10 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -92,7 +92,7 @@ public class ThemeNodeImpl extends EObjectImpl implements ThemeNode {
 	 * @generated
 	 * @ordered
 	 */
-	protected Theme theme = null;
+	protected Theme theme;
 
 	/**
 	 * The cached value of the '{@link #getChildnodes() <em>Childnodes</em>}' containment reference list.
@@ -102,7 +102,7 @@ public class ThemeNodeImpl extends EObjectImpl implements ThemeNode {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList childnodes = null;
+	protected EList childnodes;
 
 	/**
 	 * <!-- begin-user-doc -->

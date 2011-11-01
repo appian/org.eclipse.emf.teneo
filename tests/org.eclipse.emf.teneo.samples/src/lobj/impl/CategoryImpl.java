@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CategoryImpl.java,v 1.3 2007/03/28 13:56:53 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -46,7 +46,7 @@ public class CategoryImpl extends LearningObjectImpl implements Category {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList titleMeta = null;
+	protected EList titleMeta;
 
 	/**
 	 * The cached value of the '{@link #getCourse() <em>Course</em>}' containment reference list.
@@ -56,7 +56,7 @@ public class CategoryImpl extends LearningObjectImpl implements Category {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList course = null;
+	protected EList course;
 
 	/**
 	 * <!-- begin-user-doc -->

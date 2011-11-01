@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LuFolderImpl.java,v 1.3 2007/03/28 13:56:57 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -52,7 +52,7 @@ public class LuFolderImpl extends LearningObjectImpl implements LuFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected FolderMeta folderMeta = null;
+	protected FolderMeta folderMeta;
 
 	/**
 	 * The cached value of the '{@link #getLuFolder() <em>Lu Folder</em>}' containment reference list.
@@ -62,7 +62,7 @@ public class LuFolderImpl extends LearningObjectImpl implements LuFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList luFolder = null;
+	protected EList luFolder;
 
 	/**
 	 * The cached value of the '{@link #getLearningUnit() <em>Learning Unit</em>}' containment reference list.
@@ -72,7 +72,7 @@ public class LuFolderImpl extends LearningObjectImpl implements LuFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList learningUnit = null;
+	protected EList learningUnit;
 
 	/**
 	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
@@ -82,7 +82,7 @@ public class LuFolderImpl extends LearningObjectImpl implements LuFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UserImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -595,7 +595,7 @@ public class UserImpl extends EObjectImpl implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList authorizations = null;
+	protected EList authorizations;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

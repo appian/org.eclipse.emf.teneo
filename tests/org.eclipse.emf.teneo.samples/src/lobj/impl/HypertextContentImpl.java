@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HypertextContentImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -70,7 +70,7 @@ public class HypertextContentImpl extends AbstractContentImpl implements Hyperte
 	 * @generated
 	 * @ordered
 	 */
-	protected BlockAudiofile blockAudiofile = null;
+	protected BlockAudiofile blockAudiofile;
 
 	/**
 	 * The cached value of the '{@link #getResrcFile() <em>Resrc File</em>}' reference list.
@@ -80,7 +80,7 @@ public class HypertextContentImpl extends AbstractContentImpl implements Hyperte
 	 * @generated
 	 * @ordered
 	 */
-	protected EList resrcFile = null;
+	protected EList resrcFile;
 
 	/**
 	 * <!-- begin-user-doc -->

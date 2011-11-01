@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AddressImpl.java,v 1.3 2007/03/28 13:57:10 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 

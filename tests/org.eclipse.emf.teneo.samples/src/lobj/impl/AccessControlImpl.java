@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AccessControlImpl.java,v 1.3 2007/03/28 13:56:58 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -62,7 +62,7 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	 * @generated
 	 * @ordered
 	 */
-	protected User owner = null;
+	protected User owner;
 
 	/**
 	 * The default value of the '{@link #getLastModified() <em>Last Modified</em>}' attribute.
@@ -92,7 +92,7 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	 * @generated
 	 * @ordered
 	 */
-	protected User lastModifiedBy = null;
+	protected User lastModifiedBy;
 
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
@@ -142,7 +142,7 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	 * @generated
 	 * @ordered
 	 */
-	protected User lastStatusChangeBy = null;
+	protected User lastStatusChangeBy;
 
 	/**
 	 * The cached value of the '{@link #getSharednotes() <em>Sharednotes</em>}' containment reference.
@@ -152,7 +152,7 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	 * @generated
 	 * @ordered
 	 */
-	protected Sharednotes sharednotes = null;
+	protected Sharednotes sharednotes;
 
 	/**
 	 * The cached value of the '{@link #getAuthorizes() <em>Authorizes</em>}' containment reference list.
@@ -162,7 +162,7 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList authorizes = null;
+	protected EList authorizes;
 
 	/**
 	 * The cached value of the '{@link #getEditionHistory() <em>Edition History</em>}' containment reference list.
@@ -172,7 +172,7 @@ public class AccessControlImpl extends EObjectImpl implements AccessControl {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList editionHistory = null;
+	protected EList editionHistory;
 
 	/**
 	 * The default value of the '{@link #isGlobalAccess() <em>Global Access</em>}' attribute.

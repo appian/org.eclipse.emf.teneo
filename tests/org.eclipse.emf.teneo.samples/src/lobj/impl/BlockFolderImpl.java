@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BlockFolderImpl.java,v 1.3 2007/03/28 13:57:08 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -52,7 +52,7 @@ public class BlockFolderImpl extends LearningObjectImpl implements BlockFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected FolderMeta folderMeta = null;
+	protected FolderMeta folderMeta;
 
 	/**
 	 * The cached value of the '{@link #getBlockFolder() <em>Block Folder</em>}' containment reference list.
@@ -62,7 +62,7 @@ public class BlockFolderImpl extends LearningObjectImpl implements BlockFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList blockFolder = null;
+	protected EList blockFolder;
 
 	/**
 	 * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference list.
@@ -72,7 +72,7 @@ public class BlockFolderImpl extends LearningObjectImpl implements BlockFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList block = null;
+	protected EList block;
 
 	/**
 	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
@@ -82,7 +82,7 @@ public class BlockFolderImpl extends LearningObjectImpl implements BlockFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * <!-- begin-user-doc -->

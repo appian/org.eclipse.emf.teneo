@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CourseImpl.java,v 1.3 2007/03/28 13:56:58 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -55,7 +55,7 @@ public class CourseImpl extends LearningObjectImpl implements Course {
 	 * @generated
 	 * @ordered
 	 */
-	protected CourseMeta courseMeta = null;
+	protected CourseMeta courseMeta;
 
 	/**
 	 * The cached value of the '{@link #getExternalMetadata() <em>External Metadata</em>}' containment reference list.
@@ -65,7 +65,7 @@ public class CourseImpl extends LearningObjectImpl implements Course {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList externalMetadata = null;
+	protected EList externalMetadata;
 
 	/**
 	 * The cached value of the '{@link #getCoursetype() <em>Coursetype</em>}' reference.
@@ -75,7 +75,7 @@ public class CourseImpl extends LearningObjectImpl implements Course {
 	 * @generated
 	 * @ordered
 	 */
-	protected Coursetype coursetype = null;
+	protected Coursetype coursetype;
 
 	/**
 	 * The default value of the '{@link #getOutlineAsXml() <em>Outline As Xml</em>}' attribute.
@@ -105,7 +105,7 @@ public class CourseImpl extends LearningObjectImpl implements Course {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList module = null;
+	protected EList module;
 
 	/**
 	 * <!-- begin-user-doc -->

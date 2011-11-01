@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModuleFolderImpl.java,v 1.3 2007/03/28 13:56:58 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -52,7 +52,7 @@ public class ModuleFolderImpl extends LearningObjectImpl implements ModuleFolder
 	 * @generated
 	 * @ordered
 	 */
-	protected FolderMeta folderMeta = null;
+	protected FolderMeta folderMeta;
 
 	/**
 	 * The cached value of the '{@link #getModuleFolder() <em>Module Folder</em>}' containment reference list.
@@ -62,7 +62,7 @@ public class ModuleFolderImpl extends LearningObjectImpl implements ModuleFolder
 	 * @generated
 	 * @ordered
 	 */
-	protected EList moduleFolder = null;
+	protected EList moduleFolder;
 
 	/**
 	 * The cached value of the '{@link #getModule() <em>Module</em>}' containment reference list.
@@ -72,7 +72,7 @@ public class ModuleFolderImpl extends LearningObjectImpl implements ModuleFolder
 	 * @generated
 	 * @ordered
 	 */
-	protected EList module = null;
+	protected EList module;
 
 	/**
 	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
@@ -82,7 +82,7 @@ public class ModuleFolderImpl extends LearningObjectImpl implements ModuleFolder
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * <!-- begin-user-doc -->

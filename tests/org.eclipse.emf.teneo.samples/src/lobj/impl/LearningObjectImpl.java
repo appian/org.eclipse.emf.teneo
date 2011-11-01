@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LearningObjectImpl.java,v 1.3 2007/03/28 13:57:03 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UserauthorizationImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -43,7 +43,7 @@ public class UserauthorizationImpl extends EObjectImpl implements Userauthorizat
 	 * @generated
 	 * @ordered
 	 */
-	protected User user = null;
+	protected User user;
 
 	/**
 	 * The cached value of the '{@link #getAuthType() <em>Auth Type</em>}' reference.
@@ -53,7 +53,7 @@ public class UserauthorizationImpl extends EObjectImpl implements Userauthorizat
 	 * @generated
 	 * @ordered
 	 */
-	protected AuthorizationTypes authType = null;
+	protected AuthorizationTypes authType;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BlockAudiofile.java,v 1.1 2007/03/28 13:56:50 mtaal Exp $
+ * $Id$
  */
 package lobj;
 

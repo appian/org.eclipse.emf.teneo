@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobjResourceFactoryImpl.java,v 1.3 2007/03/28 13:56:53 mtaal Exp $
+ * $Id$
  */
 package lobj.util;
 

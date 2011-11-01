@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: HypertextBlockImpl.java,v 1.3 2007/03/28 13:56:53 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -44,7 +44,7 @@ public class HypertextBlockImpl extends BlockImpl implements HypertextBlock {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList hypertextContent = null;
+	protected EList hypertextContent;
 
 	/**
 	 * <!-- begin-user-doc -->

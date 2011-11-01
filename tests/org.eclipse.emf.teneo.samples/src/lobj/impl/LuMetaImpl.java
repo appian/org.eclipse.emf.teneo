@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LuMetaImpl.java,v 1.3 2007/03/28 13:56:56 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -57,7 +57,7 @@ public class LuMetaImpl extends LearningObjectImpl implements LuMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList didacMeta = null;
+	protected EList didacMeta;
 
 	/**
 	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
@@ -87,7 +87,7 @@ public class LuMetaImpl extends LearningObjectImpl implements LuMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Domain domain = null;
+	protected Domain domain;
 
 	/**
 	 * The cached value of the '{@link #getAuthors() <em>Authors</em>}' containment reference list.
@@ -97,7 +97,7 @@ public class LuMetaImpl extends LearningObjectImpl implements LuMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList authors = null;
+	protected EList authors;
 
 	/**
 	 * The cached value of the '{@link #getPublishInfo() <em>Publish Info</em>}' containment reference.
@@ -107,7 +107,7 @@ public class LuMetaImpl extends LearningObjectImpl implements LuMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected PublishInfo publishInfo = null;
+	protected PublishInfo publishInfo;
 
 	/**
 	 * The cached value of the '{@link #getDefLang() <em>Def Lang</em>}' reference.
@@ -117,7 +117,7 @@ public class LuMetaImpl extends LearningObjectImpl implements LuMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language defLang = null;
+	protected Language defLang;
 
 	/**
 	 * <!-- begin-user-doc -->

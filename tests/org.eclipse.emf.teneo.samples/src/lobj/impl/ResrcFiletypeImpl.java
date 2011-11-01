@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ResrcFiletypeImpl.java,v 1.3 2007/03/28 13:57:04 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DomainImpl.java,v 1.3 2007/03/28 13:56:58 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -94,7 +94,7 @@ public class DomainImpl extends EObjectImpl implements Domain {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList blocktypes = null;
+	protected EList blocktypes;
 
 	/**
 	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.

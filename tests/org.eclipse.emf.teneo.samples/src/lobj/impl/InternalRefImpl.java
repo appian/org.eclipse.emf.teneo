@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: InternalRefImpl.java,v 1.3 2007/03/28 13:56:57 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -44,7 +44,7 @@ public class InternalRefImpl extends EObjectImpl implements InternalRef {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language language = null;
+	protected Language language;
 
 	/**
 	 * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.

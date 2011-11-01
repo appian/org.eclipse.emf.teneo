@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BlockImpl.java,v 1.3 2007/03/28 13:57:00 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -51,7 +51,7 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	 * @generated
 	 * @ordered
 	 */
-	protected BlockMeta blockMeta = null;
+	protected BlockMeta blockMeta;
 
 	/**
 	 * The cached value of the '{@link #getExternalMetadata() <em>External Metadata</em>}' containment reference list.
@@ -61,7 +61,7 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList externalMetadata = null;
+	protected EList externalMetadata;
 
 	/**
 	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
@@ -71,7 +71,7 @@ public abstract class BlockImpl extends LearningObjectImpl implements Block {
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AffiliationImpl.java,v 1.3 2007/03/28 13:57:10 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -126,7 +126,7 @@ public class AffiliationImpl extends EObjectImpl implements Affiliation {
 	 * @generated
 	 * @ordered
 	 */
-	protected Address address = null;
+	protected Address address;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

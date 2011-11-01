@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SimpleDidacMetaImpl.java,v 1.3 2007/03/28 13:57:07 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -44,7 +44,7 @@ public class SimpleDidacMetaImpl extends EObjectImpl implements SimpleDidacMeta 
 	 * @generated
 	 * @ordered
 	 */
-	protected Language language = null;
+	protected Language language;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.

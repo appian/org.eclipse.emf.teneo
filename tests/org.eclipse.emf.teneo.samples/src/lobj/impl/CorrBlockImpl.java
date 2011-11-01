@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorrBlockImpl.java,v 1.3 2007/03/28 13:56:58 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -51,7 +51,7 @@ public class CorrBlockImpl extends EObjectImpl implements CorrBlock {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList presentationBlock = null;
+	protected EList presentationBlock;
 
 	/**
 	 * The cached value of the '{@link #getTitleMeta() <em>Title Meta</em>}' containment reference list.
@@ -61,7 +61,7 @@ public class CorrBlockImpl extends EObjectImpl implements CorrBlock {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList titleMeta = null;
+	protected EList titleMeta;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

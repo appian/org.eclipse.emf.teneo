@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TitleMetaImpl.java,v 1.3 2007/03/28 13:57:07 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -42,7 +42,7 @@ public class TitleMetaImpl extends EObjectImpl implements TitleMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language language = null;
+	protected Language language;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.

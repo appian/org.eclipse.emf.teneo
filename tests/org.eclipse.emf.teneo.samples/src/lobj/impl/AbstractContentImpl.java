@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AbstractContentImpl.java,v 1.3 2007/03/28 13:57:00 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -63,7 +63,7 @@ public abstract class AbstractContentImpl extends LearningObjectImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected Language language = null;
+	protected Language language;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
@@ -73,7 +73,7 @@ public abstract class AbstractContentImpl extends LearningObjectImpl implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected Source source = null;
+	protected Source source;
 
 	/**
 	 * <!-- begin-user-doc -->

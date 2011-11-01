@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: NoteImpl.java,v 1.3 2007/03/28 13:56:57 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 

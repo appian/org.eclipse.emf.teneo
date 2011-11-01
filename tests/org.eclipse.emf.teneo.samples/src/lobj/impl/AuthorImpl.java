@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AuthorImpl.java,v 1.3 2007/03/28 13:56:55 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -66,7 +66,7 @@ public class AuthorImpl extends EObjectImpl implements Author {
 	 * @generated
 	 * @ordered
 	 */
-	protected Person person = null;
+	protected Person person;
 
 	/**
 	 * The cached value of the '{@link #getAddress() <em>Address</em>}' containment reference.
@@ -76,7 +76,7 @@ public class AuthorImpl extends EObjectImpl implements Author {
 	 * @generated
 	 * @ordered
 	 */
-	protected Address address = null;
+	protected Address address;
 
 	/**
 	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ItemImpl.java,v 1.3 2007/03/28 13:56:53 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -51,7 +51,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList corrBlock = null;
+	protected EList corrBlock;
 
 	/**
 	 * The cached value of the '{@link #getChilditems() <em>Childitems</em>}' containment reference list.
@@ -61,7 +61,7 @@ public class ItemImpl extends EObjectImpl implements Item {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList childitems = null;
+	protected EList childitems;
 
 	/**
 	 * The default value of the '{@link #getLuRef() <em>Lu Ref</em>}' attribute.

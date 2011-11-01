@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PublisherImpl.java,v 1.3 2007/03/28 13:56:56 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -63,7 +63,7 @@ public class PublisherImpl extends EObjectImpl implements Publisher {
 	 * @generated
 	 * @ordered
 	 */
-	protected Address address = null;
+	protected Address address;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: EditionImpl.java,v 1.3 2007/03/28 13:57:10 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -105,7 +105,7 @@ public class EditionImpl extends EObjectImpl implements Edition {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean versionESet = false;
+	protected boolean versionESet;
 
 	/**
 	 * The default value of the '{@link #getLastVersionNumber() <em>Last Version Number</em>}' attribute.

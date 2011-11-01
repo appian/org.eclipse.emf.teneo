@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CourseMetaImpl.java,v 1.3 2007/03/28 13:56:58 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -59,7 +59,7 @@ public class CourseMetaImpl extends LearningObjectImpl implements CourseMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList didacMeta = null;
+	protected EList didacMeta;
 
 	/**
 	 * The default value of the '{@link #getHours() <em>Hours</em>}' attribute.
@@ -88,7 +88,7 @@ public class CourseMetaImpl extends LearningObjectImpl implements CourseMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean hoursESet = false;
+	protected boolean hoursESet;
 
 	/**
 	 * The default value of the '{@link #getLvanr() <em>Lvanr</em>}' attribute.
@@ -178,7 +178,7 @@ public class CourseMetaImpl extends LearningObjectImpl implements CourseMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected User lecturer = null;
+	protected User lecturer;
 
 	/**
 	 * The cached value of the '{@link #getDefLang() <em>Def Lang</em>}' reference.
@@ -188,7 +188,7 @@ public class CourseMetaImpl extends LearningObjectImpl implements CourseMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language defLang = null;
+	protected Language defLang;
 
 	/**
 	 * <!-- begin-user-doc -->

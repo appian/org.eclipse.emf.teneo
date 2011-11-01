@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrecognitionImpl.java,v 1.3 2007/03/28 13:56:57 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -70,7 +70,7 @@ public class PrecognitionImpl extends EObjectImpl implements Precognition {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList internalRefs = null;
+	protected EList internalRefs;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

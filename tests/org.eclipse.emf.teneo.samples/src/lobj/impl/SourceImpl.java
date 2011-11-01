@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SourceImpl.java,v 1.3 2007/03/28 13:56:56 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -48,7 +48,7 @@ public class SourceImpl extends EObjectImpl implements Source {
 	 * @generated
 	 * @ordered
 	 */
-	protected Author author = null;
+	protected Author author;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.

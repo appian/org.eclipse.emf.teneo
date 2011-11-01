@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ResrcFolderImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -53,7 +53,7 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected FolderMeta folderMeta = null;
+	protected FolderMeta folderMeta;
 
 	/**
 	 * The cached value of the '{@link #getResrcFolder() <em>Resrc Folder</em>}' containment reference list.
@@ -63,7 +63,7 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList resrcFolder = null;
+	protected EList resrcFolder;
 
 	/**
 	 * The cached value of the '{@link #getAccessControl() <em>Access Control</em>}' containment reference.
@@ -73,7 +73,7 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * The default value of the '{@link #isDeleteScheduled() <em>Delete Scheduled</em>}' attribute.
@@ -103,7 +103,7 @@ public class ResrcFolderImpl extends LearningObjectImpl implements ResrcFolder {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList resrcFile = null;
+	protected EList resrcFile;
 
 	/**
 	 * <!-- begin-user-doc -->

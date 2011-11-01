@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobjSwitch.java,v 1.3 2007/03/28 13:56:53 mtaal Exp $
+ * $Id$
  */
 package lobj.util;
 
@@ -436,13 +436,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Learning Object</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Learning Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Learning Object</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Learning Object</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -451,13 +451,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Block</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Block</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -466,13 +466,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Hypertext Block</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hypertext Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Hypertext Block</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hypertext Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -481,13 +481,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Abstract Content</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Content</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Abstract Content</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Content</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -496,13 +496,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Hypertext Content</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Hypertext Content</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Hypertext Content</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Hypertext Content</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -511,13 +511,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Block Folder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Block Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Block Folder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Block Folder</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -526,13 +526,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Category</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Category</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Category</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Category</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -541,13 +541,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Corr Block</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Corr Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Corr Block</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Corr Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -556,13 +556,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Course</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Course</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Course</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Course</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -571,13 +571,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Item</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Item</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Item</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -586,13 +586,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Learning Unit</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Learning Unit</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Learning Unit</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Learning Unit</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -601,13 +601,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Lu Folder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Lu Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Lu Folder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Lu Folder</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -616,13 +616,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Module</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Module</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Module</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Module</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -631,13 +631,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Module Folder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Module Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Module Folder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Module Folder</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -646,13 +646,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Resrc Folder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Resrc Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Resrc Folder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Resrc Folder</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -661,13 +661,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Theme</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Theme</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Theme</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Theme</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -676,13 +676,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Presentation Block</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Presentation Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Presentation Block</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Presentation Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -691,13 +691,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Node</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -706,13 +706,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Theme Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Theme Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Theme Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Theme Node</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -721,13 +721,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Lu Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Lu Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Lu Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Lu Node</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -736,13 +736,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Resrc File</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Resrc File</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Resrc File</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Resrc File</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -751,13 +751,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Block Audiofile</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Block Audiofile</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Block Audiofile</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Block Audiofile</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -766,13 +766,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Resrc Filetype</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Resrc Filetype</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Resrc Filetype</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Resrc Filetype</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -781,13 +781,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Access Control</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Access Control</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Access Control</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Access Control</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -796,13 +796,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Address</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Address</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Address</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Address</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -811,13 +811,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Affiliation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Affiliation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Affiliation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Affiliation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -826,13 +826,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Author</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Author</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Author</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Author</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -841,13 +841,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Block Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Block Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Block Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Block Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -856,13 +856,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Blocktype</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Blocktype</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Blocktype</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Blocktype</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -871,13 +871,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Title Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Title Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Title Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Title Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -886,13 +886,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Course Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Course Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Course Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Course Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -901,13 +901,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Simple Didac Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Simple Didac Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Simple Didac Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Simple Didac Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -916,13 +916,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Didac Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Didac Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Didac Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Didac Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -931,13 +931,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Domain</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Domain</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Domain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -946,13 +946,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Edition</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Edition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Edition</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Edition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -961,13 +961,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Folder Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Folder Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Folder Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Folder Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -976,13 +976,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Lu Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Lu Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Lu Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Lu Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -991,13 +991,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Userauthorization</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Userauthorization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Userauthorization</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Userauthorization</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1006,13 +1006,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Note</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Note</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Note</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1021,13 +1021,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Person</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Person</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Person</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Person</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1036,13 +1036,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Publisher</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Publisher</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Publisher</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Publisher</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1051,13 +1051,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Publish Info</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Publish Info</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Publish Info</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Publish Info</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1066,13 +1066,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Resrc Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Resrc Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Resrc Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Resrc Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1081,13 +1081,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Sharednotes</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Sharednotes</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Sharednotes</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Sharednotes</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1096,13 +1096,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Coursetype</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Coursetype</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Coursetype</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Coursetype</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1111,13 +1111,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>External Metadata</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>External Metadata</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>External Metadata</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>External Metadata</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1126,13 +1126,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Language</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Language</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Language</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Language</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1141,13 +1141,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Precognition</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Precognition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Precognition</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Precognition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1156,13 +1156,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Internal Ref</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Internal Ref</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Internal Ref</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Internal Ref</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1171,13 +1171,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Module Meta</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Module Meta</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Module Meta</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Module Meta</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1186,13 +1186,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1201,13 +1201,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Authorization Types</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Authorization Types</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Authorization Types</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Authorization Types</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1216,13 +1216,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>User</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>User</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>User</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>User</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -1231,13 +1231,13 @@ public class LobjSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */

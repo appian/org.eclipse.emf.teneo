@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModuleMetaImpl.java,v 1.3 2007/03/28 13:57:00 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -55,7 +55,7 @@ public class ModuleMetaImpl extends LearningObjectImpl implements ModuleMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList didacMeta = null;
+	protected EList didacMeta;
 
 	/**
 	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
@@ -85,7 +85,7 @@ public class ModuleMetaImpl extends LearningObjectImpl implements ModuleMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList authors = null;
+	protected EList authors;
 
 	/**
 	 * The cached value of the '{@link #getPublishInfo() <em>Publish Info</em>}' containment reference.
@@ -95,7 +95,7 @@ public class ModuleMetaImpl extends LearningObjectImpl implements ModuleMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected PublishInfo publishInfo = null;
+	protected PublishInfo publishInfo;
 
 	/**
 	 * The cached value of the '{@link #getDefLang() <em>Def Lang</em>}' reference.
@@ -105,7 +105,7 @@ public class ModuleMetaImpl extends LearningObjectImpl implements ModuleMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language defLang = null;
+	protected Language defLang;
 
 	/**
 	 * <!-- begin-user-doc -->

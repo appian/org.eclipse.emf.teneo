@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModuleImpl.java,v 1.3 2007/03/28 13:56:59 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -55,7 +55,7 @@ public class ModuleImpl extends LearningObjectImpl implements Module {
 	 * @generated
 	 * @ordered
 	 */
-	protected ModuleMeta moduleMeta = null;
+	protected ModuleMeta moduleMeta;
 
 	/**
 	 * The cached value of the '{@link #getExternalMetadata() <em>External Metadata</em>}' containment reference list.
@@ -65,7 +65,7 @@ public class ModuleImpl extends LearningObjectImpl implements Module {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList externalMetadata = null;
+	protected EList externalMetadata;
 
 	/**
 	 * The cached value of the '{@link #getRootNode() <em>Root Node</em>}' containment reference.
@@ -75,7 +75,7 @@ public class ModuleImpl extends LearningObjectImpl implements Module {
 	 * @generated
 	 * @ordered
 	 */
-	protected Node rootNode = null;
+	protected Node rootNode;
 
 	/**
 	 * The default value of the '{@link #getModuleFile() <em>Module File</em>}' attribute.
@@ -125,7 +125,7 @@ public class ModuleImpl extends LearningObjectImpl implements Module {
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * <!-- begin-user-doc -->

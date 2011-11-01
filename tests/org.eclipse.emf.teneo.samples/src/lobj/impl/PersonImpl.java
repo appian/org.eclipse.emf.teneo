@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PersonImpl.java,v 1.3 2007/03/28 13:57:02 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -134,7 +134,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList affiliations = null;
+	protected EList affiliations;
 
 	/**
 	 * The default value of the '{@link #getPersonblurb() <em>Personblurb</em>}' attribute.

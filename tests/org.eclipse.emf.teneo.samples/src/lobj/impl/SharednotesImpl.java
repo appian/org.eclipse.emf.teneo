@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SharednotesImpl.java,v 1.3 2007/03/28 13:57:07 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -49,7 +49,7 @@ public class SharednotesImpl extends EObjectImpl implements Sharednotes {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList notes = null;
+	protected EList notes;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

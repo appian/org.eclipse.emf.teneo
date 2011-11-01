@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LearningUnitImpl.java,v 1.3 2007/03/28 13:57:00 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -55,7 +55,7 @@ public class LearningUnitImpl extends LearningObjectImpl implements LearningUnit
 	 * @generated
 	 * @ordered
 	 */
-	protected LuMeta luMeta = null;
+	protected LuMeta luMeta;
 
 	/**
 	 * The cached value of the '{@link #getExternalMetadata() <em>External Metadata</em>}' containment reference list.
@@ -65,7 +65,7 @@ public class LearningUnitImpl extends LearningObjectImpl implements LearningUnit
 	 * @generated
 	 * @ordered
 	 */
-	protected EList externalMetadata = null;
+	protected EList externalMetadata;
 
 	/**
 	 * The default value of the '{@link #getTreeAsXml() <em>Tree As Xml</em>}' attribute.
@@ -115,7 +115,7 @@ public class LearningUnitImpl extends LearningObjectImpl implements LearningUnit
 	 * @generated
 	 * @ordered
 	 */
-	protected AccessControl accessControl = null;
+	protected AccessControl accessControl;
 
 	/**
 	 * The cached value of the '{@link #getItem() <em>Item</em>}' containment reference list.
@@ -125,7 +125,7 @@ public class LearningUnitImpl extends LearningObjectImpl implements LearningUnit
 	 * @generated
 	 * @ordered
 	 */
-	protected EList item = null;
+	protected EList item;
 
 	/**
 	 * <!-- begin-user-doc -->

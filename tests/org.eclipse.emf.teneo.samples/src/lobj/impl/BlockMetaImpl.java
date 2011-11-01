@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BlockMetaImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -75,7 +75,7 @@ public class BlockMetaImpl extends LearningObjectImpl implements BlockMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean lodESet = false;
+	protected boolean lodESet;
 
 	/**
 	 * The default value of the '{@link #getRendering() <em>Rendering</em>}' attribute.
@@ -105,7 +105,7 @@ public class BlockMetaImpl extends LearningObjectImpl implements BlockMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Blocktype blocktype = null;
+	protected Blocktype blocktype;
 
 	/**
 	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
@@ -155,7 +155,7 @@ public class BlockMetaImpl extends LearningObjectImpl implements BlockMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList simpleDidacMeta = null;
+	protected EList simpleDidacMeta;
 
 	/**
 	 * The cached value of the '{@link #getDefLang() <em>Def Lang</em>}' reference.
@@ -165,7 +165,7 @@ public class BlockMetaImpl extends LearningObjectImpl implements BlockMeta {
 	 * @generated
 	 * @ordered
 	 */
-	protected Language defLang = null;
+	protected Language defLang;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PresentationBlockImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -62,7 +62,7 @@ public class PresentationBlockImpl extends EObjectImpl implements PresentationBl
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean lodESet = false;
+	protected boolean lodESet;
 
 	/**
 	 * The default value of the '{@link #getRendering() <em>Rendering</em>}' attribute.
@@ -92,7 +92,7 @@ public class PresentationBlockImpl extends EObjectImpl implements PresentationBl
 	 * @generated
 	 * @ordered
 	 */
-	protected Block block = null;
+	protected Block block;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

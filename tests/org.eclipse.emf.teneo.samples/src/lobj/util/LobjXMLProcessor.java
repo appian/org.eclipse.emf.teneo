@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LobjXMLProcessor.java,v 1.3 2007/03/28 13:56:53 mtaal Exp $
+ * $Id$
  */
 package lobj.util;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
  * @generated
  */
 public class LobjXMLProcessor extends XMLProcessor {
+
 	/**
 	 * Public constructor to instantiate the helper.
 	 * <!-- begin-user-doc -->

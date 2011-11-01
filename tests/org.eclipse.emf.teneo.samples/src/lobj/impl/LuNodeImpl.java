@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LuNodeImpl.java,v 1.3 2007/03/28 13:57:10 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -82,7 +82,7 @@ public class LuNodeImpl extends EObjectImpl implements LuNode {
 	 * @generated
 	 * @ordered
 	 */
-	protected LearningUnit learningUnit = null;
+	protected LearningUnit learningUnit;
 
 	/**
 	 * <!-- begin-user-doc -->

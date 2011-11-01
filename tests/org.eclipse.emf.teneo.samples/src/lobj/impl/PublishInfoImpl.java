@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PublishInfoImpl.java,v 1.3 2007/03/28 13:56:54 mtaal Exp $
+ * $Id$
  */
 package lobj.impl;
 
@@ -88,7 +88,7 @@ public class PublishInfoImpl extends EObjectImpl implements PublishInfo {
 	 * @generated
 	 * @ordered
 	 */
-	protected Publisher publisher = null;
+	protected Publisher publisher;
 
 	/**
 	 * The default value of the '{@link #getPubsnumber() <em>Pubsnumber</em>}' attribute.
