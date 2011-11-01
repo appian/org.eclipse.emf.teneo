@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	(c) 2010
+	Martin Taal
+	The code, documentation and other materials contained herein have been
+	licensed under the Eclipse Public License - v 1.0 by the individual
+	copyright holders listed above, as Initial Contributors under such license.
+	The text of such license is available at www.eclipse.org.
+-->
+<rmap xmlns="http://www.eclipse.org/buckminster/RMap-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mp="http://www.eclipse.org/buckminster/MavenProvider-1.0"
+	xmlns:pmp="http://www.eclipse.org/buckminster/PDEMapProvider-1.0"
+	xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0">
+
+ 	<property key="build.type" mutable="true" value="N"/>
+ 	
+  	<searchPath name="teneo.platform">
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      		<uri format="file:{0}">
+				<bc:propertyRef key="buildSitePath" />
+      		</uri>
+    	</provider>
+	</searchPath>
+	
+	<searchPath name="teneo.test.plugins">
+		<provider componentTypes="osgi.bundle" readerType="git" source="true">
+			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git"/>
+			<uri format="{0},build/{1}">
+				<bc:propertyRef key="gitPath"/>
+				<bc:propertyRef key="buckminster.component"/>
+			</uri>
+		</provider>
+		<provider componentTypes="osgi.bundle" readerType="git" source="true">
+			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git"/>
+			<uri format="{0},core/{1}">
+				<bc:propertyRef key="gitPath"/>
+				<bc:propertyRef key="buckminster.component"/>
+			</uri>
+		</provider>
+		<provider componentTypes="osgi.bundle" readerType="git" source="true">
+			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git"/>
+			<uri format="{0},eclipselink/{1}">
+				<bc:propertyRef key="gitPath"/>
+				<bc:propertyRef key="buckminster.component"/>
+			</uri>
+		</provider>
+		<provider componentTypes="osgi.bundle" readerType="git" source="true">
+			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git"/>
+			<uri format="{0},hibernate/{1}">
+				<bc:propertyRef key="gitPath"/>
+				<bc:propertyRef key="buckminster.component"/>
+			</uri>
+		</provider>
+		<provider componentTypes="osgi.bundle" readerType="git" source="true">
+			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git"/>
+			<uri format="{0},tests/{1}">
+				<bc:propertyRef key="gitPath"/>
+				<bc:propertyRef key="buckminster.component"/>
+			</uri>
+		</provider>
+	</searchPath>
+	
+	<searchPath name="teneo.features">
+		<provider componentTypes="eclipse.feature" readerType="git" source="true" mutable="false">
+			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git"/>
+			<uri format="{0},build/{1}-feature">
+				<bc:propertyRef key="gitPath"/>
+				<bc:propertyRef key="buckminster.component"/>
+			</uri>
+		</provider>
+  	</searchPath>
+
+  	<searchPath name="target.platform">
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=N)">
+      		<uri format="http://download.eclipse.org/releases/helios"/>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(|(build.type=N)(build.type=R))">
+      		<uri format="http://download.eclipse.org/eclipse/updates/3.6"/>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=R)">
+      		<uri format="http://download.eclipse.org/releases/galileo"/>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(|(build.type=N)(build.type=R))">
+      		<uri format="http://www.elver.org/eclipse/update"/>
+    	</provider>
+		<provider readerType="p2" componentTypes="osgi.bundle" mutable="false" source="false">
+			<uri format="http://download.eclipse.org/tools/orbit/downloads/drops/S20100508202910/repository"/>
+		</provider>
+  	</searchPath>
+
+	<locator searchPathRef="teneo.platform" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
+	<locator searchPathRef="teneo.features" pattern="^org\.eclipse\.emf\.teneo([\.\-].+)?" failOnError="false"/>
+	<locator searchPathRef="teneo.test.plugins" pattern="^org\.eclipse\.emf\.teneo(\..+)?" failOnError="false"/>
+  	<locator searchPathRef="target.platform"/>
+	
+</rmap>
