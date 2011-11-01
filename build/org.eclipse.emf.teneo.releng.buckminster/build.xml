@@ -24,7 +24,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<property file="buckminster.properties" />
 
-	<condition property="hudsonWorkSpacePath" value="${env.WORKSPACE}" else="${basedir}/../">
+	<condition property="hudsonWorkSpacePath" value="${env.WORKSPACE}" else="${basedir}/../../">
 		<isset property="env.WORKSPACE" />
 	</condition>
 
