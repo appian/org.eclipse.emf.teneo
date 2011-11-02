@@ -41,7 +41,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</condition>
 	<echo message="site.signing = ${site.signing}" />
 	<property name="eclipse.staging.area"
-	          value="/shared/download-staging.priv/modeling/emf/texo/${hudson.JOB_NAME}" />
+	          value="/shared/download-staging.priv/modeling/emf/teneo/${hudson.JOB_NAME}" />
 
 	<condition property="buckminster.loglevel" value="${env.BUCKMINSTER_LOGLEVEL}" else="info">
 		<isset property="env.BUCKMINSTER_LOGLEVEL" />
