@@ -145,11 +145,14 @@ public class HibernateTestbed extends Testbed {
 	private void writeMappingToFile(String mappingXML, AbstractTest testCase,
 			ExtensionManager extensionManager) throws IOException {
 
-		// System.err.println(mappingXML);
-
-		if (!getActiveConfiguration().getName().startsWith("mysql")) {
+		if (isRunningOnBuildServer()) {
 			return;
 		}
+		if (mappingXML == null) {
+			return;
+		}
+		
+		// System.err.println(mappingXML);
 		final File file = getHBMFile(testCase, getActiveConfiguration());
 		writeMappingToFile(file, mappingXML);
 	}
