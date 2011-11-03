@@ -866,8 +866,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 							"name",
 							getHbmContext().trunc(joinColumn,
 									joinColumn.getName()))
-					.addAttribute("not-null",
-							joinColumn.isNullable() ? "false" : "true")
 					.addAttribute("unique",
 							joinColumn.isUnique() ? "true" : "false");
 
