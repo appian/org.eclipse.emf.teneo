@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitution.impl.ComplexNumberImpl" entity-name="ComplexNumber" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="ComplexNumber"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitution.impl.EvenComplexNumberTypeImpl" entity-name="EvenComplexNumberType" abstract="false" lazy="false" extends="ComplexNumber" discriminator-value="EvenComplexNumberType"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitution.impl.MultiNumberTypeImpl" entity-name="MultiNumberType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="MultiNumberType"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitution.impl.NumberTypeImpl" entity-name="NumberType" abstract="false" lazy="false" extends="EAV_EObject" discriminator-value="NumberType"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.substitution.impl.OddComplexNumberTypeImpl" entity-name="OddComplexNumberType" abstract="false" lazy="false" extends="ComplexNumber" discriminator-value="OddComplexNumberType"/>
+</hibernate-mapping>

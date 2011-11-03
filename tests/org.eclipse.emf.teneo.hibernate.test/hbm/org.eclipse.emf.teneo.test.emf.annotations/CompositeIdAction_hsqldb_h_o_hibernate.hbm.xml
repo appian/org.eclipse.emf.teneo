@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" discriminator-value="Person" table="`PERSON`">
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http:///org/elver/samples/emf/annotations/compositeid.ecore</meta>
+		<composite-id class="org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID" mapped="true">
+			<key-property name="firstName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+			</key-property>
+			<key-property name="lastName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`LASTNAME`"/>
+			</key-property>
+		</composite-id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PERSONDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl.ParentImpl" entity-name="Parent" abstract="false" lazy="false" extends="Person" discriminator-value="Parent">
+		<meta attribute="eclassName" inherit="false">Parent</meta>
+		<meta attribute="epackage" inherit="false">http:///org/elver/samples/emf/annotations/compositeid.ecore</meta>
+		<list name="children" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="PARENT_CHILDREN">
+				<column name="`MYPARENTFIRSTNAME`" unique="false"/>
+				<column name="`MYPARENTLASTNAME`" unique="false"/>
+			</key>
+			<list-index column="`PARENT_CHILDREN_IDX`"/>
+			<one-to-many entity-name="Child"/>
+		</list>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.annotations.compositeid.impl.ChildImpl" entity-name="Child" abstract="false" lazy="false" extends="Person" discriminator-value="Child">
+		<meta attribute="eclassName" inherit="false">Child</meta>
+		<meta attribute="epackage" inherit="false">http:///org/elver/samples/emf/annotations/compositeid.ecore</meta>
+	</subclass>
+</hibernate-mapping>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl.ItemImpl" entity-name="Item" abstract="false" lazy="false" discriminator-value="Item" table="`ITEM`">
+		<meta attribute="eclassName" inherit="false">Item</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/schemaprimerpo</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ITEMDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="productName" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`PRODUCTNAME`"/>
+		</property>
+		<property name="quantity" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigInteger">
+			<column not-null="true" unique="false" name="`QUANTITY`"/>
+		</property>
+		<property name="uSPrice" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigDecimal">
+			<column not-null="true" unique="false" name="`USPRICE`"/>
+		</property>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMMENT`"/>
+		</property>
+		<property name="shipDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDate">
+			<column not-null="false" unique="false" name="`SHIPDATE`"/>
+		</property>
+		<property name="partNum" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`PARTNUM`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl.PurchaseOrderImpl" entity-name="PurchaseOrder" abstract="false" lazy="false" discriminator-value="PurchaseOrder" table="`PURCHASEORDER`">
+		<meta attribute="eclassName" inherit="false">PurchaseOrder</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/schemaprimerpo</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PURCHASEORDERDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="shipTo" entity-name="USAddress" lazy="false" cascade="all" foreign-key="PURCHASEORDER_SHIPTO" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`USADDRESS_SHIPTO_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="billTo" entity-name="USAddress" lazy="false" cascade="all" foreign-key="PURCHASEORDER_BILLTO" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`USADDRESS_BILLTO_E_ID`"/>
+		</many-to-one>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMMENT`"/>
+		</property>
+		<list name="items" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="PURCHASEORDER_ITEMS">
+				<column name="`PURCHASEORDER_ITEMS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PURCHASEORDER_ITEMS_IDX`"/>
+			<one-to-many entity-name="Item"/>
+		</list>
+		<property name="orderDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDate">
+			<column not-null="false" unique="false" name="`ORDERDATE`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.schemaprimerpo.impl.USAddressImpl" entity-name="USAddress" abstract="false" lazy="false" discriminator-value="USAddress" table="`USADDRESS`">
+		<meta attribute="eclassName" inherit="false">USAddress</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/schemaprimerpo</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="USADDRESSDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</property>
+		<property name="street" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`STREET`"/>
+		</property>
+		<property name="city" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`CITY`"/>
+		</property>
+		<property name="state" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`STATE`"/>
+		</property>
+		<property name="zip" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigDecimal">
+			<column not-null="true" unique="false" name="`ZIP`"/>
+		</property>
+		<property name="country" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COUNTRY`"/>
+		</property>
+	</class>
+</hibernate-mapping>

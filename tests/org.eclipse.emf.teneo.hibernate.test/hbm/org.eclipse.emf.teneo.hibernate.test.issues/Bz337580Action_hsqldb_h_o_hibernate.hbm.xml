@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz337580.impl.TestImpl" entity-name="Test" abstract="false" lazy="false" discriminator-value="Test" table="`AVERYLONGNAMEFORTEST`">
+		<meta attribute="eclassName" inherit="false">Test</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz337580</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="AVERYLONGNAMEFORTESTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="nameWhichShouldBeTrunctated" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NMWHCHSHLD`"/>
+		</property>
+	</class>
+</hibernate-mapping>

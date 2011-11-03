@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.otopk.impl.EmployeeImpl" entity-name="Employee" abstract="false" lazy="false" discriminator-value="Employee" table="`EMPLOYEE`">
+		<meta attribute="eclassName" inherit="false">Employee</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/otopk</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="foreign">
+				<param name="property">employeeInfo</param>
+			</generator>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="EMPLOYEEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="employeeInfo" entity-name="EmployeeInfo" cascade="merge,persist,save-update,lock,refresh" not-null="false" lazy="false" foreign-key="EMPLOYEE_EMPLOYEEINFO" insert="true" update="true"/>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.otopk.impl.EmployeeInfoImpl" entity-name="EmployeeInfo" abstract="false" lazy="false" discriminator-value="EmployeeInfo" table="`EMPLOYEEINFO`">
+		<meta attribute="eclassName" inherit="false">EmployeeInfo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/otopk</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="EMPLOYEEINFODTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>

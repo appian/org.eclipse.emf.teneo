@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.w3._2000._09.xmldsig.impl.CanonicalizationMethodTypeImpl" entity-name="CanonicalizationMethodType" abstract="false" lazy="false" table="`CANONICALIZATIONMETHODTYPE`">
+		<meta attribute="eclassName" inherit="false">CanonicalizationMethodType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`CANONICALIZATIONMETHODTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`CANONICALIZATIONMETHODTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`CANONICALIZATIONMETHODTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="CanonicalizationMethodType_mixed"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ALGORITHM`"/>
+		</property>
+	</class>
+	<class entity-name="CanonicalizationMethodType_mixed" lazy="false" table="`CANONICALIZATIONMETHODTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">CanonicalizationMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<list name="any" table="`MIXED_CANONICALIZATIONMETHODTYPE_ANY`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_CANONICALIZATIONMETHODTYPE_ANY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_CANONICALIZATIONMETHODTYPE_ANY_IDX`"/>
+			<one-to-many entity-name="CanonicalizationMethodType_any"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ALGORITHM`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="CanonicalizationMethodType_any" lazy="false" table="`CANONICALIZATIONMETHODTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">CanonicalizationMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.DigestMethodTypeImpl" entity-name="DigestMethodType" abstract="false" lazy="false" table="`DIGESTMETHODTYPE`">
+		<meta attribute="eclassName" inherit="false">DigestMethodType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`DIGESTMETHODTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DIGESTMETHODTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DIGESTMETHODTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="DigestMethodType_mixed"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ALGORITHM`"/>
+		</property>
+	</class>
+	<class entity-name="DigestMethodType_mixed" lazy="false" table="`DIGESTMETHODTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">DigestMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<list name="any" table="`MIXED_DIGESTMETHODTYPE_ANY`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_DIGESTMETHODTYPE_ANY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_DIGESTMETHODTYPE_ANY_IDX`"/>
+			<one-to-many entity-name="DigestMethodType_any"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ALGORITHM`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="DigestMethodType_any" lazy="false" table="`DIGESTMETHODTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">DigestMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.DSAKeyValueTypeImpl" entity-name="DSAKeyValueType" abstract="false" lazy="false" table="`DSAKEYVALUETYPE`">
+		<meta attribute="eclassName" inherit="false">DSAKeyValueType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<array name="p" table="`DSAKEYVALUETYPE_P`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_P_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_P_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="q" table="`DSAKEYVALUETYPE_Q`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_Q_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_Q_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="g" table="`DSAKEYVALUETYPE_G`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_G_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_G_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="y" table="`DSAKEYVALUETYPE_Y`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_Y_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_Y_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="j" table="`DSAKEYVALUETYPE_J`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_J_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_J_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="seed" table="`DSAKEYVALUETYPE_SEED`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_SEED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_SEED_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="pgenCounter" table="`DSAKEYVALUETYPE_PGENCOUNTER`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DSAKEYVALUETYPE_PGENCOUNTER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DSAKEYVALUETYPE_PGENCOUNTER_IDX`"/>
+			<element type="byte"/>
+		</array>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.KeyInfoTypeImpl" entity-name="KeyInfoType" abstract="false" lazy="false" table="`KEYINFOTYPE`">
+		<meta attribute="eclassName" inherit="false">KeyInfoType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`KEYINFOTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`KEYINFOTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`KEYINFOTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="KeyInfoType_mixed"/>
+		</list>
+	</class>
+	<class entity-name="KeyInfoType_mixed" lazy="false" table="`KEYINFOTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">KeyInfoType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<list name="group" table="`MIXED_KEYINFOTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_KEYINFOTYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_KEYINFOTYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="KeyInfoType_group"/>
+		</list>
+		<property name="keyName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_KEYNAME`"/>
+		</property>
+		<many-to-one name="keyValue" entity-name="KeyValueType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_KEYVALUE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_KEYVALUETYPE_KEYVALUE_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="retrievalMethod" entity-name="RetrievalMethodType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_RETRIEVALMETHOD" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_RETRIEVALMETHODTYPE_RETRIEVALMETHOD_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="x509Data" entity-name="X509DataType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_X509DATA" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_X509DATATYPE_X509DATA_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="pGPData" entity-name="PGPDataType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_PGPDATA" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_PGPDATATYPE_PGPDATA_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="sPKIData" entity-name="SPKIDataType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_SPKIDATA" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_SPKIDATATYPE_SPKIDATA_E_ID`"/>
+		</many-to-one>
+		<property name="mgmtData" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_MGMTDATA`"/>
+		</property>
+		<many-to-one name="any" entity-name="KeyInfoType_any" cascade="all" not-null="false"/>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ID`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="KeyInfoType_group" lazy="false" table="`KEYINFOTYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">KeyInfoType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="keyName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_KEYNAME`"/>
+		</property>
+		<many-to-one name="keyValue" entity-name="KeyValueType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_KEYVALUE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_KEYVALUETYPE_KEYVALUE_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="retrievalMethod" entity-name="RetrievalMethodType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_RETRIEVALMETHOD" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_RETRIEVALMETHODTYPE_RETRIEVALMETHOD_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="x509Data" entity-name="X509DataType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_X509DATA" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_X509DATATYPE_X509DATA_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="pGPData" entity-name="PGPDataType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_PGPDATA" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_PGPDATATYPE_PGPDATA_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="sPKIData" entity-name="SPKIDataType" lazy="false" cascade="all" foreign-key="KEYINFOTYPE_SPKIDATA" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_SPKIDATATYPE_SPKIDATA_E_ID`"/>
+		</many-to-one>
+		<property name="mgmtData" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_MGMTDATA`"/>
+		</property>
+		<many-to-one name="any" entity-name="KeyInfoType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="KeyInfoType_any" lazy="false" table="`KEYINFOTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">KeyInfoType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.KeyValueTypeImpl" entity-name="KeyValueType" abstract="false" lazy="false" table="`KEYVALUETYPE`">
+		<meta attribute="eclassName" inherit="false">KeyValueType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`KEYVALUETYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`KEYVALUETYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`KEYVALUETYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="KeyValueType_mixed"/>
+		</list>
+	</class>
+	<class entity-name="KeyValueType_mixed" lazy="false" table="`KEYVALUETYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">KeyValueType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="dSAKeyValue" entity-name="DSAKeyValueType" lazy="false" cascade="all" foreign-key="KEYVALUETYPE_DSAKEYVALUE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_DSAKEYVALUETYPE_DSAKEYVALUE_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="rSAKeyValue" entity-name="RSAKeyValueType" lazy="false" cascade="all" foreign-key="KEYVALUETYPE_RSAKEYVALUE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_RSAKEYVALUETYPE_RSAKEYVALUE_E_ID`"/>
+		</many-to-one>
+		<list name="any" table="`MIXED_KEYVALUETYPE_ANY`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_KEYVALUETYPE_ANY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_KEYVALUETYPE_ANY_IDX`"/>
+			<one-to-many entity-name="KeyValueType_any"/>
+		</list>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="KeyValueType_any" lazy="false" table="`KEYVALUETYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">KeyValueType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.ManifestTypeImpl" entity-name="ManifestType" abstract="false" lazy="false" table="`MANIFESTTYPE`">
+		<meta attribute="eclassName" inherit="false">ManifestType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="reference" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="MANIFESTTYPE_REFERENCE">
+				<column name="`MANIFESTTYPE_REFERENCE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MANIFESTTYPE_REFERENCE_IDX`"/>
+			<one-to-many entity-name="ReferenceType"/>
+		</list>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.ObjectTypeImpl" entity-name="ObjectType" abstract="false" lazy="false" table="`OBJECTTYPE`">
+		<meta attribute="eclassName" inherit="false">ObjectType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`OBJECTTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`OBJECTTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`OBJECTTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="ObjectType_mixed"/>
+		</list>
+		<property name="encoding" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ENCODING`"/>
+		</property>
+		<property name="mimeType" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIMETYPE`"/>
+		</property>
+	</class>
+	<class entity-name="ObjectType_mixed" lazy="false" table="`OBJECTTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">ObjectType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<list name="group" table="`MIXED_OBJECTTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_OBJECTTYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_OBJECTTYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="ObjectType_group"/>
+		</list>
+		<many-to-one name="any" entity-name="ObjectType_any" cascade="all" not-null="false"/>
+		<property name="encoding" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ENCODING`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ID`"/>
+		</property>
+		<property name="mimeType" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_MIMETYPE`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="ObjectType_group" lazy="false" table="`OBJECTTYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">ObjectType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="any" entity-name="ObjectType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="ObjectType_any" lazy="false" table="`OBJECTTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">ObjectType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.PGPDataTypeImpl" entity-name="PGPDataType" abstract="false" lazy="false" table="`PGPDATATYPE`">
+		<meta attribute="eclassName" inherit="false">PGPDataType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<array name="pGPKeyID" table="`PGPDATATYPE_PGPKEYID`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PGPDATATYPE_PGPKEYID_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PGPDATATYPE_PGPKEYID_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="pGPKeyPacket" table="`PGPDATATYPE_PGPKEYPACKET`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PGPDATATYPE_PGPKEYPACKET_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PGPDATATYPE_PGPKEYPACKET_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<list name="any" table="`PGPDATATYPE_ANY`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PGPDATATYPE_ANY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PGPDATATYPE_ANY_IDX`"/>
+			<one-to-many entity-name="PGPDataType_any"/>
+		</list>
+		<array name="pGPKeyPacket1" table="`PGPDATATYPE_PGPKEYPACKET1`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PGPDATATYPE_PGPKEYPACKET1_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PGPDATATYPE_PGPKEYPACKET1_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<list name="any1" table="`PGPDATATYPE_ANY1`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PGPDATATYPE_ANY1_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PGPDATATYPE_ANY1_IDX`"/>
+			<one-to-many entity-name="PGPDataType_any1"/>
+		</list>
+	</class>
+	<class entity-name="PGPDataType_any" lazy="false" table="`PGPDATATYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">PGPDataType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class entity-name="PGPDataType_any1" lazy="false" table="`PGPDATATYPE_ANY1`">
+		<meta attribute="featureMap" inherit="false">PGPDataType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any1_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any1_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY1_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY1_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.ReferenceTypeImpl" entity-name="ReferenceType" abstract="false" lazy="false" table="`REFERENCETYPE`">
+		<meta attribute="eclassName" inherit="false">ReferenceType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="transforms" entity-name="TransformsType" lazy="false" cascade="all" foreign-key="REFERENCETYPE_TRANSFORMS" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`TRANSFORMSTYPE_TRANSFORMS_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="digestMethod" entity-name="DigestMethodType" lazy="false" cascade="all" foreign-key="REFERENCETYPE_DIGESTMETHOD" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`DIGESTMETHODTYPE_DIGESTMETHOD_E_ID`"/>
+		</many-to-one>
+		<array name="digestValue" table="`REFERENCETYPE_DIGESTVALUE`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`REFERENCETYPE_DIGESTVALUE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`REFERENCETYPE_DIGESTVALUE_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<property name="type" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+		</property>
+		<property name="uRI" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`URI`"/>
+		</property>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.RetrievalMethodTypeImpl" entity-name="RetrievalMethodType" abstract="false" lazy="false" table="`RETRIEVALMETHODTYPE`">
+		<meta attribute="eclassName" inherit="false">RetrievalMethodType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="transforms" entity-name="TransformsType" lazy="false" cascade="all" foreign-key="RETRIEVALMETHODTYPE_TRANSFORMS" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`TRANSFORMSTYPE_TRANSFORMS_E_ID`"/>
+		</many-to-one>
+		<property name="type" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+		</property>
+		<property name="uRI" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`URI`"/>
+		</property>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.RSAKeyValueTypeImpl" entity-name="RSAKeyValueType" abstract="false" lazy="false" table="`RSAKEYVALUETYPE`">
+		<meta attribute="eclassName" inherit="false">RSAKeyValueType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<array name="modulus" table="`RSAKEYVALUETYPE_MODULUS`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`RSAKEYVALUETYPE_MODULUS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`RSAKEYVALUETYPE_MODULUS_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<array name="exponent" table="`RSAKEYVALUETYPE_EXPONENT`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`RSAKEYVALUETYPE_EXPONENT_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`RSAKEYVALUETYPE_EXPONENT_IDX`"/>
+			<element type="byte"/>
+		</array>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SignatureMethodTypeImpl" entity-name="SignatureMethodType" abstract="false" lazy="false" table="`SIGNATUREMETHODTYPE`">
+		<meta attribute="eclassName" inherit="false">SignatureMethodType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`SIGNATUREMETHODTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`SIGNATUREMETHODTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIGNATUREMETHODTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="SignatureMethodType_mixed"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ALGORITHM`"/>
+		</property>
+	</class>
+	<class entity-name="SignatureMethodType_mixed" lazy="false" table="`SIGNATUREMETHODTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">SignatureMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="hMACOutputLength" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.math.BigInteger">
+			<column not-null="false" unique="false" name="`MIXED_HMACOUTPUTLENGTH`"/>
+		</property>
+		<list name="any" table="`MIXED_SIGNATUREMETHODTYPE_ANY`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_SIGNATUREMETHODTYPE_ANY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_SIGNATUREMETHODTYPE_ANY_IDX`"/>
+			<one-to-many entity-name="SignatureMethodType_any"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ALGORITHM`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="SignatureMethodType_any" lazy="false" table="`SIGNATUREMETHODTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">SignatureMethodType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SignaturePropertiesTypeImpl" entity-name="SignaturePropertiesType" abstract="false" lazy="false" table="`SIGNATUREPROPERTIESTYPE`">
+		<meta attribute="eclassName" inherit="false">SignaturePropertiesType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="signatureProperty" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY">
+				<column name="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_IDX`"/>
+			<one-to-many entity-name="SignaturePropertyType"/>
+		</list>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SignaturePropertyTypeImpl" entity-name="SignaturePropertyType" abstract="false" lazy="false" table="`SIGNATUREPROPERTYTYPE`">
+		<meta attribute="eclassName" inherit="false">SignaturePropertyType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`SIGNATUREPROPERTYTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`SIGNATUREPROPERTYTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIGNATUREPROPERTYTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="SignaturePropertyType_mixed"/>
+		</list>
+		<property name="target" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`TARGET`"/>
+		</property>
+	</class>
+	<class entity-name="SignaturePropertyType_mixed" lazy="false" table="`SIGNATUREPROPERTYTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">SignaturePropertyType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<list name="group" table="`MIXED_SIGNATUREPROPERTYTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="SignaturePropertyType_group"/>
+		</list>
+		<many-to-one name="any" entity-name="SignaturePropertyType_any" cascade="all" not-null="false"/>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ID`"/>
+		</property>
+		<property name="target" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_TARGET`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="SignaturePropertyType_group" lazy="false" table="`SIGNATUREPROPERTYTYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">SignaturePropertyType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="any" entity-name="SignaturePropertyType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="SignaturePropertyType_any" lazy="false" table="`SIGNATUREPROPERTYTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">SignaturePropertyType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SignatureTypeImpl" entity-name="SignatureType" abstract="false" lazy="false" table="`SIGNATURETYPE`">
+		<meta attribute="eclassName" inherit="false">SignatureType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="signedInfo" entity-name="SignedInfoType" lazy="false" cascade="all" foreign-key="SIGNATURETYPE_SIGNEDINFO" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`SIGNEDINFOTYPE_SIGNEDINFO_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="signatureValue" entity-name="SignatureValueType" lazy="false" cascade="all" foreign-key="SIGNATURETYPE_SIGNATUREVALUE" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`SIGNATUREVALUETYPE_SIGNATUREVALUE_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="keyInfo" entity-name="KeyInfoType" lazy="false" cascade="all" foreign-key="SIGNATURETYPE_KEYINFO" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`KEYINFOTYPE_KEYINFO_ID`"/>
+		</many-to-one>
+		<list name="object" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="SIGNATURETYPE_OBJECT">
+				<column name="`SIGNATURETYPE_OBJECT_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIGNATURETYPE_OBJECT_IDX`"/>
+			<one-to-many entity-name="ObjectType"/>
+		</list>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SignatureValueTypeImpl" entity-name="SignatureValueType" abstract="false" lazy="false" table="`SIGNATUREVALUETYPE`">
+		<meta attribute="eclassName" inherit="false">SignatureValueType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<array name="value" table="`SIGNATUREVALUETYPE_VALUE`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`SIGNATUREVALUETYPE_VALUE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIGNATUREVALUETYPE_VALUE_IDX`"/>
+			<element type="byte"/>
+		</array>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SignedInfoTypeImpl" entity-name="SignedInfoType" abstract="false" lazy="false" table="`SIGNEDINFOTYPE`">
+		<meta attribute="eclassName" inherit="false">SignedInfoType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="canonicalizationMethod" entity-name="CanonicalizationMethodType" lazy="false" cascade="all" foreign-key="SIGNEDINFOTYPE_CANONICALIZATIONMETHOD" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`CANONICALIZATIONMETHODTYPE_CANONICALIZATIONMETHOD_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="signatureMethod" entity-name="SignatureMethodType" lazy="false" cascade="all" foreign-key="SIGNEDINFOTYPE_SIGNATUREMETHOD" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`SIGNATUREMETHODTYPE_SIGNATUREMETHOD_E_ID`"/>
+		</many-to-one>
+		<list name="reference" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="SIGNEDINFOTYPE_REFERENCE">
+				<column name="`SIGNEDINFOTYPE_REFERENCE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SIGNEDINFOTYPE_REFERENCE_IDX`"/>
+			<one-to-many entity-name="ReferenceType"/>
+		</list>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.SPKIDataTypeImpl" entity-name="SPKIDataType" abstract="false" lazy="false" table="`SPKIDATATYPE`">
+		<meta attribute="eclassName" inherit="false">SPKIDataType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="group" table="`SPKIDATATYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`SPKIDATATYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SPKIDATATYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="SPKIDataType_group"/>
+		</list>
+	</class>
+	<class entity-name="SPKIDataType_group" lazy="false" table="`SPKIDATATYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">SPKIDataType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="sPKISexp" lazy="false" insert="true" update="true" not-null="false" unique="false" type="byte">
+			<column not-null="false" unique="false" name="`GROUP_SPKISEXP`"/>
+		</property>
+		<many-to-one name="any" entity-name="SPKIDataType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="SPKIDataType_any" lazy="false" table="`SPKIDATATYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">SPKIDataType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.TransformsTypeImpl" entity-name="TransformsType" abstract="false" lazy="false" table="`TRANSFORMSTYPE`">
+		<meta attribute="eclassName" inherit="false">TransformsType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="transform" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="TRANSFORMSTYPE_TRANSFORM">
+				<column name="`TRANSFORMSTYPE_TRANSFORM_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`TRANSFORMSTYPE_TRANSFORM_IDX`"/>
+			<one-to-many entity-name="TransformType"/>
+		</list>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.TransformTypeImpl" entity-name="TransformType" abstract="false" lazy="false" table="`TRANSFORMTYPE`">
+		<meta attribute="eclassName" inherit="false">TransformType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`TRANSFORMTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`TRANSFORMTYPE_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`TRANSFORMTYPE_MIXED_IDX`"/>
+			<one-to-many entity-name="TransformType_mixed"/>
+		</list>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ALGORITHM`"/>
+		</property>
+	</class>
+	<class entity-name="TransformType_mixed" lazy="false" table="`TRANSFORMTYPE_MIXED`">
+		<meta attribute="featureMap" inherit="false">TransformType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<list name="group" table="`MIXED_TRANSFORMTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_TRANSFORMTYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`MIXED_TRANSFORMTYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="TransformType_group"/>
+		</list>
+		<many-to-one name="any" entity-name="TransformType_any" cascade="all" not-null="false"/>
+		<property name="xPath" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_XPATH`"/>
+		</property>
+		<property name="algorithm" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MIXED_ALGORITHM`"/>
+		</property>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
+	<class entity-name="TransformType_group" lazy="false" table="`TRANSFORMTYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">TransformType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="any" entity-name="TransformType_any" cascade="all" not-null="false"/>
+		<property name="xPath" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_XPATH`"/>
+		</property>
+	</class>
+	<class entity-name="TransformType_any" lazy="false" table="`TRANSFORMTYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">TransformType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.X509DataTypeImpl" entity-name="X509DataType" abstract="false" lazy="false" table="`X509DATATYPE`">
+		<meta attribute="eclassName" inherit="false">X509DataType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="group" table="`X509DATATYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`X509DATATYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`X509DATATYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="X509DataType_group"/>
+		</list>
+	</class>
+	<class entity-name="X509DataType_group" lazy="false" table="`X509DATATYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">X509DataType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<many-to-one name="x509IssuerSerial" entity-name="X509IssuerSerialType" lazy="false" cascade="all" foreign-key="X509DATATYPE_X509ISSUERSERIAL" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_X509ISSUERSERIALTYPE_X509ISSUERSERIAL_E_ID`"/>
+		</many-to-one>
+		<property name="x509SKI" lazy="false" insert="true" update="true" not-null="false" unique="false" type="byte">
+			<column not-null="false" unique="false" name="`GROUP_X509SKI`"/>
+		</property>
+		<property name="x509SubjectName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_X509SUBJECTNAME`"/>
+		</property>
+		<property name="x509Certificate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="byte">
+			<column not-null="false" unique="false" name="`GROUP_X509CERTIFICATE`"/>
+		</property>
+		<property name="x509CRL" lazy="false" insert="true" update="true" not-null="false" unique="false" type="byte">
+			<column not-null="false" unique="false" name="`GROUP_X509CRL`"/>
+		</property>
+		<many-to-one name="any" entity-name="X509DataType_any" cascade="all" not-null="false"/>
+	</class>
+	<class entity-name="X509DataType_any" lazy="false" table="`X509DATATYPE_ANY`">
+		<meta attribute="featureMap" inherit="false">X509DataType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="any_fme_any_data" type="java.lang.String"/>
+		<any id-type="long" meta-type="string" name="any_fme_any_reference" cascade="all">
+			<column not-null="false" unique="false" name="`ANY_TYPE`"/>
+			<column not-null="false" unique="false" name="`ANY_ID`"/>
+		</any>
+	</class>
+	<class name="org.w3._2000._09.xmldsig.impl.X509IssuerSerialTypeImpl" entity-name="X509IssuerSerialType" abstract="false" lazy="false" table="`X509ISSUERSERIALTYPE`">
+		<meta attribute="eclassName" inherit="false">X509IssuerSerialType</meta>
+		<meta attribute="epackage" inherit="false">http://www.w3.org/2000/09/xmldsig#</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="x509IssuerName" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`X509ISSUERNAME`"/>
+		</property>
+		<property name="x509SerialNumber" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.math.BigInteger">
+			<column not-null="true" unique="false" name="`X509SERIALNUMBER`"/>
+		</property>
+	</class>
+</hibernate-mapping>

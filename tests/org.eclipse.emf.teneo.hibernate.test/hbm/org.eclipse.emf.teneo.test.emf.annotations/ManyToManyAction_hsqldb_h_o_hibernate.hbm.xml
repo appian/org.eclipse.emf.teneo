@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl.CntrImpl" entity-name="Cntr" abstract="false" lazy="false" discriminator-value="Cntr" table="`CNTR`">
+		<meta attribute="eclassName" inherit="false">Cntr</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/manytomany</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="CNTRDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<bag name="rght" lazy="false" cascade="merge,persist,save-update,lock" table="`RIGHTCENTER`">
+			<key update="true">
+				<column name="`CNTR_E_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="Rght" unique="false" foreign-key="CNTR_RGHT">
+				<column name="`RGHT_E_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<list name="lft" lazy="false" cascade="merge,persist,save-update,lock" table="`CNTR_LFT`">
+			<key update="true">
+				<column name="`CNTR_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`CNTR_LFT_IDX`"/>
+			<many-to-many entity-name="Lft" unique="false" foreign-key="CNTR_LFT">
+				<column name="`LFT_E_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl.LftImpl" entity-name="Lft" abstract="false" lazy="false" discriminator-value="Lft" table="`LFT`">
+		<meta attribute="eclassName" inherit="false">Lft</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/manytomany</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="LFTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="cntr" lazy="true" cascade="merge,persist,save-update,lock" table="`LFT_CNTR`">
+			<key update="true">
+				<column name="`LFT_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`LFT_CNTR_IDX`"/>
+			<many-to-many entity-name="Cntr" unique="false" foreign-key="LFT_CNTR">
+				<column name="`CNTR_E_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.manytomany.impl.RghtImpl" entity-name="Rght" abstract="false" lazy="false" discriminator-value="Rght" table="`RGHT`">
+		<meta attribute="eclassName" inherit="false">Rght</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/manytomany</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="RGHTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<bag name="cntr" lazy="true" cascade="merge,persist,save-update,lock" inverse="true" table="`RIGHTCENTER`">
+			<key update="true">
+				<column name="`RGHT_E_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="Cntr" unique="false" foreign-key="RGHT_CNTR">
+				<column name="`CNTR_E_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+	</class>
+</hibernate-mapping>

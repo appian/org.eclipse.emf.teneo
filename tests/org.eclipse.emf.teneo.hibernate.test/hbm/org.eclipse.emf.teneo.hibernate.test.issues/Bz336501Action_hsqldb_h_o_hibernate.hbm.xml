@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz336501.impl.TestImpl" entity-name="Test" abstract="false" lazy="false" discriminator-value="Test" table="`TEST`">
+		<meta attribute="eclassName" inherit="false">Test</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz336501</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TESTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="dateOrTime" lazy="false" insert="true" update="true" not-null="true" unique="false" type="timestamp">
+			<column not-null="true" unique="false" name="`DATEORTIME`"/>
+		</property>
+		<list name="dateOrTimes" table="`TEST_DATEORTIMES`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`TEST_DATEORTIMES_NAME`" unique="false"/>
+			</key>
+			<list-index column="`TEST_DATEORTIMES_IDX`"/>
+			<element type="timestamp"/>
+		</list>
+	</class>
+</hibernate-mapping>

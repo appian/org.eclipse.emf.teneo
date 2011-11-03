@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowElementImpl" entity-name="WorkflowElement" abstract="true" lazy="false" table="`WORKFLOWELEMENT`">
+		<meta attribute="eclassName" inherit="false">WorkflowElement</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<id name="id" type="java.lang.String">
+			<column not-null="true" unique="false" name="`ID`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="comment" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COMMENT`"/>
+		</property>
+		<property name="x" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`X`"/>
+		</property>
+		<property name="y" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`Y`"/>
+		</property>
+		<property name="width" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`WIDTH`"/>
+		</property>
+		<property name="height" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`HEIGHT`"/>
+		</property>
+	</class>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowImpl" entity-name="Workflow" abstract="false" lazy="false" extends="WorkflowElement" table="`WORKFLOW`">
+		<meta attribute="eclassName" inherit="false">Workflow</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWELEMENT_ID`"/>
+		</key>
+		<list name="nodes" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`WORKFLOWNODE_WORKFLOW_ID`" unique="false"/>
+			</key>
+			<list-index column="`WORKFLOW_NODES_IDX`"/>
+			<one-to-many entity-name="WorkflowNode"/>
+		</list>
+		<list name="edges" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`EDGE_WORKFLOW_ID`" unique="false"/>
+			</key>
+			<list-index column="`WORKFLOW_EDGES_IDX`"/>
+			<one-to-many entity-name="Edge"/>
+		</list>
+		<list name="comments" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`COMMENT_WORKFLOW_ID`" unique="false"/>
+			</key>
+			<list-index column="`WORKFLOW_COMMENTS_IDX`"/>
+			<one-to-many entity-name="Comment"/>
+		</list>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.WorkflowNodeImpl" entity-name="WorkflowNode" abstract="true" lazy="false" extends="WorkflowElement" table="`WORKFLOWNODE`">
+		<meta attribute="eclassName" inherit="false">WorkflowNode</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWELEMENT_ID`"/>
+		</key>
+		<many-to-one name="workflow" entity-name="Workflow" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="WORKFLOWNODE_WORKFLOW" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`WORKFLOWNODE_WORKFLOW_ID`"/>
+		</many-to-one>
+		<list name="outputs" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`OUTPUTPORT_NODE_ID`" unique="false"/>
+			</key>
+			<list-index column="`WORKFLOWNODE_OUTPUTS_IDX`"/>
+			<one-to-many entity-name="OutputPort"/>
+		</list>
+		<list name="inputs" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`INPUTPORT_NODE_ID`" unique="false"/>
+			</key>
+			<list-index column="`WORKFLOWNODE_INPUTS_IDX`"/>
+			<one-to-many entity-name="InputPort"/>
+		</list>
+		<property name="isStart" lazy="false" insert="true" update="true" not-null="true" unique="false" type="boolean">
+			<column not-null="true" unique="false" name="`ISSTART`"/>
+		</property>
+		<property name="isFinish" lazy="false" insert="true" update="true" not-null="true" unique="false" type="boolean">
+			<column not-null="true" unique="false" name="`ISFINISH`"/>
+		</property>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.EdgeImpl" entity-name="Edge" abstract="false" lazy="false" extends="WorkflowElement" table="`EDGE`">
+		<meta attribute="eclassName" inherit="false">Edge</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWELEMENT_ID`"/>
+		</key>
+		<many-to-one name="workflow" entity-name="Workflow" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="EDGE_WORKFLOW" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`EDGE_WORKFLOW_ID`"/>
+		</many-to-one>
+		<many-to-one name="target" entity-name="InputPort" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="EDGE_TARGET" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`EDGE_TARGET_ID`"/>
+		</many-to-one>
+		<many-to-one name="source" entity-name="OutputPort" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="EDGE_SOURCE" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`EDGE_SOURCE_ID`"/>
+		</many-to-one>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.PortImpl" entity-name="Port" abstract="true" lazy="false" extends="WorkflowElement" table="`PORT`">
+		<meta attribute="eclassName" inherit="false">Port</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWELEMENT_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.InputPortImpl" entity-name="InputPort" abstract="false" lazy="false" extends="Port" table="`INPUTPORT`">
+		<meta attribute="eclassName" inherit="false">InputPort</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`PORT_ID`"/>
+		</key>
+		<many-to-one name="node" entity-name="WorkflowNode" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="INPUTPORT_NODE" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`INPUTPORT_NODE_ID`"/>
+		</many-to-one>
+		<list name="edges" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`EDGE_TARGET_ID`" unique="false"/>
+			</key>
+			<list-index column="`INPUTPORT_EDGES_IDX`"/>
+			<one-to-many entity-name="Edge"/>
+		</list>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.OutputPortImpl" entity-name="OutputPort" abstract="false" lazy="false" extends="Port" table="`OUTPUTPORT`">
+		<meta attribute="eclassName" inherit="false">OutputPort</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`PORT_ID`"/>
+		</key>
+		<many-to-one name="node" entity-name="WorkflowNode" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="OUTPUTPORT_NODE" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`OUTPUTPORT_NODE_ID`"/>
+		</many-to-one>
+		<list name="edges" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`EDGE_SOURCE_ID`" unique="false"/>
+			</key>
+			<list-index column="`OUTPUTPORT_EDGES_IDX`"/>
+			<one-to-many entity-name="Edge"/>
+		</list>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.FaultImpl" entity-name="Fault" abstract="false" lazy="false" extends="OutputPort" table="`FAULT`">
+		<meta attribute="eclassName" inherit="false">Fault</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`OUTPUTPORT_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.CompoundTaskImpl" entity-name="CompoundTask" abstract="false" lazy="false" extends="WorkflowNode" table="`COMPOUNDTASK`">
+		<meta attribute="eclassName" inherit="false">CompoundTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWNODE_ID`"/>
+		</key>
+		<many-to-one name="subworkflow" entity-name="Workflow" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="COMPOUNDTASK_SUBWORKFLOW" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`WORKFLOW_SUBWORKFLOW_ID`"/>
+		</many-to-one>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.TransformationTaskImpl" entity-name="TransformationTask" abstract="false" lazy="false" extends="WorkflowNode" table="`TRANSFORMATIONTASK`">
+		<meta attribute="eclassName" inherit="false">TransformationTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWNODE_ID`"/>
+		</key>
+		<property name="transformExpression" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TRANSFORMEXPRESSION`"/>
+		</property>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.ConditionalTaskImpl" entity-name="ConditionalTask" abstract="false" lazy="false" extends="WorkflowNode" table="`CONDITIONALTASK`">
+		<meta attribute="eclassName" inherit="false">ConditionalTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWNODE_ID`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.LoopTaskImpl" entity-name="LoopTask" abstract="false" lazy="false" extends="CompoundTask" table="`LOOPTASK`">
+		<meta attribute="eclassName" inherit="false">LoopTask</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`COMPOUNDTASK_ID`"/>
+		</key>
+		<property name="whileCondition" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`WHILECONDITION`"/>
+		</property>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.ConditionalOutputPortImpl" entity-name="ConditionalOutputPort" abstract="false" lazy="false" extends="OutputPort" table="`CONDITIONALOUTPUTPORT`">
+		<meta attribute="eclassName" inherit="false">ConditionalOutputPort</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`OUTPUTPORT_ID`"/>
+		</key>
+		<property name="condition" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`CONDITION`"/>
+		</property>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.CommentImpl" entity-name="Comment" abstract="false" lazy="false" extends="WorkflowElement" table="`COMMENT`">
+		<meta attribute="eclassName" inherit="false">Comment</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWELEMENT_ID`"/>
+		</key>
+		<many-to-one name="workflow" entity-name="Workflow" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="COMMENT_WORKFLOW" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`COMMENT_WORKFLOW_ID`"/>
+		</many-to-one>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.emf.sample.workflow.impl.TaskImpl" entity-name="Task" abstract="false" lazy="false" extends="WorkflowNode" table="`TASK`">
+		<meta attribute="eclassName" inherit="false">Task</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/store/test/emf/workflow</meta>
+		<key>
+			<column name="`WORKFLOWNODE_ID`"/>
+		</key>
+	</joined-subclass>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.inheritance.impl.ThingImpl" entity-name="Thing" abstract="false" lazy="false" table="`THING`">
+		<meta attribute="eclassName" inherit="false">Thing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/inheritance</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="things" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="THING_THINGS">
+				<column name="`THING_THINGS_NAME`" unique="false"/>
+			</key>
+			<list-index column="`THING_THINGS_IDX`"/>
+			<one-to-many entity-name="SubThing"/>
+		</list>
+	</class>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.inheritance.impl.AnnotationImpl" entity-name="Annotation" abstract="false" lazy="false" extends="Thing" table="`ANNOTATION`">
+		<meta attribute="eclassName" inherit="false">Annotation</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/inheritance</meta>
+		<key>
+			<column name="`THING_NAME`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.inheritance.impl.InterestImpl" entity-name="Interest" abstract="false" lazy="false" extends="Thing" table="`INTEREST`">
+		<meta attribute="eclassName" inherit="false">Interest</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/inheritance</meta>
+		<key>
+			<column name="`THING_NAME`"/>
+		</key>
+	</joined-subclass>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.inheritance.impl.SubOneImpl" entity-name="SubOne" abstract="false" lazy="false" extends="Annotation" table="`SUBONE`">
+		<meta attribute="eclassName" inherit="false">SubOne</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/inheritance</meta>
+		<key>
+			<column name="`ANNOTATION_NAME`"/>
+		</key>
+	</joined-subclass>
+	<class name="org.eclipse.emf.teneo.samples.issues.inheritance.impl.SubThingImpl" entity-name="SubThing" abstract="false" lazy="false" table="`SUBTHING`">
+		<meta attribute="eclassName" inherit="false">SubThing</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/inheritance</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<joined-subclass name="org.eclipse.emf.teneo.samples.issues.inheritance.impl.SubTwoImpl" entity-name="SubTwo" abstract="false" lazy="false" extends="Annotation" table="`SUBTWO`">
+		<meta attribute="eclassName" inherit="false">SubTwo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/inheritance</meta>
+		<key>
+			<column name="`ANNOTATION_NAME`"/>
+		</key>
+	</joined-subclass>
+</hibernate-mapping>

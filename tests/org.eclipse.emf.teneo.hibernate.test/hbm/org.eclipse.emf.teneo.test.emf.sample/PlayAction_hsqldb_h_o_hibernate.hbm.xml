@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.ActTypeImpl" entity-name="ActType" abstract="false" lazy="false" discriminator-value="ActType" table="`ACTTYPE`">
+		<meta attribute="eclassName" inherit="false">ActType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ACTTYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="scene" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="ACTTYPE_SCENE">
+				<column name="`ACTTYPE_SCENE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`ACTTYPE_SCENE_IDX`"/>
+			<one-to-many entity-name="SceneType"/>
+		</list>
+		<property name="pindex" lazy="false" insert="true" update="true" not-null="false" unique="false" type="byte">
+			<column not-null="false" unique="false" name="`PINDEX`"/>
+		</property>
+		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`TITLE`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.FmTypeImpl" entity-name="FmType" abstract="false" lazy="false" discriminator-value="FmType" table="`FMTYPE`">
+		<meta attribute="eclassName" inherit="false">FmType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="FMTYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="p" table="`FMTYPE_P`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`FMTYPE_P_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`FMTYPE_P_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaeTypeImpl" entity-name="PersonaeType" abstract="false" lazy="false" discriminator-value="PersonaeType" table="`PERSONAETYPE`">
+		<meta attribute="eclassName" inherit="false">PersonaeType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PERSONAETYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="group" table="`PERSONAETYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PERSONAETYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PERSONAETYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="PersonaeType_group"/>
+		</list>
+	</class>
+	<class entity-name="PersonaeType_group" lazy="false" table="`PERSONAETYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">PersonaeType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_TITLE`"/>
+		</property>
+		<property name="persona" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_PERSONA`"/>
+		</property>
+		<many-to-one name="personaGroup" entity-name="PersonaGroupType" lazy="false" cascade="all" foreign-key="PERSONAETYPE_PERSONAGROUP" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_PERSONAGROUPTYPE_PERSONAGROUP_E_ID`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PersonaGroupTypeImpl" entity-name="PersonaGroupType" abstract="false" lazy="false" discriminator-value="PersonaGroupType" table="`PERSONAGROUPTYPE`">
+		<meta attribute="eclassName" inherit="false">PersonaGroupType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PERSONAGROUPTYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="persona" table="`PERSONAGROUPTYPE_PERSONA`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`PERSONAGROUPTYPE_PERSONA_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PERSONAGROUPTYPE_PERSONA_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<property name="groupDescription" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`GROUPDESCRIPTION`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.PlayTypeImpl" entity-name="PlayType" abstract="false" lazy="false" discriminator-value="PlayType" table="`PLAYTYPE`">
+		<meta attribute="eclassName" inherit="false">PlayType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PLAYTYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`TITLE`"/>
+		</property>
+		<many-to-one name="fm" entity-name="FmType" lazy="false" cascade="all" foreign-key="PLAYTYPE_FM" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`FMTYPE_FM_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="personae" entity-name="PersonaeType" lazy="false" cascade="all" foreign-key="PLAYTYPE_PERSONAE" insert="true" update="true" not-null="true" unique="true">
+			<column not-null="true" unique="false" name="`PERSONAETYPE_PERSONAE_E_ID`"/>
+		</many-to-one>
+		<property name="sceneDescription" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`SCENEDESCRIPTION`"/>
+		</property>
+		<property name="playSubTitle" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`PLAYSUBTITLE`"/>
+		</property>
+		<list name="act" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="PLAYTYPE_ACT">
+				<column name="`PLAYTYPE_ACT_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PLAYTYPE_ACT_IDX`"/>
+			<one-to-many entity-name="ActType"/>
+		</list>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.SceneTypeImpl" entity-name="SceneType" abstract="false" lazy="false" discriminator-value="SceneType" table="`SCENETYPE`">
+		<meta attribute="eclassName" inherit="false">SceneType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="SCENETYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="group" table="`SCENETYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`SCENETYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SCENETYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="SceneType_group"/>
+		</list>
+		<property name="pindex" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`PINDEX`"/>
+		</property>
+		<property name="title" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`TITLE`"/>
+		</property>
+	</class>
+	<class entity-name="SceneType_group" lazy="false" table="`SCENETYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">SceneType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="stageDirections" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_STAGEDIRECTIONS`"/>
+		</property>
+		<many-to-one name="speech" entity-name="SpeechType" lazy="false" cascade="all" foreign-key="SCENETYPE_SPEECH" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`GROUP_SPEECHTYPE_SPEECH_E_ID`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.sample.play.impl.SpeechTypeImpl" entity-name="SpeechType" abstract="false" lazy="false" discriminator-value="SpeechType" table="`SPEECHTYPE`">
+		<meta attribute="eclassName" inherit="false">SpeechType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/play</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="SPEECHTYPEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="group" table="`SPEECHTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`SPEECHTYPE_GROUP_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`SPEECHTYPE_GROUP_IDX`"/>
+			<one-to-many entity-name="SpeechType_group"/>
+		</list>
+	</class>
+	<class entity-name="SpeechType_group" lazy="false" table="`SPEECHTYPE_GROUP`">
+		<meta attribute="featureMap" inherit="false">SpeechType</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<property name="speaker" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_SPEAKER`"/>
+		</property>
+		<property name="line" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_LINE`"/>
+		</property>
+		<property name="stageDirections" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`GROUP_STAGEDIRECTIONS`"/>
+		</property>
+	</class>
+</hibernate-mapping>

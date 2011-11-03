@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.BlockImpl" entity-name="Block" abstract="false" lazy="false" discriminator-value="Block" table="`OPS_BLOCK`">
+		<meta attribute="eclassName" inherit="false">Block</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_blockDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<many-to-one name="vserver" entity-name="VServer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BLOCK_VSERVER" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`VSERVER_ID`"/>
+		</many-to-one>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="agent" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`AGENT`"/>
+		</property>
+		<property name="service" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SERVICE`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DataCenterImpl" entity-name="DataCenter" abstract="false" lazy="false" discriminator-value="DataCenter" table="`OPS_DATACENTER`">
+		<meta attribute="eclassName" inherit="false">DataCenter</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_datacenterDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="host" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DATACENTER_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="Host"/>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`DESCRIPTION`" length="64000"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DomainImpl" entity-name="Domain" abstract="false" lazy="false" discriminator-value="Domain" table="`DOMAIN`">
+		<meta attribute="eclassName" inherit="false">Domain</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="DOMAINDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="systems" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`DOMAIN_SYSTEM`">
+			<key update="true">
+				<column name="`DOMAIN_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="DomainSystem" unique="false" foreign-key="DOMAIN_SYSTEMS">
+				<column name="`SYSTEM_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DomainSystemImpl" entity-name="DomainSystem" abstract="false" lazy="false" discriminator-value="DomainSystem" table="`DOMAINSYSTEM`">
+		<meta attribute="eclassName" inherit="false">DomainSystem</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="DOMAINSYSTEMDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<bag name="domains" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`DOMAIN_SYSTEM`">
+			<key update="true">
+				<column name="`SYSTEM_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="Domain" unique="false" foreign-key="DOMAINSYSTEM_DOMAINS">
+				<column name="`DOMAIN_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<bag name="opsSystem" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_DOMAINSYSTEM_OPSSYSTEM`">
+			<key update="true">
+				<column name="`DOMAINSYSTEM_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="OpsSystem" unique="false" foreign-key="DOMAINSYSTEM_OPSSYSTEM">
+				<column name="`OPSSYSTEM_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<many-to-one name="interface" entity-name="Interface" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="DOMAINSYSTEM_INTERFACE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`INTERFACE_ID`"/>
+		</many-to-one>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="forwardEmail" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`FORWARDEMAIL`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.FailoverTypeImpl" entity-name="FailoverType" abstract="false" lazy="false" discriminator-value="FailoverType" table="`OPS_FAILOVERTYPE`">
+		<meta attribute="eclassName" inherit="false">FailoverType</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_failovertypeDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.HostImpl" entity-name="Host" abstract="false" lazy="false" discriminator-value="Host" table="`OPS_HOST`">
+		<meta attribute="eclassName" inherit="false">Host</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_hostDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<many-to-one name="dataCenter" entity-name="DataCenter" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HOST_DATACENTER" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`DATACENTER_ID`"/>
+		</many-to-one>
+		<bag name="vserver" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`HOST_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="VServer"/>
+		</bag>
+		<bag name="ip" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`HOST_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="IP"/>
+		</bag>
+		<many-to-one name="ownIp" entity-name="IP" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HOST_OWNIP" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`OWNIP_ID`"/>
+		</many-to-one>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`DESCRIPTION`" length="64000"/>
+		</property>
+		<property name="network" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`NETWORK`" length="64000"/>
+		</property>
+		<property name="providerId" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`PROVIDERID`" length="64000"/>
+		</property>
+		<many-to-one name="gateway" entity-name="IP" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HOST_GATEWAY" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`IP_GATEWAY_ID`"/>
+		</many-to-one>
+		<bag name="block" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`HOST_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="HostBlock"/>
+		</bag>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.HostBlockImpl" entity-name="HostBlock" abstract="false" lazy="false" discriminator-value="HostBlock" table="`OPS_HOSTBLOCK`">
+		<meta attribute="eclassName" inherit="false">HostBlock</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_hostblockDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<many-to-one name="host" entity-name="Host" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HOSTBLOCK_HOST" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`HOST_ID`"/>
+		</many-to-one>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`DESCRIPTION`"/>
+		</property>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="agent" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`AGENT`"/>
+		</property>
+		<property name="service" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SERVICE`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.InterfaceImpl" entity-name="Interface" abstract="false" lazy="false" discriminator-value="Interface" table="`OPS_INTERFACE`">
+		<meta attribute="eclassName" inherit="false">Interface</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_interfaceDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="role" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_ROLE_INTERFACE`">
+			<key update="true">
+				<column name="`INTERFACE_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="Role" unique="false" foreign-key="INTERFACE_ROLE">
+				<column name="`ROLE_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<bag name="domainSystem" fetch="subselect" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`INTERFACE_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="DomainSystem"/>
+		</bag>
+		<many-to-one name="failoverType" entity-name="FailoverType" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="INTERFACE_FAILOVERTYPE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`FAILOVERTYPE_ID`"/>
+		</many-to-one>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="port" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`PORT`"/>
+		</property>
+		<property name="external" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`EXTERNAL`"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.IPImpl" entity-name="IP" abstract="false" lazy="false" discriminator-value="IP" table="`OPS_IP`">
+		<meta attribute="eclassName" inherit="false">IP</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_ipDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<property name="ip" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`IP`"/>
+		</property>
+		<many-to-one name="host" entity-name="Host" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="IP_HOST" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`HOST_ID`"/>
+		</many-to-one>
+		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.IpType</param>
+				<param name="eclassifier">IpType</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</param>
+			</type>
+		</property>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="shared" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`SHARED`"/>
+		</property>
+		<bag name="ipName" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_IP_IPNAME`">
+			<key update="true">
+				<column name="`IP_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="IPName" unique="false" foreign-key="IP_IPNAME">
+				<column name="`IPNAME_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<bag name="vserver" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_VSERVER_IP`">
+			<key update="true">
+				<column name="`IP_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="VServer" unique="false" foreign-key="IP_VSERVER">
+				<column name="`VSERVER_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.MuninInfoImpl" entity-name="MuninInfo" abstract="false" lazy="false" discriminator-value="MuninInfo" table="`OPS_MUNININFO`">
+		<meta attribute="eclassName" inherit="false">MuninInfo</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_munininfoDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="pluginName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`PLUGINNAME`" length="64000"/>
+		</property>
+		<property name="warningLevel" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`WARNINGLEVEL`"/>
+		</property>
+		<property name="criticalLevel" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CRITICALLEVEL`"/>
+		</property>
+		<property name="monitorableByNagios" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`MONITORABLEBYNAGIOS`"/>
+		</property>
+		<property name="displaySummary" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`DISPLAYSUMMARY`"/>
+		</property>
+		<many-to-one name="role" entity-name="Role" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="MUNININFO_ROLE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`ROLE_ID`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.IPNameImpl" entity-name="IPName" abstract="false" lazy="false" discriminator-value="IPName" table="`OPS_IPNAME`">
+		<meta attribute="eclassName" inherit="false">IPName</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_ipnameDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="ip" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_IP_IPNAME`">
+			<key update="true">
+				<column name="`IPNAME_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="IP" unique="false" foreign-key="IPNAME_IP">
+				<column name="`IP_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.ParameterImpl" entity-name="Parameter" abstract="false" lazy="false" discriminator-value="Parameter" table="`OPS_PARAMETER`">
+		<meta attribute="eclassName" inherit="false">Parameter</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_parameterDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="key" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`KEY`"/>
+		</property>
+		<property name="value" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`VALUE`" length="64000"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.RoleImpl" entity-name="Role" abstract="false" lazy="false" discriminator-value="Role" table="`OPS_ROLE`">
+		<meta attribute="eclassName" inherit="false">Role</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_roleDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="interface" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_ROLE_INTERFACE`">
+			<key update="true">
+				<column name="`ROLE_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="Interface" unique="false" foreign-key="ROLE_INTERFACE">
+				<column name="`INTERFACE_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<bag name="vserver" fetch="subselect" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`ROLE_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="VServer"/>
+		</bag>
+		<bag name="requiredInterface" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_ROLE_REQUREDINTERFACE`">
+			<key update="true">
+				<column name="`ROLE_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="Interface" unique="false" foreign-key="ROLE_REQUIREDINTERFACE">
+				<column name="`INTERFACE_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<bag name="muninInfo" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`ROLE_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="MuninInfo"/>
+		</bag>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.OpsSystemImpl" entity-name="OpsSystem" abstract="false" lazy="false" discriminator-value="OpsSystem" table="`OPS_OPSSYSTEM`">
+		<meta attribute="eclassName" inherit="false">OpsSystem</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_opssystemDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="ownVserver" fetch="subselect" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`OWN_OPSSYSTEM_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="VServer"/>
+		</bag>
+		<bag name="servingVserver" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_VSERVER_OPSSYSTEM`">
+			<key update="true">
+				<column name="`OPSSYSTEM_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="VServer" unique="false" foreign-key="OPSSYSTEM_SERVINGVSERVER">
+				<column name="`VSERVER_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<bag name="domainSystem" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" inverse="true" table="`OPS_DOMAINSYSTEM_OPSSYSTEM`">
+			<key update="true">
+				<column name="`OPSSYSTEM_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="DomainSystem" unique="false" foreign-key="OPSSYSTEM_DOMAINSYSTEM">
+				<column name="`DOMAINSYSTEM_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.VServerImpl" entity-name="VServer" abstract="false" lazy="false" discriminator-value="VServer" table="`OPS_VSERVER`">
+		<meta attribute="eclassName" inherit="false">VServer</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_vserverDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="block" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`VSERVER_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="Block"/>
+		</bag>
+		<many-to-one name="ownSystem" entity-name="OpsSystem" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VSERVER_OWNSYSTEM" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`OWN_OPSSYSTEM_ID`"/>
+		</many-to-one>
+		<bag name="servedSystem" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_VSERVER_OPSSYSTEM`">
+			<key update="true">
+				<column name="`VSERVER_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="OpsSystem" unique="false" foreign-key="VSERVER_SERVEDSYSTEM">
+				<column name="`OPSSYSTEM_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<bag name="ip" fetch="subselect" lazy="true" cascade="merge,persist,save-update,lock,refresh" table="`OPS_VSERVER_IP`">
+			<key update="true">
+				<column name="`VSERVER_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="IP" unique="false" foreign-key="VSERVER_IP">
+				<column name="`IP_ID`" not-null="true" unique="false"/>
+			</many-to-many>
+		</bag>
+		<many-to-one name="host" entity-name="Host" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VSERVER_HOST" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`HOST_ID`"/>
+		</many-to-one>
+		<many-to-one name="role" entity-name="Role" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VSERVER_ROLE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`ROLE_ID`"/>
+		</many-to-one>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DWHClusterImpl" entity-name="DWHCluster" abstract="false" lazy="false" discriminator-value="DWHCluster" table="`OPS_DWHCLUSTER`">
+		<meta attribute="eclassName" inherit="false">DWHCluster</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_dwhclusterDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="true" type="java.lang.String">
+			<column not-null="false" unique="true" name="`NAME`"/>
+		</property>
+		<bag name="instance" fetch="subselect" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="DWHCLUSTER_INSTANCE">
+				<column name="`DWHCLUSTER_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="DWHInstance"/>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`DESCRIPTION`" length="64000"/>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz225296_2.ops.impl.DWHInstanceImpl" entity-name="DWHInstance" abstract="false" lazy="false" discriminator-value="DWHInstance" table="`OPS_DWHINSTANCE`">
+		<meta attribute="eclassName" inherit="false">DWHInstance</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz225296_2</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ops_dwhinstanceDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="revision" type="int">
+			<column not-null="false" unique="false" name="`E_VERSION`"/>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<bag name="etl" fetch="subselect" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="DWHINSTANCE_ETL">
+				<column name="`DWHINSTANCE_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="VServer"/>
+		</bag>
+		<property name="modified" lazy="false" insert="false" update="false" not-null="false" unique="false" generated="always" type="timestamp">
+			<column not-null="false" unique="false" name="`MODIFIED`" sql-type="timestamp"/>
+		</property>
+		<property name="description" lazy="false" insert="true" update="true" not-null="false" unique="false" type="text">
+			<column not-null="false" unique="false" name="`DESCRIPTION`" length="64000"/>
+		</property>
+	</class>
+</hibernate-mapping>

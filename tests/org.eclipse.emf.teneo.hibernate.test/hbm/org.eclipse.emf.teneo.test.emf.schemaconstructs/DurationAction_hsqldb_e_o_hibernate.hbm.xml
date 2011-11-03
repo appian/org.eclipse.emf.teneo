@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.schemaconstructs.duration.impl.DurationTestImpl" entity-name="DurationTest" abstract="false" lazy="false" table="`DURATIONTEST`">
+		<meta attribute="eclassName" inherit="false">DurationTest</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/schemaconstructs/duration</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="duration" lazy="false" insert="true" update="true" not-null="false" unique="false" type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration">
+			<column not-null="false" unique="false" name="`DURATION`"/>
+		</property>
+		<list name="durations" table="`DURATIONTEST_DURATIONS`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DURATIONTEST_DURATIONS_NAME`" unique="false"/>
+			</key>
+			<list-index column="`DURATIONTEST_DURATIONS_IDX`"/>
+			<element type="org.eclipse.emf.teneo.hibernate.mapping.XSDDuration"/>
+		</list>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<typedef name="bz288963.BooktypeObject" class="org.eclipse.emf.teneo.hibernate.mapping.DefaultToStringUserType">
+		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</param>
+		<param name="edatatype">BooktypeObject</param>
+	</typedef>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.BookImpl" entity-name="Book" abstract="false" lazy="false" discriminator-value="Book" table="`BOOK`">
+		<meta attribute="eclassName" inherit="false">Book</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="BOOKDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="citation" entity-name="Book" lazy="false" cascade="all" foreign-key="BOOK_CITATION" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`BOOK_CITATION_E_ID`"/>
+		</many-to-one>
+		<list name="paralist" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BOOK_PARALIST">
+				<column name="`BOOK_PARALIST_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`BOOK_PARALIST_IDX`"/>
+			<one-to-many entity-name="Paragraph"/>
+		</list>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="selfdef" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`SELFDEF`"/>
+		</property>
+		<property name="type" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`TYPE`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.bz288963.Booktype</param>
+				<param name="eclassifier">Booktype</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</param>
+			</type>
+		</property>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.ParagraphImpl" entity-name="Paragraph" abstract="false" lazy="false" discriminator-value="Paragraph" table="`PARAGRAPH`">
+		<meta attribute="eclassName" inherit="false">Paragraph</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PARAGRAPHDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="number" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`NUMBER`"/>
+		</property>
+		<property name="title" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`TITLE`"/>
+		</property>
+	</class>
+	<subclass name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.FootnoteImpl" entity-name="Footnote" abstract="false" lazy="false" extends="Paragraph" discriminator-value="Footnote">
+		<meta attribute="eclassName" inherit="false">Footnote</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+	</subclass>
+	<subclass name="org.eclipse.emf.teneo.samples.issues.bz288963.impl.IndentedparaImpl" entity-name="Indentedpara" abstract="false" lazy="false" extends="Paragraph" discriminator-value="Indentedpara">
+		<meta attribute="eclassName" inherit="false">Indentedpara</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz288963</meta>
+		<property name="indentSpace" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`INDENTSPACE`"/>
+		</property>
+	</subclass>
+</hibernate-mapping>

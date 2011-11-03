@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz277546.impl.AnotherVersionImpl" entity-name="AnotherVersion" abstract="false" lazy="false" table="`ANOTHERVERSION`">
+		<meta attribute="eclassName" inherit="false">AnotherVersion</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<version name="version" type="timestamp">
+			<column not-null="true" unique="false" name="`VERSION`"/>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz277546.impl.DateVersionImpl" entity-name="DateVersion" abstract="false" lazy="false" table="`DATEVERSION`">
+		<meta attribute="eclassName" inherit="false">DateVersion</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<version name="version" type="java.util.Date">
+			<column not-null="true" unique="false" name="`VERSION`"/>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz277546.impl.SimpleVersionImpl" entity-name="SimpleVersion" abstract="false" lazy="false" table="`SIMPLEVERSION`">
+		<meta attribute="eclassName" inherit="false">SimpleVersion</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz277546</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<version name="version" type="timestamp">
+			<column not-null="true" unique="false" name="`VERSION`"/>
+		</version>
+	</class>
+</hibernate-mapping>

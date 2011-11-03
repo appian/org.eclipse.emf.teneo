@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz329275.impl.ItemImpl" entity-name="Item" abstract="false" lazy="false" discriminator-value="Item" table="`ITEM`">
+		<meta attribute="eclassName" inherit="false">Item</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz329275</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="ITEMDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="version" type="long">
+			<column not-null="true" unique="false" name="`VERSION`"/>
+		</version>
+		<property name="unSettableStringNoDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`UNSETTABLESTRINGNODEFAULT`"/>
+		</property>
+		<property name="standardStringNoDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STANDARDSTRINGNODEFAULT`"/>
+		</property>
+		<property name="unSettableStringWithDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`UNSETTABLESTRINGWITHDEFAULT`"/>
+		</property>
+		<property name="standardStringDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STANDARDSTRINGDEFAULT`"/>
+		</property>
+		<property name="unSettableEnum" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`UNSETTABLEENUM`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.bz329275.TestEnum</param>
+				<param name="eclassifier">TestEnum</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz329275</param>
+			</type>
+		</property>
+		<property name="standardEnum" lazy="false" not-null="false" insert="true" update="true" unique="false">
+			<column not-null="false" unique="false" name="`STANDARDENUM`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
+				<param name="enumClass">org.eclipse.emf.teneo.samples.issues.bz329275.TestEnum</param>
+				<param name="eclassifier">TestEnum</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/issues/bz329275</param>
+			</type>
+		</property>
+		<property name="unSettablePrimitiveNoDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`UNSETTABLEPRIMITIVENODEFAULT`"/>
+		</property>
+		<property name="standardPrimitiveNoDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`STANDARDPRIMITIVENODEFAULT`"/>
+		</property>
+		<property name="unSettablePrimitiveWithDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`UNSETTABLEPRIMITIVEWITHDEFAULT`"/>
+		</property>
+		<property name="standardPrimitiveWithDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`STANDARDPRIMITIVEWITHDEFAULT`"/>
+		</property>
+		<property name="unSettableObjectPrimitiveWithDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.Long">
+			<column not-null="false" unique="false" name="`UNSETTABLEOBJECTPRIMITIVEWITHDEFAULT`"/>
+		</property>
+		<property name="standardObjectPrimitiveWithDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.Long">
+			<column not-null="false" unique="false" name="`STANDARDOBJECTPRIMITIVEWITHDEFAULT`"/>
+		</property>
+		<property name="unSettableObjectPrimitiveNoDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.Long">
+			<column not-null="false" unique="false" name="`UNSETTABLEOBJECTPRIMITIVENODEFAULT`"/>
+		</property>
+		<property name="standardObjectPrimitiveNoDefault" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.Long">
+			<column not-null="false" unique="false" name="`STANDARDOBJECTPRIMITIVENODEFAULT`"/>
+		</property>
+	</class>
+</hibernate-mapping>

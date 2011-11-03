@@ -10,7 +10,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="DTYPE" index="PARENTDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="PARENTDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
@@ -18,9 +18,9 @@
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
 			<column not-null="true" unique="false" name="`NAME`"/>
 		</property>
-		<bag name="children" lazy="true" cascade="persist,merge,refresh,delete,save-update,delete-orphan">
+		<bag name="children" lazy="true" cascade="persist,merge,refresh,delete,save-update,delete-orphan,lock">
 			<key update="true" foreign-key="PARENT_CHILDREN">
-				<column name="`PARENT_CHILDREN_E_ID`" not-null="false" unique="false"/>
+				<column name="`PARENT_CHILDREN_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="Child"/>
 		</bag>
@@ -33,7 +33,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="DTYPE" index="CHILDDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="CHILDDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>

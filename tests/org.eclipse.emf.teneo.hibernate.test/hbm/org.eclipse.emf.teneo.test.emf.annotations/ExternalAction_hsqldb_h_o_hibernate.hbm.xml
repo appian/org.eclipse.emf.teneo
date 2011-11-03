@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalTestImpl" entity-name="ExternalTest" abstract="false" lazy="false" discriminator-value="ExternalTest" table="`EXTERNALTEST`">
+		<meta attribute="eclassName" inherit="false">ExternalTest</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/external</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="EXTERNALTESTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</property>
+		<property name="eObject" lazy="false" insert="true" update="true" not-null="false" unique="false">
+			<column not-null="false" unique="false" name="`EOBJECT`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ExternalType">
+				<param name="eclassName">EObject</param>
+				<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
+			</type>
+		</property>
+		<list name="eObjects" table="`EXTERNALTEST_EOBJECTS`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`EXTERNALTEST_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`EXTERNALTEST_EOBJECTS_IDX`"/>
+			<element>
+				<type name="org.eclipse.emf.teneo.hibernate.mapping.ExternalType">
+					<param name="eclassName">EObject</param>
+					<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
+				</type>
+			</element>
+		</list>
+		<property name="eClass" lazy="false" insert="true" update="true" not-null="false" unique="false">
+			<column not-null="false" unique="false" name="`ECLASS`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType">
+				<param name="eclassName">EClass</param>
+				<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
+			</type>
+		</property>
+	</class>
+</hibernate-mapping>

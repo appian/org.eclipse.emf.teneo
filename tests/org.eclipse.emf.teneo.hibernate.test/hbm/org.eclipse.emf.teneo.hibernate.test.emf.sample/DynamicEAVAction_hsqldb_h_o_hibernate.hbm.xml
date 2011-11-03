@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl" entity-name="Person" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Person" proxy="org.eclipse.emf.teneo.samples.emf.sample.dynamic.Person"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl" entity-name="Employee" abstract="false" lazy="true" extends="Person" discriminator-value="Employee" proxy="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl"/>
+	<subclass name="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl" entity-name="SpecialEmployee" abstract="false" lazy="true" extends="Employee" discriminator-value="SpecialEmployee" proxy="org.eclipse.emf.teneo.samples.emf.sample.dynamic.impl.PersonImpl"/>
+	<subclass entity-name="Department" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Department" proxy="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"/>
+	<subclass entity-name="Office" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Office" proxy="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"/>
+	<subclass entity-name="Address" abstract="false" lazy="true" extends="EAV_EObject" discriminator-value="Address" proxy="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"/>
+</hibernate-mapping>

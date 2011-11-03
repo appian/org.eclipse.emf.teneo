@@ -10,7 +10,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="DTYPE" index="TESTSET_CONTAINEDITEMDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="TESTSET_CONTAINEDITEMDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
@@ -27,7 +27,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="DTYPE" index="TESTSET_ITEMDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="TESTSET_ITEMDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
@@ -50,7 +50,7 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="DTYPE" index="TESTSET_ITEMLISTDTYPE" length="255" not-null="true"/>
+			<column name="`DTYPE`" index="TESTSET_ITEMLISTDTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
@@ -60,19 +60,19 @@
 		</property>
 		<bag name="containedItem" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="TESTSET_ITEMLIST_CONTAINEDITEM">
-				<column name="`ITEMLIST_CONTAINEDITEM_E_ID`" not-null="false" unique="false"/>
+				<column name="`ITEMLIST_CONTAINEDITEM_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.ContainedItem"/>
 		</bag>
-		<bag name="item" order-by="`NAME` desc" inverse="true" lazy="extra" cascade="merge,persist,save-update,lock,refresh">
+		<bag name="item" order-by="`NAME` desc" inverse="true" lazy="extra" cascade="persist,merge,refresh,save-update,lock">
 			<key update="true">
-				<column name="`ITEM_ITEMLIST_E_ID`" not-null="false" unique="false"/>
+				<column name="`ITEM_ITEMLIST_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.Item"/>
 		</bag>
-		<bag name="joinedItem" order-by="ABS(number)" inverse="true" lazy="extra" cascade="merge,persist,save-update,lock,refresh">
+		<bag name="joinedItem" order-by="ABS(number)" inverse="true" lazy="extra" cascade="persist,merge,refresh,save-update,lock">
 			<key update="true" foreign-key="TESTSET_ITEMLIST_JOINEDITEM">
-				<column name="`ITEMLIST_JOINEDITEM_E_ID`" not-null="false" unique="false"/>
+				<column name="`ITEMLIST_JOINEDITEM_E_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="testSet.Item"/>
 		</bag>

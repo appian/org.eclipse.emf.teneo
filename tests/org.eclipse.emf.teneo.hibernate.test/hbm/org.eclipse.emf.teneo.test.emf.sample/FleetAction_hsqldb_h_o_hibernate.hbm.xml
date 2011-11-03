@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class entity-name="Vehicle" abstract="false" lazy="false" discriminator-value="Vehicle" table="`VEHICLE`">
+		<meta attribute="eclassName" inherit="false">Vehicle</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="VEHICLEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="brand" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`BRAND`"/>
+		</property>
+		<property name="model" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MODEL`"/>
+		</property>
+		<property name="make" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MAKE`"/>
+		</property>
+		<property name="color" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COLOR`"/>
+		</property>
+		<property name="plate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PLATE`"/>
+		</property>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="year" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`YEAR`"/>
+		</property>
+		<property name="length" lazy="false" insert="true" update="true" not-null="false" unique="false" type="long">
+			<column not-null="false" unique="false" name="`LENGTH`"/>
+		</property>
+		<list name="availableColors" table="`VEHICLE_AVAILABLECOLORS`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`VEHICLE_AVAILABLECOLORS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`VEHICLE_AVAILABLECOLORS_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+		<many-to-one name="owner" entity-name="Person" lazy="false" cascade="all" foreign-key="VEHICLE_OWNER" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`PERSON_OWNER_E_ID`"/>
+		</many-to-one>
+		<list name="manufacturedAt" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="VEHICLE_MANUFACTUREDAT">
+				<column name="`VEHICLE_MANUFACTUREDAT_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`VEHICLE_MANUFACTUREDAT_IDX`"/>
+			<one-to-many entity-name="ManufacturingPlant"/>
+		</list>
+		<many-to-one name="tireSpec" entity-name="Tire" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VEHICLE_TIRESPEC" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`TIRE_TIRESPEC_E_ID`"/>
+		</many-to-one>
+	</class>
+	<class entity-name="Temporal" abstract="false" lazy="false" discriminator-value="Temporal" table="`TEMPORAL`">
+		<meta attribute="eclassName" inherit="false">Temporal</meta>
+		<meta attribute="epackage" inherit="false">http:///temporal.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TEMPORALDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`DATE`"/>
+		</property>
+		<array name="touchedAttributes" table="`TEMPORAL_TOUCHEDATTRIBUTES`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`TEMPORAL_TOUCHEDATTRIBUTES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`TEMPORAL_TOUCHEDATTRIBUTES_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<property name="continuity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`CONTINUITY`"/>
+		</property>
+		<many-to-one name="versionHolder" entity-name="VersionHolder" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TEMPORAL_VERSIONHOLDER" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`TEMPORAL_VERSIONHOLDER_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="versionHolderContainment" entity-name="VersionHolder" lazy="false" cascade="all" foreign-key="TEMPORAL_VERSIONHOLDERCONTAINMENT" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`VERSIONHOLDER_VERSIONHOLDERCONTAINMENT_E_ID`"/>
+		</many-to-one>
+	</class>
+	<subclass entity-name="Person" abstract="false" lazy="false" extends="Temporal" discriminator-value="Person">
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<property name="employed" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`EMPLOYED`"/>
+		</property>
+		<list name="addresses" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="PERSON_ADDRESSES">
+				<column name="`PERSON_ADDRESSES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PERSON_ADDRESSES_IDX`"/>
+			<one-to-many entity-name="Address"/>
+		</list>
+		<list name="ownedVehicles" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="PERSON_OWNEDVEHICLES">
+				<column name="`PERSON_OWNEDVEHICLES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`PERSON_OWNEDVEHICLES_IDX`"/>
+			<one-to-many entity-name="VehicleInfo"/>
+		</list>
+		<many-to-one name="birthAddress" entity-name="Address" lazy="false" cascade="all" foreign-key="PERSON_BIRTHADDRESS" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`ADDRESS_BIRTHADDRESS_E_ID`"/>
+		</many-to-one>
+	</subclass>
+	<subclass entity-name="Address" abstract="false" lazy="false" extends="Temporal" discriminator-value="Address">
+		<meta attribute="eclassName" inherit="false">Address</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="streetName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STREETNAME`"/>
+		</property>
+		<property name="streetNumber" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STREETNUMBER`"/>
+		</property>
+		<property name="city" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`CITY`"/>
+		</property>
+		<property name="country" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`COUNTRY`"/>
+		</property>
+	</subclass>
+	<class entity-name="VehicleInfo" abstract="false" lazy="false" discriminator-value="VehicleInfo" table="`VEHICLEINFO`">
+		<meta attribute="eclassName" inherit="false">VehicleInfo</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="VEHICLEINFODTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="acquisitionDate" lazy="false" insert="true" update="true" not-null="true" unique="false" type="timestamp">
+			<column not-null="true" unique="false" name="`ACQUISITIONDATE`"/>
+		</property>
+		<many-to-one name="vehicle" entity-name="Vehicle" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VEHICLEINFO_VEHICLE" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`VEHICLE_VEHICLE_E_ID`"/>
+		</many-to-one>
+	</class>
+	<class entity-name="ManufacturingPlant" abstract="false" lazy="false" discriminator-value="ManufacturingPlant" table="`MANUFACTURINGPLANT`">
+		<meta attribute="eclassName" inherit="false">ManufacturingPlant</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="MANUFACTURINGPLANTDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+		<many-to-one name="address" entity-name="Address" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="MANUFACTURINGPLANT_ADDRESS" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`ADDRESS_ADDRESS_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="transportFleet" entity-name="Fleet" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="MANUFACTURINGPLANT_TRANSPORTFLEET" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`FLEET_TRANSPORTFLEET_E_ID`"/>
+		</many-to-one>
+	</class>
+	<subclass entity-name="Fleet" abstract="false" lazy="false" extends="Temporal" discriminator-value="Fleet">
+		<meta attribute="eclassName" inherit="false">Fleet</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<list name="vehicles" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="FLEET_VEHICLES">
+				<column name="`FLEET_VEHICLES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`FLEET_VEHICLES_IDX`"/>
+			<one-to-many entity-name="Vehicle"/>
+		</list>
+		<list name="vehicleInformation" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="FLEET_VEHICLEINFORMATION">
+				<column name="`FLEET_VEHICLEINFORMATION_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`FLEET_VEHICLEINFORMATION_IDX`"/>
+			<one-to-many entity-name="VehicleInfo"/>
+		</list>
+		<many-to-one name="serviceGarage" entity-name="Garage" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="FLEET_SERVICEGARAGE" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`FLEET_SERVICEGARAGE_E_ID`"/>
+		</many-to-one>
+	</subclass>
+	<subclass entity-name="Garage" abstract="false" lazy="false" extends="Temporal" discriminator-value="Garage">
+		<meta attribute="eclassName" inherit="false">Garage</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<list name="vehicles" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true" foreign-key="GARAGE_VEHICLES">
+				<column name="`GARAGE_VEHICLES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`GARAGE_VEHICLES_IDX`"/>
+			<one-to-many entity-name="Vehicle"/>
+		</list>
+		<many-to-one name="customerShuttles" entity-name="Fleet" lazy="false" cascade="all" foreign-key="GARAGE_CUSTOMERSHUTTLES" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`FLEET_CUSTOMERSHUTTLES_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="address" entity-name="Address" lazy="false" cascade="all" foreign-key="GARAGE_ADDRESS" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`ADDRESS_ADDRESS_E_ID`"/>
+		</many-to-one>
+		<list name="fleetsUsingGarage" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`FLEET_SERVICEGARAGE_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`GARAGE_FLEETSUSINGGARAGE_IDX`"/>
+			<one-to-many entity-name="Fleet"/>
+		</list>
+		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`NAME`"/>
+		</property>
+	</subclass>
+	<class entity-name="Tire" abstract="false" lazy="false" discriminator-value="Tire" table="`TIRE`">
+		<meta attribute="eclassName" inherit="false">Tire</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TIREDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="radius" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`RADIUS`"/>
+		</property>
+		<property name="width" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`WIDTH`"/>
+		</property>
+		<property name="profile" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`PROFILE`"/>
+		</property>
+		<property name="make" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MAKE`"/>
+		</property>
+		<property name="model" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MODEL`"/>
+		</property>
+	</class>
+	<subclass entity-name="Car" abstract="false" lazy="false" extends="Vehicle" discriminator-value="Car">
+		<meta attribute="eclassName" inherit="false">Car</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
+		</property>
+		<property name="date" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`DATE`"/>
+		</property>
+		<array name="touchedAttributes" table="`CAR_TOUCHEDATTRIBUTES`" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`CAR_TOUCHEDATTRIBUTES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`CAR_TOUCHEDATTRIBUTES_IDX`"/>
+			<element type="byte"/>
+		</array>
+		<property name="continuity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`CONTINUITY`"/>
+		</property>
+		<many-to-one name="versionHolder" entity-name="VersionHolder" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="TEMPORAL_VERSIONHOLDER" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`CAR_VERSIONHOLDER_E_ID`"/>
+		</many-to-one>
+		<many-to-one name="versionHolderContainment" entity-name="VersionHolder" lazy="false" cascade="all" foreign-key="TEMPORAL_VERSIONHOLDERCONTAINMENT" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`VERSIONHOLDER_VERSIONHOLDERCONTAINMENT_E_ID`"/>
+		</many-to-one>
+		<property name="numPassengers" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`NUMPASSENGERS`"/>
+		</property>
+		<property name="numTires" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`NUMTIRES`"/>
+		</property>
+		<list name="tires" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="CAR_TIRES">
+				<column name="`CAR_TIRES_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`CAR_TIRES_IDX`"/>
+			<one-to-many entity-name="Tire"/>
+		</list>
+	</subclass>
+	<subclass entity-name="Hybrid" abstract="false" lazy="false" extends="Car" discriminator-value="Hybrid">
+		<meta attribute="eclassName" inherit="false">Hybrid</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="hasRechargePlug" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`HASRECHARGEPLUG`"/>
+		</property>
+		<property name="batteryLife" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`BATTERYLIFE`"/>
+		</property>
+	</subclass>
+	<class name="fleet.PassengerVehicle" entity-name="PassengerVehicle" abstract="true" lazy="false" discriminator-value="PassengerVehicle" table="`PASSENGERVEHICLE`">
+		<meta attribute="eclassName" inherit="false">PassengerVehicle</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PASSENGERVEHICLEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="passengerName" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`PASSENGERNAME`"/>
+		</property>
+	</class>
+	<subclass entity-name="EngineFactory" abstract="false" lazy="false" extends="ManufacturingPlant" discriminator-value="EngineFactory">
+		<meta attribute="eclassName" inherit="false">EngineFactory</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="makesDieselEngines" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
+			<column not-null="false" unique="false" name="`MAKESDIESELENGINES`"/>
+		</property>
+		<list name="brands" table="`ENGINEFACTORY_BRANDS`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`ENGINEFACTORY_BRANDS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`ENGINEFACTORY_BRANDS_IDX`"/>
+			<element type="java.lang.String"/>
+		</list>
+	</subclass>
+	<subclass entity-name="USAddress" abstract="false" lazy="false" extends="Address" discriminator-value="USAddress">
+		<meta attribute="eclassName" inherit="false">USAddress</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<property name="zipCode" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ZIPCODE`"/>
+		</property>
+		<property name="state" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`STATE`"/>
+		</property>
+	</subclass>
+	<class entity-name="Vin" abstract="false" lazy="false" discriminator-value="Vin" table="`VIN`">
+		<meta attribute="eclassName" inherit="false">Vin</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="VINDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="id" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`ID`"/>
+		</property>
+		<property name="installationDate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="timestamp">
+			<column not-null="false" unique="false" name="`INSTALLATIONDATE`"/>
+		</property>
+		<many-to-one name="vehicle" entity-name="Vehicle" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="VIN_VEHICLE" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`VEHICLE_VEHICLE_E_ID`"/>
+		</many-to-one>
+	</class>
+	<class entity-name="TransportationDevice" abstract="false" lazy="false" discriminator-value="TransportationDevice" table="`TRANSPORTATIONDEVICE`">
+		<meta attribute="eclassName" inherit="false">TransportationDevice</meta>
+		<meta attribute="epackage" inherit="false">http:///fleet.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="TRANSPORTATIONDEVICEDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="manufacturedBy" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+			<column not-null="false" unique="false" name="`MANUFACTUREDBY`"/>
+		</property>
+		<property name="year" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`YEAR`"/>
+		</property>
+	</class>
+	<class entity-name="VersionHolder" abstract="false" lazy="false" discriminator-value="VersionHolder" table="`VERSIONHOLDER`">
+		<meta attribute="eclassName" inherit="false">VersionHolder</meta>
+		<meta attribute="epackage" inherit="false">http:///temporal.ecore</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="VERSIONHOLDERDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="versions" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`TEMPORAL_VERSIONHOLDER_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`VERSIONHOLDER_VERSIONS_IDX`"/>
+			<one-to-many entity-name="Temporal"/>
+		</list>
+		<property name="indexOfContinuity" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
+			<column not-null="false" unique="false" name="`INDEXOFCONTINUITY`"/>
+		</property>
+	</class>
+</hibernate-mapping>

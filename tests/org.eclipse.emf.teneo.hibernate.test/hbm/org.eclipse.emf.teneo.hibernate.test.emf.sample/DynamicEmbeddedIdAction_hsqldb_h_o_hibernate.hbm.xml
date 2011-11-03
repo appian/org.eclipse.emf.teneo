@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class entity-name="Person" abstract="false" lazy="false" name="org.eclipse.emf.ecore.impl.DynamicEObjectImpl" discriminator-value="Person" table="`PERSON`">
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http:///www.elver.org/org.eclipse.emf.teneo.hibernate.test.emf.sample.DynamicEmbeddedIdAction</meta>
+		<composite-id name="name" class="org.eclipse.emf.teneo.hibernate.mapping.SerializableDynamicEObjectImpl" access="org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler">
+			<meta attribute="eclassName" inherit="false">Name</meta>
+			<meta attribute="epackage" inherit="false">http:///www.elver.org/org.eclipse.emf.teneo.hibernate.test.emf.sample.DynamicEmbeddedIdAction</meta>
+			<key-property name="firstName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+			</key-property>
+			<key-property name="lastName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`LASTNAME`"/>
+			</key-property>
+		</composite-id>
+		<discriminator type="string">
+			<column name="`DTYPE`" index="PERSONDTYPE" length="255" not-null="true"/>
+		</discriminator>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>

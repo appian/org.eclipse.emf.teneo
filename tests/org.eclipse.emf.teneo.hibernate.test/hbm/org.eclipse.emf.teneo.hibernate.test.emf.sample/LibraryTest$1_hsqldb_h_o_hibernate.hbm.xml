@@ -6,38 +6,38 @@
 		<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
 		<param name="edatatype">BookCategoryObject</param>
 	</typedef>
-	<class entity-name="Book" abstract="false" lazy="false" discriminator-value="Book" table="`tab_book`">
+	<class entity-name="Book" abstract="false" lazy="false" discriminator-value="Book" table="`TAB_BOOK`">
 		<meta attribute="eclassName" inherit="false">Book</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<cache usage="read-write"/>
 		<id name="title" type="java.lang.String">
-			<column not-null="true" unique="false" name="`col_title`" length="50"/>
+			<column not-null="true" unique="false" name="`COL_TITLE`" length="50"/>
 		</id>
 		<discriminator type="string">
-			<column name="COL_dtype" index="TAB_bookCOL_dtype" length="255" not-null="true"/>
+			<column name="`COL_DTYPE`" index="TAB_BOOKCOL_DTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="pages" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`col_pages`"/>
+			<column not-null="false" unique="false" name="`COL_PAGES`"/>
 		</property>
 		<property name="category" lazy="false" not-null="false" insert="true" update="true" unique="false">
-			<column not-null="false" unique="false" name="`col_category`"/>
+			<column not-null="false" unique="false" name="`COL_CATEGORY`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserIntegerType">
 				<param name="enumClass">org.eclipse.emf.teneo.samples.emf.sample.library.BookCategory</param>
 				<param name="eclassifier">BookCategory</param>
 				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</param>
 			</type>
 		</property>
-		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="FKPRE_book_author" insert="false" update="false" not-null="false">
-			<column not-null="false" unique="false" name="`col_book_author_e_id`"/>
+		<many-to-one name="author" entity-name="Writer" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="FKPRE_BOOK_AUTHOR" insert="false" update="false" not-null="false">
+			<column not-null="false" unique="false" name="`COL_BOOK_AUTHOR_E_ID`"/>
 		</many-to-one>
 		<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="int">
-			<column not-null="false" unique="false" name="`col_test`"/>
+			<column not-null="false" unique="false" name="`COL_TEST`"/>
 		</property>
 	</class>
-	<class entity-name="Library" abstract="false" lazy="false" discriminator-value="Library" table="`tab_library`">
+	<class entity-name="Library" abstract="false" lazy="false" discriminator-value="Library" table="`TAB_LIBRARY`">
 		<meta attribute="eclassName" inherit="false">Library</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<cache usage="read-write"/>
@@ -46,32 +46,32 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="COL_dtype" index="TAB_libraryCOL_dtype" length="255" not-null="true"/>
+			<column name="`COL_DTYPE`" index="TAB_LIBRARYCOL_DTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`col_name`" length="50"/>
+			<column not-null="true" unique="false" name="`COL_NAME`" length="50"/>
 		</property>
 		<list name="writers" fetch="subselect" lazy="true" cascade="all,delete-orphan">
 			<cache usage="read-write"/>
 			<key update="true" foreign-key="schrijvers">
-				<column name="`col_library_writers_e_id`" not-null="false" unique="false"/>
+				<column name="`COL_LIBRARY_WRITERS_E_ID`" unique="false"/>
 			</key>
-			<list-index column="`test_index`"/>
+			<list-index column="`TEST_INDEX`"/>
 			<one-to-many entity-name="Writer"/>
 		</list>
 		<list name="books" lazy="true" cascade="all,delete-orphan">
 			<cache usage="read-write"/>
-			<key update="true" foreign-key="FKPRE_library_books">
-				<column name="`col_library_books_e_id`" not-null="false" unique="false"/>
+			<key update="true" foreign-key="FKPRE_LIBRARY_BOOKS">
+				<column name="`COL_LIBRARY_BOOKS_E_ID`" unique="false"/>
 			</key>
-			<list-index column="`col_library_books_idx`"/>
+			<list-index column="`COL_LIBRARY_BOOKS_IDX`"/>
 			<one-to-many entity-name="Book"/>
 		</list>
 	</class>
-	<class entity-name="Writer" abstract="false" lazy="false" discriminator-value="Writer" table="`tab_writer`">
+	<class entity-name="Writer" abstract="false" lazy="false" discriminator-value="Writer" table="`TAB_WRITER`">
 		<meta attribute="eclassName" inherit="false">Writer</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/Library</meta>
 		<cache usage="read-write"/>
@@ -80,20 +80,20 @@
 			<generator class="native"/>
 		</id>
 		<discriminator type="string">
-			<column name="COL_dtype" index="TAB_writerCOL_dtype" length="255" not-null="true"/>
+			<column name="`COL_DTYPE`" index="TAB_WRITERCOL_DTYPE" length="255" not-null="true"/>
 		</discriminator>
 		<version name="COL_e_version" column="COL_e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<property name="name" lazy="false" insert="true" update="true" not-null="true" unique="false" type="java.lang.String">
-			<column not-null="true" unique="false" name="`col_name`" length="50"/>
+			<column not-null="true" unique="false" name="`COL_NAME`" length="50"/>
 		</property>
-		<list name="books" lazy="true" cascade="merge,persist,save-update,lock,refresh">
+		<list name="books" lazy="true" cascade="persist,merge,refresh,save-update,lock">
 			<cache usage="read-write"/>
 			<key update="true">
-				<column name="`col_book_author_e_id`" not-null="false" unique="false"/>
+				<column name="`COL_BOOK_AUTHOR_E_ID`" unique="false"/>
 			</key>
-			<list-index column="`col_writer_books_idx`"/>
+			<list-index column="`COL_WRITER_BOOKS_IDX`"/>
 			<one-to-many entity-name="Book"/>
 		</list>
 	</class>
