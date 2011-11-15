@@ -137,10 +137,10 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 			collElement.addAttribute("inverse", "true");
 		}
 
-		boolean isMapValueIsEntity = false;
+		final EClass eclass = eref.getEReferenceType();
+		boolean isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
 		if (hbReference.getHbIdBag() == null && otm.isList()) {
 			// now we check if it is a list or a map
-			final EClass eclass = eref.getEReferenceType();
 			if (hbReference.getMapKey() != null
 					|| hbReference.getHbMapKey() != null
 					|| hbReference.getMapKeyManyToMany() != null) {
@@ -185,7 +185,6 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 		if (hbReference.getEmbedded() != null) {
 			addCompositeElement(collElement, hbReference);
 		} else if (isMap && !isMapValueIsEntity) {
-			final EClass eclass = eref.getEReferenceType();
 			final EAttribute valueEAttribute = (EAttribute) eclass
 					.getEStructuralFeature("value");
 			final PAnnotatedEAttribute valuePAttribute = paReference
