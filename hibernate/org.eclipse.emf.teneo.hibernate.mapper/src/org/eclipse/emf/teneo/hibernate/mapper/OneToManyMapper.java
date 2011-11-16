@@ -139,15 +139,13 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 
 		final EClass eclass = eref.getEReferenceType();
 		boolean isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
-		if (hbReference.getHbIdBag() == null && otm.isList()) {
+		if (hbReference.getHbIdBag() == null) {
 			// now we check if it is a list or a map
 			if (hbReference.getMapKey() != null
 					|| hbReference.getHbMapKey() != null
 					|| hbReference.getMapKeyManyToMany() != null) {
-				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
 				addMapKey(collElement, paReference);
 			} else if (isMap) {
-				isMapValueIsEntity = (eclass.getEStructuralFeature("value") instanceof EReference);
 				addMapKey(collElement, hbReference);
 			} else if (collElement.getName().compareTo("list") == 0) { // otm.isIndexed()
 				addListIndex(collElement, paReference);
