@@ -859,11 +859,6 @@ public abstract class AbstractMapper {
 			columns.add(typeColumn);
 		}
 
-		for (JoinColumn joinColumn : paFeature.getJoinColumns()) {
-			final Column column = org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory.eINSTANCE.createColumn();
-			column.setName(joinColumn.getName());
-			columns.add(column);
-		}
 		if (paFeature.getColumn() != null) {
 			columns.add(paFeature.getColumn());
 		} else {
