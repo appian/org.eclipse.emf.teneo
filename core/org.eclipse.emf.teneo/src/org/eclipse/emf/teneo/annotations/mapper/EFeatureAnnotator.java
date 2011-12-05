@@ -117,7 +117,8 @@ public class EFeatureAnnotator extends AbstractAnnotator implements
 					}
 				}
 
-				if (aReference != null && aReference.getExternal() == null
+				if (aReference != null && aReference.getTransient() == null
+						&& aReference.getExternal() == null
 						&& aReference.getAReferenceType() != null
 						&& aReference.getAReferenceType().getExternal() != null) {
 					aReference.setExternal(aReference.getAReferenceType()
