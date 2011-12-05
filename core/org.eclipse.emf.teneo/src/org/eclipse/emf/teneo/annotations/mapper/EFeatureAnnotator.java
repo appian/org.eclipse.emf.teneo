@@ -106,17 +106,22 @@ public class EFeatureAnnotator extends AbstractAnnotator implements
 					final Transient trans = getFactory().createTransient();
 					trans.setEModelElement(eStructuralFeature);
 					aStructuralFeature.setTransient(trans);
-				} else if (hasTransientAnnotation(aReference
-						.getEReferenceType())) {
-					final Transient trans = getFactory().createTransient();
-					trans.setEModelElement(eStructuralFeature);
-					aStructuralFeature.setTransient(trans);
-				} else if (aReference.getAReferenceType() != null) {
-					isTransient = aReference.getAReferenceType().getTransient() != null;
+				} else if (aReference.getExternal() == null) {
+					if (hasTransientAnnotation(aReference.getEReferenceType())) {
+						final Transient trans = getFactory().createTransient();
+						trans.setEModelElement(eStructuralFeature);
+						aStructuralFeature.setTransient(trans);
+					} else if (aReference.getAReferenceType() != null) {
+						isTransient = aReference.getAReferenceType()
+								.getTransient() != null;
+					}
 				}
 
-				if (aReference.getExternal() == null && aReference.getAReferenceType().getExternal() != null) {
-					aReference.setExternal(aReference.getAReferenceType().getExternal());
+				if (aReference != null && aReference.getExternal() == null
+						&& aReference.getAReferenceType() != null
+						&& aReference.getAReferenceType().getExternal() != null) {
+					aReference.setExternal(aReference.getAReferenceType()
+							.getExternal());
 				}
 			}
 
