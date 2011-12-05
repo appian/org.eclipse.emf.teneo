@@ -12,12 +12,16 @@
     </genClasses>
     <genClasses ecoreClass="mappedsuperclass.ecore#//Document">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//Document/myGenericInfo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mappedsuperclass.ecore#//Document/myTestReference"/>
     </genClasses>
     <genClasses ecoreClass="mappedsuperclass.ecore#//ParentDocument">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//ParentDocument/myName"/>
     </genClasses>
     <genClasses ecoreClass="mappedsuperclass.ecore#//SpecificDocument">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//SpecificDocument/mySpecificInfo"/>
+    </genClasses>
+    <genClasses ecoreClass="mappedsuperclass.ecore#//TestReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mappedsuperclass.ecore#//TestReference/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

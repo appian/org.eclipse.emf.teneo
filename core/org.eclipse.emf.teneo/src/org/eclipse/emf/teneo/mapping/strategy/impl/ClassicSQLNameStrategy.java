@@ -135,7 +135,11 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 	 * (org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature)
 	 */
 	public String getForeignKeyName(PAnnotatedEStructuralFeature aFeature) {
-		final PAnnotatedEClass aClass = aFeature.getPaEClass();
+		return getForeignKeyName(aFeature.getPaEClass(), aFeature);
+	}
+
+	public String getForeignKeyName(PAnnotatedEClass aClass,
+			PAnnotatedEStructuralFeature aFeature) {
 		return optionForeignKeyNamePrefix
 				+ convert(
 						getEntityName(aClass.getPaModel(),

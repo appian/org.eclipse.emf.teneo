@@ -64,6 +64,7 @@ public class MappedsuperclassFactoryImpl extends EFactoryImpl implements Mappeds
 			case MappedsuperclassPackage.DOCUMENT: return createDocument();
 			case MappedsuperclassPackage.PARENT_DOCUMENT: return createParentDocument();
 			case MappedsuperclassPackage.SPECIFIC_DOCUMENT: return createSpecificDocument();
+			case MappedsuperclassPackage.TEST_REFERENCE: return createTestReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +108,16 @@ public class MappedsuperclassFactoryImpl extends EFactoryImpl implements Mappeds
 	public SpecificDocument createSpecificDocument() {
 		SpecificDocumentImpl specificDocument = new SpecificDocumentImpl();
 		return specificDocument;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestReference createTestReference() {
+		TestReferenceImpl testReference = new TestReferenceImpl();
+		return testReference;
 	}
 
 	/**

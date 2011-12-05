@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
@@ -20,6 +21,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Mappedsupe
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.ParentDocument;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.SpecificDocument;
+import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +59,13 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	private EClass specificDocumentEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testReferenceEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -83,20 +92,10 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link MappedsuperclassPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -108,7 +107,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		if (isInited) return (MappedsuperclassPackage)EPackage.Registry.INSTANCE.getEPackage(MappedsuperclassPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MappedsuperclassPackageImpl theMappedsuperclassPackage = (MappedsuperclassPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof MappedsuperclassPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new MappedsuperclassPackageImpl());
+		MappedsuperclassPackageImpl theMappedsuperclassPackage = (MappedsuperclassPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MappedsuperclassPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MappedsuperclassPackageImpl());
 
 		isInited = true;
 
@@ -124,6 +123,9 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		// Mark meta-data to indicate it can't be changed
 		theMappedsuperclassPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(MappedsuperclassPackage.eNS_URI, theMappedsuperclassPackage);
 		return theMappedsuperclassPackage;
 	}
 
@@ -168,6 +170,15 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDocument_MyTestReference() {
+		return (EReference)documentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getParentDocument() {
 		return parentDocumentEClass;
 	}
@@ -204,6 +215,24 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTestReference() {
+		return testReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestReference_Name() {
+		return (EAttribute)testReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MappedsuperclassFactory getMappedsuperclassFactory() {
 		return (MappedsuperclassFactory)getEFactoryInstance();
 	}
@@ -232,12 +261,16 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 
 		documentEClass = createEClass(DOCUMENT);
 		createEAttribute(documentEClass, DOCUMENT__MY_GENERIC_INFO);
+		createEReference(documentEClass, DOCUMENT__MY_TEST_REFERENCE);
 
 		parentDocumentEClass = createEClass(PARENT_DOCUMENT);
 		createEAttribute(parentDocumentEClass, PARENT_DOCUMENT__MY_NAME);
 
 		specificDocumentEClass = createEClass(SPECIFIC_DOCUMENT);
 		createEAttribute(specificDocumentEClass, SPECIFIC_DOCUMENT__MY_SPECIFIC_INFO);
+
+		testReferenceEClass = createEClass(TEST_REFERENCE);
+		createEAttribute(testReferenceEClass, TEST_REFERENCE__NAME);
 	}
 
 	/**
@@ -281,12 +314,16 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocument_MyGenericInfo(), theXMLTypePackage.getString(), "myGenericInfo", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDocument_MyTestReference(), this.getTestReference(), null, "myTestReference", null, 1, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parentDocumentEClass, ParentDocument.class, "ParentDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParentDocument_MyName(), theXMLTypePackage.getString(), "myName", null, 1, 1, ParentDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(specificDocumentEClass, SpecificDocument.class, "SpecificDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSpecificDocument_MySpecificInfo(), theXMLTypePackage.getString(), "mySpecificInfo", null, 1, 1, SpecificDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(testReferenceEClass, TestReference.class, "TestReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestReference_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, TestReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -317,7 +354,7 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   source, 
 		   new String[] {
 			 "appinfo", "@MappedSuperclass"
-		   });				
+		   });					
 		addAnnotation
 		  (parentDocumentEClass, 
 		   source, 
@@ -335,6 +372,12 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   source, 
 		   new String[] {
 			 "appinfo", "@Entity\n       @AttributeOverrides({@AttributeOverride(name=\"myName\",  \n\t\tcolumn=@Column(name=\"PARENTDOCUMENT_NAME\", length=\"50\"))})\n\t\t\t"
+		   });				
+		addAnnotation
+		  (testReferenceEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Entity"
 		   });		
 	}
 
@@ -373,6 +416,13 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   new String[] {
 			 "kind", "element",
 			 "name", "myGenericInfo"
+		   });		
+		addAnnotation
+		  (getDocument_MyTestReference(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "myTestReference"
 		   });			
 		addAnnotation
 		  (parentDocumentEClass, 
@@ -401,6 +451,20 @@ public class MappedsuperclassPackageImpl extends EPackageImpl implements Mappeds
 		   new String[] {
 			 "kind", "element",
 			 "name", "mySpecificInfo"
+		   });			
+		addAnnotation
+		  (testReferenceEClass, 
+		   source, 
+		   new String[] {
+			 "name", "TestReference",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getTestReference_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
 		   });
 	}
 

@@ -84,6 +84,10 @@ public interface SQLNameStrategy extends ExtensionPoint {
 	public abstract String getForeignKeyName(
 			PAnnotatedEStructuralFeature aFeature);
 
+	public abstract String getForeignKeyName(
+			PAnnotatedEClass aOwningClass,
+			PAnnotatedEStructuralFeature aFeature);
+
 	/** Return joincolumn names for many-to-one */
 	public abstract List<String> getManyToOneJoinColumnNames(
 			PAnnotatedEReference aReference);

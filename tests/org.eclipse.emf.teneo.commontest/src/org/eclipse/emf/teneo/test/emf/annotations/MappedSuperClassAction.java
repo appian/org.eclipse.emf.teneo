@@ -62,6 +62,8 @@ public class MappedSuperClassAction extends AbstractTestAction {
 			sd.setMyName("TEST IT");
 			sd.setMyGenericInfo("GENERIC INFO");
 			sd.setMySpecificInfo("SPECIFIC INFO");
+			sd.setMyTestReference(factory.createTestReference());
+			sd.getMyTestReference().setName("name");
 			store.store(sd);
 			store.commitTransaction();
 		}

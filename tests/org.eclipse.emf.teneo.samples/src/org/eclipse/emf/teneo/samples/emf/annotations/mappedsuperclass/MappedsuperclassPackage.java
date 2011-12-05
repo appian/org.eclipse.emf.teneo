@@ -9,6 +9,7 @@ package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,13 +79,22 @@ public interface MappedsuperclassPackage extends EPackage {
 	int DOCUMENT__MY_GENERIC_INFO = 0;
 
 	/**
+	 * The feature id for the '<em><b>My Test Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__MY_TEST_REFERENCE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCUMENT_FEATURE_COUNT = 1;
+	int DOCUMENT_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.AddIDDocumentImpl <em>Add ID Document</em>}' class.
@@ -104,6 +114,15 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADD_ID_DOCUMENT__MY_GENERIC_INFO = DOCUMENT__MY_GENERIC_INFO;
+
+	/**
+	 * The feature id for the '<em><b>My Test Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ID_DOCUMENT__MY_TEST_REFERENCE = DOCUMENT__MY_TEST_REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -143,6 +162,15 @@ public interface MappedsuperclassPackage extends EPackage {
 	int PARENT_DOCUMENT__MY_GENERIC_INFO = DOCUMENT__MY_GENERIC_INFO;
 
 	/**
+	 * The feature id for the '<em><b>My Test Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_DOCUMENT__MY_TEST_REFERENCE = DOCUMENT__MY_TEST_REFERENCE;
+
+	/**
 	 * The feature id for the '<em><b>My Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,6 +208,15 @@ public interface MappedsuperclassPackage extends EPackage {
 	int SPECIFIC_DOCUMENT__MY_GENERIC_INFO = PARENT_DOCUMENT__MY_GENERIC_INFO;
 
 	/**
+	 * The feature id for the '<em><b>My Test Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIC_DOCUMENT__MY_TEST_REFERENCE = PARENT_DOCUMENT__MY_TEST_REFERENCE;
+
+	/**
 	 * The feature id for the '<em><b>My Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -205,6 +242,35 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPECIFIC_DOCUMENT_FEATURE_COUNT = PARENT_DOCUMENT_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.TestReferenceImpl <em>Test Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.TestReferenceImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getTestReference()
+	 * @generated
+	 */
+	int TEST_REFERENCE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_REFERENCE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Test Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_REFERENCE_FEATURE_COUNT = 1;
 
 
 	/**
@@ -250,6 +316,17 @@ public interface MappedsuperclassPackage extends EPackage {
 	EAttribute getDocument_MyGenericInfo();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyTestReference <em>My Test Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>My Test Reference</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyTestReference()
+	 * @see #getDocument()
+	 * @generated
+	 */
+	EReference getDocument_MyTestReference();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.ParentDocument <em>Parent Document</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +367,27 @@ public interface MappedsuperclassPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSpecificDocument_MySpecificInfo();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference <em>Test Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Reference</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference
+	 * @generated
+	 */
+	EClass getTestReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference#getName()
+	 * @see #getTestReference()
+	 * @generated
+	 */
+	EAttribute getTestReference_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -350,6 +448,14 @@ public interface MappedsuperclassPackage extends EPackage {
 		EAttribute DOCUMENT__MY_GENERIC_INFO = eINSTANCE.getDocument_MyGenericInfo();
 
 		/**
+		 * The meta object literal for the '<em><b>My Test Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT__MY_TEST_REFERENCE = eINSTANCE.getDocument_MyTestReference();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.ParentDocumentImpl <em>Parent Document</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -384,6 +490,24 @@ public interface MappedsuperclassPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SPECIFIC_DOCUMENT__MY_SPECIFIC_INFO = eINSTANCE.getSpecificDocument_MySpecificInfo();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.TestReferenceImpl <em>Test Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.TestReferenceImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.MappedsuperclassPackageImpl#getTestReference()
+		 * @generated
+		 */
+		EClass TEST_REFERENCE = eINSTANCE.getTestReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_REFERENCE__NAME = eINSTANCE.getTestReference_Name();
 
 	}
 

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage;
+import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +25,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Mappedsupe
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.DocumentImpl#getMyGenericInfo <em>My Generic Info</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.DocumentImpl#getMyTestReference <em>My Test Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +51,16 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * @ordered
 	 */
 	protected String myGenericInfo = MY_GENERIC_INFO_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMyTestReference() <em>My Test Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMyTestReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected TestReference myTestReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,11 +107,34 @@ public class DocumentImpl extends EObjectImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TestReference getMyTestReference() {
+		return myTestReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMyTestReference(TestReference newMyTestReference) {
+		TestReference oldMyTestReference = myTestReference;
+		myTestReference = newMyTestReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MappedsuperclassPackage.DOCUMENT__MY_TEST_REFERENCE, oldMyTestReference, myTestReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
 				return getMyGenericInfo();
+			case MappedsuperclassPackage.DOCUMENT__MY_TEST_REFERENCE:
+				return getMyTestReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -114,6 +149,9 @@ public class DocumentImpl extends EObjectImpl implements Document {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
 				setMyGenericInfo((String)newValue);
+				return;
+			case MappedsuperclassPackage.DOCUMENT__MY_TEST_REFERENCE:
+				setMyTestReference((TestReference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -130,6 +168,9 @@ public class DocumentImpl extends EObjectImpl implements Document {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
 				setMyGenericInfo(MY_GENERIC_INFO_EDEFAULT);
 				return;
+			case MappedsuperclassPackage.DOCUMENT__MY_TEST_REFERENCE:
+				setMyTestReference((TestReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -144,6 +185,8 @@ public class DocumentImpl extends EObjectImpl implements Document {
 		switch (featureID) {
 			case MappedsuperclassPackage.DOCUMENT__MY_GENERIC_INFO:
 				return MY_GENERIC_INFO_EDEFAULT == null ? myGenericInfo != null : !MY_GENERIC_INFO_EDEFAULT.equals(myGenericInfo);
+			case MappedsuperclassPackage.DOCUMENT__MY_TEST_REFERENCE:
+				return myTestReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

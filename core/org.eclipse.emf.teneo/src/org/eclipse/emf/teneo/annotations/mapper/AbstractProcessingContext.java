@@ -36,6 +36,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
+import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
 
 /**
  * ProcessingContext which handles attributes overrides.
@@ -81,8 +82,8 @@ public class AbstractProcessingContext {
 	public void addAssociationOverrides(EList<AssociationOverride> overrides) {
 		if (overrides != null) {
 			for (AssociationOverride override : overrides) {
-				currentOverrides.put(override.getName(), override
-						.getJoinColumns());
+				currentOverrides.put(override.getName(),
+						override.getJoinColumns());
 			}
 		}
 	}
@@ -149,8 +150,9 @@ public class AbstractProcessingContext {
 				return getAttributeOverride(newFeatureName,
 						embeddingFeatureStack.size() - 1);
 			} else if (embeddingFeatureIndex > 0) {
-				String newFeatureName = embeddingFeatureStack.get(
-						embeddingFeatureIndex - 1).getModelElement().getName()
+				String newFeatureName = embeddingFeatureStack
+						.get(embeddingFeatureIndex - 1).getModelElement()
+						.getName()
 						+ "." + featureName;
 				return getAttributeOverride(newFeatureName,
 						embeddingFeatureIndex - 1);
@@ -188,8 +190,9 @@ public class AbstractProcessingContext {
 				return getAssociationOverrides(newFeatureName,
 						embeddingFeatureStack.size() - 1);
 			} else if (embeddingFeatureIndex > 0) {
-				String newFeatureName = embeddingFeatureStack.get(
-						embeddingFeatureIndex - 1).getModelElement().getName()
+				String newFeatureName = embeddingFeatureStack
+						.get(embeddingFeatureIndex - 1).getModelElement()
+						.getName()
 						+ "." + featureName;
 				return getAssociationOverrides(newFeatureName,
 						embeddingFeatureIndex - 1);
@@ -262,7 +265,22 @@ public class AbstractProcessingContext {
 			result.add(paModel.getPAnnotated(esf));
 		}
 
+		// solve: https://issues.openbravo.com/view.php?id=19236
+		for (PAnnotatedEStructuralFeature paFeature : result) {
+			if (paFeature.getForeignKey() != null
+					&& paFeature.getForeignKey().isGenerated()) {
+				paFeature.getForeignKey().setName(
+						getSqlNameStrategy().getForeignKeyName(aClass,
+								paFeature));
+			}
+		}
+
 		return result;
+	}
+
+	public SQLNameStrategy getSqlNameStrategy() {
+		// needs to be implemented by subclass
+		throw new UnsupportedOperationException();
 	}
 
 	/**

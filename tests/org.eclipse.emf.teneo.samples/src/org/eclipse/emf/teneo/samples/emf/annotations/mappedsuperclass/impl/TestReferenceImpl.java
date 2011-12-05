@@ -2,60 +2,58 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParentDocumentImpl.java,v 1.3 2007/08/10 20:30:43 mtaal Exp $
+ * $Id$
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.ParentDocument;
 import org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.TestReference;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parent Document</b></em>'.
+ * An implementation of the model object '<em><b>Test Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.ParentDocumentImpl#getMyName <em>My Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.impl.TestReferenceImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
+public class TestReferenceImpl extends EObjectImpl implements TestReference {
 	/**
-	 * The default value of the '{@link #getMyName() <em>My Name</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMyName()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MY_NAME_EDEFAULT = null;
-
+	protected static final String NAME_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getMyName() <em>My Name</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMyName()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String myName = MY_NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ParentDocumentImpl() {
+	protected TestReferenceImpl() {
 		super();
 	}
 
@@ -66,7 +64,7 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MappedsuperclassPackage.Literals.PARENT_DOCUMENT;
+		return MappedsuperclassPackage.Literals.TEST_REFERENCE;
 	}
 
 	/**
@@ -74,8 +72,8 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMyName() {
-		return myName;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -83,11 +81,11 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyName(String newMyName) {
-		String oldMyName = myName;
-		myName = newMyName;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MappedsuperclassPackage.PARENT_DOCUMENT__MY_NAME, oldMyName, myName));
+			eNotify(new ENotificationImpl(this, Notification.SET, MappedsuperclassPackage.TEST_REFERENCE__NAME, oldName, name));
 	}
 
 	/**
@@ -98,8 +96,8 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MappedsuperclassPackage.PARENT_DOCUMENT__MY_NAME:
-				return getMyName();
+			case MappedsuperclassPackage.TEST_REFERENCE__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,8 +110,8 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MappedsuperclassPackage.PARENT_DOCUMENT__MY_NAME:
-				setMyName((String)newValue);
+			case MappedsuperclassPackage.TEST_REFERENCE__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,8 +125,8 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MappedsuperclassPackage.PARENT_DOCUMENT__MY_NAME:
-				setMyName(MY_NAME_EDEFAULT);
+			case MappedsuperclassPackage.TEST_REFERENCE__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -142,8 +140,8 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MappedsuperclassPackage.PARENT_DOCUMENT__MY_NAME:
-				return MY_NAME_EDEFAULT == null ? myName != null : !MY_NAME_EDEFAULT.equals(myName);
+			case MappedsuperclassPackage.TEST_REFERENCE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -158,10 +156,10 @@ public class ParentDocumentImpl extends DocumentImpl implements ParentDocument {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (myName: ");
-		result.append(myName);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ParentDocumentImpl
+} //TestReferenceImpl

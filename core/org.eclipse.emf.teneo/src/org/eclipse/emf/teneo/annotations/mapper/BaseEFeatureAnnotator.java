@@ -60,6 +60,7 @@ public abstract class BaseEFeatureAnnotator extends AbstractAnnotator {
 	/** Create a foreign key and set its name */
 	protected ForeignKey createFK(PAnnotatedEStructuralFeature aFeature) {
 		final ForeignKey fk = getFactory().createForeignKey();
+		fk.setGenerated(true);
 		fk.setName(getSqlNameStrategy().getForeignKeyName(aFeature));
 		return fk;
 	}

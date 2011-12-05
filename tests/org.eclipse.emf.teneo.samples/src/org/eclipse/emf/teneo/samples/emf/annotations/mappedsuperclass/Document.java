@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyGenericInfo <em>My Generic Info</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyTestReference <em>My Test Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,5 +53,32 @@ public interface Document extends EObject {
 	 * @generated
 	 */
 	void setMyGenericInfo(String value);
+
+	/**
+	 * Returns the value of the '<em><b>My Test Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>My Test Reference</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>My Test Reference</em>' reference.
+	 * @see #setMyTestReference(TestReference)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.MappedsuperclassPackage#getDocument_MyTestReference()
+	 * @model resolveProxies="false" required="true"
+	 *        extendedMetaData="kind='element' name='myTestReference'"
+	 * @generated
+	 */
+	TestReference getMyTestReference();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.mappedsuperclass.Document#getMyTestReference <em>My Test Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>My Test Reference</em>' reference.
+	 * @see #getMyTestReference()
+	 * @generated
+	 */
+	void setMyTestReference(TestReference value);
 
 } // Document
