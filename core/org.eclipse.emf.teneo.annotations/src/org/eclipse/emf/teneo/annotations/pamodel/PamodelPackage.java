@@ -413,13 +413,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__SEQUENCE_GENERATORS = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
+	 * The feature id for the '<em><b>External</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ECLASS__EXTERNAL = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.
@@ -1562,6 +1571,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_SequenceGenerators();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal <em>External</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>External</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal()
+	 * @see #getPAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getPAnnotatedEClass_External();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature <em>PAnnotated EStructural Feature</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>PAnnotated EStructural Feature</em>'.
@@ -2332,6 +2352,14 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ECLASS__SEQUENCE_GENERATORS = eINSTANCE.getPAnnotatedEClass_SequenceGenerators();
+
+		/**
+		 * The meta object literal for the '<em><b>External</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__EXTERNAL = eINSTANCE.getPAnnotatedEClass_External();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.

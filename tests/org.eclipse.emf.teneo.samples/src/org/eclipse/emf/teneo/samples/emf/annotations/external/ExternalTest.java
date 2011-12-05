@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getEObject <em>EObject</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getEObjects <em>EObjects</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getEClass <em>EClass</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObject <em>External Object</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObjects <em>External Objects</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,5 +127,47 @@ public interface ExternalTest extends EObject {
 	 * @generated
 	 */
 	void setEClass(EClass value);
+
+	/**
+	 * Returns the value of the '<em><b>External Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External Object</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External Object</em>' reference.
+	 * @see #setExternalObject(ExternalObject)
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage#getExternalTest_ExternalObject()
+	 * @model
+	 * @generated
+	 */
+	ExternalObject getExternalObject();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObject <em>External Object</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External Object</em>' reference.
+	 * @see #getExternalObject()
+	 * @generated
+	 */
+	void setExternalObject(ExternalObject value);
+
+	/**
+	 * Returns the value of the '<em><b>External Objects</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External Objects</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External Objects</em>' reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage#getExternalTest_ExternalObjects()
+	 * @model
+	 * @generated
+	 */
+	EList<ExternalObject> getExternalObjects();
 
 } // ExternalTest

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest;
 
@@ -35,6 +36,8 @@ import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalTestImpl#getEObject <em>EObject</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalTestImpl#getEObjects <em>EObjects</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalTestImpl#getEClass <em>EClass</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalTestImpl#getExternalObject <em>External Object</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalTestImpl#getExternalObjects <em>External Objects</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,6 +93,26 @@ public class ExternalTestImpl extends EObjectImpl implements ExternalTest {
 	 * @ordered
 	 */
 	protected EClass eClass;
+
+	/**
+	 * The cached value of the '{@link #getExternalObject() <em>External Object</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExternalObject externalObject;
+
+	/**
+	 * The cached value of the '{@link #getExternalObjects() <em>External Objects</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalObjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ExternalObject> externalObjects;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,6 +247,56 @@ public class ExternalTestImpl extends EObjectImpl implements ExternalTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExternalObject getExternalObject() {
+		if (externalObject != null && externalObject.eIsProxy()) {
+			InternalEObject oldExternalObject = (InternalEObject)externalObject;
+			externalObject = (ExternalObject)eResolveProxy(oldExternalObject);
+			if (externalObject != oldExternalObject) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECT, oldExternalObject, externalObject));
+			}
+		}
+		return externalObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalObject basicGetExternalObject() {
+		return externalObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternalObject(ExternalObject newExternalObject) {
+		ExternalObject oldExternalObject = externalObject;
+		externalObject = newExternalObject;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECT, oldExternalObject, externalObject));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ExternalObject> getExternalObjects() {
+		if (externalObjects == null) {
+			externalObjects = new EObjectResolvingEList<ExternalObject>(ExternalObject.class, this, ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECTS);
+		}
+		return externalObjects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -237,6 +310,11 @@ public class ExternalTestImpl extends EObjectImpl implements ExternalTest {
 			case ExternalPackage.EXTERNAL_TEST__ECLASS:
 				if (resolve) return getEClass();
 				return basicGetEClass();
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECT:
+				if (resolve) return getExternalObject();
+				return basicGetExternalObject();
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECTS:
+				return getExternalObjects();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -263,6 +341,13 @@ public class ExternalTestImpl extends EObjectImpl implements ExternalTest {
 			case ExternalPackage.EXTERNAL_TEST__ECLASS:
 				setEClass((EClass)newValue);
 				return;
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECT:
+				setExternalObject((ExternalObject)newValue);
+				return;
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECTS:
+				getExternalObjects().clear();
+				getExternalObjects().addAll((Collection<? extends ExternalObject>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -287,6 +372,12 @@ public class ExternalTestImpl extends EObjectImpl implements ExternalTest {
 			case ExternalPackage.EXTERNAL_TEST__ECLASS:
 				setEClass((EClass)null);
 				return;
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECT:
+				setExternalObject((ExternalObject)null);
+				return;
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECTS:
+				getExternalObjects().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -307,6 +398,10 @@ public class ExternalTestImpl extends EObjectImpl implements ExternalTest {
 				return eObjects != null && !eObjects.isEmpty();
 			case ExternalPackage.EXTERNAL_TEST__ECLASS:
 				return eClass != null;
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECT:
+				return externalObject != null;
+			case ExternalPackage.EXTERNAL_TEST__EXTERNAL_OBJECTS:
+				return externalObjects != null && !externalObjects.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

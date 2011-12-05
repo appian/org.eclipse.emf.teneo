@@ -60,6 +60,7 @@
 			<xsd:element name="eav-mapping" type="EAVMapping" minOccurs="0"/>
 			<xsd:element name="embeddable" type="Embeddable" minOccurs="0"/>
 			<xsd:element name="entity" type="Entity" minOccurs="0"/>
+			<xsd:element name="external" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="force-discriminator" type="ForceDiscriminator" minOccurs="0"/>
 			<xsd:element name="cache" type="Cache" minOccurs="0"/>
 			<xsd:element name="named-query" type="NamedQuery" minOccurs="0" maxOccurs="unbounded"/>
@@ -333,6 +334,7 @@
 		<xsd:element name="meta-column" type="Column" minOccurs="0"/>
 	</xsd:sequence>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="meta-def" type="xsd:string" use="optional"/>
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
@@ -344,11 +346,13 @@
 			</xsd:annotation>
 		</xsd:element>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="id-type" type="xsd:string" use="required"/>
 	<xsd:attribute name="meta-type" type="xsd:string" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="Cache">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="include" type="xsd:string" use="optional"/>
 	<xsd:attribute name="region" type="xsd:string" use="optional"/>
 	<xsd:attribute name="usage" type="CacheConcurrencyStrategy" use="optional"/>
@@ -364,10 +368,12 @@
 </xsd:simpleType>
 <xsd:complexType name="CollectionOfElements">
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-element" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="Filter">
 	<xsd:attribute name="condition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="FilterDef">
@@ -379,9 +385,12 @@
 		</xsd:element>
 	</xsd:sequence>
 	<xsd:attribute name="default-condition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
-<xsd:complexType name="ForceDiscriminator"/>
+<xsd:complexType name="ForceDiscriminator">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:simpleType name="GenerationTime">
 	<xsd:restriction base="xsd:token">
 		<xsd:enumeration value="NEVER"/>
@@ -397,6 +406,7 @@
 			</xsd:annotation>
 		</xsd:element>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="strategy" type="xsd:string" use="required"/>
 </xsd:complexType>
@@ -418,6 +428,7 @@
 <xsd:complexType name="HbEntity">
 	<xsd:attribute name="dynamic-insert" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="dynamic-update" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="mutable" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="optimistic-lock" type="OptimisticLockType" use="optional"/>
 	<xsd:attribute name="persister" type="xsd:string" use="optional"/>
@@ -432,11 +443,14 @@
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="IdBag">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="generator" type="xsd:string" use="optional"/>
 	<xsd:attribute name="table" type="xsd:string" use="optional"/>
 	<xsd:attribute name="type" type="xsd:string" use="optional"/>
 </xsd:complexType>
-<xsd:complexType name="Immutable"/>
+<xsd:complexType name="Immutable">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="MapKeyManyToMany">
 	<xsd:sequence>
 		<xsd:element name="join-column" type="JoinColumn" minOccurs="0" maxOccurs="unbounded">
@@ -445,13 +459,16 @@
 			</xsd:annotation>
 		</xsd:element>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="MetaValue">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 	<xsd:attribute name="value" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="NamedQuery">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="query" type="xsd:string" use="optional"/>
 </xsd:complexType>
@@ -476,10 +493,12 @@
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="ParamDef">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="type" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="Parameter">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="value" type="xsd:string" use="required"/>
 </xsd:complexType>
@@ -490,6 +509,7 @@
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="Proxy">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="lazy" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="proxy-class" type="xsd:string" use="optional"/>
 </xsd:complexType>
@@ -501,6 +521,7 @@
 			</xsd:annotation>
 		</xsd:element>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="type" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="TypeDef">
@@ -511,6 +532,7 @@
 			</xsd:annotation>
 		</xsd:element>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="type-class" type="xsd:string" use="required"/>
 </xsd:complexType>
@@ -522,16 +544,19 @@
 			</xsd:annotation>
 		</xsd:element>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="AttributeOverride">
 	<xsd:sequence>
 		<xsd:element name="column" type="Column" minOccurs="1"/>
 	</xsd:sequence>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="Basic">
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
 <xsd:simpleType name="CascadeType">
@@ -546,6 +571,7 @@
 </xsd:simpleType>
 <xsd:complexType name="Column">
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="index" type="xsd:string" use="optional"/>
 	<xsd:attribute name="insertable" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="length" type="xsd:int" use="optional"/>
@@ -564,6 +590,7 @@
 	</xsd:sequence>
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
 	<xsd:attribute name="discriminator-type" type="DiscriminatorType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="length" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 </xsd:complexType>
@@ -574,12 +601,21 @@
 		<xsd:enumeration value="INTEGER"/>
 	</xsd:restriction>
 </xsd:simpleType>
-<xsd:complexType name="EAVMapping"/>
-<xsd:complexType name="Embeddable"/>
-<xsd:complexType name="Embedded"/>
-<xsd:complexType name="EmbeddedId"/>
+<xsd:complexType name="EAVMapping">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="Embeddable">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="Embedded">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="EmbeddedId">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="Entity">
 	<xsd:attribute name="extends" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:simpleType name="EnumType">
@@ -596,6 +632,7 @@
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="GeneratedValue">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="generator" type="xsd:string" use="optional"/>
 	<xsd:attribute name="strategy" type="GenerationType" use="optional"/>
 </xsd:complexType>
@@ -609,7 +646,9 @@
 		<xsd:enumeration value="ASSIGNED"/>
 	</xsd:restriction>
 </xsd:simpleType>
-<xsd:complexType name="Id"/>
+<xsd:complexType name="Id">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:simpleType name="InheritanceType">
 	<xsd:restriction base="xsd:token">
 		<xsd:enumeration value="SINGLE_TABLE"/>
@@ -619,6 +658,7 @@
 </xsd:simpleType>
 <xsd:complexType name="JoinColumn">
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="insertable" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="nullable" type="xsd:boolean" use="optional"/>
@@ -646,16 +686,20 @@
 		</xsd:element>
 	</xsd:choice>
 	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="schema" type="xsd:string" use="optional"/>
 </xsd:complexType>
-<xsd:complexType name="Lob"/>
+<xsd:complexType name="Lob">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="ManyToMany">
 	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType" minOccurs="0" maxOccurs="unbounded"/>
 	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="indexed" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="mapped-by" type="xsd:string" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
@@ -666,17 +710,23 @@
 	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
-<xsd:complexType name="MappedSuperclass"/>
-<xsd:complexType name="NoEAVMapping"/>
+<xsd:complexType name="MappedSuperclass">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="NoEAVMapping">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="OneToMany">
 	<xsd:sequence>
 		<xsd:element name="cascade" type="CascadeType" minOccurs="0" maxOccurs="unbounded"/>
 	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="indexed" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="mapped-by" type="xsd:string" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
@@ -688,6 +738,7 @@
 	</xsd:sequence>
 	<xsd:attribute name="cascade" type="CascadeType" use="optional"/>
 	<xsd:attribute name="fetch" type="FetchType" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="mapped-by" type="xsd:string" use="optional"/>
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
@@ -701,6 +752,7 @@
 </xsd:simpleType>
 <xsd:complexType name="PrimaryKeyJoinColumn">
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="referenced-column-name" type="xsd:string" use="optional"/>
 </xsd:complexType>
@@ -718,16 +770,19 @@
 		</xsd:element>
 	</xsd:choice>
 	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="schema" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="SequenceGenerator">
 	<xsd:attribute name="allocation-size" type="xsd:int" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="initial-value" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="sequence-name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="SequenceStyleGenerator">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="increment-size" type="xsd:int" use="optional"/>
 	<xsd:attribute name="initial-value" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
@@ -743,6 +798,7 @@
 		</xsd:element>
 	</xsd:sequence>
 	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="optional"/>
 	<xsd:attribute name="schema" type="xsd:string" use="optional"/>
 </xsd:complexType>
@@ -756,6 +812,7 @@
 	</xsd:sequence>
 	<xsd:attribute name="allocation-size" type="xsd:int" use="optional"/>
 	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="initial-value" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="pk-column-name" type="xsd:string" use="optional"/>
@@ -771,6 +828,10 @@
 		<xsd:enumeration value="TIMESTAMP"/>
 	</xsd:restriction>
 </xsd:simpleType>
-<xsd:complexType name="Transient"/>
-<xsd:complexType name="Version"/>
+<xsd:complexType name="Transient">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="Version">
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 </xsd:schema>

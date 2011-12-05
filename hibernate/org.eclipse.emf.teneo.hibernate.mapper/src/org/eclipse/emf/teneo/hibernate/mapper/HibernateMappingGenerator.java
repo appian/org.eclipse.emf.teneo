@@ -233,6 +233,10 @@ public class HibernateMappingGenerator implements ExtensionPoint,
 							.createTransient());
 					return;
 				}
+				
+				if (paEClass.getExternal() != null) {
+					return;
+				}
 
 				hbmContext.setCurrentEClass(paEClass.getModelEClass());
 				hbmContext.getEntityMapper().processEntity(paEClass);

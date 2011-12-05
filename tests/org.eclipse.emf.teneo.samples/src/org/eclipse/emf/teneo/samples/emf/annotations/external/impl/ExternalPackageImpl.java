@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest;
 
@@ -32,6 +33,13 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 	 * @generated
 	 */
 	private EClass externalTestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalObjectEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -147,6 +155,33 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getExternalTest_ExternalObject() {
+		return (EReference)externalTestEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalTest_ExternalObjects() {
+		return (EReference)externalTestEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExternalObject() {
+		return externalObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ExternalFactory getExternalFactory() {
 		return (ExternalFactory)getEFactoryInstance();
 	}
@@ -175,6 +210,10 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		createEReference(externalTestEClass, EXTERNAL_TEST__EOBJECT);
 		createEReference(externalTestEClass, EXTERNAL_TEST__EOBJECTS);
 		createEReference(externalTestEClass, EXTERNAL_TEST__ECLASS);
+		createEReference(externalTestEClass, EXTERNAL_TEST__EXTERNAL_OBJECT);
+		createEReference(externalTestEClass, EXTERNAL_TEST__EXTERNAL_OBJECTS);
+
+		externalObjectEClass = createEClass(EXTERNAL_OBJECT);
 	}
 
 	/**
@@ -215,6 +254,10 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		initEReference(getExternalTest_EObject(), ecorePackage.getEObject(), null, "eObject", null, 0, 1, ExternalTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExternalTest_EObjects(), ecorePackage.getEObject(), null, "eObjects", null, 0, -1, ExternalTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExternalTest_EClass(), ecorePackage.getEClass(), null, "eClass", null, 0, 1, ExternalTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExternalTest_ExternalObject(), this.getExternalObject(), null, "externalObject", null, 0, 1, ExternalTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExternalTest_ExternalObjects(), this.getExternalObject(), null, "externalObjects", null, 0, -1, ExternalTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(externalObjectEClass, ExternalObject.class, "ExternalObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -240,7 +283,7 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "city"
-		   });			
+		   });				
 	}
 
 	/**
@@ -268,6 +311,12 @@ public class ExternalPackageImpl extends EPackageImpl implements ExternalPackage
 		   source, 
 		   new String[] {
 			 "value", "@External(type=\"org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType\")"
+		   });		
+		addAnnotation
+		  (externalObjectEClass, 
+		   source, 
+		   new String[] {
+			 "value", "@External"
 		   });
 	}
 

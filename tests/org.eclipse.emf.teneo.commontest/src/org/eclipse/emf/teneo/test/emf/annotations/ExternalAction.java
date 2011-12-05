@@ -20,6 +20,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalFactory;
+import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalPackage;
 import org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest;
 import org.eclipse.emf.teneo.samples.emf.sample.play.ActType;
@@ -37,6 +39,7 @@ import org.eclipse.emf.teneo.samples.emf.sample.play.PlayPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.play.PlayType;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
+import org.junit.Assert;
 
 /**
  * Testcase
@@ -78,6 +81,20 @@ public class ExternalAction extends AbstractTestAction {
 			throw new TeneoException(e.getMessage(), e);
 		}
 
+		final ExternalObject external1 = ExternalFactory.eINSTANCE
+				.createExternalObject();
+		final ExternalObject external2 = ExternalFactory.eINSTANCE
+				.createExternalObject();
+		final ExternalObject external3 = ExternalFactory.eINSTANCE
+				.createExternalObject();
+		{
+			final URI externalUri = URI.createURI("external.url");
+			final Resource resource = new XMLResourceImpl(externalUri);
+			resource.getContents().add(external1);
+			resource.getContents().add(external2);
+			resource.getContents().add(external3);
+		}
+
 		{
 			store.beginTransaction();
 			final ExternalTest et1 = factory.createExternalTest();
@@ -86,6 +103,9 @@ public class ExternalAction extends AbstractTestAction {
 			et1.getEObjects().add(o3);
 			et1.getEObjects().add(o1);
 			et1.getEObjects().add(o2);
+			et1.setExternalObject(external1);
+			et1.getExternalObjects().add(external2);
+			et1.getExternalObjects().add(external3);
 			et1.setEClass(ExternalPackage.eINSTANCE.getExternalTest());
 			store.store(et1);
 			final ExternalTest et2 = factory.createExternalTest();
@@ -96,6 +116,24 @@ public class ExternalAction extends AbstractTestAction {
 			store.commitTransaction();
 
 			EcoreUtil.resolveAll(et2);
+		}
+
+		{
+			boolean errorOccured = false;
+			try {
+				store.beginTransaction();
+				store.store(ExternalFactory.eINSTANCE.createExternalObject());
+				store.commitTransaction();
+				errorOccured = false;
+			} catch (Exception e) {
+				errorOccured = true;
+				try {
+					store.rollbackTransaction();
+				} catch (Exception x) {
+					// ignore
+				}
+			}
+			Assert.assertTrue(errorOccured);
 		}
 
 		try {
@@ -109,6 +147,16 @@ public class ExternalAction extends AbstractTestAction {
 			for (EObject eobj : res.getContents()) {
 				final ExternalTest et = (ExternalTest) eobj;
 				if (et.getName().equals("et1")) {
+					
+					assertTrue(et.getExternalObject() instanceof ExternalObject);
+					Assert.assertTrue(((InternalEObject)et.getExternalObject()).eIsProxy());
+					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(0)).eIsProxy());
+					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(1)).eIsProxy());
+					Assert.assertTrue(((InternalEObject)et.getExternalObject()).eProxyURI().toString().contains("external.url"));
+					assertEquals(2, et.getExternalObjects().size());
+					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(0)).eProxyURI().toString().contains("external.url"));
+					Assert.assertTrue(((InternalEObject)et.getExternalObjects().get(1)).eProxyURI().toString().contains("external.url"));
+					
 					assertTrue(et.getEObject() instanceof ActType);
 					int cnt = 0;
 					assertEquals(3, et.getEObjects().size());

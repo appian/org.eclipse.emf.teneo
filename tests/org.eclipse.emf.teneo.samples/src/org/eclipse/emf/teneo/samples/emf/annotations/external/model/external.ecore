@@ -27,5 +27,13 @@
         <details key="value" value="@External(type=&quot;org.eclipse.emf.teneo.hibernate.mapping.EcoreModelElementType&quot;)"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="externalObject" eType="#//ExternalObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="externalObjects" upperBound="-1"
+        eType="#//ExternalObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalObject">
+    <eAnnotations source="teneo.jpa">
+      <details key="value" value="@External"/>
+    </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

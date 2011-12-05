@@ -76,6 +76,10 @@ public class ExternalAdapterFactory extends AdapterFactoryImpl {
 				return createExternalTestAdapter();
 			}
 			@Override
+			public Adapter caseExternalObject(ExternalObject object) {
+				return createExternalObjectAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -106,6 +110,20 @@ public class ExternalAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExternalTestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject
+	 * @generated
+	 */
+	public Adapter createExternalObjectAdapter() {
 		return null;
 	}
 

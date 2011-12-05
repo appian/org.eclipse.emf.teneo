@@ -12,6 +12,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference external.ecore#//ExternalTest/eObject"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference external.ecore#//ExternalTest/eObjects"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference external.ecore#//ExternalTest/eClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference external.ecore#//ExternalTest/externalObject"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference external.ecore#//ExternalTest/externalObjects"/>
     </genClasses>
+    <genClasses ecoreClass="external.ecore#//ExternalObject"/>
   </genPackages>
 </genmodel:GenModel>

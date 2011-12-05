@@ -61,6 +61,7 @@ public class ExternalFactoryImpl extends EFactoryImpl implements ExternalFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ExternalPackage.EXTERNAL_TEST: return createExternalTest();
+			case ExternalPackage.EXTERNAL_OBJECT: return createExternalObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +75,16 @@ public class ExternalFactoryImpl extends EFactoryImpl implements ExternalFactory
 	public ExternalTest createExternalTest() {
 		ExternalTestImpl externalTest = new ExternalTestImpl();
 		return externalTest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalObject createExternalObject() {
+		ExternalObjectImpl externalObject = new ExternalObjectImpl();
+		return externalObject;
 	}
 
 	/**

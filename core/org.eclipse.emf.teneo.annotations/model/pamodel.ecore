@@ -135,6 +135,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerators" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//SequenceGenerator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="external" eType="ecore:EClass pannotation.ecore#//External"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedETypedElement">

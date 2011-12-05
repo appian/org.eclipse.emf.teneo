@@ -44,5 +44,24 @@
 				<param name="epackage">http://www.eclipse.org/emf/2002/Ecore</param>
 			</type>
 		</property>
+		<property name="externalObject" lazy="false" insert="true" update="true" not-null="false" unique="false">
+			<column not-null="false" unique="false" name="`EXTERNALOBJECT`"/>
+			<type name="org.eclipse.emf.teneo.hibernate.mapping.ExternalType">
+				<param name="eclassName">ExternalObject</param>
+				<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/external</param>
+			</type>
+		</property>
+		<list name="externalObjects" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<key update="true">
+				<column name="`EXTERNALTEST_EXTERNALOBJECTS_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`EXTERNALTEST_EXTERNALOBJECTS_IDX`"/>
+			<element>
+				<type name="org.eclipse.emf.teneo.hibernate.mapping.ExternalType">
+					<param name="eclassName">ExternalObject</param>
+					<param name="epackage">http://www.eclipse.org/emf/teneo/samples/emf/annotations/external</param>
+				</type>
+			</element>
+		</list>
 	</class>
 </hibernate-mapping>

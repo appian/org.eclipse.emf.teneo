@@ -106,13 +106,51 @@ public interface ExternalPackage extends EPackage {
 	int EXTERNAL_TEST__ECLASS = 3;
 
 	/**
+	 * The feature id for the '<em><b>External Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TEST__EXTERNAL_OBJECT = 4;
+
+	/**
+	 * The feature id for the '<em><b>External Objects</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TEST__EXTERNAL_OBJECTS = 5;
+
+	/**
 	 * The number of structural features of the '<em>Test</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_TEST_FEATURE_COUNT = 4;
+	int EXTERNAL_TEST_FEATURE_COUNT = 6;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalObjectImpl <em>Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalObjectImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalPackageImpl#getExternalObject()
+	 * @generated
+	 */
+	int EXTERNAL_OBJECT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_OBJECT_FEATURE_COUNT = 0;
 
 
 	/**
@@ -168,6 +206,38 @@ public interface ExternalPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExternalTest_EClass();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObject <em>External Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>External Object</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObject()
+	 * @see #getExternalTest()
+	 * @generated
+	 */
+	EReference getExternalTest_ExternalObject();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObjects <em>External Objects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>External Objects</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalTest#getExternalObjects()
+	 * @see #getExternalTest()
+	 * @generated
+	 */
+	EReference getExternalTest_ExternalObjects();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.ExternalObject
+	 * @generated
+	 */
+	EClass getExternalObject();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -232,6 +302,32 @@ public interface ExternalPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXTERNAL_TEST__ECLASS = eINSTANCE.getExternalTest_EClass();
+
+		/**
+		 * The meta object literal for the '<em><b>External Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTERNAL_TEST__EXTERNAL_OBJECT = eINSTANCE.getExternalTest_ExternalObject();
+
+		/**
+		 * The meta object literal for the '<em><b>External Objects</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTERNAL_TEST__EXTERNAL_OBJECTS = eINSTANCE.getExternalTest_ExternalObjects();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalObjectImpl <em>Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalObjectImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.external.impl.ExternalPackageImpl#getExternalObject()
+		 * @generated
+		 */
+		EClass EXTERNAL_OBJECT = eINSTANCE.getExternalObject();
 
 	}
 

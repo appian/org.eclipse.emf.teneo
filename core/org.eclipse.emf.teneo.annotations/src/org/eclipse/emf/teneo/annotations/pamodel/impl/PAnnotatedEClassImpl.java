@@ -35,6 +35,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Entity;
+import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
 import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
@@ -71,6 +72,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getEavMapping <em>Eav Mapping</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getNoEAVMapping <em>No EAV Mapping</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getExternal <em>External</em>}</li>
  * </ul>
  * </p>
  *
@@ -234,6 +236,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @ordered
 	 */
 	protected EList<SequenceGenerator> sequenceGenerators;
+
+	/**
+	 * The cached value of the '{@link #getExternal() <em>External</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternal()
+	 * @generated
+	 * @ordered
+	 */
+	protected External external;
 
 	/** The computed super pa entity */
 	private PAnnotatedEClass paSuperEntity = null;
@@ -829,6 +841,44 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public External getExternal() {
+		if (external != null && external.eIsProxy()) {
+			InternalEObject oldExternal = (InternalEObject)external;
+			external = (External)eResolveProxy(oldExternal);
+			if (external != oldExternal) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PamodelPackage.PANNOTATED_ECLASS__EXTERNAL, oldExternal, external));
+			}
+		}
+		return external;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public External basicGetExternal() {
+		return external;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternal(External newExternal) {
+		External oldExternal = external;
+		external = newExternal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__EXTERNAL, oldExternal, external));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -952,6 +1002,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return getNoEAVMapping();
 			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
 				return getSequenceGenerators();
+			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
+				if (resolve) return getExternal();
+				return basicGetExternal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1024,6 +1077,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				getSequenceGenerators().clear();
 				getSequenceGenerators().addAll((Collection<? extends SequenceGenerator>)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
+				setExternal((External)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1089,6 +1145,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
 				getSequenceGenerators().clear();
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
+				setExternal((External)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1138,6 +1197,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return noEAVMapping != null;
 			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
 				return sequenceGenerators != null && !sequenceGenerators.isEmpty();
+			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
+				return external != null;
 		}
 		return super.eIsSet(featureID);
 	}
