@@ -237,8 +237,6 @@ public class HbEntityDataStore extends HbDataStore implements
 					throw new IllegalStateException(e);
 				}
 			}
-
-			System.err.println(getMappingXML());
 			
 			// TODO replace this
 			final StringBufferInputStream is = new StringBufferInputStream(
