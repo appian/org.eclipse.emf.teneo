@@ -23,6 +23,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usertype.ecore#//Person/addresses"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/birthPlace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Person/double"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usertype.ecore#//Person/certificate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference usertype.ecore#//Person/certificates"/>
     </genClasses>
     <genClasses ecoreClass="usertype.ecore#//Address">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Address/addressInfo"/>
@@ -31,6 +33,10 @@
     <genClasses ecoreClass="usertype.ecore#//City">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//City/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//City/size"/>
+    </genClasses>
+    <genClasses ecoreClass="usertype.ecore#//Certificate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Certificate/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute usertype.ecore#//Certificate/length"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

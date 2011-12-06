@@ -53,6 +53,15 @@ public interface UsertypeFactory extends EFactory {
 	City createCity();
 
 	/**
+	 * Returns a new object of class '<em>Certificate</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Certificate</em>'.
+	 * @generated
+	 */
+	Certificate createCertificate();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

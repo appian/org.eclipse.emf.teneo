@@ -813,7 +813,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		// MT: the target type name is ignored for a many element, it is always
 		// recomputed
 		elElement = collElement.addElement("element");
-		setType(paFeature, elElement);
 		// } else { // in this case the defaultannotator has set the
 		// targetentity!
 		// elElement = collElement.addElement("element").addAttribute("type",
@@ -823,6 +822,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			addColumnsAndFormula(elElement, paFeature, columns, getHbmContext()
 					.isCurrentElementFeatureMap(), true);
 		}
+		setType(paFeature, elElement);
 		return elElement;
 	}
 

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
@@ -49,6 +50,13 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * @generated
 	 */
 	private EClass cityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass certificateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,6 +231,24 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPerson_Certificate() {
+		return (EReference)personEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPerson_Certificates() {
+		return (EReference)personEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAddress() {
 		return addressEClass;
 	}
@@ -270,6 +296,33 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 	 */
 	public EAttribute getCity_Size() {
 		return (EAttribute)cityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCertificate() {
+		return certificateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCertificate_Name() {
+		return (EAttribute)certificateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCertificate_Length() {
+		return (EAttribute)certificateEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -353,6 +406,8 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		createEReference(personEClass, PERSON__ADDRESSES);
 		createEAttribute(personEClass, PERSON__BIRTH_PLACE);
 		createEAttribute(personEClass, PERSON__DOUBLE);
+		createEReference(personEClass, PERSON__CERTIFICATE);
+		createEReference(personEClass, PERSON__CERTIFICATES);
 
 		addressEClass = createEClass(ADDRESS);
 		createEAttribute(addressEClass, ADDRESS__ADDRESS_INFO);
@@ -361,6 +416,10 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		cityEClass = createEClass(CITY);
 		createEAttribute(cityEClass, CITY__ID);
 		createEAttribute(cityEClass, CITY__SIZE);
+
+		certificateEClass = createEClass(CERTIFICATE);
+		createEAttribute(certificateEClass, CERTIFICATE__NAME);
+		createEAttribute(certificateEClass, CERTIFICATE__LENGTH);
 
 		// Create enums
 		citySizeEEnum = createEEnum(CITY_SIZE);
@@ -406,6 +465,8 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		initEReference(getPerson_Addresses(), this.getAddress(), this.getAddress_Person(), "addresses", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_BirthPlace(), ecorePackage.getEString(), "birthPlace", null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPerson_Double(), this.getmyDoubleType(), "double", "0", 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Certificate(), this.getCertificate(), null, "certificate", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Certificates(), this.getCertificate(), null, "certificates", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addressEClass, Address.class, "Address", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAddress_AddressInfo(), ecorePackage.getEString(), "addressInfo", null, 1, 1, Address.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -414,6 +475,10 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		initEClass(cityEClass, City.class, "City", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCity_Id(), ecorePackage.getELong(), "id", "0", 0, 1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCity_Size(), this.getCitySize(), "size", "MEDIUM", 0, 1, City.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(certificateEClass, Certificate.class, "Certificate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCertificate_Name(), ecorePackage.getEString(), "name", null, 1, 1, Certificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCertificate_Length(), ecorePackage.getEInt(), "length", null, 1, 1, Certificate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(citySizeEEnum, CitySize.class, "CitySize");
@@ -458,7 +523,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "appinfo", "@NamedQuery(name=\"getPersonByBirthPlace\" query=\"select p from Person p where p.birthPlace=?\")\n@HbEntity(dynamicInsert=true, dynamicUpdate=true, mutable=true, selectBeforeUpdate=true, persister=\"org.hibernate.persister.entity.SingleTableEntityPersister\", optimisticLock=NONE, polymorphism=EXPLICIT)"
-		   });											
+		   });																
 	}
 
 	/**
@@ -480,7 +545,19 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "appinfo", "@OnDelete(action=OnDeleteAction.CASCADE)\n@OneToMany(indexed=false, unique=true)"
-		   });				
+		   });			
+		addAnnotation
+		  (getPerson_Certificate(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Columns({@Column(name=\"cert_name\"), @Column(name=\"cert_length\")})\n\t\t\t\t\t"
+		   });		
+		addAnnotation
+		  (getPerson_Certificates(), 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Columns({@Column(name=\"cert_name\"), @Column(name=\"cert_length\")})\n\t\t\t\t\t"
+		   });			
 		addAnnotation
 		  (intArrayEDataType, 
 		   source, 
@@ -498,7 +575,13 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "value", "@GeneratedValue(strategy=\"ASSIGNED\")"
-		   });
+		   });		
+		addAnnotation
+		  (certificateEClass, 
+		   source, 
+		   new String[] {
+			 "appinfo", "@Type(type=\"org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CertificateType\")\n\t\t\t\t\t"
+		   });		
 	}
 
 	/**
@@ -542,7 +625,7 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   new String[] {
 			 "kind", "element",
 			 "name", "intArray"
-		   });		
+		   });				
 		addAnnotation
 		  (intArrayEDataType, 
 		   source, 
@@ -568,7 +651,21 @@ public class UsertypePackageImpl extends EPackageImpl implements UsertypePackage
 		   source, 
 		   new String[] {
 			 "name", "IntArray"
+		   });					
+		addAnnotation
+		  (getCertificate_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
 		   });		
+		addAnnotation
+		  (getCertificate_Length(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "name"
+		   });
 	}
 
 } //UsertypePackageImpl

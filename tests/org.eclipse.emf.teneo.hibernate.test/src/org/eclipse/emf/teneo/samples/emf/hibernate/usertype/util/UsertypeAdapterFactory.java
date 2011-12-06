@@ -80,6 +80,9 @@ public class UsertypeAdapterFactory extends AdapterFactoryImpl {
 			public Object caseCity(City object) {
 				return createCityAdapter();
 			}
+			public Object caseCertificate(Certificate object) {
+				return createCertificateAdapter();
+			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -137,6 +140,20 @@ public class UsertypeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate <em>Certificate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate
+	 * @generated
+	 */
+	public Adapter createCertificateAdapter() {
 		return null;
 	}
 

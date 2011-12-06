@@ -20,7 +20,7 @@
 				<column name="`TESTELEMENT_TESTMAP_E_ID`" unique="false"/>
 			</key>
 			<map-key type="java.lang.String"/>
-			<element type="text" not-null="false" unique="false">
+			<element not-null="false" unique="false" type="text">
 				<column not-null="false" unique="false" name="`VALUE`" length="1000000"/>
 			</element>
 		</map>

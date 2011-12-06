@@ -18,11 +18,14 @@ package org.eclipse.emf.teneo.hibernate.mapper;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 
 /**
  * Dispatch events to the appropriate Mapper.
@@ -68,6 +71,8 @@ public class FeatureMapper implements ExtensionPoint {
 	private ManyAttributeMapper manyAttributeMapper = null;
 
 	private OneToManyMapper oneToManyMapper = null;
+
+	private TypedEReferenceMapper typedEReferenceMapper = null;
 
 	private OneToOneMapper oneToOneMapper = null;
 
@@ -151,6 +156,19 @@ public class FeatureMapper implements ExtensionPoint {
 	/** Process the ereference */
 	private void processPAnnotatedEReference(
 			PAnnotatedEReference pAnnotatedEReference) {
+
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) pAnnotatedEReference;
+		final HbAnnotatedEClass hbClass = hbReference.getTransient() == null ? (HbAnnotatedEClass) pAnnotatedEReference
+				.getAReferenceType() : null;
+		if (hbReference.getHbType() != null
+				|| (hbClass != null && hbClass.getHbType() != null)) {
+			if (hbReference.getHbType() == null) {
+				hbReference.setHbType(EcoreUtil.copy(hbClass.getHbType()));
+			}
+			getTypedEReferenceMapper().process(pAnnotatedEReference);
+			return;
+		}
+
 		final EStructuralFeature discrFeature;
 		if (pAnnotatedEReference.getAnnotations().isEmpty()) {
 			discrFeature = PamodelPackage.eINSTANCE
@@ -275,5 +293,14 @@ public class FeatureMapper implements ExtensionPoint {
 	public void setManyExternalReferenceMapper(
 			ManyExternalReferenceMapper manyExternalReferenceMapper) {
 		this.manyExternalReferenceMapper = manyExternalReferenceMapper;
+	}
+
+	public TypedEReferenceMapper getTypedEReferenceMapper() {
+		return typedEReferenceMapper;
+	}
+
+	public void setTypedEReferenceMapper(
+			TypedEReferenceMapper typedEReferenceMapper) {
+		this.typedEReferenceMapper = typedEReferenceMapper;
 	}
 }

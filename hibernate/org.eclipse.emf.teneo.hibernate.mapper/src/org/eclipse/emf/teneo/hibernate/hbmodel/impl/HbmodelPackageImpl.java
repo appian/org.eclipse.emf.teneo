@@ -107,20 +107,10 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link HbmodelPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -132,7 +122,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		if (isInited) return (HbmodelPackage)EPackage.Registry.INSTANCE.getEPackage(HbmodelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		HbmodelPackageImpl theHbmodelPackage = (HbmodelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof HbmodelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new HbmodelPackageImpl());
+		HbmodelPackageImpl theHbmodelPackage = (HbmodelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof HbmodelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new HbmodelPackageImpl());
 
 		isInited = true;
 
@@ -154,6 +144,9 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		// Mark meta-data to indicate it can't be changed
 		theHbmodelPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(HbmodelPackage.eNS_URI, theHbmodelPackage);
 		return theHbmodelPackage;
 	}
 
@@ -425,6 +418,15 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 	 */
 	public EReference getHbAnnotatedEClass_BatchSize() {
 		return (EReference)hbAnnotatedEClassEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHbAnnotatedEClass_HbType() {
+		return (EReference)hbAnnotatedEClassEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -712,6 +714,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__IMMUTABLE);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_ENTITY);
 		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__BATCH_SIZE);
+		createEReference(hbAnnotatedEClassEClass, HB_ANNOTATED_ECLASS__HB_TYPE);
 
 		hbAnnotatedEModelElementEClass = createEClass(HB_ANNOTATED_EMODEL_ELEMENT);
 
@@ -821,6 +824,7 @@ public class HbmodelPackageImpl extends EPackageImpl implements HbmodelPackage {
 		initEReference(getHbAnnotatedEClass_Immutable(), theHbannotationPackage.getImmutable(), null, "immutable", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEClass_HbEntity(), theHbannotationPackage.getHbEntity(), null, "hbEntity", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHbAnnotatedEClass_BatchSize(), theHbannotationPackage.getBatchSize(), null, "batchSize", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHbAnnotatedEClass_HbType(), theHbannotationPackage.getType(), null, "hbType", null, 0, 1, HbAnnotatedEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hbAnnotatedEModelElementEClass, HbAnnotatedEModelElement.class, "HbAnnotatedEModelElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

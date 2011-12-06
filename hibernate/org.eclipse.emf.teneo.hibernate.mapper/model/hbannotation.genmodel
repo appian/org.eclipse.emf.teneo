@@ -213,6 +213,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/immutable"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbEntity"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/batchSize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference hbmodel.ecore#//HbAnnotatedEClass/hbType"/>
     </genClasses>
     <genClasses image="false" ecoreClass="hbmodel.ecore#//HbAnnotatedEModelElement"/>
     <genClasses ecoreClass="hbmodel.ecore#//HbAnnotatedEPackage">

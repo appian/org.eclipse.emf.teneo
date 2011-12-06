@@ -297,6 +297,8 @@ public class MappingContext extends AbstractProcessingContext implements
 		featureMapper.setOneToOneMapper(createMapper(OneToOneMapper.class));
 		featureMapper
 				.setManyExternalReferenceMapper(createMapper(ManyExternalReferenceMapper.class));
+		featureMapper
+				.setTypedEReferenceMapper(createMapper(TypedEReferenceMapper.class));
 		return featureMapper;
 	}
 

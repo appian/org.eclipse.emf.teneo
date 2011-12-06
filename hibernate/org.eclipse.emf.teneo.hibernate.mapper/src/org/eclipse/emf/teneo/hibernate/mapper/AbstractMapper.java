@@ -41,7 +41,9 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Parameter;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
@@ -123,33 +125,54 @@ public abstract class AbstractMapper {
 	/** Handles the External annotation */
 	protected void setType(PAnnotatedEReference paReference, Element propElement) {
 		final External external = paReference.getExternal();
-		if (external == null) {
+		final Element typeElement = propElement.addElement("type");
+		if (external != null) {
+			if (external.getType() == null) { // standard external
+				typeElement.addAttribute("name", getHbmContext()
+						.getExternalUserType());
+			} else {
+				typeElement.addAttribute("name", external.getType());
+			}
+			typeElement
+					.addElement("param")
+					.addAttribute("name", HbMapperConstants.ECLASS_NAME_META)
+					.addText(
+							paReference.getModelEReference()
+									.getEReferenceType().getName());
+			typeElement
+					.addElement("param")
+					.addAttribute("name", HbMapperConstants.EPACKAGE_PARAM)
+					.addText(
+							paReference.getModelEReference()
+									.getEReferenceType().getEPackage()
+									.getNsURI());
+			return;
+		}
+
+		// there must be a type element
+		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
+		Type type = hbReference.getHbType();
+		if (type == null) {
+			type = ((HbAnnotatedEClass) hbReference.getPaEClass()).getHbType();
+		}
+		if (type == null || type.getType() == null ) {
 			throw new MappingException(
-					"External annotation not set on eReference "
+					"No external or type annotation set (or type has no name) on eReference "
 							+ StoreUtil.toString(paReference
 									.getModelEReference()));
 		}
-
-		final Element typeElement = propElement.addElement("type");
-		if (external.getType() == null) { // standard external
-			typeElement.addAttribute("name", getHbmContext()
-					.getExternalUserType());
-		} else {
-			typeElement.addAttribute("name", external.getType());
+		final String name = type.getType();
+		final List<Parameter> params = type.getParameters();
+		if (name != null) {
+			typeElement.addAttribute("name", name);
+			if (params != null) {
+				for (Parameter param : params) {
+					typeElement.addElement("param")
+							.addAttribute("name", param.getName())
+							.addText(param.getValue());
+				}
+			}
 		}
-		typeElement
-				.addElement("param")
-				.addAttribute("name", HbMapperConstants.ECLASS_NAME_META)
-				.addText(
-						paReference.getModelEReference().getEReferenceType()
-								.getName());
-		typeElement
-				.addElement("param")
-				.addAttribute("name", HbMapperConstants.EPACKAGE_PARAM)
-				.addText(
-						paReference.getModelEReference().getEReferenceType()
-								.getEPackage().getNsURI());
-
 	}
 
 	/** Handles the type or typedef annotations */

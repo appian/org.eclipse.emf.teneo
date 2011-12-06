@@ -23,6 +23,7 @@ import java.util.Properties;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.test.stores.HibernateTestStore;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.City;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
@@ -63,7 +64,7 @@ public class UserTypeAction extends AbstractTestAction {
 		testPerson(store);
 		testDatabase(store);
 		removePerson(store);
-
+		
 		{
 			final City c = UsertypeFactory.eINSTANCE.createCity();
 			assertTrue(c.getSize() != null);
@@ -94,8 +95,25 @@ public class UserTypeAction extends AbstractTestAction {
 	}
 
 	private void storePerson(TestStore store) {
+		
+
+		Certificate c1 = UsertypeFactory.eINSTANCE.createCertificate();
+		c1.setName("c1");
+		c1.setLength(1);
+		Certificate c2 = UsertypeFactory.eINSTANCE.createCertificate();
+		c2.setName("c2");
+		c2.setLength(2);
+		Certificate c3 = UsertypeFactory.eINSTANCE.createCertificate();
+		c3.setName("c3");
+		c3.setLength(3);
+				
 		store.beginTransaction();
 		Person person = UsertypeFactory.eINSTANCE.createPerson();
+		
+		person.setCertificate(c1);
+		person.getCertificates().add(c3);
+		person.getCertificates().add(c2);
+		
 		person.setName(NAME);
 		person.setDouble(new Double(5));
 		UsaPhoneNumber up1 = new UsaPhoneNumber(100, 200, 300);
@@ -134,6 +152,12 @@ public class UserTypeAction extends AbstractTestAction {
 
 		assertEquals(2, person.getAddresses().size());
 
+		assertEquals("c1", person.getCertificate().getName());
+		assertEquals("c3", ((Certificate)person.getCertificates().get(0)).getName());
+		assertEquals(3, ((Certificate)person.getCertificates().get(0)).getLength());
+		assertEquals("c2", ((Certificate)person.getCertificates().get(1)).getName());
+		assertEquals(2, ((Certificate)person.getCertificates().get(1)).getLength());
+		
 		store.commitTransaction();
 
 		final Query q1 = ((HibernateTestStore) store).getSession().getNamedQuery("getPersonByBirthPlace");

@@ -27,6 +27,7 @@ import org.eclipse.emf.teneo.hibernate.hbannotation.Immutable;
 import org.eclipse.emf.teneo.hibernate.hbannotation.NamedQuery;
 import org.eclipse.emf.teneo.hibernate.hbannotation.OnDelete;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Proxy;
+import org.eclipse.emf.teneo.hibernate.hbannotation.Type;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Where;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
@@ -49,6 +50,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getImmutable <em>Immutable</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbEntity <em>Hb Entity</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getBatchSize <em>Batch Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.hibernate.hbmodel.impl.HbAnnotatedEClassImpl#getHbType <em>Hb Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -174,6 +176,16 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	 * @ordered
 	 */
 	protected BatchSize batchSize;
+
+	/**
+	 * The cached value of the '{@link #getHbType() <em>Hb Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type hbType;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -593,6 +605,49 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getHbType() {
+		return hbType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetHbType(Type newHbType, NotificationChain msgs) {
+		Type oldHbType = hbType;
+		hbType = newHbType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, oldHbType, newHbType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbType(Type newHbType) {
+		if (newHbType != hbType) {
+			NotificationChain msgs = null;
+			if (hbType != null)
+				msgs = ((InternalEObject)hbType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, null, msgs);
+			if (newHbType != null)
+				msgs = ((InternalEObject)newHbType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, null, msgs);
+			msgs = basicSetHbType(newHbType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE, newHbType, newHbType));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -609,6 +664,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return basicSetForceDiscriminator(null, msgs);
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__IMMUTABLE:
 				return basicSetImmutable(null, msgs);
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				return basicSetHbType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -648,6 +705,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
 				if (resolve) return getBatchSize();
 				return basicGetBatchSize();
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				return getHbType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -699,6 +758,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
 				setBatchSize((BatchSize)newValue);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				setHbType((Type)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -746,6 +808,9 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
 				setBatchSize((BatchSize)null);
 				return;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				setHbType((Type)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -781,6 +846,8 @@ public class HbAnnotatedEClassImpl extends PAnnotatedEClassImpl implements HbAnn
 				return hbEntity != null;
 			case HbmodelPackage.HB_ANNOTATED_ECLASS__BATCH_SIZE:
 				return batchSize != null;
+			case HbmodelPackage.HB_ANNOTATED_ECLASS__HB_TYPE:
+				return hbType != null;
 		}
 		return super.eIsSet(featureID);
 	}

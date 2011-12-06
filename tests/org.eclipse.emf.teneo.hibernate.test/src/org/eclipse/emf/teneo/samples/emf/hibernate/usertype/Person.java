@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getBirthPlace <em>Birth Place</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getDouble <em>Double</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificate <em>Certificate</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificates <em>Certificates</em>}</li>
  * </ul>
  * </p>
  *
@@ -202,5 +204,48 @@ public interface Person extends EObject {
 	 * @generated
 	 */
 	void setDouble(Double value);
+
+	/**
+	 * Returns the value of the '<em><b>Certificate</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Certificate</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Certificate</em>' reference.
+	 * @see #setCertificate(Certificate)
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson_Certificate()
+	 * @model annotation="teneo.jpa appinfo='@Columns({@Column(name=\"cert_name\"), @Column(name=\"cert_length\")})\n\t\t\t\t\t'"
+	 * @generated
+	 */
+	Certificate getCertificate();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificate <em>Certificate</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Certificate</em>' reference.
+	 * @see #getCertificate()
+	 * @generated
+	 */
+	void setCertificate(Certificate value);
+
+	/**
+	 * Returns the value of the '<em><b>Certificates</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Certificates</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Certificates</em>' reference list.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage#getPerson_Certificates()
+	 * @model type="org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate"
+	 *        annotation="teneo.jpa appinfo='@Columns({@Column(name=\"cert_name\"), @Column(name=\"cert_length\")})\n\t\t\t\t\t'"
+	 * @generated
+	 */
+	EList getCertificates();
 
 } // Person

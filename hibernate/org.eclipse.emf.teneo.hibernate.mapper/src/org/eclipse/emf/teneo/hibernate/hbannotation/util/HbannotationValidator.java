@@ -8,11 +8,13 @@ package org.eclipse.emf.teneo.hibernate.hbannotation.util;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.teneo.annotations.pannotation.util.PannotationValidator;
+import org.eclipse.emf.teneo.hibernate.hbannotation.*;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Any;
 import org.eclipse.emf.teneo.hibernate.hbannotation.AnyMetaDef;
 import org.eclipse.emf.teneo.hibernate.hbannotation.BatchSize;
@@ -225,9 +227,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateHbAnnotation(HbAnnotation hbAnnotation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(hbAnnotation, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(hbAnnotation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(hbAnnotation, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(hbAnnotation, diagnostics, context);
@@ -250,6 +254,20 @@ public class HbannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "CompatibleEModelElementType", getObjectLabel(hbAnnotation, context) },
+						 new Object[] { hbAnnotation },
+						 context));
+			}
+			return false;
+		}
 		return pannotationValidator.validatePAnnotation_CompatibleEModelElementType(hbAnnotation, diagnostics, context);
 	}
 
@@ -266,6 +284,20 @@ public class HbannotationValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AnnotationIsSupported", getObjectLabel(hbAnnotation, context) },
+						 new Object[] { hbAnnotation },
+						 context));
+			}
+			return false;
+		}
 		return pannotationValidator.validatePAnnotation_AnnotationIsSupported(hbAnnotation, diagnostics, context);
 	}
 
@@ -275,9 +307,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateCascade(Cascade cascade,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(cascade, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cascade, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(cascade, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(cascade, diagnostics, context);
@@ -294,9 +328,11 @@ public class HbannotationValidator extends EObjectValidator {
 	public boolean validateCollectionOfElements(
 			CollectionOfElements collectionOfElements,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(collectionOfElements, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(collectionOfElements, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(collectionOfElements, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(collectionOfElements, diagnostics, context);
@@ -312,9 +348,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateHbMapKey(HbMapKey hbMapKey,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(hbMapKey, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(hbMapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(hbMapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(hbMapKey, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(hbMapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(hbMapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(hbMapKey, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(hbMapKey, diagnostics, context);
@@ -330,9 +368,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateParameter(Parameter parameter,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(parameter, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(parameter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(parameter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(parameter, diagnostics, context);
@@ -348,9 +388,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateType(Type type, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(type, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(type, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(type, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(type, diagnostics, context);
@@ -366,9 +408,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateWhere(Where where, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(where, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(where, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(where, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(where, diagnostics, context);
@@ -384,9 +428,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateIdBag(IdBag idBag, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(idBag, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(idBag, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(idBag, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(idBag, diagnostics, context);
@@ -402,9 +448,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateGenericGenerator(GenericGenerator genericGenerator,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(genericGenerator, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(genericGenerator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(genericGenerator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(genericGenerator, diagnostics, context);
@@ -420,9 +468,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateCache(Cache cache, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(cache, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cache, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(cache, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(cache, diagnostics, context);
@@ -438,9 +488,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateTypeDef(TypeDef typeDef,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(typeDef, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(typeDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(typeDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(typeDef, diagnostics, context);
@@ -456,9 +508,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateFetch(Fetch fetch, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(fetch, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(fetch, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(fetch, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(fetch, diagnostics, context);
@@ -474,9 +528,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateOnDelete(OnDelete onDelete,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(onDelete, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(onDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(onDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(onDelete, diagnostics, context);
@@ -492,9 +548,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateProxy(Proxy proxy, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(proxy, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(proxy, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(proxy, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(proxy, diagnostics, context);
@@ -510,9 +568,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateNamedQuery(NamedQuery namedQuery,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(namedQuery, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(namedQuery, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(namedQuery, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(namedQuery, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(namedQuery, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(namedQuery, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(namedQuery, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(namedQuery, diagnostics, context);
@@ -528,9 +588,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateFilter(Filter filter, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(filter, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(filter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(filter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(filter, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(filter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(filter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(filter, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(filter, diagnostics, context);
@@ -546,9 +608,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateParamDef(ParamDef paramDef,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(paramDef, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(paramDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(paramDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(paramDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(paramDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(paramDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(paramDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(paramDef, diagnostics, context);
@@ -564,9 +628,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateFilterDef(FilterDef filterDef,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(filterDef, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(filterDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(filterDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(filterDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(filterDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(filterDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(filterDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(filterDef, diagnostics, context);
@@ -583,9 +649,11 @@ public class HbannotationValidator extends EObjectValidator {
 	public boolean validateDiscriminatorFormula(
 			DiscriminatorFormula discriminatorFormula,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(discriminatorFormula, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(discriminatorFormula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discriminatorFormula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discriminatorFormula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discriminatorFormula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discriminatorFormula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(discriminatorFormula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discriminatorFormula, diagnostics, context);
@@ -601,9 +669,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateNaturalId(NaturalId naturalId,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(naturalId, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(naturalId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(naturalId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(naturalId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(naturalId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(naturalId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(naturalId, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(naturalId, diagnostics, context);
@@ -619,9 +689,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateMapKeyManyToMany(MapKeyManyToMany mapKeyManyToMany,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKeyManyToMany, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKeyManyToMany, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(mapKeyManyToMany, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKeyManyToMany, diagnostics, context);
@@ -638,9 +710,11 @@ public class HbannotationValidator extends EObjectValidator {
 	public boolean validateForceDiscriminator(
 			ForceDiscriminator forceDiscriminator, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(forceDiscriminator, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(forceDiscriminator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(forceDiscriminator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(forceDiscriminator, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(forceDiscriminator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(forceDiscriminator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(forceDiscriminator, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(forceDiscriminator, diagnostics, context);
@@ -656,9 +730,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateImmutable(Immutable immutable,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(immutable, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(immutable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(immutable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(immutable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(immutable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(immutable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(immutable, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(immutable, diagnostics, context);
@@ -674,9 +750,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateFormula(Formula formula,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(formula, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(formula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(formula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(formula, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(formula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(formula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(formula, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(formula, diagnostics, context);
@@ -692,9 +770,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateNotFound(NotFound notFound,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(notFound, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(notFound, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(notFound, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(notFound, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(notFound, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(notFound, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(notFound, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(notFound, diagnostics, context);
@@ -710,9 +790,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateHbEntity(HbEntity hbEntity,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(hbEntity, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(hbEntity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(hbEntity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(hbEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(hbEntity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(hbEntity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(hbEntity, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(hbEntity, diagnostics, context);
@@ -728,9 +810,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBatchSize(BatchSize batchSize, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(batchSize, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(batchSize, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(batchSize, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(batchSize, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(batchSize, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(batchSize, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(batchSize, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(batchSize, diagnostics, context);
@@ -746,9 +830,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAny(Any any, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(any, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(any, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(any, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(any, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(any, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(any, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(any, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(any, diagnostics, context);
@@ -764,9 +850,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMetaValue(MetaValue metaValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(metaValue, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(metaValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(metaValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(metaValue, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(metaValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(metaValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(metaValue, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(metaValue, diagnostics, context);
@@ -782,9 +870,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAnyMetaDef(AnyMetaDef anyMetaDef, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(anyMetaDef, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(anyMetaDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(anyMetaDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(anyMetaDef, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(anyMetaDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(anyMetaDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(anyMetaDef, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(anyMetaDef, diagnostics, context);
@@ -800,9 +890,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateIndex(Index index, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(index, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(index, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(index, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(index, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(index, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(index, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(index, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(index, diagnostics, context);
@@ -818,9 +910,11 @@ public class HbannotationValidator extends EObjectValidator {
 	 */
 	public boolean validateGenerated(Generated generated,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(generated, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(generated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(generated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(generated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(generated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(generated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(generated, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(generated, diagnostics, context);

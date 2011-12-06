@@ -61,6 +61,7 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.emf.annotations",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(UserTypeAction.class);
 		suite.addTestSuite(ExternalAction.class);
 		suite.addTestSuite(UniqueConstraintsAction.class);
 		suite.addTestSuite(HbCascadeAction.class);
@@ -78,7 +79,6 @@ public class AllTests {
 		suite.addTestSuite(BZ290969Action.class);
 		suite.addTestSuite(HibernateAction.class);
 		suite.addTestSuite(IdTypeTestOneAction.class);
-		suite.addTestSuite(UserTypeAction.class);
 		suite.addTestSuite(JoinColumnsTest.class);
 		suite.addTestSuite(LobAction.class);
 		suite.addTestSuite(VariousAction.class);

@@ -238,6 +238,8 @@ public class HbEntityDataStore extends HbDataStore implements
 				}
 			}
 
+			System.err.println(getMappingXML());
+			
 			// TODO replace this
 			final StringBufferInputStream is = new StringBufferInputStream(
 					getMappingXML());

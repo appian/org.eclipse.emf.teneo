@@ -234,7 +234,13 @@ public class HibernateMappingGenerator implements ExtensionPoint,
 					return;
 				}
 				
+				// persisted externally
 				if (paEClass.getExternal() != null) {
+					return;
+				}
+				
+				// it has a type is persisted differently
+				if (((HbAnnotatedEClass)paEClass).getHbType() != null) {
 					return;
 				}
 

@@ -178,6 +178,15 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ETYPE_ELEMENT__FOREIGN_KEY = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__FOREIGN_KEY;
 
 	/**
+	 * The feature id for the '<em><b>List Index Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ETYPE_ELEMENT__LIST_INDEX_COLUMN = PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN;
+
+	/**
 	 * The feature id for the '<em><b>Hb Where</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -393,6 +402,15 @@ public interface HbmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EATTRIBUTE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EATTRIBUTE__FOREIGN_KEY;
+
+	/**
+	 * The feature id for the '<em><b>List Index Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EATTRIBUTE__LIST_INDEX_COLUMN = PamodelPackage.PANNOTATED_EATTRIBUTE__LIST_INDEX_COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Model EAttribute</b></em>' reference.
@@ -783,6 +801,42 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__ASSOCIATION_OVERRIDES = PamodelPackage.PANNOTATED_ECLASS__ASSOCIATION_OVERRIDES;
 
 	/**
+	 * The feature id for the '<em><b>Eav Mapping</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__EAV_MAPPING = PamodelPackage.PANNOTATED_ECLASS__EAV_MAPPING;
+
+	/**
+	 * The feature id for the '<em><b>No EAV Mapping</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__NO_EAV_MAPPING = PamodelPackage.PANNOTATED_ECLASS__NO_EAV_MAPPING;
+
+	/**
+	 * The feature id for the '<em><b>Sequence Generators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__SEQUENCE_GENERATORS = PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS;
+
+	/**
+	 * The feature id for the '<em><b>External</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__EXTERNAL = PamodelPackage.PANNOTATED_ECLASS__EXTERNAL;
+
+	/**
 	 * The feature id for the '<em><b>Hb Cache</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -891,13 +945,22 @@ public interface HbmodelPackage extends EPackage {
 	int HB_ANNOTATED_ECLASS__BATCH_SIZE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Hb Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_ECLASS__HB_TYPE = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotated EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 12;
+	int HB_ANNOTATED_ECLASS_FEATURE_COUNT = PamodelPackage.PANNOTATED_ECLASS_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.
@@ -1198,6 +1261,15 @@ public interface HbmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ANNOTATED_EREFERENCE__FOREIGN_KEY = PamodelPackage.PANNOTATED_EREFERENCE__FOREIGN_KEY;
+
+	/**
+	 * The feature id for the '<em><b>List Index Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATED_EREFERENCE__LIST_INDEX_COLUMN = PamodelPackage.PANNOTATED_EREFERENCE__LIST_INDEX_COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Model EReference</b></em>' reference.
@@ -1997,6 +2069,17 @@ public interface HbmodelPackage extends EPackage {
 	EReference getHbAnnotatedEClass_BatchSize();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbType <em>Hb Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Hb Type</em>'.
+	 * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass#getHbType()
+	 * @see #getHbAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getHbAnnotatedEClass_HbType();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2534,6 +2617,14 @@ public interface HbmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HB_ANNOTATED_ECLASS__BATCH_SIZE = eINSTANCE.getHbAnnotatedEClass_BatchSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Hb Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HB_ANNOTATED_ECLASS__HB_TYPE = eINSTANCE.getHbAnnotatedEClass_HbType();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement <em>Hb Annotated EModel Element</em>}' class.

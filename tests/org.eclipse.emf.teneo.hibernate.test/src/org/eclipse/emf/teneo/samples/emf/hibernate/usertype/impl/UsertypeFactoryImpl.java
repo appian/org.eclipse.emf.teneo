@@ -68,6 +68,7 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 			case UsertypePackage.PERSON: return createPerson();
 			case UsertypePackage.ADDRESS: return createAddress();
 			case UsertypePackage.CITY: return createCity();
+			case UsertypePackage.CERTIFICATE: return createCertificate();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -145,6 +146,16 @@ public class UsertypeFactoryImpl extends EFactoryImpl implements UsertypeFactory
 	public City createCity() {
 		CityImpl city = new CityImpl();
 		return city;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Certificate createCertificate() {
+		CertificateImpl certificate = new CertificateImpl();
+		return certificate;
 	}
 
 	/**

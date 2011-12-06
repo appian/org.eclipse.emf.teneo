@@ -136,13 +136,31 @@ public interface UsertypePackage extends EPackage {
 	int PERSON__DOUBLE = 6;
 
 	/**
+	 * The feature id for the '<em><b>Certificate</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__CERTIFICATE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Certificates</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON__CERTIFICATES = 8;
+
+	/**
 	 * The number of structural features of the '<em>Person</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = 7;
+	int PERSON_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
@@ -219,6 +237,43 @@ public interface UsertypePackage extends EPackage {
 	int CITY_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CertificateImpl <em>Certificate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CertificateImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCertificate()
+	 * @generated
+	 */
+	int CERTIFICATE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CERTIFICATE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CERTIFICATE__LENGTH = 1;
+
+	/**
+	 * The number of structural features of the '<em>Certificate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CERTIFICATE_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize <em>City Size</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -226,7 +281,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCitySize()
 	 * @generated
 	 */
-	int CITY_SIZE = 3;
+	int CITY_SIZE = 4;
 
 	/**
 	 * The meta object id for the '<em>Name</em>' data type.
@@ -236,7 +291,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getName_()
 	 * @generated
 	 */
-	int NAME = 4;
+	int NAME = 5;
 
 
 	/**
@@ -247,7 +302,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getPhoneNumber()
 	 * @generated
 	 */
-	int PHONE_NUMBER = 5;
+	int PHONE_NUMBER = 6;
 
 
 	/**
@@ -257,7 +312,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getIntArray()
 	 * @generated
 	 */
-	int INT_ARRAY = 6;
+	int INT_ARRAY = 7;
 
 
 	/**
@@ -268,7 +323,7 @@ public interface UsertypePackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getmyDoubleType()
 	 * @generated
 	 */
-	int MY_DOUBLE_TYPE = 7;
+	int MY_DOUBLE_TYPE = 8;
 
 
 	/**
@@ -359,6 +414,28 @@ public interface UsertypePackage extends EPackage {
 	EAttribute getPerson_Double();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificate <em>Certificate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Certificate</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificate()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_Certificate();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificates <em>Certificates</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Certificates</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person#getCertificates()
+	 * @see #getPerson()
+	 * @generated
+	 */
+	EReference getPerson_Certificates();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -421,6 +498,38 @@ public interface UsertypePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCity_Size();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate <em>Certificate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Certificate</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate
+	 * @generated
+	 */
+	EClass getCertificate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate#getName()
+	 * @see #getCertificate()
+	 * @generated
+	 */
+	EAttribute getCertificate_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate#getLength <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate#getLength()
+	 * @see #getCertificate()
+	 * @generated
+	 */
+	EAttribute getCertificate_Length();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize <em>City Size</em>}'.
@@ -570,6 +679,22 @@ public interface UsertypePackage extends EPackage {
 		EAttribute PERSON__DOUBLE = eINSTANCE.getPerson_Double();
 
 		/**
+		 * The meta object literal for the '<em><b>Certificate</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__CERTIFICATE = eINSTANCE.getPerson_Certificate();
+
+		/**
+		 * The meta object literal for the '<em><b>Certificates</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSON__CERTIFICATES = eINSTANCE.getPerson_Certificates();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.AddressImpl <em>Address</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -620,6 +745,32 @@ public interface UsertypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CITY__SIZE = eINSTANCE.getCity_Size();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CertificateImpl <em>Certificate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.CertificateImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.UsertypePackageImpl#getCertificate()
+		 * @generated
+		 */
+		EClass CERTIFICATE = eINSTANCE.getCertificate();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CERTIFICATE__NAME = eINSTANCE.getCertificate_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CERTIFICATE__LENGTH = eINSTANCE.getCertificate_Length();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.CitySize <em>City Size</em>}' enum.

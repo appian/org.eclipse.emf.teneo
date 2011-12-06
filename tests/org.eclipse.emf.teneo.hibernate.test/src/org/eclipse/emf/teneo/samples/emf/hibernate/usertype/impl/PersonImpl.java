@@ -16,9 +16,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Address;
+import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Certificate;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Name;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.Person;
 import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsaPhoneNumber;
@@ -39,6 +41,8 @@ import org.eclipse.emf.teneo.samples.emf.hibernate.usertype.UsertypePackage;
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getBirthPlace <em>Birth Place</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getDouble <em>Double</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getCertificate <em>Certificate</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.hibernate.usertype.impl.PersonImpl#getCertificates <em>Certificates</em>}</li>
  * </ul>
  * </p>
  *
@@ -165,6 +169,26 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * @ordered
 	 */
 	protected Double double_ = DOUBLE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCertificate() <em>Certificate</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCertificate()
+	 * @generated
+	 * @ordered
+	 */
+	protected Certificate certificate;
+
+	/**
+	 * The cached value of the '{@link #getCertificates() <em>Certificates</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCertificates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList certificates;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -318,6 +342,56 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Certificate getCertificate() {
+		if (certificate != null && certificate.eIsProxy()) {
+			InternalEObject oldCertificate = (InternalEObject)certificate;
+			certificate = (Certificate)eResolveProxy(oldCertificate);
+			if (certificate != oldCertificate) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UsertypePackage.PERSON__CERTIFICATE, oldCertificate, certificate));
+			}
+		}
+		return certificate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Certificate basicGetCertificate() {
+		return certificate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCertificate(Certificate newCertificate) {
+		Certificate oldCertificate = certificate;
+		certificate = newCertificate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UsertypePackage.PERSON__CERTIFICATE, oldCertificate, certificate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getCertificates() {
+		if (certificates == null) {
+			certificates = new EObjectResolvingEList(Certificate.class, this, UsertypePackage.PERSON__CERTIFICATES);
+		}
+		return certificates;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UsertypePackage.PERSON__ADDRESSES:
@@ -360,6 +434,11 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return getBirthPlace();
 			case UsertypePackage.PERSON__DOUBLE:
 				return getDouble();
+			case UsertypePackage.PERSON__CERTIFICATE:
+				if (resolve) return getCertificate();
+				return basicGetCertificate();
+			case UsertypePackage.PERSON__CERTIFICATES:
+				return getCertificates();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -394,6 +473,13 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__DOUBLE:
 				setDouble((Double)newValue);
 				return;
+			case UsertypePackage.PERSON__CERTIFICATE:
+				setCertificate((Certificate)newValue);
+				return;
+			case UsertypePackage.PERSON__CERTIFICATES:
+				getCertificates().clear();
+				getCertificates().addAll((Collection)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -426,6 +512,12 @@ public class PersonImpl extends EObjectImpl implements Person {
 			case UsertypePackage.PERSON__DOUBLE:
 				setDouble(DOUBLE_EDEFAULT);
 				return;
+			case UsertypePackage.PERSON__CERTIFICATE:
+				setCertificate((Certificate)null);
+				return;
+			case UsertypePackage.PERSON__CERTIFICATES:
+				getCertificates().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -451,6 +543,10 @@ public class PersonImpl extends EObjectImpl implements Person {
 				return BIRTH_PLACE_EDEFAULT == null ? birthPlace != null : !BIRTH_PLACE_EDEFAULT.equals(birthPlace);
 			case UsertypePackage.PERSON__DOUBLE:
 				return DOUBLE_EDEFAULT == null ? double_ != null : !DOUBLE_EDEFAULT.equals(double_);
+			case UsertypePackage.PERSON__CERTIFICATE:
+				return certificate != null;
+			case UsertypePackage.PERSON__CERTIFICATES:
+				return certificates != null && !certificates.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

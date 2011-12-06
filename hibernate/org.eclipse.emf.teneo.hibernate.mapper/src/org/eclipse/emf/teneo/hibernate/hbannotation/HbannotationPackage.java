@@ -76,6 +76,15 @@ public interface HbannotationPackage extends EPackage {
 	int HB_ANNOTATION__EMODEL_ELEMENT = PannotationPackage.PANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ANNOTATION__GENERATED = PannotationPackage.PANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Hb Annotation</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -101,6 +110,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int CASCADE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CASCADE__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute list.
@@ -137,6 +155,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int COLLECTION_OF_ELEMENTS__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_OF_ELEMENTS__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Target Element</b></em>' attribute.
@@ -185,6 +212,15 @@ public interface HbannotationPackage extends EPackage {
 	int HB_MAP_KEY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_MAP_KEY__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,6 +255,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -266,6 +311,15 @@ public interface HbannotationPackage extends EPackage {
 	int TYPE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -311,6 +365,15 @@ public interface HbannotationPackage extends EPackage {
 	int WHERE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHERE__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Clause</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -345,6 +408,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ID_BAG__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ID_BAG__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -401,6 +473,15 @@ public interface HbannotationPackage extends EPackage {
 	int GENERIC_GENERATOR__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_GENERATOR__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -453,6 +534,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int CACHE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Usage</b></em>' attribute.
@@ -509,6 +599,15 @@ public interface HbannotationPackage extends EPackage {
 	int TYPE_DEF__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEF__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -563,6 +662,15 @@ public interface HbannotationPackage extends EPackage {
 	int FETCH__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FETCH__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -599,6 +707,15 @@ public interface HbannotationPackage extends EPackage {
 	int ON_DELETE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ON_DELETE__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Action</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -633,6 +750,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROXY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Proxy Class</b></em>' attribute.
@@ -680,6 +806,15 @@ public interface HbannotationPackage extends EPackage {
 	int INDEX__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDEX__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -717,6 +852,15 @@ public interface HbannotationPackage extends EPackage {
 	int GENERATED__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERATED__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -752,6 +896,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_QUERY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_QUERY__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -800,6 +953,15 @@ public interface HbannotationPackage extends EPackage {
 	int FILTER__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILTER__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -846,6 +1008,15 @@ public interface HbannotationPackage extends EPackage {
 	int PARAM_DEF__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAM_DEF__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -890,6 +1061,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILTER_DEF__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILTER_DEF__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -947,6 +1127,15 @@ public interface HbannotationPackage extends EPackage {
 	int DISCRIMINATOR_FORMULA__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRIMINATOR_FORMULA__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -984,6 +1173,15 @@ public interface HbannotationPackage extends EPackage {
 	int NATURAL_ID__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NATURAL_ID__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Mutable</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1019,6 +1217,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAP_KEY_MANY_TO_MANY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_MANY_TO_MANY__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -1067,6 +1274,15 @@ public interface HbannotationPackage extends EPackage {
 	int FORCE_DISCRIMINATOR__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORCE_DISCRIMINATOR__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Force Discriminator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1095,6 +1311,15 @@ public interface HbannotationPackage extends EPackage {
 	int IMMUTABLE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMMUTABLE__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The number of structural features of the '<em>Immutable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1121,6 +1346,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORMULA__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMULA__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1160,6 +1394,15 @@ public interface HbannotationPackage extends EPackage {
 	int NOT_FOUND__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_FOUND__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Action</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1195,6 +1438,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int HB_ENTITY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HB_ENTITY__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Dynamic Insert</b></em>' attribute.
@@ -1288,6 +1540,15 @@ public interface HbannotationPackage extends EPackage {
 	int BATCH_SIZE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BATCH_SIZE__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1323,6 +1584,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ANY__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Meta Def</b></em>' attribute.
@@ -1389,6 +1659,15 @@ public interface HbannotationPackage extends EPackage {
 	int META_VALUE__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_VALUE__GENERATED = HB_ANNOTATION__GENERATED;
+
+	/**
 	 * The feature id for the '<em><b>Target Entity</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1433,6 +1712,15 @@ public interface HbannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ANY_META_DEF__EMODEL_ELEMENT = HB_ANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANY_META_DEF__GENERATED = HB_ANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.

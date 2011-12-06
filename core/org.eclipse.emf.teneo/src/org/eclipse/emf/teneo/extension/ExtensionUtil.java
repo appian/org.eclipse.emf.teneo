@@ -245,6 +245,9 @@ public class ExtensionUtil {
 		em.registerExtension(createExtension(
 				"org.eclipse.emf.teneo.hibernate.mapper.OneToOneMapper", false));
 		em.registerExtension(createExtension(
+				"org.eclipse.emf.teneo.hibernate.mapper.TypedEReferenceMapper",
+				false));
+		em.registerExtension(createExtension(
 				"org.eclipse.emf.teneo.hibernate.mapper.ManyExternalReferenceMapper",
 				false));
 		em.registerExtension(createExtension(
