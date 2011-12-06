@@ -10,12 +10,12 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.samples.issues.bz363777.*;
+import org.eclipse.emf.teneo.samples.issues.bz363777.Bz363777Package;
+import org.eclipse.emf.teneo.samples.issues.bz363777.ChannelMap;
+import org.eclipse.emf.teneo.samples.issues.bz363777.ChannelMapService;
+import org.eclipse.emf.teneo.samples.issues.bz363777.NE;
 
 /**
  * <!-- begin-user-doc -->

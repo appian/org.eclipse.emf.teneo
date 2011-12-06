@@ -10,9 +10,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
@@ -21,8 +18,14 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
-
-import org.eclipse.emf.teneo.hibernate.hbmodel.*;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEAttribute;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEClass;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEDataType;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEModelElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEPackage;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedETypeElement;
+import org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +40,7 @@ import org.eclipse.emf.teneo.hibernate.hbmodel.*;
  * @see org.eclipse.emf.teneo.hibernate.hbmodel.HbmodelPackage
  * @generated
  */
-public class HbmodelSwitch<T> extends Switch<T> {
+public class HbmodelSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -59,16 +62,14 @@ public class HbmodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Checks whether this is a switch for the given package.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
-	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
+	public T doSwitch(EObject theEObject) {
+		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
 	/**
@@ -78,7 +79,26 @@ public class HbmodelSwitch<T> extends Switch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
+		if (theEClass.eContainer() == modelPackage) {
+			return doSwitch(theEClass.getClassifierID(), theEObject);
+		}
+		else {
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch(eSuperTypes.get(0), theEObject);
+		}
+	}
+
+	/**
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case HbmodelPackage.HB_ANNOTATED_ETYPE_ELEMENT: {
@@ -387,7 +407,6 @@ public class HbmodelSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}

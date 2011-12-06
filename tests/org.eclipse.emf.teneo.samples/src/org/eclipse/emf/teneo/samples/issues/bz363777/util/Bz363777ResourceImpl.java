@@ -7,7 +7,6 @@
 package org.eclipse.emf.teneo.samples.issues.bz363777.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**
