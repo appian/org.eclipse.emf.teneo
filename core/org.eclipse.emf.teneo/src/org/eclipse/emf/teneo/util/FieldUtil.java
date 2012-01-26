@@ -11,6 +11,7 @@ package org.eclipse.emf.teneo.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.teneo.TeneoException;
 
@@ -23,7 +24,7 @@ import org.eclipse.emf.teneo.TeneoException;
 
 public class FieldUtil {
 	/** The hashtable caches clazz field name combinations */
-	private static final Hashtable<String, Object> fieldMethodCache = new Hashtable<String, Object>();
+	private static final ConcurrentHashMap<String, Object> fieldMethodCache = new ConcurrentHashMap<String, Object>();
 
 	/** Sets a field and wraps the exceptions */
 	public static Object callMethod(Object obj, String methodName, Object[] params) {
