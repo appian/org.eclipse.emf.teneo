@@ -28,6 +28,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
 import org.eclipse.emf.teneo.annotations.pannotation.GenerationType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
+import org.eclipse.emf.teneo.annotations.pannotation.OptimizerType;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
 import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
@@ -357,8 +358,10 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 							id.getModelEAttribute(), generatedValue.getGenerator());
 					generatorElement.addElement("param").addAttribute("name", "sequence_name").setText(
 							sg.getSequenceName());
-					generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
-							sg.getOptimizer().getName().toLowerCase());
+					if (sg.getOptimizer() != OptimizerType.NONE) {
+						generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
+								sg.getOptimizer().getName().toLowerCase());
+					}
 					generatorElement.addElement("param").addAttribute("name", "initial_value").setText(
 							Integer.toString(sg.getInitialValue()));
 					generatorElement.addElement("param").addAttribute("name", "increment_size").setText(

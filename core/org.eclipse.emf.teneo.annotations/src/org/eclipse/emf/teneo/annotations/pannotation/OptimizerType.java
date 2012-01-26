@@ -50,7 +50,15 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	POOLED(2, "POOLED", "POOLED");
+	POOLED(2, "POOLED", "POOLED"), /**
+	 * The '<em><b>POOLED LO</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #POOLED_LO_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	POOLED_LO(3, "POOLED_LO", "POOLED-LO");
 
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
@@ -98,6 +106,21 @@ public enum OptimizerType implements Enumerator {
 	public static final int POOLED_VALUE = 2;
 
 	/**
+	 * The '<em><b>POOLED LO</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>POOLED LO</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #POOLED_LO
+	 * @model literal="POOLED-LO"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int POOLED_LO_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Optimizer Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,6 +131,7 @@ public enum OptimizerType implements Enumerator {
 			NONE,
 			HILO,
 			POOLED,
+			POOLED_LO,
 		};
 
 	/**
@@ -161,6 +185,7 @@ public enum OptimizerType implements Enumerator {
 			case NONE_VALUE: return NONE;
 			case HILO_VALUE: return HILO;
 			case POOLED_VALUE: return POOLED;
+			case POOLED_LO_VALUE: return POOLED_LO;
 		}
 		return null;
 	}

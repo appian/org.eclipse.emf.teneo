@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OtherTableGeneratorIDImpl.java,v 1.1 2007/11/15 14:48:27 mtaal Exp $
+ * $Id$
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.id.impl;
 
@@ -14,22 +14,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.teneo.samples.emf.annotations.id.IdPackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.id.OtherTableGeneratorID;
+import org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceStyleID;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Other Table Generator ID</b></em>'.
+ * An implementation of the model object '<em><b>Sequence Style ID</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.OtherTableGeneratorIDImpl#getMyid <em>Myid</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceStyleIDImpl#getMyid <em>Myid</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTableGeneratorID {
+public class SequenceStyleIDImpl extends EObjectImpl implements SequenceStyleID {
 	/**
 	 * The default value of the '{@link #getMyid() <em>Myid</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -64,7 +64,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OtherTableGeneratorIDImpl() {
+	protected SequenceStyleIDImpl() {
 		super();
 	}
 
@@ -75,7 +75,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IdPackage.Literals.OTHER_TABLE_GENERATOR_ID;
+		return IdPackage.Literals.SEQUENCE_STYLE_ID;
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 		boolean oldMyidESet = myidESet;
 		myidESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IdPackage.OTHER_TABLE_GENERATOR_ID__MYID, oldMyid, myid, !oldMyidESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, IdPackage.SEQUENCE_STYLE_ID__MYID, oldMyid, myid, !oldMyidESet));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 		myid = MYID_EDEFAULT;
 		myidESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, IdPackage.OTHER_TABLE_GENERATOR_ID__MYID, oldMyid, MYID_EDEFAULT, oldMyidESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, IdPackage.SEQUENCE_STYLE_ID__MYID, oldMyid, MYID_EDEFAULT, oldMyidESet));
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IdPackage.OTHER_TABLE_GENERATOR_ID__MYID:
+			case IdPackage.SEQUENCE_STYLE_ID__MYID:
 				return getMyid();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -146,7 +146,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IdPackage.OTHER_TABLE_GENERATOR_ID__MYID:
+			case IdPackage.SEQUENCE_STYLE_ID__MYID:
 				setMyid((Long)newValue);
 				return;
 		}
@@ -161,7 +161,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IdPackage.OTHER_TABLE_GENERATOR_ID__MYID:
+			case IdPackage.SEQUENCE_STYLE_ID__MYID:
 				unsetMyid();
 				return;
 		}
@@ -176,7 +176,7 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IdPackage.OTHER_TABLE_GENERATOR_ID__MYID:
+			case IdPackage.SEQUENCE_STYLE_ID__MYID:
 				return isSetMyid();
 		}
 		return super.eIsSet(featureID);
@@ -198,4 +198,4 @@ public class OtherTableGeneratorIDImpl extends EObjectImpl implements OtherTable
 		return result.toString();
 	}
 
-} //OtherTableGeneratorIDImpl
+} //SequenceStyleIDImpl

@@ -133,7 +133,7 @@ public class SimpleIDImpl extends EObjectImpl implements SimpleID {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IdPackage.SIMPLE_ID__AUTO_ID:
-				return new Long(getAutoID());
+				return getAutoID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -147,7 +147,7 @@ public class SimpleIDImpl extends EObjectImpl implements SimpleID {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IdPackage.SIMPLE_ID__AUTO_ID:
-				setAutoID(((Long)newValue).longValue());
+				setAutoID((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

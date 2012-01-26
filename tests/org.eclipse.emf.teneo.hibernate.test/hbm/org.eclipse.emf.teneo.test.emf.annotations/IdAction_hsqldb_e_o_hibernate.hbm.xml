@@ -82,4 +82,33 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceIDImpl" entity-name="SequenceID" abstract="false" lazy="false" table="`SEQUENCEID`">
+		<meta attribute="eclassName" inherit="false">SequenceID</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/id</meta>
+		<id name="myid" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`MYID`"/>
+			<generator class="seqhilo">
+				<param name="sequence">mySequenceName</param>
+				<param name="max_lo">99</param>
+			</generator>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceStyleIDImpl" entity-name="SequenceStyleID" abstract="false" lazy="false" table="`SEQUENCESTYLEID`">
+		<meta attribute="eclassName" inherit="false">SequenceStyleID</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/annotations/id</meta>
+		<id name="myid" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`MYID`"/>
+			<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+				<param name="sequence_name">myOtherSequenceName</param>
+				<param name="initial_value">5</param>
+				<param name="increment_size">25</param>
+			</generator>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
 </hibernate-mapping>

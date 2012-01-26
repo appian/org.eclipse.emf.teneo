@@ -4,27 +4,33 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
     modelPluginID="org.eclipse.emf.teneo.samples" modelName="Id" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0">
-  <foreignModel>id.ecore</foreignModel>
+  <foreignModel>id_with_sequence.ecore</foreignModel>
   <genPackages prefix="Id" basePackage="org.eclipse.emf.teneo.samples.emf.annotations"
-      resource="XML" disposableProviderFactory="true" ecorePackage="id.ecore#/">
-    <genClasses ecoreClass="id.ecore#//IdentityID">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//IdentityID/myid"/>
+      resource="XML" disposableProviderFactory="true" ecorePackage="id_with_sequence.ecore#/">
+    <genClasses ecoreClass="id_with_sequence.ecore#//IdentityID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//IdentityID/myid"/>
     </genClasses>
-    <genClasses ecoreClass="id.ecore#//SimpleID">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//SimpleID/autoID"/>
+    <genClasses ecoreClass="id_with_sequence.ecore#//SimpleID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//SimpleID/autoID"/>
     </genClasses>
-    <genClasses ecoreClass="id.ecore#//TableID">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//TableID/myid"/>
+    <genClasses ecoreClass="id_with_sequence.ecore#//TableID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//TableID/myid"/>
     </genClasses>
-    <genClasses ecoreClass="id.ecore#//TableGeneratorID">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//TableGeneratorID/myid"/>
+    <genClasses ecoreClass="id_with_sequence.ecore#//TableGeneratorID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//TableGeneratorID/myid"/>
     </genClasses>
-    <genClasses ecoreClass="id.ecore#//AutoID">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//AutoID/autoID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//AutoID/name"/>
+    <genClasses ecoreClass="id_with_sequence.ecore#//AutoID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//AutoID/autoID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//AutoID/name"/>
     </genClasses>
-    <genClasses ecoreClass="id.ecore#//OtherTableGeneratorID">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id.ecore#//OtherTableGeneratorID/myid"/>
+    <genClasses ecoreClass="id_with_sequence.ecore#//OtherTableGeneratorID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//OtherTableGeneratorID/myid"/>
+    </genClasses>
+    <genClasses ecoreClass="id_with_sequence.ecore#//SequenceID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//SequenceID/myid"/>
+    </genClasses>
+    <genClasses ecoreClass="id_with_sequence.ecore#//SequenceStyleID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute id_with_sequence.ecore#//SequenceStyleID/myid"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

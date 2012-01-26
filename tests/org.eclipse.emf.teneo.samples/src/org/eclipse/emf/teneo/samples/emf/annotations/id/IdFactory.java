@@ -80,6 +80,24 @@ public interface IdFactory extends EFactory {
 	OtherTableGeneratorID createOtherTableGeneratorID();
 
 	/**
+	 * Returns a new object of class '<em>Sequence ID</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequence ID</em>'.
+	 * @generated
+	 */
+	SequenceID createSequenceID();
+
+	/**
+	 * Returns a new object of class '<em>Sequence Style ID</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequence Style ID</em>'.
+	 * @generated
+	 */
+	SequenceStyleID createSequenceStyleID();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

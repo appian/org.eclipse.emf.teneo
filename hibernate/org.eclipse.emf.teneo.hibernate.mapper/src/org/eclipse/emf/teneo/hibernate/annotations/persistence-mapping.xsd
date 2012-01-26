@@ -66,6 +66,7 @@
 			<xsd:element name="named-query" type="NamedQuery" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element name="on-delete" type="OnDeleteAction" minOccurs="0"/>
 			<xsd:element name="proxy" type="Proxy" minOccurs="0"/>
+			<xsd:element name="type" type="Type" minOccurs="0"/>
 			<xsd:element name="where" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="id-class" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="immutable" type="Immutable" minOccurs="0"/>
@@ -748,6 +749,7 @@
 		<xsd:enumeration value="NONE"/>
 		<xsd:enumeration value="HILO"/>
 		<xsd:enumeration value="POOLED"/>
+		<xsd:enumeration value="POOLED-LO"/>
 	</xsd:restriction>
 </xsd:simpleType>
 <xsd:complexType name="PrimaryKeyJoinColumn">

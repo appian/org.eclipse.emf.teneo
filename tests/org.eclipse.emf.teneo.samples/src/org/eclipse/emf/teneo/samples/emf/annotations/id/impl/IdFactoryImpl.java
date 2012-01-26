@@ -70,6 +70,8 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 			case IdPackage.TABLE_GENERATOR_ID: return createTableGeneratorID();
 			case IdPackage.AUTO_ID: return createAutoID();
 			case IdPackage.OTHER_TABLE_GENERATOR_ID: return createOtherTableGeneratorID();
+			case IdPackage.SEQUENCE_ID: return createSequenceID();
+			case IdPackage.SEQUENCE_STYLE_ID: return createSequenceStyleID();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -133,6 +135,26 @@ public class IdFactoryImpl extends EFactoryImpl implements IdFactory {
 	public OtherTableGeneratorID createOtherTableGeneratorID() {
 		OtherTableGeneratorIDImpl otherTableGeneratorID = new OtherTableGeneratorIDImpl();
 		return otherTableGeneratorID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SequenceID createSequenceID() {
+		SequenceIDImpl sequenceID = new SequenceIDImpl();
+		return sequenceID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SequenceStyleID createSequenceStyleID() {
+		SequenceStyleIDImpl sequenceStyleID = new SequenceStyleIDImpl();
+		return sequenceStyleID;
 	}
 
 	/**

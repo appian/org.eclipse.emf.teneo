@@ -141,7 +141,7 @@ public class AutoIDImpl extends EObjectImpl implements AutoID {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IdPackage.AUTO_ID__AUTO_ID:
-				return new Long(getAutoID());
+				return getAutoID();
 			case IdPackage.AUTO_ID__NAME:
 				return getName();
 		}
@@ -157,7 +157,7 @@ public class AutoIDImpl extends EObjectImpl implements AutoID {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IdPackage.AUTO_ID__AUTO_ID:
-				setAutoID(((Long)newValue).longValue());
+				setAutoID((Long)newValue);
 				return;
 			case IdPackage.AUTO_ID__NAME:
 				setName((String)newValue);

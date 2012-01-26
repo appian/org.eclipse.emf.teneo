@@ -2234,6 +2234,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.NONE);
 		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.HILO);
 		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.POOLED);
+		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.POOLED_LO);
 
 		// Create resource
 		createResource(eNS_URI);

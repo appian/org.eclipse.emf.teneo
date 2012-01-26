@@ -133,7 +133,7 @@ public class IdentityIDImpl extends EObjectImpl implements IdentityID {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IdPackage.IDENTITY_ID__MYID:
-				return new Long(getMyid());
+				return getMyid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -147,7 +147,7 @@ public class IdentityIDImpl extends EObjectImpl implements IdentityID {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case IdPackage.IDENTITY_ID__MYID:
-				setMyid(((Long)newValue).longValue());
+				setMyid((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

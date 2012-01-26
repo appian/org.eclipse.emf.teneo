@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.eclipse.emf.teneo.samples.emf.annotations.id.IdFactory
  * @model kind="package"
- *        annotation="teneo.jpa appinfo='\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\" initialValue=10 allocationSize=100)\n\t\t\t@SequenceGenerator(name=\"GENERATORTWO\" sequenceName=\"myOtherSequenceName\" initialValue=5 allocationSize=50)\n\t'"
+ *        annotation="teneo.jpa appinfo='\t\t\t@SequenceStyleGenerator(name=\"StyleGENERATOR\" sequenceName=\"myOtherSequenceName\" optimizer=HILO initialValue=5 incrementSize=25)\n\t\t\t@SequenceStyleGenerator(name=\"StyleGENERATOR2\" sequenceName=\"myOtherSequenceName\" initialValue=5 incrementSize=25)\n\t\t\t@SequenceGenerator(name=\"GENERATOR\" sequenceName=\"mySequenceName\" initialValue=10 allocationSize=100)\n\t\t\t@SequenceGenerator(name=\"GENERATORTWO\" sequenceName=\"myOtherSequenceName\" initialValue=5 allocationSize=50)'"
  * @generated
  */
 public interface IdPackage extends EPackage {
@@ -242,6 +242,64 @@ public interface IdPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceIDImpl <em>Sequence ID</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceIDImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getSequenceID()
+	 * @generated
+	 */
+	int SEQUENCE_ID = 6;
+
+	/**
+	 * The feature id for the '<em><b>Myid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_ID__MYID = 0;
+
+	/**
+	 * The number of structural features of the '<em>Sequence ID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_ID_FEATURE_COUNT = 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceStyleIDImpl <em>Sequence Style ID</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceStyleIDImpl
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getSequenceStyleID()
+	 * @generated
+	 */
+	int SEQUENCE_STYLE_ID = 7;
+
+	/**
+	 * The feature id for the '<em><b>Myid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_ID__MYID = 0;
+
+	/**
+	 * The number of structural features of the '<em>Sequence Style ID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_ID_FEATURE_COUNT = 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.IdentityID <em>Identity ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -377,6 +435,48 @@ public interface IdPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOtherTableGeneratorID_Myid();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceID <em>Sequence ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence ID</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceID
+	 * @generated
+	 */
+	EClass getSequenceID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceID#getMyid <em>Myid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Myid</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceID#getMyid()
+	 * @see #getSequenceID()
+	 * @generated
+	 */
+	EAttribute getSequenceID_Myid();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceStyleID <em>Sequence Style ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence Style ID</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceStyleID
+	 * @generated
+	 */
+	EClass getSequenceStyleID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceStyleID#getMyid <em>Myid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Myid</em>'.
+	 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.SequenceStyleID#getMyid()
+	 * @see #getSequenceStyleID()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleID_Myid();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -515,6 +615,42 @@ public interface IdPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OTHER_TABLE_GENERATOR_ID__MYID = eINSTANCE.getOtherTableGeneratorID_Myid();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceIDImpl <em>Sequence ID</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceIDImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getSequenceID()
+		 * @generated
+		 */
+		EClass SEQUENCE_ID = eINSTANCE.getSequenceID();
+
+		/**
+		 * The meta object literal for the '<em><b>Myid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_ID__MYID = eINSTANCE.getSequenceID_Myid();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceStyleIDImpl <em>Sequence Style ID</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.SequenceStyleIDImpl
+		 * @see org.eclipse.emf.teneo.samples.emf.annotations.id.impl.IdPackageImpl#getSequenceStyleID()
+		 * @generated
+		 */
+		EClass SEQUENCE_STYLE_ID = eINSTANCE.getSequenceStyleID();
+
+		/**
+		 * The meta object literal for the '<em><b>Myid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_ID__MYID = eINSTANCE.getSequenceStyleID_Myid();
 
 	}
 

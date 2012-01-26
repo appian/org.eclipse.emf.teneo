@@ -463,6 +463,7 @@
     <eLiterals name="NONE" literal="NONE"/>
     <eLiterals name="HILO" value="1" literal="HILO"/>
     <eLiterals name="POOLED" value="2" literal="POOLED"/>
+    <eLiterals name="POOLED_LO" value="3" literal="POOLED-LO"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="External" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

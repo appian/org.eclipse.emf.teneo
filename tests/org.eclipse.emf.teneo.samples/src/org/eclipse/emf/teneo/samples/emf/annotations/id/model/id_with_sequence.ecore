@@ -4,7 +4,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="id"
     nsURI="http://www.eclipse.org/emf/teneo/samples/emf/annotations/id" nsPrefix="id">
   <eAnnotations source="teneo.jpa">
-    <details key="appinfo" value="&#x9;&#x9;&#x9;@SequenceStyleGenerator(name=&quot;StyleGENERATOR&quot; sequenceName=&quot;myOtherSequenceName&quot; optimizer=HILO initialValue=5 incrementSize=25)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATOR&quot; sequenceName=&quot;mySequenceName&quot; initialValue=10 allocationSize=100)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATORTWO&quot; sequenceName=&quot;myOtherSequenceName&quot; initialValue=5 allocationSize=50)"/>
+    <details key="appinfo" value="&#x9;&#x9;&#x9;@SequenceStyleGenerator(name=&quot;StyleGENERATOR&quot; sequenceName=&quot;myOtherSequenceName&quot; optimizer=HILO initialValue=5 incrementSize=25)&#xA;&#x9;&#x9;&#x9;@SequenceStyleGenerator(name=&quot;StyleGENERATOR2&quot; sequenceName=&quot;myOtherSequenceName&quot; initialValue=5 incrementSize=25)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATOR&quot; sequenceName=&quot;mySequenceName&quot; initialValue=10 allocationSize=100)&#xA;&#x9;&#x9;&#x9;@SequenceGenerator(name=&quot;GENERATORTWO&quot; sequenceName=&quot;myOtherSequenceName&quot; initialValue=5 allocationSize=50)"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="IdentityID">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -104,6 +104,22 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id&#xA;&#x9;&#x9;&#x9;&#x9;@GeneratedValue(strategy=&quot;SEQUENCE&quot; generator=&quot;GENERATOR&quot;)&#xA;&#x9;&#x9;&#x9;"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="myid"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceStyleID">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="IdentityID"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myid" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Long" unsettable="true">
+      <eAnnotations source="teneo.jpa">
+        <details key="appinfo" value="&#xA;&#x9;&#x9;&#x9;&#x9;@Id&#xA;&#x9;&#x9;&#x9;&#x9;@GeneratedValue(strategy=&quot;SEQUENCESTYLE&quot; generator=&quot;StyleGENERATOR2&quot;)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
