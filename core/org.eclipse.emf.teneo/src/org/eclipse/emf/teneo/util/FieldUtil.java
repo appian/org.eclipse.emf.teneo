@@ -27,12 +27,9 @@ public class FieldUtil {
 
 	/** Sets a field and wraps the exceptions */
 	public static Object callMethod(Object obj, String methodName, Object[] params) {
-		Method method = (Method) fieldMethodCache.get(obj.getClass().getName() + "." + methodName);
-
+		Method method;
 		try {
-			if (method == null) {
-				method = getMethodInternal(obj.getClass(), methodName, (params == null ? 0 : params.length));
-			}
+			method = getMethodInternal(obj.getClass(), methodName, (params == null ? 0 : params.length));
 			if (method != null) {
 				fieldMethodCache.put(obj.getClass().getName() + "." + methodName + "."
 						+ (params == null ? 0 : params.length), method);
@@ -155,7 +152,7 @@ public class FieldUtil {
 			return null;
 		}
 
-		final Method method = (Method) fieldMethodCache.get(clazz.getName() + "." + methodName);
+		final Method method = (Method) fieldMethodCache.get(clazz.getName() + "." + methodName + "." + numOfParams);
 		if (method != null) {
 			return method;
 		}
