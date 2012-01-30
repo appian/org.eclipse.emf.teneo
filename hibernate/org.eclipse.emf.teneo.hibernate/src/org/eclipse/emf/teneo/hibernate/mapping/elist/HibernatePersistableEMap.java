@@ -55,6 +55,8 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 	/** The logger */
 	private static Log log = LogFactory.getLog(HibernatePersistableEMap.class);
 
+	private Long cachedSize = null;
+	
 	/** Constructor */
 	public HibernatePersistableEMap(InternalEObject owner, EReference eref,
 			List<Entry<K, V>> list) {
@@ -159,6 +161,9 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 		if (!isLoaded()
 				&& delegateEList instanceof PersistableEList<?>
 				&& ((PersistableEList<?>) delegateEList).getDelegate() instanceof AbstractPersistentCollection) {
+			if (cachedSize != null) {
+				return cachedSize.intValue();
+			}
 			try {
 				final Session s = (Session) ((AbstractPersistentCollection) ((PersistableEList<?>) delegateEList)
 						.getDelegate()).getSession();
@@ -166,12 +171,13 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 				// now that we have the session, we can query the size of
 				// the list without loading it
 				s.flush();
-				size = ((Long) s
+				cachedSize = ((Long) s
 						.createFilter(
 								((PersistableEList<?>) delegateEList)
 										.getDelegate(),
-								"select count(*)").list().get(0)).intValue();
-				return size;
+								"select count(*)").list().get(0));
+				size = cachedSize.intValue();
+				return cachedSize.intValue();
 			} catch (Throwable t) {
 				// ignore on purpose, let the call to super handle it
 			}

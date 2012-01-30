@@ -54,6 +54,8 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 	/** The logger */
 	private static Log log = LogFactory.getLog(MapHibernatePersistableEMap.class);
 
+	private Long cachedSize = null;
+	
 	/**
 	 * Constructor: this version will take a natural map as input (probided by hibernate) and
 	 * transform the entries into the EMF keyToValue format
@@ -121,6 +123,9 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 		// load delegate
 		if (!isMapValueIsEAttribute() && this.getORMMapDelegate() != null) {
 			if (!this.isORMMapDelegateLoaded() && (this.getORMMapDelegate() instanceof AbstractPersistentCollection)) {
+				if (cachedSize != null) {
+					return cachedSize.intValue();
+				}
 				try {
 					// here is a neat trick. we use reflection to get the
 					// session of the persistanMap.
@@ -130,9 +135,9 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 
 					// now that we have the session, we can query the size of
 					// the list without loading it
-					size =
-							((Long) s.createFilter(this.getORMMapDelegate(), "select count(*)").list().get(0))
-								.intValue();
+					cachedSize =
+							((Long) s.createFilter(this.getORMMapDelegate(), "select count(*)").list().get(0));
+					size = cachedSize.intValue();
 					return size;
 				} catch (Throwable t) {
 					// ignore on purpose, let the call to super handle it
