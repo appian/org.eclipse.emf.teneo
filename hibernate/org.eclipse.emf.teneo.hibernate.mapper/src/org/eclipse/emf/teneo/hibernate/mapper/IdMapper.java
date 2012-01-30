@@ -361,9 +361,9 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 					if (sg.getOptimizerClass() != null && sg.getOptimizerClass().trim().length() > 0) {
 						generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
 								sg.getOptimizerClass());
-					} else if (sg.getOptimizer() != OptimizerType.NONE) {
+					} else if (sg.getOptimizer() != OptimizerType.DEFAULT) {
 						generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
-								sg.getOptimizer().getName().toLowerCase());
+								sg.getOptimizer().getLiteral().toLowerCase());
 					}
 					generatorElement.addElement("param").addAttribute("name", "initial_value").setText(
 							Integer.toString(sg.getInitialValue()));

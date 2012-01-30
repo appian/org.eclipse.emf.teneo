@@ -457,14 +457,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="incrementSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="50"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizer" eType="#//OptimizerType"
-        defaultValueLiteral="NONE"/>
+        defaultValueLiteral="DEFAULT"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizerClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="OptimizerType">
-    <eLiterals name="NONE" literal="NONE"/>
-    <eLiterals name="HILO" value="1" literal="HILO"/>
-    <eLiterals name="POOLED" value="2" literal="POOLED"/>
-    <eLiterals name="POOLED_LO" value="3" literal="POOLED-LO"/>
+    <eLiterals name="NONE" value="1" literal="NONE"/>
+    <eLiterals name="HILO" value="2" literal="HILO"/>
+    <eLiterals name="POOLED" value="3" literal="POOLED"/>
+    <eLiterals name="POOLED_LO" value="4" literal="POOLED-LO"/>
+    <eLiterals name="DEFAULT" literal="DEFAULT"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="External" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

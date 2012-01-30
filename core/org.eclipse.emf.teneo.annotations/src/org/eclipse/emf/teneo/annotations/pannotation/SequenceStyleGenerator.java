@@ -137,7 +137,7 @@ public interface SequenceStyleGenerator extends PAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Optimizer</b></em>' attribute.
-	 * The default value is <code>"NONE"</code>.
+	 * The default value is <code>"DEFAULT"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -149,7 +149,7 @@ public interface SequenceStyleGenerator extends PAnnotation {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.OptimizerType
 	 * @see #setOptimizer(OptimizerType)
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceStyleGenerator_Optimizer()
-	 * @model default="NONE"
+	 * @model default="DEFAULT"
 	 * @generated
 	 */
 	OptimizerType getOptimizer();

@@ -30,7 +30,7 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NONE(0, "NONE", "NONE"),
+	NONE(1, "NONE", "NONE"),
 
 	/**
 	 * The '<em><b>HILO</b></em>' literal object.
@@ -40,7 +40,7 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HILO(1, "HILO", "HILO"),
+	HILO(2, "HILO", "HILO"),
 
 	/**
 	 * The '<em><b>POOLED</b></em>' literal object.
@@ -50,7 +50,7 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	POOLED(2, "POOLED", "POOLED"), /**
+	POOLED(3, "POOLED", "POOLED"), /**
 	 * The '<em><b>POOLED LO</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +58,15 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	POOLED_LO(3, "POOLED_LO", "POOLED-LO");
+	POOLED_LO(4, "POOLED_LO", "POOLED-LO"), /**
+	 * The '<em><b>DEFAULT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DEFAULT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DEFAULT(0, "DEFAULT", "DEFAULT");
 
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
@@ -73,7 +81,7 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE_VALUE = 0;
+	public static final int NONE_VALUE = 1;
 
 	/**
 	 * The '<em><b>HILO</b></em>' literal value.
@@ -88,7 +96,7 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HILO_VALUE = 1;
+	public static final int HILO_VALUE = 2;
 
 	/**
 	 * The '<em><b>POOLED</b></em>' literal value.
@@ -103,7 +111,7 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int POOLED_VALUE = 2;
+	public static final int POOLED_VALUE = 3;
 
 	/**
 	 * The '<em><b>POOLED LO</b></em>' literal value.
@@ -118,7 +126,22 @@ public enum OptimizerType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int POOLED_LO_VALUE = 3;
+	public static final int POOLED_LO_VALUE = 4;
+
+	/**
+	 * The '<em><b>DEFAULT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>DEFAULT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DEFAULT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEFAULT_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Optimizer Type</b></em>' enumerators.
@@ -132,6 +155,7 @@ public enum OptimizerType implements Enumerator {
 			HILO,
 			POOLED,
 			POOLED_LO,
+			DEFAULT,
 		};
 
 	/**
@@ -186,6 +210,7 @@ public enum OptimizerType implements Enumerator {
 			case HILO_VALUE: return HILO;
 			case POOLED_VALUE: return POOLED;
 			case POOLED_LO_VALUE: return POOLED_LO;
+			case DEFAULT_VALUE: return DEFAULT;
 		}
 		return null;
 	}

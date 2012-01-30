@@ -2187,7 +2187,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getSequenceStyleGenerator_SequenceName(), ecorePackage.getEString(), "sequenceName", null, 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceStyleGenerator_InitialValue(), ecorePackage.getEInt(), "initialValue", "1", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceStyleGenerator_IncrementSize(), ecorePackage.getEInt(), "incrementSize", "50", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSequenceStyleGenerator_Optimizer(), this.getOptimizerType(), "optimizer", "NONE", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceStyleGenerator_Optimizer(), this.getOptimizerType(), "optimizer", "DEFAULT", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceStyleGenerator_OptimizerClass(), ecorePackage.getEString(), "optimizerClass", null, 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(externalEClass, External.class, "External", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2246,6 +2246,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.HILO);
 		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.POOLED);
 		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.POOLED_LO);
+		addEEnumLiteral(optimizerTypeEEnum, OptimizerType.DEFAULT);
 
 		// Create resource
 		createResource(eNS_URI);

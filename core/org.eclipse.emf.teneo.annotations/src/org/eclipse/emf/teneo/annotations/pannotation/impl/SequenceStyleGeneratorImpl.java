@@ -120,7 +120,7 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 	 * @generated
 	 * @ordered
 	 */
-	protected static final OptimizerType OPTIMIZER_EDEFAULT = OptimizerType.NONE;
+	protected static final OptimizerType OPTIMIZER_EDEFAULT = OptimizerType.DEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOptimizer() <em>Optimizer</em>}' attribute.
