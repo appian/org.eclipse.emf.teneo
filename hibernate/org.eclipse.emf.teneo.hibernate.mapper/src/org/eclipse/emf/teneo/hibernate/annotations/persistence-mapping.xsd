@@ -789,6 +789,7 @@
 	<xsd:attribute name="initial-value" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 	<xsd:attribute name="optimizer" type="OptimizerType" use="optional"/>
+	<xsd:attribute name="optimizer-class" type="xsd:string" use="optional"/>
 	<xsd:attribute name="sequence-name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="Table">
