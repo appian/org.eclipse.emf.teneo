@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl#getIncrementSize <em>Increment Size</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl#getOptimizer <em>Optimizer</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceStyleGeneratorImpl#getOptimizerClass <em>Optimizer Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +131,26 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 	 * @ordered
 	 */
 	protected OptimizerType optimizer = OPTIMIZER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOptimizerClass() <em>Optimizer Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOptimizerClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OPTIMIZER_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOptimizerClass() <em>Optimizer Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOptimizerClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String optimizerClass = OPTIMIZER_CLASS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,6 +281,27 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getOptimizerClass() {
+		return optimizerClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOptimizerClass(String newOptimizerClass) {
+		String oldOptimizerClass = optimizerClass;
+		optimizerClass = newOptimizerClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS, oldOptimizerClass, optimizerClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -273,6 +315,8 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 				return getIncrementSize();
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER:
 				return getOptimizer();
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS:
+				return getOptimizerClass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,6 +343,9 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 				return;
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER:
 				setOptimizer((OptimizerType)newValue);
+				return;
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS:
+				setOptimizerClass((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,6 +374,9 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER:
 				setOptimizer(OPTIMIZER_EDEFAULT);
 				return;
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS:
+				setOptimizerClass(OPTIMIZER_CLASS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +399,8 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 				return incrementSize != INCREMENT_SIZE_EDEFAULT;
 			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER:
 				return optimizer != OPTIMIZER_EDEFAULT;
+			case PannotationPackage.SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS:
+				return OPTIMIZER_CLASS_EDEFAULT == null ? optimizerClass != null : !OPTIMIZER_CLASS_EDEFAULT.equals(optimizerClass);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -373,6 +425,8 @@ public class SequenceStyleGeneratorImpl extends PAnnotationImpl implements Seque
 		result.append(incrementSize);
 		result.append(", optimizer: ");
 		result.append(optimizer);
+		result.append(", optimizerClass: ");
+		result.append(optimizerClass);
 		result.append(')');
 		return result.toString();
 	}

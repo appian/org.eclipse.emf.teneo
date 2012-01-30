@@ -358,7 +358,10 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 							id.getModelEAttribute(), generatedValue.getGenerator());
 					generatorElement.addElement("param").addAttribute("name", "sequence_name").setText(
 							sg.getSequenceName());
-					if (sg.getOptimizer() != OptimizerType.NONE) {
+					if (sg.getOptimizerClass() != null && sg.getOptimizerClass().trim().length() > 0) {
+						generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
+								sg.getOptimizerClass());
+					} else if (sg.getOptimizer() != OptimizerType.NONE) {
 						generatorElement.addElement("param").addAttribute("name", "optimizer").setText(
 								sg.getOptimizer().getName().toLowerCase());
 					}

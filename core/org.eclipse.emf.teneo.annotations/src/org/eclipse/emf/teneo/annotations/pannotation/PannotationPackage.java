@@ -2236,13 +2236,22 @@ public interface PannotationPackage extends EPackage {
 	int SEQUENCE_STYLE_GENERATOR__OPTIMIZER = PANNOTATION_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Optimizer Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Sequence Style Generator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_STYLE_GENERATOR_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
+	int SEQUENCE_STYLE_GENERATOR_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ExternalImpl <em>External</em>}' class.
@@ -3835,6 +3844,17 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getSequenceStyleGenerator_Optimizer();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizerClass <em>Optimizer Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optimizer Class</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizerClass()
+	 * @see #getSequenceStyleGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceStyleGenerator_OptimizerClass();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.External <em>External</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5212,6 +5232,14 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SEQUENCE_STYLE_GENERATOR__OPTIMIZER = eINSTANCE.getSequenceStyleGenerator_Optimizer();
+
+		/**
+		 * The meta object literal for the '<em><b>Optimizer Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS = eINSTANCE.getSequenceStyleGenerator_OptimizerClass();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ExternalImpl <em>External</em>}' class.

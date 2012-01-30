@@ -313,6 +313,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/initialValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/incrementSize"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/optimizer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//SequenceStyleGenerator/optimizerClass"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//External">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//External/type"/>

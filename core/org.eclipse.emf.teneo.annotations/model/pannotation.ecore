@@ -458,6 +458,7 @@
         defaultValueLiteral="50"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizer" eType="#//OptimizerType"
         defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizerClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="OptimizerType">
     <eLiterals name="NONE" literal="NONE"/>

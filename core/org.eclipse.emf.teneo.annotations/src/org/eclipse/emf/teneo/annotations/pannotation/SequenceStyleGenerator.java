@@ -20,6 +20,7 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getIncrementSize <em>Increment Size</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizer <em>Optimizer</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizerClass <em>Optimizer Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -163,5 +164,31 @@ public interface SequenceStyleGenerator extends PAnnotation {
 	 * @generated
 	 */
 	void setOptimizer(OptimizerType value);
+
+	/**
+	 * Returns the value of the '<em><b>Optimizer Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Optimizer Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Optimizer Class</em>' attribute.
+	 * @see #setOptimizerClass(String)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceStyleGenerator_OptimizerClass()
+	 * @model
+	 * @generated
+	 */
+	String getOptimizerClass();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator#getOptimizerClass <em>Optimizer Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Optimizer Class</em>' attribute.
+	 * @see #getOptimizerClass()
+	 * @generated
+	 */
+	void setOptimizerClass(String value);
 
 } // SequenceStyleGenerator

@@ -1571,6 +1571,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSequenceStyleGenerator_OptimizerClass() {
+		return (EAttribute)sequenceStyleGeneratorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExternal() {
 		return externalEClass;
 	}
@@ -1911,6 +1920,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__INITIAL_VALUE);
 		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__INCREMENT_SIZE);
 		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__OPTIMIZER);
+		createEAttribute(sequenceStyleGeneratorEClass, SEQUENCE_STYLE_GENERATOR__OPTIMIZER_CLASS);
 
 		externalEClass = createEClass(EXTERNAL);
 		createEAttribute(externalEClass, EXTERNAL__TYPE);
@@ -2178,6 +2188,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getSequenceStyleGenerator_InitialValue(), ecorePackage.getEInt(), "initialValue", "1", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceStyleGenerator_IncrementSize(), ecorePackage.getEInt(), "incrementSize", "50", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceStyleGenerator_Optimizer(), this.getOptimizerType(), "optimizer", "NONE", 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceStyleGenerator_OptimizerClass(), ecorePackage.getEString(), "optimizerClass", null, 0, 1, SequenceStyleGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(externalEClass, External.class, "External", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExternal_Type(), ecorePackage.getEString(), "type", null, 0, 1, External.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
