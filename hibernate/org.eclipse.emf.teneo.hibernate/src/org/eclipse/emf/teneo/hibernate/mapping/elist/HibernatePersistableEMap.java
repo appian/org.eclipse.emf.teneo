@@ -37,6 +37,8 @@ import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.Session;
 import org.hibernate.collection.AbstractPersistentCollection;
 import org.hibernate.collection.PersistentCollection;
+import org.hibernate.collection.PersistentList;
+import org.hibernate.collection.PersistentMap;
 
 /**
  * Implements the hibernate persistable emap. Note an emap is not loaded lazily!
@@ -56,7 +58,7 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 	private static Log log = LogFactory.getLog(HibernatePersistableEMap.class);
 
 	private Long cachedSize = null;
-	
+
 	/** Constructor */
 	public HibernatePersistableEMap(InternalEObject owner, EReference eref,
 			List<Entry<K, V>> list) {
@@ -161,7 +163,17 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 		if (!isLoaded()
 				&& delegateEList instanceof PersistableEList<?>
 				&& ((PersistableEList<?>) delegateEList).getDelegate() instanceof AbstractPersistentCollection) {
-			if (cachedSize != null) {
+			final AbstractPersistentCollection abstractPersistentCollection = (AbstractPersistentCollection) ((PersistableEList<?>) delegateEList)
+					.getDelegate();
+			if (abstractPersistentCollection.wasInitialized()) {
+				if (abstractPersistentCollection instanceof PersistentList) {
+					return ((PersistentList) abstractPersistentCollection)
+							.size();
+				} else if (abstractPersistentCollection instanceof PersistentMap) {
+					return ((PersistentMap) abstractPersistentCollection)
+							.size();
+				}
+			} else if (cachedSize != null) {
 				return cachedSize.intValue();
 			}
 			try {
