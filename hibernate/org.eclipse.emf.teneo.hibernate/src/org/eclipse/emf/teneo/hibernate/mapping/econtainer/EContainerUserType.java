@@ -25,6 +25,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.dom4j.Node;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -80,10 +81,10 @@ public class EContainerUserType extends AbstractType implements
 			Types.VARCHAR };
 
 	/** HashTable with cached constructors */
-	private final Hashtable<String, Constructor<?>> constructorCache = new Hashtable<String, Constructor<?>>();
+	private final ConcurrentHashMap<String, Constructor<?>> constructorCache = new ConcurrentHashMap<String, Constructor<?>>();
 
 	/** HashTable with identifier types hashed by entityname */
-	private final Hashtable<String, Type> identifierTypeCache = new Hashtable<String, Type>();
+	private final ConcurrentHashMap<String, Type> identifierTypeCache = new ConcurrentHashMap<String, Type>();
 
 	/**
 	 * Abstract method from super class, currently does not really print
