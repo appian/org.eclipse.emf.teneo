@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005 - 2012 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.annotations.mapper.AbstractAnnotator;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -136,6 +137,18 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 	 */
 	public String getForeignKeyName(PAnnotatedEStructuralFeature aFeature) {
 		return getForeignKeyName(aFeature.getPaEClass(), aFeature);
+	}
+
+	/**
+	 * Returns the name of an index for a foreign key.
+	 */
+	public String getForeignKeyIndexName(AbstractAnnotator annotator, PAnnotatedEReference aReference) {
+		return annotator.getPersistenceOptions()
+				.getSQLIndexNamePrefix()
+				+ annotator.getEntityName(aReference.getModelEReference()
+						.getEContainingClass())
+				+ "_"
+				+ aReference.getModelEReference().getName();
 	}
 
 	public String getForeignKeyName(PAnnotatedEClass aClass,

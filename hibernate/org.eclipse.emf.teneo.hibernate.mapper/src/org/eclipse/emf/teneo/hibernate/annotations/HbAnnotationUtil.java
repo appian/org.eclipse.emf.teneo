@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2006, 2007, 2008 Springsite BV (The Netherlands) and others
+ * Copyright (c) 2005 - 2012 Springsite BV (The Netherlands) and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbannotationFactory;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Index;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
+import org.eclipse.emf.teneo.mapping.strategy.SQLNameStrategy;
+import org.eclipse.emf.teneo.mapping.strategy.impl.ClassicSQLNameStrategy;
 
 /**
  * Some utility methods.
@@ -38,13 +40,18 @@ public class HbAnnotationUtil {
 
 	/** Adds an index */
 	public static void setIndex(PAnnotatedEReference aReference,
-			AbstractAnnotator annotator) {
-		final String indexName = annotator.getPersistenceOptions()
-				.getSQLIndexNamePrefix()
-				+ annotator.getEntityName(aReference.getModelEReference()
-						.getEContainingClass())
-				+ "_"
-				+ aReference.getModelEReference().getName();
+			AbstractAnnotator annotator, SQLNameStrategy namingStrategy) {
+		final String indexName;
+		if (namingStrategy instanceof ClassicSQLNameStrategy) {
+			indexName = ((ClassicSQLNameStrategy)namingStrategy).getForeignKeyIndexName(annotator, aReference);
+		} else {
+			indexName = annotator.getPersistenceOptions()
+					.getSQLIndexNamePrefix()
+					+ annotator.getEntityName(aReference.getModelEReference()
+							.getEContainingClass())
+					+ "_"
+					+ aReference.getModelEReference().getName();
+		}
 		final HbAnnotatedEReference haReference = (HbAnnotatedEReference) aReference;
 		if (haReference.getHbIndex() == null) {
 			final Index index = HbannotationFactory.eINSTANCE.createIndex();

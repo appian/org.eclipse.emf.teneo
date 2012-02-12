@@ -42,7 +42,7 @@ public class HbUnidirectionalManyToManyAnnotator extends UnidirectionalManyToMan
 	@Override
 	public void annotate(PAnnotatedEReference reference) {
 		if (getPersistenceOptions().isAddIndexForForeignKey()) {
-			HbAnnotationUtil.setIndex(reference, this);
+			HbAnnotationUtil.setIndex(reference, this, getSqlNameStrategy());
 		}
 		annotate(reference);
 	}
