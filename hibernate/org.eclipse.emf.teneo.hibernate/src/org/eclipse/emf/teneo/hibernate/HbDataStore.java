@@ -344,6 +344,8 @@ public abstract class HbDataStore implements DataStore {
 
 		log.debug("Registering datastore with persistent classes");
 		HbHelper.INSTANCE.registerDataStoreByPC(this);
+		
+		EModelResolver.instance().registerOwnerShip(this, getEPackages());
 	}
 
 	/** Build the mappings in the configuration */

@@ -17,11 +17,15 @@
 
 package org.eclipse.emf.teneo.ecore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.ERuntime;
 
 /**
@@ -49,6 +53,8 @@ public abstract class EModelResolver {
 		instance = modelResolver;
 	}
 
+	private Map<EPackage, List<DataStore>> ePackageRegistration = new HashMap<EPackage, List<DataStore>>();
+	
 	/** Clear all internal datastructures */
 	public abstract void clear();
 
@@ -64,6 +70,41 @@ public abstract class EModelResolver {
 	/** Register the epackages */
 	public abstract void register(EPackage[] epacks);
 
+	/** Register that a set of epackages is owned by a datastore */
+	public synchronized void registerOwnerShip(DataStore dataStore, EPackage[] epacks) {	
+		for (EPackage ePackage : epacks) {
+			List<DataStore> stores = ePackageRegistration.get(ePackage);
+			if (stores == null) {
+				stores = new ArrayList<DataStore>();
+				ePackageRegistration.put(ePackage, stores);
+			}
+			if (!stores.contains(dataStore)) {
+				stores.add(dataStore);
+			}
+		}
+	}
+	
+	/** Unregister an epackage */
+	public synchronized void unregisterOwnerShip(DataStore dataStore, EPackage[] epacks) {
+		final List<EPackage> toRemove = new ArrayList<EPackage>();
+		for (EPackage ePackage : epacks) {
+			List<DataStore> stores = ePackageRegistration.get(ePackage);
+			if (stores != null) {
+				stores.remove(dataStore);
+				if (stores.isEmpty()) {
+					ePackageRegistration.remove(ePackage);
+					toRemove.add(ePackage);
+				}
+			}
+		}
+		removeEPackages(toRemove);
+	}
+	
+	/** Remove an epackage from the internal lists */
+	protected void removeEPackages(List<EPackage> ePackages) {
+		
+	}
+	
 	/** @return all java classes and interfaces */
 	public abstract List<Class<?>> getAllClassesAndInterfaces();
 

@@ -59,6 +59,9 @@ public class ERuntime extends EModelResolver {
 	/** The list of epackages processed here */
 	private final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 
+	/** Count of times that an epackage got registered */
+	private final ArrayList<Integer> registrationCount = new ArrayList<Integer>();
+	
 	/** The mapping from concrete classes to eclass and back */
 	private final HashMap<Class<?>, EClass> concreteToEClass = new HashMap<Class<?>, EClass>();
 
@@ -71,6 +74,17 @@ public class ERuntime extends EModelResolver {
 
 	/** The list of contained classes/interfaces */
 	private final ArrayList<Class<?>> containedClasses = new ArrayList<Class<?>>();
+	
+	/** Remove an epackage from the internal lists */
+	public void removeEPackages(List<EPackage> ePackages) {
+		for (EPackage ePackage : ePackages) {
+			epackages.remove(ePackage);		
+		}
+
+		// recompute everything
+		computeConcreteInstanceMapping();
+		computeContainedClasses();
+	}
 
 	/** Register the epackages */
 	@Override
@@ -291,13 +305,13 @@ public class ERuntime extends EModelResolver {
 	 * @see org.eclipse.emf.teneo.jpox.emf.IEMFDataStore#getEPackages()
 	 */
 	@Override
-	public EPackage[] getEPackages() {
+	public synchronized EPackage[] getEPackages() {
 		return epackages.toArray(new EPackage[epackages.size()]);
 	}
 
 	/** Returns true if the epackage is registered here */
 	@Override
-	public boolean isRegistered(EPackage epackage) {
+	public synchronized boolean isRegistered(EPackage epackage) {
 		return epackages.contains(epackage);
 	}
 
@@ -315,7 +329,7 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/** Returns the instanceclass for a passed interface */
-	public Class<?> getInstanceClass(Class<?> interf) {
+	public synchronized Class<?> getInstanceClass(Class<?> interf) {
 		final EClass eclass = interfaceToEClass.get(interf);
 		if (eclass == null) {
 			throw new TeneoException("No eclass for interf " + interf.getName());
@@ -325,7 +339,7 @@ public class ERuntime extends EModelResolver {
 
 	/** Returns the instanceclass for a passed eclass */
 	@Override
-	public Class<?> getJavaClass(EClassifier eclassifier) {
+	public synchronized Class<?> getJavaClass(EClassifier eclassifier) {
 		if (eclassifier instanceof EClass) {
 			final EClass eclass = (EClass) eclassifier;
 			if (eclass.isInterface()) {
@@ -337,19 +351,19 @@ public class ERuntime extends EModelResolver {
 
 	/** Returns the interface class for a passed eclass */
 	@Override
-	public Class<?> getJavaInterfaceClass(EClass eclass) {
+	public synchronized Class<?> getJavaInterfaceClass(EClass eclass) {
 		return eclass.getInstanceClass();
 	}
 
 	/** Returns true if the passed EClass has a javaClass representation. */
 	@Override
-	public boolean hasImplementationClass(EClassifier eclassifier) {
+	public synchronized boolean hasImplementationClass(EClassifier eclassifier) {
 		return null != getJavaClass(eclassifier);
 	}
 
 	/** Returns null */
 	@Override
-	public Object create(EClass eclass) {
+	public synchronized Object create(EClass eclass) {
 		// abstract instance classes are added later
 		if (eclass.isAbstract() || eclass.isInterface()) {
 			return null;
@@ -370,7 +384,7 @@ public class ERuntime extends EModelResolver {
 
 	/** Get the eclass for a certain class */
 	@Override
-	public EClass getEClass(Class<?> clazz) {
+	public synchronized EClass getEClass(Class<?> clazz) {
 		if (clazz.isInterface()) {
 			return interfaceToEClass.get(clazz);
 		}
@@ -378,7 +392,7 @@ public class ERuntime extends EModelResolver {
 	}
 
 	/** Get the eclass for a certain class name */
-	public EClass getEClass(String classname) {
+	public synchronized EClass getEClass(String classname) {
 		try {
 			return getEClass(ClassLoaderResolver.classForName(classname));
 		} catch (StoreClassLoadException e) {
@@ -391,7 +405,7 @@ public class ERuntime extends EModelResolver {
 	 * Returns the structural feature for a certain field and object comby. Null is returned if
 	 * nothing is found
 	 */
-	public EStructuralFeature getStructuralFeature(Class<?> clazz, String FieldName) {
+	public synchronized EStructuralFeature getStructuralFeature(Class<?> clazz, String FieldName) {
 		final EClass eclass = getEClass(clazz);
 		if (eclass == null) {
 			return null;
@@ -406,7 +420,7 @@ public class ERuntime extends EModelResolver {
 	 * 
 	 * Note that multiple classes in one inheritance structure can be present.
 	 */
-	public Class<?>[] getContainedInterfaces() {
+	public synchronized Class<?>[] getContainedInterfaces() {
 		return containedClasses.toArray(new Class[containedClasses.size()]);
 	}
 
@@ -416,7 +430,7 @@ public class ERuntime extends EModelResolver {
 	 * @see org.eclipse.emf.teneo.ecore.EModelResolver#getAllClassesAndInterfaces()
 	 */
 	@Override
-	public List<Class<?>> getAllClassesAndInterfaces() {
+	public synchronized List<Class<?>> getAllClassesAndInterfaces() {
 		final List<Class<?>> result = new ArrayList<Class<?>>();
 		result.addAll(getAllConcreteClasses());
 		result.addAll(getAllInterfaces());

@@ -523,11 +523,14 @@ public abstract class StoreResource extends ResourceImpl {
 			// reflection to handle that
 			final Resource oldResource = eObject.eDirectResource();
 			if (oldResource != null) {
+				if (isLoaded) {
+					detached(eObject);
+				}
 				notifications = ((InternalEList<?>) oldResource.getContents())
 						.basicRemove(this, notifications);
+				FieldUtil.callMethod(eObject, "eSetDirectResource",
+						new Object[] { null });
 			}
-			FieldUtil.callMethod(eObject, "eSetDirectResource",
-					new Object[] { null });
 
 			return notifications;
 		}

@@ -56,6 +56,7 @@ public class AllTests {
 				"Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
 		
+		suite.addTestSuite(Bz372869Action.class);
 		suite.addTestSuite(Bz363777Action.class);
 		suite.addTestSuite(Bz321765Action.class);
 		suite.addTestSuite(Bz337580Action.class);

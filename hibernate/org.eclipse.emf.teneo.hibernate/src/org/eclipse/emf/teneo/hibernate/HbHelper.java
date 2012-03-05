@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.annotations.mapper.PersistenceMappingBuilder;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.extension.ExtensionManagerFactory;
 import org.eclipse.emf.teneo.hibernate.mapper.HibernateMappingGenerator;
@@ -143,6 +144,9 @@ public class HbHelper {
 		if (emfds.getName() != null) {
 			emfDataStores.remove(emfds.getName());
 		}
+		
+		EModelResolver.instance().unregisterOwnerShip(emfds, emfds.getEPackages());
+		
 		if (emfds.isInitialized()) {
 			emfds.close();
 		}
