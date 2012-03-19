@@ -76,7 +76,7 @@ public class TeneoSQLNameStrategy extends ClassicSQLNameStrategy {
 
 		final List<String> result = new ArrayList<String>();
 		final List<String> names = StrategyUtil.getIDFeaturesNames(aReference.getAReferenceType(), persistenceOptions
-				.getDefaultIDFeatureName());
+				.getDefaultIDFeatureName(), persistenceOptions);
 		final boolean simpleNaming = optionJoinColumnNamingStrategy.compareTo("simple") == 0;
 		for (String name : names) {
 			final String postFix;

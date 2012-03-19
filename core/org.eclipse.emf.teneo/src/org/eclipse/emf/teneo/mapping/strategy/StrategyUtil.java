@@ -68,12 +68,20 @@ public class StrategyUtil {
 	}
 
 	/**
+	 * @deprecated use {@link #getIDFeaturesNames(PAnnotatedEClass, String, PersistenceOptions)}
+	 */
+	public static List<String> getIDFeaturesNames(PAnnotatedEClass aClass,
+			String optionDefaultIDFeatureName) {
+		return getIDFeaturesNames(aClass, optionDefaultIDFeatureName, null);
+	}
+
+		/**
 	 * Returns the list of names of id props of the eclass, walks the
 	 * inheritance tree to find the id feature, if none is found then the
 	 */
 	public static List<String> getIDFeaturesNames(PAnnotatedEClass aClass,
-			String optionDefaultIDFeatureName) {
-		final List<String> list = getIDFeaturesNamesRecurse(aClass);
+			String optionDefaultIDFeatureName, PersistenceOptions po) {
+		final List<String> list = getIDFeaturesNamesRecurse(aClass, po);
 		// See, 172756
 		if (list.isEmpty()) {
 			list.add(optionDefaultIDFeatureName);
@@ -83,7 +91,9 @@ public class StrategyUtil {
 
 	/** Internal will walk the inheritance tree to find the id feature */
 	private static List<String> getIDFeaturesNamesRecurse(
-			PAnnotatedEClass aClass) {
+			PAnnotatedEClass aClass, PersistenceOptions po) {
+		final boolean useIDFeatures = po != null ? po.isIDFeatureAsPrimaryKey() : false;
+		
 		final ArrayList<String> list = new ArrayList<String>();
 		for (EStructuralFeature feature : aClass.getModelEClass()
 				.getEStructuralFeatures()) {
@@ -93,7 +103,12 @@ public class StrategyUtil {
 				final PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aStructuralFeature;
 				final String attrName = aAttribute.getModelEAttribute()
 						.getName();
-				if (aAttribute.getId() != null && !list.contains(attrName)) {
+				if (list.contains(attrName)) {
+					continue;
+				}
+				if (aAttribute.getId() != null) {
+					list.add(attrName);
+				} else if (useIDFeatures && aAttribute.getModelEAttribute().isID()) {
 					list.add(attrName);
 				}
 			}
@@ -105,7 +120,7 @@ public class StrategyUtil {
 				final PAnnotatedEClass aSuperClass = aClass.getPaModel()
 						.getPAnnotated(eClass);
 				if (aSuperClass != null) {
-					final List<String> superList = getIDFeaturesNamesRecurse(aSuperClass);
+					final List<String> superList = getIDFeaturesNamesRecurse(aSuperClass, po);
 					list.removeAll(superList);
 					list.addAll(superList);
 				}

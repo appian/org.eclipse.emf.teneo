@@ -28,7 +28,7 @@
 			<column not-null="false" unique="false" name="`PRODUCT_PRODUCTCATEGORY_E_ID`"/>
 		</many-to-one>
 		<many-to-one name="priceCategory" entity-name="PriceCategory" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="PRODUCT_PRICECATEGORY" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`PRICECATEGORY_PRICECATEGORY_E_ID`"/>
+			<column not-null="false" unique="false" name="`PRICECATEGORY_PRICECATEGORY_NAME`"/>
 		</many-to-one>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.nocollectionowner.impl.CustomerImpl" entity-name="Customer" abstract="false" lazy="false" discriminator-value="Customer" table="`CUSTOMER`">

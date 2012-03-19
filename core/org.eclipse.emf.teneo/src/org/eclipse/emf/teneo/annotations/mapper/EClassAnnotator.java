@@ -174,7 +174,7 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			for (EClass eSuperClass : aClass.getModelEClass().getESuperTypes()) {
 				aSuperClass = getAnnotatedModel().getPAnnotated(eSuperClass);
 				idFeatures.addAll(StrategyUtil.getIDFeaturesNames(aSuperClass, getPersistenceOptions()
-						.getDefaultIDFeatureName()));
+						.getDefaultIDFeatureName(), getPersistenceOptions()));
 				if (!idFeatures.isEmpty()) {
 					break;
 				}

@@ -147,11 +147,10 @@ public class IndirectEList<E> extends ArrayList<E> implements IndirectEContainer
 	@Override
 	public synchronized boolean addAll(int index, Collection<? extends E> collection) {
 
-		Iterator<? extends E> elements = collection.iterator();
 		// Must trigger add events if tracked or uow.
 		if (hasBeenRegistered() || hasEclipseLinkPropertyChangeListener()) {
-			while (elements.hasNext()) {
-				this.add(index, elements.next());
+			for (E e : new ArrayList<E>(collection)) {
+				this.add(index, e);
 				index++;
 			}
 			return true;

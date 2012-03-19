@@ -197,7 +197,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 
 		final List<String> result = new ArrayList<String>();
 		final List<String> names = StrategyUtil.getIDFeaturesNames(aClass,
-				persistenceOptions.getDefaultIDFeatureName());
+				persistenceOptions.getDefaultIDFeatureName(), persistenceOptions);
 		final boolean simpleNaming = optionJoinColumnNamingStrategy
 				.compareTo("simple") == 0;
 		for (String name : names) {
@@ -234,7 +234,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 
 		final List<String> result = new ArrayList<String>();
 		final List<String> names = StrategyUtil.getIDFeaturesNames(aClass,
-				persistenceOptions.getDefaultIDFeatureName());
+				persistenceOptions.getDefaultIDFeatureName(), persistenceOptions);
 		final boolean simpleNaming = optionJoinColumnNamingStrategy
 				.compareTo("simple") == 0;
 		for (String name : names) {
@@ -279,7 +279,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 
 		final List<String> result = new ArrayList<String>();
 		final List<String> names = StrategyUtil.getIDFeaturesNames(aClass,
-				persistenceOptions.getDefaultIDFeatureName());
+				persistenceOptions.getDefaultIDFeatureName(), persistenceOptions);
 		final boolean simpleNaming = optionJoinColumnNamingStrategy
 				.compareTo("simple") == 0;
 		for (String name : names) {
@@ -332,7 +332,7 @@ public class ClassicSQLNameStrategy implements SQLNameStrategy,
 
 		final List<String> result = new ArrayList<String>();
 		final List<String> names = StrategyUtil.getIDFeaturesNames(aClass,
-				persistenceOptions.getDefaultIDFeatureName());
+				persistenceOptions.getDefaultIDFeatureName(), persistenceOptions);
 		final boolean simpleNaming = optionJoinColumnNamingStrategy
 				.compareTo("simple") == 0;
 		for (String name : names) {

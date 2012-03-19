@@ -191,7 +191,7 @@
 		</version>
 		<list name="mixed" table="`KEYINFOTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`KEYINFOTYPE_MIXED_E_ID`" unique="false"/>
+				<column name="`KEYINFOTYPE_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`KEYINFOTYPE_MIXED_IDX`"/>
 			<one-to-many entity-name="KeyInfoType_mixed"/>
@@ -208,7 +208,7 @@
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_KEYINFOTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`MIXED_KEYINFOTYPE_GROUP_E_ID`" unique="false"/>
+				<column name="`MIXED_KEYINFOTYPE_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_KEYINFOTYPE_GROUP_IDX`"/>
 			<one-to-many entity-name="KeyInfoType_group"/>
@@ -359,7 +359,7 @@
 		</version>
 		<list name="reference" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="MANIFESTTYPE_REFERENCE">
-				<column name="`MANIFESTTYPE_REFERENCE_E_ID`" unique="false"/>
+				<column name="`MANIFESTTYPE_REFERENCE_ID`" unique="false"/>
 			</key>
 			<list-index column="`MANIFESTTYPE_REFERENCE_IDX`"/>
 			<one-to-many entity-name="ReferenceType"/>
@@ -376,7 +376,7 @@
 		</version>
 		<list name="mixed" table="`OBJECTTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`OBJECTTYPE_MIXED_E_ID`" unique="false"/>
+				<column name="`OBJECTTYPE_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`OBJECTTYPE_MIXED_IDX`"/>
 			<one-to-many entity-name="ObjectType_mixed"/>
@@ -399,7 +399,7 @@
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_OBJECTTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`MIXED_OBJECTTYPE_GROUP_E_ID`" unique="false"/>
+				<column name="`MIXED_OBJECTTYPE_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_OBJECTTYPE_GROUP_IDX`"/>
 			<one-to-many entity-name="ObjectType_group"/>
@@ -537,7 +537,7 @@
 		</many-to-one>
 		<array name="digestValue" table="`REFERENCETYPE_DIGESTVALUE`" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`REFERENCETYPE_DIGESTVALUE_E_ID`" unique="false"/>
+				<column name="`REFERENCETYPE_DIGESTVALUE_ID`" unique="false"/>
 			</key>
 			<list-index column="`REFERENCETYPE_DIGESTVALUE_IDX`"/>
 			<element type="byte"/>
@@ -667,7 +667,7 @@
 		</version>
 		<list name="signatureProperty" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY">
-				<column name="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_E_ID`" unique="false"/>
+				<column name="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREPROPERTIESTYPE_SIGNATUREPROPERTY_IDX`"/>
 			<one-to-many entity-name="SignaturePropertyType"/>
@@ -684,7 +684,7 @@
 		</version>
 		<list name="mixed" table="`SIGNATUREPROPERTYTYPE_MIXED`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`SIGNATUREPROPERTYTYPE_MIXED_E_ID`" unique="false"/>
+				<column name="`SIGNATUREPROPERTYTYPE_MIXED_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREPROPERTYTYPE_MIXED_IDX`"/>
 			<one-to-many entity-name="SignaturePropertyType_mixed"/>
@@ -704,7 +704,7 @@
 		<property name="fme_feature" type="java.lang.String"/>
 		<list name="group" table="`MIXED_SIGNATUREPROPERTYTYPE_GROUP`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_E_ID`" unique="false"/>
+				<column name="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_ID`" unique="false"/>
 			</key>
 			<list-index column="`MIXED_SIGNATUREPROPERTYTYPE_GROUP_IDX`"/>
 			<one-to-many entity-name="SignaturePropertyType_group"/>
@@ -756,17 +756,17 @@
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
 		<many-to-one name="signedInfo" entity-name="SignedInfoType" lazy="false" cascade="all" foreign-key="SIGNATURETYPE_SIGNEDINFO" insert="true" update="true" not-null="true" unique="true">
-			<column not-null="true" unique="false" name="`SIGNEDINFOTYPE_SIGNEDINFO_E_ID`"/>
+			<column not-null="true" unique="false" name="`SIGNEDINFOTYPE_SIGNEDINFO_ID`"/>
 		</many-to-one>
 		<many-to-one name="signatureValue" entity-name="SignatureValueType" lazy="false" cascade="all" foreign-key="SIGNATURETYPE_SIGNATUREVALUE" insert="true" update="true" not-null="true" unique="true">
-			<column not-null="true" unique="false" name="`SIGNATUREVALUETYPE_SIGNATUREVALUE_E_ID`"/>
+			<column not-null="true" unique="false" name="`SIGNATUREVALUETYPE_SIGNATUREVALUE_ID`"/>
 		</many-to-one>
 		<many-to-one name="keyInfo" entity-name="KeyInfoType" lazy="false" cascade="all" foreign-key="SIGNATURETYPE_KEYINFO" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`KEYINFOTYPE_KEYINFO_ID`"/>
 		</many-to-one>
 		<list name="object" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="SIGNATURETYPE_OBJECT">
-				<column name="`SIGNATURETYPE_OBJECT_E_ID`" unique="false"/>
+				<column name="`SIGNATURETYPE_OBJECT_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATURETYPE_OBJECT_IDX`"/>
 			<one-to-many entity-name="ObjectType"/>
@@ -783,7 +783,7 @@
 		</version>
 		<array name="value" table="`SIGNATUREVALUETYPE_VALUE`" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`SIGNATUREVALUETYPE_VALUE_E_ID`" unique="false"/>
+				<column name="`SIGNATUREVALUETYPE_VALUE_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNATUREVALUETYPE_VALUE_IDX`"/>
 			<element type="byte"/>
@@ -806,7 +806,7 @@
 		</many-to-one>
 		<list name="reference" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="SIGNEDINFOTYPE_REFERENCE">
-				<column name="`SIGNEDINFOTYPE_REFERENCE_E_ID`" unique="false"/>
+				<column name="`SIGNEDINFOTYPE_REFERENCE_ID`" unique="false"/>
 			</key>
 			<list-index column="`SIGNEDINFOTYPE_REFERENCE_IDX`"/>
 			<one-to-many entity-name="ReferenceType"/>

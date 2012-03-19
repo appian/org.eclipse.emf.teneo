@@ -106,14 +106,14 @@
 		</version>
 		<list name="library" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="LIBRARY_LIBRARY">
-				<column name="`LIBRARY_LIBRARY_E_ID`" unique="false"/>
+				<column name="`LIBRARY_LIBRARY_UNIQUENAME`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_LIBRARY_IDX`"/>
 			<one-to-many entity-name="Library"/>
 		</list>
 		<list name="abstractBookDefinitionGroup" table="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
-				<column name="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP_E_ID`" unique="false"/>
+				<column name="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP_UNIQUENAME`" unique="false"/>
 			</key>
 			<list-index column="`LIBRARY_ABSTRACTBOOKDEFINITIONGROUP_IDX`"/>
 			<one-to-many entity-name="Library_abstractBookDefinitionGroup"/>
