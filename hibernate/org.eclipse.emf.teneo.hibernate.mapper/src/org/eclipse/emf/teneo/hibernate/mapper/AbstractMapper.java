@@ -10,6 +10,7 @@ package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -447,6 +448,11 @@ public abstract class AbstractMapper {
 			return getHbmContext().getXSDDateUserType();
 		}
 
+		if (eDataType.getInstanceClass() != null
+				&& Calendar.class.isAssignableFrom(eDataType.getInstanceClass())) {
+			return "calendar";
+		}
+
 		if (paAttribute.getTemporal() != null) {
 			final TemporalType tt = paAttribute.getTemporal().getValue();
 			return hbType(tt);
@@ -501,6 +507,11 @@ public abstract class AbstractMapper {
 			return getHbmContext().getXSDTimeUserType();
 		}
 
+		if (eDataType.getInstanceClass() != null
+				&& Calendar.class.isAssignableFrom(eDataType.getInstanceClass())) {
+			return "calendar";
+		}
+
 		// TODO: should it not use the eDataType.getInstanceClass()? Hmm if the
 		// user
 		// really wants a different mapping he/she should use maybe a usertype??
@@ -519,6 +530,11 @@ public abstract class AbstractMapper {
 
 		if (XMLTypePackage.eINSTANCE.getDateTime().equals(eDataType)) {
 			return getHbmContext().getXSDDateTimeUserType();
+		}
+
+		if (eDataType.getInstanceClass() != null
+				&& Calendar.class.isAssignableFrom(eDataType.getInstanceClass())) {
+			return "calendar";
 		}
 
 		if (paAttribute.getTemporal() != null) {
