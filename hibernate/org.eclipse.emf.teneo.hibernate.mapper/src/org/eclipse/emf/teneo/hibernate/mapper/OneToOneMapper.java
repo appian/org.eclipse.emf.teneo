@@ -24,17 +24,20 @@ import org.eclipse.emf.teneo.simpledom.Element;
 /**
  * Maps a {@link OneToOne} element to its {@link MappingContext}.
  * <p>
- * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal OneToOne, i.e.
+ * Assumes that the given {@link PAnnotatedEStructuralFeature} is a normal
+ * OneToOne, i.e.
  * <ul>
  * <li>it is a {@link PAnnotatedEReference};
  * <li>it has a {@link OneToOne} annotation;
- * <li>each attribute on the {@link OneToOne} annotation is set possibly except for {@link OneToOne#getMappedBy()};
+ * <li>each attribute on the {@link OneToOne} annotation is set possibly except
+ * for {@link OneToOne#getMappedBy()};
  * <li>TODO requirements on JoinColumns/PrimaryKeyJoinColumn
  * </ul>
  * 
  * @author <a href="mailto:mtaal at elver.org">Martin Taal</a>
  */
-public class OneToOneMapper extends AbstractAssociationMapper implements ExtensionPoint {
+public class OneToOneMapper extends AbstractAssociationMapper implements
+		ExtensionPoint {
 
 	private static final Log log = LogFactory.getLog(OneToOneMapper.class);
 
@@ -45,7 +48,8 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 		if (opposite != null) {
 			// handle the case of a primary key one-to-one
 			if (!paReference.getPrimaryKeyJoinColumns().isEmpty()
-					|| (opposite != null && !opposite.getPrimaryKeyJoinColumns().isEmpty())) {
+					|| (opposite != null && !opposite
+							.getPrimaryKeyJoinColumns().isEmpty())) {
 				createOneToOne(paReference);
 			} else {
 				// For a non-pk one-to-one, one side is mapped as oto, and the
@@ -57,7 +61,9 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 					createManyToOne(paReference);
 				}
 			}
-		} else { // can this case occur? A non-bidirectional one-to-one?
+		} else if (!paReference.getPrimaryKeyJoinColumns().isEmpty()) {
+			createOneToOne(paReference);
+		} else {
 			createManyToOne(paReference);
 		}
 
@@ -89,35 +95,43 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 		String specifiedName = oto.getTargetEntity();
 
 		if (specifiedName == null) {
-			specifiedName = getHbmContext().getEntityName(eref.getEReferenceType());
+			specifiedName = getHbmContext().getEntityName(
+					eref.getEReferenceType());
 		}
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 
-		final boolean isAny = hbReference.getAny() != null || hbReference.getAnyMetaDef() != null
+		final boolean isAny = hbReference.getAny() != null
+				|| hbReference.getAnyMetaDef() != null
 				|| isEObject(oto.getTargetEntity());
 		if (isAny) {
-			final String assocName = getHbmContext().getPropertyName(hbReference.getModelEStructuralFeature());
-			final Element anyElement = createAny(assocName, hbReference, hbReference.getAny(), hbReference
-					.getAnyMetaDef(), false);
+			final String assocName = getHbmContext().getPropertyName(
+					hbReference.getModelEStructuralFeature());
+			final Element anyElement = createAny(assocName, hbReference,
+					hbReference.getAny(), hbReference.getAnyMetaDef(), false);
 			getHbmContext().getCurrent().add(anyElement);
 			return;
 		}
 
-		final Element associationElement = addManyToOne(getHbmContext().getCurrent(), paReference, specifiedName, false);
+		final Element associationElement = addManyToOne(getHbmContext()
+				.getCurrent(), paReference, specifiedName, false);
 		addAccessor(associationElement);
 
-		addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), oto.getCascade()));
+		addCascadesForSingle(associationElement,
+				getCascades(hbReference.getHbCascade(), oto.getCascade()));
 
-		final boolean isNullable = (oto.isOptional() || getHbmContext().isDoForceOptional(paReference) || getHbmContext()
+		final boolean isNullable = (oto.isOptional()
+				|| getHbmContext().isDoForceOptional(paReference) || getHbmContext()
 				.isCurrentElementFeatureMap());
 
-		associationElement.addAttribute("not-null", (isNullable ? "false" : "true"));
+		associationElement.addAttribute("not-null", (isNullable ? "false"
+				: "true"));
 
 		addLazyProxy(associationElement, oto.getFetch(), paReference);
 
 		if (hbReference.getHbFetch() != null) {
-			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
+			associationElement.addAttribute("fetch", hbReference.getHbFetch()
+					.getValue().getName().toLowerCase());
 		}
 
 		addForeignKeyAttribute(associationElement, paReference);
@@ -136,35 +150,43 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 	/** Create hibernate one-to-one mapping */
 	private void createOneToOne(PAnnotatedEReference paReference) {
 		if (log.isDebugEnabled()) {
-			log.debug("Generating one to one bidirectional inverse mapping for " + paReference);
+			log.debug("Generating one to one bidirectional inverse mapping for "
+					+ paReference);
 		}
 
 		final OneToOne oto = paReference.getOneToOne();
 		String targetName = oto.getTargetEntity();
 		if (targetName == null) {
-			targetName = getHbmContext().getEntityName(paReference.getEReferenceType());
+			targetName = getHbmContext().getEntityName(
+					paReference.getEReferenceType());
 		}
 
 		final HbAnnotatedEReference hbReference = (HbAnnotatedEReference) paReference;
 		final EReference eref = paReference.getModelEReference();
 		final EReference otherSide = eref.getEOpposite();
-		final Element associationElement = addOneToOne(paReference, getHbmContext().getPropertyName(eref), targetName);
+		final Element associationElement = addOneToOne(paReference,
+				getHbmContext().getPropertyName(eref), targetName);
 		addAccessor(associationElement);
 
 		addForeignKeyAttribute(associationElement, paReference);
-		addCascadesForSingle(associationElement, getCascades(hbReference.getHbCascade(), oto.getCascade()));
+		addCascadesForSingle(associationElement,
+				getCascades(hbReference.getHbCascade(), oto.getCascade()));
 		addLazyProxy(associationElement, oto.getFetch(), paReference);
 
 		if (hbReference.getHbFetch() != null) {
-			associationElement.addAttribute("fetch", hbReference.getHbFetch().getValue().getName().toLowerCase());
+			associationElement.addAttribute("fetch", hbReference.getHbFetch()
+					.getValue().getName().toLowerCase());
 		}
 
 		// add the other-side
-		final boolean primaryKeyJoin = !paReference.getPrimaryKeyJoinColumns().isEmpty()
-				|| (otherSide != null && !getOtherSide(paReference).getPrimaryKeyJoinColumns().isEmpty());
+		final boolean primaryKeyJoin = !paReference.getPrimaryKeyJoinColumns()
+				.isEmpty()
+				|| (otherSide != null && !getOtherSide(paReference)
+						.getPrimaryKeyJoinColumns().isEmpty());
 
 		if (!primaryKeyJoin && otherSide != null && oto.getMappedBy() != null) {
-			associationElement.addAttribute("property-ref", getHbmContext().getPropertyName(otherSide));
+			associationElement.addAttribute("property-ref", getHbmContext()
+					.getPropertyName(otherSide));
 		}
 
 		// apparently is always allowed for a one-to-one, if it is bidirectional
@@ -172,7 +194,8 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 
 		// place constrained when:
 		// 1) this side has a primary key join column annotation
-		boolean addConstrained = !paReference.getPrimaryKeyJoinColumns().isEmpty();
+		boolean addConstrained = !paReference.getPrimaryKeyJoinColumns()
+				.isEmpty();
 		if (!addConstrained && otherSide == null) {
 			// 2) there is no other side and it is mandatory see here:
 			// http://www.hibernate.org/162.html
@@ -182,11 +205,15 @@ public class OneToOneMapper extends AbstractAssociationMapper implements Extensi
 			// this is the case when it does not have a pk join column and
 			// mappedby is
 			// null, or when it has a many-to-one annotation.
-			final PAnnotatedEReference aOpposite = paReference.getPaModel().getPAnnotated(otherSide);
-			addConstrained = aOpposite.getManyToOne() != null && eref.isRequired();
+			final PAnnotatedEReference aOpposite = paReference.getPaModel()
+					.getPAnnotated(otherSide);
+			addConstrained = aOpposite.getManyToOne() != null
+					&& eref.isRequired();
 			if (!addConstrained) {
-				addConstrained = eref.isRequired() && aOpposite.getPrimaryKeyJoinColumns().isEmpty()
-						&& aOpposite.getOneToOne() != null && aOpposite.getOneToOne().getMappedBy() == null;
+				addConstrained = eref.isRequired()
+						&& aOpposite.getPrimaryKeyJoinColumns().isEmpty()
+						&& aOpposite.getOneToOne() != null
+						&& aOpposite.getOneToOne().getMappedBy() == null;
 			}
 		}
 
