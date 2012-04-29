@@ -136,6 +136,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceGenerators" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//SequenceGenerator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="external" eType="ecore:EClass pannotation.ecore#//External"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cacheable" eType="ecore:EClass pannotation.ecore#//Cacheable"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEStructuralFeature" abstract="true"
       eSuperTypes="#//PAnnotatedETypedElement">
@@ -164,6 +166,10 @@
         <details key="annotationClass" value="javax.persistence.JoinColumns"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collectionTable" eType="ecore:EClass pannotation.ecore#//CollectionTable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementCollection" eType="ecore:EClass pannotation.ecore#//ElementCollection"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEAttribute" eSuperTypes="#//PAnnotatedEStructuralFeature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -230,6 +236,20 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="external" eType="ecore:EClass pannotation.ecore#//External"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyClass" eType="ecore:EClass pannotation.ecore#//MapKeyClass"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyColumn" eType="ecore:EClass pannotation.ecore#//MapKeyColumn"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyEnumerated" eType="ecore:EClass pannotation.ecore#//MapKeyEnumerated"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyJoinColumns" upperBound="-1"
+        eType="ecore:EClass pannotation.ecore#//MapKeyJoinColumn" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyTemporal" eType="ecore:EClass pannotation.ecore#//MapKeyTemporal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapsId" eType="ecore:EClass pannotation.ecore#//MapsId"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderColumn" eType="ecore:EClass pannotation.ecore#//OrderColumn"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedETypedElement" abstract="true"
       eSuperTypes="#//PAnnotatedEModelElement">

@@ -54,6 +54,7 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="batch-size" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="cacheable" type="xsd:boolean" minOccurs="0"/>
 			<xsd:element name="discriminator-column" type="DiscriminatorColumn" minOccurs="0"/>
 			<xsd:element name="discriminator-formula" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="discriminator-value" type="xsd:string" minOccurs="0"/>
@@ -109,7 +110,9 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="basic" type="Basic" minOccurs="0"/>
+			<xsd:element name="collection-table" type="CollectionTable" minOccurs="0"/>
 			<xsd:element name="column" type="Column" minOccurs="0"/>
+			<xsd:element name="element-collection" type="FetchType" minOccurs="0"/>
 			<xsd:element name="enumerated" type="EnumType" minOccurs="0"/>
 			<xsd:element name="foreign-key" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="formula" type="xsd:string" minOccurs="0"/>
@@ -170,7 +173,9 @@
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="batch-size" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="collection-table" type="CollectionTable" minOccurs="0"/>
 			<xsd:element name="column" type="Column" minOccurs="0"/>
+			<xsd:element name="element-collection" type="FetchType" minOccurs="0"/>
 			<xsd:element name="embedded" type="Embedded" minOccurs="0"/>
 			<xsd:element name="embedded-id" type="EmbeddedId" minOccurs="0"/>
 			<xsd:element name="external" type="xsd:string" minOccurs="0"/>
@@ -206,11 +211,22 @@
 			<xsd:element name="many-to-many" type="ManyToMany" minOccurs="0"/>
 			<xsd:element name="many-to-one" type="ManyToOne" minOccurs="0"/>
 			<xsd:element name="map-key" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="map-key-class" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="map-key-column" type="MapKeyColumn" minOccurs="0"/>
+			<xsd:element name="map-key-enumerated" type="EnumType" minOccurs="0"/>
+			<xsd:element name="map-key-join-column" type="MapKeyJoinColumn" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">mapKeyJoinColumns</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="map-key-temporal" type="TemporalType" minOccurs="0"/>
+			<xsd:element name="maps-id" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="natural-id" type="xsd:boolean" minOccurs="0"/>
 			<xsd:element name="not-found" type="NotFoundAction" minOccurs="0"/>
 			<xsd:element name="one-to-many" type="OneToMany" minOccurs="0"/>
 			<xsd:element name="one-to-one" type="OneToOne" minOccurs="0"/>
 			<xsd:element name="order-by" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="order-column" type="OrderColumn" minOccurs="0"/>
 			<xsd:element name="primary-key-join-column" type="PrimaryKeyJoinColumn" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">primaryKeyJoinColumns</xsd:appinfo>
@@ -243,7 +259,9 @@
 			</xsd:element>
 			<xsd:element name="basic" type="Basic" minOccurs="0"/>
 			<xsd:element name="batch-size" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="collection-table" type="CollectionTable" minOccurs="0"/>
 			<xsd:element name="column" type="Column" minOccurs="0"/>
+			<xsd:element name="element-collection" type="FetchType" minOccurs="0"/>
 			<xsd:element name="embedded" type="Embedded" minOccurs="0"/>
 			<xsd:element name="embedded-id" type="EmbeddedId" minOccurs="0"/>
 			<xsd:element name="enumerated" type="EnumType" minOccurs="0"/>
@@ -284,11 +302,22 @@
 			<xsd:element name="many-to-many" type="ManyToMany" minOccurs="0"/>
 			<xsd:element name="many-to-one" type="ManyToOne" minOccurs="0"/>
 			<xsd:element name="map-key" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="map-key-class" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="map-key-column" type="MapKeyColumn" minOccurs="0"/>
+			<xsd:element name="map-key-enumerated" type="EnumType" minOccurs="0"/>
+			<xsd:element name="map-key-join-column" type="MapKeyJoinColumn" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">mapKeyJoinColumns</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="map-key-temporal" type="TemporalType" minOccurs="0"/>
+			<xsd:element name="maps-id" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="natural-id" type="xsd:boolean" minOccurs="0"/>
 			<xsd:element name="not-found" type="NotFoundAction" minOccurs="0"/>
 			<xsd:element name="one-to-many" type="OneToMany" minOccurs="0"/>
 			<xsd:element name="one-to-one" type="OneToOne" minOccurs="0"/>
 			<xsd:element name="order-by" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="order-column" type="OrderColumn" minOccurs="0"/>
 			<xsd:element name="primary-key-join-column" type="PrimaryKeyJoinColumn" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
 					<xsd:appinfo source="teneo/internal/EStructuralFeatureName">primaryKeyJoinColumns</xsd:appinfo>
@@ -538,13 +567,14 @@
 	<xsd:attribute name="type-class" type="xsd:string" use="required"/>
 </xsd:complexType>
 <xsd:complexType name="AssociationOverride">
-	<xsd:sequence>
+	<xsd:choice minOccurs="0" maxOccurs="unbounded">
 		<xsd:element name="join-column" type="JoinColumn" minOccurs="1" maxOccurs="unbounded">
 			<xsd:annotation>
 				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
 			</xsd:annotation>
 		</xsd:element>
-	</xsd:sequence>
+		<xsd:element name="join-table" type="JoinTable" minOccurs="0"/>
+	</xsd:choice>
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
 </xsd:complexType>
@@ -570,6 +600,24 @@
 		<xsd:enumeration value="NONE"/>
 	</xsd:restriction>
 </xsd:simpleType>
+<xsd:complexType name="CollectionTable">
+	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+		<xsd:element name="join-column" type="JoinColumn" minOccurs="0" maxOccurs="unbounded">
+			<xsd:annotation>
+				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">joinColumns</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element name="unique-constraint" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+			<xsd:annotation>
+				<xsd:appinfo source="teneo/internal/EStructuralFeatureName">uniqueConstraints</xsd:appinfo>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:choice>
+	<xsd:attribute name="catalog" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="schema" type="xsd:string" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="Column">
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
@@ -715,6 +763,32 @@
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
+<xsd:complexType name="MapKeyColumn">
+	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="index" type="xsd:string" use="optional"/>
+	<xsd:attribute name="insertable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="length" type="xsd:int" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="nullable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="precision" type="xsd:int" use="optional"/>
+	<xsd:attribute name="scale" type="xsd:int" use="optional"/>
+	<xsd:attribute name="table" type="xsd:string" use="optional"/>
+	<xsd:attribute name="unique" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="unique-key" type="xsd:string" use="optional"/>
+	<xsd:attribute name="updatable" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
+<xsd:complexType name="MapKeyJoinColumn">
+	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="insertable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="nullable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="referenced-column-name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="table" type="xsd:string" use="optional"/>
+	<xsd:attribute name="unique" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="updatable" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="MappedSuperclass">
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
@@ -730,6 +804,7 @@
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="indexed" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="mapped-by" type="xsd:string" use="optional"/>
+	<xsd:attribute name="orphan-removal" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 	<xsd:attribute name="unique" type="xsd:boolean" use="optional"/>
 </xsd:complexType>
@@ -742,6 +817,7 @@
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="mapped-by" type="xsd:string" use="optional"/>
 	<xsd:attribute name="optional" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="orphan-removal" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="target-entity" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:simpleType name="OptimizerType">
@@ -750,8 +826,17 @@
 		<xsd:enumeration value="HILO"/>
 		<xsd:enumeration value="POOLED"/>
 		<xsd:enumeration value="POOLED-LO"/>
+		<xsd:enumeration value="DEFAULT"/>
 	</xsd:restriction>
 </xsd:simpleType>
+<xsd:complexType name="OrderColumn">
+	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
+	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="insertable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="name" type="xsd:string" use="optional"/>
+	<xsd:attribute name="nullable" type="xsd:boolean" use="optional"/>
+	<xsd:attribute name="updatable" type="xsd:boolean" use="optional"/>
+</xsd:complexType>
 <xsd:complexType name="PrimaryKeyJoinColumn">
 	<xsd:attribute name="column-definition" type="xsd:string" use="optional"/>
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
@@ -778,9 +863,11 @@
 </xsd:complexType>
 <xsd:complexType name="SequenceGenerator">
 	<xsd:attribute name="allocation-size" type="xsd:int" use="optional"/>
+	<xsd:attribute name="catalog" type="xsd:string" use="required"/>
 	<xsd:attribute name="generated" type="xsd:boolean" use="optional"/>
 	<xsd:attribute name="initial-value" type="xsd:int" use="optional"/>
 	<xsd:attribute name="name" type="xsd:string" use="required"/>
+	<xsd:attribute name="schema" type="xsd:string" use="required"/>
 	<xsd:attribute name="sequence-name" type="xsd:string" use="optional"/>
 </xsd:complexType>
 <xsd:complexType name="SequenceStyleGenerator">

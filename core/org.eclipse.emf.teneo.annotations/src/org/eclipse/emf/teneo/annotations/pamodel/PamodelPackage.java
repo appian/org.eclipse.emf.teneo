@@ -422,13 +422,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ECLASS__EXTERNAL = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
+	 * The feature id for the '<em><b>Cacheable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ECLASS__CACHEABLE = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 20;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EClass</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 20;
+	int PANNOTATED_ECLASS_FEATURE_COUNT = PANNOTATED_EMODEL_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.
@@ -657,13 +666,31 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Collection Table</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Element Collection</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the the '<em>PAnnotated EStructural Feature</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 4;
+	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -809,6 +836,24 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EATTRIBUTE__LIST_INDEX_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Collection Table</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EATTRIBUTE__COLLECTION_TABLE = PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE;
+
+	/**
+	 * The feature id for the '<em><b>Element Collection</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EATTRIBUTE__ELEMENT_COLLECTION = PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION;
 
 	/**
 	 * The feature id for the '<em><b>Model EAttribute</b></em>' reference.
@@ -1009,6 +1054,24 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__LIST_INDEX_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN;
 
 	/**
+	 * The feature id for the '<em><b>Collection Table</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__COLLECTION_TABLE = PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE;
+
+	/**
+	 * The feature id for the '<em><b>Element Collection</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__ELEMENT_COLLECTION = PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION;
+
+	/**
 	 * The feature id for the '<em><b>Model EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1108,13 +1171,76 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__EXTERNAL = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Map Key Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__MAP_KEY_CLASS = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Map Key Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__MAP_KEY_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Map Key Enumerated</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Map Key Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Map Key Temporal</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Maps Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__MAPS_ID = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Order Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__ORDER_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 17;
+
+	/**
 	 * The number of structural features of the '<em>PAnnotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 11;
+	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Model Element</b></em>' reference.
@@ -1582,6 +1708,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEClass_External();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable <em>Cacheable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cacheable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable()
+	 * @see #getPAnnotatedEClass()
+	 * @generated
+	 */
+	EReference getPAnnotatedEClass_Cacheable();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature <em>PAnnotated EStructural Feature</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>PAnnotated EStructural Feature</em>'.
@@ -1632,6 +1769,28 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEStructuralFeature_ListIndexColumn();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getCollectionTable <em>Collection Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Collection Table</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getCollectionTable()
+	 * @see #getPAnnotatedEStructuralFeature()
+	 * @generated
+	 */
+	EReference getPAnnotatedEStructuralFeature_CollectionTable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getElementCollection <em>Element Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Element Collection</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getElementCollection()
+	 * @see #getPAnnotatedEStructuralFeature()
+	 * @generated
+	 */
+	EReference getPAnnotatedEStructuralFeature_ElementCollection();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute <em>PAnnotated EAttribute</em>}'.
@@ -1972,6 +2131,83 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEReference_External();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyClass <em>Map Key Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Map Key Class</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyClass()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_MapKeyClass();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyColumn <em>Map Key Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Map Key Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyColumn()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_MapKeyColumn();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyEnumerated <em>Map Key Enumerated</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Map Key Enumerated</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyEnumerated()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_MapKeyEnumerated();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyJoinColumns <em>Map Key Join Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Map Key Join Columns</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyJoinColumns()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_MapKeyJoinColumns();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyTemporal <em>Map Key Temporal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Map Key Temporal</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyTemporal()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_MapKeyTemporal();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapsId <em>Maps Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Maps Id</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapsId()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_MapsId();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderColumn <em>Order Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Order Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderColumn()
+	 * @see #getPAnnotatedEReference()
+	 * @generated
+	 */
+	EReference getPAnnotatedEReference_OrderColumn();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement <em>PAnnotated ETyped Element</em>}'.
@@ -2362,6 +2598,14 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ECLASS__EXTERNAL = eINSTANCE.getPAnnotatedEClass_External();
 
 		/**
+		 * The meta object literal for the '<em><b>Cacheable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ECLASS__CACHEABLE = eINSTANCE.getPAnnotatedEClass_Cacheable();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl <em>PAnnotated EStructural Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2402,6 +2646,22 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN = eINSTANCE.getPAnnotatedEStructuralFeature_ListIndexColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Collection Table</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE = eINSTANCE.getPAnnotatedEStructuralFeature_CollectionTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Element Collection</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION = eINSTANCE.getPAnnotatedEStructuralFeature_ElementCollection();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -2664,6 +2924,62 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_EREFERENCE__EXTERNAL = eINSTANCE.getPAnnotatedEReference_External();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key Class</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAP_KEY_CLASS = eINSTANCE.getPAnnotatedEReference_MapKeyClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAP_KEY_COLUMN = eINSTANCE.getPAnnotatedEReference_MapKeyColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key Enumerated</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED = eINSTANCE.getPAnnotatedEReference_MapKeyEnumerated();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key Join Columns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS = eINSTANCE.getPAnnotatedEReference_MapKeyJoinColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Key Temporal</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL = eINSTANCE.getPAnnotatedEReference_MapKeyTemporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Maps Id</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__MAPS_ID = eINSTANCE.getPAnnotatedEReference_MapsId();
+
+		/**
+		 * The meta object literal for the '<em><b>Order Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_EREFERENCE__ORDER_COLUMN = eINSTANCE.getPAnnotatedEReference_OrderColumn();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.

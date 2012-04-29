@@ -30,6 +30,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
+import org.eclipse.emf.teneo.annotations.pannotation.Cacheable;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
@@ -73,6 +74,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getNoEAVMapping <em>No EAV Mapping</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getSequenceGenerators <em>Sequence Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getExternal <em>External</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEClassImpl#getCacheable <em>Cacheable</em>}</li>
  * </ul>
  * </p>
  *
@@ -246,6 +248,16 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	 * @ordered
 	 */
 	protected External external;
+
+	/**
+	 * The cached value of the '{@link #getCacheable() <em>Cacheable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCacheable()
+	 * @generated
+	 * @ordered
+	 */
+	protected Cacheable cacheable;
 
 	/** The computed super pa entity */
 	private PAnnotatedEClass paSuperEntity = null;
@@ -879,6 +891,49 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Cacheable getCacheable() {
+		return cacheable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCacheable(Cacheable newCacheable, NotificationChain msgs) {
+		Cacheable oldCacheable = cacheable;
+		cacheable = newCacheable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__CACHEABLE, oldCacheable, newCacheable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCacheable(Cacheable newCacheable) {
+		if (newCacheable != cacheable) {
+			NotificationChain msgs = null;
+			if (cacheable != null)
+				msgs = ((InternalEObject)cacheable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__CACHEABLE, null, msgs);
+			if (newCacheable != null)
+				msgs = ((InternalEObject)newCacheable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ECLASS__CACHEABLE, null, msgs);
+			msgs = basicSetCacheable(newCacheable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ECLASS__CACHEABLE, newCacheable, newCacheable));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -939,6 +994,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return basicSetNoEAVMapping(null, msgs);
 			case PamodelPackage.PANNOTATED_ECLASS__SEQUENCE_GENERATORS:
 				return ((InternalEList<?>)getSequenceGenerators()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_ECLASS__CACHEABLE:
+				return basicSetCacheable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1005,6 +1062,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
 				if (resolve) return getExternal();
 				return basicGetExternal();
+			case PamodelPackage.PANNOTATED_ECLASS__CACHEABLE:
+				return getCacheable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1080,6 +1139,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
 				setExternal((External)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__CACHEABLE:
+				setCacheable((Cacheable)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1148,6 +1210,9 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
 				setExternal((External)null);
 				return;
+			case PamodelPackage.PANNOTATED_ECLASS__CACHEABLE:
+				setCacheable((Cacheable)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1199,6 +1264,8 @@ public class PAnnotatedEClassImpl extends PAnnotatedEModelElementImpl implements
 				return sequenceGenerators != null && !sequenceGenerators.isEmpty();
 			case PamodelPackage.PANNOTATED_ECLASS__EXTERNAL:
 				return external != null;
+			case PamodelPackage.PANNOTATED_ECLASS__CACHEABLE:
+				return cacheable != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -7,6 +7,8 @@
 package org.eclipse.emf.teneo.annotations.pamodel;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.CollectionTable;
+import org.eclipse.emf.teneo.annotations.pannotation.ElementCollection;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
@@ -22,6 +24,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getModelEStructuralFeature <em>Model EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getForeignKey <em>Foreign Key</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getListIndexColumn <em>List Index Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getCollectionTable <em>Collection Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getElementCollection <em>Element Collection</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,6 +129,58 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedETypedElement {
 	 * @generated
 	 */
 	void setListIndexColumn(ListIndexColumn value);
+
+	/**
+	 * Returns the value of the '<em><b>Collection Table</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Collection Table</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Collection Table</em>' containment reference.
+	 * @see #setCollectionTable(CollectionTable)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_CollectionTable()
+	 * @model containment="true"
+	 * @generated
+	 */
+	CollectionTable getCollectionTable();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getCollectionTable <em>Collection Table</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Collection Table</em>' containment reference.
+	 * @see #getCollectionTable()
+	 * @generated
+	 */
+	void setCollectionTable(CollectionTable value);
+
+	/**
+	 * Returns the value of the '<em><b>Element Collection</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Element Collection</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Element Collection</em>' containment reference.
+	 * @see #setElementCollection(ElementCollection)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_ElementCollection()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ElementCollection getElementCollection();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getElementCollection <em>Element Collection</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Element Collection</em>' containment reference.
+	 * @see #getElementCollection()
+	 * @generated
+	 */
+	void setElementCollection(ElementCollection value);
 
 	/**
 	 * Convenience function for obtaining the first available Column annotation.

@@ -17,6 +17,8 @@ package org.eclipse.emf.teneo.annotations.pannotation;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSequenceName <em>Sequence Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getAllocationSize <em>Allocation Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog <em>Catalog</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema <em>Schema</em>}</li>
  * </ul>
  * </p>
  *
@@ -180,5 +182,57 @@ public interface SequenceGenerator extends PAnnotation {
 	 * @generated
 	 */
 	boolean isSetAllocationSize();
+
+	/**
+	 * Returns the value of the '<em><b>Catalog</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Catalog</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Catalog</em>' attribute.
+	 * @see #setCatalog(String)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_Catalog()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getCatalog();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog <em>Catalog</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Catalog</em>' attribute.
+	 * @see #getCatalog()
+	 * @generated
+	 */
+	void setCatalog(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Schema</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Schema</em>' attribute.
+	 * @see #setSchema(String)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getSequenceGenerator_Schema()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getSchema();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema <em>Schema</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Schema</em>' attribute.
+	 * @see #getSchema()
+	 * @generated
+	 */
+	void setSchema(String value);
 
 } // SequenceGenerator

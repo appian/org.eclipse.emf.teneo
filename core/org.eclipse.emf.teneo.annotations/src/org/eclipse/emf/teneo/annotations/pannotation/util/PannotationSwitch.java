@@ -140,6 +140,20 @@ public class PannotationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case PannotationPackage.CACHEABLE: {
+				Cacheable cacheable = (Cacheable)theEObject;
+				T result = caseCacheable(cacheable);
+				if (result == null) result = casePAnnotation(cacheable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.COLLECTION_TABLE: {
+				CollectionTable collectionTable = (CollectionTable)theEObject;
+				T result = caseCollectionTable(collectionTable);
+				if (result == null) result = casePAnnotation(collectionTable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case PannotationPackage.COLUMN: {
 				Column column = (Column)theEObject;
 				T result = caseColumn(column);
@@ -158,6 +172,13 @@ public class PannotationSwitch<T> extends Switch<T> {
 				DiscriminatorValue discriminatorValue = (DiscriminatorValue)theEObject;
 				T result = caseDiscriminatorValue(discriminatorValue);
 				if (result == null) result = casePAnnotation(discriminatorValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.ELEMENT_COLLECTION: {
+				ElementCollection elementCollection = (ElementCollection)theEObject;
+				T result = caseElementCollection(elementCollection);
+				if (result == null) result = casePAnnotation(elementCollection);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -266,10 +287,52 @@ public class PannotationSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case PannotationPackage.MAP_KEY_CLASS: {
+				MapKeyClass mapKeyClass = (MapKeyClass)theEObject;
+				T result = caseMapKeyClass(mapKeyClass);
+				if (result == null) result = casePAnnotation(mapKeyClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.MAP_KEY_COLUMN: {
+				MapKeyColumn mapKeyColumn = (MapKeyColumn)theEObject;
+				T result = caseMapKeyColumn(mapKeyColumn);
+				if (result == null) result = casePAnnotation(mapKeyColumn);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.MAP_KEY_ENUMERATED: {
+				MapKeyEnumerated mapKeyEnumerated = (MapKeyEnumerated)theEObject;
+				T result = caseMapKeyEnumerated(mapKeyEnumerated);
+				if (result == null) result = casePAnnotation(mapKeyEnumerated);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.MAP_KEY_JOIN_COLUMN: {
+				MapKeyJoinColumn mapKeyJoinColumn = (MapKeyJoinColumn)theEObject;
+				T result = caseMapKeyJoinColumn(mapKeyJoinColumn);
+				if (result == null) result = casePAnnotation(mapKeyJoinColumn);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.MAP_KEY_TEMPORAL: {
+				MapKeyTemporal mapKeyTemporal = (MapKeyTemporal)theEObject;
+				T result = caseMapKeyTemporal(mapKeyTemporal);
+				if (result == null) result = casePAnnotation(mapKeyTemporal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case PannotationPackage.MAPPED_SUPERCLASS: {
 				MappedSuperclass mappedSuperclass = (MappedSuperclass)theEObject;
 				T result = caseMappedSuperclass(mappedSuperclass);
 				if (result == null) result = casePAnnotation(mappedSuperclass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.MAPS_ID: {
+				MapsId mapsId = (MapsId)theEObject;
+				T result = caseMapsId(mapsId);
+				if (result == null) result = casePAnnotation(mapsId);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -291,6 +354,13 @@ public class PannotationSwitch<T> extends Switch<T> {
 				OrderBy orderBy = (OrderBy)theEObject;
 				T result = caseOrderBy(orderBy);
 				if (result == null) result = casePAnnotation(orderBy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PannotationPackage.ORDER_COLUMN: {
+				OrderColumn orderColumn = (OrderColumn)theEObject;
+				T result = caseOrderColumn(orderColumn);
+				if (result == null) result = casePAnnotation(orderColumn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -449,6 +519,36 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cacheable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cacheable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCacheable(Cacheable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Table</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionTable(CollectionTable object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Column</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -494,6 +594,21 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element Collection</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseElementCollection(ElementCollection object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Embeddable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -520,6 +635,21 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMappedSuperclass(MappedSuperclass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Maps Id</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Maps Id</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapsId(MapsId object) {
 		return null;
 	}
 
@@ -734,6 +864,81 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Key Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Key Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapKeyClass(MapKeyClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Key Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Key Column</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapKeyColumn(MapKeyColumn object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Key Enumerated</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Key Enumerated</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapKeyEnumerated(MapKeyEnumerated object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Key Join Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Key Join Column</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapKeyJoinColumn(MapKeyJoinColumn object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Key Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Key Temporal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapKeyTemporal(MapKeyTemporal object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>One To Many</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -775,6 +980,21 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOrderBy(OrderBy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Order Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Order Column</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrderColumn(OrderColumn object) {
 		return null;
 	}
 

@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
+import org.eclipse.emf.teneo.annotations.pannotation.Cacheable;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
@@ -56,6 +57,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getNoEAVMapping <em>No EAV Mapping</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getSequenceGenerators <em>Sequence Generators</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getExternal <em>External</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable <em>Cacheable</em>}</li>
  * </ul>
  * </p>
  *
@@ -517,6 +519,32 @@ public interface PAnnotatedEClass extends PAnnotatedEModelElement {
 	 * @generated
 	 */
 	void setExternal(External value);
+
+	/**
+	 * Returns the value of the '<em><b>Cacheable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cacheable</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cacheable</em>' containment reference.
+	 * @see #setCacheable(Cacheable)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEClass_Cacheable()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Cacheable getCacheable();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass#getCacheable <em>Cacheable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cacheable</em>' containment reference.
+	 * @see #getCacheable()
+	 * @generated
+	 */
+	void setCacheable(Cacheable value);
 
 	/**
 	 * @return Returns the List of PAnnotatedEAttributes belonging to this PAnnotatedEClass for which an Id PAnnotation

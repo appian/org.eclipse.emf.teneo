@@ -161,7 +161,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getColumn()
 	 * @generated
 	 */
-	int COLUMN = 4;
+	int COLUMN = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorColumnImpl <em>Discriminator Column</em>}' class.
@@ -170,7 +170,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorColumn()
 	 * @generated
 	 */
-	int DISCRIMINATOR_COLUMN = 5;
+	int DISCRIMINATOR_COLUMN = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.DiscriminatorValueImpl <em>Discriminator Value</em>}' class.
@@ -179,7 +179,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorValue()
 	 * @generated
 	 */
-	int DISCRIMINATOR_VALUE = 6;
+	int DISCRIMINATOR_VALUE = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddableImpl <em>Embeddable</em>}' class.
@@ -188,7 +188,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEmbeddable()
 	 * @generated
 	 */
-	int EMBEDDABLE = 7;
+	int EMBEDDABLE = 10;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MappedSuperclassImpl <em>Mapped Superclass</em>}' class.
@@ -197,7 +197,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMappedSuperclass()
 	 * @generated
 	 */
-	int MAPPED_SUPERCLASS = 22;
+	int MAPPED_SUPERCLASS = 30;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddedImpl <em>Embedded</em>}' class.
@@ -206,7 +206,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEmbedded()
 	 * @generated
 	 */
-	int EMBEDDED = 8;
+	int EMBEDDED = 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddedIdImpl <em>Embedded Id</em>}' class.
@@ -215,7 +215,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEmbeddedId()
 	 * @generated
 	 */
-	int EMBEDDED_ID = 9;
+	int EMBEDDED_ID = 12;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EnumeratedImpl <em>Enumerated</em>}' class.
@@ -224,7 +224,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumerated()
 	 * @generated
 	 */
-	int ENUMERATED = 11;
+	int ENUMERATED = 14;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EntityImpl <em>Entity</em>}' class.
@@ -233,7 +233,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEntity()
 	 * @generated
 	 */
-	int ENTITY = 10;
+	int ENTITY = 13;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.GeneratedValueImpl <em>Generated Value</em>}' class.
@@ -242,7 +242,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGeneratedValue()
 	 * @generated
 	 */
-	int GENERATED_VALUE = 12;
+	int GENERATED_VALUE = 15;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdImpl <em>Id</em>}' class.
@@ -251,7 +251,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getId()
 	 * @generated
 	 */
-	int ID = 13;
+	int ID = 16;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.IdClassImpl <em>Id Class</em>}' class.
@@ -260,7 +260,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getIdClass()
 	 * @generated
 	 */
-	int ID_CLASS = 14;
+	int ID_CLASS = 17;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.InheritanceImpl <em>Inheritance</em>}' class.
@@ -269,7 +269,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritance()
 	 * @generated
 	 */
-	int INHERITANCE = 15;
+	int INHERITANCE = 18;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinColumnImpl <em>Join Column</em>}' class.
@@ -278,7 +278,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getJoinColumn()
 	 * @generated
 	 */
-	int JOIN_COLUMN = 16;
+	int JOIN_COLUMN = 19;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.JoinTableImpl <em>Join Table</em>}' class.
@@ -287,7 +287,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getJoinTable()
 	 * @generated
 	 */
-	int JOIN_TABLE = 17;
+	int JOIN_TABLE = 20;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.LobImpl <em>Lob</em>}' class.
@@ -296,7 +296,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getLob()
 	 * @generated
 	 */
-	int LOB = 18;
+	int LOB = 21;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToManyImpl <em>Many To Many</em>}' class.
@@ -305,7 +305,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getManyToMany()
 	 * @generated
 	 */
-	int MANY_TO_MANY = 19;
+	int MANY_TO_MANY = 22;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ManyToOneImpl <em>Many To One</em>}' class.
@@ -314,7 +314,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getManyToOne()
 	 * @generated
 	 */
-	int MANY_TO_ONE = 20;
+	int MANY_TO_ONE = 23;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyImpl <em>Map Key</em>}' class.
@@ -323,7 +323,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKey()
 	 * @generated
 	 */
-	int MAP_KEY = 21;
+	int MAP_KEY = 24;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl <em>One To Many</em>}' class.
@@ -332,7 +332,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOneToMany()
 	 * @generated
 	 */
-	int ONE_TO_MANY = 23;
+	int ONE_TO_MANY = 32;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl <em>One To One</em>}' class.
@@ -341,7 +341,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOneToOne()
 	 * @generated
 	 */
-	int ONE_TO_ONE = 24;
+	int ONE_TO_ONE = 33;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderByImpl <em>Order By</em>}' class.
@@ -350,7 +350,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOrderBy()
 	 * @generated
 	 */
-	int ORDER_BY = 25;
+	int ORDER_BY = 34;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl <em>Primary Key Join Column</em>}' class.
@@ -359,7 +359,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getPrimaryKeyJoinColumn()
 	 * @generated
 	 */
-	int PRIMARY_KEY_JOIN_COLUMN = 26;
+	int PRIMARY_KEY_JOIN_COLUMN = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SecondaryTableImpl <em>Secondary Table</em>}' class.
@@ -368,7 +368,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSecondaryTable()
 	 * @generated
 	 */
-	int SECONDARY_TABLE = 27;
+	int SECONDARY_TABLE = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl <em>Sequence Generator</em>}' class.
@@ -377,7 +377,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSequenceGenerator()
 	 * @generated
 	 */
-	int SEQUENCE_GENERATOR = 28;
+	int SEQUENCE_GENERATOR = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl <em>Table</em>}' class.
@@ -386,7 +386,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTable()
 	 * @generated
 	 */
-	int TABLE = 29;
+	int TABLE = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableGeneratorImpl <em>Table Generator</em>}' class.
@@ -395,7 +395,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTableGenerator()
 	 * @generated
 	 */
-	int TABLE_GENERATOR = 30;
+	int TABLE_GENERATOR = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TemporalImpl <em>Temporal</em>}' class.
@@ -404,7 +404,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporal()
 	 * @generated
 	 */
-	int TEMPORAL = 31;
+	int TEMPORAL = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TransientImpl <em>Transient</em>}' class.
@@ -413,7 +413,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTransient()
 	 * @generated
 	 */
-	int TRANSIENT = 32;
+	int TRANSIENT = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.UniqueConstraintImpl <em>Unique Constraint</em>}' class.
@@ -422,7 +422,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getUniqueConstraint()
 	 * @generated
 	 */
-	int UNIQUE_CONSTRAINT = 33;
+	int UNIQUE_CONSTRAINT = 43;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.VersionImpl <em>Version</em>}' class.
@@ -431,7 +431,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 34;
+	int VERSION = 44;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl <em>Association Override</em>}' class.
@@ -478,13 +478,22 @@ public interface PannotationPackage extends EPackage {
 	int ASSOCIATION_OVERRIDE__JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Join Table</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSOCIATION_OVERRIDE__JOIN_TABLE = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Association Override</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSOCIATION_OVERRIDE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 2;
+	int ASSOCIATION_OVERRIDE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -528,6 +537,134 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int BASIC_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.CacheableImpl <em>Cacheable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.CacheableImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCacheable()
+	 * @generated
+	 */
+	int CACHEABLE = 4;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHEABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHEABLE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHEABLE__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Cacheable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHEABLE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.CollectionTableImpl <em>Collection Table</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.CollectionTableImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCollectionTable()
+	 * @generated
+	 */
+	int COLLECTION_TABLE = 5;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Catalog</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__CATALOG = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__SCHEMA = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Unique Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__UNIQUE_CONSTRAINTS = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Collection Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -759,6 +896,52 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRIMINATOR_VALUE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl <em>Element Collection</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getElementCollection()
+	 * @generated
+	 */
+	int ELEMENT_COLLECTION = 9;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_COLLECTION__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_COLLECTION__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Fetch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_COLLECTION__FETCH = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Element Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_COLLECTION_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1425,6 +1608,398 @@ public interface PannotationPackage extends EPackage {
 	int MAP_KEY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyClassImpl <em>Map Key Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyClassImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyClass()
+	 * @generated
+	 */
+	int MAP_KEY_CLASS = 25;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_CLASS__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_CLASS__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_CLASS__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Map Key Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_CLASS_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyColumnImpl <em>Map Key Column</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyColumnImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyColumn()
+	 * @generated
+	 */
+	int MAP_KEY_COLUMN = 26;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__UNIQUE = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Nullable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__NULLABLE = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Insertable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__INSERTABLE = PANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Updatable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__UPDATABLE = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Column Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__COLUMN_DEFINITION = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__TABLE = PANNOTATION_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__LENGTH = PANNOTATION_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Precision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__PRECISION = PANNOTATION_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__SCALE = PANNOTATION_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Unique Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__UNIQUE_KEY = PANNOTATION_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN__INDEX = PANNOTATION_FEATURE_COUNT + 11;
+
+	/**
+	 * The number of structural features of the '<em>Map Key Column</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 12;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyEnumeratedImpl <em>Map Key Enumerated</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyEnumeratedImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyEnumerated()
+	 * @generated
+	 */
+	int MAP_KEY_ENUMERATED = 27;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_ENUMERATED__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_ENUMERATED__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_ENUMERATED__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Map Key Enumerated</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_ENUMERATED_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyJoinColumnImpl <em>Map Key Join Column</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyJoinColumnImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyJoinColumn()
+	 * @generated
+	 */
+	int MAP_KEY_JOIN_COLUMN = 28;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Referenced Column Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__UNIQUE = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Nullable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__NULLABLE = PANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Insertable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__INSERTABLE = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Updatable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__UPDATABLE = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Column Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION = PANNOTATION_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN__TABLE = PANNOTATION_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of structural features of the '<em>Map Key Join Column</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_JOIN_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 8;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyTemporalImpl <em>Map Key Temporal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyTemporalImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyTemporal()
+	 * @generated
+	 */
+	int MAP_KEY_TEMPORAL = 29;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_TEMPORAL__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_TEMPORAL__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_TEMPORAL__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Map Key Temporal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_TEMPORAL_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
@@ -1450,6 +2025,52 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAPPED_SUPERCLASS_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl <em>Maps Id</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapsId()
+	 * @generated
+	 */
+	int MAPS_ID = 31;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPS_ID__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPS_ID__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPS_ID__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Maps Id</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPS_ID_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1522,13 +2143,22 @@ public interface PannotationPackage extends EPackage {
 	int ONE_TO_MANY__UNIQUE = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Orphan Removal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONE_TO_MANY__ORPHAN_REMOVAL = PANNOTATION_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>One To Many</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ONE_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
+	int ONE_TO_MANY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1591,13 +2221,22 @@ public interface PannotationPackage extends EPackage {
 	int ONE_TO_ONE__MAPPED_BY = PANNOTATION_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Orphan Removal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONE_TO_ONE__ORPHAN_REMOVAL = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>One To One</em>' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ONE_TO_ONE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
+	int ONE_TO_ONE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1633,6 +2272,88 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORDER_BY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl <em>Order Column</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOrderColumn()
+	 * @generated
+	 */
+	int ORDER_COLUMN = 35;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__NAME = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Nullable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__NULLABLE = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Insertable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__INSERTABLE = PANNOTATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Updatable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__UPDATABLE = PANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Column Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN__COLUMN_DEFINITION = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Order Column</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1810,13 +2531,31 @@ public interface PannotationPackage extends EPackage {
 	int SEQUENCE_GENERATOR__ALLOCATION_SIZE = PANNOTATION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Catalog</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_GENERATOR__CATALOG = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_GENERATOR__SCHEMA = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Sequence Generator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_GENERATOR_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 4;
+	int SEQUENCE_GENERATOR_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2124,7 +2863,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getForeignKey()
 	 * @generated
 	 */
-	int FOREIGN_KEY = 35;
+	int FOREIGN_KEY = 45;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2170,7 +2909,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getSequenceStyleGenerator()
 	 * @generated
 	 */
-	int SEQUENCE_STYLE_GENERATOR = 36;
+	int SEQUENCE_STYLE_GENERATOR = 46;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2261,7 +3000,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getExternal()
 	 * @generated
 	 */
-	int EXTERNAL = 37;
+	int EXTERNAL = 47;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2307,7 +3046,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEAVMapping()
 	 * @generated
 	 */
-	int EAV_MAPPING = 38;
+	int EAV_MAPPING = 48;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2344,7 +3083,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getNoEAVMapping()
 	 * @generated
 	 */
-	int NO_EAV_MAPPING = 39;
+	int NO_EAV_MAPPING = 49;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2381,7 +3120,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getListIndexColumn()
 	 * @generated
 	 */
-	int LIST_INDEX_COLUMN = 40;
+	int LIST_INDEX_COLUMN = 50;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2426,7 +3165,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getFetchType()
 	 * @generated
 	 */
-	int FETCH_TYPE = 44;
+	int FETCH_TYPE = 54;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType <em>Discriminator Type</em>}' enum.
@@ -2435,7 +3174,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getDiscriminatorType()
 	 * @generated
 	 */
-	int DISCRIMINATOR_TYPE = 42;
+	int DISCRIMINATOR_TYPE = 52;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.EnumType <em>Enum Type</em>}' enum.
@@ -2444,7 +3183,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getEnumType()
 	 * @generated
 	 */
-	int ENUM_TYPE = 43;
+	int ENUM_TYPE = 53;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.InheritanceType <em>Inheritance Type</em>}' enum.
@@ -2453,7 +3192,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getInheritanceType()
 	 * @generated
 	 */
-	int INHERITANCE_TYPE = 46;
+	int INHERITANCE_TYPE = 56;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.CascadeType <em>Cascade Type</em>}' enum.
@@ -2462,7 +3201,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCascadeType()
 	 * @generated
 	 */
-	int CASCADE_TYPE = 41;
+	int CASCADE_TYPE = 51;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.TemporalType <em>Temporal Type</em>}' enum.
@@ -2471,7 +3210,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getTemporalType()
 	 * @generated
 	 */
-	int TEMPORAL_TYPE = 47;
+	int TEMPORAL_TYPE = 57;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.OptimizerType <em>Optimizer Type</em>}' enum.
@@ -2481,7 +3220,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOptimizerType()
 	 * @generated
 	 */
-	int OPTIMIZER_TYPE = 48;
+	int OPTIMIZER_TYPE = 58;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.GenerationType <em>Generation Type</em>}' enum.
@@ -2490,7 +3229,7 @@ public interface PannotationPackage extends EPackage {
 	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getGenerationType()
 	 * @generated
 	 */
-	int GENERATION_TYPE = 45;
+	int GENERATION_TYPE = 55;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PAnnotation <em>PAnnotation</em>}'.
@@ -2579,6 +3318,92 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBasic_Optional();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Cacheable <em>Cacheable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cacheable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.Cacheable
+	 * @generated
+	 */
+	EClass getCacheable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.Cacheable#isValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.Cacheable#isValue()
+	 * @see #getCacheable()
+	 * @generated
+	 */
+	EAttribute getCacheable_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable <em>Collection Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Collection Table</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable
+	 * @generated
+	 */
+	EClass getCollectionTable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getName()
+	 * @see #getCollectionTable()
+	 * @generated
+	 */
+	EAttribute getCollectionTable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getCatalog <em>Catalog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Catalog</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getCatalog()
+	 * @see #getCollectionTable()
+	 * @generated
+	 */
+	EAttribute getCollectionTable_Catalog();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getSchema <em>Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Schema</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getSchema()
+	 * @see #getCollectionTable()
+	 * @generated
+	 */
+	EAttribute getCollectionTable_Schema();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getJoinColumns <em>Join Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Join Columns</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getJoinColumns()
+	 * @see #getCollectionTable()
+	 * @generated
+	 */
+	EReference getCollectionTable_JoinColumns();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getUniqueConstraints <em>Unique Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Unique Constraints</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getUniqueConstraints()
+	 * @see #getCollectionTable()
+	 * @generated
+	 */
+	EReference getCollectionTable_UniqueConstraints();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Column <em>Column</em>}'.
@@ -2781,6 +3606,27 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getDiscriminatorValue_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.ElementCollection <em>Element Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Element Collection</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ElementCollection
+	 * @generated
+	 */
+	EClass getElementCollection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.ElementCollection#getFetch <em>Fetch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fetch</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.ElementCollection#getFetch()
+	 * @see #getElementCollection()
+	 * @generated
+	 */
+	EAttribute getElementCollection_Fetch();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn#getColumnDefinition <em>Column Definition</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Column Definition</em>'.
@@ -2807,6 +3653,27 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMappedSuperclass();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapsId <em>Maps Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Maps Id</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapsId
+	 * @generated
+	 */
+	EClass getMapsId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapsId#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapsId#getValue()
+	 * @see #getMapsId()
+	 * @generated
+	 */
+	EAttribute getMapsId_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Embedded <em>Embedded</em>}'.
@@ -3248,6 +4115,309 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getMapKey_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass <em>Map Key Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Key Class</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass
+	 * @generated
+	 */
+	EClass getMapKeyClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass#getValue()
+	 * @see #getMapKeyClass()
+	 * @generated
+	 */
+	EAttribute getMapKeyClass_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn <em>Map Key Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Key Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn
+	 * @generated
+	 */
+	EClass getMapKeyColumn();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getName()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isUnique <em>Unique</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unique</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isUnique()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Unique();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isNullable <em>Nullable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Nullable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isNullable()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Nullable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isInsertable <em>Insertable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Insertable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isInsertable()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Insertable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isUpdatable <em>Updatable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Updatable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#isUpdatable()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Updatable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getColumnDefinition <em>Column Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column Definition</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getColumnDefinition()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_ColumnDefinition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Table</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getTable()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Table();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getLength <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getLength()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Length();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getPrecision <em>Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Precision</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getPrecision()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Precision();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getScale <em>Scale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Scale</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getScale()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Scale();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getUniqueKey <em>Unique Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unique Key</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getUniqueKey()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_UniqueKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn#getIndex()
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyColumn_Index();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated <em>Map Key Enumerated</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Key Enumerated</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated
+	 * @generated
+	 */
+	EClass getMapKeyEnumerated();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated#getValue()
+	 * @see #getMapKeyEnumerated()
+	 * @generated
+	 */
+	EAttribute getMapKeyEnumerated_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn <em>Map Key Join Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Key Join Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn
+	 * @generated
+	 */
+	EClass getMapKeyJoinColumn();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getName()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getReferencedColumnName <em>Referenced Column Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Referenced Column Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getReferencedColumnName()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_ReferencedColumnName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUnique <em>Unique</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unique</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUnique()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_Unique();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isNullable <em>Nullable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Nullable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isNullable()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_Nullable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isInsertable <em>Insertable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Insertable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isInsertable()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_Insertable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUpdatable <em>Updatable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Updatable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUpdatable()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_Updatable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getColumnDefinition <em>Column Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column Definition</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getColumnDefinition()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_ColumnDefinition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Table</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getTable()
+	 * @see #getMapKeyJoinColumn()
+	 * @generated
+	 */
+	EAttribute getMapKeyJoinColumn_Table();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal <em>Map Key Temporal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Key Temporal</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal
+	 * @generated
+	 */
+	EClass getMapKeyTemporal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal#getValue()
+	 * @see #getMapKeyTemporal()
+	 * @generated
+	 */
+	EAttribute getMapKeyTemporal_Value();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany <em>One To Many</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>One To Many</em>'.
@@ -3319,6 +4489,17 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getOneToMany_Unique();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isOrphanRemoval <em>Orphan Removal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Orphan Removal</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OneToMany#isOrphanRemoval()
+	 * @see #getOneToMany()
+	 * @generated
+	 */
+	EAttribute getOneToMany_OrphanRemoval();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne <em>One To One</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>One To One</em>'.
@@ -3378,6 +4559,17 @@ public interface PannotationPackage extends EPackage {
 	EAttribute getOneToOne_MappedBy();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval <em>Orphan Removal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Orphan Removal</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval()
+	 * @see #getOneToOne()
+	 * @generated
+	 */
+	EAttribute getOneToOne_OrphanRemoval();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderBy <em>Order By</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Order By</em>'.
@@ -3395,6 +4587,71 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOrderBy_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderColumn <em>Order Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Order Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OrderColumn
+	 * @generated
+	 */
+	EClass getOrderColumn();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#getName()
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	EAttribute getOrderColumn_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#isNullable <em>Nullable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Nullable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#isNullable()
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	EAttribute getOrderColumn_Nullable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#isInsertable <em>Insertable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Insertable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#isInsertable()
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	EAttribute getOrderColumn_Insertable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#isUpdatable <em>Updatable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Updatable</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#isUpdatable()
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	EAttribute getOrderColumn_Updatable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#getColumnDefinition <em>Column Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column Definition</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.OrderColumn#getColumnDefinition()
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	EAttribute getOrderColumn_ColumnDefinition();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn <em>Primary Key Join Column</em>}'.
@@ -3542,6 +4799,28 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSequenceGenerator_AllocationSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog <em>Catalog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Catalog</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getCatalog()
+	 * @see #getSequenceGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceGenerator_Catalog();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema <em>Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Schema</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator#getSchema()
+	 * @see #getSequenceGenerator()
+	 * @generated
+	 */
+	EAttribute getSequenceGenerator_Schema();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Table <em>Table</em>}'.
@@ -3946,6 +5225,17 @@ public interface PannotationPackage extends EPackage {
 	EReference getAssociationOverride_JoinColumns();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinTable <em>Join Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Join Table</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride#getJoinTable()
+	 * @see #getAssociationOverride()
+	 * @generated
+	 */
+	EReference getAssociationOverride_JoinTable();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.teneo.annotations.pannotation.FetchType <em>Fetch Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Fetch Type</em>'.
@@ -4118,6 +5408,14 @@ public interface PannotationPackage extends EPackage {
 		EReference ASSOCIATION_OVERRIDE__JOIN_COLUMNS = eINSTANCE.getAssociationOverride_JoinColumns();
 
 		/**
+		 * The meta object literal for the '<em><b>Join Table</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSOCIATION_OVERRIDE__JOIN_TABLE = eINSTANCE.getAssociationOverride_JoinTable();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.BasicImpl <em>Basic</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4142,6 +5440,74 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BASIC__OPTIONAL = eINSTANCE.getBasic_Optional();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.CacheableImpl <em>Cacheable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.CacheableImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCacheable()
+		 * @generated
+		 */
+		EClass CACHEABLE = eINSTANCE.getCacheable();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHEABLE__VALUE = eINSTANCE.getCacheable_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.CollectionTableImpl <em>Collection Table</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.CollectionTableImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getCollectionTable()
+		 * @generated
+		 */
+		EClass COLLECTION_TABLE = eINSTANCE.getCollectionTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLLECTION_TABLE__NAME = eINSTANCE.getCollectionTable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Catalog</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLLECTION_TABLE__CATALOG = eINSTANCE.getCollectionTable_Catalog();
+
+		/**
+		 * The meta object literal for the '<em><b>Schema</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLLECTION_TABLE__SCHEMA = eINSTANCE.getCollectionTable_Schema();
+
+		/**
+		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLECTION_TABLE__JOIN_COLUMNS = eINSTANCE.getCollectionTable_JoinColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLLECTION_TABLE__UNIQUE_CONSTRAINTS = eINSTANCE.getCollectionTable_UniqueConstraints();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl <em>Column</em>}' class.
@@ -4316,6 +5682,24 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DISCRIMINATOR_VALUE__VALUE = eINSTANCE.getDiscriminatorValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl <em>Element Collection</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getElementCollection()
+		 * @generated
+		 */
+		EClass ELEMENT_COLLECTION = eINSTANCE.getElementCollection();
+
+		/**
+		 * The meta object literal for the '<em><b>Fetch</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT_COLLECTION__FETCH = eINSTANCE.getElementCollection_Fetch();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.EmbeddableImpl <em>Embeddable</em>}' class.
@@ -4716,6 +6100,240 @@ public interface PannotationPackage extends EPackage {
 		EAttribute MAP_KEY__NAME = eINSTANCE.getMapKey_Name();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyClassImpl <em>Map Key Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyClassImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyClass()
+		 * @generated
+		 */
+		EClass MAP_KEY_CLASS = eINSTANCE.getMapKeyClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_CLASS__VALUE = eINSTANCE.getMapKeyClass_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyColumnImpl <em>Map Key Column</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyColumnImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyColumn()
+		 * @generated
+		 */
+		EClass MAP_KEY_COLUMN = eINSTANCE.getMapKeyColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__NAME = eINSTANCE.getMapKeyColumn_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__UNIQUE = eINSTANCE.getMapKeyColumn_Unique();
+
+		/**
+		 * The meta object literal for the '<em><b>Nullable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__NULLABLE = eINSTANCE.getMapKeyColumn_Nullable();
+
+		/**
+		 * The meta object literal for the '<em><b>Insertable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__INSERTABLE = eINSTANCE.getMapKeyColumn_Insertable();
+
+		/**
+		 * The meta object literal for the '<em><b>Updatable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__UPDATABLE = eINSTANCE.getMapKeyColumn_Updatable();
+
+		/**
+		 * The meta object literal for the '<em><b>Column Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__COLUMN_DEFINITION = eINSTANCE.getMapKeyColumn_ColumnDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__TABLE = eINSTANCE.getMapKeyColumn_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__LENGTH = eINSTANCE.getMapKeyColumn_Length();
+
+		/**
+		 * The meta object literal for the '<em><b>Precision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__PRECISION = eINSTANCE.getMapKeyColumn_Precision();
+
+		/**
+		 * The meta object literal for the '<em><b>Scale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__SCALE = eINSTANCE.getMapKeyColumn_Scale();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__UNIQUE_KEY = eINSTANCE.getMapKeyColumn_UniqueKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_COLUMN__INDEX = eINSTANCE.getMapKeyColumn_Index();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyEnumeratedImpl <em>Map Key Enumerated</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyEnumeratedImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyEnumerated()
+		 * @generated
+		 */
+		EClass MAP_KEY_ENUMERATED = eINSTANCE.getMapKeyEnumerated();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_ENUMERATED__VALUE = eINSTANCE.getMapKeyEnumerated_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyJoinColumnImpl <em>Map Key Join Column</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyJoinColumnImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyJoinColumn()
+		 * @generated
+		 */
+		EClass MAP_KEY_JOIN_COLUMN = eINSTANCE.getMapKeyJoinColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__NAME = eINSTANCE.getMapKeyJoinColumn_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Referenced Column Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME = eINSTANCE.getMapKeyJoinColumn_ReferencedColumnName();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__UNIQUE = eINSTANCE.getMapKeyJoinColumn_Unique();
+
+		/**
+		 * The meta object literal for the '<em><b>Nullable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__NULLABLE = eINSTANCE.getMapKeyJoinColumn_Nullable();
+
+		/**
+		 * The meta object literal for the '<em><b>Insertable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__INSERTABLE = eINSTANCE.getMapKeyJoinColumn_Insertable();
+
+		/**
+		 * The meta object literal for the '<em><b>Updatable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__UPDATABLE = eINSTANCE.getMapKeyJoinColumn_Updatable();
+
+		/**
+		 * The meta object literal for the '<em><b>Column Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION = eINSTANCE.getMapKeyJoinColumn_ColumnDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_JOIN_COLUMN__TABLE = eINSTANCE.getMapKeyJoinColumn_Table();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyTemporalImpl <em>Map Key Temporal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyTemporalImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapKeyTemporal()
+		 * @generated
+		 */
+		EClass MAP_KEY_TEMPORAL = eINSTANCE.getMapKeyTemporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_KEY_TEMPORAL__VALUE = eINSTANCE.getMapKeyTemporal_Value();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MappedSuperclassImpl <em>Mapped Superclass</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4724,6 +6342,24 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MAPPED_SUPERCLASS = eINSTANCE.getMappedSuperclass();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl <em>Maps Id</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapsId()
+		 * @generated
+		 */
+		EClass MAPS_ID = eINSTANCE.getMapsId();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAPS_ID__VALUE = eINSTANCE.getMapsId_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToManyImpl <em>One To Many</em>}' class.
@@ -4784,6 +6420,14 @@ public interface PannotationPackage extends EPackage {
 		EAttribute ONE_TO_MANY__UNIQUE = eINSTANCE.getOneToMany_Unique();
 
 		/**
+		 * The meta object literal for the '<em><b>Orphan Removal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ONE_TO_MANY__ORPHAN_REMOVAL = eINSTANCE.getOneToMany_OrphanRemoval();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl <em>One To One</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4834,6 +6478,14 @@ public interface PannotationPackage extends EPackage {
 		EAttribute ONE_TO_ONE__MAPPED_BY = eINSTANCE.getOneToOne_MappedBy();
 
 		/**
+		 * The meta object literal for the '<em><b>Orphan Removal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ONE_TO_ONE__ORPHAN_REMOVAL = eINSTANCE.getOneToOne_OrphanRemoval();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderByImpl <em>Order By</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4850,6 +6502,56 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ORDER_BY__VALUE = eINSTANCE.getOrderBy_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl <em>Order Column</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl
+		 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOrderColumn()
+		 * @generated
+		 */
+		EClass ORDER_COLUMN = eINSTANCE.getOrderColumn();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_COLUMN__NAME = eINSTANCE.getOrderColumn_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Nullable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_COLUMN__NULLABLE = eINSTANCE.getOrderColumn_Nullable();
+
+		/**
+		 * The meta object literal for the '<em><b>Insertable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_COLUMN__INSERTABLE = eINSTANCE.getOrderColumn_Insertable();
+
+		/**
+		 * The meta object literal for the '<em><b>Updatable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_COLUMN__UPDATABLE = eINSTANCE.getOrderColumn_Updatable();
+
+		/**
+		 * The meta object literal for the '<em><b>Column Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_COLUMN__COLUMN_DEFINITION = eINSTANCE.getOrderColumn_ColumnDefinition();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.PrimaryKeyJoinColumnImpl <em>Primary Key Join Column</em>}' class.
@@ -4976,6 +6678,22 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SEQUENCE_GENERATOR__ALLOCATION_SIZE = eINSTANCE.getSequenceGenerator_AllocationSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Catalog</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_GENERATOR__CATALOG = eINSTANCE.getSequenceGenerator_Catalog();
+
+		/**
+		 * The meta object literal for the '<em><b>Schema</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCE_GENERATOR__SCHEMA = eINSTANCE.getSequenceGenerator_Schema();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.TableImpl <em>Table</em>}' class.

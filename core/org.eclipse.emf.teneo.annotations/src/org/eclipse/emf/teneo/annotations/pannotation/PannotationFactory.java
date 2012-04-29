@@ -39,6 +39,24 @@ public interface PannotationFactory extends EFactory {
 	Basic createBasic();
 
 	/**
+	 * Returns a new object of class '<em>Cacheable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cacheable</em>'.
+	 * @generated
+	 */
+	Cacheable createCacheable();
+
+	/**
+	 * Returns a new object of class '<em>Collection Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Table</em>'.
+	 * @generated
+	 */
+	CollectionTable createCollectionTable();
+
+	/**
 	 * Returns a new object of class '<em>Column</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Column</em>'.
@@ -63,6 +81,15 @@ public interface PannotationFactory extends EFactory {
 	DiscriminatorValue createDiscriminatorValue();
 
 	/**
+	 * Returns a new object of class '<em>Element Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Element Collection</em>'.
+	 * @generated
+	 */
+	ElementCollection createElementCollection();
+
+	/**
 	 * Returns a new object of class '<em>Embeddable</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>Embeddable</em>'.
@@ -77,6 +104,15 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	MappedSuperclass createMappedSuperclass();
+
+	/**
+	 * Returns a new object of class '<em>Maps Id</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Maps Id</em>'.
+	 * @generated
+	 */
+	MapsId createMapsId();
 
 	/**
 	 * Returns a new object of class '<em>Embedded</em>'.
@@ -191,6 +227,51 @@ public interface PannotationFactory extends EFactory {
 	MapKey createMapKey();
 
 	/**
+	 * Returns a new object of class '<em>Map Key Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map Key Class</em>'.
+	 * @generated
+	 */
+	MapKeyClass createMapKeyClass();
+
+	/**
+	 * Returns a new object of class '<em>Map Key Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map Key Column</em>'.
+	 * @generated
+	 */
+	MapKeyColumn createMapKeyColumn();
+
+	/**
+	 * Returns a new object of class '<em>Map Key Enumerated</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map Key Enumerated</em>'.
+	 * @generated
+	 */
+	MapKeyEnumerated createMapKeyEnumerated();
+
+	/**
+	 * Returns a new object of class '<em>Map Key Join Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map Key Join Column</em>'.
+	 * @generated
+	 */
+	MapKeyJoinColumn createMapKeyJoinColumn();
+
+	/**
+	 * Returns a new object of class '<em>Map Key Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map Key Temporal</em>'.
+	 * @generated
+	 */
+	MapKeyTemporal createMapKeyTemporal();
+
+	/**
 	 * Returns a new object of class '<em>One To Many</em>'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return a new object of class '<em>One To Many</em>'.
@@ -213,6 +294,15 @@ public interface PannotationFactory extends EFactory {
 	 * @generated
 	 */
 	OrderBy createOrderBy();
+
+	/**
+	 * Returns a new object of class '<em>Order Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Order Column</em>'.
+	 * @generated
+	 */
+	OrderColumn createOrderColumn();
 
 	/**
 	 * Returns a new object of class '<em>Primary Key Join Column</em>'. <!-- begin-user-doc --> <!-- end-user-doc

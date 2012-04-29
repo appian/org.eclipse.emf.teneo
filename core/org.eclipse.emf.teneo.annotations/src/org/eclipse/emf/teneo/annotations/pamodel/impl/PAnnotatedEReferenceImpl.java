@@ -27,8 +27,15 @@ import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal;
+import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
+import org.eclipse.emf.teneo.annotations.pannotation.OrderColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 
 /**
@@ -48,6 +55,13 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getAssociationOverrides <em>Association Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getExternal <em>External</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyClass <em>Map Key Class</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyColumn <em>Map Key Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyEnumerated <em>Map Key Enumerated</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyJoinColumns <em>Map Key Join Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyTemporal <em>Map Key Temporal</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapsId <em>Maps Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderColumn <em>Order Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -149,6 +163,76 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 	 * @ordered
 	 */
 	protected External external;
+
+	/**
+	 * The cached value of the '{@link #getMapKeyClass() <em>Map Key Class</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapKeyClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapKeyClass mapKeyClass;
+
+	/**
+	 * The cached value of the '{@link #getMapKeyColumn() <em>Map Key Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapKeyColumn mapKeyColumn;
+
+	/**
+	 * The cached value of the '{@link #getMapKeyEnumerated() <em>Map Key Enumerated</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapKeyEnumerated()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapKeyEnumerated mapKeyEnumerated;
+
+	/**
+	 * The cached value of the '{@link #getMapKeyJoinColumns() <em>Map Key Join Columns</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapKeyJoinColumns()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MapKeyJoinColumn> mapKeyJoinColumns;
+
+	/**
+	 * The cached value of the '{@link #getMapKeyTemporal() <em>Map Key Temporal</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapKeyTemporal()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapKeyTemporal mapKeyTemporal;
+
+	/**
+	 * The cached value of the '{@link #getMapsId() <em>Maps Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapsId()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapsId mapsId;
+
+	/**
+	 * The cached value of the '{@link #getOrderColumn() <em>Order Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrderColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected OrderColumn orderColumn;
 
 	/** The pannotated eclass to which the reference is pointing */
 	private PAnnotatedEClass areferenceType = null;
@@ -564,6 +648,276 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyClass getMapKeyClass() {
+		return mapKeyClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapKeyClass(MapKeyClass newMapKeyClass, NotificationChain msgs) {
+		MapKeyClass oldMapKeyClass = mapKeyClass;
+		mapKeyClass = newMapKeyClass;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS, oldMapKeyClass, newMapKeyClass);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapKeyClass(MapKeyClass newMapKeyClass) {
+		if (newMapKeyClass != mapKeyClass) {
+			NotificationChain msgs = null;
+			if (mapKeyClass != null)
+				msgs = ((InternalEObject)mapKeyClass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS, null, msgs);
+			if (newMapKeyClass != null)
+				msgs = ((InternalEObject)newMapKeyClass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS, null, msgs);
+			msgs = basicSetMapKeyClass(newMapKeyClass, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS, newMapKeyClass, newMapKeyClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyColumn getMapKeyColumn() {
+		return mapKeyColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapKeyColumn(MapKeyColumn newMapKeyColumn, NotificationChain msgs) {
+		MapKeyColumn oldMapKeyColumn = mapKeyColumn;
+		mapKeyColumn = newMapKeyColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN, oldMapKeyColumn, newMapKeyColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapKeyColumn(MapKeyColumn newMapKeyColumn) {
+		if (newMapKeyColumn != mapKeyColumn) {
+			NotificationChain msgs = null;
+			if (mapKeyColumn != null)
+				msgs = ((InternalEObject)mapKeyColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN, null, msgs);
+			if (newMapKeyColumn != null)
+				msgs = ((InternalEObject)newMapKeyColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN, null, msgs);
+			msgs = basicSetMapKeyColumn(newMapKeyColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN, newMapKeyColumn, newMapKeyColumn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyEnumerated getMapKeyEnumerated() {
+		return mapKeyEnumerated;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapKeyEnumerated(MapKeyEnumerated newMapKeyEnumerated, NotificationChain msgs) {
+		MapKeyEnumerated oldMapKeyEnumerated = mapKeyEnumerated;
+		mapKeyEnumerated = newMapKeyEnumerated;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED, oldMapKeyEnumerated, newMapKeyEnumerated);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapKeyEnumerated(MapKeyEnumerated newMapKeyEnumerated) {
+		if (newMapKeyEnumerated != mapKeyEnumerated) {
+			NotificationChain msgs = null;
+			if (mapKeyEnumerated != null)
+				msgs = ((InternalEObject)mapKeyEnumerated).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED, null, msgs);
+			if (newMapKeyEnumerated != null)
+				msgs = ((InternalEObject)newMapKeyEnumerated).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED, null, msgs);
+			msgs = basicSetMapKeyEnumerated(newMapKeyEnumerated, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED, newMapKeyEnumerated, newMapKeyEnumerated));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<MapKeyJoinColumn> getMapKeyJoinColumns() {
+		if (mapKeyJoinColumns == null) {
+			mapKeyJoinColumns = new EObjectContainmentEList<MapKeyJoinColumn>(MapKeyJoinColumn.class, this, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS);
+		}
+		return mapKeyJoinColumns;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyTemporal getMapKeyTemporal() {
+		return mapKeyTemporal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapKeyTemporal(MapKeyTemporal newMapKeyTemporal, NotificationChain msgs) {
+		MapKeyTemporal oldMapKeyTemporal = mapKeyTemporal;
+		mapKeyTemporal = newMapKeyTemporal;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL, oldMapKeyTemporal, newMapKeyTemporal);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapKeyTemporal(MapKeyTemporal newMapKeyTemporal) {
+		if (newMapKeyTemporal != mapKeyTemporal) {
+			NotificationChain msgs = null;
+			if (mapKeyTemporal != null)
+				msgs = ((InternalEObject)mapKeyTemporal).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL, null, msgs);
+			if (newMapKeyTemporal != null)
+				msgs = ((InternalEObject)newMapKeyTemporal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL, null, msgs);
+			msgs = basicSetMapKeyTemporal(newMapKeyTemporal, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL, newMapKeyTemporal, newMapKeyTemporal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapsId getMapsId() {
+		return mapsId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapsId(MapsId newMapsId, NotificationChain msgs) {
+		MapsId oldMapsId = mapsId;
+		mapsId = newMapsId;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, oldMapsId, newMapsId);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapsId(MapsId newMapsId) {
+		if (newMapsId != mapsId) {
+			NotificationChain msgs = null;
+			if (mapsId != null)
+				msgs = ((InternalEObject)mapsId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, null, msgs);
+			if (newMapsId != null)
+				msgs = ((InternalEObject)newMapsId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, null, msgs);
+			msgs = basicSetMapsId(newMapsId, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, newMapsId, newMapsId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OrderColumn getOrderColumn() {
+		return orderColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrderColumn(OrderColumn newOrderColumn, NotificationChain msgs) {
+		OrderColumn oldOrderColumn = orderColumn;
+		orderColumn = newOrderColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, oldOrderColumn, newOrderColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrderColumn(OrderColumn newOrderColumn) {
+		if (newOrderColumn != orderColumn) {
+			NotificationChain msgs = null;
+			if (orderColumn != null)
+				msgs = ((InternalEObject)orderColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, null, msgs);
+			if (newOrderColumn != null)
+				msgs = ((InternalEObject)newOrderColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, null, msgs);
+			msgs = basicSetOrderColumn(newOrderColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, newOrderColumn, newOrderColumn));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -589,6 +943,20 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return ((InternalEList<?>)getPrimaryKeyJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__ASSOCIATION_OVERRIDES:
 				return ((InternalEList<?>)getAssociationOverrides()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS:
+				return basicSetMapKeyClass(null, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN:
+				return basicSetMapKeyColumn(null, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED:
+				return basicSetMapKeyEnumerated(null, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS:
+				return ((InternalEList<?>)getMapKeyJoinColumns()).basicRemove(otherEnd, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
+				return basicSetMapKeyTemporal(null, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
+				return basicSetMapsId(null, msgs);
+			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
+				return basicSetOrderColumn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -624,6 +992,20 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__EXTERNAL:
 				if (resolve) return getExternal();
 				return basicGetExternal();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS:
+				return getMapKeyClass();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN:
+				return getMapKeyColumn();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED:
+				return getMapKeyEnumerated();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS:
+				return getMapKeyJoinColumns();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
+				return getMapKeyTemporal();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
+				return getMapsId();
+			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
+				return getOrderColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -668,6 +1050,28 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__EXTERNAL:
 				setExternal((External)newValue);
 				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS:
+				setMapKeyClass((MapKeyClass)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN:
+				setMapKeyColumn((MapKeyColumn)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED:
+				setMapKeyEnumerated((MapKeyEnumerated)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS:
+				getMapKeyJoinColumns().clear();
+				getMapKeyJoinColumns().addAll((Collection<? extends MapKeyJoinColumn>)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
+				setMapKeyTemporal((MapKeyTemporal)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
+				setMapsId((MapsId)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
+				setOrderColumn((OrderColumn)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -709,6 +1113,27 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__EXTERNAL:
 				setExternal((External)null);
 				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS:
+				setMapKeyClass((MapKeyClass)null);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN:
+				setMapKeyColumn((MapKeyColumn)null);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED:
+				setMapKeyEnumerated((MapKeyEnumerated)null);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS:
+				getMapKeyJoinColumns().clear();
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
+				setMapKeyTemporal((MapKeyTemporal)null);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
+				setMapsId((MapsId)null);
+				return;
+			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
+				setOrderColumn((OrderColumn)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -742,6 +1167,20 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return associationOverrides != null && !associationOverrides.isEmpty();
 			case PamodelPackage.PANNOTATED_EREFERENCE__EXTERNAL:
 				return external != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_CLASS:
+				return mapKeyClass != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_COLUMN:
+				return mapKeyColumn != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_ENUMERATED:
+				return mapKeyEnumerated != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_JOIN_COLUMNS:
+				return mapKeyJoinColumns != null && !mapKeyJoinColumns.isEmpty();
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
+				return mapKeyTemporal != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
+				return mapsId != null;
+			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
+				return orderColumn != null;
 		}
 		return super.eIsSet(featureID);
 	}

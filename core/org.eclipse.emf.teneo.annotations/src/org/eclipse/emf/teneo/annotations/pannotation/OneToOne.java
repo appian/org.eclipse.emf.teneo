@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getFetch <em>Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOptional <em>Optional</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#getMappedBy <em>Mapped By</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval <em>Orphan Removal</em>}</li>
  * </ul>
  * </p>
  *
@@ -175,5 +176,32 @@ public interface OneToOne extends PAnnotation {
 	 * @generated
 	 */
 	void setMappedBy(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Orphan Removal</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Orphan Removal</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Orphan Removal</em>' attribute.
+	 * @see #setOrphanRemoval(boolean)
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage#getOneToOne_OrphanRemoval()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isOrphanRemoval();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToOne#isOrphanRemoval <em>Orphan Removal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Orphan Removal</em>' attribute.
+	 * @see #isOrphanRemoval()
+	 * @generated
+	 */
+	void setOrphanRemoval(boolean value);
 
 } // OneToOne

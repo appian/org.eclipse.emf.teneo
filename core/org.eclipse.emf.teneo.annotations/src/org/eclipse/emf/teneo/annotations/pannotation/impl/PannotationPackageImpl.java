@@ -24,12 +24,15 @@ import org.eclipse.emf.teneo.annotations.pamodel.impl.PamodelPackageImpl;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
+import org.eclipse.emf.teneo.annotations.pannotation.Cacheable;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
+import org.eclipse.emf.teneo.annotations.pannotation.CollectionTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorType;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
+import org.eclipse.emf.teneo.annotations.pannotation.ElementCollection;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
@@ -52,12 +55,19 @@ import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
 import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OptimizerType;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
+import org.eclipse.emf.teneo.annotations.pannotation.OrderColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationFactory;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
@@ -102,6 +112,20 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	private EClass basicEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cacheableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass collectionTableEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -120,6 +144,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	private EClass discriminatorValueEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass elementCollectionEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -130,6 +161,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass mappedSuperclassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapsIdEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -216,6 +254,41 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	private EClass mapKeyEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapKeyClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapKeyColumnEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapKeyEnumeratedEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapKeyJoinColumnEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapKeyTemporalEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -232,6 +305,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass orderByEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderColumnEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -531,6 +611,78 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCacheable() {
+		return cacheableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCacheable_Value() {
+		return (EAttribute)cacheableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCollectionTable() {
+		return collectionTableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCollectionTable_Name() {
+		return (EAttribute)collectionTableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCollectionTable_Catalog() {
+		return (EAttribute)collectionTableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCollectionTable_Schema() {
+		return (EAttribute)collectionTableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCollectionTable_JoinColumns() {
+		return (EReference)collectionTableEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCollectionTable_UniqueConstraints() {
+		return (EReference)collectionTableEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -694,6 +846,24 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getElementCollection() {
+		return elementCollectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElementCollection_Fetch() {
+		return (EAttribute)elementCollectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -715,6 +885,24 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EClass getMappedSuperclass() {
 		return mappedSuperclassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapsId() {
+		return mapsIdEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapsId_Value() {
+		return (EAttribute)mapsIdEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1079,6 +1267,258 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapKeyClass() {
+		return mapKeyClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyClass_Value() {
+		return (EAttribute)mapKeyClassEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapKeyColumn() {
+		return mapKeyColumnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Name() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Unique() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Nullable() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Insertable() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Updatable() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_ColumnDefinition() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Table() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Length() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Precision() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Scale() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_UniqueKey() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyColumn_Index() {
+		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapKeyEnumerated() {
+		return mapKeyEnumeratedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyEnumerated_Value() {
+		return (EAttribute)mapKeyEnumeratedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapKeyJoinColumn() {
+		return mapKeyJoinColumnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_Name() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_ReferencedColumnName() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_Unique() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_Nullable() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_Insertable() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_Updatable() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_ColumnDefinition() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyJoinColumn_Table() {
+		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapKeyTemporal() {
+		return mapKeyTemporalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapKeyTemporal_Value() {
+		return (EAttribute)mapKeyTemporalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1135,6 +1575,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOneToMany_OrphanRemoval() {
+		return (EAttribute)oneToManyEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1183,6 +1632,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOneToOne_OrphanRemoval() {
+		return (EAttribute)oneToOneEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1196,6 +1654,60 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getOrderBy_Value() {
 		return (EAttribute)orderByEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrderColumn() {
+		return orderColumnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrderColumn_Name() {
+		return (EAttribute)orderColumnEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrderColumn_Nullable() {
+		return (EAttribute)orderColumnEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrderColumn_Insertable() {
+		return (EAttribute)orderColumnEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrderColumn_Updatable() {
+		return (EAttribute)orderColumnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrderColumn_ColumnDefinition() {
+		return (EAttribute)orderColumnEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1316,6 +1828,24 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getSequenceGenerator_AllocationSize() {
 		return (EAttribute)sequenceGeneratorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceGenerator_Catalog() {
+		return (EAttribute)sequenceGeneratorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequenceGenerator_Schema() {
+		return (EAttribute)sequenceGeneratorEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1654,6 +2184,15 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssociationOverride_JoinTable() {
+		return (EReference)associationOverrideEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1755,10 +2294,21 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		associationOverrideEClass = createEClass(ASSOCIATION_OVERRIDE);
 		createEAttribute(associationOverrideEClass, ASSOCIATION_OVERRIDE__NAME);
 		createEReference(associationOverrideEClass, ASSOCIATION_OVERRIDE__JOIN_COLUMNS);
+		createEReference(associationOverrideEClass, ASSOCIATION_OVERRIDE__JOIN_TABLE);
 
 		basicEClass = createEClass(BASIC);
 		createEAttribute(basicEClass, BASIC__FETCH);
 		createEAttribute(basicEClass, BASIC__OPTIONAL);
+
+		cacheableEClass = createEClass(CACHEABLE);
+		createEAttribute(cacheableEClass, CACHEABLE__VALUE);
+
+		collectionTableEClass = createEClass(COLLECTION_TABLE);
+		createEAttribute(collectionTableEClass, COLLECTION_TABLE__NAME);
+		createEAttribute(collectionTableEClass, COLLECTION_TABLE__CATALOG);
+		createEAttribute(collectionTableEClass, COLLECTION_TABLE__SCHEMA);
+		createEReference(collectionTableEClass, COLLECTION_TABLE__JOIN_COLUMNS);
+		createEReference(collectionTableEClass, COLLECTION_TABLE__UNIQUE_CONSTRAINTS);
 
 		columnEClass = createEClass(COLUMN);
 		createEAttribute(columnEClass, COLUMN__NAME);
@@ -1783,6 +2333,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		discriminatorValueEClass = createEClass(DISCRIMINATOR_VALUE);
 		createEAttribute(discriminatorValueEClass, DISCRIMINATOR_VALUE__VALUE);
+
+		elementCollectionEClass = createEClass(ELEMENT_COLLECTION);
+		createEAttribute(elementCollectionEClass, ELEMENT_COLLECTION__FETCH);
 
 		embeddableEClass = createEClass(EMBEDDABLE);
 
@@ -1845,7 +2398,43 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		mapKeyEClass = createEClass(MAP_KEY);
 		createEAttribute(mapKeyEClass, MAP_KEY__NAME);
 
+		mapKeyClassEClass = createEClass(MAP_KEY_CLASS);
+		createEAttribute(mapKeyClassEClass, MAP_KEY_CLASS__VALUE);
+
+		mapKeyColumnEClass = createEClass(MAP_KEY_COLUMN);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__NAME);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__UNIQUE);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__NULLABLE);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__INSERTABLE);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__UPDATABLE);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__COLUMN_DEFINITION);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__TABLE);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__LENGTH);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__PRECISION);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__SCALE);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__UNIQUE_KEY);
+		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__INDEX);
+
+		mapKeyEnumeratedEClass = createEClass(MAP_KEY_ENUMERATED);
+		createEAttribute(mapKeyEnumeratedEClass, MAP_KEY_ENUMERATED__VALUE);
+
+		mapKeyJoinColumnEClass = createEClass(MAP_KEY_JOIN_COLUMN);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__NAME);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__UNIQUE);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__NULLABLE);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__INSERTABLE);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__UPDATABLE);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION);
+		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__TABLE);
+
+		mapKeyTemporalEClass = createEClass(MAP_KEY_TEMPORAL);
+		createEAttribute(mapKeyTemporalEClass, MAP_KEY_TEMPORAL__VALUE);
+
 		mappedSuperclassEClass = createEClass(MAPPED_SUPERCLASS);
+
+		mapsIdEClass = createEClass(MAPS_ID);
+		createEAttribute(mapsIdEClass, MAPS_ID__VALUE);
 
 		oneToManyEClass = createEClass(ONE_TO_MANY);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__TARGET_ENTITY);
@@ -1854,6 +2443,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__MAPPED_BY);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__INDEXED);
 		createEAttribute(oneToManyEClass, ONE_TO_MANY__UNIQUE);
+		createEAttribute(oneToManyEClass, ONE_TO_MANY__ORPHAN_REMOVAL);
 
 		oneToOneEClass = createEClass(ONE_TO_ONE);
 		createEAttribute(oneToOneEClass, ONE_TO_ONE__TARGET_ENTITY);
@@ -1861,9 +2451,17 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(oneToOneEClass, ONE_TO_ONE__FETCH);
 		createEAttribute(oneToOneEClass, ONE_TO_ONE__OPTIONAL);
 		createEAttribute(oneToOneEClass, ONE_TO_ONE__MAPPED_BY);
+		createEAttribute(oneToOneEClass, ONE_TO_ONE__ORPHAN_REMOVAL);
 
 		orderByEClass = createEClass(ORDER_BY);
 		createEAttribute(orderByEClass, ORDER_BY__VALUE);
+
+		orderColumnEClass = createEClass(ORDER_COLUMN);
+		createEAttribute(orderColumnEClass, ORDER_COLUMN__NAME);
+		createEAttribute(orderColumnEClass, ORDER_COLUMN__NULLABLE);
+		createEAttribute(orderColumnEClass, ORDER_COLUMN__INSERTABLE);
+		createEAttribute(orderColumnEClass, ORDER_COLUMN__UPDATABLE);
+		createEAttribute(orderColumnEClass, ORDER_COLUMN__COLUMN_DEFINITION);
 
 		primaryKeyJoinColumnEClass = createEClass(PRIMARY_KEY_JOIN_COLUMN);
 		createEAttribute(primaryKeyJoinColumnEClass, PRIMARY_KEY_JOIN_COLUMN__NAME);
@@ -1882,6 +2480,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(sequenceGeneratorEClass, SEQUENCE_GENERATOR__SEQUENCE_NAME);
 		createEAttribute(sequenceGeneratorEClass, SEQUENCE_GENERATOR__INITIAL_VALUE);
 		createEAttribute(sequenceGeneratorEClass, SEQUENCE_GENERATOR__ALLOCATION_SIZE);
+		createEAttribute(sequenceGeneratorEClass, SEQUENCE_GENERATOR__CATALOG);
+		createEAttribute(sequenceGeneratorEClass, SEQUENCE_GENERATOR__SCHEMA);
 
 		tableEClass = createEClass(TABLE);
 		createEAttribute(tableEClass, TABLE__NAME);
@@ -1973,9 +2573,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		attributeOverrideEClass.getESuperTypes().add(this.getPAnnotation());
 		associationOverrideEClass.getESuperTypes().add(this.getPAnnotation());
 		basicEClass.getESuperTypes().add(this.getPAnnotation());
+		cacheableEClass.getESuperTypes().add(this.getPAnnotation());
+		collectionTableEClass.getESuperTypes().add(this.getPAnnotation());
 		columnEClass.getESuperTypes().add(this.getPAnnotation());
 		discriminatorColumnEClass.getESuperTypes().add(this.getPAnnotation());
 		discriminatorValueEClass.getESuperTypes().add(this.getPAnnotation());
+		elementCollectionEClass.getESuperTypes().add(this.getPAnnotation());
 		embeddableEClass.getESuperTypes().add(this.getPAnnotation());
 		embeddedEClass.getESuperTypes().add(this.getPAnnotation());
 		embeddedIdEClass.getESuperTypes().add(this.getPAnnotation());
@@ -1991,10 +2594,17 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		manyToManyEClass.getESuperTypes().add(this.getPAnnotation());
 		manyToOneEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyClassEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyColumnEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyEnumeratedEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyJoinColumnEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyTemporalEClass.getESuperTypes().add(this.getPAnnotation());
 		mappedSuperclassEClass.getESuperTypes().add(this.getPAnnotation());
+		mapsIdEClass.getESuperTypes().add(this.getPAnnotation());
 		oneToManyEClass.getESuperTypes().add(this.getPAnnotation());
 		oneToOneEClass.getESuperTypes().add(this.getPAnnotation());
 		orderByEClass.getESuperTypes().add(this.getPAnnotation());
+		orderColumnEClass.getESuperTypes().add(this.getPAnnotation());
 		primaryKeyJoinColumnEClass.getESuperTypes().add(this.getPAnnotation());
 		secondaryTableEClass.getESuperTypes().add(this.getPAnnotation());
 		sequenceGeneratorEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2023,10 +2633,21 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEClass(associationOverrideEClass, AssociationOverride.class, "AssociationOverride", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssociationOverride_Name(), ecorePackage.getEString(), "name", null, 1, 1, AssociationOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAssociationOverride_JoinColumns(), this.getJoinColumn(), null, "joinColumns", null, 1, -1, AssociationOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssociationOverride_JoinTable(), this.getJoinTable(), null, "joinTable", null, 0, 1, AssociationOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(basicEClass, Basic.class, "Basic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBasic_Fetch(), this.getFetchType(), "fetch", "EAGER", 0, 1, Basic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBasic_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1, Basic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cacheableEClass, Cacheable.class, "Cacheable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCacheable_Value(), ecorePackage.getEBoolean(), "value", "false", 0, 1, Cacheable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(collectionTableEClass, CollectionTable.class, "CollectionTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCollectionTable_Name(), ecorePackage.getEString(), "name", "false", 0, 1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCollectionTable_Catalog(), ecorePackage.getEString(), "catalog", "false", 0, 1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCollectionTable_Schema(), ecorePackage.getEString(), "schema", "false", 0, 1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionTable_JoinColumns(), this.getJoinColumn(), null, "joinColumns", null, 0, -1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCollectionTable_UniqueConstraints(), this.getUniqueConstraint(), null, "uniqueConstraints", null, 0, -1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2051,6 +2672,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 
 		initEClass(discriminatorValueEClass, DiscriminatorValue.class, "DiscriminatorValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscriminatorValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, DiscriminatorValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(elementCollectionEClass, ElementCollection.class, "ElementCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getElementCollection_Fetch(), this.getFetchType(), "fetch", "EAGER", 0, 1, ElementCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(embeddableEClass, Embeddable.class, "Embeddable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2113,7 +2737,43 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEClass(mapKeyEClass, MapKey.class, "MapKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, MapKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(mapKeyClassEClass, MapKeyClass.class, "MapKeyClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapKeyClass_Value(), ecorePackage.getEString(), "value", null, 0, 1, MapKeyClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapKeyColumnEClass, MapKeyColumn.class, "MapKeyColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapKeyColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Unique(), ecorePackage.getEBoolean(), "unique", "false", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "true", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Insertable(), ecorePackage.getEBoolean(), "insertable", "true", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Updatable(), ecorePackage.getEBoolean(), "updatable", "true", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_ColumnDefinition(), ecorePackage.getEString(), "columnDefinition", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Table(), ecorePackage.getEString(), "table", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Length(), ecorePackage.getEInt(), "length", "255", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Precision(), ecorePackage.getEInt(), "precision", "0", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Scale(), ecorePackage.getEInt(), "scale", "0", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_UniqueKey(), ecorePackage.getEString(), "uniqueKey", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyColumn_Index(), ecorePackage.getEString(), "index", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapKeyEnumeratedEClass, MapKeyEnumerated.class, "MapKeyEnumerated", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapKeyEnumerated_Value(), this.getEnumType(), "value", null, 0, 1, MapKeyEnumerated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapKeyJoinColumnEClass, MapKeyJoinColumn.class, "MapKeyJoinColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapKeyJoinColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_ReferencedColumnName(), ecorePackage.getEString(), "referencedColumnName", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_Unique(), ecorePackage.getEBoolean(), "unique", "false", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "true", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_Insertable(), ecorePackage.getEBoolean(), "insertable", "true", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_Updatable(), ecorePackage.getEBoolean(), "updatable", "true", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_ColumnDefinition(), ecorePackage.getEString(), "columnDefinition", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapKeyJoinColumn_Table(), ecorePackage.getEString(), "table", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapKeyTemporalEClass, MapKeyTemporal.class, "MapKeyTemporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapKeyTemporal_Value(), this.getTemporalType(), "value", "", 0, 1, MapKeyTemporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(mappedSuperclassEClass, MappedSuperclass.class, "MappedSuperclass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(mapsIdEClass, MapsId.class, "MapsId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapsId_Value(), ecorePackage.getEString(), "value", null, 0, 1, MapsId.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oneToManyEClass, OneToMany.class, "OneToMany", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOneToMany_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2122,6 +2782,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getOneToMany_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToMany_Indexed(), ecorePackage.getEBoolean(), "indexed", "true", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToMany_Unique(), ecorePackage.getEBoolean(), "unique", "true", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOneToMany_OrphanRemoval(), ecorePackage.getEBoolean(), "orphanRemoval", "false", 0, 1, OneToMany.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oneToOneEClass, OneToOne.class, "OneToOne", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOneToOne_TargetEntity(), ecorePackage.getEString(), "targetEntity", null, 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2129,9 +2790,17 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getOneToOne_Fetch(), this.getFetchType(), "fetch", "EAGER", 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToOne_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOneToOne_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOneToOne_OrphanRemoval(), ecorePackage.getEBoolean(), "orphanRemoval", "false", 0, 1, OneToOne.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderByEClass, OrderBy.class, "OrderBy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrderBy_Value(), ecorePackage.getEString(), "value", null, 0, 1, OrderBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orderColumnEClass, OrderColumn.class, "OrderColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOrderColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, OrderColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrderColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "true", 0, 1, OrderColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrderColumn_Insertable(), ecorePackage.getEBoolean(), "insertable", "true", 0, 1, OrderColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrderColumn_Updatable(), ecorePackage.getEBoolean(), "updatable", "true", 0, 1, OrderColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrderColumn_ColumnDefinition(), ecorePackage.getEString(), "columnDefinition", null, 0, 1, OrderColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(primaryKeyJoinColumnEClass, PrimaryKeyJoinColumn.class, "PrimaryKeyJoinColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrimaryKeyJoinColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, PrimaryKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2150,6 +2819,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getSequenceGenerator_SequenceName(), ecorePackage.getEString(), "sequenceName", null, 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceGenerator_InitialValue(), ecorePackage.getEInt(), "initialValue", "1", 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequenceGenerator_AllocationSize(), ecorePackage.getEInt(), "allocationSize", "50", 0, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceGenerator_Catalog(), ecorePackage.getEString(), "catalog", null, 1, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequenceGenerator_Schema(), ecorePackage.getEString(), "schema", null, 1, 1, SequenceGenerator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableEClass, Table.class, "Table", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2281,7 +2952,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "Target", "teneo/internal/Target",
 			 "Unsupported", "teneo/internal/Unsupported"
-		   });																																																													
+		   });																																																																										
 	}
 
 	/**
@@ -2298,7 +2969,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "http://annotation.elver.org/",
 			 "1", "http://ejb.elver.org/"
-		   });																																																												
+		   });																																																																									
 	}
 
 	/**
@@ -2319,7 +2990,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "AllowedElementType"
-		   });			
+		   });					
 		addAnnotation
 		  (columnEClass, 
 		   source, 
@@ -2331,7 +3002,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "NoAbstract"
-		   });			
+		   });				
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
@@ -2385,13 +3056,25 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "IsNotManyValued"
-		   });				
+		   });					
+		addAnnotation
+		  (mapKeyColumnEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "ScalePrecisionForNumeric LengthForString"
+		   });					
+		addAnnotation
+		  (mapKeyTemporalEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "AllowedElementType"
+		   });			
 		addAnnotation
 		  (mappedSuperclassEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "NoInterface"
-		   });			
+		   });				
 		addAnnotation
 		  (oneToManyEClass, 
 		   source, 
@@ -2409,6 +3092,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "constraints", "WellFormedOrder IsManyValued"
+		   });			
+		addAnnotation
+		  (orderColumnEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "ScalePrecisionForNumeric LengthForString"
 		   });								
 		addAnnotation
 		  (temporalEClass, 
@@ -2452,6 +3141,18 @@ public class PannotationPackageImpl extends EPackageImpl implements
 			 "0", "EAttribute"
 		   });			
 		addAnnotation
+		  (cacheableEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass"
+		   });		
+		addAnnotation
+		  (collectionTableEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
+		   });		
+		addAnnotation
 		  (columnEClass, 
 		   source, 
 		   new String[] {
@@ -2469,6 +3170,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "0", "EClass"
 		   });			
+		addAnnotation
+		  (elementCollectionEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
+		   });		
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
@@ -2561,11 +3268,48 @@ public class PannotationPackageImpl extends EPackageImpl implements
 			 "0", "EStructuralFeature"
 		   });		
 		addAnnotation
+		  (mapKeyClassEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EReference"
+		   });		
+		addAnnotation
+		  (mapKeyColumnEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EReference"
+		   });			
+		addAnnotation
+		  (mapKeyEnumeratedEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EReference"
+		   });		
+		addAnnotation
+		  (mapKeyJoinColumnEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EClass",
+			 "1", "EReference"
+		   });		
+		addAnnotation
+		  (mapKeyTemporalEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EAttribute"
+		   });			
+		addAnnotation
 		  (mappedSuperclassEClass, 
 		   source, 
 		   new String[] {
 			 "0", "EClass"
 		   });			
+		addAnnotation
+		  (mapsIdEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EReference"
+		   });		
 		addAnnotation
 		  (oneToManyEClass, 
 		   source, 
@@ -2583,6 +3327,12 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "0", "EReference"
+		   });			
+		addAnnotation
+		  (orderColumnEClass, 
+		   source, 
+		   new String[] {
+			 "0", "EStructuralFeature"
 		   });			
 		addAnnotation
 		  (primaryKeyJoinColumnEClass, 
@@ -2689,7 +3439,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																																										
+		   });																																																																							
 	}
 
 	/**
@@ -2699,13 +3449,13 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	protected void createPeristenceMappingAnnotations() {
-		String source = "teneo/PeristenceMapping";																	
+		String source = "teneo/PeristenceMapping";																				
 		addAnnotation
 		  (embeddableEClass, 
 		   source, 
 		   new String[] {
 			 "ignore", "true"
-		   });																																														
+		   });																																																								
 	}
 
 	/**

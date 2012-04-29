@@ -23,6 +23,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl#getSequenceName <em>Sequence Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl#getInitialValue <em>Initial Value</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl#getAllocationSize <em>Allocation Size</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl#getCatalog <em>Catalog</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.SequenceGeneratorImpl#getSchema <em>Schema</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,6 +128,46 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 	 * @ordered
 	 */
 	protected boolean allocationSizeESet;
+
+	/**
+	 * The default value of the '{@link #getCatalog() <em>Catalog</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCatalog()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CATALOG_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCatalog() <em>Catalog</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCatalog()
+	 * @generated
+	 * @ordered
+	 */
+	protected String catalog = CATALOG_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSchema() <em>Schema</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SCHEMA_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSchema() <em>Schema</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected String schema = SCHEMA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -285,6 +327,48 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCatalog() {
+		return catalog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCatalog(String newCatalog) {
+		String oldCatalog = catalog;
+		catalog = newCatalog;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.SEQUENCE_GENERATOR__CATALOG, oldCatalog, catalog));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSchema() {
+		return schema;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSchema(String newSchema) {
+		String oldSchema = schema;
+		schema = newSchema;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.SEQUENCE_GENERATOR__SCHEMA, oldSchema, schema));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -296,6 +380,10 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 				return getInitialValue();
 			case PannotationPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
 				return getAllocationSize();
+			case PannotationPackage.SEQUENCE_GENERATOR__CATALOG:
+				return getCatalog();
+			case PannotationPackage.SEQUENCE_GENERATOR__SCHEMA:
+				return getSchema();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,6 +407,12 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 				return;
 			case PannotationPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
 				setAllocationSize((Integer)newValue);
+				return;
+			case PannotationPackage.SEQUENCE_GENERATOR__CATALOG:
+				setCatalog((String)newValue);
+				return;
+			case PannotationPackage.SEQUENCE_GENERATOR__SCHEMA:
+				setSchema((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -344,6 +438,12 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 			case PannotationPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
 				unsetAllocationSize();
 				return;
+			case PannotationPackage.SEQUENCE_GENERATOR__CATALOG:
+				setCatalog(CATALOG_EDEFAULT);
+				return;
+			case PannotationPackage.SEQUENCE_GENERATOR__SCHEMA:
+				setSchema(SCHEMA_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -364,6 +464,10 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 				return isSetInitialValue();
 			case PannotationPackage.SEQUENCE_GENERATOR__ALLOCATION_SIZE:
 				return isSetAllocationSize();
+			case PannotationPackage.SEQUENCE_GENERATOR__CATALOG:
+				return CATALOG_EDEFAULT == null ? catalog != null : !CATALOG_EDEFAULT.equals(catalog);
+			case PannotationPackage.SEQUENCE_GENERATOR__SCHEMA:
+				return SCHEMA_EDEFAULT == null ? schema != null : !SCHEMA_EDEFAULT.equals(schema);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -386,6 +490,10 @@ public class SequenceGeneratorImpl extends PAnnotationImpl implements SequenceGe
 		if (initialValueESet) result.append(initialValue); else result.append("<unset>");
 		result.append(", allocationSize: ");
 		if (allocationSizeESet) result.append(allocationSize); else result.append("<unset>");
+		result.append(", catalog: ");
+		result.append(catalog);
+		result.append(", schema: ");
+		result.append(schema);
 		result.append(')');
 		return result.toString();
 	}

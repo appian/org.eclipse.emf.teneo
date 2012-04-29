@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 
 /**
@@ -28,6 +29,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl#getJoinColumns <em>Join Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.AssociationOverrideImpl#getJoinTable <em>Join Table</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,6 +64,16 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 	 * @ordered
 	 */
 	protected EList<JoinColumn> joinColumns;
+
+	/**
+	 * The cached value of the '{@link #getJoinTable() <em>Join Table</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJoinTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected JoinTable joinTable;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -111,6 +123,49 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JoinTable getJoinTable() {
+		return joinTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetJoinTable(JoinTable newJoinTable, NotificationChain msgs) {
+		JoinTable oldJoinTable = joinTable;
+		joinTable = newJoinTable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE, oldJoinTable, newJoinTable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJoinTable(JoinTable newJoinTable) {
+		if (newJoinTable != joinTable) {
+			NotificationChain msgs = null;
+			if (joinTable != null)
+				msgs = ((InternalEObject)joinTable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE, null, msgs);
+			if (newJoinTable != null)
+				msgs = ((InternalEObject)newJoinTable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE, null, msgs);
+			msgs = basicSetJoinTable(newJoinTable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE, newJoinTable, newJoinTable));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -119,6 +174,8 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 		switch (featureID) {
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
 				return ((InternalEList<?>)getJoinColumns()).basicRemove(otherEnd, msgs);
+			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE:
+				return basicSetJoinTable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -134,6 +191,8 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 				return getName();
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
 				return getJoinColumns();
+			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE:
+				return getJoinTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -153,6 +212,9 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 				getJoinColumns().clear();
 				getJoinColumns().addAll((Collection<? extends JoinColumn>)newValue);
 				return;
+			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE:
+				setJoinTable((JoinTable)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -170,6 +232,9 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
 				getJoinColumns().clear();
 				return;
+			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE:
+				setJoinTable((JoinTable)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -185,6 +250,8 @@ public class AssociationOverrideImpl extends PAnnotationImpl implements Associat
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_COLUMNS:
 				return joinColumns != null && !joinColumns.isEmpty();
+			case PannotationPackage.ASSOCIATION_OVERRIDE__JOIN_TABLE:
+				return joinTable != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -16,8 +16,15 @@ import org.eclipse.emf.teneo.annotations.pannotation.External;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal;
+import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
+import org.eclipse.emf.teneo.annotations.pannotation.OrderColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
 
 /**
@@ -38,6 +45,13 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getPrimaryKeyJoinColumns <em>Primary Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getAssociationOverrides <em>Association Overrides</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getExternal <em>External</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyClass <em>Map Key Class</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyColumn <em>Map Key Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyEnumerated <em>Map Key Enumerated</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyJoinColumns <em>Map Key Join Columns</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyTemporal <em>Map Key Temporal</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapsId <em>Maps Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderColumn <em>Order Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -315,6 +329,178 @@ public interface PAnnotatedEReference extends PAnnotatedEStructuralFeature {
 	 * @generated
 	 */
 	void setExternal(External value);
+
+	/**
+	 * Returns the value of the '<em><b>Map Key Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Map Key Class</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Map Key Class</em>' containment reference.
+	 * @see #setMapKeyClass(MapKeyClass)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_MapKeyClass()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MapKeyClass getMapKeyClass();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyClass <em>Map Key Class</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Map Key Class</em>' containment reference.
+	 * @see #getMapKeyClass()
+	 * @generated
+	 */
+	void setMapKeyClass(MapKeyClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Map Key Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Map Key Column</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Map Key Column</em>' containment reference.
+	 * @see #setMapKeyColumn(MapKeyColumn)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_MapKeyColumn()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MapKeyColumn getMapKeyColumn();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyColumn <em>Map Key Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Map Key Column</em>' containment reference.
+	 * @see #getMapKeyColumn()
+	 * @generated
+	 */
+	void setMapKeyColumn(MapKeyColumn value);
+
+	/**
+	 * Returns the value of the '<em><b>Map Key Enumerated</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Map Key Enumerated</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Map Key Enumerated</em>' containment reference.
+	 * @see #setMapKeyEnumerated(MapKeyEnumerated)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_MapKeyEnumerated()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MapKeyEnumerated getMapKeyEnumerated();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyEnumerated <em>Map Key Enumerated</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Map Key Enumerated</em>' containment reference.
+	 * @see #getMapKeyEnumerated()
+	 * @generated
+	 */
+	void setMapKeyEnumerated(MapKeyEnumerated value);
+
+	/**
+	 * Returns the value of the '<em><b>Map Key Join Columns</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Map Key Join Columns</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Map Key Join Columns</em>' containment reference list.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_MapKeyJoinColumns()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<MapKeyJoinColumn> getMapKeyJoinColumns();
+
+	/**
+	 * Returns the value of the '<em><b>Map Key Temporal</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Map Key Temporal</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Map Key Temporal</em>' containment reference.
+	 * @see #setMapKeyTemporal(MapKeyTemporal)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_MapKeyTemporal()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MapKeyTemporal getMapKeyTemporal();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapKeyTemporal <em>Map Key Temporal</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Map Key Temporal</em>' containment reference.
+	 * @see #getMapKeyTemporal()
+	 * @generated
+	 */
+	void setMapKeyTemporal(MapKeyTemporal value);
+
+	/**
+	 * Returns the value of the '<em><b>Maps Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Maps Id</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Maps Id</em>' containment reference.
+	 * @see #setMapsId(MapsId)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_MapsId()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MapsId getMapsId();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getMapsId <em>Maps Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Maps Id</em>' containment reference.
+	 * @see #getMapsId()
+	 * @generated
+	 */
+	void setMapsId(MapsId value);
+
+	/**
+	 * Returns the value of the '<em><b>Order Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Order Column</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Order Column</em>' containment reference.
+	 * @see #setOrderColumn(OrderColumn)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEReference_OrderColumn()
+	 * @model containment="true"
+	 * @generated
+	 */
+	OrderColumn getOrderColumn();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderColumn <em>Order Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Order Column</em>' containment reference.
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	void setOrderColumn(OrderColumn value);
 
 	/** Refers to an entity or to a concrete class */
 	boolean isRefersToAnEntity();

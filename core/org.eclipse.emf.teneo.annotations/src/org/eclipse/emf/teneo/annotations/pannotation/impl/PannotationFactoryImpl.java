@@ -111,9 +111,12 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.ATTRIBUTE_OVERRIDE: return createAttributeOverride();
 			case PannotationPackage.ASSOCIATION_OVERRIDE: return createAssociationOverride();
 			case PannotationPackage.BASIC: return createBasic();
+			case PannotationPackage.CACHEABLE: return createCacheable();
+			case PannotationPackage.COLLECTION_TABLE: return createCollectionTable();
 			case PannotationPackage.COLUMN: return createColumn();
 			case PannotationPackage.DISCRIMINATOR_COLUMN: return createDiscriminatorColumn();
 			case PannotationPackage.DISCRIMINATOR_VALUE: return createDiscriminatorValue();
+			case PannotationPackage.ELEMENT_COLLECTION: return createElementCollection();
 			case PannotationPackage.EMBEDDABLE: return createEmbeddable();
 			case PannotationPackage.EMBEDDED: return createEmbedded();
 			case PannotationPackage.EMBEDDED_ID: return createEmbeddedId();
@@ -129,10 +132,17 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 			case PannotationPackage.MANY_TO_MANY: return createManyToMany();
 			case PannotationPackage.MANY_TO_ONE: return createManyToOne();
 			case PannotationPackage.MAP_KEY: return createMapKey();
+			case PannotationPackage.MAP_KEY_CLASS: return createMapKeyClass();
+			case PannotationPackage.MAP_KEY_COLUMN: return createMapKeyColumn();
+			case PannotationPackage.MAP_KEY_ENUMERATED: return createMapKeyEnumerated();
+			case PannotationPackage.MAP_KEY_JOIN_COLUMN: return createMapKeyJoinColumn();
+			case PannotationPackage.MAP_KEY_TEMPORAL: return createMapKeyTemporal();
 			case PannotationPackage.MAPPED_SUPERCLASS: return createMappedSuperclass();
+			case PannotationPackage.MAPS_ID: return createMapsId();
 			case PannotationPackage.ONE_TO_MANY: return createOneToMany();
 			case PannotationPackage.ONE_TO_ONE: return createOneToOne();
 			case PannotationPackage.ORDER_BY: return createOrderBy();
+			case PannotationPackage.ORDER_COLUMN: return createOrderColumn();
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN: return createPrimaryKeyJoinColumn();
 			case PannotationPackage.SECONDARY_TABLE: return createSecondaryTable();
 			case PannotationPackage.SEQUENCE_GENERATOR: return createSequenceGenerator();
@@ -236,6 +246,26 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Cacheable createCacheable() {
+		CacheableImpl cacheable = new CacheableImpl();
+		return cacheable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollectionTable createCollectionTable() {
+		CollectionTableImpl collectionTable = new CollectionTableImpl();
+		return collectionTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Column createColumn() {
 		ColumnImpl column = new ColumnImpl();
 		return column;
@@ -266,6 +296,16 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ElementCollection createElementCollection() {
+		ElementCollectionImpl elementCollection = new ElementCollectionImpl();
+		return elementCollection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Embeddable createEmbeddable() {
 		EmbeddableImpl embeddable = new EmbeddableImpl();
 		return embeddable;
@@ -279,6 +319,16 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public MappedSuperclass createMappedSuperclass() {
 		MappedSuperclassImpl mappedSuperclass = new MappedSuperclassImpl();
 		return mappedSuperclass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapsId createMapsId() {
+		MapsIdImpl mapsId = new MapsIdImpl();
+		return mapsId;
 	}
 
 	/**
@@ -426,6 +476,56 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MapKeyClass createMapKeyClass() {
+		MapKeyClassImpl mapKeyClass = new MapKeyClassImpl();
+		return mapKeyClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyColumn createMapKeyColumn() {
+		MapKeyColumnImpl mapKeyColumn = new MapKeyColumnImpl();
+		return mapKeyColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyEnumerated createMapKeyEnumerated() {
+		MapKeyEnumeratedImpl mapKeyEnumerated = new MapKeyEnumeratedImpl();
+		return mapKeyEnumerated;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyJoinColumn createMapKeyJoinColumn() {
+		MapKeyJoinColumnImpl mapKeyJoinColumn = new MapKeyJoinColumnImpl();
+		return mapKeyJoinColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapKeyTemporal createMapKeyTemporal() {
+		MapKeyTemporalImpl mapKeyTemporal = new MapKeyTemporalImpl();
+		return mapKeyTemporal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OneToMany createOneToMany() {
 		OneToManyImpl oneToMany = new OneToManyImpl();
 		return oneToMany;
@@ -449,6 +549,16 @@ public class PannotationFactoryImpl extends EFactoryImpl implements PannotationF
 	public OrderBy createOrderBy() {
 		OrderByImpl orderBy = new OrderByImpl();
 		return orderBy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OrderColumn createOrderColumn() {
+		OrderColumnImpl orderColumn = new OrderColumnImpl();
+		return orderColumn;
 	}
 
 	/**

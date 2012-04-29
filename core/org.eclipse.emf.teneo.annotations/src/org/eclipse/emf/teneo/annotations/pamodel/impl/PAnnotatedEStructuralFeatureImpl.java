@@ -17,6 +17,8 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
 import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
+import org.eclipse.emf.teneo.annotations.pannotation.CollectionTable;
+import org.eclipse.emf.teneo.annotations.pannotation.ElementCollection;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
@@ -31,6 +33,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getModelEStructuralFeature <em>Model EStructural Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getForeignKey <em>Foreign Key</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getListIndexColumn <em>List Index Column</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getCollectionTable <em>Collection Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getElementCollection <em>Element Collection</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +60,26 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * @ordered
 	 */
 	protected ListIndexColumn listIndexColumn;
+
+	/**
+	 * The cached value of the '{@link #getCollectionTable() <em>Collection Table</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCollectionTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected CollectionTable collectionTable;
+
+	/**
+	 * The cached value of the '{@link #getElementCollection() <em>Element Collection</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementCollection()
+	 * @generated
+	 * @ordered
+	 */
+	protected ElementCollection elementCollection;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -214,6 +238,92 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollectionTable getCollectionTable() {
+		return collectionTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCollectionTable(CollectionTable newCollectionTable, NotificationChain msgs) {
+		CollectionTable oldCollectionTable = collectionTable;
+		collectionTable = newCollectionTable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE, oldCollectionTable, newCollectionTable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCollectionTable(CollectionTable newCollectionTable) {
+		if (newCollectionTable != collectionTable) {
+			NotificationChain msgs = null;
+			if (collectionTable != null)
+				msgs = ((InternalEObject)collectionTable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE, null, msgs);
+			if (newCollectionTable != null)
+				msgs = ((InternalEObject)newCollectionTable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE, null, msgs);
+			msgs = basicSetCollectionTable(newCollectionTable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE, newCollectionTable, newCollectionTable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementCollection getElementCollection() {
+		return elementCollection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetElementCollection(ElementCollection newElementCollection, NotificationChain msgs) {
+		ElementCollection oldElementCollection = elementCollection;
+		elementCollection = newElementCollection;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION, oldElementCollection, newElementCollection);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setElementCollection(ElementCollection newElementCollection) {
+		if (newElementCollection != elementCollection) {
+			NotificationChain msgs = null;
+			if (elementCollection != null)
+				msgs = ((InternalEObject)elementCollection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION, null, msgs);
+			if (newElementCollection != null)
+				msgs = ((InternalEObject)newElementCollection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION, null, msgs);
+			msgs = basicSetElementCollection(newElementCollection, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION, newElementCollection, newElementCollection));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -241,6 +351,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return basicSetForeignKey(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
 				return basicSetListIndexColumn(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE:
+				return basicSetCollectionTable(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
+				return basicSetElementCollection(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -274,6 +388,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return getForeignKey();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
 				return getListIndexColumn();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE:
+				return getCollectionTable();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
+				return getElementCollection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +411,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
 				setListIndexColumn((ListIndexColumn)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE:
+				setCollectionTable((CollectionTable)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
+				setElementCollection((ElementCollection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -314,6 +438,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
 				setListIndexColumn((ListIndexColumn)null);
 				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE:
+				setCollectionTable((CollectionTable)null);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
+				setElementCollection((ElementCollection)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -333,6 +463,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return foreignKey != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__LIST_INDEX_COLUMN:
 				return listIndexColumn != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__COLLECTION_TABLE:
+				return collectionTable != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
+				return elementCollection != null;
 		}
 		return super.eIsSet(featureID);
 	}

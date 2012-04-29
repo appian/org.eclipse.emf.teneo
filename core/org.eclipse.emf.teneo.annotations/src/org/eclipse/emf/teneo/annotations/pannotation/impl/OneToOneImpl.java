@@ -31,6 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getFetch <em>Fetch</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#isOptional <em>Optional</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#getMappedBy <em>Mapped By</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OneToOneImpl#isOrphanRemoval <em>Orphan Removal</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,6 +135,26 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	 * @ordered
 	 */
 	protected String mappedBy = MAPPED_BY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isOrphanRemoval() <em>Orphan Removal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOrphanRemoval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ORPHAN_REMOVAL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOrphanRemoval() <em>Orphan Removal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOrphanRemoval()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean orphanRemoval = ORPHAN_REMOVAL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -265,6 +286,27 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isOrphanRemoval() {
+		return orphanRemoval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrphanRemoval(boolean newOrphanRemoval) {
+		boolean oldOrphanRemoval = orphanRemoval;
+		orphanRemoval = newOrphanRemoval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL, oldOrphanRemoval, orphanRemoval));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -281,6 +323,8 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 				return isOptional();
 			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
 				return getMappedBy();
+			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+				return isOrphanRemoval();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -309,6 +353,9 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
 				setMappedBy((String)newValue);
 				return;
+			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+				setOrphanRemoval((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -335,6 +382,9 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
 				setMappedBy(MAPPED_BY_EDEFAULT);
 				return;
+			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+				setOrphanRemoval(ORPHAN_REMOVAL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -356,6 +406,8 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 				return optional != OPTIONAL_EDEFAULT;
 			case PannotationPackage.ONE_TO_ONE__MAPPED_BY:
 				return MAPPED_BY_EDEFAULT == null ? mappedBy != null : !MAPPED_BY_EDEFAULT.equals(mappedBy);
+			case PannotationPackage.ONE_TO_ONE__ORPHAN_REMOVAL:
+				return orphanRemoval != ORPHAN_REMOVAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -379,6 +431,8 @@ public class OneToOneImpl extends PAnnotationImpl implements OneToOne {
 		result.append(optional);
 		result.append(", mappedBy: ");
 		result.append(mappedBy);
+		result.append(", orphanRemoval: ");
+		result.append(orphanRemoval);
 		result.append(')');
 		return result.toString();
 	}

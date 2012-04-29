@@ -145,12 +145,18 @@ public class PannotationValidator extends EObjectValidator {
 				return validateAssociationOverride((AssociationOverride)value, diagnostics, context);
 			case PannotationPackage.BASIC:
 				return validateBasic((Basic)value, diagnostics, context);
+			case PannotationPackage.CACHEABLE:
+				return validateCacheable((Cacheable)value, diagnostics, context);
+			case PannotationPackage.COLLECTION_TABLE:
+				return validateCollectionTable((CollectionTable)value, diagnostics, context);
 			case PannotationPackage.COLUMN:
 				return validateColumn((Column)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_COLUMN:
 				return validateDiscriminatorColumn((DiscriminatorColumn)value, diagnostics, context);
 			case PannotationPackage.DISCRIMINATOR_VALUE:
 				return validateDiscriminatorValue((DiscriminatorValue)value, diagnostics, context);
+			case PannotationPackage.ELEMENT_COLLECTION:
+				return validateElementCollection((ElementCollection)value, diagnostics, context);
 			case PannotationPackage.EMBEDDABLE:
 				return validateEmbeddable((Embeddable)value, diagnostics, context);
 			case PannotationPackage.EMBEDDED:
@@ -181,14 +187,28 @@ public class PannotationValidator extends EObjectValidator {
 				return validateManyToOne((ManyToOne)value, diagnostics, context);
 			case PannotationPackage.MAP_KEY:
 				return validateMapKey((MapKey)value, diagnostics, context);
+			case PannotationPackage.MAP_KEY_CLASS:
+				return validateMapKeyClass((MapKeyClass)value, diagnostics, context);
+			case PannotationPackage.MAP_KEY_COLUMN:
+				return validateMapKeyColumn((MapKeyColumn)value, diagnostics, context);
+			case PannotationPackage.MAP_KEY_ENUMERATED:
+				return validateMapKeyEnumerated((MapKeyEnumerated)value, diagnostics, context);
+			case PannotationPackage.MAP_KEY_JOIN_COLUMN:
+				return validateMapKeyJoinColumn((MapKeyJoinColumn)value, diagnostics, context);
+			case PannotationPackage.MAP_KEY_TEMPORAL:
+				return validateMapKeyTemporal((MapKeyTemporal)value, diagnostics, context);
 			case PannotationPackage.MAPPED_SUPERCLASS:
 				return validateMappedSuperclass((MappedSuperclass)value, diagnostics, context);
+			case PannotationPackage.MAPS_ID:
+				return validateMapsId((MapsId)value, diagnostics, context);
 			case PannotationPackage.ONE_TO_MANY:
 				return validateOneToMany((OneToMany)value, diagnostics, context);
 			case PannotationPackage.ONE_TO_ONE:
 				return validateOneToOne((OneToOne)value, diagnostics, context);
 			case PannotationPackage.ORDER_BY:
 				return validateOrderBy((OrderBy)value, diagnostics, context);
+			case PannotationPackage.ORDER_COLUMN:
+				return validateOrderColumn((OrderColumn)value, diagnostics, context);
 			case PannotationPackage.PRIMARY_KEY_JOIN_COLUMN:
 				return validatePrimaryKeyJoinColumn((PrimaryKeyJoinColumn)value, diagnostics, context);
 			case PannotationPackage.SECONDARY_TABLE:
@@ -410,6 +430,46 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateCacheable(Cacheable cacheable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(cacheable, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(cacheable, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(cacheable, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCollectionTable(CollectionTable collectionTable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(collectionTable, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(collectionTable, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(collectionTable, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateColumn(Column column, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(column, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(column, diagnostics, context);
@@ -550,6 +610,26 @@ public class PannotationValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateElementCollection(ElementCollection elementCollection, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(elementCollection, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(elementCollection, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(elementCollection, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1147,6 +1227,193 @@ public class PannotationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateMapKeyClass(MapKeyClass mapKeyClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKeyClass, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyClass, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyColumn(MapKeyColumn mapKeyColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKeyColumn, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMapKeyColumn_ScalePrecisionForNumeric(mapKeyColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMapKeyColumn_LengthForString(mapKeyColumn, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the ScalePrecisionForNumeric constraint of '<em>Map Key Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyColumn_ScalePrecisionForNumeric(MapKeyColumn mapKeyColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ScalePrecisionForNumeric", getObjectLabel(mapKeyColumn, context) },
+						 new Object[] { mapKeyColumn },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the LengthForString constraint of '<em>Map Key Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyColumn_LengthForString(MapKeyColumn mapKeyColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "LengthForString", getObjectLabel(mapKeyColumn, context) },
+						 new Object[] { mapKeyColumn },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyEnumerated(MapKeyEnumerated mapKeyEnumerated, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKeyEnumerated, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyEnumerated, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyJoinColumn(MapKeyJoinColumn mapKeyJoinColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKeyJoinColumn, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyJoinColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyJoinColumn, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyTemporal(MapKeyTemporal mapKeyTemporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapKeyTemporal, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyTemporal, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMapKeyTemporal_AllowedElementType(mapKeyTemporal, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the AllowedElementType constraint of '<em>Map Key Temporal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapKeyTemporal_AllowedElementType(MapKeyTemporal mapKeyTemporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "AllowedElementType", getObjectLabel(mapKeyTemporal, context) },
+						 new Object[] { mapKeyTemporal },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateMappedSuperclass(MappedSuperclass mappedSuperclass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(mappedSuperclass, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(mappedSuperclass, diagnostics, context);
@@ -1189,6 +1456,26 @@ public class PannotationValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMapsId(MapsId mapsId, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mapsId, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapsId, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapsId, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1360,6 +1647,84 @@ public class PannotationValidator extends EObjectValidator {
 						 "_UI_GenericConstraint_diagnostic",
 						 new Object[] { "IsManyValued", getObjectLabel(orderBy, context) },
 						 new Object[] { orderBy },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOrderColumn(OrderColumn orderColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(orderColumn, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validateOrderColumn_ScalePrecisionForNumeric(orderColumn, diagnostics, context);
+		if (result || diagnostics != null) result &= validateOrderColumn_LengthForString(orderColumn, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the ScalePrecisionForNumeric constraint of '<em>Order Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOrderColumn_ScalePrecisionForNumeric(OrderColumn orderColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "ScalePrecisionForNumeric", getObjectLabel(orderColumn, context) },
+						 new Object[] { orderColumn },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the LengthForString constraint of '<em>Order Column</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateOrderColumn_LengthForString(OrderColumn orderColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "LengthForString", getObjectLabel(orderColumn, context) },
+						 new Object[] { orderColumn },
 						 context));
 			}
 			return false;
