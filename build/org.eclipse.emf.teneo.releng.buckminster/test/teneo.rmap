@@ -12,7 +12,8 @@
 	xmlns:pmp="http://www.eclipse.org/buckminster/PDEMapProvider-1.0"
 	xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0">
 
- 	<property key="build.type" mutable="true" value="N"/>
+ 	<property key="build.type" mutable="true" value="Indigo"/>
+ 	<property key="eclipse.download" value="http://download.eclipse.org"/>
  	
   	<searchPath name="teneo.platform">
     	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
@@ -65,20 +66,55 @@
   	</searchPath>
 
   	<searchPath name="target.platform">
-    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=N)">
-      		<uri format="http://download.eclipse.org/releases/helios"/>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Juno)">
+      		<uri format="{0}/releases/juno">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
     	</provider>
-    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(|(build.type=N)(build.type=R))">
-      		<uri format="http://download.eclipse.org/eclipse/updates/3.6"/>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Juno)">
+      		<uri format="{0}/eclipse/updates/3.8milestones/">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
     	</provider>
-    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=R)">
-      		<uri format="http://download.eclipse.org/releases/galileo"/>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Indigo)">
+      		<uri format="{0}/releases/helios">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
     	</provider>
-    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(|(build.type=N)(build.type=R))">
-      		<uri format="http://www.elver.org/eclipse/update"/>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Indigo)">
+      		<uri format="{0}/eclipse/updates/3.7">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Helios)">
+      		<uri format="{0}/releases/helios">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Helios)">
+      		<uri format="{0}/eclipse/updates/3.6">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Galileo)">
+      		<uri format="{0}/releases/galileo">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Galileo)">
+      		<uri format="{0}/eclipse/updates/3.5">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
+    	</provider>
+    	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      		<uri format="{0}">
+	      		<bc:propertyRef key="thirdPartyPath"/>
+      		</uri>
     	</provider>
 		<provider readerType="p2" componentTypes="osgi.bundle" mutable="false" source="false">
-			<uri format="http://download.eclipse.org/tools/orbit/downloads/drops/S20111018035124/repository/"/>
+			<uri format="{0}/tools/orbit/downloads/drops/S20111018035124/repository/">
+				<bc:propertyRef key="eclipse.download"/>
+      		</uri>
 		</provider>
   	</searchPath>
 

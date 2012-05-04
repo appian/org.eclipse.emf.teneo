@@ -48,7 +48,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</condition>
 
 	<!-- Is used in buck.minster also -->
-	<condition property="build.type" value="${env.BUILDTYPE}" else="N">
+	<condition property="build.type" value="${env.BUILDTYPE}" else="Indigo">
 		<isset property="env.BUILDTYPE" />
 	</condition>
 
@@ -71,6 +71,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="rootPath" location="${buildsPath}" />
 
 	<property name="buildRoot" location="${rootPath}/build" />
+	<property name="thirdPartyPath" location="${rootPath}/thirdparty" />
 	<property name="testRoot" location="${rootPath}/test" />
 	<property name="toolsPath" location="${rootPath}/tools" />
 	<property name="buildSitePath" location="${rootPath}/result/p2site" />
@@ -170,6 +171,15 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${tools}" />
 		<unzip src="${director.zip}" dest="${toolsPath}" />
 		<delete file="${director.zip}" />
+	</target>
+
+	<target name="get.thirdparty">
+		<echo message="Fetching thirdparty files" />
+		<tempfile destdir="${java.io.tmpdir}" prefix="thirdparty-" suffix=".zip" property="thirdparty.zip" deleteonexit="true" />
+		<get src="${thirdparty.url}" dest="${thirdparty.zip}" />
+		<mkdir dir="${thirdPartyPath}" />
+		<unzip src="${thirdparty.zip}" dest="${thirdPartyPath}" />
+		<delete file="${thirdparty.zip}" />
 	</target>
 
 	<target name="install.buckminster" unless="buckminster.exists" depends="get.director">

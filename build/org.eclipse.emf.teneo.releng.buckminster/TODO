@@ -1,0 +1,7 @@
+- Create a single param to do builds against different platforms and branches
+> Helios
+> Indigo
+> Juno
+
+- Use local repositories for builds done at hudson
+- Maybe download p2 site from github?
