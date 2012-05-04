@@ -77,7 +77,7 @@
       		</uri>
     	</provider>
     	<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(build.type=Indigo)">
-      		<uri format="{0}/releases/helios">
+      		<uri format="{0}/releases/indigo">
 				<bc:propertyRef key="eclipse.download"/>
       		</uri>
     	</provider>
