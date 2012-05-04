@@ -86,7 +86,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<import file="ant_common.xml" />
 
-	<target name="build.and.test" depends="init, init.checks, install.buckminster">
+	<target name="build.and.test" depends="get.thirdparty, init, init.checks, install.buckminster">
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 
