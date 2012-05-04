@@ -178,7 +178,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<target name="get.thirdparty">
 		<echo message="Fetching thirdparty files" />
 		<tempfile destdir="${java.io.tmpdir}" prefix="thirdparty-" suffix=".zip" property="thirdparty.zip" deleteonexit="true" />
-		<get src="${thirdparty20.url}" dest="${thirdparty.zip}" />
+		<get src="${thirdparty.url}" dest="${thirdparty.zip}" />
 		<mkdir dir="${thirdPartyPath}" />
 		<unzip src="${thirdparty.zip}" dest="${thirdPartyPath}" />
 		<delete file="${thirdparty.zip}" />
