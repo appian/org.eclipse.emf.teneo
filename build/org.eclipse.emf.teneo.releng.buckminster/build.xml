@@ -162,6 +162,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<available file="${tools}/director/director" property="director.exists" />
 		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
 
+		<echo message="Using eclipse download: ${eclipse.download}"/>
+		
 	</target>
 
 	<target name="get.director" unless="director.exists">
