@@ -72,7 +72,7 @@ public class TypedEReferenceMapper extends AbstractAssociationMapper implements
 
 		addFetchType(collElement, otm.getFetch());
 		addCascadesForMany(collElement,
-				getCascades(hbReference.getHbCascade(), otm.getCascade()));
+				getCascades(hbReference.getHbCascade(), otm.getCascade(), otm.isOrphanRemoval()));
 
 		addElementElement(collElement, paEFeature, getColumns(paEFeature),
 				otm.getTargetEntity());

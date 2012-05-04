@@ -10,6 +10,8 @@ package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.List;
 
+import javax.print.attribute.standard.MediaSize.ISO;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;
@@ -118,7 +120,7 @@ public class OneToOneMapper extends AbstractAssociationMapper implements
 		addAccessor(associationElement);
 
 		addCascadesForSingle(associationElement,
-				getCascades(hbReference.getHbCascade(), oto.getCascade()));
+				getCascades(hbReference.getHbCascade(), oto.getCascade(), false));
 
 		final boolean isNullable = (oto.isOptional()
 				|| getHbmContext().isDoForceOptional(paReference) || getHbmContext()
@@ -169,8 +171,8 @@ public class OneToOneMapper extends AbstractAssociationMapper implements
 		addAccessor(associationElement);
 
 		addForeignKeyAttribute(associationElement, paReference);
-		addCascadesForSingle(associationElement,
-				getCascades(hbReference.getHbCascade(), oto.getCascade()));
+		addCascades(associationElement,
+				getCascades(hbReference.getHbCascade(), oto.getCascade(), oto.isOrphanRemoval()), true);
 		addLazyProxy(associationElement, oto.getFetch(), paReference);
 
 		if (hbReference.getHbFetch() != null) {

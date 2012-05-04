@@ -135,7 +135,7 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 
 		if (!isProperty) {
 			addCascadesForSingle(associationElement,
-					getCascades(hbReference.getHbCascade(), mto.getCascade()));
+					getCascades(hbReference.getHbCascade(), mto.getCascade(), false));
 		}
 
 		if (hbReference.getHbFetch() != null) {

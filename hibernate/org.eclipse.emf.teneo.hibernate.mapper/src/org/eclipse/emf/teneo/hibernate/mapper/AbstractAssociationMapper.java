@@ -89,11 +89,12 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 
 	// translates jpa CascadeType to HbCascadeType
 	protected List<HbCascadeType> getCascades(Cascade cascade,
-			List<CascadeType> cascades) {
-		if (cascade != null) {
-			return cascade.getValue();
+			List<CascadeType> cascades, boolean orphanRemoval) {
+		final List<HbCascadeType> result = cascade != null ? cascade.getValue() : convertCascade(cascades);
+		if (orphanRemoval && !(result.contains(HbCascadeType.ALL) || result.contains(HbCascadeType.DELETE_ORPHAN))) {
+			result.add(HbCascadeType.DELETE_ORPHAN);
 		}
-		return convertCascade(cascades);
+		return result;
 	}
 
 	protected List<HbCascadeType> convertCascade(List<CascadeType> cascades) {
