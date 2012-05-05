@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.AddressImpl" entity-name="Address" abstract="false" lazy="false" table="`ADDRESS`">
+		<meta attribute="eclassName" inherit="false">Address</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.HouseImpl" entity-name="House" abstract="false" lazy="false" table="`HOUSE`">
+		<meta attribute="eclassName" inherit="false">House</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+		<id name="id" type="long" unsaved-value="0">
+			<column not-null="true" unique="false" name="`ID`"/>
+			<generator class="foreign">
+				<param name="property">address</param>
+			</generator>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="address" entity-name="Address" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HOUSE_ADDRESS" insert="true" update="true" not-null="true">
+			<column not-null="true" unique="false" name="`ADDRESS_ADDRESS_ID`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.HumanImpl" entity-name="Human" abstract="false" lazy="false" table="`HUMAN`">
+		<meta attribute="eclassName" inherit="false">Human</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+		<composite-id name="name" class="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.NameImpl" access="org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler">
+			<meta attribute="eclassName" inherit="false">Name</meta>
+			<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+			<key-property name="firstName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+			</key-property>
+			<key-property name="lastName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`LASTNAME`"/>
+			</key-property>
+			<generator class="foreign">
+				<param name="property">humanClone</param>
+			</generator>
+		</composite-id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="humanClone" entity-name="HumanClone" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="HUMAN_HUMANCLONE" insert="false" update="false" not-null="true">
+			<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+			<column not-null="true" unique="false" name="`LASTNAME`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.HumanCloneImpl" entity-name="HumanClone" abstract="false" lazy="false" table="`HUMANCLONE`">
+		<meta attribute="eclassName" inherit="false">HumanClone</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+		<composite-id name="name" class="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.NameImpl" access="org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler">
+			<meta attribute="eclassName" inherit="false">Name</meta>
+			<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+			<key-property name="firstName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+			</key-property>
+			<key-property name="lastName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`LASTNAME`"/>
+			</key-property>
+		</composite-id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.PersonImpl" entity-name="Person" abstract="false" lazy="false" table="`PERSON`">
+		<meta attribute="eclassName" inherit="false">Person</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+		<composite-id name="name" class="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.NameImpl" access="org.eclipse.emf.teneo.hibernate.mapping.property.EReferencePropertyHandler">
+			<meta attribute="eclassName" inherit="false">Name</meta>
+			<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+			<key-property name="firstName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+			</key-property>
+			<key-property name="lastName" type="java.lang.String">
+				<column not-null="true" unique="false" name="`LASTNAME`"/>
+			</key-property>
+		</composite-id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<many-to-one name="identifier" entity-name="PersonIdentifier" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="PERSON_IDENTIFIER" insert="false" update="false" not-null="true">
+			<column not-null="true" unique="false" name="`FIRSTNAME`"/>
+		</many-to-one>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.impl.PersonIdentifierImpl" entity-name="PersonIdentifier" abstract="false" lazy="false" table="`PERSONIDENTIFIER`">
+		<meta attribute="eclassName" inherit="false">PersonIdentifier</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/mapsid</meta>
+		<id name="name" type="java.lang.String">
+			<column not-null="true" unique="false" name="`NAME`"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>

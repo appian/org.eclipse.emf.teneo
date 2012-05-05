@@ -72,3 +72,7 @@ Added catalog and schema
 Added OneToMany.orphanRemoval
 - OneToOne:
 Added OneToOne.orphanRemoval
+- MapsId:
+Added support for multiple Id annotations
+Added support for generator=foreign for MapsId
+Composite/Embedded Id: if the MapsId has a value then generator foreign is not supported

@@ -38,7 +38,7 @@ public class FeatureMapper implements ExtensionPoint {
 	/** Switch features for the annotated eattribute */
 	private static final EStructuralFeature[] PAEATTRIBUTE_DISCR_FEATURES = new EStructuralFeature[] {
 			PamodelPackage.eINSTANCE.getPAnnotatedEModelElement_Transient(),
-			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Id(),
+			PamodelPackage.eINSTANCE.getPAnnotatedEStructuralFeature_Id(),
 			PamodelPackage.eINSTANCE.getPAnnotatedETypedElement_OneToMany(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Basic(),
 			PamodelPackage.eINSTANCE.getPAnnotatedEAttribute_Version() };

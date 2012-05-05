@@ -48,7 +48,10 @@ public class OneToOneMapper extends AbstractAssociationMapper implements
 	public void process(PAnnotatedEReference paReference) {
 		final PAnnotatedEReference opposite = getOtherSide(paReference);
 
-		if (opposite != null) {
+		if (paReference.getMapsId() != null) {
+			// the many to one supports columns
+			createManyToOne(paReference);
+		} else if (opposite != null) {
 			// handle the case of a primary key one-to-one
 			if (!paReference.getPrimaryKeyJoinColumns().isEmpty()
 					|| (opposite != null && !opposite

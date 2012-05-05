@@ -10,8 +10,16 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.annotations.pamodel.*;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEDataType;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEModelElement;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEPackage;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement;
+import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -121,6 +121,38 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 	}
 
 	/**
+	 * Process multiple id's
+	 * @param aReference
+	 */
+	public void processMultipleIds(PAnnotatedEClass aClass) {
+		final Element compositeIdElement = DocumentHelper.createElement("composite-id");
+		getHbmContext().getCurrent().add(0, compositeIdElement);
+
+		getHbmContext().setCurrent(compositeIdElement);
+		
+		for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
+			if (aFeature instanceof PAnnotatedEAttribute) {
+				PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
+				final Element keyPropertyElement = compositeIdElement.addElement("key-property");
+				keyPropertyElement.addAttribute("name", aFeature.getModelEStructuralFeature().getName());
+				addColumnsAndFormula(keyPropertyElement, aAttribute, getColumns(aAttribute), getHbmContext()
+						.isCurrentElementFeatureMap(), false);
+				setType(aAttribute, keyPropertyElement);
+				
+//				keyPropertyElement.addAttribute("access", "org.eclipse.emf.teneo.hibernate.mapping.property.EAttributePropertyHandler");
+			} else if (aFeature instanceof PAnnotatedEReference
+					&& !((PAnnotatedEReference) aFeature).getModelEReference().isMany()) {
+				addKeyManyToOne(compositeIdElement, (PAnnotatedEReference) aFeature);
+			}
+		}
+		
+		// also a composite id can be handled by a foreign generator
+		checkAddForeignGenerator(compositeIdElement, aClass);
+
+		getHbmContext().setCurrent(compositeIdElement.getParent());
+	}
+	
+	/**
 	 * Process embedded id.
 	 */
 	public void processEmbeddedId(PAnnotatedEReference aReference) {
@@ -169,6 +201,9 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 		getHbmContext().setCurrent(compositeIdElement.getParent());
 
 		addAccessor(compositeIdElement, hbmContext.getComponentPropertyHandlerName());
+		
+		// also a composite id can be handled by a foreign generator
+		checkAddForeignGenerator(compositeIdElement, aReference.getPaEClass());
 	}
 
 	private void addKeyManyToOne(Element currentParent, PAnnotatedEReference paReference) {
@@ -207,6 +242,29 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 	 */
 	public void processIdProperty(PAnnotatedEAttribute id) {
 		final PAnnotatedEClass aClass = id.getPaEClass();
+		
+		// check if there are multiple id features
+		// if so then process them, only do that for the first
+		// id feature to only generate one composite id
+		// which contains all the other features
+		boolean foundIdFeature = false;
+		boolean isFirstIdFeature = false;
+		for (PAnnotatedEStructuralFeature paFeature : aClass.getPaEStructuralFeatures()) {
+			if (paFeature.getId() != null) {
+				if (foundIdFeature) {
+					// must be multiple
+					// only process the first
+					if (isFirstIdFeature) {
+						processMultipleIds(aClass);
+					}
+					return;
+				}
+				if (!foundIdFeature && paFeature == id) {
+					isFirstIdFeature = true;
+				}
+				foundIdFeature = true;
+			}
+		}
 
 		// check precondition
 		if (aClass.getPaSuperEntity() != null && aClass.getPaSuperEntity().hasIdAnnotatedFeature()) {
@@ -384,7 +442,14 @@ public class IdMapper extends AbstractAssociationMapper implements ExtensionPoin
 	// then use a special generator
 	protected boolean checkAddForeignGenerator(Element idElement, PAnnotatedEClass aClass) {
 		for (PAnnotatedEStructuralFeature aFeature : aClass.getPaEStructuralFeatures()) {
-			if (aFeature instanceof PAnnotatedEReference) {
+			if (aFeature.getMapsId() != null && aFeature.getMapsId().getValue() == null) {
+				final Element genElement = idElement.addElement("generator");
+				genElement.addAttribute("class", "foreign");
+				final Element paramElement = genElement.addElement("param");
+				paramElement.addAttribute("name", "property");
+				paramElement.addText(aFeature.getModelElement().getName());
+				return true;
+			} else if (aFeature instanceof PAnnotatedEReference) {
 				final PAnnotatedEReference aReference = (PAnnotatedEReference) aFeature;
 				if (aReference.getOneToOne() != null && !aReference.getPrimaryKeyJoinColumns().isEmpty()) {
 					final Element genElement = idElement.addElement("generator");
