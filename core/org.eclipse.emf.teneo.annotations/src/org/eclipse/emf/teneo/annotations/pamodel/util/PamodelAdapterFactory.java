@@ -130,7 +130,7 @@ public class PamodelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch(0, (EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
