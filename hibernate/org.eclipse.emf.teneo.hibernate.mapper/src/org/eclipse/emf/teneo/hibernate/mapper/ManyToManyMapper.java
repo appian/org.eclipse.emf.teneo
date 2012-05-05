@@ -80,7 +80,7 @@ public class ManyToManyMapper extends AbstractAssociationMapper implements
 
 		addFetchType(collElement, mtm.getFetch());
 		addCascades(collElement,
-				getCascades(hbReference.getHbCascade(), mtm.getCascade()),
+				getCascades(hbReference.getHbCascade(), mtm.getCascade(), false),
 				false);
 
 		final PAnnotatedEClass referedToAClass = hbReference

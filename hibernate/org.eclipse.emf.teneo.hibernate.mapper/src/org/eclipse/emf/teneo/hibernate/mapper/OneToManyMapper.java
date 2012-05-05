@@ -160,7 +160,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm
 				.getFetch());
 		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(),
-				otm.getCascade()));
+				otm.getCascade(), otm.isOrphanRemoval()));
 		List<JoinColumn> inverseJoinColumns = jt != null
 				&& jt.getInverseJoinColumns() != null ? jt
 				.getInverseJoinColumns() : new ArrayList<JoinColumn>();
@@ -277,7 +277,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 
 		addFetchType(collElement, otm.getFetch());
 		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(),
-				otm.getCascade()));
+				otm.getCascade(), otm.isOrphanRemoval()));
 
 		boolean isMap = StoreUtil.isMap(eref)
 				&& getHbmContext().isMapEMapAsTrueMap();

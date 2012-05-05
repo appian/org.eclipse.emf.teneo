@@ -48,7 +48,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	</condition>
 
 	<!-- Is used in buck.minster also -->
-	<condition property="build.type" value="${env.BUILDTYPE}" else="N">
+	<condition property="build.type" value="${env.BUILDTYPE}" else="Indigo">
 		<isset property="env.BUILDTYPE" />
 	</condition>
 
@@ -71,6 +71,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="rootPath" location="${buildsPath}" />
 
 	<property name="buildRoot" location="${rootPath}/build" />
+	<property name="thirdPartyPath" location="${rootPath}/thirdparty" />
 	<property name="testRoot" location="${rootPath}/test" />
 	<property name="toolsPath" location="${rootPath}/tools" />
 	<property name="buildSitePath" location="${rootPath}/result/p2site" />
@@ -85,7 +86,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<import file="ant_common.xml" />
 
-	<target name="build.and.test" depends="init, init.checks, install.buckminster">
+	<target name="build.and.test" depends="get.thirdparty, init, init.checks, install.buckminster">
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 
@@ -161,6 +162,8 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<available file="${tools}/director/director" property="director.exists" />
 		<available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
 
+		<echo message="Using eclipse download: ${eclipse.download}"/>
+		
 	</target>
 
 	<target name="get.director" unless="director.exists">
@@ -170,6 +173,15 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${tools}" />
 		<unzip src="${director.zip}" dest="${toolsPath}" />
 		<delete file="${director.zip}" />
+	</target>
+
+	<target name="get.thirdparty">
+		<echo message="Fetching thirdparty files" />
+		<tempfile destdir="${java.io.tmpdir}" prefix="thirdparty-" suffix=".zip" property="thirdparty.zip" deleteonexit="true" />
+		<get src="${thirdparty.url}" dest="${thirdparty.zip}" />
+		<mkdir dir="${thirdPartyPath}" />
+		<unzip src="${thirdparty.zip}" dest="${thirdPartyPath}" />
+		<delete file="${thirdparty.zip}" />
 	</target>
 
 	<target name="install.buckminster" unless="buckminster.exists" depends="get.director">

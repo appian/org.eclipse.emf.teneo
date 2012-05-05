@@ -14,7 +14,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<one-to-one name="employeeInfo" entity-name="EmployeeInfo" foreign-key="EMPLOYEE_EMPLOYEEINFO" cascade="merge,persist,save-update,lock,refresh" lazy="false" constrained="true"/>
+		<one-to-one name="employeeInfo" entity-name="EmployeeInfo" foreign-key="EMPLOYEE_EMPLOYEEINFO" constrained="true" cascade="merge,persist,save-update,lock,refresh" lazy="false"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.otopk.impl.EmployeeInfoImpl" entity-name="EmployeeInfo" abstract="false" lazy="false" table="`EMPLOYEEINFO`">
 		<meta attribute="eclassName" inherit="false">EmployeeInfo</meta>

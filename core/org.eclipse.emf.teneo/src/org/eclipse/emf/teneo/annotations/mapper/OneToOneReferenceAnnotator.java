@@ -76,6 +76,10 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
 
+		if (eReference.isContainment() && getPersistenceOptions().isSetCascadeAllOnContainment()) {
+			oto.setOrphanRemoval(true);
+		}
+		
 		if (getPersistenceOptions().isSetForeignKeyNames() && aReference.getForeignKey() == null) {
 			// See bugzilla 211798: handle a specific case when this is a
 			// bidirectional

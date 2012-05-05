@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Orphanremoval" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>orphanremoval.ecore</foreignModel>
+  <genPackages prefix="Orphanremoval" basePackage="org.eclipse.emf.teneo.samples.emf.jpa2"
+      disposableProviderFactory="true" ecorePackage="orphanremoval.ecore#/">
+    <genClasses ecoreClass="orphanremoval.ecore#//Employee">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute orphanremoval.ecore#//Employee/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference orphanremoval.ecore#//Employee/employeeInfo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference orphanremoval.ecore#//Employee/addresses"/>
+    </genClasses>
+    <genClasses ecoreClass="orphanremoval.ecore#//EmployeeInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute orphanremoval.ecore#//EmployeeInfo/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute orphanremoval.ecore#//EmployeeInfo/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference orphanremoval.ecore#//EmployeeInfo/employee"/>
+    </genClasses>
+    <genClasses ecoreClass="orphanremoval.ecore#//Address">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute orphanremoval.ecore#//Address/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

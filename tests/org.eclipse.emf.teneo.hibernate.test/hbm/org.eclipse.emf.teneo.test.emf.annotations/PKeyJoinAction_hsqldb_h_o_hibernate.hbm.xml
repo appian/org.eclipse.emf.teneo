@@ -17,7 +17,7 @@
 		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
 			<meta attribute="syntheticVersion" inherit="false">true</meta>
 		</version>
-		<one-to-one name="head" entity-name="Head" foreign-key="BODY_HEAD" cascade="all" lazy="false" constrained="true"/>
+		<one-to-one name="head" entity-name="Head" foreign-key="BODY_HEAD" constrained="true" cascade="all" lazy="false"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.annotations.primarykeyjoin.impl.HeadImpl" entity-name="Head" abstract="false" lazy="false" discriminator-value="Head" table="`HEAD`">
 		<meta attribute="eclassName" inherit="false">Head</meta>

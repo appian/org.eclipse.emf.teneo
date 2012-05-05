@@ -66,7 +66,7 @@ public class ManyExternalReferenceMapper extends AbstractAssociationMapper
 
 		addFetchType(collElement, otm.getFetch());
 		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(),
-				otm.getCascade()));
+				otm.getCascade(), false));
 
 		addElementElement(collElement, paReference, getColumns(paReference),
 				otm.getTargetEntity());
