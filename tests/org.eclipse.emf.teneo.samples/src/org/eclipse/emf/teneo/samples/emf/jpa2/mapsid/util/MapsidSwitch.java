@@ -10,11 +10,10 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.*;
 import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Address;
 import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.House;
+import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Human;
+import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.HumanClone;
 import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.MapsidPackage;
 import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Name;
 import org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Person;
