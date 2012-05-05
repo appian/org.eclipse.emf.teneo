@@ -63,10 +63,12 @@ Added AssociationOverride.joinTable
 - MapKeyJoinColumn --> New
 - MapKeyTemporal --> New
 - MapsId --> New
+- OrderColumn --> New
+- SequenceGenerator:
+Added catalog and schema
+
+== Done ==
 - OneToMany:
 Added OneToMany.orphanRemoval
 - OneToOne:
 Added OneToOne.orphanRemoval
-- OrderColumn --> New
-- SequenceGenerator:
-Added catalog and schema

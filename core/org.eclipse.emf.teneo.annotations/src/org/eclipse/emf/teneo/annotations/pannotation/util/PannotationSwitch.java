@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PannotationSwitch.java,v 1.33 2011/02/21 06:40:10 mtaal Exp $
+ * $Id$
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
@@ -10,51 +10,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
+
 import org.eclipse.emf.teneo.annotations.pannotation.*;
-import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
-import org.eclipse.emf.teneo.annotations.pannotation.Basic;
-import org.eclipse.emf.teneo.annotations.pannotation.Column;
-import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
-import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
-import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
-import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
-import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
-import org.eclipse.emf.teneo.annotations.pannotation.Entity;
-import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
-import org.eclipse.emf.teneo.annotations.pannotation.External;
-import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
-import org.eclipse.emf.teneo.annotations.pannotation.GeneratedValue;
-import org.eclipse.emf.teneo.annotations.pannotation.Id;
-import org.eclipse.emf.teneo.annotations.pannotation.IdClass;
-import org.eclipse.emf.teneo.annotations.pannotation.Inheritance;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
-import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.Lob;
-import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
-import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
-import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
-import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
-import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
-import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
-import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
-import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
-import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
-import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
-import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
-import org.eclipse.emf.teneo.annotations.pannotation.SecondaryTable;
-import org.eclipse.emf.teneo.annotations.pannotation.SequenceGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.SequenceStyleGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.Table;
-import org.eclipse.emf.teneo.annotations.pannotation.TableGenerator;
-import org.eclipse.emf.teneo.annotations.pannotation.Temporal;
-import org.eclipse.emf.teneo.annotations.pannotation.Transient;
-import org.eclipse.emf.teneo.annotations.pannotation.UniqueConstraint;
-import org.eclipse.emf.teneo.annotations.pannotation.Version;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +26,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage
  * @generated
  */
-public class PannotationSwitch<T> extends Switch<T> {
+public class PannotationSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -91,16 +48,14 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Checks whether this is a switch for the given package.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
-	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
+	public T doSwitch(EObject theEObject) {
+		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
 	/**
@@ -110,7 +65,26 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
+		if (theEClass.eContainer() == modelPackage) {
+			return doSwitch(theEClass.getClassifierID(), theEObject);
+		}
+		else {
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch(eSuperTypes.get(0), theEObject);
+		}
+	}
+
+	/**
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case PannotationPackage.PANNOTATION: {
@@ -504,6 +478,21 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Association Override</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Association Override</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssociationOverride(AssociationOverride object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Basic</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -624,36 +613,6 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mapped Superclass</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mapped Superclass</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMappedSuperclass(MappedSuperclass object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Maps Id</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Maps Id</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMapsId(MapsId object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Embedded</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -684,21 +643,6 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Enumerated</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Enumerated</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEnumerated(Enumerated object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -710,6 +654,21 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Enumerated</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Enumerated</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEnumerated(Enumerated object) {
 		return null;
 	}
 
@@ -935,6 +894,36 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMapKeyTemporal(MapKeyTemporal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mapped Superclass</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mapped Superclass</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMappedSuperclass(MappedSuperclass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Maps Id</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Maps Id</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMapsId(MapsId object) {
 		return null;
 	}
 
@@ -1224,21 +1213,6 @@ public class PannotationSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Association Override</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Association Override</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAssociationOverride(AssociationOverride object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1249,7 +1223,6 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}
