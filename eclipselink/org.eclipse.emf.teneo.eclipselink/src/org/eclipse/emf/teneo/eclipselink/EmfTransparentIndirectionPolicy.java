@@ -19,6 +19,7 @@ import org.eclipse.persistence.indirection.ValueHolder;
 import org.eclipse.persistence.indirection.ValueHolderInterface;
 import org.eclipse.persistence.internal.indirection.DatabaseValueHolder;
 import org.eclipse.persistence.internal.indirection.TransparentIndirectionPolicy;
+import org.eclipse.persistence.internal.indirection.UnitOfWorkValueHolder;
 import org.eclipse.persistence.internal.sessions.AbstractRecord;
 import org.eclipse.persistence.internal.sessions.AbstractSession;
 import org.eclipse.persistence.internal.sessions.UnitOfWorkImpl;
@@ -50,6 +51,7 @@ public class EmfTransparentIndirectionPolicy extends TransparentIndirectionPolic
 	 *            indicates that we are building the clone directly from a row as opposed to building the original from
 	 *            the row, putting it in the shared cache, and then cloning the original.
 	 */
+	@Override
 	public Object cloneAttribute(Object attributeValue, Object original, Object clone, UnitOfWorkImpl unitOfWork,
 			boolean buildDirectlyFromRow) {
 		ValueHolderInterface valueHolder = null;
@@ -68,13 +70,14 @@ public class EmfTransparentIndirectionPolicy extends TransparentIndirectionPolic
 				throw DescriptorException.attemptToRegisterDeadIndirection(original, getMapping());
 			}
 			if (getMapping().getRelationshipPartner() == null) {
-				// container = getMapping().buildCloneForPartObject(attributeValue, original, clone, unitOfWork, false);
+				container = getMapping().buildCloneForPartObject(attributeValue, original, clone, unitOfWork, false);
 			} else {
 				if (!(attributeValue instanceof IndirectContainer)) {
 					valueHolder = new ValueHolder(attributeValue);
 				}
+				AbstractRecord row = null;
 				if (valueHolder instanceof DatabaseValueHolder) {
-					((DatabaseValueHolder) valueHolder).getRow();
+					row = ((DatabaseValueHolder) valueHolder).getRow();
 				}
 
 				// If a new object is being cloned then we must build a new
@@ -85,15 +88,13 @@ public class EmfTransparentIndirectionPolicy extends TransparentIndirectionPolic
 				// UOWValueHolder will assume the objects in the collection are existing
 				// if the valueholder
 				// Goes through it's own instantiation process.
-				// MT: solve compile error
-				// UnitOfWorkValueHolder newValueHolder = getMapping().createUnitOfWorkValueHolder(valueHolder,
-				// original,
-				// clone, row, unitOfWork, buildDirectlyFromRow);
-				// container = buildIndirectContainer(newValueHolder);
-				// Object cloneCollection = getMapping().buildCloneForPartObject(attributeValue, original, clone,
-				// unitOfWork, false);
-				// newValueHolder.privilegedSetValue(cloneCollection);
-				// newValueHolder.setInstantiated();
+				UnitOfWorkValueHolder newValueHolder = getMapping().createUnitOfWorkValueHolder(valueHolder, original,
+						clone, row, unitOfWork, buildDirectlyFromRow);
+				container = buildIndirectContainer(newValueHolder);
+				Object cloneCollection = getMapping().buildCloneForPartObject(attributeValue, original, clone,
+						unitOfWork, false);
+				newValueHolder.privilegedSetValue(cloneCollection);
+				newValueHolder.setInstantiated();
 			}
 		} else {
 			if (!(attributeValue instanceof IndirectContainer)) {
