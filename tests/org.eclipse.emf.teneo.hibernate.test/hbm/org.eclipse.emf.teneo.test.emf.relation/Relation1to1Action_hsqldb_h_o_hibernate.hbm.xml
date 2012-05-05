@@ -65,7 +65,7 @@
 			<column not-null="false" unique="false" name="`NOTCONTAINEDCHILDNR_NOTCONTAINEDONEWAYNOTREQUIRED_E_ID`"/>
 		</many-to-one>
 		<one-to-one name="notcontainedtwowaynotrequired" entity-name="NotContainedChildNRT" cascade="merge,persist,save-update,lock,refresh" lazy="false" property-ref="main"/>
-		<one-to-one name="notcontainedtwowayrequirednr" entity-name="NotContainedChildRTNR" cascade="merge,persist,save-update,lock,refresh" lazy="false" property-ref="main" constrained="true"/>
+		<one-to-one name="notcontainedtwowayrequirednr" entity-name="NotContainedChildRTNR" constrained="true" cascade="merge,persist,save-update,lock,refresh" lazy="false" property-ref="main"/>
 		<one-to-one name="notcontainedtwowaynotrequirednr" entity-name="NotContainedChildNRTNR" cascade="merge,persist,save-update,lock,refresh" lazy="false" property-ref="main"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.relation.relation1to1.impl.NotContainedChildNRImpl" entity-name="NotContainedChildNR" abstract="false" lazy="false" discriminator-value="NotContainedChildNR" table="`NOTCONTAINEDCHILDNR`">

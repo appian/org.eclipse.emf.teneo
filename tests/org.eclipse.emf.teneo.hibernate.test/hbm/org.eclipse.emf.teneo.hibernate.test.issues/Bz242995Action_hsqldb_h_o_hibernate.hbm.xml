@@ -106,7 +106,7 @@
 		<property name="Name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
-		<one-to-one name="theAuthor" entity-name="Author" cascade="merge,persist,save-update,lock,refresh" lazy="proxy" constrained="true"/>
+		<one-to-one name="theAuthor" entity-name="Author" constrained="true" cascade="merge,persist,save-update,lock,refresh" lazy="proxy"/>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.issues.bz242995.impl.AuthorImpl" entity-name="Author" abstract="false" lazy="true" discriminator-value="Author" table="`AUTHOR`" proxy="org.eclipse.emf.teneo.samples.issues.bz242995.Author">
 		<meta attribute="eclassName" inherit="false">Author</meta>

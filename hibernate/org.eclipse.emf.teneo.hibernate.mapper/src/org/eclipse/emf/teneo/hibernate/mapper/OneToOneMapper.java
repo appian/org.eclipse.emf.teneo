@@ -20,6 +20,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
+import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
 import org.eclipse.emf.teneo.hibernate.hbmodel.HbAnnotatedEReference;
 import org.eclipse.emf.teneo.simpledom.Element;
 
@@ -171,25 +172,6 @@ public class OneToOneMapper extends AbstractAssociationMapper implements
 		addAccessor(associationElement);
 
 		addForeignKeyAttribute(associationElement, paReference);
-		addCascades(associationElement,
-				getCascades(hbReference.getHbCascade(), oto.getCascade(), oto.isOrphanRemoval()), true);
-		addLazyProxy(associationElement, oto.getFetch(), paReference);
-
-		if (hbReference.getHbFetch() != null) {
-			associationElement.addAttribute("fetch", hbReference.getHbFetch()
-					.getValue().getName().toLowerCase());
-		}
-
-		// add the other-side
-		final boolean primaryKeyJoin = !paReference.getPrimaryKeyJoinColumns()
-				.isEmpty()
-				|| (otherSide != null && !getOtherSide(paReference)
-						.getPrimaryKeyJoinColumns().isEmpty());
-
-		if (!primaryKeyJoin && otherSide != null && oto.getMappedBy() != null) {
-			associationElement.addAttribute("property-ref", getHbmContext()
-					.getPropertyName(otherSide));
-		}
 
 		// apparently is always allowed for a one-to-one, if it is bidirectional
 		// if (paReference.getPrimaryKeyJoinColumns().size() > 0) {
@@ -223,5 +205,30 @@ public class OneToOneMapper extends AbstractAssociationMapper implements
 			associationElement.addAttribute("constrained", "true");
 		}
 		// }
+		
+		final List<HbCascadeType> cascades = getCascades(hbReference.getHbCascade(), oto.getCascade(), !addConstrained && oto.isOrphanRemoval());
+		if (addConstrained && cascades.contains(HbCascadeType.DELETE_ORPHAN)) {
+			cascades.remove(HbCascadeType.DELETE_ORPHAN);
+		}
+		
+		addCascades(associationElement, cascades, !addConstrained && true);
+		addLazyProxy(associationElement, oto.getFetch(), paReference);
+
+		if (hbReference.getHbFetch() != null) {
+			associationElement.addAttribute("fetch", hbReference.getHbFetch()
+					.getValue().getName().toLowerCase());
+		}
+
+		// add the other-side
+		final boolean primaryKeyJoin = !paReference.getPrimaryKeyJoinColumns()
+				.isEmpty()
+				|| (otherSide != null && !getOtherSide(paReference)
+						.getPrimaryKeyJoinColumns().isEmpty());
+
+		if (!primaryKeyJoin && otherSide != null && oto.getMappedBy() != null) {
+			associationElement.addAttribute("property-ref", getHbmContext()
+					.getPropertyName(otherSide));
+		}
+
 	}
 }
