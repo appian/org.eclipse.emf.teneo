@@ -6,20 +6,18 @@
  */
 package org.eclipse.emf.teneo.annotations.pannotation.util;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.emf.teneo.annotations.pannotation.*;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
+import org.eclipse.emf.teneo.annotations.pannotation.Cacheable;
+import org.eclipse.emf.teneo.annotations.pannotation.CollectionTable;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.DiscriminatorValue;
 import org.eclipse.emf.teneo.annotations.pannotation.EAVMapping;
+import org.eclipse.emf.teneo.annotations.pannotation.ElementCollection;
 import org.eclipse.emf.teneo.annotations.pannotation.Embeddable;
 import org.eclipse.emf.teneo.annotations.pannotation.Embedded;
 import org.eclipse.emf.teneo.annotations.pannotation.EmbeddedId;
@@ -38,11 +36,18 @@ import org.eclipse.emf.teneo.annotations.pannotation.Lob;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyClass;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal;
 import org.eclipse.emf.teneo.annotations.pannotation.MappedSuperclass;
+import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
 import org.eclipse.emf.teneo.annotations.pannotation.NoEAVMapping;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToMany;
 import org.eclipse.emf.teneo.annotations.pannotation.OneToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.OrderBy;
+import org.eclipse.emf.teneo.annotations.pannotation.OrderColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
 import org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage;
 import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
@@ -69,7 +74,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  * @see org.eclipse.emf.teneo.annotations.pannotation.PannotationPackage
  * @generated
  */
-public class PannotationSwitch<T> extends Switch<T> {
+public class PannotationSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -110,7 +115,6 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case PannotationPackage.PANNOTATION: {
@@ -1249,7 +1253,6 @@ public class PannotationSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}
