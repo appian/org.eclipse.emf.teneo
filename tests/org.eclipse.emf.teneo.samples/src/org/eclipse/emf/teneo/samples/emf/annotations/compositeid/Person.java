@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson()
  * @model annotation="teneo.jpa appinfo='@IdClass(org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID)'"
- * @generatedNOT
+ * @generated
  */
-public interface Person extends EObject, Serializable {
+public interface Person extends EObject {
 	/**
 	 * Returns the value of the '<em><b>First Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
