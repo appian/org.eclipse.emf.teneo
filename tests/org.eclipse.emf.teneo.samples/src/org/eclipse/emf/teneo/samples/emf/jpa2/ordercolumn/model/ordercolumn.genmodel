@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Ordercolumn" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>ordercolumn.ecore</foreignModel>
+  <genPackages prefix="Ordercolumn" basePackage="org.eclipse.emf.teneo.samples.emf.jpa2"
+      resource="XML" disposableProviderFactory="true" ecorePackage="ordercolumn.ecore#/">
+    <genClasses ecoreClass="ordercolumn.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ordercolumn.ecore#//Item/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ordercolumn.ecore#//Item/number"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ordercolumn.ecore#//Item/name2"/>
+    </genClasses>
+    <genClasses ecoreClass="ordercolumn.ecore#//ItemList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ordercolumn.ecore#//ItemList/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ordercolumn.ecore#//ItemList/item"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -62,7 +62,6 @@ Added AssociationOverride.joinTable
 - MapKeyEnumerated --> New
 - MapKeyJoinColumn --> New
 - MapKeyTemporal --> New
-- MapsId --> New
 - OrderColumn --> New
 - SequenceGenerator:
 Added catalog and schema

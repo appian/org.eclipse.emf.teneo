@@ -60,7 +60,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyEnumerated <em>Map Key Enumerated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyJoinColumns <em>Map Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyTemporal <em>Map Key Temporal</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderColumn <em>Order Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -212,16 +211,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 	 * @ordered
 	 */
 	protected MapKeyTemporal mapKeyTemporal;
-
-	/**
-	 * The cached value of the '{@link #getOrderColumn() <em>Order Column</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrderColumn()
-	 * @generated
-	 * @ordered
-	 */
-	protected OrderColumn orderColumn;
 
 	/** The pannotated eclass to which the reference is pointing */
 	private PAnnotatedEClass areferenceType = null;
@@ -821,49 +810,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OrderColumn getOrderColumn() {
-		return orderColumn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOrderColumn(OrderColumn newOrderColumn, NotificationChain msgs) {
-		OrderColumn oldOrderColumn = orderColumn;
-		orderColumn = newOrderColumn;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, oldOrderColumn, newOrderColumn);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOrderColumn(OrderColumn newOrderColumn) {
-		if (newOrderColumn != orderColumn) {
-			NotificationChain msgs = null;
-			if (orderColumn != null)
-				msgs = ((InternalEObject)orderColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, null, msgs);
-			if (newOrderColumn != null)
-				msgs = ((InternalEObject)newOrderColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, null, msgs);
-			msgs = basicSetOrderColumn(newOrderColumn, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN, newOrderColumn, newOrderColumn));
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -899,8 +845,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return ((InternalEList<?>)getMapKeyJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				return basicSetMapKeyTemporal(null, msgs);
-			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
-				return basicSetOrderColumn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -946,8 +890,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return getMapKeyJoinColumns();
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				return getMapKeyTemporal();
-			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
-				return getOrderColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1008,9 +950,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				setMapKeyTemporal((MapKeyTemporal)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
-				setOrderColumn((OrderColumn)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1067,9 +1006,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				setMapKeyTemporal((MapKeyTemporal)null);
 				return;
-			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
-				setOrderColumn((OrderColumn)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1113,8 +1049,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return mapKeyJoinColumns != null && !mapKeyJoinColumns.isEmpty();
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				return mapKeyTemporal != null;
-			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
-				return orderColumn != null;
 		}
 		return super.eIsSet(featureID);
 	}

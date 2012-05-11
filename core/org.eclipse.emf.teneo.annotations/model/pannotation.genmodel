@@ -56,6 +56,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/elementCollection"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/mapsId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/orderColumn"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/modelEAttribute"/>
@@ -83,7 +84,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKeyEnumerated"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKeyJoinColumns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKeyTemporal"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/orderColumn"/>
     </genClasses>
     <genClasses image="false" ecoreClass="pamodel.ecore#//PAnnotatedETypedElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedETypedElement/attributeOverrides"/>

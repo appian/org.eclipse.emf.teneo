@@ -702,13 +702,22 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Order Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the the '<em>PAnnotated EStructural Feature</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 8;
+	int PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT = PANNOTATED_ETYPED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
@@ -890,6 +899,15 @@ public interface PamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PANNOTATED_EATTRIBUTE__MAPS_ID = PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID;
+
+	/**
+	 * The feature id for the '<em><b>Order Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EATTRIBUTE__ORDER_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN;
 
 	/**
 	 * The feature id for the '<em><b>Model EAttribute</b></em>' reference.
@@ -1117,6 +1135,15 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__MAPS_ID = PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID;
 
 	/**
+	 * The feature id for the '<em><b>Order Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANNOTATED_EREFERENCE__ORDER_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN;
+
+	/**
 	 * The feature id for the '<em><b>Model EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1261,22 +1288,13 @@ public interface PamodelPackage extends EPackage {
 	int PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 15;
 
 	/**
-	 * The feature id for the '<em><b>Order Column</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANNOTATED_EREFERENCE__ORDER_COLUMN = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 16;
-
-	/**
 	 * The number of structural features of the '<em>PAnnotated EReference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 17;
+	int PANNOTATED_EREFERENCE_FEATURE_COUNT = PANNOTATED_ESTRUCTURAL_FEATURE_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Model Element</b></em>' reference.
@@ -1851,6 +1869,17 @@ public interface PamodelPackage extends EPackage {
 	EReference getPAnnotatedEStructuralFeature_MapsId();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getOrderColumn <em>Order Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Order Column</em>'.
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getOrderColumn()
+	 * @see #getPAnnotatedEStructuralFeature()
+	 * @generated
+	 */
+	EReference getPAnnotatedEStructuralFeature_OrderColumn();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute <em>PAnnotated EAttribute</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>PAnnotated EAttribute</em>'.
@@ -2233,17 +2262,6 @@ public interface PamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPAnnotatedEReference_MapKeyTemporal();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderColumn <em>Order Column</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Order Column</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference#getOrderColumn()
-	 * @see #getPAnnotatedEReference()
-	 * @generated
-	 */
-	EReference getPAnnotatedEReference_OrderColumn();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedETypedElement <em>PAnnotated ETyped Element</em>}'.
@@ -2716,6 +2734,14 @@ public interface PamodelPackage extends EPackage {
 		EReference PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID = eINSTANCE.getPAnnotatedEStructuralFeature_MapsId();
 
 		/**
+		 * The meta object literal for the '<em><b>Order Column</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN = eINSTANCE.getPAnnotatedEStructuralFeature_OrderColumn();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl <em>PAnnotated EAttribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3008,14 +3034,6 @@ public interface PamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL = eINSTANCE.getPAnnotatedEReference_MapKeyTemporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Order Column</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANNOTATED_EREFERENCE__ORDER_COLUMN = eINSTANCE.getPAnnotatedEReference_OrderColumn();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedETypedElementImpl <em>PAnnotated ETyped Element</em>}' class.

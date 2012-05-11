@@ -14,6 +14,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
+import org.eclipse.emf.teneo.annotations.pannotation.OrderColumn;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'. <!--
@@ -30,6 +31,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getElementCollection <em>Element Collection</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getMapsId <em>Maps Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getOrderColumn <em>Order Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -237,6 +239,32 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedETypedElement {
 	 * @generated
 	 */
 	void setMapsId(MapsId value);
+
+	/**
+	 * Returns the value of the '<em><b>Order Column</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Order Column</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Order Column</em>' containment reference.
+	 * @see #setOrderColumn(OrderColumn)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_OrderColumn()
+	 * @model containment="true"
+	 * @generated
+	 */
+	OrderColumn getOrderColumn();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getOrderColumn <em>Order Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Order Column</em>' containment reference.
+	 * @see #getOrderColumn()
+	 * @generated
+	 */
+	void setOrderColumn(OrderColumn value);
 
 	/**
 	 * Convenience function for obtaining the first available Column annotation.

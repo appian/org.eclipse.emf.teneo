@@ -174,6 +174,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mapsId" eType="ecore:EClass pannotation.ecore#//MapsId"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderColumn" eType="ecore:EClass pannotation.ecore#//OrderColumn"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedEAttribute" eSuperTypes="#//PAnnotatedEStructuralFeature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -247,8 +249,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyJoinColumns" upperBound="-1"
         eType="ecore:EClass pannotation.ecore#//MapKeyJoinColumn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mapKeyTemporal" eType="ecore:EClass pannotation.ecore#//MapKeyTemporal"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="orderColumn" eType="ecore:EClass pannotation.ecore#//OrderColumn"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PAnnotatedETypedElement" abstract="true"
