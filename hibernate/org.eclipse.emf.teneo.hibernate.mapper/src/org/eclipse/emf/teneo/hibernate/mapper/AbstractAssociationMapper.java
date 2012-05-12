@@ -596,7 +596,7 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			PAnnotatedEStructuralFeature paFeature) {
 		final Element collectionElement;
 		HbAnnotatedETypeElement hbFeature = (HbAnnotatedETypeElement) paFeature;
-		final PAnnotatedEReference paReference = (PAnnotatedEReference) paFeature;
+		final PAnnotatedEReference paReference = paFeature instanceof PAnnotatedEReference ? (PAnnotatedEReference) paFeature : null;
 		final IdBag idBag = hbFeature.getHbIdBag();
 
 		final EStructuralFeature estruct = paFeature
