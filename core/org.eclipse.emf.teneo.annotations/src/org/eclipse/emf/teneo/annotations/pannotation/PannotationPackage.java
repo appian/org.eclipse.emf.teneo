@@ -595,13 +595,23 @@ public interface PannotationPackage extends EPackage {
 	int COLLECTION_TABLE = 5;
 
 	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl <em>Element Collection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getElementCollection()
+	 * @generated
+	 */
+	int ELEMENT_COLLECTION = 9;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+	int JOIN_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -610,34 +620,31 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__GENERATED = PANNOTATION__GENERATED;
+	int JOIN_TABLE__GENERATED = PANNOTATION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__NAME = PANNOTATION_FEATURE_COUNT + 0;
+	int JOIN_TABLE__NAME = PANNOTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Catalog</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__CATALOG = PANNOTATION_FEATURE_COUNT + 1;
+	int JOIN_TABLE__CATALOG = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Schema</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__SCHEMA = PANNOTATION_FEATURE_COUNT + 2;
+	int JOIN_TABLE__SCHEMA = PANNOTATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
@@ -646,7 +653,97 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 3;
+	int JOIN_TABLE__JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Inverse Join Columns</b></em>' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TABLE__INVERSE_JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Unique Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TABLE__UNIQUE_CONSTRAINTS = PANNOTATION_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Join Table</em>' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_TABLE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__EMODEL_ELEMENT = JOIN_TABLE__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__GENERATED = JOIN_TABLE__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__NAME = JOIN_TABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Catalog</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__CATALOG = JOIN_TABLE__CATALOG;
+
+	/**
+	 * The feature id for the '<em><b>Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__SCHEMA = JOIN_TABLE__SCHEMA;
+
+	/**
+	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__JOIN_COLUMNS = JOIN_TABLE__JOIN_COLUMNS;
+
+	/**
+	 * The feature id for the '<em><b>Inverse Join Columns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_TABLE__INVERSE_JOIN_COLUMNS = JOIN_TABLE__INVERSE_JOIN_COLUMNS;
 
 	/**
 	 * The feature id for the '<em><b>Unique Constraints</b></em>' containment reference list.
@@ -655,7 +752,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE__UNIQUE_CONSTRAINTS = PANNOTATION_FEATURE_COUNT + 4;
+	int COLLECTION_TABLE__UNIQUE_CONSTRAINTS = JOIN_TABLE__UNIQUE_CONSTRAINTS;
 
 	/**
 	 * The number of structural features of the '<em>Collection Table</em>' class.
@@ -664,7 +761,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COLLECTION_TABLE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 5;
+	int COLLECTION_TABLE_FEATURE_COUNT = JOIN_TABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -896,16 +993,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRIMINATOR_VALUE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl <em>Element Collection</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.ElementCollectionImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getElementCollection()
-	 * @generated
-	 */
-	int ELEMENT_COLLECTION = 9;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -1335,84 +1422,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__GENERATED = PANNOTATION__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__NAME = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Catalog</b></em>' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__CATALOG = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Schema</b></em>' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__SCHEMA = PANNOTATION_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Join Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Inverse Join Columns</b></em>' containment reference list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__INVERSE_JOIN_COLUMNS = PANNOTATION_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Unique Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE__UNIQUE_CONSTRAINTS = PANNOTATION_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of structural features of the '<em>Join Table</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TABLE_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3349,61 +3358,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCollectionTable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getName()
-	 * @see #getCollectionTable()
-	 * @generated
-	 */
-	EAttribute getCollectionTable_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getCatalog <em>Catalog</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Catalog</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getCatalog()
-	 * @see #getCollectionTable()
-	 * @generated
-	 */
-	EAttribute getCollectionTable_Catalog();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getSchema <em>Schema</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Schema</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getSchema()
-	 * @see #getCollectionTable()
-	 * @generated
-	 */
-	EAttribute getCollectionTable_Schema();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getJoinColumns <em>Join Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Join Columns</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getJoinColumns()
-	 * @see #getCollectionTable()
-	 * @generated
-	 */
-	EReference getCollectionTable_JoinColumns();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getUniqueConstraints <em>Unique Constraints</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Unique Constraints</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.CollectionTable#getUniqueConstraints()
-	 * @see #getCollectionTable()
-	 * @generated
-	 */
-	EReference getCollectionTable_UniqueConstraints();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.Column <em>Column</em>}'.
@@ -5468,46 +5422,6 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COLLECTION_TABLE = eINSTANCE.getCollectionTable();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COLLECTION_TABLE__NAME = eINSTANCE.getCollectionTable_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Catalog</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COLLECTION_TABLE__CATALOG = eINSTANCE.getCollectionTable_Catalog();
-
-		/**
-		 * The meta object literal for the '<em><b>Schema</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COLLECTION_TABLE__SCHEMA = eINSTANCE.getCollectionTable_Schema();
-
-		/**
-		 * The meta object literal for the '<em><b>Join Columns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COLLECTION_TABLE__JOIN_COLUMNS = eINSTANCE.getCollectionTable_JoinColumns();
-
-		/**
-		 * The meta object literal for the '<em><b>Unique Constraints</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COLLECTION_TABLE__UNIQUE_CONSTRAINTS = eINSTANCE.getCollectionTable_UniqueConstraints();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.ColumnImpl <em>Column</em>}' class.

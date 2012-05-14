@@ -25,6 +25,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.EnumType;
 import org.eclipse.emf.teneo.annotations.pannotation.Enumerated;
@@ -568,9 +569,16 @@ public abstract class AbstractMapper {
 	 * reference or an empty list if no JoinColumns were defined.
 	 */
 	protected List<JoinColumn> getJoinColumns(PAnnotatedEReference paReference) {
-		List<JoinColumn> joinColumns = getHbmContext().getAssociationOverrides(
+		final AssociationOverride override = getHbmContext().getAssociationOverrides(
 				paReference);
-		if (joinColumns == null) {
+		List<JoinColumn> joinColumns = null;
+		if (override != null) {
+			if (override.getJoinTable() != null) {
+				joinColumns = override.getJoinTable().getJoinColumns();
+			} else {
+				joinColumns = override.getJoinColumns();
+			}
+		} else {
 			joinColumns = paReference.getJoinColumns();
 		}
 		if (joinColumns == null) {

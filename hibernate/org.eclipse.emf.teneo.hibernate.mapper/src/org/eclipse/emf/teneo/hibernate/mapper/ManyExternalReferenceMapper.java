@@ -47,7 +47,7 @@ public class ManyExternalReferenceMapper extends AbstractAssociationMapper
 		final Element collElement = addCollectionElement(paReference);
 		final Element keyElement = collElement.addElement("key");
 
-		final JoinTable jt = paReference.getJoinTable();
+		final JoinTable jt = getJoinTable(paReference);
 		final List<JoinColumn> jcs = paReference.getJoinColumns() == null ? new ArrayList<JoinColumn>()
 				: paReference.getJoinColumns();
 		final OneToMany otm = paReference.getOneToMany();

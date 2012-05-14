@@ -465,6 +465,12 @@ public class IdMapper extends AbstractAssociationMapper implements
 					final SequenceGenerator sg = id.getPaModel()
 							.getSequenceGenerator(id.getModelEAttribute(),
 									generatedValue.getGenerator());
+					if (sg.getCatalog() != null) {
+						generatorElement.addAttribute("catalog", sg.getCatalog());
+					}
+					if (sg.getSchema() != null) {
+						generatorElement.addAttribute("schema", sg.getSchema());
+					}
 					if (sg.isSetAllocationSize()) {
 						generatorElement.addAttribute("class", "seqhilo");
 						generatorElement.addElement("param")

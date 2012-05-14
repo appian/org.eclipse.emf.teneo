@@ -16,13 +16,6 @@
 
 package org.eclipse.emf.teneo.hibernate.test.emf.jpa2;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.teneo.samples.emf.annotations.any.AnyFactory;
-import org.eclipse.emf.teneo.samples.emf.annotations.any.AnyObject;
-import org.eclipse.emf.teneo.samples.emf.annotations.any.AnyPackage;
-import org.eclipse.emf.teneo.samples.emf.annotations.any.GlobalObjectType;
 import org.eclipse.emf.teneo.samples.emf.jpa2.orphanremoval.Address;
 import org.eclipse.emf.teneo.samples.emf.jpa2.orphanremoval.Employee;
 import org.eclipse.emf.teneo.samples.emf.jpa2.orphanremoval.EmployeeInfo;

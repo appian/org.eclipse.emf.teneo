@@ -81,8 +81,8 @@ public class ManyToOneMapper extends AbstractAssociationMapper implements
 			if (aOpposite.getOneToMany() != null
 					&& (!aOpposite.getOneToMany().isList() || aOpposite
 							.getOneToMany().getFetch().equals(FetchType.EXTRA))
-					&& aOpposite.getJoinTable() != null) {
-				joinTable = aOpposite.getJoinTable();
+					&& getJoinTable(aOpposite) != null) {
+				joinTable = getJoinTable(aOpposite);
 			}
 		}
 

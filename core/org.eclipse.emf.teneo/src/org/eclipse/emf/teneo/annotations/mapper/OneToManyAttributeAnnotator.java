@@ -76,8 +76,7 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 				otm.setFetch(FetchType.EXTRA);
 			}
 		} else {
-			log
-					.debug("One to many present adding default information if required");
+			log.debug("One to many present adding default information if required");
 		}
 
 		if (getPersistenceOptions().isSetForeignKeyNames()
@@ -117,18 +116,24 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 		if (aAttribute.getJoinColumns().size() == 0) {
 			final List<String> names = getSqlNameStrategy()
 					.getOneToManyEAttributeJoinColumns(aAttribute);
-			aAttribute.getJoinColumns().addAll(
-					getJoinColumns(names, FeatureMapUtil
-							.isFeatureMap(eAttribute), true, otm));
+			aAttribute
+					.getJoinColumns()
+					.addAll(getJoinColumns(names,
+							FeatureMapUtil.isFeatureMap(eAttribute), true, otm));
 		}
 
 		// set unique and indexed
 		if (!otmWasSet) {
-			log
-					.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
-							+ "because otm was not set manually");
+			log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
+					+ "because otm was not set manually");
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
+
+			if (aAttribute.getElementCollection() != null
+					&& aAttribute.getElementCollection().getFetch() != otm
+							.getFetch()) {
+				otm.setFetch(aAttribute.getElementCollection().getFetch());
+			}
 		}
 	}
 

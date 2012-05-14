@@ -42,13 +42,8 @@
 	<subclass name="org.eclipse.emf.teneo.samples.issues.bz247939.impl.CatImpl" entity-name="Cat" abstract="false" lazy="false" extends="Animal" discriminator-value="Cat">
 		<meta attribute="eclassName" inherit="false">Cat</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz247939</meta>
-		<join table="`CAT`">
-			<key>
-				<column name="`ANIMAL_ID`"/>
-			</key>
-			<many-to-one name="owner" entity-name="Owner" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CAT_OWNER" insert="true" update="true" not-null="false">
-				<column not-null="false" unique="false" name="`CAT_OWNER_ID`"/>
-			</many-to-one>
-		</join>
+		<many-to-one name="owner" entity-name="Owner" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="CAT_OWNER" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`CAT_OWNER_ID`"/>
+		</many-to-one>
 	</subclass>
 </hibernate-mapping>

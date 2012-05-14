@@ -174,6 +174,7 @@ public class PannotationSwitch<T> {
 			case PannotationPackage.COLLECTION_TABLE: {
 				CollectionTable collectionTable = (CollectionTable)theEObject;
 				T result = caseCollectionTable(collectionTable);
+				if (result == null) result = caseJoinTable(collectionTable);
 				if (result == null) result = casePAnnotation(collectionTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

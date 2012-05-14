@@ -56,6 +56,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/elementCollection"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/mapsId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEStructuralFeature/orderColumn"/>
     </genClasses>
     <genClasses ecoreClass="pamodel.ecore#//PAnnotatedEAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEAttribute/modelEAttribute"/>
@@ -83,7 +84,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKeyEnumerated"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKeyJoinColumns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/mapKeyTemporal"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedEReference/orderColumn"/>
     </genClasses>
     <genClasses image="false" ecoreClass="pamodel.ecore#//PAnnotatedETypedElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pamodel.ecore#//PAnnotatedETypedElement/attributeOverrides"/>
@@ -176,13 +176,7 @@
     <genClasses ecoreClass="pannotation.ecore#//Cacheable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Cacheable/value"/>
     </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//CollectionTable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//CollectionTable/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//CollectionTable/catalog"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//CollectionTable/schema"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//CollectionTable/joinColumns"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//CollectionTable/uniqueConstraints"/>
-    </genClasses>
+    <genClasses ecoreClass="pannotation.ecore#//CollectionTable"/>
     <genClasses ecoreClass="pannotation.ecore#//Column">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/unique"/>

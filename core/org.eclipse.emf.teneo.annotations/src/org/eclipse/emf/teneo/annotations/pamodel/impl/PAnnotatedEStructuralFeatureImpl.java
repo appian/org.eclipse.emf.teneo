@@ -24,6 +24,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
 import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
+import org.eclipse.emf.teneo.annotations.pannotation.OrderColumn;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'.
@@ -39,6 +40,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getElementCollection <em>Element Collection</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getMapsId <em>Maps Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getOrderColumn <em>Order Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -104,6 +106,16 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * @ordered
 	 */
 	protected MapsId mapsId;
+
+	/**
+	 * The cached value of the '{@link #getOrderColumn() <em>Order Column</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrderColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected OrderColumn orderColumn;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -434,6 +446,49 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OrderColumn getOrderColumn() {
+		return orderColumn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrderColumn(OrderColumn newOrderColumn, NotificationChain msgs) {
+		OrderColumn oldOrderColumn = orderColumn;
+		orderColumn = newOrderColumn;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN, oldOrderColumn, newOrderColumn);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrderColumn(OrderColumn newOrderColumn) {
+		if (newOrderColumn != orderColumn) {
+			NotificationChain msgs = null;
+			if (orderColumn != null)
+				msgs = ((InternalEObject)orderColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN, null, msgs);
+			if (newOrderColumn != null)
+				msgs = ((InternalEObject)newOrderColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN, null, msgs);
+			msgs = basicSetOrderColumn(newOrderColumn, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN, newOrderColumn, newOrderColumn));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -469,6 +524,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return basicSetId(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
 				return basicSetMapsId(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN:
+				return basicSetOrderColumn(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -510,6 +567,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return getId();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
 				return getMapsId();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN:
+				return getOrderColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -541,6 +600,9 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
 				setMapsId((MapsId)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN:
+				setOrderColumn((OrderColumn)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -574,6 +636,9 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
 				setMapsId((MapsId)null);
 				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN:
+				setOrderColumn((OrderColumn)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -601,6 +666,8 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return id != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
 				return mapsId != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ORDER_COLUMN:
+				return orderColumn != null;
 		}
 		return super.eIsSet(featureID);
 	}
