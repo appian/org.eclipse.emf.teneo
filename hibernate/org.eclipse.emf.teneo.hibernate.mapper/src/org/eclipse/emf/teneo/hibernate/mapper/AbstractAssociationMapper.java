@@ -21,6 +21,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
+import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.CascadeType;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
@@ -1049,5 +1050,13 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 										 * (List)joinTable. getJoinColumns
 										 * ().getValue()
 										 */);
+	}
+	
+	protected JoinTable getJoinTable(PAnnotatedEReference paReference) {
+		final AssociationOverride override = getHbmContext().getAssociationOverrides(paReference);
+		if (override != null && override.getJoinTable() != null) {
+			return override.getJoinTable();
+		}
+		return paReference.getJoinTable();
 	}
 }

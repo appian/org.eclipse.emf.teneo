@@ -26,6 +26,7 @@ import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedModel;
+import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.PAnnotation;
@@ -888,24 +889,15 @@ public class MappingContext extends AbstractProcessingContext implements
 						}
 					}
 					for (EReference er : eClass.getEAllReferences()) {
-						final List<JoinColumn> jcs = getAssociationOverrides(er
-								.getName());
-						if (jcs != null && jcs.size() > 0) {
-							return jcs.get(0).getTable();
+						tableName = tableNameFromAssociationOverride(er.getName());
+						if (tableName != null) {
+							return tableName;
 						}
 					}
 				} else {
-					List<JoinColumn> jcs = getAssociationOverrides(per);
-					if (jcs == null || jcs.size() == 0) {
-						jcs = per.getJoinColumns();
-					}
-					if (jcs != null && jcs.size() > 0) {
-						for (JoinColumn jc : jcs) {
-							if (jc.getTable() != null) {
-								tableName = jc.getTable();
-								break;
-							}
-						}
+					tableName = tableNameFromAssociationOverride(per.getModelEReference().getName());
+					if (tableName != null) {
+						return tableName;
 					}
 				}
 			} finally {
@@ -915,4 +907,26 @@ public class MappingContext extends AbstractProcessingContext implements
 		return tableName;
 	}
 
+	public String tableNameFromAssociationOverride(String name) {
+		final AssociationOverride override = getAssociationOverrides(name);
+		if (override != null) {
+			if (override.getJoinTable() != null && override.getJoinTable().getName() != null) {
+				return override.getJoinTable().getName();
+			} else if (override.getJoinTable() != null && override.getJoinTable().getJoinColumns().size() >0) {
+				for (JoinColumn jc : override.getJoinTable().getJoinColumns()) {
+					if (jc.getTable() != null) {
+						return jc.getTable();
+					}
+				}
+			} else if (override.getJoinColumns().size() > 0) {
+				for (JoinColumn jc : override.getJoinColumns()) {
+					if (jc.getTable() != null) {
+						return jc.getTable();
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
 }

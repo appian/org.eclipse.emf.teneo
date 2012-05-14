@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/teneo/samples/emf/jpa2/associationoverride"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/teneo/samples/emf/jpa2/associationoverride">
+	
+	<xsd:complexType name="Address">
+		<xsd:sequence>
+			<xsd:element name="street" type="xsd:string"/>
+			<xsd:element name="postalCode" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Person">
+		<xsd:annotation>
+			<xsd:appinfo source="teneo.jpa">@MappedSuperclass</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="address" type="this:Address" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@OneToMany</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Student">
+		<!-- Leave the Address foreign key column as-is. ("address_id") -->
+		<xsd:complexContent>
+			<xsd:extension base="this:Person">
+				<xsd:sequence>
+					<xsd:element name="faculty" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="Employee">
+		<xsd:annotation>
+			<!-- Override the Address foreign key column. ("employee_address_id") -->
+			<xsd:appinfo source="teneo.jpa">@AssociationOverride(name="address" joinTable=@JoinTable(name="abc" joinColumns=@JoinColumn(name="employee_addr_id")))</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="this:Person">
+				<xsd:sequence>
+					<xsd:element name="department" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+</xsd:schema>

@@ -52,17 +52,12 @@ Added catalog and schema
 - Version --> No Change
 
 == New and Changed Annotations  ==
-- AssociationOverride(s):
-Added AssociationOverride.joinTable
 - CollectionTable --> New
-- ElementCollection --> New
 - MapKeyClass --> New
 - MapKeyColumn --> New
 - MapKeyEnumerated --> New
 - MapKeyJoinColumn --> New
 - MapKeyTemporal --> New
-- SequenceGenerator:
-Added catalog and schema
 
 == Done ==
 - OneToMany:
@@ -77,3 +72,8 @@ Composite/Embedded Id: if the MapsId has a value then generator foreign is not s
 - Cacheable
 > use the HbCache annotation, Cacheable does not work for hibernate in any case
 > https://hibernate.onjira.com/browse/HHH-5303
+- ElementCollection --> New
+- SequenceGenerator:
+Added catalog and schema
+- AssociationOverride(s):
+Added AssociationOverride.joinTable

@@ -82,8 +82,7 @@ public class AbstractProcessingContext {
 	public void addAssociationOverrides(EList<AssociationOverride> overrides) {
 		if (overrides != null) {
 			for (AssociationOverride override : overrides) {
-				currentOverrides.put(override.getName(),
-						override.getJoinColumns());
+				currentOverrides.put(override.getName(), override);
 			}
 		}
 	}
@@ -162,25 +161,24 @@ public class AbstractProcessingContext {
 	}
 
 	/** Return the overridden JoinColumns for this reference */
-	public List<JoinColumn> getAssociationOverrides(
+	public AssociationOverride getAssociationOverrides(
 			PAnnotatedEReference paReference) {
 		return getAssociationOverrides(paReference.getModelEReference()
 				.getName());
 	}
 
-	public List<JoinColumn> getAssociationOverrides(String featureName) {
+	public AssociationOverride getAssociationOverrides(String featureName) {
 		return getAssociationOverrides(featureName, -1);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<JoinColumn> getAssociationOverrides(String featureName,
+	public AssociationOverride getAssociationOverrides(String featureName,
 			int embeddingFeatureIndex) {
-		final List<JoinColumn> jcs = (List<JoinColumn>) currentOverrides
+		final AssociationOverride jcs = (AssociationOverride) currentOverrides
 				.get(featureName);
 		if (jcs == null) {
 			final Object o = getFromStack(featureName);
 			if (o instanceof List<?>) {
-				return (List<JoinColumn>) o;
+				return (AssociationOverride) o;
 			}
 			// o == null, try one level deeper
 			if (embeddingFeatureIndex == -1 && !embeddingFeatureStack.isEmpty()) {

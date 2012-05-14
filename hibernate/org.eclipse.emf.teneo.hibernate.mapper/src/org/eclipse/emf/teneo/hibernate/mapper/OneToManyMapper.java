@@ -114,7 +114,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 
 		// TODO: throw error if both jointable and joincolumns have been set
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
-		final JoinTable jt = paReference.getJoinTable();
+		final JoinTable jt = getJoinTable(paReference);
 		if (jt != null) {
 			addJoinTable(hbReference, collElement, keyElement, jt);
 		} else {
@@ -268,7 +268,7 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 				.getHbOnDelete());
 
 		final List<JoinColumn> jcs = getJoinColumns(paReference);
-		final JoinTable jt = paReference.getJoinTable();
+		final JoinTable jt = getJoinTable(paReference);
 		if (jt != null) {
 			addJoinTable(hbReference, collElement, keyElement, jt);
 		} else {
