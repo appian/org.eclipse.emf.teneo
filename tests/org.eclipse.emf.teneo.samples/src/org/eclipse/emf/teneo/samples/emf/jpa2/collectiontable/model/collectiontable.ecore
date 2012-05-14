@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="collectiontable"
+    nsURI="http://www.eclipse.org/emf/teneo/samples/emf/jpa2/collectiontable" nsPrefix="collectiontable">
+  <eClassifiers xsi:type="ecore:EClass" name="Item">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="names" unique="false" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@CollectionTable(name=&quot;NamesTable&quot; joinColumns={@JoinColumn(name=&quot;joinColumn1&quot;)})&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//EmbeddedItem">
+      <eAnnotations source="teneo.jpa">
+        <details key="value" value="@Embedded&#xA;@CollectionTable(name=&quot;EmbeddedItemsTable&quot; joinColumns={@JoinColumn(name=&quot;MYJC&quot;)})&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmbeddedItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+</ecore:EPackage>
