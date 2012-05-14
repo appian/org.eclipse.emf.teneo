@@ -11,7 +11,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.CollectionTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ElementCollection;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
+import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'. <!--
@@ -26,6 +28,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getListIndexColumn <em>List Index Column</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getCollectionTable <em>Collection Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getElementCollection <em>Element Collection</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getMapsId <em>Maps Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,6 +185,58 @@ public interface PAnnotatedEStructuralFeature extends PAnnotatedETypedElement {
 	 * @generated
 	 */
 	void setElementCollection(ElementCollection value);
+
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Id</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' containment reference.
+	 * @see #setId(Id)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_Id()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Id getId();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getId <em>Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' containment reference.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(Id value);
+
+	/**
+	 * Returns the value of the '<em><b>Maps Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Maps Id</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Maps Id</em>' containment reference.
+	 * @see #setMapsId(MapsId)
+	 * @see org.eclipse.emf.teneo.annotations.pamodel.PamodelPackage#getPAnnotatedEStructuralFeature_MapsId()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MapsId getMapsId();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEStructuralFeature#getMapsId <em>Maps Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Maps Id</em>' containment reference.
+	 * @see #getMapsId()
+	 * @generated
+	 */
+	void setMapsId(MapsId value);
 
 	/**
 	 * Convenience function for obtaining the first available Column annotation.

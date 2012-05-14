@@ -26,6 +26,7 @@ import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.FetchType;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinColumn;
 import org.eclipse.emf.teneo.annotations.pannotation.JoinTable;
+import org.eclipse.emf.teneo.annotations.pannotation.ManyToOne;
 import org.eclipse.emf.teneo.annotations.pannotation.MapKey;
 import org.eclipse.emf.teneo.hibernate.hbannotation.Cascade;
 import org.eclipse.emf.teneo.hibernate.hbannotation.HbCascadeType;
@@ -119,6 +120,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		return res;
 	}
 
+	protected void mapMapsIdColumns() {
+		
+	}
+	
 	/** Adds a manytoone tag to the current element of the hbmcontext */
 	protected Element addManyToOne(Element currentParent,
 			PAnnotatedEReference aReference, String referedTo,
@@ -194,6 +199,13 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 	protected void addJoinColumns(PAnnotatedEReference per,
 			Element associationElement, List<JoinColumn> joinColumns,
 			boolean forceNullable) {
+		
+		if (per.getMapsId() != null) {
+			if (mapMapsIdColumns(per, associationElement)) {
+				return;
+			}
+		}
+		
 		log.debug("addJoinColumns " + associationElement.getName()
 				+ "/ no of joincolumns" + joinColumns.size());
 
@@ -827,12 +839,62 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		return elElement;
 	}
 
+	protected boolean mapMapsIdColumns(PAnnotatedEReference per, Element parentElement) {
+		// find the embedded id type and its features
+		final PAnnotatedEClass aClass = per.getPaEClass();
+		final String name = per.getMapsId().getValue();
+		PAnnotatedEReference embeddedERef = null;
+		for (PAnnotatedEStructuralFeature pef : aClass.getPaEStructuralFeatures()) {
+			if (pef instanceof PAnnotatedEReference && ((PAnnotatedEReference)pef).getEmbeddedId() != null) {
+				embeddedERef = (PAnnotatedEReference)pef;
+			}
+		}
+		if (embeddedERef == null) {
+			return false;
+		}
+		final PAnnotatedEClass embeddedIdAClass = embeddedERef.getAReferenceType();
+		for (PAnnotatedEStructuralFeature aFeature : embeddedIdAClass.getPaEStructuralFeatures()) {
+			// if only map a specific name then ignore all efeatures which are not that name
+			if (name != null && !aFeature.getModelEStructuralFeature().getName().equals(name)) {
+				continue;
+			}
+			
+			if (aFeature instanceof PAnnotatedEAttribute) {
+				PAnnotatedEAttribute aAttribute = (PAnnotatedEAttribute) aFeature;
+				addColumnsAndFormula(parentElement, aAttribute, getColumns(aAttribute), getHbmContext()
+						.isCurrentElementFeatureMap(), false);
+			} else if (aFeature instanceof PAnnotatedEReference
+					&& !((PAnnotatedEReference) aFeature).getModelEReference().isMany()) {
+				final PAnnotatedEReference embeddedIdReferenceProperty = (PAnnotatedEReference) aFeature;
+				final List<JoinColumn> jcs = getJoinColumns(embeddedIdReferenceProperty);
+				final ManyToOne mto = embeddedIdReferenceProperty.getManyToOne();
+
+				addJoinColumns(embeddedIdReferenceProperty, parentElement, jcs, getHbmContext().isDoForceOptional(embeddedIdReferenceProperty)
+						|| mto.isOptional() || getHbmContext().isCurrentElementFeatureMap());
+			}
+		}
+		
+		// now set insertable/updatable to false
+		parentElement.addAttribute("insert", "false");
+		parentElement.addAttribute("update", "false");
+		return true;
+	}
+	
 	/**
 	 * Adds columns to a key element. Also sets update on the key element based
 	 * on the values in the columns.
 	 */
 	protected void addKeyColumns(HbAnnotatedETypeElement per,
 			Element keyElement, List<JoinColumn> joinColumns) {
+		if (per instanceof HbAnnotatedEReference) {
+			final HbAnnotatedEReference hbRef = (HbAnnotatedEReference)per;
+			if (hbRef.getMapsId() != null) {
+				if (mapMapsIdColumns(hbRef, keyElement)) {
+					return;
+				}
+			}
+		}
+		
 		log.debug("Adding key columns");
 		boolean setUpdatable = false;
 		boolean isUpdatable = false;

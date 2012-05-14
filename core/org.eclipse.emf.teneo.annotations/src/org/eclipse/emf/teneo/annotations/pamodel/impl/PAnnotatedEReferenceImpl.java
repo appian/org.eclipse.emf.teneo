@@ -60,7 +60,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.PrimaryKeyJoinColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyEnumerated <em>Map Key Enumerated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyJoinColumns <em>Map Key Join Columns</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapKeyTemporal <em>Map Key Temporal</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getMapsId <em>Maps Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEReferenceImpl#getOrderColumn <em>Order Column</em>}</li>
  * </ul>
  * </p>
@@ -213,16 +212,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 	 * @ordered
 	 */
 	protected MapKeyTemporal mapKeyTemporal;
-
-	/**
-	 * The cached value of the '{@link #getMapsId() <em>Maps Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMapsId()
-	 * @generated
-	 * @ordered
-	 */
-	protected MapsId mapsId;
 
 	/**
 	 * The cached value of the '{@link #getOrderColumn() <em>Order Column</em>}' containment reference.
@@ -836,49 +825,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MapsId getMapsId() {
-		return mapsId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMapsId(MapsId newMapsId, NotificationChain msgs) {
-		MapsId oldMapsId = mapsId;
-		mapsId = newMapsId;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, oldMapsId, newMapsId);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMapsId(MapsId newMapsId) {
-		if (newMapsId != mapsId) {
-			NotificationChain msgs = null;
-			if (mapsId != null)
-				msgs = ((InternalEObject)mapsId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, null, msgs);
-			if (newMapsId != null)
-				msgs = ((InternalEObject)newMapsId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, null, msgs);
-			msgs = basicSetMapsId(newMapsId, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID, newMapsId, newMapsId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public OrderColumn getOrderColumn() {
 		return orderColumn;
 	}
@@ -953,8 +899,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return ((InternalEList<?>)getMapKeyJoinColumns()).basicRemove(otherEnd, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				return basicSetMapKeyTemporal(null, msgs);
-			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
-				return basicSetMapsId(null, msgs);
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
 				return basicSetOrderColumn(null, msgs);
 		}
@@ -1002,8 +946,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return getMapKeyJoinColumns();
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				return getMapKeyTemporal();
-			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
-				return getMapsId();
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
 				return getOrderColumn();
 		}
@@ -1066,9 +1008,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				setMapKeyTemporal((MapKeyTemporal)newValue);
 				return;
-			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
-				setMapsId((MapsId)newValue);
-				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
 				setOrderColumn((OrderColumn)newValue);
 				return;
@@ -1128,9 +1067,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				setMapKeyTemporal((MapKeyTemporal)null);
 				return;
-			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
-				setMapsId((MapsId)null);
-				return;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
 				setOrderColumn((OrderColumn)null);
 				return;
@@ -1177,8 +1113,6 @@ public class PAnnotatedEReferenceImpl extends PAnnotatedEStructuralFeatureImpl
 				return mapKeyJoinColumns != null && !mapKeyJoinColumns.isEmpty();
 			case PamodelPackage.PANNOTATED_EREFERENCE__MAP_KEY_TEMPORAL:
 				return mapKeyTemporal != null;
-			case PamodelPackage.PANNOTATED_EREFERENCE__MAPS_ID:
-				return mapsId != null;
 			case PamodelPackage.PANNOTATED_EREFERENCE__ORDER_COLUMN:
 				return orderColumn != null;
 		}

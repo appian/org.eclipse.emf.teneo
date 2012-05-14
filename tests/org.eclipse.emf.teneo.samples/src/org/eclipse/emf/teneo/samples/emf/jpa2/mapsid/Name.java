@@ -2,9 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Person.java,v 1.2 2006/11/07 10:22:28 mtaal Exp $
+ * $Id$
  */
-package org.eclipse.emf.teneo.samples.emf.annotations.compositeid;
+package org.eclipse.emf.teneo.samples.emf.jpa2.mapsid;
 
 import java.io.Serializable;
 
@@ -12,22 +12,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Person</b></em>'.
+ * A representation of the model object '<em><b>Name</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.compositeid.Person#getFirstName <em>First Name</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.annotations.compositeid.Person#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Name#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Name#getLastName <em>Last Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson()
- * @model annotation="teneo.jpa appinfo='@IdClass(org.eclipse.emf.teneo.samples.emf.annotations.compositeid.PersonID)'"
- * @generated
+ * @see org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.MapsidPackage#getName_()
+ * @model annotation="teneo.jpa appinfo='@Embeddable'"
+ *        extendedMetaData="name='Name' kind='elementOnly'"
+ * @generatedNOT
  */
-public interface Person extends EObject {
+public interface Name extends EObject, Serializable {
 	/**
 	 * Returns the value of the '<em><b>First Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -38,14 +39,15 @@ public interface Person extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson_FirstName()
-	 * @model annotation="teneo.jpa appinfo='@Id'"
+	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.MapsidPackage#getName_FirstName()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        extendedMetaData="kind='element' name='firstName'"
 	 * @generated
 	 */
 	String getFirstName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.compositeid.Person#getFirstName <em>First Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Name#getFirstName <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>First Name</em>' attribute.
@@ -64,14 +66,15 @@ public interface Person extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.annotations.compositeid.CompositeidPackage#getPerson_LastName()
-	 * @model annotation="teneo.jpa appinfo='@Id'"
+	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.MapsidPackage#getName_LastName()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        extendedMetaData="kind='element' name='lastName'"
 	 * @generated
 	 */
 	String getLastName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.annotations.compositeid.Person#getLastName <em>Last Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.jpa2.mapsid.Name#getLastName <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Last Name</em>' attribute.
@@ -80,4 +83,4 @@ public interface Person extends EObject {
 	 */
 	void setLastName(String value);
 
-} // Person
+} // Name

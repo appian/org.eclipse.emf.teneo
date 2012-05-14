@@ -9,14 +9,49 @@
 					<xsd:appinfo source="teneo.jpa">@EmbeddedId</xsd:appinfo>
 				</xsd:annotation>				
 			</xsd:element>
-			<xsd:element name="address" type="xsd:string" minOccurs="0">
+			<xsd:element name="identifier" type="xsd:anyURI" ecore:reference="this:PersonIdentifier">
 				<xsd:annotation>
-					<xsd:appinfo source="teneo.jpa">@Lob</xsd:appinfo>					
+					<xsd:appinfo source="teneo.jpa">@MapsId("firstName")</xsd:appinfo>					
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
-	
+
+	<xsd:complexType name="Human">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:anyURI" ecore:reference="this:Name">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@EmbeddedId</xsd:appinfo>
+				</xsd:annotation>				
+			</xsd:element>
+			<xsd:element name="humanClone" type="xsd:anyURI" ecore:reference="this:HumanClone">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@MapsId</xsd:appinfo>					
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="HumanClone">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:anyURI" ecore:reference="this:Name">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@EmbeddedId</xsd:appinfo>
+				</xsd:annotation>				
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+		
+	<xsd:complexType name="PersonIdentifier">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>					
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
 	<xsd:complexType name="Name">
 		<xsd:annotation>
 			<xsd:appinfo source="teneo.jpa">@Embeddable</xsd:appinfo>
@@ -25,6 +60,31 @@
 			<xsd:element name="firstName" type="xsd:string"/>
 			<xsd:element name="lastName" type="xsd:string"/>
 		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="House">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id</xsd:appinfo>					
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="address" type="xsd:anyURI" ecore:reference="this:Address">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@MapsId</xsd:appinfo>					
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>		
+	</xsd:complexType>
+	
+	<xsd:complexType name="Address">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long">
+				<xsd:annotation>
+					<xsd:appinfo source="teneo.jpa">@Id @GeneratedValue</xsd:appinfo>					
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>		
 	</xsd:complexType>
 	
 </xsd:schema>

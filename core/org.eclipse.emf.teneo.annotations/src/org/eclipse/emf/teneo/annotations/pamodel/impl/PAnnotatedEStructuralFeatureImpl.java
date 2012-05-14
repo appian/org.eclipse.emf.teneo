@@ -21,7 +21,9 @@ import org.eclipse.emf.teneo.annotations.pannotation.CollectionTable;
 import org.eclipse.emf.teneo.annotations.pannotation.ElementCollection;
 import org.eclipse.emf.teneo.annotations.pannotation.Column;
 import org.eclipse.emf.teneo.annotations.pannotation.ForeignKey;
+import org.eclipse.emf.teneo.annotations.pannotation.Id;
 import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
+import org.eclipse.emf.teneo.annotations.pannotation.MapsId;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>PAnnotated EStructural Feature</b></em>'.
@@ -35,6 +37,8 @@ import org.eclipse.emf.teneo.annotations.pannotation.ListIndexColumn;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getListIndexColumn <em>List Index Column</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getCollectionTable <em>Collection Table</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getElementCollection <em>Element Collection</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEStructuralFeatureImpl#getMapsId <em>Maps Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,6 +84,26 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	 * @ordered
 	 */
 	protected ElementCollection elementCollection;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected Id id;
+
+	/**
+	 * The cached value of the '{@link #getMapsId() <em>Maps Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapsId()
+	 * @generated
+	 * @ordered
+	 */
+	protected MapsId mapsId;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -324,6 +348,92 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Id getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetId(Id newId, NotificationChain msgs) {
+		Id oldId = id;
+		id = newId;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID, oldId, newId);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(Id newId) {
+		if (newId != id) {
+			NotificationChain msgs = null;
+			if (id != null)
+				msgs = ((InternalEObject)id).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID, null, msgs);
+			if (newId != null)
+				msgs = ((InternalEObject)newId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID, null, msgs);
+			msgs = basicSetId(newId, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID, newId, newId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapsId getMapsId() {
+		return mapsId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMapsId(MapsId newMapsId, NotificationChain msgs) {
+		MapsId oldMapsId = mapsId;
+		mapsId = newMapsId;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID, oldMapsId, newMapsId);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMapsId(MapsId newMapsId) {
+		if (newMapsId != mapsId) {
+			NotificationChain msgs = null;
+			if (mapsId != null)
+				msgs = ((InternalEObject)mapsId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID, null, msgs);
+			if (newMapsId != null)
+				msgs = ((InternalEObject)newMapsId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID, null, msgs);
+			msgs = basicSetMapsId(newMapsId, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID, newMapsId, newMapsId));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -355,6 +465,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return basicSetCollectionTable(null, msgs);
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
 				return basicSetElementCollection(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID:
+				return basicSetId(null, msgs);
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
+				return basicSetMapsId(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -392,6 +506,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return getCollectionTable();
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
 				return getElementCollection();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID:
+				return getId();
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
+				return getMapsId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -417,6 +535,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
 				setElementCollection((ElementCollection)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID:
+				setId((Id)newValue);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
+				setMapsId((MapsId)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -444,6 +568,12 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
 				setElementCollection((ElementCollection)null);
 				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID:
+				setId((Id)null);
+				return;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
+				setMapsId((MapsId)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -467,6 +597,10 @@ public abstract class PAnnotatedEStructuralFeatureImpl extends PAnnotatedETypedE
 				return collectionTable != null;
 			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ELEMENT_COLLECTION:
 				return elementCollection != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__ID:
+				return id != null;
+			case PamodelPackage.PANNOTATED_ESTRUCTURAL_FEATURE__MAPS_ID:
+				return mapsId != null;
 		}
 		return super.eIsSet(featureID);
 	}

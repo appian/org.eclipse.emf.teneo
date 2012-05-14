@@ -32,7 +32,6 @@ import org.eclipse.emf.teneo.annotations.pannotation.Version;
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getBasic <em>Basic</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getEnumerated <em>Enumerated</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getGeneratedValue <em>Generated Value</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getLob <em>Lob</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getTemporal <em>Temporal</em>}</li>
  *   <li>{@link org.eclipse.emf.teneo.annotations.pamodel.impl.PAnnotatedEAttributeImpl#getVersion <em>Version</em>}</li>
@@ -69,16 +68,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * @ordered
 	 */
 	protected GeneratedValue generatedValue;
-
-	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' containment reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected Id id;
 
 	/**
 	 * The cached value of the '{@link #getLob() <em>Lob</em>}' containment reference. <!--
@@ -268,46 +257,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Id getId() {
-		return id;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetId(Id newId, NotificationChain msgs) {
-		Id oldId = id;
-		id = newId;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EATTRIBUTE__ID, oldId, newId);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setId(Id newId) {
-		if (newId != id) {
-			NotificationChain msgs = null;
-			if (id != null)
-				msgs = ((InternalEObject)id).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EATTRIBUTE__ID, null, msgs);
-			if (newId != null)
-				msgs = ((InternalEObject)newId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PamodelPackage.PANNOTATED_EATTRIBUTE__ID, null, msgs);
-			msgs = basicSetId(newId, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PamodelPackage.PANNOTATED_EATTRIBUTE__ID, newId, newId));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Lob getLob() {
 		return lob;
 	}
@@ -437,8 +386,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return basicSetEnumerated(null, msgs);
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__GENERATED_VALUE:
 				return basicSetGeneratedValue(null, msgs);
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
-				return basicSetId(null, msgs);
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__LOB:
 				return basicSetLob(null, msgs);
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__TEMPORAL:
@@ -465,8 +412,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return getEnumerated();
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__GENERATED_VALUE:
 				return getGeneratedValue();
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
-				return getId();
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__LOB:
 				return getLob();
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__TEMPORAL:
@@ -492,9 +437,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__GENERATED_VALUE:
 				setGeneratedValue((GeneratedValue)newValue);
-				return;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
-				setId((Id)newValue);
 				return;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__LOB:
 				setLob((Lob)newValue);
@@ -525,9 +467,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__GENERATED_VALUE:
 				setGeneratedValue((GeneratedValue)null);
 				return;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
-				setId((Id)null);
-				return;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__LOB:
 				setLob((Lob)null);
 				return;
@@ -556,8 +495,6 @@ public class PAnnotatedEAttributeImpl extends PAnnotatedEStructuralFeatureImpl i
 				return enumerated != null;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__GENERATED_VALUE:
 				return generatedValue != null;
-			case PamodelPackage.PANNOTATED_EATTRIBUTE__ID:
-				return id != null;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__LOB:
 				return lob != null;
 			case PamodelPackage.PANNOTATED_EATTRIBUTE__TEMPORAL:

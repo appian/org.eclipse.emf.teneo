@@ -6,6 +6,8 @@
  */
 package org.eclipse.emf.teneo.samples.emf.annotations.joincolumns;
 
+import java.io.Serializable;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
