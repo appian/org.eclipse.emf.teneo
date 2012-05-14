@@ -62,20 +62,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CollectionTable" eSuperTypes="#//PAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionTable" eSuperTypes="#//JoinTable">
     <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EStructuralFeature"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joinColumns" upperBound="-1"
-        eType="#//JoinColumn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="uniqueConstraints" upperBound="-1"
-        eType="#//UniqueConstraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Column" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

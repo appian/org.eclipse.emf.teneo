@@ -176,13 +176,7 @@
     <genClasses ecoreClass="pannotation.ecore#//Cacheable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Cacheable/value"/>
     </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//CollectionTable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//CollectionTable/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//CollectionTable/catalog"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//CollectionTable/schema"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//CollectionTable/joinColumns"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pannotation.ecore#//CollectionTable/uniqueConstraints"/>
-    </genClasses>
+    <genClasses ecoreClass="pannotation.ecore#//CollectionTable"/>
     <genClasses ecoreClass="pannotation.ecore#//Column">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//Column/unique"/>

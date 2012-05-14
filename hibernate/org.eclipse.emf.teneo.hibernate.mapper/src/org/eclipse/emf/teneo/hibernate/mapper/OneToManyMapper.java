@@ -152,13 +152,9 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 			}
 		}
 
-		final CollectionOfElements coe = hbReference
-				.getHbCollectionOfElements();
-
 		// TODO OneToMany and CollectionOfElements are mutually exclusive.
 		// Should throw exception if both there?
-		addFetchType(collElement, (null != coe) ? coe.getFetch() : otm
-				.getFetch());
+		addFetchType(collElement, getFetchType(hbReference, otm.getFetch()));
 		addCascadesForMany(collElement, getCascades(hbReference.getHbCascade(),
 				otm.getCascade(), otm.isOrphanRemoval()));
 		List<JoinColumn> inverseJoinColumns = jt != null
@@ -423,5 +419,18 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 			getHbmContext().setCurrent(collElement.getParent());
 		}
 		return componentElement;
+	}
+	
+	private FetchType getFetchType(HbAnnotatedEReference hbReference, FetchType defaultFetchType) {
+
+		final CollectionOfElements coe = hbReference
+				.getHbCollectionOfElements();
+		if (coe != null) {
+			return coe.getFetch();
+		}
+		if (hbReference.getElementCollection() != null) {
+			return hbReference.getElementCollection().getFetch();
+		}
+		return defaultFetchType;
 	}
 }

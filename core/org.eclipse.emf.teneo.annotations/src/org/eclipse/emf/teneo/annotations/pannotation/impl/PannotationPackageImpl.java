@@ -638,51 +638,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCollectionTable_Name() {
-		return (EAttribute)collectionTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCollectionTable_Catalog() {
-		return (EAttribute)collectionTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCollectionTable_Schema() {
-		return (EAttribute)collectionTableEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCollectionTable_JoinColumns() {
-		return (EReference)collectionTableEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCollectionTable_UniqueConstraints() {
-		return (EReference)collectionTableEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -2304,11 +2259,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(cacheableEClass, CACHEABLE__VALUE);
 
 		collectionTableEClass = createEClass(COLLECTION_TABLE);
-		createEAttribute(collectionTableEClass, COLLECTION_TABLE__NAME);
-		createEAttribute(collectionTableEClass, COLLECTION_TABLE__CATALOG);
-		createEAttribute(collectionTableEClass, COLLECTION_TABLE__SCHEMA);
-		createEReference(collectionTableEClass, COLLECTION_TABLE__JOIN_COLUMNS);
-		createEReference(collectionTableEClass, COLLECTION_TABLE__UNIQUE_CONSTRAINTS);
 
 		columnEClass = createEClass(COLUMN);
 		createEAttribute(columnEClass, COLUMN__NAME);
@@ -2574,7 +2524,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		associationOverrideEClass.getESuperTypes().add(this.getPAnnotation());
 		basicEClass.getESuperTypes().add(this.getPAnnotation());
 		cacheableEClass.getESuperTypes().add(this.getPAnnotation());
-		collectionTableEClass.getESuperTypes().add(this.getPAnnotation());
+		collectionTableEClass.getESuperTypes().add(this.getJoinTable());
 		columnEClass.getESuperTypes().add(this.getPAnnotation());
 		discriminatorColumnEClass.getESuperTypes().add(this.getPAnnotation());
 		discriminatorValueEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2643,11 +2593,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getCacheable_Value(), ecorePackage.getEBoolean(), "value", "false", 0, 1, Cacheable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(collectionTableEClass, CollectionTable.class, "CollectionTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCollectionTable_Name(), ecorePackage.getEString(), "name", "false", 0, 1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCollectionTable_Catalog(), ecorePackage.getEString(), "catalog", "false", 0, 1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCollectionTable_Schema(), ecorePackage.getEString(), "schema", "false", 0, 1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCollectionTable_JoinColumns(), this.getJoinColumn(), null, "joinColumns", null, 0, -1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCollectionTable_UniqueConstraints(), this.getUniqueConstraint(), null, "uniqueConstraints", null, 0, -1, CollectionTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

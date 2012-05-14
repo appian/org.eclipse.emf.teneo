@@ -1057,6 +1057,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		if (override != null && override.getJoinTable() != null) {
 			return override.getJoinTable();
 		}
+		if (paReference.getEmbedded() != null && paReference.getCollectionTable() != null) {
+			return paReference.getCollectionTable();
+		}
+		
 		return paReference.getJoinTable();
 	}
 }
