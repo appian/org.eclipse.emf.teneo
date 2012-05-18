@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<forum:Forum xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:forum="http:///oracle/toplink/emf/examples/library/forum.ecore" name="EclipseCon Forum">
-  <ratedAuthors href="tle:///library?select o from Library o where o.name = 'EclipseCon Library'#Writer|name='The True Eclipse Expert'"/>
-  <featuredBooks href="tle:///library?select o from Library o where o.name = 'EclipseCon Library'#//@books.0/@value"/>
-</forum:Forum>
