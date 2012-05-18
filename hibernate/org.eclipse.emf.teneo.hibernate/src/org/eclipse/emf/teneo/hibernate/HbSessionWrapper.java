@@ -157,7 +157,9 @@ public class HbSessionWrapper implements SessionWrapper {
 	/** Close the underlying session */
 	public void close() {
 		getSessionInternal().clear();
-		getSessionInternal().close();
+		if (!getSessionInternal().getSessionFactory().isClosed()) {
+			getSessionInternal().close();
+		}
 	}
 
 	/** Save or update the pass object */
