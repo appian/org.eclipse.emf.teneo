@@ -257,7 +257,7 @@ public class HibernateTestStore extends AbstractTestStore {
 		if (sessionWrapper.isTransactionActive()) {
 			sessionWrapper.rollbackTransaction();
 		}
-		sessionWrapper.close();
+//		sessionWrapper.close();
 		sessionWrapper = emfDataStore.createSessionWrapper();
 		sessionWrapper.getHibernateSession().setFlushMode(FlushMode.COMMIT);
 	}
@@ -452,7 +452,7 @@ public class HibernateTestStore extends AbstractTestStore {
 			rollbackTransaction();
 		}
 
-		sessionWrapper.close();
+//		sessionWrapper.close();
 
 		HbHelper.INSTANCE.closeAll();
 
