@@ -156,11 +156,7 @@ public class HbSessionWrapper implements SessionWrapper {
 
 	/** Close the underlying session */
 	public void close() {
-		try {
-			getSessionInternal().close();
-		} catch (UnknownServiceException e) {
-			// ignore these ones...
-		}
+		getSessionInternal().close();
 	}
 
 	/** Save or update the pass object */
