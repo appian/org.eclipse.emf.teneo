@@ -18,38 +18,45 @@ import junit.framework.Assert;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsFactory;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
-public class MapKeyColumnAction extends AbstractTestAction {
+public class MapKeyJoinColumnAction extends AbstractTestAction {
 
 	private static final MapsFactory FACTORY = MapsFactory.eINSTANCE;
 
-	public MapKeyColumnAction() {
+	public MapKeyJoinColumnAction() {
 		super(MapsPackage.eINSTANCE);
 	}
 
 	@Override
 	public void doAction(TestStore store) {
-		final String key1 = "k1";
-		final String value1 = "v1";
-		final String key2 = "k2";
-		final String value2 = "v2";
+		final String name1 = "nm1";
+		final String name2 = "nm2";
 		{
 			store.beginTransaction();
+			final PhotoPart pp1 = FACTORY.createPhotoPart();
+			pp1.setName(name1);
+			final PhotoPart pp2 = FACTORY.createPhotoPart();
+			pp2.setName(name2);
 			final Images images = FACTORY.createImages();
-			images.getImageFiles().put(key1, value1);
-			images.getImageFiles().put(key2, value2);
+			images.getPhotoParts().put(pp1, name1);
+			images.getPhotoParts().put(pp2, name2);
+			store.store(pp1);
+			store.store(pp2);
 			store.store(images);
 			store.commitTransaction();
 		}
 		{
 			store.beginTransaction();
 			final Images images = store.getObject(Images.class);
-			Assert.assertTrue(images.getImageFiles().get(key1).equals(value1));
-			Assert.assertTrue(images.getImageFiles().get(key2).equals(value2));
-			Assert.assertTrue(images.getImageFiles().size() == 2);
-			store.store(images);
+			
+			Assert.assertTrue(images.getPhotoParts().size() == 2);
+			for (PhotoPart pp : images.getPhotoParts().keySet()) {
+				final String val = images.getPhotoParts().get(pp);
+				Assert.assertTrue(pp.getName().equals(val));
+			}
 			store.commitTransaction();
 		}
 		testTables(store);
@@ -62,7 +69,7 @@ public class MapKeyColumnAction extends AbstractTestAction {
 		try {
 			stmt = conn.createStatement();
 			rs = stmt
-					.executeQuery("select IMAGE_NAME, IMAGE_FILENAME from IMAGE_MAPPING");
+					.executeQuery("select PARTS_NAME from PHOTOPARTS_MAP");
 			Assert.assertTrue(rs.next());
 			Assert.assertTrue(rs.next());
 			Assert.assertFalse(rs.next());

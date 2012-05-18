@@ -264,22 +264,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyClass/value"/>
     </genClasses>
     <genClasses ecoreClass="pannotation.ecore#//MapKeyColumn"/>
-    <genClasses ecoreClass="pannotation.ecore#//MapKeyEnumerated">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyEnumerated/value"/>
-    </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//MapKeyJoinColumn">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/referencedColumnName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/unique"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/nullable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/insertable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/updatable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/columnDefinition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyJoinColumn/table"/>
-    </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//MapKeyTemporal">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyTemporal/value"/>
-    </genClasses>
+    <genClasses ecoreClass="pannotation.ecore#//MapKeyEnumerated"/>
+    <genClasses ecoreClass="pannotation.ecore#//MapKeyJoinColumn"/>
+    <genClasses ecoreClass="pannotation.ecore#//MapKeyTemporal"/>
     <genClasses ecoreClass="pannotation.ecore#//MappedSuperclass"/>
     <genClasses ecoreClass="pannotation.ecore#//MapsId">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapsId/value"/>

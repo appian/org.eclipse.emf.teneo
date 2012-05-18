@@ -1349,6 +1349,7 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyEnumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyEnumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEnumerated_AllowedElementType(mapKeyEnumerated, diagnostics, context);
 		return result;
 	}
 
@@ -1400,7 +1401,8 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMapKeyTemporal_AllowedElementType(MapKeyTemporal mapKeyTemporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1418,7 +1420,7 @@ public class PannotationValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return true;
+		return validateTemporal_AllowedElementType(mapKeyTemporal, diagnostics, context);
 	}
 
 	/**

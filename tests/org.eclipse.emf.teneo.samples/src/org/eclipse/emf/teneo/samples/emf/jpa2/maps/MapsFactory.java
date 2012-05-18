@@ -35,13 +35,13 @@ public interface MapsFactory extends EFactory {
 	Images createImages();
 
 	/**
-	 * Returns a new object of class '<em>Photo Book</em>'.
+	 * Returns a new object of class '<em>Photo Part</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Photo Book</em>'.
+	 * @return a new object of class '<em>Photo Part</em>'.
 	 * @generated
 	 */
-	PhotoBook createPhotoBook();
+	PhotoPart createPhotoPart();
 
 	/**
 	 * Returns the package supported by this factory.

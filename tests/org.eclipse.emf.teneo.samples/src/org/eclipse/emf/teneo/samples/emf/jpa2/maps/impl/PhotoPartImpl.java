@@ -7,29 +7,26 @@
 package org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
-import org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoBook;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Photo Book</b></em>'.
+ * An implementation of the model object '<em><b>Photo Part</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.PhotoBookImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.PhotoPartImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
+public class PhotoPartImpl extends EObjectImpl implements PhotoPart {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -55,7 +52,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PhotoBookImpl() {
+	protected PhotoPartImpl() {
 		super();
 	}
 
@@ -66,7 +63,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MapsPackage.Literals.PHOTO_BOOK;
+		return MapsPackage.Literals.PHOTO_PART;
 	}
 
 	/**
@@ -87,7 +84,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MapsPackage.PHOTO_BOOK__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, MapsPackage.PHOTO_PART__NAME, oldName, name));
 	}
 
 	/**
@@ -98,7 +95,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MapsPackage.PHOTO_BOOK__NAME:
+			case MapsPackage.PHOTO_PART__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +109,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MapsPackage.PHOTO_BOOK__NAME:
+			case MapsPackage.PHOTO_PART__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -127,7 +124,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MapsPackage.PHOTO_BOOK__NAME:
+			case MapsPackage.PHOTO_PART__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -142,7 +139,7 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MapsPackage.PHOTO_BOOK__NAME:
+			case MapsPackage.PHOTO_PART__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
@@ -164,4 +161,4 @@ public class PhotoBookImpl extends EObjectImpl implements PhotoBook {
 		return result.toString();
 	}
 
-} //PhotoBookImpl
+} //PhotoPartImpl

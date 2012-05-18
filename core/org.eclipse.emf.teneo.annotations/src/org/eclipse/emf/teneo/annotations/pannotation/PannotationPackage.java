@@ -1824,7 +1824,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_ENUMERATED__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+	int MAP_KEY_ENUMERATED__EMODEL_ELEMENT = ENUMERATED__EMODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -1833,7 +1833,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_ENUMERATED__GENERATED = PANNOTATION__GENERATED;
+	int MAP_KEY_ENUMERATED__GENERATED = ENUMERATED__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1842,7 +1842,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_ENUMERATED__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+	int MAP_KEY_ENUMERATED__VALUE = ENUMERATED__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Map Key Enumerated</em>' class.
@@ -1851,7 +1851,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_ENUMERATED_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+	int MAP_KEY_ENUMERATED_FEATURE_COUNT = ENUMERATED_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyJoinColumnImpl <em>Map Key Join Column</em>}' class.
@@ -1870,7 +1870,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+	int MAP_KEY_JOIN_COLUMN__EMODEL_ELEMENT = JOIN_COLUMN__EMODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -1879,7 +1879,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__GENERATED = PANNOTATION__GENERATED;
+	int MAP_KEY_JOIN_COLUMN__GENERATED = JOIN_COLUMN__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1888,7 +1888,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__NAME = PANNOTATION_FEATURE_COUNT + 0;
+	int MAP_KEY_JOIN_COLUMN__NAME = JOIN_COLUMN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Referenced Column Name</b></em>' attribute.
@@ -1897,7 +1897,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME = PANNOTATION_FEATURE_COUNT + 1;
+	int MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME = JOIN_COLUMN__REFERENCED_COLUMN_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Unique</b></em>' attribute.
@@ -1906,7 +1906,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__UNIQUE = PANNOTATION_FEATURE_COUNT + 2;
+	int MAP_KEY_JOIN_COLUMN__UNIQUE = JOIN_COLUMN__UNIQUE;
 
 	/**
 	 * The feature id for the '<em><b>Nullable</b></em>' attribute.
@@ -1915,7 +1915,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__NULLABLE = PANNOTATION_FEATURE_COUNT + 3;
+	int MAP_KEY_JOIN_COLUMN__NULLABLE = JOIN_COLUMN__NULLABLE;
 
 	/**
 	 * The feature id for the '<em><b>Insertable</b></em>' attribute.
@@ -1924,7 +1924,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__INSERTABLE = PANNOTATION_FEATURE_COUNT + 4;
+	int MAP_KEY_JOIN_COLUMN__INSERTABLE = JOIN_COLUMN__INSERTABLE;
 
 	/**
 	 * The feature id for the '<em><b>Updatable</b></em>' attribute.
@@ -1933,7 +1933,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__UPDATABLE = PANNOTATION_FEATURE_COUNT + 5;
+	int MAP_KEY_JOIN_COLUMN__UPDATABLE = JOIN_COLUMN__UPDATABLE;
 
 	/**
 	 * The feature id for the '<em><b>Column Definition</b></em>' attribute.
@@ -1942,7 +1942,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION = PANNOTATION_FEATURE_COUNT + 6;
+	int MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION = JOIN_COLUMN__COLUMN_DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Table</b></em>' attribute.
@@ -1951,7 +1951,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN__TABLE = PANNOTATION_FEATURE_COUNT + 7;
+	int MAP_KEY_JOIN_COLUMN__TABLE = JOIN_COLUMN__TABLE;
 
 	/**
 	 * The number of structural features of the '<em>Map Key Join Column</em>' class.
@@ -1960,7 +1960,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_JOIN_COLUMN_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 8;
+	int MAP_KEY_JOIN_COLUMN_FEATURE_COUNT = JOIN_COLUMN_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyTemporalImpl <em>Map Key Temporal</em>}' class.
@@ -1973,13 +1973,33 @@ public interface PannotationPackage extends EPackage {
 	int MAP_KEY_TEMPORAL = 29;
 
 	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl <em>Maps Id</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapsId()
+	 * @generated
+	 */
+	int MAPS_ID = 31;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl <em>Order Column</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl
+	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOrderColumn()
+	 * @generated
+	 */
+	int ORDER_COLUMN = 35;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_TEMPORAL__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
+	int TEMPORAL__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -1988,7 +2008,42 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_TEMPORAL__GENERATED = PANNOTATION__GENERATED;
+	int TEMPORAL__GENERATED = PANNOTATION__GENERATED;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Temporal</em>' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_TEMPORAL__EMODEL_ELEMENT = TEMPORAL__EMODEL_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Generated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_KEY_TEMPORAL__GENERATED = TEMPORAL__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1997,7 +2052,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_TEMPORAL__VALUE = PANNOTATION_FEATURE_COUNT + 0;
+	int MAP_KEY_TEMPORAL__VALUE = TEMPORAL__VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Map Key Temporal</em>' class.
@@ -2006,7 +2061,7 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_KEY_TEMPORAL_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
+	int MAP_KEY_TEMPORAL_FEATURE_COUNT = TEMPORAL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2034,16 +2089,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAPPED_SUPERCLASS_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl <em>Maps Id</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.MapsIdImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getMapsId()
-	 * @generated
-	 */
-	int MAPS_ID = 31;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2281,16 +2326,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORDER_BY_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl <em>Order Column</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.OrderColumnImpl
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.impl.PannotationPackageImpl#getOrderColumn()
-	 * @generated
-	 */
-	int ORDER_COLUMN = 35;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference.
@@ -2738,41 +2773,6 @@ public interface PannotationPackage extends EPackage {
 	 * @ordered
 	 */
 	int TABLE_GENERATOR_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__EMODEL_ELEMENT = PANNOTATION__EMODEL_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Generated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__GENERATED = PANNOTATION__GENERATED;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL__VALUE = PANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Temporal</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEMPORAL_FEATURE_COUNT = PANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EModel Element</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -4110,17 +4110,6 @@ public interface PannotationPackage extends EPackage {
 	EClass getMapKeyEnumerated();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyEnumerated#getValue()
-	 * @see #getMapKeyEnumerated()
-	 * @generated
-	 */
-	EAttribute getMapKeyEnumerated_Value();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn <em>Map Key Join Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4131,94 +4120,6 @@ public interface PannotationPackage extends EPackage {
 	EClass getMapKeyJoinColumn();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getName()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getReferencedColumnName <em>Referenced Column Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Referenced Column Name</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getReferencedColumnName()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_ReferencedColumnName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUnique <em>Unique</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unique</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUnique()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_Unique();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isNullable <em>Nullable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Nullable</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isNullable()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_Nullable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isInsertable <em>Insertable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Insertable</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isInsertable()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_Insertable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUpdatable <em>Updatable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Updatable</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#isUpdatable()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_Updatable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getColumnDefinition <em>Column Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Column Definition</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getColumnDefinition()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_ColumnDefinition();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getTable <em>Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Table</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyJoinColumn#getTable()
-	 * @see #getMapKeyJoinColumn()
-	 * @generated
-	 */
-	EAttribute getMapKeyJoinColumn_Table();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal <em>Map Key Temporal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4227,17 +4128,6 @@ public interface PannotationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMapKeyTemporal();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.emf.teneo.annotations.pannotation.MapKeyTemporal#getValue()
-	 * @see #getMapKeyTemporal()
-	 * @generated
-	 */
-	EAttribute getMapKeyTemporal_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.teneo.annotations.pannotation.OneToMany <em>One To Many</em>}'.
@@ -5920,14 +5810,6 @@ public interface PannotationPackage extends EPackage {
 		EClass MAP_KEY_ENUMERATED = eINSTANCE.getMapKeyEnumerated();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_ENUMERATED__VALUE = eINSTANCE.getMapKeyEnumerated_Value();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyJoinColumnImpl <em>Map Key Join Column</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5938,70 +5820,6 @@ public interface PannotationPackage extends EPackage {
 		EClass MAP_KEY_JOIN_COLUMN = eINSTANCE.getMapKeyJoinColumn();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__NAME = eINSTANCE.getMapKeyJoinColumn_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Referenced Column Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME = eINSTANCE.getMapKeyJoinColumn_ReferencedColumnName();
-
-		/**
-		 * The meta object literal for the '<em><b>Unique</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__UNIQUE = eINSTANCE.getMapKeyJoinColumn_Unique();
-
-		/**
-		 * The meta object literal for the '<em><b>Nullable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__NULLABLE = eINSTANCE.getMapKeyJoinColumn_Nullable();
-
-		/**
-		 * The meta object literal for the '<em><b>Insertable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__INSERTABLE = eINSTANCE.getMapKeyJoinColumn_Insertable();
-
-		/**
-		 * The meta object literal for the '<em><b>Updatable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__UPDATABLE = eINSTANCE.getMapKeyJoinColumn_Updatable();
-
-		/**
-		 * The meta object literal for the '<em><b>Column Definition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION = eINSTANCE.getMapKeyJoinColumn_ColumnDefinition();
-
-		/**
-		 * The meta object literal for the '<em><b>Table</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_JOIN_COLUMN__TABLE = eINSTANCE.getMapKeyJoinColumn_Table();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MapKeyTemporalImpl <em>Map Key Temporal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6010,14 +5828,6 @@ public interface PannotationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MAP_KEY_TEMPORAL = eINSTANCE.getMapKeyTemporal();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAP_KEY_TEMPORAL__VALUE = eINSTANCE.getMapKeyTemporal_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.teneo.annotations.pannotation.impl.MappedSuperclassImpl <em>Mapped Superclass</em>}' class.

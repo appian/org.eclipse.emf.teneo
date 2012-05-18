@@ -8,12 +8,13 @@ package org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.*;
+import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Address;
+import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.AssociationoverridePackage;
+import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Employee;
+import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Person;
+import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Student;
 
 /**
  * <!-- begin-user-doc -->

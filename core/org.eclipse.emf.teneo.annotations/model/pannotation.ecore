@@ -291,39 +291,24 @@
       <details key="constraints" value="ScalePrecisionForNumeric LengthForString"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MapKeyEnumerated" eSuperTypes="#//PAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="MapKeyEnumerated" eSuperTypes="#//Enumerated">
     <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EReference"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//EnumType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MapKeyJoinColumn" eSuperTypes="#//PAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="MapKeyJoinColumn" eSuperTypes="#//JoinColumn">
     <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EClass"/>
       <details key="1" value="EReference"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referencedColumnName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true" unsettable="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="insertable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="table" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MapKeyTemporal" eSuperTypes="#//PAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="MapKeyTemporal" eSuperTypes="#//Temporal">
     <eAnnotations source="teneo/internal/Target">
       <details key="0" value="EAttribute"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="AllowedElementType"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//TemporalType"
-        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappedSuperclass" eSuperTypes="#//PAnnotation">
     <eAnnotations source="teneo/internal/Target">

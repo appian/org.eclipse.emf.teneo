@@ -6,6 +6,8 @@
  */
 package org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl;
 
+import java.util.Date;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EMap;
@@ -17,19 +19,19 @@ import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String To String Map Entry</b></em>'.
+ * An implementation of the model object '<em><b>Date To String Map Entry</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.StringToStringMapEntryImpl#getTypedKey <em>Key</em>}</li>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.StringToStringMapEntryImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.DateToStringMapEntryImpl#getTypedKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.DateToStringMapEntryImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<String,String> {
+public class DateToStringMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<Date,String> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -38,7 +40,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String KEY_EDEFAULT = null;
+	protected static final Date KEY_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
@@ -48,7 +50,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 * @ordered
 	 */
-	protected String key = KEY_EDEFAULT;
+	protected Date key = KEY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
@@ -75,7 +77,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringToStringMapEntryImpl() {
+	protected DateToStringMapEntryImpl() {
 		super();
 	}
 
@@ -86,7 +88,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MapsPackage.Literals.STRING_TO_STRING_MAP_ENTRY;
+		return MapsPackage.Literals.DATE_TO_STRING_MAP_ENTRY;
 	}
 
 	/**
@@ -94,7 +96,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTypedKey() {
+	public Date getTypedKey() {
 		return key;
 	}
 
@@ -103,11 +105,11 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedKey(String newKey) {
-		String oldKey = key;
+	public void setTypedKey(Date newKey) {
+		Date oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MapsPackage.STRING_TO_STRING_MAP_ENTRY__KEY, oldKey, key));
+			eNotify(new ENotificationImpl(this, Notification.SET, MapsPackage.DATE_TO_STRING_MAP_ENTRY__KEY, oldKey, key));
 	}
 
 	/**
@@ -128,7 +130,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MapsPackage.STRING_TO_STRING_MAP_ENTRY__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, MapsPackage.DATE_TO_STRING_MAP_ENTRY__VALUE, oldValue, value));
 	}
 
 	/**
@@ -139,9 +141,9 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__KEY:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__KEY:
 				return getTypedKey();
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__VALUE:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__VALUE:
 				return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -155,10 +157,10 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__KEY:
-				setTypedKey((String)newValue);
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__KEY:
+				setTypedKey((Date)newValue);
 				return;
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__VALUE:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__VALUE:
 				setTypedValue((String)newValue);
 				return;
 		}
@@ -173,10 +175,10 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__KEY:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__KEY:
 				setTypedKey(KEY_EDEFAULT);
 				return;
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__VALUE:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__VALUE:
 				setTypedValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -191,9 +193,9 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__KEY:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__KEY:
 				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
-			case MapsPackage.STRING_TO_STRING_MAP_ENTRY__VALUE:
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
@@ -251,7 +253,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getKey() {
+	public Date getKey() {
 		return getTypedKey();
 	}
 
@@ -260,7 +262,7 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKey(String key) {
+	public void setKey(Date key) {
 		setTypedKey(key);
 	}
 
@@ -290,9 +292,9 @@ public class StringToStringMapEntryImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<String, String> getEMap() {
+	public EMap<Date, String> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, String>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<Date, String>)container.eGet(eContainmentFeature());
 	}
 
-} //StringToStringMapEntryImpl
+} //DateToStringMapEntryImpl

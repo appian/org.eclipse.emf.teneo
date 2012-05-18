@@ -1262,15 +1262,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapKeyEnumerated_Value() {
-		return (EAttribute)mapKeyEnumeratedEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMapKeyJoinColumn() {
 		return mapKeyJoinColumnEClass;
 	}
@@ -1280,89 +1271,8 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapKeyJoinColumn_Name() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_ReferencedColumnName() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_Unique() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_Nullable() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_Insertable() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_Updatable() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_ColumnDefinition() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyJoinColumn_Table() {
-		return (EAttribute)mapKeyJoinColumnEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMapKeyTemporal() {
 		return mapKeyTemporalEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyTemporal_Value() {
-		return (EAttribute)mapKeyTemporalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2246,20 +2156,10 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		mapKeyColumnEClass = createEClass(MAP_KEY_COLUMN);
 
 		mapKeyEnumeratedEClass = createEClass(MAP_KEY_ENUMERATED);
-		createEAttribute(mapKeyEnumeratedEClass, MAP_KEY_ENUMERATED__VALUE);
 
 		mapKeyJoinColumnEClass = createEClass(MAP_KEY_JOIN_COLUMN);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__NAME);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__REFERENCED_COLUMN_NAME);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__UNIQUE);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__NULLABLE);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__INSERTABLE);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__UPDATABLE);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__COLUMN_DEFINITION);
-		createEAttribute(mapKeyJoinColumnEClass, MAP_KEY_JOIN_COLUMN__TABLE);
 
 		mapKeyTemporalEClass = createEClass(MAP_KEY_TEMPORAL);
-		createEAttribute(mapKeyTemporalEClass, MAP_KEY_TEMPORAL__VALUE);
 
 		mappedSuperclassEClass = createEClass(MAPPED_SUPERCLASS);
 
@@ -2426,9 +2326,9 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		mapKeyEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyClassEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyColumnEClass.getESuperTypes().add(this.getColumn());
-		mapKeyEnumeratedEClass.getESuperTypes().add(this.getPAnnotation());
-		mapKeyJoinColumnEClass.getESuperTypes().add(this.getPAnnotation());
-		mapKeyTemporalEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyEnumeratedEClass.getESuperTypes().add(this.getEnumerated());
+		mapKeyJoinColumnEClass.getESuperTypes().add(this.getJoinColumn());
+		mapKeyTemporalEClass.getESuperTypes().add(this.getTemporal());
 		mappedSuperclassEClass.getESuperTypes().add(this.getPAnnotation());
 		mapsIdEClass.getESuperTypes().add(this.getPAnnotation());
 		oneToManyEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2568,20 +2468,10 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEClass(mapKeyColumnEClass, MapKeyColumn.class, "MapKeyColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(mapKeyEnumeratedEClass, MapKeyEnumerated.class, "MapKeyEnumerated", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMapKeyEnumerated_Value(), this.getEnumType(), "value", null, 0, 1, MapKeyEnumerated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mapKeyJoinColumnEClass, MapKeyJoinColumn.class, "MapKeyJoinColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMapKeyJoinColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_ReferencedColumnName(), ecorePackage.getEString(), "referencedColumnName", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_Unique(), ecorePackage.getEBoolean(), "unique", "false", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "true", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_Insertable(), ecorePackage.getEBoolean(), "insertable", "true", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_Updatable(), ecorePackage.getEBoolean(), "updatable", "true", 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_ColumnDefinition(), ecorePackage.getEString(), "columnDefinition", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyJoinColumn_Table(), ecorePackage.getEString(), "table", null, 0, 1, MapKeyJoinColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mapKeyTemporalEClass, MapKeyTemporal.class, "MapKeyTemporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMapKeyTemporal_Value(), this.getTemporalType(), "value", "", 0, 1, MapKeyTemporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mappedSuperclassEClass, MappedSuperclass.class, "MappedSuperclass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -184,7 +184,8 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 					.getEStructuralFeature("value");
 			final PAnnotatedEAttribute valuePAttribute = paReference
 					.getPaModel().getPAnnotated(valueEAttribute);
-			// column annotation can be set at reference level
+			
+			// Put column at the reference level to the attribute itself
 			if (valuePAttribute.getColumn() == null && paReference.getColumn() != null) {
 				valuePAttribute.setColumn(EcoreUtil.copy(paReference.getColumn()));
 			}

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -487,6 +488,27 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final EStructuralFeature keyFeature = eref.getEReferenceType()
 				.getEStructuralFeature("key");
 
+		final PAnnotatedEStructuralFeature paKeyFeature = aref.getPaModel()
+				.getPAnnotated(keyFeature);
+		PAnnotatedEAttribute paAttribute = null;
+		if (paKeyFeature instanceof PAnnotatedEAttribute) {
+
+			paAttribute = (PAnnotatedEAttribute) paKeyFeature;
+
+			// put different things that are defined at reference level to the
+			// key
+			if (paAttribute.getEnumerated() == null
+					&& aref.getMapKeyEnumerated() != null) {
+				paAttribute.setEnumerated(EcoreUtil.copy(aref
+						.getMapKeyEnumerated()));
+			}
+			if (paAttribute.getTemporal() == null
+					&& aref.getMapKeyTemporal() != null) {
+				paAttribute
+						.setTemporal(EcoreUtil.copy(aref.getMapKeyTemporal()));
+			}
+		}
+
 		if (hbRef.getHbMapKey() != null && hbRef.getMapKey() != null) {
 			log.warn("The EReference "
 					+ aref.getModelElement().getName()
@@ -503,8 +525,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		if (hbRef.getHbMapKey() != null) {
 			final org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey mapKey = hbRef
 					.getHbMapKey();
-			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref
-					.getPaModel().getPAnnotated(keyFeature);
 			final Element mapKeyElement = collElement.addElement("map-key");
 			if (mapKey.getColumns() != null && mapKey.getColumns().size() > 0) {
 				addColumnsAndFormula(mapKeyElement, aref, mapKey.getColumns(),
@@ -518,9 +538,6 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKey() != null) {
 			final MapKey mapKey = hbRef.getMapKey();
-
-			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref
-					.getPaModel().getPAnnotated(keyFeature);
 			final Element mapKeyElement = collElement.addElement("map-key");
 			if (hbRef.getMapKeyColumn() != null) {
 				final List<Column> mkColumns = new ArrayList<Column>();
@@ -555,6 +572,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 			if (mkm.getJoinColumns() != null && mkm.getJoinColumns().size() > 0) {
 				addJoinColumns(hbRef, mkmElement, mkm.getJoinColumns(), false);
+			} else if (hbRef.getMapKeyJoinColumns().size() > 0) {
+				final List<JoinColumn> jcs = new ArrayList<JoinColumn>();
+				jcs.addAll(hbRef.getMapKeyJoinColumns());
+				addJoinColumns(hbRef, mkmElement, jcs, false);
 			}
 		} else if (keyFeature instanceof EReference) {
 			final PAnnotatedEClass referedAClass = aref.getPaModel()
@@ -573,13 +594,17 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 						getHbmContext().getInstanceClassName(
 								referedAClass.getModelEClass()));
 			}
+			Element mkmElement = collElement.element("map-key-many-to-many");
+			if (hbRef.getMapKeyJoinColumns().size() > 0) {
+				final List<JoinColumn> jcs = new ArrayList<JoinColumn>();
+				jcs.addAll(hbRef.getMapKeyJoinColumns());
+				addJoinColumns(hbRef, mkmElement, jcs, false);
+			}
 		} else {
 			// final String type =
 			// hbType(aref.getPaModel().getPAnnotated((EAttribute) feature));
 			final Element mapKeyElement = collElement.addElement("map-key"); // .addAttribute("type",
 			// type);
-			final PAnnotatedEAttribute paAttribute = aref.getPaModel()
-					.getPAnnotated((EAttribute) keyFeature);
 			setType(paAttribute, mapKeyElement);
 			if (hbRef.getMapKeyColumn() != null) {
 				final List<Column> mkColumns = new ArrayList<Column>();

@@ -10,21 +10,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Photo Book</b></em>'.
+ * A representation of the model object '<em><b>Photo Part</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoBook#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage#getPhotoBook()
- * @model extendedMetaData="name='PhotoBook' kind='elementOnly'"
+ * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage#getPhotoPart()
+ * @model extendedMetaData="name='PhotoPart' kind='elementOnly'"
  * @generated
  */
-public interface PhotoBook extends EObject {
+public interface PhotoPart extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -35,7 +35,7 @@ public interface PhotoBook extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage#getPhotoBook_Name()
+	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage#getPhotoPart_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='name'"
 	 * @generated
@@ -43,7 +43,7 @@ public interface PhotoBook extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoBook#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -52,4 +52,4 @@ public interface PhotoBook extends EObject {
 	 */
 	void setName(String value);
 
-} // PhotoBook
+} // PhotoPart

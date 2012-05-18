@@ -6,6 +6,7 @@
  */
 package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -74,12 +75,24 @@ public class MapsAdapterFactory extends AdapterFactoryImpl {
 	protected MapsSwitch<Adapter> modelSwitch =
 		new MapsSwitch<Adapter>() {
 			@Override
+			public Adapter caseDateToStringMapEntry(Map.Entry<Date, String> object) {
+				return createDateToStringMapEntryAdapter();
+			}
+			@Override
+			public Adapter caseEnumToStringMapEntry(Map.Entry<EnumType, String> object) {
+				return createEnumToStringMapEntryAdapter();
+			}
+			@Override
 			public Adapter caseImages(Images object) {
 				return createImagesAdapter();
 			}
 			@Override
-			public Adapter casePhotoBook(PhotoBook object) {
-				return createPhotoBookAdapter();
+			public Adapter casePhotoPart(PhotoPart object) {
+				return createPhotoPartAdapter();
+			}
+			@Override
+			public Adapter caseStringToPartMapEntry(Map.Entry<PhotoPart, String> object) {
+				return createStringToPartMapEntryAdapter();
 			}
 			@Override
 			public Adapter caseStringToStringMapEntry(Map.Entry<String, String> object) {
@@ -106,6 +119,34 @@ public class MapsAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Date To String Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createDateToStringMapEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Enum To String Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createEnumToStringMapEntryAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images <em>Images</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -120,16 +161,30 @@ public class MapsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoBook <em>Photo Book</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart <em>Photo Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoBook
+	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart
 	 * @generated
 	 */
-	public Adapter createPhotoBookAdapter() {
+	public Adapter createPhotoPartAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>String To Part Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createStringToPartMapEntryAdapter() {
 		return null;
 	}
 

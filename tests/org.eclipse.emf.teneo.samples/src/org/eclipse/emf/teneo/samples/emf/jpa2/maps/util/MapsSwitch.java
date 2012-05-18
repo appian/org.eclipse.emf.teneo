@@ -6,14 +6,16 @@
  */
 package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.util.Switch;
-
-import org.eclipse.emf.teneo.samples.emf.jpa2.maps.*;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.EnumType;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +30,7 @@ import org.eclipse.emf.teneo.samples.emf.jpa2.maps.*;
  * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage
  * @generated
  */
-public class MapsSwitch<T> extends Switch<T> {
+public class MapsSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -50,16 +52,14 @@ public class MapsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Checks whether this is a switch for the given package.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
-	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
+	public T doSwitch(EObject theEObject) {
+		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
 	/**
@@ -69,18 +69,55 @@ public class MapsSwitch<T> extends Switch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
+		if (theEClass.eContainer() == modelPackage) {
+			return doSwitch(theEClass.getClassifierID(), theEObject);
+		}
+		else {
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch(eSuperTypes.get(0), theEObject);
+		}
+	}
+
+	/**
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<Date, String> dateToStringMapEntry = (Map.Entry<Date, String>)theEObject;
+				T result = caseDateToStringMapEntry(dateToStringMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MapsPackage.ENUM_TO_STRING_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<EnumType, String> enumToStringMapEntry = (Map.Entry<EnumType, String>)theEObject;
+				T result = caseEnumToStringMapEntry(enumToStringMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case MapsPackage.IMAGES: {
 				Images images = (Images)theEObject;
 				T result = caseImages(images);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MapsPackage.PHOTO_BOOK: {
-				PhotoBook photoBook = (PhotoBook)theEObject;
-				T result = casePhotoBook(photoBook);
+			case MapsPackage.PHOTO_PART: {
+				PhotoPart photoPart = (PhotoPart)theEObject;
+				T result = casePhotoPart(photoPart);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MapsPackage.STRING_TO_PART_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<PhotoPart, String> stringToPartMapEntry = (Map.Entry<PhotoPart, String>)theEObject;
+				T result = caseStringToPartMapEntry(stringToPartMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -92,6 +129,36 @@ public class MapsSwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Date To String Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Date To String Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDateToStringMapEntry(Map.Entry<Date, String> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Enum To String Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Enum To String Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEnumToStringMapEntry(Map.Entry<EnumType, String> object) {
+		return null;
 	}
 
 	/**
@@ -110,17 +177,32 @@ public class MapsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Photo Book</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Photo Part</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Photo Book</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Photo Part</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePhotoBook(PhotoBook object) {
+	public T casePhotoPart(PhotoPart object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To Part Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To Part Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringToPartMapEntry(Map.Entry<PhotoPart, String> object) {
 		return null;
 	}
 
@@ -150,7 +232,6 @@ public class MapsSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}
