@@ -1253,114 +1253,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapKeyColumn_Name() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Unique() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Nullable() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Insertable() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Updatable() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_ColumnDefinition() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Table() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Length() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Precision() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Scale() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_UniqueKey() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMapKeyColumn_Index() {
-		return (EAttribute)mapKeyColumnEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMapKeyEnumerated() {
 		return mapKeyEnumeratedEClass;
 	}
@@ -2352,18 +2244,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		createEAttribute(mapKeyClassEClass, MAP_KEY_CLASS__VALUE);
 
 		mapKeyColumnEClass = createEClass(MAP_KEY_COLUMN);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__NAME);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__UNIQUE);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__NULLABLE);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__INSERTABLE);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__UPDATABLE);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__COLUMN_DEFINITION);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__TABLE);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__LENGTH);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__PRECISION);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__SCALE);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__UNIQUE_KEY);
-		createEAttribute(mapKeyColumnEClass, MAP_KEY_COLUMN__INDEX);
 
 		mapKeyEnumeratedEClass = createEClass(MAP_KEY_ENUMERATED);
 		createEAttribute(mapKeyEnumeratedEClass, MAP_KEY_ENUMERATED__VALUE);
@@ -2545,7 +2425,7 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		manyToOneEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyClassEClass.getESuperTypes().add(this.getPAnnotation());
-		mapKeyColumnEClass.getESuperTypes().add(this.getPAnnotation());
+		mapKeyColumnEClass.getESuperTypes().add(this.getColumn());
 		mapKeyEnumeratedEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyJoinColumnEClass.getESuperTypes().add(this.getPAnnotation());
 		mapKeyTemporalEClass.getESuperTypes().add(this.getPAnnotation());
@@ -2686,18 +2566,6 @@ public class PannotationPackageImpl extends EPackageImpl implements
 		initEAttribute(getMapKeyClass_Value(), ecorePackage.getEString(), "value", null, 0, 1, MapKeyClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mapKeyColumnEClass, MapKeyColumn.class, "MapKeyColumn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMapKeyColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Unique(), ecorePackage.getEBoolean(), "unique", "false", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "true", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Insertable(), ecorePackage.getEBoolean(), "insertable", "true", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Updatable(), ecorePackage.getEBoolean(), "updatable", "true", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_ColumnDefinition(), ecorePackage.getEString(), "columnDefinition", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Table(), ecorePackage.getEString(), "table", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Length(), ecorePackage.getEInt(), "length", "255", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Precision(), ecorePackage.getEInt(), "precision", "0", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Scale(), ecorePackage.getEInt(), "scale", "0", 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_UniqueKey(), ecorePackage.getEString(), "uniqueKey", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapKeyColumn_Index(), ecorePackage.getEString(), "index", null, 0, 1, MapKeyColumn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mapKeyEnumeratedEClass, MapKeyEnumerated.class, "MapKeyEnumerated", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapKeyEnumerated_Value(), this.getEnumType(), "value", null, 0, 1, MapKeyEnumerated.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

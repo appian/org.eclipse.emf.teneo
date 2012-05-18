@@ -9,6 +9,7 @@
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -508,17 +509,31 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			if (mapKey.getColumns() != null && mapKey.getColumns().size() > 0) {
 				addColumnsAndFormula(mapKeyElement, aref, mapKey.getColumns(),
 						false, false, false, false);
+			} else if (hbRef.getMapKeyColumn() != null) {
+				final List<Column> mkColumns = new ArrayList<Column>();
+				mkColumns.add(hbRef.getMapKeyColumn());
+				addColumnsAndFormula(mapKeyElement, aref, mkColumns, false,
+						false, false, false);
 			}
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKey() != null) {
 			final MapKey mapKey = hbRef.getMapKey();
+
 			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref
 					.getPaModel().getPAnnotated(keyFeature);
-			final Element mapKeyElement = collElement.addElement("map-key")
-					.addAttribute(
-							"column",
-							getHbmContext().trunc(hbRef.getMapKey(),
-									mapKey.getName()));
+			final Element mapKeyElement = collElement.addElement("map-key");
+			if (hbRef.getMapKeyColumn() != null) {
+				final List<Column> mkColumns = new ArrayList<Column>();
+				mkColumns.add(hbRef.getMapKeyColumn());
+				addColumnsAndFormula(mapKeyElement, aref, mkColumns, false,
+						false, false, false);
+			} else {
+				mapKeyElement.addAttribute(
+						"column",
+						getHbmContext().trunc(hbRef.getMapKey(),
+								mapKey.getName()));
+			}
+
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKeyManyToMany() != null) {
 			final MapKeyManyToMany mkm = hbRef.getMapKeyManyToMany();
@@ -561,11 +576,17 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		} else {
 			// final String type =
 			// hbType(aref.getPaModel().getPAnnotated((EAttribute) feature));
-			final Element mapKey = collElement.addElement("map-key"); // .addAttribute("type",
+			final Element mapKeyElement = collElement.addElement("map-key"); // .addAttribute("type",
 			// type);
 			final PAnnotatedEAttribute paAttribute = aref.getPaModel()
 					.getPAnnotated((EAttribute) keyFeature);
-			setType(paAttribute, mapKey);
+			setType(paAttribute, mapKeyElement);
+			if (hbRef.getMapKeyColumn() != null) {
+				final List<Column> mkColumns = new ArrayList<Column>();
+				mkColumns.add(hbRef.getMapKeyColumn());
+				addColumnsAndFormula(mapKeyElement, aref, mkColumns, false,
+						false, false, false);
+			}
 		}
 	}
 
@@ -597,7 +618,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			PAnnotatedEStructuralFeature paFeature) {
 		final Element collectionElement;
 		HbAnnotatedETypeElement hbFeature = (HbAnnotatedETypeElement) paFeature;
-		final PAnnotatedEReference paReference = paFeature instanceof PAnnotatedEReference ? (PAnnotatedEReference) paFeature : null;
+		final PAnnotatedEReference paReference = paFeature instanceof PAnnotatedEReference ? (PAnnotatedEReference) paFeature
+				: null;
 		final IdBag idBag = hbFeature.getHbIdBag();
 
 		final EStructuralFeature estruct = paFeature
@@ -1051,16 +1073,23 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 										 * ().getValue()
 										 */);
 	}
-	
+
 	protected JoinTable getJoinTable(PAnnotatedEReference paReference) {
-		final AssociationOverride override = getHbmContext().getAssociationOverrides(paReference);
+		final AssociationOverride override = getHbmContext()
+				.getAssociationOverrides(paReference);
 		if (override != null && override.getJoinTable() != null) {
 			return override.getJoinTable();
 		}
-		if (paReference.getEmbedded() != null && paReference.getCollectionTable() != null) {
+		final boolean isMap = StoreUtil.isMap(paReference
+				.getModelEStructuralFeature())
+				&& getHbmContext().isMapEMapAsTrueMap();
+
+		if ((paReference.getEmbedded() != null || isMap || paReference
+				.getElementCollection() != null)
+				&& paReference.getCollectionTable() != null) {
 			return paReference.getCollectionTable();
 		}
-		
+
 		return paReference.getJoinTable();
 	}
 }

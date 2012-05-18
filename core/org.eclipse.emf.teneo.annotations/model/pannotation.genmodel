@@ -263,20 +263,7 @@
     <genClasses ecoreClass="pannotation.ecore#//MapKeyClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyClass/value"/>
     </genClasses>
-    <genClasses ecoreClass="pannotation.ecore#//MapKeyColumn">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/unique"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/nullable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/insertable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/updatable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/columnDefinition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/table"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/length"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/precision"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/scale"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/uniqueKey"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyColumn/index"/>
-    </genClasses>
+    <genClasses ecoreClass="pannotation.ecore#//MapKeyColumn"/>
     <genClasses ecoreClass="pannotation.ecore#//MapKeyEnumerated">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pannotation.ecore#//MapKeyEnumerated/value"/>
     </genClasses>
