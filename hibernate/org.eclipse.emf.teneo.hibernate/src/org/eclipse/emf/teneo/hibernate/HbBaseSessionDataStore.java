@@ -26,10 +26,11 @@ import javax.naming.Reference;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Interceptor;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.StatelessSession;
-import org.hibernate.classic.Session;
-import org.hibernate.engine.FilterDefinition;
+import org.hibernate.engine.spi.FilterDefinition;
+import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
 import org.hibernate.stat.Statistics;
@@ -194,16 +195,16 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	}
 
 	public Session openSession(Connection connection, Interceptor interceptor) {
-		return getSessionFactory().openSession(connection, interceptor);
+		return ((SessionFactoryImpl)getSessionFactory()).withOptions().interceptor(interceptor).connection(connection).openSession();
 	}
 
 	public Session openSession(Connection connection) {
-		return getSessionFactory().openSession(connection);
+		return ((SessionFactoryImpl)getSessionFactory()).withOptions().connection(connection).openSession();
 	}
 
 	public Session openSession(Interceptor interceptor)
 			throws HibernateException {
-		return getSessionFactory().openSession(interceptor);
+		return ((SessionFactoryImpl)getSessionFactory()).withOptions().interceptor(interceptor).openSession();
 	}
 
 	public StatelessSession openStatelessSession() {

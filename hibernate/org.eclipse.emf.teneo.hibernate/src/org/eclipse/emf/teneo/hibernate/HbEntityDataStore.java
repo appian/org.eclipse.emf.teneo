@@ -56,9 +56,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.ejb.Ejb3Configuration;
 import org.hibernate.ejb.EntityManagerFactoryImpl;
 import org.hibernate.ejb.QueryImpl;
-import org.hibernate.engine.query.NamedParameterDescriptor;
-import org.hibernate.event.InitializeCollectionEventListener;
-import org.hibernate.impl.AbstractQueryImpl;
+import org.hibernate.engine.query.spi.NamedParameterDescriptor;
+import org.hibernate.event.spi.EventType;
+import org.hibernate.event.spi.InitializeCollectionEventListener;
+import org.hibernate.internal.AbstractQueryImpl;
+import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.type.EntityType;
 import org.hibernate.type.Type;
 
@@ -123,6 +125,8 @@ public class HbEntityDataStore extends HbDataStore implements
 			HbHelper.INSTANCE.register(this);
 
 			setInitialized(true);
+			
+			setEventListeners();
 		} finally {
 			PackageRegistryProvider.getInstance()
 					.setThreadPackageRegistry(null);
@@ -140,10 +144,12 @@ public class HbEntityDataStore extends HbDataStore implements
 	protected void setEventListeners() {
 		final EMFInitializeCollectionEventListener eventListener = getExtensionManager()
 				.getExtension(EMFInitializeCollectionEventListener.class);
-		getConfiguration()
-				.getEventListeners()
-				.setInitializeCollectionEventListeners(
-						new InitializeCollectionEventListener[] { eventListener });
+		EntityManagerFactory emf = getEntityManagerFactory();
+		if (emf instanceof WrappedEntityManagerFactory) {
+			emf = ((WrappedEntityManagerFactory)emf).getDelegate();
+		}
+		org.hibernate.event.service.spi.EventListenerGroup<InitializeCollectionEventListener> group = ((SessionFactoryImpl)((EntityManagerFactoryImpl)emf).getSessionFactory()).getServiceRegistry().getService( org.hibernate.event.service.spi.EventListenerRegistry.class ).getEventListenerGroup( EventType.INIT_COLLECTION );
+		group.appendListener(eventListener);
 	}
 
 	/** Sets the interceptor */

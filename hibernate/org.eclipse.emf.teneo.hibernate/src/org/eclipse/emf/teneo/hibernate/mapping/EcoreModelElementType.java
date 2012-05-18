@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
@@ -87,7 +88,7 @@ public class EcoreModelElementType implements UserType, ParameterizedType {
 		return false;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner)
 			throws HibernateException, SQLException {
 		final String value = rs.getString(names[0]);
 		if (rs.wasNull()) {
@@ -117,7 +118,7 @@ public class EcoreModelElementType implements UserType, ParameterizedType {
 		}
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index)
+	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor)
 			throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.VARCHAR);

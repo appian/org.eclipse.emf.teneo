@@ -32,9 +32,13 @@ import org.eclipse.emf.teneo.hibernate.mapping.EMFInitializeCollectionEventListe
 import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVGenericIDUserType;
 import org.hibernate.Cache;
 import org.hibernate.Interceptor;
+import org.hibernate.SessionBuilder;
+import org.hibernate.StatelessSessionBuilder;
 import org.hibernate.TypeHelper;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.event.InitializeCollectionEventListener;
+import org.hibernate.event.spi.EventType;
+import org.hibernate.event.spi.InitializeCollectionEventListener;
+import org.hibernate.internal.SessionFactoryImpl;
 
 /**
  * Holds the SessionFactory and performs different initialization related
@@ -107,6 +111,8 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 			buildSessionFactory();
 
 			setInitialized(true);
+			
+			setEventListeners();
 		} finally {
 			PackageRegistryProvider.getInstance()
 					.setThreadPackageRegistry(null);
@@ -118,10 +124,8 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	protected void setEventListeners() {
 		final EMFInitializeCollectionEventListener initializeCollectionEventListener = getExtensionManager()
 				.getExtension(EMFInitializeCollectionEventListener.class);
-		getConfiguration()
-				.getEventListeners()
-				.setInitializeCollectionEventListeners(
-						new InitializeCollectionEventListener[] { initializeCollectionEventListener });
+		org.hibernate.event.service.spi.EventListenerGroup<InitializeCollectionEventListener> group = ((SessionFactoryImpl)getSessionFactory()).getServiceRegistry().getService( org.hibernate.event.service.spi.EventListenerRegistry.class ).getEventListenerGroup( EventType.INIT_COLLECTION );
+		group.appendListener(initializeCollectionEventListener);
 	}
 
 	/*
@@ -228,7 +232,7 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	}
 
 	/** Build the session factory */
-	protected void buildSessionFactory() {
+	protected void buildSessionFactory() {		
 		setSessionFactory(getConfiguration().buildSessionFactory());
 	}
 
@@ -270,5 +274,17 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 
 	public TypeHelper getTypeHelper() {
 		return getSessionFactory().getTypeHelper();
+	}
+
+	public SessionFactoryOptions getSessionFactoryOptions() {
+		return getSessionFactory().getSessionFactoryOptions();
+	}
+
+	public SessionBuilder withOptions() {
+		return getSessionFactory().withOptions();
+	}
+
+	public StatelessSessionBuilder withStatelessOptions() {
+		return getSessionFactory().withStatelessOptions();
 	}
 }

@@ -18,8 +18,8 @@ package org.eclipse.emf.teneo.hibernate.mapping;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.teneo.extension.ExtensionPoint;
 import org.hibernate.HibernateException;
-import org.hibernate.event.InitializeCollectionEvent;
-import org.hibernate.event.def.DefaultInitializeCollectionEventListener;
+import org.hibernate.event.internal.DefaultInitializeCollectionEventListener;
+import org.hibernate.event.spi.InitializeCollectionEvent;
 
 /**
  * Sets eDeliver to false for the owner of the collection during the initialization of the

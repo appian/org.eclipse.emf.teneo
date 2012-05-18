@@ -33,11 +33,12 @@ import org.hibernate.EntityMode;
 import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
-import org.hibernate.engine.CascadeStyle;
-import org.hibernate.engine.ForeignKeys;
-import org.hibernate.engine.Mapping;
-import org.hibernate.engine.SessionFactoryImplementor;
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.internal.ForeignKeys;
+import org.hibernate.engine.spi.CascadeStyle;
+import org.hibernate.engine.spi.Mapping;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.metamodel.relational.Size;
 import org.hibernate.persister.entity.Joinable;
 import org.hibernate.type.AbstractType;
 import org.hibernate.type.AssociationType;
@@ -90,7 +91,6 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 	}
 
 	/** Checks using equals */
-	@Override
 	public boolean isSame(Object x, Object y, EntityMode entityMode)
 			throws HibernateException {
 		if (x != null) {
@@ -100,7 +100,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 	}
 
 	/** Compare is not implemented, returning 0 for now */
-	@Override
+	
 	public int compare(Object x, Object y, EntityMode entityMode) {
 		return 0;
 	}
@@ -167,7 +167,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 		}
 	}
 
-	@Override
+	
 	public Object hydrate(ResultSet rs, String[] names,
 			SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
@@ -187,7 +187,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 		return new EObjectCacheEntry(entityName, getId(idStr, idType));
 	}
 
-	@Override
+	
 	public Object resolve(Object value, SessionImplementor session, Object owner)
 			throws HibernateException {
 		EObjectCacheEntry entry = (EObjectCacheEntry) value;
@@ -272,7 +272,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 		}
 	}
 
-	@Override
+	
 	public Object assemble(Serializable cached, SessionImplementor session,
 			Object owner) throws HibernateException {
 		final EObjectCacheEntry entry = (EObjectCacheEntry) cached;
@@ -280,7 +280,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 				entry.id, true, false);
 	}
 
-	@Override
+	
 	public Serializable disassemble(Object value, SessionImplementor session,
 			Object owner) throws HibernateException {
 		if (value == null) {
@@ -292,7 +292,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 		return new EObjectCacheEntry(entityName, id);
 	}
 
-	@Override
+	
 	public boolean isAnyType() {
 		return true;
 	}
@@ -370,7 +370,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
+	
 	public boolean isComponentType() {
 		return true;
 	}
@@ -379,7 +379,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 		return ForeignKeyDirection.FOREIGN_KEY_FROM_PARENT;
 	}
 
-	@Override
+	
 	public boolean isAssociationType() {
 		return true;
 	}
@@ -393,7 +393,7 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 				"any types do not have a unique referenced persister");
 	}
 
-	@Override
+	
 	public boolean isModified(Object old, Object current, boolean[] checkable,
 			SessionImplementor session) throws HibernateException {
 		if (current == null) {
@@ -468,5 +468,19 @@ public class AnyEObjectType extends AbstractType implements CompositeType,
 
 	public boolean isEmbedded() {
 		return false;
+	}
+
+	public Size[] dictatedSizes(Mapping mapping) throws MappingException {
+		return new Size[]{new Size(), new Size(), new Size()};
+	}
+
+	public Size[] defaultSizes(Mapping mapping) throws MappingException {
+		return new Size[]{new Size(), new Size(), new Size()};
+	}
+
+	public Object deepCopy(Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
+		// TODO Auto-generated method stub
+		return value;
 	}
 }

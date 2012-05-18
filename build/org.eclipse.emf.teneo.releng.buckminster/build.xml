@@ -52,7 +52,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<isset property="env.BUILDTYPE" />
 	</condition>
 
-	<condition property="teneo.version" value="${env.VERSION}" else="1.2.0">
+	<condition property="teneo.version" value="${env.VERSION}" else="2.0.0">
 		<isset property="env.VERSION" />
 	</condition>
 

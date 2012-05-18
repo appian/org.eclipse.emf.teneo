@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.type.IntegerType;
+import org.hibernate.type.StringType;
 import org.hibernate.usertype.UserType;
 
 /**
@@ -48,19 +50,21 @@ public class CertificateType implements UserType {
 		return true;
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
-		String name = (String) Hibernate.STRING.nullSafeGet(rs, names[0]);
-		Integer length = Hibernate.INTEGER.nullSafeGet(rs, names[1]);
+	public Object nullSafeGet(ResultSet rs, String[] names,
+			SessionImplementor session, Object owner)
+			throws HibernateException, SQLException {
+		String name = StringType.INSTANCE.nullSafeGet(rs, names[0], session);
+		Integer length = IntegerType.INSTANCE.nullSafeGet(rs, names[1], session);
 		final Certificate certificate = UsertypeFactory.eINSTANCE.createCertificate();
 		certificate.setLength(length.intValue());
 		certificate.setName(name);
 		return certificate;
 	}
 
-	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		Certificate certificate = (Certificate) value;
-		Hibernate.STRING.nullSafeSet(st, certificate.getName(), index);
-		Hibernate.INTEGER.nullSafeSet(st, certificate.getLength(), index + 1);
+		StringType.INSTANCE.nullSafeSet(st, certificate.getName(), index, sessionImplementor);
+		IntegerType.INSTANCE.nullSafeSet(st, certificate.getLength(), index + 1, sessionImplementor);
 	}
 
 	public Object replace(Object original, Object target, Object owner) throws HibernateException {

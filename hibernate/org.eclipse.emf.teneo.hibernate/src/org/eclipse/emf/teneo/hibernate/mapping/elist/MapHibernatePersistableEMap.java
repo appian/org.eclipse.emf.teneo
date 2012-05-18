@@ -33,8 +33,8 @@ import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.mapping.elist.MapPersistableEMap;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.hibernate.Session;
-import org.hibernate.collection.AbstractPersistentCollection;
-import org.hibernate.collection.PersistentMap;
+import org.hibernate.collection.internal.AbstractPersistentCollection;
+import org.hibernate.collection.internal.PersistentMap;
 
 /**
  * Implements the hibernate persistable emap using a real map mapping (instead of the previous list

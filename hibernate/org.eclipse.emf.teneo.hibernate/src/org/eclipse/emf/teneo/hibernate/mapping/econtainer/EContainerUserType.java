@@ -23,7 +23,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -37,11 +36,12 @@ import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.TransientObjectException;
-import org.hibernate.engine.ForeignKeys;
-import org.hibernate.engine.Mapping;
-import org.hibernate.engine.SessionFactoryImplementor;
-import org.hibernate.engine.SessionImplementor;
-import org.hibernate.impl.SessionImpl;
+import org.hibernate.engine.internal.ForeignKeys;
+import org.hibernate.engine.spi.Mapping;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.internal.SessionImpl;
+import org.hibernate.metamodel.relational.Size;
 import org.hibernate.persister.entity.Joinable;
 import org.hibernate.type.AbstractStandardBasicType;
 import org.hibernate.type.AbstractType;
@@ -546,5 +546,19 @@ public class EContainerUserType extends AbstractType implements
 		private Object getObject(SessionImplementor session) {
 			return session.internalLoad(container, id, false, false);
 		}
+	}
+
+	public Size[] dictatedSizes(Mapping mapping) throws MappingException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Size[] defaultSizes(Mapping mapping) throws MappingException {
+		return new Size[]{new Size(), new Size()};
+	}
+
+	public Object deepCopy(Object value, SessionFactoryImplementor factory)
+			throws HibernateException {
+		return value;
 	}
 }

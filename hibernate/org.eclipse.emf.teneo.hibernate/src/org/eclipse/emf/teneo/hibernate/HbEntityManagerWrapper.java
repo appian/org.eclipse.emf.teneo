@@ -28,8 +28,8 @@ import javax.persistence.Query;
 
 import org.eclipse.emf.teneo.annotations.pannotation.InheritanceType;
 import org.hibernate.Session;
-import org.hibernate.engine.ForeignKeys;
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.internal.ForeignKeys;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.mapping.JoinedSubclass;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.SingleTableSubclass;

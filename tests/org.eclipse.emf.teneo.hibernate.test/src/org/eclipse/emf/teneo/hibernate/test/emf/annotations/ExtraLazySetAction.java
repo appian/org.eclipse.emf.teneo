@@ -25,7 +25,7 @@ import org.eclipse.emf.teneo.hibernate.LazyCollectionUtils;
 import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.ItemList;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.collection.PersistentCollection;
+import org.hibernate.collection.spi.PersistentCollection;
 
 /**
  * Tests the Set collection in extra lazy mode.

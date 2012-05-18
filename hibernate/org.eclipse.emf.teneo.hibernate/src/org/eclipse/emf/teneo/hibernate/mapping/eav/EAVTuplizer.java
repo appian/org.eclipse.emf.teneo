@@ -20,9 +20,9 @@ package org.eclipse.emf.teneo.hibernate.mapping.eav;
 import java.util.Iterator;
 
 import org.hibernate.HibernateException;
-import org.hibernate.collection.PersistentList;
-import org.hibernate.engine.SessionFactoryImplementor;
-import org.hibernate.intercept.LazyPropertyInitializer;
+import org.hibernate.bytecode.instrumentation.spi.LazyPropertyInitializer;
+import org.hibernate.collection.internal.PersistentList;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.EntityMetamodel;

@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
@@ -122,7 +123,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * @throws SQLException
 	 *             if the value cannot be retrieved from the ResultSet.
 	 */
-	public Object nullSafeGet(ResultSet resultSet, String[] names, Object owner) throws SQLException {
+	public Object nullSafeGet(ResultSet resultSet, String[] names, SessionImplementor sessionImplementor, Object owner) throws SQLException {
 
 		String data = resultSet.getString(names[0]);
 		if (data == null) {
@@ -143,7 +144,7 @@ public class DefaultToStringUserType implements UserType, ParameterizedType {
 	 * @throws SQLException
 	 *             if the converted value cannot be set in the statement.
 	 */
-	public void nullSafeSet(PreparedStatement statement, Object value, int index) throws SQLException {
+	public void nullSafeSet(PreparedStatement statement, Object value, int index, SessionImplementor sessionImplementor) throws SQLException {
 		String pvalue = null;
 		if (value != null) {
 			pvalue = this.eFactory.convertToString(this.eDataType, value);

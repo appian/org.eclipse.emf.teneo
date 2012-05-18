@@ -2,24 +2,24 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Plugin.name
 Bundle-SymbolicName: org.eclipse.emf.teneo.eclipse; singleton:=true
-Bundle-Version: 1.1.2.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: org.eclipse.emf.teneo.eclipse.StorePlugin
 Bundle-Localization: plugin
 Eclipse-BuddyPolicy: dependent
-Require-Bundle: org.eclipse.ui;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
+Require-Bundle: org.eclipse.ui;bundle-version="[3.5.0,5.0.0)",
+ org.eclipse.core.runtime;bundle-version="[3.5.0,5.0.0)",
  org.eclipse.ui.ide;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.core.resources;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.jdt;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.jdt.core;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.emf.teneo;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.jdt.launching;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.debug.core;bundle-version="[3.5.0,4.0.0)"
+ org.eclipse.core.resources;bundle-version="[3.5.0,5.0.0)",
+ org.eclipse.jdt;bundle-version="[3.5.0,5.0.0)",
+ org.eclipse.jdt.core;bundle-version="[3.5.0,5.0.0)",
+ org.eclipse.emf.teneo;bundle-version="[2.0.0,3.0.0)",
+ org.eclipse.jdt.launching;bundle-version="[3.5.0,5.0.0)",
+ org.eclipse.debug.core;bundle-version="[3.5.0,5.0.0)"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.emf.teneo.eclipse;version="1.1.2",
- org.eclipse.emf.teneo.eclipse.genxml;version="1.1.2",
- org.eclipse.emf.teneo.eclipse.resourcehandler;version="1.1.2"
+Export-Package: org.eclipse.emf.teneo.eclipse;version="2.0.0",
+ org.eclipse.emf.teneo.eclipse.genxml;version="2.0.0",
+ org.eclipse.emf.teneo.eclipse.resourcehandler;version="2.0.0"
 Bundle-Vendor: %Plugin.providerName
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.apache.commons.logging;version="[1.0.0,2.0.0)"
+Import-Package: org.apache.commons.logging;version="[1.0.0,3.0.0)"
 

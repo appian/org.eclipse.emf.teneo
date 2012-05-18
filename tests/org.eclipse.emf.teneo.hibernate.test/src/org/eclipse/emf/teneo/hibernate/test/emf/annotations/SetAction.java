@@ -26,7 +26,7 @@ import org.eclipse.emf.teneo.samples.emf.annotations.set.SetFactory;
 import org.eclipse.emf.teneo.samples.emf.annotations.set.SetPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.collection.PersistentCollection;
+import org.hibernate.collection.spi.PersistentCollection;
 
 /**
  * Test 1n relation (contained and non-contained) using sets.

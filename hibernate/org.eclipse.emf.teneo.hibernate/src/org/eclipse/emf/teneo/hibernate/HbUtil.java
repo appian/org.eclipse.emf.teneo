@@ -46,7 +46,7 @@ import org.eclipse.emf.teneo.hibernate.mapping.property.SyntheticPropertyHandler
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.MetaAttribute;
@@ -177,7 +177,7 @@ public class HbUtil {
 
 	/** Encode the id of an eobject */
 	@SuppressWarnings("unchecked")
-	public static String idToString(EObject eobj, HbDataStore hd) {
+	public static String idToString(EObject eobj, HbDataStore hd, Session session) {
 		final PersistentClass pc = hd.getPersistentClass(hd
 				.getEntityNameStrategy().toEntityName(eobj.eClass()));
 		if (pc == null) { // can happen with map entries
@@ -188,7 +188,7 @@ public class HbUtil {
 			id = ((HibernateProxy) eobj).getHibernateLazyInitializer()
 					.getIdentifier();
 		} else {
-			id = IdentifierUtil.getID(eobj, hd);
+			id = IdentifierUtil.getID(eobj, hd, (SessionImplementor)session);
 		}
 		if (id == null) {
 			id = IdentifierCacheHandler.getInstance().getID(eobj);

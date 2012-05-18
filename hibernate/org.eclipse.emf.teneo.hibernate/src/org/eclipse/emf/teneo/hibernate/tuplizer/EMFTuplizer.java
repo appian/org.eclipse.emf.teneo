@@ -42,10 +42,13 @@ import org.hibernate.EntityMode;
 import org.hibernate.EntityNameResolver;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Environment;
-import org.hibernate.engine.SessionFactoryImplementor;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.internal.util.ReflectHelper;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.mapping.Property;
 import org.hibernate.mapping.Subclass;
+import org.hibernate.metamodel.binding.AttributeBinding;
+import org.hibernate.metamodel.binding.EntityBinding;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
@@ -55,7 +58,6 @@ import org.hibernate.tuple.Instantiator;
 import org.hibernate.tuple.entity.AbstractEntityTuplizer;
 import org.hibernate.tuple.entity.EntityMetamodel;
 import org.hibernate.type.CompositeType;
-import org.hibernate.util.ReflectHelper;
 
 /**
  * Overrides the get and setidentifier methods to get the identifier from an
@@ -371,4 +373,30 @@ public class EMFTuplizer extends AbstractEntityTuplizer {
 		return HbUtil.getPropertyAccessor(mappedProperty, ds,
 				pc.getEntityName(), null);
 	}
+
+	@Override
+	protected Getter buildPropertyGetter(AttributeBinding mappedProperty) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Setter buildPropertySetter(AttributeBinding mappedProperty) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Instantiator buildInstantiator(EntityBinding mappingInfo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected ProxyFactory buildProxyFactory(EntityBinding mappingInfo,
+			Getter idGetter, Setter idSetter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

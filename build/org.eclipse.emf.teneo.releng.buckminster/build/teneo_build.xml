@@ -84,7 +84,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			</globargs>
 			<cmdargs>
 				<arg value="org.eclipse.emf.teneo.hibernate:eclipse.feature#site.p2" />
-				<arg value="org.eclipse.emf.teneo.eclipselink:eclipse.feature#site.p2" />
 			</cmdargs>
 		</buckminster>
 		

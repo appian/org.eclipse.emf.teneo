@@ -47,9 +47,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.collection.PersistentCollection;
-import org.hibernate.engine.SessionImplementor;
-import org.hibernate.util.IdentityMap;
+import org.hibernate.collection.spi.PersistentCollection;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.internal.util.collections.IdentityMap;
 
 /**
  * HbResource. This hibernate resource creates a new session for each load and

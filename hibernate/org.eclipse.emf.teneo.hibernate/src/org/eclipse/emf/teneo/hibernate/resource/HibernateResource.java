@@ -48,8 +48,8 @@ import org.eclipse.emf.teneo.util.AssertUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.engine.SessionImplementor;
-import org.hibernate.impl.SessionImpl;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.internal.SessionImpl;
 import org.hibernate.metadata.ClassMetadata;
 
 /**
@@ -296,7 +296,7 @@ public class HibernateResource extends StoreResource implements HbResource {
 		if (object == null) {
 			return null;
 		}
-		final String theId = HbUtil.idToString(object, emfDataStore);
+		final String theId = HbUtil.idToString(object, emfDataStore, getSessionWrapper().getHibernateSession());
 		if (theId == null) {
 			return super.getURIFragment(object);
 		}

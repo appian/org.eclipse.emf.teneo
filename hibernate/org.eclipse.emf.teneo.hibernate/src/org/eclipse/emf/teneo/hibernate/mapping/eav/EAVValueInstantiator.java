@@ -18,7 +18,7 @@ package org.eclipse.emf.teneo.hibernate.mapping.eav;
 
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
-import org.hibernate.bytecode.ReflectionOptimizer;
+import org.hibernate.bytecode.spi.ReflectionOptimizer;
 import org.hibernate.mapping.Component;
 import org.hibernate.mapping.PersistentClass;
 import org.hibernate.tuple.PojoInstantiator;

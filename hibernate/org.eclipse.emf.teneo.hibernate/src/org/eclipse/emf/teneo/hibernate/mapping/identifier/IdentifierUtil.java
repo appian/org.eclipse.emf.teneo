@@ -27,10 +27,11 @@ import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.hibernate.EntityMode;
-import org.hibernate.engine.ForeignKeys;
-import org.hibernate.engine.SessionImplementor;
-import org.hibernate.impl.SessionFactoryImpl;
-import org.hibernate.impl.SessionImpl;
+import org.hibernate.Session;
+import org.hibernate.engine.internal.ForeignKeys;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.internal.SessionImpl;
 import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.type.AbstractStandardBasicType;
 import org.hibernate.type.Type;
@@ -139,12 +140,12 @@ public class IdentifierUtil {
 
 	/** Returns the id of the passed object */
 	@SuppressWarnings("deprecation")
-	public static Serializable getID(EObject eobj, HbDataStore hd) {
+	public static Serializable getID(EObject eobj, HbDataStore hd, SessionImplementor session) {
 		final String entityName = hd.getEntityNameStrategy().toEntityName(
 				eobj.eClass());
 		final EntityPersister entityPersister = ((SessionFactoryImpl) hd
 				.getSessionFactory()).getEntityPersister(entityName);
-		return entityPersister.getIdentifier(eobj, EntityMode.MAP);
+		return entityPersister.getIdentifier(eobj, session);
 	}
 
 	/** Returns the id of the passed object */

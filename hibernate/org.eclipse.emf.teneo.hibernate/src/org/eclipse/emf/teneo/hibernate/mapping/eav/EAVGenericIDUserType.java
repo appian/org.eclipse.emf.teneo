@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
 
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.type.StandardBasicTypes;
 import org.hibernate.usertype.UserType;
 
@@ -64,10 +65,10 @@ public class EAVGenericIDUserType implements UserType {
 		return x.equals(y);
 	}
 
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner)
 			throws SQLException {
 		final String value = (String) StandardBasicTypes.STRING.nullSafeGet(rs,
-				names[0]);
+				names[0], sessionImplementor);
 		if (rs.wasNull()) {
 			return null;
 		}
@@ -81,7 +82,7 @@ public class EAVGenericIDUserType implements UserType {
 		return id;
 	}
 
-	public void nullSafeSet(PreparedStatement statement, Object value, int index)
+	public void nullSafeSet(PreparedStatement statement, Object value, int index, SessionImplementor sessionImplementor)
 			throws SQLException {
 		if (value == null) {
 			statement.setNull(index, Types.VARCHAR);

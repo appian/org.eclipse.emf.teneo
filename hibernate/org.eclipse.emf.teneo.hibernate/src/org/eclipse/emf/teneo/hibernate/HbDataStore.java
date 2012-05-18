@@ -78,11 +78,10 @@ import org.hibernate.FetchMode;
 import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cache.HashtableCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.cfg.Mappings;
-import org.hibernate.engine.CascadeStyle;
+import org.hibernate.engine.spi.CascadeStyle;
 import org.hibernate.mapping.Collection;
 import org.hibernate.mapping.Column;
 import org.hibernate.mapping.Component;
@@ -335,9 +334,6 @@ public abstract class HbDataStore implements DataStore {
 
 		setTuplizer();
 
-		// set the event listeners
-		setEventListeners();
-
 		if (getPersistenceOptions().isUpdateSchema()) {
 			log.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
 		}
@@ -450,13 +446,6 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	protected void setDefaultProperties(Properties properties) {
-		if (properties.getProperty("hibernate.cache.provider_class") == null) {
-			log.warn("No hibernate cache provider set, using "
-					+ HashtableCacheProvider.class.getName());
-			log.warn("For production use please set the ehcache (or other) provider explicitly and configure it");
-			properties.setProperty("hibernate.cache.provider_class",
-					HashtableCacheProvider.class.getName());
-		}
 		final String hbmUpdate = properties
 				.getProperty(Environment.HBM2DDL_AUTO);
 		if (hbmUpdate == null) {

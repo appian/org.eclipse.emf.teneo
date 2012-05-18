@@ -31,10 +31,10 @@ import org.eclipse.emf.teneo.mapping.elist.PersistableEList;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.collection.AbstractPersistentCollection;
-import org.hibernate.collection.PersistentList;
-import org.hibernate.engine.CollectionEntry;
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.collection.internal.AbstractPersistentCollection;
+import org.hibernate.collection.internal.PersistentList;
+import org.hibernate.engine.spi.CollectionEntry;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.persister.collection.AbstractCollectionPersister;
 import org.hibernate.type.EntityType;
 

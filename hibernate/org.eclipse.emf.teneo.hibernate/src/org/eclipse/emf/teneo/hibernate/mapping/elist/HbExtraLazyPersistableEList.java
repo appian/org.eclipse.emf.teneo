@@ -34,11 +34,11 @@ import org.eclipse.emf.teneo.hibernate.resource.HbResource;
 import org.eclipse.emf.teneo.resource.StoreResource;
 import org.eclipse.emf.teneo.util.StoreUtil;
 import org.hibernate.Session;
-import org.hibernate.collection.AbstractPersistentCollection;
-import org.hibernate.collection.PersistentBag;
-import org.hibernate.collection.PersistentCollection;
-import org.hibernate.collection.PersistentIdentifierBag;
-import org.hibernate.collection.PersistentList;
+import org.hibernate.collection.internal.AbstractPersistentCollection;
+import org.hibernate.collection.internal.PersistentBag;
+import org.hibernate.collection.internal.PersistentIdentifierBag;
+import org.hibernate.collection.internal.PersistentList;
+import org.hibernate.collection.spi.PersistentCollection;
 
 /**
  * Implements the hibernate persistable elist with extra lazy behavior, most

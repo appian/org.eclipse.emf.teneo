@@ -32,20 +32,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.teneo.eclipselink.examples.library"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.teneo.eclipselink.examples.library.orm.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.teneo.hibernate.test"
          download-size="0"
          install-size="0"

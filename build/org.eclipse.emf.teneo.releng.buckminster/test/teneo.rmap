@@ -37,12 +37,6 @@
 			</uri>
 		</provider>
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
-			<uri format="{0},eclipselink/{1}">
-				<bc:propertyRef key="gitPath"/>
-				<bc:propertyRef key="buckminster.component"/>
-			</uri>
-		</provider>
-		<provider componentTypes="osgi.bundle" readerType="git" source="true">
 			<uri format="{0},hibernate/{1}">
 				<bc:propertyRef key="gitPath"/>
 				<bc:propertyRef key="buckminster.component"/>

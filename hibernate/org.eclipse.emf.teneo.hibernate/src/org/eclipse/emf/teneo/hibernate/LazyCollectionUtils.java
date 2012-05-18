@@ -26,10 +26,10 @@ import org.eclipse.emf.teneo.hibernate.mapping.eav.EAVValueHolder;
 import org.eclipse.emf.teneo.mapping.elist.PersistableDelegateList;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.collection.AbstractPersistentCollection;
-import org.hibernate.engine.CollectionEntry;
-import org.hibernate.engine.SessionImplementor;
-import org.hibernate.hql.ast.util.SessionFactoryHelper;
+import org.hibernate.collection.internal.AbstractPersistentCollection;
+import org.hibernate.engine.spi.CollectionEntry;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.hql.internal.ast.util.SessionFactoryHelper;
 import org.hibernate.persister.collection.AbstractCollectionPersister;
 import org.hibernate.persister.collection.QueryableCollection;
 

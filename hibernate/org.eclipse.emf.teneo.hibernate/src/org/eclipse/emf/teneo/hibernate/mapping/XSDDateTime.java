@@ -30,6 +30,8 @@ import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
+import org.hibernate.type.AbstractStandardBasicType;
+import org.hibernate.type.ImmutableType;
 import org.hibernate.type.MutableType;
 
 /**
@@ -111,16 +113,6 @@ public class XSDDateTime extends MutableType {
 			return false;
 		}
 		return x.equals(y);
-	}
-
-	/*
-	 * @see org.hibernate.type.AbstractType#getHashCode(java.lang.Object,
-	 * org.hibernate.EntityMode)
-	 */
-	@Override
-	public int getHashCode(Object x, EntityMode entityMode)
-			throws HibernateException {
-		return x.hashCode();
 	}
 
 	/*

@@ -35,7 +35,7 @@ import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 import org.eclipse.emf.teneo.util.FieldUtil;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.Transaction;
-import org.hibernate.collection.AbstractPersistentCollection;
+import org.hibernate.collection.internal.AbstractPersistentCollection;
 
 /**
  * Intercepts the getEntityName call to return the EClass name as the entity name.

@@ -27,7 +27,7 @@ import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Book;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.EmapFactory;
 import org.eclipse.emf.teneo.samples.emf.schemaconstructs.emap.Writer;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.collection.PersistentCollection;
+import org.hibernate.collection.spi.PersistentCollection;
 
 /**
  * Tests support for emaps with extra lazy.
