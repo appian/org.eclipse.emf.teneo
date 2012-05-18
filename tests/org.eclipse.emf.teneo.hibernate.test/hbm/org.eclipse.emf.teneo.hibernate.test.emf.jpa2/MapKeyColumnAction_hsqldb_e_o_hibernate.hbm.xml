@@ -17,7 +17,9 @@
 			<map-key type="java.lang.String">
 				<column not-null="false" unique="false" name="`IMAGE_NAME`"/>
 			</map-key>
-			<element type="java.lang.String"/>
+			<element not-null="false" unique="false" type="java.lang.String">
+				<column not-null="false" unique="false" name="`IMAGE_FILENAME`"/>
+			</element>
 		</map>
 	</class>
 	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.PhotoBookImpl" entity-name="PhotoBook" abstract="false" lazy="false" table="`PHOTOBOOK`">

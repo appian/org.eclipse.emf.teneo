@@ -16,6 +16,7 @@ import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -183,6 +184,10 @@ public class OneToManyMapper extends AbstractAssociationMapper implements
 					.getEStructuralFeature("value");
 			final PAnnotatedEAttribute valuePAttribute = paReference
 					.getPaModel().getPAnnotated(valueEAttribute);
+			// column annotation can be set at reference level
+			if (valuePAttribute.getColumn() == null && paReference.getColumn() != null) {
+				valuePAttribute.setColumn(EcoreUtil.copy(paReference.getColumn()));
+			}
 			addElementElement(collElement, valuePAttribute,
 					getColumns(valuePAttribute), otm.getTargetEntity());
 		} else if (!isEObject(targetName) && jt != null) {

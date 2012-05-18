@@ -13,10 +13,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import junit.framework.Assert;
+
 import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.CollectiontableFactory;
 import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.CollectiontablePackage;
 import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.EmbeddedItem;
 import org.eclipse.emf.teneo.samples.emf.jpa2.collectiontable.Item;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsFactory;
 import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
@@ -25,15 +28,35 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
 public class MapKeyColumnAction extends AbstractTestAction {
 
 	private static final MapsFactory FACTORY = MapsFactory.eINSTANCE;
-	
+
 	public MapKeyColumnAction() {
 		super(MapsPackage.eINSTANCE);
 	}
 
 	@Override
 	public void doAction(TestStore store) {
-		store.beginTransaction();
-		store.commitTransaction();
+		final String key1 = "k1";
+		final String value1 = "v1";
+		final String key2 = "k2";
+		final String value2 = "v2";
+		{
+			store.beginTransaction();
+			final Images images = FACTORY.createImages();
+			images.getImageFiles().put(key1, value1);
+			images.getImageFiles().put(key2, value2);
+			store.store(images);
+			store.commitTransaction();
+		}
+		{
+			store.beginTransaction();
+			final Images images = store.getObject(Images.class);
+			Assert.assertTrue(images.getImageFiles().get(key1).equals(value1));
+			Assert.assertTrue(images.getImageFiles().get(key2).equals(value2));
+			Assert.assertTrue(images.getImageFiles().size() == 2);
+			store.store(images);
+			store.commitTransaction();
+		}
+		testTables(store);
 	}
 
 	private void testTables(TestStore store) {
@@ -42,13 +65,12 @@ public class MapKeyColumnAction extends AbstractTestAction {
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select count(*) from EmbeddedItemsTable where MYJC is not null");
-			rs.next();
-			assertEquals(50, rs.getInt(1));
+			rs = stmt
+					.executeQuery("select IMAGE_NAME, IMAGE_FILENAME from IMAGE_MAPPING");
+			Assert.assertTrue(rs.next());
+			Assert.assertTrue(rs.next());
+			Assert.assertFalse(rs.next());
 			rs.close();
-			rs = stmt.executeQuery("select count(*) from NamesTable where JOINCOLUMN1 is not null");
-			rs.next();
-			assertEquals(48, rs.getInt(1));
 		} catch (final SQLException e) {
 			assertTrue(e.getMessage(), false);
 		} finally {
