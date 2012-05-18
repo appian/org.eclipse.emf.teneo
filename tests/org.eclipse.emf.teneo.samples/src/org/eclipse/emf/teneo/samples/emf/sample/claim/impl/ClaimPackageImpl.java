@@ -417,14 +417,14 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		  (claimEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\t\n\t@Table(\n\t  name=PCLM_NPRC_CLM\n\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\"})\n\t  \t\t\t\t\t  }\t  \n\t)\n\t"
-		   });													
+			 "appinfo", "\t\n\t@Table(\n\t  name=PCLM_NPRC_CLM\n\t)\n\t"
+		   });														
 		addAnnotation
 		  (getClaim_ClaimLine(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@OneToMany(mappedBy=\"ClaimLine\", indexed=false)\n\t\t\t\t\t@JoinColumns({\n    \t\t\t\t\t@JoinColumn(name=\"CLM_NBR\"),\n    \t\t\t\t\t@JoinColumn(name=\"CLM_EXT_NBR\")\n    \t\t\t\t})\t\n\t\t\t\t"
-		   });																																	
+		   });																																		
 	}
 
 	/**
@@ -465,7 +465,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 			 "kind", "element",
 			 "name", "claimGroupVSPId",
 			 "namespace", "##targetNamespace"
-		   });			
+		   });				
 		addAnnotation
 		  (getClaim_ClaimStatus(), 
 		   source, 
@@ -543,7 +543,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 			 "kind", "element",
 			 "name", "serviceCode",
 			 "namespace", "##targetNamespace"
-		   });			
+		   });				
 		addAnnotation
 		  (getClaimLine_ClaimLineStatus(), 
 		   source, 
@@ -596,7 +596,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "@Column(name=CLM_GRP_VSP_ID,length=\"3\")"
-		   });			
+		   });				
 		addAnnotation
 		  (getClaim_ClaimStatus(), 
 		   source, 
@@ -608,7 +608,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@Column(name=CLM_NBR)\n\t\t\t\t"
-		   });																												
+		   });																													
 	}
 
 	/**
@@ -624,7 +624,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "@Column(name=BILLING_NAME,length=\"50\")"
-		   });										
+		   });											
 		addAnnotation
 		  (claimCompositeKeyEClass, 
 		   source, 
@@ -635,7 +635,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		  (claimLineEClass, 
 		   source, 
 		   new String[] {
-			 "appinfo", "\t\n\t\t@Table(\n\t\t  name=PCLM_NPRC_CLMLN\t\t  \n\t\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\", \"CLMLN_NBR\"})\n\t\t  \t\t\t\t\t  }\t  \n\t\t )\n\t\t"
+			 "appinfo", "\t\n\t\t@Table(\n\t\t  name=PCLM_NPRC_CLMLN\t\t  \n\t\t )\n\t\t"
 		   });				
 		addAnnotation
 		  (getClaimLine_Claim(), 
@@ -660,7 +660,7 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@Column(name=SVC_CD)\n\t\t\t\t"
-		   });			
+		   });				
 		addAnnotation
 		  (getClaimLine_ClaimLineStatus(), 
 		   source, 
@@ -694,13 +694,13 @@ public class ClaimPackageImpl extends EPackageImpl implements ClaimPackage {
 	 * @generated
 	 */
 	protected void createTeneo_3Annotations() {
-		String source = "teneo.extra.test2";																							
+		String source = "teneo.extra.test2";																								
 		addAnnotation
 		  (getClaimCompositeKey_ClaimExtensionNumber(), 
 		   source, 
 		   new String[] {
 			 "appinfo", "\n\t\t\t\t\t@Column(name=CLM_EXT_NBR)\n\t\t\t\t"
-		   });																									
+		   });																										
 	}
 
 } //ClaimPackageImpl

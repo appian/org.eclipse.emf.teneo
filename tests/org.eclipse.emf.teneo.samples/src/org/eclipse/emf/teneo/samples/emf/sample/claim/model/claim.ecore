@@ -8,7 +8,7 @@
       <details key="documentation" value="Claim Information"/>
     </eAnnotations>
     <eAnnotations source="teneo.extra">
-      <details key="appinfo" value="&#x9;&#xA;&#x9;@Table(&#xA;&#x9;  name=PCLM_NPRC_CLM&#xA;&#x9;  uniqueConstraints = {&#x9;@UniqueConstraint(columnNames={&quot;CLM_NBR&quot;, &quot;CLM_EXT_NBR&quot;})&#xA;&#x9;  &#x9;&#x9;&#x9;&#x9;&#x9;  }&#x9;  &#xA;&#x9;)&#xA;&#x9;"/>
+      <details key="appinfo" value="&#x9;&#xA;&#x9;@Table(&#xA;&#x9;  name=PCLM_NPRC_CLM&#xA;&#x9;)&#xA;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="Claim"/>
@@ -58,6 +58,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="claimStatus" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String" defaultValueLiteral=""
         unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value=""/>
+      </eAnnotations>
       <eAnnotations source="teneo.extra.test">
         <details key="appinfo" value="@Column(name=CLM_STATUS,length=&quot;2&quot;)"/>
       </eAnnotations>
@@ -121,7 +124,7 @@
       <details key="documentation" value="Claim Line Information"/>
     </eAnnotations>
     <eAnnotations source="teneo.jpa">
-      <details key="appinfo" value="&#x9;&#xA;&#x9;&#x9;@Table(&#xA;&#x9;&#x9;  name=PCLM_NPRC_CLMLN&#x9;&#x9;  &#xA;&#x9;&#x9;  uniqueConstraints = {&#x9;@UniqueConstraint(columnNames={&quot;CLM_NBR&quot;, &quot;CLM_EXT_NBR&quot;, &quot;CLMLN_NBR&quot;})&#xA;&#x9;&#x9;  &#x9;&#x9;&#x9;&#x9;&#x9;  }&#x9;  &#xA;&#x9;&#x9; )&#xA;&#x9;&#x9;"/>
+      <details key="appinfo" value="&#x9;&#xA;&#x9;&#x9;@Table(&#xA;&#x9;&#x9;  name=PCLM_NPRC_CLMLN&#x9;&#x9;  &#xA;&#x9;&#x9; )&#xA;&#x9;&#x9;"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="ClaimLine"/>
@@ -183,6 +186,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="claimLineStatus" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String" defaultValueLiteral=""
         unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value=""/>
+      </eAnnotations>
       <eAnnotations source="teneo.jpa">
         <details key="appinfo" value="@Column(name=CLMLN_STATUS,length=&quot;2&quot;)"/>
       </eAnnotations>

@@ -40,8 +40,6 @@
       <xsd:appinfo source="teneo.extra">	
 	@Table(
 	  name=PCLM_NPRC_CLM
-	  uniqueConstraints = {	@UniqueConstraint(columnNames={"CLM_NBR", "CLM_EXT_NBR"})
-	  					  }	  
 	)
 	</xsd:appinfo>	
 	<xsd:documentation>Claim Information</xsd:documentation>
@@ -102,8 +100,6 @@
 	      <xsd:appinfo source="teneo.jpa">	
 		@Table(
 		  name=PCLM_NPRC_CLMLN		  
-		  uniqueConstraints = {	@UniqueConstraint(columnNames={"CLM_NBR", "CLM_EXT_NBR", "CLMLN_NBR"})
-		  					  }	  
 		 )
 		</xsd:appinfo>	
 		<xsd:documentation>Claim Line Information</xsd:documentation>

@@ -7,10 +7,10 @@
 		<meta attribute="epackage">http://model.test.teneo.vsp.com</meta>
 		<composite-id name="claimCompositeKey" class="com.vsp.teneo.test.model.impl.ClaimCompositeKeyImpl">
 			<key-property name="claimNumber" type="java.lang.String">
-				<column not-null="false" unique="false" name="`clm_nbr`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`clm_nbr`"/>
 			</key-property>
 			<key-property name="claimExtensionNumber" type="java.lang.String">
-				<column not-null="false" unique="false" name="`clm_ext_nbr`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`clm_ext_nbr`"/>
 			</key-property>
 		</composite-id>
 		<discriminator column="`dtype`" type="string"/>
@@ -39,11 +39,11 @@
 		<meta attribute="epackage">http://model.test.teneo.vsp.com</meta>
 		<composite-id name="claimLineCompositeKey" class="com.vsp.teneo.test.model.impl.ClaimLineCompositeKeyImpl">
 			<key-many-to-one name="claim" entity-name="Claim" foreign-key="claimline_claim" lazy="false">
-				<column not-null="false" unique="false" name="`clm_nbr`" unique-key="c0"/>
-				<column not-null="false" unique="false" name="`clm_ext_nbr`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`clm_nbr`" />
+				<column not-null="false" unique="false" name="`clm_ext_nbr`" />
 			</key-many-to-one>
 			<key-property name="claimLineNumber" type="java.lang.String">
-				<column not-null="false" unique="false" name="`clmln_nbr`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`clmln_nbr`" />
 			</key-property>
 		</composite-id>
 		<discriminator column="`dtype`" type="string"/>

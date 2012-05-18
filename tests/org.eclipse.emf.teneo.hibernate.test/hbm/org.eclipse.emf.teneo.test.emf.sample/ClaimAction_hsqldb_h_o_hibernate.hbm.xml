@@ -9,10 +9,10 @@
 			<meta attribute="eclassName" inherit="false">ClaimCompositeKey</meta>
 			<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/claim</meta>
 			<key-property name="claimNumber" type="java.lang.String">
-				<column not-null="false" unique="false" name="`CLM_NBR`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`CLM_NBR`"/>
 			</key-property>
 			<key-property name="claimExtensionNumber" type="java.lang.String">
-				<column not-null="false" unique="false" name="`CLM_EXT_NBR`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`CLM_EXT_NBR`"/>
 			</key-property>
 		</composite-id>
 		<discriminator type="string">
@@ -45,11 +45,11 @@
 			<meta attribute="eclassName" inherit="false">ClaimLineCompositeKey</meta>
 			<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/sample/claim</meta>
 			<key-many-to-one name="claim" entity-name="Claim" foreign-key="CLAIMLINECOMPOSITEKEY_CLAIM" lazy="false">
-				<column not-null="false" unique="false" name="`CLM_NBR`" unique-key="c0"/>
-				<column not-null="false" unique="false" name="`CLM_EXT_NBR`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`CLM_NBR`"/>
+				<column not-null="false" unique="false" name="`CLM_EXT_NBR`"/>
 			</key-many-to-one>
 			<key-property name="claimLineNumber" type="java.lang.String">
-				<column not-null="false" unique="false" name="`CLMLN_NBR`" unique-key="c0"/>
+				<column not-null="false" unique="false" name="`CLMLN_NBR`"/>
 			</key-property>
 		</composite-id>
 		<discriminator type="string">

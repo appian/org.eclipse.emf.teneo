@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.emf.teneo.samples.emf.sample.claim.ClaimPackage#getClaimLine()
- * @model annotation="teneo.jpa appinfo='\t\n\t\t@Table(\n\t\t  name=PCLM_NPRC_CLMLN\t\t  \n\t\t  uniqueConstraints = {\t@UniqueConstraint(columnNames={\"CLM_NBR\", \"CLM_EXT_NBR\", \"CLMLN_NBR\"})\n\t\t  \t\t\t\t\t  }\t  \n\t\t )\n\t\t'"
+ * @model annotation="teneo.jpa appinfo='\t\n\t\t@Table(\n\t\t  name=PCLM_NPRC_CLMLN\t\t  \n\t\t )\n\t\t'"
  *        extendedMetaData="name='ClaimLine' kind='elementOnly'"
  * @generated
  */
@@ -160,6 +160,9 @@ public interface ClaimLine extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Claim Line Status</em>' attribute.
 	 * @see #isSetClaimLineStatus()
 	 * @see #unsetClaimLineStatus()
