@@ -156,6 +156,7 @@ public class HbSessionWrapper implements SessionWrapper {
 
 	/** Close the underlying session */
 	public void close() {
+		getSessionInternal().clear();
 		getSessionInternal().close();
 	}
 
