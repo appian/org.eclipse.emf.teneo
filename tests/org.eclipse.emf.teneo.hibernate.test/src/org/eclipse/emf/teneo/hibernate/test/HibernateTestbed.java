@@ -165,7 +165,7 @@ public class HibernateTestbed extends Testbed {
 		}
 		mappingFile.createNewFile();
 		final FileWriter fileWriter = new FileWriter(mappingFile);
-
+		
 		fileWriter.write(mappingXML);
 		fileWriter.close();
 	}

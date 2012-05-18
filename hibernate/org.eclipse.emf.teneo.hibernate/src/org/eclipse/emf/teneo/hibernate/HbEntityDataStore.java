@@ -471,7 +471,9 @@ public class HbEntityDataStore extends HbDataStore implements
 		}
 
 		public void close() {
-			delegateEntityManager.close();
+			if (delegateEntityManager.isOpen()) {
+				delegateEntityManager.close();
+			}
 		}
 
 		public boolean contains(Object arg0) {

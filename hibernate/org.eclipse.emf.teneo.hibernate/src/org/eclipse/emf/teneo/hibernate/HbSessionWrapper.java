@@ -31,6 +31,7 @@ import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.persister.entity.JoinedSubclassEntityPersister;
 import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.hibernate.persister.entity.UnionSubclassEntityPersister;
+import org.hibernate.service.UnknownServiceException;
 
 /**
  * Wraps a standard hibernate session.
@@ -155,7 +156,11 @@ public class HbSessionWrapper implements SessionWrapper {
 
 	/** Close the underlying session */
 	public void close() {
-		getSessionInternal().close();
+		try {
+			getSessionInternal().close();
+		} catch (UnknownServiceException e) {
+			// ignore these ones...
+		}
 	}
 
 	/** Save or update the pass object */

@@ -13,6 +13,8 @@ import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
 import org.eclipse.emf.teneo.hibernate.mapper.HbMapperConstants;
 import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.internal.SessionImpl;
 
 /**
  * Stores a java enum
@@ -34,7 +36,8 @@ public class ENumUserIntegerType extends ENumUserType {
 	 * 
 	 * @see org.hibernate.usertype.UserType#nullSafeGet(java.sql.ResultSet, java.lang.String[], java.lang.Object)
 	 */
-	public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
+	@Override
+	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor sessionImplementor, Object owner) throws HibernateException, SQLException {
 		final int value = rs.getInt(names[0]);
 		if (rs.wasNull())
 			return null;
@@ -61,7 +64,8 @@ public class ENumUserIntegerType extends ENumUserType {
 	 * 
 	 * @see org.hibernate.usertype.UserType#nullSafeSet(java.sql.PreparedStatement, java.lang.Object, int)
 	 */
-	public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
+	@Override
+	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 		if (value == null) {
 			st.setNull(index, Types.INTEGER);
 		} else {

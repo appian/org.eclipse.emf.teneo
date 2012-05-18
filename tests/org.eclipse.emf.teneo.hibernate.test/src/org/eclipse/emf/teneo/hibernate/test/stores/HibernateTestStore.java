@@ -50,6 +50,7 @@ import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
+import org.hibernate.cache.internal.NoCachingRegionFactory;
 import org.hibernate.cfg.Environment;
 
 /**
@@ -138,6 +139,8 @@ public class HibernateTestStore extends AbstractTestStore {
 		props.setProperty(Environment.PASS, dbadapter.getDbPwd());
 		props.setProperty(Environment.DIALECT, dbadapter.getDialect());
 		props.setProperty(Environment.BYTECODE_PROVIDER, "cglib");
+		props.setProperty(Environment.USE_SECOND_LEVEL_CACHE, "false");
+		props.setProperty(Environment.GENERATE_STATISTICS, "false");
 		return props;
 	}
 
