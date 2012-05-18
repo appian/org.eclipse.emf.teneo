@@ -4,14 +4,17 @@
  *
  * $Id$
  */
-package org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util;
+package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
 
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.AssociationoverridePackage;
+
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents
@@ -19,7 +22,7 @@ import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Associationove
  * <!-- end-user-doc -->
  * @generated
  */
-public class AssociationoverrideXMLProcessor extends XMLProcessor {
+public class MapsXMLProcessor extends XMLProcessor {
 
 	/**
 	 * Public constructor to instantiate the helper.
@@ -27,13 +30,13 @@ public class AssociationoverrideXMLProcessor extends XMLProcessor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AssociationoverrideXMLProcessor() {
+	public MapsXMLProcessor() {
 		super((EPackage.Registry.INSTANCE));
-		AssociationoverridePackage.eINSTANCE.eClass();
+		MapsPackage.eINSTANCE.eClass();
 	}
 	
 	/**
-	 * Register for "*" and "xml" file extensions the AssociationoverrideResourceFactoryImpl factory.
+	 * Register for "*" and "xml" file extensions the MapsResourceFactoryImpl factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -42,10 +45,10 @@ public class AssociationoverrideXMLProcessor extends XMLProcessor {
 	protected Map<String, Resource.Factory> getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new AssociationoverrideResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new AssociationoverrideResourceFactoryImpl());
+			registrations.put(XML_EXTENSION, new MapsResourceFactoryImpl());
+			registrations.put(STAR_EXTENSION, new MapsResourceFactoryImpl());
 		}
 		return registrations;
 	}
 
-} //AssociationoverrideXMLProcessor
+} //MapsXMLProcessor

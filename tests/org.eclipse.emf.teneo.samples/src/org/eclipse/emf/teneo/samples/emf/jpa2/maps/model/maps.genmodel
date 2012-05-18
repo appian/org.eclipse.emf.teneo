@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.teneo.samples/src"
+    modelPluginID="org.eclipse.emf.teneo.samples" modelName="Maps" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>maps.xsd</foreignModel>
+  <genPackages prefix="Maps" basePackage="org.eclipse.emf.teneo.samples.emf.jpa2"
+      resource="XML" disposableProviderFactory="true" ecorePackage="maps.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="maps.ecore#//EnumType">
+      <genEnumLiterals ecoreEnumLiteral="maps.ecore#//EnumType/val1"/>
+      <genEnumLiterals ecoreEnumLiteral="maps.ecore#//EnumType/val2"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="maps.ecore#//EnumTypeObject"/>
+    <genDataTypes ecoreDataType="maps.ecore#//MyDate"/>
+    <genClasses ecoreClass="maps.ecore#//DateToStringMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//DateToStringMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//DateToStringMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="maps.ecore#//EnumToStringMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//EnumToStringMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//EnumToStringMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="maps.ecore#//Images">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maps.ecore#//Images/imageFiles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maps.ecore#//Images/imageTypeNames"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maps.ecore#//Images/imageDateDescriptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference maps.ecore#//Images/photoParts"/>
+    </genClasses>
+    <genClasses ecoreClass="maps.ecore#//PhotoPart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//PhotoPart/name"/>
+    </genClasses>
+    <genClasses ecoreClass="maps.ecore#//StringToPartMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference maps.ecore#//StringToPartMapEntry/key"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute maps.ecore#//StringToPartMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="maps.ecore#//StringToStringMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//StringToStringMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute maps.ecore#//StringToStringMapEntry/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

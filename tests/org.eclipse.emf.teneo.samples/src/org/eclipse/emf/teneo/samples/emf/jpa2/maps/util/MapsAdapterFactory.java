@@ -4,34 +4,36 @@
  *
  * $Id$
  */
-package org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util;
+package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
+
+import java.util.Date;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Address;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.AssociationoverridePackage;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Employee;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Person;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Student;
+
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.AssociationoverridePackage
+ * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage
  * @generated
  */
-public class AssociationoverrideAdapterFactory extends AdapterFactoryImpl {
+public class MapsAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static AssociationoverridePackage modelPackage;
+	protected static MapsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -39,9 +41,9 @@ public class AssociationoverrideAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AssociationoverrideAdapterFactory() {
+	public MapsAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = AssociationoverridePackage.eINSTANCE;
+			modelPackage = MapsPackage.eINSTANCE;
 		}
 	}
 
@@ -70,23 +72,31 @@ public class AssociationoverrideAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AssociationoverrideSwitch<Adapter> modelSwitch =
-		new AssociationoverrideSwitch<Adapter>() {
+	protected MapsSwitch<Adapter> modelSwitch =
+		new MapsSwitch<Adapter>() {
 			@Override
-			public Adapter caseAddress(Address object) {
-				return createAddressAdapter();
+			public Adapter caseDateToStringMapEntry(Map.Entry<Date, String> object) {
+				return createDateToStringMapEntryAdapter();
 			}
 			@Override
-			public Adapter caseEmployee(Employee object) {
-				return createEmployeeAdapter();
+			public Adapter caseEnumToStringMapEntry(Map.Entry<EnumType, String> object) {
+				return createEnumToStringMapEntryAdapter();
 			}
 			@Override
-			public Adapter casePerson(Person object) {
-				return createPersonAdapter();
+			public Adapter caseImages(Images object) {
+				return createImagesAdapter();
 			}
 			@Override
-			public Adapter caseStudent(Student object) {
-				return createStudentAdapter();
+			public Adapter casePhotoPart(PhotoPart object) {
+				return createPhotoPartAdapter();
+			}
+			@Override
+			public Adapter caseStringToPartMapEntry(Map.Entry<PhotoPart, String> object) {
+				return createStringToPartMapEntryAdapter();
+			}
+			@Override
+			public Adapter caseStringToStringMapEntry(Map.Entry<String, String> object) {
+				return createStringToStringMapEntryAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -109,58 +119,86 @@ public class AssociationoverrideAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Address <em>Address</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Date To String Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Address
+	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createAddressAdapter() {
+	public Adapter createDateToStringMapEntryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Employee <em>Employee</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Enum To String Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Employee
+	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createEmployeeAdapter() {
+	public Adapter createEnumToStringMapEntryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Person <em>Person</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images <em>Images</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Person
+	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images
 	 * @generated
 	 */
-	public Adapter createPersonAdapter() {
+	public Adapter createImagesAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Student <em>Student</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart <em>Photo Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Student
+	 * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart
 	 * @generated
 	 */
-	public Adapter createStudentAdapter() {
+	public Adapter createPhotoPartAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>String To Part Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createStringToPartMapEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createStringToStringMapEntryAdapter() {
 		return null;
 	}
 
@@ -176,4 +214,4 @@ public class AssociationoverrideAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //AssociationoverrideAdapterFactory
+} //MapsAdapterFactory

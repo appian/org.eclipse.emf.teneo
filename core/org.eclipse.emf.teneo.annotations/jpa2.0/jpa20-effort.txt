@@ -52,12 +52,6 @@ Added catalog and schema
 - Version --> No Change
 
 == New and Changed Annotations  ==
-- CollectionTable --> New
-- MapKeyClass --> New
-- MapKeyColumn --> New
-- MapKeyEnumerated --> New
-- MapKeyJoinColumn --> New
-- MapKeyTemporal --> New
 
 == Done ==
 - OneToMany:
@@ -77,3 +71,9 @@ Composite/Embedded Id: if the MapsId has a value then generator foreign is not s
 Added catalog and schema
 - AssociationOverride(s):
 Added AssociationOverride.joinTable
+- CollectionTable --> New
+- MapKeyClass --> No change, is always supported as EMF ensures typed collection elements
+- MapKeyColumn --> New
+- MapKeyEnumerated --> New
+- MapKeyTemporal --> New
+- MapKeyJoinColumn --> New

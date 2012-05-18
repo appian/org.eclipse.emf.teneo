@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.teneo.annotations.pannotation.*;
 import org.eclipse.emf.teneo.annotations.pannotation.AssociationOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.AttributeOverride;
 import org.eclipse.emf.teneo.annotations.pannotation.Basic;
@@ -1280,7 +1281,8 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMapKeyColumn_ScalePrecisionForNumeric(MapKeyColumn mapKeyColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1298,7 +1300,7 @@ public class PannotationValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return true;
+		return validateColumn_ScalePrecisionForNumeric(mapKeyColumn, diagnostics, context);
 	}
 
 	/**
@@ -1308,7 +1310,8 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMapKeyColumn_LengthForString(MapKeyColumn mapKeyColumn, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1326,7 +1329,7 @@ public class PannotationValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return true;
+		return validateColumn_LengthForString(mapKeyColumn, diagnostics, context);
 	}
 
 	/**
@@ -1346,6 +1349,7 @@ public class PannotationValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mapKeyEnumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_CompatibleEModelElementType(mapKeyEnumerated, diagnostics, context);
 		if (result || diagnostics != null) result &= validatePAnnotation_AnnotationIsSupported(mapKeyEnumerated, diagnostics, context);
+		if (result || diagnostics != null) result &= validateEnumerated_AllowedElementType(mapKeyEnumerated, diagnostics, context);
 		return result;
 	}
 
@@ -1397,7 +1401,8 @@ public class PannotationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMapKeyTemporal_AllowedElementType(MapKeyTemporal mapKeyTemporal, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
+		// TODO override the constraint, if desired
+		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -1415,7 +1420,7 @@ public class PannotationValidator extends EObjectValidator {
 			}
 			return false;
 		}
-		return true;
+		return validateTemporal_AllowedElementType(mapKeyTemporal, diagnostics, context);
 	}
 
 	/**

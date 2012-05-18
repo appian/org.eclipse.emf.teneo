@@ -9,6 +9,7 @@
 package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEAttribute;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEClass;
 import org.eclipse.emf.teneo.annotations.pamodel.PAnnotatedEReference;
@@ -486,6 +488,27 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		final EStructuralFeature keyFeature = eref.getEReferenceType()
 				.getEStructuralFeature("key");
 
+		final PAnnotatedEStructuralFeature paKeyFeature = aref.getPaModel()
+				.getPAnnotated(keyFeature);
+		PAnnotatedEAttribute paAttribute = null;
+		if (paKeyFeature instanceof PAnnotatedEAttribute) {
+
+			paAttribute = (PAnnotatedEAttribute) paKeyFeature;
+
+			// put different things that are defined at reference level to the
+			// key
+			if (paAttribute.getEnumerated() == null
+					&& aref.getMapKeyEnumerated() != null) {
+				paAttribute.setEnumerated(EcoreUtil.copy(aref
+						.getMapKeyEnumerated()));
+			}
+			if (paAttribute.getTemporal() == null
+					&& aref.getMapKeyTemporal() != null) {
+				paAttribute
+						.setTemporal(EcoreUtil.copy(aref.getMapKeyTemporal()));
+			}
+		}
+
 		if (hbRef.getHbMapKey() != null && hbRef.getMapKey() != null) {
 			log.warn("The EReference "
 					+ aref.getModelElement().getName()
@@ -502,23 +525,32 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 		if (hbRef.getHbMapKey() != null) {
 			final org.eclipse.emf.teneo.hibernate.hbannotation.HbMapKey mapKey = hbRef
 					.getHbMapKey();
-			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref
-					.getPaModel().getPAnnotated(keyFeature);
 			final Element mapKeyElement = collElement.addElement("map-key");
 			if (mapKey.getColumns() != null && mapKey.getColumns().size() > 0) {
 				addColumnsAndFormula(mapKeyElement, aref, mapKey.getColumns(),
 						false, false, false, false);
+			} else if (hbRef.getMapKeyColumn() != null) {
+				final List<Column> mkColumns = new ArrayList<Column>();
+				mkColumns.add(hbRef.getMapKeyColumn());
+				addColumnsAndFormula(mapKeyElement, aref, mkColumns, false,
+						false, false, false);
 			}
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKey() != null) {
 			final MapKey mapKey = hbRef.getMapKey();
-			final PAnnotatedEAttribute paAttribute = (PAnnotatedEAttribute) aref
-					.getPaModel().getPAnnotated(keyFeature);
-			final Element mapKeyElement = collElement.addElement("map-key")
-					.addAttribute(
-							"column",
-							getHbmContext().trunc(hbRef.getMapKey(),
-									mapKey.getName()));
+			final Element mapKeyElement = collElement.addElement("map-key");
+			if (hbRef.getMapKeyColumn() != null) {
+				final List<Column> mkColumns = new ArrayList<Column>();
+				mkColumns.add(hbRef.getMapKeyColumn());
+				addColumnsAndFormula(mapKeyElement, aref, mkColumns, false,
+						false, false, false);
+			} else {
+				mapKeyElement.addAttribute(
+						"column",
+						getHbmContext().trunc(hbRef.getMapKey(),
+								mapKey.getName()));
+			}
+
 			setType(paAttribute, mapKeyElement);
 		} else if (hbRef.getMapKeyManyToMany() != null) {
 			final MapKeyManyToMany mkm = hbRef.getMapKeyManyToMany();
@@ -540,6 +572,10 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			}
 			if (mkm.getJoinColumns() != null && mkm.getJoinColumns().size() > 0) {
 				addJoinColumns(hbRef, mkmElement, mkm.getJoinColumns(), false);
+			} else if (hbRef.getMapKeyJoinColumns().size() > 0) {
+				final List<JoinColumn> jcs = new ArrayList<JoinColumn>();
+				jcs.addAll(hbRef.getMapKeyJoinColumns());
+				addJoinColumns(hbRef, mkmElement, jcs, false);
 			}
 		} else if (keyFeature instanceof EReference) {
 			final PAnnotatedEClass referedAClass = aref.getPaModel()
@@ -558,14 +594,24 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 						getHbmContext().getInstanceClassName(
 								referedAClass.getModelEClass()));
 			}
+			Element mkmElement = collElement.element("map-key-many-to-many");
+			if (hbRef.getMapKeyJoinColumns().size() > 0) {
+				final List<JoinColumn> jcs = new ArrayList<JoinColumn>();
+				jcs.addAll(hbRef.getMapKeyJoinColumns());
+				addJoinColumns(hbRef, mkmElement, jcs, false);
+			}
 		} else {
 			// final String type =
 			// hbType(aref.getPaModel().getPAnnotated((EAttribute) feature));
-			final Element mapKey = collElement.addElement("map-key"); // .addAttribute("type",
+			final Element mapKeyElement = collElement.addElement("map-key"); // .addAttribute("type",
 			// type);
-			final PAnnotatedEAttribute paAttribute = aref.getPaModel()
-					.getPAnnotated((EAttribute) keyFeature);
-			setType(paAttribute, mapKey);
+			setType(paAttribute, mapKeyElement);
+			if (hbRef.getMapKeyColumn() != null) {
+				final List<Column> mkColumns = new ArrayList<Column>();
+				mkColumns.add(hbRef.getMapKeyColumn());
+				addColumnsAndFormula(mapKeyElement, aref, mkColumns, false,
+						false, false, false);
+			}
 		}
 	}
 
@@ -597,7 +643,8 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 			PAnnotatedEStructuralFeature paFeature) {
 		final Element collectionElement;
 		HbAnnotatedETypeElement hbFeature = (HbAnnotatedETypeElement) paFeature;
-		final PAnnotatedEReference paReference = paFeature instanceof PAnnotatedEReference ? (PAnnotatedEReference) paFeature : null;
+		final PAnnotatedEReference paReference = paFeature instanceof PAnnotatedEReference ? (PAnnotatedEReference) paFeature
+				: null;
 		final IdBag idBag = hbFeature.getHbIdBag();
 
 		final EStructuralFeature estruct = paFeature
@@ -1051,16 +1098,23 @@ public abstract class AbstractAssociationMapper extends AbstractMapper {
 										 * ().getValue()
 										 */);
 	}
-	
+
 	protected JoinTable getJoinTable(PAnnotatedEReference paReference) {
-		final AssociationOverride override = getHbmContext().getAssociationOverrides(paReference);
+		final AssociationOverride override = getHbmContext()
+				.getAssociationOverrides(paReference);
 		if (override != null && override.getJoinTable() != null) {
 			return override.getJoinTable();
 		}
-		if (paReference.getEmbedded() != null && paReference.getCollectionTable() != null) {
+		final boolean isMap = StoreUtil.isMap(paReference
+				.getModelEStructuralFeature())
+				&& getHbmContext().isMapEMapAsTrueMap();
+
+		if ((paReference.getEmbedded() != null || isMap || paReference
+				.getElementCollection() != null)
+				&& paReference.getCollectionTable() != null) {
 			return paReference.getCollectionTable();
 		}
-		
+
 		return paReference.getJoinTable();
 	}
 }

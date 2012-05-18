@@ -4,17 +4,18 @@
  *
  * $Id$
  */
-package org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util;
+package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Address;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.AssociationoverridePackage;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Employee;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Person;
-import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Student;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.EnumType;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.Images;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage;
+import org.eclipse.emf.teneo.samples.emf.jpa2.maps.PhotoPart;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,17 +27,17 @@ import org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.Student;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.AssociationoverridePackage
+ * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.MapsPackage
  * @generated
  */
-public class AssociationoverrideSwitch<T> {
+public class MapsSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static AssociationoverridePackage modelPackage;
+	protected static MapsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -44,9 +45,9 @@ public class AssociationoverrideSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AssociationoverrideSwitch() {
+	public MapsSwitch() {
 		if (modelPackage == null) {
-			modelPackage = AssociationoverridePackage.eINSTANCE;
+			modelPackage = MapsPackage.eINSTANCE;
 		}
 	}
 
@@ -90,29 +91,39 @@ public class AssociationoverrideSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case AssociationoverridePackage.ADDRESS: {
-				Address address = (Address)theEObject;
-				T result = caseAddress(address);
+			case MapsPackage.DATE_TO_STRING_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<Date, String> dateToStringMapEntry = (Map.Entry<Date, String>)theEObject;
+				T result = caseDateToStringMapEntry(dateToStringMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AssociationoverridePackage.EMPLOYEE: {
-				Employee employee = (Employee)theEObject;
-				T result = caseEmployee(employee);
-				if (result == null) result = casePerson(employee);
+			case MapsPackage.ENUM_TO_STRING_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<EnumType, String> enumToStringMapEntry = (Map.Entry<EnumType, String>)theEObject;
+				T result = caseEnumToStringMapEntry(enumToStringMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AssociationoverridePackage.PERSON: {
-				Person person = (Person)theEObject;
-				T result = casePerson(person);
+			case MapsPackage.IMAGES: {
+				Images images = (Images)theEObject;
+				T result = caseImages(images);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AssociationoverridePackage.STUDENT: {
-				Student student = (Student)theEObject;
-				T result = caseStudent(student);
-				if (result == null) result = casePerson(student);
+			case MapsPackage.PHOTO_PART: {
+				PhotoPart photoPart = (PhotoPart)theEObject;
+				T result = casePhotoPart(photoPart);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MapsPackage.STRING_TO_PART_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<PhotoPart, String> stringToPartMapEntry = (Map.Entry<PhotoPart, String>)theEObject;
+				T result = caseStringToPartMapEntry(stringToPartMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MapsPackage.STRING_TO_STRING_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<String, String> stringToStringMapEntry = (Map.Entry<String, String>)theEObject;
+				T result = caseStringToStringMapEntry(stringToStringMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -121,62 +132,92 @@ public class AssociationoverrideSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Address</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Date To String Map Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Address</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Date To String Map Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAddress(Address object) {
+	public T caseDateToStringMapEntry(Map.Entry<Date, String> object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Employee</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Enum To String Map Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Employee</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Enum To String Map Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEmployee(Employee object) {
+	public T caseEnumToStringMapEntry(Map.Entry<EnumType, String> object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Person</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Images</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Person</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Images</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePerson(Person object) {
+	public T caseImages(Images object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Student</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Photo Part</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Student</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Photo Part</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStudent(Student object) {
+	public T casePhotoPart(PhotoPart object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To Part Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To Part Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringToPartMapEntry(Map.Entry<PhotoPart, String> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringToStringMapEntry(Map.Entry<String, String> object) {
 		return null;
 	}
 
@@ -195,4 +236,4 @@ public class AssociationoverrideSwitch<T> {
 		return null;
 	}
 
-} //AssociationoverrideSwitch
+} //MapsSwitch

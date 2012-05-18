@@ -4,19 +4,20 @@
  *
  * $Id$
  */
-package org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util;
+package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util.AssociationoverrideResourceFactoryImpl
+ * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.util.MapsResourceFactoryImpl
  * @generated
  */
-public class AssociationoverrideResourceImpl extends XMLResourceImpl {
+public class MapsResourceImpl extends XMLResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
@@ -24,8 +25,8 @@ public class AssociationoverrideResourceImpl extends XMLResourceImpl {
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-	public AssociationoverrideResourceImpl(URI uri) {
+	public MapsResourceImpl(URI uri) {
 		super(uri);
 	}
 
-} //AssociationoverrideResourceImpl
+} //MapsResourceImpl

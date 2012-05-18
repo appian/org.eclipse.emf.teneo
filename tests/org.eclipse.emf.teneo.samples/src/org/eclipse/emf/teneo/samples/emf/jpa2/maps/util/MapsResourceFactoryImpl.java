@@ -4,28 +4,31 @@
  *
  * $Id$
  */
-package org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util;
+package org.eclipse.emf.teneo.samples.emf.jpa2.maps.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
+
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.emf.teneo.samples.emf.jpa2.associationoverride.util.AssociationoverrideResourceImpl
+ * @see org.eclipse.emf.teneo.samples.emf.jpa2.maps.util.MapsResourceImpl
  * @generated
  */
-public class AssociationoverrideResourceFactoryImpl extends ResourceFactoryImpl {
+public class MapsResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AssociationoverrideResourceFactoryImpl() {
+	public MapsResourceFactoryImpl() {
 		super();
 	}
 
@@ -37,7 +40,7 @@ public class AssociationoverrideResourceFactoryImpl extends ResourceFactoryImpl 
 	 */
 	@Override
 	public Resource createResource(URI uri) {
-		XMLResource result = new AssociationoverrideResourceImpl(uri);
+		XMLResource result = new MapsResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
@@ -50,4 +53,4 @@ public class AssociationoverrideResourceFactoryImpl extends ResourceFactoryImpl 
 		return result;
 	}
 
-} //AssociationoverrideResourceFactoryImpl
+} //MapsResourceFactoryImpl
