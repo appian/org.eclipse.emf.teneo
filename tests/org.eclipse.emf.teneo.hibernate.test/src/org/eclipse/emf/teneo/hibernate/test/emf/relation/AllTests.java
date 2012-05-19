@@ -37,7 +37,7 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite("Test for org.eclipse.emf.teneo.hibernate.test.emf.relation", HibernateTestbed.instance()
 				.getConfigurations());
 
-//		suite.addTestSuite(Relation1to1Action.class);
+		suite.addTestSuite(Relation1to1Action.class);
 		suite.addTestSuite(Relation1tonAction.class);
 		suite.addTestSuite(RelationntomAction.class);
 
