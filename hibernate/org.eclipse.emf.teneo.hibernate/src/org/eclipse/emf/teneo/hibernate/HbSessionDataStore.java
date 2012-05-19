@@ -38,8 +38,8 @@ import org.hibernate.TypeHelper;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.event.service.spi.EventListenerRegistry;
 import org.hibernate.event.spi.EventType;
-import org.hibernate.event.spi.InitializeCollectionEventListener;
 import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.service.BootstrapServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
 /**
@@ -126,8 +126,6 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	protected void setEventListeners() {
 		final EMFInitializeCollectionEventListener initializeCollectionEventListener = getExtensionManager()
 				.getExtension(EMFInitializeCollectionEventListener.class);
-		org.hibernate.event.service.spi.EventListenerGroup<InitializeCollectionEventListener> group = ((SessionFactoryImpl)getSessionFactory()).getServiceRegistry().getService( org.hibernate.event.service.spi.EventListenerRegistry.class ).getEventListenerGroup( EventType.INIT_COLLECTION );
-		group.appendListener(initializeCollectionEventListener);
 		final ServiceRegistry serviceRegistry = ((SessionFactoryImpl)getSessionFactory()).getServiceRegistry();
 		final EventListenerRegistry eventListenerRegistry = serviceRegistry.getService( EventListenerRegistry.class );
 		eventListenerRegistry.setListeners(EventType.INIT_COLLECTION, initializeCollectionEventListener);
@@ -237,7 +235,8 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 	}
 
 	/** Build the session factory */
-	protected void buildSessionFactory() {		
+	@SuppressWarnings("deprecation")
+	protected void buildSessionFactory() {
 		setSessionFactory(getConfiguration().buildSessionFactory());
 	}
 

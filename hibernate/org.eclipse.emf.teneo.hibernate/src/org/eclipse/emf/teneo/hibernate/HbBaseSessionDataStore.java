@@ -28,11 +28,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Interceptor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.SessionFactoryObserver;
 import org.hibernate.StatelessSession;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.spi.FilterDefinition;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.metadata.CollectionMetadata;
+import org.hibernate.service.BootstrapServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.service.internal.StandardServiceRegistryImpl;
 import org.hibernate.stat.Statistics;
 
 /**
@@ -195,16 +201,19 @@ public abstract class HbBaseSessionDataStore extends HbDataStore implements
 	}
 
 	public Session openSession(Connection connection, Interceptor interceptor) {
-		return ((SessionFactoryImpl)getSessionFactory()).withOptions().interceptor(interceptor).connection(connection).openSession();
+		return ((SessionFactoryImpl) getSessionFactory()).withOptions()
+				.interceptor(interceptor).connection(connection).openSession();
 	}
 
 	public Session openSession(Connection connection) {
-		return ((SessionFactoryImpl)getSessionFactory()).withOptions().connection(connection).openSession();
+		return ((SessionFactoryImpl) getSessionFactory()).withOptions()
+				.connection(connection).openSession();
 	}
 
 	public Session openSession(Interceptor interceptor)
 			throws HibernateException {
-		return ((SessionFactoryImpl)getSessionFactory()).withOptions().interceptor(interceptor).openSession();
+		return ((SessionFactoryImpl) getSessionFactory()).withOptions()
+				.interceptor(interceptor).openSession();
 	}
 
 	public StatelessSession openStatelessSession() {
