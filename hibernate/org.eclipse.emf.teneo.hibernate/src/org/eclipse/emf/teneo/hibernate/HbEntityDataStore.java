@@ -57,10 +57,11 @@ import org.hibernate.ejb.Ejb3Configuration;
 import org.hibernate.ejb.EntityManagerFactoryImpl;
 import org.hibernate.ejb.QueryImpl;
 import org.hibernate.engine.query.spi.NamedParameterDescriptor;
+import org.hibernate.event.service.spi.EventListenerRegistry;
 import org.hibernate.event.spi.EventType;
-import org.hibernate.event.spi.InitializeCollectionEventListener;
 import org.hibernate.internal.AbstractQueryImpl;
 import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.EntityType;
 import org.hibernate.type.Type;
 
@@ -148,8 +149,9 @@ public class HbEntityDataStore extends HbDataStore implements
 		if (emf instanceof WrappedEntityManagerFactory) {
 			emf = ((WrappedEntityManagerFactory)emf).getDelegate();
 		}
-		org.hibernate.event.service.spi.EventListenerGroup<InitializeCollectionEventListener> group = ((SessionFactoryImpl)((EntityManagerFactoryImpl)emf).getSessionFactory()).getServiceRegistry().getService( org.hibernate.event.service.spi.EventListenerRegistry.class ).getEventListenerGroup( EventType.INIT_COLLECTION );
-		group.appendListener(eventListener);
+		final ServiceRegistry serviceRegistry = ((SessionFactoryImpl)((EntityManagerFactoryImpl)emf).getSessionFactory()).getServiceRegistry();
+		final EventListenerRegistry eventListenerRegistry = serviceRegistry.getService( EventListenerRegistry.class );
+		eventListenerRegistry.setListeners(EventType.INIT_COLLECTION, eventListener);
 	}
 
 	/** Sets the interceptor */

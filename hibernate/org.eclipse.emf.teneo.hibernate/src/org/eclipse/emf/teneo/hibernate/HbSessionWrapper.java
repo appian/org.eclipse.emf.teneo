@@ -31,7 +31,6 @@ import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.persister.entity.JoinedSubclassEntityPersister;
 import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.hibernate.persister.entity.UnionSubclassEntityPersister;
-import org.hibernate.service.UnknownServiceException;
 
 /**
  * Wraps a standard hibernate session.

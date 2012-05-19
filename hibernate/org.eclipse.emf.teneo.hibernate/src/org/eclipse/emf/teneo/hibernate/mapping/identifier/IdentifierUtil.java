@@ -26,8 +26,6 @@ import org.eclipse.emf.teneo.classloader.ClassLoaderResolver;
 import org.eclipse.emf.teneo.classloader.StoreClassLoadException;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbMapperException;
-import org.hibernate.EntityMode;
-import org.hibernate.Session;
 import org.hibernate.engine.internal.ForeignKeys;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.internal.SessionFactoryImpl;

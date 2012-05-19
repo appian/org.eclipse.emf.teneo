@@ -28,10 +28,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.emf.teneo.hibernate.HbStoreException;
 import org.eclipse.emf.teneo.util.EcoreDataTypes;
-import org.hibernate.EntityMode;
 import org.hibernate.HibernateException;
-import org.hibernate.type.AbstractStandardBasicType;
-import org.hibernate.type.ImmutableType;
 import org.hibernate.type.MutableType;
 
 /**
