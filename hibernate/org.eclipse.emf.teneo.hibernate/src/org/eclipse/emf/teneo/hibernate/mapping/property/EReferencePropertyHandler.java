@@ -32,6 +32,7 @@ import org.hibernate.engine.SessionImplementor;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
+import org.hibernate.proxy.HibernateProxy;
 
 /**
  * Implements the getter for an EReference field. Normally uses the eget/eset
@@ -119,7 +120,13 @@ public class EReferencePropertyHandler implements Getter, Setter,
 		// see bugzilla: 283680, in case of cascading having this
 		// to false ment that Hibernate encountered unresolved/empty
 		// object
-		// return ((EObject) owner).eGet(eReference, false);
+		Object result = ((EObject) owner).eGet(eReference, false);
+		if (result instanceof HibernateProxy) {
+			// in case of HibernateProxy do not force eager load by invoking
+			// eGet with true parameter that will invoke eIsProxy() on the
+			// hibernate proxy object
+			return result;
+		}
 		return ((EObject) owner).eGet(eReference, true);
 	}
 
