@@ -32,6 +32,7 @@ import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.property.Getter;
 import org.hibernate.property.PropertyAccessor;
 import org.hibernate.property.Setter;
+import org.hibernate.proxy.HibernateProxy;
 
 /**
  * Implements the getter for an EReference field. Normally uses the eget/eset
