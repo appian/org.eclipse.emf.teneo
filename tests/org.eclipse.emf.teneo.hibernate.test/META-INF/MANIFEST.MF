@@ -8,7 +8,7 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.emf.teneo.commontest,
  org.eclipse.emf.ecore,
  org.junit,
- org.eclipse.emf.teneo.hibernate,
+ org.eclipse.emf.teneo.hibernate;bundle-version="[1.2.0,2.0.0)",
  org.eclipse.emf.ecore.xmi,
  org.eclipse.xsd,
  org.apache.log4j;bundle-version="1.2.12"
