@@ -145,10 +145,16 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 		} else {
 			// if nullable was not set explicitly then use the mto optional
 			// feature
+			final List<String> names = getSqlNameStrategy().getManyToOneJoinColumnNames(aReference);
+			int i = 0;
 			for (JoinColumn jc : aReference.getJoinColumns()) {
 				if (!jc.isSetNullable()) {
 					jc.setNullable(mto.isOptional());
 				}
+				if (jc.getName() == null) {
+					jc.setName(names.get(i));
+				}
+				i++;
 			}
 		}
 	}
