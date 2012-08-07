@@ -36,7 +36,7 @@ public interface Bar extends EObject {
 	 * @return the value of the '<em>Foo</em>' reference.
 	 * @see #setFoo(Foo)
 	 * @see org.eclipse.emf.teneo.samples.issues.bz386607.Bz386607Package#getBar_Foo()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	Foo getFoo();

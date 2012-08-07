@@ -4,7 +4,7 @@
 	<epackage namespace-uri="http://www.eclipse.org/emf/teneo/samples/issues/bz386607">
 		<eclass name="Bar">
 			<ereference name="foo">
-				<join-column nullable="true" />
+				<many-to-one optional="false"/>
 			</ereference>
 		</eclass>
 	</epackage>

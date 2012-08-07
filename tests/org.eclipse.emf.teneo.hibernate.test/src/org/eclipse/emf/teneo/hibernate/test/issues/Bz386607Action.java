@@ -8,26 +8,15 @@
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
-import java.util.Calendar;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Author;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Book;
-import org.eclipse.emf.teneo.samples.issues.bz242995.BookCategory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Library;
-import org.eclipse.emf.teneo.samples.issues.bz242995.OneTimeWonder;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Writer;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Factory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package;
-import org.eclipse.emf.teneo.samples.issues.bz375705.Bar;
-import org.eclipse.emf.teneo.samples.issues.bz375705.Bz375705Factory;
-import org.eclipse.emf.teneo.samples.issues.bz375705.Bz375705Package;
+import org.eclipse.emf.teneo.samples.issues.bz386607.Bar;
+import org.eclipse.emf.teneo.samples.issues.bz386607.Bz386607Factory;
 import org.eclipse.emf.teneo.samples.issues.bz386607.Bz386607Package;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.proxy.HibernateProxy;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
@@ -42,11 +31,32 @@ public class Bz386607Action extends AbstractTestAction {
 	@Override
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
-		props.setProperty(PersistenceOptions.PERSISTENCE_XML, "org/eclipse/emf/teneo/hibernate/test/issues/bz386607.persistence.xml");
+		props.setProperty(PersistenceOptions.PERSISTENCE_XML,
+				"org/eclipse/emf/teneo/hibernate/test/issues/bz386607.persistence.xml");
 		return props;
 	}
 
 	@Override
 	public void doAction(TestStore store) {
+		{
+			store.beginTransaction();
+			Bar bar = Bz386607Factory.eINSTANCE.createBar();
+			try {
+				store.store(bar);
+				store.commitTransaction();
+				fail();
+			} catch (Exception e) {
+				// should fail
+				store.rollbackTransaction();
+			}
+		}
+		{
+			store.beginTransaction();
+			Bar bar = Bz386607Factory.eINSTANCE.createBar();
+			bar.setFoo(Bz386607Factory.eINSTANCE.createFoo());
+			store.store(bar);
+			store.commitTransaction();
+		}
+
 	}
 }
