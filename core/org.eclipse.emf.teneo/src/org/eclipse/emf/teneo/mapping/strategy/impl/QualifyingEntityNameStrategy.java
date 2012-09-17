@@ -17,6 +17,8 @@
 
 package org.eclipse.emf.teneo.mapping.strategy.impl;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -34,6 +36,9 @@ import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
  * @version $Revision: 1.8 $
  */
 public class QualifyingEntityNameStrategy implements EntityNameStrategy {
+
+	/** The logger */
+	private static Log log = LogFactory.getLog(QualifyingEntityNameStrategy.class);
 
 	// The pamodel for which this is done
 	private PAnnotatedModel paModel;
@@ -97,7 +102,11 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 			}
 		}
 		if (eClass == null) {
-			throw new IllegalArgumentException("No EClass found using " + eClassStr);
+			log.debug("Failed to retreive EClass for name: " + eClassName
+					+ ". This is no problem if this is a featuremap.");
+			return null;
+			// throw new IllegalArgumentException("No EClass found using " +
+			// eClassName);
 		}
 		return eClass;
 	}

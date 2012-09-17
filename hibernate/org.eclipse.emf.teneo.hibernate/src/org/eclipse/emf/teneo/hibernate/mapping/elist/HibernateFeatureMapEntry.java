@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.teneo.EContainerRepairControl;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.util.AssertUtil;
 import org.eclipse.emf.teneo.util.StoreUtil;
 
@@ -141,9 +142,6 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	/** Sets the featuremap, is done when an entry is added to the featuremap */
 	public void setFeatureMap(FeatureMap.Internal featureMap) {
 		owningMap = featureMap;
-		if (featureMap != null) {
-			entityName = StoreUtil.getEntityName(featureMap.getEStructuralFeature());
-		}
 	}
 
 	/** Unsets the featuremap, is done when an entry is removed */
@@ -339,7 +337,10 @@ public class HibernateFeatureMapEntry implements FeatureMap.Entry.Internal, Seri
 	/**
 	 * @return the entityName
 	 */
-	public String getEntityName() {
+	public String getEntityName(EntityNameStrategy entityNameStrategy) {
+		if (entityName == null && owningMap != null) {
+			entityName = StoreUtil.getEntityName(entityNameStrategy, owningMap.getEStructuralFeature());
+		}
 		return entityName;
 	}
 
