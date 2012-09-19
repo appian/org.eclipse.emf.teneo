@@ -66,7 +66,7 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 	private boolean isLoading = false;
 
 	/** The string used for logging */
-	protected final String logString;
+	protected String logString = "";
 
 	protected Boolean isThisListWrapped;
 
@@ -88,10 +88,12 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 			delegate = list;
 		}
 
-		logString = "EList of type: " + this.getClass().getName() + " of member " + estructuralFeature.getName()
-				+ " owned by " + owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
-
-		log.debug("Created persistable list " + logString);
+		if (log.isDebugEnabled()) {
+			logString = "EList of type: " + this.getClass().getName() + " of member " + estructuralFeature.getName()
+					+ " owned by " + owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
+	
+			log.debug("Created persistable list " + logString);
+		}
 	}
 
 	/** Takes care of serializing the efeature */
@@ -233,7 +235,9 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 		}
 
 		isLoading = true;
-		log.debug("Loading " + getLogString());
+		if (log.isDebugEnabled()) {
+			log.debug("Loading " + getLogString());
+		}
 
 		// prevent notifications to be sent out
 		boolean eDeliver = owner.eDeliver();
@@ -241,7 +245,9 @@ public abstract class PersistableEList<E> extends DelegatingEcoreEList<E> implem
 		try {
 			// only set to false if it was true
 			if (eDeliver) {
-				log.debug("Owner " + owner.getClass() + " set eDeliver to false");
+				if (log.isDebugEnabled()) {
+					log.debug("Owner " + owner.getClass() + " set eDeliver to false");
+				}
 				owner.eSetDeliver(false);
 				setDeliver = true;
 			}

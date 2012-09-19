@@ -100,7 +100,9 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 			size();
 		}
 
-		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		}
 		mapValueIsEAttribute = entryEClass.getEStructuralFeature("value") instanceof EAttribute;
 	}
 
@@ -126,8 +128,10 @@ public abstract class MapPersistableEMap<K, V> extends PersistableEMap<K, V> imp
 		// sets the size of this map
 		size();
 
-		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
-
+		if (log.isDebugEnabled()) {
+			log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		}
+		
 		mapValueIsEAttribute = entryEClass.getEStructuralFeature("value") instanceof EAttribute;
 	}
 

@@ -54,7 +54,9 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 		AssertUtil.assertTrue(pc.getEntityName()
 				+ " does not have a meta attribute", pc
 				.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null);
-		log.debug("Creating fme instantiator for " + pc.getEntityName());
+		if (log.isDebugEnabled()) {
+			log.debug("Creating fme instantiator for " + pc.getEntityName());
+		}
 		proxyInterface = pc.getProxyInterface();
 		persistentClass = pc;
 	}

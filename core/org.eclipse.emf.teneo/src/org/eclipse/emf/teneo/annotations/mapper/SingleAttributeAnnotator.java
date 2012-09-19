@@ -128,7 +128,9 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 		if (aAttribute.getId() != null) {
 			aAttribute.getBasic().setOptional(false);
 			if (aAttribute.getColumn() != null && aAttribute.getColumn().isNullable()) {
-				log.warn("The column of a primary key property is null, this will often result in database errors!");
+				if (log.isWarnEnabled()) {
+					log.warn("The column of a primary key property is null, this will often result in database errors!");
+				}
 			}
 		}
 		addColumnConstraints(aAttribute);

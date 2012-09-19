@@ -85,13 +85,17 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 		}
 
 		final EModelResolver eModelResolver = EModelResolver.instance();
-		log.debug("Registering epackages in model resolver, modelresolver instance is: " +
-				eModelResolver.getClass().getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Registering epackages in model resolver, modelresolver instance is: " +
+					eModelResolver.getClass().getName());
+		}
 		eModelResolver.register(epacks);
 
 		// if force fully classify typename then use the EModelResolver/ERuntime
 		if (persistenceOptions.isAlsoMapAsClass()) {
-			log.debug("Class names are to be fully classified, registering all the " + "epackages");
+			if (log.isDebugEnabled()) {
+				log.debug("Class names are to be fully classified, registering all the " + "epackages");
+			}
 			// and now set the map as entity for each eclass
 			for (PAnnotatedEPackage apack : annotatedModel.getPaEPackages()) {
 				for (PAnnotatedEClass aclass : apack.getPaEClasses()) {
@@ -157,14 +161,18 @@ public class AnnotationGenerator implements ExtensionPoint, ExtensionManagerAwar
 
 	/** Maps one epackage */
 	protected void processPackage(PAnnotatedEPackage aPackage) {
-		log.debug(">>>> Adding default annotations for EPackage " + aPackage.getModelElement().getName());
-
-		log.debug("Processing EDataTypes");
+		if (log.isDebugEnabled()) {
+			log.debug(">>>> Adding default annotations for EPackage " + aPackage.getModelElement().getName());
+	
+			log.debug("Processing EDataTypes");
+		}
 		for (PAnnotatedEDataType annotatedEDataType : aPackage.getPaEDataTypes()) {
 			eDataTypeAnnotator.annotate(annotatedEDataType);
 		}
 
-		log.debug("Processing EClasses");
+		if (log.isDebugEnabled()) {
+			log.debug("Processing EClasses");
+		}
 		for (PAnnotatedEClass annotatedEClass : aPackage.getPaEClasses()) {
 			eClassAnnotator.annotate(annotatedEClass);
 		}

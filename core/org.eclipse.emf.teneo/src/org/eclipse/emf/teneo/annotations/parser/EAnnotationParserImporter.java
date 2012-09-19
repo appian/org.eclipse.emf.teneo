@@ -265,14 +265,16 @@ public class EAnnotationParserImporter implements EClassResolver,
 						.startsWith(Constants.ANNOTATION_SOURCE_TENEO_JPA)
 						|| extraAnnotationsSources[i]
 								.startsWith(Constants.ANNOTATION_SOURCE_TENEO_MAPPING)) {
-					log.warn("Extra annotation source ("
-							+ extraAnnotationsSources[i]
-							+ ") starts with the default Teneo annotation source: "
-							+ Constants.ANNOTATION_SOURCE_TENEO_JPA
-							+ " or "
-							+ Constants.ANNOTATION_SOURCE_TENEO_MAPPING
-							+ ". Annotations which should sometimes be "
-							+ "ignored or disabled should not start with these values as they are always considered by Teneo");
+					if (log.isWarnEnabled()) {
+						log.warn("Extra annotation source ("
+								+ extraAnnotationsSources[i]
+								+ ") starts with the default Teneo annotation source: "
+								+ Constants.ANNOTATION_SOURCE_TENEO_JPA
+								+ " or "
+								+ Constants.ANNOTATION_SOURCE_TENEO_MAPPING
+								+ ". Annotations which should sometimes be "
+								+ "ignored or disabled should not start with these values as they are always considered by Teneo");
+					}
 				}
 			}
 		}

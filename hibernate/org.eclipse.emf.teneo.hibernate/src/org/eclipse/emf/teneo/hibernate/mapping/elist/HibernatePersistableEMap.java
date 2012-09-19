@@ -87,18 +87,20 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 									.wasInitialized();
 					if (!isDelegateLoaded
 							&& !sessionWrapper.isTransactionActive()) {
-						log.debug("Reconnecting session to read a lazy collection, elist: "
-								+ logString);
+						if (log.isDebugEnabled()) {
+							log.debug("Reconnecting session to read a lazy collection, elist: "
+									+ logString);
+						}
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
 						sessionWrapper.setFlushModeManual();
-					} else {
+					} else if (log.isDebugEnabled()) {
 						log.debug("Delegate loaded or resource session is still active, using it");
 					}
-				} else {
+				} else if (log.isDebugEnabled()) {
 					log.debug("EMap uses session from resource, " + logString);
 				}
-			} else {
+			} else if (log.isDebugEnabled()) {
 				log.debug("EMap is not loaded in session context");
 			}
 
@@ -122,8 +124,10 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 						}
 					}
 				}
-				log.debug("Loaded " + objs.length + " from backend store for "
-						+ logString);
+				if (log.isDebugEnabled()) {
+					log.debug("Loaded " + objs.length + " from backend store for "
+							+ logString);
+				}
 			} finally {
 				if (controlsTransaction) {
 					((StoreResource) res).setIsLoading(false);
@@ -148,7 +152,9 @@ public class HibernatePersistableEMap<K, V> extends PersistableEMap<K, V>
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
-		log.debug("Finished loading elist " + logString);
+		if (log.isDebugEnabled()) {
+			log.debug("Finished loading elist " + logString);
+		}
 	}
 
 	/**

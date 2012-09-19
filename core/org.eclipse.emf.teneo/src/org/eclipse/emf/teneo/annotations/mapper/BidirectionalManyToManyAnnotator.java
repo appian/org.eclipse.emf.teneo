@@ -56,11 +56,13 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 		ManyToMany mtm = aReference.getManyToMany();
 		final boolean mtmWasSet = mtm != null; // mtm was set manually
 		if (mtm == null) {
-			log.debug("Adding manytomany annotations to ereference: " + featureLogStr);
+			if (log.isDebugEnabled()) {
+				log.debug("Adding manytomany annotations to ereference: " + featureLogStr);
+			}
 			mtm = getFactory().createManyToMany();
 			aReference.setManyToMany(mtm);
 			mtm.setEModelElement(eReference);
-		} else {
+		} else if (log.isDebugEnabled()) {
 			log.debug("ManyToMany present check if default information should be added");
 		}
 
@@ -105,8 +107,10 @@ public class BidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator impl
 		// disabled because indexed = false now for mtm,
 		// to overcome this the user has to explicitly set a mtm annotation.
 		if (!mtmWasSet) {
-			log.debug("Setting indexed and unique from ereference.isOrdered/isUnique "
-					+ "because mtm was not set manually!");
+			if (log.isDebugEnabled()) {
+				log.debug("Setting indexed and unique from ereference.isOrdered/isUnique "
+						+ "because mtm was not set manually!");
+			}
 			mtm.setIndexed(!getPersistenceOptions().alwaysMapListAsBag() && eReference.isOrdered());
 		}
 

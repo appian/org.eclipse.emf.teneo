@@ -96,7 +96,9 @@ public class HbEntityDataStore extends HbDataStore implements
 			PackageRegistryProvider.getInstance().setThreadPackageRegistry(
 					getPackageRegistry());
 
-			log.debug("Initializing EJB3 Hb Entity DataStore");
+			if (log.isDebugEnabled()) {
+				log.debug("Initializing EJB3 Hb Entity DataStore");
+			}
 			// check a few things
 			if (getEPackages() == null) {
 				throw new HbMapperException("EPackages are not set");
@@ -188,11 +190,15 @@ public class HbEntityDataStore extends HbDataStore implements
 	protected void mapModel() {
 		if (getPersistenceOptions().isUseMappingFile()
 				|| getPersistenceOptions().getMappingFilePath() != null) {
-			log.debug("Searching hbm files in class paths of epackages");
+			if (log.isDebugEnabled()) {
+				log.debug("Searching hbm files in class paths of epackages");
+			}
 			final String[] fileList = getMappingFileList();
 			for (String element : fileList) {
-				log.debug("Adding file " + element
-						+ " to Hibernate Configuration");
+				if (log.isDebugEnabled()) {
+					log.debug("Adding file " + element
+							+ " to Hibernate Configuration");
+				}
 				final PersistenceFileProvider pfp = getExtensionManager()
 						.getExtension(PersistenceFileProvider.class);
 				final InputStream is = pfp.getFileContent(this.getClass(),

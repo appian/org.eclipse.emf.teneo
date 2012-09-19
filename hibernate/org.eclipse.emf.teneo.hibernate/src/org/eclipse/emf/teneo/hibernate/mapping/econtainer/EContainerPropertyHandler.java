@@ -59,7 +59,9 @@ public class EContainerPropertyHandler implements Getter, Setter,
 
 	/** Constructor */
 	public void initialize(String field) {
-		log.debug("Created eContainer property handler");
+		if (log.isDebugEnabled()) {
+			log.debug("Created eContainer property handler");
+		}
 		ecField = FieldUtil.getField(EObjectImpl.class, "eContainer");
 	}
 

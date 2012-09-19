@@ -62,8 +62,10 @@ public class EMFInstantiator implements Instantiator {
 
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, PersistentClass pc) {
-		log.debug("Creating eobject instantiator for " + pc.getEntityName()
-				+ " and eclass " + eclass.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Creating eobject instantiator for " + pc.getEntityName()
+					+ " and eclass " + eclass.getName());
+		}
 		proxyInterface = pc.getProxyInterface();
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
@@ -71,8 +73,10 @@ public class EMFInstantiator implements Instantiator {
 
 	/** Constructor */
 	public EMFInstantiator(EClass eclass, Component component) {
-		log.debug("Creating eobject instantiator for component eclass "
-				+ eclass.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Creating eobject instantiator for component eclass "
+					+ eclass.getName());
+		}
 		this.eclass = eclass;
 		mappedClass = eclass.getInstanceClass();
 		proxyInterface = null;

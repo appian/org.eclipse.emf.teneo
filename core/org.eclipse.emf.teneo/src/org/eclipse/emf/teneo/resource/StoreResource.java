@@ -179,7 +179,7 @@ public abstract class StoreResource extends ResourceImpl {
 		// note this ugly statement is required because in this class
 		// it is required to have direct access to the contents member
 		// the call to getSuperContents will initialize it
-		if (getContents().size() == 0) {
+		if (getContents().size() == 0 && log.isDebugEnabled()) {
 			log.debug("Initialized contents member");
 		}
 
@@ -201,10 +201,12 @@ public abstract class StoreResource extends ResourceImpl {
 
 	/** Sets the defined queries */
 	public void setDefinedQueries(String[] qrys) {
-		log.debug("Setting defined queries of resource " + getURI().toString()
-				+ "/" + this.getClass().getName());
-		for (String element : qrys) {
-			log.debug("Adding query: " + element);
+		if (log.isDebugEnabled()) {
+			log.debug("Setting defined queries of resource " + getURI().toString()
+					+ "/" + this.getClass().getName());
+			for (String element : qrys) {
+				log.debug("Adding query: " + element);
+			}
 		}
 
 		definedQueries = qrys;
@@ -569,9 +571,11 @@ public abstract class StoreResource extends ResourceImpl {
 				newEObjects);
 		newOrChangedObjects.addAll(modifiedEObjects);
 
-		log.debug("Validating contents of resource " + uri + " approx. "
-				+ newOrChangedObjects.size() + " will be checked");
-
+		if (log.isDebugEnabled()) {
+			log.debug("Validating contents of resource " + uri + " approx. "
+					+ newOrChangedObjects.size() + " will be checked");
+		}
+		
 		final ArrayList<org.eclipse.emf.common.util.Diagnostic> diags = new ArrayList<org.eclipse.emf.common.util.Diagnostic>();
 		for (int i = 0; i < newOrChangedObjects.size(); i++) {
 			final InternalEObject obj = (InternalEObject) newOrChangedObjects
@@ -593,7 +597,9 @@ public abstract class StoreResource extends ResourceImpl {
 				diags.add(diag);
 			}
 		}
-		log.debug("Found " + diags.size() + " errors ");
+		if (log.isDebugEnabled()) {
+			log.debug("Found " + diags.size() + " errors ");
+		}
 		if (diags.size() > 0) {
 			throw new StoreValidationException(
 					diags.toArray(new org.eclipse.emf.common.util.Diagnostic[diags

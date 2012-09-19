@@ -135,7 +135,9 @@ public class StoreUtil {
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 		for (String element : ecoreFiles) {
 
-			log.debug("Reading ecore file: " + element);
+			if (log.isDebugEnabled()) {
+				log.debug("Reading ecore file: " + element);
+			}
 
 			Resource res = resourceSet.getResource(URI.createFileURI(element), true);
 
@@ -573,7 +575,9 @@ public class StoreUtil {
 	 */
 	public static String[] getFileList(String fileName, String additionalLocation) {
 		final ArrayList<String> result = new ArrayList<String>();
-		log.debug(">>>> Building or descriptor file List");
+		if (log.isDebugEnabled()) {
+			log.debug(">>>> Building or descriptor file List");
+		}
 
 		if (additionalLocation != null) {
 			result.add(additionalLocation);
@@ -583,12 +587,16 @@ public class StoreUtil {
 		for (final String packagePath : packagelist) {
 			final String filePath = packagePath + fileName;
 
-			log.debug("Try path: " + filePath);
+			if (log.isDebugEnabled()) {
+				log.debug("Try path: " + filePath);
+			}
 
 			final URL url = StoreUtil.class.getResource(filePath);
 			if (url != null) // file exists
 			{
-				log.debug("!!Found!!");
+				if (log.isDebugEnabled()) {
+					log.debug("!!Found!!");
+				}
 				result.add(filePath);
 			}
 		}
@@ -630,7 +638,9 @@ public class StoreUtil {
 	/** Copies a file */
 	public static void copyFile(File src, File dst) {
 		try {
-			log.debug("Copy file from " + src.getAbsolutePath() + " to " + dst.getAbsolutePath());
+			if (log.isDebugEnabled()) {
+				log.debug("Copy file from " + src.getAbsolutePath() + " to " + dst.getAbsolutePath());
+			}
 			InputStream in = new FileInputStream(src);
 			OutputStream out = new FileOutputStream(dst);
 

@@ -64,7 +64,9 @@ public class NewEContainerFeatureIDPropertyHandler implements PropertyAccessor,
 	private Field ecField;
 
 	public NewEContainerFeatureIDPropertyHandler() {
-		log.debug("Created eContainer property handler");
+		if (log.isDebugEnabled()) {
+			log.debug("Created eContainer property handler");
+		}
 		ecField = FieldUtil.getField(EObjectImpl.class, "eContainerFeatureID");
 	}
 

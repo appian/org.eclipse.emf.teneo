@@ -97,7 +97,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 	public HibernateResource(URI uri) {
 		super(uri);
 
-		log.debug("Creating hibernateresource using uri: " + uri.toString());
+		if (log.isDebugEnabled()) {
+			log.debug("Creating hibernateresource using uri: " + uri.toString());
+		}
 
 		final Map<String, String> params = decodeQueryString(uri.query());
 
@@ -112,20 +114,26 @@ public class HibernateResource extends StoreResource implements HbResource {
 			final String scName = getParam(params, SESSION_CONTROLLER_PARAM,
 					uri.query());
 			sessionController = SessionController.getSessionController(scName);
-			log.debug("Using session controller " + scName);
+			if (log.isDebugEnabled()) {
+				log.debug("Using session controller " + scName);
+			}
 			emfDataStore = sessionController.getHbDataStore();
 			hasSessionController = true;
 		} else if (uri.fileExtension() != null) // this is probably a platform
 		// uri!
 		{
-			log.debug("Trying fileextension: " + uri.fileExtension());
+			if (log.isDebugEnabled()) {
+				log.debug("Trying fileextension: " + uri.fileExtension());
+			}
 			// then try the extension of the resource
 			emfDataStore = HbHelper.INSTANCE.getDataStore(uri.fileExtension());
 
 			// if null then assume that this is a properties file
 			if (emfDataStore == null) {
-				log.debug("No datastore defined for extension, assuming this is a property file "
+				if (log.isDebugEnabled()) {
+					log.debug("No datastore defined for extension, assuming this is a property file "
 						+ uri.toString());
+				}
 				try {
 					final URIConverter uriConverter = getURIConverter();
 					final InputStream is = uriConverter.createInputStream(uri);
@@ -146,7 +154,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 					"No HbDataStore can be found using the uri "
 							+ uri.toString());
 		}
-		log.debug("Using emf data store using  " + emfDataStore.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Using emf data store using  " + emfDataStore.getName());
+		}
 		super.init(emfDataStore.getTopEntities());
 	}
 
@@ -368,7 +378,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 */
 	@Override
 	protected void saveResource(Map<?, ?> options) {
-		log.debug("Saving resource with uri: " + getURI());
+		if (log.isDebugEnabled()) {
+			log.debug("Saving resource with uri: " + getURI());
+		}
 
 		boolean err = true;
 		final SessionWrapper mySessionWrapper = getSessionWrapper();
@@ -493,7 +505,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 	 */
 	@Override
 	protected List<EObject> loadResource(Map<?, ?> options) {
-		log.debug("Loading resource: " + getURI().toString());
+		if (log.isDebugEnabled()) {
+			log.debug("Loading resource: " + getURI().toString());
+		}
 
 		// first clear the old list
 		boolean err = true;
@@ -506,7 +520,9 @@ public class HibernateResource extends StoreResource implements HbResource {
 			// note we have to a call to the super class otherwise an infinite
 			// loop is created
 			final List<EObject> storeList = loadFromStore(mySessionWrapper);
-			log.debug("Loaded " + storeList.size() + " objects");
+			if (log.isDebugEnabled()) {
+				log.debug("Loaded " + storeList.size() + " objects");
+			}
 			err = false;
 			return storeList;
 		} catch (Exception e) {
@@ -539,10 +555,12 @@ public class HibernateResource extends StoreResource implements HbResource {
 						!((SessionImpl) getSessionWrapper().getSession())
 								.isTransactionInProgress());
 			}
-			log.debug("Doing unload, closing and nullifying session");
+			if (log.isDebugEnabled()) {
+				log.debug("Doing unload, closing and nullifying session");
+			}
 			getSessionWrapper().close();
 			setSessionWrapper(null);
-		} else {
+		} else if (log.isDebugEnabled()) {
 			log.debug("Doing unload, has session controller, sessioncontroller is therefor responsible for session close");
 		}
 	}
@@ -565,10 +583,14 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** Reads data based on the topclasses list */
 	private ArrayList<EObject> loadUsingTopClasses(SessionWrapper sess) {
-		log.debug("Loading resource " + getURI() + " using top classes");
+		if (log.isDebugEnabled()) {
+			log.debug("Loading resource " + getURI() + " using top classes");
+		}
 		final ArrayList<EObject> readObjects = new ArrayList<EObject>();
 		for (final String topClassName : topClassNames) {
-			log.debug("Loading objects using hql: FROM " + topClassName);
+			if (log.isDebugEnabled()) {
+				log.debug("Loading objects using hql: FROM " + topClassName);
+			}
 
 			final List<?> qryResult;
 			if (sess.isEJB3EntityManager()) {
@@ -593,12 +615,16 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** Reads data based using defined queries */
 	private ArrayList<EObject> loadUsingDefinedQueries(SessionWrapper sess) {
-		log.debug("Loading resource " + getURI() + " using defined queries");
+		if (log.isDebugEnabled()) {
+			log.debug("Loading resource " + getURI() + " using defined queries");
+		}
 		final ArrayList<EObject> readObjects = new ArrayList<EObject>();
 		final String[] qrys = getDefinedQueries();
 		for (String element : qrys) {
 			final List<?> qryResult = sess.executeQuery(element);
-			log.debug("Loading objects using hql: " + element);
+			if (log.isDebugEnabled()) {
+				log.debug("Loading objects using hql: " + element);
+			}
 			final Iterator<?> it = qryResult.iterator();
 			while (it.hasNext()) {
 				final Object obj = it.next();
@@ -610,8 +636,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** Reads a set of objects into the resource by using a query. */
 	public Object[] getObjectsByQuery(String query, boolean cache) {
-		log.debug("Started listing objects by query " + query + " in resource "
+		if (log.isDebugEnabled()) {
+			log.debug("Started listing objects by query " + query + " in resource "
 				+ getURI());
+		}
 		SessionWrapper mySessionWrapper = null;
 		boolean err = true;
 		setIsLoading(true);
@@ -638,8 +666,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 			}
 
 			err = false;
-			log.debug("Listed " + qryResult.size() + " objects using query "
+			if (log.isDebugEnabled()) {
+				log.debug("Listed " + qryResult.size() + " objects using query "
 					+ query + " in resource " + getURI());
+			}
 			return qryResult.toArray();
 		} finally {
 			if (!hasSessionController) {
@@ -651,8 +681,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 				}
 			}
 			setIsLoading(false);
-			log.debug("Finished getting objects by query " + query
-					+ " in resource " + getURI());
+			if (log.isDebugEnabled()) {
+				log.debug("Finished getting objects by query " + query
+						+ " in resource " + getURI());
+			}
 		}
 	}
 
@@ -670,8 +702,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 
 	/** Load additional objects into the contents using a query */
 	public Object[] listByQuery(String query, boolean cache) {
-		log.debug("Started listing objects by query " + query + " in resource "
-				+ getURI());
+		if (log.isDebugEnabled()) {
+			log.debug("Started listing objects by query " + query + " in resource "
+					+ getURI());
+		}
 		SessionWrapper mySessionWrapper = null;
 		boolean err = true;
 		setIsLoading(true);
@@ -690,8 +724,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 			}
 
 			err = false;
-			log.debug("Listed " + qryResult.size() + " objects using query "
-					+ query + " in resource " + getURI());
+			if (log.isDebugEnabled()) {
+				log.debug("Listed " + qryResult.size() + " objects using query "
+						+ query + " in resource " + getURI());
+			}
 			return qryResult.toArray();
 		} finally {
 			setIsLoading(false);
@@ -706,8 +742,10 @@ public class HibernateResource extends StoreResource implements HbResource {
 			if (notification != null) {
 				eNotify(notification);
 			}
-			log.debug("Finished listing objects by query " + query
-					+ " in resource " + getURI());
+			if (log.isDebugEnabled()) {
+				log.debug("Finished listing objects by query " + query
+						+ " in resource " + getURI());
+			}
 		}
 	}
 }

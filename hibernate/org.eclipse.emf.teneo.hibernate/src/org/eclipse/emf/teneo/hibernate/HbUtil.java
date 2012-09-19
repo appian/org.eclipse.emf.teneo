@@ -276,9 +276,11 @@ public class HbUtil {
 							+ mappedProperty.getName());
 		}
 
-		log.debug("Creating property accessor for " + mappedProperty.getName()
-				+ "/" + entityName + "/" + efeature.getName());
-
+		if (log.isDebugEnabled()) {
+			log.debug("Creating property accessor for " + mappedProperty.getName()
+					+ "/" + entityName + "/" + efeature.getName());
+		}
+		
 		// check extra lazy
 		final boolean extraLazy = mappedProperty.getValue() instanceof Collection
 				&& ((Collection) mappedProperty.getValue()).isExtraLazy();

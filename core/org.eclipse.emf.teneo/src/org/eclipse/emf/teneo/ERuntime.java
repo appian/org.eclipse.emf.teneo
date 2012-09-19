@@ -241,11 +241,15 @@ public class ERuntime extends EModelResolver {
 			final EPackage epack = epackages.get(i);
 
 			if (ignorePackage(epack)) {
-				log.debug("Not determining concrete classes for package " + epack.getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Not determining concrete classes for package " + epack.getName());
+				}
 				continue;
 			}
 
-			log.debug("Determining concrete classes for package " + epack.getName());
+			if (log.isDebugEnabled()) {
+				log.debug("Determining concrete classes for package " + epack.getName());
+			}
 
 			for (EClassifier eclassifier : epack.getEClassifiers()) {
 				if (!(eclassifier instanceof EClass)) {
@@ -376,8 +380,10 @@ public class ERuntime extends EModelResolver {
 			// log but do nothing because this happens when we try to create an
 			// object
 			// with an invalid classifier, which is a eclass!
-			log.debug("The classifier: " + eclass.getName() + " is not a valid eclass");
-
+			if (log.isDebugEnabled()) {
+				log.debug("The classifier: " + eclass.getName() + " is not a valid eclass");
+			}
+			
 			return null;
 		}
 	}
