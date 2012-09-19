@@ -455,8 +455,10 @@ public abstract class HbDataStore implements DataStore {
 		final String hbmUpdate = properties
 				.getProperty(Environment.HBM2DDL_AUTO);
 		if (hbmUpdate == null) {
-			log.info("Hibernate property: " + Environment.HBM2DDL_AUTO
+			if (log.isInfoEnabled()) {
+				log.info("Hibernate property: " + Environment.HBM2DDL_AUTO
 					+ " not set, setting to update");
+			}
 			properties.setProperty(Environment.HBM2DDL_AUTO, "update");
 		}
 		if (log.isDebugEnabled()) {
@@ -1624,6 +1626,9 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Dump properties in the log */
 	protected void logProperties(Properties props) {
+		if (!log.isInfoEnabled()) {
+			return;
+		}
 		final Iterator<?> it = props.keySet().iterator();
 		while (it.hasNext()) {
 			final String key = (String) it.next();
