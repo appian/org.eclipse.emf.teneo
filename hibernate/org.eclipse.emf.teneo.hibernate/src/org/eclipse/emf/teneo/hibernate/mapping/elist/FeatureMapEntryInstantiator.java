@@ -52,9 +52,11 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 	/** Constructor */
 	public FeatureMapEntryInstantiator(PersistentClass pc) {
 		AssertUtil.assertTrue(pc.getEntityName()
-				+ " does not have a meta attribute", pc
-				.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null);
-		log.debug("Creating fme instantiator for " + pc.getEntityName());
+				+ " does not have a meta attribute",
+				pc.getMetaAttribute(HbMapperConstants.FEATUREMAP_META) != null);
+		if (log.isDebugEnabled()) {
+			log.debug("Creating fme instantiator for " + pc.getEntityName());
+		}
 		proxyInterface = pc.getProxyInterface();
 		persistentClass = pc;
 	}
@@ -62,7 +64,7 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 	/** Instantiates using the EFactory */
 	public Object instantiate() {
 		final HibernateFeatureMapEntry fme = new HibernateFeatureMapEntry();
-		
+
 		fme.setEntityName(persistentClass.getEntityName());
 		return fme;
 	}

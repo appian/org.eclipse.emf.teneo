@@ -87,13 +87,17 @@ public class EPackageConstructor {
 			return;
 		}
 		// build the list of EPackages
-		log.debug("Reading EPackages");
+		if (log.isDebugEnabled()) {
+			log.debug("Reading EPackages");
+		}
 		final ArrayList<EPackage> ePacks = new ArrayList<EPackage>();
 		ePacks.addAll(buildFromModelClasses());
 		ePacks.addAll(buildFromModelFiles());
 
-		for (EPackage epackage : ePacks) {
-			log.info("Registered EPackage: " + epackage.getNsURI());
+		if (log.isInfoEnabled()) {
+			for (EPackage epackage : ePacks) {
+				log.info("Registered EPackage: " + epackage.getNsURI());
+			}
 		}
 
 		// also add subpackages
@@ -210,7 +214,9 @@ public class EPackageConstructor {
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new EcoreResourceFactoryImpl());
 		final ArrayList<EPackage> epackages = new ArrayList<EPackage>();
 		for (String ecoreFile : ecoreFiles) {
-			log.debug("Reading ecore file: " + ecoreFile);
+			if (log.isDebugEnabled()) {
+				log.debug("Reading ecore file: " + ecoreFile);
+			}
 			// final String path = ecoreContext.getQualifiedPath(ecoreFile);
 			// log.debug("Using qualified path: " + path);
 			try {

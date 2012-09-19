@@ -113,7 +113,9 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 					// probably are we doing this already return
 					return false;
 				}
-				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				if (log.isDebugEnabled()) {
+					log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+				}
 				try {
 					setIsLoading(true);
 					// do load to load the resource
@@ -142,17 +144,19 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 				sessionWrapper = ((HibernateResource) res).getSessionWrapper();
 				if (res.isLoaded()) { // resource is loaded reopen transaction
 					if (!sessionWrapper.isTransactionActive()) {
-						log.debug("Reconnecting session to read a lazy collection, Featuremap: " + logString);
+						if (log.isDebugEnabled()) {
+							log.debug("Reconnecting session to read a lazy collection, Featuremap: " + logString);
+						}
 						controlsSession = true;
 						sessionWrapper.beginTransaction();
 						sessionWrapper.setFlushModeManual();
-					} else {
+					} else if (log.isDebugEnabled()) {
 						log.debug("Resource session is still active, using it");
 					}
-				} else {
+				} else if (log.isDebugEnabled()) {
 					log.debug("Featuremap uses session from resource, " + logString);
 				}
-			} else {
+			} else if (log.isDebugEnabled()) {
 				log.debug("EList is not loaded in session context");
 			}
 
@@ -179,7 +183,9 @@ public class HibernatePersistableFeatureMap extends PersistableFeatureMap implem
 			}
 
 			err = false;
-			log.debug("Loaded " + objs.length + " from backend store for " + logString);
+			if (log.isDebugEnabled()) {
+				log.debug("Loaded " + objs.length + " from backend store for " + logString);
+			}
 		} finally {
 			if (controlsSession) {
 				if (err) {

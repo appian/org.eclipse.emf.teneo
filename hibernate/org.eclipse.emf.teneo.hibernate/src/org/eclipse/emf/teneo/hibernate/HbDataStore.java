@@ -116,7 +116,9 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Initializes emf types with jpox */
 	private static synchronized void initializeTypes() {
-		log.debug("Initializing protocol/extension for hibernate");
+		if (log.isDebugEnabled()) {
+			log.debug("Initializing protocol/extension for hibernate");
+		}
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
 				"hibernate", new HibernateResourceFactory());
 		Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("ehb",
@@ -318,7 +320,9 @@ public abstract class HbDataStore implements DataStore {
 
 		setInterceptor();
 
-		log.debug("Determine referers for each class");
+		if (log.isDebugEnabled()) {
+			log.debug("Determine referers for each class");
+		}
 
 		referers = computeReferers();
 
@@ -334,11 +338,13 @@ public abstract class HbDataStore implements DataStore {
 
 		setTuplizer();
 
-		if (getPersistenceOptions().isUpdateSchema()) {
+		if (getPersistenceOptions().isUpdateSchema() && log.isWarnEnabled()) {
 			log.warn("The teneo update schema option is not used anymore for hibernate, use the hibernate option: hibernate.hbm2ddl.auto");
 		}
 
-		log.debug("Registering datastore with persistent classes");
+		if (log.isDebugEnabled()) {
+			log.debug("Registering datastore with persistent classes");
+		}
 		HbHelper.INSTANCE.registerDataStoreByPC(this);
 		
 		EModelResolver.instance().registerOwnerShip(this, getEPackages());
@@ -453,7 +459,9 @@ public abstract class HbDataStore implements DataStore {
 					+ " not set, setting to update");
 			properties.setProperty(Environment.HBM2DDL_AUTO, "update");
 		}
-		log.debug("Setting properties in Hibernate Configuration:");
+		if (log.isDebugEnabled()) {
+			log.debug("Setting properties in Hibernate Configuration:");
+		}
 		logProperties(properties);
 	}
 
@@ -859,7 +867,9 @@ public abstract class HbDataStore implements DataStore {
 	/** Adds a econtainer mapping to the class mapping */
 	protected void addContainerMappings() {
 		if (getPersistenceOptions().isDisableEContainerMapping()) {
-			log.debug("EContainer mapping disabled.");
+			if (log.isDebugEnabled()) {
+				log.debug("EContainer mapping disabled.");
+			}
 			return;
 		}
 		for (Iterator<?> pcs = getClassMappings(); pcs.hasNext();) {
@@ -951,7 +961,9 @@ public abstract class HbDataStore implements DataStore {
 					component.getComponentClassName());
 		}
 		if (eClass != null) {
-			log.debug("Found " + eClass.getName() + " as a component");
+			if (log.isDebugEnabled()) {
+				log.debug("Found " + eClass.getName() + " as a component");
+			}
 		} else {
 			eClass = HbUtil.getEClassFromMeta(component);
 			if (eClass == null) {
@@ -1007,7 +1019,9 @@ public abstract class HbDataStore implements DataStore {
 
 	/** Generate a hibernate mapping xml string from a set of epackages */
 	protected String mapEPackages() {
-		log.debug("Generating mapping file from in-mem ecore");
+		if (log.isDebugEnabled()) {
+			log.debug("Generating mapping file from in-mem ecore");
+		}
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of
 		// Hibernate-specific annotations.
@@ -1020,7 +1034,9 @@ public abstract class HbDataStore implements DataStore {
 		hmg.setPersistenceOptions(po);
 		final String hbm = hmg.generateToString(getPaModel());
 
-		log.debug("Computing id types of mapped EClasses");
+		if (log.isDebugEnabled()) {
+			log.debug("Computing id types of mapped EClasses");
+		}
 		idFeatureByEClass = new HashMap<EClass, EStructuralFeature>();
 		computeIdTypesByEClass(idFeatureByEClass);
 
@@ -1147,7 +1163,9 @@ public abstract class HbDataStore implements DataStore {
 			return;
 		}
 
-		log.debug("Adding container mapping for " + getMappedName(pc));
+		if (log.isDebugEnabled()) {
+			log.debug("Adding container mapping for " + getMappedName(pc));
+		}
 		// check if there are not alreadyecontai ner features for the eclass
 
 		final EClass eclass;
@@ -1172,7 +1190,9 @@ public abstract class HbDataStore implements DataStore {
 
 		for (EReference eref : eclass.getEAllReferences()) {
 			if (eref.isContainer()) {
-				log.debug("There are container ereferences present, assuming that no separate econtainer columns are required.");
+				if (log.isDebugEnabled()) {
+					log.debug("There are container ereferences present, assuming that no separate econtainer columns are required.");
+				}
 				return;
 			}
 		}
@@ -1180,8 +1200,10 @@ public abstract class HbDataStore implements DataStore {
 	}
 
 	protected void addContainerMappingToPC(PersistentClass pc) {
-		log.debug("Adding eContainer and econtainerfeatureid properties to "
+		if (log.isDebugEnabled()) {
+			log.debug("Adding eContainer and econtainerfeatureid properties to "
 				+ pc.getClassName());
+		}
 		final EContainerFeaturePersistenceStrategy featurePersistenceStrategy = getPersistenceOptions()
 				.getEContainerFeaturePersistenceStrategy();
 
@@ -1655,14 +1677,18 @@ public abstract class HbDataStore implements DataStore {
 	 */
 	protected String[] getMappingFileList() {
 		if (getPersistenceOptions().getMappingFilePath() != null) {
-			log.debug("Using specified list of mapping files "
+			if (log.isDebugEnabled()) {
+				log.debug("Using specified list of mapping files "
 					+ getPersistenceOptions().getMappingFilePath());
+			}
 			return getPersistenceOptions().getMappingFilePath().split(",");
 		} else if (getPersistenceOptions().isUseMappingFile()) {
 			// register otherwise the getFileList will not work
 			EModelResolver.instance().register(getEPackages());
 
-			log.debug("Searching hbm files in class paths of epackages");
+			if (log.isDebugEnabled()) {
+				log.debug("Searching hbm files in class paths of epackages");
+			}
 			return StoreUtil.getFileList(HbConstants.HBM_FILE_NAME, null);
 		} else {
 			throw new HbStoreException(

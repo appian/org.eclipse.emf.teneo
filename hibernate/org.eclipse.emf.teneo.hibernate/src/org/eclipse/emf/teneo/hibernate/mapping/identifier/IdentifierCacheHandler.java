@@ -72,8 +72,10 @@ public class IdentifierCacheHandler {
 	public Object getID(Object obj) {
 		final Object id = idMap.get(new Key(obj));
 		if (id == null) {
-			log.debug("ID for object " + obj.getClass().getName()
-					+ " not found in id cache");
+			if (log.isDebugEnabled()) {
+				log.debug("ID for object " + obj.getClass().getName()
+						+ " not found in id cache");
+			}
 			return null;
 		}
 		if (id instanceof WeakReference<?>) {

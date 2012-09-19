@@ -78,14 +78,18 @@ public class HbHelper {
 				throw new HbMapperException("There is already a datastore registered for this pc: "
 						+ pc.getEntityName() + (dataStoreByPersistentClass.get(pc)).getName() + "/" + ds.getName());
 			}
-			log.debug("Datastore: " + ds.getName() + " registered for pc: " + pc.getEntityName());
+			if (log.isDebugEnabled()) {
+				log.debug("Datastore: " + ds.getName() + " registered for pc: " + pc.getEntityName());
+			}
 			dataStoreByPersistentClass.put(pc, ds);
 		}
 	}
 
 	/** Register the datastore also for the components */
 	void registerDataStoreByComponent(HbDataStore ds, Component component) {
-		log.debug("Datastore: " + ds.getName() + " registered for component: " + component.getComponentClassName());
+		if (log.isDebugEnabled()) {
+			log.debug("Datastore: " + ds.getName() + " registered for component: " + component.getComponentClassName());
+		}
 		dataStoreByPersistentClass.put(component, ds);
 	}
 
@@ -179,7 +183,7 @@ public class HbHelper {
 	/** Return a emf data store */
 	public HbDataStore getDataStore(String name) {
 		final HbDataStore hds = emfDataStores.get(name);
-		if (hds == null) {
+		if (hds == null && log.isDebugEnabled()) {
 			log.debug("No datastore found using " + name);
 		}
 		return hds;
@@ -200,7 +204,9 @@ public class HbHelper {
 	public String generateMapping(EPackage[] epackages, Properties props, ExtensionManager extensionManager) {
 		MappingUtil.registerHbExtensions(extensionManager);
 
-		log.debug("Generating mapping file passed epackages");
+		if (log.isDebugEnabled()) {
+			log.debug("Generating mapping file passed epackages");
+		}
 		// DCB: Use Hibernate-specific annotation processing mechanism. This
 		// allows use of
 		// Hibernate-specific annotations.

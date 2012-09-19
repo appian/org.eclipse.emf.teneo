@@ -88,7 +88,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	public HbResourceImpl(URI uri) {
 		super(uri);
 
-		log.debug("Creating hibernateresource using uri: " + uri.toString());
+		if (log.isDebugEnabled()) {
+			log.debug("Creating hibernateresource using uri: " + uri.toString());
+		}
 
 		final Map<String, String> params = decodeQueryString(uri.query());
 
@@ -98,7 +100,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 		// platform uri!
 		{
 			if (HbConstants.EHB_FILE_EXTENSION.compareTo(uri.fileExtension()) == 0) {
-				log.debug("Assuming this is a property file " + uri.toString());
+				if (log.isDebugEnabled()) {
+					log.debug("Assuming this is a property file " + uri.toString());
+				}
 				try {
 					final URIConverter uriConverter = getURIConverter();
 					final InputStream is = uriConverter.createInputStream(uri);
@@ -114,7 +118,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 									+ uri.toString(), e);
 				}
 			} else {
-				log.debug("Trying fileextension: " + uri.fileExtension());
+				if (log.isDebugEnabled()) {
+					log.debug("Trying fileextension: " + uri.fileExtension());
+				}
 				// then try the extension of the resource
 				emfdsName = uri.fileExtension();
 			}
@@ -130,7 +136,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 							+ uri.query()
 							+ ". Are all the required parameters present?");
 		}
-		log.debug("Looking for emf data store using  " + emfdsName);
+		if (log.isDebugEnabled()) {
+			log.debug("Looking for emf data store using  " + emfdsName);
+		}
 
 		emfDataStore = HbHelper.INSTANCE.getDataStore(emfdsName);
 
@@ -239,7 +247,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	 */
 	@Override
 	protected void saveResource(Map<?, ?> options) {
-		log.debug("Saving resource with uri: " + getURI());
+		if (log.isDebugEnabled()) {
+			log.debug("Saving resource with uri: " + getURI());
+		}
 
 		boolean err = true;
 		Transaction tx = null;
@@ -293,7 +303,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 	 */
 	@Override
 	protected List<EObject> loadResource(Map<?, ?> options) {
-		log.debug("Loading resource: " + getURI().toString());
+		if (log.isDebugEnabled()) {
+			log.debug("Loading resource: " + getURI().toString());
+		}
 
 		// first clear the old list
 		Transaction tx = null;
@@ -305,7 +317,9 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 			// note we have to a call to the super class otherwise an infinite
 			// loop is created
 			final List<EObject> storeList = loadFromStore(mySession);
-			log.debug("Loaded " + storeList.size() + " objects");
+			if (log.isDebugEnabled()) {
+				log.debug("Loaded " + storeList.size() + " objects");
+			}
 			err = false;
 			return storeList;
 		} catch (Exception e) {
@@ -353,10 +367,14 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 
 	/** Reads data based on the topclasses list */
 	private ArrayList<EObject> loadUsingTopClasses(Session sess) {
-		log.debug("Loading resource " + getURI() + " using top classes");
+		if (log.isDebugEnabled()) {
+			log.debug("Loading resource " + getURI() + " using top classes");
+		}
 		final ArrayList<EObject> readObjects = new ArrayList<EObject>();
 		for (final String topClassName : topClassNames) {
-			log.debug("Loading objects using hql: FROM " + topClassName);
+			if (log.isDebugEnabled()) {
+				log.debug("Loading objects using hql: FROM " + topClassName);
+			}
 
 			final Query qry = sess.createQuery("FROM " + topClassName);
 			final Iterator<?> it = qry.list().iterator();
@@ -375,12 +393,16 @@ public class HbResourceImpl extends StoreResource implements HbResource {
 
 	/** Reads data based using defined queries */
 	private ArrayList<EObject> loadUsingDefinedQueries(Session sess) {
-		log.debug("Loading resource " + getURI() + " using defined queries");
+		if (log.isDebugEnabled()) {
+			log.debug("Loading resource " + getURI() + " using defined queries");
+		}
 		final ArrayList<EObject> readObjects = new ArrayList<EObject>();
 		final String[] qrys = getDefinedQueries();
 		for (String element : qrys) {
 			final Query qry = sess.createQuery(element);
-			log.debug("Loading objects using hql: " + element);
+			if (log.isDebugEnabled()) {
+				log.debug("Loading objects using hql: " + element);
+			}
 			final Iterator<?> it = qry.list().iterator();
 			while (it.hasNext()) {
 				final Object obj = it.next();

@@ -114,7 +114,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 		AssertUtil.assertTrue("EList " + logString, !isLoaded());
 
-		log.debug("Started loading elist " + logString);
+		if (log.isDebugEnabled()) {
+			log.debug("Started loading elist " + logString);
+		}
 
 		SessionWrapper sessionWrapper = null;
 		boolean controlsTransaction = false;
@@ -143,10 +145,10 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 						log
 								.debug("Delegate loaded or resource session is still active, using it");
 					}
-				} else {
+				} else if (log.isDebugEnabled()) {
 					log.debug("Elist uses session from resource, " + logString);
 				}
-			} else {
+			} else if (log.isDebugEnabled()) {
 				log.debug("EList is not loaded in session context");
 			}
 
@@ -182,9 +184,11 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 						}
 					}
 				}
-
-				log.debug("Loaded " + objs.length + " from backend store for "
-						+ logString);
+				
+				if (log.isDebugEnabled()) {
+					log.debug("Loaded " + objs.length + " from backend store for "
+							+ logString);
+				}
 			} finally {
 				if (controlsTransaction) {
 					((StoreResource) res).setIsLoading(false);
@@ -211,7 +215,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
-		log.debug("Finished loading elist " + logString);
+		if (log.isDebugEnabled()) {
+			log.debug("Finished loading elist " + logString);
+		}
 	}
 
 	/** Overridden because general list type is not supported as a replacement */

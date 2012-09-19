@@ -85,7 +85,9 @@ public class EAttributePropertyHandler implements Getter, Setter,
 		AssertUtil.assertTrue(eAttribute.getName()
 				+ " is a many feature which is not handled by this accessor ",
 				!eAttribute.isMany());
-		log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
+		if (log.isDebugEnabled()) {
+			log.debug("Created getter/setter for " + StoreUtil.toString(eAttribute));
+		}
 	}
 
 	public EAttribute getEAttribute() {
@@ -365,9 +367,11 @@ public class EAttributePropertyHandler implements Getter, Setter,
 				&& instanceClass != null
 				&& (!instanceClass.isPrimitive() || !arr.getClass()
 						.isPrimitive())) {
-			log.debug("Expecting " + instanceClass.getName()
-					+ " as instance class but it is: "
-					+ arr.getClass().getName());
+			if (log.isDebugEnabled()) {
+				log.debug("Expecting " + instanceClass.getName()
+						+ " as instance class but it is: "
+						+ arr.getClass().getName());
+			}
 		}
 		return arr;
 	}

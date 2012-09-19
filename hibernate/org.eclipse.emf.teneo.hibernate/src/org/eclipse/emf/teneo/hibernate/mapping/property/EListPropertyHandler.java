@@ -92,7 +92,9 @@ public class EListPropertyHandler implements Getter, Setter, PropertyAccessor,
 			boolean newEMapMapping) {
 		this.extraLazy = extraLazy;
 		this.eFeature = eFeature;
-		log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
+		if (log.isDebugEnabled()) {
+			log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
+		}
 		AssertUtil.assertTrue("Many must be true but this isn't the case for "
 				+ StoreUtil.toString(eFeature), eFeature.isMany());
 		isAMap = StoreUtil.isMap(eFeature);

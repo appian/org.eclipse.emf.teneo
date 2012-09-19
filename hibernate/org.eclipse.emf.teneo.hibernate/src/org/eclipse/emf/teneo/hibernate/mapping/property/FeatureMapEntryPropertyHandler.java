@@ -63,7 +63,9 @@ public class FeatureMapEntryPropertyHandler implements Getter, Setter,
 	/** Constructor */
 	public void initialize(EStructuralFeature eFeature) {
 		this.eFeature = eFeature;
-		log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
+		if (log.isDebugEnabled()) {
+			log.debug("Created getter/setter for " + StoreUtil.toString(eFeature));
+		}
 	}
 
 	/*

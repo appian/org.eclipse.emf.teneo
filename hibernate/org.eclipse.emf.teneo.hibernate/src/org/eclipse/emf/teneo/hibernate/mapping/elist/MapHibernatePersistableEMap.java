@@ -96,7 +96,9 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 		// not yet notice it then do the local load behavior.
 		// delegate is loaded in case of subselect or eager loading
 		if (!super.isLoaded() && !isLoading() && isORMMapDelegateLoaded()) {
-			log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+			if (log.isDebugEnabled()) {
+				log.debug("Persistentlist already initialized, probably eagerly loaded: " + getLogString());
+			}
 			try {
 				this.setLoading(true);
 				// do load to load the resource
@@ -188,17 +190,19 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 							delegate instanceof AbstractPersistentCollection &&
 									((AbstractPersistentCollection) delegate).wasInitialized();
 					if (!isDelegateLoaded && !sessionWrapper.isTransactionActive()) {
-						log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
+						if (log.isDebugEnabled()) {
+							log.debug("Reconnecting session to read a lazy collection, elist: " + logString);
+						}
 						controlsTransaction = true;
 						sessionWrapper.beginTransaction();
 						sessionWrapper.setFlushModeManual();
-					} else {
+					} else if (log.isDebugEnabled()) {
 						log.debug("Delegate loaded or resource session is still active, using it");
 					}
-				} else {
+				} else if (log.isDebugEnabled()) {
 					log.debug("EMap uses session from resource, " + logString);
 				}
-			} else {
+			} else if (log.isDebugEnabled()) {
 				log.debug("EMap is not loaded in session context");
 			}
 
@@ -226,7 +230,9 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 						}
 					}
 				}
-				log.debug("Loaded " + delegate.size() + " from backend store for " + logString);
+				if (log.isDebugEnabled()) {
+					log.debug("Loaded " + delegate.size() + " from backend store for " + logString);
+				}
 			} finally {
 				if (controlsTransaction) {
 					((StoreResource) res).setIsLoading(false);
@@ -251,7 +257,9 @@ public class MapHibernatePersistableEMap<K, V> extends MapPersistableEMap<K, V> 
 				((HbResource) res).returnSessionWrapper(sessionWrapper);
 			}
 		}
-		log.debug("Finished loading emap " + logString);
+		if (log.isDebugEnabled()) {
+			log.debug("Finished loading emap " + logString);
+		}
 	}
 
 	/** Return the hibernate map */

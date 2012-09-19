@@ -71,7 +71,9 @@ public class EReferencePropertyHandler implements Getter, Setter,
 		featureId = eClass.getFeatureID(eReference);
 		isBidirectional = (eReference.getEOpposite() != null && !eReference
 				.getEOpposite().isTransient());
-		log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
+		if (log.isDebugEnabled()) {
+			log.debug("Created getter/setter for " + StoreUtil.toString(eReference));
+		}
 	}
 
 	public EReference getEReference() {

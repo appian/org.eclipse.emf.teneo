@@ -58,7 +58,9 @@ public class EContainerFeatureIDPropertyHandler implements Getter, Setter,
 	/** Constructor */
 	public void initialize(String field) {
 		ecField = FieldUtil.getField(EObjectImpl.class, "eContainerFeatureID");
-		log.debug("Created eContainerFeatureID handler");
+		if (log.isDebugEnabled()) {
+			log.debug("Created eContainerFeatureID handler");
+		}
 	}
 
 	/*

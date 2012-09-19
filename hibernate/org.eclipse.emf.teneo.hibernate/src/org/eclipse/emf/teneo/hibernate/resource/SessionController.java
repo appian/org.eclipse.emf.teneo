@@ -49,7 +49,9 @@ public class SessionController {
 		if (sessionControllers.get(name) != null) {
 			throw new HbMapperException("There is already a session controller registered with the name: " + name);
 		}
-		log.debug("Registering session controller: " + name);
+		if (log.isDebugEnabled()) {
+			log.debug("Registering session controller: " + name);
+		}
 		sessionControllers.put(name, sc);
 	}
 
@@ -58,7 +60,9 @@ public class SessionController {
 		if (sessionControllers.get(name) == null) {
 			throw new HbMapperException("There is no session controller registered with the name: " + name);
 		}
-		log.debug("De-Registering session controller: " + name);
+		if (log.isDebugEnabled()) {
+			log.debug("De-Registering session controller: " + name);
+		}
 		sessionControllers.remove(name);
 	}
 

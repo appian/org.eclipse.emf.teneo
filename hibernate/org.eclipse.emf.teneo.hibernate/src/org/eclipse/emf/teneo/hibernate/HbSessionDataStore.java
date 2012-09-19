@@ -85,7 +85,9 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 				getPackageRegistry());
 
 		try {
-			log.debug("Initializing Hb Session DataStore");
+			if (log.isDebugEnabled()) {
+				log.debug("Initializing Hb Session DataStore");
+			}
 
 			// check a few things
 			if (getEPackages() == null) {
@@ -97,7 +99,9 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 			// reset interceptor
 			setInterceptor(null);
 
-			log.debug(">>>>> Creating HB Configuration");
+			if (log.isDebugEnabled()) {
+				log.debug(">>>>> Creating HB Configuration");
+			}
 
 			getConfiguration();
 
@@ -183,8 +187,10 @@ public class HbSessionDataStore extends HbBaseSessionDataStore {
 				|| getPersistenceOptions().isUseMappingFile()) {
 			final String[] fileList = getMappingFileList();
 			for (String element : fileList) {
-				log.debug("Adding file " + element
+				if (log.isDebugEnabled()) {
+					log.debug("Adding file " + element
 						+ " to Hibernate Configuration");
+				}
 				final PersistenceFileProvider pfp = getExtensionManager()
 						.getExtension(PersistenceFileProvider.class);
 				final InputStream is = pfp.getFileContent(this.getClass(),
