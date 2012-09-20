@@ -64,6 +64,7 @@ public class FeatureMapEntryInstantiator implements Instantiator {
 	/** Instantiates using the EFactory */
 	public Object instantiate() {
 		final HibernateFeatureMapEntry fme = new HibernateFeatureMapEntry();
+		
 		fme.setEntityName(persistentClass.getEntityName());
 		return fme;
 	}

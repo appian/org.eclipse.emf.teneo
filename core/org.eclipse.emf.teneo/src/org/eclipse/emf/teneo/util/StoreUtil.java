@@ -48,6 +48,7 @@ import org.eclipse.emf.teneo.Constants;
 import org.eclipse.emf.teneo.PackageRegistryProvider;
 import org.eclipse.emf.teneo.TeneoException;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
+import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.type.PersistentStoreAdapter;
 
 /**
@@ -198,9 +199,9 @@ public class StoreUtil {
 	/** The nsprefix, eclass separator */
 	// private static final String NSPREFIX_ECLASS_SEPARATOR = ".";
 	/** Returns the name of the entity used for this feature map entry */
-	public static String getEntityName(EStructuralFeature feature) {
+	public static String getEntityName(EntityNameStrategy nameStrategy, EStructuralFeature feature) {
 		assert (FeatureMapUtil.isFeatureMap(feature));
-		return feature.getEContainingClass().getName() + "_" + feature.getName();
+		return nameStrategy.toEntityName(feature.getEContainingClass()) + "_" + feature.getName();
 	}
 
 	/** Returns a loggable string for a efeature */

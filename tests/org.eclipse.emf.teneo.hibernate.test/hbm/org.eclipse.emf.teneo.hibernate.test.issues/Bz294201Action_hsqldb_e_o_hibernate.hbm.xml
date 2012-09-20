@@ -17,10 +17,10 @@
 				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
 			</key>
 			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
-			<one-to-many entity-name="DocumentRoot_mixed"/>
+			<one-to-many entity-name="documentrootexp.DocumentRoot_mixed"/>
 		</list>
 	</class>
-	<class entity-name="DocumentRoot_mixed" lazy="false" table="`DOCUMENTROOT_MIXED`">
+	<class entity-name="documentrootexp.DocumentRoot_mixed" lazy="false" table="`DOCUMENTROOTEXP_DOCUMENTROOT_MIXED`">
 		<meta attribute="featureMap" inherit="false">documentrootexp.DocumentRoot</meta>
 		<id type="long">
 			<generator class="native"/>

@@ -59,12 +59,12 @@ public class FeatureMapMapping extends AbstractMapper {
 
 	/** Returns the entityName */
 	public String getEntityName() {
-		return StoreUtil.getEntityName(paAttribute.getModelEAttribute());
+		return StoreUtil.getEntityName(hbmContext.getEntityNameStrategy(), paAttribute.getModelEAttribute());
 	}
 
 	/** Processes the features of this featuremap entry */
 	public void process() {
-		final String entityName = StoreUtil.getEntityName(paAttribute.getModelEAttribute());
+		final String entityName = StoreUtil.getEntityName(hbmContext.getEntityNameStrategy(), paAttribute.getModelEAttribute());
 		log.debug("Processing feature map feature: " + entityName);
 		Element mainElement;
 		if (getHbmContext().getPersistenceOptions().isMapFeatureMapAsComponent()) {

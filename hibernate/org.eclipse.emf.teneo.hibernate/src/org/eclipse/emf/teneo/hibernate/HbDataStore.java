@@ -563,7 +563,7 @@ public abstract class HbDataStore implements DataStore {
 					eReferedTo.eClass());
 		} else if (referedTo instanceof HibernateFeatureMapEntry) {
 			final HibernateFeatureMapEntry fme = (HibernateFeatureMapEntry) referedTo;
-			targetEntityName = fme.getEntityName();
+			targetEntityName = fme.getEntityName(getEntityNameStrategy());
 		} else {
 			throw new IllegalArgumentException("Non eobject not yet supported "
 					+ referedTo.getClass().getName());
