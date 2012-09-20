@@ -41,7 +41,9 @@ class ArrayValueNode extends NamedParserNode {
 
 	/** Translate into a list of eobjects */
 	List<Object> convert(EClassResolver ecr) {
-		log.debug("Converting array value node");
+		if (log.isDebugEnabled()) {
+			log.debug("Converting array value node");
+		}
 
 		final ArrayList<Object> result = new ArrayList<Object>();
 		for (Object ob : children) {

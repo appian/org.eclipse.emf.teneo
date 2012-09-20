@@ -93,7 +93,9 @@ public abstract class PersistableFeatureMap extends DelegatingFeatureMap impleme
 		logString = "FeatureMap of member " + getEStructuralFeature().getName() + " owned by "
 				+ owner.getClass().getName() + " with delegate list " + delegate.getClass().getName();
 
-		log.debug("Created persistable featuremap " + logString);
+		if (log.isDebugEnabled()) {
+			log.debug("Created persistable featuremap " + logString);
+		}
 	}
 
 	/** Returns the element type to be used */

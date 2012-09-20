@@ -229,8 +229,10 @@ public class AbstractProcessingContext {
 		if (eclass.getESuperTypes().size() == 0) {
 			return new ArrayList<PAnnotatedEStructuralFeature>();
 		}
-		log.debug("Determining inherited features which are mapped locally for "
-				+ aClass.getModelEClass().getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Determining inherited features which are mapped locally for "
+					+ aClass.getModelEClass().getName());
+		}
 		final List<EStructuralFeature> inheritedFeatures = new ArrayList<EStructuralFeature>(
 				eclass.getEAllStructuralFeatures());
 

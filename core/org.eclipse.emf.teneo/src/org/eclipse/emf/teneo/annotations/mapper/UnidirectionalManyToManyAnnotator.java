@@ -54,7 +54,9 @@ public class UnidirectionalManyToManyAnnotator extends BaseEFeatureAnnotator imp
 		// note that mtm is always present because this case can not be
 		// discovered by Teneo
 		final ManyToMany mtm = aReference.getManyToMany();
-		log.debug("ManyToMany present check if default information should be added");
+		if (log.isDebugEnabled()) {
+			log.debug("ManyToMany present check if default information should be added");
+		}
 		mtm.setEModelElement(eReference);
 
 		if (eReference.isContainment() || getPersistenceOptions().isSetDefaultCascadeOnNonContainment()) {

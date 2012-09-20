@@ -53,7 +53,9 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 
 		ManyToOne mto = aReference.getManyToOne();
 		if (mto == null) {
-			log.debug("EReference + " + logStr + " does not have a manytoone annotation, adding one");
+			if (log.isDebugEnabled()) {
+				log.debug("EReference + " + logStr + " does not have a manytoone annotation, adding one");
+			}
 			mto = getFactory().createManyToOne();
 			aReference.setManyToOne(mto);
 			// removed unsettable because it is not used to define optional, it
@@ -66,7 +68,7 @@ public class ManyToOneReferenceAnnotator extends BaseEFeatureAnnotator implement
 			// eReference.getEOpposite() != null);
 			mto.setOptional(!eReference.isRequired() || eReference.getEOpposite() != null || eReference.isUnsettable());
 			mto.setEModelElement(eReference);
-		} else {
+		} else if (log.isDebugEnabled()){
 			log.debug("EReference + " + logStr + " does have a manytoone annotation, using it");
 		}
 

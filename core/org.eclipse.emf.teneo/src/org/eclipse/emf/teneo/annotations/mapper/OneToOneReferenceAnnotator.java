@@ -51,7 +51,9 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 
 		OneToOne oto = aReference.getOneToOne();
 		if (oto == null) {
-			log.debug("EReference + " + logStr + " does not have a onetoone annotation, adding one");
+			if (log.isDebugEnabled()) {
+				log.debug("EReference + " + logStr + " does not have a onetoone annotation, adding one");
+			}
 			oto = getFactory().createOneToOne();
 			aReference.setOneToOne(oto);
 			// removed unsettable because it is not used to define optional, it
@@ -63,7 +65,7 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			// eReference.isUnsettable());
 			oto.setOptional(!eReference.isRequired());
 			oto.setEModelElement(eReference);
-		} else {
+		} else if (log.isDebugEnabled()) {
 			log.debug("EReference + " + logStr + " has an onetoone annotation setting defaults if required");
 		}
 

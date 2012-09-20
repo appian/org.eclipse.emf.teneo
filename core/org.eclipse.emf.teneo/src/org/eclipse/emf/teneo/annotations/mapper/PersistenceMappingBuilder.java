@@ -101,9 +101,13 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 		// processing mechanism
 		// can provide their own model builder.
 		BasicPamodelBuilder pamodelBuilder = extensionManager.getExtension(BasicPamodelBuilder.class);
-		log.debug("Creating pamodel for the following epackages");
+		if (log.isDebugEnabled()) {
+			log.debug("Creating pamodel for the following epackages");
+		}
 		for (EPackage element : epackages) {
-			log.debug(element.getName());
+			if (log.isDebugEnabled()) {
+				log.debug(element.getName());
+			}
 			pamodelBuilder.addRecurse(element);
 		}
 
@@ -116,10 +120,14 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 			pamodelBuilder.addSpecificEClass((EClass) eClassifier);
 		}
 
-		log.debug("Create base pannotated model");
+		if (log.isDebugEnabled()) {
+			log.debug("Create base pannotated model");
+		}
 		PAnnotatedModel pam = pamodelBuilder.getPAnnotatedModel();
 
-		log.debug("Deprecated eannotations with http://annotations.elver.org or http://ejb.elver.org are ignored.");
+		if (log.isDebugEnabled()) {
+			log.debug("Deprecated eannotations with http://annotations.elver.org or http://ejb.elver.org are ignored.");
+		}
 		// if (po.isIgnoreEAnnotations()) {
 		// log.debug("Ignoring eannotations");
 		// } else {
@@ -133,9 +141,13 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 		// }
 
 		if (po.isIgnoreEAnnotations()) {
-			log.debug("Ignoring annotations");
+			if (log.isDebugEnabled()) {
+				log.debug("Ignoring annotations");
+			}
 		} else {
-			log.debug("Parse annotations");
+			if (log.isDebugEnabled()) {
+				log.debug("Parse annotations");
+			}
 			final EAnnotationParserImporter parserImporter = extensionManager
 					.getExtension(EAnnotationParserImporter.class);
 			parserImporter.setExtraAnnotationSources(po);
@@ -172,14 +184,18 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 		// eattribute, overwrite may not occur!
 		processEDataTypeAnnotations(pam);
 
-		log.debug("Add default annotations");
+		if (log.isDebugEnabled()) {
+			log.debug("Add default annotations");
+		}
 		// DCB: Introduce indirection so that extensions to annotation
 		// processing mechanism
 		// can provide their own default annotation.
 		pam.setInitialized(true);
 		extensionManager.getExtension(AnnotationGenerator.class).map(pam, po);
 
-		log.debug("Returning created pamodel");
+		if (log.isDebugEnabled()) {
+			log.debug("Returning created pamodel");
+		}
 		return pam;
 	}
 
@@ -255,7 +271,9 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 	 * yet set in the eattribute
 	 */
 	protected void processEDataTypeAnnotations(PAnnotatedModel pam) {
-		log.debug("Copying annotations on edatatypes over eattribute annotations!");
+		if (log.isDebugEnabled()) {
+			log.debug("Copying annotations on edatatypes over eattribute annotations!");
+		}
 		for (PAnnotatedEPackage pep : pam.getPaEPackages()) {
 			for (PAnnotatedEClass pec : pep.getPaEClasses()) {
 				for (PAnnotatedEStructuralFeature pef : pec.getPaEStructuralFeatures()) {
@@ -269,8 +287,10 @@ public class PersistenceMappingBuilder implements ExtensionPoint {
 						for (EStructuralFeature esf : ped.eClass().getEAllStructuralFeatures()) {
 							final EStructuralFeature asf = pea.eClass().getEStructuralFeature(esf.getName());
 							if (asf != null && !pea.eIsSet(asf) && ped.eIsSet(esf)) {
-								log.debug("Copying value for feature " + esf.getName() + " from edatatype "
+								if (log.isDebugEnabled()) {
+									log.debug("Copying value for feature " + esf.getName() + " from edatatype "
 										+ et.getName() + " to " + pea.getModelEAttribute().getName());
+								}
 
 								final Object obj = ped.eGet(esf);
 								if (obj instanceof Collection<?>) {

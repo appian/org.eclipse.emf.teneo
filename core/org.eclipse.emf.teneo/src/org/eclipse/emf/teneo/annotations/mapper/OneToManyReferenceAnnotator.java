@@ -69,8 +69,10 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator
 		OneToMany otm = aReference.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
-			log.debug("EReference + " + logStr
+			if (log.isDebugEnabled()) {
+				log.debug("EReference + " + logStr
 					+ " does not have a onetomany annotation, adding one");
+			}
 			otm = getFactory().createOneToMany();
 			aReference.setOneToMany(otm);
 			otm.setEModelElement(eReference);
@@ -81,7 +83,7 @@ public class OneToManyReferenceAnnotator extends BaseEFeatureAnnotator
 			} else if (getPersistenceOptions().isFetchAssociationExtraLazy()) {
 				otm.setFetch(FetchType.EXTRA);
 			}
-		} else {
+		} else if (log.isDebugEnabled()) {
 			log.debug("EReference + " + logStr
 					+ " has onetomany, check if defaults should be set");
 		}

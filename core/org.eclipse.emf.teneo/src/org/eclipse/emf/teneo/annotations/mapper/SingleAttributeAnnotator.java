@@ -48,7 +48,9 @@ public class SingleAttributeAnnotator extends BaseEFeatureAnnotator implements E
 	/** Process the features of the eclass */
 	public void annotate(PAnnotatedEAttribute aAttribute) {
 
-		log.debug(" Adding default annotations for EAttribute " + aAttribute.getModelElement().getName());
+		if (log.isDebugEnabled()) {
+			log.debug(" Adding default annotations for EAttribute " + aAttribute.getModelElement().getName());
+		}
 
 		final EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
 

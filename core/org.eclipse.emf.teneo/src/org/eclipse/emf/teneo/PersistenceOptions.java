@@ -714,8 +714,10 @@ public class PersistenceOptions implements ExtensionPoint {
 			in = this.getClass()
 					.getResourceAsStream(DEFAULT_CLASSPATH_FILENAME);
 			if (in != null) {
-				log.debug("Loading persistence options from classpath \""
+				if (log.isDebugEnabled()) {
+					log.debug("Loading persistence options from classpath \""
 						+ DEFAULT_CLASSPATH_FILENAME + "\".");
+				}
 				props.load(in);
 			}
 		} catch (IOException e) {
@@ -738,6 +740,9 @@ public class PersistenceOptions implements ExtensionPoint {
 
 	/** Dump the props */
 	public void logProperties() {
+		if (!log.isDebugEnabled()) {
+			return;
+		}
 		log.debug("Properties of PersistenceOptions:");
 		for (Object key : properties.keySet()) {
 			log.debug(key + ": " + properties.get(key));

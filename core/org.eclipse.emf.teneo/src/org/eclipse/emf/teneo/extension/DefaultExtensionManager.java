@@ -60,8 +60,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 		if (extension.isDefaultExtension()) {
 			final Extension currentExtension = extensionRegistry.get(extension.getPoint());
 			if (currentExtension != null && !currentExtension.isDefaultExtension()) {
-				log.debug("Not registering extension " + extension);
-				log.debug("There is already a user plugin defined: " + currentExtension);
+				if (log.isDebugEnabled()) {
+					log.debug("Not registering extension " + extension);
+					log.debug("There is already a user plugin defined: " + currentExtension);
+				}
 				return;
 			}
 		}
@@ -71,7 +73,9 @@ public class DefaultExtensionManager implements ExtensionManager {
 		if (extension.getClassName() == null) {
 			throw new TeneoExtensionException("Classname of extension: " + extension.getPoint() + " may not be null");
 		}
-		log.debug("Registering " + extension);
+		if (log.isDebugEnabled()) {
+			log.debug("Registering " + extension);
+		}
 		extensionRegistry.put(extension.getPoint(), extension);
 
 		// remove any instances for this extension
@@ -98,7 +102,9 @@ public class DefaultExtensionManager implements ExtensionManager {
 	 * @see org.eclipse.emf.teneo.extension.ExtensionManager#getExtension(java.lang .String)
 	 */
 	public ExtensionPoint getExtension(String point, Object[] initArgs) {
-		log.debug("Searching extension " + point);
+		if (log.isDebugEnabled()) {
+			log.debug("Searching extension " + point);
+		}
 		final Extension extension = extensionRegistry.get(point);
 		if (extension == null) {
 			throw new TeneoExtensionException("Extension point " + point + " not registered");
@@ -107,7 +113,9 @@ public class DefaultExtensionManager implements ExtensionManager {
 		if (extension.isSingleton()) {
 			final ExtensionPoint extensionInstance = extensionInstances.get(point);
 			if (extensionInstance != null) {
-				log.debug("Found instance " + extensionInstance.getClass().getClass());
+				if (log.isDebugEnabled()) {
+					log.debug("Found instance " + extensionInstance.getClass().getClass());
+				}
 				return extensionInstance;
 			}
 		}
@@ -132,19 +140,25 @@ public class DefaultExtensionManager implements ExtensionManager {
 				constructorUsed = false;
 				extensionInstance = (ExtensionPoint) clz.newInstance();
 			} else {
-				log.debug("Initargs passed, using constructor for class " + clz.getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Initargs passed, using constructor for class " + clz.getName());
+				}
 				constructorUsed = true;
 				final Constructor<?> constructor = getConstructor(clz, initArgs);
 				extensionInstance = (ExtensionPoint) constructor.newInstance(initArgs);
 			}
-			log.debug("Created extensionPoint instance: " + extensionInstance.getClass().getName());
+			if (log.isDebugEnabled()) {
+				log.debug("Created extensionPoint instance: " + extensionInstance.getClass().getName());
+			}
 
 			if (extensionInstance instanceof ExtensionManagerAware) {
 				((ExtensionManagerAware) extensionInstance).setExtensionManager(this);
 			}
 
 			if (extensionInstance instanceof ExtensionInitializable) {
-				log.debug("Initializing extension " + extensionInstance.getClass().getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Initializing extension " + extensionInstance.getClass().getName());
+				}
 				((ExtensionInitializable) extensionInstance).initializeExtension();
 			}
 
@@ -152,7 +166,9 @@ public class DefaultExtensionManager implements ExtensionManager {
 			// we assume
 			// that instances always differ
 			if (extension.isSingleton() && !constructorUsed) {
-				log.debug("Caching extension instance as singleton " + extension);
+				if (log.isDebugEnabled()) {
+					log.debug("Caching extension instance as singleton " + extension);
+				}
 				extensionInstances.put(point, extensionInstance);
 
 				// now see if the extensioninstance also implements other
@@ -278,8 +294,10 @@ public class DefaultExtensionManager implements ExtensionManager {
 		}
 		if (extension.getClassName().compareTo(extensionInstance.getClass().getName()) == 0 && extension.isSingleton()
 				&& extensionInstances.get(extension.getPoint()) == null) {
-			log.debug("Also registering extensioninstance: " + extensionInstance.getClass().getName()
+			if (log.isDebugEnabled()) {
+				log.debug("Also registering extensioninstance: " + extensionInstance.getClass().getName()
 					+ " for extension " + extension.getPoint());
+			}
 			extensionInstances.put(extension.getPoint(), extensionInstance);
 		}
 	}

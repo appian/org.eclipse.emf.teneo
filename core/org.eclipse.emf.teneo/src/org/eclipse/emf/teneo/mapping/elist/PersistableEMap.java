@@ -87,7 +87,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 
 		this.owner = owner;
 		this.featureID = owner.eClass().getFeatureID(feature);
-		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		}
 	}
 
 	/**
@@ -111,7 +113,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		// sets the size of this map
 		// size();
 
-		log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		if (log.isDebugEnabled()) {
+			log.debug("Created persistable emap for entry eclass " + entryEClass.getName());
+		}
 	}
 
 	/** Sets the delegatelist to a persistablelist */
@@ -126,7 +130,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 				+ " owned by " + owner.getClass().getName() + " with delegate list "
 				+ delegateORMList.getClass().getName();
 
-		log.debug("Created/reset elist " + logString);
+		if (log.isDebugEnabled()) {
+			log.debug("Created/reset elist " + logString);
+		}
 
 		if (delegateORMList instanceof EList<?>) {
 			setLoaded(true);
@@ -170,7 +176,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		}
 
 		isLoading = true;
-		log.debug("Loading " + getLogString());
+		if (log.isDebugEnabled()) {
+			log.debug("Loading " + getLogString());
+		}
 
 		// set the size
 		size = this.size();
@@ -181,7 +189,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 		try {
 			// only set to false if it was true
 			if (eDeliver) {
-				log.debug("Owner " + getOwner().getClass() + " set eDeliver to false");
+				if (log.isDebugEnabled()) {
+					log.debug("Owner " + getOwner().getClass() + " set eDeliver to false");
+				}
 				getOwner().eSetDeliver(false);
 				setDeliver = true;
 			}
@@ -358,7 +368,9 @@ public abstract class PersistableEMap<K, V> extends EcoreEMap<K, V> implements
 
 	protected void setLoaded(boolean isLoaded) {
 		this.isLoaded = isLoaded;
-		log.debug("Isloaded is " + isLoaded);
+		if (log.isDebugEnabled()) {
+			log.debug("Isloaded is " + isLoaded);
+		}
 	}
 
 	protected String getLogString() {

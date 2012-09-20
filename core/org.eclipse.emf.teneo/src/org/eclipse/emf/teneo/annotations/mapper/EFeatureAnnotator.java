@@ -134,9 +134,11 @@ public class EFeatureAnnotator extends AbstractAnnotator implements
 			if (aStructuralFeature.getTransient() == null
 					&& ((!mapVolitatileFeature() && eStructuralFeature
 							.isVolatile()) || isTransient)) {
-				log.debug("Structural feature "
+				if (log.isDebugEnabled()) {
+					log.debug("Structural feature "
 						+ eStructuralFeature.getName()
 						+ " is transient, therefore adding transient annotation");
+				}
 				final Transient trans = getFactory().createTransient();
 				trans.setEModelElement(eStructuralFeature);
 				aStructuralFeature.setTransient(trans);

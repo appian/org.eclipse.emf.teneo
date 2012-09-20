@@ -102,8 +102,10 @@ public class QualifyingEntityNameStrategy implements EntityNameStrategy {
 			}
 		}
 		if (eClass == null) {
-			log.debug("Failed to retreive EClass for name: " + eClassName
+			if (log.isDebugEnabled()) {
+				log.debug("Failed to retreive EClass for name: " + eClassName
 					+ ". This is no problem if this is a featuremap.");
+			}
 			return null;
 			// throw new IllegalArgumentException("No EClass found using " +
 			// eClassName);

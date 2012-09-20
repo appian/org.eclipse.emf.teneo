@@ -56,7 +56,9 @@ class ComplexNode extends NamedParserNode {
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	Object convert(EClassResolver ecr) {
-		log.debug("Converting " + getName() + " to EObject ");
+		if (log.isDebugEnabled()) {
+			log.debug("Converting " + getName() + " to EObject ");
+		}
 
 		// special case in which the main type is just a list of other types
 		// for example SecondaryTables which is just a list of SecondaryTable
@@ -80,8 +82,10 @@ class ComplexNode extends NamedParserNode {
 					eClass, child.getName());
 			if (child instanceof PrimitiveValueNode) {
 				final PrimitiveValueNode pvn = (PrimitiveValueNode) child;
-				log.debug("Primitive child: " + pvn.getName() + ": "
-						+ pvn.getValue());
+				if (log.isDebugEnabled()) {
+					log.debug("Primitive child: " + pvn.getName() + ": "
+							+ pvn.getValue());
+				}
 				if (!(efeature instanceof EAttribute)) {
 					throw new AnnotationParserException("The EFeature "
 							+ efeature.getName() + "/" + eClass.getName()

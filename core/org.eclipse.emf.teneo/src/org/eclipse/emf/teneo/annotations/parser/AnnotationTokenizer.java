@@ -155,7 +155,9 @@ class AnnotationTokenizer {
 		tokBeg = 0;
 		tokEnd = 0;
 
-		log.debug(dump());
+		if (log.isDebugEnabled()) {
+			log.debug(dump());
+		}
 	}
 
 	/**

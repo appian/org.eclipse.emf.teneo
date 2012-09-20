@@ -241,11 +241,15 @@ public class ERuntime extends EModelResolver {
 			final EPackage epack = epackages.get(i);
 
 			if (ignorePackage(epack)) {
-				log.debug("Not determining concrete classes for package " + epack.getName());
+				if (log.isDebugEnabled()) {
+					log.debug("Not determining concrete classes for package " + epack.getName());
+				}
 				continue;
 			}
 
-			log.debug("Determining concrete classes for package " + epack.getName());
+			if (log.isDebugEnabled()) {
+				log.debug("Determining concrete classes for package " + epack.getName());
+			}
 
 			for (EClassifier eclassifier : epack.getEClassifiers()) {
 				if (!(eclassifier instanceof EClass)) {

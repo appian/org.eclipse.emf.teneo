@@ -110,11 +110,15 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			aClass.setEavMapping(PannotationFactory.eINSTANCE.createEAVMapping());
 		}
 
-		log.debug(" Adding default annotations for EClass: " + aClass.getModelElement().getName());
+		if (log.isDebugEnabled()) {
+			log.debug(" Adding default annotations for EClass: " + aClass.getModelElement().getName());
+		}
 
 		processedAClasses.add(aClass);
 
-		log.debug("Setting the superentity of the eclass");
+		if (log.isDebugEnabled()) {
+			log.debug("Setting the superentity of the eclass");
+		}
 		setSuperEntity(aClass);
 		final boolean isInheritanceRoot = aClass.getPaSuperEntity() == null
 				|| aClass.getPaSuperEntity().getMappedSuperclass() != null; // last
@@ -343,7 +347,9 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 		final EClass eclass = aClass.getModelEClass();
 
 		if (!mapInterfaceEClass() && eclass.isInterface()) {
-			log.debug("Not mapping interfaces and this is an interface eclass, ignore it");
+			if (log.isDebugEnabled()) {
+				log.debug("Not mapping interfaces and this is an interface eclass, ignore it");
+			}
 			return false;
 		}
 
@@ -353,8 +359,10 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 
 		if (!getPersistenceOptions().isSetEntityAutomatically() && aClass.getEntity() == null
 				&& aClass.getEmbeddable() == null) {
-			log.debug("Entities are not added automatically and this eclass: " + aClass.getModelEClass().getName()
+			if (log.isDebugEnabled()) {
+				log.debug("Entities are not added automatically and this eclass: " + aClass.getModelEClass().getName()
 					+ " does not have an entity/embeddable annotation.");
+			}
 			return false;
 		}
 
@@ -397,13 +405,19 @@ public class EClassAnnotator extends AbstractAnnotator implements ExtensionPoint
 			InheritanceType it = InheritanceType.get(persistenceOptions.getInheritanceMapping());
 			if (it == InheritanceType.JOINED) {
 				optionDefaultInheritanceMapping = InheritanceType.JOINED;
-				log.debug("Option inheritance: joined");
+				if (log.isDebugEnabled()) {
+					log.debug("Option inheritance: joined");
+				}
 			} else if (it == InheritanceType.SINGLE_TABLE) {
 				optionDefaultInheritanceMapping = InheritanceType.SINGLE_TABLE;
-				log.debug("Option inheritance: single");
+				if (log.isDebugEnabled()) {
+					log.debug("Option inheritance: single");
+				}
 			} else if (it == InheritanceType.TABLE_PER_CLASS) {
 				optionDefaultInheritanceMapping = InheritanceType.TABLE_PER_CLASS;
-				log.debug("Option inheritance: table per class");
+				if (log.isDebugEnabled()) {
+					log.debug("Option inheritance: table per class");
+				}
 			} else {
 				throw new IllegalArgumentException("Inheritance mapping option: "
 						+ persistenceOptions.getInheritanceMapping() + " is not supported");

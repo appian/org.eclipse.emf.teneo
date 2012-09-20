@@ -58,14 +58,18 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 				+ aAttribute.getModelEAttribute().getEContainingClass()
 						.getName();
 
-		log.debug("EAttribute " + logStr + " needs a onetomany");
+		if (log.isDebugEnabled()) {
+			log.debug("EAttribute " + logStr + " needs a onetomany");
+		}
 
 		final EAttribute eAttribute = (EAttribute) aAttribute.getModelElement();
 
 		OneToMany otm = aAttribute.getOneToMany();
 		final boolean otmWasSet = otm != null; // otm was set manually
 		if (otm == null) {
-			log.debug("One to many not present adding one");
+			if (log.isDebugEnabled()) {
+				log.debug("One to many not present adding one");
+			}
 			otm = getFactory().createOneToMany();
 			aAttribute.setOneToMany(otm);
 			otm.setEModelElement(eAttribute);
@@ -75,7 +79,7 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 			} else if (getPersistenceOptions().isFetchAssociationExtraLazy()) {
 				otm.setFetch(FetchType.EXTRA);
 			}
-		} else {
+		} else if (log.isDebugEnabled()) {
 			log.debug("One to many present adding default information if required");
 		}
 
@@ -124,8 +128,10 @@ public class OneToManyAttributeAnnotator extends BaseEFeatureAnnotator
 
 		// set unique and indexed
 		if (!otmWasSet) {
-			log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
+			if (log.isDebugEnabled()) {
+				log.debug("Setting indexed and unique on otm from eAttribute.isOrdered/isUnique "
 					+ "because otm was not set manually");
+			}
 			otm.setIndexed(eAttribute.isOrdered());
 			otm.setUnique(eAttribute.isUnique());
 
