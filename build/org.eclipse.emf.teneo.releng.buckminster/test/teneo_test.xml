@@ -93,7 +93,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 			<param name="timeStamp" expression="${buildTimeStamp}" />
 			<param name="testName" expression="Hibernate Tests" />
 			<param name="testPackage" expression="org.eclipse.emf.teneo.hibernate.tests" />
-		</xslt-->
+		</xslt
 
 		<echo message="Running tests EclipseLink" />
 		<buckminster command="junit" workspace="${workspacePath}">

@@ -32,13 +32,6 @@
 		</provider>
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
 			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/"/>
-			<uri format="{0},eclipselink/{1}">
-				<bc:propertyRef key="gitPath"/>
-				<bc:propertyRef key="buckminster.component"/>
-			</uri>
-		</provider>
-		<provider componentTypes="osgi.bundle" readerType="git" source="true">
-			<property key="git.remote.uri" value="git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/"/>
 			<uri format="{0},hibernate/{1}">
 				<bc:propertyRef key="gitPath"/>
 				<bc:propertyRef key="buckminster.component"/>
