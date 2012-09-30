@@ -8,29 +8,17 @@
 
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
-import java.util.Properties;
-
 import junit.framework.Assert;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.ERuntime;
-import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.ecore.EModelResolver;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.rental.RentalPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.library.LibraryPackage;
 import org.eclipse.emf.teneo.samples.emf.sample.product.ProductPackage;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Author;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Book;
-import org.eclipse.emf.teneo.samples.issues.bz242995.BookCategory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Library;
-import org.eclipse.emf.teneo.samples.issues.bz242995.OneTimeWonder;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Writer;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Factory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.proxy.HibernateProxy;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>

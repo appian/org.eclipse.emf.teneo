@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false">
+	<class name="org.eclipse.emf.teneo.samples.issues.bz390774.impl.MainImpl" entity-name="Main" abstract="false" lazy="false" table="`MAIN`">
+		<meta attribute="eclassName" inherit="false">Main</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz390774</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<join table="`SECONDARY`">
+			<key/>
+			<many-to-one name="secondary" entity-name="Secondary" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="MAIN_SECONDARY" insert="true" update="true" not-null="false">
+				<column not-null="false" unique="false" name="`SECONDARY_JOIN`"/>
+			</many-to-one>
+			<property name="test" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
+				<column not-null="false" unique="false" name="`TEST`"/>
+			</property>
+		</join>
+	</class>
+	<class name="org.eclipse.emf.teneo.samples.issues.bz390774.impl.SecondaryImpl" entity-name="Secondary" abstract="false" lazy="false" table="`SECONDARY`">
+		<meta attribute="eclassName" inherit="false">Secondary</meta>
+		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/issues/bz390774</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+	</class>
+</hibernate-mapping>

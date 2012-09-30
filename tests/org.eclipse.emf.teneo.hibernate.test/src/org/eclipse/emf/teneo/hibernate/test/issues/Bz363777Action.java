@@ -12,9 +12,6 @@ import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.hibernate.HbDataStore;
-import org.eclipse.emf.teneo.hibernate.HbSessionDataStore;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package;
 import org.eclipse.emf.teneo.samples.issues.bz363777.Bz363777Factory;
 import org.eclipse.emf.teneo.samples.issues.bz363777.Bz363777Package;
 import org.eclipse.emf.teneo.samples.issues.bz363777.ChannelMap;
@@ -22,7 +19,6 @@ import org.eclipse.emf.teneo.samples.issues.bz363777.ChannelMapService;
 import org.eclipse.emf.teneo.samples.issues.bz363777.NE;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.cfg.Configuration;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>

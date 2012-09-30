@@ -9,7 +9,7 @@
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import java.util.List;
- 
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;

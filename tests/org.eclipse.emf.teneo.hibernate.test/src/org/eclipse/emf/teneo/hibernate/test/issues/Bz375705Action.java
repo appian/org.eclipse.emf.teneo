@@ -9,24 +9,13 @@
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import java.util.Calendar;
-import java.util.Properties;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.PersistenceOptions;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Author;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Book;
-import org.eclipse.emf.teneo.samples.issues.bz242995.BookCategory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Library;
-import org.eclipse.emf.teneo.samples.issues.bz242995.OneTimeWonder;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Writer;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Factory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package;
 import org.eclipse.emf.teneo.samples.issues.bz375705.Bar;
 import org.eclipse.emf.teneo.samples.issues.bz375705.Bz375705Factory;
 import org.eclipse.emf.teneo.samples.issues.bz375705.Bz375705Package;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.proxy.HibernateProxy;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>

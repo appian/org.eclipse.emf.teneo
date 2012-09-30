@@ -889,15 +889,23 @@ public class MappingContext extends AbstractProcessingContext implements
 						}
 					}
 					for (EReference er : eClass.getEAllReferences()) {
-						tableName = tableNameFromAssociationOverride(er.getName());
+						tableName = tableNameFromAssociationOverride(er
+								.getName());
 						if (tableName != null) {
 							return tableName;
 						}
 					}
 				} else {
-					tableName = tableNameFromAssociationOverride(per.getModelEReference().getName());
+					tableName = tableNameFromAssociationOverride(per
+							.getModelEReference().getName());
 					if (tableName != null) {
 						return tableName;
+					} else if (!per.getJoinColumns().isEmpty()) {
+						for (JoinColumn jc : per.getJoinColumns()) {
+							if (jc.getTable() != null) {
+								return jc.getTable();
+							}
+						}
 					}
 				}
 			} finally {
@@ -910,9 +918,11 @@ public class MappingContext extends AbstractProcessingContext implements
 	public String tableNameFromAssociationOverride(String name) {
 		final AssociationOverride override = getAssociationOverrides(name);
 		if (override != null) {
-			if (override.getJoinTable() != null && override.getJoinTable().getName() != null) {
+			if (override.getJoinTable() != null
+					&& override.getJoinTable().getName() != null) {
 				return override.getJoinTable().getName();
-			} else if (override.getJoinTable() != null && override.getJoinTable().getJoinColumns().size() >0) {
+			} else if (override.getJoinTable() != null
+					&& override.getJoinTable().getJoinColumns().size() > 0) {
 				for (JoinColumn jc : override.getJoinTable().getJoinColumns()) {
 					if (jc.getTable() != null) {
 						return jc.getTable();
@@ -928,5 +938,5 @@ public class MappingContext extends AbstractProcessingContext implements
 		}
 		return null;
 	}
-	
+
 }

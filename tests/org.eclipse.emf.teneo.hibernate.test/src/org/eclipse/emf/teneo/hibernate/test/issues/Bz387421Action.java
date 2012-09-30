@@ -16,22 +16,12 @@ import org.eclipse.dd.dc.DcPackage;
 import org.eclipse.dd.di.DiPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.extension.ExtensionManager;
 import org.eclipse.emf.teneo.mapping.strategy.EntityNameStrategy;
 import org.eclipse.emf.teneo.mapping.strategy.impl.QualifyingEntityNameStrategy;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Author;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Book;
-import org.eclipse.emf.teneo.samples.issues.bz242995.BookCategory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Library;
-import org.eclipse.emf.teneo.samples.issues.bz242995.OneTimeWonder;
-import org.eclipse.emf.teneo.samples.issues.bz242995.Writer;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Factory;
-import org.eclipse.emf.teneo.samples.issues.bz242995.bz242995Package;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
-import org.hibernate.proxy.HibernateProxy;
 
 /**
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
