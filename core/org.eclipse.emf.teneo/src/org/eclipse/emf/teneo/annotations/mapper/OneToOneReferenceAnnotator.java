@@ -76,7 +76,7 @@ public class OneToOneReferenceAnnotator extends BaseEFeatureAnnotator implements
 			oto.setMappedBy(eReference.getEOpposite().getName());
 		}
 
-		if (eReference.isContainment() && getPersistenceOptions().isSetCascadeAllOnContainment()) {
+		if (oto.getCascade().isEmpty() && eReference.isContainment() && getPersistenceOptions().isSetCascadeAllOnContainment()) {
 			oto.setOrphanRemoval(true);
 		}
 		

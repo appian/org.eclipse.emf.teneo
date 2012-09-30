@@ -10,8 +10,6 @@ package org.eclipse.emf.teneo.hibernate.mapper;
 
 import java.util.List;
 
-import javax.print.attribute.standard.MediaSize.ISO;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.ecore.EReference;

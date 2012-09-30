@@ -9,7 +9,7 @@
 package org.eclipse.emf.teneo.hibernate.test.issues;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.teneo.samples.issues.bz390772.Bz390772Package;
+import org.eclipse.emf.teneo.samples.issues.bz390773.Bz390773Package;
 import org.eclipse.emf.teneo.test.AbstractTestAction;
 import org.eclipse.emf.teneo.test.stores.TestStore;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.teneo.test.stores.TestStore;
  * @author <a href="mailto:mtaal@elver.org">Martin Taal</a>
  * @version $Revision: 1.1 $
  */
-public class Bz390772Action extends AbstractTestAction {
+public class Bz390773Action extends AbstractTestAction {
 
-	public Bz390772Action() {
-		super(new EPackage[] { Bz390772Package.eINSTANCE });
+	public Bz390773Action() {
+		super(new EPackage[] { Bz390773Package.eINSTANCE });
 	}
 
 //	@Override
