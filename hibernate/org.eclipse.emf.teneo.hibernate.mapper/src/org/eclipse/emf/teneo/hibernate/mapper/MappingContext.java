@@ -898,6 +898,12 @@ public class MappingContext extends AbstractProcessingContext implements
 					tableName = tableNameFromAssociationOverride(per.getModelEReference().getName());
 					if (tableName != null) {
 						return tableName;
+					} else if (!per.getJoinColumns().isEmpty()) {
+						for (JoinColumn jc : per.getJoinColumns()) {
+							if (jc.getTable() != null) {
+								return jc.getTable();
+							}
+						}
 					}
 				}
 			} finally {

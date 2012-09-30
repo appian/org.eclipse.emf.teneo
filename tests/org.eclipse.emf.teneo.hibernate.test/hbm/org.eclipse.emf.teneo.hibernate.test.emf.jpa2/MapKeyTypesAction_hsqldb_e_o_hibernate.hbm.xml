@@ -45,10 +45,8 @@
 			<map-key type="timestamp"/>
 			<element type="java.lang.String"/>
 		</map>
-		<map name="photoParts" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
-				<column name="`IMAGES_PHOTOPARTS_E_ID`" unique="false"/>
-			</key>
+		<map name="photoParts" table="`PHOTOPARTS_MAP`" lazy="true" cascade="all,delete-orphan">
+			<key/>
 			<map-key-many-to-many entity-name="PhotoPart">
 				<column not-null="true" unique="false" name="`PARTS_NAME`"/>
 			</map-key-many-to-many>

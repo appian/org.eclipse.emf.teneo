@@ -45,9 +45,16 @@
 			<map-key type="timestamp"/>
 			<element type="java.lang.String"/>
 		</map>
+		<map name="photoParts" table="`PHOTOPARTS_MAP`" lazy="true" cascade="all,delete-orphan">
+			<key/>
+			<map-key-many-to-many entity-name="PhotoPart">
+				<column not-null="true" unique="false" name="`PARTS_NAME`"/>
+			</map-key-many-to-many>
+			<element type="java.lang.String"/>
+		</map>
 	</class>
-	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.PhotoBookImpl" entity-name="PhotoBook" abstract="false" lazy="false" table="`PHOTOBOOK`">
-		<meta attribute="eclassName" inherit="false">PhotoBook</meta>
+	<class name="org.eclipse.emf.teneo.samples.emf.jpa2.maps.impl.PhotoPartImpl" entity-name="PhotoPart" abstract="false" lazy="false" table="`PHOTOPART`">
+		<meta attribute="eclassName" inherit="false">PhotoPart</meta>
 		<meta attribute="epackage" inherit="false">http://www.eclipse.org/emf/teneo/samples/emf/jpa2/maps</meta>
 		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
 			<meta attribute="syntheticId" inherit="false">true</meta>
