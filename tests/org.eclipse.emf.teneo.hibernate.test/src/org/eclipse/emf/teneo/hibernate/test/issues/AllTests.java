@@ -55,6 +55,7 @@ public class AllTests {
 		TestSuite suite = new MultiCfgTestSuite(
 				"Test for org.eclipse.emf.teneo.hibernate.test.issues",
 				HibernateTestbed.instance().getConfigurations());
+		suite.addTestSuite(Bz391134Action.class);
 		suite.addTestSuite(Bz387421Action.class);
 		suite.addTestSuite(Bz390774Action.class);
 		suite.addTestSuite(Bz390775Action.class);
