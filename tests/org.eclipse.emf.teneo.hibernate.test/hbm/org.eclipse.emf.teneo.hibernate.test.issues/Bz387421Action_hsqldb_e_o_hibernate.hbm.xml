@@ -3062,6 +3062,81 @@
 			</type>
 		</property>
 	</joined-subclass>
+	<class name="org.eclipse.dd.di.impl.DocumentRootImpl" entity-name="dd_di.DocumentRoot" abstract="false" lazy="false" table="`DD_DI_DOCUMENTROOT`">
+		<meta attribute="eclassName" inherit="false">DocumentRoot</meta>
+		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMI</meta>
+		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
+			<meta attribute="syntheticId" inherit="false">true</meta>
+			<generator class="native"/>
+		</id>
+		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<list name="mixed" table="`DD_DI_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
+			</key>
+			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
+			<one-to-many entity-name="dd_di.DocumentRoot_mixed"/>
+		</list>
+	</class>
+	<class entity-name="dd_di.DocumentRoot_mixed" lazy="false" table="`DD_DI_DOCUMENTROOT_MIXED`">
+		<meta attribute="featureMap" inherit="false">dd_di.DocumentRoot</meta>
+		<id type="long">
+			<generator class="native"/>
+		</id>
+		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
+			<meta attribute="syntheticVersion" inherit="false">true</meta>
+		</version>
+		<property name="fme_feature" type="java.lang.String"/>
+		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
+			</key>
+			<map-key type="java.lang.String"/>
+			<element type="java.lang.String"/>
+		</map>
+		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
+			<key update="true">
+				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
+			</key>
+			<map-key type="java.lang.String"/>
+			<element type="java.lang.String"/>
+		</map>
+		<many-to-one name="diagramElement" entity-name="dd_di.DiagramElement" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_DIAGRAMELEMENT" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_DIAGRAMELEMENT_DIAGRAMELEMENT_ID`"/>
+		</many-to-one>
+		<many-to-one name="diagram" entity-name="dd_di.Diagram" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_DIAGRAM" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_DIAGRAM_DIAGRAM_ID`"/>
+		</many-to-one>
+		<many-to-one name="edge" entity-name="dd_di.Edge" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_EDGE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_EDGE_EDGE_ID`"/>
+		</many-to-one>
+		<many-to-one name="label" entity-name="dd_di.Label" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_LABEL" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_LABEL_LABEL_ID`"/>
+		</many-to-one>
+		<many-to-one name="labeledEdge" entity-name="dd_di.LabeledEdge" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_LABELEDEDGE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_LABELEDEDGE_LABELEDEDGE_ID`"/>
+		</many-to-one>
+		<many-to-one name="labeledShape" entity-name="dd_di.LabeledShape" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_LABELEDSHAPE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_LABELEDSHAPE_LABELEDSHAPE_ID`"/>
+		</many-to-one>
+		<many-to-one name="node" entity-name="dd_di.Node" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_NODE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_NODE_NODE_ID`"/>
+		</many-to-one>
+		<many-to-one name="plane" entity-name="dd_di.Plane" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_PLANE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_PLANE_PLANE_ID`"/>
+		</many-to-one>
+		<many-to-one name="shape" entity-name="dd_di.Shape" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_SHAPE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_SHAPE_SHAPE_ID`"/>
+		</many-to-one>
+		<many-to-one name="style" entity-name="dd_di.Style" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_STYLE" insert="true" update="true" not-null="false">
+			<column not-null="false" unique="false" name="`MIXED_STYLE_STYLE_ID`"/>
+		</many-to-one>
+		<property name="fme_mixed_text" type="java.lang.String"/>
+		<property name="fme_mixed_cdata" type="java.lang.String"/>
+		<property name="fme_mixed_comment" type="java.lang.String"/>
+	</class>
 	<class name="org.eclipse.dd.dc.impl.DocumentRootImpl" entity-name="dc.DocumentRoot" abstract="false" lazy="false" table="`DC_DOCUMENTROOT`">
 		<meta attribute="eclassName" inherit="false">DocumentRoot</meta>
 		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DC-XMI</meta>
@@ -3184,80 +3259,5 @@
 		<property name="y" lazy="false" insert="true" update="true" not-null="true" unique="false" type="float">
 			<column not-null="true" unique="false" name="`Y`"/>
 		</property>
-	</class>
-	<class name="org.eclipse.dd.di.impl.DocumentRootImpl" entity-name="dd_di.DocumentRoot" abstract="false" lazy="false" table="`DD_DI_DOCUMENTROOT`">
-		<meta attribute="eclassName" inherit="false">DocumentRoot</meta>
-		<meta attribute="epackage" inherit="false">http://www.omg.org/spec/DD/20100524/DI-XMI</meta>
-		<id type="long" name="e_id" column="e_id" access="org.eclipse.emf.teneo.hibernate.mapping.identifier.IdentifierPropertyHandler">
-			<meta attribute="syntheticId" inherit="false">true</meta>
-			<generator class="native"/>
-		</id>
-		<version name="e_version" column="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion" inherit="false">true</meta>
-		</version>
-		<list name="mixed" table="`DD_DI_DOCUMENTROOT_MIXED`" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
-				<column name="`DOCUMENTROOT_MIXED_E_ID`" unique="false"/>
-			</key>
-			<list-index column="`DOCUMENTROOT_MIXED_IDX`"/>
-			<one-to-many entity-name="dd_di.DocumentRoot_mixed"/>
-		</list>
-	</class>
-	<class entity-name="dd_di.DocumentRoot_mixed" lazy="false" table="`DD_DI_DOCUMENTROOT_MIXED`">
-		<meta attribute="featureMap" inherit="false">dd_di.DocumentRoot</meta>
-		<id type="long">
-			<generator class="native"/>
-		</id>
-		<version name="e_version" access="org.eclipse.emf.teneo.hibernate.mapping.property.VersionPropertyHandler">
-			<meta attribute="syntheticVersion" inherit="false">true</meta>
-		</version>
-		<property name="fme_feature" type="java.lang.String"/>
-		<map name="xMLNSPrefixMap" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
-				<column name="`MIXED_DOCUMENTROOT_XMLNSPREFIXMAP_E_ID`" unique="false"/>
-			</key>
-			<map-key type="java.lang.String"/>
-			<element type="java.lang.String"/>
-		</map>
-		<map name="xSISchemaLocation" lazy="true" cascade="all,delete-orphan">
-			<key update="true">
-				<column name="`MIXED_DOCUMENTROOT_XSISCHEMALOCATION_E_ID`" unique="false"/>
-			</key>
-			<map-key type="java.lang.String"/>
-			<element type="java.lang.String"/>
-		</map>
-		<many-to-one name="diagramElement" entity-name="dd_di.DiagramElement" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_DIAGRAMELEMENT" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_DIAGRAMELEMENT_DIAGRAMELEMENT_ID`"/>
-		</many-to-one>
-		<many-to-one name="diagram" entity-name="dd_di.Diagram" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_DIAGRAM" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_DIAGRAM_DIAGRAM_ID`"/>
-		</many-to-one>
-		<many-to-one name="edge" entity-name="dd_di.Edge" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_EDGE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_EDGE_EDGE_ID`"/>
-		</many-to-one>
-		<many-to-one name="label" entity-name="dd_di.Label" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_LABEL" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_LABEL_LABEL_ID`"/>
-		</many-to-one>
-		<many-to-one name="labeledEdge" entity-name="dd_di.LabeledEdge" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_LABELEDEDGE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_LABELEDEDGE_LABELEDEDGE_ID`"/>
-		</many-to-one>
-		<many-to-one name="labeledShape" entity-name="dd_di.LabeledShape" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_LABELEDSHAPE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_LABELEDSHAPE_LABELEDSHAPE_ID`"/>
-		</many-to-one>
-		<many-to-one name="node" entity-name="dd_di.Node" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_NODE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_NODE_NODE_ID`"/>
-		</many-to-one>
-		<many-to-one name="plane" entity-name="dd_di.Plane" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_PLANE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_PLANE_PLANE_ID`"/>
-		</many-to-one>
-		<many-to-one name="shape" entity-name="dd_di.Shape" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_SHAPE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_SHAPE_SHAPE_ID`"/>
-		</many-to-one>
-		<many-to-one name="style" entity-name="dd_di.Style" lazy="false" cascade="all" foreign-key="DD_DI_DOCUMENTROOT_STYLE" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`MIXED_STYLE_STYLE_ID`"/>
-		</many-to-one>
-		<property name="fme_mixed_text" type="java.lang.String"/>
-		<property name="fme_mixed_cdata" type="java.lang.String"/>
-		<property name="fme_mixed_comment" type="java.lang.String"/>
 	</class>
 </hibernate-mapping>

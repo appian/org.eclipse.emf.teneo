@@ -37,6 +37,8 @@ public class Bz387421Action extends AbstractTestAction {
 	public Properties getExtraConfigurationProperties() {
 		final Properties props = new Properties();
 		props.setProperty(PersistenceOptions.MAP_DOCUMENT_ROOT, "true");
+		props.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+		props.setProperty(PersistenceOptions.AUTO_ADD_REFERENCED_EPACKAGES, "true");
 		return props;
 	}
 
