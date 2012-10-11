@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence-mapping xmlns="http://www.eclipse.org/emft/teneo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<epackage namespace-uri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI">
+		<eclass name="SubProcess">
+			<association-override name="flowElements">
+				<join-column name="flowElement_sp_ID"/>
+			</association-override>
+		</eclass>
+		<eclass name="SubChoreography">
+			<association-override name="flowElements">
+				<join-column name="flowElement_sc_ID"/>
+			</association-override>
+		</eclass>
+		<eclass name="Process">
+			<association-override name="flowElements">
+				<join-column name="flowElement_p_ID"/>
+			</association-override>
+		</eclass>
+		<eclass name="FlowElementsContainer">
+			<association-override name="flowElements">
+				<join-column name="flowElement_fec_ID"/>
+			</association-override>
+		</eclass>
+		<eclass name="Choreography">
+			<association-override name="flowElements">
+				<join-column name="flowElement_c_ID"/>
+			</association-override>
+		</eclass>
+	</epackage>
+</persistence-mapping>

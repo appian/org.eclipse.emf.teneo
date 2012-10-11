@@ -475,12 +475,17 @@
 			</key>
 			<one-to-many entity-name="bpmn2.Documentation"/>
 		</bag>
-		<bag name="extensionDefinitions" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_BASEELEMENT_EXTENSIONDEFINITIONS">
-				<column name="`BASEELEMENT_EXTENSIONDEFINITIONS_ID`" unique="false"/>
+		<idbag name="extensionDefinitions" table="`BPMN2_BASEELEMENT_BPMN2_EXTENSIONDEFINITION`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`BASEELEMENT_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.ExtensionDefinition"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.ExtensionDefinition" unique="false" foreign-key="BPMN2_BASEELEMENT_EXTENSIONDEFINITIONS">
+				<column name="`EXTENSIONDEFINITION_E_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<list name="anyAttribute" table="`BPMN2_BASEELEMENT_ANYATTRIBUTE`" lazy="true" cascade="all,delete-orphan">
 			<key update="true">
 				<column name="`BASEELEMENT_ANYATTRIBUTE_ID`" unique="false"/>
@@ -511,12 +516,17 @@
 		<many-to-one name="monitoring" entity-name="bpmn2.Monitoring" lazy="false" cascade="all" foreign-key="BPMN2_FLOWELEMENT_MONITORING" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`MONITORING_MONITORING_ID`"/>
 		</many-to-one>
-		<bag name="categoryValueRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_FLOWELEMENT_CATEGORYVALUEREF">
-				<column name="`FLOWELEMENT_CATEGORYVALUEREF_ID`" unique="false"/>
+		<idbag name="categoryValueRef" table="`BPMN2_FLOWELEMENT_BPMN2_CATEGORYVALUE`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`FLOWELEMENT_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.CategoryValue"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.CategoryValue" unique="false" foreign-key="BPMN2_FLOWELEMENT_CATEGORYVALUEREF">
+				<column name="`CATEGORYVALUE_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
@@ -527,19 +537,24 @@
 		<key>
 			<column name="`BPMN2_FLOWELEMENT_ID`"/>
 		</key>
-		<bag name="incoming" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+		<idbag name="incoming" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
 			<key update="true">
 				<column name="`SEQUENCEFLOW_TARGETREF_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.SequenceFlow"/>
-		</bag>
-		<list name="outgoing" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<many-to-many entity-name="bpmn2.SequenceFlow"/>
+		</idbag>
+		<idbag name="outgoing" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
 			<key update="true">
 				<column name="`SEQUENCEFLOW_SOURCEREF_ID`" unique="false"/>
 			</key>
-			<list-index column="`FLOWNODE_OUTGOING_IDX`"/>
-			<one-to-many entity-name="bpmn2.SequenceFlow"/>
-		</list>
+			<many-to-many entity-name="bpmn2.SequenceFlow"/>
+		</idbag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.ActivityImpl" entity-name="bpmn2.Activity" abstract="false" lazy="false" extends="bpmn2.FlowNode" table="`BPMN2_ACTIVITY`">
 		<meta attribute="eclassName" inherit="false">Activity</meta>
@@ -568,9 +583,12 @@
 			</key>
 			<one-to-many entity-name="bpmn2.DataOutputAssociation"/>
 		</bag>
-		<many-to-one name="resources" entity-name="bpmn2.ResourceRole" lazy="false" cascade="all" foreign-key="BPMN2_ACTIVITY_RESOURCES" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`RESOURCEROLE_RESOURCES_ID`"/>
-		</many-to-one>
+		<bag name="resources" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_ACTIVITY_RESOURCES">
+				<column name="`ACTIVITY_RESOURCES_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.ResourceRole"/>
+		</bag>
 		<many-to-one name="loopCharacteristics" entity-name="bpmn2.LoopCharacteristics" lazy="false" cascade="all" foreign-key="BPMN2_ACTIVITY_LOOPCHARACTERISTICS" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`LOOPCHARACTERISTICS_LOOPCHARACTERISTICS_ID`"/>
 		</many-to-one>
@@ -599,12 +617,18 @@
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
-		<many-to-one name="flowElements" entity-name="bpmn2.FlowElement" lazy="false" cascade="all" foreign-key="BPMN2_SUBPROCESS_FLOWELEMENTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`FLOWELEMENT_FLOWELEMENTS_ID`"/>
-		</many-to-one>
-		<many-to-one name="artifacts" entity-name="bpmn2.Artifact" lazy="false" cascade="all" foreign-key="BPMN2_SUBPROCESS_ARTIFACTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`ARTIFACT_ARTIFACTS_ID`"/>
-		</many-to-one>
+		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_SUBPROCESS_FLOWELEMENTS">
+				<column name="`FLOWELEMENT_SP_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.FlowElement"/>
+		</bag>
+		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_SUBPROCESS_ARTIFACTS">
+				<column name="`SUBPROCESS_ARTIFACTS_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.Artifact"/>
+		</bag>
 		<property name="triggeredByEvent" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
 			<column not-null="false" unique="false" name="`TRIGGEREDBYEVENT`"/>
 		</property>
@@ -712,15 +736,23 @@
 		<many-to-one name="outputSet" entity-name="bpmn2.OutputSet" lazy="false" cascade="all" foreign-key="BPMN2_CATCHEVENT_OUTPUTSET" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`OUTPUTSET_OUTPUTSET_ID`"/>
 		</many-to-one>
-		<many-to-one name="eventDefinitions" entity-name="bpmn2.EventDefinition" lazy="false" cascade="all" foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`EVENTDEFINITION_EVENTDEFINITIONS_ID`"/>
-		</many-to-one>
-		<bag name="eventDefinitionRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONREFS">
-				<column name="`CATCHEVENT_EVENTDEFINITIONREFS_ID`" unique="false"/>
+		<bag name="eventDefinitions" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONS">
+				<column name="`CATCHEVENT_EVENTDEFINITIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.EventDefinition"/>
 		</bag>
+		<idbag name="eventDefinitionRefs" table="`BPMN2_CATCHEVENT_BPMN2_EVENTDEFINITION`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CATCHEVENT_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="bpmn2.EventDefinition" unique="false" foreign-key="BPMN2_CATCHEVENT_EVENTDEFINITIONREFS">
+				<column name="`EVENTDEFINITION_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<property name="parallelMultiple" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
 			<column not-null="false" unique="false" name="`PARALLELMULTIPLE`"/>
 		</property>
@@ -771,12 +803,17 @@
 		<key>
 			<column name="`BPMN2_FLOWNODE_ID`"/>
 		</key>
-		<bag name="participantRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_PARTICIPANTREFS">
-				<column name="`CHOREOGRAPHYACTIVITY_PARTICIPANTREFS_ID`" unique="false"/>
+		<idbag name="participantRefs" table="`BPMN2_CHOREOGRAPHYACTIVITY_BPMN2_PARTICIPANT`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CHOREOGRAPHYACTIVITY_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Participant"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_PARTICIPANTREFS">
+				<column name="`PARTICIPANT_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<bag name="correlationKeys" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="BPMN2_CHOREOGRAPHYACTIVITY_CORRELATIONKEYS">
 				<column name="`CHOREOGRAPHYACTIVITY_CORRELATIONKEYS_ID`" unique="false"/>
@@ -817,18 +854,28 @@
 		<key>
 			<column name="`BPMN2_BASEELEMENT_ID`"/>
 		</key>
-		<bag name="participantRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CONVERSATIONNODE_PARTICIPANTREFS">
-				<column name="`CONVERSATIONNODE_PARTICIPANTREFS_ID`" unique="false"/>
+		<idbag name="participantRefs" table="`BPMN2_CONVERSATIONNODE_BPMN2_PARTICIPANT`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CONVERSATIONNODE_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Participant"/>
-		</bag>
-		<bag name="messageFlowRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CONVERSATIONNODE_MESSAGEFLOWREFS">
-				<column name="`CONVERSATIONNODE_MESSAGEFLOWREFS_ID`" unique="false"/>
+			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_CONVERSATIONNODE_PARTICIPANTREFS">
+				<column name="`PARTICIPANT_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
+		<idbag name="messageFlowRefs" table="`BPMN2_CONVERSATIONNODE_BPMN2_MESSAGEFLOW`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CONVERSATIONNODE_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.MessageFlow"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.MessageFlow" unique="false" foreign-key="BPMN2_CONVERSATIONNODE_MESSAGEFLOWREFS">
+				<column name="`MESSAGEFLOW_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<bag name="correlationKeys" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="BPMN2_CONVERSATIONNODE_CORRELATIONKEYS">
 				<column name="`CONVERSATIONNODE_CORRELATIONKEYS_ID`" unique="false"/>
@@ -868,12 +915,17 @@
 		<key>
 			<column name="`BPMN2_ROOTELEMENT_ID`"/>
 		</key>
-		<bag name="supportedInterfaceRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CALLABLEELEMENT_SUPPORTEDINTERFACEREFS">
-				<column name="`CALLABLEELEMENT_SUPPORTEDINTERFACEREFS_ID`" unique="false"/>
+		<idbag name="supportedInterfaceRefs" table="`BPMN2_CALLABLEELEMENT_BPMN2_INTERFACE`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CALLABLEELEMENT_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Interface"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Interface" unique="false" foreign-key="BPMN2_CALLABLEELEMENT_SUPPORTEDINTERFACEREFS">
+				<column name="`INTERFACE_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<many-to-one name="ioSpecification" entity-name="bpmn2.InputOutputSpecification" lazy="false" cascade="all" foreign-key="BPMN2_CALLABLEELEMENT_IOSPECIFICATION" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`INPUTOUTPUTSPECIFICATION_IOSPECIFICATION_ID`"/>
 		</many-to-one>
@@ -945,12 +997,18 @@
 			</key>
 			<one-to-many entity-name="bpmn2.MessageFlow"/>
 		</bag>
-		<many-to-one name="artifacts" entity-name="bpmn2.Artifact" lazy="false" cascade="all" foreign-key="BPMN2_COLLABORATION_ARTIFACTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`ARTIFACT_ARTIFACTS_ID`"/>
-		</many-to-one>
-		<many-to-one name="conversations" entity-name="bpmn2.ConversationNode" lazy="false" cascade="all" foreign-key="BPMN2_COLLABORATION_CONVERSATIONS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`CONVERSATIONNODE_CONVERSATIONS_ID`"/>
-		</many-to-one>
+		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_COLLABORATION_ARTIFACTS">
+				<column name="`COLLABORATION_ARTIFACTS_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.Artifact"/>
+		</bag>
+		<bag name="conversations" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_COLLABORATION_CONVERSATIONS">
+				<column name="`COLLABORATION_CONVERSATIONS_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.ConversationNode"/>
+		</bag>
 		<bag name="conversationAssociations" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="BPMN2_COLLABORATION_CONVERSATIONASSOCIATIONS">
 				<column name="`COLLABORATION_CONVERSATIONASSOCIATIONS_ID`" unique="false"/>
@@ -975,12 +1033,17 @@
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationKey"/>
 		</bag>
-		<bag name="choreographyRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_COLLABORATION_CHOREOGRAPHYREF">
-				<column name="`COLLABORATION_CHOREOGRAPHYREF_ID`" unique="false"/>
+		<idbag name="choreographyRef" table="`BPMN2_COLLABORATION_BPMN2_CHOREOGRAPHY`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`COLLABORATION_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Choreography"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Choreography" unique="false" foreign-key="BPMN2_COLLABORATION_CHOREOGRAPHYREF">
+				<column name="`CHOREOGRAPHY_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<bag name="conversationLinks" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="BPMN2_COLLABORATION_CONVERSATIONLINKS">
 				<column name="`COLLABORATION_CONVERSATIONLINKS_ID`" unique="false"/>
@@ -1006,9 +1069,12 @@
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
-		<many-to-one name="flowElements" entity-name="bpmn2.FlowElement" lazy="false" cascade="all" foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`FLOWELEMENT_FLOWELEMENTS_ID`"/>
-		</many-to-one>
+		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS">
+				<column name="`FLOWELEMENT_C_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.FlowElement"/>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.ChoreographyTaskImpl" entity-name="bpmn2.ChoreographyTask" abstract="false" lazy="false" extends="bpmn2.ChoreographyActivity" table="`BPMN2_CHOREOGRAPHYTASK`">
 		<meta attribute="eclassName" inherit="false">ChoreographyTask</meta>
@@ -1016,12 +1082,17 @@
 		<key>
 			<column name="`BPMN2_CHOREOGRAPHYACTIVITY_ID`"/>
 		</key>
-		<bag name="messageFlowRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CHOREOGRAPHYTASK_MESSAGEFLOWREF">
-				<column name="`CHOREOGRAPHYTASK_MESSAGEFLOWREF_ID`" unique="false"/>
+		<idbag name="messageFlowRef" table="`BPMN2_CHOREOGRAPHYTASK_BPMN2_MESSAGEFLOW`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CHOREOGRAPHYTASK_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.MessageFlow"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.MessageFlow" unique="false" foreign-key="BPMN2_CHOREOGRAPHYTASK_MESSAGEFLOWREF">
+				<column name="`MESSAGEFLOW_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.CompensateEventDefinitionImpl" entity-name="bpmn2.CompensateEventDefinition" abstract="false" lazy="false" extends="bpmn2.EventDefinition" table="`BPMN2_COMPENSATEEVENTDEFINITION`">
 		<meta attribute="eclassName" inherit="false">CompensateEventDefinition</meta>
@@ -1129,12 +1200,17 @@
 		<key>
 			<column name="`BPMN2_BASEELEMENT_ID`"/>
 		</key>
-		<bag name="correlationPropertyRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_CORRELATIONKEY_CORRELATIONPROPERTYREF">
-				<column name="`CORRELATIONKEY_CORRELATIONPROPERTYREF_ID`" unique="false"/>
+		<idbag name="correlationPropertyRef" table="`BPMN2_CORRELATIONKEY_BPMN2_CORRELATIONPROPERTY`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`CORRELATIONKEY_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.CorrelationProperty"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.CorrelationProperty" unique="false" foreign-key="BPMN2_CORRELATIONKEY_CORRELATIONPROPERTYREF">
+				<column name="`CORRELATIONPROPERTY_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
@@ -1206,12 +1282,17 @@
 		<key>
 			<column name="`BPMN2_BASEELEMENT_ID`"/>
 		</key>
-		<bag name="sourceRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_DATAASSOCIATION_SOURCEREF">
-				<column name="`DATAASSOCIATION_SOURCEREF_ID`" unique="false"/>
+		<idbag name="sourceRef" table="`BPMN2_DATAASSOCIATION_BPMN2_ITEMAWAREELEMENT`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`DATAASSOCIATION_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.ItemAwareElement"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.ItemAwareElement" unique="false" foreign-key="BPMN2_DATAASSOCIATION_SOURCEREF">
+				<column name="`ITEMAWAREELEMENT_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<many-to-one name="targetRef" entity-name="bpmn2.ItemAwareElement" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_DATAASSOCIATION_TARGETREF" insert="true" update="true" not-null="true">
 			<column not-null="true" unique="false" name="`ITEMAWAREELEMENT_TARGETREF_ID`"/>
 		</many-to-one>
@@ -1370,9 +1451,12 @@
 			</key>
 			<one-to-many entity-name="bpmn2.Extension"/>
 		</bag>
-		<many-to-one name="rootElements" entity-name="bpmn2.RootElement" lazy="false" cascade="all" foreign-key="BPMN2_DEFINITIONS_ROOTELEMENTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`ROOTELEMENT_ROOTELEMENTS_ID`"/>
-		</many-to-one>
+		<bag name="rootElements" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_DEFINITIONS_ROOTELEMENTS">
+				<column name="`DEFINITIONS_ROOTELEMENTS_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.RootElement"/>
+		</bag>
 		<bag name="diagrams" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="BPMN2_DEFINITIONS_DIAGRAMS">
 				<column name="`DEFINITIONS_DIAGRAMS_ID`" unique="false"/>
@@ -1464,15 +1548,23 @@
 		<many-to-one name="inputSet" entity-name="bpmn2.InputSet" lazy="false" cascade="all" foreign-key="BPMN2_THROWEVENT_INPUTSET" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`INPUTSET_INPUTSET_ID`"/>
 		</many-to-one>
-		<many-to-one name="eventDefinitions" entity-name="bpmn2.EventDefinition" lazy="false" cascade="all" foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`EVENTDEFINITION_EVENTDEFINITIONS_ID`"/>
-		</many-to-one>
-		<bag name="eventDefinitionRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONREFS">
-				<column name="`THROWEVENT_EVENTDEFINITIONREFS_ID`" unique="false"/>
+		<bag name="eventDefinitions" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONS">
+				<column name="`THROWEVENT_EVENTDEFINITIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.EventDefinition"/>
 		</bag>
+		<idbag name="eventDefinitionRefs" table="`BPMN2_THROWEVENT_BPMN2_EVENTDEFINITION`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`THROWEVENT_ID`" unique="false"/>
+			</key>
+			<many-to-many entity-name="bpmn2.EventDefinition" unique="false" foreign-key="BPMN2_THROWEVENT_EVENTDEFINITIONREFS">
+				<column name="`EVENTDEFINITION_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.EndEventImpl" entity-name="bpmn2.EndEvent" abstract="false" lazy="false" extends="bpmn2.ThrowEvent" table="`BPMN2_ENDEVENT`">
 		<meta attribute="eclassName" inherit="false">EndEvent</meta>
@@ -1674,9 +1766,12 @@
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
-		<many-to-one name="flowElements" entity-name="bpmn2.FlowElement" lazy="false" cascade="all" foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`FLOWELEMENT_FLOWELEMENTS_ID`"/>
-		</many-to-one>
+		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_CHOREOGRAPHY_FLOWELEMENTS">
+				<column name="`FLOWELEMENT_FEC_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.FlowElement"/>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.FormalExpressionImpl" entity-name="bpmn2.FormalExpression" abstract="false" lazy="false" extends="bpmn2.Expression" table="`BPMN2_FORMALEXPRESSION`">
 		<meta attribute="eclassName" inherit="false">FormalExpression</meta>
@@ -1729,9 +1824,12 @@
 		<key>
 			<column name="`BPMN2_CALLABLEELEMENT_ID`"/>
 		</key>
-		<many-to-one name="resources" entity-name="bpmn2.ResourceRole" lazy="false" cascade="all" foreign-key="BPMN2_GLOBALTASK_RESOURCES" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`RESOURCEROLE_RESOURCES_ID`"/>
-		</many-to-one>
+		<bag name="resources" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_GLOBALTASK_RESOURCES">
+				<column name="`GLOBALTASK_RESOURCES_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.ResourceRole"/>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.GlobalBusinessRuleTaskImpl" entity-name="bpmn2.GlobalBusinessRuleTask" abstract="false" lazy="false" extends="bpmn2.GlobalTask" table="`BPMN2_GLOBALBUSINESSRULETASK`">
 		<meta attribute="eclassName" inherit="false">GlobalBusinessRuleTask</meta>
@@ -2084,12 +2182,15 @@
 		<key>
 			<column name="`BPMN2_EVENTDEFINITION_ID`"/>
 		</key>
-		<bag name="source" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+		<idbag name="source" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
 			<key update="true">
 				<column name="`LINKEVENTDEFINITION_TARGET_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.LinkEventDefinition"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.LinkEventDefinition"/>
+		</idbag>
 		<many-to-one name="target" entity-name="bpmn2.LinkEventDefinition" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_LINKEVENTDEFINITION_TARGET" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`LINKEVENTDEFINITION_TARGET_ID`"/>
 		</many-to-one>
@@ -2236,12 +2337,17 @@
 		<many-to-one name="outMessageRef" entity-name="bpmn2.Message" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_OPERATION_OUTMESSAGEREF" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`MESSAGE_OUTMESSAGEREF_ID`"/>
 		</many-to-one>
-		<bag name="errorRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_OPERATION_ERRORREFS">
-				<column name="`OPERATION_ERRORREFS_ID`" unique="false"/>
+		<idbag name="errorRefs" table="`BPMN2_OPERATION_BPMN2_ERROR`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`OPERATION_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Error"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Error" unique="false" foreign-key="BPMN2_OPERATION_ERRORREFS">
+				<column name="`ERROR_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<any id-type="long" meta-type="string" name="implementationRef" cascade="all">
 			<column not-null="false" unique="false" name="`IMPLEMENTATIONREF_TYPE`"/>
 			<column not-null="false" unique="false" name="`IMPLEMENTATIONREF_ID`"/>
@@ -2305,18 +2411,28 @@
 		<key>
 			<column name="`BPMN2_BASEELEMENT_ID`"/>
 		</key>
-		<bag name="interfaceRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_PARTICIPANT_INTERFACEREFS">
-				<column name="`PARTICIPANT_INTERFACEREFS_ID`" unique="false"/>
+		<idbag name="interfaceRefs" table="`BPMN2_PARTICIPANT_BPMN2_INTERFACE`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`PARTICIPANT_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Interface"/>
-		</bag>
-		<bag name="endPointRefs" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_PARTICIPANT_ENDPOINTREFS">
-				<column name="`PARTICIPANT_ENDPOINTREFS_ID`" unique="false"/>
+			<many-to-many entity-name="bpmn2.Interface" unique="false" foreign-key="BPMN2_PARTICIPANT_INTERFACEREFS">
+				<column name="`INTERFACE_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
+		<idbag name="endPointRefs" table="`BPMN2_PARTICIPANT_BPMN2_ENDPOINT`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`PARTICIPANT_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.EndPoint"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.EndPoint" unique="false" foreign-key="BPMN2_PARTICIPANT_ENDPOINTREFS">
+				<column name="`ENDPOINT_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<many-to-one name="participantMultiplicity" entity-name="bpmn2.ParticipantMultiplicity" lazy="false" cascade="all" foreign-key="BPMN2_PARTICIPANT_PARTICIPANTMULTIPLICITY" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`PARTICIPANTMULTIPLICITY_PARTICIPANTMULTIPLICITY_ID`"/>
 		</many-to-one>
@@ -2359,12 +2475,17 @@
 		<key>
 			<column name="`BPMN2_ROOTELEMENT_ID`"/>
 		</key>
-		<bag name="participantRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_PARTNERENTITY_PARTICIPANTREF">
-				<column name="`PARTNERENTITY_PARTICIPANTREF_ID`" unique="false"/>
+		<idbag name="participantRef" table="`BPMN2_PARTNERENTITY_BPMN2_PARTICIPANT`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`PARTNERENTITY_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Participant"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_PARTNERENTITY_PARTICIPANTREF">
+				<column name="`PARTICIPANT_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
@@ -2375,12 +2496,17 @@
 		<key>
 			<column name="`BPMN2_ROOTELEMENT_ID`"/>
 		</key>
-		<bag name="participantRef" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_PARTNERROLE_PARTICIPANTREF">
-				<column name="`PARTNERROLE_PARTICIPANTREF_ID`" unique="false"/>
+		<idbag name="participantRef" table="`BPMN2_PARTNERROLE_BPMN2_PARTICIPANT`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
+				<column name="`PARTNERROLE_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Participant"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Participant" unique="false" foreign-key="BPMN2_PARTNERROLE_PARTICIPANTREF">
+				<column name="`PARTICIPANT_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<property name="name" lazy="false" insert="true" update="true" not-null="false" unique="false" type="java.lang.String">
 			<column not-null="false" unique="false" name="`NAME`"/>
 		</property>
@@ -2404,9 +2530,12 @@
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
-		<many-to-one name="flowElements" entity-name="bpmn2.FlowElement" lazy="false" cascade="all" foreign-key="BPMN2_PROCESS_FLOWELEMENTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`FLOWELEMENT_FLOWELEMENTS_ID`"/>
-		</many-to-one>
+		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_PROCESS_FLOWELEMENTS">
+				<column name="`FLOWELEMENT_P_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.FlowElement"/>
+		</bag>
 		<many-to-one name="auditing" entity-name="bpmn2.Auditing" lazy="false" cascade="all" foreign-key="BPMN2_PROCESS_AUDITING" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`AUDITING_AUDITING_ID`"/>
 		</many-to-one>
@@ -2419,24 +2548,35 @@
 			</key>
 			<one-to-many entity-name="bpmn2.Property"/>
 		</bag>
-		<many-to-one name="artifacts" entity-name="bpmn2.Artifact" lazy="false" cascade="all" foreign-key="BPMN2_PROCESS_ARTIFACTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`ARTIFACT_ARTIFACTS_ID`"/>
-		</many-to-one>
-		<many-to-one name="resources" entity-name="bpmn2.ResourceRole" lazy="false" cascade="all" foreign-key="BPMN2_PROCESS_RESOURCES" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`RESOURCEROLE_RESOURCES_ID`"/>
-		</many-to-one>
+		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_PROCESS_ARTIFACTS">
+				<column name="`PROCESS_ARTIFACTS_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.Artifact"/>
+		</bag>
+		<bag name="resources" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_PROCESS_RESOURCES">
+				<column name="`PROCESS_RESOURCES_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.ResourceRole"/>
+		</bag>
 		<bag name="correlationSubscriptions" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="BPMN2_PROCESS_CORRELATIONSUBSCRIPTIONS">
 				<column name="`PROCESS_CORRELATIONSUBSCRIPTIONS_ID`" unique="false"/>
 			</key>
 			<one-to-many entity-name="bpmn2.CorrelationSubscription"/>
 		</bag>
-		<bag name="supports" lazy="true" cascade="persist,merge,refresh,save-update,lock">
-			<key update="true" foreign-key="BPMN2_PROCESS_SUPPORTS">
+		<idbag name="supports" table="`BPMN2_PROCESS_BPMN2_PROCESS`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
+			<key update="true">
 				<column name="`PROCESS_SUPPORTS_ID`" unique="false"/>
 			</key>
-			<one-to-many entity-name="bpmn2.Process"/>
-		</bag>
+			<many-to-many entity-name="bpmn2.Process" unique="false" foreign-key="BPMN2_PROCESS_SUPPORTS">
+				<column name="`PROCESS_ID`" unique="false"/>
+			</many-to-many>
+		</idbag>
 		<many-to-one name="definitionalCollaborationRef" entity-name="bpmn2.Collaboration" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_PROCESS_DEFINITIONALCOLLABORATIONREF" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`COLLABORATION_DEFINITIONALCOLLABORATIONREF_ID`"/>
 		</many-to-one>
@@ -2490,7 +2630,10 @@
 		<key>
 			<column name="`BPMN2_BASEELEMENT_ID`"/>
 		</key>
-		<bag name="sources" table="`BPMN2_RELATIONSHIP_SOURCES`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+		<idbag name="sources" table="`BPMN2_RELATIONSHIP_SOURCES`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
 			<key update="true" foreign-key="BPMN2_RELATIONSHIP_SOURCES">
 				<column name="`RELATIONSHIP_ID`" unique="false"/>
 			</key>
@@ -2498,8 +2641,11 @@
 				<column not-null="false" unique="false" name="`SOURCES_TYPE`"/>
 				<column not-null="false" unique="false" name="`SOURCES_ID`"/>
 			</many-to-any>
-		</bag>
-		<bag name="targets" table="`BPMN2_RELATIONSHIP_TARGETS`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+		</idbag>
+		<idbag name="targets" table="`BPMN2_RELATIONSHIP_TARGETS`" lazy="true" cascade="persist,merge,refresh,save-update,lock">
+			<collection-id column="ID" type="long">
+				<generator class="increment"/>
+			</collection-id>
 			<key update="true" foreign-key="BPMN2_RELATIONSHIP_TARGETS">
 				<column name="`RELATIONSHIP_ID`" unique="false"/>
 			</key>
@@ -2507,7 +2653,7 @@
 				<column not-null="false" unique="false" name="`TARGETS_TYPE`"/>
 				<column not-null="false" unique="false" name="`TARGETS_ID`"/>
 			</many-to-any>
-		</bag>
+		</idbag>
 		<property name="direction" lazy="false" not-null="false" insert="true" update="true" unique="false">
 			<column not-null="false" unique="false" name="`DIRECTION`"/>
 			<type name="org.eclipse.emf.teneo.hibernate.mapping.ENumUserType">
@@ -2623,7 +2769,7 @@
 		<property name="isImmediate" lazy="false" insert="true" update="true" not-null="false" unique="false" type="boolean">
 			<column not-null="false" unique="false" name="`ISIMMEDIATE`"/>
 		</property>
-		<many-to-one name="sourceRef" entity-name="bpmn2.FlowNode" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_SEQUENCEFLOW_SOURCEREF" insert="false" update="false" not-null="false">
+		<many-to-one name="sourceRef" entity-name="bpmn2.FlowNode" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_SEQUENCEFLOW_SOURCEREF" insert="true" update="true" not-null="false">
 			<column not-null="false" unique="false" name="`SEQUENCEFLOW_SOURCEREF_ID`"/>
 		</many-to-one>
 		<many-to-one name="targetRef" entity-name="bpmn2.FlowNode" lazy="false" cascade="merge,persist,save-update,lock,refresh" foreign-key="BPMN2_SEQUENCEFLOW_TARGETREF" insert="true" update="true" not-null="false">
@@ -2704,12 +2850,18 @@
 			</key>
 			<one-to-many entity-name="bpmn2.LaneSet"/>
 		</bag>
-		<many-to-one name="flowElements" entity-name="bpmn2.FlowElement" lazy="false" cascade="all" foreign-key="BPMN2_SUBCHOREOGRAPHY_FLOWELEMENTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`FLOWELEMENT_FLOWELEMENTS_ID`"/>
-		</many-to-one>
-		<many-to-one name="artifacts" entity-name="bpmn2.Artifact" lazy="false" cascade="all" foreign-key="BPMN2_SUBCHOREOGRAPHY_ARTIFACTS" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`ARTIFACT_ARTIFACTS_ID`"/>
-		</many-to-one>
+		<bag name="flowElements" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_SUBCHOREOGRAPHY_FLOWELEMENTS">
+				<column name="`FLOWELEMENT_SC_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.FlowElement"/>
+		</bag>
+		<bag name="artifacts" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_SUBCHOREOGRAPHY_ARTIFACTS">
+				<column name="`SUBCHOREOGRAPHY_ARTIFACTS_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.Artifact"/>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.SubConversationImpl" entity-name="bpmn2.SubConversation" abstract="false" lazy="false" extends="bpmn2.ConversationNode" table="`BPMN2_SUBCONVERSATION`">
 		<meta attribute="eclassName" inherit="false">SubConversation</meta>
@@ -2717,9 +2869,12 @@
 		<key>
 			<column name="`BPMN2_CONVERSATIONNODE_ID`"/>
 		</key>
-		<many-to-one name="conversationNodes" entity-name="bpmn2.ConversationNode" lazy="false" cascade="all" foreign-key="BPMN2_SUBCONVERSATION_CONVERSATIONNODES" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`CONVERSATIONNODE_CONVERSATIONNODES_ID`"/>
-		</many-to-one>
+		<bag name="conversationNodes" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="BPMN2_SUBCONVERSATION_CONVERSATIONNODES">
+				<column name="`SUBCONVERSATION_CONVERSATIONNODES_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="bpmn2.ConversationNode"/>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.impl.TerminateEventDefinitionImpl" entity-name="bpmn2.TerminateEventDefinition" abstract="false" lazy="false" extends="bpmn2.EventDefinition" table="`BPMN2_TERMINATEEVENTDEFINITION`">
 		<meta attribute="eclassName" inherit="false">TerminateEventDefinition</meta>
@@ -2900,13 +3055,12 @@
 		<key>
 			<column name="`DD_DI_DIAGRAMELEMENT_ID`"/>
 		</key>
-		<list name="waypoint" lazy="true" cascade="all,delete-orphan">
+		<bag name="waypoint" lazy="true" cascade="all,delete-orphan">
 			<key update="true" foreign-key="DD_DI_EDGE_WAYPOINT">
 				<column name="`EDGE_WAYPOINT_ID`" unique="false"/>
 			</key>
-			<list-index column="`EDGE_WAYPOINT_IDX`"/>
 			<one-to-many entity-name="dc.Point"/>
-		</list>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.dd.di.impl.LabeledEdgeImpl" entity-name="dd_di.LabeledEdge" abstract="true" lazy="false" extends="dd_di.Edge" table="`DD_DI_LABELEDEDGE`">
 		<meta attribute="eclassName" inherit="false">LabeledEdge</meta>
@@ -2995,9 +3149,12 @@
 		<key>
 			<column name="`DD_DI_NODE_ID`"/>
 		</key>
-		<many-to-one name="planeElement" entity-name="dd_di.DiagramElement" lazy="false" cascade="all" foreign-key="DD_DI_PLANE_PLANEELEMENT" insert="true" update="true" not-null="false">
-			<column not-null="false" unique="false" name="`DIAGRAMELEMENT_PLANEELEMENT_ID`"/>
-		</many-to-one>
+		<bag name="planeElement" lazy="true" cascade="all,delete-orphan">
+			<key update="true" foreign-key="DD_DI_PLANE_PLANEELEMENT">
+				<column name="`PLANE_PLANEELEMENT_ID`" unique="false"/>
+			</key>
+			<one-to-many entity-name="dd_di.DiagramElement"/>
+		</bag>
 	</joined-subclass>
 	<joined-subclass name="org.eclipse.bpmn2.di.impl.BPMNPlaneImpl" entity-name="bpmndi.BPMNPlane" abstract="false" lazy="false" extends="dd_di.Plane" table="`BPMNDI_BPMNPLANE`">
 		<meta attribute="eclassName" inherit="false">BPMNPlane</meta>

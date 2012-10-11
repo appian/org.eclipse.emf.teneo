@@ -18,7 +18,10 @@ package org.eclipse.emf.teneo.hibernate.test;
 
 import java.util.Properties;
 
+import org.eclipse.bpmn2.Bpmn2Factory;
 import org.eclipse.bpmn2.Bpmn2Package;
+import org.eclipse.bpmn2.DocumentRoot;
+import org.eclipse.bpmn2.RootElement;
 import org.eclipse.bpmn2.di.BpmnDiPackage;
 import org.eclipse.dd.dc.DcPackage;
 import org.eclipse.dd.di.DiPackage;
@@ -26,6 +29,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.hibernate.Session;
 import org.hibernate.cfg.Environment;
 
 /**
@@ -41,7 +45,17 @@ public class QuickTest {
 		// the name of the database, this database should exist but does not
 		// need to contain tables
 		String dbName = "test";
-		doQuickStart(dbName); // ignore return
+		final HbDataStore hbds = doQuickStart(dbName); // ignore return
+
+		final Session session = hbds.getSessionFactory().openSession();
+		final DocumentRoot docRoot = Bpmn2Factory.eINSTANCE.createDocumentRoot();
+		final RootElement rootElement = Bpmn2Factory.eINSTANCE.createRootElement();
+		rootElement.setId("1");
+		docRoot.setRootElement(rootElement);
+		session.beginTransaction();
+		session.saveOrUpdate(docRoot);
+		session.getTransaction().commit();
+
 	}
 
 	/**
@@ -96,7 +110,6 @@ public class QuickTest {
 			// print the generated mapping
 			System.err.println(hbds.getMappingXML());
 		}
-
 
 		return hbds;
 	}
