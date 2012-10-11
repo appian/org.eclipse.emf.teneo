@@ -521,7 +521,7 @@ public class StoreUtil {
 	/** Checks if a feature is an element of a group */
 	public static boolean isElementOfAGroup(EStructuralFeature estruct) {
 		final EStructuralFeature ef = ExtendedMetaData.INSTANCE.getGroup(estruct);
-		return ef != null;
+		return ef != null && ef != estruct;
 		/*
 		 * // group elements are always transient if (!estruct.isTransient()) return false; final EAnnotation annotation
 		 * = estruct.getEAnnotation(ANNOTATION_SOURCE); if (annotation == null) return false; final EMap map =
