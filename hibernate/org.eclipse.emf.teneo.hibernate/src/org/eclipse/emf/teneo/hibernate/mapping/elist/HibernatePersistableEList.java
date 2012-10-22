@@ -540,6 +540,9 @@ public class HibernatePersistableEList<E> extends PersistableEList<E> implements
 
 	@Override
 	protected int delegateSize() {
+		if (delegate instanceof AbstractPersistentCollection && !isInitialized() && !isLoaded()) {
+			return delegate.size();
+		}
 		return delegateList().size();
 	}
 
