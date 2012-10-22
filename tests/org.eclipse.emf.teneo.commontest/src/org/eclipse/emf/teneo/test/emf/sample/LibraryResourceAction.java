@@ -258,7 +258,7 @@ public class LibraryResourceAction extends AbstractTestAction {
 			newLib.setName("tstlib");
 			res.getContents().add(newLib);
 			lib.getWriters().remove(writer);
-			assertTrue(lib.getBooks().size() > 0); // force load of books to
+			assertTrue(lib.getBooks().get(0) != null); // force load of books to
 			// prevent dangling error
 			// in jpox
 			newLib.getWriters().add(writer);
