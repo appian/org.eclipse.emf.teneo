@@ -91,9 +91,6 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<target name="build.and.test" depends="get.thirdparty, init, init.checks, install.buckminster">
 
-		<echo message="buildTimestamp: ${buildTimestamp}"/>
-		<echo message="buckminster.build.timestamp: ${buckminster.build.timestamp}"/>
-
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 		
@@ -102,7 +99,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 		<computeVersionQualifier directory="${rootPath}/output/org.eclipse.emf.teneo_${teneo.version}-osgi.bundle/jar" pattern="org.eclipse.emf.teneo*.jar"/>
 		
-		<echo message="Building maven" />
+		<echo message="Creating maven jars with versionQualifier ${versionQualifier}" />
 		<teneo.maven name="org.eclipse.emf.teneo"/>
 		<teneo.maven name="org.eclipse.emf.teneo.annotations"/>
 		<teneo.maven name="org.eclipse.emf.teneo.hibernate.mapper"/>
