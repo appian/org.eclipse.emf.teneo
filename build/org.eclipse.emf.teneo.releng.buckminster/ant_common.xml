@@ -15,6 +15,37 @@ build setup:
 http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
 -->
 <project>
+
+	<!--
+	Computes the version qualifier on the basis of the filename of a generated jar file.
+	It is difficult to get this information directly from buckminster, therefore
+	computing it from a filename. 
+	-->
+	<macrodef name="computeVersionQualifier">
+		<attribute name="directory" />
+		<attribute name="pattern" />
+		<sequential>
+
+			<path id="versionQualifierFileName.id">
+				<fileset dir="@{directory}">
+					<include name="@{pattern}" />
+				</fileset>
+			</path>
+
+			<property name="versionQualifierFileName" refid="versionQualifierFileName.id" />
+
+			<script language="javascript">
+				<![CDATA[
+		 	var lastIndex = versionQualifierFileName.lastIndexOf('.');
+			var version = versionQualifierFileName.substring(0, lastIndex);
+			lastIndex = version.lastIndexOf('.');
+			version = version.substring(lastIndex + 1);
+			project.setProperty('versionQualifier', version);
+  	  	]]>
+			</script>
+		</sequential>
+	</macrodef>
+
 	<!-- This macro executes the default application of an eclipse installation that resides
 	     in the folder ${buildtools}/@app
 	  -->

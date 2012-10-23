@@ -4,8 +4,8 @@
 	<macrodef name="teneo.maven">
 		<attribute name="name"/>
 		<sequential>
-			<property name="mavenVersion" value="${teneo.version}-v${buildTimestamp}"/>
-			<property name="teneoVersion" value="${teneo.version}.v${buildTimestamp}"/>
+			<property name="mavenVersion" value="${teneo.version}-${versionQualifier}"/>
+			<property name="teneoVersion" value="${teneo.version}.${versionQualifier}"/>
 			<property name="eclipse.jarFile" value="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/jar/@{name}_${teneoVersion}.jar"/>
 			<property name="eclipse.sourceJarFile" value="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/source.jar/@{name}.source_${teneoVersion}.jar"/>
 			<property name="maven.jarFile" value="${mavenPath}/@{name}-${mavenVersion}.jar"/>
