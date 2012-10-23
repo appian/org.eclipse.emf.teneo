@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="TeneoMaven">
+
+	<macrodef name="teneo.maven">
+		<attribute name="name"/>
+		<sequential>
+			<property name="mavenVersion" value="${teneo.version}-v${buildTimestamp}"/>
+			<property name="teneoVersion" value="${teneo.version}.v${buildTimestamp}"/>
+			<property name="eclipse.jarFile" value="${buildRoot}/output/@{name}_${teneo.version}-osgi.bundle/jar/@{name}_${teneoVersion}.jar"/>
+			<property name="eclipse.sourceJarFile" value="${buildRoot}/output/@{name}_${teneo.version}-osgi.bundle/source.jar/@{name}.source_${teneoVersion}.jar"/>
+			<property name="maven.jarFile" value="${mavenPath}/@{name}-${mavenVersion}.jar"/>
+			<property name="maven.sourceJarFile" value="${mavenPath}/@{name}-${mavenVersion}-sources.jar"/>
+			<property name="maven.pomFile" value="${mavenPath}/@{name}-${mavenVersion}.pom"/>
+			
+			<copy file="${eclipse.jarFile}" tofile="${maven.jarFile"/>
+			<copy file="${eclipse.sourceJarFile}" tofile="${maven.sourceJarFile}"/>
+			
+			<echo file="${maven.pomFile}"> 
+			   <![CDATA[ 
+				<?xml version="1.0" encoding="UTF-8"?>
+				<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		 				<modelVersion>4.0.0</modelVersion>
+		 				<groupId>org.eclipse.emf.teneo</groupId>
+		 				<artifactId>${name}</artifactId>
+		 				<name>${name}</name>
+		 				<version>${mavenVersion}</version>
+		 				<description>http://wiki.eclipse.org/Teneo/Hibernate</description>
+				</project>
+				]]> 
+			</echo> 
+		</sequential>
+	</macrodef>
+</project>

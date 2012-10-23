@@ -74,6 +74,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<property name="thirdPartyPath" location="${rootPath}/thirdparty" />
 	<property name="testRoot" location="${rootPath}/test" />
 	<property name="toolsPath" location="${rootPath}/tools" />
+	<property name="mavenPath" location="${rootPath}/result/maven" />
 	<property name="buildSitePath" location="${rootPath}/result/p2site" />
 	<property name="buildZipsPath" location="${rootPath}/result/zips" />
 	<property name="testResultsPath" location="${rootPath}/result/test" />
@@ -86,12 +87,20 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 
 	<import file="ant_common.xml" />
 
+	<import file="ant_maven.xml" />
+
 	<target name="build.and.test" depends="get.thirdparty, init, init.checks, install.buckminster">
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 
 		<echo message="Testing" />
 		<ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" />
+
+		<echo message="Building maven" />
+		<teneo.maven name="org.eclipse.emf.teneo"/>
+		<teneo.maven name="org.eclipse.emf.teneo.annotations"/>
+		<teneo.maven name="org.eclipse.emf.teneo.hibernate.mapper"/>
+		<teneo.maven name="org.eclipse.emf.teneo.hibernate"/>
 	</target>
 
 	<target name="promote" depends="init.build.properties">
@@ -147,6 +156,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<echo message="rootPath: ${rootPath}" />
 		<echo message="buildRoot: ${buildRoot}" />
 		<echo message="testRoot: ${testRoot}" />
+		<echo message="mavenPath: ${mavenPath}" />
 		<echo message="buildSitePath: ${buildSitePath}" />
 		<echo message="buildZipsPath: ${buildZipsPath}" />
 		<echo message="testResultsPath: ${testResultsPath}" />
@@ -154,6 +164,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<mkdir dir="${buildRoot}" />
 		<mkdir dir="${testRoot}" />
 		<mkdir dir="${toolsPath}" />
+		<mkdir dir="${mavenPath}" />
 		<mkdir dir="${buildSitePath}" />
 		<mkdir dir="${buildZipsPath}" />
 		<mkdir dir="${testResultsPath}" />
