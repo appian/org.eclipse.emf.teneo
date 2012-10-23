@@ -12,7 +12,7 @@
 			<property name="maven.sourceJarFile" value="${mavenPath}/@{name}-${mavenVersion}-sources.jar"/>
 			<property name="maven.pomFile" value="${mavenPath}/@{name}-${mavenVersion}.pom"/>
 			
-			<copy file="${eclipse.jarFile}" tofile="${maven.jarFile"/>
+			<copy file="${eclipse.jarFile}" tofile="${maven.jarFile}"/>
 			<copy file="${eclipse.sourceJarFile}" tofile="${maven.sourceJarFile}"/>
 			
 			<echo file="${maven.pomFile}"> 
