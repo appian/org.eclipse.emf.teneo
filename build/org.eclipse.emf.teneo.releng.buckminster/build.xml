@@ -100,6 +100,10 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<computeVersionQualifier directory="${rootPath}/output/org.eclipse.emf.teneo_${teneo.version}-osgi.bundle/jar" pattern="org.eclipse.emf.teneo*.jar"/>
 		
 		<echo message="Creating maven jars with versionQualifier ${versionQualifier}" />
+		
+		<property name="mavenVersion" value="${teneo.version}-${versionQualifier}" />
+		<property name="teneoVersion" value="${teneo.version}.${versionQualifier}" />
+
 		<teneo.maven name="org.eclipse.emf.teneo"/>
 		<teneo.maven name="org.eclipse.emf.teneo.annotations"/>
 		<teneo.maven name="org.eclipse.emf.teneo.hibernate.mapper"/>
