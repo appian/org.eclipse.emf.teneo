@@ -5,8 +5,7 @@
 		<attribute name="fileName"/>
 		<sequential>
 
-			<echo file="@{fileName}">
-				<![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+			<echoxml file="@{fileName}">
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.teneo</groupId>
@@ -34,8 +33,8 @@
 	    	<email>mtaal@elver.org</email>
 	 	</developer>
 	 </developers>
-</project>]]> 
-			</echo>
+</project>
+</echoxml>
 		</sequential>
 	</macrodef>
 
