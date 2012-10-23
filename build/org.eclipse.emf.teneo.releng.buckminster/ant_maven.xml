@@ -2,6 +2,7 @@
 <project name="TeneoMaven">
 
 	<macrodef name="teneo.pom">
+		<attribute name="mavenVersion" />
 		<attribute name="fileName" />
 		<attribute name="name" />
 		<sequential>
@@ -33,10 +34,10 @@
 			<copy file="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/jar/@{name}_${teneoVersion}.jar" tofile="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.jar" />
 			<copy file="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/source.jar/@{name}.source_${teneoVersion}.jar" tofile="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT-sources.jar" />
 
-			<teneo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom" name="@{name}" />
+			<teneo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom" name="@{name}" mavenVersion="${mavenVersion}"/>
 			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-${mavenVersion}-javadoc.jar" />
 
-			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom" name="@{name}" />
+			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom" name="@{name}" mavenVersion="${mavenVersion}"/>
 			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-SNAPSHOT-javadoc.jar" />
 		</sequential>
 	</macrodef>
