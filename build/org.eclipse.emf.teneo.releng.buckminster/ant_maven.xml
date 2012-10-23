@@ -5,7 +5,10 @@
 		<attribute name="fileName" />
 		<attribute name="name" />
 		<sequential>
-			<xslt style="pom.xsl" out="@{fileName}" mavenVersion="@{mavenVersion}" name="@{name}" />
+			<xslt style="pom.xsl" out="@{fileName}">
+					<param name="mavenVersion" expression="@{mavenVersion}"/>
+					<param name="name" expression="@{name}" />
+			</xslt>
 		</sequential>
 	</macrodef>
 

@@ -95,7 +95,7 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
 		
 		<echo message="Testing" />
-		<ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" />
+		<!--ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" /-->
 
 		<computeVersionQualifier directory="${rootPath}/output/org.eclipse.emf.teneo_${teneo.version}-osgi.bundle/jar" pattern="org.eclipse.emf.teneo*.jar"/>
 		
