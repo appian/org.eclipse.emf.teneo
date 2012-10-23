@@ -24,7 +24,8 @@
 	 </licenses>
 	 <scm>
 	 	<url>http://git.eclipse.org/c/teneo/org.eclipse.emf.teneo.git/</url>
-	    <connection>git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</connection>
+	    <connection>scm:git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</connection>
+		<developerConnection>scm:git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</developerConnection>
 	 </scm>
 	 <developers>
 	 	<developer>
@@ -34,6 +35,16 @@
 	 	</developer>
 	 </developers>
 </project>]]> 
+			</echo>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="teneo.dummy.javadoc">
+		<attribute name="fileName"/>
+		<sequential>
+
+			<echo file="@{fileName}">
+				<![CDATA[No content, needed for publishing on nexus]]> 
 			</echo>
 		</sequential>
 	</macrodef>
@@ -50,8 +61,10 @@
 			<copy file="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/source.jar/@{name}.source_${teneoVersion}.jar" tofile="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT-sources.jar" />
 
 			<teneo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom"/>
-
+			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-${mavenVersion}-javadoc.jar"/>
+			
 			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom"/>
+			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-SNAPSHOT-javadoc.jar"/>
 		</sequential>
 	</macrodef>
 </project>
