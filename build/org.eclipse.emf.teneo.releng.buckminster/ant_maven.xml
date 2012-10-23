@@ -18,9 +18,28 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.teneo</groupId>
 	<artifactId>@{name}</artifactId>
+	<packaging>jar</packaging>
 	<name>@{name}</name>
 	<version>${mavenVersion}</version>
 	<description>http://wiki.eclipse.org/Teneo/Hibernate</description>
+	<licenses>
+		<license>
+	    	<name>The Apache Software License, Version 2.0</name>
+	     	<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	     	<distribution>repo</distribution>
+	   	</license>
+	 </licenses>
+	 <scm>
+	 	<url>http://git.eclipse.org/c/teneo/org.eclipse.emf.teneo.git/</url>
+	    <connection>git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</connection>
+	 </scm>
+	 <developers>
+	 	<developer>
+	      	<id>mtaal</id>
+	      	<name>Martin Taal</name>
+	    	<email>mtaal@elver.org</email>
+	 	</developer>
+	 </developers>
 </project>]]> 
 			</echo>
 
@@ -30,9 +49,28 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.teneo</groupId>
 	<artifactId>@{name}</artifactId>
+	<packaging>jar</packaging>
 	<name>@{name}</name>
-	<version>${teneoVersion}-SNAPSHOT</version>
+	<version>${mavenVersion}</version>
 	<description>http://wiki.eclipse.org/Teneo/Hibernate</description>
+	<licenses>
+		<license>
+	    	<name>The Apache Software License, Version 2.0</name>
+	     	<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	     	<distribution>repo</distribution>
+	   	</license>
+	 </licenses>
+	 <scm>
+	 	<url>http://git.eclipse.org/c/teneo/org.eclipse.emf.teneo.git/</url>
+	    <connection>git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</connection>
+	 </scm>
+	 <developers>
+	 	<developer>
+	      	<id>mtaal</id>
+	      	<name>Martin Taal</name>
+	    	<email>mtaal@elver.org</email>
+	 	</developer>
+	 </developers>
 </project>]]> 
 			</echo>
 		</sequential>
