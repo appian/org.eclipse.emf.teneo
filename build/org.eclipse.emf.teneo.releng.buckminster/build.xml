@@ -90,9 +90,13 @@ http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/bu
 	<import file="ant_maven.xml" />
 
 	<target name="build.and.test" depends="get.thirdparty, init, init.checks, install.buckminster">
+
+		<echo message="buildTimestamp: ${buildTimestamp}"/>
+		<echo message="buckminster.build.timestamp: ${buckminster.build.timestamp}"/>
+
 		<echo message="Building" />
 		<ant dir="${basedir}/build" antfile="teneo_build.xml" target="run" inheritRefs="true" />
-
+		
 		<echo message="Testing" />
 		<ant dir="${basedir}/test" antfile="teneo_test.xml" target="run" inheritRefs="true" />
 
