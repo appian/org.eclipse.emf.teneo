@@ -15,6 +15,7 @@
 			<name><xsl:value-of select="$name" /></name>
 			<version><xsl:value-of select="$mavenVersion" /></version>
 			<description>http://wiki.eclipse.org/Teneo/Hibernate</description>
+			<url>http://wiki.eclipse.org/Teneo/Hibernate</url>
 			<licenses>
 				<license>
 					<name>The Eclipse Public License Version 1.0</name>
