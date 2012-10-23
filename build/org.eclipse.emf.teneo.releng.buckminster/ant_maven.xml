@@ -2,55 +2,23 @@
 <project name="TeneoMaven">
 
 	<macrodef name="teneo.pom">
-		<attribute name="fileName"/>
+		<attribute name="fileName" />
+		<attribute name="name" />
 		<sequential>
-
-			<echo file="@{fileName}">
-<![CDATA[ 
-<?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.emf.teneo</groupId>
-	<artifactId>@{name}</artifactId>
-	<packaging>jar</packaging>
-	<name>@{name}</name>
-	<version>${mavenVersion}</version>
-	<description>http://wiki.eclipse.org/Teneo/Hibernate</description>
-	<licenses>
-		<license>
-	    	<name>The Eclipse Public License Version 1.0</name>
-	     	<url>http://www.eclipse.org/legal/epl-v10.html</url>
-	     	<distribution>repo</distribution>
-	   	</license>
-	 </licenses>
-	 <scm>
-	 	<url>http://git.eclipse.org/c/teneo/org.eclipse.emf.teneo.git/</url>
-	    <connection>scm:git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</connection>
-		<developerConnection>scm:git://git.eclipse.org/gitroot/teneo/org.eclipse.emf.teneo.git/</developerConnection>
-	 </scm>
-	 <developers>
-	 	<developer>
-	      	<id>mtaal</id>
-	      	<name>Martin Taal</name>
-	    	<email>mtaal@elver.org</email>
-	 	</developer>
-	 </developers>
-</project>
-]]>
-</echo>
+			<xslt style="pom.xsl" out="@{fileName}" mavenVersion="@{mavenVersion}" name="@{name}" />
 		</sequential>
 	</macrodef>
 
 	<macrodef name="teneo.dummy.javadoc">
-		<attribute name="fileName"/>
+		<attribute name="fileName" />
 		<sequential>
 
 			<echo file="@{fileName}">
-				<![CDATA[No content, needed for publishing on nexus]]> 
+				<![CDATA[No content, needed for publishing on nexus]]>
 			</echo>
 		</sequential>
 	</macrodef>
-	
+
 	<macrodef name="teneo.maven">
 		<attribute name="name" />
 		<sequential>
@@ -62,11 +30,11 @@
 			<copy file="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/jar/@{name}_${teneoVersion}.jar" tofile="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.jar" />
 			<copy file="${rootPath}/output/@{name}_${teneo.version}-osgi.bundle/source.jar/@{name}.source_${teneoVersion}.jar" tofile="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT-sources.jar" />
 
-			<teneo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom"/>
-			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-${mavenVersion}-javadoc.jar"/>
-			
-			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom"/>
-			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-SNAPSHOT-javadoc.jar"/>
+			<teneo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom" name="@{name}" />
+			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-${mavenVersion}-javadoc.jar" />
+
+			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom" name="@{name}" />
+			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-SNAPSHOT-javadoc.jar" />
 		</sequential>
 	</macrodef>
 </project>
