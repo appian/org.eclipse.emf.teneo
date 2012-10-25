@@ -39,8 +39,8 @@
 			<teneo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom" name="@{name}" mavenVersion="${mavenVersion}" />
 			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-${mavenVersion}-javadoc.jar" />
 
-			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom" name="@{name}" mavenVersion="${mavenVersion}" />
-			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-SNAPSHOT-javadoc.jar" />
+			<teneo.pom fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT.pom" name="@{name}" mavenVersion="${teneo.version}-SNAPSHOT" />
+			<teneo.dummy.javadoc fileName="${mavenPath}/@{name}-${teneo.version}-SNAPSHOT-javadoc.jar" />
 		</sequential>
 	</macrodef>
 </project>
