@@ -9,7 +9,7 @@
 			xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 			xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 			<modelVersion>4.0.0</modelVersion>
-			<groupId>org.eclipse.emf.teneo</groupId>
+			<groupId>org.eclipse.emf</groupId>
 			<artifactId><xsl:value-of select="$name" /></artifactId>
 			<packaging>jar</packaging>
 			<name><xsl:value-of select="$name" /></name>
